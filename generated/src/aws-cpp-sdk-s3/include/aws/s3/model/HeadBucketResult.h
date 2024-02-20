@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -122,16 +122,6 @@ namespace Model
 
     
     inline HeadBucketResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>Region of the bucket. If it's any empty string, this response header does not appear in the response.</p>
-     */
-    inline const Aws::String & GetRegion() const{ return m_region; }
-
-    /**
-     * <p>Set region for the bucket.</p>
-     */
-    inline void SetRegion(Aws::String value) { m_region = std::move(value); }
 
   private:
 
