@@ -65,6 +65,22 @@ bool AWSCredentialsProvider::IsTimeToRefresh(long reloadFrequency)
     return false;
 }
 
+void AWSCredentialsProvider::SetNeedRefresh()
+{
+    ReaderLockGuard guard(m_reloadLock);
+    if (m_lastLoadedMs != 0)
+    {
+        guard.UpgradeToWriterLock();
+        m_lastLoadedMs = 0;
+    }
+}
+
+bool AWSCredentialsProvider::IsSetNeedRefresh()
+{
+    /// This function is called from implementations of RefreshIfExpired() at the point when m_reloadLock is locked.
+    return m_lastLoadedMs == 0;
+}
+
 
 static const char* ENVIRONMENT_LOG_TAG = "EnvironmentAWSCredentialsProvider";
 
