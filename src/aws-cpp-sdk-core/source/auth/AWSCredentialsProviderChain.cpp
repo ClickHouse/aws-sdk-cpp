@@ -40,6 +40,19 @@ AWSCredentials AWSCredentialsProviderChain::GetAWSCredentials()
     return AWSCredentials();
 }
 
+void AWSCredentialsProviderChain::SetNeedRefresh()
+{
+    for (auto&& credentialsProvider : m_providerChain)
+        credentialsProvider->SetNeedRefresh();
+
+    ReaderLockGuard lock(m_cachedProviderLock);
+    if (m_cachedProvider)
+    {
+        lock.UpgradeToWriterLock();
+        m_cachedProvider.reset();
+    }
+}
+
 DefaultAWSCredentialsProviderChain::DefaultAWSCredentialsProviderChain() : AWSCredentialsProviderChain()
 {
     AddProvider(Aws::MakeShared<EnvironmentAWSCredentialsProvider>(DefaultCredentialsProviderChainTag));
