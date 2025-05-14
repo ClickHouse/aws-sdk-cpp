@@ -240,6 +240,8 @@ void GeneralHTTPCredentialsProvider::Reload()
     accountId = credentialsView.GetString("AccountId");
     AWS_LOGSTREAM_DEBUG(GEN_HTTP_LOG_TAG, "Successfully pulled credentials from metadata service with access key " << accessKey);
 
+    auto old_credentials = m_credentials;
+
     m_credentials.SetAWSAccessKeyId(accessKey);
     m_credentials.SetAWSSecretKey(secretKey);
     m_credentials.SetSessionToken(token);
@@ -249,6 +251,8 @@ void GeneralHTTPCredentialsProvider::Reload()
         m_credentials.AddUserAgentFeature(Aws::Client::UserAgentFeature::CREDENTIALS_HTTP);
     }
     AWSCredentialsProvider::Reload();
+
+    AWS_LOGSTREAM_DEBUG(GEN_HTTP_LOG_TAG, "Got " << ((m_credentials == old_credentials) ? "same " : "") << "credentials from ECSCredentialService.");
 }
 
 void GeneralHTTPCredentialsProvider::RefreshIfExpired()
