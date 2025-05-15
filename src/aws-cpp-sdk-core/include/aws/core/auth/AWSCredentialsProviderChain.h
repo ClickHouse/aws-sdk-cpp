@@ -29,6 +29,8 @@ namespace Aws
              */
             virtual AWSCredentials GetAWSCredentials();
 
+            virtual void SetNeedRefresh();
+
             /**
              * Gets all providers stored in this chain.
              */
