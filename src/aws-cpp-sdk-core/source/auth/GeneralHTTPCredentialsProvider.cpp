@@ -240,11 +240,15 @@ void GeneralHTTPCredentialsProvider::Reload()
     token = credentialsView.GetString("Token");
     AWS_LOGSTREAM_DEBUG(GEN_HTTP_LOG_TAG, "Successfully pulled credentials from metadata service with access key " << accessKey);
 
+    auto old_credentials = m_credentials;
+
     m_credentials.SetAWSAccessKeyId(accessKey);
     m_credentials.SetAWSSecretKey(secretKey);
     m_credentials.SetSessionToken(token);
     m_credentials.SetExpiration(Aws::Utils::DateTime(credentialsView.GetString("Expiration"), Aws::Utils::DateFormat::ISO_8601));
     AWSCredentialsProvider::Reload();
+
+    AWS_LOGSTREAM_DEBUG(GEN_HTTP_LOG_TAG, "Got " << ((m_credentials == old_credentials) ? "same " : "") << "credentials from ECSCredentialService.");
 }
 
 void GeneralHTTPCredentialsProvider::RefreshIfExpired()
