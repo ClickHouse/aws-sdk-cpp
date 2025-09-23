@@ -548,32 +548,6 @@ std::shared_ptr<RetryStrategy> InitRetryStrategy(Aws::String retryMode)
     return retryStrategy;
 }
 
-std::shared_ptr<RetryStrategy> InitRetryStrategy(Aws::String retryMode)
-{
-    int maxAttempts = 0;
-    Aws::String maxAttemptsString = Aws::Environment::GetEnv("AWS_MAX_ATTEMPTS");
-    if (maxAttemptsString.empty())
-    {
-        maxAttemptsString = Aws::Config::GetCachedConfigValue("max_attempts");
-    }
-    // In case users specify 0 explicitly to disable retry.
-    if (maxAttemptsString == "0")
-    {
-        maxAttempts = 0;
-    }
-    else
-    {
-        maxAttempts = static_cast<int>(Aws::Utils::StringUtils::ConvertToInt32(maxAttemptsString.c_str()));
-        if (maxAttempts == 0)
-        {
-            AWS_LOGSTREAM_INFO(CLIENT_CONFIG_TAG, "Retry Strategy will use the default max attempts.");
-            maxAttempts = -1;
-        }
-    }
-
-    return InitRetryStrategy(maxAttempts, retryMode);
-}
-
 Aws::String ClientConfiguration::LoadConfigFromEnvOrProfile(const Aws::String& envKey,
                                                             const Aws::String& profile,
                                                             const Aws::String& profileProperty,
