@@ -12,13 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AssociateBotRequest::AssociateBotRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_lexBotHasBeenSet(false),
-    m_lexV2BotHasBeenSet(false)
-{
-}
-
 Aws::String AssociateBotRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,12 @@ Aws::String AssociateBotRequest::SerializePayload() const
   if(m_lexV2BotHasBeenSet)
   {
    payload.WithObject("LexV2Bot", m_lexV2Bot.Jsonize());
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("ClientToken", m_clientToken);
 
   }
 

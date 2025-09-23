@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TableFieldCustomTextContent::TableFieldCustomTextContent() : 
-    m_valueHasBeenSet(false),
-    m_fontConfigurationHasBeenSet(false)
-{
-}
-
-TableFieldCustomTextContent::TableFieldCustomTextContent(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_fontConfigurationHasBeenSet(false)
+TableFieldCustomTextContent::TableFieldCustomTextContent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TableFieldCustomTextContent& TableFieldCustomTextContent::operator =(JsonView js
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FontConfiguration"))
   {
     m_fontConfiguration = jsonValue.GetObject("FontConfiguration");
-
     m_fontConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

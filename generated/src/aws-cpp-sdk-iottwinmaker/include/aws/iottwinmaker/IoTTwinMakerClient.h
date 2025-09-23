@@ -27,8 +27,8 @@ namespace IoTTwinMaker
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef IoTTwinMakerClientConfiguration ClientConfigurationType;
       typedef IoTTwinMakerEndpointProvider EndpointProviderType;
@@ -38,14 +38,14 @@ namespace IoTTwinMaker
         * is not specified, it will be initialized to default values.
         */
         IoTTwinMakerClient(const Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration& clientConfiguration = Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration(),
-                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTTwinMakerEndpointProvider>(ALLOCATION_TAG));
+                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         IoTTwinMakerClient(const Aws::Auth::AWSCredentials& credentials,
-                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTTwinMakerEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration& clientConfiguration = Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration());
 
        /**
@@ -53,7 +53,7 @@ namespace IoTTwinMaker
         * the default http client factory will be used
         */
         IoTTwinMakerClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = Aws::MakeShared<IoTTwinMakerEndpointProvider>(ALLOCATION_TAG),
+                           std::shared_ptr<IoTTwinMakerEndpointProviderBase> endpointProvider = nullptr,
                            const Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration& clientConfiguration = Aws::IoTTwinMaker::IoTTwinMakerClientConfiguration());
 
 
@@ -517,13 +517,13 @@ namespace IoTTwinMaker
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/GetPricingPlan">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetPricingPlanOutcome GetPricingPlan(const Model::GetPricingPlanRequest& request) const;
+        virtual Model::GetPricingPlanOutcome GetPricingPlan(const Model::GetPricingPlanRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetPricingPlan that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetPricingPlanRequestT = Model::GetPricingPlanRequest>
-        Model::GetPricingPlanOutcomeCallable GetPricingPlanCallable(const GetPricingPlanRequestT& request) const
+        Model::GetPricingPlanOutcomeCallable GetPricingPlanCallable(const GetPricingPlanRequestT& request = {}) const
         {
             return SubmitCallable(&IoTTwinMakerClient::GetPricingPlan, request);
         }
@@ -532,7 +532,7 @@ namespace IoTTwinMaker
          * An Async wrapper for GetPricingPlan that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetPricingPlanRequestT = Model::GetPricingPlanRequest>
-        void GetPricingPlanAsync(const GetPricingPlanRequestT& request, const GetPricingPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetPricingPlanAsync(const GetPricingPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetPricingPlanRequestT& request = {}) const
         {
             return SubmitAsync(&IoTTwinMakerClient::GetPricingPlan, request, handler, context);
         }
@@ -900,13 +900,13 @@ namespace IoTTwinMaker
          * href="http://docs.aws.amazon.com/goto/WebAPI/iottwinmaker-2021-11-29/ListWorkspaces">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListWorkspacesOutcome ListWorkspaces(const Model::ListWorkspacesRequest& request) const;
+        virtual Model::ListWorkspacesOutcome ListWorkspaces(const Model::ListWorkspacesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListWorkspaces that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListWorkspacesRequestT = Model::ListWorkspacesRequest>
-        Model::ListWorkspacesOutcomeCallable ListWorkspacesCallable(const ListWorkspacesRequestT& request) const
+        Model::ListWorkspacesOutcomeCallable ListWorkspacesCallable(const ListWorkspacesRequestT& request = {}) const
         {
             return SubmitCallable(&IoTTwinMakerClient::ListWorkspaces, request);
         }
@@ -915,7 +915,7 @@ namespace IoTTwinMaker
          * An Async wrapper for ListWorkspaces that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListWorkspacesRequestT = Model::ListWorkspacesRequest>
-        void ListWorkspacesAsync(const ListWorkspacesRequestT& request, const ListWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListWorkspacesAsync(const ListWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListWorkspacesRequestT& request = {}) const
         {
             return SubmitAsync(&IoTTwinMakerClient::ListWorkspaces, request, handler, context);
         }
@@ -1103,7 +1103,6 @@ namespace IoTTwinMaker
       void init(const IoTTwinMakerClientConfiguration& clientConfiguration);
 
       IoTTwinMakerClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<IoTTwinMakerEndpointProviderBase> m_endpointProvider;
   };
 

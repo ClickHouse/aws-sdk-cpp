@@ -18,15 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-LegalTerm::LegalTerm() : 
-    m_documentsHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-LegalTerm::LegalTerm(JsonView jsonValue) : 
-    m_documentsHasBeenSet(false),
-    m_typeHasBeenSet(false)
+LegalTerm::LegalTerm(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ LegalTerm& LegalTerm::operator =(JsonView jsonValue)
     }
     m_documentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,14 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-UpdateServiceSpecificCredentialRequest::UpdateServiceSpecificCredentialRequest() : 
-    m_userNameHasBeenSet(false),
-    m_serviceSpecificCredentialIdHasBeenSet(false),
-    m_status(StatusType::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String UpdateServiceSpecificCredentialRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +26,7 @@ Aws::String UpdateServiceSpecificCredentialRequest::SerializePayload() const
 
   if(m_statusHasBeenSet)
   {
-    ss << "Status=" << StatusTypeMapper::GetNameForStatusType(m_status) << "&";
+    ss << "Status=" << StringUtils::URLEncode(StatusTypeMapper::GetNameForStatusType(m_status)) << "&";
   }
 
   ss << "Version=2010-05-08";

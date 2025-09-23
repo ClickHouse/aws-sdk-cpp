@@ -24,59 +24,38 @@ namespace Model
 {
 
   /**
-   * <p>An object which defines an incremental run type and has only
-   * <code>incrementalRunType</code> as a field.</p><p><h3>See Also:</h3>   <a
+   * <p>Optional. An object that defines the incremental run type. This object
+   * contains only the <code>incrementalRunType</code> field, which appears as
+   * "Automatic" in the console. </p>  <p>For workflows where
+   * <code>resolutionType</code> is <code>ML_MATCHING</code>, incremental processing
+   * is not supported. </p> <p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/entityresolution-2018-05-10/IncrementalRunConfig">AWS
    * API Reference</a></p>
    */
   class IncrementalRunConfig
   {
   public:
-    AWS_ENTITYRESOLUTION_API IncrementalRunConfig();
+    AWS_ENTITYRESOLUTION_API IncrementalRunConfig() = default;
     AWS_ENTITYRESOLUTION_API IncrementalRunConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API IncrementalRunConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The type of incremental run. It takes only one value:
-     * <code>IMMEDIATE</code>.</p>
+     * <p>The type of incremental run. The only valid value is <code>IMMEDIATE</code>.
+     * This appears as "Automatic" in the console.</p>  <p>For workflows
+     * where <code>resolutionType</code> is <code>ML_MATCHING</code>, incremental
+     * processing is not supported. </p> 
      */
-    inline const IncrementalRunType& GetIncrementalRunType() const{ return m_incrementalRunType; }
-
-    /**
-     * <p>The type of incremental run. It takes only one value:
-     * <code>IMMEDIATE</code>.</p>
-     */
+    inline IncrementalRunType GetIncrementalRunType() const { return m_incrementalRunType; }
     inline bool IncrementalRunTypeHasBeenSet() const { return m_incrementalRunTypeHasBeenSet; }
-
-    /**
-     * <p>The type of incremental run. It takes only one value:
-     * <code>IMMEDIATE</code>.</p>
-     */
-    inline void SetIncrementalRunType(const IncrementalRunType& value) { m_incrementalRunTypeHasBeenSet = true; m_incrementalRunType = value; }
-
-    /**
-     * <p>The type of incremental run. It takes only one value:
-     * <code>IMMEDIATE</code>.</p>
-     */
-    inline void SetIncrementalRunType(IncrementalRunType&& value) { m_incrementalRunTypeHasBeenSet = true; m_incrementalRunType = std::move(value); }
-
-    /**
-     * <p>The type of incremental run. It takes only one value:
-     * <code>IMMEDIATE</code>.</p>
-     */
-    inline IncrementalRunConfig& WithIncrementalRunType(const IncrementalRunType& value) { SetIncrementalRunType(value); return *this;}
-
-    /**
-     * <p>The type of incremental run. It takes only one value:
-     * <code>IMMEDIATE</code>.</p>
-     */
-    inline IncrementalRunConfig& WithIncrementalRunType(IncrementalRunType&& value) { SetIncrementalRunType(std::move(value)); return *this;}
-
+    inline void SetIncrementalRunType(IncrementalRunType value) { m_incrementalRunTypeHasBeenSet = true; m_incrementalRunType = value; }
+    inline IncrementalRunConfig& WithIncrementalRunType(IncrementalRunType value) { SetIncrementalRunType(value); return *this;}
+    ///@}
   private:
 
-    IncrementalRunType m_incrementalRunType;
+    IncrementalRunType m_incrementalRunType{IncrementalRunType::NOT_SET};
     bool m_incrementalRunTypeHasBeenSet = false;
   };
 

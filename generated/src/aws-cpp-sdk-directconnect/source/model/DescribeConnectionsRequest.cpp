@@ -12,11 +12,6 @@ using namespace Aws::DirectConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeConnectionsRequest::DescribeConnectionsRequest() : 
-    m_connectionIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeConnectionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,18 @@ Aws::String DescribeConnectionsRequest::SerializePayload() const
   if(m_connectionIdHasBeenSet)
   {
    payload.WithString("connectionId", m_connectionId);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
 
   }
 

@@ -30,59 +30,37 @@ namespace Model
   class SecurityPolicyStats
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API SecurityPolicyStats();
+    AWS_OPENSEARCHSERVERLESS_API SecurityPolicyStats() = default;
     AWS_OPENSEARCHSERVERLESS_API SecurityPolicyStats(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API SecurityPolicyStats& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of encryption policies in the current account.</p>
      */
-    inline long long GetEncryptionPolicyCount() const{ return m_encryptionPolicyCount; }
-
-    /**
-     * <p>The number of encryption policies in the current account.</p>
-     */
+    inline long long GetEncryptionPolicyCount() const { return m_encryptionPolicyCount; }
     inline bool EncryptionPolicyCountHasBeenSet() const { return m_encryptionPolicyCountHasBeenSet; }
-
-    /**
-     * <p>The number of encryption policies in the current account.</p>
-     */
     inline void SetEncryptionPolicyCount(long long value) { m_encryptionPolicyCountHasBeenSet = true; m_encryptionPolicyCount = value; }
-
-    /**
-     * <p>The number of encryption policies in the current account.</p>
-     */
     inline SecurityPolicyStats& WithEncryptionPolicyCount(long long value) { SetEncryptionPolicyCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of network policies in the current account.</p>
      */
-    inline long long GetNetworkPolicyCount() const{ return m_networkPolicyCount; }
-
-    /**
-     * <p>The number of network policies in the current account.</p>
-     */
+    inline long long GetNetworkPolicyCount() const { return m_networkPolicyCount; }
     inline bool NetworkPolicyCountHasBeenSet() const { return m_networkPolicyCountHasBeenSet; }
-
-    /**
-     * <p>The number of network policies in the current account.</p>
-     */
     inline void SetNetworkPolicyCount(long long value) { m_networkPolicyCountHasBeenSet = true; m_networkPolicyCount = value; }
-
-    /**
-     * <p>The number of network policies in the current account.</p>
-     */
     inline SecurityPolicyStats& WithNetworkPolicyCount(long long value) { SetNetworkPolicyCount(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_encryptionPolicyCount;
+    long long m_encryptionPolicyCount{0};
     bool m_encryptionPolicyCountHasBeenSet = false;
 
-    long long m_networkPolicyCount;
+    long long m_networkPolicyCount{0};
     bool m_networkPolicyCountHasBeenSet = false;
   };
 

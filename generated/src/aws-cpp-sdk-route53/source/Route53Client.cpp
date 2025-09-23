@@ -106,20 +106,27 @@ using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
 
-const char* Route53Client::SERVICE_NAME = "route53";
-const char* Route53Client::ALLOCATION_TAG = "Route53Client";
+namespace Aws
+{
+  namespace Route53
+  {
+    const char SERVICE_NAME[] = "route53";
+    const char ALLOCATION_TAG[] = "Route53Client";
+  }
+}
+const char* Route53Client::GetServiceName() {return SERVICE_NAME;}
+const char* Route53Client::GetAllocationTag() {return ALLOCATION_TAG;}
 
 Route53Client::Route53Client(const Route53::Route53ClientConfiguration& clientConfiguration,
                              std::shared_ptr<Route53EndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Route53EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -134,8 +141,7 @@ Route53Client::Route53Client(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Route53EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -150,8 +156,7 @@ Route53Client::Route53Client(const std::shared_ptr<AWSCredentialsProvider>& cred
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Route53EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -160,12 +165,11 @@ Route53Client::Route53Client(const std::shared_ptr<AWSCredentialsProvider>& cred
   Route53Client::Route53Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<Route53EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -180,7 +184,6 @@ Route53Client::Route53Client(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<Route53EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -195,7 +198,6 @@ Route53Client::Route53Client(const std::shared_ptr<AWSCredentialsProvider>& cred
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<Route53EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -215,6 +217,14 @@ std::shared_ptr<Route53EndpointProviderBase>& Route53Client::accessEndpointProvi
 void Route53Client::init(const Route53::Route53ClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Route 53");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

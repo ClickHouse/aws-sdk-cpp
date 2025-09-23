@@ -29,174 +29,80 @@ namespace Model
   class UpdateAnalysisPermissionsResult
   {
   public:
-    AWS_QUICKSIGHT_API UpdateAnalysisPermissionsResult();
+    AWS_QUICKSIGHT_API UpdateAnalysisPermissionsResult() = default;
     AWS_QUICKSIGHT_API UpdateAnalysisPermissionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API UpdateAnalysisPermissionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
      */
-    inline const Aws::String& GetAnalysisArn() const{ return m_analysisArn; }
+    inline const Aws::String& GetAnalysisArn() const { return m_analysisArn; }
+    template<typename AnalysisArnT = Aws::String>
+    void SetAnalysisArn(AnalysisArnT&& value) { m_analysisArnHasBeenSet = true; m_analysisArn = std::forward<AnalysisArnT>(value); }
+    template<typename AnalysisArnT = Aws::String>
+    UpdateAnalysisPermissionsResult& WithAnalysisArn(AnalysisArnT&& value) { SetAnalysisArn(std::forward<AnalysisArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
-     */
-    inline void SetAnalysisArn(const Aws::String& value) { m_analysisArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
-     */
-    inline void SetAnalysisArn(Aws::String&& value) { m_analysisArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
-     */
-    inline void SetAnalysisArn(const char* value) { m_analysisArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithAnalysisArn(const Aws::String& value) { SetAnalysisArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithAnalysisArn(Aws::String&& value) { SetAnalysisArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the analysis that you updated.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithAnalysisArn(const char* value) { SetAnalysisArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the analysis that you updated permissions for.</p>
      */
-    inline const Aws::String& GetAnalysisId() const{ return m_analysisId; }
+    inline const Aws::String& GetAnalysisId() const { return m_analysisId; }
+    template<typename AnalysisIdT = Aws::String>
+    void SetAnalysisId(AnalysisIdT&& value) { m_analysisIdHasBeenSet = true; m_analysisId = std::forward<AnalysisIdT>(value); }
+    template<typename AnalysisIdT = Aws::String>
+    UpdateAnalysisPermissionsResult& WithAnalysisId(AnalysisIdT&& value) { SetAnalysisId(std::forward<AnalysisIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the analysis that you updated permissions for.</p>
-     */
-    inline void SetAnalysisId(const Aws::String& value) { m_analysisId = value; }
-
-    /**
-     * <p>The ID of the analysis that you updated permissions for.</p>
-     */
-    inline void SetAnalysisId(Aws::String&& value) { m_analysisId = std::move(value); }
-
-    /**
-     * <p>The ID of the analysis that you updated permissions for.</p>
-     */
-    inline void SetAnalysisId(const char* value) { m_analysisId.assign(value); }
-
-    /**
-     * <p>The ID of the analysis that you updated permissions for.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithAnalysisId(const Aws::String& value) { SetAnalysisId(value); return *this;}
-
-    /**
-     * <p>The ID of the analysis that you updated permissions for.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithAnalysisId(Aws::String&& value) { SetAnalysisId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the analysis that you updated permissions for.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithAnalysisId(const char* value) { SetAnalysisId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure that describes the principals and the resource-level permissions
      * on an analysis.</p>
      */
-    inline const Aws::Vector<ResourcePermission>& GetPermissions() const{ return m_permissions; }
+    inline const Aws::Vector<ResourcePermission>& GetPermissions() const { return m_permissions; }
+    template<typename PermissionsT = Aws::Vector<ResourcePermission>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<ResourcePermission>>
+    UpdateAnalysisPermissionsResult& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    template<typename PermissionsT = ResourcePermission>
+    UpdateAnalysisPermissionsResult& AddPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions.emplace_back(std::forward<PermissionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis.</p>
-     */
-    inline void SetPermissions(const Aws::Vector<ResourcePermission>& value) { m_permissions = value; }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis.</p>
-     */
-    inline void SetPermissions(Aws::Vector<ResourcePermission>&& value) { m_permissions = std::move(value); }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithPermissions(const Aws::Vector<ResourcePermission>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& WithPermissions(Aws::Vector<ResourcePermission>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& AddPermissions(const ResourcePermission& value) { m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis.</p>
-     */
-    inline UpdateAnalysisPermissionsResult& AddPermissions(ResourcePermission&& value) { m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateAnalysisPermissionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateAnalysisPermissionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateAnalysisPermissionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateAnalysisPermissionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline UpdateAnalysisPermissionsResult& WithStatus(int value) { SetStatus(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_analysisArn;
+    bool m_analysisArnHasBeenSet = false;
 
     Aws::String m_analysisId;
+    bool m_analysisIdHasBeenSet = false;
 
     Aws::Vector<ResourcePermission> m_permissions;
+    bool m_permissionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
   };
 
 } // namespace Model

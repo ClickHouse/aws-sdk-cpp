@@ -38,714 +38,236 @@ namespace Model
   class SavingsPlan
   {
   public:
-    AWS_SAVINGSPLANS_API SavingsPlan();
+    AWS_SAVINGSPLANS_API SavingsPlan() = default;
     AWS_SAVINGSPLANS_API SavingsPlan(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAVINGSPLANS_API SavingsPlan& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAVINGSPLANS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the offering.</p>
      */
-    inline const Aws::String& GetOfferingId() const{ return m_offeringId; }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
+    inline const Aws::String& GetOfferingId() const { return m_offeringId; }
     inline bool OfferingIdHasBeenSet() const { return m_offeringIdHasBeenSet; }
+    template<typename OfferingIdT = Aws::String>
+    void SetOfferingId(OfferingIdT&& value) { m_offeringIdHasBeenSet = true; m_offeringId = std::forward<OfferingIdT>(value); }
+    template<typename OfferingIdT = Aws::String>
+    SavingsPlan& WithOfferingId(OfferingIdT&& value) { SetOfferingId(std::forward<OfferingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline void SetOfferingId(const Aws::String& value) { m_offeringIdHasBeenSet = true; m_offeringId = value; }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline void SetOfferingId(Aws::String&& value) { m_offeringIdHasBeenSet = true; m_offeringId = std::move(value); }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline void SetOfferingId(const char* value) { m_offeringIdHasBeenSet = true; m_offeringId.assign(value); }
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline SavingsPlan& WithOfferingId(const Aws::String& value) { SetOfferingId(value); return *this;}
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline SavingsPlan& WithOfferingId(Aws::String&& value) { SetOfferingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the offering.</p>
-     */
-    inline SavingsPlan& WithOfferingId(const char* value) { SetOfferingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Savings Plan.</p>
      */
-    inline const Aws::String& GetSavingsPlanId() const{ return m_savingsPlanId; }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
+    inline const Aws::String& GetSavingsPlanId() const { return m_savingsPlanId; }
     inline bool SavingsPlanIdHasBeenSet() const { return m_savingsPlanIdHasBeenSet; }
+    template<typename SavingsPlanIdT = Aws::String>
+    void SetSavingsPlanId(SavingsPlanIdT&& value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId = std::forward<SavingsPlanIdT>(value); }
+    template<typename SavingsPlanIdT = Aws::String>
+    SavingsPlan& WithSavingsPlanId(SavingsPlanIdT&& value) { SetSavingsPlanId(std::forward<SavingsPlanIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanId(const Aws::String& value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId = value; }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanId(Aws::String&& value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId = std::move(value); }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanId(const char* value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId.assign(value); }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanId(const Aws::String& value) { SetSavingsPlanId(value); return *this;}
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanId(Aws::String&& value) { SetSavingsPlanId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanId(const char* value) { SetSavingsPlanId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
      */
-    inline const Aws::String& GetSavingsPlanArn() const{ return m_savingsPlanArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
+    inline const Aws::String& GetSavingsPlanArn() const { return m_savingsPlanArn; }
     inline bool SavingsPlanArnHasBeenSet() const { return m_savingsPlanArnHasBeenSet; }
+    template<typename SavingsPlanArnT = Aws::String>
+    void SetSavingsPlanArn(SavingsPlanArnT&& value) { m_savingsPlanArnHasBeenSet = true; m_savingsPlanArn = std::forward<SavingsPlanArnT>(value); }
+    template<typename SavingsPlanArnT = Aws::String>
+    SavingsPlan& WithSavingsPlanArn(SavingsPlanArnT&& value) { SetSavingsPlanArn(std::forward<SavingsPlanArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanArn(const Aws::String& value) { m_savingsPlanArnHasBeenSet = true; m_savingsPlanArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanArn(Aws::String&& value) { m_savingsPlanArnHasBeenSet = true; m_savingsPlanArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanArn(const char* value) { m_savingsPlanArnHasBeenSet = true; m_savingsPlanArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanArn(const Aws::String& value) { SetSavingsPlanArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanArn(Aws::String&& value) { SetSavingsPlanArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Savings Plan.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanArn(const char* value) { SetSavingsPlanArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    SavingsPlan& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline SavingsPlan& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline SavingsPlan& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline SavingsPlan& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The start time.</p>
      */
-    inline const Aws::String& GetStart() const{ return m_start; }
-
-    /**
-     * <p>The start time.</p>
-     */
+    inline const Aws::String& GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
+    template<typename StartT = Aws::String>
+    void SetStart(StartT&& value) { m_startHasBeenSet = true; m_start = std::forward<StartT>(value); }
+    template<typename StartT = Aws::String>
+    SavingsPlan& WithStart(StartT&& value) { SetStart(std::forward<StartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The start time.</p>
-     */
-    inline void SetStart(const Aws::String& value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * <p>The start time.</p>
-     */
-    inline void SetStart(Aws::String&& value) { m_startHasBeenSet = true; m_start = std::move(value); }
-
-    /**
-     * <p>The start time.</p>
-     */
-    inline void SetStart(const char* value) { m_startHasBeenSet = true; m_start.assign(value); }
-
-    /**
-     * <p>The start time.</p>
-     */
-    inline SavingsPlan& WithStart(const Aws::String& value) { SetStart(value); return *this;}
-
-    /**
-     * <p>The start time.</p>
-     */
-    inline SavingsPlan& WithStart(Aws::String&& value) { SetStart(std::move(value)); return *this;}
-
-    /**
-     * <p>The start time.</p>
-     */
-    inline SavingsPlan& WithStart(const char* value) { SetStart(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The end time.</p>
      */
-    inline const Aws::String& GetEnd() const{ return m_end; }
-
-    /**
-     * <p>The end time.</p>
-     */
+    inline const Aws::String& GetEnd() const { return m_end; }
     inline bool EndHasBeenSet() const { return m_endHasBeenSet; }
+    template<typename EndT = Aws::String>
+    void SetEnd(EndT&& value) { m_endHasBeenSet = true; m_end = std::forward<EndT>(value); }
+    template<typename EndT = Aws::String>
+    SavingsPlan& WithEnd(EndT&& value) { SetEnd(std::forward<EndT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The end time.</p>
+     * <p>The current state.</p>
      */
-    inline void SetEnd(const Aws::String& value) { m_endHasBeenSet = true; m_end = value; }
-
-    /**
-     * <p>The end time.</p>
-     */
-    inline void SetEnd(Aws::String&& value) { m_endHasBeenSet = true; m_end = std::move(value); }
-
-    /**
-     * <p>The end time.</p>
-     */
-    inline void SetEnd(const char* value) { m_endHasBeenSet = true; m_end.assign(value); }
-
-    /**
-     * <p>The end time.</p>
-     */
-    inline SavingsPlan& WithEnd(const Aws::String& value) { SetEnd(value); return *this;}
-
-    /**
-     * <p>The end time.</p>
-     */
-    inline SavingsPlan& WithEnd(Aws::String&& value) { SetEnd(std::move(value)); return *this;}
-
-    /**
-     * <p>The end time.</p>
-     */
-    inline SavingsPlan& WithEnd(const char* value) { SetEnd(value); return *this;}
-
-
-    /**
-     * <p>The state.</p>
-     */
-    inline const SavingsPlanState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state.</p>
-     */
+    inline SavingsPlanState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(SavingsPlanState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline SavingsPlan& WithState(SavingsPlanState value) { SetState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state.</p>
+     * <p>The Amazon Web Services Region.</p>
      */
-    inline void SetState(const SavingsPlanState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state.</p>
-     */
-    inline void SetState(SavingsPlanState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state.</p>
-     */
-    inline SavingsPlan& WithState(const SavingsPlanState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state.</p>
-     */
-    inline SavingsPlan& WithState(SavingsPlanState&& value) { SetState(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline const Aws::String& GetRegion() const{ return m_region; }
-
-    /**
-     * <p>The AWS Region.</p>
-     */
+    inline const Aws::String& GetRegion() const { return m_region; }
     inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    SavingsPlan& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline void SetRegion(const Aws::String& value) { m_regionHasBeenSet = true; m_region = value; }
-
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline void SetRegion(Aws::String&& value) { m_regionHasBeenSet = true; m_region = std::move(value); }
-
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline void SetRegion(const char* value) { m_regionHasBeenSet = true; m_region.assign(value); }
-
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline SavingsPlan& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
-
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline SavingsPlan& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS Region.</p>
-     */
-    inline SavingsPlan& WithRegion(const char* value) { SetRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The EC2 instance family.</p>
      */
-    inline const Aws::String& GetEc2InstanceFamily() const{ return m_ec2InstanceFamily; }
-
-    /**
-     * <p>The EC2 instance family.</p>
-     */
+    inline const Aws::String& GetEc2InstanceFamily() const { return m_ec2InstanceFamily; }
     inline bool Ec2InstanceFamilyHasBeenSet() const { return m_ec2InstanceFamilyHasBeenSet; }
+    template<typename Ec2InstanceFamilyT = Aws::String>
+    void SetEc2InstanceFamily(Ec2InstanceFamilyT&& value) { m_ec2InstanceFamilyHasBeenSet = true; m_ec2InstanceFamily = std::forward<Ec2InstanceFamilyT>(value); }
+    template<typename Ec2InstanceFamilyT = Aws::String>
+    SavingsPlan& WithEc2InstanceFamily(Ec2InstanceFamilyT&& value) { SetEc2InstanceFamily(std::forward<Ec2InstanceFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The EC2 instance family.</p>
-     */
-    inline void SetEc2InstanceFamily(const Aws::String& value) { m_ec2InstanceFamilyHasBeenSet = true; m_ec2InstanceFamily = value; }
-
-    /**
-     * <p>The EC2 instance family.</p>
-     */
-    inline void SetEc2InstanceFamily(Aws::String&& value) { m_ec2InstanceFamilyHasBeenSet = true; m_ec2InstanceFamily = std::move(value); }
-
-    /**
-     * <p>The EC2 instance family.</p>
-     */
-    inline void SetEc2InstanceFamily(const char* value) { m_ec2InstanceFamilyHasBeenSet = true; m_ec2InstanceFamily.assign(value); }
-
-    /**
-     * <p>The EC2 instance family.</p>
-     */
-    inline SavingsPlan& WithEc2InstanceFamily(const Aws::String& value) { SetEc2InstanceFamily(value); return *this;}
-
-    /**
-     * <p>The EC2 instance family.</p>
-     */
-    inline SavingsPlan& WithEc2InstanceFamily(Aws::String&& value) { SetEc2InstanceFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The EC2 instance family.</p>
-     */
-    inline SavingsPlan& WithEc2InstanceFamily(const char* value) { SetEc2InstanceFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The plan type.</p>
      */
-    inline const SavingsPlanType& GetSavingsPlanType() const{ return m_savingsPlanType; }
-
-    /**
-     * <p>The plan type.</p>
-     */
+    inline SavingsPlanType GetSavingsPlanType() const { return m_savingsPlanType; }
     inline bool SavingsPlanTypeHasBeenSet() const { return m_savingsPlanTypeHasBeenSet; }
+    inline void SetSavingsPlanType(SavingsPlanType value) { m_savingsPlanTypeHasBeenSet = true; m_savingsPlanType = value; }
+    inline SavingsPlan& WithSavingsPlanType(SavingsPlanType value) { SetSavingsPlanType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The plan type.</p>
-     */
-    inline void SetSavingsPlanType(const SavingsPlanType& value) { m_savingsPlanTypeHasBeenSet = true; m_savingsPlanType = value; }
-
-    /**
-     * <p>The plan type.</p>
-     */
-    inline void SetSavingsPlanType(SavingsPlanType&& value) { m_savingsPlanTypeHasBeenSet = true; m_savingsPlanType = std::move(value); }
-
-    /**
-     * <p>The plan type.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanType(const SavingsPlanType& value) { SetSavingsPlanType(value); return *this;}
-
-    /**
-     * <p>The plan type.</p>
-     */
-    inline SavingsPlan& WithSavingsPlanType(SavingsPlanType&& value) { SetSavingsPlanType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The payment option.</p>
      */
-    inline const SavingsPlanPaymentOption& GetPaymentOption() const{ return m_paymentOption; }
-
-    /**
-     * <p>The payment option.</p>
-     */
+    inline SavingsPlanPaymentOption GetPaymentOption() const { return m_paymentOption; }
     inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
+    inline void SetPaymentOption(SavingsPlanPaymentOption value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
+    inline SavingsPlan& WithPaymentOption(SavingsPlanPaymentOption value) { SetPaymentOption(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The payment option.</p>
-     */
-    inline void SetPaymentOption(const SavingsPlanPaymentOption& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
-
-    /**
-     * <p>The payment option.</p>
-     */
-    inline void SetPaymentOption(SavingsPlanPaymentOption&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::move(value); }
-
-    /**
-     * <p>The payment option.</p>
-     */
-    inline SavingsPlan& WithPaymentOption(const SavingsPlanPaymentOption& value) { SetPaymentOption(value); return *this;}
-
-    /**
-     * <p>The payment option.</p>
-     */
-    inline SavingsPlan& WithPaymentOption(SavingsPlanPaymentOption&& value) { SetPaymentOption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The product types.</p>
      */
-    inline const Aws::Vector<SavingsPlanProductType>& GetProductTypes() const{ return m_productTypes; }
-
-    /**
-     * <p>The product types.</p>
-     */
+    inline const Aws::Vector<SavingsPlanProductType>& GetProductTypes() const { return m_productTypes; }
     inline bool ProductTypesHasBeenSet() const { return m_productTypesHasBeenSet; }
+    template<typename ProductTypesT = Aws::Vector<SavingsPlanProductType>>
+    void SetProductTypes(ProductTypesT&& value) { m_productTypesHasBeenSet = true; m_productTypes = std::forward<ProductTypesT>(value); }
+    template<typename ProductTypesT = Aws::Vector<SavingsPlanProductType>>
+    SavingsPlan& WithProductTypes(ProductTypesT&& value) { SetProductTypes(std::forward<ProductTypesT>(value)); return *this;}
+    inline SavingsPlan& AddProductTypes(SavingsPlanProductType value) { m_productTypesHasBeenSet = true; m_productTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The product types.</p>
-     */
-    inline void SetProductTypes(const Aws::Vector<SavingsPlanProductType>& value) { m_productTypesHasBeenSet = true; m_productTypes = value; }
-
-    /**
-     * <p>The product types.</p>
-     */
-    inline void SetProductTypes(Aws::Vector<SavingsPlanProductType>&& value) { m_productTypesHasBeenSet = true; m_productTypes = std::move(value); }
-
-    /**
-     * <p>The product types.</p>
-     */
-    inline SavingsPlan& WithProductTypes(const Aws::Vector<SavingsPlanProductType>& value) { SetProductTypes(value); return *this;}
-
-    /**
-     * <p>The product types.</p>
-     */
-    inline SavingsPlan& WithProductTypes(Aws::Vector<SavingsPlanProductType>&& value) { SetProductTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The product types.</p>
-     */
-    inline SavingsPlan& AddProductTypes(const SavingsPlanProductType& value) { m_productTypesHasBeenSet = true; m_productTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The product types.</p>
-     */
-    inline SavingsPlan& AddProductTypes(SavingsPlanProductType&& value) { m_productTypesHasBeenSet = true; m_productTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The currency.</p>
      */
-    inline const CurrencyCode& GetCurrency() const{ return m_currency; }
-
-    /**
-     * <p>The currency.</p>
-     */
+    inline CurrencyCode GetCurrency() const { return m_currency; }
     inline bool CurrencyHasBeenSet() const { return m_currencyHasBeenSet; }
+    inline void SetCurrency(CurrencyCode value) { m_currencyHasBeenSet = true; m_currency = value; }
+    inline SavingsPlan& WithCurrency(CurrencyCode value) { SetCurrency(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The currency.</p>
+     * <p>The hourly commitment amount in the specified currency.</p>
      */
-    inline void SetCurrency(const CurrencyCode& value) { m_currencyHasBeenSet = true; m_currency = value; }
-
-    /**
-     * <p>The currency.</p>
-     */
-    inline void SetCurrency(CurrencyCode&& value) { m_currencyHasBeenSet = true; m_currency = std::move(value); }
-
-    /**
-     * <p>The currency.</p>
-     */
-    inline SavingsPlan& WithCurrency(const CurrencyCode& value) { SetCurrency(value); return *this;}
-
-    /**
-     * <p>The currency.</p>
-     */
-    inline SavingsPlan& WithCurrency(CurrencyCode&& value) { SetCurrency(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline const Aws::String& GetCommitment() const{ return m_commitment; }
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
+    inline const Aws::String& GetCommitment() const { return m_commitment; }
     inline bool CommitmentHasBeenSet() const { return m_commitmentHasBeenSet; }
+    template<typename CommitmentT = Aws::String>
+    void SetCommitment(CommitmentT&& value) { m_commitmentHasBeenSet = true; m_commitment = std::forward<CommitmentT>(value); }
+    template<typename CommitmentT = Aws::String>
+    SavingsPlan& WithCommitment(CommitmentT&& value) { SetCommitment(std::forward<CommitmentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline void SetCommitment(const Aws::String& value) { m_commitmentHasBeenSet = true; m_commitment = value; }
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline void SetCommitment(Aws::String&& value) { m_commitmentHasBeenSet = true; m_commitment = std::move(value); }
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline void SetCommitment(const char* value) { m_commitmentHasBeenSet = true; m_commitment.assign(value); }
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline SavingsPlan& WithCommitment(const Aws::String& value) { SetCommitment(value); return *this;}
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline SavingsPlan& WithCommitment(Aws::String&& value) { SetCommitment(std::move(value)); return *this;}
-
-    /**
-     * <p>The hourly commitment, in USD.</p>
-     */
-    inline SavingsPlan& WithCommitment(const char* value) { SetCommitment(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The up-front payment amount.</p>
      */
-    inline const Aws::String& GetUpfrontPaymentAmount() const{ return m_upfrontPaymentAmount; }
-
-    /**
-     * <p>The up-front payment amount.</p>
-     */
+    inline const Aws::String& GetUpfrontPaymentAmount() const { return m_upfrontPaymentAmount; }
     inline bool UpfrontPaymentAmountHasBeenSet() const { return m_upfrontPaymentAmountHasBeenSet; }
+    template<typename UpfrontPaymentAmountT = Aws::String>
+    void SetUpfrontPaymentAmount(UpfrontPaymentAmountT&& value) { m_upfrontPaymentAmountHasBeenSet = true; m_upfrontPaymentAmount = std::forward<UpfrontPaymentAmountT>(value); }
+    template<typename UpfrontPaymentAmountT = Aws::String>
+    SavingsPlan& WithUpfrontPaymentAmount(UpfrontPaymentAmountT&& value) { SetUpfrontPaymentAmount(std::forward<UpfrontPaymentAmountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The up-front payment amount.</p>
-     */
-    inline void SetUpfrontPaymentAmount(const Aws::String& value) { m_upfrontPaymentAmountHasBeenSet = true; m_upfrontPaymentAmount = value; }
-
-    /**
-     * <p>The up-front payment amount.</p>
-     */
-    inline void SetUpfrontPaymentAmount(Aws::String&& value) { m_upfrontPaymentAmountHasBeenSet = true; m_upfrontPaymentAmount = std::move(value); }
-
-    /**
-     * <p>The up-front payment amount.</p>
-     */
-    inline void SetUpfrontPaymentAmount(const char* value) { m_upfrontPaymentAmountHasBeenSet = true; m_upfrontPaymentAmount.assign(value); }
-
-    /**
-     * <p>The up-front payment amount.</p>
-     */
-    inline SavingsPlan& WithUpfrontPaymentAmount(const Aws::String& value) { SetUpfrontPaymentAmount(value); return *this;}
-
-    /**
-     * <p>The up-front payment amount.</p>
-     */
-    inline SavingsPlan& WithUpfrontPaymentAmount(Aws::String&& value) { SetUpfrontPaymentAmount(std::move(value)); return *this;}
-
-    /**
-     * <p>The up-front payment amount.</p>
-     */
-    inline SavingsPlan& WithUpfrontPaymentAmount(const char* value) { SetUpfrontPaymentAmount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The recurring payment amount.</p>
      */
-    inline const Aws::String& GetRecurringPaymentAmount() const{ return m_recurringPaymentAmount; }
-
-    /**
-     * <p>The recurring payment amount.</p>
-     */
+    inline const Aws::String& GetRecurringPaymentAmount() const { return m_recurringPaymentAmount; }
     inline bool RecurringPaymentAmountHasBeenSet() const { return m_recurringPaymentAmountHasBeenSet; }
+    template<typename RecurringPaymentAmountT = Aws::String>
+    void SetRecurringPaymentAmount(RecurringPaymentAmountT&& value) { m_recurringPaymentAmountHasBeenSet = true; m_recurringPaymentAmount = std::forward<RecurringPaymentAmountT>(value); }
+    template<typename RecurringPaymentAmountT = Aws::String>
+    SavingsPlan& WithRecurringPaymentAmount(RecurringPaymentAmountT&& value) { SetRecurringPaymentAmount(std::forward<RecurringPaymentAmountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The recurring payment amount.</p>
-     */
-    inline void SetRecurringPaymentAmount(const Aws::String& value) { m_recurringPaymentAmountHasBeenSet = true; m_recurringPaymentAmount = value; }
-
-    /**
-     * <p>The recurring payment amount.</p>
-     */
-    inline void SetRecurringPaymentAmount(Aws::String&& value) { m_recurringPaymentAmountHasBeenSet = true; m_recurringPaymentAmount = std::move(value); }
-
-    /**
-     * <p>The recurring payment amount.</p>
-     */
-    inline void SetRecurringPaymentAmount(const char* value) { m_recurringPaymentAmountHasBeenSet = true; m_recurringPaymentAmount.assign(value); }
-
-    /**
-     * <p>The recurring payment amount.</p>
-     */
-    inline SavingsPlan& WithRecurringPaymentAmount(const Aws::String& value) { SetRecurringPaymentAmount(value); return *this;}
-
-    /**
-     * <p>The recurring payment amount.</p>
-     */
-    inline SavingsPlan& WithRecurringPaymentAmount(Aws::String&& value) { SetRecurringPaymentAmount(std::move(value)); return *this;}
-
-    /**
-     * <p>The recurring payment amount.</p>
-     */
-    inline SavingsPlan& WithRecurringPaymentAmount(const char* value) { SetRecurringPaymentAmount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The duration of the term, in seconds.</p>
      */
-    inline long long GetTermDurationInSeconds() const{ return m_termDurationInSeconds; }
-
-    /**
-     * <p>The duration of the term, in seconds.</p>
-     */
+    inline long long GetTermDurationInSeconds() const { return m_termDurationInSeconds; }
     inline bool TermDurationInSecondsHasBeenSet() const { return m_termDurationInSecondsHasBeenSet; }
-
-    /**
-     * <p>The duration of the term, in seconds.</p>
-     */
     inline void SetTermDurationInSeconds(long long value) { m_termDurationInSecondsHasBeenSet = true; m_termDurationInSeconds = value; }
-
-    /**
-     * <p>The duration of the term, in seconds.</p>
-     */
     inline SavingsPlan& WithTermDurationInSeconds(long long value) { SetTermDurationInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>One or more tags.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    SavingsPlan& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    SavingsPlan& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>One or more tags.</p>
+     * <p>The time until when a return for the Savings Plan can be requested. If the
+     * Savings Plan is not returnable, the field reflects the Savings Plan start
+     * time.</p>
      */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline SavingsPlan& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    inline const Aws::String& GetReturnableUntil() const { return m_returnableUntil; }
+    inline bool ReturnableUntilHasBeenSet() const { return m_returnableUntilHasBeenSet; }
+    template<typename ReturnableUntilT = Aws::String>
+    void SetReturnableUntil(ReturnableUntilT&& value) { m_returnableUntilHasBeenSet = true; m_returnableUntil = std::forward<ReturnableUntilT>(value); }
+    template<typename ReturnableUntilT = Aws::String>
+    SavingsPlan& WithReturnableUntil(ReturnableUntilT&& value) { SetReturnableUntil(std::forward<ReturnableUntilT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_offeringId;
@@ -766,7 +288,7 @@ namespace Model
     Aws::String m_end;
     bool m_endHasBeenSet = false;
 
-    SavingsPlanState m_state;
+    SavingsPlanState m_state{SavingsPlanState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_region;
@@ -775,16 +297,16 @@ namespace Model
     Aws::String m_ec2InstanceFamily;
     bool m_ec2InstanceFamilyHasBeenSet = false;
 
-    SavingsPlanType m_savingsPlanType;
+    SavingsPlanType m_savingsPlanType{SavingsPlanType::NOT_SET};
     bool m_savingsPlanTypeHasBeenSet = false;
 
-    SavingsPlanPaymentOption m_paymentOption;
+    SavingsPlanPaymentOption m_paymentOption{SavingsPlanPaymentOption::NOT_SET};
     bool m_paymentOptionHasBeenSet = false;
 
     Aws::Vector<SavingsPlanProductType> m_productTypes;
     bool m_productTypesHasBeenSet = false;
 
-    CurrencyCode m_currency;
+    CurrencyCode m_currency{CurrencyCode::NOT_SET};
     bool m_currencyHasBeenSet = false;
 
     Aws::String m_commitment;
@@ -796,11 +318,14 @@ namespace Model
     Aws::String m_recurringPaymentAmount;
     bool m_recurringPaymentAmountHasBeenSet = false;
 
-    long long m_termDurationInSeconds;
+    long long m_termDurationInSeconds{0};
     bool m_termDurationInSecondsHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    Aws::String m_returnableUntil;
+    bool m_returnableUntilHasBeenSet = false;
   };
 
 } // namespace Model

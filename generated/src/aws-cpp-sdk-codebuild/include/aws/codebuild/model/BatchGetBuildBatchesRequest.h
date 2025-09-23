@@ -22,7 +22,7 @@ namespace Model
   class BatchGetBuildBatchesRequest : public CodeBuildRequest
   {
   public:
-    AWS_CODEBUILD_API BatchGetBuildBatchesRequest();
+    AWS_CODEBUILD_API BatchGetBuildBatchesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,51 +35,19 @@ namespace Model
     AWS_CODEBUILD_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An array that contains the batch build identifiers to retrieve.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetIds() const{ return m_ids; }
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetIds() const { return m_ids; }
     inline bool IdsHasBeenSet() const { return m_idsHasBeenSet; }
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline void SetIds(const Aws::Vector<Aws::String>& value) { m_idsHasBeenSet = true; m_ids = value; }
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline void SetIds(Aws::Vector<Aws::String>&& value) { m_idsHasBeenSet = true; m_ids = std::move(value); }
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline BatchGetBuildBatchesRequest& WithIds(const Aws::Vector<Aws::String>& value) { SetIds(value); return *this;}
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline BatchGetBuildBatchesRequest& WithIds(Aws::Vector<Aws::String>&& value) { SetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline BatchGetBuildBatchesRequest& AddIds(const Aws::String& value) { m_idsHasBeenSet = true; m_ids.push_back(value); return *this; }
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline BatchGetBuildBatchesRequest& AddIds(Aws::String&& value) { m_idsHasBeenSet = true; m_ids.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array that contains the batch build identifiers to retrieve.</p>
-     */
-    inline BatchGetBuildBatchesRequest& AddIds(const char* value) { m_idsHasBeenSet = true; m_ids.push_back(value); return *this; }
-
+    template<typename IdsT = Aws::Vector<Aws::String>>
+    void SetIds(IdsT&& value) { m_idsHasBeenSet = true; m_ids = std::forward<IdsT>(value); }
+    template<typename IdsT = Aws::Vector<Aws::String>>
+    BatchGetBuildBatchesRequest& WithIds(IdsT&& value) { SetIds(std::forward<IdsT>(value)); return *this;}
+    template<typename IdsT = Aws::String>
+    BatchGetBuildBatchesRequest& AddIds(IdsT&& value) { m_idsHasBeenSet = true; m_ids.emplace_back(std::forward<IdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_ids;

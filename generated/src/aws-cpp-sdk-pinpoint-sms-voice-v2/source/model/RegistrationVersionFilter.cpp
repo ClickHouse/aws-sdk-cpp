@@ -18,17 +18,7 @@ namespace PinpointSMSVoiceV2
 namespace Model
 {
 
-RegistrationVersionFilter::RegistrationVersionFilter() : 
-    m_name(RegistrationVersionFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-RegistrationVersionFilter::RegistrationVersionFilter(JsonView jsonValue) : 
-    m_name(RegistrationVersionFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+RegistrationVersionFilter::RegistrationVersionFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ RegistrationVersionFilter& RegistrationVersionFilter::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Name"))
   {
     m_name = RegistrationVersionFilterNameMapper::GetRegistrationVersionFilterNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -51,7 +39,6 @@ RegistrationVersionFilter& RegistrationVersionFilter::operator =(JsonView jsonVa
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

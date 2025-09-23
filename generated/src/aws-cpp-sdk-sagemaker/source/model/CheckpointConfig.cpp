@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-CheckpointConfig::CheckpointConfig() : 
-    m_s3UriHasBeenSet(false),
-    m_localPathHasBeenSet(false)
-{
-}
-
-CheckpointConfig::CheckpointConfig(JsonView jsonValue) : 
-    m_s3UriHasBeenSet(false),
-    m_localPathHasBeenSet(false)
+CheckpointConfig::CheckpointConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CheckpointConfig& CheckpointConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3Uri"))
   {
     m_s3Uri = jsonValue.GetString("S3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LocalPath"))
   {
     m_localPath = jsonValue.GetString("LocalPath");
-
     m_localPathHasBeenSet = true;
   }
-
   return *this;
 }
 

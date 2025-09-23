@@ -18,17 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ComplianceSummary::ComplianceSummary() : 
-    m_compliantResourceCountHasBeenSet(false),
-    m_nonCompliantResourceCountHasBeenSet(false),
-    m_complianceSummaryTimestampHasBeenSet(false)
-{
-}
-
-ComplianceSummary::ComplianceSummary(JsonView jsonValue) : 
-    m_compliantResourceCountHasBeenSet(false),
-    m_nonCompliantResourceCountHasBeenSet(false),
-    m_complianceSummaryTimestampHasBeenSet(false)
+ComplianceSummary::ComplianceSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ComplianceSummary& ComplianceSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CompliantResourceCount"))
   {
     m_compliantResourceCount = jsonValue.GetObject("CompliantResourceCount");
-
     m_compliantResourceCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NonCompliantResourceCount"))
   {
     m_nonCompliantResourceCount = jsonValue.GetObject("NonCompliantResourceCount");
-
     m_nonCompliantResourceCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceSummaryTimestamp"))
   {
     m_complianceSummaryTimestamp = jsonValue.GetDouble("ComplianceSummaryTimestamp");
-
     m_complianceSummaryTimestampHasBeenSet = true;
   }
-
   return *this;
 }
 

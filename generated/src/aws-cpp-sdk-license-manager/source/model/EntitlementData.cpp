@@ -18,19 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-EntitlementData::EntitlementData() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_unit(EntitlementDataUnit::NOT_SET),
-    m_unitHasBeenSet(false)
-{
-}
-
-EntitlementData::EntitlementData(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_unit(EntitlementDataUnit::NOT_SET),
-    m_unitHasBeenSet(false)
+EntitlementData::EntitlementData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ EntitlementData& EntitlementData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Unit"))
   {
     m_unit = EntitlementDataUnitMapper::GetEntitlementDataUnitForName(jsonValue.GetString("Unit"));
-
     m_unitHasBeenSet = true;
   }
-
   return *this;
 }
 

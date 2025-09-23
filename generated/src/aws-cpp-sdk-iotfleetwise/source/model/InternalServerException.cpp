@@ -18,17 +18,7 @@ namespace IoTFleetWise
 namespace Model
 {
 
-InternalServerException::InternalServerException() : 
-    m_messageHasBeenSet(false),
-    m_retryAfterSeconds(0),
-    m_retryAfterSecondsHasBeenSet(false)
-{
-}
-
-InternalServerException::InternalServerException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_retryAfterSeconds(0),
-    m_retryAfterSecondsHasBeenSet(false)
+InternalServerException::InternalServerException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InternalServerException& InternalServerException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("retryAfterSeconds"))
   {
     m_retryAfterSeconds = jsonValue.GetInteger("retryAfterSeconds");
-
     m_retryAfterSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

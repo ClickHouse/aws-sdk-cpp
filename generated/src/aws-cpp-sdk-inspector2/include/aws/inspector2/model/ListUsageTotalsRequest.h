@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/inspector2/Inspector2_EXPORTS.h>
 #include <aws/inspector2/Inspector2Request.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +22,7 @@ namespace Model
   class ListUsageTotalsRequest : public Inspector2Request
   {
   public:
-    AWS_INSPECTOR2_API ListUsageTotalsRequest();
+    AWS_INSPECTOR2_API ListUsageTotalsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,85 +33,20 @@ namespace Model
     AWS_INSPECTOR2_API Aws::String SerializePayload() const override;
 
 
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetAccountIds() const{ return m_accountIds; }
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline bool AccountIdsHasBeenSet() const { return m_accountIdsHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline void SetAccountIds(const Aws::Vector<Aws::String>& value) { m_accountIdsHasBeenSet = true; m_accountIds = value; }
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline void SetAccountIds(Aws::Vector<Aws::String>&& value) { m_accountIdsHasBeenSet = true; m_accountIds = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline ListUsageTotalsRequest& WithAccountIds(const Aws::Vector<Aws::String>& value) { SetAccountIds(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline ListUsageTotalsRequest& WithAccountIds(Aws::Vector<Aws::String>&& value) { SetAccountIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline ListUsageTotalsRequest& AddAccountIds(const Aws::String& value) { m_accountIdsHasBeenSet = true; m_accountIds.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline ListUsageTotalsRequest& AddAccountIds(Aws::String&& value) { m_accountIdsHasBeenSet = true; m_accountIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
-     */
-    inline ListUsageTotalsRequest& AddAccountIds(const char* value) { m_accountIdsHasBeenSet = true; m_accountIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of results the response can return. If your request would
      * return more than the maximum the response will return a <code>nextToken</code>
      * value, use this value when you call the action again to get the remaining
      * results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
     inline ListUsageTotalsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A token to use for paginating results that are returned in the response. Set
      * the value of this parameter to null for the first request to a list action. If
@@ -120,88 +55,37 @@ namespace Model
      * <code>nextToken</code> value returned from the previous request to continue
      * listing results after the first page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListUsageTotalsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
+     * <p>The Amazon Web Services account IDs to retrieve usage totals for.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
-     */
-    inline ListUsageTotalsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
-     */
-    inline ListUsageTotalsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * <code>nextToken</code> value returned from the previous request to continue
-     * listing results after the first page.</p>
-     */
-    inline ListUsageTotalsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    inline const Aws::Vector<Aws::String>& GetAccountIds() const { return m_accountIds; }
+    inline bool AccountIdsHasBeenSet() const { return m_accountIdsHasBeenSet; }
+    template<typename AccountIdsT = Aws::Vector<Aws::String>>
+    void SetAccountIds(AccountIdsT&& value) { m_accountIdsHasBeenSet = true; m_accountIds = std::forward<AccountIdsT>(value); }
+    template<typename AccountIdsT = Aws::Vector<Aws::String>>
+    ListUsageTotalsRequest& WithAccountIds(AccountIdsT&& value) { SetAccountIds(std::forward<AccountIdsT>(value)); return *this;}
+    template<typename AccountIdsT = Aws::String>
+    ListUsageTotalsRequest& AddAccountIds(AccountIdsT&& value) { m_accountIdsHasBeenSet = true; m_accountIds.emplace_back(std::forward<AccountIdsT>(value)); return *this; }
+    ///@}
   private:
 
-    Aws::Vector<Aws::String> m_accountIds;
-    bool m_accountIdsHasBeenSet = false;
-
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_accountIds;
+    bool m_accountIdsHasBeenSet = false;
   };
 
 } // namespace Model

@@ -21,7 +21,7 @@ namespace Model
   class GetOpenCypherQueryStatusRequest : public NeptunedataRequest
   {
   public:
-    AWS_NEPTUNEDATA_API GetOpenCypherQueryStatusRequest();
+    AWS_NEPTUNEDATA_API GetOpenCypherQueryStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_NEPTUNEDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID of the openCypher query for which to retrieve the query
      * status.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
     inline bool QueryIdHasBeenSet() const { return m_queryIdHasBeenSet; }
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryIdHasBeenSet = true; m_queryId = value; }
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryIdHasBeenSet = true; m_queryId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryIdHasBeenSet = true; m_queryId.assign(value); }
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
-    inline GetOpenCypherQueryStatusRequest& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
-    inline GetOpenCypherQueryStatusRequest& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the openCypher query for which to retrieve the query
-     * status.</p>
-     */
-    inline GetOpenCypherQueryStatusRequest& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    GetOpenCypherQueryStatusRequest& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;

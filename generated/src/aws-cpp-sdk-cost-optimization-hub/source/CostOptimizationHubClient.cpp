@@ -42,20 +42,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* CostOptimizationHubClient::SERVICE_NAME = "cost-optimization-hub";
-const char* CostOptimizationHubClient::ALLOCATION_TAG = "CostOptimizationHubClient";
+namespace Aws
+{
+  namespace CostOptimizationHub
+  {
+    const char SERVICE_NAME[] = "cost-optimization-hub";
+    const char ALLOCATION_TAG[] = "CostOptimizationHubClient";
+  }
+}
+const char* CostOptimizationHubClient::GetServiceName() {return SERVICE_NAME;}
+const char* CostOptimizationHubClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 CostOptimizationHubClient::CostOptimizationHubClient(const CostOptimizationHub::CostOptimizationHubClientConfiguration& clientConfiguration,
                                                      std::shared_ptr<CostOptimizationHubEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CostOptimizationHubErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CostOptimizationHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -70,8 +77,7 @@ CostOptimizationHubClient::CostOptimizationHubClient(const AWSCredentials& crede
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CostOptimizationHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CostOptimizationHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -86,8 +92,7 @@ CostOptimizationHubClient::CostOptimizationHubClient(const std::shared_ptr<AWSCr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CostOptimizationHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CostOptimizationHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -96,12 +101,11 @@ CostOptimizationHubClient::CostOptimizationHubClient(const std::shared_ptr<AWSCr
   CostOptimizationHubClient::CostOptimizationHubClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CostOptimizationHubErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<CostOptimizationHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -116,7 +120,6 @@ CostOptimizationHubClient::CostOptimizationHubClient(const AWSCredentials& crede
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CostOptimizationHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CostOptimizationHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -131,7 +134,6 @@ CostOptimizationHubClient::CostOptimizationHubClient(const std::shared_ptr<AWSCr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CostOptimizationHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CostOptimizationHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -151,6 +153,14 @@ std::shared_ptr<CostOptimizationHubEndpointProviderBase>& CostOptimizationHubCli
 void CostOptimizationHubClient::init(const CostOptimizationHub::CostOptimizationHubClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Cost Optimization Hub");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-VisualAxisSortOption::VisualAxisSortOption() : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
-{
-}
-
-VisualAxisSortOption::VisualAxisSortOption(JsonView jsonValue) : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
+VisualAxisSortOption::VisualAxisSortOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VisualAxisSortOption& VisualAxisSortOption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AvailabilityStatus"))
   {
     m_availabilityStatus = DashboardBehaviorMapper::GetDashboardBehaviorForName(jsonValue.GetString("AvailabilityStatus"));
-
     m_availabilityStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

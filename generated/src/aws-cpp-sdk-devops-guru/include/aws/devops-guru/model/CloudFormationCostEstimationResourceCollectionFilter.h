@@ -39,57 +39,25 @@ namespace Model
   class CloudFormationCostEstimationResourceCollectionFilter
   {
   public:
-    AWS_DEVOPSGURU_API CloudFormationCostEstimationResourceCollectionFilter();
+    AWS_DEVOPSGURU_API CloudFormationCostEstimationResourceCollectionFilter() = default;
     AWS_DEVOPSGURU_API CloudFormationCostEstimationResourceCollectionFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API CloudFormationCostEstimationResourceCollectionFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetStackNames() const{ return m_stackNames; }
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetStackNames() const { return m_stackNames; }
     inline bool StackNamesHasBeenSet() const { return m_stackNamesHasBeenSet; }
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline void SetStackNames(const Aws::Vector<Aws::String>& value) { m_stackNamesHasBeenSet = true; m_stackNames = value; }
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline void SetStackNames(Aws::Vector<Aws::String>&& value) { m_stackNamesHasBeenSet = true; m_stackNames = std::move(value); }
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline CloudFormationCostEstimationResourceCollectionFilter& WithStackNames(const Aws::Vector<Aws::String>& value) { SetStackNames(value); return *this;}
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline CloudFormationCostEstimationResourceCollectionFilter& WithStackNames(Aws::Vector<Aws::String>&& value) { SetStackNames(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline CloudFormationCostEstimationResourceCollectionFilter& AddStackNames(const Aws::String& value) { m_stackNamesHasBeenSet = true; m_stackNames.push_back(value); return *this; }
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline CloudFormationCostEstimationResourceCollectionFilter& AddStackNames(Aws::String&& value) { m_stackNamesHasBeenSet = true; m_stackNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of CloudFormation stack names. Its size is fixed at 1 item.</p>
-     */
-    inline CloudFormationCostEstimationResourceCollectionFilter& AddStackNames(const char* value) { m_stackNamesHasBeenSet = true; m_stackNames.push_back(value); return *this; }
-
+    template<typename StackNamesT = Aws::Vector<Aws::String>>
+    void SetStackNames(StackNamesT&& value) { m_stackNamesHasBeenSet = true; m_stackNames = std::forward<StackNamesT>(value); }
+    template<typename StackNamesT = Aws::Vector<Aws::String>>
+    CloudFormationCostEstimationResourceCollectionFilter& WithStackNames(StackNamesT&& value) { SetStackNames(std::forward<StackNamesT>(value)); return *this;}
+    template<typename StackNamesT = Aws::String>
+    CloudFormationCostEstimationResourceCollectionFilter& AddStackNames(StackNamesT&& value) { m_stackNamesHasBeenSet = true; m_stackNames.emplace_back(std::forward<StackNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_stackNames;

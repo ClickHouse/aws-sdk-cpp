@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CapacityReservationTargetResponse::CapacityReservationTargetResponse() : 
-    m_capacityReservationIdHasBeenSet(false),
-    m_capacityReservationResourceGroupArnHasBeenSet(false)
-{
-}
-
-CapacityReservationTargetResponse::CapacityReservationTargetResponse(const XmlNode& xmlNode) : 
-    m_capacityReservationIdHasBeenSet(false),
-    m_capacityReservationResourceGroupArnHasBeenSet(false)
+CapacityReservationTargetResponse::CapacityReservationTargetResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -34,155 +34,59 @@ namespace Model
   class CategoricalDimensionField
   {
   public:
-    AWS_QUICKSIGHT_API CategoricalDimensionField();
+    AWS_QUICKSIGHT_API CategoricalDimensionField() = default;
     AWS_QUICKSIGHT_API CategoricalDimensionField(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CategoricalDimensionField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The custom field ID.</p>
      */
-    inline const Aws::String& GetFieldId() const{ return m_fieldId; }
-
-    /**
-     * <p>The custom field ID.</p>
-     */
+    inline const Aws::String& GetFieldId() const { return m_fieldId; }
     inline bool FieldIdHasBeenSet() const { return m_fieldIdHasBeenSet; }
+    template<typename FieldIdT = Aws::String>
+    void SetFieldId(FieldIdT&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::forward<FieldIdT>(value); }
+    template<typename FieldIdT = Aws::String>
+    CategoricalDimensionField& WithFieldId(FieldIdT&& value) { SetFieldId(std::forward<FieldIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom field ID.</p>
-     */
-    inline void SetFieldId(const Aws::String& value) { m_fieldIdHasBeenSet = true; m_fieldId = value; }
-
-    /**
-     * <p>The custom field ID.</p>
-     */
-    inline void SetFieldId(Aws::String&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::move(value); }
-
-    /**
-     * <p>The custom field ID.</p>
-     */
-    inline void SetFieldId(const char* value) { m_fieldIdHasBeenSet = true; m_fieldId.assign(value); }
-
-    /**
-     * <p>The custom field ID.</p>
-     */
-    inline CategoricalDimensionField& WithFieldId(const Aws::String& value) { SetFieldId(value); return *this;}
-
-    /**
-     * <p>The custom field ID.</p>
-     */
-    inline CategoricalDimensionField& WithFieldId(Aws::String&& value) { SetFieldId(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom field ID.</p>
-     */
-    inline CategoricalDimensionField& WithFieldId(const char* value) { SetFieldId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The column that is used in the <code>CategoricalDimensionField</code>.</p>
      */
-    inline const ColumnIdentifier& GetColumn() const{ return m_column; }
-
-    /**
-     * <p>The column that is used in the <code>CategoricalDimensionField</code>.</p>
-     */
+    inline const ColumnIdentifier& GetColumn() const { return m_column; }
     inline bool ColumnHasBeenSet() const { return m_columnHasBeenSet; }
+    template<typename ColumnT = ColumnIdentifier>
+    void SetColumn(ColumnT&& value) { m_columnHasBeenSet = true; m_column = std::forward<ColumnT>(value); }
+    template<typename ColumnT = ColumnIdentifier>
+    CategoricalDimensionField& WithColumn(ColumnT&& value) { SetColumn(std::forward<ColumnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The column that is used in the <code>CategoricalDimensionField</code>.</p>
-     */
-    inline void SetColumn(const ColumnIdentifier& value) { m_columnHasBeenSet = true; m_column = value; }
-
-    /**
-     * <p>The column that is used in the <code>CategoricalDimensionField</code>.</p>
-     */
-    inline void SetColumn(ColumnIdentifier&& value) { m_columnHasBeenSet = true; m_column = std::move(value); }
-
-    /**
-     * <p>The column that is used in the <code>CategoricalDimensionField</code>.</p>
-     */
-    inline CategoricalDimensionField& WithColumn(const ColumnIdentifier& value) { SetColumn(value); return *this;}
-
-    /**
-     * <p>The column that is used in the <code>CategoricalDimensionField</code>.</p>
-     */
-    inline CategoricalDimensionField& WithColumn(ColumnIdentifier&& value) { SetColumn(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom hierarchy ID.</p>
      */
-    inline const Aws::String& GetHierarchyId() const{ return m_hierarchyId; }
-
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
+    inline const Aws::String& GetHierarchyId() const { return m_hierarchyId; }
     inline bool HierarchyIdHasBeenSet() const { return m_hierarchyIdHasBeenSet; }
+    template<typename HierarchyIdT = Aws::String>
+    void SetHierarchyId(HierarchyIdT&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::forward<HierarchyIdT>(value); }
+    template<typename HierarchyIdT = Aws::String>
+    CategoricalDimensionField& WithHierarchyId(HierarchyIdT&& value) { SetHierarchyId(std::forward<HierarchyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
-    inline void SetHierarchyId(const Aws::String& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = value; }
-
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
-    inline void SetHierarchyId(Aws::String&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::move(value); }
-
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
-    inline void SetHierarchyId(const char* value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId.assign(value); }
-
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
-    inline CategoricalDimensionField& WithHierarchyId(const Aws::String& value) { SetHierarchyId(value); return *this;}
-
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
-    inline CategoricalDimensionField& WithHierarchyId(Aws::String&& value) { SetHierarchyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom hierarchy ID.</p>
-     */
-    inline CategoricalDimensionField& WithHierarchyId(const char* value) { SetHierarchyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The format configuration of the field.</p>
      */
-    inline const StringFormatConfiguration& GetFormatConfiguration() const{ return m_formatConfiguration; }
-
-    /**
-     * <p>The format configuration of the field.</p>
-     */
+    inline const StringFormatConfiguration& GetFormatConfiguration() const { return m_formatConfiguration; }
     inline bool FormatConfigurationHasBeenSet() const { return m_formatConfigurationHasBeenSet; }
-
-    /**
-     * <p>The format configuration of the field.</p>
-     */
-    inline void SetFormatConfiguration(const StringFormatConfiguration& value) { m_formatConfigurationHasBeenSet = true; m_formatConfiguration = value; }
-
-    /**
-     * <p>The format configuration of the field.</p>
-     */
-    inline void SetFormatConfiguration(StringFormatConfiguration&& value) { m_formatConfigurationHasBeenSet = true; m_formatConfiguration = std::move(value); }
-
-    /**
-     * <p>The format configuration of the field.</p>
-     */
-    inline CategoricalDimensionField& WithFormatConfiguration(const StringFormatConfiguration& value) { SetFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>The format configuration of the field.</p>
-     */
-    inline CategoricalDimensionField& WithFormatConfiguration(StringFormatConfiguration&& value) { SetFormatConfiguration(std::move(value)); return *this;}
-
+    template<typename FormatConfigurationT = StringFormatConfiguration>
+    void SetFormatConfiguration(FormatConfigurationT&& value) { m_formatConfigurationHasBeenSet = true; m_formatConfiguration = std::forward<FormatConfigurationT>(value); }
+    template<typename FormatConfigurationT = StringFormatConfiguration>
+    CategoricalDimensionField& WithFormatConfiguration(FormatConfigurationT&& value) { SetFormatConfiguration(std::forward<FormatConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fieldId;

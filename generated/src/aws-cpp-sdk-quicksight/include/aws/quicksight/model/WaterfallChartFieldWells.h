@@ -32,42 +32,23 @@ namespace Model
   class WaterfallChartFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API WaterfallChartFieldWells();
+    AWS_QUICKSIGHT_API WaterfallChartFieldWells() = default;
     AWS_QUICKSIGHT_API WaterfallChartFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API WaterfallChartFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a waterfall visual.</p>
      */
-    inline const WaterfallChartAggregatedFieldWells& GetWaterfallChartAggregatedFieldWells() const{ return m_waterfallChartAggregatedFieldWells; }
-
-    /**
-     * <p>The field well configuration of a waterfall visual.</p>
-     */
+    inline const WaterfallChartAggregatedFieldWells& GetWaterfallChartAggregatedFieldWells() const { return m_waterfallChartAggregatedFieldWells; }
     inline bool WaterfallChartAggregatedFieldWellsHasBeenSet() const { return m_waterfallChartAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The field well configuration of a waterfall visual.</p>
-     */
-    inline void SetWaterfallChartAggregatedFieldWells(const WaterfallChartAggregatedFieldWells& value) { m_waterfallChartAggregatedFieldWellsHasBeenSet = true; m_waterfallChartAggregatedFieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a waterfall visual.</p>
-     */
-    inline void SetWaterfallChartAggregatedFieldWells(WaterfallChartAggregatedFieldWells&& value) { m_waterfallChartAggregatedFieldWellsHasBeenSet = true; m_waterfallChartAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a waterfall visual.</p>
-     */
-    inline WaterfallChartFieldWells& WithWaterfallChartAggregatedFieldWells(const WaterfallChartAggregatedFieldWells& value) { SetWaterfallChartAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a waterfall visual.</p>
-     */
-    inline WaterfallChartFieldWells& WithWaterfallChartAggregatedFieldWells(WaterfallChartAggregatedFieldWells&& value) { SetWaterfallChartAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename WaterfallChartAggregatedFieldWellsT = WaterfallChartAggregatedFieldWells>
+    void SetWaterfallChartAggregatedFieldWells(WaterfallChartAggregatedFieldWellsT&& value) { m_waterfallChartAggregatedFieldWellsHasBeenSet = true; m_waterfallChartAggregatedFieldWells = std::forward<WaterfallChartAggregatedFieldWellsT>(value); }
+    template<typename WaterfallChartAggregatedFieldWellsT = WaterfallChartAggregatedFieldWells>
+    WaterfallChartFieldWells& WithWaterfallChartAggregatedFieldWells(WaterfallChartAggregatedFieldWellsT&& value) { SetWaterfallChartAggregatedFieldWells(std::forward<WaterfallChartAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     WaterfallChartAggregatedFieldWells m_waterfallChartAggregatedFieldWells;

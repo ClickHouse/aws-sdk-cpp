@@ -32,47 +32,23 @@ namespace Model
   class CreateRouteResult
   {
   public:
-    AWS_MIGRATIONHUBREFACTORSPACES_API CreateRouteResult();
+    AWS_MIGRATIONHUBREFACTORSPACES_API CreateRouteResult() = default;
     AWS_MIGRATIONHUBREFACTORSPACES_API CreateRouteResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MIGRATIONHUBREFACTORSPACES_API CreateRouteResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the application in which the route is created.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    CreateRouteResult& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the application in which the route is created.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationId = value; }
-
-    /**
-     * <p>The ID of the application in which the route is created.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationId = std::move(value); }
-
-    /**
-     * <p>The ID of the application in which the route is created.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationId.assign(value); }
-
-    /**
-     * <p>The ID of the application in which the route is created.</p>
-     */
-    inline CreateRouteResult& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The ID of the application in which the route is created.</p>
-     */
-    inline CreateRouteResult& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the application in which the route is created.</p>
-     */
-    inline CreateRouteResult& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
      * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
@@ -81,481 +57,175 @@ namespace Model
      * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CreateRouteResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
-     * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
-     * </code>. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
-     * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
-     * </code>. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
-     * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
-     * </code>. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
-     * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
-     * </code>. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateRouteResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
-     * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
-     * </code>. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateRouteResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the route. The format for this ARN is
-     * <code>arn:aws:refactor-spaces:<i>region</i>:<i>account-id</i>:<i>resource-type/resource-id</i>
-     * </code>. For more information about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">
-     * Amazon Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateRouteResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the route creator.</p>
      */
-    inline const Aws::String& GetCreatedByAccountId() const{ return m_createdByAccountId; }
+    inline const Aws::String& GetCreatedByAccountId() const { return m_createdByAccountId; }
+    template<typename CreatedByAccountIdT = Aws::String>
+    void SetCreatedByAccountId(CreatedByAccountIdT&& value) { m_createdByAccountIdHasBeenSet = true; m_createdByAccountId = std::forward<CreatedByAccountIdT>(value); }
+    template<typename CreatedByAccountIdT = Aws::String>
+    CreateRouteResult& WithCreatedByAccountId(CreatedByAccountIdT&& value) { SetCreatedByAccountId(std::forward<CreatedByAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the route creator.</p>
-     */
-    inline void SetCreatedByAccountId(const Aws::String& value) { m_createdByAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the route creator.</p>
-     */
-    inline void SetCreatedByAccountId(Aws::String&& value) { m_createdByAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the route creator.</p>
-     */
-    inline void SetCreatedByAccountId(const char* value) { m_createdByAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the route creator.</p>
-     */
-    inline CreateRouteResult& WithCreatedByAccountId(const Aws::String& value) { SetCreatedByAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the route creator.</p>
-     */
-    inline CreateRouteResult& WithCreatedByAccountId(Aws::String&& value) { SetCreatedByAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the route creator.</p>
-     */
-    inline CreateRouteResult& WithCreatedByAccountId(const char* value) { SetCreatedByAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp that indicates when the route is created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    CreateRouteResult& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that indicates when the route is created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTime = value; }
-
-    /**
-     * <p>A timestamp that indicates when the route is created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that indicates when the route is created.</p>
-     */
-    inline CreateRouteResult& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that indicates when the route is created.</p>
-     */
-    inline CreateRouteResult& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp that indicates when the route was last updated. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    CreateRouteResult& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that indicates when the route was last updated. </p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTime = value; }
-
-    /**
-     * <p>A timestamp that indicates when the route was last updated. </p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that indicates when the route was last updated. </p>
-     */
-    inline CreateRouteResult& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that indicates when the route was last updated. </p>
-     */
-    inline CreateRouteResult& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the route owner.</p>
      */
-    inline const Aws::String& GetOwnerAccountId() const{ return m_ownerAccountId; }
+    inline const Aws::String& GetOwnerAccountId() const { return m_ownerAccountId; }
+    template<typename OwnerAccountIdT = Aws::String>
+    void SetOwnerAccountId(OwnerAccountIdT&& value) { m_ownerAccountIdHasBeenSet = true; m_ownerAccountId = std::forward<OwnerAccountIdT>(value); }
+    template<typename OwnerAccountIdT = Aws::String>
+    CreateRouteResult& WithOwnerAccountId(OwnerAccountIdT&& value) { SetOwnerAccountId(std::forward<OwnerAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the route owner.</p>
-     */
-    inline void SetOwnerAccountId(const Aws::String& value) { m_ownerAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the route owner.</p>
-     */
-    inline void SetOwnerAccountId(Aws::String&& value) { m_ownerAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the route owner.</p>
-     */
-    inline void SetOwnerAccountId(const char* value) { m_ownerAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the route owner.</p>
-     */
-    inline CreateRouteResult& WithOwnerAccountId(const Aws::String& value) { SetOwnerAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the route owner.</p>
-     */
-    inline CreateRouteResult& WithOwnerAccountId(Aws::String&& value) { SetOwnerAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the route owner.</p>
-     */
-    inline CreateRouteResult& WithOwnerAccountId(const char* value) { SetOwnerAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the route.</p>
      */
-    inline const Aws::String& GetRouteId() const{ return m_routeId; }
+    inline const Aws::String& GetRouteId() const { return m_routeId; }
+    template<typename RouteIdT = Aws::String>
+    void SetRouteId(RouteIdT&& value) { m_routeIdHasBeenSet = true; m_routeId = std::forward<RouteIdT>(value); }
+    template<typename RouteIdT = Aws::String>
+    CreateRouteResult& WithRouteId(RouteIdT&& value) { SetRouteId(std::forward<RouteIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the route.</p>
-     */
-    inline void SetRouteId(const Aws::String& value) { m_routeId = value; }
-
-    /**
-     * <p>The unique identifier of the route.</p>
-     */
-    inline void SetRouteId(Aws::String&& value) { m_routeId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the route.</p>
-     */
-    inline void SetRouteId(const char* value) { m_routeId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the route.</p>
-     */
-    inline CreateRouteResult& WithRouteId(const Aws::String& value) { SetRouteId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the route.</p>
-     */
-    inline CreateRouteResult& WithRouteId(Aws::String&& value) { SetRouteId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the route.</p>
-     */
-    inline CreateRouteResult& WithRouteId(const char* value) { SetRouteId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route type of the route.</p>
      */
-    inline const RouteType& GetRouteType() const{ return m_routeType; }
+    inline RouteType GetRouteType() const { return m_routeType; }
+    inline void SetRouteType(RouteType value) { m_routeTypeHasBeenSet = true; m_routeType = value; }
+    inline CreateRouteResult& WithRouteType(RouteType value) { SetRouteType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The route type of the route.</p>
-     */
-    inline void SetRouteType(const RouteType& value) { m_routeType = value; }
-
-    /**
-     * <p>The route type of the route.</p>
-     */
-    inline void SetRouteType(RouteType&& value) { m_routeType = std::move(value); }
-
-    /**
-     * <p>The route type of the route.</p>
-     */
-    inline CreateRouteResult& WithRouteType(const RouteType& value) { SetRouteType(value); return *this;}
-
-    /**
-     * <p>The route type of the route.</p>
-     */
-    inline CreateRouteResult& WithRouteType(RouteType&& value) { SetRouteType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of service in which the route is created. Traffic that matches this
      * route is forwarded to this service.</p>
      */
-    inline const Aws::String& GetServiceId() const{ return m_serviceId; }
+    inline const Aws::String& GetServiceId() const { return m_serviceId; }
+    template<typename ServiceIdT = Aws::String>
+    void SetServiceId(ServiceIdT&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::forward<ServiceIdT>(value); }
+    template<typename ServiceIdT = Aws::String>
+    CreateRouteResult& WithServiceId(ServiceIdT&& value) { SetServiceId(std::forward<ServiceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of service in which the route is created. Traffic that matches this
-     * route is forwarded to this service.</p>
-     */
-    inline void SetServiceId(const Aws::String& value) { m_serviceId = value; }
-
-    /**
-     * <p>The ID of service in which the route is created. Traffic that matches this
-     * route is forwarded to this service.</p>
-     */
-    inline void SetServiceId(Aws::String&& value) { m_serviceId = std::move(value); }
-
-    /**
-     * <p>The ID of service in which the route is created. Traffic that matches this
-     * route is forwarded to this service.</p>
-     */
-    inline void SetServiceId(const char* value) { m_serviceId.assign(value); }
-
-    /**
-     * <p>The ID of service in which the route is created. Traffic that matches this
-     * route is forwarded to this service.</p>
-     */
-    inline CreateRouteResult& WithServiceId(const Aws::String& value) { SetServiceId(value); return *this;}
-
-    /**
-     * <p>The ID of service in which the route is created. Traffic that matches this
-     * route is forwarded to this service.</p>
-     */
-    inline CreateRouteResult& WithServiceId(Aws::String&& value) { SetServiceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of service in which the route is created. Traffic that matches this
-     * route is forwarded to this service.</p>
-     */
-    inline CreateRouteResult& WithServiceId(const char* value) { SetServiceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the route. Activation state only allows
      * <code>ACTIVE</code> or <code>INACTIVE</code> as user inputs. <code>FAILED</code>
      * is a route state that is system generated.</p>
      */
-    inline const RouteState& GetState() const{ return m_state; }
+    inline RouteState GetState() const { return m_state; }
+    inline void SetState(RouteState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline CreateRouteResult& WithState(RouteState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the route. Activation state only allows
-     * <code>ACTIVE</code> or <code>INACTIVE</code> as user inputs. <code>FAILED</code>
-     * is a route state that is system generated.</p>
-     */
-    inline void SetState(const RouteState& value) { m_state = value; }
-
-    /**
-     * <p>The current state of the route. Activation state only allows
-     * <code>ACTIVE</code> or <code>INACTIVE</code> as user inputs. <code>FAILED</code>
-     * is a route state that is system generated.</p>
-     */
-    inline void SetState(RouteState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the route. Activation state only allows
-     * <code>ACTIVE</code> or <code>INACTIVE</code> as user inputs. <code>FAILED</code>
-     * is a route state that is system generated.</p>
-     */
-    inline CreateRouteResult& WithState(const RouteState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the route. Activation state only allows
-     * <code>ACTIVE</code> or <code>INACTIVE</code> as user inputs. <code>FAILED</code>
-     * is a route state that is system generated.</p>
-     */
-    inline CreateRouteResult& WithState(RouteState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags assigned to the created route. A tag is a label that you assign to
      * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateRouteResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateRouteResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags assigned to the created route. A tag is a label that you assign to
-     * an Amazon Web Services resource. Each tag consists of a key-value pair. </p>
-     */
-    inline CreateRouteResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Configuration for the URI path route type. </p>
      */
-    inline const UriPathRouteInput& GetUriPathRoute() const{ return m_uriPathRoute; }
+    inline const UriPathRouteInput& GetUriPathRoute() const { return m_uriPathRoute; }
+    template<typename UriPathRouteT = UriPathRouteInput>
+    void SetUriPathRoute(UriPathRouteT&& value) { m_uriPathRouteHasBeenSet = true; m_uriPathRoute = std::forward<UriPathRouteT>(value); }
+    template<typename UriPathRouteT = UriPathRouteInput>
+    CreateRouteResult& WithUriPathRoute(UriPathRouteT&& value) { SetUriPathRoute(std::forward<UriPathRouteT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration for the URI path route type. </p>
-     */
-    inline void SetUriPathRoute(const UriPathRouteInput& value) { m_uriPathRoute = value; }
-
-    /**
-     * <p>Configuration for the URI path route type. </p>
-     */
-    inline void SetUriPathRoute(UriPathRouteInput&& value) { m_uriPathRoute = std::move(value); }
-
-    /**
-     * <p>Configuration for the URI path route type. </p>
-     */
-    inline CreateRouteResult& WithUriPathRoute(const UriPathRouteInput& value) { SetUriPathRoute(value); return *this;}
-
-    /**
-     * <p>Configuration for the URI path route type. </p>
-     */
-    inline CreateRouteResult& WithUriPathRoute(UriPathRouteInput&& value) { SetUriPathRoute(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateRouteResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateRouteResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateRouteResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateRouteResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
+    bool m_applicationIdHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_createdByAccountId;
+    bool m_createdByAccountIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
+    bool m_createdTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
+    bool m_lastUpdatedTimeHasBeenSet = false;
 
     Aws::String m_ownerAccountId;
+    bool m_ownerAccountIdHasBeenSet = false;
 
     Aws::String m_routeId;
+    bool m_routeIdHasBeenSet = false;
 
-    RouteType m_routeType;
+    RouteType m_routeType{RouteType::NOT_SET};
+    bool m_routeTypeHasBeenSet = false;
 
     Aws::String m_serviceId;
+    bool m_serviceIdHasBeenSet = false;
 
-    RouteState m_state;
+    RouteState m_state{RouteState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     UriPathRouteInput m_uriPathRoute;
+    bool m_uriPathRouteHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

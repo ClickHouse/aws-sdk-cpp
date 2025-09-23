@@ -18,15 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-ExportDataSource::ExportDataSource() : 
-    m_metricsDataSourceHasBeenSet(false),
-    m_messageInsightsDataSourceHasBeenSet(false)
-{
-}
-
-ExportDataSource::ExportDataSource(JsonView jsonValue) : 
-    m_metricsDataSourceHasBeenSet(false),
-    m_messageInsightsDataSourceHasBeenSet(false)
+ExportDataSource::ExportDataSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExportDataSource& ExportDataSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MetricsDataSource"))
   {
     m_metricsDataSource = jsonValue.GetObject("MetricsDataSource");
-
     m_metricsDataSourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MessageInsightsDataSource"))
   {
     m_messageInsightsDataSource = jsonValue.GetObject("MessageInsightsDataSource");
-
     m_messageInsightsDataSourceHasBeenSet = true;
   }
-
   return *this;
 }
 

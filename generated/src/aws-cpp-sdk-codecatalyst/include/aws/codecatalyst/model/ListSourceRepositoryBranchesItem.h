@@ -33,185 +33,62 @@ namespace Model
   class ListSourceRepositoryBranchesItem
   {
   public:
-    AWS_CODECATALYST_API ListSourceRepositoryBranchesItem();
+    AWS_CODECATALYST_API ListSourceRepositoryBranchesItem() = default;
     AWS_CODECATALYST_API ListSourceRepositoryBranchesItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API ListSourceRepositoryBranchesItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Git reference name of the branch.</p>
      */
-    inline const Aws::String& GetRef() const{ return m_ref; }
-
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
+    inline const Aws::String& GetRef() const { return m_ref; }
     inline bool RefHasBeenSet() const { return m_refHasBeenSet; }
+    template<typename RefT = Aws::String>
+    void SetRef(RefT&& value) { m_refHasBeenSet = true; m_ref = std::forward<RefT>(value); }
+    template<typename RefT = Aws::String>
+    ListSourceRepositoryBranchesItem& WithRef(RefT&& value) { SetRef(std::forward<RefT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
-    inline void SetRef(const Aws::String& value) { m_refHasBeenSet = true; m_ref = value; }
-
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
-    inline void SetRef(Aws::String&& value) { m_refHasBeenSet = true; m_ref = std::move(value); }
-
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
-    inline void SetRef(const char* value) { m_refHasBeenSet = true; m_ref.assign(value); }
-
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithRef(const Aws::String& value) { SetRef(value); return *this;}
-
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithRef(Aws::String&& value) { SetRef(std::move(value)); return *this;}
-
-    /**
-     * <p>The Git reference name of the branch.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithRef(const char* value) { SetRef(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the branch.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ListSourceRepositoryBranchesItem& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the branch was last updated, in coordinated universal time (UTC)
      * timestamp format as specified in <a
      * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The time the branch was last updated, in coordinated universal time (UTC)
-     * timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    ListSourceRepositoryBranchesItem& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the branch was last updated, in coordinated universal time (UTC)
-     * timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The time the branch was last updated, in coordinated universal time (UTC)
-     * timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The time the branch was last updated, in coordinated universal time (UTC)
-     * timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The time the branch was last updated, in coordinated universal time (UTC)
-     * timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The commit ID of the tip of the branch at the time of the request, also known
      * as the head commit.</p>
      */
-    inline const Aws::String& GetHeadCommitId() const{ return m_headCommitId; }
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
+    inline const Aws::String& GetHeadCommitId() const { return m_headCommitId; }
     inline bool HeadCommitIdHasBeenSet() const { return m_headCommitIdHasBeenSet; }
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
-    inline void SetHeadCommitId(const Aws::String& value) { m_headCommitIdHasBeenSet = true; m_headCommitId = value; }
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
-    inline void SetHeadCommitId(Aws::String&& value) { m_headCommitIdHasBeenSet = true; m_headCommitId = std::move(value); }
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
-    inline void SetHeadCommitId(const char* value) { m_headCommitIdHasBeenSet = true; m_headCommitId.assign(value); }
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithHeadCommitId(const Aws::String& value) { SetHeadCommitId(value); return *this;}
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithHeadCommitId(Aws::String&& value) { SetHeadCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The commit ID of the tip of the branch at the time of the request, also known
-     * as the head commit.</p>
-     */
-    inline ListSourceRepositoryBranchesItem& WithHeadCommitId(const char* value) { SetHeadCommitId(value); return *this;}
-
+    template<typename HeadCommitIdT = Aws::String>
+    void SetHeadCommitId(HeadCommitIdT&& value) { m_headCommitIdHasBeenSet = true; m_headCommitId = std::forward<HeadCommitIdT>(value); }
+    template<typename HeadCommitIdT = Aws::String>
+    ListSourceRepositoryBranchesItem& WithHeadCommitId(HeadCommitIdT&& value) { SetHeadCommitId(std::forward<HeadCommitIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ref;
@@ -220,7 +97,7 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
 
     Aws::String m_headCommitId;

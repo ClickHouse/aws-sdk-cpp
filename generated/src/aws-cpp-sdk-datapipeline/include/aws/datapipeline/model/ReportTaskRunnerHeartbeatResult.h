@@ -33,53 +33,35 @@ namespace Model
   class ReportTaskRunnerHeartbeatResult
   {
   public:
-    AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatResult();
+    AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatResult() = default;
     AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Indicates whether the calling task runner should terminate.</p>
      */
-    inline bool GetTerminate() const{ return m_terminate; }
-
-    /**
-     * <p>Indicates whether the calling task runner should terminate.</p>
-     */
-    inline void SetTerminate(bool value) { m_terminate = value; }
-
-    /**
-     * <p>Indicates whether the calling task runner should terminate.</p>
-     */
+    inline bool GetTerminate() const { return m_terminate; }
+    inline void SetTerminate(bool value) { m_terminateHasBeenSet = true; m_terminate = value; }
     inline ReportTaskRunnerHeartbeatResult& WithTerminate(bool value) { SetTerminate(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ReportTaskRunnerHeartbeatResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ReportTaskRunnerHeartbeatResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ReportTaskRunnerHeartbeatResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ReportTaskRunnerHeartbeatResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_terminate;
+    bool m_terminate{false};
+    bool m_terminateHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

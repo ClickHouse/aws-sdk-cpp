@@ -33,57 +33,25 @@ namespace Model
   class SnapshotAnonymousUserRedacted
   {
   public:
-    AWS_QUICKSIGHT_API SnapshotAnonymousUserRedacted();
+    AWS_QUICKSIGHT_API SnapshotAnonymousUserRedacted() = default;
     AWS_QUICKSIGHT_API SnapshotAnonymousUserRedacted(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SnapshotAnonymousUserRedacted& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRowLevelPermissionTagKeys() const{ return m_rowLevelPermissionTagKeys; }
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRowLevelPermissionTagKeys() const { return m_rowLevelPermissionTagKeys; }
     inline bool RowLevelPermissionTagKeysHasBeenSet() const { return m_rowLevelPermissionTagKeysHasBeenSet; }
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline void SetRowLevelPermissionTagKeys(const Aws::Vector<Aws::String>& value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys = value; }
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline void SetRowLevelPermissionTagKeys(Aws::Vector<Aws::String>&& value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys = std::move(value); }
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline SnapshotAnonymousUserRedacted& WithRowLevelPermissionTagKeys(const Aws::Vector<Aws::String>& value) { SetRowLevelPermissionTagKeys(value); return *this;}
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline SnapshotAnonymousUserRedacted& WithRowLevelPermissionTagKeys(Aws::Vector<Aws::String>&& value) { SetRowLevelPermissionTagKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline SnapshotAnonymousUserRedacted& AddRowLevelPermissionTagKeys(const Aws::String& value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys.push_back(value); return *this; }
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline SnapshotAnonymousUserRedacted& AddRowLevelPermissionTagKeys(Aws::String&& value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The tag keys for the <code>RowLevelPermissionTags</code>.</p>
-     */
-    inline SnapshotAnonymousUserRedacted& AddRowLevelPermissionTagKeys(const char* value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys.push_back(value); return *this; }
-
+    template<typename RowLevelPermissionTagKeysT = Aws::Vector<Aws::String>>
+    void SetRowLevelPermissionTagKeys(RowLevelPermissionTagKeysT&& value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys = std::forward<RowLevelPermissionTagKeysT>(value); }
+    template<typename RowLevelPermissionTagKeysT = Aws::Vector<Aws::String>>
+    SnapshotAnonymousUserRedacted& WithRowLevelPermissionTagKeys(RowLevelPermissionTagKeysT&& value) { SetRowLevelPermissionTagKeys(std::forward<RowLevelPermissionTagKeysT>(value)); return *this;}
+    template<typename RowLevelPermissionTagKeysT = Aws::String>
+    SnapshotAnonymousUserRedacted& AddRowLevelPermissionTagKeys(RowLevelPermissionTagKeysT&& value) { m_rowLevelPermissionTagKeysHasBeenSet = true; m_rowLevelPermissionTagKeys.emplace_back(std::forward<RowLevelPermissionTagKeysT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_rowLevelPermissionTagKeys;

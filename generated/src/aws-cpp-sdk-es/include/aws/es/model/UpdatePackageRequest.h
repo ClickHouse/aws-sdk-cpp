@@ -26,7 +26,7 @@ namespace Model
   class UpdatePackageRequest : public ElasticsearchServiceRequest
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API UpdatePackageRequest();
+    AWS_ELASTICSEARCHSERVICE_API UpdatePackageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,155 +37,52 @@ namespace Model
     AWS_ELASTICSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Unique identifier for the package.</p>
      */
-    inline const Aws::String& GetPackageID() const{ return m_packageID; }
-
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
+    inline const Aws::String& GetPackageID() const { return m_packageID; }
     inline bool PackageIDHasBeenSet() const { return m_packageIDHasBeenSet; }
+    template<typename PackageIDT = Aws::String>
+    void SetPackageID(PackageIDT&& value) { m_packageIDHasBeenSet = true; m_packageID = std::forward<PackageIDT>(value); }
+    template<typename PackageIDT = Aws::String>
+    UpdatePackageRequest& WithPackageID(PackageIDT&& value) { SetPackageID(std::forward<PackageIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
-    inline void SetPackageID(const Aws::String& value) { m_packageIDHasBeenSet = true; m_packageID = value; }
-
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
-    inline void SetPackageID(Aws::String&& value) { m_packageIDHasBeenSet = true; m_packageID = std::move(value); }
-
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
-    inline void SetPackageID(const char* value) { m_packageIDHasBeenSet = true; m_packageID.assign(value); }
-
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
-    inline UpdatePackageRequest& WithPackageID(const Aws::String& value) { SetPackageID(value); return *this;}
-
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
-    inline UpdatePackageRequest& WithPackageID(Aws::String&& value) { SetPackageID(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique identifier for the package.</p>
-     */
-    inline UpdatePackageRequest& WithPackageID(const char* value) { SetPackageID(value); return *this;}
-
-
+    ///@{
     
-    inline const PackageSource& GetPackageSource() const{ return m_packageSource; }
-
-    
+    inline const PackageSource& GetPackageSource() const { return m_packageSource; }
     inline bool PackageSourceHasBeenSet() const { return m_packageSourceHasBeenSet; }
+    template<typename PackageSourceT = PackageSource>
+    void SetPackageSource(PackageSourceT&& value) { m_packageSourceHasBeenSet = true; m_packageSource = std::forward<PackageSourceT>(value); }
+    template<typename PackageSourceT = PackageSource>
+    UpdatePackageRequest& WithPackageSource(PackageSourceT&& value) { SetPackageSource(std::forward<PackageSourceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPackageSource(const PackageSource& value) { m_packageSourceHasBeenSet = true; m_packageSource = value; }
-
-    
-    inline void SetPackageSource(PackageSource&& value) { m_packageSourceHasBeenSet = true; m_packageSource = std::move(value); }
-
-    
-    inline UpdatePackageRequest& WithPackageSource(const PackageSource& value) { SetPackageSource(value); return *this;}
-
-    
-    inline UpdatePackageRequest& WithPackageSource(PackageSource&& value) { SetPackageSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>New description of the package.</p>
      */
-    inline const Aws::String& GetPackageDescription() const{ return m_packageDescription; }
-
-    /**
-     * <p>New description of the package.</p>
-     */
+    inline const Aws::String& GetPackageDescription() const { return m_packageDescription; }
     inline bool PackageDescriptionHasBeenSet() const { return m_packageDescriptionHasBeenSet; }
+    template<typename PackageDescriptionT = Aws::String>
+    void SetPackageDescription(PackageDescriptionT&& value) { m_packageDescriptionHasBeenSet = true; m_packageDescription = std::forward<PackageDescriptionT>(value); }
+    template<typename PackageDescriptionT = Aws::String>
+    UpdatePackageRequest& WithPackageDescription(PackageDescriptionT&& value) { SetPackageDescription(std::forward<PackageDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>New description of the package.</p>
-     */
-    inline void SetPackageDescription(const Aws::String& value) { m_packageDescriptionHasBeenSet = true; m_packageDescription = value; }
-
-    /**
-     * <p>New description of the package.</p>
-     */
-    inline void SetPackageDescription(Aws::String&& value) { m_packageDescriptionHasBeenSet = true; m_packageDescription = std::move(value); }
-
-    /**
-     * <p>New description of the package.</p>
-     */
-    inline void SetPackageDescription(const char* value) { m_packageDescriptionHasBeenSet = true; m_packageDescription.assign(value); }
-
-    /**
-     * <p>New description of the package.</p>
-     */
-    inline UpdatePackageRequest& WithPackageDescription(const Aws::String& value) { SetPackageDescription(value); return *this;}
-
-    /**
-     * <p>New description of the package.</p>
-     */
-    inline UpdatePackageRequest& WithPackageDescription(Aws::String&& value) { SetPackageDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>New description of the package.</p>
-     */
-    inline UpdatePackageRequest& WithPackageDescription(const char* value) { SetPackageDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An info message for the new version which will be shown as part of
      * <code>GetPackageVersionHistoryResponse</code>.</p>
      */
-    inline const Aws::String& GetCommitMessage() const{ return m_commitMessage; }
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
+    inline const Aws::String& GetCommitMessage() const { return m_commitMessage; }
     inline bool CommitMessageHasBeenSet() const { return m_commitMessageHasBeenSet; }
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
-    inline void SetCommitMessage(const Aws::String& value) { m_commitMessageHasBeenSet = true; m_commitMessage = value; }
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
-    inline void SetCommitMessage(Aws::String&& value) { m_commitMessageHasBeenSet = true; m_commitMessage = std::move(value); }
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
-    inline void SetCommitMessage(const char* value) { m_commitMessageHasBeenSet = true; m_commitMessage.assign(value); }
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
-    inline UpdatePackageRequest& WithCommitMessage(const Aws::String& value) { SetCommitMessage(value); return *this;}
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
-    inline UpdatePackageRequest& WithCommitMessage(Aws::String&& value) { SetCommitMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An info message for the new version which will be shown as part of
-     * <code>GetPackageVersionHistoryResponse</code>.</p>
-     */
-    inline UpdatePackageRequest& WithCommitMessage(const char* value) { SetCommitMessage(value); return *this;}
-
+    template<typename CommitMessageT = Aws::String>
+    void SetCommitMessage(CommitMessageT&& value) { m_commitMessageHasBeenSet = true; m_commitMessage = std::forward<CommitMessageT>(value); }
+    template<typename CommitMessageT = Aws::String>
+    UpdatePackageRequest& WithCommitMessage(CommitMessageT&& value) { SetCommitMessage(std::forward<CommitMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_packageID;

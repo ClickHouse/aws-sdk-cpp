@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/cloudhsmv2/CloudHSMV2_EXPORTS.h>
 #include <aws/cloudhsmv2/CloudHSMV2Request.h>
-#include <aws/cloudhsmv2/model/BackupRetentionPolicy.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/cloudhsmv2/model/BackupRetentionPolicy.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +22,7 @@ namespace Model
   class ModifyClusterRequest : public CloudHSMV2Request
   {
   public:
-    AWS_CLOUDHSMV2_API ModifyClusterRequest();
+    AWS_CLOUDHSMV2_API ModifyClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,86 +35,46 @@ namespace Model
     AWS_CLOUDHSMV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>A policy that defines how the service retains backups.</p>
+     * <p>The desired HSM type of the cluster.</p>
      */
-    inline const BackupRetentionPolicy& GetBackupRetentionPolicy() const{ return m_backupRetentionPolicy; }
+    inline const Aws::String& GetHsmType() const { return m_hsmType; }
+    inline bool HsmTypeHasBeenSet() const { return m_hsmTypeHasBeenSet; }
+    template<typename HsmTypeT = Aws::String>
+    void SetHsmType(HsmTypeT&& value) { m_hsmTypeHasBeenSet = true; m_hsmType = std::forward<HsmTypeT>(value); }
+    template<typename HsmTypeT = Aws::String>
+    ModifyClusterRequest& WithHsmType(HsmTypeT&& value) { SetHsmType(std::forward<HsmTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>A policy that defines how the service retains backups.</p>
      */
+    inline const BackupRetentionPolicy& GetBackupRetentionPolicy() const { return m_backupRetentionPolicy; }
     inline bool BackupRetentionPolicyHasBeenSet() const { return m_backupRetentionPolicyHasBeenSet; }
+    template<typename BackupRetentionPolicyT = BackupRetentionPolicy>
+    void SetBackupRetentionPolicy(BackupRetentionPolicyT&& value) { m_backupRetentionPolicyHasBeenSet = true; m_backupRetentionPolicy = std::forward<BackupRetentionPolicyT>(value); }
+    template<typename BackupRetentionPolicyT = BackupRetentionPolicy>
+    ModifyClusterRequest& WithBackupRetentionPolicy(BackupRetentionPolicyT&& value) { SetBackupRetentionPolicy(std::forward<BackupRetentionPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A policy that defines how the service retains backups.</p>
-     */
-    inline void SetBackupRetentionPolicy(const BackupRetentionPolicy& value) { m_backupRetentionPolicyHasBeenSet = true; m_backupRetentionPolicy = value; }
-
-    /**
-     * <p>A policy that defines how the service retains backups.</p>
-     */
-    inline void SetBackupRetentionPolicy(BackupRetentionPolicy&& value) { m_backupRetentionPolicyHasBeenSet = true; m_backupRetentionPolicy = std::move(value); }
-
-    /**
-     * <p>A policy that defines how the service retains backups.</p>
-     */
-    inline ModifyClusterRequest& WithBackupRetentionPolicy(const BackupRetentionPolicy& value) { SetBackupRetentionPolicy(value); return *this;}
-
-    /**
-     * <p>A policy that defines how the service retains backups.</p>
-     */
-    inline ModifyClusterRequest& WithBackupRetentionPolicy(BackupRetentionPolicy&& value) { SetBackupRetentionPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier (ID) of the cluster that you want to modify. To find the
      * cluster ID, use <a>DescribeClusters</a>.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
-    inline ModifyClusterRequest& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
-    inline ModifyClusterRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the cluster that you want to modify. To find the
-     * cluster ID, use <a>DescribeClusters</a>.</p>
-     */
-    inline ModifyClusterRequest& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    ModifyClusterRequest& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
   private:
+
+    Aws::String m_hsmType;
+    bool m_hsmTypeHasBeenSet = false;
 
     BackupRetentionPolicy m_backupRetentionPolicy;
     bool m_backupRetentionPolicyHasBeenSet = false;

@@ -33,12 +33,13 @@ namespace Model
   class DocumentationPartLocation
   {
   public:
-    AWS_APIGATEWAY_API DocumentationPartLocation();
+    AWS_APIGATEWAY_API DocumentationPartLocation() = default;
     AWS_APIGATEWAY_API DocumentationPartLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_APIGATEWAY_API DocumentationPartLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APIGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of API entity to which the documentation content applies. Valid
      * values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>,
@@ -50,74 +51,13 @@ namespace Model
      * <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code>
      * type.</p>
      */
-    inline const DocumentationPartType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of API entity to which the documentation content applies. Valid
-     * values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity
-     * of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>,
-     * <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code>
-     * type.</p>
-     */
+    inline DocumentationPartType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(DocumentationPartType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DocumentationPartLocation& WithType(DocumentationPartType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of API entity to which the documentation content applies. Valid
-     * values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity
-     * of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>,
-     * <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code>
-     * type.</p>
-     */
-    inline void SetType(const DocumentationPartType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of API entity to which the documentation content applies. Valid
-     * values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity
-     * of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>,
-     * <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code>
-     * type.</p>
-     */
-    inline void SetType(DocumentationPartType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of API entity to which the documentation content applies. Valid
-     * values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity
-     * of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>,
-     * <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code>
-     * type.</p>
-     */
-    inline DocumentationPartLocation& WithType(const DocumentationPartType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of API entity to which the documentation content applies. Valid
-     * values are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity
-     * of the <code>API</code>, <code>AUTHORIZER</code>, <code>METHOD</code>,
-     * <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code>
-     * type.</p>
-     */
-    inline DocumentationPartLocation& WithType(DocumentationPartType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL path of the target. It is a valid field for the API entity types of
      * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
@@ -129,100 +69,15 @@ namespace Model
      * <code>location</code> attributes, the child entity's <code>path</code> attribute
      * must match that of the parent entity as a prefix.</p>
      */
-    inline const Aws::String& GetPath() const{ return m_path; }
-
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
+    inline const Aws::String& GetPath() const { return m_path; }
     inline bool PathHasBeenSet() const { return m_pathHasBeenSet; }
+    template<typename PathT = Aws::String>
+    void SetPath(PathT&& value) { m_pathHasBeenSet = true; m_path = std::forward<PathT>(value); }
+    template<typename PathT = Aws::String>
+    DocumentationPartLocation& WithPath(PathT&& value) { SetPath(std::forward<PathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
-    inline void SetPath(const Aws::String& value) { m_pathHasBeenSet = true; m_path = value; }
-
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
-
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
-    inline void SetPath(const char* value) { m_pathHasBeenSet = true; m_path.assign(value); }
-
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
-    inline DocumentationPartLocation& WithPath(const Aws::String& value) { SetPath(value); return *this;}
-
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
-    inline DocumentationPartLocation& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL path of the target. It is a valid field for the API entity types of
-     * <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>,
-     * <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>,
-     * <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>,
-     * and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root
-     * resource. When an applicable child entity inherits the content of another entity
-     * of the same type with more general specifications of the other
-     * <code>location</code> attributes, the child entity's <code>path</code> attribute
-     * must match that of the parent entity as a prefix.</p>
-     */
-    inline DocumentationPartLocation& WithPath(const char* value) { SetPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP verb of a method. It is a valid field for the API entity types of
      * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
@@ -233,93 +88,15 @@ namespace Model
      * other <code>location</code> attributes, the child entity's <code>method</code>
      * attribute must match that of the parent entity exactly.</p>
      */
-    inline const Aws::String& GetMethod() const{ return m_method; }
-
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
+    inline const Aws::String& GetMethod() const { return m_method; }
     inline bool MethodHasBeenSet() const { return m_methodHasBeenSet; }
+    template<typename MethodT = Aws::String>
+    void SetMethod(MethodT&& value) { m_methodHasBeenSet = true; m_method = std::forward<MethodT>(value); }
+    template<typename MethodT = Aws::String>
+    DocumentationPartLocation& WithMethod(MethodT&& value) { SetMethod(std::forward<MethodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
-    inline void SetMethod(const Aws::String& value) { m_methodHasBeenSet = true; m_method = value; }
-
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
-    inline void SetMethod(Aws::String&& value) { m_methodHasBeenSet = true; m_method = std::move(value); }
-
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
-    inline void SetMethod(const char* value) { m_methodHasBeenSet = true; m_method.assign(value); }
-
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
-    inline DocumentationPartLocation& WithMethod(const Aws::String& value) { SetMethod(value); return *this;}
-
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
-    inline DocumentationPartLocation& WithMethod(Aws::String&& value) { SetMethod(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP verb of a method. It is a valid field for the API entity types of
-     * <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>,
-     * <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value
-     * is <code>*</code> for any method. When an applicable child entity inherits the
-     * content of an entity of the same type with more general specifications of the
-     * other <code>location</code> attributes, the child entity's <code>method</code>
-     * attribute must match that of the parent entity exactly.</p>
-     */
-    inline DocumentationPartLocation& WithMethod(const char* value) { SetMethod(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status code of a response. It is a valid field for the API entity
      * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
@@ -329,86 +106,15 @@ namespace Model
      * attributes, the child entity's <code>statusCode</code> attribute must match that
      * of the parent entity exactly.</p>
      */
-    inline const Aws::String& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
+    inline const Aws::String& GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
+    template<typename StatusCodeT = Aws::String>
+    void SetStatusCode(StatusCodeT&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::forward<StatusCodeT>(value); }
+    template<typename StatusCodeT = Aws::String>
+    DocumentationPartLocation& WithStatusCode(StatusCodeT&& value) { SetStatusCode(std::forward<StatusCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
-    inline void SetStatusCode(const Aws::String& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
-    inline void SetStatusCode(Aws::String&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
-    inline void SetStatusCode(const char* value) { m_statusCodeHasBeenSet = true; m_statusCode.assign(value); }
-
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
-    inline DocumentationPartLocation& WithStatusCode(const Aws::String& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
-    inline DocumentationPartLocation& WithStatusCode(Aws::String&& value) { SetStatusCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP status code of a response. It is a valid field for the API entity
-     * types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and
-     * <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status
-     * code. When an applicable child entity inherits the content of an entity of the
-     * same type with more general specifications of the other <code>location</code>
-     * attributes, the child entity's <code>statusCode</code> attribute must match that
-     * of the parent entity exactly.</p>
-     */
-    inline DocumentationPartLocation& WithStatusCode(const char* value) { SetStatusCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the targeted API entity. It is a valid and required field for the
      * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
@@ -417,81 +123,16 @@ namespace Model
      * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
      * type.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
-    inline DocumentationPartLocation& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
-    inline DocumentationPartLocation& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the targeted API entity. It is a valid and required field for the
-     * API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>,
-     * <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>,
-     * <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and
-     * <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity
-     * type.</p>
-     */
-    inline DocumentationPartLocation& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DocumentationPartLocation& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
-    DocumentationPartType m_type;
+    DocumentationPartType m_type{DocumentationPartType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_path;

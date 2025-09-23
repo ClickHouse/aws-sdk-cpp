@@ -5,12 +5,14 @@
 
 #pragma once
 #include <aws/connectcases/ConnectCases_EXPORTS.h>
+#include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/connectcases/model/LayoutConfiguration.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/connectcases/model/TemplateStatus.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/connectcases/model/RequiredField.h>
+#include <aws/connectcases/model/TemplateRule.h>
 #include <utility>
 
 namespace Aws
@@ -32,363 +34,199 @@ namespace Model
   class GetTemplateResult
   {
   public:
-    AWS_CONNECTCASES_API GetTemplateResult();
+    AWS_CONNECTCASES_API GetTemplateResult() = default;
     AWS_CONNECTCASES_API GetTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONNECTCASES_API GetTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>Timestamp at which the resource was created.</p>
+     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    GetTemplateResult& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>Denotes whether or not the resource has been deleted.</p>
+     */
+    inline bool GetDeleted() const { return m_deleted; }
+    inline void SetDeleted(bool value) { m_deletedHasBeenSet = true; m_deleted = value; }
+    inline GetTemplateResult& WithDeleted(bool value) { SetDeleted(value); return *this;}
+    ///@}
+
+    ///@{
     /**
      * <p>A brief description of the template.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetTemplateResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A brief description of the template.</p>
+     * <p>Timestamp at which the resource was created or last modified.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    GetTemplateResult& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A brief description of the template.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>A brief description of the template.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>A brief description of the template.</p>
-     */
-    inline GetTemplateResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A brief description of the template.</p>
-     */
-    inline GetTemplateResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A brief description of the template.</p>
-     */
-    inline GetTemplateResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration of layouts associated to the template.</p>
      */
-    inline const LayoutConfiguration& GetLayoutConfiguration() const{ return m_layoutConfiguration; }
+    inline const LayoutConfiguration& GetLayoutConfiguration() const { return m_layoutConfiguration; }
+    template<typename LayoutConfigurationT = LayoutConfiguration>
+    void SetLayoutConfiguration(LayoutConfigurationT&& value) { m_layoutConfigurationHasBeenSet = true; m_layoutConfiguration = std::forward<LayoutConfigurationT>(value); }
+    template<typename LayoutConfigurationT = LayoutConfiguration>
+    GetTemplateResult& WithLayoutConfiguration(LayoutConfigurationT&& value) { SetLayoutConfiguration(std::forward<LayoutConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration of layouts associated to the template.</p>
-     */
-    inline void SetLayoutConfiguration(const LayoutConfiguration& value) { m_layoutConfiguration = value; }
-
-    /**
-     * <p>Configuration of layouts associated to the template.</p>
-     */
-    inline void SetLayoutConfiguration(LayoutConfiguration&& value) { m_layoutConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration of layouts associated to the template.</p>
-     */
-    inline GetTemplateResult& WithLayoutConfiguration(const LayoutConfiguration& value) { SetLayoutConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration of layouts associated to the template.</p>
-     */
-    inline GetTemplateResult& WithLayoutConfiguration(LayoutConfiguration&& value) { SetLayoutConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the template.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetTemplateResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline GetTemplateResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline GetTemplateResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the template.</p>
-     */
-    inline GetTemplateResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of fields that must contain a value for a case to be successfully
      * created with this template.</p>
      */
-    inline const Aws::Vector<RequiredField>& GetRequiredFields() const{ return m_requiredFields; }
+    inline const Aws::Vector<RequiredField>& GetRequiredFields() const { return m_requiredFields; }
+    template<typename RequiredFieldsT = Aws::Vector<RequiredField>>
+    void SetRequiredFields(RequiredFieldsT&& value) { m_requiredFieldsHasBeenSet = true; m_requiredFields = std::forward<RequiredFieldsT>(value); }
+    template<typename RequiredFieldsT = Aws::Vector<RequiredField>>
+    GetTemplateResult& WithRequiredFields(RequiredFieldsT&& value) { SetRequiredFields(std::forward<RequiredFieldsT>(value)); return *this;}
+    template<typename RequiredFieldsT = RequiredField>
+    GetTemplateResult& AddRequiredFields(RequiredFieldsT&& value) { m_requiredFieldsHasBeenSet = true; m_requiredFields.emplace_back(std::forward<RequiredFieldsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of fields that must contain a value for a case to be successfully
-     * created with this template.</p>
+     * <p>A list of case rules (also known as <a
+     * href="https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html">case
+     * field conditions</a>) on a template. </p>
      */
-    inline void SetRequiredFields(const Aws::Vector<RequiredField>& value) { m_requiredFields = value; }
+    inline const Aws::Vector<TemplateRule>& GetRules() const { return m_rules; }
+    template<typename RulesT = Aws::Vector<TemplateRule>>
+    void SetRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules = std::forward<RulesT>(value); }
+    template<typename RulesT = Aws::Vector<TemplateRule>>
+    GetTemplateResult& WithRules(RulesT&& value) { SetRules(std::forward<RulesT>(value)); return *this;}
+    template<typename RulesT = TemplateRule>
+    GetTemplateResult& AddRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules.emplace_back(std::forward<RulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of fields that must contain a value for a case to be successfully
-     * created with this template.</p>
-     */
-    inline void SetRequiredFields(Aws::Vector<RequiredField>&& value) { m_requiredFields = std::move(value); }
-
-    /**
-     * <p>A list of fields that must contain a value for a case to be successfully
-     * created with this template.</p>
-     */
-    inline GetTemplateResult& WithRequiredFields(const Aws::Vector<RequiredField>& value) { SetRequiredFields(value); return *this;}
-
-    /**
-     * <p>A list of fields that must contain a value for a case to be successfully
-     * created with this template.</p>
-     */
-    inline GetTemplateResult& WithRequiredFields(Aws::Vector<RequiredField>&& value) { SetRequiredFields(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of fields that must contain a value for a case to be successfully
-     * created with this template.</p>
-     */
-    inline GetTemplateResult& AddRequiredFields(const RequiredField& value) { m_requiredFields.push_back(value); return *this; }
-
-    /**
-     * <p>A list of fields that must contain a value for a case to be successfully
-     * created with this template.</p>
-     */
-    inline GetTemplateResult& AddRequiredFields(RequiredField&& value) { m_requiredFields.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The status of the template.</p>
      */
-    inline const TemplateStatus& GetStatus() const{ return m_status; }
+    inline TemplateStatus GetStatus() const { return m_status; }
+    inline void SetStatus(TemplateStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetTemplateResult& WithStatus(TemplateStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the template.</p>
-     */
-    inline void SetStatus(const TemplateStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the template.</p>
-     */
-    inline void SetStatus(TemplateStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the template.</p>
-     */
-    inline GetTemplateResult& WithStatus(const TemplateStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the template.</p>
-     */
-    inline GetTemplateResult& WithStatus(TemplateStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
      * to organize, track, or control access for this resource.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetTemplateResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetTemplateResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of of key-value pairs that represent tags on a resource. Tags are used
-     * to organize, track, or control access for this resource.</p>
-     */
-    inline GetTemplateResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the template.</p>
      */
-    inline const Aws::String& GetTemplateArn() const{ return m_templateArn; }
+    inline const Aws::String& GetTemplateArn() const { return m_templateArn; }
+    template<typename TemplateArnT = Aws::String>
+    void SetTemplateArn(TemplateArnT&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::forward<TemplateArnT>(value); }
+    template<typename TemplateArnT = Aws::String>
+    GetTemplateResult& WithTemplateArn(TemplateArnT&& value) { SetTemplateArn(std::forward<TemplateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the template.</p>
-     */
-    inline void SetTemplateArn(const Aws::String& value) { m_templateArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the template.</p>
-     */
-    inline void SetTemplateArn(Aws::String&& value) { m_templateArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the template.</p>
-     */
-    inline void SetTemplateArn(const char* value) { m_templateArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the template.</p>
-     */
-    inline GetTemplateResult& WithTemplateArn(const Aws::String& value) { SetTemplateArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the template.</p>
-     */
-    inline GetTemplateResult& WithTemplateArn(Aws::String&& value) { SetTemplateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the template.</p>
-     */
-    inline GetTemplateResult& WithTemplateArn(const char* value) { SetTemplateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier of a template.</p>
      */
-    inline const Aws::String& GetTemplateId() const{ return m_templateId; }
+    inline const Aws::String& GetTemplateId() const { return m_templateId; }
+    template<typename TemplateIdT = Aws::String>
+    void SetTemplateId(TemplateIdT&& value) { m_templateIdHasBeenSet = true; m_templateId = std::forward<TemplateIdT>(value); }
+    template<typename TemplateIdT = Aws::String>
+    GetTemplateResult& WithTemplateId(TemplateIdT&& value) { SetTemplateId(std::forward<TemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier of a template.</p>
-     */
-    inline void SetTemplateId(const Aws::String& value) { m_templateId = value; }
-
-    /**
-     * <p>A unique identifier of a template.</p>
-     */
-    inline void SetTemplateId(Aws::String&& value) { m_templateId = std::move(value); }
-
-    /**
-     * <p>A unique identifier of a template.</p>
-     */
-    inline void SetTemplateId(const char* value) { m_templateId.assign(value); }
-
-    /**
-     * <p>A unique identifier of a template.</p>
-     */
-    inline GetTemplateResult& WithTemplateId(const Aws::String& value) { SetTemplateId(value); return *this;}
-
-    /**
-     * <p>A unique identifier of a template.</p>
-     */
-    inline GetTemplateResult& WithTemplateId(Aws::String&& value) { SetTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier of a template.</p>
-     */
-    inline GetTemplateResult& WithTemplateId(const char* value) { SetTemplateId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetTemplateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetTemplateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetTemplateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetTemplateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
+    Aws::Utils::DateTime m_createdTime{};
+    bool m_createdTimeHasBeenSet = false;
+
+    bool m_deleted{false};
+    bool m_deletedHasBeenSet = false;
+
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
 
     LayoutConfiguration m_layoutConfiguration;
+    bool m_layoutConfigurationHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::Vector<RequiredField> m_requiredFields;
+    bool m_requiredFieldsHasBeenSet = false;
 
-    TemplateStatus m_status;
+    Aws::Vector<TemplateRule> m_rules;
+    bool m_rulesHasBeenSet = false;
+
+    TemplateStatus m_status{TemplateStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_templateArn;
+    bool m_templateArnHasBeenSet = false;
 
     Aws::String m_templateId;
+    bool m_templateIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

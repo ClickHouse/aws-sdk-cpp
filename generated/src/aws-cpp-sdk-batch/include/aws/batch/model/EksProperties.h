@@ -32,42 +32,23 @@ namespace Model
   class EksProperties
   {
   public:
-    AWS_BATCH_API EksProperties();
+    AWS_BATCH_API EksProperties() = default;
     AWS_BATCH_API EksProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API EksProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The properties for the Kubernetes pod resources of a job.</p>
      */
-    inline const EksPodProperties& GetPodProperties() const{ return m_podProperties; }
-
-    /**
-     * <p>The properties for the Kubernetes pod resources of a job.</p>
-     */
+    inline const EksPodProperties& GetPodProperties() const { return m_podProperties; }
     inline bool PodPropertiesHasBeenSet() const { return m_podPropertiesHasBeenSet; }
-
-    /**
-     * <p>The properties for the Kubernetes pod resources of a job.</p>
-     */
-    inline void SetPodProperties(const EksPodProperties& value) { m_podPropertiesHasBeenSet = true; m_podProperties = value; }
-
-    /**
-     * <p>The properties for the Kubernetes pod resources of a job.</p>
-     */
-    inline void SetPodProperties(EksPodProperties&& value) { m_podPropertiesHasBeenSet = true; m_podProperties = std::move(value); }
-
-    /**
-     * <p>The properties for the Kubernetes pod resources of a job.</p>
-     */
-    inline EksProperties& WithPodProperties(const EksPodProperties& value) { SetPodProperties(value); return *this;}
-
-    /**
-     * <p>The properties for the Kubernetes pod resources of a job.</p>
-     */
-    inline EksProperties& WithPodProperties(EksPodProperties&& value) { SetPodProperties(std::move(value)); return *this;}
-
+    template<typename PodPropertiesT = EksPodProperties>
+    void SetPodProperties(PodPropertiesT&& value) { m_podPropertiesHasBeenSet = true; m_podProperties = std::forward<PodPropertiesT>(value); }
+    template<typename PodPropertiesT = EksPodProperties>
+    EksProperties& WithPodProperties(PodPropertiesT&& value) { SetPodProperties(std::forward<PodPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     EksPodProperties m_podProperties;

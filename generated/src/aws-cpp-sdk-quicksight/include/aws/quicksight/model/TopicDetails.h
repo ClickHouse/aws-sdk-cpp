@@ -6,7 +6,9 @@
 #pragma once
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/quicksight/model/TopicUserExperienceVersion.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/quicksight/model/TopicConfigOptions.h>
 #include <aws/quicksight/model/DatasetMetadata.h>
 #include <utility>
 
@@ -34,134 +36,71 @@ namespace Model
   class TopicDetails
   {
   public:
-    AWS_QUICKSIGHT_API TopicDetails();
+    AWS_QUICKSIGHT_API TopicDetails() = default;
     AWS_QUICKSIGHT_API TopicDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TopicDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the topic.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TopicDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline TopicDetails& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline TopicDetails& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline TopicDetails& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the topic.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the topic.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    TopicDetails& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The description of the topic.</p>
+     * <p>The user experience version of a topic.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline TopicUserExperienceVersion GetUserExperienceVersion() const { return m_userExperienceVersion; }
+    inline bool UserExperienceVersionHasBeenSet() const { return m_userExperienceVersionHasBeenSet; }
+    inline void SetUserExperienceVersion(TopicUserExperienceVersion value) { m_userExperienceVersionHasBeenSet = true; m_userExperienceVersion = value; }
+    inline TopicDetails& WithUserExperienceVersion(TopicUserExperienceVersion value) { SetUserExperienceVersion(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the topic.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the topic.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the topic.</p>
-     */
-    inline TopicDetails& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the topic.</p>
-     */
-    inline TopicDetails& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the topic.</p>
-     */
-    inline TopicDetails& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data sets that the topic is associated with.</p>
      */
-    inline const Aws::Vector<DatasetMetadata>& GetDataSets() const{ return m_dataSets; }
-
-    /**
-     * <p>The data sets that the topic is associated with.</p>
-     */
+    inline const Aws::Vector<DatasetMetadata>& GetDataSets() const { return m_dataSets; }
     inline bool DataSetsHasBeenSet() const { return m_dataSetsHasBeenSet; }
+    template<typename DataSetsT = Aws::Vector<DatasetMetadata>>
+    void SetDataSets(DataSetsT&& value) { m_dataSetsHasBeenSet = true; m_dataSets = std::forward<DataSetsT>(value); }
+    template<typename DataSetsT = Aws::Vector<DatasetMetadata>>
+    TopicDetails& WithDataSets(DataSetsT&& value) { SetDataSets(std::forward<DataSetsT>(value)); return *this;}
+    template<typename DataSetsT = DatasetMetadata>
+    TopicDetails& AddDataSets(DataSetsT&& value) { m_dataSetsHasBeenSet = true; m_dataSets.emplace_back(std::forward<DataSetsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The data sets that the topic is associated with.</p>
+     * <p>Configuration options for a <code>Topic</code>.</p>
      */
-    inline void SetDataSets(const Aws::Vector<DatasetMetadata>& value) { m_dataSetsHasBeenSet = true; m_dataSets = value; }
-
-    /**
-     * <p>The data sets that the topic is associated with.</p>
-     */
-    inline void SetDataSets(Aws::Vector<DatasetMetadata>&& value) { m_dataSetsHasBeenSet = true; m_dataSets = std::move(value); }
-
-    /**
-     * <p>The data sets that the topic is associated with.</p>
-     */
-    inline TopicDetails& WithDataSets(const Aws::Vector<DatasetMetadata>& value) { SetDataSets(value); return *this;}
-
-    /**
-     * <p>The data sets that the topic is associated with.</p>
-     */
-    inline TopicDetails& WithDataSets(Aws::Vector<DatasetMetadata>&& value) { SetDataSets(std::move(value)); return *this;}
-
-    /**
-     * <p>The data sets that the topic is associated with.</p>
-     */
-    inline TopicDetails& AddDataSets(const DatasetMetadata& value) { m_dataSetsHasBeenSet = true; m_dataSets.push_back(value); return *this; }
-
-    /**
-     * <p>The data sets that the topic is associated with.</p>
-     */
-    inline TopicDetails& AddDataSets(DatasetMetadata&& value) { m_dataSetsHasBeenSet = true; m_dataSets.push_back(std::move(value)); return *this; }
-
+    inline const TopicConfigOptions& GetConfigOptions() const { return m_configOptions; }
+    inline bool ConfigOptionsHasBeenSet() const { return m_configOptionsHasBeenSet; }
+    template<typename ConfigOptionsT = TopicConfigOptions>
+    void SetConfigOptions(ConfigOptionsT&& value) { m_configOptionsHasBeenSet = true; m_configOptions = std::forward<ConfigOptionsT>(value); }
+    template<typename ConfigOptionsT = TopicConfigOptions>
+    TopicDetails& WithConfigOptions(ConfigOptionsT&& value) { SetConfigOptions(std::forward<ConfigOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -170,8 +109,14 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
+    TopicUserExperienceVersion m_userExperienceVersion{TopicUserExperienceVersion::NOT_SET};
+    bool m_userExperienceVersionHasBeenSet = false;
+
     Aws::Vector<DatasetMetadata> m_dataSets;
     bool m_dataSetsHasBeenSet = false;
+
+    TopicConfigOptions m_configOptions;
+    bool m_configOptionsHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,17 +18,7 @@ namespace ECS
 namespace Model
 {
 
-ServiceEvent::ServiceEvent() : 
-    m_idHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ServiceEvent::ServiceEvent(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ServiceEvent::ServiceEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ServiceEvent& ServiceEvent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace ChimeSDKMediaPipelines
 namespace Model
 {
 
-ConcatenationSource::ConcatenationSource() : 
-    m_type(ConcatenationSourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_mediaCapturePipelineSourceConfigurationHasBeenSet(false)
-{
-}
-
-ConcatenationSource::ConcatenationSource(JsonView jsonValue) : 
-    m_type(ConcatenationSourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_mediaCapturePipelineSourceConfigurationHasBeenSet(false)
+ConcatenationSource::ConcatenationSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConcatenationSource& ConcatenationSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = ConcatenationSourceTypeMapper::GetConcatenationSourceTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MediaCapturePipelineSourceConfiguration"))
   {
     m_mediaCapturePipelineSourceConfiguration = jsonValue.GetObject("MediaCapturePipelineSourceConfiguration");
-
     m_mediaCapturePipelineSourceConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

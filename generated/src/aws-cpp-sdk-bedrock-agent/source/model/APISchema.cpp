@@ -18,15 +18,7 @@ namespace BedrockAgent
 namespace Model
 {
 
-APISchema::APISchema() : 
-    m_s3HasBeenSet(false),
-    m_payloadHasBeenSet(false)
-{
-}
-
-APISchema::APISchema(JsonView jsonValue) : 
-    m_s3HasBeenSet(false),
-    m_payloadHasBeenSet(false)
+APISchema::APISchema(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ APISchema& APISchema::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("s3"))
   {
     m_s3 = jsonValue.GetObject("s3");
-
     m_s3HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("payload"))
   {
     m_payload = jsonValue.GetString("payload");
-
     m_payloadHasBeenSet = true;
   }
-
   return *this;
 }
 

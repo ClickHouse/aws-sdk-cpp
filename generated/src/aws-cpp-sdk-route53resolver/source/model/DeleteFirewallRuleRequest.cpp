@@ -12,12 +12,6 @@ using namespace Aws::Route53Resolver::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteFirewallRuleRequest::DeleteFirewallRuleRequest() : 
-    m_firewallRuleGroupIdHasBeenSet(false),
-    m_firewallDomainListIdHasBeenSet(false)
-{
-}
-
 Aws::String DeleteFirewallRuleRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,18 @@ Aws::String DeleteFirewallRuleRequest::SerializePayload() const
   if(m_firewallDomainListIdHasBeenSet)
   {
    payload.WithString("FirewallDomainListId", m_firewallDomainListId);
+
+  }
+
+  if(m_firewallThreatProtectionIdHasBeenSet)
+  {
+   payload.WithString("FirewallThreatProtectionId", m_firewallThreatProtectionId);
+
+  }
+
+  if(m_qtypeHasBeenSet)
+  {
+   payload.WithString("Qtype", m_qtype);
 
   }
 

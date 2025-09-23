@@ -12,19 +12,6 @@ using namespace Aws::DataZone::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SearchListingsRequest::SearchListingsRequest() : 
-    m_additionalAttributesHasBeenSet(false),
-    m_domainIdentifierHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_searchInHasBeenSet(false),
-    m_searchTextHasBeenSet(false),
-    m_sortHasBeenSet(false)
-{
-}
-
 Aws::String SearchListingsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -37,6 +24,17 @@ Aws::String SearchListingsRequest::SerializePayload() const
      additionalAttributesJsonList[additionalAttributesIndex].AsString(SearchOutputAdditionalAttributeMapper::GetNameForSearchOutputAdditionalAttribute(m_additionalAttributes[additionalAttributesIndex]));
    }
    payload.WithArray("additionalAttributes", std::move(additionalAttributesJsonList));
+
+  }
+
+  if(m_aggregationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> aggregationsJsonList(m_aggregations.size());
+   for(unsigned aggregationsIndex = 0; aggregationsIndex < aggregationsJsonList.GetLength(); ++aggregationsIndex)
+   {
+     aggregationsJsonList[aggregationsIndex].AsObject(m_aggregations[aggregationsIndex].Jsonize());
+   }
+   payload.WithArray("aggregations", std::move(aggregationsJsonList));
 
   }
 

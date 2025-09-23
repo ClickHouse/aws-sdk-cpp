@@ -33,93 +33,42 @@ namespace Model
   class ResolvedTargets
   {
   public:
-    AWS_SSM_API ResolvedTargets();
+    AWS_SSM_API ResolvedTargets() = default;
     AWS_SSM_API ResolvedTargets(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API ResolvedTargets& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of parameter values sent to targets that resolved during the
      * Automation execution.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetParameterValues() const{ return m_parameterValues; }
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetParameterValues() const { return m_parameterValues; }
     inline bool ParameterValuesHasBeenSet() const { return m_parameterValuesHasBeenSet; }
+    template<typename ParameterValuesT = Aws::Vector<Aws::String>>
+    void SetParameterValues(ParameterValuesT&& value) { m_parameterValuesHasBeenSet = true; m_parameterValues = std::forward<ParameterValuesT>(value); }
+    template<typename ParameterValuesT = Aws::Vector<Aws::String>>
+    ResolvedTargets& WithParameterValues(ParameterValuesT&& value) { SetParameterValues(std::forward<ParameterValuesT>(value)); return *this;}
+    template<typename ParameterValuesT = Aws::String>
+    ResolvedTargets& AddParameterValues(ParameterValuesT&& value) { m_parameterValuesHasBeenSet = true; m_parameterValues.emplace_back(std::forward<ParameterValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline void SetParameterValues(const Aws::Vector<Aws::String>& value) { m_parameterValuesHasBeenSet = true; m_parameterValues = value; }
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline void SetParameterValues(Aws::Vector<Aws::String>&& value) { m_parameterValuesHasBeenSet = true; m_parameterValues = std::move(value); }
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline ResolvedTargets& WithParameterValues(const Aws::Vector<Aws::String>& value) { SetParameterValues(value); return *this;}
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline ResolvedTargets& WithParameterValues(Aws::Vector<Aws::String>&& value) { SetParameterValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline ResolvedTargets& AddParameterValues(const Aws::String& value) { m_parameterValuesHasBeenSet = true; m_parameterValues.push_back(value); return *this; }
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline ResolvedTargets& AddParameterValues(Aws::String&& value) { m_parameterValuesHasBeenSet = true; m_parameterValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of parameter values sent to targets that resolved during the
-     * Automation execution.</p>
-     */
-    inline ResolvedTargets& AddParameterValues(const char* value) { m_parameterValuesHasBeenSet = true; m_parameterValues.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A boolean value indicating whether the resolved target list is truncated.</p>
      */
-    inline bool GetTruncated() const{ return m_truncated; }
-
-    /**
-     * <p>A boolean value indicating whether the resolved target list is truncated.</p>
-     */
+    inline bool GetTruncated() const { return m_truncated; }
     inline bool TruncatedHasBeenSet() const { return m_truncatedHasBeenSet; }
-
-    /**
-     * <p>A boolean value indicating whether the resolved target list is truncated.</p>
-     */
     inline void SetTruncated(bool value) { m_truncatedHasBeenSet = true; m_truncated = value; }
-
-    /**
-     * <p>A boolean value indicating whether the resolved target list is truncated.</p>
-     */
     inline ResolvedTargets& WithTruncated(bool value) { SetTruncated(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_parameterValues;
     bool m_parameterValuesHasBeenSet = false;
 
-    bool m_truncated;
+    bool m_truncated{false};
     bool m_truncatedHasBeenSet = false;
   };
 

@@ -18,19 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-ComponentParameterDetail::ComponentParameterDetail() : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-ComponentParameterDetail::ComponentParameterDetail(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+ComponentParameterDetail::ComponentParameterDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ComponentParameterDetail& ComponentParameterDetail::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("defaultValue"))
   {
     Aws::Utils::Array<JsonView> defaultValueJsonList = jsonValue.GetArray("defaultValue");
@@ -60,14 +44,11 @@ ComponentParameterDetail& ComponentParameterDetail::operator =(JsonView jsonValu
     }
     m_defaultValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

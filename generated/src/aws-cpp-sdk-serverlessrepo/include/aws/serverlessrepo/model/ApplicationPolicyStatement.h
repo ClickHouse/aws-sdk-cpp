@@ -32,235 +32,70 @@ namespace Model
   class ApplicationPolicyStatement
   {
   public:
-    AWS_SERVERLESSAPPLICATIONREPOSITORY_API ApplicationPolicyStatement();
+    AWS_SERVERLESSAPPLICATIONREPOSITORY_API ApplicationPolicyStatement() = default;
     AWS_SERVERLESSAPPLICATIONREPOSITORY_API ApplicationPolicyStatement(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVERLESSAPPLICATIONREPOSITORY_API ApplicationPolicyStatement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVERLESSAPPLICATIONREPOSITORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>For the list of actions supported for this operation, see <a
      * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
      * 
  Permissions</a>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
+    template<typename ActionsT = Aws::Vector<Aws::String>>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = Aws::Vector<Aws::String>>
+    ApplicationPolicyStatement& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    template<typename ActionsT = Aws::String>
+    ApplicationPolicyStatement& AddActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions.emplace_back(std::forward<ActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline void SetActions(const Aws::Vector<Aws::String>& value) { m_actionsHasBeenSet = true; m_actions = value; }
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline void SetActions(Aws::Vector<Aws::String>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline ApplicationPolicyStatement& WithActions(const Aws::Vector<Aws::String>& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline ApplicationPolicyStatement& WithActions(Aws::Vector<Aws::String>&& value) { SetActions(std::move(value)); return *this;}
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline ApplicationPolicyStatement& AddActions(const Aws::String& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline ApplicationPolicyStatement& AddActions(Aws::String&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>For the list of actions supported for this operation, see <a
-     * href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions">Application
-     * 
- Permissions</a>.</p>
-     */
-    inline ApplicationPolicyStatement& AddActions(const char* value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
      * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
      * global condition key.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPrincipalOrgIDs() const{ return m_principalOrgIDs; }
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPrincipalOrgIDs() const { return m_principalOrgIDs; }
     inline bool PrincipalOrgIDsHasBeenSet() const { return m_principalOrgIDsHasBeenSet; }
+    template<typename PrincipalOrgIDsT = Aws::Vector<Aws::String>>
+    void SetPrincipalOrgIDs(PrincipalOrgIDsT&& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs = std::forward<PrincipalOrgIDsT>(value); }
+    template<typename PrincipalOrgIDsT = Aws::Vector<Aws::String>>
+    ApplicationPolicyStatement& WithPrincipalOrgIDs(PrincipalOrgIDsT&& value) { SetPrincipalOrgIDs(std::forward<PrincipalOrgIDsT>(value)); return *this;}
+    template<typename PrincipalOrgIDsT = Aws::String>
+    ApplicationPolicyStatement& AddPrincipalOrgIDs(PrincipalOrgIDsT&& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.emplace_back(std::forward<PrincipalOrgIDsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline void SetPrincipalOrgIDs(const Aws::Vector<Aws::String>& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs = value; }
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline void SetPrincipalOrgIDs(Aws::Vector<Aws::String>&& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs = std::move(value); }
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline ApplicationPolicyStatement& WithPrincipalOrgIDs(const Aws::Vector<Aws::String>& value) { SetPrincipalOrgIDs(value); return *this;}
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline ApplicationPolicyStatement& WithPrincipalOrgIDs(Aws::Vector<Aws::String>&& value) { SetPrincipalOrgIDs(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline ApplicationPolicyStatement& AddPrincipalOrgIDs(const Aws::String& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.push_back(value); return *this; }
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline ApplicationPolicyStatement& AddPrincipalOrgIDs(Aws::String&& value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of PrinciplalOrgIDs, which corresponds to AWS IAM <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id">aws:PrincipalOrgID</a>
-     * global condition key.</p>
-     */
-    inline ApplicationPolicyStatement& AddPrincipalOrgIDs(const char* value) { m_principalOrgIDsHasBeenSet = true; m_principalOrgIDs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of AWS account IDs, or * to make the application public.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPrincipals() const{ return m_principals; }
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPrincipals() const { return m_principals; }
     inline bool PrincipalsHasBeenSet() const { return m_principalsHasBeenSet; }
+    template<typename PrincipalsT = Aws::Vector<Aws::String>>
+    void SetPrincipals(PrincipalsT&& value) { m_principalsHasBeenSet = true; m_principals = std::forward<PrincipalsT>(value); }
+    template<typename PrincipalsT = Aws::Vector<Aws::String>>
+    ApplicationPolicyStatement& WithPrincipals(PrincipalsT&& value) { SetPrincipals(std::forward<PrincipalsT>(value)); return *this;}
+    template<typename PrincipalsT = Aws::String>
+    ApplicationPolicyStatement& AddPrincipals(PrincipalsT&& value) { m_principalsHasBeenSet = true; m_principals.emplace_back(std::forward<PrincipalsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline void SetPrincipals(const Aws::Vector<Aws::String>& value) { m_principalsHasBeenSet = true; m_principals = value; }
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline void SetPrincipals(Aws::Vector<Aws::String>&& value) { m_principalsHasBeenSet = true; m_principals = std::move(value); }
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline ApplicationPolicyStatement& WithPrincipals(const Aws::Vector<Aws::String>& value) { SetPrincipals(value); return *this;}
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline ApplicationPolicyStatement& WithPrincipals(Aws::Vector<Aws::String>&& value) { SetPrincipals(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline ApplicationPolicyStatement& AddPrincipals(const Aws::String& value) { m_principalsHasBeenSet = true; m_principals.push_back(value); return *this; }
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline ApplicationPolicyStatement& AddPrincipals(Aws::String&& value) { m_principalsHasBeenSet = true; m_principals.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of AWS account IDs, or * to make the application public.</p>
-     */
-    inline ApplicationPolicyStatement& AddPrincipals(const char* value) { m_principalsHasBeenSet = true; m_principals.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A unique ID for the statement.</p>
      */
-    inline const Aws::String& GetStatementId() const{ return m_statementId; }
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
+    inline const Aws::String& GetStatementId() const { return m_statementId; }
     inline bool StatementIdHasBeenSet() const { return m_statementIdHasBeenSet; }
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
-    inline void SetStatementId(const Aws::String& value) { m_statementIdHasBeenSet = true; m_statementId = value; }
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
-    inline void SetStatementId(Aws::String&& value) { m_statementIdHasBeenSet = true; m_statementId = std::move(value); }
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
-    inline void SetStatementId(const char* value) { m_statementIdHasBeenSet = true; m_statementId.assign(value); }
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
-    inline ApplicationPolicyStatement& WithStatementId(const Aws::String& value) { SetStatementId(value); return *this;}
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
-    inline ApplicationPolicyStatement& WithStatementId(Aws::String&& value) { SetStatementId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique ID for the statement.</p>
-     */
-    inline ApplicationPolicyStatement& WithStatementId(const char* value) { SetStatementId(value); return *this;}
-
+    template<typename StatementIdT = Aws::String>
+    void SetStatementId(StatementIdT&& value) { m_statementIdHasBeenSet = true; m_statementId = std::forward<StatementIdT>(value); }
+    template<typename StatementIdT = Aws::String>
+    ApplicationPolicyStatement& WithStatementId(StatementIdT&& value) { SetStatementId(std::forward<StatementIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_actions;

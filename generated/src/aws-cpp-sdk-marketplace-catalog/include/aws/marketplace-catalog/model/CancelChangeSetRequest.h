@@ -25,7 +25,7 @@ namespace Model
   class CancelChangeSetRequest : public MarketplaceCatalogRequest
   {
   public:
-    AWS_MARKETPLACECATALOG_API CancelChangeSetRequest();
+    AWS_MARKETPLACECATALOG_API CancelChangeSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,103 +38,31 @@ namespace Model
     AWS_MARKETPLACECATALOG_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Required. The catalog related to the request. Fixed value:
      * <code>AWSMarketplace</code>.</p>
      */
-    inline const Aws::String& GetCatalog() const{ return m_catalog; }
-
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
+    inline const Aws::String& GetCatalog() const { return m_catalog; }
     inline bool CatalogHasBeenSet() const { return m_catalogHasBeenSet; }
+    template<typename CatalogT = Aws::String>
+    void SetCatalog(CatalogT&& value) { m_catalogHasBeenSet = true; m_catalog = std::forward<CatalogT>(value); }
+    template<typename CatalogT = Aws::String>
+    CancelChangeSetRequest& WithCatalog(CatalogT&& value) { SetCatalog(std::forward<CatalogT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
-    inline void SetCatalog(const Aws::String& value) { m_catalogHasBeenSet = true; m_catalog = value; }
-
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
-    inline void SetCatalog(Aws::String&& value) { m_catalogHasBeenSet = true; m_catalog = std::move(value); }
-
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
-    inline void SetCatalog(const char* value) { m_catalogHasBeenSet = true; m_catalog.assign(value); }
-
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
-    inline CancelChangeSetRequest& WithCatalog(const Aws::String& value) { SetCatalog(value); return *this;}
-
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
-    inline CancelChangeSetRequest& WithCatalog(Aws::String&& value) { SetCatalog(std::move(value)); return *this;}
-
-    /**
-     * <p>Required. The catalog related to the request. Fixed value:
-     * <code>AWSMarketplace</code>.</p>
-     */
-    inline CancelChangeSetRequest& WithCatalog(const char* value) { SetCatalog(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
      * that you want to cancel.</p>
      */
-    inline const Aws::String& GetChangeSetId() const{ return m_changeSetId; }
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
+    inline const Aws::String& GetChangeSetId() const { return m_changeSetId; }
     inline bool ChangeSetIdHasBeenSet() const { return m_changeSetIdHasBeenSet; }
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
-    inline void SetChangeSetId(const Aws::String& value) { m_changeSetIdHasBeenSet = true; m_changeSetId = value; }
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
-    inline void SetChangeSetId(Aws::String&& value) { m_changeSetIdHasBeenSet = true; m_changeSetId = std::move(value); }
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
-    inline void SetChangeSetId(const char* value) { m_changeSetIdHasBeenSet = true; m_changeSetId.assign(value); }
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
-    inline CancelChangeSetRequest& WithChangeSetId(const Aws::String& value) { SetChangeSetId(value); return *this;}
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
-    inline CancelChangeSetRequest& WithChangeSetId(Aws::String&& value) { SetChangeSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Required. The unique identifier of the <code>StartChangeSet</code> request
-     * that you want to cancel.</p>
-     */
-    inline CancelChangeSetRequest& WithChangeSetId(const char* value) { SetChangeSetId(value); return *this;}
-
+    template<typename ChangeSetIdT = Aws::String>
+    void SetChangeSetId(ChangeSetIdT&& value) { m_changeSetIdHasBeenSet = true; m_changeSetId = std::forward<ChangeSetIdT>(value); }
+    template<typename ChangeSetIdT = Aws::String>
+    CancelChangeSetRequest& WithChangeSetId(ChangeSetIdT&& value) { SetChangeSetId(std::forward<ChangeSetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalog;

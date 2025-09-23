@@ -21,7 +21,7 @@ namespace Model
   class DeleteContactMethodRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API DeleteContactMethodRequest();
+    AWS_LIGHTSAIL_API DeleteContactMethodRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,57 +34,21 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The protocol that will be deleted, such as <code>Email</code> or
      * <code>SMS</code> (text messaging).</p>  <p>To delete an <code>Email</code>
      * and an <code>SMS</code> contact method if you added both, you must run separate
      * <code>DeleteContactMethod</code> actions to delete each protocol.</p> 
      */
-    inline const ContactProtocol& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol that will be deleted, such as <code>Email</code> or
-     * <code>SMS</code> (text messaging).</p>  <p>To delete an <code>Email</code>
-     * and an <code>SMS</code> contact method if you added both, you must run separate
-     * <code>DeleteContactMethod</code> actions to delete each protocol.</p> 
-     */
+    inline ContactProtocol GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The protocol that will be deleted, such as <code>Email</code> or
-     * <code>SMS</code> (text messaging).</p>  <p>To delete an <code>Email</code>
-     * and an <code>SMS</code> contact method if you added both, you must run separate
-     * <code>DeleteContactMethod</code> actions to delete each protocol.</p> 
-     */
-    inline void SetProtocol(const ContactProtocol& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol that will be deleted, such as <code>Email</code> or
-     * <code>SMS</code> (text messaging).</p>  <p>To delete an <code>Email</code>
-     * and an <code>SMS</code> contact method if you added both, you must run separate
-     * <code>DeleteContactMethod</code> actions to delete each protocol.</p> 
-     */
-    inline void SetProtocol(ContactProtocol&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol that will be deleted, such as <code>Email</code> or
-     * <code>SMS</code> (text messaging).</p>  <p>To delete an <code>Email</code>
-     * and an <code>SMS</code> contact method if you added both, you must run separate
-     * <code>DeleteContactMethod</code> actions to delete each protocol.</p> 
-     */
-    inline DeleteContactMethodRequest& WithProtocol(const ContactProtocol& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol that will be deleted, such as <code>Email</code> or
-     * <code>SMS</code> (text messaging).</p>  <p>To delete an <code>Email</code>
-     * and an <code>SMS</code> contact method if you added both, you must run separate
-     * <code>DeleteContactMethod</code> actions to delete each protocol.</p> 
-     */
-    inline DeleteContactMethodRequest& WithProtocol(ContactProtocol&& value) { SetProtocol(std::move(value)); return *this;}
-
+    inline void SetProtocol(ContactProtocol value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline DeleteContactMethodRequest& WithProtocol(ContactProtocol value) { SetProtocol(value); return *this;}
+    ///@}
   private:
 
-    ContactProtocol m_protocol;
+    ContactProtocol m_protocol{ContactProtocol::NOT_SET};
     bool m_protocolHasBeenSet = false;
   };
 

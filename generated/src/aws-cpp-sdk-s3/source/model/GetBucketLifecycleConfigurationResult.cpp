@@ -16,10 +16,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetBucketLifecycleConfigurationResult::GetBucketLifecycleConfigurationResult()
-{
-}
-
 GetBucketLifecycleConfigurationResult::GetBucketLifecycleConfigurationResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
@@ -36,20 +32,30 @@ GetBucketLifecycleConfigurationResult& GetBucketLifecycleConfigurationResult::op
     if(!rulesNode.IsNull())
     {
       XmlNode ruleMember = rulesNode;
+      m_rulesHasBeenSet = !ruleMember.IsNull();
       while(!ruleMember.IsNull())
       {
         m_rules.push_back(ruleMember);
         ruleMember = ruleMember.NextNode("Rule");
       }
 
+      m_rulesHasBeenSet = true;
     }
   }
 
   const auto& headers = result.GetHeaderValueCollection();
+  const auto& transitionDefaultMinimumObjectSizeIter = headers.find("x-amz-transition-default-minimum-object-size");
+  if(transitionDefaultMinimumObjectSizeIter != headers.end())
+  {
+    m_transitionDefaultMinimumObjectSize = TransitionDefaultMinimumObjectSizeMapper::GetTransitionDefaultMinimumObjectSizeForName(transitionDefaultMinimumObjectSizeIter->second);
+    m_transitionDefaultMinimumObjectSizeHasBeenSet = true;
+  }
+
   const auto& requestIdIter = headers.find("x-amz-request-id");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
   return *this;

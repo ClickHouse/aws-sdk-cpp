@@ -32,79 +32,37 @@ namespace Model
   class VoiceAnalyticsProcessorConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API VoiceAnalyticsProcessorConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API VoiceAnalyticsProcessorConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API VoiceAnalyticsProcessorConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API VoiceAnalyticsProcessorConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the speaker search task.</p>
      */
-    inline const VoiceAnalyticsConfigurationStatus& GetSpeakerSearchStatus() const{ return m_speakerSearchStatus; }
-
-    /**
-     * <p>The status of the speaker search task.</p>
-     */
+    inline VoiceAnalyticsConfigurationStatus GetSpeakerSearchStatus() const { return m_speakerSearchStatus; }
     inline bool SpeakerSearchStatusHasBeenSet() const { return m_speakerSearchStatusHasBeenSet; }
+    inline void SetSpeakerSearchStatus(VoiceAnalyticsConfigurationStatus value) { m_speakerSearchStatusHasBeenSet = true; m_speakerSearchStatus = value; }
+    inline VoiceAnalyticsProcessorConfiguration& WithSpeakerSearchStatus(VoiceAnalyticsConfigurationStatus value) { SetSpeakerSearchStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the speaker search task.</p>
-     */
-    inline void SetSpeakerSearchStatus(const VoiceAnalyticsConfigurationStatus& value) { m_speakerSearchStatusHasBeenSet = true; m_speakerSearchStatus = value; }
-
-    /**
-     * <p>The status of the speaker search task.</p>
-     */
-    inline void SetSpeakerSearchStatus(VoiceAnalyticsConfigurationStatus&& value) { m_speakerSearchStatusHasBeenSet = true; m_speakerSearchStatus = std::move(value); }
-
-    /**
-     * <p>The status of the speaker search task.</p>
-     */
-    inline VoiceAnalyticsProcessorConfiguration& WithSpeakerSearchStatus(const VoiceAnalyticsConfigurationStatus& value) { SetSpeakerSearchStatus(value); return *this;}
-
-    /**
-     * <p>The status of the speaker search task.</p>
-     */
-    inline VoiceAnalyticsProcessorConfiguration& WithSpeakerSearchStatus(VoiceAnalyticsConfigurationStatus&& value) { SetSpeakerSearchStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the voice tone analysis task.</p>
      */
-    inline const VoiceAnalyticsConfigurationStatus& GetVoiceToneAnalysisStatus() const{ return m_voiceToneAnalysisStatus; }
-
-    /**
-     * <p>The status of the voice tone analysis task.</p>
-     */
+    inline VoiceAnalyticsConfigurationStatus GetVoiceToneAnalysisStatus() const { return m_voiceToneAnalysisStatus; }
     inline bool VoiceToneAnalysisStatusHasBeenSet() const { return m_voiceToneAnalysisStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisStatus(const VoiceAnalyticsConfigurationStatus& value) { m_voiceToneAnalysisStatusHasBeenSet = true; m_voiceToneAnalysisStatus = value; }
-
-    /**
-     * <p>The status of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisStatus(VoiceAnalyticsConfigurationStatus&& value) { m_voiceToneAnalysisStatusHasBeenSet = true; m_voiceToneAnalysisStatus = std::move(value); }
-
-    /**
-     * <p>The status of the voice tone analysis task.</p>
-     */
-    inline VoiceAnalyticsProcessorConfiguration& WithVoiceToneAnalysisStatus(const VoiceAnalyticsConfigurationStatus& value) { SetVoiceToneAnalysisStatus(value); return *this;}
-
-    /**
-     * <p>The status of the voice tone analysis task.</p>
-     */
-    inline VoiceAnalyticsProcessorConfiguration& WithVoiceToneAnalysisStatus(VoiceAnalyticsConfigurationStatus&& value) { SetVoiceToneAnalysisStatus(std::move(value)); return *this;}
-
+    inline void SetVoiceToneAnalysisStatus(VoiceAnalyticsConfigurationStatus value) { m_voiceToneAnalysisStatusHasBeenSet = true; m_voiceToneAnalysisStatus = value; }
+    inline VoiceAnalyticsProcessorConfiguration& WithVoiceToneAnalysisStatus(VoiceAnalyticsConfigurationStatus value) { SetVoiceToneAnalysisStatus(value); return *this;}
+    ///@}
   private:
 
-    VoiceAnalyticsConfigurationStatus m_speakerSearchStatus;
+    VoiceAnalyticsConfigurationStatus m_speakerSearchStatus{VoiceAnalyticsConfigurationStatus::NOT_SET};
     bool m_speakerSearchStatusHasBeenSet = false;
 
-    VoiceAnalyticsConfigurationStatus m_voiceToneAnalysisStatus;
+    VoiceAnalyticsConfigurationStatus m_voiceToneAnalysisStatus{VoiceAnalyticsConfigurationStatus::NOT_SET};
     bool m_voiceToneAnalysisStatusHasBeenSet = false;
   };
 

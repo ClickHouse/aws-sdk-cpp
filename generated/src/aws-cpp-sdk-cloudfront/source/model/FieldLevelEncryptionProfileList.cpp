@@ -20,23 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-FieldLevelEncryptionProfileList::FieldLevelEncryptionProfileList() : 
-    m_nextMarkerHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
-{
-}
-
-FieldLevelEncryptionProfileList::FieldLevelEncryptionProfileList(const XmlNode& xmlNode) : 
-    m_nextMarkerHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
+FieldLevelEncryptionProfileList::FieldLevelEncryptionProfileList(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +53,7 @@ FieldLevelEncryptionProfileList& FieldLevelEncryptionProfileList::operator =(con
     if(!itemsNode.IsNull())
     {
       XmlNode itemsMember = itemsNode.FirstChild("FieldLevelEncryptionProfileSummary");
+      m_itemsHasBeenSet = !itemsMember.IsNull();
       while(!itemsMember.IsNull())
       {
         m_items.push_back(itemsMember);

@@ -32,120 +32,51 @@ namespace Model
   class BatchCreateVariableError
   {
   public:
-    AWS_FRAUDDETECTOR_API BatchCreateVariableError();
+    AWS_FRAUDDETECTOR_API BatchCreateVariableError() = default;
     AWS_FRAUDDETECTOR_API BatchCreateVariableError(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API BatchCreateVariableError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BatchCreateVariableError& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name.</p>
-     */
-    inline BatchCreateVariableError& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name.</p>
-     */
-    inline BatchCreateVariableError& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name.</p>
-     */
-    inline BatchCreateVariableError& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error code. </p>
      */
-    inline int GetCode() const{ return m_code; }
-
-    /**
-     * <p>The error code. </p>
-     */
+    inline int GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The error code. </p>
-     */
     inline void SetCode(int value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The error code. </p>
-     */
     inline BatchCreateVariableError& WithCode(int value) { SetCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The error message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The error message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline BatchCreateVariableError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline BatchCreateVariableError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline BatchCreateVariableError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    BatchCreateVariableError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    int m_code;
+    int m_code{0};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

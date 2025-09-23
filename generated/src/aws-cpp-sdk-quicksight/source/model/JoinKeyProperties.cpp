@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-JoinKeyProperties::JoinKeyProperties() : 
-    m_uniqueKey(false),
-    m_uniqueKeyHasBeenSet(false)
-{
-}
-
-JoinKeyProperties::JoinKeyProperties(JsonView jsonValue) : 
-    m_uniqueKey(false),
-    m_uniqueKeyHasBeenSet(false)
+JoinKeyProperties::JoinKeyProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ JoinKeyProperties& JoinKeyProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UniqueKey"))
   {
     m_uniqueKey = jsonValue.GetBool("UniqueKey");
-
     m_uniqueKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

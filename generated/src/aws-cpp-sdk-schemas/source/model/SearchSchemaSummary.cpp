@@ -18,19 +18,7 @@ namespace Schemas
 namespace Model
 {
 
-SearchSchemaSummary::SearchSchemaSummary() : 
-    m_registryNameHasBeenSet(false),
-    m_schemaArnHasBeenSet(false),
-    m_schemaNameHasBeenSet(false),
-    m_schemaVersionsHasBeenSet(false)
-{
-}
-
-SearchSchemaSummary::SearchSchemaSummary(JsonView jsonValue) : 
-    m_registryNameHasBeenSet(false),
-    m_schemaArnHasBeenSet(false),
-    m_schemaNameHasBeenSet(false),
-    m_schemaVersionsHasBeenSet(false)
+SearchSchemaSummary::SearchSchemaSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ SearchSchemaSummary& SearchSchemaSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RegistryName"))
   {
     m_registryName = jsonValue.GetString("RegistryName");
-
     m_registryNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaArn"))
   {
     m_schemaArn = jsonValue.GetString("SchemaArn");
-
     m_schemaArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaName"))
   {
     m_schemaName = jsonValue.GetString("SchemaName");
-
     m_schemaNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaVersions"))
   {
     Aws::Utils::Array<JsonView> schemaVersionsJsonList = jsonValue.GetArray("SchemaVersions");
@@ -67,7 +49,6 @@ SearchSchemaSummary& SearchSchemaSummary::operator =(JsonView jsonValue)
     }
     m_schemaVersionsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,19 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFeatureGroupRequest::CreateFeatureGroupRequest() : 
-    m_featureGroupNameHasBeenSet(false),
-    m_recordIdentifierFeatureNameHasBeenSet(false),
-    m_eventTimeFeatureNameHasBeenSet(false),
-    m_featureDefinitionsHasBeenSet(false),
-    m_onlineStoreConfigHasBeenSet(false),
-    m_offlineStoreConfigHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateFeatureGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -67,6 +54,12 @@ Aws::String CreateFeatureGroupRequest::SerializePayload() const
   if(m_offlineStoreConfigHasBeenSet)
   {
    payload.WithObject("OfflineStoreConfig", m_offlineStoreConfig.Jsonize());
+
+  }
+
+  if(m_throughputConfigHasBeenSet)
+  {
+   payload.WithObject("ThroughputConfig", m_throughputConfig.Jsonize());
 
   }
 

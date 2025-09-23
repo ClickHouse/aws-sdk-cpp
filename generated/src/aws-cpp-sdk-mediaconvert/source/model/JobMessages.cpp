@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-JobMessages::JobMessages() : 
-    m_infoHasBeenSet(false),
-    m_warningHasBeenSet(false)
-{
-}
-
-JobMessages::JobMessages(JsonView jsonValue) : 
-    m_infoHasBeenSet(false),
-    m_warningHasBeenSet(false)
+JobMessages::JobMessages(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ JobMessages& JobMessages::operator =(JsonView jsonValue)
     }
     m_infoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("warning"))
   {
     Aws::Utils::Array<JsonView> warningJsonList = jsonValue.GetArray("warning");
@@ -52,7 +43,6 @@ JobMessages& JobMessages::operator =(JsonView jsonValue)
     }
     m_warningHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,89 +32,41 @@ namespace Model
   class ThrottlingException
   {
   public:
-    AWS_IOTJOBSDATAPLANE_API ThrottlingException();
+    AWS_IOTJOBSDATAPLANE_API ThrottlingException() = default;
     AWS_IOTJOBSDATAPLANE_API ThrottlingException(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTJOBSDATAPLANE_API ThrottlingException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTJOBSDATAPLANE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The message associated with the exception.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message associated with the exception.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ThrottlingException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message associated with the exception.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message associated with the exception.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message associated with the exception.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message associated with the exception.</p>
-     */
-    inline ThrottlingException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message associated with the exception.</p>
-     */
-    inline ThrottlingException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message associated with the exception.</p>
-     */
-    inline ThrottlingException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The payload associated with the exception.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetPayload() const{ return m_payload; }
-
-    /**
-     * <p>The payload associated with the exception.</p>
-     */
+    inline const Aws::Utils::ByteBuffer& GetPayload() const { return m_payload; }
     inline bool PayloadHasBeenSet() const { return m_payloadHasBeenSet; }
-
-    /**
-     * <p>The payload associated with the exception.</p>
-     */
-    inline void SetPayload(const Aws::Utils::ByteBuffer& value) { m_payloadHasBeenSet = true; m_payload = value; }
-
-    /**
-     * <p>The payload associated with the exception.</p>
-     */
-    inline void SetPayload(Aws::Utils::ByteBuffer&& value) { m_payloadHasBeenSet = true; m_payload = std::move(value); }
-
-    /**
-     * <p>The payload associated with the exception.</p>
-     */
-    inline ThrottlingException& WithPayload(const Aws::Utils::ByteBuffer& value) { SetPayload(value); return *this;}
-
-    /**
-     * <p>The payload associated with the exception.</p>
-     */
-    inline ThrottlingException& WithPayload(Aws::Utils::ByteBuffer&& value) { SetPayload(std::move(value)); return *this;}
-
+    template<typename PayloadT = Aws::Utils::ByteBuffer>
+    void SetPayload(PayloadT&& value) { m_payloadHasBeenSet = true; m_payload = std::forward<PayloadT>(value); }
+    template<typename PayloadT = Aws::Utils::ByteBuffer>
+    ThrottlingException& WithPayload(PayloadT&& value) { SetPayload(std::forward<PayloadT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    Aws::Utils::ByteBuffer m_payload;
+    Aws::Utils::ByteBuffer m_payload{};
     bool m_payloadHasBeenSet = false;
   };
 

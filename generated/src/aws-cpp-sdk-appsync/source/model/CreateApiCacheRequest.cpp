@@ -12,21 +12,6 @@ using namespace Aws::AppSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateApiCacheRequest::CreateApiCacheRequest() : 
-    m_apiIdHasBeenSet(false),
-    m_ttl(0),
-    m_ttlHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_atRestEncryptionEnabled(false),
-    m_atRestEncryptionEnabledHasBeenSet(false),
-    m_apiCachingBehavior(ApiCachingBehavior::NOT_SET),
-    m_apiCachingBehaviorHasBeenSet(false),
-    m_type(ApiCacheType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String CreateApiCacheRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -34,18 +19,6 @@ Aws::String CreateApiCacheRequest::SerializePayload() const
   if(m_ttlHasBeenSet)
   {
    payload.WithInt64("ttl", m_ttl);
-
-  }
-
-  if(m_transitEncryptionEnabledHasBeenSet)
-  {
-   payload.WithBool("transitEncryptionEnabled", m_transitEncryptionEnabled);
-
-  }
-
-  if(m_atRestEncryptionEnabledHasBeenSet)
-  {
-   payload.WithBool("atRestEncryptionEnabled", m_atRestEncryptionEnabled);
 
   }
 
@@ -57,6 +30,11 @@ Aws::String CreateApiCacheRequest::SerializePayload() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("type", ApiCacheTypeMapper::GetNameForApiCacheType(m_type));
+  }
+
+  if(m_healthMetricsConfigHasBeenSet)
+  {
+   payload.WithString("healthMetricsConfig", CacheHealthMetricsConfigMapper::GetNameForCacheHealthMetricsConfig(m_healthMetricsConfig));
   }
 
   return payload.View().WriteReadable();

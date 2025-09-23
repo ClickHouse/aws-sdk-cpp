@@ -32,73 +32,35 @@ namespace Model
   class MemberDetails
   {
   public:
-    AWS_DATAZONE_API MemberDetails();
+    AWS_DATAZONE_API MemberDetails() = default;
     AWS_DATAZONE_API MemberDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API MemberDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The group details of a project member.</p>
      */
-    inline const GroupDetails& GetGroup() const{ return m_group; }
-
-    /**
-     * <p>The group details of a project member.</p>
-     */
+    inline const GroupDetails& GetGroup() const { return m_group; }
     inline bool GroupHasBeenSet() const { return m_groupHasBeenSet; }
+    template<typename GroupT = GroupDetails>
+    void SetGroup(GroupT&& value) { m_groupHasBeenSet = true; m_group = std::forward<GroupT>(value); }
+    template<typename GroupT = GroupDetails>
+    MemberDetails& WithGroup(GroupT&& value) { SetGroup(std::forward<GroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The group details of a project member.</p>
-     */
-    inline void SetGroup(const GroupDetails& value) { m_groupHasBeenSet = true; m_group = value; }
-
-    /**
-     * <p>The group details of a project member.</p>
-     */
-    inline void SetGroup(GroupDetails&& value) { m_groupHasBeenSet = true; m_group = std::move(value); }
-
-    /**
-     * <p>The group details of a project member.</p>
-     */
-    inline MemberDetails& WithGroup(const GroupDetails& value) { SetGroup(value); return *this;}
-
-    /**
-     * <p>The group details of a project member.</p>
-     */
-    inline MemberDetails& WithGroup(GroupDetails&& value) { SetGroup(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The user details of a project member.</p>
      */
-    inline const UserDetails& GetUser() const{ return m_user; }
-
-    /**
-     * <p>The user details of a project member.</p>
-     */
+    inline const UserDetails& GetUser() const { return m_user; }
     inline bool UserHasBeenSet() const { return m_userHasBeenSet; }
-
-    /**
-     * <p>The user details of a project member.</p>
-     */
-    inline void SetUser(const UserDetails& value) { m_userHasBeenSet = true; m_user = value; }
-
-    /**
-     * <p>The user details of a project member.</p>
-     */
-    inline void SetUser(UserDetails&& value) { m_userHasBeenSet = true; m_user = std::move(value); }
-
-    /**
-     * <p>The user details of a project member.</p>
-     */
-    inline MemberDetails& WithUser(const UserDetails& value) { SetUser(value); return *this;}
-
-    /**
-     * <p>The user details of a project member.</p>
-     */
-    inline MemberDetails& WithUser(UserDetails&& value) { SetUser(std::move(value)); return *this;}
-
+    template<typename UserT = UserDetails>
+    void SetUser(UserT&& value) { m_userHasBeenSet = true; m_user = std::forward<UserT>(value); }
+    template<typename UserT = UserDetails>
+    MemberDetails& WithUser(UserT&& value) { SetUser(std::forward<UserT>(value)); return *this;}
+    ///@}
   private:
 
     GroupDetails m_group;

@@ -31,7 +31,7 @@ namespace Model
   class MetricGranularityType
   {
   public:
-    AWS_AUTOSCALING_API MetricGranularityType();
+    AWS_AUTOSCALING_API MetricGranularityType() = default;
     AWS_AUTOSCALING_API MetricGranularityType(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API MetricGranularityType& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
      */
-    inline const Aws::String& GetGranularity() const{ return m_granularity; }
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
+    inline const Aws::String& GetGranularity() const { return m_granularity; }
     inline bool GranularityHasBeenSet() const { return m_granularityHasBeenSet; }
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
-    inline void SetGranularity(const Aws::String& value) { m_granularityHasBeenSet = true; m_granularity = value; }
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
-    inline void SetGranularity(Aws::String&& value) { m_granularityHasBeenSet = true; m_granularity = std::move(value); }
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
-    inline void SetGranularity(const char* value) { m_granularityHasBeenSet = true; m_granularity.assign(value); }
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
-    inline MetricGranularityType& WithGranularity(const Aws::String& value) { SetGranularity(value); return *this;}
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
-    inline MetricGranularityType& WithGranularity(Aws::String&& value) { SetGranularity(std::move(value)); return *this;}
-
-    /**
-     * <p>The granularity. The only valid value is <code>1Minute</code>.</p>
-     */
-    inline MetricGranularityType& WithGranularity(const char* value) { SetGranularity(value); return *this;}
-
+    template<typename GranularityT = Aws::String>
+    void SetGranularity(GranularityT&& value) { m_granularityHasBeenSet = true; m_granularity = std::forward<GranularityT>(value); }
+    template<typename GranularityT = Aws::String>
+    MetricGranularityType& WithGranularity(GranularityT&& value) { SetGranularity(std::forward<GranularityT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_granularity;

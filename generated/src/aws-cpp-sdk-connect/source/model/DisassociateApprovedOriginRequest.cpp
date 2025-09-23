@@ -15,12 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DisassociateApprovedOriginRequest::DisassociateApprovedOriginRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_originHasBeenSet(false)
-{
-}
-
 Aws::String DisassociateApprovedOriginRequest::SerializePayload() const
 {
   return {};
@@ -33,6 +27,13 @@ void DisassociateApprovedOriginRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_origin;
       uri.AddQueryStringParameter("origin", ss.str());
+      ss.str("");
+    }
+
+    if(m_clientTokenHasBeenSet)
+    {
+      ss << m_clientToken;
+      uri.AddQueryStringParameter("clientToken", ss.str());
       ss.str("");
     }
 

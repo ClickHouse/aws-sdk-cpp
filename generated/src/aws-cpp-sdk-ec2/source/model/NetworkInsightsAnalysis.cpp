@@ -20,47 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInsightsAnalysis::NetworkInsightsAnalysis() : 
-    m_networkInsightsAnalysisIdHasBeenSet(false),
-    m_networkInsightsAnalysisArnHasBeenSet(false),
-    m_networkInsightsPathIdHasBeenSet(false),
-    m_additionalAccountsHasBeenSet(false),
-    m_filterInArnsHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_status(AnalysisStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_warningMessageHasBeenSet(false),
-    m_networkPathFound(false),
-    m_networkPathFoundHasBeenSet(false),
-    m_forwardPathComponentsHasBeenSet(false),
-    m_returnPathComponentsHasBeenSet(false),
-    m_explanationsHasBeenSet(false),
-    m_alternatePathHintsHasBeenSet(false),
-    m_suggestedAccountsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-NetworkInsightsAnalysis::NetworkInsightsAnalysis(const XmlNode& xmlNode) : 
-    m_networkInsightsAnalysisIdHasBeenSet(false),
-    m_networkInsightsAnalysisArnHasBeenSet(false),
-    m_networkInsightsPathIdHasBeenSet(false),
-    m_additionalAccountsHasBeenSet(false),
-    m_filterInArnsHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_status(AnalysisStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_warningMessageHasBeenSet(false),
-    m_networkPathFound(false),
-    m_networkPathFoundHasBeenSet(false),
-    m_forwardPathComponentsHasBeenSet(false),
-    m_returnPathComponentsHasBeenSet(false),
-    m_explanationsHasBeenSet(false),
-    m_alternatePathHintsHasBeenSet(false),
-    m_suggestedAccountsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+NetworkInsightsAnalysis::NetworkInsightsAnalysis(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -93,6 +53,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!additionalAccountsNode.IsNull())
     {
       XmlNode additionalAccountsMember = additionalAccountsNode.FirstChild("item");
+      m_additionalAccountsHasBeenSet = !additionalAccountsMember.IsNull();
       while(!additionalAccountsMember.IsNull())
       {
         m_additionalAccounts.push_back(additionalAccountsMember.GetText());
@@ -105,6 +66,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!filterInArnsNode.IsNull())
     {
       XmlNode filterInArnsMember = filterInArnsNode.FirstChild("item");
+      m_filterInArnsHasBeenSet = !filterInArnsMember.IsNull();
       while(!filterInArnsMember.IsNull())
       {
         m_filterInArns.push_back(filterInArnsMember.GetText());
@@ -112,6 +74,19 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
       }
 
       m_filterInArnsHasBeenSet = true;
+    }
+    XmlNode filterOutArnsNode = resultNode.FirstChild("filterOutArnSet");
+    if(!filterOutArnsNode.IsNull())
+    {
+      XmlNode filterOutArnsMember = filterOutArnsNode.FirstChild("item");
+      m_filterOutArnsHasBeenSet = !filterOutArnsMember.IsNull();
+      while(!filterOutArnsMember.IsNull())
+      {
+        m_filterOutArns.push_back(filterOutArnsMember.GetText());
+        filterOutArnsMember = filterOutArnsMember.NextNode("item");
+      }
+
+      m_filterOutArnsHasBeenSet = true;
     }
     XmlNode startDateNode = resultNode.FirstChild("startDate");
     if(!startDateNode.IsNull())
@@ -122,7 +97,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = AnalysisStatusMapper::GetAnalysisStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = AnalysisStatusMapper::GetAnalysisStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -147,6 +122,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!forwardPathComponentsNode.IsNull())
     {
       XmlNode forwardPathComponentsMember = forwardPathComponentsNode.FirstChild("item");
+      m_forwardPathComponentsHasBeenSet = !forwardPathComponentsMember.IsNull();
       while(!forwardPathComponentsMember.IsNull())
       {
         m_forwardPathComponents.push_back(forwardPathComponentsMember);
@@ -159,6 +135,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!returnPathComponentsNode.IsNull())
     {
       XmlNode returnPathComponentsMember = returnPathComponentsNode.FirstChild("item");
+      m_returnPathComponentsHasBeenSet = !returnPathComponentsMember.IsNull();
       while(!returnPathComponentsMember.IsNull())
       {
         m_returnPathComponents.push_back(returnPathComponentsMember);
@@ -171,6 +148,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!explanationsNode.IsNull())
     {
       XmlNode explanationsMember = explanationsNode.FirstChild("item");
+      m_explanationsHasBeenSet = !explanationsMember.IsNull();
       while(!explanationsMember.IsNull())
       {
         m_explanations.push_back(explanationsMember);
@@ -183,6 +161,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!alternatePathHintsNode.IsNull())
     {
       XmlNode alternatePathHintsMember = alternatePathHintsNode.FirstChild("item");
+      m_alternatePathHintsHasBeenSet = !alternatePathHintsMember.IsNull();
       while(!alternatePathHintsMember.IsNull())
       {
         m_alternatePathHints.push_back(alternatePathHintsMember);
@@ -195,6 +174,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!suggestedAccountsNode.IsNull())
     {
       XmlNode suggestedAccountsMember = suggestedAccountsNode.FirstChild("item");
+      m_suggestedAccountsHasBeenSet = !suggestedAccountsMember.IsNull();
       while(!suggestedAccountsMember.IsNull())
       {
         m_suggestedAccounts.push_back(suggestedAccountsMember.GetText());
@@ -207,6 +187,7 @@ NetworkInsightsAnalysis& NetworkInsightsAnalysis::operator =(const XmlNode& xmlN
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -255,6 +236,15 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
       }
   }
 
+  if(m_filterOutArnsHasBeenSet)
+  {
+      unsigned filterOutArnsIdx = 1;
+      for(auto& item : m_filterOutArns)
+      {
+        oStream << location << index << locationValue << ".FilterOutArnSet." << filterOutArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
   if(m_startDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".StartDate=" << StringUtils::URLEncode(m_startDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
@@ -262,7 +252,7 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << AnalysisStatusMapper::GetNameForAnalysisStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(AnalysisStatusMapper::GetNameForAnalysisStatus(m_status)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -376,13 +366,21 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
         oStream << location << ".FilterInArnSet." << filterInArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+  if(m_filterOutArnsHasBeenSet)
+  {
+      unsigned filterOutArnsIdx = 1;
+      for(auto& item : m_filterOutArns)
+      {
+        oStream << location << ".FilterOutArnSet." << filterOutArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
   if(m_startDateHasBeenSet)
   {
       oStream << location << ".StartDate=" << StringUtils::URLEncode(m_startDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << AnalysisStatusMapper::GetNameForAnalysisStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(AnalysisStatusMapper::GetNameForAnalysisStatus(m_status)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {
@@ -402,7 +400,7 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_forwardPathComponents)
       {
         Aws::StringStream forwardPathComponentsSs;
-        forwardPathComponentsSs << location <<  ".ForwardPathComponentSet." << forwardPathComponentsIdx++;
+        forwardPathComponentsSs << location << ".ForwardPathComponentSet." << forwardPathComponentsIdx++;
         item.OutputToStream(oStream, forwardPathComponentsSs.str().c_str());
       }
   }
@@ -412,7 +410,7 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_returnPathComponents)
       {
         Aws::StringStream returnPathComponentsSs;
-        returnPathComponentsSs << location <<  ".ReturnPathComponentSet." << returnPathComponentsIdx++;
+        returnPathComponentsSs << location << ".ReturnPathComponentSet." << returnPathComponentsIdx++;
         item.OutputToStream(oStream, returnPathComponentsSs.str().c_str());
       }
   }
@@ -422,7 +420,7 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_explanations)
       {
         Aws::StringStream explanationsSs;
-        explanationsSs << location <<  ".ExplanationSet." << explanationsIdx++;
+        explanationsSs << location << ".ExplanationSet." << explanationsIdx++;
         item.OutputToStream(oStream, explanationsSs.str().c_str());
       }
   }
@@ -432,7 +430,7 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_alternatePathHints)
       {
         Aws::StringStream alternatePathHintsSs;
-        alternatePathHintsSs << location <<  ".AlternatePathHintSet." << alternatePathHintsIdx++;
+        alternatePathHintsSs << location << ".AlternatePathHintSet." << alternatePathHintsIdx++;
         item.OutputToStream(oStream, alternatePathHintsSs.str().c_str());
       }
   }
@@ -450,7 +448,7 @@ void NetworkInsightsAnalysis::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

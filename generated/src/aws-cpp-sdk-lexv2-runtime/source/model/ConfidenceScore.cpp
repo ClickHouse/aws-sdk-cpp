@@ -18,15 +18,7 @@ namespace LexRuntimeV2
 namespace Model
 {
 
-ConfidenceScore::ConfidenceScore() : 
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
-{
-}
-
-ConfidenceScore::ConfidenceScore(JsonView jsonValue) : 
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
+ConfidenceScore::ConfidenceScore(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ConfidenceScore& ConfidenceScore::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("score"))
   {
     m_score = jsonValue.GetDouble("score");
-
     m_scoreHasBeenSet = true;
   }
-
   return *this;
 }
 

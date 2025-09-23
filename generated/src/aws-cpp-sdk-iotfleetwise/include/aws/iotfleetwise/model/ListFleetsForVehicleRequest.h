@@ -21,7 +21,7 @@ namespace Model
   class ListFleetsForVehicleRequest : public IoTFleetWiseRequest
   {
   public:
-    AWS_IOTFLEETWISE_API ListFleetsForVehicleRequest();
+    AWS_IOTFLEETWISE_API ListFleetsForVehicleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,19 @@ namespace Model
     AWS_IOTFLEETWISE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> The ID of the vehicle to retrieve information about. </p>
      */
-    inline const Aws::String& GetVehicleName() const{ return m_vehicleName; }
-
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
+    inline const Aws::String& GetVehicleName() const { return m_vehicleName; }
     inline bool VehicleNameHasBeenSet() const { return m_vehicleNameHasBeenSet; }
+    template<typename VehicleNameT = Aws::String>
+    void SetVehicleName(VehicleNameT&& value) { m_vehicleNameHasBeenSet = true; m_vehicleName = std::forward<VehicleNameT>(value); }
+    template<typename VehicleNameT = Aws::String>
+    ListFleetsForVehicleRequest& WithVehicleName(VehicleNameT&& value) { SetVehicleName(std::forward<VehicleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
-    inline void SetVehicleName(const Aws::String& value) { m_vehicleNameHasBeenSet = true; m_vehicleName = value; }
-
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
-    inline void SetVehicleName(Aws::String&& value) { m_vehicleNameHasBeenSet = true; m_vehicleName = std::move(value); }
-
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
-    inline void SetVehicleName(const char* value) { m_vehicleNameHasBeenSet = true; m_vehicleName.assign(value); }
-
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
-    inline ListFleetsForVehicleRequest& WithVehicleName(const Aws::String& value) { SetVehicleName(value); return *this;}
-
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
-    inline ListFleetsForVehicleRequest& WithVehicleName(Aws::String&& value) { SetVehicleName(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the vehicle to retrieve information about. </p>
-     */
-    inline ListFleetsForVehicleRequest& WithVehicleName(const char* value) { SetVehicleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A pagination token for the next set of results.</p> <p>If the results of a
      * search are large, only a portion of the results are returned, and a
@@ -83,99 +55,23 @@ namespace Model
      * token. When all results have been returned, the response does not contain a
      * pagination token value. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFleetsForVehicleRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
+     * <p>The maximum number of items to return, between 1 and 100, inclusive.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
-     */
-    inline ListFleetsForVehicleRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
-     */
-    inline ListFleetsForVehicleRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token for the next set of results.</p> <p>If the results of a
-     * search are large, only a portion of the results are returned, and a
-     * <code>nextToken</code> pagination token is returned in the response. To retrieve
-     * the next set of results, reissue the search request and include the returned
-     * token. When all results have been returned, the response does not contain a
-     * pagination token value. </p>
-     */
-    inline ListFleetsForVehicleRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p> The maximum number of items to return, between 1 and 100, inclusive. </p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p> The maximum number of items to return, between 1 and 100, inclusive. </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p> The maximum number of items to return, between 1 and 100, inclusive. </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p> The maximum number of items to return, between 1 and 100, inclusive. </p>
-     */
     inline ListFleetsForVehicleRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_vehicleName;
@@ -184,7 +80,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

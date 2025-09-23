@@ -35,89 +35,39 @@ namespace Model
   class S3RecordingSinkConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API S3RecordingSinkConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API S3RecordingSinkConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API S3RecordingSinkConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API S3RecordingSinkConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
      */
-    inline const Aws::String& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
+    inline const Aws::String& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
+    template<typename DestinationT = Aws::String>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Aws::String>
+    S3RecordingSinkConfiguration& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
-    inline void SetDestination(const Aws::String& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
-    inline void SetDestination(Aws::String&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
-    inline void SetDestination(const char* value) { m_destinationHasBeenSet = true; m_destination.assign(value); }
-
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
-    inline S3RecordingSinkConfiguration& WithDestination(const Aws::String& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
-    inline S3RecordingSinkConfiguration& WithDestination(Aws::String&& value) { SetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p>The default URI of the Amazon S3 bucket used as the recording sink.</p>
-     */
-    inline S3RecordingSinkConfiguration& WithDestination(const char* value) { SetDestination(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default file format for the media files sent to the Amazon S3 bucket.</p>
      */
-    inline const RecordingFileFormat& GetRecordingFileFormat() const{ return m_recordingFileFormat; }
-
-    /**
-     * <p>The default file format for the media files sent to the Amazon S3 bucket.</p>
-     */
+    inline RecordingFileFormat GetRecordingFileFormat() const { return m_recordingFileFormat; }
     inline bool RecordingFileFormatHasBeenSet() const { return m_recordingFileFormatHasBeenSet; }
-
-    /**
-     * <p>The default file format for the media files sent to the Amazon S3 bucket.</p>
-     */
-    inline void SetRecordingFileFormat(const RecordingFileFormat& value) { m_recordingFileFormatHasBeenSet = true; m_recordingFileFormat = value; }
-
-    /**
-     * <p>The default file format for the media files sent to the Amazon S3 bucket.</p>
-     */
-    inline void SetRecordingFileFormat(RecordingFileFormat&& value) { m_recordingFileFormatHasBeenSet = true; m_recordingFileFormat = std::move(value); }
-
-    /**
-     * <p>The default file format for the media files sent to the Amazon S3 bucket.</p>
-     */
-    inline S3RecordingSinkConfiguration& WithRecordingFileFormat(const RecordingFileFormat& value) { SetRecordingFileFormat(value); return *this;}
-
-    /**
-     * <p>The default file format for the media files sent to the Amazon S3 bucket.</p>
-     */
-    inline S3RecordingSinkConfiguration& WithRecordingFileFormat(RecordingFileFormat&& value) { SetRecordingFileFormat(std::move(value)); return *this;}
-
+    inline void SetRecordingFileFormat(RecordingFileFormat value) { m_recordingFileFormatHasBeenSet = true; m_recordingFileFormat = value; }
+    inline S3RecordingSinkConfiguration& WithRecordingFileFormat(RecordingFileFormat value) { SetRecordingFileFormat(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_destination;
     bool m_destinationHasBeenSet = false;
 
-    RecordingFileFormat m_recordingFileFormat;
+    RecordingFileFormat m_recordingFileFormat{RecordingFileFormat::NOT_SET};
     bool m_recordingFileFormatHasBeenSet = false;
   };
 

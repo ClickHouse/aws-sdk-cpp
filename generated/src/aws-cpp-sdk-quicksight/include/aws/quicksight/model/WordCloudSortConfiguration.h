@@ -33,83 +33,37 @@ namespace Model
   class WordCloudSortConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API WordCloudSortConfiguration();
+    AWS_QUICKSIGHT_API WordCloudSortConfiguration() = default;
     AWS_QUICKSIGHT_API WordCloudSortConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API WordCloudSortConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The limit on the number of groups that are displayed in a word cloud.</p>
      */
-    inline const ItemsLimitConfiguration& GetCategoryItemsLimit() const{ return m_categoryItemsLimit; }
-
-    /**
-     * <p>The limit on the number of groups that are displayed in a word cloud.</p>
-     */
+    inline const ItemsLimitConfiguration& GetCategoryItemsLimit() const { return m_categoryItemsLimit; }
     inline bool CategoryItemsLimitHasBeenSet() const { return m_categoryItemsLimitHasBeenSet; }
+    template<typename CategoryItemsLimitT = ItemsLimitConfiguration>
+    void SetCategoryItemsLimit(CategoryItemsLimitT&& value) { m_categoryItemsLimitHasBeenSet = true; m_categoryItemsLimit = std::forward<CategoryItemsLimitT>(value); }
+    template<typename CategoryItemsLimitT = ItemsLimitConfiguration>
+    WordCloudSortConfiguration& WithCategoryItemsLimit(CategoryItemsLimitT&& value) { SetCategoryItemsLimit(std::forward<CategoryItemsLimitT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The limit on the number of groups that are displayed in a word cloud.</p>
-     */
-    inline void SetCategoryItemsLimit(const ItemsLimitConfiguration& value) { m_categoryItemsLimitHasBeenSet = true; m_categoryItemsLimit = value; }
-
-    /**
-     * <p>The limit on the number of groups that are displayed in a word cloud.</p>
-     */
-    inline void SetCategoryItemsLimit(ItemsLimitConfiguration&& value) { m_categoryItemsLimitHasBeenSet = true; m_categoryItemsLimit = std::move(value); }
-
-    /**
-     * <p>The limit on the number of groups that are displayed in a word cloud.</p>
-     */
-    inline WordCloudSortConfiguration& WithCategoryItemsLimit(const ItemsLimitConfiguration& value) { SetCategoryItemsLimit(value); return *this;}
-
-    /**
-     * <p>The limit on the number of groups that are displayed in a word cloud.</p>
-     */
-    inline WordCloudSortConfiguration& WithCategoryItemsLimit(ItemsLimitConfiguration&& value) { SetCategoryItemsLimit(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort configuration of group by fields.</p>
      */
-    inline const Aws::Vector<FieldSortOptions>& GetCategorySort() const{ return m_categorySort; }
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
+    inline const Aws::Vector<FieldSortOptions>& GetCategorySort() const { return m_categorySort; }
     inline bool CategorySortHasBeenSet() const { return m_categorySortHasBeenSet; }
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
-    inline void SetCategorySort(const Aws::Vector<FieldSortOptions>& value) { m_categorySortHasBeenSet = true; m_categorySort = value; }
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
-    inline void SetCategorySort(Aws::Vector<FieldSortOptions>&& value) { m_categorySortHasBeenSet = true; m_categorySort = std::move(value); }
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
-    inline WordCloudSortConfiguration& WithCategorySort(const Aws::Vector<FieldSortOptions>& value) { SetCategorySort(value); return *this;}
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
-    inline WordCloudSortConfiguration& WithCategorySort(Aws::Vector<FieldSortOptions>&& value) { SetCategorySort(std::move(value)); return *this;}
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
-    inline WordCloudSortConfiguration& AddCategorySort(const FieldSortOptions& value) { m_categorySortHasBeenSet = true; m_categorySort.push_back(value); return *this; }
-
-    /**
-     * <p>The sort configuration of group by fields.</p>
-     */
-    inline WordCloudSortConfiguration& AddCategorySort(FieldSortOptions&& value) { m_categorySortHasBeenSet = true; m_categorySort.push_back(std::move(value)); return *this; }
-
+    template<typename CategorySortT = Aws::Vector<FieldSortOptions>>
+    void SetCategorySort(CategorySortT&& value) { m_categorySortHasBeenSet = true; m_categorySort = std::forward<CategorySortT>(value); }
+    template<typename CategorySortT = Aws::Vector<FieldSortOptions>>
+    WordCloudSortConfiguration& WithCategorySort(CategorySortT&& value) { SetCategorySort(std::forward<CategorySortT>(value)); return *this;}
+    template<typename CategorySortT = FieldSortOptions>
+    WordCloudSortConfiguration& AddCategorySort(CategorySortT&& value) { m_categorySortHasBeenSet = true; m_categorySort.emplace_back(std::forward<CategorySortT>(value)); return *this; }
+    ///@}
   private:
 
     ItemsLimitConfiguration m_categoryItemsLimit;

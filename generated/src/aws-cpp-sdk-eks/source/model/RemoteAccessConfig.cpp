@@ -18,15 +18,7 @@ namespace EKS
 namespace Model
 {
 
-RemoteAccessConfig::RemoteAccessConfig() : 
-    m_ec2SshKeyHasBeenSet(false),
-    m_sourceSecurityGroupsHasBeenSet(false)
-{
-}
-
-RemoteAccessConfig::RemoteAccessConfig(JsonView jsonValue) : 
-    m_ec2SshKeyHasBeenSet(false),
-    m_sourceSecurityGroupsHasBeenSet(false)
+RemoteAccessConfig::RemoteAccessConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RemoteAccessConfig& RemoteAccessConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ec2SshKey"))
   {
     m_ec2SshKey = jsonValue.GetString("ec2SshKey");
-
     m_ec2SshKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceSecurityGroups"))
   {
     Aws::Utils::Array<JsonView> sourceSecurityGroupsJsonList = jsonValue.GetArray("sourceSecurityGroups");
@@ -49,7 +39,6 @@ RemoteAccessConfig& RemoteAccessConfig::operator =(JsonView jsonValue)
     }
     m_sourceSecurityGroupsHasBeenSet = true;
   }
-
   return *this;
 }
 

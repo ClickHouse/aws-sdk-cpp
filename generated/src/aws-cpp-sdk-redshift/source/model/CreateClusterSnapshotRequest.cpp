@@ -10,15 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-CreateClusterSnapshotRequest::CreateClusterSnapshotRequest() : 
-    m_snapshotIdentifierHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_manualSnapshotRetentionPeriod(0),
-    m_manualSnapshotRetentionPeriodHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterSnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -40,11 +31,18 @@ Aws::String CreateClusterSnapshotRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

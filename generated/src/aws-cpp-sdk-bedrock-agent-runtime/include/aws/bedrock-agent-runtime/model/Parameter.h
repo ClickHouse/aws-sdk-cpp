@@ -24,141 +24,54 @@ namespace Model
 {
 
   /**
-   * <p>parameters included in action group invocation</p><p><h3>See Also:</h3>   <a
+   * <p>A parameter for the API request or function.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-runtime-2023-07-26/Parameter">AWS
    * API Reference</a></p>
    */
   class Parameter
   {
   public:
-    AWS_BEDROCKAGENTRUNTIME_API Parameter();
+    AWS_BEDROCKAGENTRUNTIME_API Parameter() = default;
     AWS_BEDROCKAGENTRUNTIME_API Parameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Parameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Name of parameter</p>
+     * <p>The name of the parameter.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of parameter</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Parameter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Name of parameter</p>
+     * <p>The type of the parameter.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of parameter</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of parameter</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of parameter</p>
-     */
-    inline Parameter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of parameter</p>
-     */
-    inline Parameter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of parameter</p>
-     */
-    inline Parameter& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>Type of parameter</p>
-     */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>Type of parameter</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    Parameter& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Type of parameter</p>
+     * <p>The value of the parameter.</p>
      */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Type of parameter</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Type of parameter</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>Type of parameter</p>
-     */
-    inline Parameter& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Type of parameter</p>
-     */
-    inline Parameter& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>Type of parameter</p>
-     */
-    inline Parameter& WithType(const char* value) { SetType(value); return *this;}
-
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Value of parameter</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline Parameter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline Parameter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Value of parameter</p>
-     */
-    inline Parameter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Parameter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

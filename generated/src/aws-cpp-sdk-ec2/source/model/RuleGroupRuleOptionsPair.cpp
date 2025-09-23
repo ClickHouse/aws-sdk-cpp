@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-RuleGroupRuleOptionsPair::RuleGroupRuleOptionsPair() : 
-    m_ruleGroupArnHasBeenSet(false),
-    m_ruleOptionsHasBeenSet(false)
-{
-}
-
-RuleGroupRuleOptionsPair::RuleGroupRuleOptionsPair(const XmlNode& xmlNode) : 
-    m_ruleGroupArnHasBeenSet(false),
-    m_ruleOptionsHasBeenSet(false)
+RuleGroupRuleOptionsPair::RuleGroupRuleOptionsPair(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ RuleGroupRuleOptionsPair& RuleGroupRuleOptionsPair::operator =(const XmlNode& xm
     if(!ruleOptionsNode.IsNull())
     {
       XmlNode ruleOptionsMember = ruleOptionsNode.FirstChild("item");
+      m_ruleOptionsHasBeenSet = !ruleOptionsMember.IsNull();
       while(!ruleOptionsMember.IsNull())
       {
         m_ruleOptions.push_back(ruleOptionsMember);
@@ -94,7 +87,7 @@ void RuleGroupRuleOptionsPair::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_ruleOptions)
       {
         Aws::StringStream ruleOptionsSs;
-        ruleOptionsSs << location <<  ".RuleOptionSet." << ruleOptionsIdx++;
+        ruleOptionsSs << location << ".RuleOptionSet." << ruleOptionsIdx++;
         item.OutputToStream(oStream, ruleOptionsSs.str().c_str());
       }
   }

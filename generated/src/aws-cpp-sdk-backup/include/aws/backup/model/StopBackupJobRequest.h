@@ -21,7 +21,7 @@ namespace Model
   class StopBackupJobRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API StopBackupJobRequest();
+    AWS_BACKUP_API StopBackupJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Uniquely identifies a request to Backup to back up a resource.</p>
      */
-    inline const Aws::String& GetBackupJobId() const{ return m_backupJobId; }
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
+    inline const Aws::String& GetBackupJobId() const { return m_backupJobId; }
     inline bool BackupJobIdHasBeenSet() const { return m_backupJobIdHasBeenSet; }
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
-    inline void SetBackupJobId(const Aws::String& value) { m_backupJobIdHasBeenSet = true; m_backupJobId = value; }
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
-    inline void SetBackupJobId(Aws::String&& value) { m_backupJobIdHasBeenSet = true; m_backupJobId = std::move(value); }
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
-    inline void SetBackupJobId(const char* value) { m_backupJobIdHasBeenSet = true; m_backupJobId.assign(value); }
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
-    inline StopBackupJobRequest& WithBackupJobId(const Aws::String& value) { SetBackupJobId(value); return *this;}
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
-    inline StopBackupJobRequest& WithBackupJobId(Aws::String&& value) { SetBackupJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>Uniquely identifies a request to Backup to back up a resource.</p>
-     */
-    inline StopBackupJobRequest& WithBackupJobId(const char* value) { SetBackupJobId(value); return *this;}
-
+    template<typename BackupJobIdT = Aws::String>
+    void SetBackupJobId(BackupJobIdT&& value) { m_backupJobIdHasBeenSet = true; m_backupJobId = std::forward<BackupJobIdT>(value); }
+    template<typename BackupJobIdT = Aws::String>
+    StopBackupJobRequest& WithBackupJobId(BackupJobIdT&& value) { SetBackupJobId(std::forward<BackupJobIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupJobId;

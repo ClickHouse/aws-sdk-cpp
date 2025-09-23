@@ -18,17 +18,7 @@ namespace KinesisAnalytics
 namespace Model
 {
 
-RecordColumn::RecordColumn() : 
-    m_nameHasBeenSet(false),
-    m_mappingHasBeenSet(false),
-    m_sqlTypeHasBeenSet(false)
-{
-}
-
-RecordColumn::RecordColumn(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_mappingHasBeenSet(false),
-    m_sqlTypeHasBeenSet(false)
+RecordColumn::RecordColumn(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ RecordColumn& RecordColumn::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Mapping"))
   {
     m_mapping = jsonValue.GetString("Mapping");
-
     m_mappingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqlType"))
   {
     m_sqlType = jsonValue.GetString("SqlType");
-
     m_sqlTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

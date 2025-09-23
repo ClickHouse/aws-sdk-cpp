@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ConversionTask::ConversionTask() : 
-    m_conversionTaskIdHasBeenSet(false),
-    m_expirationTimeHasBeenSet(false),
-    m_importInstanceHasBeenSet(false),
-    m_importVolumeHasBeenSet(false),
-    m_state(ConversionTaskState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ConversionTask::ConversionTask(const XmlNode& xmlNode) : 
-    m_conversionTaskIdHasBeenSet(false),
-    m_expirationTimeHasBeenSet(false),
-    m_importInstanceHasBeenSet(false),
-    m_importVolumeHasBeenSet(false),
-    m_state(ConversionTaskState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ConversionTask::ConversionTask(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,7 +58,7 @@ ConversionTask& ConversionTask::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = ConversionTaskStateMapper::GetConversionTaskStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = ConversionTaskStateMapper::GetConversionTaskStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -91,6 +71,7 @@ ConversionTask& ConversionTask::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -132,7 +113,7 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << ConversionTaskStateMapper::GetNameForConversionTaskState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(ConversionTaskStateMapper::GetNameForConversionTaskState(m_state)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -177,7 +158,7 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << ConversionTaskStateMapper::GetNameForConversionTaskState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(ConversionTaskStateMapper::GetNameForConversionTaskState(m_state)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {
@@ -189,7 +170,7 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

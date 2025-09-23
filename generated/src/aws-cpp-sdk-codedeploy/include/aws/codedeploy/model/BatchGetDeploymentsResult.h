@@ -35,73 +35,39 @@ namespace Model
   class BatchGetDeploymentsResult
   {
   public:
-    AWS_CODEDEPLOY_API BatchGetDeploymentsResult();
+    AWS_CODEDEPLOY_API BatchGetDeploymentsResult() = default;
     AWS_CODEDEPLOY_API BatchGetDeploymentsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEDEPLOY_API BatchGetDeploymentsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> Information about the deployments. </p>
      */
-    inline const Aws::Vector<DeploymentInfo>& GetDeploymentsInfo() const{ return m_deploymentsInfo; }
+    inline const Aws::Vector<DeploymentInfo>& GetDeploymentsInfo() const { return m_deploymentsInfo; }
+    template<typename DeploymentsInfoT = Aws::Vector<DeploymentInfo>>
+    void SetDeploymentsInfo(DeploymentsInfoT&& value) { m_deploymentsInfoHasBeenSet = true; m_deploymentsInfo = std::forward<DeploymentsInfoT>(value); }
+    template<typename DeploymentsInfoT = Aws::Vector<DeploymentInfo>>
+    BatchGetDeploymentsResult& WithDeploymentsInfo(DeploymentsInfoT&& value) { SetDeploymentsInfo(std::forward<DeploymentsInfoT>(value)); return *this;}
+    template<typename DeploymentsInfoT = DeploymentInfo>
+    BatchGetDeploymentsResult& AddDeploymentsInfo(DeploymentsInfoT&& value) { m_deploymentsInfoHasBeenSet = true; m_deploymentsInfo.emplace_back(std::forward<DeploymentsInfoT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> Information about the deployments. </p>
-     */
-    inline void SetDeploymentsInfo(const Aws::Vector<DeploymentInfo>& value) { m_deploymentsInfo = value; }
-
-    /**
-     * <p> Information about the deployments. </p>
-     */
-    inline void SetDeploymentsInfo(Aws::Vector<DeploymentInfo>&& value) { m_deploymentsInfo = std::move(value); }
-
-    /**
-     * <p> Information about the deployments. </p>
-     */
-    inline BatchGetDeploymentsResult& WithDeploymentsInfo(const Aws::Vector<DeploymentInfo>& value) { SetDeploymentsInfo(value); return *this;}
-
-    /**
-     * <p> Information about the deployments. </p>
-     */
-    inline BatchGetDeploymentsResult& WithDeploymentsInfo(Aws::Vector<DeploymentInfo>&& value) { SetDeploymentsInfo(std::move(value)); return *this;}
-
-    /**
-     * <p> Information about the deployments. </p>
-     */
-    inline BatchGetDeploymentsResult& AddDeploymentsInfo(const DeploymentInfo& value) { m_deploymentsInfo.push_back(value); return *this; }
-
-    /**
-     * <p> Information about the deployments. </p>
-     */
-    inline BatchGetDeploymentsResult& AddDeploymentsInfo(DeploymentInfo&& value) { m_deploymentsInfo.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline BatchGetDeploymentsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline BatchGetDeploymentsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline BatchGetDeploymentsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    BatchGetDeploymentsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DeploymentInfo> m_deploymentsInfo;
+    bool m_deploymentsInfoHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

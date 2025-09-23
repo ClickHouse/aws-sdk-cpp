@@ -18,15 +18,7 @@ namespace GlueDataBrew
 namespace Model
 {
 
-StatisticsConfiguration::StatisticsConfiguration() : 
-    m_includedStatisticsHasBeenSet(false),
-    m_overridesHasBeenSet(false)
-{
-}
-
-StatisticsConfiguration::StatisticsConfiguration(JsonView jsonValue) : 
-    m_includedStatisticsHasBeenSet(false),
-    m_overridesHasBeenSet(false)
+StatisticsConfiguration::StatisticsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ StatisticsConfiguration& StatisticsConfiguration::operator =(JsonView jsonValue)
     }
     m_includedStatisticsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Overrides"))
   {
     Aws::Utils::Array<JsonView> overridesJsonList = jsonValue.GetArray("Overrides");
@@ -52,7 +43,6 @@ StatisticsConfiguration& StatisticsConfiguration::operator =(JsonView jsonValue)
     }
     m_overridesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DeletePartnershipRequest : public B2BIRequest
   {
   public:
-    AWS_B2BI_API DeletePartnershipRequest();
+    AWS_B2BI_API DeletePartnershipRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_B2BI_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the unique, system-generated identifier for a partnership.</p>
      */
-    inline const Aws::String& GetPartnershipId() const{ return m_partnershipId; }
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
+    inline const Aws::String& GetPartnershipId() const { return m_partnershipId; }
     inline bool PartnershipIdHasBeenSet() const { return m_partnershipIdHasBeenSet; }
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
-    inline void SetPartnershipId(const Aws::String& value) { m_partnershipIdHasBeenSet = true; m_partnershipId = value; }
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
-    inline void SetPartnershipId(Aws::String&& value) { m_partnershipIdHasBeenSet = true; m_partnershipId = std::move(value); }
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
-    inline void SetPartnershipId(const char* value) { m_partnershipIdHasBeenSet = true; m_partnershipId.assign(value); }
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
-    inline DeletePartnershipRequest& WithPartnershipId(const Aws::String& value) { SetPartnershipId(value); return *this;}
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
-    inline DeletePartnershipRequest& WithPartnershipId(Aws::String&& value) { SetPartnershipId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the unique, system-generated identifier for a partnership.</p>
-     */
-    inline DeletePartnershipRequest& WithPartnershipId(const char* value) { SetPartnershipId(value); return *this;}
-
+    template<typename PartnershipIdT = Aws::String>
+    void SetPartnershipId(PartnershipIdT&& value) { m_partnershipIdHasBeenSet = true; m_partnershipId = std::forward<PartnershipIdT>(value); }
+    template<typename PartnershipIdT = Aws::String>
+    DeletePartnershipRequest& WithPartnershipId(PartnershipIdT&& value) { SetPartnershipId(std::forward<PartnershipIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_partnershipId;

@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DeleteFleetError::DeleteFleetError() : 
-    m_code(DeleteFleetErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-DeleteFleetError::DeleteFleetError(const XmlNode& xmlNode) : 
-    m_code(DeleteFleetErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+DeleteFleetError::DeleteFleetError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ DeleteFleetError& DeleteFleetError::operator =(const XmlNode& xmlNode)
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = DeleteFleetErrorCodeMapper::GetDeleteFleetErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = DeleteFleetErrorCodeMapper::GetDeleteFleetErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void DeleteFleetError::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << DeleteFleetErrorCodeMapper::GetNameForDeleteFleetErrorCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(DeleteFleetErrorCodeMapper::GetNameForDeleteFleetErrorCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void DeleteFleetError::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << DeleteFleetErrorCodeMapper::GetNameForDeleteFleetErrorCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(DeleteFleetErrorCodeMapper::GetNameForDeleteFleetErrorCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

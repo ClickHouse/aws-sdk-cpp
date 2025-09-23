@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeLifecycleHooksRequest::DescribeLifecycleHooksRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_lifecycleHookNamesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeLifecycleHooksRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String DescribeLifecycleHooksRequest::SerializePayload() const
 
   if(m_lifecycleHookNamesHasBeenSet)
   {
-    unsigned lifecycleHookNamesCount = 1;
-    for(auto& item : m_lifecycleHookNames)
+    if (m_lifecycleHookNames.empty())
     {
-      ss << "LifecycleHookNames.member." << lifecycleHookNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      lifecycleHookNamesCount++;
+      ss << "LifecycleHookNames=&";
+    }
+    else
+    {
+      unsigned lifecycleHookNamesCount = 1;
+      for(auto& item : m_lifecycleHookNames)
+      {
+        ss << "LifecycleHookNames.member." << lifecycleHookNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        lifecycleHookNamesCount++;
+      }
     }
   }
 

@@ -23,7 +23,7 @@ namespace Model
   class DescribeMaintenanceWindowExecutionTasksRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DescribeMaintenanceWindowExecutionTasksRequest();
+    AWS_SSM_API DescribeMaintenanceWindowExecutionTasksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,197 +36,60 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the maintenance window execution whose task executions should be
      * retrieved.</p>
      */
-    inline const Aws::String& GetWindowExecutionId() const{ return m_windowExecutionId; }
-
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
+    inline const Aws::String& GetWindowExecutionId() const { return m_windowExecutionId; }
     inline bool WindowExecutionIdHasBeenSet() const { return m_windowExecutionIdHasBeenSet; }
+    template<typename WindowExecutionIdT = Aws::String>
+    void SetWindowExecutionId(WindowExecutionIdT&& value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId = std::forward<WindowExecutionIdT>(value); }
+    template<typename WindowExecutionIdT = Aws::String>
+    DescribeMaintenanceWindowExecutionTasksRequest& WithWindowExecutionId(WindowExecutionIdT&& value) { SetWindowExecutionId(std::forward<WindowExecutionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
-    inline void SetWindowExecutionId(const Aws::String& value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId = value; }
-
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
-    inline void SetWindowExecutionId(Aws::String&& value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId = std::move(value); }
-
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
-    inline void SetWindowExecutionId(const char* value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId.assign(value); }
-
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithWindowExecutionId(const Aws::String& value) { SetWindowExecutionId(value); return *this;}
-
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithWindowExecutionId(Aws::String&& value) { SetWindowExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the maintenance window execution whose task executions should be
-     * retrieved.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithWindowExecutionId(const char* value) { SetWindowExecutionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional filters used to scope down the returned tasks. The supported filter
      * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
      * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
      * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
      */
-    inline const Aws::Vector<MaintenanceWindowFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
+    inline const Aws::Vector<MaintenanceWindowFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<MaintenanceWindowFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<MaintenanceWindowFilter>>
+    DescribeMaintenanceWindowExecutionTasksRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = MaintenanceWindowFilter>
+    DescribeMaintenanceWindowExecutionTasksRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
-    inline void SetFilters(const Aws::Vector<MaintenanceWindowFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
-    inline void SetFilters(Aws::Vector<MaintenanceWindowFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithFilters(const Aws::Vector<MaintenanceWindowFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithFilters(Aws::Vector<MaintenanceWindowFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& AddFilters(const MaintenanceWindowFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>Optional filters used to scope down the returned tasks. The supported filter
-     * key is <code>STATUS</code> with the corresponding values <code>PENDING</code>,
-     * <code>IN_PROGRESS</code>, <code>SUCCESS</code>, <code>FAILED</code>,
-     * <code>TIMED_OUT</code>, <code>CANCELLING</code>, and <code>CANCELLED</code>.</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& AddFilters(MaintenanceWindowFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
      * token that you can specify in a subsequent call to get the next set of
      * results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
     inline DescribeMaintenanceWindowExecutionTasksRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeMaintenanceWindowExecutionTasksRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeMaintenanceWindowExecutionTasksRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_windowExecutionId;
@@ -235,7 +98,7 @@ namespace Model
     Aws::Vector<MaintenanceWindowFilter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

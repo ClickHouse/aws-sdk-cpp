@@ -18,19 +18,7 @@ namespace ApplicationDiscoveryService
 namespace Model
 {
 
-DeletionWarning::DeletionWarning() : 
-    m_configurationIdHasBeenSet(false),
-    m_warningCode(0),
-    m_warningCodeHasBeenSet(false),
-    m_warningTextHasBeenSet(false)
-{
-}
-
-DeletionWarning::DeletionWarning(JsonView jsonValue) : 
-    m_configurationIdHasBeenSet(false),
-    m_warningCode(0),
-    m_warningCodeHasBeenSet(false),
-    m_warningTextHasBeenSet(false)
+DeletionWarning::DeletionWarning(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ DeletionWarning& DeletionWarning::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("configurationId"))
   {
     m_configurationId = jsonValue.GetString("configurationId");
-
     m_configurationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("warningCode"))
   {
     m_warningCode = jsonValue.GetInteger("warningCode");
-
     m_warningCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("warningText"))
   {
     m_warningText = jsonValue.GetString("warningText");
-
     m_warningTextHasBeenSet = true;
   }
-
   return *this;
 }
 

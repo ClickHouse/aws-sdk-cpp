@@ -18,17 +18,7 @@ namespace drs
 namespace Model
 {
 
-LifeCycleLastLaunch::LifeCycleLastLaunch() : 
-    m_initiatedHasBeenSet(false),
-    m_status(LaunchStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-LifeCycleLastLaunch::LifeCycleLastLaunch(JsonView jsonValue) : 
-    m_initiatedHasBeenSet(false),
-    m_status(LaunchStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+LifeCycleLastLaunch::LifeCycleLastLaunch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LifeCycleLastLaunch& LifeCycleLastLaunch::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("initiated"))
   {
     m_initiated = jsonValue.GetObject("initiated");
-
     m_initiatedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = LaunchStatusMapper::GetLaunchStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

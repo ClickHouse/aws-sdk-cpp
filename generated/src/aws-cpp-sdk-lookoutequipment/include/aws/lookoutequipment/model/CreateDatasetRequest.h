@@ -25,7 +25,7 @@ namespace Model
   class CreateDatasetRequest : public LookoutEquipmentRequest
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API CreateDatasetRequest();
+    AWS_LOOKOUTEQUIPMENT_API CreateDatasetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,222 +38,70 @@ namespace Model
     AWS_LOOKOUTEQUIPMENT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the dataset being created. </p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
     inline bool DatasetNameHasBeenSet() const { return m_datasetNameHasBeenSet; }
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    CreateDatasetRequest& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetNameHasBeenSet = true; m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetNameHasBeenSet = true; m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline CreateDatasetRequest& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline CreateDatasetRequest& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline CreateDatasetRequest& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A JSON description of the data that is in each time series dataset, including
      * names, column names, and data types. </p>
      */
-    inline const DatasetSchema& GetDatasetSchema() const{ return m_datasetSchema; }
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
+    inline const DatasetSchema& GetDatasetSchema() const { return m_datasetSchema; }
     inline bool DatasetSchemaHasBeenSet() const { return m_datasetSchemaHasBeenSet; }
+    template<typename DatasetSchemaT = DatasetSchema>
+    void SetDatasetSchema(DatasetSchemaT&& value) { m_datasetSchemaHasBeenSet = true; m_datasetSchema = std::forward<DatasetSchemaT>(value); }
+    template<typename DatasetSchemaT = DatasetSchema>
+    CreateDatasetRequest& WithDatasetSchema(DatasetSchemaT&& value) { SetDatasetSchema(std::forward<DatasetSchemaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline void SetDatasetSchema(const DatasetSchema& value) { m_datasetSchemaHasBeenSet = true; m_datasetSchema = value; }
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline void SetDatasetSchema(DatasetSchema&& value) { m_datasetSchemaHasBeenSet = true; m_datasetSchema = std::move(value); }
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline CreateDatasetRequest& WithDatasetSchema(const DatasetSchema& value) { SetDatasetSchema(value); return *this;}
-
-    /**
-     * <p>A JSON description of the data that is in each time series dataset, including
-     * names, column names, and data types. </p>
-     */
-    inline CreateDatasetRequest& WithDatasetSchema(DatasetSchema&& value) { SetDatasetSchema(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
      * Lookout for Equipment. </p>
      */
-    inline const Aws::String& GetServerSideKmsKeyId() const{ return m_serverSideKmsKeyId; }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
+    inline const Aws::String& GetServerSideKmsKeyId() const { return m_serverSideKmsKeyId; }
     inline bool ServerSideKmsKeyIdHasBeenSet() const { return m_serverSideKmsKeyIdHasBeenSet; }
+    template<typename ServerSideKmsKeyIdT = Aws::String>
+    void SetServerSideKmsKeyId(ServerSideKmsKeyIdT&& value) { m_serverSideKmsKeyIdHasBeenSet = true; m_serverSideKmsKeyId = std::forward<ServerSideKmsKeyIdT>(value); }
+    template<typename ServerSideKmsKeyIdT = Aws::String>
+    CreateDatasetRequest& WithServerSideKmsKeyId(ServerSideKmsKeyIdT&& value) { SetServerSideKmsKeyId(std::forward<ServerSideKmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline void SetServerSideKmsKeyId(const Aws::String& value) { m_serverSideKmsKeyIdHasBeenSet = true; m_serverSideKmsKeyId = value; }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline void SetServerSideKmsKeyId(Aws::String&& value) { m_serverSideKmsKeyIdHasBeenSet = true; m_serverSideKmsKeyId = std::move(value); }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline void SetServerSideKmsKeyId(const char* value) { m_serverSideKmsKeyIdHasBeenSet = true; m_serverSideKmsKeyId.assign(value); }
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline CreateDatasetRequest& WithServerSideKmsKeyId(const Aws::String& value) { SetServerSideKmsKeyId(value); return *this;}
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline CreateDatasetRequest& WithServerSideKmsKeyId(Aws::String&& value) { SetServerSideKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the identifier of the KMS key used to encrypt dataset data by Amazon
-     * Lookout for Equipment. </p>
-     */
-    inline CreateDatasetRequest& WithServerSideKmsKeyId(const char* value) { SetServerSideKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> A unique identifier for the request. If you do not set the client request
      * token, Amazon Lookout for Equipment generates one. </p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateDatasetRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
-    inline CreateDatasetRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
-    inline CreateDatasetRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p> A unique identifier for the request. If you do not set the client request
-     * token, Amazon Lookout for Equipment generates one. </p>
-     */
-    inline CreateDatasetRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any tags associated with the ingested data described in the dataset. </p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
-    inline CreateDatasetRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
-    inline CreateDatasetRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
-    inline CreateDatasetRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Any tags associated with the ingested data described in the dataset. </p>
-     */
-    inline CreateDatasetRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateDatasetRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateDatasetRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_datasetName;
@@ -265,8 +113,8 @@ namespace Model
     Aws::String m_serverSideKmsKeyId;
     bool m_serverSideKmsKeyIdHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;

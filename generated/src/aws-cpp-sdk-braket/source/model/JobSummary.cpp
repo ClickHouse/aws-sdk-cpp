@@ -18,84 +18,48 @@ namespace Braket
 namespace Model
 {
 
-JobSummary::JobSummary() : 
-    m_createdAtHasBeenSet(false),
-    m_deviceHasBeenSet(false),
-    m_endedAtHasBeenSet(false),
-    m_jobArnHasBeenSet(false),
-    m_jobNameHasBeenSet(false),
-    m_startedAtHasBeenSet(false),
-    m_status(JobPrimaryStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-JobSummary::JobSummary(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_deviceHasBeenSet(false),
-    m_endedAtHasBeenSet(false),
-    m_jobArnHasBeenSet(false),
-    m_jobNameHasBeenSet(false),
-    m_startedAtHasBeenSet(false),
-    m_status(JobPrimaryStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+JobSummary::JobSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 JobSummary& JobSummary::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdAt"))
-  {
-    m_createdAt = jsonValue.GetString("createdAt");
-
-    m_createdAtHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("device"))
-  {
-    m_device = jsonValue.GetString("device");
-
-    m_deviceHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("endedAt"))
-  {
-    m_endedAt = jsonValue.GetString("endedAt");
-
-    m_endedAtHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("jobArn"))
-  {
-    m_jobArn = jsonValue.GetString("jobArn");
-
-    m_jobArnHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("jobName"))
-  {
-    m_jobName = jsonValue.GetString("jobName");
-
-    m_jobNameHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("startedAt"))
-  {
-    m_startedAt = jsonValue.GetString("startedAt");
-
-    m_startedAtHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = JobPrimaryStatusMapper::GetJobPrimaryStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("jobArn"))
+  {
+    m_jobArn = jsonValue.GetString("jobArn");
+    m_jobArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("jobName"))
+  {
+    m_jobName = jsonValue.GetString("jobName");
+    m_jobNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("device"))
+  {
+    m_device = jsonValue.GetString("device");
+    m_deviceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdAt"))
+  {
+    m_createdAt = jsonValue.GetString("createdAt");
+    m_createdAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("startedAt"))
+  {
+    m_startedAt = jsonValue.GetString("startedAt");
+    m_startedAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("endedAt"))
+  {
+    m_endedAt = jsonValue.GetString("endedAt");
+    m_endedAtHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -105,7 +69,6 @@ JobSummary& JobSummary::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -113,20 +76,9 @@ JsonValue JobSummary::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_createdAtHasBeenSet)
+  if(m_statusHasBeenSet)
   {
-   payload.WithString("createdAt", m_createdAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
-  if(m_deviceHasBeenSet)
-  {
-   payload.WithString("device", m_device);
-
-  }
-
-  if(m_endedAtHasBeenSet)
-  {
-   payload.WithString("endedAt", m_endedAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+   payload.WithString("status", JobPrimaryStatusMapper::GetNameForJobPrimaryStatus(m_status));
   }
 
   if(m_jobArnHasBeenSet)
@@ -141,14 +93,25 @@ JsonValue JobSummary::Jsonize() const
 
   }
 
+  if(m_deviceHasBeenSet)
+  {
+   payload.WithString("device", m_device);
+
+  }
+
+  if(m_createdAtHasBeenSet)
+  {
+   payload.WithString("createdAt", m_createdAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
   if(m_startedAtHasBeenSet)
   {
    payload.WithString("startedAt", m_startedAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
-  if(m_statusHasBeenSet)
+  if(m_endedAtHasBeenSet)
   {
-   payload.WithString("status", JobPrimaryStatusMapper::GetNameForJobPrimaryStatus(m_status));
+   payload.WithString("endedAt", m_endedAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   if(m_tagsHasBeenSet)

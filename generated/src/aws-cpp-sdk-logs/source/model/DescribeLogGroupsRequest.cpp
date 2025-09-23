@@ -12,20 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeLogGroupsRequest::DescribeLogGroupsRequest() : 
-    m_accountIdentifiersHasBeenSet(false),
-    m_logGroupNamePrefixHasBeenSet(false),
-    m_logGroupNamePatternHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false),
-    m_includeLinkedAccounts(false),
-    m_includeLinkedAccountsHasBeenSet(false),
-    m_logGroupClass(LogGroupClass::NOT_SET),
-    m_logGroupClassHasBeenSet(false)
-{
-}
-
 Aws::String DescribeLogGroupsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -74,6 +60,17 @@ Aws::String DescribeLogGroupsRequest::SerializePayload() const
   if(m_logGroupClassHasBeenSet)
   {
    payload.WithString("logGroupClass", LogGroupClassMapper::GetNameForLogGroupClass(m_logGroupClass));
+  }
+
+  if(m_logGroupIdentifiersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> logGroupIdentifiersJsonList(m_logGroupIdentifiers.size());
+   for(unsigned logGroupIdentifiersIndex = 0; logGroupIdentifiersIndex < logGroupIdentifiersJsonList.GetLength(); ++logGroupIdentifiersIndex)
+   {
+     logGroupIdentifiersJsonList[logGroupIdentifiersIndex].AsString(m_logGroupIdentifiers[logGroupIdentifiersIndex]);
+   }
+   payload.WithArray("logGroupIdentifiers", std::move(logGroupIdentifiersJsonList));
+
   }
 
   return payload.View().WriteReadable();

@@ -22,7 +22,9 @@ namespace Model
     SEND_NOTIFICATION,
     CREATE_CASE,
     UPDATE_CASE,
-    END_ASSOCIATED_TASKS
+    ASSIGN_SLA,
+    END_ASSOCIATED_TASKS,
+    SUBMIT_AUTO_EVALUATION
   };
 
 namespace ActionTypeMapper

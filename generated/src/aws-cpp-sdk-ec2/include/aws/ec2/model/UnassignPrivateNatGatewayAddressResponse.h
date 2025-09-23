@@ -30,105 +30,53 @@ namespace Model
   class UnassignPrivateNatGatewayAddressResponse
   {
   public:
-    AWS_EC2_API UnassignPrivateNatGatewayAddressResponse();
+    AWS_EC2_API UnassignPrivateNatGatewayAddressResponse() = default;
     AWS_EC2_API UnassignPrivateNatGatewayAddressResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API UnassignPrivateNatGatewayAddressResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the NAT gateway.</p>
      */
-    inline const Aws::String& GetNatGatewayId() const{ return m_natGatewayId; }
+    inline const Aws::String& GetNatGatewayId() const { return m_natGatewayId; }
+    template<typename NatGatewayIdT = Aws::String>
+    void SetNatGatewayId(NatGatewayIdT&& value) { m_natGatewayIdHasBeenSet = true; m_natGatewayId = std::forward<NatGatewayIdT>(value); }
+    template<typename NatGatewayIdT = Aws::String>
+    UnassignPrivateNatGatewayAddressResponse& WithNatGatewayId(NatGatewayIdT&& value) { SetNatGatewayId(std::forward<NatGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the NAT gateway.</p>
-     */
-    inline void SetNatGatewayId(const Aws::String& value) { m_natGatewayId = value; }
-
-    /**
-     * <p>The ID of the NAT gateway.</p>
-     */
-    inline void SetNatGatewayId(Aws::String&& value) { m_natGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the NAT gateway.</p>
-     */
-    inline void SetNatGatewayId(const char* value) { m_natGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the NAT gateway.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& WithNatGatewayId(const Aws::String& value) { SetNatGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the NAT gateway.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& WithNatGatewayId(Aws::String&& value) { SetNatGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the NAT gateway.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& WithNatGatewayId(const char* value) { SetNatGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the NAT gateway IP addresses.</p>
      */
-    inline const Aws::Vector<NatGatewayAddress>& GetNatGatewayAddresses() const{ return m_natGatewayAddresses; }
+    inline const Aws::Vector<NatGatewayAddress>& GetNatGatewayAddresses() const { return m_natGatewayAddresses; }
+    template<typename NatGatewayAddressesT = Aws::Vector<NatGatewayAddress>>
+    void SetNatGatewayAddresses(NatGatewayAddressesT&& value) { m_natGatewayAddressesHasBeenSet = true; m_natGatewayAddresses = std::forward<NatGatewayAddressesT>(value); }
+    template<typename NatGatewayAddressesT = Aws::Vector<NatGatewayAddress>>
+    UnassignPrivateNatGatewayAddressResponse& WithNatGatewayAddresses(NatGatewayAddressesT&& value) { SetNatGatewayAddresses(std::forward<NatGatewayAddressesT>(value)); return *this;}
+    template<typename NatGatewayAddressesT = NatGatewayAddress>
+    UnassignPrivateNatGatewayAddressResponse& AddNatGatewayAddresses(NatGatewayAddressesT&& value) { m_natGatewayAddressesHasBeenSet = true; m_natGatewayAddresses.emplace_back(std::forward<NatGatewayAddressesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the NAT gateway IP addresses.</p>
-     */
-    inline void SetNatGatewayAddresses(const Aws::Vector<NatGatewayAddress>& value) { m_natGatewayAddresses = value; }
-
-    /**
-     * <p>Information about the NAT gateway IP addresses.</p>
-     */
-    inline void SetNatGatewayAddresses(Aws::Vector<NatGatewayAddress>&& value) { m_natGatewayAddresses = std::move(value); }
-
-    /**
-     * <p>Information about the NAT gateway IP addresses.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& WithNatGatewayAddresses(const Aws::Vector<NatGatewayAddress>& value) { SetNatGatewayAddresses(value); return *this;}
-
-    /**
-     * <p>Information about the NAT gateway IP addresses.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& WithNatGatewayAddresses(Aws::Vector<NatGatewayAddress>&& value) { SetNatGatewayAddresses(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the NAT gateway IP addresses.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& AddNatGatewayAddresses(const NatGatewayAddress& value) { m_natGatewayAddresses.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the NAT gateway IP addresses.</p>
-     */
-    inline UnassignPrivateNatGatewayAddressResponse& AddNatGatewayAddresses(NatGatewayAddress&& value) { m_natGatewayAddresses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline UnassignPrivateNatGatewayAddressResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline UnassignPrivateNatGatewayAddressResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    UnassignPrivateNatGatewayAddressResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_natGatewayId;
+    bool m_natGatewayIdHasBeenSet = false;
 
     Aws::Vector<NatGatewayAddress> m_natGatewayAddresses;
+    bool m_natGatewayAddressesHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

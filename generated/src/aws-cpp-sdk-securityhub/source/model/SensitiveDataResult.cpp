@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-SensitiveDataResult::SensitiveDataResult() : 
-    m_categoryHasBeenSet(false),
-    m_detectionsHasBeenSet(false),
-    m_totalCount(0),
-    m_totalCountHasBeenSet(false)
-{
-}
-
-SensitiveDataResult::SensitiveDataResult(JsonView jsonValue) : 
-    m_categoryHasBeenSet(false),
-    m_detectionsHasBeenSet(false),
-    m_totalCount(0),
-    m_totalCountHasBeenSet(false)
+SensitiveDataResult::SensitiveDataResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ SensitiveDataResult& SensitiveDataResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Category"))
   {
     m_category = jsonValue.GetString("Category");
-
     m_categoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Detections"))
   {
     Aws::Utils::Array<JsonView> detectionsJsonList = jsonValue.GetArray("Detections");
@@ -53,14 +39,11 @@ SensitiveDataResult& SensitiveDataResult::operator =(JsonView jsonValue)
     }
     m_detectionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TotalCount"))
   {
     m_totalCount = jsonValue.GetInt64("TotalCount");
-
     m_totalCountHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,58 +18,44 @@ namespace QBusiness
 namespace Model
 {
 
-AttachmentOutput::AttachmentOutput() : 
-    m_errorHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(AttachmentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-AttachmentOutput::AttachmentOutput(JsonView jsonValue) : 
-    m_errorHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(AttachmentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+AttachmentOutput::AttachmentOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 AttachmentOutput& AttachmentOutput::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("error"))
-  {
-    m_error = jsonValue.GetObject("error");
-
-    m_errorHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = AttachmentStatusMapper::GetAttachmentStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("error"))
+  {
+    m_error = jsonValue.GetObject("error");
+    m_errorHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("attachmentId"))
+  {
+    m_attachmentId = jsonValue.GetString("attachmentId");
+    m_attachmentIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("conversationId"))
+  {
+    m_conversationId = jsonValue.GetString("conversationId");
+    m_conversationIdHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue AttachmentOutput::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_errorHasBeenSet)
-  {
-   payload.WithObject("error", m_error.Jsonize());
-
-  }
 
   if(m_nameHasBeenSet)
   {
@@ -80,6 +66,24 @@ JsonValue AttachmentOutput::Jsonize() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("status", AttachmentStatusMapper::GetNameForAttachmentStatus(m_status));
+  }
+
+  if(m_errorHasBeenSet)
+  {
+   payload.WithObject("error", m_error.Jsonize());
+
+  }
+
+  if(m_attachmentIdHasBeenSet)
+  {
+   payload.WithString("attachmentId", m_attachmentId);
+
+  }
+
+  if(m_conversationIdHasBeenSet)
+  {
+   payload.WithString("conversationId", m_conversationId);
+
   }
 
   return payload;

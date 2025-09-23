@@ -18,15 +18,7 @@ namespace ManagedGrafana
 namespace Model
 {
 
-RoleValues::RoleValues() : 
-    m_adminHasBeenSet(false),
-    m_editorHasBeenSet(false)
-{
-}
-
-RoleValues::RoleValues(JsonView jsonValue) : 
-    m_adminHasBeenSet(false),
-    m_editorHasBeenSet(false)
+RoleValues::RoleValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ RoleValues& RoleValues::operator =(JsonView jsonValue)
     }
     m_adminHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("editor"))
   {
     Aws::Utils::Array<JsonView> editorJsonList = jsonValue.GetArray("editor");
@@ -52,7 +43,6 @@ RoleValues& RoleValues::operator =(JsonView jsonValue)
     }
     m_editorHasBeenSet = true;
   }
-
   return *this;
 }
 

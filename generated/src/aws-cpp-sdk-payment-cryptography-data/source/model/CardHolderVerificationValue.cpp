@@ -18,44 +18,28 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-CardHolderVerificationValue::CardHolderVerificationValue() : 
-    m_applicationTransactionCounterHasBeenSet(false),
-    m_panSequenceNumberHasBeenSet(false),
-    m_unpredictableNumberHasBeenSet(false)
-{
-}
-
-CardHolderVerificationValue::CardHolderVerificationValue(JsonView jsonValue) : 
-    m_applicationTransactionCounterHasBeenSet(false),
-    m_panSequenceNumberHasBeenSet(false),
-    m_unpredictableNumberHasBeenSet(false)
+CardHolderVerificationValue::CardHolderVerificationValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 CardHolderVerificationValue& CardHolderVerificationValue::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("ApplicationTransactionCounter"))
-  {
-    m_applicationTransactionCounter = jsonValue.GetString("ApplicationTransactionCounter");
-
-    m_applicationTransactionCounterHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("PanSequenceNumber"))
-  {
-    m_panSequenceNumber = jsonValue.GetString("PanSequenceNumber");
-
-    m_panSequenceNumberHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("UnpredictableNumber"))
   {
     m_unpredictableNumber = jsonValue.GetString("UnpredictableNumber");
-
     m_unpredictableNumberHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PanSequenceNumber"))
+  {
+    m_panSequenceNumber = jsonValue.GetString("PanSequenceNumber");
+    m_panSequenceNumberHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ApplicationTransactionCounter"))
+  {
+    m_applicationTransactionCounter = jsonValue.GetString("ApplicationTransactionCounter");
+    m_applicationTransactionCounterHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,9 +47,9 @@ JsonValue CardHolderVerificationValue::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_applicationTransactionCounterHasBeenSet)
+  if(m_unpredictableNumberHasBeenSet)
   {
-   payload.WithString("ApplicationTransactionCounter", m_applicationTransactionCounter);
+   payload.WithString("UnpredictableNumber", m_unpredictableNumber);
 
   }
 
@@ -75,9 +59,9 @@ JsonValue CardHolderVerificationValue::Jsonize() const
 
   }
 
-  if(m_unpredictableNumberHasBeenSet)
+  if(m_applicationTransactionCounterHasBeenSet)
   {
-   payload.WithString("UnpredictableNumber", m_unpredictableNumber);
+   payload.WithString("ApplicationTransactionCounter", m_applicationTransactionCounter);
 
   }
 

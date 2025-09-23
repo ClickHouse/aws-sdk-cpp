@@ -36,122 +36,56 @@ namespace Model
   class UpdatePipelineResult
   {
   public:
-    AWS_ELASTICTRANSCODER_API UpdatePipelineResult();
+    AWS_ELASTICTRANSCODER_API UpdatePipelineResult() = default;
     AWS_ELASTICTRANSCODER_API UpdatePipelineResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ELASTICTRANSCODER_API UpdatePipelineResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The pipeline updated by this <code>UpdatePipelineResponse</code> call.</p>
      */
-    inline const Pipeline& GetPipeline() const{ return m_pipeline; }
+    inline const Pipeline& GetPipeline() const { return m_pipeline; }
+    template<typename PipelineT = Pipeline>
+    void SetPipeline(PipelineT&& value) { m_pipelineHasBeenSet = true; m_pipeline = std::forward<PipelineT>(value); }
+    template<typename PipelineT = Pipeline>
+    UpdatePipelineResult& WithPipeline(PipelineT&& value) { SetPipeline(std::forward<PipelineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pipeline updated by this <code>UpdatePipelineResponse</code> call.</p>
-     */
-    inline void SetPipeline(const Pipeline& value) { m_pipeline = value; }
-
-    /**
-     * <p>The pipeline updated by this <code>UpdatePipelineResponse</code> call.</p>
-     */
-    inline void SetPipeline(Pipeline&& value) { m_pipeline = std::move(value); }
-
-    /**
-     * <p>The pipeline updated by this <code>UpdatePipelineResponse</code> call.</p>
-     */
-    inline UpdatePipelineResult& WithPipeline(const Pipeline& value) { SetPipeline(value); return *this;}
-
-    /**
-     * <p>The pipeline updated by this <code>UpdatePipelineResponse</code> call.</p>
-     */
-    inline UpdatePipelineResult& WithPipeline(Pipeline&& value) { SetPipeline(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
      * are not in the same region as the pipeline.</p> <p>Using resources in the same
      * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
      * KMS key, reduces processing time and prevents cross-regional charges.</p>
      */
-    inline const Aws::Vector<Warning>& GetWarnings() const{ return m_warnings; }
+    inline const Aws::Vector<Warning>& GetWarnings() const { return m_warnings; }
+    template<typename WarningsT = Aws::Vector<Warning>>
+    void SetWarnings(WarningsT&& value) { m_warningsHasBeenSet = true; m_warnings = std::forward<WarningsT>(value); }
+    template<typename WarningsT = Aws::Vector<Warning>>
+    UpdatePipelineResult& WithWarnings(WarningsT&& value) { SetWarnings(std::forward<WarningsT>(value)); return *this;}
+    template<typename WarningsT = Warning>
+    UpdatePipelineResult& AddWarnings(WarningsT&& value) { m_warningsHasBeenSet = true; m_warnings.emplace_back(std::forward<WarningsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
-     * are not in the same region as the pipeline.</p> <p>Using resources in the same
-     * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
-     * KMS key, reduces processing time and prevents cross-regional charges.</p>
-     */
-    inline void SetWarnings(const Aws::Vector<Warning>& value) { m_warnings = value; }
-
-    /**
-     * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
-     * are not in the same region as the pipeline.</p> <p>Using resources in the same
-     * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
-     * KMS key, reduces processing time and prevents cross-regional charges.</p>
-     */
-    inline void SetWarnings(Aws::Vector<Warning>&& value) { m_warnings = std::move(value); }
-
-    /**
-     * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
-     * are not in the same region as the pipeline.</p> <p>Using resources in the same
-     * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
-     * KMS key, reduces processing time and prevents cross-regional charges.</p>
-     */
-    inline UpdatePipelineResult& WithWarnings(const Aws::Vector<Warning>& value) { SetWarnings(value); return *this;}
-
-    /**
-     * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
-     * are not in the same region as the pipeline.</p> <p>Using resources in the same
-     * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
-     * KMS key, reduces processing time and prevents cross-regional charges.</p>
-     */
-    inline UpdatePipelineResult& WithWarnings(Aws::Vector<Warning>&& value) { SetWarnings(std::move(value)); return *this;}
-
-    /**
-     * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
-     * are not in the same region as the pipeline.</p> <p>Using resources in the same
-     * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
-     * KMS key, reduces processing time and prevents cross-regional charges.</p>
-     */
-    inline UpdatePipelineResult& AddWarnings(const Warning& value) { m_warnings.push_back(value); return *this; }
-
-    /**
-     * <p>Elastic Transcoder returns a warning if the resources used by your pipeline
-     * are not in the same region as the pipeline.</p> <p>Using resources in the same
-     * region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS
-     * KMS key, reduces processing time and prevents cross-regional charges.</p>
-     */
-    inline UpdatePipelineResult& AddWarnings(Warning&& value) { m_warnings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdatePipelineResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdatePipelineResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdatePipelineResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdatePipelineResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Pipeline m_pipeline;
+    bool m_pipelineHasBeenSet = false;
 
     Aws::Vector<Warning> m_warnings;
+    bool m_warningsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

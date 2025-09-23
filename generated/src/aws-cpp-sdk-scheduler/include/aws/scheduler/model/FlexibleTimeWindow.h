@@ -32,69 +32,37 @@ namespace Model
   class FlexibleTimeWindow
   {
   public:
-    AWS_SCHEDULER_API FlexibleTimeWindow();
+    AWS_SCHEDULER_API FlexibleTimeWindow() = default;
     AWS_SCHEDULER_API FlexibleTimeWindow(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API FlexibleTimeWindow& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum time window during which a schedule can be invoked.</p>
      */
-    inline int GetMaximumWindowInMinutes() const{ return m_maximumWindowInMinutes; }
-
-    /**
-     * <p>The maximum time window during which a schedule can be invoked.</p>
-     */
+    inline int GetMaximumWindowInMinutes() const { return m_maximumWindowInMinutes; }
     inline bool MaximumWindowInMinutesHasBeenSet() const { return m_maximumWindowInMinutesHasBeenSet; }
-
-    /**
-     * <p>The maximum time window during which a schedule can be invoked.</p>
-     */
     inline void SetMaximumWindowInMinutes(int value) { m_maximumWindowInMinutesHasBeenSet = true; m_maximumWindowInMinutes = value; }
-
-    /**
-     * <p>The maximum time window during which a schedule can be invoked.</p>
-     */
     inline FlexibleTimeWindow& WithMaximumWindowInMinutes(int value) { SetMaximumWindowInMinutes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines whether the schedule is invoked within a flexible time window.</p>
      */
-    inline const FlexibleTimeWindowMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>Determines whether the schedule is invoked within a flexible time window.</p>
-     */
+    inline FlexibleTimeWindowMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>Determines whether the schedule is invoked within a flexible time window.</p>
-     */
-    inline void SetMode(const FlexibleTimeWindowMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>Determines whether the schedule is invoked within a flexible time window.</p>
-     */
-    inline void SetMode(FlexibleTimeWindowMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>Determines whether the schedule is invoked within a flexible time window.</p>
-     */
-    inline FlexibleTimeWindow& WithMode(const FlexibleTimeWindowMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>Determines whether the schedule is invoked within a flexible time window.</p>
-     */
-    inline FlexibleTimeWindow& WithMode(FlexibleTimeWindowMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(FlexibleTimeWindowMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline FlexibleTimeWindow& WithMode(FlexibleTimeWindowMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    int m_maximumWindowInMinutes;
+    int m_maximumWindowInMinutes{0};
     bool m_maximumWindowInMinutesHasBeenSet = false;
 
-    FlexibleTimeWindowMode m_mode;
+    FlexibleTimeWindowMode m_mode{FlexibleTimeWindowMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

@@ -31,7 +31,7 @@ namespace Model
   class ReferenceDetails
   {
   public:
-    AWS_RDS_API ReferenceDetails();
+    AWS_RDS_API ReferenceDetails() = default;
     AWS_RDS_API ReferenceDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API ReferenceDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,36 +39,17 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The metric reference details when the reference is a scalar.</p>
      */
-    inline const ScalarReferenceDetails& GetScalarReferenceDetails() const{ return m_scalarReferenceDetails; }
-
-    /**
-     * <p>The metric reference details when the reference is a scalar.</p>
-     */
+    inline const ScalarReferenceDetails& GetScalarReferenceDetails() const { return m_scalarReferenceDetails; }
     inline bool ScalarReferenceDetailsHasBeenSet() const { return m_scalarReferenceDetailsHasBeenSet; }
-
-    /**
-     * <p>The metric reference details when the reference is a scalar.</p>
-     */
-    inline void SetScalarReferenceDetails(const ScalarReferenceDetails& value) { m_scalarReferenceDetailsHasBeenSet = true; m_scalarReferenceDetails = value; }
-
-    /**
-     * <p>The metric reference details when the reference is a scalar.</p>
-     */
-    inline void SetScalarReferenceDetails(ScalarReferenceDetails&& value) { m_scalarReferenceDetailsHasBeenSet = true; m_scalarReferenceDetails = std::move(value); }
-
-    /**
-     * <p>The metric reference details when the reference is a scalar.</p>
-     */
-    inline ReferenceDetails& WithScalarReferenceDetails(const ScalarReferenceDetails& value) { SetScalarReferenceDetails(value); return *this;}
-
-    /**
-     * <p>The metric reference details when the reference is a scalar.</p>
-     */
-    inline ReferenceDetails& WithScalarReferenceDetails(ScalarReferenceDetails&& value) { SetScalarReferenceDetails(std::move(value)); return *this;}
-
+    template<typename ScalarReferenceDetailsT = ScalarReferenceDetails>
+    void SetScalarReferenceDetails(ScalarReferenceDetailsT&& value) { m_scalarReferenceDetailsHasBeenSet = true; m_scalarReferenceDetails = std::forward<ScalarReferenceDetailsT>(value); }
+    template<typename ScalarReferenceDetailsT = ScalarReferenceDetails>
+    ReferenceDetails& WithScalarReferenceDetails(ScalarReferenceDetailsT&& value) { SetScalarReferenceDetails(std::forward<ScalarReferenceDetailsT>(value)); return *this;}
+    ///@}
   private:
 
     ScalarReferenceDetails m_scalarReferenceDetails;

@@ -12,20 +12,6 @@ using namespace Aws::EMRServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartJobRunRequest::StartJobRunRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_executionRoleArnHasBeenSet(false),
-    m_jobDriverHasBeenSet(false),
-    m_configurationOverridesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_executionTimeoutMinutes(0),
-    m_executionTimeoutMinutesHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String StartJobRunRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +25,12 @@ Aws::String StartJobRunRequest::SerializePayload() const
   if(m_executionRoleArnHasBeenSet)
   {
    payload.WithString("executionRoleArn", m_executionRoleArn);
+
+  }
+
+  if(m_executionIamPolicyHasBeenSet)
+  {
+   payload.WithObject("executionIamPolicy", m_executionIamPolicy.Jsonize());
 
   }
 
@@ -74,6 +66,17 @@ Aws::String StartJobRunRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_modeHasBeenSet)
+  {
+   payload.WithString("mode", JobRunModeMapper::GetNameForJobRunMode(m_mode));
+  }
+
+  if(m_retryPolicyHasBeenSet)
+  {
+   payload.WithObject("retryPolicy", m_retryPolicy.Jsonize());
 
   }
 

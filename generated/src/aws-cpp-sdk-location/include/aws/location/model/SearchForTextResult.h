@@ -33,198 +33,79 @@ namespace Model
   class SearchForTextResult
   {
   public:
-    AWS_LOCATIONSERVICE_API SearchForTextResult();
+    AWS_LOCATIONSERVICE_API SearchForTextResult() = default;
     AWS_LOCATIONSERVICE_API SearchForTextResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOCATIONSERVICE_API SearchForTextResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOCATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The distance in meters of a great-circle arc between the bias position
-     * specified and the result. <code>Distance</code> will be returned only if a bias
-     * position was specified in the query.</p>  <p>A great-circle arc is the
-     * shortest path on a sphere, in this case the Earth. This returns the shortest
-     * distance between two locations.</p> 
-     */
-    inline double GetDistance() const{ return m_distance; }
-
-    /**
-     * <p>The distance in meters of a great-circle arc between the bias position
-     * specified and the result. <code>Distance</code> will be returned only if a bias
-     * position was specified in the query.</p>  <p>A great-circle arc is the
-     * shortest path on a sphere, in this case the Earth. This returns the shortest
-     * distance between two locations.</p> 
-     */
-    inline bool DistanceHasBeenSet() const { return m_distanceHasBeenSet; }
-
-    /**
-     * <p>The distance in meters of a great-circle arc between the bias position
-     * specified and the result. <code>Distance</code> will be returned only if a bias
-     * position was specified in the query.</p>  <p>A great-circle arc is the
-     * shortest path on a sphere, in this case the Earth. This returns the shortest
-     * distance between two locations.</p> 
-     */
-    inline void SetDistance(double value) { m_distanceHasBeenSet = true; m_distance = value; }
-
-    /**
-     * <p>The distance in meters of a great-circle arc between the bias position
-     * specified and the result. <code>Distance</code> will be returned only if a bias
-     * position was specified in the query.</p>  <p>A great-circle arc is the
-     * shortest path on a sphere, in this case the Earth. This returns the shortest
-     * distance between two locations.</p> 
-     */
-    inline SearchForTextResult& WithDistance(double value) { SetDistance(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the search result, such as its address and position.</p>
      */
-    inline const Place& GetPlace() const{ return m_place; }
-
-    /**
-     * <p>Details about the search result, such as its address and position.</p>
-     */
+    inline const Place& GetPlace() const { return m_place; }
     inline bool PlaceHasBeenSet() const { return m_placeHasBeenSet; }
+    template<typename PlaceT = Place>
+    void SetPlace(PlaceT&& value) { m_placeHasBeenSet = true; m_place = std::forward<PlaceT>(value); }
+    template<typename PlaceT = Place>
+    SearchForTextResult& WithPlace(PlaceT&& value) { SetPlace(std::forward<PlaceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Details about the search result, such as its address and position.</p>
+     * <p>The distance in meters of a great-circle arc between the bias position
+     * specified and the result. <code>Distance</code> will be returned only if a bias
+     * position was specified in the query.</p>  <p>A great-circle arc is the
+     * shortest path on a sphere, in this case the Earth. This returns the shortest
+     * distance between two locations.</p> 
      */
-    inline void SetPlace(const Place& value) { m_placeHasBeenSet = true; m_place = value; }
+    inline double GetDistance() const { return m_distance; }
+    inline bool DistanceHasBeenSet() const { return m_distanceHasBeenSet; }
+    inline void SetDistance(double value) { m_distanceHasBeenSet = true; m_distance = value; }
+    inline SearchForTextResult& WithDistance(double value) { SetDistance(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the search result, such as its address and position.</p>
-     */
-    inline void SetPlace(Place&& value) { m_placeHasBeenSet = true; m_place = std::move(value); }
-
-    /**
-     * <p>Details about the search result, such as its address and position.</p>
-     */
-    inline SearchForTextResult& WithPlace(const Place& value) { SetPlace(value); return *this;}
-
-    /**
-     * <p>Details about the search result, such as its address and position.</p>
-     */
-    inline SearchForTextResult& WithPlace(Place&& value) { SetPlace(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline const Aws::String& GetPlaceId() const{ return m_placeId; }
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline bool PlaceIdHasBeenSet() const { return m_placeIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline void SetPlaceId(const Aws::String& value) { m_placeIdHasBeenSet = true; m_placeId = value; }
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline void SetPlaceId(Aws::String&& value) { m_placeIdHasBeenSet = true; m_placeId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline void SetPlaceId(const char* value) { m_placeIdHasBeenSet = true; m_placeId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline SearchForTextResult& WithPlaceId(const Aws::String& value) { SetPlaceId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline SearchForTextResult& WithPlaceId(Aws::String&& value) { SetPlaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the place. You can use this with the
-     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
-     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
-     * returned only by place indexes that use HERE or Grab as a data provider.</p>
-     * 
-     */
-    inline SearchForTextResult& WithPlaceId(const char* value) { SetPlaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The relative confidence in the match for a result among the results returned.
      * For example, if more fields for an address match (including house number,
      * street, city, country/region, and postal code), the relevance score is closer to
      * 1.</p> <p>Returned only when the partner selected is Esri or Grab.</p>
      */
-    inline double GetRelevance() const{ return m_relevance; }
-
-    /**
-     * <p>The relative confidence in the match for a result among the results returned.
-     * For example, if more fields for an address match (including house number,
-     * street, city, country/region, and postal code), the relevance score is closer to
-     * 1.</p> <p>Returned only when the partner selected is Esri or Grab.</p>
-     */
+    inline double GetRelevance() const { return m_relevance; }
     inline bool RelevanceHasBeenSet() const { return m_relevanceHasBeenSet; }
-
-    /**
-     * <p>The relative confidence in the match for a result among the results returned.
-     * For example, if more fields for an address match (including house number,
-     * street, city, country/region, and postal code), the relevance score is closer to
-     * 1.</p> <p>Returned only when the partner selected is Esri or Grab.</p>
-     */
     inline void SetRelevance(double value) { m_relevanceHasBeenSet = true; m_relevance = value; }
-
-    /**
-     * <p>The relative confidence in the match for a result among the results returned.
-     * For example, if more fields for an address match (including house number,
-     * street, city, country/region, and postal code), the relevance score is closer to
-     * 1.</p> <p>Returned only when the partner selected is Esri or Grab.</p>
-     */
     inline SearchForTextResult& WithRelevance(double value) { SetRelevance(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The unique identifier of the place. You can use this with the
+     * <code>GetPlace</code> operation to find the place again later.</p>  <p>For
+     * <code>SearchPlaceIndexForText</code> operations, the <code>PlaceId</code> is
+     * returned only by place indexes that use HERE or Grab as a data provider.</p>
+     * 
+     */
+    inline const Aws::String& GetPlaceId() const { return m_placeId; }
+    inline bool PlaceIdHasBeenSet() const { return m_placeIdHasBeenSet; }
+    template<typename PlaceIdT = Aws::String>
+    void SetPlaceId(PlaceIdT&& value) { m_placeIdHasBeenSet = true; m_placeId = std::forward<PlaceIdT>(value); }
+    template<typename PlaceIdT = Aws::String>
+    SearchForTextResult& WithPlaceId(PlaceIdT&& value) { SetPlaceId(std::forward<PlaceIdT>(value)); return *this;}
+    ///@}
   private:
-
-    double m_distance;
-    bool m_distanceHasBeenSet = false;
 
     Place m_place;
     bool m_placeHasBeenSet = false;
 
+    double m_distance{0.0};
+    bool m_distanceHasBeenSet = false;
+
+    double m_relevance{0.0};
+    bool m_relevanceHasBeenSet = false;
+
     Aws::String m_placeId;
     bool m_placeIdHasBeenSet = false;
-
-    double m_relevance;
-    bool m_relevanceHasBeenSet = false;
   };
 
 } // namespace Model

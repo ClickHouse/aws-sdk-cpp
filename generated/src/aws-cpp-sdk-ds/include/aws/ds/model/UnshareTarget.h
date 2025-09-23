@@ -33,89 +33,39 @@ namespace Model
   class UnshareTarget
   {
   public:
-    AWS_DIRECTORYSERVICE_API UnshareTarget();
+    AWS_DIRECTORYSERVICE_API UnshareTarget() = default;
     AWS_DIRECTORYSERVICE_API UnshareTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API UnshareTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifier of the directory consumer account.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UnshareTarget& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
-    inline UnshareTarget& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
-    inline UnshareTarget& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifier of the directory consumer account.</p>
-     */
-    inline UnshareTarget& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Type of identifier to be used in the <i>Id</i> field.</p>
      */
-    inline const TargetType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Type of identifier to be used in the <i>Id</i> field.</p>
-     */
+    inline TargetType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Type of identifier to be used in the <i>Id</i> field.</p>
-     */
-    inline void SetType(const TargetType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Type of identifier to be used in the <i>Id</i> field.</p>
-     */
-    inline void SetType(TargetType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Type of identifier to be used in the <i>Id</i> field.</p>
-     */
-    inline UnshareTarget& WithType(const TargetType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Type of identifier to be used in the <i>Id</i> field.</p>
-     */
-    inline UnshareTarget& WithType(TargetType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(TargetType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline UnshareTarget& WithType(TargetType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    TargetType m_type;
+    TargetType m_type{TargetType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace MediaTailor
 namespace Model
 {
 
-LivePreRollConfiguration::LivePreRollConfiguration() : 
-    m_adDecisionServerUrlHasBeenSet(false),
-    m_maxDurationSeconds(0),
-    m_maxDurationSecondsHasBeenSet(false)
-{
-}
-
-LivePreRollConfiguration::LivePreRollConfiguration(JsonView jsonValue) : 
-    m_adDecisionServerUrlHasBeenSet(false),
-    m_maxDurationSeconds(0),
-    m_maxDurationSecondsHasBeenSet(false)
+LivePreRollConfiguration::LivePreRollConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LivePreRollConfiguration& LivePreRollConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("AdDecisionServerUrl"))
   {
     m_adDecisionServerUrl = jsonValue.GetString("AdDecisionServerUrl");
-
     m_adDecisionServerUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxDurationSeconds"))
   {
     m_maxDurationSeconds = jsonValue.GetInteger("MaxDurationSeconds");
-
     m_maxDurationSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

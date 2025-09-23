@@ -10,13 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DeletePublicIpv4PoolRequest::DeletePublicIpv4PoolRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_poolIdHasBeenSet(false)
-{
-}
-
 Aws::String DeletePublicIpv4PoolRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,6 +22,11 @@ Aws::String DeletePublicIpv4PoolRequest::SerializePayload() const
   if(m_poolIdHasBeenSet)
   {
     ss << "PoolId=" << StringUtils::URLEncode(m_poolId.c_str()) << "&";
+  }
+
+  if(m_networkBorderGroupHasBeenSet)
+  {
+    ss << "NetworkBorderGroup=" << StringUtils::URLEncode(m_networkBorderGroup.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

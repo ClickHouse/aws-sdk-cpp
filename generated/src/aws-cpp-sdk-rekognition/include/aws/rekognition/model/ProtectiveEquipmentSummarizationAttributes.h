@@ -41,12 +41,13 @@ namespace Model
   class ProtectiveEquipmentSummarizationAttributes
   {
   public:
-    AWS_REKOGNITION_API ProtectiveEquipmentSummarizationAttributes();
+    AWS_REKOGNITION_API ProtectiveEquipmentSummarizationAttributes() = default;
     AWS_REKOGNITION_API ProtectiveEquipmentSummarizationAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API ProtectiveEquipmentSummarizationAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The minimum confidence level for which you want summary information. The
      * confidence level applies to person detection, body part detection, equipment
@@ -57,45 +58,13 @@ namespace Model
      * detection confidence is between 50% - 100%. If you specify a value that is less
      * than 50%, the results are the same specifying a value of 50%.</p> <p> </p>
      */
-    inline double GetMinConfidence() const{ return m_minConfidence; }
-
-    /**
-     * <p>The minimum confidence level for which you want summary information. The
-     * confidence level applies to person detection, body part detection, equipment
-     * detection, and body part coverage. Amazon Rekognition doesn't return summary
-     * information with a confidence than this specified value. There isn't a default
-     * value.</p> <p>Specify a <code>MinConfidence</code> value that is between 50-100%
-     * as <code>DetectProtectiveEquipment</code> returns predictions only where the
-     * detection confidence is between 50% - 100%. If you specify a value that is less
-     * than 50%, the results are the same specifying a value of 50%.</p> <p> </p>
-     */
+    inline double GetMinConfidence() const { return m_minConfidence; }
     inline bool MinConfidenceHasBeenSet() const { return m_minConfidenceHasBeenSet; }
-
-    /**
-     * <p>The minimum confidence level for which you want summary information. The
-     * confidence level applies to person detection, body part detection, equipment
-     * detection, and body part coverage. Amazon Rekognition doesn't return summary
-     * information with a confidence than this specified value. There isn't a default
-     * value.</p> <p>Specify a <code>MinConfidence</code> value that is between 50-100%
-     * as <code>DetectProtectiveEquipment</code> returns predictions only where the
-     * detection confidence is between 50% - 100%. If you specify a value that is less
-     * than 50%, the results are the same specifying a value of 50%.</p> <p> </p>
-     */
     inline void SetMinConfidence(double value) { m_minConfidenceHasBeenSet = true; m_minConfidence = value; }
-
-    /**
-     * <p>The minimum confidence level for which you want summary information. The
-     * confidence level applies to person detection, body part detection, equipment
-     * detection, and body part coverage. Amazon Rekognition doesn't return summary
-     * information with a confidence than this specified value. There isn't a default
-     * value.</p> <p>Specify a <code>MinConfidence</code> value that is between 50-100%
-     * as <code>DetectProtectiveEquipment</code> returns predictions only where the
-     * detection confidence is between 50% - 100%. If you specify a value that is less
-     * than 50%, the results are the same specifying a value of 50%.</p> <p> </p>
-     */
     inline ProtectiveEquipmentSummarizationAttributes& WithMinConfidence(double value) { SetMinConfidence(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An array of personal protective equipment types for which you want summary
      * information. If a person is detected wearing a required requipment type, the
@@ -103,74 +72,17 @@ namespace Model
      * field returned in <a>ProtectiveEquipmentSummary</a> by
      * <code>DetectProtectiveEquipment</code>. </p>
      */
-    inline const Aws::Vector<ProtectiveEquipmentType>& GetRequiredEquipmentTypes() const{ return m_requiredEquipmentTypes; }
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
+    inline const Aws::Vector<ProtectiveEquipmentType>& GetRequiredEquipmentTypes() const { return m_requiredEquipmentTypes; }
     inline bool RequiredEquipmentTypesHasBeenSet() const { return m_requiredEquipmentTypesHasBeenSet; }
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
-    inline void SetRequiredEquipmentTypes(const Aws::Vector<ProtectiveEquipmentType>& value) { m_requiredEquipmentTypesHasBeenSet = true; m_requiredEquipmentTypes = value; }
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
-    inline void SetRequiredEquipmentTypes(Aws::Vector<ProtectiveEquipmentType>&& value) { m_requiredEquipmentTypesHasBeenSet = true; m_requiredEquipmentTypes = std::move(value); }
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
-    inline ProtectiveEquipmentSummarizationAttributes& WithRequiredEquipmentTypes(const Aws::Vector<ProtectiveEquipmentType>& value) { SetRequiredEquipmentTypes(value); return *this;}
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
-    inline ProtectiveEquipmentSummarizationAttributes& WithRequiredEquipmentTypes(Aws::Vector<ProtectiveEquipmentType>&& value) { SetRequiredEquipmentTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
-    inline ProtectiveEquipmentSummarizationAttributes& AddRequiredEquipmentTypes(const ProtectiveEquipmentType& value) { m_requiredEquipmentTypesHasBeenSet = true; m_requiredEquipmentTypes.push_back(value); return *this; }
-
-    /**
-     * <p>An array of personal protective equipment types for which you want summary
-     * information. If a person is detected wearing a required requipment type, the
-     * person's ID is added to the <code>PersonsWithRequiredEquipment</code> array
-     * field returned in <a>ProtectiveEquipmentSummary</a> by
-     * <code>DetectProtectiveEquipment</code>. </p>
-     */
-    inline ProtectiveEquipmentSummarizationAttributes& AddRequiredEquipmentTypes(ProtectiveEquipmentType&& value) { m_requiredEquipmentTypesHasBeenSet = true; m_requiredEquipmentTypes.push_back(std::move(value)); return *this; }
-
+    template<typename RequiredEquipmentTypesT = Aws::Vector<ProtectiveEquipmentType>>
+    void SetRequiredEquipmentTypes(RequiredEquipmentTypesT&& value) { m_requiredEquipmentTypesHasBeenSet = true; m_requiredEquipmentTypes = std::forward<RequiredEquipmentTypesT>(value); }
+    template<typename RequiredEquipmentTypesT = Aws::Vector<ProtectiveEquipmentType>>
+    ProtectiveEquipmentSummarizationAttributes& WithRequiredEquipmentTypes(RequiredEquipmentTypesT&& value) { SetRequiredEquipmentTypes(std::forward<RequiredEquipmentTypesT>(value)); return *this;}
+    inline ProtectiveEquipmentSummarizationAttributes& AddRequiredEquipmentTypes(ProtectiveEquipmentType value) { m_requiredEquipmentTypesHasBeenSet = true; m_requiredEquipmentTypes.push_back(value); return *this; }
+    ///@}
   private:
 
-    double m_minConfidence;
+    double m_minConfidence{0.0};
     bool m_minConfidenceHasBeenSet = false;
 
     Aws::Vector<ProtectiveEquipmentType> m_requiredEquipmentTypes;

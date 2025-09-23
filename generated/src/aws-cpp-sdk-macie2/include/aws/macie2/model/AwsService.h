@@ -32,52 +32,23 @@ namespace Model
   class AwsService
   {
   public:
-    AWS_MACIE2_API AwsService();
+    AWS_MACIE2_API AwsService() = default;
     AWS_MACIE2_API AwsService(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API AwsService& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Web Service that performed the action.</p>
      */
-    inline const Aws::String& GetInvokedBy() const{ return m_invokedBy; }
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
+    inline const Aws::String& GetInvokedBy() const { return m_invokedBy; }
     inline bool InvokedByHasBeenSet() const { return m_invokedByHasBeenSet; }
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
-    inline void SetInvokedBy(const Aws::String& value) { m_invokedByHasBeenSet = true; m_invokedBy = value; }
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
-    inline void SetInvokedBy(Aws::String&& value) { m_invokedByHasBeenSet = true; m_invokedBy = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
-    inline void SetInvokedBy(const char* value) { m_invokedByHasBeenSet = true; m_invokedBy.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
-    inline AwsService& WithInvokedBy(const Aws::String& value) { SetInvokedBy(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
-    inline AwsService& WithInvokedBy(Aws::String&& value) { SetInvokedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Service that performed the action.</p>
-     */
-    inline AwsService& WithInvokedBy(const char* value) { SetInvokedBy(value); return *this;}
-
+    template<typename InvokedByT = Aws::String>
+    void SetInvokedBy(InvokedByT&& value) { m_invokedByHasBeenSet = true; m_invokedBy = std::forward<InvokedByT>(value); }
+    template<typename InvokedByT = Aws::String>
+    AwsService& WithInvokedBy(InvokedByT&& value) { SetInvokedBy(std::forward<InvokedByT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_invokedBy;

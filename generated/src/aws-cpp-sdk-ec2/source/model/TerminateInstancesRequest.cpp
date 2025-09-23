@@ -10,13 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-TerminateInstancesRequest::TerminateInstancesRequest() : 
-    m_instanceIdsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String TerminateInstancesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,6 +23,16 @@ Aws::String TerminateInstancesRequest::SerializePayload() const
           << StringUtils::URLEncode(item.c_str()) << "&";
       instanceIdsCount++;
     }
+  }
+
+  if(m_forceHasBeenSet)
+  {
+    ss << "Force=" << std::boolalpha << m_force << "&";
+  }
+
+  if(m_skipOsShutdownHasBeenSet)
+  {
+    ss << "SkipOsShutdown=" << std::boolalpha << m_skipOsShutdown << "&";
   }
 
   if(m_dryRunHasBeenSet)

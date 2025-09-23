@@ -32,140 +32,49 @@ namespace Model
   class ArchiveOutputSettings
   {
   public:
-    AWS_MEDIALIVE_API ArchiveOutputSettings();
+    AWS_MEDIALIVE_API ArchiveOutputSettings() = default;
     AWS_MEDIALIVE_API ArchiveOutputSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API ArchiveOutputSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Settings specific to the container type of the file.
      */
-    inline const ArchiveContainerSettings& GetContainerSettings() const{ return m_containerSettings; }
-
-    /**
-     * Settings specific to the container type of the file.
-     */
+    inline const ArchiveContainerSettings& GetContainerSettings() const { return m_containerSettings; }
     inline bool ContainerSettingsHasBeenSet() const { return m_containerSettingsHasBeenSet; }
+    template<typename ContainerSettingsT = ArchiveContainerSettings>
+    void SetContainerSettings(ContainerSettingsT&& value) { m_containerSettingsHasBeenSet = true; m_containerSettings = std::forward<ContainerSettingsT>(value); }
+    template<typename ContainerSettingsT = ArchiveContainerSettings>
+    ArchiveOutputSettings& WithContainerSettings(ContainerSettingsT&& value) { SetContainerSettings(std::forward<ContainerSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings specific to the container type of the file.
-     */
-    inline void SetContainerSettings(const ArchiveContainerSettings& value) { m_containerSettingsHasBeenSet = true; m_containerSettings = value; }
-
-    /**
-     * Settings specific to the container type of the file.
-     */
-    inline void SetContainerSettings(ArchiveContainerSettings&& value) { m_containerSettingsHasBeenSet = true; m_containerSettings = std::move(value); }
-
-    /**
-     * Settings specific to the container type of the file.
-     */
-    inline ArchiveOutputSettings& WithContainerSettings(const ArchiveContainerSettings& value) { SetContainerSettings(value); return *this;}
-
-    /**
-     * Settings specific to the container type of the file.
-     */
-    inline ArchiveOutputSettings& WithContainerSettings(ArchiveContainerSettings&& value) { SetContainerSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Output file extension. If excluded, this will be auto-selected from the
      * container type.
      */
-    inline const Aws::String& GetExtension() const{ return m_extension; }
-
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
+    inline const Aws::String& GetExtension() const { return m_extension; }
     inline bool ExtensionHasBeenSet() const { return m_extensionHasBeenSet; }
+    template<typename ExtensionT = Aws::String>
+    void SetExtension(ExtensionT&& value) { m_extensionHasBeenSet = true; m_extension = std::forward<ExtensionT>(value); }
+    template<typename ExtensionT = Aws::String>
+    ArchiveOutputSettings& WithExtension(ExtensionT&& value) { SetExtension(std::forward<ExtensionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
-    inline void SetExtension(const Aws::String& value) { m_extensionHasBeenSet = true; m_extension = value; }
-
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
-    inline void SetExtension(Aws::String&& value) { m_extensionHasBeenSet = true; m_extension = std::move(value); }
-
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
-    inline void SetExtension(const char* value) { m_extensionHasBeenSet = true; m_extension.assign(value); }
-
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
-    inline ArchiveOutputSettings& WithExtension(const Aws::String& value) { SetExtension(value); return *this;}
-
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
-    inline ArchiveOutputSettings& WithExtension(Aws::String&& value) { SetExtension(std::move(value)); return *this;}
-
-    /**
-     * Output file extension. If excluded, this will be auto-selected from the
-     * container type.
-     */
-    inline ArchiveOutputSettings& WithExtension(const char* value) { SetExtension(value); return *this;}
-
-
+    ///@{
     /**
      * String concatenated to the end of the destination filename.  Required for
      * multiple outputs of the same type.
      */
-    inline const Aws::String& GetNameModifier() const{ return m_nameModifier; }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
+    inline const Aws::String& GetNameModifier() const { return m_nameModifier; }
     inline bool NameModifierHasBeenSet() const { return m_nameModifierHasBeenSet; }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline void SetNameModifier(const Aws::String& value) { m_nameModifierHasBeenSet = true; m_nameModifier = value; }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline void SetNameModifier(Aws::String&& value) { m_nameModifierHasBeenSet = true; m_nameModifier = std::move(value); }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline void SetNameModifier(const char* value) { m_nameModifierHasBeenSet = true; m_nameModifier.assign(value); }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline ArchiveOutputSettings& WithNameModifier(const Aws::String& value) { SetNameModifier(value); return *this;}
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline ArchiveOutputSettings& WithNameModifier(Aws::String&& value) { SetNameModifier(std::move(value)); return *this;}
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline ArchiveOutputSettings& WithNameModifier(const char* value) { SetNameModifier(value); return *this;}
-
+    template<typename NameModifierT = Aws::String>
+    void SetNameModifier(NameModifierT&& value) { m_nameModifierHasBeenSet = true; m_nameModifier = std::forward<NameModifierT>(value); }
+    template<typename NameModifierT = Aws::String>
+    ArchiveOutputSettings& WithNameModifier(NameModifierT&& value) { SetNameModifier(std::forward<NameModifierT>(value)); return *this;}
+    ///@}
   private:
 
     ArchiveContainerSettings m_containerSettings;

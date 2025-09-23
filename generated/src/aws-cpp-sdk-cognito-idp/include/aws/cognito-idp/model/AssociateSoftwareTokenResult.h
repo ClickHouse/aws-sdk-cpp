@@ -27,132 +27,53 @@ namespace Model
   class AssociateSoftwareTokenResult
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API AssociateSoftwareTokenResult();
+    AWS_COGNITOIDENTITYPROVIDER_API AssociateSoftwareTokenResult() = default;
     AWS_COGNITOIDENTITYPROVIDER_API AssociateSoftwareTokenResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITYPROVIDER_API AssociateSoftwareTokenResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
+     * <p>A unique generated shared secret code that is used by the TOTP algorithm to
      * generate a one-time code.</p>
      */
-    inline const Aws::String& GetSecretCode() const{ return m_secretCode; }
+    inline const Aws::String& GetSecretCode() const { return m_secretCode; }
+    template<typename SecretCodeT = Aws::String>
+    void SetSecretCode(SecretCodeT&& value) { m_secretCodeHasBeenSet = true; m_secretCode = std::forward<SecretCodeT>(value); }
+    template<typename SecretCodeT = Aws::String>
+    AssociateSoftwareTokenResult& WithSecretCode(SecretCodeT&& value) { SetSecretCode(std::forward<SecretCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
-     * generate a one-time code.</p>
+     * <p>The session identifier that maintains the state of authentication requests
+     * and challenge responses.</p>
      */
-    inline void SetSecretCode(const Aws::String& value) { m_secretCode = value; }
+    inline const Aws::String& GetSession() const { return m_session; }
+    template<typename SessionT = Aws::String>
+    void SetSession(SessionT&& value) { m_sessionHasBeenSet = true; m_session = std::forward<SessionT>(value); }
+    template<typename SessionT = Aws::String>
+    AssociateSoftwareTokenResult& WithSession(SessionT&& value) { SetSession(std::forward<SessionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
-     * generate a one-time code.</p>
-     */
-    inline void SetSecretCode(Aws::String&& value) { m_secretCode = std::move(value); }
-
-    /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
-     * generate a one-time code.</p>
-     */
-    inline void SetSecretCode(const char* value) { m_secretCode.assign(value); }
-
-    /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
-     * generate a one-time code.</p>
-     */
-    inline AssociateSoftwareTokenResult& WithSecretCode(const Aws::String& value) { SetSecretCode(value); return *this;}
-
-    /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
-     * generate a one-time code.</p>
-     */
-    inline AssociateSoftwareTokenResult& WithSecretCode(Aws::String&& value) { SetSecretCode(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique generated shared secret code that is used in the TOTP algorithm to
-     * generate a one-time code.</p>
-     */
-    inline AssociateSoftwareTokenResult& WithSecretCode(const char* value) { SetSecretCode(value); return *this;}
-
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline const Aws::String& GetSession() const{ return m_session; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline void SetSession(const Aws::String& value) { m_session = value; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline void SetSession(Aws::String&& value) { m_session = std::move(value); }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline void SetSession(const char* value) { m_session.assign(value); }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline AssociateSoftwareTokenResult& WithSession(const Aws::String& value) { SetSession(value); return *this;}
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline AssociateSoftwareTokenResult& WithSession(Aws::String&& value) { SetSession(std::move(value)); return *this;}
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline AssociateSoftwareTokenResult& WithSession(const char* value) { SetSession(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociateSoftwareTokenResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociateSoftwareTokenResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociateSoftwareTokenResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociateSoftwareTokenResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_secretCode;
+    bool m_secretCodeHasBeenSet = false;
 
     Aws::String m_session;
+    bool m_sessionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

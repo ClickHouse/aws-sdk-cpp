@@ -20,49 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBProxy::DBProxy() : 
-    m_dBProxyNameHasBeenSet(false),
-    m_dBProxyArnHasBeenSet(false),
-    m_status(DBProxyStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_engineFamilyHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_vpcSubnetIdsHasBeenSet(false),
-    m_authHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_requireTLS(false),
-    m_requireTLSHasBeenSet(false),
-    m_idleClientTimeout(0),
-    m_idleClientTimeoutHasBeenSet(false),
-    m_debugLogging(false),
-    m_debugLoggingHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_updatedDateHasBeenSet(false)
-{
-}
-
-DBProxy::DBProxy(const XmlNode& xmlNode) : 
-    m_dBProxyNameHasBeenSet(false),
-    m_dBProxyArnHasBeenSet(false),
-    m_status(DBProxyStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_engineFamilyHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_vpcSubnetIdsHasBeenSet(false),
-    m_authHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_requireTLS(false),
-    m_requireTLSHasBeenSet(false),
-    m_idleClientTimeout(0),
-    m_idleClientTimeoutHasBeenSet(false),
-    m_debugLogging(false),
-    m_debugLoggingHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_updatedDateHasBeenSet(false)
+DBProxy::DBProxy(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -88,7 +46,7 @@ DBProxy& DBProxy::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = DBProxyStatusMapper::GetDBProxyStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = DBProxyStatusMapper::GetDBProxyStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode engineFamilyNode = resultNode.FirstChild("EngineFamily");
@@ -107,6 +65,7 @@ DBProxy& DBProxy::operator =(const XmlNode& xmlNode)
     if(!vpcSecurityGroupIdsNode.IsNull())
     {
       XmlNode vpcSecurityGroupIdsMember = vpcSecurityGroupIdsNode.FirstChild("member");
+      m_vpcSecurityGroupIdsHasBeenSet = !vpcSecurityGroupIdsMember.IsNull();
       while(!vpcSecurityGroupIdsMember.IsNull())
       {
         m_vpcSecurityGroupIds.push_back(vpcSecurityGroupIdsMember.GetText());
@@ -119,6 +78,7 @@ DBProxy& DBProxy::operator =(const XmlNode& xmlNode)
     if(!vpcSubnetIdsNode.IsNull())
     {
       XmlNode vpcSubnetIdsMember = vpcSubnetIdsNode.FirstChild("member");
+      m_vpcSubnetIdsHasBeenSet = !vpcSubnetIdsMember.IsNull();
       while(!vpcSubnetIdsMember.IsNull())
       {
         m_vpcSubnetIds.push_back(vpcSubnetIdsMember.GetText());
@@ -127,10 +87,17 @@ DBProxy& DBProxy::operator =(const XmlNode& xmlNode)
 
       m_vpcSubnetIdsHasBeenSet = true;
     }
+    XmlNode defaultAuthSchemeNode = resultNode.FirstChild("DefaultAuthScheme");
+    if(!defaultAuthSchemeNode.IsNull())
+    {
+      m_defaultAuthScheme = Aws::Utils::Xml::DecodeEscapedXmlText(defaultAuthSchemeNode.GetText());
+      m_defaultAuthSchemeHasBeenSet = true;
+    }
     XmlNode authNode = resultNode.FirstChild("Auth");
     if(!authNode.IsNull())
     {
       XmlNode authMember = authNode.FirstChild("member");
+      m_authHasBeenSet = !authMember.IsNull();
       while(!authMember.IsNull())
       {
         m_auth.push_back(authMember);
@@ -181,6 +148,18 @@ DBProxy& DBProxy::operator =(const XmlNode& xmlNode)
       m_updatedDate = DateTime(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(updatedDateNode.GetText()).c_str()).c_str(), Aws::Utils::DateFormat::ISO_8601);
       m_updatedDateHasBeenSet = true;
     }
+    XmlNode endpointNetworkTypeNode = resultNode.FirstChild("EndpointNetworkType");
+    if(!endpointNetworkTypeNode.IsNull())
+    {
+      m_endpointNetworkType = EndpointNetworkTypeMapper::GetEndpointNetworkTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endpointNetworkTypeNode.GetText()).c_str()));
+      m_endpointNetworkTypeHasBeenSet = true;
+    }
+    XmlNode targetConnectionNetworkTypeNode = resultNode.FirstChild("TargetConnectionNetworkType");
+    if(!targetConnectionNetworkTypeNode.IsNull())
+    {
+      m_targetConnectionNetworkType = TargetConnectionNetworkTypeMapper::GetTargetConnectionNetworkTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetConnectionNetworkTypeNode.GetText()).c_str()));
+      m_targetConnectionNetworkTypeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -200,7 +179,7 @@ void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location, unsign
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << DBProxyStatusMapper::GetNameForDBProxyStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(DBProxyStatusMapper::GetNameForDBProxyStatus(m_status)) << "&";
   }
 
   if(m_engineFamilyHasBeenSet)
@@ -229,6 +208,11 @@ void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location, unsign
       {
         oStream << location << index << locationValue << ".VpcSubnetIds.member." << vpcSubnetIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+
+  if(m_defaultAuthSchemeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DefaultAuthScheme=" << StringUtils::URLEncode(m_defaultAuthScheme.c_str()) << "&";
   }
 
   if(m_authHasBeenSet)
@@ -277,6 +261,16 @@ void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location, unsign
       oStream << location << index << locationValue << ".UpdatedDate=" << StringUtils::URLEncode(m_updatedDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
   }
 
+  if(m_endpointNetworkTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EndpointNetworkType=" << StringUtils::URLEncode(EndpointNetworkTypeMapper::GetNameForEndpointNetworkType(m_endpointNetworkType)) << "&";
+  }
+
+  if(m_targetConnectionNetworkTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".TargetConnectionNetworkType=" << StringUtils::URLEncode(TargetConnectionNetworkTypeMapper::GetNameForTargetConnectionNetworkType(m_targetConnectionNetworkType)) << "&";
+  }
+
 }
 
 void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -291,7 +285,7 @@ void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << DBProxyStatusMapper::GetNameForDBProxyStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(DBProxyStatusMapper::GetNameForDBProxyStatus(m_status)) << "&";
   }
   if(m_engineFamilyHasBeenSet)
   {
@@ -317,13 +311,17 @@ void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location) const
         oStream << location << ".VpcSubnetIds.member." << vpcSubnetIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+  if(m_defaultAuthSchemeHasBeenSet)
+  {
+      oStream << location << ".DefaultAuthScheme=" << StringUtils::URLEncode(m_defaultAuthScheme.c_str()) << "&";
+  }
   if(m_authHasBeenSet)
   {
       unsigned authIdx = 1;
       for(auto& item : m_auth)
       {
         Aws::StringStream authSs;
-        authSs << location <<  ".Auth.member." << authIdx++;
+        authSs << location << ".Auth.member." << authIdx++;
         item.OutputToStream(oStream, authSs.str().c_str());
       }
   }
@@ -354,6 +352,14 @@ void DBProxy::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_updatedDateHasBeenSet)
   {
       oStream << location << ".UpdatedDate=" << StringUtils::URLEncode(m_updatedDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_endpointNetworkTypeHasBeenSet)
+  {
+      oStream << location << ".EndpointNetworkType=" << StringUtils::URLEncode(EndpointNetworkTypeMapper::GetNameForEndpointNetworkType(m_endpointNetworkType)) << "&";
+  }
+  if(m_targetConnectionNetworkTypeHasBeenSet)
+  {
+      oStream << location << ".TargetConnectionNetworkType=" << StringUtils::URLEncode(TargetConnectionNetworkTypeMapper::GetNameForTargetConnectionNetworkType(m_targetConnectionNetworkType)) << "&";
   }
 }
 

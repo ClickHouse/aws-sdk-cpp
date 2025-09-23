@@ -33,130 +33,67 @@ namespace Model
   class BatchPutDocumentResponseFailedDocument
   {
   public:
-    AWS_KENDRA_API BatchPutDocumentResponseFailedDocument();
+    AWS_KENDRA_API BatchPutDocumentResponseFailedDocument() = default;
     AWS_KENDRA_API BatchPutDocumentResponseFailedDocument(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API BatchPutDocumentResponseFailedDocument& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the document.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the document.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    BatchPutDocumentResponseFailedDocument& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the document.</p>
+     * <p> The identifier of the data source connector that the failed document belongs
+     * to. </p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
+    inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    BatchPutDocumentResponseFailedDocument& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the document.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the document.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the document.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the document.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the document.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of error that caused the document to fail to be indexed.</p>
      */
-    inline const ErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The type of error that caused the document to fail to be indexed.</p>
-     */
+    inline ErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(ErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline BatchPutDocumentResponseFailedDocument& WithErrorCode(ErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of error that caused the document to fail to be indexed.</p>
-     */
-    inline void SetErrorCode(const ErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The type of error that caused the document to fail to be indexed.</p>
-     */
-    inline void SetErrorCode(ErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The type of error that caused the document to fail to be indexed.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithErrorCode(const ErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The type of error that caused the document to fail to be indexed.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithErrorCode(ErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the reason why the document could not be indexed.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the reason why the document could not be indexed.</p>
-     */
-    inline BatchPutDocumentResponseFailedDocument& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    BatchPutDocumentResponseFailedDocument& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    ErrorCode m_errorCode;
+    Aws::String m_dataSourceId;
+    bool m_dataSourceIdHasBeenSet = false;
+
+    ErrorCode m_errorCode{ErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;

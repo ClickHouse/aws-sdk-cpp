@@ -30,43 +30,24 @@ namespace Model
   class StatsEvent
   {
   public:
-    AWS_S3_API StatsEvent();
+    AWS_S3_API StatsEvent() = default;
     AWS_S3_API StatsEvent(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API StatsEvent& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The Stats event details.</p>
      */
-    inline const Stats& GetDetails() const{ return m_details; }
-
-    /**
-     * <p>The Stats event details.</p>
-     */
+    inline const Stats& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
-
-    /**
-     * <p>The Stats event details.</p>
-     */
-    inline void SetDetails(const Stats& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p>The Stats event details.</p>
-     */
-    inline void SetDetails(Stats&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p>The Stats event details.</p>
-     */
-    inline StatsEvent& WithDetails(const Stats& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>The Stats event details.</p>
-     */
-    inline StatsEvent& WithDetails(Stats&& value) { SetDetails(std::move(value)); return *this;}
-
+    template<typename DetailsT = Stats>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Stats>
+    StatsEvent& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
   private:
 
     Stats m_details;

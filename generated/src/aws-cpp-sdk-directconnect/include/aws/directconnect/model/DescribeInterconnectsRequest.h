@@ -21,7 +21,7 @@ namespace Model
   class DescribeInterconnectsRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API DescribeInterconnectsRequest();
+    AWS_DIRECTCONNECT_API DescribeInterconnectsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,50 +34,52 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the interconnect.</p>
      */
-    inline const Aws::String& GetInterconnectId() const{ return m_interconnectId; }
-
-    /**
-     * <p>The ID of the interconnect.</p>
-     */
+    inline const Aws::String& GetInterconnectId() const { return m_interconnectId; }
     inline bool InterconnectIdHasBeenSet() const { return m_interconnectIdHasBeenSet; }
+    template<typename InterconnectIdT = Aws::String>
+    void SetInterconnectId(InterconnectIdT&& value) { m_interconnectIdHasBeenSet = true; m_interconnectId = std::forward<InterconnectIdT>(value); }
+    template<typename InterconnectIdT = Aws::String>
+    DescribeInterconnectsRequest& WithInterconnectId(InterconnectIdT&& value) { SetInterconnectId(std::forward<InterconnectIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the interconnect.</p>
+     * <p>The maximum number of results to return with a single call. To retrieve the
+     * remaining results, make another call with the returned <code>nextToken</code>
+     * value.</p> <p>If <code>MaxResults</code> is given a value larger than 100, only
+     * 100 results are returned.</p>
      */
-    inline void SetInterconnectId(const Aws::String& value) { m_interconnectIdHasBeenSet = true; m_interconnectId = value; }
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline DescribeInterconnectsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the interconnect.</p>
+     * <p>The token for the next page of results.</p>
      */
-    inline void SetInterconnectId(Aws::String&& value) { m_interconnectIdHasBeenSet = true; m_interconnectId = std::move(value); }
-
-    /**
-     * <p>The ID of the interconnect.</p>
-     */
-    inline void SetInterconnectId(const char* value) { m_interconnectIdHasBeenSet = true; m_interconnectId.assign(value); }
-
-    /**
-     * <p>The ID of the interconnect.</p>
-     */
-    inline DescribeInterconnectsRequest& WithInterconnectId(const Aws::String& value) { SetInterconnectId(value); return *this;}
-
-    /**
-     * <p>The ID of the interconnect.</p>
-     */
-    inline DescribeInterconnectsRequest& WithInterconnectId(Aws::String&& value) { SetInterconnectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the interconnect.</p>
-     */
-    inline DescribeInterconnectsRequest& WithInterconnectId(const char* value) { SetInterconnectId(value); return *this;}
-
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeInterconnectsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_interconnectId;
     bool m_interconnectIdHasBeenSet = false;
+
+    int m_maxResults{0};
+    bool m_maxResultsHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
   };
 
 } // namespace Model

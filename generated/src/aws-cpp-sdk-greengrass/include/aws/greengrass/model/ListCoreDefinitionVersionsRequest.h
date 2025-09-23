@@ -25,7 +25,7 @@ namespace Model
   class ListCoreDefinitionVersionsRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API ListCoreDefinitionVersionsRequest();
+    AWS_GREENGRASS_API ListCoreDefinitionVersionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,136 +38,42 @@ namespace Model
     AWS_GREENGRASS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * The ID of the core definition.
      */
-    inline const Aws::String& GetCoreDefinitionId() const{ return m_coreDefinitionId; }
-
-    /**
-     * The ID of the core definition.
-     */
+    inline const Aws::String& GetCoreDefinitionId() const { return m_coreDefinitionId; }
     inline bool CoreDefinitionIdHasBeenSet() const { return m_coreDefinitionIdHasBeenSet; }
+    template<typename CoreDefinitionIdT = Aws::String>
+    void SetCoreDefinitionId(CoreDefinitionIdT&& value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId = std::forward<CoreDefinitionIdT>(value); }
+    template<typename CoreDefinitionIdT = Aws::String>
+    ListCoreDefinitionVersionsRequest& WithCoreDefinitionId(CoreDefinitionIdT&& value) { SetCoreDefinitionId(std::forward<CoreDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the core definition.
-     */
-    inline void SetCoreDefinitionId(const Aws::String& value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId = value; }
-
-    /**
-     * The ID of the core definition.
-     */
-    inline void SetCoreDefinitionId(Aws::String&& value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the core definition.
-     */
-    inline void SetCoreDefinitionId(const char* value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId.assign(value); }
-
-    /**
-     * The ID of the core definition.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithCoreDefinitionId(const Aws::String& value) { SetCoreDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the core definition.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithCoreDefinitionId(Aws::String&& value) { SetCoreDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the core definition.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithCoreDefinitionId(const char* value) { SetCoreDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * The maximum number of results to be returned per request.
      */
-    inline const Aws::String& GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
+    inline const Aws::String& GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    template<typename MaxResultsT = Aws::String>
+    void SetMaxResults(MaxResultsT&& value) { m_maxResultsHasBeenSet = true; m_maxResults = std::forward<MaxResultsT>(value); }
+    template<typename MaxResultsT = Aws::String>
+    ListCoreDefinitionVersionsRequest& WithMaxResults(MaxResultsT&& value) { SetMaxResults(std::forward<MaxResultsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline void SetMaxResults(const Aws::String& value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline void SetMaxResults(Aws::String&& value) { m_maxResultsHasBeenSet = true; m_maxResults = std::move(value); }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline void SetMaxResults(const char* value) { m_maxResultsHasBeenSet = true; m_maxResults.assign(value); }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithMaxResults(const Aws::String& value) { SetMaxResults(value); return *this;}
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithMaxResults(Aws::String&& value) { SetMaxResults(std::move(value)); return *this;}
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithMaxResults(const char* value) { SetMaxResults(value); return *this;}
-
-
+    ///@{
     /**
      * The token for the next set of results, or ''null'' if there are no additional
      * results.
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListCoreDefinitionVersionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListCoreDefinitionVersionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_coreDefinitionId;

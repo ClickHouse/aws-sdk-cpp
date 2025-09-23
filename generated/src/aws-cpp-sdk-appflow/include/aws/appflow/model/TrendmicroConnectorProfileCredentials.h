@@ -32,52 +32,23 @@ namespace Model
   class TrendmicroConnectorProfileCredentials
   {
   public:
-    AWS_APPFLOW_API TrendmicroConnectorProfileCredentials();
+    AWS_APPFLOW_API TrendmicroConnectorProfileCredentials() = default;
     AWS_APPFLOW_API TrendmicroConnectorProfileCredentials(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API TrendmicroConnectorProfileCredentials& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Secret Access Key portion of the credentials. </p>
      */
-    inline const Aws::String& GetApiSecretKey() const{ return m_apiSecretKey; }
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
+    inline const Aws::String& GetApiSecretKey() const { return m_apiSecretKey; }
     inline bool ApiSecretKeyHasBeenSet() const { return m_apiSecretKeyHasBeenSet; }
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
-    inline void SetApiSecretKey(const Aws::String& value) { m_apiSecretKeyHasBeenSet = true; m_apiSecretKey = value; }
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
-    inline void SetApiSecretKey(Aws::String&& value) { m_apiSecretKeyHasBeenSet = true; m_apiSecretKey = std::move(value); }
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
-    inline void SetApiSecretKey(const char* value) { m_apiSecretKeyHasBeenSet = true; m_apiSecretKey.assign(value); }
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
-    inline TrendmicroConnectorProfileCredentials& WithApiSecretKey(const Aws::String& value) { SetApiSecretKey(value); return *this;}
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
-    inline TrendmicroConnectorProfileCredentials& WithApiSecretKey(Aws::String&& value) { SetApiSecretKey(std::move(value)); return *this;}
-
-    /**
-     * <p> The Secret Access Key portion of the credentials. </p>
-     */
-    inline TrendmicroConnectorProfileCredentials& WithApiSecretKey(const char* value) { SetApiSecretKey(value); return *this;}
-
+    template<typename ApiSecretKeyT = Aws::String>
+    void SetApiSecretKey(ApiSecretKeyT&& value) { m_apiSecretKeyHasBeenSet = true; m_apiSecretKey = std::forward<ApiSecretKeyT>(value); }
+    template<typename ApiSecretKeyT = Aws::String>
+    TrendmicroConnectorProfileCredentials& WithApiSecretKey(ApiSecretKeyT&& value) { SetApiSecretKey(std::forward<ApiSecretKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiSecretKey;

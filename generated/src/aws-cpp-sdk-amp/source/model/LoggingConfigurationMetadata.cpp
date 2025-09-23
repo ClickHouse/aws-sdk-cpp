@@ -18,21 +18,7 @@ namespace PrometheusService
 namespace Model
 {
 
-LoggingConfigurationMetadata::LoggingConfigurationMetadata() : 
-    m_statusHasBeenSet(false),
-    m_workspaceHasBeenSet(false),
-    m_logGroupArnHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false)
-{
-}
-
-LoggingConfigurationMetadata::LoggingConfigurationMetadata(JsonView jsonValue) : 
-    m_statusHasBeenSet(false),
-    m_workspaceHasBeenSet(false),
-    m_logGroupArnHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false)
+LoggingConfigurationMetadata::LoggingConfigurationMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,28 @@ LoggingConfigurationMetadata& LoggingConfigurationMetadata::operator =(JsonView 
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetObject("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("workspace"))
   {
     m_workspace = jsonValue.GetString("workspace");
-
     m_workspaceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logGroupArn"))
   {
     m_logGroupArn = jsonValue.GetString("logGroupArn");
-
     m_logGroupArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modifiedAt"))
   {
     m_modifiedAt = jsonValue.GetDouble("modifiedAt");
-
     m_modifiedAtHasBeenSet = true;
   }
-
   return *this;
 }
 

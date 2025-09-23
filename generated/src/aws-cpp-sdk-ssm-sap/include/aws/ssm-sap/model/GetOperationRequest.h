@@ -21,7 +21,7 @@ namespace Model
   class GetOperationRequest : public SsmSapRequest
   {
   public:
-    AWS_SSMSAP_API GetOperationRequest();
+    AWS_SSMSAP_API GetOperationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SSMSAP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the operation.</p>
      */
-    inline const Aws::String& GetOperationId() const{ return m_operationId; }
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
+    inline const Aws::String& GetOperationId() const { return m_operationId; }
     inline bool OperationIdHasBeenSet() const { return m_operationIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
-    inline void SetOperationId(const Aws::String& value) { m_operationIdHasBeenSet = true; m_operationId = value; }
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
-    inline void SetOperationId(Aws::String&& value) { m_operationIdHasBeenSet = true; m_operationId = std::move(value); }
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
-    inline void SetOperationId(const char* value) { m_operationIdHasBeenSet = true; m_operationId.assign(value); }
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
-    inline GetOperationRequest& WithOperationId(const Aws::String& value) { SetOperationId(value); return *this;}
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
-    inline GetOperationRequest& WithOperationId(Aws::String&& value) { SetOperationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the operation.</p>
-     */
-    inline GetOperationRequest& WithOperationId(const char* value) { SetOperationId(value); return *this;}
-
+    template<typename OperationIdT = Aws::String>
+    void SetOperationId(OperationIdT&& value) { m_operationIdHasBeenSet = true; m_operationId = std::forward<OperationIdT>(value); }
+    template<typename OperationIdT = Aws::String>
+    GetOperationRequest& WithOperationId(OperationIdT&& value) { SetOperationId(std::forward<OperationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_operationId;

@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetChannelScheduleRequest::GetChannelScheduleRequest() : 
-    m_channelNameHasBeenSet(false),
-    m_durationMinutesHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String GetChannelScheduleRequest::SerializePayload() const
 {
   return {};
@@ -50,6 +41,13 @@ void GetChannelScheduleRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_audienceHasBeenSet)
+    {
+      ss << m_audience;
+      uri.AddQueryStringParameter("audience", ss.str());
       ss.str("");
     }
 

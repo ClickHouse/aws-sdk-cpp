@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InferenceAcceleratorInfo::InferenceAcceleratorInfo() : 
-    m_acceleratorsHasBeenSet(false),
-    m_totalInferenceMemoryInMiB(0),
-    m_totalInferenceMemoryInMiBHasBeenSet(false)
-{
-}
-
-InferenceAcceleratorInfo::InferenceAcceleratorInfo(const XmlNode& xmlNode) : 
-    m_acceleratorsHasBeenSet(false),
-    m_totalInferenceMemoryInMiB(0),
-    m_totalInferenceMemoryInMiBHasBeenSet(false)
+InferenceAcceleratorInfo::InferenceAcceleratorInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ InferenceAcceleratorInfo& InferenceAcceleratorInfo::operator =(const XmlNode& xm
     if(!acceleratorsNode.IsNull())
     {
       XmlNode acceleratorsMember = acceleratorsNode.FirstChild("member");
+      m_acceleratorsHasBeenSet = !acceleratorsMember.IsNull();
       while(!acceleratorsMember.IsNull())
       {
         m_accelerators.push_back(acceleratorsMember);
@@ -92,7 +83,7 @@ void InferenceAcceleratorInfo::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_accelerators)
       {
         Aws::StringStream acceleratorsSs;
-        acceleratorsSs << location <<  ".Accelerators." << acceleratorsIdx++;
+        acceleratorsSs << location << ".Accelerators." << acceleratorsIdx++;
         item.OutputToStream(oStream, acceleratorsSs.str().c_str());
       }
   }

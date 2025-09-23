@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-ComponentVersion::ComponentVersion() : 
-    m_componentTypeHasBeenSet(false),
-    m_versionsHasBeenSet(false)
-{
-}
-
-ComponentVersion::ComponentVersion(JsonView jsonValue) : 
-    m_componentTypeHasBeenSet(false),
-    m_versionsHasBeenSet(false)
+ComponentVersion::ComponentVersion(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ComponentVersion& ComponentVersion::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("componentType"))
   {
     m_componentType = jsonValue.GetString("componentType");
-
     m_componentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("versions"))
   {
     Aws::Utils::Array<JsonView> versionsJsonList = jsonValue.GetArray("versions");
@@ -49,7 +39,6 @@ ComponentVersion& ComponentVersion::operator =(JsonView jsonValue)
     }
     m_versionsHasBeenSet = true;
   }
-
   return *this;
 }
 

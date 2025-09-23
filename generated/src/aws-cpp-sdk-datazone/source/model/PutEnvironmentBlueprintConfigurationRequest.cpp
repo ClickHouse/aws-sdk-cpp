@@ -12,16 +12,6 @@ using namespace Aws::DataZone::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutEnvironmentBlueprintConfigurationRequest::PutEnvironmentBlueprintConfigurationRequest() : 
-    m_domainIdentifierHasBeenSet(false),
-    m_enabledRegionsHasBeenSet(false),
-    m_environmentBlueprintIdentifierHasBeenSet(false),
-    m_manageAccessRoleArnHasBeenSet(false),
-    m_provisioningRoleArnHasBeenSet(false),
-    m_regionalParametersHasBeenSet(false)
-{
-}
-
 Aws::String PutEnvironmentBlueprintConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -37,9 +27,37 @@ Aws::String PutEnvironmentBlueprintConfigurationRequest::SerializePayload() cons
 
   }
 
+  if(m_environmentRolePermissionBoundaryHasBeenSet)
+  {
+   payload.WithString("environmentRolePermissionBoundary", m_environmentRolePermissionBoundary);
+
+  }
+
+  if(m_globalParametersHasBeenSet)
+  {
+   JsonValue globalParametersJsonMap;
+   for(auto& globalParametersItem : m_globalParameters)
+   {
+     globalParametersJsonMap.WithString(globalParametersItem.first, globalParametersItem.second);
+   }
+   payload.WithObject("globalParameters", std::move(globalParametersJsonMap));
+
+  }
+
   if(m_manageAccessRoleArnHasBeenSet)
   {
    payload.WithString("manageAccessRoleArn", m_manageAccessRoleArn);
+
+  }
+
+  if(m_provisioningConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> provisioningConfigurationsJsonList(m_provisioningConfigurations.size());
+   for(unsigned provisioningConfigurationsIndex = 0; provisioningConfigurationsIndex < provisioningConfigurationsJsonList.GetLength(); ++provisioningConfigurationsIndex)
+   {
+     provisioningConfigurationsJsonList[provisioningConfigurationsIndex].AsObject(m_provisioningConfigurations[provisioningConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("provisioningConfigurations", std::move(provisioningConfigurationsJsonList));
 
   }
 

@@ -32,328 +32,139 @@ namespace Model
 {
 
   /**
-   * <p>The authentication event type.</p><p><h3>See Also:</h3>   <a
+   * <p>One authentication event that Amazon Cognito logged in a user pool with
+   * threat protection active. Contains user and device metadata and a risk
+   * assessment from your user pool.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AuthEventType">AWS
    * API Reference</a></p>
    */
   class AuthEventType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API AuthEventType();
+    AWS_COGNITOIDENTITYPROVIDER_API AuthEventType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API AuthEventType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API AuthEventType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The event ID.</p>
      */
-    inline const Aws::String& GetEventId() const{ return m_eventId; }
-
-    /**
-     * <p>The event ID.</p>
-     */
+    inline const Aws::String& GetEventId() const { return m_eventId; }
     inline bool EventIdHasBeenSet() const { return m_eventIdHasBeenSet; }
+    template<typename EventIdT = Aws::String>
+    void SetEventId(EventIdT&& value) { m_eventIdHasBeenSet = true; m_eventId = std::forward<EventIdT>(value); }
+    template<typename EventIdT = Aws::String>
+    AuthEventType& WithEventId(EventIdT&& value) { SetEventId(std::forward<EventIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The event ID.</p>
+     * <p>The type of authentication event.</p>
      */
-    inline void SetEventId(const Aws::String& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline void SetEventId(const char* value) { m_eventIdHasBeenSet = true; m_eventId.assign(value); }
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline AuthEventType& WithEventId(const Aws::String& value) { SetEventId(value); return *this;}
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline AuthEventType& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
-
-    /**
-     * <p>The event ID.</p>
-     */
-    inline AuthEventType& WithEventId(const char* value) { SetEventId(value); return *this;}
-
-
-    /**
-     * <p>The event type.</p>
-     */
-    inline const EventType& GetEventType() const{ return m_eventType; }
-
-    /**
-     * <p>The event type.</p>
-     */
+    inline EventType GetEventType() const { return m_eventType; }
     inline bool EventTypeHasBeenSet() const { return m_eventTypeHasBeenSet; }
+    inline void SetEventType(EventType value) { m_eventTypeHasBeenSet = true; m_eventType = value; }
+    inline AuthEventType& WithEventType(EventType value) { SetEventType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The event type.</p>
+     * <p>The date and time when the item was created. Amazon Cognito returns this
+     * timestamp in UNIX epoch time format. Your SDK might render the output in a
+     * human-readable format like ISO 8601 or a Java <code>Date</code> object.</p>
      */
-    inline void SetEventType(const EventType& value) { m_eventTypeHasBeenSet = true; m_eventType = value; }
-
-    /**
-     * <p>The event type.</p>
-     */
-    inline void SetEventType(EventType&& value) { m_eventTypeHasBeenSet = true; m_eventType = std::move(value); }
-
-    /**
-     * <p>The event type.</p>
-     */
-    inline AuthEventType& WithEventType(const EventType& value) { SetEventType(value); return *this;}
-
-    /**
-     * <p>The event type.</p>
-     */
-    inline AuthEventType& WithEventType(EventType&& value) { SetEventType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The date and time, in <a
-     * href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a>
-     * format, when the item was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The date and time, in <a
-     * href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a>
-     * format, when the item was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    AuthEventType& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in <a
-     * href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a>
-     * format, when the item was created.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The date and time, in <a
-     * href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a>
-     * format, when the item was created.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The date and time, in <a
-     * href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a>
-     * format, when the item was created.</p>
-     */
-    inline AuthEventType& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The date and time, in <a
-     * href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a>
-     * format, when the item was created.</p>
-     */
-    inline AuthEventType& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The event response.</p>
      */
-    inline const EventResponseType& GetEventResponse() const{ return m_eventResponse; }
-
-    /**
-     * <p>The event response.</p>
-     */
+    inline EventResponseType GetEventResponse() const { return m_eventResponse; }
     inline bool EventResponseHasBeenSet() const { return m_eventResponseHasBeenSet; }
+    inline void SetEventResponse(EventResponseType value) { m_eventResponseHasBeenSet = true; m_eventResponse = value; }
+    inline AuthEventType& WithEventResponse(EventResponseType value) { SetEventResponse(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The event response.</p>
+     * <p>The threat evaluation from your user pool about an event. Contains
+     * information about whether your user pool detected compromised credentials,
+     * whether the event triggered an automated response, and the level of risk.</p>
      */
-    inline void SetEventResponse(const EventResponseType& value) { m_eventResponseHasBeenSet = true; m_eventResponse = value; }
-
-    /**
-     * <p>The event response.</p>
-     */
-    inline void SetEventResponse(EventResponseType&& value) { m_eventResponseHasBeenSet = true; m_eventResponse = std::move(value); }
-
-    /**
-     * <p>The event response.</p>
-     */
-    inline AuthEventType& WithEventResponse(const EventResponseType& value) { SetEventResponse(value); return *this;}
-
-    /**
-     * <p>The event response.</p>
-     */
-    inline AuthEventType& WithEventResponse(EventResponseType&& value) { SetEventResponse(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The event risk.</p>
-     */
-    inline const EventRiskType& GetEventRisk() const{ return m_eventRisk; }
-
-    /**
-     * <p>The event risk.</p>
-     */
+    inline const EventRiskType& GetEventRisk() const { return m_eventRisk; }
     inline bool EventRiskHasBeenSet() const { return m_eventRiskHasBeenSet; }
+    template<typename EventRiskT = EventRiskType>
+    void SetEventRisk(EventRiskT&& value) { m_eventRiskHasBeenSet = true; m_eventRisk = std::forward<EventRiskT>(value); }
+    template<typename EventRiskT = EventRiskType>
+    AuthEventType& WithEventRisk(EventRiskT&& value) { SetEventRisk(std::forward<EventRiskT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The event risk.</p>
+     * <p>A list of the challenges that the user was requested to answer, for example
+     * <code>Password</code>, and the result, for example <code>Success</code>.</p>
      */
-    inline void SetEventRisk(const EventRiskType& value) { m_eventRiskHasBeenSet = true; m_eventRisk = value; }
-
-    /**
-     * <p>The event risk.</p>
-     */
-    inline void SetEventRisk(EventRiskType&& value) { m_eventRiskHasBeenSet = true; m_eventRisk = std::move(value); }
-
-    /**
-     * <p>The event risk.</p>
-     */
-    inline AuthEventType& WithEventRisk(const EventRiskType& value) { SetEventRisk(value); return *this;}
-
-    /**
-     * <p>The event risk.</p>
-     */
-    inline AuthEventType& WithEventRisk(EventRiskType&& value) { SetEventRisk(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline const Aws::Vector<ChallengeResponseType>& GetChallengeResponses() const{ return m_challengeResponses; }
-
-    /**
-     * <p>The challenge responses.</p>
-     */
+    inline const Aws::Vector<ChallengeResponseType>& GetChallengeResponses() const { return m_challengeResponses; }
     inline bool ChallengeResponsesHasBeenSet() const { return m_challengeResponsesHasBeenSet; }
+    template<typename ChallengeResponsesT = Aws::Vector<ChallengeResponseType>>
+    void SetChallengeResponses(ChallengeResponsesT&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses = std::forward<ChallengeResponsesT>(value); }
+    template<typename ChallengeResponsesT = Aws::Vector<ChallengeResponseType>>
+    AuthEventType& WithChallengeResponses(ChallengeResponsesT&& value) { SetChallengeResponses(std::forward<ChallengeResponsesT>(value)); return *this;}
+    template<typename ChallengeResponsesT = ChallengeResponseType>
+    AuthEventType& AddChallengeResponses(ChallengeResponsesT&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace_back(std::forward<ChallengeResponsesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline void SetChallengeResponses(const Aws::Vector<ChallengeResponseType>& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses = value; }
-
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline void SetChallengeResponses(Aws::Vector<ChallengeResponseType>&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses = std::move(value); }
-
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline AuthEventType& WithChallengeResponses(const Aws::Vector<ChallengeResponseType>& value) { SetChallengeResponses(value); return *this;}
-
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline AuthEventType& WithChallengeResponses(Aws::Vector<ChallengeResponseType>&& value) { SetChallengeResponses(std::move(value)); return *this;}
-
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline AuthEventType& AddChallengeResponses(const ChallengeResponseType& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.push_back(value); return *this; }
-
-    /**
-     * <p>The challenge responses.</p>
-     */
-    inline AuthEventType& AddChallengeResponses(ChallengeResponseType&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The user context data captured at the time of an event request. This value
      * provides additional information about the client from which event the request is
      * received.</p>
      */
-    inline const EventContextDataType& GetEventContextData() const{ return m_eventContextData; }
-
-    /**
-     * <p>The user context data captured at the time of an event request. This value
-     * provides additional information about the client from which event the request is
-     * received.</p>
-     */
+    inline const EventContextDataType& GetEventContextData() const { return m_eventContextData; }
     inline bool EventContextDataHasBeenSet() const { return m_eventContextDataHasBeenSet; }
+    template<typename EventContextDataT = EventContextDataType>
+    void SetEventContextData(EventContextDataT&& value) { m_eventContextDataHasBeenSet = true; m_eventContextData = std::forward<EventContextDataT>(value); }
+    template<typename EventContextDataT = EventContextDataType>
+    AuthEventType& WithEventContextData(EventContextDataT&& value) { SetEventContextData(std::forward<EventContextDataT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user context data captured at the time of an event request. This value
-     * provides additional information about the client from which event the request is
-     * received.</p>
+     * <p>The <code>UpdateAuthEventFeedback</code> or
+     * <code>AdminUpdateAuthEventFeedback</code> feedback that you or your user
+     * provided in response to the event. A value of <code>Valid</code> indicates that
+     * you disagreed with the level of risk that your user pool assigned, and evaluated
+     * a session to be valid, or likely safe. A value of <code>Invalid</code> indicates
+     * that you agreed with the user pool risk level and evaluated a session to be
+     * invalid, or likely malicious.</p>
      */
-    inline void SetEventContextData(const EventContextDataType& value) { m_eventContextDataHasBeenSet = true; m_eventContextData = value; }
-
-    /**
-     * <p>The user context data captured at the time of an event request. This value
-     * provides additional information about the client from which event the request is
-     * received.</p>
-     */
-    inline void SetEventContextData(EventContextDataType&& value) { m_eventContextDataHasBeenSet = true; m_eventContextData = std::move(value); }
-
-    /**
-     * <p>The user context data captured at the time of an event request. This value
-     * provides additional information about the client from which event the request is
-     * received.</p>
-     */
-    inline AuthEventType& WithEventContextData(const EventContextDataType& value) { SetEventContextData(value); return *this;}
-
-    /**
-     * <p>The user context data captured at the time of an event request. This value
-     * provides additional information about the client from which event the request is
-     * received.</p>
-     */
-    inline AuthEventType& WithEventContextData(EventContextDataType&& value) { SetEventContextData(std::move(value)); return *this;}
-
-
-    /**
-     * <p>A flag specifying the user feedback captured at the time of an event request
-     * is good or bad. </p>
-     */
-    inline const EventFeedbackType& GetEventFeedback() const{ return m_eventFeedback; }
-
-    /**
-     * <p>A flag specifying the user feedback captured at the time of an event request
-     * is good or bad. </p>
-     */
+    inline const EventFeedbackType& GetEventFeedback() const { return m_eventFeedback; }
     inline bool EventFeedbackHasBeenSet() const { return m_eventFeedbackHasBeenSet; }
-
-    /**
-     * <p>A flag specifying the user feedback captured at the time of an event request
-     * is good or bad. </p>
-     */
-    inline void SetEventFeedback(const EventFeedbackType& value) { m_eventFeedbackHasBeenSet = true; m_eventFeedback = value; }
-
-    /**
-     * <p>A flag specifying the user feedback captured at the time of an event request
-     * is good or bad. </p>
-     */
-    inline void SetEventFeedback(EventFeedbackType&& value) { m_eventFeedbackHasBeenSet = true; m_eventFeedback = std::move(value); }
-
-    /**
-     * <p>A flag specifying the user feedback captured at the time of an event request
-     * is good or bad. </p>
-     */
-    inline AuthEventType& WithEventFeedback(const EventFeedbackType& value) { SetEventFeedback(value); return *this;}
-
-    /**
-     * <p>A flag specifying the user feedback captured at the time of an event request
-     * is good or bad. </p>
-     */
-    inline AuthEventType& WithEventFeedback(EventFeedbackType&& value) { SetEventFeedback(std::move(value)); return *this;}
-
+    template<typename EventFeedbackT = EventFeedbackType>
+    void SetEventFeedback(EventFeedbackT&& value) { m_eventFeedbackHasBeenSet = true; m_eventFeedback = std::forward<EventFeedbackT>(value); }
+    template<typename EventFeedbackT = EventFeedbackType>
+    AuthEventType& WithEventFeedback(EventFeedbackT&& value) { SetEventFeedback(std::forward<EventFeedbackT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_eventId;
     bool m_eventIdHasBeenSet = false;
 
-    EventType m_eventType;
+    EventType m_eventType{EventType::NOT_SET};
     bool m_eventTypeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
-    EventResponseType m_eventResponse;
+    EventResponseType m_eventResponse{EventResponseType::NOT_SET};
     bool m_eventResponseHasBeenSet = false;
 
     EventRiskType m_eventRisk;

@@ -34,91 +34,51 @@ namespace Model
   class ListApplicationsResult
   {
   public:
-    AWS_KINESISANALYTICS_API ListApplicationsResult();
+    AWS_KINESISANALYTICS_API ListApplicationsResult() = default;
     AWS_KINESISANALYTICS_API ListApplicationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KINESISANALYTICS_API ListApplicationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>List of <code>ApplicationSummary</code> objects. </p>
      */
-    inline const Aws::Vector<ApplicationSummary>& GetApplicationSummaries() const{ return m_applicationSummaries; }
+    inline const Aws::Vector<ApplicationSummary>& GetApplicationSummaries() const { return m_applicationSummaries; }
+    template<typename ApplicationSummariesT = Aws::Vector<ApplicationSummary>>
+    void SetApplicationSummaries(ApplicationSummariesT&& value) { m_applicationSummariesHasBeenSet = true; m_applicationSummaries = std::forward<ApplicationSummariesT>(value); }
+    template<typename ApplicationSummariesT = Aws::Vector<ApplicationSummary>>
+    ListApplicationsResult& WithApplicationSummaries(ApplicationSummariesT&& value) { SetApplicationSummaries(std::forward<ApplicationSummariesT>(value)); return *this;}
+    template<typename ApplicationSummariesT = ApplicationSummary>
+    ListApplicationsResult& AddApplicationSummaries(ApplicationSummariesT&& value) { m_applicationSummariesHasBeenSet = true; m_applicationSummaries.emplace_back(std::forward<ApplicationSummariesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of <code>ApplicationSummary</code> objects. </p>
-     */
-    inline void SetApplicationSummaries(const Aws::Vector<ApplicationSummary>& value) { m_applicationSummaries = value; }
-
-    /**
-     * <p>List of <code>ApplicationSummary</code> objects. </p>
-     */
-    inline void SetApplicationSummaries(Aws::Vector<ApplicationSummary>&& value) { m_applicationSummaries = std::move(value); }
-
-    /**
-     * <p>List of <code>ApplicationSummary</code> objects. </p>
-     */
-    inline ListApplicationsResult& WithApplicationSummaries(const Aws::Vector<ApplicationSummary>& value) { SetApplicationSummaries(value); return *this;}
-
-    /**
-     * <p>List of <code>ApplicationSummary</code> objects. </p>
-     */
-    inline ListApplicationsResult& WithApplicationSummaries(Aws::Vector<ApplicationSummary>&& value) { SetApplicationSummaries(std::move(value)); return *this;}
-
-    /**
-     * <p>List of <code>ApplicationSummary</code> objects. </p>
-     */
-    inline ListApplicationsResult& AddApplicationSummaries(const ApplicationSummary& value) { m_applicationSummaries.push_back(value); return *this; }
-
-    /**
-     * <p>List of <code>ApplicationSummary</code> objects. </p>
-     */
-    inline ListApplicationsResult& AddApplicationSummaries(ApplicationSummary&& value) { m_applicationSummaries.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Returns true if there are more applications to retrieve.</p>
      */
-    inline bool GetHasMoreApplications() const{ return m_hasMoreApplications; }
-
-    /**
-     * <p>Returns true if there are more applications to retrieve.</p>
-     */
-    inline void SetHasMoreApplications(bool value) { m_hasMoreApplications = value; }
-
-    /**
-     * <p>Returns true if there are more applications to retrieve.</p>
-     */
+    inline bool GetHasMoreApplications() const { return m_hasMoreApplications; }
+    inline void SetHasMoreApplications(bool value) { m_hasMoreApplicationsHasBeenSet = true; m_hasMoreApplications = value; }
     inline ListApplicationsResult& WithHasMoreApplications(bool value) { SetHasMoreApplications(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListApplicationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListApplicationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListApplicationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListApplicationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ApplicationSummary> m_applicationSummaries;
+    bool m_applicationSummariesHasBeenSet = false;
 
-    bool m_hasMoreApplications;
+    bool m_hasMoreApplications{false};
+    bool m_hasMoreApplicationsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

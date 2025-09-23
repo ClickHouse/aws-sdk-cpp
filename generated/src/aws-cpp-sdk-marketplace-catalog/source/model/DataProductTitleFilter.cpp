@@ -18,15 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-DataProductTitleFilter::DataProductTitleFilter() : 
-    m_valueListHasBeenSet(false),
-    m_wildCardValueHasBeenSet(false)
-{
-}
-
-DataProductTitleFilter::DataProductTitleFilter(JsonView jsonValue) : 
-    m_valueListHasBeenSet(false),
-    m_wildCardValueHasBeenSet(false)
+DataProductTitleFilter::DataProductTitleFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ DataProductTitleFilter& DataProductTitleFilter::operator =(JsonView jsonValue)
     }
     m_valueListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WildCardValue"))
   {
     m_wildCardValue = jsonValue.GetString("WildCardValue");
-
     m_wildCardValueHasBeenSet = true;
   }
-
   return *this;
 }
 

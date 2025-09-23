@@ -18,19 +18,7 @@ namespace ConnectCases
 namespace Model
 {
 
-SearchCasesResponseItem::SearchCasesResponseItem() : 
-    m_caseIdHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_templateIdHasBeenSet(false)
-{
-}
-
-SearchCasesResponseItem::SearchCasesResponseItem(JsonView jsonValue) : 
-    m_caseIdHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_templateIdHasBeenSet(false)
+SearchCasesResponseItem::SearchCasesResponseItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ SearchCasesResponseItem& SearchCasesResponseItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("caseId"))
   {
     m_caseId = jsonValue.GetString("caseId");
-
     m_caseIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fields"))
   {
     Aws::Utils::Array<JsonView> fieldsJsonList = jsonValue.GetArray("fields");
@@ -53,7 +39,6 @@ SearchCasesResponseItem& SearchCasesResponseItem::operator =(JsonView jsonValue)
     }
     m_fieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -63,14 +48,11 @@ SearchCasesResponseItem& SearchCasesResponseItem::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("templateId"))
   {
     m_templateId = jsonValue.GetString("templateId");
-
     m_templateIdHasBeenSet = true;
   }
-
   return *this;
 }
 

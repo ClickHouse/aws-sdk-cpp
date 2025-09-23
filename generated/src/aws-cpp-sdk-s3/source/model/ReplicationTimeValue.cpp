@@ -20,15 +20,7 @@ namespace S3
 namespace Model
 {
 
-ReplicationTimeValue::ReplicationTimeValue() : 
-    m_minutes(0),
-    m_minutesHasBeenSet(false)
-{
-}
-
-ReplicationTimeValue::ReplicationTimeValue(const XmlNode& xmlNode) : 
-    m_minutes(0),
-    m_minutesHasBeenSet(false)
+ReplicationTimeValue::ReplicationTimeValue(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

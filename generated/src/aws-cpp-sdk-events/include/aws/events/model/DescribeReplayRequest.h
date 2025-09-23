@@ -21,7 +21,7 @@ namespace Model
   class DescribeReplayRequest : public CloudWatchEventsRequest
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API DescribeReplayRequest();
+    AWS_CLOUDWATCHEVENTS_API DescribeReplayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CLOUDWATCHEVENTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the replay to retrieve.</p>
      */
-    inline const Aws::String& GetReplayName() const{ return m_replayName; }
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
+    inline const Aws::String& GetReplayName() const { return m_replayName; }
     inline bool ReplayNameHasBeenSet() const { return m_replayNameHasBeenSet; }
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
-    inline void SetReplayName(const Aws::String& value) { m_replayNameHasBeenSet = true; m_replayName = value; }
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
-    inline void SetReplayName(Aws::String&& value) { m_replayNameHasBeenSet = true; m_replayName = std::move(value); }
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
-    inline void SetReplayName(const char* value) { m_replayNameHasBeenSet = true; m_replayName.assign(value); }
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
-    inline DescribeReplayRequest& WithReplayName(const Aws::String& value) { SetReplayName(value); return *this;}
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
-    inline DescribeReplayRequest& WithReplayName(Aws::String&& value) { SetReplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the replay to retrieve.</p>
-     */
-    inline DescribeReplayRequest& WithReplayName(const char* value) { SetReplayName(value); return *this;}
-
+    template<typename ReplayNameT = Aws::String>
+    void SetReplayName(ReplayNameT&& value) { m_replayNameHasBeenSet = true; m_replayName = std::forward<ReplayNameT>(value); }
+    template<typename ReplayNameT = Aws::String>
+    DescribeReplayRequest& WithReplayName(ReplayNameT&& value) { SetReplayName(std::forward<ReplayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_replayName;

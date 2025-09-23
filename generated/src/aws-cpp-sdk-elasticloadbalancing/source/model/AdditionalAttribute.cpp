@@ -20,15 +20,7 @@ namespace ElasticLoadBalancing
 namespace Model
 {
 
-AdditionalAttribute::AdditionalAttribute() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-AdditionalAttribute::AdditionalAttribute(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+AdditionalAttribute::AdditionalAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

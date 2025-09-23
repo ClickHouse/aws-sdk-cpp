@@ -18,15 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-VectorEnrichmentJobConfig::VectorEnrichmentJobConfig() : 
-    m_mapMatchingConfigHasBeenSet(false),
-    m_reverseGeocodingConfigHasBeenSet(false)
-{
-}
-
-VectorEnrichmentJobConfig::VectorEnrichmentJobConfig(JsonView jsonValue) : 
-    m_mapMatchingConfigHasBeenSet(false),
-    m_reverseGeocodingConfigHasBeenSet(false)
+VectorEnrichmentJobConfig::VectorEnrichmentJobConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ VectorEnrichmentJobConfig& VectorEnrichmentJobConfig::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("MapMatchingConfig"))
   {
     m_mapMatchingConfig = jsonValue.GetObject("MapMatchingConfig");
-
     m_mapMatchingConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ReverseGeocodingConfig"))
   {
     m_reverseGeocodingConfig = jsonValue.GetObject("ReverseGeocodingConfig");
-
     m_reverseGeocodingConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

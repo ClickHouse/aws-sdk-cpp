@@ -26,7 +26,7 @@ namespace Model
   class UpdatePipelineNotificationsRequest : public ElasticTranscoderRequest
   {
   public:
-    AWS_ELASTICTRANSCODER_API UpdatePipelineNotificationsRequest();
+    AWS_ELASTICTRANSCODER_API UpdatePipelineNotificationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,55 +37,20 @@ namespace Model
     AWS_ELASTICTRANSCODER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the pipeline for which you want to change notification
      * settings.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdatePipelineNotificationsRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
-    inline UpdatePipelineNotificationsRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
-    inline UpdatePipelineNotificationsRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the pipeline for which you want to change notification
-     * settings.</p>
-     */
-    inline UpdatePipelineNotificationsRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic
      * that you want to notify to report job status.</p>  <p>To receive
@@ -104,108 +69,13 @@ namespace Model
      * when Elastic Transcoder encounters an error condition. This is the ARN that
      * Amazon SNS returned when you created the topic.</p> </li> </ul>
      */
-    inline const Notifications& GetNotifications() const{ return m_notifications; }
-
-    /**
-     * <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic
-     * that you want to notify to report job status.</p>  <p>To receive
-     * notifications, you must also subscribe to the new topic in the Amazon SNS
-     * console.</p>  <ul> <li> <p> <b>Progressing</b>: The topic ARN for
-     * the Amazon Simple Notification Service (Amazon SNS) topic that you want to
-     * notify when Elastic Transcoder has started to process jobs that are added to
-     * this pipeline. This is the ARN that Amazon SNS returned when you created the
-     * topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS
-     * topic that you want to notify when Elastic Transcoder has finished processing a
-     * job. This is the ARN that Amazon SNS returned when you created the topic.</p>
-     * </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you
-     * want to notify when Elastic Transcoder encounters a warning condition. This is
-     * the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p>
-     * <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify
-     * when Elastic Transcoder encounters an error condition. This is the ARN that
-     * Amazon SNS returned when you created the topic.</p> </li> </ul>
-     */
+    inline const Notifications& GetNotifications() const { return m_notifications; }
     inline bool NotificationsHasBeenSet() const { return m_notificationsHasBeenSet; }
-
-    /**
-     * <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic
-     * that you want to notify to report job status.</p>  <p>To receive
-     * notifications, you must also subscribe to the new topic in the Amazon SNS
-     * console.</p>  <ul> <li> <p> <b>Progressing</b>: The topic ARN for
-     * the Amazon Simple Notification Service (Amazon SNS) topic that you want to
-     * notify when Elastic Transcoder has started to process jobs that are added to
-     * this pipeline. This is the ARN that Amazon SNS returned when you created the
-     * topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS
-     * topic that you want to notify when Elastic Transcoder has finished processing a
-     * job. This is the ARN that Amazon SNS returned when you created the topic.</p>
-     * </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you
-     * want to notify when Elastic Transcoder encounters a warning condition. This is
-     * the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p>
-     * <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify
-     * when Elastic Transcoder encounters an error condition. This is the ARN that
-     * Amazon SNS returned when you created the topic.</p> </li> </ul>
-     */
-    inline void SetNotifications(const Notifications& value) { m_notificationsHasBeenSet = true; m_notifications = value; }
-
-    /**
-     * <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic
-     * that you want to notify to report job status.</p>  <p>To receive
-     * notifications, you must also subscribe to the new topic in the Amazon SNS
-     * console.</p>  <ul> <li> <p> <b>Progressing</b>: The topic ARN for
-     * the Amazon Simple Notification Service (Amazon SNS) topic that you want to
-     * notify when Elastic Transcoder has started to process jobs that are added to
-     * this pipeline. This is the ARN that Amazon SNS returned when you created the
-     * topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS
-     * topic that you want to notify when Elastic Transcoder has finished processing a
-     * job. This is the ARN that Amazon SNS returned when you created the topic.</p>
-     * </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you
-     * want to notify when Elastic Transcoder encounters a warning condition. This is
-     * the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p>
-     * <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify
-     * when Elastic Transcoder encounters an error condition. This is the ARN that
-     * Amazon SNS returned when you created the topic.</p> </li> </ul>
-     */
-    inline void SetNotifications(Notifications&& value) { m_notificationsHasBeenSet = true; m_notifications = std::move(value); }
-
-    /**
-     * <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic
-     * that you want to notify to report job status.</p>  <p>To receive
-     * notifications, you must also subscribe to the new topic in the Amazon SNS
-     * console.</p>  <ul> <li> <p> <b>Progressing</b>: The topic ARN for
-     * the Amazon Simple Notification Service (Amazon SNS) topic that you want to
-     * notify when Elastic Transcoder has started to process jobs that are added to
-     * this pipeline. This is the ARN that Amazon SNS returned when you created the
-     * topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS
-     * topic that you want to notify when Elastic Transcoder has finished processing a
-     * job. This is the ARN that Amazon SNS returned when you created the topic.</p>
-     * </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you
-     * want to notify when Elastic Transcoder encounters a warning condition. This is
-     * the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p>
-     * <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify
-     * when Elastic Transcoder encounters an error condition. This is the ARN that
-     * Amazon SNS returned when you created the topic.</p> </li> </ul>
-     */
-    inline UpdatePipelineNotificationsRequest& WithNotifications(const Notifications& value) { SetNotifications(value); return *this;}
-
-    /**
-     * <p>The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic
-     * that you want to notify to report job status.</p>  <p>To receive
-     * notifications, you must also subscribe to the new topic in the Amazon SNS
-     * console.</p>  <ul> <li> <p> <b>Progressing</b>: The topic ARN for
-     * the Amazon Simple Notification Service (Amazon SNS) topic that you want to
-     * notify when Elastic Transcoder has started to process jobs that are added to
-     * this pipeline. This is the ARN that Amazon SNS returned when you created the
-     * topic.</p> </li> <li> <p> <b>Complete</b>: The topic ARN for the Amazon SNS
-     * topic that you want to notify when Elastic Transcoder has finished processing a
-     * job. This is the ARN that Amazon SNS returned when you created the topic.</p>
-     * </li> <li> <p> <b>Warning</b>: The topic ARN for the Amazon SNS topic that you
-     * want to notify when Elastic Transcoder encounters a warning condition. This is
-     * the ARN that Amazon SNS returned when you created the topic.</p> </li> <li> <p>
-     * <b>Error</b>: The topic ARN for the Amazon SNS topic that you want to notify
-     * when Elastic Transcoder encounters an error condition. This is the ARN that
-     * Amazon SNS returned when you created the topic.</p> </li> </ul>
-     */
-    inline UpdatePipelineNotificationsRequest& WithNotifications(Notifications&& value) { SetNotifications(std::move(value)); return *this;}
-
+    template<typename NotificationsT = Notifications>
+    void SetNotifications(NotificationsT&& value) { m_notificationsHasBeenSet = true; m_notifications = std::forward<NotificationsT>(value); }
+    template<typename NotificationsT = Notifications>
+    UpdatePipelineNotificationsRequest& WithNotifications(NotificationsT&& value) { SetNotifications(std::forward<NotificationsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

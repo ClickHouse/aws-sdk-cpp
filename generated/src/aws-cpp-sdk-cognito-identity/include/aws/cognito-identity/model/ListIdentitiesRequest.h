@@ -24,7 +24,7 @@ namespace Model
   class ListIdentitiesRequest : public CognitoIdentityRequest
   {
   public:
-    AWS_COGNITOIDENTITY_API ListIdentitiesRequest();
+    AWS_COGNITOIDENTITY_API ListIdentitiesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,149 +37,63 @@ namespace Model
     AWS_COGNITOIDENTITY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
      */
-    inline const Aws::String& GetIdentityPoolId() const{ return m_identityPoolId; }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
+    inline const Aws::String& GetIdentityPoolId() const { return m_identityPoolId; }
     inline bool IdentityPoolIdHasBeenSet() const { return m_identityPoolIdHasBeenSet; }
+    template<typename IdentityPoolIdT = Aws::String>
+    void SetIdentityPoolId(IdentityPoolIdT&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::forward<IdentityPoolIdT>(value); }
+    template<typename IdentityPoolIdT = Aws::String>
+    ListIdentitiesRequest& WithIdentityPoolId(IdentityPoolIdT&& value) { SetIdentityPoolId(std::forward<IdentityPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityPoolId(const Aws::String& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityPoolId(const char* value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId.assign(value); }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline ListIdentitiesRequest& WithIdentityPoolId(const Aws::String& value) { SetIdentityPoolId(value); return *this;}
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline ListIdentitiesRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline ListIdentitiesRequest& WithIdentityPoolId(const char* value) { SetIdentityPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of identities to return.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of identities to return.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of identities to return.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of identities to return.</p>
-     */
     inline ListIdentitiesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListIdentitiesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline ListIdentitiesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline ListIdentitiesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token.</p>
-     */
-    inline ListIdentitiesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional boolean parameter that allows you to hide disabled identities. If
      * omitted, the ListIdentities API will include disabled identities in the
      * response.</p>
      */
-    inline bool GetHideDisabled() const{ return m_hideDisabled; }
-
-    /**
-     * <p>An optional boolean parameter that allows you to hide disabled identities. If
-     * omitted, the ListIdentities API will include disabled identities in the
-     * response.</p>
-     */
+    inline bool GetHideDisabled() const { return m_hideDisabled; }
     inline bool HideDisabledHasBeenSet() const { return m_hideDisabledHasBeenSet; }
-
-    /**
-     * <p>An optional boolean parameter that allows you to hide disabled identities. If
-     * omitted, the ListIdentities API will include disabled identities in the
-     * response.</p>
-     */
     inline void SetHideDisabled(bool value) { m_hideDisabledHasBeenSet = true; m_hideDisabled = value; }
-
-    /**
-     * <p>An optional boolean parameter that allows you to hide disabled identities. If
-     * omitted, the ListIdentities API will include disabled identities in the
-     * response.</p>
-     */
     inline ListIdentitiesRequest& WithHideDisabled(bool value) { SetHideDisabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_identityPoolId;
     bool m_identityPoolIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    bool m_hideDisabled;
+    bool m_hideDisabled{false};
     bool m_hideDisabledHasBeenSet = false;
   };
 

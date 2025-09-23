@@ -18,17 +18,7 @@ namespace PinpointEmail
 namespace Model
 {
 
-DeliveryOptions::DeliveryOptions() : 
-    m_tlsPolicy(TlsPolicy::NOT_SET),
-    m_tlsPolicyHasBeenSet(false),
-    m_sendingPoolNameHasBeenSet(false)
-{
-}
-
-DeliveryOptions::DeliveryOptions(JsonView jsonValue) : 
-    m_tlsPolicy(TlsPolicy::NOT_SET),
-    m_tlsPolicyHasBeenSet(false),
-    m_sendingPoolNameHasBeenSet(false)
+DeliveryOptions::DeliveryOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DeliveryOptions& DeliveryOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TlsPolicy"))
   {
     m_tlsPolicy = TlsPolicyMapper::GetTlsPolicyForName(jsonValue.GetString("TlsPolicy"));
-
     m_tlsPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SendingPoolName"))
   {
     m_sendingPoolName = jsonValue.GetString("SendingPoolName");
-
     m_sendingPoolNameHasBeenSet = true;
   }
-
   return *this;
 }
 

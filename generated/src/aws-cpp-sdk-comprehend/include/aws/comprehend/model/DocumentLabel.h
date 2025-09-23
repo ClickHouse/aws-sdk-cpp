@@ -32,111 +32,54 @@ namespace Model
   class DocumentLabel
   {
   public:
-    AWS_COMPREHEND_API DocumentLabel();
+    AWS_COMPREHEND_API DocumentLabel() = default;
     AWS_COMPREHEND_API DocumentLabel(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API DocumentLabel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the label.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the label.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DocumentLabel& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the label.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the label.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the label.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the label.</p>
-     */
-    inline DocumentLabel& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the label.</p>
-     */
-    inline DocumentLabel& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the label.</p>
-     */
-    inline DocumentLabel& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The confidence score that Amazon Comprehend has this label correctly
      * attributed.</p>
      */
-    inline double GetScore() const{ return m_score; }
-
-    /**
-     * <p>The confidence score that Amazon Comprehend has this label correctly
-     * attributed.</p>
-     */
+    inline double GetScore() const { return m_score; }
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
-
-    /**
-     * <p>The confidence score that Amazon Comprehend has this label correctly
-     * attributed.</p>
-     */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
-
-    /**
-     * <p>The confidence score that Amazon Comprehend has this label correctly
-     * attributed.</p>
-     */
     inline DocumentLabel& WithScore(double value) { SetScore(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Page number where the label occurs. This field is present in the response
      * only if your request includes the <code>Byte</code> parameter. </p>
      */
-    inline int GetPage() const{ return m_page; }
-
-    /**
-     * <p>Page number where the label occurs. This field is present in the response
-     * only if your request includes the <code>Byte</code> parameter. </p>
-     */
+    inline int GetPage() const { return m_page; }
     inline bool PageHasBeenSet() const { return m_pageHasBeenSet; }
-
-    /**
-     * <p>Page number where the label occurs. This field is present in the response
-     * only if your request includes the <code>Byte</code> parameter. </p>
-     */
     inline void SetPage(int value) { m_pageHasBeenSet = true; m_page = value; }
-
-    /**
-     * <p>Page number where the label occurs. This field is present in the response
-     * only if your request includes the <code>Byte</code> parameter. </p>
-     */
     inline DocumentLabel& WithPage(int value) { SetPage(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    double m_score;
+    double m_score{0.0};
     bool m_scoreHasBeenSet = false;
 
-    int m_page;
+    int m_page{0};
     bool m_pageHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-CreateBackendAuthMFAConfig::CreateBackendAuthMFAConfig() : 
-    m_mFAMode(MFAMode::NOT_SET),
-    m_mFAModeHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
-CreateBackendAuthMFAConfig::CreateBackendAuthMFAConfig(JsonView jsonValue) : 
-    m_mFAMode(MFAMode::NOT_SET),
-    m_mFAModeHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+CreateBackendAuthMFAConfig::CreateBackendAuthMFAConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CreateBackendAuthMFAConfig& CreateBackendAuthMFAConfig::operator =(JsonView json
   if(jsonValue.ValueExists("MFAMode"))
   {
     m_mFAMode = MFAModeMapper::GetMFAModeForName(jsonValue.GetString("MFAMode"));
-
     m_mFAModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("settings"))
   {
     m_settings = jsonValue.GetObject("settings");
-
     m_settingsHasBeenSet = true;
   }
-
   return *this;
 }
 

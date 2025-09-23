@@ -21,7 +21,7 @@ namespace Model
   class ResetJobBookmarkRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API ResetJobBookmarkRequest();
+    AWS_GLUE_API ResetJobBookmarkRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the job in question.</p>
      */
-    inline const Aws::String& GetJobName() const{ return m_jobName; }
-
-    /**
-     * <p>The name of the job in question.</p>
-     */
+    inline const Aws::String& GetJobName() const { return m_jobName; }
     inline bool JobNameHasBeenSet() const { return m_jobNameHasBeenSet; }
+    template<typename JobNameT = Aws::String>
+    void SetJobName(JobNameT&& value) { m_jobNameHasBeenSet = true; m_jobName = std::forward<JobNameT>(value); }
+    template<typename JobNameT = Aws::String>
+    ResetJobBookmarkRequest& WithJobName(JobNameT&& value) { SetJobName(std::forward<JobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the job in question.</p>
-     */
-    inline void SetJobName(const Aws::String& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
-
-    /**
-     * <p>The name of the job in question.</p>
-     */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
-
-    /**
-     * <p>The name of the job in question.</p>
-     */
-    inline void SetJobName(const char* value) { m_jobNameHasBeenSet = true; m_jobName.assign(value); }
-
-    /**
-     * <p>The name of the job in question.</p>
-     */
-    inline ResetJobBookmarkRequest& WithJobName(const Aws::String& value) { SetJobName(value); return *this;}
-
-    /**
-     * <p>The name of the job in question.</p>
-     */
-    inline ResetJobBookmarkRequest& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the job in question.</p>
-     */
-    inline ResetJobBookmarkRequest& WithJobName(const char* value) { SetJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique run identifier associated with this job run.</p>
      */
-    inline const Aws::String& GetRunId() const{ return m_runId; }
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
+    inline const Aws::String& GetRunId() const { return m_runId; }
     inline bool RunIdHasBeenSet() const { return m_runIdHasBeenSet; }
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
-    inline void SetRunId(const Aws::String& value) { m_runIdHasBeenSet = true; m_runId = value; }
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
-    inline void SetRunId(const char* value) { m_runIdHasBeenSet = true; m_runId.assign(value); }
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
-    inline ResetJobBookmarkRequest& WithRunId(const Aws::String& value) { SetRunId(value); return *this;}
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
-    inline ResetJobBookmarkRequest& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique run identifier associated with this job run.</p>
-     */
-    inline ResetJobBookmarkRequest& WithRunId(const char* value) { SetRunId(value); return *this;}
-
+    template<typename RunIdT = Aws::String>
+    void SetRunId(RunIdT&& value) { m_runIdHasBeenSet = true; m_runId = std::forward<RunIdT>(value); }
+    template<typename RunIdT = Aws::String>
+    ResetJobBookmarkRequest& WithRunId(RunIdT&& value) { SetRunId(std::forward<RunIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobName;

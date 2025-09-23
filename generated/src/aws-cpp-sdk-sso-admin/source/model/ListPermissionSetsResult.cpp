@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListPermissionSetsResult::ListPermissionSetsResult()
-{
-}
-
 ListPermissionSetsResult::ListPermissionSetsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListPermissionSetsResult::ListPermissionSetsResult(const Aws::AmazonWebServiceRe
 ListPermissionSetsResult& ListPermissionSetsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("NextToken"))
-  {
-    m_nextToken = jsonValue.GetString("NextToken");
-
-  }
-
   if(jsonValue.ValueExists("PermissionSets"))
   {
     Aws::Utils::Array<JsonView> permissionSetsJsonList = jsonValue.GetArray("PermissionSets");
@@ -42,14 +32,20 @@ ListPermissionSetsResult& ListPermissionSetsResult::operator =(const Aws::Amazon
     {
       m_permissionSets.push_back(permissionSetsJsonList[permissionSetsIndex].AsString());
     }
+    m_permissionSetsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("NextToken"))
+  {
+    m_nextToken = jsonValue.GetString("NextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

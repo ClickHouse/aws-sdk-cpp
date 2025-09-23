@@ -34,118 +34,54 @@ namespace Model
   class ListGroundStationsResult
   {
   public:
-    AWS_GROUNDSTATION_API ListGroundStationsResult();
+    AWS_GROUNDSTATION_API ListGroundStationsResult() = default;
     AWS_GROUNDSTATION_API ListGroundStationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GROUNDSTATION_API ListGroundStationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>List of ground stations.</p>
      */
-    inline const Aws::Vector<GroundStationData>& GetGroundStationList() const{ return m_groundStationList; }
+    inline const Aws::Vector<GroundStationData>& GetGroundStationList() const { return m_groundStationList; }
+    template<typename GroundStationListT = Aws::Vector<GroundStationData>>
+    void SetGroundStationList(GroundStationListT&& value) { m_groundStationListHasBeenSet = true; m_groundStationList = std::forward<GroundStationListT>(value); }
+    template<typename GroundStationListT = Aws::Vector<GroundStationData>>
+    ListGroundStationsResult& WithGroundStationList(GroundStationListT&& value) { SetGroundStationList(std::forward<GroundStationListT>(value)); return *this;}
+    template<typename GroundStationListT = GroundStationData>
+    ListGroundStationsResult& AddGroundStationList(GroundStationListT&& value) { m_groundStationListHasBeenSet = true; m_groundStationList.emplace_back(std::forward<GroundStationListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of ground stations.</p>
-     */
-    inline void SetGroundStationList(const Aws::Vector<GroundStationData>& value) { m_groundStationList = value; }
-
-    /**
-     * <p>List of ground stations.</p>
-     */
-    inline void SetGroundStationList(Aws::Vector<GroundStationData>&& value) { m_groundStationList = std::move(value); }
-
-    /**
-     * <p>List of ground stations.</p>
-     */
-    inline ListGroundStationsResult& WithGroundStationList(const Aws::Vector<GroundStationData>& value) { SetGroundStationList(value); return *this;}
-
-    /**
-     * <p>List of ground stations.</p>
-     */
-    inline ListGroundStationsResult& WithGroundStationList(Aws::Vector<GroundStationData>&& value) { SetGroundStationList(std::move(value)); return *this;}
-
-    /**
-     * <p>List of ground stations.</p>
-     */
-    inline ListGroundStationsResult& AddGroundStationList(const GroundStationData& value) { m_groundStationList.push_back(value); return *this; }
-
-    /**
-     * <p>List of ground stations.</p>
-     */
-    inline ListGroundStationsResult& AddGroundStationList(GroundStationData&& value) { m_groundStationList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Next token that can be supplied in the next call to get the next page of
      * ground stations.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListGroundStationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Next token that can be supplied in the next call to get the next page of
-     * ground stations.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>Next token that can be supplied in the next call to get the next page of
-     * ground stations.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>Next token that can be supplied in the next call to get the next page of
-     * ground stations.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>Next token that can be supplied in the next call to get the next page of
-     * ground stations.</p>
-     */
-    inline ListGroundStationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Next token that can be supplied in the next call to get the next page of
-     * ground stations.</p>
-     */
-    inline ListGroundStationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Next token that can be supplied in the next call to get the next page of
-     * ground stations.</p>
-     */
-    inline ListGroundStationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListGroundStationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListGroundStationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListGroundStationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListGroundStationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<GroundStationData> m_groundStationList;
+    bool m_groundStationListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

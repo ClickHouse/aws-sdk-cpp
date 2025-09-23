@@ -25,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p>A structure of time range that you want to search results</p><p><h3>See
+   * <p>A structure of time range that you want to search results.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08/SearchContactsTimeRange">AWS
    * API Reference</a></p>
@@ -33,113 +33,54 @@ namespace Model
   class SearchContactsTimeRange
   {
   public:
-    AWS_CONNECT_API SearchContactsTimeRange();
+    AWS_CONNECT_API SearchContactsTimeRange() = default;
     AWS_CONNECT_API SearchContactsTimeRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API SearchContactsTimeRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The type of timestamp to search</p>
+     * <p>The type of timestamp to search.</p>
      */
-    inline const SearchContactsTimeRangeType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of timestamp to search</p>
-     */
+    inline SearchContactsTimeRangeType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(SearchContactsTimeRangeType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline SearchContactsTimeRange& WithType(SearchContactsTimeRangeType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of timestamp to search</p>
-     */
-    inline void SetType(const SearchContactsTimeRangeType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of timestamp to search</p>
-     */
-    inline void SetType(SearchContactsTimeRangeType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of timestamp to search</p>
-     */
-    inline SearchContactsTimeRange& WithType(const SearchContactsTimeRangeType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of timestamp to search</p>
-     */
-    inline SearchContactsTimeRange& WithType(SearchContactsTimeRangeType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The start time of the time range.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The start time of the time range.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    SearchContactsTimeRange& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The start time of the time range.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The start time of the time range.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The start time of the time range.</p>
-     */
-    inline SearchContactsTimeRange& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The start time of the time range.</p>
-     */
-    inline SearchContactsTimeRange& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The end time of the time range.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The end time of the time range.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
-
-    /**
-     * <p>The end time of the time range.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The end time of the time range.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The end time of the time range.</p>
-     */
-    inline SearchContactsTimeRange& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The end time of the time range.</p>
-     */
-    inline SearchContactsTimeRange& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    SearchContactsTimeRange& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    SearchContactsTimeRangeType m_type;
+    SearchContactsTimeRangeType m_type{SearchContactsTimeRangeType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
   };
 

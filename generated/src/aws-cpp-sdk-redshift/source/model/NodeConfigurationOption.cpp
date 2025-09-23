@@ -20,25 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-NodeConfigurationOption::NodeConfigurationOption() : 
-    m_nodeTypeHasBeenSet(false),
-    m_numberOfNodes(0),
-    m_numberOfNodesHasBeenSet(false),
-    m_estimatedDiskUtilizationPercent(0.0),
-    m_estimatedDiskUtilizationPercentHasBeenSet(false),
-    m_mode(Mode::NOT_SET),
-    m_modeHasBeenSet(false)
-{
-}
-
-NodeConfigurationOption::NodeConfigurationOption(const XmlNode& xmlNode) : 
-    m_nodeTypeHasBeenSet(false),
-    m_numberOfNodes(0),
-    m_numberOfNodesHasBeenSet(false),
-    m_estimatedDiskUtilizationPercent(0.0),
-    m_estimatedDiskUtilizationPercentHasBeenSet(false),
-    m_mode(Mode::NOT_SET),
-    m_modeHasBeenSet(false)
+NodeConfigurationOption::NodeConfigurationOption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -70,7 +52,7 @@ NodeConfigurationOption& NodeConfigurationOption::operator =(const XmlNode& xmlN
     XmlNode modeNode = resultNode.FirstChild("Mode");
     if(!modeNode.IsNull())
     {
-      m_mode = ModeMapper::GetModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(modeNode.GetText()).c_str()).c_str());
+      m_mode = ModeMapper::GetModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(modeNode.GetText()).c_str()));
       m_modeHasBeenSet = true;
     }
   }
@@ -97,7 +79,7 @@ void NodeConfigurationOption::OutputToStream(Aws::OStream& oStream, const char* 
 
   if(m_modeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Mode=" << ModeMapper::GetNameForMode(m_mode) << "&";
+      oStream << location << index << locationValue << ".Mode=" << StringUtils::URLEncode(ModeMapper::GetNameForMode(m_mode)) << "&";
   }
 
 }
@@ -114,11 +96,11 @@ void NodeConfigurationOption::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_estimatedDiskUtilizationPercentHasBeenSet)
   {
-        oStream << location << ".EstimatedDiskUtilizationPercent=" << StringUtils::URLEncode(m_estimatedDiskUtilizationPercent) << "&";
+      oStream << location << ".EstimatedDiskUtilizationPercent=" << StringUtils::URLEncode(m_estimatedDiskUtilizationPercent) << "&";
   }
   if(m_modeHasBeenSet)
   {
-      oStream << location << ".Mode=" << ModeMapper::GetNameForMode(m_mode) << "&";
+      oStream << location << ".Mode=" << StringUtils::URLEncode(ModeMapper::GetNameForMode(m_mode)) << "&";
   }
 }
 

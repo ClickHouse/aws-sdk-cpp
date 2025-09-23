@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceMaintenanceOptionsRequest::InstanceMaintenanceOptionsRequest() : 
-    m_autoRecovery(InstanceAutoRecoveryState::NOT_SET),
-    m_autoRecoveryHasBeenSet(false)
-{
-}
-
-InstanceMaintenanceOptionsRequest::InstanceMaintenanceOptionsRequest(const XmlNode& xmlNode) : 
-    m_autoRecovery(InstanceAutoRecoveryState::NOT_SET),
-    m_autoRecoveryHasBeenSet(false)
+InstanceMaintenanceOptionsRequest::InstanceMaintenanceOptionsRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ InstanceMaintenanceOptionsRequest& InstanceMaintenanceOptionsRequest::operator =
     XmlNode autoRecoveryNode = resultNode.FirstChild("AutoRecovery");
     if(!autoRecoveryNode.IsNull())
     {
-      m_autoRecovery = InstanceAutoRecoveryStateMapper::GetInstanceAutoRecoveryStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(autoRecoveryNode.GetText()).c_str()).c_str());
+      m_autoRecovery = InstanceAutoRecoveryStateMapper::GetInstanceAutoRecoveryStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(autoRecoveryNode.GetText()).c_str()));
       m_autoRecoveryHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void InstanceMaintenanceOptionsRequest::OutputToStream(Aws::OStream& oStream, co
 {
   if(m_autoRecoveryHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutoRecovery=" << InstanceAutoRecoveryStateMapper::GetNameForInstanceAutoRecoveryState(m_autoRecovery) << "&";
+      oStream << location << index << locationValue << ".AutoRecovery=" << StringUtils::URLEncode(InstanceAutoRecoveryStateMapper::GetNameForInstanceAutoRecoveryState(m_autoRecovery)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void InstanceMaintenanceOptionsRequest::OutputToStream(Aws::OStream& oStream, co
 {
   if(m_autoRecoveryHasBeenSet)
   {
-      oStream << location << ".AutoRecovery=" << InstanceAutoRecoveryStateMapper::GetNameForInstanceAutoRecoveryState(m_autoRecovery) << "&";
+      oStream << location << ".AutoRecovery=" << StringUtils::URLEncode(InstanceAutoRecoveryStateMapper::GetNameForInstanceAutoRecoveryState(m_autoRecovery)) << "&";
   }
 }
 

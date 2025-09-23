@@ -20,47 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FpgaImage::FpgaImage() : 
-    m_fpgaImageIdHasBeenSet(false),
-    m_fpgaImageGlobalIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_shellVersionHasBeenSet(false),
-    m_pciIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_ownerAliasHasBeenSet(false),
-    m_productCodesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_public(false),
-    m_publicHasBeenSet(false),
-    m_dataRetentionSupport(false),
-    m_dataRetentionSupportHasBeenSet(false),
-    m_instanceTypesHasBeenSet(false)
-{
-}
-
-FpgaImage::FpgaImage(const XmlNode& xmlNode) : 
-    m_fpgaImageIdHasBeenSet(false),
-    m_fpgaImageGlobalIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_shellVersionHasBeenSet(false),
-    m_pciIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_ownerAliasHasBeenSet(false),
-    m_productCodesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_public(false),
-    m_publicHasBeenSet(false),
-    m_dataRetentionSupport(false),
-    m_dataRetentionSupportHasBeenSet(false),
-    m_instanceTypesHasBeenSet(false)
+FpgaImage::FpgaImage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -141,6 +101,7 @@ FpgaImage& FpgaImage::operator =(const XmlNode& xmlNode)
     if(!productCodesNode.IsNull())
     {
       XmlNode productCodesMember = productCodesNode.FirstChild("item");
+      m_productCodesHasBeenSet = !productCodesMember.IsNull();
       while(!productCodesMember.IsNull())
       {
         m_productCodes.push_back(productCodesMember);
@@ -153,6 +114,7 @@ FpgaImage& FpgaImage::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -177,6 +139,7 @@ FpgaImage& FpgaImage::operator =(const XmlNode& xmlNode)
     if(!instanceTypesNode.IsNull())
     {
       XmlNode instanceTypesMember = instanceTypesNode.FirstChild("item");
+      m_instanceTypesHasBeenSet = !instanceTypesMember.IsNull();
       while(!instanceTypesMember.IsNull())
       {
         m_instanceTypes.push_back(instanceTypesMember.GetText());
@@ -350,7 +313,7 @@ void FpgaImage::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_productCodes)
       {
         Aws::StringStream productCodesSs;
-        productCodesSs << location <<  ".ProductCodes." << productCodesIdx++;
+        productCodesSs << location << ".ProductCodes." << productCodesIdx++;
         item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }
@@ -360,7 +323,7 @@ void FpgaImage::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tags." << tagsIdx++;
+        tagsSs << location << ".Tags." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

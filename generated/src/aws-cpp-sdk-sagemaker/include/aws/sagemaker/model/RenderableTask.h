@@ -31,12 +31,13 @@ namespace Model
   class RenderableTask
   {
   public:
-    AWS_SAGEMAKER_API RenderableTask();
+    AWS_SAGEMAKER_API RenderableTask() = default;
     AWS_SAGEMAKER_API RenderableTask(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API RenderableTask& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A JSON object that contains values for the variables defined in the template.
      * It is made available to the template under the substitution variable
@@ -44,71 +45,13 @@ namespace Model
      * <code>task.input.text</code> in your template, you can supply the variable in
      * the JSON object as <code>"text": "sample text"</code>.</p>
      */
-    inline const Aws::String& GetInput() const{ return m_input; }
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
+    inline const Aws::String& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
-    inline void SetInput(const Aws::String& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
-    inline void SetInput(const char* value) { m_inputHasBeenSet = true; m_input.assign(value); }
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
-    inline RenderableTask& WithInput(const Aws::String& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
-    inline RenderableTask& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
-
-    /**
-     * <p>A JSON object that contains values for the variables defined in the template.
-     * It is made available to the template under the substitution variable
-     * <code>task.input</code>. For example, if you define a variable
-     * <code>task.input.text</code> in your template, you can supply the variable in
-     * the JSON object as <code>"text": "sample text"</code>.</p>
-     */
-    inline RenderableTask& WithInput(const char* value) { SetInput(value); return *this;}
-
+    template<typename InputT = Aws::String>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = Aws::String>
+    RenderableTask& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_input;

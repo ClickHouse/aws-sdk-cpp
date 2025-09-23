@@ -18,15 +18,7 @@ namespace FMS
 namespace Model
 {
 
-NetworkFirewallPolicy::NetworkFirewallPolicy() : 
-    m_firewallDeploymentModel(FirewallDeploymentModel::NOT_SET),
-    m_firewallDeploymentModelHasBeenSet(false)
-{
-}
-
-NetworkFirewallPolicy::NetworkFirewallPolicy(JsonView jsonValue) : 
-    m_firewallDeploymentModel(FirewallDeploymentModel::NOT_SET),
-    m_firewallDeploymentModelHasBeenSet(false)
+NetworkFirewallPolicy::NetworkFirewallPolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NetworkFirewallPolicy& NetworkFirewallPolicy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FirewallDeploymentModel"))
   {
     m_firewallDeploymentModel = FirewallDeploymentModelMapper::GetFirewallDeploymentModelForName(jsonValue.GetString("FirewallDeploymentModel"));
-
     m_firewallDeploymentModelHasBeenSet = true;
   }
-
   return *this;
 }
 

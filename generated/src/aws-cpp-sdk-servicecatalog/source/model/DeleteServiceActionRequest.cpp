@@ -12,12 +12,6 @@ using namespace Aws::ServiceCatalog::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteServiceActionRequest::DeleteServiceActionRequest() : 
-    m_idHasBeenSet(false),
-    m_acceptLanguageHasBeenSet(false)
-{
-}
-
 Aws::String DeleteServiceActionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String DeleteServiceActionRequest::SerializePayload() const
   if(m_acceptLanguageHasBeenSet)
   {
    payload.WithString("AcceptLanguage", m_acceptLanguage);
+
+  }
+
+  if(m_idempotencyTokenHasBeenSet)
+  {
+   payload.WithString("IdempotencyToken", m_idempotencyToken);
 
   }
 

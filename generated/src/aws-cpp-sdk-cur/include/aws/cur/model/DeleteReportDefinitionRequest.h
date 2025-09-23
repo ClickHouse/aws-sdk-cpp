@@ -24,7 +24,7 @@ namespace Model
   class DeleteReportDefinitionRequest : public CostandUsageReportServiceRequest
   {
   public:
-    AWS_COSTANDUSAGEREPORTSERVICE_API DeleteReportDefinitionRequest();
+    AWS_COSTANDUSAGEREPORTSERVICE_API DeleteReportDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,54 +37,18 @@ namespace Model
     AWS_COSTANDUSAGEREPORTSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the report that you want to delete. The name must be unique, is
      * case sensitive, and can't include spaces.</p>
      */
-    inline const Aws::String& GetReportName() const{ return m_reportName; }
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
+    inline const Aws::String& GetReportName() const { return m_reportName; }
     inline bool ReportNameHasBeenSet() const { return m_reportNameHasBeenSet; }
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
-    inline void SetReportName(const Aws::String& value) { m_reportNameHasBeenSet = true; m_reportName = value; }
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
-    inline void SetReportName(Aws::String&& value) { m_reportNameHasBeenSet = true; m_reportName = std::move(value); }
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
-    inline void SetReportName(const char* value) { m_reportNameHasBeenSet = true; m_reportName.assign(value); }
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
-    inline DeleteReportDefinitionRequest& WithReportName(const Aws::String& value) { SetReportName(value); return *this;}
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
-    inline DeleteReportDefinitionRequest& WithReportName(Aws::String&& value) { SetReportName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the report that you want to delete. The name must be unique, is
-     * case sensitive, and can't include spaces.</p>
-     */
-    inline DeleteReportDefinitionRequest& WithReportName(const char* value) { SetReportName(value); return *this;}
-
+    template<typename ReportNameT = Aws::String>
+    void SetReportName(ReportNameT&& value) { m_reportNameHasBeenSet = true; m_reportName = std::forward<ReportNameT>(value); }
+    template<typename ReportNameT = Aws::String>
+    DeleteReportDefinitionRequest& WithReportName(ReportNameT&& value) { SetReportName(std::forward<ReportNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reportName;

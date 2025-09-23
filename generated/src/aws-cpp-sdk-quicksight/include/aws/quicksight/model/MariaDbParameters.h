@@ -31,120 +31,51 @@ namespace Model
   class MariaDbParameters
   {
   public:
-    AWS_QUICKSIGHT_API MariaDbParameters();
+    AWS_QUICKSIGHT_API MariaDbParameters() = default;
     AWS_QUICKSIGHT_API MariaDbParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API MariaDbParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Host.</p>
      */
-    inline const Aws::String& GetHost() const{ return m_host; }
-
-    /**
-     * <p>Host.</p>
-     */
+    inline const Aws::String& GetHost() const { return m_host; }
     inline bool HostHasBeenSet() const { return m_hostHasBeenSet; }
+    template<typename HostT = Aws::String>
+    void SetHost(HostT&& value) { m_hostHasBeenSet = true; m_host = std::forward<HostT>(value); }
+    template<typename HostT = Aws::String>
+    MariaDbParameters& WithHost(HostT&& value) { SetHost(std::forward<HostT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Host.</p>
-     */
-    inline void SetHost(const Aws::String& value) { m_hostHasBeenSet = true; m_host = value; }
-
-    /**
-     * <p>Host.</p>
-     */
-    inline void SetHost(Aws::String&& value) { m_hostHasBeenSet = true; m_host = std::move(value); }
-
-    /**
-     * <p>Host.</p>
-     */
-    inline void SetHost(const char* value) { m_hostHasBeenSet = true; m_host.assign(value); }
-
-    /**
-     * <p>Host.</p>
-     */
-    inline MariaDbParameters& WithHost(const Aws::String& value) { SetHost(value); return *this;}
-
-    /**
-     * <p>Host.</p>
-     */
-    inline MariaDbParameters& WithHost(Aws::String&& value) { SetHost(std::move(value)); return *this;}
-
-    /**
-     * <p>Host.</p>
-     */
-    inline MariaDbParameters& WithHost(const char* value) { SetHost(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Port.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>Port.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>Port.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>Port.</p>
-     */
     inline MariaDbParameters& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Database.</p>
      */
-    inline const Aws::String& GetDatabase() const{ return m_database; }
-
-    /**
-     * <p>Database.</p>
-     */
+    inline const Aws::String& GetDatabase() const { return m_database; }
     inline bool DatabaseHasBeenSet() const { return m_databaseHasBeenSet; }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline void SetDatabase(const Aws::String& value) { m_databaseHasBeenSet = true; m_database = value; }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline void SetDatabase(Aws::String&& value) { m_databaseHasBeenSet = true; m_database = std::move(value); }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline void SetDatabase(const char* value) { m_databaseHasBeenSet = true; m_database.assign(value); }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline MariaDbParameters& WithDatabase(const Aws::String& value) { SetDatabase(value); return *this;}
-
-    /**
-     * <p>Database.</p>
-     */
-    inline MariaDbParameters& WithDatabase(Aws::String&& value) { SetDatabase(std::move(value)); return *this;}
-
-    /**
-     * <p>Database.</p>
-     */
-    inline MariaDbParameters& WithDatabase(const char* value) { SetDatabase(value); return *this;}
-
+    template<typename DatabaseT = Aws::String>
+    void SetDatabase(DatabaseT&& value) { m_databaseHasBeenSet = true; m_database = std::forward<DatabaseT>(value); }
+    template<typename DatabaseT = Aws::String>
+    MariaDbParameters& WithDatabase(DatabaseT&& value) { SetDatabase(std::forward<DatabaseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_host;
     bool m_hostHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
     Aws::String m_database;

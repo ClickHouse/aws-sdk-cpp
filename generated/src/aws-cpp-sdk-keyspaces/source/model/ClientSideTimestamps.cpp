@@ -18,15 +18,7 @@ namespace Keyspaces
 namespace Model
 {
 
-ClientSideTimestamps::ClientSideTimestamps() : 
-    m_status(ClientSideTimestampsStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ClientSideTimestamps::ClientSideTimestamps(JsonView jsonValue) : 
-    m_status(ClientSideTimestampsStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ClientSideTimestamps::ClientSideTimestamps(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ClientSideTimestamps& ClientSideTimestamps::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = ClientSideTimestampsStatusMapper::GetClientSideTimestampsStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

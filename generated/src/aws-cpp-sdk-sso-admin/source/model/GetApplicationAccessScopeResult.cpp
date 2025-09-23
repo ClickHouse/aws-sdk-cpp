@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetApplicationAccessScopeResult::GetApplicationAccessScopeResult()
-{
-}
-
 GetApplicationAccessScopeResult::GetApplicationAccessScopeResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,6 +25,11 @@ GetApplicationAccessScopeResult::GetApplicationAccessScopeResult(const Aws::Amaz
 GetApplicationAccessScopeResult& GetApplicationAccessScopeResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("Scope"))
+  {
+    m_scope = jsonValue.GetString("Scope");
+    m_scopeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("AuthorizedTargets"))
   {
     Aws::Utils::Array<JsonView> authorizedTargetsJsonList = jsonValue.GetArray("AuthorizedTargets");
@@ -36,20 +37,15 @@ GetApplicationAccessScopeResult& GetApplicationAccessScopeResult::operator =(con
     {
       m_authorizedTargets.push_back(authorizedTargetsJsonList[authorizedTargetsIndex].AsString());
     }
+    m_authorizedTargetsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Scope"))
-  {
-    m_scope = jsonValue.GetString("Scope");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

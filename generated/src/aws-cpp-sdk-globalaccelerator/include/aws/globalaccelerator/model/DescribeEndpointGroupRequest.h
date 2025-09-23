@@ -21,7 +21,7 @@ namespace Model
   class DescribeEndpointGroupRequest : public GlobalAcceleratorRequest
   {
   public:
-    AWS_GLOBALACCELERATOR_API DescribeEndpointGroupRequest();
+    AWS_GLOBALACCELERATOR_API DescribeEndpointGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_GLOBALACCELERATOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
      */
-    inline const Aws::String& GetEndpointGroupArn() const{ return m_endpointGroupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
+    inline const Aws::String& GetEndpointGroupArn() const { return m_endpointGroupArn; }
     inline bool EndpointGroupArnHasBeenSet() const { return m_endpointGroupArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
-    inline void SetEndpointGroupArn(const Aws::String& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
-    inline void SetEndpointGroupArn(Aws::String&& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
-    inline void SetEndpointGroupArn(const char* value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
-    inline DescribeEndpointGroupRequest& WithEndpointGroupArn(const Aws::String& value) { SetEndpointGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
-    inline DescribeEndpointGroupRequest& WithEndpointGroupArn(Aws::String&& value) { SetEndpointGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to describe.</p>
-     */
-    inline DescribeEndpointGroupRequest& WithEndpointGroupArn(const char* value) { SetEndpointGroupArn(value); return *this;}
-
+    template<typename EndpointGroupArnT = Aws::String>
+    void SetEndpointGroupArn(EndpointGroupArnT&& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = std::forward<EndpointGroupArnT>(value); }
+    template<typename EndpointGroupArnT = Aws::String>
+    DescribeEndpointGroupRequest& WithEndpointGroupArn(EndpointGroupArnT&& value) { SetEndpointGroupArn(std::forward<EndpointGroupArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointGroupArn;

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2LaunchTemplateDataMonitoringDetails::AwsEc2LaunchTemplateDataMonitoringDetails() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-AwsEc2LaunchTemplateDataMonitoringDetails::AwsEc2LaunchTemplateDataMonitoringDetails(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+AwsEc2LaunchTemplateDataMonitoringDetails::AwsEc2LaunchTemplateDataMonitoringDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsEc2LaunchTemplateDataMonitoringDetails& AwsEc2LaunchTemplateDataMonitoringDet
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

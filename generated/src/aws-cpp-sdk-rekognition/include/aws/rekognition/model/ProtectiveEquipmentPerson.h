@@ -35,141 +35,60 @@ namespace Model
   class ProtectiveEquipmentPerson
   {
   public:
-    AWS_REKOGNITION_API ProtectiveEquipmentPerson();
+    AWS_REKOGNITION_API ProtectiveEquipmentPerson() = default;
     AWS_REKOGNITION_API ProtectiveEquipmentPerson(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API ProtectiveEquipmentPerson& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of body parts detected on a person's body (including body parts
      * without PPE). </p>
      */
-    inline const Aws::Vector<ProtectiveEquipmentBodyPart>& GetBodyParts() const{ return m_bodyParts; }
-
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
+    inline const Aws::Vector<ProtectiveEquipmentBodyPart>& GetBodyParts() const { return m_bodyParts; }
     inline bool BodyPartsHasBeenSet() const { return m_bodyPartsHasBeenSet; }
+    template<typename BodyPartsT = Aws::Vector<ProtectiveEquipmentBodyPart>>
+    void SetBodyParts(BodyPartsT&& value) { m_bodyPartsHasBeenSet = true; m_bodyParts = std::forward<BodyPartsT>(value); }
+    template<typename BodyPartsT = Aws::Vector<ProtectiveEquipmentBodyPart>>
+    ProtectiveEquipmentPerson& WithBodyParts(BodyPartsT&& value) { SetBodyParts(std::forward<BodyPartsT>(value)); return *this;}
+    template<typename BodyPartsT = ProtectiveEquipmentBodyPart>
+    ProtectiveEquipmentPerson& AddBodyParts(BodyPartsT&& value) { m_bodyPartsHasBeenSet = true; m_bodyParts.emplace_back(std::forward<BodyPartsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
-    inline void SetBodyParts(const Aws::Vector<ProtectiveEquipmentBodyPart>& value) { m_bodyPartsHasBeenSet = true; m_bodyParts = value; }
-
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
-    inline void SetBodyParts(Aws::Vector<ProtectiveEquipmentBodyPart>&& value) { m_bodyPartsHasBeenSet = true; m_bodyParts = std::move(value); }
-
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
-    inline ProtectiveEquipmentPerson& WithBodyParts(const Aws::Vector<ProtectiveEquipmentBodyPart>& value) { SetBodyParts(value); return *this;}
-
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
-    inline ProtectiveEquipmentPerson& WithBodyParts(Aws::Vector<ProtectiveEquipmentBodyPart>&& value) { SetBodyParts(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
-    inline ProtectiveEquipmentPerson& AddBodyParts(const ProtectiveEquipmentBodyPart& value) { m_bodyPartsHasBeenSet = true; m_bodyParts.push_back(value); return *this; }
-
-    /**
-     * <p>An array of body parts detected on a person's body (including body parts
-     * without PPE). </p>
-     */
-    inline ProtectiveEquipmentPerson& AddBodyParts(ProtectiveEquipmentBodyPart&& value) { m_bodyPartsHasBeenSet = true; m_bodyParts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A bounding box around the detected person.</p>
      */
-    inline const BoundingBox& GetBoundingBox() const{ return m_boundingBox; }
-
-    /**
-     * <p>A bounding box around the detected person.</p>
-     */
+    inline const BoundingBox& GetBoundingBox() const { return m_boundingBox; }
     inline bool BoundingBoxHasBeenSet() const { return m_boundingBoxHasBeenSet; }
+    template<typename BoundingBoxT = BoundingBox>
+    void SetBoundingBox(BoundingBoxT&& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = std::forward<BoundingBoxT>(value); }
+    template<typename BoundingBoxT = BoundingBox>
+    ProtectiveEquipmentPerson& WithBoundingBox(BoundingBoxT&& value) { SetBoundingBox(std::forward<BoundingBoxT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A bounding box around the detected person.</p>
-     */
-    inline void SetBoundingBox(const BoundingBox& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = value; }
-
-    /**
-     * <p>A bounding box around the detected person.</p>
-     */
-    inline void SetBoundingBox(BoundingBox&& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = std::move(value); }
-
-    /**
-     * <p>A bounding box around the detected person.</p>
-     */
-    inline ProtectiveEquipmentPerson& WithBoundingBox(const BoundingBox& value) { SetBoundingBox(value); return *this;}
-
-    /**
-     * <p>A bounding box around the detected person.</p>
-     */
-    inline ProtectiveEquipmentPerson& WithBoundingBox(BoundingBox&& value) { SetBoundingBox(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The confidence that Amazon Rekognition has that the bounding box contains a
      * person.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition has that the bounding box contains a
-     * person.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition has that the bounding box contains a
-     * person.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition has that the bounding box contains a
-     * person.</p>
-     */
     inline ProtectiveEquipmentPerson& WithConfidence(double value) { SetConfidence(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The identifier for the detected person. The identifier is only unique for a
      * single call to <code>DetectProtectiveEquipment</code>.</p>
      */
-    inline int GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier for the detected person. The identifier is only unique for a
-     * single call to <code>DetectProtectiveEquipment</code>.</p>
-     */
+    inline int GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>The identifier for the detected person. The identifier is only unique for a
-     * single call to <code>DetectProtectiveEquipment</code>.</p>
-     */
     inline void SetId(int value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier for the detected person. The identifier is only unique for a
-     * single call to <code>DetectProtectiveEquipment</code>.</p>
-     */
     inline ProtectiveEquipmentPerson& WithId(int value) { SetId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<ProtectiveEquipmentBodyPart> m_bodyParts;
@@ -178,10 +97,10 @@ namespace Model
     BoundingBox m_boundingBox;
     bool m_boundingBoxHasBeenSet = false;
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
 
-    int m_id;
+    int m_id{0};
     bool m_idHasBeenSet = false;
   };
 

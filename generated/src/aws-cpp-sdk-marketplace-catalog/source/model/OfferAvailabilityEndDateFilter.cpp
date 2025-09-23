@@ -18,13 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-OfferAvailabilityEndDateFilter::OfferAvailabilityEndDateFilter() : 
-    m_dateRangeHasBeenSet(false)
-{
-}
-
-OfferAvailabilityEndDateFilter::OfferAvailabilityEndDateFilter(JsonView jsonValue) : 
-    m_dateRangeHasBeenSet(false)
+OfferAvailabilityEndDateFilter::OfferAvailabilityEndDateFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ OfferAvailabilityEndDateFilter& OfferAvailabilityEndDateFilter::operator =(JsonV
   if(jsonValue.ValueExists("DateRange"))
   {
     m_dateRange = jsonValue.GetObject("DateRange");
-
     m_dateRangeHasBeenSet = true;
   }
-
   return *this;
 }
 

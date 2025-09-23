@@ -24,7 +24,7 @@ namespace Model
   class StopReplicationRequest : public DatabaseMigrationServiceRequest
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API StopReplicationRequest();
+    AWS_DATABASEMIGRATIONSERVICE_API StopReplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,46 +37,17 @@ namespace Model
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name of the replication to stop.</p>
      */
-    inline const Aws::String& GetReplicationConfigArn() const{ return m_replicationConfigArn; }
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
+    inline const Aws::String& GetReplicationConfigArn() const { return m_replicationConfigArn; }
     inline bool ReplicationConfigArnHasBeenSet() const { return m_replicationConfigArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
-    inline void SetReplicationConfigArn(const Aws::String& value) { m_replicationConfigArnHasBeenSet = true; m_replicationConfigArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
-    inline void SetReplicationConfigArn(Aws::String&& value) { m_replicationConfigArnHasBeenSet = true; m_replicationConfigArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
-    inline void SetReplicationConfigArn(const char* value) { m_replicationConfigArnHasBeenSet = true; m_replicationConfigArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
-    inline StopReplicationRequest& WithReplicationConfigArn(const Aws::String& value) { SetReplicationConfigArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
-    inline StopReplicationRequest& WithReplicationConfigArn(Aws::String&& value) { SetReplicationConfigArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the replication to stop.</p>
-     */
-    inline StopReplicationRequest& WithReplicationConfigArn(const char* value) { SetReplicationConfigArn(value); return *this;}
-
+    template<typename ReplicationConfigArnT = Aws::String>
+    void SetReplicationConfigArn(ReplicationConfigArnT&& value) { m_replicationConfigArnHasBeenSet = true; m_replicationConfigArn = std::forward<ReplicationConfigArnT>(value); }
+    template<typename ReplicationConfigArnT = Aws::String>
+    StopReplicationRequest& WithReplicationConfigArn(ReplicationConfigArnT&& value) { SetReplicationConfigArn(std::forward<ReplicationConfigArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_replicationConfigArn;

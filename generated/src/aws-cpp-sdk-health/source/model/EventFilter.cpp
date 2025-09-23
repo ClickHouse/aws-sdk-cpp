@@ -18,37 +18,7 @@ namespace Health
 namespace Model
 {
 
-EventFilter::EventFilter() : 
-    m_eventArnsHasBeenSet(false),
-    m_eventTypeCodesHasBeenSet(false),
-    m_servicesHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_startTimesHasBeenSet(false),
-    m_endTimesHasBeenSet(false),
-    m_lastUpdatedTimesHasBeenSet(false),
-    m_entityArnsHasBeenSet(false),
-    m_entityValuesHasBeenSet(false),
-    m_eventTypeCategoriesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_eventStatusCodesHasBeenSet(false)
-{
-}
-
-EventFilter::EventFilter(JsonView jsonValue) : 
-    m_eventArnsHasBeenSet(false),
-    m_eventTypeCodesHasBeenSet(false),
-    m_servicesHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_startTimesHasBeenSet(false),
-    m_endTimesHasBeenSet(false),
-    m_lastUpdatedTimesHasBeenSet(false),
-    m_entityArnsHasBeenSet(false),
-    m_entityValuesHasBeenSet(false),
-    m_eventTypeCategoriesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_eventStatusCodesHasBeenSet(false)
+EventFilter::EventFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -64,7 +34,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_eventArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventTypeCodes"))
   {
     Aws::Utils::Array<JsonView> eventTypeCodesJsonList = jsonValue.GetArray("eventTypeCodes");
@@ -74,7 +43,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_eventTypeCodesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("services"))
   {
     Aws::Utils::Array<JsonView> servicesJsonList = jsonValue.GetArray("services");
@@ -84,7 +52,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_servicesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("regions"))
   {
     Aws::Utils::Array<JsonView> regionsJsonList = jsonValue.GetArray("regions");
@@ -94,7 +61,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_regionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("availabilityZones"))
   {
     Aws::Utils::Array<JsonView> availabilityZonesJsonList = jsonValue.GetArray("availabilityZones");
@@ -104,7 +70,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_availabilityZonesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startTimes"))
   {
     Aws::Utils::Array<JsonView> startTimesJsonList = jsonValue.GetArray("startTimes");
@@ -114,7 +79,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_startTimesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTimes"))
   {
     Aws::Utils::Array<JsonView> endTimesJsonList = jsonValue.GetArray("endTimes");
@@ -124,7 +88,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_endTimesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastUpdatedTimes"))
   {
     Aws::Utils::Array<JsonView> lastUpdatedTimesJsonList = jsonValue.GetArray("lastUpdatedTimes");
@@ -134,7 +97,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_lastUpdatedTimesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entityArns"))
   {
     Aws::Utils::Array<JsonView> entityArnsJsonList = jsonValue.GetArray("entityArns");
@@ -144,7 +106,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_entityArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entityValues"))
   {
     Aws::Utils::Array<JsonView> entityValuesJsonList = jsonValue.GetArray("entityValues");
@@ -154,7 +115,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_entityValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventTypeCategories"))
   {
     Aws::Utils::Array<JsonView> eventTypeCategoriesJsonList = jsonValue.GetArray("eventTypeCategories");
@@ -164,7 +124,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_eventTypeCategoriesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("tags");
@@ -180,7 +139,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventStatusCodes"))
   {
     Aws::Utils::Array<JsonView> eventStatusCodesJsonList = jsonValue.GetArray("eventStatusCodes");
@@ -190,7 +148,6 @@ EventFilter& EventFilter::operator =(JsonView jsonValue)
     }
     m_eventStatusCodesHasBeenSet = true;
   }
-
   return *this;
 }
 

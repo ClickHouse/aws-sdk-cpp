@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-InvalidTemplateException::InvalidTemplateException() : 
-    m_templateNameHasBeenSet(false)
-{
-}
-
-InvalidTemplateException::InvalidTemplateException(const XmlNode& xmlNode) : 
-    m_templateNameHasBeenSet(false)
+InvalidTemplateException::InvalidTemplateException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

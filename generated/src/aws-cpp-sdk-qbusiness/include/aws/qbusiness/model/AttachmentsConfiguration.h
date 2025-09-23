@@ -32,51 +32,25 @@ namespace Model
   class AttachmentsConfiguration
   {
   public:
-    AWS_QBUSINESS_API AttachmentsConfiguration();
+    AWS_QBUSINESS_API AttachmentsConfiguration() = default;
     AWS_QBUSINESS_API AttachmentsConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API AttachmentsConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Status information about whether file upload functionality is activated or
      * deactivated for your end user.</p>
      */
-    inline const AttachmentsControlMode& GetAttachmentsControlMode() const{ return m_attachmentsControlMode; }
-
-    /**
-     * <p>Status information about whether file upload functionality is activated or
-     * deactivated for your end user.</p>
-     */
+    inline AttachmentsControlMode GetAttachmentsControlMode() const { return m_attachmentsControlMode; }
     inline bool AttachmentsControlModeHasBeenSet() const { return m_attachmentsControlModeHasBeenSet; }
-
-    /**
-     * <p>Status information about whether file upload functionality is activated or
-     * deactivated for your end user.</p>
-     */
-    inline void SetAttachmentsControlMode(const AttachmentsControlMode& value) { m_attachmentsControlModeHasBeenSet = true; m_attachmentsControlMode = value; }
-
-    /**
-     * <p>Status information about whether file upload functionality is activated or
-     * deactivated for your end user.</p>
-     */
-    inline void SetAttachmentsControlMode(AttachmentsControlMode&& value) { m_attachmentsControlModeHasBeenSet = true; m_attachmentsControlMode = std::move(value); }
-
-    /**
-     * <p>Status information about whether file upload functionality is activated or
-     * deactivated for your end user.</p>
-     */
-    inline AttachmentsConfiguration& WithAttachmentsControlMode(const AttachmentsControlMode& value) { SetAttachmentsControlMode(value); return *this;}
-
-    /**
-     * <p>Status information about whether file upload functionality is activated or
-     * deactivated for your end user.</p>
-     */
-    inline AttachmentsConfiguration& WithAttachmentsControlMode(AttachmentsControlMode&& value) { SetAttachmentsControlMode(std::move(value)); return *this;}
-
+    inline void SetAttachmentsControlMode(AttachmentsControlMode value) { m_attachmentsControlModeHasBeenSet = true; m_attachmentsControlMode = value; }
+    inline AttachmentsConfiguration& WithAttachmentsControlMode(AttachmentsControlMode value) { SetAttachmentsControlMode(value); return *this;}
+    ///@}
   private:
 
-    AttachmentsControlMode m_attachmentsControlMode;
+    AttachmentsControlMode m_attachmentsControlMode{AttachmentsControlMode::NOT_SET};
     bool m_attachmentsControlModeHasBeenSet = false;
   };
 

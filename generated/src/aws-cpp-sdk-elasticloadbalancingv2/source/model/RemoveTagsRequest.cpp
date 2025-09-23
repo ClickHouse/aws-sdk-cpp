@@ -10,35 +10,43 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-RemoveTagsRequest::RemoveTagsRequest() : 
-    m_resourceArnsHasBeenSet(false),
-    m_tagKeysHasBeenSet(false)
-{
-}
-
 Aws::String RemoveTagsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=RemoveTags&";
   if(m_resourceArnsHasBeenSet)
   {
-    unsigned resourceArnsCount = 1;
-    for(auto& item : m_resourceArns)
+    if (m_resourceArns.empty())
     {
-      ss << "ResourceArns.member." << resourceArnsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      resourceArnsCount++;
+      ss << "ResourceArns=&";
+    }
+    else
+    {
+      unsigned resourceArnsCount = 1;
+      for(auto& item : m_resourceArns)
+      {
+        ss << "ResourceArns.member." << resourceArnsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        resourceArnsCount++;
+      }
     }
   }
 
   if(m_tagKeysHasBeenSet)
   {
-    unsigned tagKeysCount = 1;
-    for(auto& item : m_tagKeys)
+    if (m_tagKeys.empty())
     {
-      ss << "TagKeys.member." << tagKeysCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      tagKeysCount++;
+      ss << "TagKeys=&";
+    }
+    else
+    {
+      unsigned tagKeysCount = 1;
+      for(auto& item : m_tagKeys)
+      {
+        ss << "TagKeys.member." << tagKeysCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        tagKeysCount++;
+      }
     }
   }
 

@@ -18,13 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-JobScopingBlock::JobScopingBlock() : 
-    m_andHasBeenSet(false)
-{
-}
-
-JobScopingBlock::JobScopingBlock(JsonView jsonValue) : 
-    m_andHasBeenSet(false)
+JobScopingBlock::JobScopingBlock(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ JobScopingBlock& JobScopingBlock::operator =(JsonView jsonValue)
     }
     m_andHasBeenSet = true;
   }
-
   return *this;
 }
 

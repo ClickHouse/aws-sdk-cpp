@@ -18,37 +18,7 @@ namespace Budgets
 namespace Model
 {
 
-Budget::Budget() : 
-    m_budgetNameHasBeenSet(false),
-    m_budgetLimitHasBeenSet(false),
-    m_plannedBudgetLimitsHasBeenSet(false),
-    m_costFiltersHasBeenSet(false),
-    m_costTypesHasBeenSet(false),
-    m_timeUnit(TimeUnit::NOT_SET),
-    m_timeUnitHasBeenSet(false),
-    m_timePeriodHasBeenSet(false),
-    m_calculatedSpendHasBeenSet(false),
-    m_budgetType(BudgetType::NOT_SET),
-    m_budgetTypeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_autoAdjustDataHasBeenSet(false)
-{
-}
-
-Budget::Budget(JsonView jsonValue) : 
-    m_budgetNameHasBeenSet(false),
-    m_budgetLimitHasBeenSet(false),
-    m_plannedBudgetLimitsHasBeenSet(false),
-    m_costFiltersHasBeenSet(false),
-    m_costTypesHasBeenSet(false),
-    m_timeUnit(TimeUnit::NOT_SET),
-    m_timeUnitHasBeenSet(false),
-    m_timePeriodHasBeenSet(false),
-    m_calculatedSpendHasBeenSet(false),
-    m_budgetType(BudgetType::NOT_SET),
-    m_budgetTypeHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_autoAdjustDataHasBeenSet(false)
+Budget::Budget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -58,17 +28,13 @@ Budget& Budget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BudgetName"))
   {
     m_budgetName = jsonValue.GetString("BudgetName");
-
     m_budgetNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BudgetLimit"))
   {
     m_budgetLimit = jsonValue.GetObject("BudgetLimit");
-
     m_budgetLimitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PlannedBudgetLimits"))
   {
     Aws::Map<Aws::String, JsonView> plannedBudgetLimitsJsonMap = jsonValue.GetObject("PlannedBudgetLimits").GetAllObjects();
@@ -78,73 +44,60 @@ Budget& Budget::operator =(JsonView jsonValue)
     }
     m_plannedBudgetLimitsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("CostFilters"))
-  {
-    Aws::Map<Aws::String, JsonView> costFiltersJsonMap = jsonValue.GetObject("CostFilters").GetAllObjects();
-    for(auto& costFiltersItem : costFiltersJsonMap)
-    {
-      Aws::Utils::Array<JsonView> dimensionValuesJsonList = costFiltersItem.second.AsArray();
-      Aws::Vector<Aws::String> dimensionValuesList;
-      dimensionValuesList.reserve((size_t)dimensionValuesJsonList.GetLength());
-      for(unsigned dimensionValuesIndex = 0; dimensionValuesIndex < dimensionValuesJsonList.GetLength(); ++dimensionValuesIndex)
-      {
-        dimensionValuesList.push_back(dimensionValuesJsonList[dimensionValuesIndex].AsString());
-      }
-      m_costFilters[costFiltersItem.first] = std::move(dimensionValuesList);
-    }
-    m_costFiltersHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("CostTypes"))
-  {
-    m_costTypes = jsonValue.GetObject("CostTypes");
-
-    m_costTypesHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("TimeUnit"))
   {
     m_timeUnit = TimeUnitMapper::GetTimeUnitForName(jsonValue.GetString("TimeUnit"));
-
     m_timeUnitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TimePeriod"))
   {
     m_timePeriod = jsonValue.GetObject("TimePeriod");
-
     m_timePeriodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CalculatedSpend"))
   {
     m_calculatedSpend = jsonValue.GetObject("CalculatedSpend");
-
     m_calculatedSpendHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BudgetType"))
   {
     m_budgetType = BudgetTypeMapper::GetBudgetTypeForName(jsonValue.GetString("BudgetType"));
-
     m_budgetTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdatedTime"))
   {
     m_lastUpdatedTime = jsonValue.GetDouble("LastUpdatedTime");
-
     m_lastUpdatedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AutoAdjustData"))
   {
     m_autoAdjustData = jsonValue.GetObject("AutoAdjustData");
-
     m_autoAdjustDataHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("FilterExpression"))
+  {
+    m_filterExpression = jsonValue.GetObject("FilterExpression");
+    m_filterExpressionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Metrics"))
+  {
+    Aws::Utils::Array<JsonView> metricsJsonList = jsonValue.GetArray("Metrics");
+    for(unsigned metricsIndex = 0; metricsIndex < metricsJsonList.GetLength(); ++metricsIndex)
+    {
+      m_metrics.push_back(MetricMapper::GetMetricForName(metricsJsonList[metricsIndex].AsString()));
+    }
+    m_metricsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("BillingViewArn"))
+  {
+    m_billingViewArn = jsonValue.GetString("BillingViewArn");
+    m_billingViewArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("HealthStatus"))
+  {
+    m_healthStatus = jsonValue.GetObject("HealthStatus");
+    m_healthStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -172,28 +125,6 @@ JsonValue Budget::Jsonize() const
      plannedBudgetLimitsJsonMap.WithObject(plannedBudgetLimitsItem.first, plannedBudgetLimitsItem.second.Jsonize());
    }
    payload.WithObject("PlannedBudgetLimits", std::move(plannedBudgetLimitsJsonMap));
-
-  }
-
-  if(m_costFiltersHasBeenSet)
-  {
-   JsonValue costFiltersJsonMap;
-   for(auto& costFiltersItem : m_costFilters)
-   {
-     Aws::Utils::Array<JsonValue> dimensionValuesJsonList(costFiltersItem.second.size());
-     for(unsigned dimensionValuesIndex = 0; dimensionValuesIndex < dimensionValuesJsonList.GetLength(); ++dimensionValuesIndex)
-     {
-       dimensionValuesJsonList[dimensionValuesIndex].AsString(costFiltersItem.second[dimensionValuesIndex]);
-     }
-     costFiltersJsonMap.WithArray(costFiltersItem.first, std::move(dimensionValuesJsonList));
-   }
-   payload.WithObject("CostFilters", std::move(costFiltersJsonMap));
-
-  }
-
-  if(m_costTypesHasBeenSet)
-  {
-   payload.WithObject("CostTypes", m_costTypes.Jsonize());
 
   }
 
@@ -227,6 +158,35 @@ JsonValue Budget::Jsonize() const
   if(m_autoAdjustDataHasBeenSet)
   {
    payload.WithObject("AutoAdjustData", m_autoAdjustData.Jsonize());
+
+  }
+
+  if(m_filterExpressionHasBeenSet)
+  {
+   payload.WithObject("FilterExpression", m_filterExpression.Jsonize());
+
+  }
+
+  if(m_metricsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> metricsJsonList(m_metrics.size());
+   for(unsigned metricsIndex = 0; metricsIndex < metricsJsonList.GetLength(); ++metricsIndex)
+   {
+     metricsJsonList[metricsIndex].AsString(MetricMapper::GetNameForMetric(m_metrics[metricsIndex]));
+   }
+   payload.WithArray("Metrics", std::move(metricsJsonList));
+
+  }
+
+  if(m_billingViewArnHasBeenSet)
+  {
+   payload.WithString("BillingViewArn", m_billingViewArn);
+
+  }
+
+  if(m_healthStatusHasBeenSet)
+  {
+   payload.WithObject("HealthStatus", m_healthStatus.Jsonize());
 
   }
 

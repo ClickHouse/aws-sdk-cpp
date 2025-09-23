@@ -27,7 +27,7 @@ namespace Model
   class UpdateVirtualGatewayRequest : public AppMeshRequest
   {
   public:
-    AWS_APPMESH_API UpdateVirtualGatewayRequest();
+    AWS_APPMESH_API UpdateVirtualGatewayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,104 +40,33 @@ namespace Model
     AWS_APPMESH_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. Up to 36 letters, numbers, hyphens, and underscores are
      * allowed.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    UpdateVirtualGatewayRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service mesh that the virtual gateway resides in.</p>
      */
-    inline const Aws::String& GetMeshName() const{ return m_meshName; }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
+    inline const Aws::String& GetMeshName() const { return m_meshName; }
     inline bool MeshNameHasBeenSet() const { return m_meshNameHasBeenSet; }
+    template<typename MeshNameT = Aws::String>
+    void SetMeshName(MeshNameT&& value) { m_meshNameHasBeenSet = true; m_meshName = std::forward<MeshNameT>(value); }
+    template<typename MeshNameT = Aws::String>
+    UpdateVirtualGatewayRequest& WithMeshName(MeshNameT&& value) { SetMeshName(std::forward<MeshNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline void SetMeshName(const Aws::String& value) { m_meshNameHasBeenSet = true; m_meshName = value; }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline void SetMeshName(Aws::String&& value) { m_meshNameHasBeenSet = true; m_meshName = std::move(value); }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline void SetMeshName(const char* value) { m_meshNameHasBeenSet = true; m_meshName.assign(value); }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithMeshName(const Aws::String& value) { SetMeshName(value); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithMeshName(Aws::String&& value) { SetMeshName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithMeshName(const char* value) { SetMeshName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
      * account ID is not your own, then it's the ID of the account that shared the mesh
@@ -145,153 +74,42 @@ namespace Model
      * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
      * with shared meshes</a>.</p>
      */
-    inline const Aws::String& GetMeshOwner() const{ return m_meshOwner; }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
+    inline const Aws::String& GetMeshOwner() const { return m_meshOwner; }
     inline bool MeshOwnerHasBeenSet() const { return m_meshOwnerHasBeenSet; }
+    template<typename MeshOwnerT = Aws::String>
+    void SetMeshOwner(MeshOwnerT&& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = std::forward<MeshOwnerT>(value); }
+    template<typename MeshOwnerT = Aws::String>
+    UpdateVirtualGatewayRequest& WithMeshOwner(MeshOwnerT&& value) { SetMeshOwner(std::forward<MeshOwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(const Aws::String& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = value; }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(Aws::String&& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(const char* value) { m_meshOwnerHasBeenSet = true; m_meshOwner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithMeshOwner(const Aws::String& value) { SetMeshOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithMeshOwner(Aws::String&& value) { SetMeshOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithMeshOwner(const char* value) { SetMeshOwner(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new virtual gateway specification to apply. This overwrites the existing
      * data.</p>
      */
-    inline const VirtualGatewaySpec& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>The new virtual gateway specification to apply. This overwrites the existing
-     * data.</p>
-     */
+    inline const VirtualGatewaySpec& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
+    template<typename SpecT = VirtualGatewaySpec>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = VirtualGatewaySpec>
+    UpdateVirtualGatewayRequest& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new virtual gateway specification to apply. This overwrites the existing
-     * data.</p>
-     */
-    inline void SetSpec(const VirtualGatewaySpec& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>The new virtual gateway specification to apply. This overwrites the existing
-     * data.</p>
-     */
-    inline void SetSpec(VirtualGatewaySpec&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>The new virtual gateway specification to apply. This overwrites the existing
-     * data.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithSpec(const VirtualGatewaySpec& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>The new virtual gateway specification to apply. This overwrites the existing
-     * data.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithSpec(VirtualGatewaySpec&& value) { SetSpec(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the virtual gateway to update.</p>
      */
-    inline const Aws::String& GetVirtualGatewayName() const{ return m_virtualGatewayName; }
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
+    inline const Aws::String& GetVirtualGatewayName() const { return m_virtualGatewayName; }
     inline bool VirtualGatewayNameHasBeenSet() const { return m_virtualGatewayNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
-    inline void SetVirtualGatewayName(const Aws::String& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = value; }
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
-    inline void SetVirtualGatewayName(Aws::String&& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
-    inline void SetVirtualGatewayName(const char* value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName.assign(value); }
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithVirtualGatewayName(const Aws::String& value) { SetVirtualGatewayName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithVirtualGatewayName(Aws::String&& value) { SetVirtualGatewayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual gateway to update.</p>
-     */
-    inline UpdateVirtualGatewayRequest& WithVirtualGatewayName(const char* value) { SetVirtualGatewayName(value); return *this;}
-
+    template<typename VirtualGatewayNameT = Aws::String>
+    void SetVirtualGatewayName(VirtualGatewayNameT&& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = std::forward<VirtualGatewayNameT>(value); }
+    template<typename VirtualGatewayNameT = Aws::String>
+    UpdateVirtualGatewayRequest& WithVirtualGatewayName(VirtualGatewayNameT&& value) { SetVirtualGatewayName(std::forward<VirtualGatewayNameT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_meshName;
     bool m_meshNameHasBeenSet = false;

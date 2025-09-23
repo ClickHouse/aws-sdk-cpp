@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-CompromisedCredentialsRiskConfigurationType::CompromisedCredentialsRiskConfigurationType() : 
-    m_eventFilterHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-CompromisedCredentialsRiskConfigurationType::CompromisedCredentialsRiskConfigurationType(JsonView jsonValue) : 
-    m_eventFilterHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+CompromisedCredentialsRiskConfigurationType::CompromisedCredentialsRiskConfigurationType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ CompromisedCredentialsRiskConfigurationType& CompromisedCredentialsRiskConfigura
     }
     m_eventFilterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     m_actions = jsonValue.GetObject("Actions");
-
     m_actionsHasBeenSet = true;
   }
-
   return *this;
 }
 

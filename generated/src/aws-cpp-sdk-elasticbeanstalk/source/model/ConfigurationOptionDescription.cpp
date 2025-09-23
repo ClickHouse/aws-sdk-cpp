@@ -20,43 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-ConfigurationOptionDescription::ConfigurationOptionDescription() : 
-    m_namespaceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_changeSeverityHasBeenSet(false),
-    m_userDefined(false),
-    m_userDefinedHasBeenSet(false),
-    m_valueType(ConfigurationOptionValueType::NOT_SET),
-    m_valueTypeHasBeenSet(false),
-    m_valueOptionsHasBeenSet(false),
-    m_minValue(0),
-    m_minValueHasBeenSet(false),
-    m_maxValue(0),
-    m_maxValueHasBeenSet(false),
-    m_maxLength(0),
-    m_maxLengthHasBeenSet(false),
-    m_regexHasBeenSet(false)
-{
-}
-
-ConfigurationOptionDescription::ConfigurationOptionDescription(const XmlNode& xmlNode) : 
-    m_namespaceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_changeSeverityHasBeenSet(false),
-    m_userDefined(false),
-    m_userDefinedHasBeenSet(false),
-    m_valueType(ConfigurationOptionValueType::NOT_SET),
-    m_valueTypeHasBeenSet(false),
-    m_valueOptionsHasBeenSet(false),
-    m_minValue(0),
-    m_minValueHasBeenSet(false),
-    m_maxValue(0),
-    m_maxValueHasBeenSet(false),
-    m_maxLength(0),
-    m_maxLengthHasBeenSet(false),
-    m_regexHasBeenSet(false)
+ConfigurationOptionDescription::ConfigurationOptionDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -100,13 +64,14 @@ ConfigurationOptionDescription& ConfigurationOptionDescription::operator =(const
     XmlNode valueTypeNode = resultNode.FirstChild("ValueType");
     if(!valueTypeNode.IsNull())
     {
-      m_valueType = ConfigurationOptionValueTypeMapper::GetConfigurationOptionValueTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(valueTypeNode.GetText()).c_str()).c_str());
+      m_valueType = ConfigurationOptionValueTypeMapper::GetConfigurationOptionValueTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(valueTypeNode.GetText()).c_str()));
       m_valueTypeHasBeenSet = true;
     }
     XmlNode valueOptionsNode = resultNode.FirstChild("ValueOptions");
     if(!valueOptionsNode.IsNull())
     {
       XmlNode valueOptionsMember = valueOptionsNode.FirstChild("member");
+      m_valueOptionsHasBeenSet = !valueOptionsMember.IsNull();
       while(!valueOptionsMember.IsNull())
       {
         m_valueOptions.push_back(valueOptionsMember.GetText());
@@ -173,7 +138,7 @@ void ConfigurationOptionDescription::OutputToStream(Aws::OStream& oStream, const
 
   if(m_valueTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ValueType=" << ConfigurationOptionValueTypeMapper::GetNameForConfigurationOptionValueType(m_valueType) << "&";
+      oStream << location << index << locationValue << ".ValueType=" << StringUtils::URLEncode(ConfigurationOptionValueTypeMapper::GetNameForConfigurationOptionValueType(m_valueType)) << "&";
   }
 
   if(m_valueOptionsHasBeenSet)
@@ -233,7 +198,7 @@ void ConfigurationOptionDescription::OutputToStream(Aws::OStream& oStream, const
   }
   if(m_valueTypeHasBeenSet)
   {
-      oStream << location << ".ValueType=" << ConfigurationOptionValueTypeMapper::GetNameForConfigurationOptionValueType(m_valueType) << "&";
+      oStream << location << ".ValueType=" << StringUtils::URLEncode(ConfigurationOptionValueTypeMapper::GetNameForConfigurationOptionValueType(m_valueType)) << "&";
   }
   if(m_valueOptionsHasBeenSet)
   {

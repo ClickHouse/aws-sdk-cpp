@@ -44,6 +44,14 @@ namespace Aws
         static const int DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED");
         static const int DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED");
         static const int DEEP_INSPECTION_NO_INVENTORY_HASH = HashingUtils::HashString("DEEP_INSPECTION_NO_INVENTORY");
+        static const int AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED");
+        static const int AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED");
+        static const int PENDING_REVIVAL_SCAN_HASH = HashingUtils::HashString("PENDING_REVIVAL_SCAN");
+        static const int INTEGRATION_CONNECTION_LOST_HASH = HashingUtils::HashString("INTEGRATION_CONNECTION_LOST");
+        static const int ACCESS_DENIED_TO_ENCRYPTION_KEY_HASH = HashingUtils::HashString("ACCESS_DENIED_TO_ENCRYPTION_KEY");
+        static const int UNSUPPORTED_LANGUAGE_HASH = HashingUtils::HashString("UNSUPPORTED_LANGUAGE");
+        static const int NO_SCAN_CONFIGURATION_ASSOCIATED_HASH = HashingUtils::HashString("NO_SCAN_CONFIGURATION_ASSOCIATED");
+        static const int SCAN_IN_PROGRESS_HASH = HashingUtils::HashString("SCAN_IN_PROGRESS");
 
 
         ScanStatusReason GetScanStatusReasonForName(const Aws::String& name)
@@ -145,6 +153,38 @@ namespace Aws
           {
             return ScanStatusReason::DEEP_INSPECTION_NO_INVENTORY;
           }
+          else if (hashCode == AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED_HASH)
+          {
+            return ScanStatusReason::AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED;
+          }
+          else if (hashCode == AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED_HASH)
+          {
+            return ScanStatusReason::AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED;
+          }
+          else if (hashCode == PENDING_REVIVAL_SCAN_HASH)
+          {
+            return ScanStatusReason::PENDING_REVIVAL_SCAN;
+          }
+          else if (hashCode == INTEGRATION_CONNECTION_LOST_HASH)
+          {
+            return ScanStatusReason::INTEGRATION_CONNECTION_LOST;
+          }
+          else if (hashCode == ACCESS_DENIED_TO_ENCRYPTION_KEY_HASH)
+          {
+            return ScanStatusReason::ACCESS_DENIED_TO_ENCRYPTION_KEY;
+          }
+          else if (hashCode == UNSUPPORTED_LANGUAGE_HASH)
+          {
+            return ScanStatusReason::UNSUPPORTED_LANGUAGE;
+          }
+          else if (hashCode == NO_SCAN_CONFIGURATION_ASSOCIATED_HASH)
+          {
+            return ScanStatusReason::NO_SCAN_CONFIGURATION_ASSOCIATED;
+          }
+          else if (hashCode == SCAN_IN_PROGRESS_HASH)
+          {
+            return ScanStatusReason::SCAN_IN_PROGRESS;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -209,6 +249,22 @@ namespace Aws
             return "DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED";
           case ScanStatusReason::DEEP_INSPECTION_NO_INVENTORY:
             return "DEEP_INSPECTION_NO_INVENTORY";
+          case ScanStatusReason::AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED:
+            return "AGENTLESS_INSTANCE_STORAGE_LIMIT_EXCEEDED";
+          case ScanStatusReason::AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED:
+            return "AGENTLESS_INSTANCE_COLLECTION_TIME_LIMIT_EXCEEDED";
+          case ScanStatusReason::PENDING_REVIVAL_SCAN:
+            return "PENDING_REVIVAL_SCAN";
+          case ScanStatusReason::INTEGRATION_CONNECTION_LOST:
+            return "INTEGRATION_CONNECTION_LOST";
+          case ScanStatusReason::ACCESS_DENIED_TO_ENCRYPTION_KEY:
+            return "ACCESS_DENIED_TO_ENCRYPTION_KEY";
+          case ScanStatusReason::UNSUPPORTED_LANGUAGE:
+            return "UNSUPPORTED_LANGUAGE";
+          case ScanStatusReason::NO_SCAN_CONFIGURATION_ASSOCIATED:
+            return "NO_SCAN_CONFIGURATION_ASSOCIATED";
+          case ScanStatusReason::SCAN_IN_PROGRESS:
+            return "SCAN_IN_PROGRESS";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

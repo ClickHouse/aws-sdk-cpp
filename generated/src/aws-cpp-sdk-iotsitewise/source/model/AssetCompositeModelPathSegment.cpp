@@ -18,15 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-AssetCompositeModelPathSegment::AssetCompositeModelPathSegment() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-AssetCompositeModelPathSegment::AssetCompositeModelPathSegment(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
+AssetCompositeModelPathSegment::AssetCompositeModelPathSegment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AssetCompositeModelPathSegment& AssetCompositeModelPathSegment::operator =(JsonV
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

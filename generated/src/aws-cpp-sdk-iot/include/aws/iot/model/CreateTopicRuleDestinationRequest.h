@@ -21,7 +21,7 @@ namespace Model
   class CreateTopicRuleDestinationRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API CreateTopicRuleDestinationRequest();
+    AWS_IOT_API CreateTopicRuleDestinationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,36 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The topic rule destination configuration.</p>
      */
-    inline const TopicRuleDestinationConfiguration& GetDestinationConfiguration() const{ return m_destinationConfiguration; }
-
-    /**
-     * <p>The topic rule destination configuration.</p>
-     */
+    inline const TopicRuleDestinationConfiguration& GetDestinationConfiguration() const { return m_destinationConfiguration; }
     inline bool DestinationConfigurationHasBeenSet() const { return m_destinationConfigurationHasBeenSet; }
-
-    /**
-     * <p>The topic rule destination configuration.</p>
-     */
-    inline void SetDestinationConfiguration(const TopicRuleDestinationConfiguration& value) { m_destinationConfigurationHasBeenSet = true; m_destinationConfiguration = value; }
-
-    /**
-     * <p>The topic rule destination configuration.</p>
-     */
-    inline void SetDestinationConfiguration(TopicRuleDestinationConfiguration&& value) { m_destinationConfigurationHasBeenSet = true; m_destinationConfiguration = std::move(value); }
-
-    /**
-     * <p>The topic rule destination configuration.</p>
-     */
-    inline CreateTopicRuleDestinationRequest& WithDestinationConfiguration(const TopicRuleDestinationConfiguration& value) { SetDestinationConfiguration(value); return *this;}
-
-    /**
-     * <p>The topic rule destination configuration.</p>
-     */
-    inline CreateTopicRuleDestinationRequest& WithDestinationConfiguration(TopicRuleDestinationConfiguration&& value) { SetDestinationConfiguration(std::move(value)); return *this;}
-
+    template<typename DestinationConfigurationT = TopicRuleDestinationConfiguration>
+    void SetDestinationConfiguration(DestinationConfigurationT&& value) { m_destinationConfigurationHasBeenSet = true; m_destinationConfiguration = std::forward<DestinationConfigurationT>(value); }
+    template<typename DestinationConfigurationT = TopicRuleDestinationConfiguration>
+    CreateTopicRuleDestinationRequest& WithDestinationConfiguration(DestinationConfigurationT&& value) { SetDestinationConfiguration(std::forward<DestinationConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     TopicRuleDestinationConfiguration m_destinationConfiguration;

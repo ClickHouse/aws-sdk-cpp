@@ -38,282 +38,102 @@ namespace Model
   class UserIdentity
   {
   public:
-    AWS_MACIE2_API UserIdentity();
+    AWS_MACIE2_API UserIdentity() = default;
     AWS_MACIE2_API UserIdentity(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API UserIdentity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If the action was performed with temporary security credentials that were
      * obtained using the AssumeRole operation of the Security Token Service (STS) API,
      * the identifiers, session context, and other details about the identity.</p>
      */
-    inline const AssumedRole& GetAssumedRole() const{ return m_assumedRole; }
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the AssumeRole operation of the Security Token Service (STS) API,
-     * the identifiers, session context, and other details about the identity.</p>
-     */
+    inline const AssumedRole& GetAssumedRole() const { return m_assumedRole; }
     inline bool AssumedRoleHasBeenSet() const { return m_assumedRoleHasBeenSet; }
+    template<typename AssumedRoleT = AssumedRole>
+    void SetAssumedRole(AssumedRoleT&& value) { m_assumedRoleHasBeenSet = true; m_assumedRole = std::forward<AssumedRoleT>(value); }
+    template<typename AssumedRoleT = AssumedRole>
+    UserIdentity& WithAssumedRole(AssumedRoleT&& value) { SetAssumedRole(std::forward<AssumedRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the AssumeRole operation of the Security Token Service (STS) API,
-     * the identifiers, session context, and other details about the identity.</p>
-     */
-    inline void SetAssumedRole(const AssumedRole& value) { m_assumedRoleHasBeenSet = true; m_assumedRole = value; }
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the AssumeRole operation of the Security Token Service (STS) API,
-     * the identifiers, session context, and other details about the identity.</p>
-     */
-    inline void SetAssumedRole(AssumedRole&& value) { m_assumedRoleHasBeenSet = true; m_assumedRole = std::move(value); }
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the AssumeRole operation of the Security Token Service (STS) API,
-     * the identifiers, session context, and other details about the identity.</p>
-     */
-    inline UserIdentity& WithAssumedRole(const AssumedRole& value) { SetAssumedRole(value); return *this;}
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the AssumeRole operation of the Security Token Service (STS) API,
-     * the identifiers, session context, and other details about the identity.</p>
-     */
-    inline UserIdentity& WithAssumedRole(AssumedRole&& value) { SetAssumedRole(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the action was performed using the credentials for another Amazon Web
      * Services account, the details of that account.</p>
      */
-    inline const AwsAccount& GetAwsAccount() const{ return m_awsAccount; }
-
-    /**
-     * <p>If the action was performed using the credentials for another Amazon Web
-     * Services account, the details of that account.</p>
-     */
+    inline const AwsAccount& GetAwsAccount() const { return m_awsAccount; }
     inline bool AwsAccountHasBeenSet() const { return m_awsAccountHasBeenSet; }
+    template<typename AwsAccountT = AwsAccount>
+    void SetAwsAccount(AwsAccountT&& value) { m_awsAccountHasBeenSet = true; m_awsAccount = std::forward<AwsAccountT>(value); }
+    template<typename AwsAccountT = AwsAccount>
+    UserIdentity& WithAwsAccount(AwsAccountT&& value) { SetAwsAccount(std::forward<AwsAccountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the action was performed using the credentials for another Amazon Web
-     * Services account, the details of that account.</p>
-     */
-    inline void SetAwsAccount(const AwsAccount& value) { m_awsAccountHasBeenSet = true; m_awsAccount = value; }
-
-    /**
-     * <p>If the action was performed using the credentials for another Amazon Web
-     * Services account, the details of that account.</p>
-     */
-    inline void SetAwsAccount(AwsAccount&& value) { m_awsAccountHasBeenSet = true; m_awsAccount = std::move(value); }
-
-    /**
-     * <p>If the action was performed using the credentials for another Amazon Web
-     * Services account, the details of that account.</p>
-     */
-    inline UserIdentity& WithAwsAccount(const AwsAccount& value) { SetAwsAccount(value); return *this;}
-
-    /**
-     * <p>If the action was performed using the credentials for another Amazon Web
-     * Services account, the details of that account.</p>
-     */
-    inline UserIdentity& WithAwsAccount(AwsAccount&& value) { SetAwsAccount(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the action was performed by an Amazon Web Services account that belongs to
-     * an Amazon Web Service, the name of the service.</p>
+     * an Amazon Web Services service, the name of the service.</p>
      */
-    inline const AwsService& GetAwsService() const{ return m_awsService; }
-
-    /**
-     * <p>If the action was performed by an Amazon Web Services account that belongs to
-     * an Amazon Web Service, the name of the service.</p>
-     */
+    inline const AwsService& GetAwsService() const { return m_awsService; }
     inline bool AwsServiceHasBeenSet() const { return m_awsServiceHasBeenSet; }
+    template<typename AwsServiceT = AwsService>
+    void SetAwsService(AwsServiceT&& value) { m_awsServiceHasBeenSet = true; m_awsService = std::forward<AwsServiceT>(value); }
+    template<typename AwsServiceT = AwsService>
+    UserIdentity& WithAwsService(AwsServiceT&& value) { SetAwsService(std::forward<AwsServiceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the action was performed by an Amazon Web Services account that belongs to
-     * an Amazon Web Service, the name of the service.</p>
-     */
-    inline void SetAwsService(const AwsService& value) { m_awsServiceHasBeenSet = true; m_awsService = value; }
-
-    /**
-     * <p>If the action was performed by an Amazon Web Services account that belongs to
-     * an Amazon Web Service, the name of the service.</p>
-     */
-    inline void SetAwsService(AwsService&& value) { m_awsServiceHasBeenSet = true; m_awsService = std::move(value); }
-
-    /**
-     * <p>If the action was performed by an Amazon Web Services account that belongs to
-     * an Amazon Web Service, the name of the service.</p>
-     */
-    inline UserIdentity& WithAwsService(const AwsService& value) { SetAwsService(value); return *this;}
-
-    /**
-     * <p>If the action was performed by an Amazon Web Services account that belongs to
-     * an Amazon Web Service, the name of the service.</p>
-     */
-    inline UserIdentity& WithAwsService(AwsService&& value) { SetAwsService(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the action was performed with temporary security credentials that were
      * obtained using the GetFederationToken operation of the Security Token Service
      * (STS) API, the identifiers, session context, and other details about the
      * identity.</p>
      */
-    inline const FederatedUser& GetFederatedUser() const{ return m_federatedUser; }
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the GetFederationToken operation of the Security Token Service
-     * (STS) API, the identifiers, session context, and other details about the
-     * identity.</p>
-     */
+    inline const FederatedUser& GetFederatedUser() const { return m_federatedUser; }
     inline bool FederatedUserHasBeenSet() const { return m_federatedUserHasBeenSet; }
+    template<typename FederatedUserT = FederatedUser>
+    void SetFederatedUser(FederatedUserT&& value) { m_federatedUserHasBeenSet = true; m_federatedUser = std::forward<FederatedUserT>(value); }
+    template<typename FederatedUserT = FederatedUser>
+    UserIdentity& WithFederatedUser(FederatedUserT&& value) { SetFederatedUser(std::forward<FederatedUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the GetFederationToken operation of the Security Token Service
-     * (STS) API, the identifiers, session context, and other details about the
-     * identity.</p>
-     */
-    inline void SetFederatedUser(const FederatedUser& value) { m_federatedUserHasBeenSet = true; m_federatedUser = value; }
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the GetFederationToken operation of the Security Token Service
-     * (STS) API, the identifiers, session context, and other details about the
-     * identity.</p>
-     */
-    inline void SetFederatedUser(FederatedUser&& value) { m_federatedUserHasBeenSet = true; m_federatedUser = std::move(value); }
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the GetFederationToken operation of the Security Token Service
-     * (STS) API, the identifiers, session context, and other details about the
-     * identity.</p>
-     */
-    inline UserIdentity& WithFederatedUser(const FederatedUser& value) { SetFederatedUser(value); return *this;}
-
-    /**
-     * <p>If the action was performed with temporary security credentials that were
-     * obtained using the GetFederationToken operation of the Security Token Service
-     * (STS) API, the identifiers, session context, and other details about the
-     * identity.</p>
-     */
-    inline UserIdentity& WithFederatedUser(FederatedUser&& value) { SetFederatedUser(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the action was performed using the credentials for an Identity and Access
      * Management (IAM) user, the name and other details about the user.</p>
      */
-    inline const IamUser& GetIamUser() const{ return m_iamUser; }
-
-    /**
-     * <p>If the action was performed using the credentials for an Identity and Access
-     * Management (IAM) user, the name and other details about the user.</p>
-     */
+    inline const IamUser& GetIamUser() const { return m_iamUser; }
     inline bool IamUserHasBeenSet() const { return m_iamUserHasBeenSet; }
+    template<typename IamUserT = IamUser>
+    void SetIamUser(IamUserT&& value) { m_iamUserHasBeenSet = true; m_iamUser = std::forward<IamUserT>(value); }
+    template<typename IamUserT = IamUser>
+    UserIdentity& WithIamUser(IamUserT&& value) { SetIamUser(std::forward<IamUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the action was performed using the credentials for an Identity and Access
-     * Management (IAM) user, the name and other details about the user.</p>
-     */
-    inline void SetIamUser(const IamUser& value) { m_iamUserHasBeenSet = true; m_iamUser = value; }
-
-    /**
-     * <p>If the action was performed using the credentials for an Identity and Access
-     * Management (IAM) user, the name and other details about the user.</p>
-     */
-    inline void SetIamUser(IamUser&& value) { m_iamUserHasBeenSet = true; m_iamUser = std::move(value); }
-
-    /**
-     * <p>If the action was performed using the credentials for an Identity and Access
-     * Management (IAM) user, the name and other details about the user.</p>
-     */
-    inline UserIdentity& WithIamUser(const IamUser& value) { SetIamUser(value); return *this;}
-
-    /**
-     * <p>If the action was performed using the credentials for an Identity and Access
-     * Management (IAM) user, the name and other details about the user.</p>
-     */
-    inline UserIdentity& WithIamUser(IamUser&& value) { SetIamUser(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the action was performed using the credentials for your Amazon Web
      * Services account, the details of your account.</p>
      */
-    inline const UserIdentityRoot& GetRoot() const{ return m_root; }
-
-    /**
-     * <p>If the action was performed using the credentials for your Amazon Web
-     * Services account, the details of your account.</p>
-     */
+    inline const UserIdentityRoot& GetRoot() const { return m_root; }
     inline bool RootHasBeenSet() const { return m_rootHasBeenSet; }
+    template<typename RootT = UserIdentityRoot>
+    void SetRoot(RootT&& value) { m_rootHasBeenSet = true; m_root = std::forward<RootT>(value); }
+    template<typename RootT = UserIdentityRoot>
+    UserIdentity& WithRoot(RootT&& value) { SetRoot(std::forward<RootT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the action was performed using the credentials for your Amazon Web
-     * Services account, the details of your account.</p>
-     */
-    inline void SetRoot(const UserIdentityRoot& value) { m_rootHasBeenSet = true; m_root = value; }
-
-    /**
-     * <p>If the action was performed using the credentials for your Amazon Web
-     * Services account, the details of your account.</p>
-     */
-    inline void SetRoot(UserIdentityRoot&& value) { m_rootHasBeenSet = true; m_root = std::move(value); }
-
-    /**
-     * <p>If the action was performed using the credentials for your Amazon Web
-     * Services account, the details of your account.</p>
-     */
-    inline UserIdentity& WithRoot(const UserIdentityRoot& value) { SetRoot(value); return *this;}
-
-    /**
-     * <p>If the action was performed using the credentials for your Amazon Web
-     * Services account, the details of your account.</p>
-     */
-    inline UserIdentity& WithRoot(UserIdentityRoot&& value) { SetRoot(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of entity that performed the action.</p>
      */
-    inline const UserIdentityType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of entity that performed the action.</p>
-     */
+    inline UserIdentityType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of entity that performed the action.</p>
-     */
-    inline void SetType(const UserIdentityType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of entity that performed the action.</p>
-     */
-    inline void SetType(UserIdentityType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of entity that performed the action.</p>
-     */
-    inline UserIdentity& WithType(const UserIdentityType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of entity that performed the action.</p>
-     */
-    inline UserIdentity& WithType(UserIdentityType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(UserIdentityType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline UserIdentity& WithType(UserIdentityType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     AssumedRole m_assumedRole;
@@ -334,7 +154,7 @@ namespace Model
     UserIdentityRoot m_root;
     bool m_rootHasBeenSet = false;
 
-    UserIdentityType m_type;
+    UserIdentityType m_type{UserIdentityType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

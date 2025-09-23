@@ -30,35 +30,24 @@ namespace Model
   class UndetectedSignature
   {
   public:
-    AWS_TEXTRACT_API UndetectedSignature();
+    AWS_TEXTRACT_API UndetectedSignature() = default;
     AWS_TEXTRACT_API UndetectedSignature(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API UndetectedSignature& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The page where a signature was expected but not found.</p>
      */
-    inline int GetPage() const{ return m_page; }
-
-    /**
-     * <p>The page where a signature was expected but not found.</p>
-     */
+    inline int GetPage() const { return m_page; }
     inline bool PageHasBeenSet() const { return m_pageHasBeenSet; }
-
-    /**
-     * <p>The page where a signature was expected but not found.</p>
-     */
     inline void SetPage(int value) { m_pageHasBeenSet = true; m_page = value; }
-
-    /**
-     * <p>The page where a signature was expected but not found.</p>
-     */
     inline UndetectedSignature& WithPage(int value) { SetPage(value); return *this;}
-
+    ///@}
   private:
 
-    int m_page;
+    int m_page{0};
     bool m_pageHasBeenSet = false;
   };
 

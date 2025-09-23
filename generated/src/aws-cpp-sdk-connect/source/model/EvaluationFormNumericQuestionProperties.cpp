@@ -18,23 +18,7 @@ namespace Connect
 namespace Model
 {
 
-EvaluationFormNumericQuestionProperties::EvaluationFormNumericQuestionProperties() : 
-    m_minValue(0),
-    m_minValueHasBeenSet(false),
-    m_maxValue(0),
-    m_maxValueHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_automationHasBeenSet(false)
-{
-}
-
-EvaluationFormNumericQuestionProperties::EvaluationFormNumericQuestionProperties(JsonView jsonValue) : 
-    m_minValue(0),
-    m_minValueHasBeenSet(false),
-    m_maxValue(0),
-    m_maxValueHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_automationHasBeenSet(false)
+EvaluationFormNumericQuestionProperties::EvaluationFormNumericQuestionProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +28,13 @@ EvaluationFormNumericQuestionProperties& EvaluationFormNumericQuestionProperties
   if(jsonValue.ValueExists("MinValue"))
   {
     m_minValue = jsonValue.GetInteger("MinValue");
-
     m_minValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxValue"))
   {
     m_maxValue = jsonValue.GetInteger("MaxValue");
-
     m_maxValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Options"))
   {
     Aws::Utils::Array<JsonView> optionsJsonList = jsonValue.GetArray("Options");
@@ -64,14 +44,11 @@ EvaluationFormNumericQuestionProperties& EvaluationFormNumericQuestionProperties
     }
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Automation"))
   {
     m_automation = jsonValue.GetObject("Automation");
-
     m_automationHasBeenSet = true;
   }
-
   return *this;
 }
 

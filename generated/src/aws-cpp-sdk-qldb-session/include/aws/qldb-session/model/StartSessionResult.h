@@ -32,99 +32,37 @@ namespace Model
   class StartSessionResult
   {
   public:
-    AWS_QLDBSESSION_API StartSessionResult();
+    AWS_QLDBSESSION_API StartSessionResult() = default;
     AWS_QLDBSESSION_API StartSessionResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_QLDBSESSION_API StartSessionResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QLDBSESSION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Session token of the started session. This <code>SessionToken</code> is
      * required for every subsequent command that is issued during the current
      * session.</p>
      */
-    inline const Aws::String& GetSessionToken() const{ return m_sessionToken; }
-
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
+    inline const Aws::String& GetSessionToken() const { return m_sessionToken; }
     inline bool SessionTokenHasBeenSet() const { return m_sessionTokenHasBeenSet; }
+    template<typename SessionTokenT = Aws::String>
+    void SetSessionToken(SessionTokenT&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = std::forward<SessionTokenT>(value); }
+    template<typename SessionTokenT = Aws::String>
+    StartSessionResult& WithSessionToken(SessionTokenT&& value) { SetSessionToken(std::forward<SessionTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
-    inline void SetSessionToken(const Aws::String& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = value; }
-
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
-    inline void SetSessionToken(Aws::String&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = std::move(value); }
-
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
-    inline void SetSessionToken(const char* value) { m_sessionTokenHasBeenSet = true; m_sessionToken.assign(value); }
-
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
-    inline StartSessionResult& WithSessionToken(const Aws::String& value) { SetSessionToken(value); return *this;}
-
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
-    inline StartSessionResult& WithSessionToken(Aws::String&& value) { SetSessionToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Session token of the started session. This <code>SessionToken</code> is
-     * required for every subsequent command that is issued during the current
-     * session.</p>
-     */
-    inline StartSessionResult& WithSessionToken(const char* value) { SetSessionToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains server-side performance information for the command.</p>
      */
-    inline const TimingInformation& GetTimingInformation() const{ return m_timingInformation; }
-
-    /**
-     * <p>Contains server-side performance information for the command.</p>
-     */
+    inline const TimingInformation& GetTimingInformation() const { return m_timingInformation; }
     inline bool TimingInformationHasBeenSet() const { return m_timingInformationHasBeenSet; }
-
-    /**
-     * <p>Contains server-side performance information for the command.</p>
-     */
-    inline void SetTimingInformation(const TimingInformation& value) { m_timingInformationHasBeenSet = true; m_timingInformation = value; }
-
-    /**
-     * <p>Contains server-side performance information for the command.</p>
-     */
-    inline void SetTimingInformation(TimingInformation&& value) { m_timingInformationHasBeenSet = true; m_timingInformation = std::move(value); }
-
-    /**
-     * <p>Contains server-side performance information for the command.</p>
-     */
-    inline StartSessionResult& WithTimingInformation(const TimingInformation& value) { SetTimingInformation(value); return *this;}
-
-    /**
-     * <p>Contains server-side performance information for the command.</p>
-     */
-    inline StartSessionResult& WithTimingInformation(TimingInformation&& value) { SetTimingInformation(std::move(value)); return *this;}
-
+    template<typename TimingInformationT = TimingInformation>
+    void SetTimingInformation(TimingInformationT&& value) { m_timingInformationHasBeenSet = true; m_timingInformation = std::forward<TimingInformationT>(value); }
+    template<typename TimingInformationT = TimingInformation>
+    StartSessionResult& WithTimingInformation(TimingInformationT&& value) { SetTimingInformation(std::forward<TimingInformationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sessionToken;

@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListProductSubscriptionsResult::ListProductSubscriptionsResult()
-{
-}
-
 ListProductSubscriptionsResult::ListProductSubscriptionsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListProductSubscriptionsResult::ListProductSubscriptionsResult(const Aws::Amazon
 ListProductSubscriptionsResult& ListProductSubscriptionsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("NextToken"))
-  {
-    m_nextToken = jsonValue.GetString("NextToken");
-
-  }
-
   if(jsonValue.ValueExists("ProductUserSummaries"))
   {
     Aws::Utils::Array<JsonView> productUserSummariesJsonList = jsonValue.GetArray("ProductUserSummaries");
@@ -42,14 +32,20 @@ ListProductSubscriptionsResult& ListProductSubscriptionsResult::operator =(const
     {
       m_productUserSummaries.push_back(productUserSummariesJsonList[productUserSummariesIndex].AsObject());
     }
+    m_productUserSummariesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("NextToken"))
+  {
+    m_nextToken = jsonValue.GetString("NextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

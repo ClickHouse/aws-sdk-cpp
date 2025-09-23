@@ -12,17 +12,6 @@ using namespace Aws::DatabaseMigrationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ModifyDataProviderRequest::ModifyDataProviderRequest() : 
-    m_dataProviderIdentifierHasBeenSet(false),
-    m_dataProviderNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_exactSettings(false),
-    m_exactSettingsHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDataProviderRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +37,12 @@ Aws::String ModifyDataProviderRequest::SerializePayload() const
   if(m_engineHasBeenSet)
   {
    payload.WithString("Engine", m_engine);
+
+  }
+
+  if(m_virtualHasBeenSet)
+  {
+   payload.WithBool("Virtual", m_virtual);
 
   }
 

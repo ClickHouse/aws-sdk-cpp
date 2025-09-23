@@ -32,52 +32,23 @@ namespace Model
   class LayoutConfiguration
   {
   public:
-    AWS_CONNECTCASES_API LayoutConfiguration();
+    AWS_CONNECTCASES_API LayoutConfiguration() = default;
     AWS_CONNECTCASES_API LayoutConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API LayoutConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Unique identifier of a layout. </p>
      */
-    inline const Aws::String& GetDefaultLayout() const{ return m_defaultLayout; }
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
+    inline const Aws::String& GetDefaultLayout() const { return m_defaultLayout; }
     inline bool DefaultLayoutHasBeenSet() const { return m_defaultLayoutHasBeenSet; }
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
-    inline void SetDefaultLayout(const Aws::String& value) { m_defaultLayoutHasBeenSet = true; m_defaultLayout = value; }
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
-    inline void SetDefaultLayout(Aws::String&& value) { m_defaultLayoutHasBeenSet = true; m_defaultLayout = std::move(value); }
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
-    inline void SetDefaultLayout(const char* value) { m_defaultLayoutHasBeenSet = true; m_defaultLayout.assign(value); }
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
-    inline LayoutConfiguration& WithDefaultLayout(const Aws::String& value) { SetDefaultLayout(value); return *this;}
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
-    inline LayoutConfiguration& WithDefaultLayout(Aws::String&& value) { SetDefaultLayout(std::move(value)); return *this;}
-
-    /**
-     * <p> Unique identifier of a layout. </p>
-     */
-    inline LayoutConfiguration& WithDefaultLayout(const char* value) { SetDefaultLayout(value); return *this;}
-
+    template<typename DefaultLayoutT = Aws::String>
+    void SetDefaultLayout(DefaultLayoutT&& value) { m_defaultLayoutHasBeenSet = true; m_defaultLayout = std::forward<DefaultLayoutT>(value); }
+    template<typename DefaultLayoutT = Aws::String>
+    LayoutConfiguration& WithDefaultLayout(DefaultLayoutT&& value) { SetDefaultLayout(std::forward<DefaultLayoutT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_defaultLayout;

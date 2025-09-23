@@ -18,23 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-FirewallStatus::FirewallStatus() : 
-    m_status(FirewallStatusValue::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_configurationSyncStateSummary(ConfigurationSyncState::NOT_SET),
-    m_configurationSyncStateSummaryHasBeenSet(false),
-    m_syncStatesHasBeenSet(false),
-    m_capacityUsageSummaryHasBeenSet(false)
-{
-}
-
-FirewallStatus::FirewallStatus(JsonView jsonValue) : 
-    m_status(FirewallStatusValue::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_configurationSyncStateSummary(ConfigurationSyncState::NOT_SET),
-    m_configurationSyncStateSummaryHasBeenSet(false),
-    m_syncStatesHasBeenSet(false),
-    m_capacityUsageSummaryHasBeenSet(false)
+FirewallStatus::FirewallStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +28,13 @@ FirewallStatus& FirewallStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Status"))
   {
     m_status = FirewallStatusValueMapper::GetFirewallStatusValueForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConfigurationSyncStateSummary"))
   {
     m_configurationSyncStateSummary = ConfigurationSyncStateMapper::GetConfigurationSyncStateForName(jsonValue.GetString("ConfigurationSyncStateSummary"));
-
     m_configurationSyncStateSummaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SyncStates"))
   {
     Aws::Map<Aws::String, JsonView> syncStatesJsonMap = jsonValue.GetObject("SyncStates").GetAllObjects();
@@ -64,14 +44,16 @@ FirewallStatus& FirewallStatus::operator =(JsonView jsonValue)
     }
     m_syncStatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CapacityUsageSummary"))
   {
     m_capacityUsageSummary = jsonValue.GetObject("CapacityUsageSummary");
-
     m_capacityUsageSummaryHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TransitGatewayAttachmentSyncState"))
+  {
+    m_transitGatewayAttachmentSyncState = jsonValue.GetObject("TransitGatewayAttachmentSyncState");
+    m_transitGatewayAttachmentSyncStateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -103,6 +85,12 @@ JsonValue FirewallStatus::Jsonize() const
   if(m_capacityUsageSummaryHasBeenSet)
   {
    payload.WithObject("CapacityUsageSummary", m_capacityUsageSummary.Jsonize());
+
+  }
+
+  if(m_transitGatewayAttachmentSyncStateHasBeenSet)
+  {
+   payload.WithObject("TransitGatewayAttachmentSyncState", m_transitGatewayAttachmentSyncState.Jsonize());
 
   }
 

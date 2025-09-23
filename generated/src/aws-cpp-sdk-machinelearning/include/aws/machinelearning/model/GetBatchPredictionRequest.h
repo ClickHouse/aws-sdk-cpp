@@ -21,7 +21,7 @@ namespace Model
   class GetBatchPredictionRequest : public MachineLearningRequest
   {
   public:
-    AWS_MACHINELEARNING_API GetBatchPredictionRequest();
+    AWS_MACHINELEARNING_API GetBatchPredictionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_MACHINELEARNING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
      */
-    inline const Aws::String& GetBatchPredictionId() const{ return m_batchPredictionId; }
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
+    inline const Aws::String& GetBatchPredictionId() const { return m_batchPredictionId; }
     inline bool BatchPredictionIdHasBeenSet() const { return m_batchPredictionIdHasBeenSet; }
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
-    inline void SetBatchPredictionId(const Aws::String& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = value; }
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
-    inline void SetBatchPredictionId(Aws::String&& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = std::move(value); }
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
-    inline void SetBatchPredictionId(const char* value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId.assign(value); }
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
-    inline GetBatchPredictionRequest& WithBatchPredictionId(const Aws::String& value) { SetBatchPredictionId(value); return *this;}
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
-    inline GetBatchPredictionRequest& WithBatchPredictionId(Aws::String&& value) { SetBatchPredictionId(std::move(value)); return *this;}
-
-    /**
-     * <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
-     */
-    inline GetBatchPredictionRequest& WithBatchPredictionId(const char* value) { SetBatchPredictionId(value); return *this;}
-
+    template<typename BatchPredictionIdT = Aws::String>
+    void SetBatchPredictionId(BatchPredictionIdT&& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = std::forward<BatchPredictionIdT>(value); }
+    template<typename BatchPredictionIdT = Aws::String>
+    GetBatchPredictionRequest& WithBatchPredictionId(BatchPredictionIdT&& value) { SetBatchPredictionId(std::forward<BatchPredictionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_batchPredictionId;

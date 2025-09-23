@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FreeFormLayoutConfiguration::FreeFormLayoutConfiguration() : 
-    m_elementsHasBeenSet(false),
-    m_canvasSizeOptionsHasBeenSet(false)
-{
-}
-
-FreeFormLayoutConfiguration::FreeFormLayoutConfiguration(JsonView jsonValue) : 
-    m_elementsHasBeenSet(false),
-    m_canvasSizeOptionsHasBeenSet(false)
+FreeFormLayoutConfiguration::FreeFormLayoutConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ FreeFormLayoutConfiguration& FreeFormLayoutConfiguration::operator =(JsonView js
     }
     m_elementsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CanvasSizeOptions"))
   {
     m_canvasSizeOptions = jsonValue.GetObject("CanvasSizeOptions");
-
     m_canvasSizeOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

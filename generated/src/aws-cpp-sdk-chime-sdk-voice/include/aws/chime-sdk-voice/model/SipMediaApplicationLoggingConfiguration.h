@@ -30,35 +30,24 @@ namespace Model
   class SipMediaApplicationLoggingConfiguration
   {
   public:
-    AWS_CHIMESDKVOICE_API SipMediaApplicationLoggingConfiguration();
+    AWS_CHIMESDKVOICE_API SipMediaApplicationLoggingConfiguration() = default;
     AWS_CHIMESDKVOICE_API SipMediaApplicationLoggingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API SipMediaApplicationLoggingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKVOICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Enables message logging for the specified SIP media application.</p>
      */
-    inline bool GetEnableSipMediaApplicationMessageLogs() const{ return m_enableSipMediaApplicationMessageLogs; }
-
-    /**
-     * <p>Enables message logging for the specified SIP media application.</p>
-     */
+    inline bool GetEnableSipMediaApplicationMessageLogs() const { return m_enableSipMediaApplicationMessageLogs; }
     inline bool EnableSipMediaApplicationMessageLogsHasBeenSet() const { return m_enableSipMediaApplicationMessageLogsHasBeenSet; }
-
-    /**
-     * <p>Enables message logging for the specified SIP media application.</p>
-     */
     inline void SetEnableSipMediaApplicationMessageLogs(bool value) { m_enableSipMediaApplicationMessageLogsHasBeenSet = true; m_enableSipMediaApplicationMessageLogs = value; }
-
-    /**
-     * <p>Enables message logging for the specified SIP media application.</p>
-     */
     inline SipMediaApplicationLoggingConfiguration& WithEnableSipMediaApplicationMessageLogs(bool value) { SetEnableSipMediaApplicationMessageLogs(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enableSipMediaApplicationMessageLogs;
+    bool m_enableSipMediaApplicationMessageLogs{false};
     bool m_enableSipMediaApplicationMessageLogsHasBeenSet = false;
   };
 

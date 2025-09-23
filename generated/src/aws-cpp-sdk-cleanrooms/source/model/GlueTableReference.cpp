@@ -18,15 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-GlueTableReference::GlueTableReference() : 
-    m_tableNameHasBeenSet(false),
-    m_databaseNameHasBeenSet(false)
-{
-}
-
-GlueTableReference::GlueTableReference(JsonView jsonValue) : 
-    m_tableNameHasBeenSet(false),
-    m_databaseNameHasBeenSet(false)
+GlueTableReference::GlueTableReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ GlueTableReference& GlueTableReference::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("tableName"))
   {
     m_tableName = jsonValue.GetString("tableName");
-
     m_tableNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("databaseName"))
   {
     m_databaseName = jsonValue.GetString("databaseName");
-
     m_databaseNameHasBeenSet = true;
   }
-
   return *this;
 }
 

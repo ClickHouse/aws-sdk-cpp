@@ -15,20 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListDataSourcesRequest::ListDataSourcesRequest() : 
-    m_domainIdentifierHasBeenSet(false),
-    m_environmentIdentifierHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_projectIdentifierHasBeenSet(false),
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String ListDataSourcesRequest::SerializePayload() const
 {
   return {};
@@ -37,6 +23,13 @@ Aws::String ListDataSourcesRequest::SerializePayload() const
 void ListDataSourcesRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
+    if(m_connectionIdentifierHasBeenSet)
+    {
+      ss << m_connectionIdentifier;
+      uri.AddQueryStringParameter("connectionIdentifier", ss.str());
+      ss.str("");
+    }
+
     if(m_environmentIdentifierHasBeenSet)
     {
       ss << m_environmentIdentifier;

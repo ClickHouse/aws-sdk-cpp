@@ -28,86 +28,50 @@ namespace Model
   class CreateAccountSubscriptionResult
   {
   public:
-    AWS_QUICKSIGHT_API CreateAccountSubscriptionResult();
+    AWS_QUICKSIGHT_API CreateAccountSubscriptionResult() = default;
     AWS_QUICKSIGHT_API CreateAccountSubscriptionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API CreateAccountSubscriptionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A <code>SignupResponse</code> object that returns information about a newly
-     * created Amazon QuickSight account.</p>
+     * created QuickSight account.</p>
      */
-    inline const SignupResponse& GetSignupResponse() const{ return m_signupResponse; }
+    inline const SignupResponse& GetSignupResponse() const { return m_signupResponse; }
+    template<typename SignupResponseT = SignupResponse>
+    void SetSignupResponse(SignupResponseT&& value) { m_signupResponseHasBeenSet = true; m_signupResponse = std::forward<SignupResponseT>(value); }
+    template<typename SignupResponseT = SignupResponse>
+    CreateAccountSubscriptionResult& WithSignupResponse(SignupResponseT&& value) { SetSignupResponse(std::forward<SignupResponseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <code>SignupResponse</code> object that returns information about a newly
-     * created Amazon QuickSight account.</p>
-     */
-    inline void SetSignupResponse(const SignupResponse& value) { m_signupResponse = value; }
-
-    /**
-     * <p>A <code>SignupResponse</code> object that returns information about a newly
-     * created Amazon QuickSight account.</p>
-     */
-    inline void SetSignupResponse(SignupResponse&& value) { m_signupResponse = std::move(value); }
-
-    /**
-     * <p>A <code>SignupResponse</code> object that returns information about a newly
-     * created Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionResult& WithSignupResponse(const SignupResponse& value) { SetSignupResponse(value); return *this;}
-
-    /**
-     * <p>A <code>SignupResponse</code> object that returns information about a newly
-     * created Amazon QuickSight account.</p>
-     */
-    inline CreateAccountSubscriptionResult& WithSignupResponse(SignupResponse&& value) { SetSignupResponse(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline CreateAccountSubscriptionResult& WithStatus(int value) { SetStatus(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateAccountSubscriptionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateAccountSubscriptionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateAccountSubscriptionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateAccountSubscriptionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     SignupResponse m_signupResponse;
+    bool m_signupResponseHasBeenSet = false;
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

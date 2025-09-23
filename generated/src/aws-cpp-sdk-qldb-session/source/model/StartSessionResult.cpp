@@ -18,15 +18,7 @@ namespace QLDBSession
 namespace Model
 {
 
-StartSessionResult::StartSessionResult() : 
-    m_sessionTokenHasBeenSet(false),
-    m_timingInformationHasBeenSet(false)
-{
-}
-
-StartSessionResult::StartSessionResult(JsonView jsonValue) : 
-    m_sessionTokenHasBeenSet(false),
-    m_timingInformationHasBeenSet(false)
+StartSessionResult::StartSessionResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ StartSessionResult& StartSessionResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SessionToken"))
   {
     m_sessionToken = jsonValue.GetString("SessionToken");
-
     m_sessionTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TimingInformation"))
   {
     m_timingInformation = jsonValue.GetObject("TimingInformation");
-
     m_timingInformationHasBeenSet = true;
   }
-
   return *this;
 }
 

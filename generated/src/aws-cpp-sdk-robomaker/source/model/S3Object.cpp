@@ -18,17 +18,7 @@ namespace RoboMaker
 namespace Model
 {
 
-S3Object::S3Object() : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_etagHasBeenSet(false)
-{
-}
-
-S3Object::S3Object(JsonView jsonValue) : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_etagHasBeenSet(false)
+S3Object::S3Object(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ S3Object& S3Object::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("bucket"))
   {
     m_bucket = jsonValue.GetString("bucket");
-
     m_bucketHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("etag"))
   {
     m_etag = jsonValue.GetString("etag");
-
     m_etagHasBeenSet = true;
   }
-
   return *this;
 }
 

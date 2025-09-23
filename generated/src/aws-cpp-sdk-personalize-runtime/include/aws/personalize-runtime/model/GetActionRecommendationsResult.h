@@ -29,11 +29,12 @@ namespace Model
   class GetActionRecommendationsResult
   {
   public:
-    AWS_PERSONALIZERUNTIME_API GetActionRecommendationsResult();
+    AWS_PERSONALIZERUNTIME_API GetActionRecommendationsResult() = default;
     AWS_PERSONALIZERUNTIME_API GetActionRecommendationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PERSONALIZERUNTIME_API GetActionRecommendationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of action recommendations sorted in descending order by prediction
      * score. There can be a maximum of 100 actions in the list. For information about
@@ -41,127 +42,44 @@ namespace Model
      * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
      * action recommendation scoring works</a>.</p>
      */
-    inline const Aws::Vector<PredictedAction>& GetActionList() const{ return m_actionList; }
+    inline const Aws::Vector<PredictedAction>& GetActionList() const { return m_actionList; }
+    template<typename ActionListT = Aws::Vector<PredictedAction>>
+    void SetActionList(ActionListT&& value) { m_actionListHasBeenSet = true; m_actionList = std::forward<ActionListT>(value); }
+    template<typename ActionListT = Aws::Vector<PredictedAction>>
+    GetActionRecommendationsResult& WithActionList(ActionListT&& value) { SetActionList(std::forward<ActionListT>(value)); return *this;}
+    template<typename ActionListT = PredictedAction>
+    GetActionRecommendationsResult& AddActionList(ActionListT&& value) { m_actionListHasBeenSet = true; m_actionList.emplace_back(std::forward<ActionListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of action recommendations sorted in descending order by prediction
-     * score. There can be a maximum of 100 actions in the list. For information about
-     * action scores, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
-    inline void SetActionList(const Aws::Vector<PredictedAction>& value) { m_actionList = value; }
-
-    /**
-     * <p>A list of action recommendations sorted in descending order by prediction
-     * score. There can be a maximum of 100 actions in the list. For information about
-     * action scores, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
-    inline void SetActionList(Aws::Vector<PredictedAction>&& value) { m_actionList = std::move(value); }
-
-    /**
-     * <p>A list of action recommendations sorted in descending order by prediction
-     * score. There can be a maximum of 100 actions in the list. For information about
-     * action scores, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
-    inline GetActionRecommendationsResult& WithActionList(const Aws::Vector<PredictedAction>& value) { SetActionList(value); return *this;}
-
-    /**
-     * <p>A list of action recommendations sorted in descending order by prediction
-     * score. There can be a maximum of 100 actions in the list. For information about
-     * action scores, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
-    inline GetActionRecommendationsResult& WithActionList(Aws::Vector<PredictedAction>&& value) { SetActionList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of action recommendations sorted in descending order by prediction
-     * score. There can be a maximum of 100 actions in the list. For information about
-     * action scores, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
-    inline GetActionRecommendationsResult& AddActionList(const PredictedAction& value) { m_actionList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of action recommendations sorted in descending order by prediction
-     * score. There can be a maximum of 100 actions in the list. For information about
-     * action scores, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
-    inline GetActionRecommendationsResult& AddActionList(PredictedAction&& value) { m_actionList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the recommendation.</p>
      */
-    inline const Aws::String& GetRecommendationId() const{ return m_recommendationId; }
+    inline const Aws::String& GetRecommendationId() const { return m_recommendationId; }
+    template<typename RecommendationIdT = Aws::String>
+    void SetRecommendationId(RecommendationIdT&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::forward<RecommendationIdT>(value); }
+    template<typename RecommendationIdT = Aws::String>
+    GetActionRecommendationsResult& WithRecommendationId(RecommendationIdT&& value) { SetRecommendationId(std::forward<RecommendationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the recommendation.</p>
-     */
-    inline void SetRecommendationId(const Aws::String& value) { m_recommendationId = value; }
-
-    /**
-     * <p>The ID of the recommendation.</p>
-     */
-    inline void SetRecommendationId(Aws::String&& value) { m_recommendationId = std::move(value); }
-
-    /**
-     * <p>The ID of the recommendation.</p>
-     */
-    inline void SetRecommendationId(const char* value) { m_recommendationId.assign(value); }
-
-    /**
-     * <p>The ID of the recommendation.</p>
-     */
-    inline GetActionRecommendationsResult& WithRecommendationId(const Aws::String& value) { SetRecommendationId(value); return *this;}
-
-    /**
-     * <p>The ID of the recommendation.</p>
-     */
-    inline GetActionRecommendationsResult& WithRecommendationId(Aws::String&& value) { SetRecommendationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the recommendation.</p>
-     */
-    inline GetActionRecommendationsResult& WithRecommendationId(const char* value) { SetRecommendationId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetActionRecommendationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetActionRecommendationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetActionRecommendationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetActionRecommendationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PredictedAction> m_actionList;
+    bool m_actionListHasBeenSet = false;
 
     Aws::String m_recommendationId;
+    bool m_recommendationIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

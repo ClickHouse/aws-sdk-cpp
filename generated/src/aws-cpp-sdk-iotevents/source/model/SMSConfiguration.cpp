@@ -18,17 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-SMSConfiguration::SMSConfiguration() : 
-    m_senderIdHasBeenSet(false),
-    m_additionalMessageHasBeenSet(false),
-    m_recipientsHasBeenSet(false)
-{
-}
-
-SMSConfiguration::SMSConfiguration(JsonView jsonValue) : 
-    m_senderIdHasBeenSet(false),
-    m_additionalMessageHasBeenSet(false),
-    m_recipientsHasBeenSet(false)
+SMSConfiguration::SMSConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SMSConfiguration& SMSConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("senderId"))
   {
     m_senderId = jsonValue.GetString("senderId");
-
     m_senderIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("additionalMessage"))
   {
     m_additionalMessage = jsonValue.GetString("additionalMessage");
-
     m_additionalMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("recipients"))
   {
     Aws::Utils::Array<JsonView> recipientsJsonList = jsonValue.GetArray("recipients");
@@ -58,7 +44,6 @@ SMSConfiguration& SMSConfiguration::operator =(JsonView jsonValue)
     }
     m_recipientsHasBeenSet = true;
   }
-
   return *this;
 }
 

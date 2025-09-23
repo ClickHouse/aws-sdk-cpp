@@ -35,7 +35,7 @@ namespace Model
   class ClassicLinkInstance
   {
   public:
-    AWS_EC2_API ClassicLinkInstance();
+    AWS_EC2_API ClassicLinkInstance() = default;
     AWS_EC2_API ClassicLinkInstance(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ClassicLinkInstance& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,169 +43,57 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The security groups.</p>
      */
-    inline const Aws::Vector<GroupIdentifier>& GetGroups() const{ return m_groups; }
-
-    /**
-     * <p>The security groups.</p>
-     */
+    inline const Aws::Vector<GroupIdentifier>& GetGroups() const { return m_groups; }
     inline bool GroupsHasBeenSet() const { return m_groupsHasBeenSet; }
+    template<typename GroupsT = Aws::Vector<GroupIdentifier>>
+    void SetGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups = std::forward<GroupsT>(value); }
+    template<typename GroupsT = Aws::Vector<GroupIdentifier>>
+    ClassicLinkInstance& WithGroups(GroupsT&& value) { SetGroups(std::forward<GroupsT>(value)); return *this;}
+    template<typename GroupsT = GroupIdentifier>
+    ClassicLinkInstance& AddGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups.emplace_back(std::forward<GroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The security groups.</p>
-     */
-    inline void SetGroups(const Aws::Vector<GroupIdentifier>& value) { m_groupsHasBeenSet = true; m_groups = value; }
-
-    /**
-     * <p>The security groups.</p>
-     */
-    inline void SetGroups(Aws::Vector<GroupIdentifier>&& value) { m_groupsHasBeenSet = true; m_groups = std::move(value); }
-
-    /**
-     * <p>The security groups.</p>
-     */
-    inline ClassicLinkInstance& WithGroups(const Aws::Vector<GroupIdentifier>& value) { SetGroups(value); return *this;}
-
-    /**
-     * <p>The security groups.</p>
-     */
-    inline ClassicLinkInstance& WithGroups(Aws::Vector<GroupIdentifier>&& value) { SetGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The security groups.</p>
-     */
-    inline ClassicLinkInstance& AddGroups(const GroupIdentifier& value) { m_groupsHasBeenSet = true; m_groups.push_back(value); return *this; }
-
-    /**
-     * <p>The security groups.</p>
-     */
-    inline ClassicLinkInstance& AddGroups(GroupIdentifier&& value) { m_groupsHasBeenSet = true; m_groups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    ClassicLinkInstance& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ClassicLinkInstance& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ClassicLinkInstance& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ClassicLinkInstance& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any tags assigned to the instance.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ClassicLinkInstance& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ClassicLinkInstance& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
-    inline ClassicLinkInstance& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
-    inline ClassicLinkInstance& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
-    inline ClassicLinkInstance& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Any tags assigned to the instance.</p>
-     */
-    inline ClassicLinkInstance& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline ClassicLinkInstance& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline ClassicLinkInstance& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC.</p>
-     */
-    inline ClassicLinkInstance& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    ClassicLinkInstance& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<GroupIdentifier> m_groups;

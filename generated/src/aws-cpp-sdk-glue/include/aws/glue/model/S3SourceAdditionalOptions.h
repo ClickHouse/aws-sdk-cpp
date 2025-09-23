@@ -30,67 +30,39 @@ namespace Model
   class S3SourceAdditionalOptions
   {
   public:
-    AWS_GLUE_API S3SourceAdditionalOptions();
+    AWS_GLUE_API S3SourceAdditionalOptions() = default;
     AWS_GLUE_API S3SourceAdditionalOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API S3SourceAdditionalOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Sets the upper limit for the target size of the dataset in bytes that will be
      * processed.</p>
      */
-    inline long long GetBoundedSize() const{ return m_boundedSize; }
-
-    /**
-     * <p>Sets the upper limit for the target size of the dataset in bytes that will be
-     * processed.</p>
-     */
+    inline long long GetBoundedSize() const { return m_boundedSize; }
     inline bool BoundedSizeHasBeenSet() const { return m_boundedSizeHasBeenSet; }
-
-    /**
-     * <p>Sets the upper limit for the target size of the dataset in bytes that will be
-     * processed.</p>
-     */
     inline void SetBoundedSize(long long value) { m_boundedSizeHasBeenSet = true; m_boundedSize = value; }
-
-    /**
-     * <p>Sets the upper limit for the target size of the dataset in bytes that will be
-     * processed.</p>
-     */
     inline S3SourceAdditionalOptions& WithBoundedSize(long long value) { SetBoundedSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Sets the upper limit for the target number of files that will be
      * processed.</p>
      */
-    inline long long GetBoundedFiles() const{ return m_boundedFiles; }
-
-    /**
-     * <p>Sets the upper limit for the target number of files that will be
-     * processed.</p>
-     */
+    inline long long GetBoundedFiles() const { return m_boundedFiles; }
     inline bool BoundedFilesHasBeenSet() const { return m_boundedFilesHasBeenSet; }
-
-    /**
-     * <p>Sets the upper limit for the target number of files that will be
-     * processed.</p>
-     */
     inline void SetBoundedFiles(long long value) { m_boundedFilesHasBeenSet = true; m_boundedFiles = value; }
-
-    /**
-     * <p>Sets the upper limit for the target number of files that will be
-     * processed.</p>
-     */
     inline S3SourceAdditionalOptions& WithBoundedFiles(long long value) { SetBoundedFiles(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_boundedSize;
+    long long m_boundedSize{0};
     bool m_boundedSizeHasBeenSet = false;
 
-    long long m_boundedFiles;
+    long long m_boundedFiles{0};
     bool m_boundedFilesHasBeenSet = false;
   };
 

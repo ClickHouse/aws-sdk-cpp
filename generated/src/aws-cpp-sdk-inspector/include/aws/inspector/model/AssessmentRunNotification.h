@@ -35,229 +35,96 @@ namespace Model
   class AssessmentRunNotification
   {
   public:
-    AWS_INSPECTOR_API AssessmentRunNotification();
+    AWS_INSPECTOR_API AssessmentRunNotification() = default;
     AWS_INSPECTOR_API AssessmentRunNotification(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API AssessmentRunNotification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date of the notification.</p>
      */
-    inline const Aws::Utils::DateTime& GetDate() const{ return m_date; }
-
-    /**
-     * <p>The date of the notification.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDate() const { return m_date; }
     inline bool DateHasBeenSet() const { return m_dateHasBeenSet; }
+    template<typename DateT = Aws::Utils::DateTime>
+    void SetDate(DateT&& value) { m_dateHasBeenSet = true; m_date = std::forward<DateT>(value); }
+    template<typename DateT = Aws::Utils::DateTime>
+    AssessmentRunNotification& WithDate(DateT&& value) { SetDate(std::forward<DateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date of the notification.</p>
-     */
-    inline void SetDate(const Aws::Utils::DateTime& value) { m_dateHasBeenSet = true; m_date = value; }
-
-    /**
-     * <p>The date of the notification.</p>
-     */
-    inline void SetDate(Aws::Utils::DateTime&& value) { m_dateHasBeenSet = true; m_date = std::move(value); }
-
-    /**
-     * <p>The date of the notification.</p>
-     */
-    inline AssessmentRunNotification& WithDate(const Aws::Utils::DateTime& value) { SetDate(value); return *this;}
-
-    /**
-     * <p>The date of the notification.</p>
-     */
-    inline AssessmentRunNotification& WithDate(Aws::Utils::DateTime&& value) { SetDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The event for which a notification is sent.</p>
      */
-    inline const InspectorEvent& GetEvent() const{ return m_event; }
-
-    /**
-     * <p>The event for which a notification is sent.</p>
-     */
+    inline InspectorEvent GetEvent() const { return m_event; }
     inline bool EventHasBeenSet() const { return m_eventHasBeenSet; }
+    inline void SetEvent(InspectorEvent value) { m_eventHasBeenSet = true; m_event = value; }
+    inline AssessmentRunNotification& WithEvent(InspectorEvent value) { SetEvent(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The event for which a notification is sent.</p>
-     */
-    inline void SetEvent(const InspectorEvent& value) { m_eventHasBeenSet = true; m_event = value; }
-
-    /**
-     * <p>The event for which a notification is sent.</p>
-     */
-    inline void SetEvent(InspectorEvent&& value) { m_eventHasBeenSet = true; m_event = std::move(value); }
-
-    /**
-     * <p>The event for which a notification is sent.</p>
-     */
-    inline AssessmentRunNotification& WithEvent(const InspectorEvent& value) { SetEvent(value); return *this;}
-
-    /**
-     * <p>The event for which a notification is sent.</p>
-     */
-    inline AssessmentRunNotification& WithEvent(InspectorEvent&& value) { SetEvent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message included in the notification.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message included in the notification.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    AssessmentRunNotification& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message included in the notification.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message included in the notification.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message included in the notification.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message included in the notification.</p>
-     */
-    inline AssessmentRunNotification& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message included in the notification.</p>
-     */
-    inline AssessmentRunNotification& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message included in the notification.</p>
-     */
-    inline AssessmentRunNotification& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Boolean value that specifies whether the notification represents an
      * error.</p>
      */
-    inline bool GetError() const{ return m_error; }
-
-    /**
-     * <p>The Boolean value that specifies whether the notification represents an
-     * error.</p>
-     */
+    inline bool GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
-
-    /**
-     * <p>The Boolean value that specifies whether the notification represents an
-     * error.</p>
-     */
     inline void SetError(bool value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The Boolean value that specifies whether the notification represents an
-     * error.</p>
-     */
     inline AssessmentRunNotification& WithError(bool value) { SetError(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The SNS topic to which the SNS notification is sent.</p>
      */
-    inline const Aws::String& GetSnsTopicArn() const{ return m_snsTopicArn; }
-
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
+    inline const Aws::String& GetSnsTopicArn() const { return m_snsTopicArn; }
     inline bool SnsTopicArnHasBeenSet() const { return m_snsTopicArnHasBeenSet; }
+    template<typename SnsTopicArnT = Aws::String>
+    void SetSnsTopicArn(SnsTopicArnT&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = std::forward<SnsTopicArnT>(value); }
+    template<typename SnsTopicArnT = Aws::String>
+    AssessmentRunNotification& WithSnsTopicArn(SnsTopicArnT&& value) { SetSnsTopicArn(std::forward<SnsTopicArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
-    inline void SetSnsTopicArn(const Aws::String& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = value; }
-
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
-    inline void SetSnsTopicArn(Aws::String&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = std::move(value); }
-
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
-    inline void SetSnsTopicArn(const char* value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn.assign(value); }
-
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
-    inline AssessmentRunNotification& WithSnsTopicArn(const Aws::String& value) { SetSnsTopicArn(value); return *this;}
-
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
-    inline AssessmentRunNotification& WithSnsTopicArn(Aws::String&& value) { SetSnsTopicArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The SNS topic to which the SNS notification is sent.</p>
-     */
-    inline AssessmentRunNotification& WithSnsTopicArn(const char* value) { SetSnsTopicArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status code of the SNS notification.</p>
      */
-    inline const AssessmentRunNotificationSnsStatusCode& GetSnsPublishStatusCode() const{ return m_snsPublishStatusCode; }
-
-    /**
-     * <p>The status code of the SNS notification.</p>
-     */
+    inline AssessmentRunNotificationSnsStatusCode GetSnsPublishStatusCode() const { return m_snsPublishStatusCode; }
     inline bool SnsPublishStatusCodeHasBeenSet() const { return m_snsPublishStatusCodeHasBeenSet; }
-
-    /**
-     * <p>The status code of the SNS notification.</p>
-     */
-    inline void SetSnsPublishStatusCode(const AssessmentRunNotificationSnsStatusCode& value) { m_snsPublishStatusCodeHasBeenSet = true; m_snsPublishStatusCode = value; }
-
-    /**
-     * <p>The status code of the SNS notification.</p>
-     */
-    inline void SetSnsPublishStatusCode(AssessmentRunNotificationSnsStatusCode&& value) { m_snsPublishStatusCodeHasBeenSet = true; m_snsPublishStatusCode = std::move(value); }
-
-    /**
-     * <p>The status code of the SNS notification.</p>
-     */
-    inline AssessmentRunNotification& WithSnsPublishStatusCode(const AssessmentRunNotificationSnsStatusCode& value) { SetSnsPublishStatusCode(value); return *this;}
-
-    /**
-     * <p>The status code of the SNS notification.</p>
-     */
-    inline AssessmentRunNotification& WithSnsPublishStatusCode(AssessmentRunNotificationSnsStatusCode&& value) { SetSnsPublishStatusCode(std::move(value)); return *this;}
-
+    inline void SetSnsPublishStatusCode(AssessmentRunNotificationSnsStatusCode value) { m_snsPublishStatusCodeHasBeenSet = true; m_snsPublishStatusCode = value; }
+    inline AssessmentRunNotification& WithSnsPublishStatusCode(AssessmentRunNotificationSnsStatusCode value) { SetSnsPublishStatusCode(value); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_date;
+    Aws::Utils::DateTime m_date{};
     bool m_dateHasBeenSet = false;
 
-    InspectorEvent m_event;
+    InspectorEvent m_event{InspectorEvent::NOT_SET};
     bool m_eventHasBeenSet = false;
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    bool m_error;
+    bool m_error{false};
     bool m_errorHasBeenSet = false;
 
     Aws::String m_snsTopicArn;
     bool m_snsTopicArnHasBeenSet = false;
 
-    AssessmentRunNotificationSnsStatusCode m_snsPublishStatusCode;
+    AssessmentRunNotificationSnsStatusCode m_snsPublishStatusCode{AssessmentRunNotificationSnsStatusCode::NOT_SET};
     bool m_snsPublishStatusCodeHasBeenSet = false;
   };
 

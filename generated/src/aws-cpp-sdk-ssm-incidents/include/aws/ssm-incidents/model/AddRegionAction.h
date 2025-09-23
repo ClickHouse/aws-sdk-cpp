@@ -32,93 +32,35 @@ namespace Model
   class AddRegionAction
   {
   public:
-    AWS_SSMINCIDENTS_API AddRegionAction();
+    AWS_SSMINCIDENTS_API AddRegionAction() = default;
     AWS_SSMINCIDENTS_API AddRegionAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API AddRegionAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services Region name to add to the replication set.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    AddRegionAction& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
-    inline AddRegionAction& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
-    inline AddRegionAction& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region name to add to the replication set.</p>
-     */
-    inline AddRegionAction& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The KMS key ID to use to encrypt your replication set.</p>
      */
-    inline const Aws::String& GetSseKmsKeyId() const{ return m_sseKmsKeyId; }
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
+    inline const Aws::String& GetSseKmsKeyId() const { return m_sseKmsKeyId; }
     inline bool SseKmsKeyIdHasBeenSet() const { return m_sseKmsKeyIdHasBeenSet; }
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
-    inline void SetSseKmsKeyId(const Aws::String& value) { m_sseKmsKeyIdHasBeenSet = true; m_sseKmsKeyId = value; }
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
-    inline void SetSseKmsKeyId(Aws::String&& value) { m_sseKmsKeyIdHasBeenSet = true; m_sseKmsKeyId = std::move(value); }
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
-    inline void SetSseKmsKeyId(const char* value) { m_sseKmsKeyIdHasBeenSet = true; m_sseKmsKeyId.assign(value); }
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
-    inline AddRegionAction& WithSseKmsKeyId(const Aws::String& value) { SetSseKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
-    inline AddRegionAction& WithSseKmsKeyId(Aws::String&& value) { SetSseKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The KMS key ID to use to encrypt your replication set.</p>
-     */
-    inline AddRegionAction& WithSseKmsKeyId(const char* value) { SetSseKmsKeyId(value); return *this;}
-
+    template<typename SseKmsKeyIdT = Aws::String>
+    void SetSseKmsKeyId(SseKmsKeyIdT&& value) { m_sseKmsKeyIdHasBeenSet = true; m_sseKmsKeyId = std::forward<SseKmsKeyIdT>(value); }
+    template<typename SseKmsKeyIdT = Aws::String>
+    AddRegionAction& WithSseKmsKeyId(SseKmsKeyIdT&& value) { SetSseKmsKeyId(std::forward<SseKmsKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;

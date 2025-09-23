@@ -20,17 +20,7 @@ namespace RDS
 namespace Model
 {
 
-AvailableProcessorFeature::AvailableProcessorFeature() : 
-    m_nameHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false)
-{
-}
-
-AvailableProcessorFeature::AvailableProcessorFeature(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false)
+AvailableProcessorFeature::AvailableProcessorFeature(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

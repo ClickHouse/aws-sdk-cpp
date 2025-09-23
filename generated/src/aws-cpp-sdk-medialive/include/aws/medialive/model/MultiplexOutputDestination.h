@@ -31,42 +31,23 @@ namespace Model
   class MultiplexOutputDestination
   {
   public:
-    AWS_MEDIALIVE_API MultiplexOutputDestination();
+    AWS_MEDIALIVE_API MultiplexOutputDestination() = default;
     AWS_MEDIALIVE_API MultiplexOutputDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MultiplexOutputDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Multiplex MediaConnect output destination settings.
      */
-    inline const MultiplexMediaConnectOutputDestinationSettings& GetMediaConnectSettings() const{ return m_mediaConnectSettings; }
-
-    /**
-     * Multiplex MediaConnect output destination settings.
-     */
+    inline const MultiplexMediaConnectOutputDestinationSettings& GetMediaConnectSettings() const { return m_mediaConnectSettings; }
     inline bool MediaConnectSettingsHasBeenSet() const { return m_mediaConnectSettingsHasBeenSet; }
-
-    /**
-     * Multiplex MediaConnect output destination settings.
-     */
-    inline void SetMediaConnectSettings(const MultiplexMediaConnectOutputDestinationSettings& value) { m_mediaConnectSettingsHasBeenSet = true; m_mediaConnectSettings = value; }
-
-    /**
-     * Multiplex MediaConnect output destination settings.
-     */
-    inline void SetMediaConnectSettings(MultiplexMediaConnectOutputDestinationSettings&& value) { m_mediaConnectSettingsHasBeenSet = true; m_mediaConnectSettings = std::move(value); }
-
-    /**
-     * Multiplex MediaConnect output destination settings.
-     */
-    inline MultiplexOutputDestination& WithMediaConnectSettings(const MultiplexMediaConnectOutputDestinationSettings& value) { SetMediaConnectSettings(value); return *this;}
-
-    /**
-     * Multiplex MediaConnect output destination settings.
-     */
-    inline MultiplexOutputDestination& WithMediaConnectSettings(MultiplexMediaConnectOutputDestinationSettings&& value) { SetMediaConnectSettings(std::move(value)); return *this;}
-
+    template<typename MediaConnectSettingsT = MultiplexMediaConnectOutputDestinationSettings>
+    void SetMediaConnectSettings(MediaConnectSettingsT&& value) { m_mediaConnectSettingsHasBeenSet = true; m_mediaConnectSettings = std::forward<MediaConnectSettingsT>(value); }
+    template<typename MediaConnectSettingsT = MultiplexMediaConnectOutputDestinationSettings>
+    MultiplexOutputDestination& WithMediaConnectSettings(MediaConnectSettingsT&& value) { SetMediaConnectSettings(std::forward<MediaConnectSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     MultiplexMediaConnectOutputDestinationSettings m_mediaConnectSettings;

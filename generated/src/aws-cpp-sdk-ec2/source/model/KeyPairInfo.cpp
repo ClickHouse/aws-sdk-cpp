@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-KeyPairInfo::KeyPairInfo() : 
-    m_keyPairIdHasBeenSet(false),
-    m_keyFingerprintHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_keyType(KeyType::NOT_SET),
-    m_keyTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_publicKeyHasBeenSet(false),
-    m_createTimeHasBeenSet(false)
-{
-}
-
-KeyPairInfo::KeyPairInfo(const XmlNode& xmlNode) : 
-    m_keyPairIdHasBeenSet(false),
-    m_keyFingerprintHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_keyType(KeyType::NOT_SET),
-    m_keyTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_publicKeyHasBeenSet(false),
-    m_createTimeHasBeenSet(false)
+KeyPairInfo::KeyPairInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,28 +37,17 @@ KeyPairInfo& KeyPairInfo::operator =(const XmlNode& xmlNode)
       m_keyPairId = Aws::Utils::Xml::DecodeEscapedXmlText(keyPairIdNode.GetText());
       m_keyPairIdHasBeenSet = true;
     }
-    XmlNode keyFingerprintNode = resultNode.FirstChild("keyFingerprint");
-    if(!keyFingerprintNode.IsNull())
-    {
-      m_keyFingerprint = Aws::Utils::Xml::DecodeEscapedXmlText(keyFingerprintNode.GetText());
-      m_keyFingerprintHasBeenSet = true;
-    }
-    XmlNode keyNameNode = resultNode.FirstChild("keyName");
-    if(!keyNameNode.IsNull())
-    {
-      m_keyName = Aws::Utils::Xml::DecodeEscapedXmlText(keyNameNode.GetText());
-      m_keyNameHasBeenSet = true;
-    }
     XmlNode keyTypeNode = resultNode.FirstChild("keyType");
     if(!keyTypeNode.IsNull())
     {
-      m_keyType = KeyTypeMapper::GetKeyTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(keyTypeNode.GetText()).c_str()).c_str());
+      m_keyType = KeyTypeMapper::GetKeyTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(keyTypeNode.GetText()).c_str()));
       m_keyTypeHasBeenSet = true;
     }
     XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -99,6 +68,18 @@ KeyPairInfo& KeyPairInfo::operator =(const XmlNode& xmlNode)
       m_createTime = DateTime(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(createTimeNode.GetText()).c_str()).c_str(), Aws::Utils::DateFormat::ISO_8601);
       m_createTimeHasBeenSet = true;
     }
+    XmlNode keyNameNode = resultNode.FirstChild("keyName");
+    if(!keyNameNode.IsNull())
+    {
+      m_keyName = Aws::Utils::Xml::DecodeEscapedXmlText(keyNameNode.GetText());
+      m_keyNameHasBeenSet = true;
+    }
+    XmlNode keyFingerprintNode = resultNode.FirstChild("keyFingerprint");
+    if(!keyFingerprintNode.IsNull())
+    {
+      m_keyFingerprint = Aws::Utils::Xml::DecodeEscapedXmlText(keyFingerprintNode.GetText());
+      m_keyFingerprintHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -111,19 +92,9 @@ void KeyPairInfo::OutputToStream(Aws::OStream& oStream, const char* location, un
       oStream << location << index << locationValue << ".KeyPairId=" << StringUtils::URLEncode(m_keyPairId.c_str()) << "&";
   }
 
-  if(m_keyFingerprintHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".KeyFingerprint=" << StringUtils::URLEncode(m_keyFingerprint.c_str()) << "&";
-  }
-
-  if(m_keyNameHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".KeyName=" << StringUtils::URLEncode(m_keyName.c_str()) << "&";
-  }
-
   if(m_keyTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".KeyType=" << KeyTypeMapper::GetNameForKeyType(m_keyType) << "&";
+      oStream << location << index << locationValue << ".KeyType=" << StringUtils::URLEncode(KeyTypeMapper::GetNameForKeyType(m_keyType)) << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -147,6 +118,16 @@ void KeyPairInfo::OutputToStream(Aws::OStream& oStream, const char* location, un
       oStream << location << index << locationValue << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
   }
 
+  if(m_keyNameHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".KeyName=" << StringUtils::URLEncode(m_keyName.c_str()) << "&";
+  }
+
+  if(m_keyFingerprintHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".KeyFingerprint=" << StringUtils::URLEncode(m_keyFingerprint.c_str()) << "&";
+  }
+
 }
 
 void KeyPairInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -155,17 +136,9 @@ void KeyPairInfo::OutputToStream(Aws::OStream& oStream, const char* location) co
   {
       oStream << location << ".KeyPairId=" << StringUtils::URLEncode(m_keyPairId.c_str()) << "&";
   }
-  if(m_keyFingerprintHasBeenSet)
-  {
-      oStream << location << ".KeyFingerprint=" << StringUtils::URLEncode(m_keyFingerprint.c_str()) << "&";
-  }
-  if(m_keyNameHasBeenSet)
-  {
-      oStream << location << ".KeyName=" << StringUtils::URLEncode(m_keyName.c_str()) << "&";
-  }
   if(m_keyTypeHasBeenSet)
   {
-      oStream << location << ".KeyType=" << KeyTypeMapper::GetNameForKeyType(m_keyType) << "&";
+      oStream << location << ".KeyType=" << StringUtils::URLEncode(KeyTypeMapper::GetNameForKeyType(m_keyType)) << "&";
   }
   if(m_tagsHasBeenSet)
   {
@@ -173,7 +146,7 @@ void KeyPairInfo::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -184,6 +157,14 @@ void KeyPairInfo::OutputToStream(Aws::OStream& oStream, const char* location) co
   if(m_createTimeHasBeenSet)
   {
       oStream << location << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_keyNameHasBeenSet)
+  {
+      oStream << location << ".KeyName=" << StringUtils::URLEncode(m_keyName.c_str()) << "&";
+  }
+  if(m_keyFingerprintHasBeenSet)
+  {
+      oStream << location << ".KeyFingerprint=" << StringUtils::URLEncode(m_keyFingerprint.c_str()) << "&";
   }
 }
 

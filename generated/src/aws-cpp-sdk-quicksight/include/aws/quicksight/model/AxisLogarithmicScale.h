@@ -29,35 +29,24 @@ namespace Model
   class AxisLogarithmicScale
   {
   public:
-    AWS_QUICKSIGHT_API AxisLogarithmicScale();
+    AWS_QUICKSIGHT_API AxisLogarithmicScale() = default;
     AWS_QUICKSIGHT_API AxisLogarithmicScale(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AxisLogarithmicScale& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The base setup of a logarithmic axis scale.</p>
      */
-    inline double GetBase() const{ return m_base; }
-
-    /**
-     * <p>The base setup of a logarithmic axis scale.</p>
-     */
+    inline double GetBase() const { return m_base; }
     inline bool BaseHasBeenSet() const { return m_baseHasBeenSet; }
-
-    /**
-     * <p>The base setup of a logarithmic axis scale.</p>
-     */
     inline void SetBase(double value) { m_baseHasBeenSet = true; m_base = value; }
-
-    /**
-     * <p>The base setup of a logarithmic axis scale.</p>
-     */
     inline AxisLogarithmicScale& WithBase(double value) { SetBase(value); return *this;}
-
+    ///@}
   private:
 
-    double m_base;
+    double m_base{0.0};
     bool m_baseHasBeenSet = false;
   };
 

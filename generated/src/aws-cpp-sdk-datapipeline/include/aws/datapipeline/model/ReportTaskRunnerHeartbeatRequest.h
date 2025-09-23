@@ -25,7 +25,7 @@ namespace Model
   class ReportTaskRunnerHeartbeatRequest : public DataPipelineRequest
   {
   public:
-    AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatRequest();
+    AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
     AWS_DATAPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the task runner. This value should be unique across your AWS
      * account. In the case of AWS Data Pipeline Task Runner launched on a resource
@@ -45,72 +46,15 @@ namespace Model
      * it launches the application. If you have written a custom task runner, you
      * should assign a unique identifier for the task runner.</p>
      */
-    inline const Aws::String& GetTaskrunnerId() const{ return m_taskrunnerId; }
-
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
+    inline const Aws::String& GetTaskrunnerId() const { return m_taskrunnerId; }
     inline bool TaskrunnerIdHasBeenSet() const { return m_taskrunnerIdHasBeenSet; }
+    template<typename TaskrunnerIdT = Aws::String>
+    void SetTaskrunnerId(TaskrunnerIdT&& value) { m_taskrunnerIdHasBeenSet = true; m_taskrunnerId = std::forward<TaskrunnerIdT>(value); }
+    template<typename TaskrunnerIdT = Aws::String>
+    ReportTaskRunnerHeartbeatRequest& WithTaskrunnerId(TaskrunnerIdT&& value) { SetTaskrunnerId(std::forward<TaskrunnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
-    inline void SetTaskrunnerId(const Aws::String& value) { m_taskrunnerIdHasBeenSet = true; m_taskrunnerId = value; }
-
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
-    inline void SetTaskrunnerId(Aws::String&& value) { m_taskrunnerIdHasBeenSet = true; m_taskrunnerId = std::move(value); }
-
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
-    inline void SetTaskrunnerId(const char* value) { m_taskrunnerIdHasBeenSet = true; m_taskrunnerId.assign(value); }
-
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithTaskrunnerId(const Aws::String& value) { SetTaskrunnerId(value); return *this;}
-
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithTaskrunnerId(Aws::String&& value) { SetTaskrunnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the task runner. This value should be unique across your AWS
-     * account. In the case of AWS Data Pipeline Task Runner launched on a resource
-     * managed by AWS Data Pipeline, the web service provides a unique identifier when
-     * it launches the application. If you have written a custom task runner, you
-     * should assign a unique identifier for the task runner.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithTaskrunnerId(const char* value) { SetTaskrunnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of task the task runner is configured to accept and process. The
      * worker group is set as a field on objects in the pipeline when they are created.
@@ -118,112 +62,25 @@ namespace Model
      * wildcard values permitted in <code>workerGroup</code>; the string must be an
      * exact, case-sensitive, match.</p>
      */
-    inline const Aws::String& GetWorkerGroup() const{ return m_workerGroup; }
-
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
+    inline const Aws::String& GetWorkerGroup() const { return m_workerGroup; }
     inline bool WorkerGroupHasBeenSet() const { return m_workerGroupHasBeenSet; }
+    template<typename WorkerGroupT = Aws::String>
+    void SetWorkerGroup(WorkerGroupT&& value) { m_workerGroupHasBeenSet = true; m_workerGroup = std::forward<WorkerGroupT>(value); }
+    template<typename WorkerGroupT = Aws::String>
+    ReportTaskRunnerHeartbeatRequest& WithWorkerGroup(WorkerGroupT&& value) { SetWorkerGroup(std::forward<WorkerGroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
-    inline void SetWorkerGroup(const Aws::String& value) { m_workerGroupHasBeenSet = true; m_workerGroup = value; }
-
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
-    inline void SetWorkerGroup(Aws::String&& value) { m_workerGroupHasBeenSet = true; m_workerGroup = std::move(value); }
-
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
-    inline void SetWorkerGroup(const char* value) { m_workerGroupHasBeenSet = true; m_workerGroup.assign(value); }
-
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithWorkerGroup(const Aws::String& value) { SetWorkerGroup(value); return *this;}
-
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithWorkerGroup(Aws::String&& value) { SetWorkerGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of task the task runner is configured to accept and process. The
-     * worker group is set as a field on objects in the pipeline when they are created.
-     * You can only specify a single value for <code>workerGroup</code>. There are no
-     * wildcard values permitted in <code>workerGroup</code>; the string must be an
-     * exact, case-sensitive, match.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithWorkerGroup(const char* value) { SetWorkerGroup(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The public DNS name of the task runner.</p>
      */
-    inline const Aws::String& GetHostname() const{ return m_hostname; }
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
+    inline const Aws::String& GetHostname() const { return m_hostname; }
     inline bool HostnameHasBeenSet() const { return m_hostnameHasBeenSet; }
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
-    inline void SetHostname(const Aws::String& value) { m_hostnameHasBeenSet = true; m_hostname = value; }
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
-    inline void SetHostname(Aws::String&& value) { m_hostnameHasBeenSet = true; m_hostname = std::move(value); }
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
-    inline void SetHostname(const char* value) { m_hostnameHasBeenSet = true; m_hostname.assign(value); }
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithHostname(const Aws::String& value) { SetHostname(value); return *this;}
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithHostname(Aws::String&& value) { SetHostname(std::move(value)); return *this;}
-
-    /**
-     * <p>The public DNS name of the task runner.</p>
-     */
-    inline ReportTaskRunnerHeartbeatRequest& WithHostname(const char* value) { SetHostname(value); return *this;}
-
+    template<typename HostnameT = Aws::String>
+    void SetHostname(HostnameT&& value) { m_hostnameHasBeenSet = true; m_hostname = std::forward<HostnameT>(value); }
+    template<typename HostnameT = Aws::String>
+    ReportTaskRunnerHeartbeatRequest& WithHostname(HostnameT&& value) { SetHostname(std::forward<HostnameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskrunnerId;

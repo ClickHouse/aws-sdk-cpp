@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-OperationResultFilter::OperationResultFilter() : 
-    m_name(OperationResultFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-OperationResultFilter::OperationResultFilter(const XmlNode& xmlNode) : 
-    m_name(OperationResultFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+OperationResultFilter::OperationResultFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ OperationResultFilter& OperationResultFilter::operator =(const XmlNode& xmlNode)
     XmlNode nameNode = resultNode.FirstChild("Name");
     if(!nameNode.IsNull())
     {
-      m_name = OperationResultFilterNameMapper::GetOperationResultFilterNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()).c_str());
+      m_name = OperationResultFilterNameMapper::GetOperationResultFilterNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()));
       m_nameHasBeenSet = true;
     }
     XmlNode valuesNode = resultNode.FirstChild("Values");
@@ -62,7 +52,7 @@ void OperationResultFilter::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_nameHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Name=" << OperationResultFilterNameMapper::GetNameForOperationResultFilterName(m_name) << "&";
+      oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(OperationResultFilterNameMapper::GetNameForOperationResultFilterName(m_name)) << "&";
   }
 
   if(m_valuesHasBeenSet)
@@ -76,7 +66,7 @@ void OperationResultFilter::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_nameHasBeenSet)
   {
-      oStream << location << ".Name=" << OperationResultFilterNameMapper::GetNameForOperationResultFilterName(m_name) << "&";
+      oStream << location << ".Name=" << StringUtils::URLEncode(OperationResultFilterNameMapper::GetNameForOperationResultFilterName(m_name)) << "&";
   }
   if(m_valuesHasBeenSet)
   {

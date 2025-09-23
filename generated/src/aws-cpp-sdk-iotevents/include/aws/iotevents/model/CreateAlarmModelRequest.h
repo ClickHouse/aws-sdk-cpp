@@ -27,7 +27,7 @@ namespace Model
   class CreateAlarmModelRequest : public IoTEventsRequest
   {
   public:
-    AWS_IOTEVENTS_API CreateAlarmModelRequest();
+    AWS_IOTEVENTS_API CreateAlarmModelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,161 +38,47 @@ namespace Model
     AWS_IOTEVENTS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A unique name that helps you identify the alarm model. You can't change this
      * name after you create the alarm model.</p>
      */
-    inline const Aws::String& GetAlarmModelName() const{ return m_alarmModelName; }
-
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
+    inline const Aws::String& GetAlarmModelName() const { return m_alarmModelName; }
     inline bool AlarmModelNameHasBeenSet() const { return m_alarmModelNameHasBeenSet; }
+    template<typename AlarmModelNameT = Aws::String>
+    void SetAlarmModelName(AlarmModelNameT&& value) { m_alarmModelNameHasBeenSet = true; m_alarmModelName = std::forward<AlarmModelNameT>(value); }
+    template<typename AlarmModelNameT = Aws::String>
+    CreateAlarmModelRequest& WithAlarmModelName(AlarmModelNameT&& value) { SetAlarmModelName(std::forward<AlarmModelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
-    inline void SetAlarmModelName(const Aws::String& value) { m_alarmModelNameHasBeenSet = true; m_alarmModelName = value; }
-
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
-    inline void SetAlarmModelName(Aws::String&& value) { m_alarmModelNameHasBeenSet = true; m_alarmModelName = std::move(value); }
-
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
-    inline void SetAlarmModelName(const char* value) { m_alarmModelNameHasBeenSet = true; m_alarmModelName.assign(value); }
-
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmModelName(const Aws::String& value) { SetAlarmModelName(value); return *this;}
-
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmModelName(Aws::String&& value) { SetAlarmModelName(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique name that helps you identify the alarm model. You can't change this
-     * name after you create the alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmModelName(const char* value) { SetAlarmModelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description that tells you what the alarm model detects.</p>
      */
-    inline const Aws::String& GetAlarmModelDescription() const{ return m_alarmModelDescription; }
-
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
+    inline const Aws::String& GetAlarmModelDescription() const { return m_alarmModelDescription; }
     inline bool AlarmModelDescriptionHasBeenSet() const { return m_alarmModelDescriptionHasBeenSet; }
+    template<typename AlarmModelDescriptionT = Aws::String>
+    void SetAlarmModelDescription(AlarmModelDescriptionT&& value) { m_alarmModelDescriptionHasBeenSet = true; m_alarmModelDescription = std::forward<AlarmModelDescriptionT>(value); }
+    template<typename AlarmModelDescriptionT = Aws::String>
+    CreateAlarmModelRequest& WithAlarmModelDescription(AlarmModelDescriptionT&& value) { SetAlarmModelDescription(std::forward<AlarmModelDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
-    inline void SetAlarmModelDescription(const Aws::String& value) { m_alarmModelDescriptionHasBeenSet = true; m_alarmModelDescription = value; }
-
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
-    inline void SetAlarmModelDescription(Aws::String&& value) { m_alarmModelDescriptionHasBeenSet = true; m_alarmModelDescription = std::move(value); }
-
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
-    inline void SetAlarmModelDescription(const char* value) { m_alarmModelDescriptionHasBeenSet = true; m_alarmModelDescription.assign(value); }
-
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmModelDescription(const Aws::String& value) { SetAlarmModelDescription(value); return *this;}
-
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmModelDescription(Aws::String&& value) { SetAlarmModelDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description that tells you what the alarm model detects.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmModelDescription(const char* value) { SetAlarmModelDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the IAM role that allows the alarm to perform actions and access
      * AWS resources. For more information, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
      * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    CreateAlarmModelRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
-    inline CreateAlarmModelRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
-    inline CreateAlarmModelRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role that allows the alarm to perform actions and access
-     * AWS resources. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
-     */
-    inline CreateAlarmModelRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
      * help you manage the alarm model. For more information, see <a
@@ -200,273 +86,87 @@ namespace Model
      * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
      * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateAlarmModelRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateAlarmModelRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of key-value pairs that contain metadata for the alarm model. The tags
-     * help you manage the alarm model. For more information, see <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/developerguide/tagging-iotevents.html">Tagging
-     * your AWS IoT Events resources</a> in the <i>AWS IoT Events Developer
-     * Guide</i>.</p> <p>You can create up to 50 tags for one alarm model.</p>
-     */
-    inline CreateAlarmModelRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
      * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
      * associated with this key to the alarm.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    CreateAlarmModelRequest& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
-    inline CreateAlarmModelRequest& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
-    inline CreateAlarmModelRequest& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>An input attribute used as a key to create an alarm. AWS IoT Events routes <a
-     * href="https://docs.aws.amazon.com/iotevents/latest/apireference/API_Input.html">inputs</a>
-     * associated with this key to the alarm.</p>
-     */
-    inline CreateAlarmModelRequest& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A non-negative integer that reflects the severity level of the alarm.</p>
      */
-    inline int GetSeverity() const{ return m_severity; }
-
-    /**
-     * <p>A non-negative integer that reflects the severity level of the alarm.</p>
-     */
+    inline int GetSeverity() const { return m_severity; }
     inline bool SeverityHasBeenSet() const { return m_severityHasBeenSet; }
-
-    /**
-     * <p>A non-negative integer that reflects the severity level of the alarm.</p>
-     */
     inline void SetSeverity(int value) { m_severityHasBeenSet = true; m_severity = value; }
-
-    /**
-     * <p>A non-negative integer that reflects the severity level of the alarm.</p>
-     */
     inline CreateAlarmModelRequest& WithSeverity(int value) { SetSeverity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Defines when your alarm is invoked.</p>
      */
-    inline const AlarmRule& GetAlarmRule() const{ return m_alarmRule; }
-
-    /**
-     * <p>Defines when your alarm is invoked.</p>
-     */
+    inline const AlarmRule& GetAlarmRule() const { return m_alarmRule; }
     inline bool AlarmRuleHasBeenSet() const { return m_alarmRuleHasBeenSet; }
+    template<typename AlarmRuleT = AlarmRule>
+    void SetAlarmRule(AlarmRuleT&& value) { m_alarmRuleHasBeenSet = true; m_alarmRule = std::forward<AlarmRuleT>(value); }
+    template<typename AlarmRuleT = AlarmRule>
+    CreateAlarmModelRequest& WithAlarmRule(AlarmRuleT&& value) { SetAlarmRule(std::forward<AlarmRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Defines when your alarm is invoked.</p>
-     */
-    inline void SetAlarmRule(const AlarmRule& value) { m_alarmRuleHasBeenSet = true; m_alarmRule = value; }
-
-    /**
-     * <p>Defines when your alarm is invoked.</p>
-     */
-    inline void SetAlarmRule(AlarmRule&& value) { m_alarmRuleHasBeenSet = true; m_alarmRule = std::move(value); }
-
-    /**
-     * <p>Defines when your alarm is invoked.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmRule(const AlarmRule& value) { SetAlarmRule(value); return *this;}
-
-    /**
-     * <p>Defines when your alarm is invoked.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmRule(AlarmRule&& value) { SetAlarmRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about one or more notification actions.</p>
      */
-    inline const AlarmNotification& GetAlarmNotification() const{ return m_alarmNotification; }
-
-    /**
-     * <p>Contains information about one or more notification actions.</p>
-     */
+    inline const AlarmNotification& GetAlarmNotification() const { return m_alarmNotification; }
     inline bool AlarmNotificationHasBeenSet() const { return m_alarmNotificationHasBeenSet; }
+    template<typename AlarmNotificationT = AlarmNotification>
+    void SetAlarmNotification(AlarmNotificationT&& value) { m_alarmNotificationHasBeenSet = true; m_alarmNotification = std::forward<AlarmNotificationT>(value); }
+    template<typename AlarmNotificationT = AlarmNotification>
+    CreateAlarmModelRequest& WithAlarmNotification(AlarmNotificationT&& value) { SetAlarmNotification(std::forward<AlarmNotificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about one or more notification actions.</p>
-     */
-    inline void SetAlarmNotification(const AlarmNotification& value) { m_alarmNotificationHasBeenSet = true; m_alarmNotification = value; }
-
-    /**
-     * <p>Contains information about one or more notification actions.</p>
-     */
-    inline void SetAlarmNotification(AlarmNotification&& value) { m_alarmNotificationHasBeenSet = true; m_alarmNotification = std::move(value); }
-
-    /**
-     * <p>Contains information about one or more notification actions.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmNotification(const AlarmNotification& value) { SetAlarmNotification(value); return *this;}
-
-    /**
-     * <p>Contains information about one or more notification actions.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmNotification(AlarmNotification&& value) { SetAlarmNotification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about one or more alarm actions.</p>
      */
-    inline const AlarmEventActions& GetAlarmEventActions() const{ return m_alarmEventActions; }
-
-    /**
-     * <p>Contains information about one or more alarm actions.</p>
-     */
+    inline const AlarmEventActions& GetAlarmEventActions() const { return m_alarmEventActions; }
     inline bool AlarmEventActionsHasBeenSet() const { return m_alarmEventActionsHasBeenSet; }
+    template<typename AlarmEventActionsT = AlarmEventActions>
+    void SetAlarmEventActions(AlarmEventActionsT&& value) { m_alarmEventActionsHasBeenSet = true; m_alarmEventActions = std::forward<AlarmEventActionsT>(value); }
+    template<typename AlarmEventActionsT = AlarmEventActions>
+    CreateAlarmModelRequest& WithAlarmEventActions(AlarmEventActionsT&& value) { SetAlarmEventActions(std::forward<AlarmEventActionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about one or more alarm actions.</p>
-     */
-    inline void SetAlarmEventActions(const AlarmEventActions& value) { m_alarmEventActionsHasBeenSet = true; m_alarmEventActions = value; }
-
-    /**
-     * <p>Contains information about one or more alarm actions.</p>
-     */
-    inline void SetAlarmEventActions(AlarmEventActions&& value) { m_alarmEventActionsHasBeenSet = true; m_alarmEventActions = std::move(value); }
-
-    /**
-     * <p>Contains information about one or more alarm actions.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmEventActions(const AlarmEventActions& value) { SetAlarmEventActions(value); return *this;}
-
-    /**
-     * <p>Contains information about one or more alarm actions.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmEventActions(AlarmEventActions&& value) { SetAlarmEventActions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of alarm state changes.</p>
      */
-    inline const AlarmCapabilities& GetAlarmCapabilities() const{ return m_alarmCapabilities; }
-
-    /**
-     * <p>Contains the configuration information of alarm state changes.</p>
-     */
+    inline const AlarmCapabilities& GetAlarmCapabilities() const { return m_alarmCapabilities; }
     inline bool AlarmCapabilitiesHasBeenSet() const { return m_alarmCapabilitiesHasBeenSet; }
-
-    /**
-     * <p>Contains the configuration information of alarm state changes.</p>
-     */
-    inline void SetAlarmCapabilities(const AlarmCapabilities& value) { m_alarmCapabilitiesHasBeenSet = true; m_alarmCapabilities = value; }
-
-    /**
-     * <p>Contains the configuration information of alarm state changes.</p>
-     */
-    inline void SetAlarmCapabilities(AlarmCapabilities&& value) { m_alarmCapabilitiesHasBeenSet = true; m_alarmCapabilities = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of alarm state changes.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmCapabilities(const AlarmCapabilities& value) { SetAlarmCapabilities(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of alarm state changes.</p>
-     */
-    inline CreateAlarmModelRequest& WithAlarmCapabilities(AlarmCapabilities&& value) { SetAlarmCapabilities(std::move(value)); return *this;}
-
+    template<typename AlarmCapabilitiesT = AlarmCapabilities>
+    void SetAlarmCapabilities(AlarmCapabilitiesT&& value) { m_alarmCapabilitiesHasBeenSet = true; m_alarmCapabilities = std::forward<AlarmCapabilitiesT>(value); }
+    template<typename AlarmCapabilitiesT = AlarmCapabilities>
+    CreateAlarmModelRequest& WithAlarmCapabilities(AlarmCapabilitiesT&& value) { SetAlarmCapabilities(std::forward<AlarmCapabilitiesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alarmModelName;
@@ -484,7 +184,7 @@ namespace Model
     Aws::String m_key;
     bool m_keyHasBeenSet = false;
 
-    int m_severity;
+    int m_severity{0};
     bool m_severityHasBeenSet = false;
 
     AlarmRule m_alarmRule;

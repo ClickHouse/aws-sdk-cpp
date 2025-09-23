@@ -12,17 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListIngestionJobsRequest::ListIngestionJobsRequest() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_sortByHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListIngestionJobsRequest::SerializePayload() const
 {
   JsonValue payload;

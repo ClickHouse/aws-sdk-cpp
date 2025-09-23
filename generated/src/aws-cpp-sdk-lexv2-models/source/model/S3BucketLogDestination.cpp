@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-S3BucketLogDestination::S3BucketLogDestination() : 
-    m_kmsKeyArnHasBeenSet(false),
-    m_s3BucketArnHasBeenSet(false),
-    m_logPrefixHasBeenSet(false)
-{
-}
-
-S3BucketLogDestination::S3BucketLogDestination(JsonView jsonValue) : 
-    m_kmsKeyArnHasBeenSet(false),
-    m_s3BucketArnHasBeenSet(false),
-    m_logPrefixHasBeenSet(false)
+S3BucketLogDestination::S3BucketLogDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ S3BucketLogDestination& S3BucketLogDestination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("kmsKeyArn"))
   {
     m_kmsKeyArn = jsonValue.GetString("kmsKeyArn");
-
     m_kmsKeyArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("s3BucketArn"))
   {
     m_s3BucketArn = jsonValue.GetString("s3BucketArn");
-
     m_s3BucketArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logPrefix"))
   {
     m_logPrefix = jsonValue.GetString("logPrefix");
-
     m_logPrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

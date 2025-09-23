@@ -12,12 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteDataSourceRequest::DeleteDataSourceRequest() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false)
-{
-}
-
 Aws::String DeleteDataSourceRequest::SerializePayload() const
 {
   return {};

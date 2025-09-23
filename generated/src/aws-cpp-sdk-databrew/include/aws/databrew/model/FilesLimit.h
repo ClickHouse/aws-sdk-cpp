@@ -34,127 +34,54 @@ namespace Model
   class FilesLimit
   {
   public:
-    AWS_GLUEDATABREW_API FilesLimit();
+    AWS_GLUEDATABREW_API FilesLimit() = default;
     AWS_GLUEDATABREW_API FilesLimit(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API FilesLimit& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of Amazon S3 files to select.</p>
      */
-    inline int GetMaxFiles() const{ return m_maxFiles; }
-
-    /**
-     * <p>The number of Amazon S3 files to select.</p>
-     */
+    inline int GetMaxFiles() const { return m_maxFiles; }
     inline bool MaxFilesHasBeenSet() const { return m_maxFilesHasBeenSet; }
-
-    /**
-     * <p>The number of Amazon S3 files to select.</p>
-     */
     inline void SetMaxFiles(int value) { m_maxFilesHasBeenSet = true; m_maxFiles = value; }
-
-    /**
-     * <p>The number of Amazon S3 files to select.</p>
-     */
     inline FilesLimit& WithMaxFiles(int value) { SetMaxFiles(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A criteria to use for Amazon S3 files sorting before their selection. By
      * default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only
      * allowed value.</p>
      */
-    inline const OrderedBy& GetOrderedBy() const{ return m_orderedBy; }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only
-     * allowed value.</p>
-     */
+    inline OrderedBy GetOrderedBy() const { return m_orderedBy; }
     inline bool OrderedByHasBeenSet() const { return m_orderedByHasBeenSet; }
+    inline void SetOrderedBy(OrderedBy value) { m_orderedByHasBeenSet = true; m_orderedBy = value; }
+    inline FilesLimit& WithOrderedBy(OrderedBy value) { SetOrderedBy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only
-     * allowed value.</p>
-     */
-    inline void SetOrderedBy(const OrderedBy& value) { m_orderedByHasBeenSet = true; m_orderedBy = value; }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only
-     * allowed value.</p>
-     */
-    inline void SetOrderedBy(OrderedBy&& value) { m_orderedByHasBeenSet = true; m_orderedBy = std::move(value); }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only
-     * allowed value.</p>
-     */
-    inline FilesLimit& WithOrderedBy(const OrderedBy& value) { SetOrderedBy(value); return *this;}
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only
-     * allowed value.</p>
-     */
-    inline FilesLimit& WithOrderedBy(OrderedBy&& value) { SetOrderedBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A criteria to use for Amazon S3 files sorting before their selection. By
      * default uses DESCENDING order, i.e. most recent files are selected first.
      * Another possible value is ASCENDING.</p>
      */
-    inline const Order& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses DESCENDING order, i.e. most recent files are selected first.
-     * Another possible value is ASCENDING.</p>
-     */
+    inline Order GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses DESCENDING order, i.e. most recent files are selected first.
-     * Another possible value is ASCENDING.</p>
-     */
-    inline void SetOrder(const Order& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses DESCENDING order, i.e. most recent files are selected first.
-     * Another possible value is ASCENDING.</p>
-     */
-    inline void SetOrder(Order&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses DESCENDING order, i.e. most recent files are selected first.
-     * Another possible value is ASCENDING.</p>
-     */
-    inline FilesLimit& WithOrder(const Order& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>A criteria to use for Amazon S3 files sorting before their selection. By
-     * default uses DESCENDING order, i.e. most recent files are selected first.
-     * Another possible value is ASCENDING.</p>
-     */
-    inline FilesLimit& WithOrder(Order&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(Order value) { m_orderHasBeenSet = true; m_order = value; }
+    inline FilesLimit& WithOrder(Order value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
-    int m_maxFiles;
+    int m_maxFiles{0};
     bool m_maxFilesHasBeenSet = false;
 
-    OrderedBy m_orderedBy;
+    OrderedBy m_orderedBy{OrderedBy::NOT_SET};
     bool m_orderedByHasBeenSet = false;
 
-    Order m_order;
+    Order m_order{Order::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

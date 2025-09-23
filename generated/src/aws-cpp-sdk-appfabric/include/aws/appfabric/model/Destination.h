@@ -33,79 +33,36 @@ namespace Model
   class Destination
   {
   public:
-    AWS_APPFABRIC_API Destination();
+    AWS_APPFABRIC_API Destination() = default;
     AWS_APPFABRIC_API Destination(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API Destination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about an Amazon S3 bucket.</p>
      */
-    inline const S3Bucket& GetS3Bucket() const{ return m_s3Bucket; }
-
-    /**
-     * <p>Contains information about an Amazon S3 bucket.</p>
-     */
+    inline const S3Bucket& GetS3Bucket() const { return m_s3Bucket; }
     inline bool S3BucketHasBeenSet() const { return m_s3BucketHasBeenSet; }
+    template<typename S3BucketT = S3Bucket>
+    void SetS3Bucket(S3BucketT&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::forward<S3BucketT>(value); }
+    template<typename S3BucketT = S3Bucket>
+    Destination& WithS3Bucket(S3BucketT&& value) { SetS3Bucket(std::forward<S3BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about an Amazon S3 bucket.</p>
-     */
-    inline void SetS3Bucket(const S3Bucket& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = value; }
-
-    /**
-     * <p>Contains information about an Amazon S3 bucket.</p>
-     */
-    inline void SetS3Bucket(S3Bucket&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::move(value); }
-
-    /**
-     * <p>Contains information about an Amazon S3 bucket.</p>
-     */
-    inline Destination& WithS3Bucket(const S3Bucket& value) { SetS3Bucket(value); return *this;}
-
-    /**
-     * <p>Contains information about an Amazon S3 bucket.</p>
-     */
-    inline Destination& WithS3Bucket(S3Bucket&& value) { SetS3Bucket(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about an Amazon Kinesis Data Firehose delivery
      * stream.</p>
      */
-    inline const FirehoseStream& GetFirehoseStream() const{ return m_firehoseStream; }
-
-    /**
-     * <p>Contains information about an Amazon Kinesis Data Firehose delivery
-     * stream.</p>
-     */
+    inline const FirehoseStream& GetFirehoseStream() const { return m_firehoseStream; }
     inline bool FirehoseStreamHasBeenSet() const { return m_firehoseStreamHasBeenSet; }
-
-    /**
-     * <p>Contains information about an Amazon Kinesis Data Firehose delivery
-     * stream.</p>
-     */
-    inline void SetFirehoseStream(const FirehoseStream& value) { m_firehoseStreamHasBeenSet = true; m_firehoseStream = value; }
-
-    /**
-     * <p>Contains information about an Amazon Kinesis Data Firehose delivery
-     * stream.</p>
-     */
-    inline void SetFirehoseStream(FirehoseStream&& value) { m_firehoseStreamHasBeenSet = true; m_firehoseStream = std::move(value); }
-
-    /**
-     * <p>Contains information about an Amazon Kinesis Data Firehose delivery
-     * stream.</p>
-     */
-    inline Destination& WithFirehoseStream(const FirehoseStream& value) { SetFirehoseStream(value); return *this;}
-
-    /**
-     * <p>Contains information about an Amazon Kinesis Data Firehose delivery
-     * stream.</p>
-     */
-    inline Destination& WithFirehoseStream(FirehoseStream&& value) { SetFirehoseStream(std::move(value)); return *this;}
-
+    template<typename FirehoseStreamT = FirehoseStream>
+    void SetFirehoseStream(FirehoseStreamT&& value) { m_firehoseStreamHasBeenSet = true; m_firehoseStream = std::forward<FirehoseStreamT>(value); }
+    template<typename FirehoseStreamT = FirehoseStream>
+    Destination& WithFirehoseStream(FirehoseStreamT&& value) { SetFirehoseStream(std::forward<FirehoseStreamT>(value)); return *this;}
+    ///@}
   private:
 
     S3Bucket m_s3Bucket;

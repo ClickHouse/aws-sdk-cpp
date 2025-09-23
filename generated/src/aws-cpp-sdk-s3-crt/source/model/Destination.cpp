@@ -20,27 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-Destination::Destination() : 
-    m_bucketHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_storageClass(StorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_accessControlTranslationHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false),
-    m_replicationTimeHasBeenSet(false),
-    m_metricsHasBeenSet(false)
-{
-}
-
-Destination::Destination(const XmlNode& xmlNode) : 
-    m_bucketHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_storageClass(StorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_accessControlTranslationHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false),
-    m_replicationTimeHasBeenSet(false),
-    m_metricsHasBeenSet(false)
+Destination::Destination(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +46,7 @@ Destination& Destination::operator =(const XmlNode& xmlNode)
     XmlNode storageClassNode = resultNode.FirstChild("StorageClass");
     if(!storageClassNode.IsNull())
     {
-      m_storageClass = StorageClassMapper::GetStorageClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageClassNode.GetText()).c_str()).c_str());
+      m_storageClass = StorageClassMapper::GetStorageClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageClassNode.GetText()).c_str()));
       m_storageClassHasBeenSet = true;
     }
     XmlNode accessControlTranslationNode = resultNode.FirstChild("AccessControlTranslation");

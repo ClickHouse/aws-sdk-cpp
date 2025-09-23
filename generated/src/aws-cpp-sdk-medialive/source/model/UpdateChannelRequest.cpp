@@ -12,21 +12,6 @@ using namespace Aws::MediaLive::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateChannelRequest::UpdateChannelRequest() : 
-    m_cdiInputSpecificationHasBeenSet(false),
-    m_channelIdHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_encoderSettingsHasBeenSet(false),
-    m_inputAttachmentsHasBeenSet(false),
-    m_inputSpecificationHasBeenSet(false),
-    m_logLevel(LogLevel::NOT_SET),
-    m_logLevelHasBeenSet(false),
-    m_maintenanceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdateChannelRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -91,6 +76,24 @@ Aws::String UpdateChannelRequest::SerializePayload() const
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
+
+  }
+
+  if(m_channelEngineVersionHasBeenSet)
+  {
+   payload.WithObject("channelEngineVersion", m_channelEngineVersion.Jsonize());
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("dryRun", m_dryRun);
+
+  }
+
+  if(m_anywhereSettingsHasBeenSet)
+  {
+   payload.WithObject("anywhereSettings", m_anywhereSettings.Jsonize());
 
   }
 

@@ -33,503 +33,209 @@ namespace Model
   class DescribeEndpointResult
   {
   public:
-    AWS_EVENTBRIDGE_API DescribeEndpointResult();
+    AWS_EVENTBRIDGE_API DescribeEndpointResult() = default;
     AWS_EVENTBRIDGE_API DescribeEndpointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EVENTBRIDGE_API DescribeEndpointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the endpoint you asked for information about.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DescribeEndpointResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the endpoint you asked for information about.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the endpoint you asked for information about.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the endpoint you asked for information about.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the endpoint you asked for information about.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DescribeEndpointResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the endpoint you asked for information about.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the endpoint you asked for information about.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the endpoint you asked for information about.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the endpoint you asked for information about.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    DescribeEndpointResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the endpoint you asked for information about.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The ARN of the endpoint you asked for information about.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the endpoint you asked for information about.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The routing configuration of the endpoint you asked for information
      * about.</p>
      */
-    inline const RoutingConfig& GetRoutingConfig() const{ return m_routingConfig; }
+    inline const RoutingConfig& GetRoutingConfig() const { return m_routingConfig; }
+    template<typename RoutingConfigT = RoutingConfig>
+    void SetRoutingConfig(RoutingConfigT&& value) { m_routingConfigHasBeenSet = true; m_routingConfig = std::forward<RoutingConfigT>(value); }
+    template<typename RoutingConfigT = RoutingConfig>
+    DescribeEndpointResult& WithRoutingConfig(RoutingConfigT&& value) { SetRoutingConfig(std::forward<RoutingConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The routing configuration of the endpoint you asked for information
-     * about.</p>
-     */
-    inline void SetRoutingConfig(const RoutingConfig& value) { m_routingConfig = value; }
-
-    /**
-     * <p>The routing configuration of the endpoint you asked for information
-     * about.</p>
-     */
-    inline void SetRoutingConfig(RoutingConfig&& value) { m_routingConfig = std::move(value); }
-
-    /**
-     * <p>The routing configuration of the endpoint you asked for information
-     * about.</p>
-     */
-    inline DescribeEndpointResult& WithRoutingConfig(const RoutingConfig& value) { SetRoutingConfig(value); return *this;}
-
-    /**
-     * <p>The routing configuration of the endpoint you asked for information
-     * about.</p>
-     */
-    inline DescribeEndpointResult& WithRoutingConfig(RoutingConfig&& value) { SetRoutingConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether replication is enabled or disabled for the endpoint you asked for
      * information about.</p>
      */
-    inline const ReplicationConfig& GetReplicationConfig() const{ return m_replicationConfig; }
+    inline const ReplicationConfig& GetReplicationConfig() const { return m_replicationConfig; }
+    template<typename ReplicationConfigT = ReplicationConfig>
+    void SetReplicationConfig(ReplicationConfigT&& value) { m_replicationConfigHasBeenSet = true; m_replicationConfig = std::forward<ReplicationConfigT>(value); }
+    template<typename ReplicationConfigT = ReplicationConfig>
+    DescribeEndpointResult& WithReplicationConfig(ReplicationConfigT&& value) { SetReplicationConfig(std::forward<ReplicationConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Whether replication is enabled or disabled for the endpoint you asked for
-     * information about.</p>
-     */
-    inline void SetReplicationConfig(const ReplicationConfig& value) { m_replicationConfig = value; }
-
-    /**
-     * <p>Whether replication is enabled or disabled for the endpoint you asked for
-     * information about.</p>
-     */
-    inline void SetReplicationConfig(ReplicationConfig&& value) { m_replicationConfig = std::move(value); }
-
-    /**
-     * <p>Whether replication is enabled or disabled for the endpoint you asked for
-     * information about.</p>
-     */
-    inline DescribeEndpointResult& WithReplicationConfig(const ReplicationConfig& value) { SetReplicationConfig(value); return *this;}
-
-    /**
-     * <p>Whether replication is enabled or disabled for the endpoint you asked for
-     * information about.</p>
-     */
-    inline DescribeEndpointResult& WithReplicationConfig(ReplicationConfig&& value) { SetReplicationConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The event buses being used by the endpoint you asked for information
      * about.</p>
      */
-    inline const Aws::Vector<EndpointEventBus>& GetEventBuses() const{ return m_eventBuses; }
+    inline const Aws::Vector<EndpointEventBus>& GetEventBuses() const { return m_eventBuses; }
+    template<typename EventBusesT = Aws::Vector<EndpointEventBus>>
+    void SetEventBuses(EventBusesT&& value) { m_eventBusesHasBeenSet = true; m_eventBuses = std::forward<EventBusesT>(value); }
+    template<typename EventBusesT = Aws::Vector<EndpointEventBus>>
+    DescribeEndpointResult& WithEventBuses(EventBusesT&& value) { SetEventBuses(std::forward<EventBusesT>(value)); return *this;}
+    template<typename EventBusesT = EndpointEventBus>
+    DescribeEndpointResult& AddEventBuses(EventBusesT&& value) { m_eventBusesHasBeenSet = true; m_eventBuses.emplace_back(std::forward<EventBusesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The event buses being used by the endpoint you asked for information
-     * about.</p>
-     */
-    inline void SetEventBuses(const Aws::Vector<EndpointEventBus>& value) { m_eventBuses = value; }
-
-    /**
-     * <p>The event buses being used by the endpoint you asked for information
-     * about.</p>
-     */
-    inline void SetEventBuses(Aws::Vector<EndpointEventBus>&& value) { m_eventBuses = std::move(value); }
-
-    /**
-     * <p>The event buses being used by the endpoint you asked for information
-     * about.</p>
-     */
-    inline DescribeEndpointResult& WithEventBuses(const Aws::Vector<EndpointEventBus>& value) { SetEventBuses(value); return *this;}
-
-    /**
-     * <p>The event buses being used by the endpoint you asked for information
-     * about.</p>
-     */
-    inline DescribeEndpointResult& WithEventBuses(Aws::Vector<EndpointEventBus>&& value) { SetEventBuses(std::move(value)); return *this;}
-
-    /**
-     * <p>The event buses being used by the endpoint you asked for information
-     * about.</p>
-     */
-    inline DescribeEndpointResult& AddEventBuses(const EndpointEventBus& value) { m_eventBuses.push_back(value); return *this; }
-
-    /**
-     * <p>The event buses being used by the endpoint you asked for information
-     * about.</p>
-     */
-    inline DescribeEndpointResult& AddEventBuses(EndpointEventBus&& value) { m_eventBuses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN of the role used by the endpoint you asked for information about.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    DescribeEndpointResult& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the role used by the endpoint you asked for information about.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the role used by the endpoint you asked for information about.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the role used by the endpoint you asked for information about.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the role used by the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the role used by the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the role used by the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the endpoint you asked for information about.</p>
      */
-    inline const Aws::String& GetEndpointId() const{ return m_endpointId; }
+    inline const Aws::String& GetEndpointId() const { return m_endpointId; }
+    template<typename EndpointIdT = Aws::String>
+    void SetEndpointId(EndpointIdT&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::forward<EndpointIdT>(value); }
+    template<typename EndpointIdT = Aws::String>
+    DescribeEndpointResult& WithEndpointId(EndpointIdT&& value) { SetEndpointId(std::forward<EndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the endpoint you asked for information about.</p>
-     */
-    inline void SetEndpointId(const Aws::String& value) { m_endpointId = value; }
-
-    /**
-     * <p>The ID of the endpoint you asked for information about.</p>
-     */
-    inline void SetEndpointId(Aws::String&& value) { m_endpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the endpoint you asked for information about.</p>
-     */
-    inline void SetEndpointId(const char* value) { m_endpointId.assign(value); }
-
-    /**
-     * <p>The ID of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithEndpointId(const Aws::String& value) { SetEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithEndpointId(Aws::String&& value) { SetEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithEndpointId(const char* value) { SetEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of the endpoint you asked for information about.</p>
      */
-    inline const Aws::String& GetEndpointUrl() const{ return m_endpointUrl; }
+    inline const Aws::String& GetEndpointUrl() const { return m_endpointUrl; }
+    template<typename EndpointUrlT = Aws::String>
+    void SetEndpointUrl(EndpointUrlT&& value) { m_endpointUrlHasBeenSet = true; m_endpointUrl = std::forward<EndpointUrlT>(value); }
+    template<typename EndpointUrlT = Aws::String>
+    DescribeEndpointResult& WithEndpointUrl(EndpointUrlT&& value) { SetEndpointUrl(std::forward<EndpointUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the endpoint you asked for information about.</p>
-     */
-    inline void SetEndpointUrl(const Aws::String& value) { m_endpointUrl = value; }
-
-    /**
-     * <p>The URL of the endpoint you asked for information about.</p>
-     */
-    inline void SetEndpointUrl(Aws::String&& value) { m_endpointUrl = std::move(value); }
-
-    /**
-     * <p>The URL of the endpoint you asked for information about.</p>
-     */
-    inline void SetEndpointUrl(const char* value) { m_endpointUrl.assign(value); }
-
-    /**
-     * <p>The URL of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithEndpointUrl(const Aws::String& value) { SetEndpointUrl(value); return *this;}
-
-    /**
-     * <p>The URL of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithEndpointUrl(Aws::String&& value) { SetEndpointUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithEndpointUrl(const char* value) { SetEndpointUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the endpoint you asked for information about.</p>
      */
-    inline const EndpointState& GetState() const{ return m_state; }
+    inline EndpointState GetState() const { return m_state; }
+    inline void SetState(EndpointState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline DescribeEndpointResult& WithState(EndpointState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the endpoint you asked for information about.</p>
-     */
-    inline void SetState(const EndpointState& value) { m_state = value; }
-
-    /**
-     * <p>The current state of the endpoint you asked for information about.</p>
-     */
-    inline void SetState(EndpointState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithState(const EndpointState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the endpoint you asked for information about.</p>
-     */
-    inline DescribeEndpointResult& WithState(EndpointState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason the endpoint you asked for information about is in its current
      * state.</p>
      */
-    inline const Aws::String& GetStateReason() const{ return m_stateReason; }
+    inline const Aws::String& GetStateReason() const { return m_stateReason; }
+    template<typename StateReasonT = Aws::String>
+    void SetStateReason(StateReasonT&& value) { m_stateReasonHasBeenSet = true; m_stateReason = std::forward<StateReasonT>(value); }
+    template<typename StateReasonT = Aws::String>
+    DescribeEndpointResult& WithStateReason(StateReasonT&& value) { SetStateReason(std::forward<StateReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason the endpoint you asked for information about is in its current
-     * state.</p>
-     */
-    inline void SetStateReason(const Aws::String& value) { m_stateReason = value; }
-
-    /**
-     * <p>The reason the endpoint you asked for information about is in its current
-     * state.</p>
-     */
-    inline void SetStateReason(Aws::String&& value) { m_stateReason = std::move(value); }
-
-    /**
-     * <p>The reason the endpoint you asked for information about is in its current
-     * state.</p>
-     */
-    inline void SetStateReason(const char* value) { m_stateReason.assign(value); }
-
-    /**
-     * <p>The reason the endpoint you asked for information about is in its current
-     * state.</p>
-     */
-    inline DescribeEndpointResult& WithStateReason(const Aws::String& value) { SetStateReason(value); return *this;}
-
-    /**
-     * <p>The reason the endpoint you asked for information about is in its current
-     * state.</p>
-     */
-    inline DescribeEndpointResult& WithStateReason(Aws::String&& value) { SetStateReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason the endpoint you asked for information about is in its current
-     * state.</p>
-     */
-    inline DescribeEndpointResult& WithStateReason(const char* value) { SetStateReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the endpoint you asked for information about was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    DescribeEndpointResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the endpoint you asked for information about was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The time the endpoint you asked for information about was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time the endpoint you asked for information about was created.</p>
-     */
-    inline DescribeEndpointResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time the endpoint you asked for information about was created.</p>
-     */
-    inline DescribeEndpointResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the endpoint you asked for information about was modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    DescribeEndpointResult& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time the endpoint you asked for information about was modified.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTime = value; }
-
-    /**
-     * <p>The last time the endpoint you asked for information about was modified.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The last time the endpoint you asked for information about was modified.</p>
-     */
-    inline DescribeEndpointResult& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The last time the endpoint you asked for information about was modified.</p>
-     */
-    inline DescribeEndpointResult& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeEndpointResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeEndpointResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeEndpointResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeEndpointResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     RoutingConfig m_routingConfig;
+    bool m_routingConfigHasBeenSet = false;
 
     ReplicationConfig m_replicationConfig;
+    bool m_replicationConfigHasBeenSet = false;
 
     Aws::Vector<EndpointEventBus> m_eventBuses;
+    bool m_eventBusesHasBeenSet = false;
 
     Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet = false;
 
     Aws::String m_endpointId;
+    bool m_endpointIdHasBeenSet = false;
 
     Aws::String m_endpointUrl;
+    bool m_endpointUrlHasBeenSet = false;
 
-    EndpointState m_state;
+    EndpointState m_state{EndpointState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::String m_stateReason;
+    bool m_stateReasonHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

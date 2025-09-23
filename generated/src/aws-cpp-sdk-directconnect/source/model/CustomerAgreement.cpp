@@ -18,15 +18,7 @@ namespace DirectConnect
 namespace Model
 {
 
-CustomerAgreement::CustomerAgreement() : 
-    m_agreementNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-CustomerAgreement::CustomerAgreement(JsonView jsonValue) : 
-    m_agreementNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
+CustomerAgreement::CustomerAgreement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CustomerAgreement& CustomerAgreement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("agreementName"))
   {
     m_agreementName = jsonValue.GetString("agreementName");
-
     m_agreementNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetString("status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class GetCodeSigningConfigRequest : public LambdaRequest
   {
   public:
-    AWS_LAMBDA_API GetCodeSigningConfigRequest();
+    AWS_LAMBDA_API GetCodeSigningConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LAMBDA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
      */
-    inline const Aws::String& GetCodeSigningConfigArn() const{ return m_codeSigningConfigArn; }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
+    inline const Aws::String& GetCodeSigningConfigArn() const { return m_codeSigningConfigArn; }
     inline bool CodeSigningConfigArnHasBeenSet() const { return m_codeSigningConfigArnHasBeenSet; }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
-    inline void SetCodeSigningConfigArn(const Aws::String& value) { m_codeSigningConfigArnHasBeenSet = true; m_codeSigningConfigArn = value; }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
-    inline void SetCodeSigningConfigArn(Aws::String&& value) { m_codeSigningConfigArnHasBeenSet = true; m_codeSigningConfigArn = std::move(value); }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
-    inline void SetCodeSigningConfigArn(const char* value) { m_codeSigningConfigArnHasBeenSet = true; m_codeSigningConfigArn.assign(value); }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
-    inline GetCodeSigningConfigRequest& WithCodeSigningConfigArn(const Aws::String& value) { SetCodeSigningConfigArn(value); return *this;}
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
-    inline GetCodeSigningConfigRequest& WithCodeSigningConfigArn(Aws::String&& value) { SetCodeSigningConfigArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>
-     */
-    inline GetCodeSigningConfigRequest& WithCodeSigningConfigArn(const char* value) { SetCodeSigningConfigArn(value); return *this;}
-
+    template<typename CodeSigningConfigArnT = Aws::String>
+    void SetCodeSigningConfigArn(CodeSigningConfigArnT&& value) { m_codeSigningConfigArnHasBeenSet = true; m_codeSigningConfigArn = std::forward<CodeSigningConfigArnT>(value); }
+    template<typename CodeSigningConfigArnT = Aws::String>
+    GetCodeSigningConfigRequest& WithCodeSigningConfigArn(CodeSigningConfigArnT&& value) { SetCodeSigningConfigArn(std::forward<CodeSigningConfigArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_codeSigningConfigArn;

@@ -21,7 +21,7 @@ namespace Model
   class DescribeChannelBanRequest : public ChimeSDKMessagingRequest
   {
   public:
-    AWS_CHIMESDKMESSAGING_API DescribeChannelBanRequest();
+    AWS_CHIMESDKMESSAGING_API DescribeChannelBanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,136 +34,42 @@ namespace Model
     AWS_CHIMESDKMESSAGING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the channel from which the user is banned.</p>
      */
-    inline const Aws::String& GetChannelArn() const{ return m_channelArn; }
-
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
+    inline const Aws::String& GetChannelArn() const { return m_channelArn; }
     inline bool ChannelArnHasBeenSet() const { return m_channelArnHasBeenSet; }
+    template<typename ChannelArnT = Aws::String>
+    void SetChannelArn(ChannelArnT&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::forward<ChannelArnT>(value); }
+    template<typename ChannelArnT = Aws::String>
+    DescribeChannelBanRequest& WithChannelArn(ChannelArnT&& value) { SetChannelArn(std::forward<ChannelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
-    inline void SetChannelArn(const Aws::String& value) { m_channelArnHasBeenSet = true; m_channelArn = value; }
-
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
-    inline void SetChannelArn(Aws::String&& value) { m_channelArnHasBeenSet = true; m_channelArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
-    inline void SetChannelArn(const char* value) { m_channelArnHasBeenSet = true; m_channelArn.assign(value); }
-
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
-    inline DescribeChannelBanRequest& WithChannelArn(const Aws::String& value) { SetChannelArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
-    inline DescribeChannelBanRequest& WithChannelArn(Aws::String&& value) { SetChannelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the channel from which the user is banned.</p>
-     */
-    inline DescribeChannelBanRequest& WithChannelArn(const char* value) { SetChannelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
      */
-    inline const Aws::String& GetMemberArn() const{ return m_memberArn; }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
+    inline const Aws::String& GetMemberArn() const { return m_memberArn; }
     inline bool MemberArnHasBeenSet() const { return m_memberArnHasBeenSet; }
+    template<typename MemberArnT = Aws::String>
+    void SetMemberArn(MemberArnT&& value) { m_memberArnHasBeenSet = true; m_memberArn = std::forward<MemberArnT>(value); }
+    template<typename MemberArnT = Aws::String>
+    DescribeChannelBanRequest& WithMemberArn(MemberArnT&& value) { SetMemberArn(std::forward<MemberArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
-    inline void SetMemberArn(const Aws::String& value) { m_memberArnHasBeenSet = true; m_memberArn = value; }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
-    inline void SetMemberArn(Aws::String&& value) { m_memberArnHasBeenSet = true; m_memberArn = std::move(value); }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
-    inline void SetMemberArn(const char* value) { m_memberArnHasBeenSet = true; m_memberArn.assign(value); }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
-    inline DescribeChannelBanRequest& WithMemberArn(const Aws::String& value) { SetMemberArn(value); return *this;}
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
-    inline DescribeChannelBanRequest& WithMemberArn(Aws::String&& value) { SetMemberArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
-     */
-    inline DescribeChannelBanRequest& WithMemberArn(const char* value) { SetMemberArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
      * that makes the API call.</p>
      */
-    inline const Aws::String& GetChimeBearer() const{ return m_chimeBearer; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
+    inline const Aws::String& GetChimeBearer() const { return m_chimeBearer; }
     inline bool ChimeBearerHasBeenSet() const { return m_chimeBearerHasBeenSet; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(const Aws::String& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(Aws::String&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(const char* value) { m_chimeBearerHasBeenSet = true; m_chimeBearer.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline DescribeChannelBanRequest& WithChimeBearer(const Aws::String& value) { SetChimeBearer(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline DescribeChannelBanRequest& WithChimeBearer(Aws::String&& value) { SetChimeBearer(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline DescribeChannelBanRequest& WithChimeBearer(const char* value) { SetChimeBearer(value); return *this;}
-
+    template<typename ChimeBearerT = Aws::String>
+    void SetChimeBearer(ChimeBearerT&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::forward<ChimeBearerT>(value); }
+    template<typename ChimeBearerT = Aws::String>
+    DescribeChannelBanRequest& WithChimeBearer(ChimeBearerT&& value) { SetChimeBearer(std::forward<ChimeBearerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelArn;

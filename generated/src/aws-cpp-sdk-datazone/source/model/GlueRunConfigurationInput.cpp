@@ -18,28 +18,28 @@ namespace DataZone
 namespace Model
 {
 
-GlueRunConfigurationInput::GlueRunConfigurationInput() : 
-    m_dataAccessRoleHasBeenSet(false),
-    m_relationalFilterConfigurationsHasBeenSet(false)
-{
-}
-
-GlueRunConfigurationInput::GlueRunConfigurationInput(JsonView jsonValue) : 
-    m_dataAccessRoleHasBeenSet(false),
-    m_relationalFilterConfigurationsHasBeenSet(false)
+GlueRunConfigurationInput::GlueRunConfigurationInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 GlueRunConfigurationInput& GlueRunConfigurationInput::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("autoImportDataQualityResult"))
+  {
+    m_autoImportDataQualityResult = jsonValue.GetBool("autoImportDataQualityResult");
+    m_autoImportDataQualityResultHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("catalogName"))
+  {
+    m_catalogName = jsonValue.GetString("catalogName");
+    m_catalogNameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("dataAccessRole"))
   {
     m_dataAccessRole = jsonValue.GetString("dataAccessRole");
-
     m_dataAccessRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("relationalFilterConfigurations"))
   {
     Aws::Utils::Array<JsonView> relationalFilterConfigurationsJsonList = jsonValue.GetArray("relationalFilterConfigurations");
@@ -49,13 +49,24 @@ GlueRunConfigurationInput& GlueRunConfigurationInput::operator =(JsonView jsonVa
     }
     m_relationalFilterConfigurationsHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue GlueRunConfigurationInput::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_autoImportDataQualityResultHasBeenSet)
+  {
+   payload.WithBool("autoImportDataQualityResult", m_autoImportDataQualityResult);
+
+  }
+
+  if(m_catalogNameHasBeenSet)
+  {
+   payload.WithString("catalogName", m_catalogName);
+
+  }
 
   if(m_dataAccessRoleHasBeenSet)
   {

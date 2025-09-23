@@ -20,15 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-KGKeyPairIds::KGKeyPairIds() : 
-    m_keyGroupIdHasBeenSet(false),
-    m_keyPairIdsHasBeenSet(false)
-{
-}
-
-KGKeyPairIds::KGKeyPairIds(const XmlNode& xmlNode) : 
-    m_keyGroupIdHasBeenSet(false),
-    m_keyPairIdsHasBeenSet(false)
+KGKeyPairIds::KGKeyPairIds(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

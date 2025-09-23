@@ -18,50 +18,28 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-EstimatedDiscounts::EstimatedDiscounts() : 
-    m_otherDiscount(0.0),
-    m_otherDiscountHasBeenSet(false),
-    m_reservedInstancesDiscount(0.0),
-    m_reservedInstancesDiscountHasBeenSet(false),
-    m_savingsPlansDiscount(0.0),
-    m_savingsPlansDiscountHasBeenSet(false)
-{
-}
-
-EstimatedDiscounts::EstimatedDiscounts(JsonView jsonValue) : 
-    m_otherDiscount(0.0),
-    m_otherDiscountHasBeenSet(false),
-    m_reservedInstancesDiscount(0.0),
-    m_reservedInstancesDiscountHasBeenSet(false),
-    m_savingsPlansDiscount(0.0),
-    m_savingsPlansDiscountHasBeenSet(false)
+EstimatedDiscounts::EstimatedDiscounts(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 EstimatedDiscounts& EstimatedDiscounts::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("otherDiscount"))
-  {
-    m_otherDiscount = jsonValue.GetDouble("otherDiscount");
-
-    m_otherDiscountHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("reservedInstancesDiscount"))
-  {
-    m_reservedInstancesDiscount = jsonValue.GetDouble("reservedInstancesDiscount");
-
-    m_reservedInstancesDiscountHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("savingsPlansDiscount"))
   {
     m_savingsPlansDiscount = jsonValue.GetDouble("savingsPlansDiscount");
-
     m_savingsPlansDiscountHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("reservedInstancesDiscount"))
+  {
+    m_reservedInstancesDiscount = jsonValue.GetDouble("reservedInstancesDiscount");
+    m_reservedInstancesDiscountHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("otherDiscount"))
+  {
+    m_otherDiscount = jsonValue.GetDouble("otherDiscount");
+    m_otherDiscountHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -69,9 +47,9 @@ JsonValue EstimatedDiscounts::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_otherDiscountHasBeenSet)
+  if(m_savingsPlansDiscountHasBeenSet)
   {
-   payload.WithDouble("otherDiscount", m_otherDiscount);
+   payload.WithDouble("savingsPlansDiscount", m_savingsPlansDiscount);
 
   }
 
@@ -81,9 +59,9 @@ JsonValue EstimatedDiscounts::Jsonize() const
 
   }
 
-  if(m_savingsPlansDiscountHasBeenSet)
+  if(m_otherDiscountHasBeenSet)
   {
-   payload.WithDouble("savingsPlansDiscount", m_savingsPlansDiscount);
+   payload.WithDouble("otherDiscount", m_otherDiscount);
 
   }
 

@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-OrganizationKubernetesAuditLogsConfiguration::OrganizationKubernetesAuditLogsConfiguration() : 
-    m_autoEnable(false),
-    m_autoEnableHasBeenSet(false)
-{
-}
-
-OrganizationKubernetesAuditLogsConfiguration::OrganizationKubernetesAuditLogsConfiguration(JsonView jsonValue) : 
-    m_autoEnable(false),
-    m_autoEnableHasBeenSet(false)
+OrganizationKubernetesAuditLogsConfiguration::OrganizationKubernetesAuditLogsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ OrganizationKubernetesAuditLogsConfiguration& OrganizationKubernetesAuditLogsCon
   if(jsonValue.ValueExists("autoEnable"))
   {
     m_autoEnable = jsonValue.GetBool("autoEnable");
-
     m_autoEnableHasBeenSet = true;
   }
-
   return *this;
 }
 

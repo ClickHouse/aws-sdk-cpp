@@ -18,17 +18,7 @@ namespace PinpointEmail
 namespace Model
 {
 
-InboxPlacementTrackingOption::InboxPlacementTrackingOption() : 
-    m_global(false),
-    m_globalHasBeenSet(false),
-    m_trackedIspsHasBeenSet(false)
-{
-}
-
-InboxPlacementTrackingOption::InboxPlacementTrackingOption(JsonView jsonValue) : 
-    m_global(false),
-    m_globalHasBeenSet(false),
-    m_trackedIspsHasBeenSet(false)
+InboxPlacementTrackingOption::InboxPlacementTrackingOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ InboxPlacementTrackingOption& InboxPlacementTrackingOption::operator =(JsonView 
   if(jsonValue.ValueExists("Global"))
   {
     m_global = jsonValue.GetBool("Global");
-
     m_globalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrackedIsps"))
   {
     Aws::Utils::Array<JsonView> trackedIspsJsonList = jsonValue.GetArray("TrackedIsps");
@@ -51,7 +39,6 @@ InboxPlacementTrackingOption& InboxPlacementTrackingOption::operator =(JsonView 
     }
     m_trackedIspsHasBeenSet = true;
   }
-
   return *this;
 }
 

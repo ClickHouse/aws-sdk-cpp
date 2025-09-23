@@ -57,6 +57,16 @@
             "required": false,
             "documentation": "When an Access Point ARN is provided and this flag is enabled, the SDK MUST use the ARN's region when constructing the endpoint instead of the client's configured region.",
             "type": "Boolean"
+        },
+        "ResourceArn": {
+            "required": false,
+            "documentation": "The resource ARN included in the request.  Only set on TagResource, UntagResourceand ListTagsForResource",
+            "type": "String"
+        },
+        "UseS3ExpressControlEndpoint": {
+            "required": false,
+            "documentation": "Internal parameter to indicate whether S3Express operation should use control plane, (ex. ListDirectoryAccessPoints)",
+            "type": "Boolean"
         }
     },
     "rules": [
@@ -72,6 +82,1347 @@
                 }
             ],
             "rules": [
+                {
+                    "conditions": [
+                        {
+                            "fn": "booleanEquals",
+                            "argv": [
+                                {
+                                    "ref": "UseFIPS"
+                                },
+                                true
+                            ]
+                        },
+                        {
+                            "fn": "aws.partition",
+                            "argv": [
+                                {
+                                    "ref": "Region"
+                                }
+                            ],
+                            "assign": "partitionResult"
+                        },
+                        {
+                            "fn": "stringEquals",
+                            "argv": [
+                                {
+                                    "fn": "getAttr",
+                                    "argv": [
+                                        {
+                                            "ref": "partitionResult"
+                                        },
+                                        "name"
+                                    ]
+                                },
+                                "aws-cn"
+                            ]
+                        }
+                    ],
+                    "error": "Partition does not support FIPS",
+                    "type": "error"
+                },
+                {
+                    "conditions": [
+                        {
+                            "fn": "isSet",
+                            "argv": [
+                                {
+                                    "ref": "OutpostId"
+                                }
+                            ]
+                        }
+                    ],
+                    "rules": [
+                        {
+                            "conditions": [
+                                {
+                                    "fn": "aws.partition",
+                                    "argv": [
+                                        {
+                                            "ref": "Region"
+                                        }
+                                    ],
+                                    "assign": "partitionResult"
+                                }
+                            ],
+                            "rules": [
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "RequiresAccountId"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "RequiresAccountId"
+                                                },
+                                                true
+                                            ]
+                                        },
+                                        {
+                                            "fn": "not",
+                                            "argv": [
+                                                {
+                                                    "fn": "isSet",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "AccountId"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "error": "AccountId is required but not set",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccountId"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "not",
+                                            "argv": [
+                                                {
+                                                    "fn": "isValidHostLabel",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "AccountId"
+                                                        },
+                                                        false
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "error": "AccountId must only contain a-z, A-Z, 0-9 and `-`.",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "not",
+                                            "argv": [
+                                                {
+                                                    "fn": "isValidHostLabel",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "OutpostId"
+                                                        },
+                                                        false
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "error": "OutpostId must only contain a-z, A-Z, 0-9 and `-`.",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "error": "Invalid Configuration: DualStack and custom endpoint are not supported",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isValidHostLabel",
+                                            "argv": [
+                                                {
+                                                    "ref": "Region"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "isSet",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "Endpoint"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "fn": "parseURL",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "Endpoint"
+                                                        }
+                                                    ],
+                                                    "assign": "url"
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "{url#scheme}://{url#authority}{url#path}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3-outposts",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                },
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseDualStack"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3-outposts-fips.{Region}.{partitionResult#dualStackDnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3-outposts",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3-outposts-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3-outposts",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseDualStack"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3-outposts.{Region}.{partitionResult#dualStackDnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3-outposts",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "endpoint": {
+                                                "url": "https://s3-outposts.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3-outposts",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                },
+                                {
+                                    "conditions": [],
+                                    "error": "Invalid region: region was not a valid DNS name.",
+                                    "type": "error"
+                                }
+                            ],
+                            "type": "tree"
+                        }
+                    ],
+                    "type": "tree"
+                },
+                {
+                    "conditions": [
+                        {
+                            "fn": "isSet",
+                            "argv": [
+                                {
+                                    "ref": "ResourceArn"
+                                }
+                            ]
+                        },
+                        {
+                            "fn": "aws.parseArn",
+                            "argv": [
+                                {
+                                    "ref": "ResourceArn"
+                                }
+                            ],
+                            "assign": "resourceArn"
+                        },
+                        {
+                            "fn": "stringEquals",
+                            "argv": [
+                                {
+                                    "fn": "getAttr",
+                                    "argv": [
+                                        {
+                                            "ref": "resourceArn"
+                                        },
+                                        "service"
+                                    ]
+                                },
+                                "s3express"
+                            ]
+                        }
+                    ],
+                    "rules": [
+                        {
+                            "conditions": [
+                                {
+                                    "fn": "aws.partition",
+                                    "argv": [
+                                        {
+                                            "ref": "Region"
+                                        }
+                                    ],
+                                    "assign": "partitionResult"
+                                }
+                            ],
+                            "rules": [
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "aws.partition",
+                                            "argv": [
+                                                {
+                                                    "fn": "getAttr",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "resourceArn"
+                                                        },
+                                                        "region"
+                                                    ]
+                                                }
+                                            ],
+                                            "assign": "arnPartition"
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "stringEquals",
+                                                    "argv": [
+                                                        {
+                                                            "fn": "getAttr",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "arnPartition"
+                                                                },
+                                                                "name"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "fn": "getAttr",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "partitionResult"
+                                                                },
+                                                                "name"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "rules": [
+                                                {
+                                                    "conditions": [
+                                                        {
+                                                            "fn": "isSet",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "UseArnRegion"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "fn": "booleanEquals",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "UseArnRegion"
+                                                                },
+                                                                false
+                                                            ]
+                                                        },
+                                                        {
+                                                            "fn": "not",
+                                                            "argv": [
+                                                                {
+                                                                    "fn": "stringEquals",
+                                                                    "argv": [
+                                                                        {
+                                                                            "fn": "getAttr",
+                                                                            "argv": [
+                                                                                {
+                                                                                    "ref": "resourceArn"
+                                                                                },
+                                                                                "region"
+                                                                            ]
+                                                                        },
+                                                                        "{Region}"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "error": "Invalid configuration: region from ARN `{resourceArn#region}` does not match client region `{Region}` and UseArnRegion is `false`",
+                                                    "type": "error"
+                                                },
+                                                {
+                                                    "conditions": [
+                                                        {
+                                                            "fn": "isSet",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "Endpoint"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "fn": "booleanEquals",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "UseDualStack"
+                                                                },
+                                                                true
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "error": "Invalid Configuration: DualStack and custom endpoint are not supported",
+                                                    "type": "error"
+                                                },
+                                                {
+                                                    "conditions": [
+                                                        {
+                                                            "fn": "booleanEquals",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "UseDualStack"
+                                                                },
+                                                                true
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "error": "S3Express does not support Dual-stack.",
+                                                    "type": "error"
+                                                },
+                                                {
+                                                    "conditions": [
+                                                        {
+                                                            "fn": "isSet",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "Endpoint"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "fn": "parseURL",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "Endpoint"
+                                                                }
+                                                            ],
+                                                            "assign": "url"
+                                                        }
+                                                    ],
+                                                    "endpoint": {
+                                                        "url": "{url#scheme}://{url#authority}",
+                                                        "properties": {
+                                                            "authSchemes": [
+                                                                {
+                                                                    "disableDoubleEncoding": true,
+                                                                    "name": "sigv4",
+                                                                    "signingName": "s3express",
+                                                                    "signingRegion": "{Region}"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "headers": {}
+                                                    },
+                                                    "type": "endpoint"
+                                                },
+                                                {
+                                                    "conditions": [
+                                                        {
+                                                            "fn": "booleanEquals",
+                                                            "argv": [
+                                                                {
+                                                                    "ref": "UseFIPS"
+                                                                },
+                                                                true
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "endpoint": {
+                                                        "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                        "properties": {
+                                                            "authSchemes": [
+                                                                {
+                                                                    "disableDoubleEncoding": true,
+                                                                    "name": "sigv4",
+                                                                    "signingName": "s3express",
+                                                                    "signingRegion": "{Region}"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "headers": {}
+                                                    },
+                                                    "type": "endpoint"
+                                                },
+                                                {
+                                                    "conditions": [],
+                                                    "endpoint": {
+                                                        "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                                        "properties": {
+                                                            "authSchemes": [
+                                                                {
+                                                                    "disableDoubleEncoding": true,
+                                                                    "name": "sigv4",
+                                                                    "signingName": "s3express",
+                                                                    "signingRegion": "{Region}"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "headers": {}
+                                                    },
+                                                    "type": "endpoint"
+                                                }
+                                            ],
+                                            "type": "tree"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "error": "Client was configured for partition `{partitionResult#name}` but ARN has `{arnPartition#name}`",
+                                            "type": "error"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                }
+                            ],
+                            "type": "tree"
+                        }
+                    ],
+                    "type": "tree"
+                },
+                {
+                    "conditions": [
+                        {
+                            "fn": "isSet",
+                            "argv": [
+                                {
+                                    "ref": "AccessPointName"
+                                }
+                            ]
+                        },
+                        {
+                            "fn": "substring",
+                            "argv": [
+                                {
+                                    "ref": "AccessPointName"
+                                },
+                                0,
+                                7,
+                                true
+                            ],
+                            "assign": "accessPointSuffix"
+                        },
+                        {
+                            "fn": "stringEquals",
+                            "argv": [
+                                {
+                                    "ref": "accessPointSuffix"
+                                },
+                                "--xa-s3"
+                            ]
+                        }
+                    ],
+                    "rules": [
+                        {
+                            "conditions": [
+                                {
+                                    "fn": "aws.partition",
+                                    "argv": [
+                                        {
+                                            "ref": "Region"
+                                        }
+                                    ],
+                                    "assign": "partitionResult"
+                                }
+                            ],
+                            "rules": [
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "error": "Invalid Configuration: DualStack and custom endpoint are not supported",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "error": "S3Express does not support Dual-stack.",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "parseURL",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ],
+                                            "assign": "url"
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "{url#scheme}://{url#authority}",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "disableDoubleEncoding": true,
+                                                    "name": "sigv4",
+                                                    "signingName": "s3express",
+                                                    "signingRegion": "{Region}"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                7,
+                                                15,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneId"
+                                        },
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                15,
+                                                17,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneDelim"
+                                        },
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "s3expressAvailabilityZoneDelim"
+                                                },
+                                                "--"
+                                            ]
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "endpoint": {
+                                                "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                7,
+                                                16,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneId"
+                                        },
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                16,
+                                                18,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneDelim"
+                                        },
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "s3expressAvailabilityZoneDelim"
+                                                },
+                                                "--"
+                                            ]
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "endpoint": {
+                                                "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                7,
+                                                20,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneId"
+                                        },
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                20,
+                                                22,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneDelim"
+                                        },
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "s3expressAvailabilityZoneDelim"
+                                                },
+                                                "--"
+                                            ]
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "endpoint": {
+                                                "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                7,
+                                                21,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneId"
+                                        },
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                21,
+                                                23,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneDelim"
+                                        },
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "s3expressAvailabilityZoneDelim"
+                                                },
+                                                "--"
+                                            ]
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "endpoint": {
+                                                "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                7,
+                                                27,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneId"
+                                        },
+                                        {
+                                            "fn": "substring",
+                                            "argv": [
+                                                {
+                                                    "ref": "AccessPointName"
+                                                },
+                                                27,
+                                                29,
+                                                true
+                                            ],
+                                            "assign": "s3expressAvailabilityZoneDelim"
+                                        },
+                                        {
+                                            "fn": "stringEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "s3expressAvailabilityZoneDelim"
+                                                },
+                                                "--"
+                                            ]
+                                        }
+                                    ],
+                                    "rules": [
+                                        {
+                                            "conditions": [
+                                                {
+                                                    "fn": "booleanEquals",
+                                                    "argv": [
+                                                        {
+                                                            "ref": "UseFIPS"
+                                                        },
+                                                        true
+                                                    ]
+                                                }
+                                            ],
+                                            "endpoint": {
+                                                "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        },
+                                        {
+                                            "conditions": [],
+                                            "endpoint": {
+                                                "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                                "properties": {
+                                                    "authSchemes": [
+                                                        {
+                                                            "disableDoubleEncoding": true,
+                                                            "name": "sigv4",
+                                                            "signingName": "s3express",
+                                                            "signingRegion": "{Region}"
+                                                        }
+                                                    ]
+                                                },
+                                                "headers": {}
+                                            },
+                                            "type": "endpoint"
+                                        }
+                                    ],
+                                    "type": "tree"
+                                },
+                                {
+                                    "conditions": [],
+                                    "error": "Unrecognized S3Express Access Point name format.",
+                                    "type": "error"
+                                }
+                            ],
+                            "type": "tree"
+                        }
+                    ],
+                    "type": "tree"
+                },
+                {
+                    "conditions": [
+                        {
+                            "fn": "isSet",
+                            "argv": [
+                                {
+                                    "ref": "UseS3ExpressControlEndpoint"
+                                }
+                            ]
+                        },
+                        {
+                            "fn": "booleanEquals",
+                            "argv": [
+                                {
+                                    "ref": "UseS3ExpressControlEndpoint"
+                                },
+                                true
+                            ]
+                        }
+                    ],
+                    "rules": [
+                        {
+                            "conditions": [
+                                {
+                                    "fn": "aws.partition",
+                                    "argv": [
+                                        {
+                                            "ref": "Region"
+                                        }
+                                    ],
+                                    "assign": "partitionResult"
+                                }
+                            ],
+                            "rules": [
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "error": "Invalid Configuration: DualStack and custom endpoint are not supported",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseDualStack"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "error": "S3Express does not support Dual-stack.",
+                                    "type": "error"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "isSet",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "fn": "parseURL",
+                                            "argv": [
+                                                {
+                                                    "ref": "Endpoint"
+                                                }
+                                            ],
+                                            "assign": "url"
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "{url#scheme}://{url#authority}",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "disableDoubleEncoding": true,
+                                                    "name": "sigv4",
+                                                    "signingName": "s3express",
+                                                    "signingRegion": "{Region}"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [
+                                        {
+                                            "fn": "booleanEquals",
+                                            "argv": [
+                                                {
+                                                    "ref": "UseFIPS"
+                                                },
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    "endpoint": {
+                                        "url": "https://s3express-control-fips.{Region}.{partitionResult#dnsSuffix}",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "disableDoubleEncoding": true,
+                                                    "name": "sigv4",
+                                                    "signingName": "s3express",
+                                                    "signingRegion": "{Region}"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                },
+                                {
+                                    "conditions": [],
+                                    "endpoint": {
+                                        "url": "https://s3express-control.{Region}.{partitionResult#dnsSuffix}",
+                                        "properties": {
+                                            "authSchemes": [
+                                                {
+                                                    "disableDoubleEncoding": true,
+                                                    "name": "sigv4",
+                                                    "signingName": "s3express",
+                                                    "signingRegion": "{Region}"
+                                                }
+                                            ]
+                                        },
+                                        "headers": {}
+                                    },
+                                    "type": "endpoint"
+                                }
+                            ],
+                            "type": "tree"
+                        }
+                    ],
+                    "type": "tree"
+                },
                 {
                     "conditions": [
                         {
@@ -175,269 +1526,6 @@
                             "fn": "isSet",
                             "argv": [
                                 {
-                                    "ref": "OutpostId"
-                                }
-                            ]
-                        }
-                    ],
-                    "rules": [
-                        {
-                            "conditions": [
-                                {
-                                    "fn": "aws.partition",
-                                    "argv": [
-                                        {
-                                            "ref": "Region"
-                                        }
-                                    ],
-                                    "assign": "partitionResult"
-                                }
-                            ],
-                            "rules": [
-                                {
-                                    "conditions": [
-                                        {
-                                            "fn": "booleanEquals",
-                                            "argv": [
-                                                {
-                                                    "ref": "UseFIPS"
-                                                },
-                                                true
-                                            ]
-                                        },
-                                        {
-                                            "fn": "stringEquals",
-                                            "argv": [
-                                                {
-                                                    "fn": "getAttr",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "partitionResult"
-                                                        },
-                                                        "name"
-                                                    ]
-                                                },
-                                                "aws-cn"
-                                            ]
-                                        }
-                                    ],
-                                    "error": "Partition does not support FIPS",
-                                    "type": "error"
-                                },
-                                {
-                                    "conditions": [
-                                        {
-                                            "fn": "isSet",
-                                            "argv": [
-                                                {
-                                                    "ref": "RequiresAccountId"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "fn": "booleanEquals",
-                                            "argv": [
-                                                {
-                                                    "ref": "RequiresAccountId"
-                                                },
-                                                true
-                                            ]
-                                        },
-                                        {
-                                            "fn": "not",
-                                            "argv": [
-                                                {
-                                                    "fn": "isSet",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "AccountId"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "error": "AccountId is required but not set",
-                                    "type": "error"
-                                },
-                                {
-                                    "conditions": [
-                                        {
-                                            "fn": "isSet",
-                                            "argv": [
-                                                {
-                                                    "ref": "AccountId"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "fn": "not",
-                                            "argv": [
-                                                {
-                                                    "fn": "isValidHostLabel",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "AccountId"
-                                                        },
-                                                        false
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "error": "AccountId must only contain a-z, A-Z, 0-9 and `-`.",
-                                    "type": "error"
-                                },
-                                {
-                                    "conditions": [
-                                        {
-                                            "fn": "not",
-                                            "argv": [
-                                                {
-                                                    "fn": "isValidHostLabel",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "OutpostId"
-                                                        },
-                                                        false
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "error": "OutpostId must only contain a-z, A-Z, 0-9 and `-`.",
-                                    "type": "error"
-                                },
-                                {
-                                    "conditions": [
-                                        {
-                                            "fn": "isValidHostLabel",
-                                            "argv": [
-                                                {
-                                                    "ref": "Region"
-                                                },
-                                                true
-                                            ]
-                                        }
-                                    ],
-                                    "rules": [
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "error": "Invalid configuration: Outposts do not support dual-stack",
-                                            "type": "error"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "isSet",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Endpoint"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "fn": "parseURL",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "Endpoint"
-                                                        }
-                                                    ],
-                                                    "assign": "url"
-                                                }
-                                            ],
-                                            "endpoint": {
-                                                "url": "{url#scheme}://{url#authority}{url#path}",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "disableDoubleEncoding": true,
-                                                            "name": "sigv4",
-                                                            "signingName": "s3-outposts",
-                                                            "signingRegion": "{Region}"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseFIPS"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "endpoint": {
-                                                "url": "https://s3-outposts-fips.{Region}.{partitionResult#dnsSuffix}",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "disableDoubleEncoding": true,
-                                                            "name": "sigv4",
-                                                            "signingName": "s3-outposts",
-                                                            "signingRegion": "{Region}"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        },
-                                        {
-                                            "conditions": [],
-                                            "endpoint": {
-                                                "url": "https://s3-outposts.{Region}.{partitionResult#dnsSuffix}",
-                                                "properties": {
-                                                    "authSchemes": [
-                                                        {
-                                                            "disableDoubleEncoding": true,
-                                                            "name": "sigv4",
-                                                            "signingName": "s3-outposts",
-                                                            "signingRegion": "{Region}"
-                                                        }
-                                                    ]
-                                                },
-                                                "headers": {}
-                                            },
-                                            "type": "endpoint"
-                                        }
-                                    ],
-                                    "type": "tree"
-                                },
-                                {
-                                    "conditions": [],
-                                    "error": "Invalid region: region was not a valid DNS name.",
-                                    "type": "error"
-                                }
-                            ],
-                            "type": "tree"
-                        }
-                    ],
-                    "type": "tree"
-                },
-                {
-                    "conditions": [
-                        {
-                            "fn": "isSet",
-                            "argv": [
-                                {
                                     "ref": "AccessPointName"
                                 }
                             ]
@@ -503,21 +1591,6 @@
                                         {
                                             "conditions": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "error": "Invalid configuration: Outpost Access Points do not support dual-stack",
-                                            "type": "error"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
                                                     "fn": "getAttr",
                                                     "argv": [
                                                         {
@@ -542,6 +1615,29 @@
                                                         }
                                                     ],
                                                     "rules": [
+                                                        {
+                                                            "conditions": [
+                                                                {
+                                                                    "fn": "isSet",
+                                                                    "argv": [
+                                                                        {
+                                                                            "ref": "Endpoint"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "fn": "booleanEquals",
+                                                                    "argv": [
+                                                                        {
+                                                                            "ref": "UseDualStack"
+                                                                        },
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "error": "Invalid Configuration: DualStack and custom endpoint are not supported",
+                                                            "type": "error"
+                                                        },
                                                         {
                                                             "conditions": [
                                                                 {
@@ -785,10 +1881,89 @@
                                                                                                                                                 },
                                                                                                                                                 true
                                                                                                                                             ]
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "fn": "booleanEquals",
+                                                                                                                                            "argv": [
+                                                                                                                                                {
+                                                                                                                                                    "ref": "UseDualStack"
+                                                                                                                                                },
+                                                                                                                                                true
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "endpoint": {
+                                                                                                                                        "url": "https://s3-outposts-fips.{accessPointArn#region}.{arnPartition#dualStackDnsSuffix}",
+                                                                                                                                        "properties": {
+                                                                                                                                            "authSchemes": [
+                                                                                                                                                {
+                                                                                                                                                    "disableDoubleEncoding": true,
+                                                                                                                                                    "name": "sigv4",
+                                                                                                                                                    "signingName": "s3-outposts",
+                                                                                                                                                    "signingRegion": "{accessPointArn#region}"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        "headers": {
+                                                                                                                                            "x-amz-account-id": [
+                                                                                                                                                "{accessPointArn#accountId}"
+                                                                                                                                            ],
+                                                                                                                                            "x-amz-outpost-id": [
+                                                                                                                                                "{outpostId}"
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "type": "endpoint"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "conditions": [
+                                                                                                                                        {
+                                                                                                                                            "fn": "booleanEquals",
+                                                                                                                                            "argv": [
+                                                                                                                                                {
+                                                                                                                                                    "ref": "UseFIPS"
+                                                                                                                                                },
+                                                                                                                                                true
+                                                                                                                                            ]
                                                                                                                                         }
                                                                                                                                     ],
                                                                                                                                     "endpoint": {
                                                                                                                                         "url": "https://s3-outposts-fips.{accessPointArn#region}.{arnPartition#dnsSuffix}",
+                                                                                                                                        "properties": {
+                                                                                                                                            "authSchemes": [
+                                                                                                                                                {
+                                                                                                                                                    "disableDoubleEncoding": true,
+                                                                                                                                                    "name": "sigv4",
+                                                                                                                                                    "signingName": "s3-outposts",
+                                                                                                                                                    "signingRegion": "{accessPointArn#region}"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        "headers": {
+                                                                                                                                            "x-amz-account-id": [
+                                                                                                                                                "{accessPointArn#accountId}"
+                                                                                                                                            ],
+                                                                                                                                            "x-amz-outpost-id": [
+                                                                                                                                                "{outpostId}"
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "type": "endpoint"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "conditions": [
+                                                                                                                                        {
+                                                                                                                                            "fn": "booleanEquals",
+                                                                                                                                            "argv": [
+                                                                                                                                                {
+                                                                                                                                                    "ref": "UseDualStack"
+                                                                                                                                                },
+                                                                                                                                                true
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "endpoint": {
+                                                                                                                                        "url": "https://s3-outposts.{accessPointArn#region}.{arnPartition#dualStackDnsSuffix}",
                                                                                                                                         "properties": {
                                                                                                                                             "authSchemes": [
                                                                                                                                                 {
@@ -1041,21 +2216,6 @@
                                         {
                                             "conditions": [
                                                 {
-                                                    "fn": "booleanEquals",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "UseDualStack"
-                                                        },
-                                                        true
-                                                    ]
-                                                }
-                                            ],
-                                            "error": "Invalid configuration: Outpost buckets do not support dual-stack",
-                                            "type": "error"
-                                        },
-                                        {
-                                            "conditions": [
-                                                {
                                                     "fn": "getAttr",
                                                     "argv": [
                                                         {
@@ -1080,6 +2240,29 @@
                                                         }
                                                     ],
                                                     "rules": [
+                                                        {
+                                                            "conditions": [
+                                                                {
+                                                                    "fn": "isSet",
+                                                                    "argv": [
+                                                                        {
+                                                                            "ref": "Endpoint"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "fn": "booleanEquals",
+                                                                    "argv": [
+                                                                        {
+                                                                            "ref": "UseDualStack"
+                                                                        },
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "error": "Invalid Configuration: DualStack and custom endpoint are not supported",
+                                                            "type": "error"
+                                                        },
                                                         {
                                                             "conditions": [
                                                                 {
@@ -1323,10 +2506,89 @@
                                                                                                                                                 },
                                                                                                                                                 true
                                                                                                                                             ]
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "fn": "booleanEquals",
+                                                                                                                                            "argv": [
+                                                                                                                                                {
+                                                                                                                                                    "ref": "UseDualStack"
+                                                                                                                                                },
+                                                                                                                                                true
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "endpoint": {
+                                                                                                                                        "url": "https://s3-outposts-fips.{bucketArn#region}.{arnPartition#dualStackDnsSuffix}",
+                                                                                                                                        "properties": {
+                                                                                                                                            "authSchemes": [
+                                                                                                                                                {
+                                                                                                                                                    "disableDoubleEncoding": true,
+                                                                                                                                                    "name": "sigv4",
+                                                                                                                                                    "signingName": "s3-outposts",
+                                                                                                                                                    "signingRegion": "{bucketArn#region}"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        "headers": {
+                                                                                                                                            "x-amz-account-id": [
+                                                                                                                                                "{bucketArn#accountId}"
+                                                                                                                                            ],
+                                                                                                                                            "x-amz-outpost-id": [
+                                                                                                                                                "{outpostId}"
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "type": "endpoint"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "conditions": [
+                                                                                                                                        {
+                                                                                                                                            "fn": "booleanEquals",
+                                                                                                                                            "argv": [
+                                                                                                                                                {
+                                                                                                                                                    "ref": "UseFIPS"
+                                                                                                                                                },
+                                                                                                                                                true
+                                                                                                                                            ]
                                                                                                                                         }
                                                                                                                                     ],
                                                                                                                                     "endpoint": {
                                                                                                                                         "url": "https://s3-outposts-fips.{bucketArn#region}.{arnPartition#dnsSuffix}",
+                                                                                                                                        "properties": {
+                                                                                                                                            "authSchemes": [
+                                                                                                                                                {
+                                                                                                                                                    "disableDoubleEncoding": true,
+                                                                                                                                                    "name": "sigv4",
+                                                                                                                                                    "signingName": "s3-outposts",
+                                                                                                                                                    "signingRegion": "{bucketArn#region}"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        "headers": {
+                                                                                                                                            "x-amz-account-id": [
+                                                                                                                                                "{bucketArn#accountId}"
+                                                                                                                                            ],
+                                                                                                                                            "x-amz-outpost-id": [
+                                                                                                                                                "{outpostId}"
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "type": "endpoint"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "conditions": [
+                                                                                                                                        {
+                                                                                                                                            "fn": "booleanEquals",
+                                                                                                                                            "argv": [
+                                                                                                                                                {
+                                                                                                                                                    "ref": "UseDualStack"
+                                                                                                                                                },
+                                                                                                                                                true
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "endpoint": {
+                                                                                                                                        "url": "https://s3-outposts.{bucketArn#region}.{arnPartition#dualStackDnsSuffix}",
                                                                                                                                         "properties": {
                                                                                                                                             "authSchemes": [
                                                                                                                                                 {
@@ -1534,36 +2796,6 @@
                                 }
                             ],
                             "rules": [
-                                {
-                                    "conditions": [
-                                        {
-                                            "fn": "booleanEquals",
-                                            "argv": [
-                                                {
-                                                    "ref": "UseFIPS"
-                                                },
-                                                true
-                                            ]
-                                        },
-                                        {
-                                            "fn": "stringEquals",
-                                            "argv": [
-                                                {
-                                                    "fn": "getAttr",
-                                                    "argv": [
-                                                        {
-                                                            "ref": "partitionResult"
-                                                        },
-                                                        "name"
-                                                    ]
-                                                },
-                                                "aws-cn"
-                                            ]
-                                        }
-                                    ],
-                                    "error": "Partition does not support FIPS",
-                                    "type": "error"
-                                },
                                 {
                                     "conditions": [
                                         {

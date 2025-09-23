@@ -25,7 +25,7 @@ namespace Model
   class GetFolderRequest : public WorkDocsRequest
   {
   public:
-    AWS_WORKDOCS_API GetFolderRequest();
+    AWS_WORKDOCS_API GetFolderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,116 +40,40 @@ namespace Model
     AWS_WORKDOCS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
      * Services administrator credentials to access the API.</p>
      */
-    inline const Aws::String& GetAuthenticationToken() const{ return m_authenticationToken; }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
+    inline const Aws::String& GetAuthenticationToken() const { return m_authenticationToken; }
     inline bool AuthenticationTokenHasBeenSet() const { return m_authenticationTokenHasBeenSet; }
+    template<typename AuthenticationTokenT = Aws::String>
+    void SetAuthenticationToken(AuthenticationTokenT&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::forward<AuthenticationTokenT>(value); }
+    template<typename AuthenticationTokenT = Aws::String>
+    GetFolderRequest& WithAuthenticationToken(AuthenticationTokenT&& value) { SetAuthenticationToken(std::forward<AuthenticationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(const Aws::String& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = value; }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(Aws::String&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::move(value); }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(const char* value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken.assign(value); }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline GetFolderRequest& WithAuthenticationToken(const Aws::String& value) { SetAuthenticationToken(value); return *this;}
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline GetFolderRequest& WithAuthenticationToken(Aws::String&& value) { SetAuthenticationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline GetFolderRequest& WithAuthenticationToken(const char* value) { SetAuthenticationToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the folder.</p>
      */
-    inline const Aws::String& GetFolderId() const{ return m_folderId; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
+    inline const Aws::String& GetFolderId() const { return m_folderId; }
     inline bool FolderIdHasBeenSet() const { return m_folderIdHasBeenSet; }
+    template<typename FolderIdT = Aws::String>
+    void SetFolderId(FolderIdT&& value) { m_folderIdHasBeenSet = true; m_folderId = std::forward<FolderIdT>(value); }
+    template<typename FolderIdT = Aws::String>
+    GetFolderRequest& WithFolderId(FolderIdT&& value) { SetFolderId(std::forward<FolderIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(const Aws::String& value) { m_folderIdHasBeenSet = true; m_folderId = value; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(Aws::String&& value) { m_folderIdHasBeenSet = true; m_folderId = std::move(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(const char* value) { m_folderIdHasBeenSet = true; m_folderId.assign(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline GetFolderRequest& WithFolderId(const Aws::String& value) { SetFolderId(value); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline GetFolderRequest& WithFolderId(Aws::String&& value) { SetFolderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline GetFolderRequest& WithFolderId(const char* value) { SetFolderId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Set to TRUE to include custom metadata in the response.</p>
      */
-    inline bool GetIncludeCustomMetadata() const{ return m_includeCustomMetadata; }
-
-    /**
-     * <p>Set to TRUE to include custom metadata in the response.</p>
-     */
+    inline bool GetIncludeCustomMetadata() const { return m_includeCustomMetadata; }
     inline bool IncludeCustomMetadataHasBeenSet() const { return m_includeCustomMetadataHasBeenSet; }
-
-    /**
-     * <p>Set to TRUE to include custom metadata in the response.</p>
-     */
     inline void SetIncludeCustomMetadata(bool value) { m_includeCustomMetadataHasBeenSet = true; m_includeCustomMetadata = value; }
-
-    /**
-     * <p>Set to TRUE to include custom metadata in the response.</p>
-     */
     inline GetFolderRequest& WithIncludeCustomMetadata(bool value) { SetIncludeCustomMetadata(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_authenticationToken;
@@ -158,7 +82,7 @@ namespace Model
     Aws::String m_folderId;
     bool m_folderIdHasBeenSet = false;
 
-    bool m_includeCustomMetadata;
+    bool m_includeCustomMetadata{false};
     bool m_includeCustomMetadataHasBeenSet = false;
   };
 

@@ -25,7 +25,7 @@ namespace Model
   class DescribeTableRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeTableRequest();
+    AWS_DYNAMODB_API DescribeTableRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,47 +37,23 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
-
     /**
-     * <p>The name of the table to describe.</p>
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
-     * <p>The name of the table to describe.</p>
+     * <p>The name of the table to describe. You can also provide the Amazon Resource
+     * Name (ARN) of the table in this parameter.</p>
      */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
-
-    /**
-     * <p>The name of the table to describe.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the table to describe.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the table to describe.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the table to describe.</p>
-     */
-    inline DescribeTableRequest& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the table to describe.</p>
-     */
-    inline DescribeTableRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table to describe.</p>
-     */
-    inline DescribeTableRequest& WithTableName(const char* value) { SetTableName(value); return *this;}
-
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    DescribeTableRequest& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tableName;

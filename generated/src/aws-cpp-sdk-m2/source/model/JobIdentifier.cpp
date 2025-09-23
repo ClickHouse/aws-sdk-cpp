@@ -18,15 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-JobIdentifier::JobIdentifier() : 
-    m_fileNameHasBeenSet(false),
-    m_scriptNameHasBeenSet(false)
-{
-}
-
-JobIdentifier::JobIdentifier(JsonView jsonValue) : 
-    m_fileNameHasBeenSet(false),
-    m_scriptNameHasBeenSet(false)
+JobIdentifier::JobIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ JobIdentifier& JobIdentifier::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("fileName"))
   {
     m_fileName = jsonValue.GetString("fileName");
-
     m_fileNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("scriptName"))
   {
     m_scriptName = jsonValue.GetString("scriptName");
-
     m_scriptNameHasBeenSet = true;
   }
-
   return *this;
 }
 

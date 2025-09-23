@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/arc-zonal-shift/ARCZonalShift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/arc-zonal-shift/model/PracticeRunConfiguration.h>
 #include <aws/arc-zonal-shift/model/ZonalAutoshiftStatus.h>
+#include <aws/arc-zonal-shift/model/PracticeRunConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -29,179 +29,79 @@ namespace Model
   class UpdatePracticeRunConfigurationResult
   {
   public:
-    AWS_ARCZONALSHIFT_API UpdatePracticeRunConfigurationResult();
+    AWS_ARCZONALSHIFT_API UpdatePracticeRunConfigurationResult() = default;
     AWS_ARCZONALSHIFT_API UpdatePracticeRunConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ARCZONALSHIFT_API UpdatePracticeRunConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
      * run for.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdatePracticeRunConfigurationResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
-     * run for.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
-     * run for.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
-     * run for.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
-     * run for.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
-     * run for.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you updated the practice
-     * run for.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource that you updated the practice run for. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdatePracticeRunConfigurationResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource that you updated the practice run for. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the resource that you updated the practice run for. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource that you updated the practice run for. </p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource that you updated the practice run for. </p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource that you updated the practice run for. </p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource that you updated the practice run for. </p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The practice run configuration that was updated.</p>
-     */
-    inline const PracticeRunConfiguration& GetPracticeRunConfiguration() const{ return m_practiceRunConfiguration; }
-
-    /**
-     * <p>The practice run configuration that was updated.</p>
-     */
-    inline void SetPracticeRunConfiguration(const PracticeRunConfiguration& value) { m_practiceRunConfiguration = value; }
-
-    /**
-     * <p>The practice run configuration that was updated.</p>
-     */
-    inline void SetPracticeRunConfiguration(PracticeRunConfiguration&& value) { m_practiceRunConfiguration = std::move(value); }
-
-    /**
-     * <p>The practice run configuration that was updated.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithPracticeRunConfiguration(const PracticeRunConfiguration& value) { SetPracticeRunConfiguration(value); return *this;}
-
-    /**
-     * <p>The practice run configuration that was updated.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithPracticeRunConfiguration(PracticeRunConfiguration&& value) { SetPracticeRunConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The zonal autoshift status for the resource that you updated the practice run
      * for.</p>
      */
-    inline const ZonalAutoshiftStatus& GetZonalAutoshiftStatus() const{ return m_zonalAutoshiftStatus; }
+    inline ZonalAutoshiftStatus GetZonalAutoshiftStatus() const { return m_zonalAutoshiftStatus; }
+    inline void SetZonalAutoshiftStatus(ZonalAutoshiftStatus value) { m_zonalAutoshiftStatusHasBeenSet = true; m_zonalAutoshiftStatus = value; }
+    inline UpdatePracticeRunConfigurationResult& WithZonalAutoshiftStatus(ZonalAutoshiftStatus value) { SetZonalAutoshiftStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The zonal autoshift status for the resource that you updated the practice run
-     * for.</p>
+     * <p>The practice run configuration that was updated.</p>
      */
-    inline void SetZonalAutoshiftStatus(const ZonalAutoshiftStatus& value) { m_zonalAutoshiftStatus = value; }
+    inline const PracticeRunConfiguration& GetPracticeRunConfiguration() const { return m_practiceRunConfiguration; }
+    template<typename PracticeRunConfigurationT = PracticeRunConfiguration>
+    void SetPracticeRunConfiguration(PracticeRunConfigurationT&& value) { m_practiceRunConfigurationHasBeenSet = true; m_practiceRunConfiguration = std::forward<PracticeRunConfigurationT>(value); }
+    template<typename PracticeRunConfigurationT = PracticeRunConfiguration>
+    UpdatePracticeRunConfigurationResult& WithPracticeRunConfiguration(PracticeRunConfigurationT&& value) { SetPracticeRunConfiguration(std::forward<PracticeRunConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The zonal autoshift status for the resource that you updated the practice run
-     * for.</p>
-     */
-    inline void SetZonalAutoshiftStatus(ZonalAutoshiftStatus&& value) { m_zonalAutoshiftStatus = std::move(value); }
-
-    /**
-     * <p>The zonal autoshift status for the resource that you updated the practice run
-     * for.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithZonalAutoshiftStatus(const ZonalAutoshiftStatus& value) { SetZonalAutoshiftStatus(value); return *this;}
-
-    /**
-     * <p>The zonal autoshift status for the resource that you updated the practice run
-     * for.</p>
-     */
-    inline UpdatePracticeRunConfigurationResult& WithZonalAutoshiftStatus(ZonalAutoshiftStatus&& value) { SetZonalAutoshiftStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdatePracticeRunConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdatePracticeRunConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdatePracticeRunConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdatePracticeRunConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
+
+    ZonalAutoshiftStatus m_zonalAutoshiftStatus{ZonalAutoshiftStatus::NOT_SET};
+    bool m_zonalAutoshiftStatusHasBeenSet = false;
 
     PracticeRunConfiguration m_practiceRunConfiguration;
-
-    ZonalAutoshiftStatus m_zonalAutoshiftStatus;
+    bool m_practiceRunConfigurationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,35 +18,7 @@ namespace MediaTailor
 namespace Model
 {
 
-ScheduleEntry::ScheduleEntry() : 
-    m_approximateDurationSeconds(0),
-    m_approximateDurationSecondsHasBeenSet(false),
-    m_approximateStartTimeHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_liveSourceNameHasBeenSet(false),
-    m_programNameHasBeenSet(false),
-    m_scheduleAdBreaksHasBeenSet(false),
-    m_scheduleEntryType(ScheduleEntryType::NOT_SET),
-    m_scheduleEntryTypeHasBeenSet(false),
-    m_sourceLocationNameHasBeenSet(false),
-    m_vodSourceNameHasBeenSet(false)
-{
-}
-
-ScheduleEntry::ScheduleEntry(JsonView jsonValue) : 
-    m_approximateDurationSeconds(0),
-    m_approximateDurationSecondsHasBeenSet(false),
-    m_approximateStartTimeHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_liveSourceNameHasBeenSet(false),
-    m_programNameHasBeenSet(false),
-    m_scheduleAdBreaksHasBeenSet(false),
-    m_scheduleEntryType(ScheduleEntryType::NOT_SET),
-    m_scheduleEntryTypeHasBeenSet(false),
-    m_sourceLocationNameHasBeenSet(false),
-    m_vodSourceNameHasBeenSet(false)
+ScheduleEntry::ScheduleEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,45 +28,33 @@ ScheduleEntry& ScheduleEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ApproximateDurationSeconds"))
   {
     m_approximateDurationSeconds = jsonValue.GetInt64("ApproximateDurationSeconds");
-
     m_approximateDurationSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApproximateStartTime"))
   {
     m_approximateStartTime = jsonValue.GetDouble("ApproximateStartTime");
-
     m_approximateStartTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChannelName"))
   {
     m_channelName = jsonValue.GetString("ChannelName");
-
     m_channelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LiveSourceName"))
   {
     m_liveSourceName = jsonValue.GetString("LiveSourceName");
-
     m_liveSourceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProgramName"))
   {
     m_programName = jsonValue.GetString("ProgramName");
-
     m_programNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScheduleAdBreaks"))
   {
     Aws::Utils::Array<JsonView> scheduleAdBreaksJsonList = jsonValue.GetArray("ScheduleAdBreaks");
@@ -104,28 +64,30 @@ ScheduleEntry& ScheduleEntry::operator =(JsonView jsonValue)
     }
     m_scheduleAdBreaksHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScheduleEntryType"))
   {
     m_scheduleEntryType = ScheduleEntryTypeMapper::GetScheduleEntryTypeForName(jsonValue.GetString("ScheduleEntryType"));
-
     m_scheduleEntryTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceLocationName"))
   {
     m_sourceLocationName = jsonValue.GetString("SourceLocationName");
-
     m_sourceLocationNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VodSourceName"))
   {
     m_vodSourceName = jsonValue.GetString("VodSourceName");
-
     m_vodSourceNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Audiences"))
+  {
+    Aws::Utils::Array<JsonView> audiencesJsonList = jsonValue.GetArray("Audiences");
+    for(unsigned audiencesIndex = 0; audiencesIndex < audiencesJsonList.GetLength(); ++audiencesIndex)
+    {
+      m_audiences.push_back(audiencesJsonList[audiencesIndex].AsString());
+    }
+    m_audiencesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -193,6 +155,17 @@ JsonValue ScheduleEntry::Jsonize() const
   if(m_vodSourceNameHasBeenSet)
   {
    payload.WithString("VodSourceName", m_vodSourceName);
+
+  }
+
+  if(m_audiencesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> audiencesJsonList(m_audiences.size());
+   for(unsigned audiencesIndex = 0; audiencesIndex < audiencesJsonList.GetLength(); ++audiencesIndex)
+   {
+     audiencesJsonList[audiencesIndex].AsString(m_audiences[audiencesIndex]);
+   }
+   payload.WithArray("Audiences", std::move(audiencesJsonList));
 
   }
 

@@ -20,15 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-S3Location::S3Location() : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false)
-{
-}
-
-S3Location::S3Location(const XmlNode& xmlNode) : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false)
+S3Location::S3Location(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

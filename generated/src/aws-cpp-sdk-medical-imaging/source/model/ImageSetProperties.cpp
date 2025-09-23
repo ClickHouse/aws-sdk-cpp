@@ -18,31 +18,7 @@ namespace MedicalImaging
 namespace Model
 {
 
-ImageSetProperties::ImageSetProperties() : 
-    m_imageSetIdHasBeenSet(false),
-    m_versionIdHasBeenSet(false),
-    m_imageSetState(ImageSetState::NOT_SET),
-    m_imageSetStateHasBeenSet(false),
-    m_imageSetWorkflowStatus(ImageSetWorkflowStatus::NOT_SET),
-    m_imageSetWorkflowStatusHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_deletedAtHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ImageSetProperties::ImageSetProperties(JsonView jsonValue) : 
-    m_imageSetIdHasBeenSet(false),
-    m_versionIdHasBeenSet(false),
-    m_imageSetState(ImageSetState::NOT_SET),
-    m_imageSetStateHasBeenSet(false),
-    m_imageSetWorkflowStatus(ImageSetWorkflowStatus::NOT_SET),
-    m_imageSetWorkflowStatusHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_deletedAtHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ImageSetProperties::ImageSetProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,59 +28,53 @@ ImageSetProperties& ImageSetProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("imageSetId"))
   {
     m_imageSetId = jsonValue.GetString("imageSetId");
-
     m_imageSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("versionId"))
   {
     m_versionId = jsonValue.GetString("versionId");
-
     m_versionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("imageSetState"))
   {
     m_imageSetState = ImageSetStateMapper::GetImageSetStateForName(jsonValue.GetString("imageSetState"));
-
     m_imageSetStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImageSetWorkflowStatus"))
   {
     m_imageSetWorkflowStatus = ImageSetWorkflowStatusMapper::GetImageSetWorkflowStatusForName(jsonValue.GetString("ImageSetWorkflowStatus"));
-
     m_imageSetWorkflowStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updatedAt"))
   {
     m_updatedAt = jsonValue.GetDouble("updatedAt");
-
     m_updatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deletedAt"))
   {
     m_deletedAt = jsonValue.GetDouble("deletedAt");
-
     m_deletedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("overrides"))
+  {
+    m_overrides = jsonValue.GetObject("overrides");
+    m_overridesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("isPrimary"))
+  {
+    m_isPrimary = jsonValue.GetBool("isPrimary");
+    m_isPrimaryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -152,6 +122,18 @@ JsonValue ImageSetProperties::Jsonize() const
   if(m_messageHasBeenSet)
   {
    payload.WithString("message", m_message);
+
+  }
+
+  if(m_overridesHasBeenSet)
+  {
+   payload.WithObject("overrides", m_overrides.Jsonize());
+
+  }
+
+  if(m_isPrimaryHasBeenSet)
+  {
+   payload.WithBool("isPrimary", m_isPrimary);
 
   }
 

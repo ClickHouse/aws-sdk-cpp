@@ -27,73 +27,37 @@ namespace Model
   class DeleteBridgeResult
   {
   public:
-    AWS_MEDIACONNECT_API DeleteBridgeResult();
+    AWS_MEDIACONNECT_API DeleteBridgeResult() = default;
     AWS_MEDIACONNECT_API DeleteBridgeResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIACONNECT_API DeleteBridgeResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
+     * <p> The ARN of the deleted bridge.</p>
      */
-    inline const Aws::String& GetBridgeArn() const{ return m_bridgeArn; }
+    inline const Aws::String& GetBridgeArn() const { return m_bridgeArn; }
+    template<typename BridgeArnT = Aws::String>
+    void SetBridgeArn(BridgeArnT&& value) { m_bridgeArnHasBeenSet = true; m_bridgeArn = std::forward<BridgeArnT>(value); }
+    template<typename BridgeArnT = Aws::String>
+    DeleteBridgeResult& WithBridgeArn(BridgeArnT&& value) { SetBridgeArn(std::forward<BridgeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
-     */
-    inline void SetBridgeArn(const Aws::String& value) { m_bridgeArn = value; }
-
-    /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
-     */
-    inline void SetBridgeArn(Aws::String&& value) { m_bridgeArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
-     */
-    inline void SetBridgeArn(const char* value) { m_bridgeArn.assign(value); }
-
-    /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
-     */
-    inline DeleteBridgeResult& WithBridgeArn(const Aws::String& value) { SetBridgeArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
-     */
-    inline DeleteBridgeResult& WithBridgeArn(Aws::String&& value) { SetBridgeArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Number (ARN) of the deleted bridge.
-     */
-    inline DeleteBridgeResult& WithBridgeArn(const char* value) { SetBridgeArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteBridgeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteBridgeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteBridgeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteBridgeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bridgeArn;
+    bool m_bridgeArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

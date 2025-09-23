@@ -18,35 +18,23 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-ReEncryptionAttributes::ReEncryptionAttributes() : 
-    m_dukptHasBeenSet(false),
-    m_symmetricHasBeenSet(false)
-{
-}
-
-ReEncryptionAttributes::ReEncryptionAttributes(JsonView jsonValue) : 
-    m_dukptHasBeenSet(false),
-    m_symmetricHasBeenSet(false)
+ReEncryptionAttributes::ReEncryptionAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ReEncryptionAttributes& ReEncryptionAttributes::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("Dukpt"))
-  {
-    m_dukpt = jsonValue.GetObject("Dukpt");
-
-    m_dukptHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Symmetric"))
   {
     m_symmetric = jsonValue.GetObject("Symmetric");
-
     m_symmetricHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Dukpt"))
+  {
+    m_dukpt = jsonValue.GetObject("Dukpt");
+    m_dukptHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue ReEncryptionAttributes::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_dukptHasBeenSet)
-  {
-   payload.WithObject("Dukpt", m_dukpt.Jsonize());
-
-  }
-
   if(m_symmetricHasBeenSet)
   {
    payload.WithObject("Symmetric", m_symmetric.Jsonize());
+
+  }
+
+  if(m_dukptHasBeenSet)
+  {
+   payload.WithObject("Dukpt", m_dukpt.Jsonize());
 
   }
 

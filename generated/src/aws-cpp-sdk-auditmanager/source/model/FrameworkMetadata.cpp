@@ -18,19 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-FrameworkMetadata::FrameworkMetadata() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_logoHasBeenSet(false),
-    m_complianceTypeHasBeenSet(false)
-{
-}
-
-FrameworkMetadata::FrameworkMetadata(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_logoHasBeenSet(false),
-    m_complianceTypeHasBeenSet(false)
+FrameworkMetadata::FrameworkMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ FrameworkMetadata& FrameworkMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logo"))
   {
     m_logo = jsonValue.GetString("logo");
-
     m_logoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("complianceType"))
   {
     m_complianceType = jsonValue.GetString("complianceType");
-
     m_complianceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-GetConnectionsFilter::GetConnectionsFilter() : 
-    m_matchCriteriaHasBeenSet(false),
-    m_connectionType(ConnectionType::NOT_SET),
-    m_connectionTypeHasBeenSet(false)
-{
-}
-
-GetConnectionsFilter::GetConnectionsFilter(JsonView jsonValue) : 
-    m_matchCriteriaHasBeenSet(false),
-    m_connectionType(ConnectionType::NOT_SET),
-    m_connectionTypeHasBeenSet(false)
+GetConnectionsFilter::GetConnectionsFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,16 @@ GetConnectionsFilter& GetConnectionsFilter::operator =(JsonView jsonValue)
     }
     m_matchCriteriaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionType"))
   {
     m_connectionType = ConnectionTypeMapper::GetConnectionTypeForName(jsonValue.GetString("ConnectionType"));
-
     m_connectionTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ConnectionSchemaVersion"))
+  {
+    m_connectionSchemaVersion = jsonValue.GetInteger("ConnectionSchemaVersion");
+    m_connectionSchemaVersionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -73,6 +65,12 @@ JsonValue GetConnectionsFilter::Jsonize() const
   if(m_connectionTypeHasBeenSet)
   {
    payload.WithString("ConnectionType", ConnectionTypeMapper::GetNameForConnectionType(m_connectionType));
+  }
+
+  if(m_connectionSchemaVersionHasBeenSet)
+  {
+   payload.WithInteger("ConnectionSchemaVersion", m_connectionSchemaVersion);
+
   }
 
   return payload;

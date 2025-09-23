@@ -17,13 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetAudienceModelResult::GetAudienceModelResult() : 
-    m_status(AudienceModelStatus::NOT_SET)
-{
-}
-
-GetAudienceModelResult::GetAudienceModelResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_status(AudienceModelStatus::NOT_SET)
+GetAudienceModelResult::GetAudienceModelResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -31,57 +25,56 @@ GetAudienceModelResult::GetAudienceModelResult(const Aws::AmazonWebServiceResult
 GetAudienceModelResult& GetAudienceModelResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("audienceModelArn"))
-  {
-    m_audienceModelArn = jsonValue.GetString("audienceModelArn");
-
-  }
-
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetString("createTime");
-
+    m_createTimeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("description"))
+  if(jsonValue.ValueExists("updateTime"))
   {
-    m_description = jsonValue.GetString("description");
-
+    m_updateTime = jsonValue.GetString("updateTime");
+    m_updateTimeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("kmsKeyArn"))
+  if(jsonValue.ValueExists("trainingDataStartTime"))
   {
-    m_kmsKeyArn = jsonValue.GetString("kmsKeyArn");
-
+    m_trainingDataStartTime = jsonValue.GetString("trainingDataStartTime");
+    m_trainingDataStartTimeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("metrics"))
+  if(jsonValue.ValueExists("trainingDataEndTime"))
   {
-    Aws::Utils::Array<JsonView> metricsJsonList = jsonValue.GetArray("metrics");
-    for(unsigned metricsIndex = 0; metricsIndex < metricsJsonList.GetLength(); ++metricsIndex)
-    {
-      m_metrics.push_back(metricsJsonList[metricsIndex].AsObject());
-    }
+    m_trainingDataEndTime = jsonValue.GetString("trainingDataEndTime");
+    m_trainingDataEndTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("audienceModelArn"))
+  {
+    m_audienceModelArn = jsonValue.GetString("audienceModelArn");
+    m_audienceModelArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
+    m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("trainingDatasetArn"))
+  {
+    m_trainingDatasetArn = jsonValue.GetString("trainingDatasetArn");
+    m_trainingDatasetArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("status"))
   {
     m_status = AudienceModelStatusMapper::GetAudienceModelStatusForName(jsonValue.GetString("status"));
-
+    m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("statusDetails"))
   {
     m_statusDetails = jsonValue.GetObject("statusDetails");
-
+    m_statusDetailsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("kmsKeyArn"))
+  {
+    m_kmsKeyArn = jsonValue.GetString("kmsKeyArn");
+    m_kmsKeyArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -89,38 +82,20 @@ GetAudienceModelResult& GetAudienceModelResult::operator =(const Aws::AmazonWebS
     {
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
+    m_tagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("trainingDataEndTime"))
+  if(jsonValue.ValueExists("description"))
   {
-    m_trainingDataEndTime = jsonValue.GetString("trainingDataEndTime");
-
+    m_description = jsonValue.GetString("description");
+    m_descriptionHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("trainingDataStartTime"))
-  {
-    m_trainingDataStartTime = jsonValue.GetString("trainingDataStartTime");
-
-  }
-
-  if(jsonValue.ValueExists("trainingDatasetArn"))
-  {
-    m_trainingDatasetArn = jsonValue.GetString("trainingDatasetArn");
-
-  }
-
-  if(jsonValue.ValueExists("updateTime"))
-  {
-    m_updateTime = jsonValue.GetString("updateTime");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

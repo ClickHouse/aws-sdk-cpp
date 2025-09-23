@@ -18,13 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-DecodeConfig::DecodeConfig() : 
-    m_unvalidatedJSONHasBeenSet(false)
-{
-}
-
-DecodeConfig::DecodeConfig(JsonView jsonValue) : 
-    m_unvalidatedJSONHasBeenSet(false)
+DecodeConfig::DecodeConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ DecodeConfig& DecodeConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("unvalidatedJSON"))
   {
     m_unvalidatedJSON = jsonValue.GetString("unvalidatedJSON");
-
     m_unvalidatedJSONHasBeenSet = true;
   }
-
   return *this;
 }
 

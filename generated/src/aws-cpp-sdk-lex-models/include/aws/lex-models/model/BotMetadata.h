@@ -33,241 +33,83 @@ namespace Model
   class BotMetadata
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API BotMetadata();
+    AWS_LEXMODELBUILDINGSERVICE_API BotMetadata() = default;
     AWS_LEXMODELBUILDINGSERVICE_API BotMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API BotMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the bot. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the bot. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BotMetadata& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bot. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the bot. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the bot. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the bot. </p>
-     */
-    inline BotMetadata& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the bot. </p>
-     */
-    inline BotMetadata& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bot. </p>
-     */
-    inline BotMetadata& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the bot.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the bot.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    BotMetadata& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the bot.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the bot.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the bot.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the bot.</p>
-     */
-    inline BotMetadata& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the bot.</p>
-     */
-    inline BotMetadata& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the bot.</p>
-     */
-    inline BotMetadata& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the bot.</p>
      */
-    inline const Status& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the bot.</p>
-     */
+    inline Status GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(Status value) { m_statusHasBeenSet = true; m_status = value; }
+    inline BotMetadata& WithStatus(Status value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the bot.</p>
-     */
-    inline void SetStatus(const Status& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the bot.</p>
-     */
-    inline void SetStatus(Status&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the bot.</p>
-     */
-    inline BotMetadata& WithStatus(const Status& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the bot.</p>
-     */
-    inline BotMetadata& WithStatus(Status&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the bot was updated. When you create a bot, the creation date
      * and last updated date are the same. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const{ return m_lastUpdatedDate; }
-
-    /**
-     * <p>The date that the bot was updated. When you create a bot, the creation date
-     * and last updated date are the same. </p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const { return m_lastUpdatedDate; }
     inline bool LastUpdatedDateHasBeenSet() const { return m_lastUpdatedDateHasBeenSet; }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    void SetLastUpdatedDate(LastUpdatedDateT&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::forward<LastUpdatedDateT>(value); }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    BotMetadata& WithLastUpdatedDate(LastUpdatedDateT&& value) { SetLastUpdatedDate(std::forward<LastUpdatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the bot was updated. When you create a bot, the creation date
-     * and last updated date are the same. </p>
-     */
-    inline void SetLastUpdatedDate(const Aws::Utils::DateTime& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = value; }
-
-    /**
-     * <p>The date that the bot was updated. When you create a bot, the creation date
-     * and last updated date are the same. </p>
-     */
-    inline void SetLastUpdatedDate(Aws::Utils::DateTime&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::move(value); }
-
-    /**
-     * <p>The date that the bot was updated. When you create a bot, the creation date
-     * and last updated date are the same. </p>
-     */
-    inline BotMetadata& WithLastUpdatedDate(const Aws::Utils::DateTime& value) { SetLastUpdatedDate(value); return *this;}
-
-    /**
-     * <p>The date that the bot was updated. When you create a bot, the creation date
-     * and last updated date are the same. </p>
-     */
-    inline BotMetadata& WithLastUpdatedDate(Aws::Utils::DateTime&& value) { SetLastUpdatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the bot was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
-
-    /**
-     * <p>The date that the bot was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
     inline bool CreatedDateHasBeenSet() const { return m_createdDateHasBeenSet; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    BotMetadata& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the bot was created.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
-
-    /**
-     * <p>The date that the bot was created.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::move(value); }
-
-    /**
-     * <p>The date that the bot was created.</p>
-     */
-    inline BotMetadata& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The date that the bot was created.</p>
-     */
-    inline BotMetadata& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the bot. For a new bot, the version is always
      * <code>$LATEST</code>.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
-    inline BotMetadata& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
-    inline BotMetadata& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the bot. For a new bot, the version is always
-     * <code>$LATEST</code>.</p>
-     */
-    inline BotMetadata& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    BotMetadata& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -276,13 +118,13 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Status m_status;
+    Status m_status{Status::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDate;
+    Aws::Utils::DateTime m_lastUpdatedDate{};
     bool m_lastUpdatedDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
     bool m_createdDateHasBeenSet = false;
 
     Aws::String m_version;

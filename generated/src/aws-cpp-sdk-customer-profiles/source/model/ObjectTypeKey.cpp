@@ -18,15 +18,7 @@ namespace CustomerProfiles
 namespace Model
 {
 
-ObjectTypeKey::ObjectTypeKey() : 
-    m_standardIdentifiersHasBeenSet(false),
-    m_fieldNamesHasBeenSet(false)
-{
-}
-
-ObjectTypeKey::ObjectTypeKey(JsonView jsonValue) : 
-    m_standardIdentifiersHasBeenSet(false),
-    m_fieldNamesHasBeenSet(false)
+ObjectTypeKey::ObjectTypeKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ObjectTypeKey& ObjectTypeKey::operator =(JsonView jsonValue)
     }
     m_standardIdentifiersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldNames"))
   {
     Aws::Utils::Array<JsonView> fieldNamesJsonList = jsonValue.GetArray("FieldNames");
@@ -52,7 +43,6 @@ ObjectTypeKey& ObjectTypeKey::operator =(JsonView jsonValue)
     }
     m_fieldNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

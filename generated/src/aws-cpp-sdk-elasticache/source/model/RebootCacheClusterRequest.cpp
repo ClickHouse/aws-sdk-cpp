@@ -10,12 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-RebootCacheClusterRequest::RebootCacheClusterRequest() : 
-    m_cacheClusterIdHasBeenSet(false),
-    m_cacheNodeIdsToRebootHasBeenSet(false)
-{
-}
-
 Aws::String RebootCacheClusterRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String RebootCacheClusterRequest::SerializePayload() const
 
   if(m_cacheNodeIdsToRebootHasBeenSet)
   {
-    unsigned cacheNodeIdsToRebootCount = 1;
-    for(auto& item : m_cacheNodeIdsToReboot)
+    if (m_cacheNodeIdsToReboot.empty())
     {
-      ss << "CacheNodeIdsToReboot.member." << cacheNodeIdsToRebootCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      cacheNodeIdsToRebootCount++;
+      ss << "CacheNodeIdsToReboot=&";
+    }
+    else
+    {
+      unsigned cacheNodeIdsToRebootCount = 1;
+      for(auto& item : m_cacheNodeIdsToReboot)
+      {
+        ss << "CacheNodeIdsToReboot.CacheNodeId." << cacheNodeIdsToRebootCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        cacheNodeIdsToRebootCount++;
+      }
     }
   }
 

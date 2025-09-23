@@ -32,42 +32,23 @@ namespace Model
   class CodegenJobRenderConfig
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API CodegenJobRenderConfig();
+    AWS_AMPLIFYUIBUILDER_API CodegenJobRenderConfig() = default;
     AWS_AMPLIFYUIBUILDER_API CodegenJobRenderConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API CodegenJobRenderConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the <code>ReactStartCodegenJobData</code> object.</p>
      */
-    inline const ReactStartCodegenJobData& GetReact() const{ return m_react; }
-
-    /**
-     * <p>The name of the <code>ReactStartCodegenJobData</code> object.</p>
-     */
+    inline const ReactStartCodegenJobData& GetReact() const { return m_react; }
     inline bool ReactHasBeenSet() const { return m_reactHasBeenSet; }
-
-    /**
-     * <p>The name of the <code>ReactStartCodegenJobData</code> object.</p>
-     */
-    inline void SetReact(const ReactStartCodegenJobData& value) { m_reactHasBeenSet = true; m_react = value; }
-
-    /**
-     * <p>The name of the <code>ReactStartCodegenJobData</code> object.</p>
-     */
-    inline void SetReact(ReactStartCodegenJobData&& value) { m_reactHasBeenSet = true; m_react = std::move(value); }
-
-    /**
-     * <p>The name of the <code>ReactStartCodegenJobData</code> object.</p>
-     */
-    inline CodegenJobRenderConfig& WithReact(const ReactStartCodegenJobData& value) { SetReact(value); return *this;}
-
-    /**
-     * <p>The name of the <code>ReactStartCodegenJobData</code> object.</p>
-     */
-    inline CodegenJobRenderConfig& WithReact(ReactStartCodegenJobData&& value) { SetReact(std::move(value)); return *this;}
-
+    template<typename ReactT = ReactStartCodegenJobData>
+    void SetReact(ReactT&& value) { m_reactHasBeenSet = true; m_react = std::forward<ReactT>(value); }
+    template<typename ReactT = ReactStartCodegenJobData>
+    CodegenJobRenderConfig& WithReact(ReactT&& value) { SetReact(std::forward<ReactT>(value)); return *this;}
+    ///@}
   private:
 
     ReactStartCodegenJobData m_react;

@@ -28,63 +28,37 @@ namespace Model
   class GetTypeResult
   {
   public:
-    AWS_APPSYNC_API GetTypeResult();
+    AWS_APPSYNC_API GetTypeResult() = default;
     AWS_APPSYNC_API GetTypeResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPSYNC_API GetTypeResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <code>Type</code> object.</p>
      */
-    inline const Type& GetType() const{ return m_type; }
+    inline const Type& GetType() const { return m_type; }
+    template<typename TypeT = Type>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Type>
+    GetTypeResult& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>Type</code> object.</p>
-     */
-    inline void SetType(const Type& value) { m_type = value; }
-
-    /**
-     * <p>The <code>Type</code> object.</p>
-     */
-    inline void SetType(Type&& value) { m_type = std::move(value); }
-
-    /**
-     * <p>The <code>Type</code> object.</p>
-     */
-    inline GetTypeResult& WithType(const Type& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The <code>Type</code> object.</p>
-     */
-    inline GetTypeResult& WithType(Type&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetTypeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetTypeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetTypeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetTypeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Type m_type;
+    bool m_typeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

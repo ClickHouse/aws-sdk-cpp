@@ -33,7 +33,7 @@ namespace Model
   class DomainEndpointOptionsStatus
   {
   public:
-    AWS_CLOUDSEARCH_API DomainEndpointOptionsStatus();
+    AWS_CLOUDSEARCH_API DomainEndpointOptionsStatus() = default;
     AWS_CLOUDSEARCH_API DomainEndpointOptionsStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDSEARCH_API DomainEndpointOptionsStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,67 +41,29 @@ namespace Model
     AWS_CLOUDSEARCH_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The domain endpoint options configured for the domain.</p>
      */
-    inline const DomainEndpointOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>The domain endpoint options configured for the domain.</p>
-     */
+    inline const DomainEndpointOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = DomainEndpointOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = DomainEndpointOptions>
+    DomainEndpointOptionsStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain endpoint options configured for the domain.</p>
-     */
-    inline void SetOptions(const DomainEndpointOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>The domain endpoint options configured for the domain.</p>
-     */
-    inline void SetOptions(DomainEndpointOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>The domain endpoint options configured for the domain.</p>
-     */
-    inline DomainEndpointOptionsStatus& WithOptions(const DomainEndpointOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>The domain endpoint options configured for the domain.</p>
-     */
-    inline DomainEndpointOptionsStatus& WithOptions(DomainEndpointOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the configured domain endpoint options.</p>
      */
-    inline const OptionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the configured domain endpoint options.</p>
-     */
+    inline const OptionStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the configured domain endpoint options.</p>
-     */
-    inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the configured domain endpoint options.</p>
-     */
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the configured domain endpoint options.</p>
-     */
-    inline DomainEndpointOptionsStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the configured domain endpoint options.</p>
-     */
-    inline DomainEndpointOptionsStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = OptionStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = OptionStatus>
+    DomainEndpointOptionsStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     DomainEndpointOptions m_options;

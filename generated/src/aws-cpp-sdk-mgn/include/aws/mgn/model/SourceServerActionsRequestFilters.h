@@ -33,57 +33,25 @@ namespace Model
   class SourceServerActionsRequestFilters
   {
   public:
-    AWS_MGN_API SourceServerActionsRequestFilters();
+    AWS_MGN_API SourceServerActionsRequestFilters() = default;
     AWS_MGN_API SourceServerActionsRequestFilters(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API SourceServerActionsRequestFilters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Action IDs to filter source server post migration custom actions by.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetActionIDs() const{ return m_actionIDs; }
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetActionIDs() const { return m_actionIDs; }
     inline bool ActionIDsHasBeenSet() const { return m_actionIDsHasBeenSet; }
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline void SetActionIDs(const Aws::Vector<Aws::String>& value) { m_actionIDsHasBeenSet = true; m_actionIDs = value; }
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline void SetActionIDs(Aws::Vector<Aws::String>&& value) { m_actionIDsHasBeenSet = true; m_actionIDs = std::move(value); }
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline SourceServerActionsRequestFilters& WithActionIDs(const Aws::Vector<Aws::String>& value) { SetActionIDs(value); return *this;}
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline SourceServerActionsRequestFilters& WithActionIDs(Aws::Vector<Aws::String>&& value) { SetActionIDs(std::move(value)); return *this;}
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline SourceServerActionsRequestFilters& AddActionIDs(const Aws::String& value) { m_actionIDsHasBeenSet = true; m_actionIDs.push_back(value); return *this; }
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline SourceServerActionsRequestFilters& AddActionIDs(Aws::String&& value) { m_actionIDsHasBeenSet = true; m_actionIDs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Action IDs to filter source server post migration custom actions by.</p>
-     */
-    inline SourceServerActionsRequestFilters& AddActionIDs(const char* value) { m_actionIDsHasBeenSet = true; m_actionIDs.push_back(value); return *this; }
-
+    template<typename ActionIDsT = Aws::Vector<Aws::String>>
+    void SetActionIDs(ActionIDsT&& value) { m_actionIDsHasBeenSet = true; m_actionIDs = std::forward<ActionIDsT>(value); }
+    template<typename ActionIDsT = Aws::Vector<Aws::String>>
+    SourceServerActionsRequestFilters& WithActionIDs(ActionIDsT&& value) { SetActionIDs(std::forward<ActionIDsT>(value)); return *this;}
+    template<typename ActionIDsT = Aws::String>
+    SourceServerActionsRequestFilters& AddActionIDs(ActionIDsT&& value) { m_actionIDsHasBeenSet = true; m_actionIDs.emplace_back(std::forward<ActionIDsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_actionIDs;

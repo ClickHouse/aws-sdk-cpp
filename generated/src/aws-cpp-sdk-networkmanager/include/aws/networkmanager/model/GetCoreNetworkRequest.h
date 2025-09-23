@@ -21,7 +21,7 @@ namespace Model
   class GetCoreNetworkRequest : public NetworkManagerRequest
   {
   public:
-    AWS_NETWORKMANAGER_API GetCoreNetworkRequest();
+    AWS_NETWORKMANAGER_API GetCoreNetworkRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_NETWORKMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of a core network.</p>
      */
-    inline const Aws::String& GetCoreNetworkId() const{ return m_coreNetworkId; }
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
+    inline const Aws::String& GetCoreNetworkId() const { return m_coreNetworkId; }
     inline bool CoreNetworkIdHasBeenSet() const { return m_coreNetworkIdHasBeenSet; }
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
-    inline void SetCoreNetworkId(const Aws::String& value) { m_coreNetworkIdHasBeenSet = true; m_coreNetworkId = value; }
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
-    inline void SetCoreNetworkId(Aws::String&& value) { m_coreNetworkIdHasBeenSet = true; m_coreNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
-    inline void SetCoreNetworkId(const char* value) { m_coreNetworkIdHasBeenSet = true; m_coreNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
-    inline GetCoreNetworkRequest& WithCoreNetworkId(const Aws::String& value) { SetCoreNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
-    inline GetCoreNetworkRequest& WithCoreNetworkId(Aws::String&& value) { SetCoreNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of a core network.</p>
-     */
-    inline GetCoreNetworkRequest& WithCoreNetworkId(const char* value) { SetCoreNetworkId(value); return *this;}
-
+    template<typename CoreNetworkIdT = Aws::String>
+    void SetCoreNetworkId(CoreNetworkIdT&& value) { m_coreNetworkIdHasBeenSet = true; m_coreNetworkId = std::forward<CoreNetworkIdT>(value); }
+    template<typename CoreNetworkIdT = Aws::String>
+    GetCoreNetworkRequest& WithCoreNetworkId(CoreNetworkIdT&& value) { SetCoreNetworkId(std::forward<CoreNetworkIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_coreNetworkId;

@@ -34,52 +34,23 @@ namespace Model
   class RemoveAction
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API RemoveAction();
+    AWS_MANAGEDBLOCKCHAIN_API RemoveAction() = default;
     AWS_MANAGEDBLOCKCHAIN_API RemoveAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API RemoveAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the member to remove.</p>
      */
-    inline const Aws::String& GetMemberId() const{ return m_memberId; }
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
+    inline const Aws::String& GetMemberId() const { return m_memberId; }
     inline bool MemberIdHasBeenSet() const { return m_memberIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
-    inline void SetMemberId(const Aws::String& value) { m_memberIdHasBeenSet = true; m_memberId = value; }
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
-    inline void SetMemberId(Aws::String&& value) { m_memberIdHasBeenSet = true; m_memberId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
-    inline void SetMemberId(const char* value) { m_memberIdHasBeenSet = true; m_memberId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
-    inline RemoveAction& WithMemberId(const Aws::String& value) { SetMemberId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
-    inline RemoveAction& WithMemberId(Aws::String&& value) { SetMemberId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the member to remove.</p>
-     */
-    inline RemoveAction& WithMemberId(const char* value) { SetMemberId(value); return *this;}
-
+    template<typename MemberIdT = Aws::String>
+    void SetMemberId(MemberIdT&& value) { m_memberIdHasBeenSet = true; m_memberId = std::forward<MemberIdT>(value); }
+    template<typename MemberIdT = Aws::String>
+    RemoveAction& WithMemberId(MemberIdT&& value) { SetMemberId(std::forward<MemberIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_memberId;

@@ -18,17 +18,7 @@ namespace FMS
 namespace Model
 {
 
-RegionScope::RegionScope() : 
-    m_regionsHasBeenSet(false),
-    m_allRegionsEnabled(false),
-    m_allRegionsEnabledHasBeenSet(false)
-{
-}
-
-RegionScope::RegionScope(JsonView jsonValue) : 
-    m_regionsHasBeenSet(false),
-    m_allRegionsEnabled(false),
-    m_allRegionsEnabledHasBeenSet(false)
+RegionScope::RegionScope(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ RegionScope& RegionScope::operator =(JsonView jsonValue)
     }
     m_regionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllRegionsEnabled"))
   {
     m_allRegionsEnabled = jsonValue.GetBool("AllRegionsEnabled");
-
     m_allRegionsEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

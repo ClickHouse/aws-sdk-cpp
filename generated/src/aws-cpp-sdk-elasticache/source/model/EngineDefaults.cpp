@@ -20,19 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-EngineDefaults::EngineDefaults() : 
-    m_cacheParameterGroupFamilyHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_cacheNodeTypeSpecificParametersHasBeenSet(false)
-{
-}
-
-EngineDefaults::EngineDefaults(const XmlNode& xmlNode) : 
-    m_cacheParameterGroupFamilyHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_cacheNodeTypeSpecificParametersHasBeenSet(false)
+EngineDefaults::EngineDefaults(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +47,7 @@ EngineDefaults& EngineDefaults::operator =(const XmlNode& xmlNode)
     if(!parametersNode.IsNull())
     {
       XmlNode parametersMember = parametersNode.FirstChild("Parameter");
+      m_parametersHasBeenSet = !parametersMember.IsNull();
       while(!parametersMember.IsNull())
       {
         m_parameters.push_back(parametersMember);
@@ -71,6 +60,7 @@ EngineDefaults& EngineDefaults::operator =(const XmlNode& xmlNode)
     if(!cacheNodeTypeSpecificParametersNode.IsNull())
     {
       XmlNode cacheNodeTypeSpecificParametersMember = cacheNodeTypeSpecificParametersNode.FirstChild("CacheNodeTypeSpecificParameter");
+      m_cacheNodeTypeSpecificParametersHasBeenSet = !cacheNodeTypeSpecificParametersMember.IsNull();
       while(!cacheNodeTypeSpecificParametersMember.IsNull())
       {
         m_cacheNodeTypeSpecificParameters.push_back(cacheNodeTypeSpecificParametersMember);
@@ -102,7 +92,7 @@ void EngineDefaults::OutputToStream(Aws::OStream& oStream, const char* location,
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location << index << locationValue << ".Parameter." << parametersIdx++;
+        parametersSs << location << index << locationValue << ".Parameters.Parameter." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
@@ -113,7 +103,7 @@ void EngineDefaults::OutputToStream(Aws::OStream& oStream, const char* location,
       for(auto& item : m_cacheNodeTypeSpecificParameters)
       {
         Aws::StringStream cacheNodeTypeSpecificParametersSs;
-        cacheNodeTypeSpecificParametersSs << location << index << locationValue << ".CacheNodeTypeSpecificParameter." << cacheNodeTypeSpecificParametersIdx++;
+        cacheNodeTypeSpecificParametersSs << location << index << locationValue << ".CacheNodeTypeSpecificParameters.CacheNodeTypeSpecificParameter." << cacheNodeTypeSpecificParametersIdx++;
         item.OutputToStream(oStream, cacheNodeTypeSpecificParametersSs.str().c_str());
       }
   }
@@ -136,7 +126,7 @@ void EngineDefaults::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location <<  ".Parameter." << parametersIdx++;
+        parametersSs << location << ".Parameters.Parameter." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
@@ -146,7 +136,7 @@ void EngineDefaults::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_cacheNodeTypeSpecificParameters)
       {
         Aws::StringStream cacheNodeTypeSpecificParametersSs;
-        cacheNodeTypeSpecificParametersSs << location <<  ".CacheNodeTypeSpecificParameter." << cacheNodeTypeSpecificParametersIdx++;
+        cacheNodeTypeSpecificParametersSs << location << ".CacheNodeTypeSpecificParameters.CacheNodeTypeSpecificParameter." << cacheNodeTypeSpecificParametersIdx++;
         item.OutputToStream(oStream, cacheNodeTypeSpecificParametersSs.str().c_str());
       }
   }

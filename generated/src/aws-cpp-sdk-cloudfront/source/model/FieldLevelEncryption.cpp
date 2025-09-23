@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-FieldLevelEncryption::FieldLevelEncryption() : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_fieldLevelEncryptionConfigHasBeenSet(false)
-{
-}
-
-FieldLevelEncryption::FieldLevelEncryption(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_fieldLevelEncryptionConfigHasBeenSet(false)
+FieldLevelEncryption::FieldLevelEncryption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

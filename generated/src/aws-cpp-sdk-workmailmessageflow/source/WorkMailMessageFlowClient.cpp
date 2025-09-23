@@ -37,20 +37,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* WorkMailMessageFlowClient::SERVICE_NAME = "workmailmessageflow";
-const char* WorkMailMessageFlowClient::ALLOCATION_TAG = "WorkMailMessageFlowClient";
+namespace Aws
+{
+  namespace WorkMailMessageFlow
+  {
+    const char SERVICE_NAME[] = "workmailmessageflow";
+    const char ALLOCATION_TAG[] = "WorkMailMessageFlowClient";
+  }
+}
+const char* WorkMailMessageFlowClient::GetServiceName() {return SERVICE_NAME;}
+const char* WorkMailMessageFlowClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 WorkMailMessageFlowClient::WorkMailMessageFlowClient(const WorkMailMessageFlow::WorkMailMessageFlowClientConfiguration& clientConfiguration,
                                                      std::shared_ptr<WorkMailMessageFlowEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkMailMessageFlowErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<WorkMailMessageFlowEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -65,8 +72,7 @@ WorkMailMessageFlowClient::WorkMailMessageFlowClient(const AWSCredentials& crede
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkMailMessageFlowErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<WorkMailMessageFlowEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -81,8 +87,7 @@ WorkMailMessageFlowClient::WorkMailMessageFlowClient(const std::shared_ptr<AWSCr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkMailMessageFlowErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<WorkMailMessageFlowEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -91,12 +96,11 @@ WorkMailMessageFlowClient::WorkMailMessageFlowClient(const std::shared_ptr<AWSCr
   WorkMailMessageFlowClient::WorkMailMessageFlowClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkMailMessageFlowErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<WorkMailMessageFlowEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -111,7 +115,6 @@ WorkMailMessageFlowClient::WorkMailMessageFlowClient(const AWSCredentials& crede
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkMailMessageFlowErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<WorkMailMessageFlowEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -126,7 +129,6 @@ WorkMailMessageFlowClient::WorkMailMessageFlowClient(const std::shared_ptr<AWSCr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkMailMessageFlowErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<WorkMailMessageFlowEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -146,6 +148,14 @@ std::shared_ptr<WorkMailMessageFlowEndpointProviderBase>& WorkMailMessageFlowCli
 void WorkMailMessageFlowClient::init(const WorkMailMessageFlow::WorkMailMessageFlowClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("WorkMailMessageFlow");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

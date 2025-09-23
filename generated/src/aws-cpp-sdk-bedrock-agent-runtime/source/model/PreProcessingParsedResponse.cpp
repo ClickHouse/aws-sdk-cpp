@@ -18,37 +18,23 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-PreProcessingParsedResponse::PreProcessingParsedResponse() : 
-    m_rationaleHasBeenSet(false),
-    m_isValid(false),
-    m_isValidHasBeenSet(false)
-{
-}
-
-PreProcessingParsedResponse::PreProcessingParsedResponse(JsonView jsonValue) : 
-    m_rationaleHasBeenSet(false),
-    m_isValid(false),
-    m_isValidHasBeenSet(false)
+PreProcessingParsedResponse::PreProcessingParsedResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 PreProcessingParsedResponse& PreProcessingParsedResponse::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("rationale"))
-  {
-    m_rationale = jsonValue.GetString("rationale");
-
-    m_rationaleHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("isValid"))
   {
     m_isValid = jsonValue.GetBool("isValid");
-
     m_isValidHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("rationale"))
+  {
+    m_rationale = jsonValue.GetString("rationale");
+    m_rationaleHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,15 +42,15 @@ JsonValue PreProcessingParsedResponse::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_rationaleHasBeenSet)
-  {
-   payload.WithString("rationale", m_rationale);
-
-  }
-
   if(m_isValidHasBeenSet)
   {
    payload.WithBool("isValid", m_isValid);
+
+  }
+
+  if(m_rationaleHasBeenSet)
+  {
+   payload.WithString("rationale", m_rationale);
 
   }
 

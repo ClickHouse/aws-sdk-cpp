@@ -18,17 +18,7 @@ namespace Greengrass
 namespace Model
 {
 
-FunctionDefaultExecutionConfig::FunctionDefaultExecutionConfig() : 
-    m_isolationMode(FunctionIsolationMode::NOT_SET),
-    m_isolationModeHasBeenSet(false),
-    m_runAsHasBeenSet(false)
-{
-}
-
-FunctionDefaultExecutionConfig::FunctionDefaultExecutionConfig(JsonView jsonValue) : 
-    m_isolationMode(FunctionIsolationMode::NOT_SET),
-    m_isolationModeHasBeenSet(false),
-    m_runAsHasBeenSet(false)
+FunctionDefaultExecutionConfig::FunctionDefaultExecutionConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FunctionDefaultExecutionConfig& FunctionDefaultExecutionConfig::operator =(JsonV
   if(jsonValue.ValueExists("IsolationMode"))
   {
     m_isolationMode = FunctionIsolationModeMapper::GetFunctionIsolationModeForName(jsonValue.GetString("IsolationMode"));
-
     m_isolationModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RunAs"))
   {
     m_runAs = jsonValue.GetObject("RunAs");
-
     m_runAsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-ControlSet::ControlSet() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_controlsHasBeenSet(false)
-{
-}
-
-ControlSet::ControlSet(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_controlsHasBeenSet(false)
+ControlSet::ControlSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ControlSet& ControlSet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("controls"))
   {
     Aws::Utils::Array<JsonView> controlsJsonList = jsonValue.GetArray("controls");
@@ -58,7 +44,6 @@ ControlSet& ControlSet::operator =(JsonView jsonValue)
     }
     m_controlsHasBeenSet = true;
   }
-
   return *this;
 }
 

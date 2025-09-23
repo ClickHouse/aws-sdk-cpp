@@ -18,19 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-StatefulRuleGroupReference::StatefulRuleGroupReference() : 
-    m_resourceArnHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_overrideHasBeenSet(false)
-{
-}
-
-StatefulRuleGroupReference::StatefulRuleGroupReference(JsonView jsonValue) : 
-    m_resourceArnHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_overrideHasBeenSet(false)
+StatefulRuleGroupReference::StatefulRuleGroupReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ StatefulRuleGroupReference& StatefulRuleGroupReference::operator =(JsonView json
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Priority"))
   {
     m_priority = jsonValue.GetInteger("Priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Override"))
   {
     m_override = jsonValue.GetObject("Override");
-
     m_overrideHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DeepThreatInspection"))
+  {
+    m_deepThreatInspection = jsonValue.GetBool("DeepThreatInspection");
+    m_deepThreatInspectionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,12 @@ JsonValue StatefulRuleGroupReference::Jsonize() const
   if(m_overrideHasBeenSet)
   {
    payload.WithObject("Override", m_override.Jsonize());
+
+  }
+
+  if(m_deepThreatInspectionHasBeenSet)
+  {
+   payload.WithBool("DeepThreatInspection", m_deepThreatInspection);
 
   }
 

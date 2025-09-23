@@ -12,24 +12,6 @@ using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartAutomationExecutionRequest::StartAutomationExecutionRequest() : 
-    m_documentNameHasBeenSet(false),
-    m_documentVersionHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_mode(ExecutionMode::NOT_SET),
-    m_modeHasBeenSet(false),
-    m_targetParameterNameHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_targetMapsHasBeenSet(false),
-    m_maxConcurrencyHasBeenSet(false),
-    m_maxErrorsHasBeenSet(false),
-    m_targetLocationsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_alarmConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String StartAutomationExecutionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -148,6 +130,12 @@ Aws::String StartAutomationExecutionRequest::SerializePayload() const
   if(m_alarmConfigurationHasBeenSet)
   {
    payload.WithObject("AlarmConfiguration", m_alarmConfiguration.Jsonize());
+
+  }
+
+  if(m_targetLocationsURLHasBeenSet)
+  {
+   payload.WithString("TargetLocationsURL", m_targetLocationsURL);
 
   }
 

@@ -32,45 +32,24 @@ namespace Model
   class PullRequestStatusChangedEventMetadata
   {
   public:
-    AWS_CODECOMMIT_API PullRequestStatusChangedEventMetadata();
+    AWS_CODECOMMIT_API PullRequestStatusChangedEventMetadata() = default;
     AWS_CODECOMMIT_API PullRequestStatusChangedEventMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API PullRequestStatusChangedEventMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The changed status of the pull request.</p>
      */
-    inline const PullRequestStatusEnum& GetPullRequestStatus() const{ return m_pullRequestStatus; }
-
-    /**
-     * <p>The changed status of the pull request.</p>
-     */
+    inline PullRequestStatusEnum GetPullRequestStatus() const { return m_pullRequestStatus; }
     inline bool PullRequestStatusHasBeenSet() const { return m_pullRequestStatusHasBeenSet; }
-
-    /**
-     * <p>The changed status of the pull request.</p>
-     */
-    inline void SetPullRequestStatus(const PullRequestStatusEnum& value) { m_pullRequestStatusHasBeenSet = true; m_pullRequestStatus = value; }
-
-    /**
-     * <p>The changed status of the pull request.</p>
-     */
-    inline void SetPullRequestStatus(PullRequestStatusEnum&& value) { m_pullRequestStatusHasBeenSet = true; m_pullRequestStatus = std::move(value); }
-
-    /**
-     * <p>The changed status of the pull request.</p>
-     */
-    inline PullRequestStatusChangedEventMetadata& WithPullRequestStatus(const PullRequestStatusEnum& value) { SetPullRequestStatus(value); return *this;}
-
-    /**
-     * <p>The changed status of the pull request.</p>
-     */
-    inline PullRequestStatusChangedEventMetadata& WithPullRequestStatus(PullRequestStatusEnum&& value) { SetPullRequestStatus(std::move(value)); return *this;}
-
+    inline void SetPullRequestStatus(PullRequestStatusEnum value) { m_pullRequestStatusHasBeenSet = true; m_pullRequestStatus = value; }
+    inline PullRequestStatusChangedEventMetadata& WithPullRequestStatus(PullRequestStatusEnum value) { SetPullRequestStatus(value); return *this;}
+    ///@}
   private:
 
-    PullRequestStatusEnum m_pullRequestStatus;
+    PullRequestStatusEnum m_pullRequestStatus{PullRequestStatusEnum::NOT_SET};
     bool m_pullRequestStatusHasBeenSet = false;
   };
 

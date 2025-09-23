@@ -18,21 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-SSESpecification::SSESpecification() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_sSEType(SSEType::NOT_SET),
-    m_sSETypeHasBeenSet(false),
-    m_kMSMasterKeyIdHasBeenSet(false)
-{
-}
-
-SSESpecification::SSESpecification(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_sSEType(SSEType::NOT_SET),
-    m_sSETypeHasBeenSet(false),
-    m_kMSMasterKeyIdHasBeenSet(false)
+SSESpecification::SSESpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ SSESpecification& SSESpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SSEType"))
   {
     m_sSEType = SSETypeMapper::GetSSETypeForName(jsonValue.GetString("SSEType"));
-
     m_sSETypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KMSMasterKeyId"))
   {
     m_kMSMasterKeyId = jsonValue.GetString("KMSMasterKeyId");
-
     m_kMSMasterKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

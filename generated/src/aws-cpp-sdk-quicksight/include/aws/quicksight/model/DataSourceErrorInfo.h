@@ -33,86 +33,36 @@ namespace Model
   class DataSourceErrorInfo
   {
   public:
-    AWS_QUICKSIGHT_API DataSourceErrorInfo();
+    AWS_QUICKSIGHT_API DataSourceErrorInfo() = default;
     AWS_QUICKSIGHT_API DataSourceErrorInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataSourceErrorInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Error type.</p>
      */
-    inline const DataSourceErrorInfoType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Error type.</p>
-     */
+    inline DataSourceErrorInfoType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(DataSourceErrorInfoType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DataSourceErrorInfo& WithType(DataSourceErrorInfoType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Error type.</p>
-     */
-    inline void SetType(const DataSourceErrorInfoType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Error type.</p>
-     */
-    inline void SetType(DataSourceErrorInfoType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Error type.</p>
-     */
-    inline DataSourceErrorInfo& WithType(const DataSourceErrorInfoType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Error type.</p>
-     */
-    inline DataSourceErrorInfo& WithType(DataSourceErrorInfoType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Error message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Error message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>Error message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Error message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Error message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Error message.</p>
-     */
-    inline DataSourceErrorInfo& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Error message.</p>
-     */
-    inline DataSourceErrorInfo& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Error message.</p>
-     */
-    inline DataSourceErrorInfo& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DataSourceErrorInfo& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    DataSourceErrorInfoType m_type;
+    DataSourceErrorInfoType m_type{DataSourceErrorInfoType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_message;

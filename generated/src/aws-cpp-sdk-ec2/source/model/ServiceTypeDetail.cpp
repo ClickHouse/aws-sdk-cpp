@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ServiceTypeDetail::ServiceTypeDetail() : 
-    m_serviceType(ServiceType::NOT_SET),
-    m_serviceTypeHasBeenSet(false)
-{
-}
-
-ServiceTypeDetail::ServiceTypeDetail(const XmlNode& xmlNode) : 
-    m_serviceType(ServiceType::NOT_SET),
-    m_serviceTypeHasBeenSet(false)
+ServiceTypeDetail::ServiceTypeDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ ServiceTypeDetail& ServiceTypeDetail::operator =(const XmlNode& xmlNode)
     XmlNode serviceTypeNode = resultNode.FirstChild("serviceType");
     if(!serviceTypeNode.IsNull())
     {
-      m_serviceType = ServiceTypeMapper::GetServiceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(serviceTypeNode.GetText()).c_str()).c_str());
+      m_serviceType = ServiceTypeMapper::GetServiceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(serviceTypeNode.GetText()).c_str()));
       m_serviceTypeHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void ServiceTypeDetail::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_serviceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ServiceType=" << ServiceTypeMapper::GetNameForServiceType(m_serviceType) << "&";
+      oStream << location << index << locationValue << ".ServiceType=" << StringUtils::URLEncode(ServiceTypeMapper::GetNameForServiceType(m_serviceType)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void ServiceTypeDetail::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_serviceTypeHasBeenSet)
   {
-      oStream << location << ".ServiceType=" << ServiceTypeMapper::GetNameForServiceType(m_serviceType) << "&";
+      oStream << location << ".ServiceType=" << StringUtils::URLEncode(ServiceTypeMapper::GetNameForServiceType(m_serviceType)) << "&";
   }
 }
 

@@ -18,21 +18,7 @@ namespace ServiceDiscovery
 namespace Model
 {
 
-NamespaceFilter::NamespaceFilter() : 
-    m_name(NamespaceFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_condition(FilterCondition::NOT_SET),
-    m_conditionHasBeenSet(false)
-{
-}
-
-NamespaceFilter::NamespaceFilter(JsonView jsonValue) : 
-    m_name(NamespaceFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_condition(FilterCondition::NOT_SET),
-    m_conditionHasBeenSet(false)
+NamespaceFilter::NamespaceFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ NamespaceFilter& NamespaceFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = NamespaceFilterNameMapper::GetNamespaceFilterNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -55,14 +39,11 @@ NamespaceFilter& NamespaceFilter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Condition"))
   {
     m_condition = FilterConditionMapper::GetFilterConditionForName(jsonValue.GetString("Condition"));
-
     m_conditionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,6 +10,7 @@
 #include <aws/lakeformation/model/DataLakePrincipal.h>
 #include <aws/lakeformation/model/Resource.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/lakeformation/model/Condition.h>
 #include <aws/lakeformation/model/Permission.h>
 #include <utility>
 
@@ -25,7 +26,7 @@ namespace Model
   class RevokePermissionsRequest : public LakeFormationRequest
   {
   public:
-    AWS_LAKEFORMATION_API RevokePermissionsRequest();
+    AWS_LAKEFORMATION_API RevokePermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,246 +37,84 @@ namespace Model
     AWS_LAKEFORMATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier for the Data Catalog. By default, the account ID. The Data
      * Catalog is the persistent metadata store. It contains database definitions,
      * table definitions, and other control information to manage your Lake Formation
      * environment. </p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    RevokePermissionsRequest& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline RevokePermissionsRequest& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline RevokePermissionsRequest& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline RevokePermissionsRequest& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The principal to be revoked permissions on the resource.</p>
      */
-    inline const DataLakePrincipal& GetPrincipal() const{ return m_principal; }
-
-    /**
-     * <p>The principal to be revoked permissions on the resource.</p>
-     */
+    inline const DataLakePrincipal& GetPrincipal() const { return m_principal; }
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
+    template<typename PrincipalT = DataLakePrincipal>
+    void SetPrincipal(PrincipalT&& value) { m_principalHasBeenSet = true; m_principal = std::forward<PrincipalT>(value); }
+    template<typename PrincipalT = DataLakePrincipal>
+    RevokePermissionsRequest& WithPrincipal(PrincipalT&& value) { SetPrincipal(std::forward<PrincipalT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The principal to be revoked permissions on the resource.</p>
-     */
-    inline void SetPrincipal(const DataLakePrincipal& value) { m_principalHasBeenSet = true; m_principal = value; }
-
-    /**
-     * <p>The principal to be revoked permissions on the resource.</p>
-     */
-    inline void SetPrincipal(DataLakePrincipal&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
-
-    /**
-     * <p>The principal to be revoked permissions on the resource.</p>
-     */
-    inline RevokePermissionsRequest& WithPrincipal(const DataLakePrincipal& value) { SetPrincipal(value); return *this;}
-
-    /**
-     * <p>The principal to be revoked permissions on the resource.</p>
-     */
-    inline RevokePermissionsRequest& WithPrincipal(DataLakePrincipal&& value) { SetPrincipal(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource to which permissions are to be revoked.</p>
      */
-    inline const Resource& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The resource to which permissions are to be revoked.</p>
-     */
+    inline const Resource& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Resource>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Resource>
+    RevokePermissionsRequest& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource to which permissions are to be revoked.</p>
-     */
-    inline void SetResource(const Resource& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The resource to which permissions are to be revoked.</p>
-     */
-    inline void SetResource(Resource&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The resource to which permissions are to be revoked.</p>
-     */
-    inline RevokePermissionsRequest& WithResource(const Resource& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The resource to which permissions are to be revoked.</p>
-     */
-    inline RevokePermissionsRequest& WithResource(Resource&& value) { SetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The permissions revoked to the principal on the resource. For information
      * about permissions, see <a
      * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
      * and Access Control to Metadata and Data</a>.</p>
      */
-    inline const Aws::Vector<Permission>& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
+    inline const Aws::Vector<Permission>& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
+    template<typename PermissionsT = Aws::Vector<Permission>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<Permission>>
+    RevokePermissionsRequest& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    inline RevokePermissionsRequest& AddPermissions(Permission value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
-    inline void SetPermissions(const Aws::Vector<Permission>& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
+    ///@{
+    
+    inline const Condition& GetCondition() const { return m_condition; }
+    inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
+    template<typename ConditionT = Condition>
+    void SetCondition(ConditionT&& value) { m_conditionHasBeenSet = true; m_condition = std::forward<ConditionT>(value); }
+    template<typename ConditionT = Condition>
+    RevokePermissionsRequest& WithCondition(ConditionT&& value) { SetCondition(std::forward<ConditionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
-    inline void SetPermissions(Aws::Vector<Permission>&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
-    inline RevokePermissionsRequest& WithPermissions(const Aws::Vector<Permission>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
-    inline RevokePermissionsRequest& WithPermissions(Aws::Vector<Permission>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
-    inline RevokePermissionsRequest& AddPermissions(const Permission& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>The permissions revoked to the principal on the resource. For information
-     * about permissions, see <a
-     * href="https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html">Security
-     * and Access Control to Metadata and Data</a>.</p>
-     */
-    inline RevokePermissionsRequest& AddPermissions(Permission&& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates a list of permissions for which to revoke the grant option allowing
      * the principal to pass permissions to other principals.</p>
      */
-    inline const Aws::Vector<Permission>& GetPermissionsWithGrantOption() const{ return m_permissionsWithGrantOption; }
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
+    inline const Aws::Vector<Permission>& GetPermissionsWithGrantOption() const { return m_permissionsWithGrantOption; }
     inline bool PermissionsWithGrantOptionHasBeenSet() const { return m_permissionsWithGrantOptionHasBeenSet; }
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
-    inline void SetPermissionsWithGrantOption(const Aws::Vector<Permission>& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption = value; }
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
-    inline void SetPermissionsWithGrantOption(Aws::Vector<Permission>&& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption = std::move(value); }
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
-    inline RevokePermissionsRequest& WithPermissionsWithGrantOption(const Aws::Vector<Permission>& value) { SetPermissionsWithGrantOption(value); return *this;}
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
-    inline RevokePermissionsRequest& WithPermissionsWithGrantOption(Aws::Vector<Permission>&& value) { SetPermissionsWithGrantOption(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
-    inline RevokePermissionsRequest& AddPermissionsWithGrantOption(const Permission& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption.push_back(value); return *this; }
-
-    /**
-     * <p>Indicates a list of permissions for which to revoke the grant option allowing
-     * the principal to pass permissions to other principals.</p>
-     */
-    inline RevokePermissionsRequest& AddPermissionsWithGrantOption(Permission&& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption.push_back(std::move(value)); return *this; }
-
+    template<typename PermissionsWithGrantOptionT = Aws::Vector<Permission>>
+    void SetPermissionsWithGrantOption(PermissionsWithGrantOptionT&& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption = std::forward<PermissionsWithGrantOptionT>(value); }
+    template<typename PermissionsWithGrantOptionT = Aws::Vector<Permission>>
+    RevokePermissionsRequest& WithPermissionsWithGrantOption(PermissionsWithGrantOptionT&& value) { SetPermissionsWithGrantOption(std::forward<PermissionsWithGrantOptionT>(value)); return *this;}
+    inline RevokePermissionsRequest& AddPermissionsWithGrantOption(Permission value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_catalogId;
@@ -289,6 +128,9 @@ namespace Model
 
     Aws::Vector<Permission> m_permissions;
     bool m_permissionsHasBeenSet = false;
+
+    Condition m_condition;
+    bool m_conditionHasBeenSet = false;
 
     Aws::Vector<Permission> m_permissionsWithGrantOption;
     bool m_permissionsWithGrantOptionHasBeenSet = false;

@@ -7,8 +7,8 @@
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/ec2/model/VpnConnectionOptionsSpecification.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ec2/model/VpnConnectionOptionsSpecification.h>
 #include <aws/ec2/model/TagSpecification.h>
 #include <utility>
 
@@ -28,7 +28,7 @@ namespace Model
   class CreateVpnConnectionRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreateVpnConnectionRequest();
+    AWS_EC2_API CreateVpnConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,290 +43,108 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the customer gateway.</p>
      */
-    inline const Aws::String& GetCustomerGatewayId() const{ return m_customerGatewayId; }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
+    inline const Aws::String& GetCustomerGatewayId() const { return m_customerGatewayId; }
     inline bool CustomerGatewayIdHasBeenSet() const { return m_customerGatewayIdHasBeenSet; }
+    template<typename CustomerGatewayIdT = Aws::String>
+    void SetCustomerGatewayId(CustomerGatewayIdT&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = std::forward<CustomerGatewayIdT>(value); }
+    template<typename CustomerGatewayIdT = Aws::String>
+    CreateVpnConnectionRequest& WithCustomerGatewayId(CustomerGatewayIdT&& value) { SetCustomerGatewayId(std::forward<CustomerGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline void SetCustomerGatewayId(const Aws::String& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = value; }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline void SetCustomerGatewayId(Aws::String&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline void SetCustomerGatewayId(const char* value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithCustomerGatewayId(const Aws::String& value) { SetCustomerGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithCustomerGatewayId(Aws::String&& value) { SetCustomerGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithCustomerGatewayId(const char* value) { SetCustomerGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    CreateVpnConnectionRequest& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
-    inline CreateVpnConnectionRequest& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
-    inline CreateVpnConnectionRequest& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
-     */
-    inline CreateVpnConnectionRequest& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the virtual private gateway. If you specify a virtual private
      * gateway, you cannot specify a transit gateway.</p>
      */
-    inline const Aws::String& GetVpnGatewayId() const{ return m_vpnGatewayId; }
-
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
+    inline const Aws::String& GetVpnGatewayId() const { return m_vpnGatewayId; }
     inline bool VpnGatewayIdHasBeenSet() const { return m_vpnGatewayIdHasBeenSet; }
+    template<typename VpnGatewayIdT = Aws::String>
+    void SetVpnGatewayId(VpnGatewayIdT&& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = std::forward<VpnGatewayIdT>(value); }
+    template<typename VpnGatewayIdT = Aws::String>
+    CreateVpnConnectionRequest& WithVpnGatewayId(VpnGatewayIdT&& value) { SetVpnGatewayId(std::forward<VpnGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
-    inline void SetVpnGatewayId(const Aws::String& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = value; }
-
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
-    inline void SetVpnGatewayId(Aws::String&& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
-    inline void SetVpnGatewayId(const char* value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithVpnGatewayId(const Aws::String& value) { SetVpnGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithVpnGatewayId(Aws::String&& value) { SetVpnGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the virtual private gateway. If you specify a virtual private
-     * gateway, you cannot specify a transit gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithVpnGatewayId(const char* value) { SetVpnGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
      * specify a virtual private gateway.</p>
      */
-    inline const Aws::String& GetTransitGatewayId() const{ return m_transitGatewayId; }
-
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
+    inline const Aws::String& GetTransitGatewayId() const { return m_transitGatewayId; }
     inline bool TransitGatewayIdHasBeenSet() const { return m_transitGatewayIdHasBeenSet; }
+    template<typename TransitGatewayIdT = Aws::String>
+    void SetTransitGatewayId(TransitGatewayIdT&& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = std::forward<TransitGatewayIdT>(value); }
+    template<typename TransitGatewayIdT = Aws::String>
+    CreateVpnConnectionRequest& WithTransitGatewayId(TransitGatewayIdT&& value) { SetTransitGatewayId(std::forward<TransitGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
-    inline void SetTransitGatewayId(const Aws::String& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = value; }
-
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
-    inline void SetTransitGatewayId(Aws::String&& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
-    inline void SetTransitGatewayId(const char* value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithTransitGatewayId(const Aws::String& value) { SetTransitGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithTransitGatewayId(Aws::String&& value) { SetTransitGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway. If you specify a transit gateway, you cannot
-     * specify a virtual private gateway.</p>
-     */
-    inline CreateVpnConnectionRequest& WithTransitGatewayId(const char* value) { SetTransitGatewayId(value); return *this;}
-
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline CreateVpnConnectionRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
-
-    /**
-     * <p>The options for the VPN connection.</p>
-     */
-    inline const VpnConnectionOptionsSpecification& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>The options for the VPN connection.</p>
-     */
-    inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
-
-    /**
-     * <p>The options for the VPN connection.</p>
-     */
-    inline void SetOptions(const VpnConnectionOptionsSpecification& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>The options for the VPN connection.</p>
-     */
-    inline void SetOptions(VpnConnectionOptionsSpecification&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>The options for the VPN connection.</p>
-     */
-    inline CreateVpnConnectionRequest& WithOptions(const VpnConnectionOptionsSpecification& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>The options for the VPN connection.</p>
-     */
-    inline CreateVpnConnectionRequest& WithOptions(VpnConnectionOptionsSpecification&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to apply to the VPN connection.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>The tags to apply to the VPN connection.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    CreateVpnConnectionRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    CreateVpnConnectionRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags to apply to the VPN connection.</p>
+     * <p>Specifies the storage mode for the pre-shared key (PSK). Valid values are
+     * <code>Standard</code>" (stored in the Site-to-Site VPN service) or
+     * <code>SecretsManager</code> (stored in Amazon Web Services Secrets Manager).</p>
      */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
+    inline const Aws::String& GetPreSharedKeyStorage() const { return m_preSharedKeyStorage; }
+    inline bool PreSharedKeyStorageHasBeenSet() const { return m_preSharedKeyStorageHasBeenSet; }
+    template<typename PreSharedKeyStorageT = Aws::String>
+    void SetPreSharedKeyStorage(PreSharedKeyStorageT&& value) { m_preSharedKeyStorageHasBeenSet = true; m_preSharedKeyStorage = std::forward<PreSharedKeyStorageT>(value); }
+    template<typename PreSharedKeyStorageT = Aws::String>
+    CreateVpnConnectionRequest& WithPreSharedKeyStorage(PreSharedKeyStorageT&& value) { SetPreSharedKeyStorage(std::forward<PreSharedKeyStorageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags to apply to the VPN connection.</p>
+     * <p>Checks whether you have the required permissions for the action, without
+     * actually making the request, and provides an error response. If you have the
+     * required permissions, the error response is <code>DryRunOperation</code>.
+     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
+    inline bool GetDryRun() const { return m_dryRun; }
+    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
+    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
+    inline CreateVpnConnectionRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags to apply to the VPN connection.</p>
+     * <p>The options for the VPN connection.</p>
      */
-    inline CreateVpnConnectionRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>The tags to apply to the VPN connection.</p>
-     */
-    inline CreateVpnConnectionRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to apply to the VPN connection.</p>
-     */
-    inline CreateVpnConnectionRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to apply to the VPN connection.</p>
-     */
-    inline CreateVpnConnectionRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
+    inline const VpnConnectionOptionsSpecification& GetOptions() const { return m_options; }
+    inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = VpnConnectionOptionsSpecification>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = VpnConnectionOptionsSpecification>
+    CreateVpnConnectionRequest& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_customerGatewayId;
@@ -341,14 +159,17 @@ namespace Model
     Aws::String m_transitGatewayId;
     bool m_transitGatewayIdHasBeenSet = false;
 
-    bool m_dryRun;
+    Aws::Vector<TagSpecification> m_tagSpecifications;
+    bool m_tagSpecificationsHasBeenSet = false;
+
+    Aws::String m_preSharedKeyStorage;
+    bool m_preSharedKeyStorageHasBeenSet = false;
+
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     VpnConnectionOptionsSpecification m_options;
     bool m_optionsHasBeenSet = false;
-
-    Aws::Vector<TagSpecification> m_tagSpecifications;
-    bool m_tagSpecificationsHasBeenSet = false;
   };
 
 } // namespace Model

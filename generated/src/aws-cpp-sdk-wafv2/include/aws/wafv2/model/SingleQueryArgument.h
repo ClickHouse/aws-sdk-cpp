@@ -36,52 +36,23 @@ namespace Model
   class SingleQueryArgument
   {
   public:
-    AWS_WAFV2_API SingleQueryArgument();
+    AWS_WAFV2_API SingleQueryArgument() = default;
     AWS_WAFV2_API SingleQueryArgument(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API SingleQueryArgument& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the query argument to inspect.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
-    inline SingleQueryArgument& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
-    inline SingleQueryArgument& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the query argument to inspect.</p>
-     */
-    inline SingleQueryArgument& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SingleQueryArgument& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

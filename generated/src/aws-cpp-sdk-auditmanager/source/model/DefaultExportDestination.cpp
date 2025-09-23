@@ -18,17 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-DefaultExportDestination::DefaultExportDestination() : 
-    m_destinationType(ExportDestinationType::NOT_SET),
-    m_destinationTypeHasBeenSet(false),
-    m_destinationHasBeenSet(false)
-{
-}
-
-DefaultExportDestination::DefaultExportDestination(JsonView jsonValue) : 
-    m_destinationType(ExportDestinationType::NOT_SET),
-    m_destinationTypeHasBeenSet(false),
-    m_destinationHasBeenSet(false)
+DefaultExportDestination::DefaultExportDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DefaultExportDestination& DefaultExportDestination::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("destinationType"))
   {
     m_destinationType = ExportDestinationTypeMapper::GetExportDestinationTypeForName(jsonValue.GetString("destinationType"));
-
     m_destinationTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destination"))
   {
     m_destination = jsonValue.GetString("destination");
-
     m_destinationHasBeenSet = true;
   }
-
   return *this;
 }
 

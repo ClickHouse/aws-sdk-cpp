@@ -28,22 +28,25 @@ namespace Model
    * about these storage classes and how to work with archived objects, see <a
    * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/archived-objects.html">
    * Working with archived objects</a> in the <i>Amazon S3 User Guide</i>.</p> 
-   * <p>This functionality is not supported for directory buckets. Only the S3
-   * Express One Zone storage class is supported by directory buckets to store
-   * objects.</p> <p><h3>See Also:</h3>   <a
+   * <p>This functionality is not supported for directory buckets. Directory buckets
+   * only support <code>EXPRESS_ONEZONE</code> (the S3 Express One Zone storage
+   * class) in Availability Zones and <code>ONEZONE_IA</code> (the S3 One
+   * Zone-Infrequent Access storage class) in Dedicated Local Zones.</p>
+   * <p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RestoreStatus">AWS
    * API Reference</a></p>
    */
   class RestoreStatus
   {
   public:
-    AWS_S3CRT_API RestoreStatus();
+    AWS_S3CRT_API RestoreStatus() = default;
     AWS_S3CRT_API RestoreStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API RestoreStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies whether the object is currently being restored. If the object
      * restoration is in progress, the header returns the value <code>TRUE</code>. For
@@ -54,99 +57,32 @@ namespace Model
      * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p> <p>If the object hasn't
      * been restored, there is no header response.</p>
      */
-    inline bool GetIsRestoreInProgress() const{ return m_isRestoreInProgress; }
-
-    /**
-     * <p>Specifies whether the object is currently being restored. If the object
-     * restoration is in progress, the header returns the value <code>TRUE</code>. For
-     * example:</p> <p> <code>x-amz-optional-object-attributes:
-     * IsRestoreInProgress="true"</code> </p> <p>If the object restoration has
-     * completed, the header returns the value <code>FALSE</code>. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p> <p>If the object hasn't
-     * been restored, there is no header response.</p>
-     */
+    inline bool GetIsRestoreInProgress() const { return m_isRestoreInProgress; }
     inline bool IsRestoreInProgressHasBeenSet() const { return m_isRestoreInProgressHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the object is currently being restored. If the object
-     * restoration is in progress, the header returns the value <code>TRUE</code>. For
-     * example:</p> <p> <code>x-amz-optional-object-attributes:
-     * IsRestoreInProgress="true"</code> </p> <p>If the object restoration has
-     * completed, the header returns the value <code>FALSE</code>. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p> <p>If the object hasn't
-     * been restored, there is no header response.</p>
-     */
     inline void SetIsRestoreInProgress(bool value) { m_isRestoreInProgressHasBeenSet = true; m_isRestoreInProgress = value; }
-
-    /**
-     * <p>Specifies whether the object is currently being restored. If the object
-     * restoration is in progress, the header returns the value <code>TRUE</code>. For
-     * example:</p> <p> <code>x-amz-optional-object-attributes:
-     * IsRestoreInProgress="true"</code> </p> <p>If the object restoration has
-     * completed, the header returns the value <code>FALSE</code>. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p> <p>If the object hasn't
-     * been restored, there is no header response.</p>
-     */
     inline RestoreStatus& WithIsRestoreInProgress(bool value) { SetIsRestoreInProgress(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates when the restored copy will expire. This value is populated only if
      * the object has already been restored. For example:</p> <p>
      * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
      * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p>
      */
-    inline const Aws::Utils::DateTime& GetRestoreExpiryDate() const{ return m_restoreExpiryDate; }
-
-    /**
-     * <p>Indicates when the restored copy will expire. This value is populated only if
-     * the object has already been restored. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p>
-     */
+    inline const Aws::Utils::DateTime& GetRestoreExpiryDate() const { return m_restoreExpiryDate; }
     inline bool RestoreExpiryDateHasBeenSet() const { return m_restoreExpiryDateHasBeenSet; }
-
-    /**
-     * <p>Indicates when the restored copy will expire. This value is populated only if
-     * the object has already been restored. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p>
-     */
-    inline void SetRestoreExpiryDate(const Aws::Utils::DateTime& value) { m_restoreExpiryDateHasBeenSet = true; m_restoreExpiryDate = value; }
-
-    /**
-     * <p>Indicates when the restored copy will expire. This value is populated only if
-     * the object has already been restored. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p>
-     */
-    inline void SetRestoreExpiryDate(Aws::Utils::DateTime&& value) { m_restoreExpiryDateHasBeenSet = true; m_restoreExpiryDate = std::move(value); }
-
-    /**
-     * <p>Indicates when the restored copy will expire. This value is populated only if
-     * the object has already been restored. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p>
-     */
-    inline RestoreStatus& WithRestoreExpiryDate(const Aws::Utils::DateTime& value) { SetRestoreExpiryDate(value); return *this;}
-
-    /**
-     * <p>Indicates when the restored copy will expire. This value is populated only if
-     * the object has already been restored. For example:</p> <p>
-     * <code>x-amz-optional-object-attributes: IsRestoreInProgress="false",
-     * RestoreExpiryDate="2012-12-21T00:00:00.000Z"</code> </p>
-     */
-    inline RestoreStatus& WithRestoreExpiryDate(Aws::Utils::DateTime&& value) { SetRestoreExpiryDate(std::move(value)); return *this;}
-
+    template<typename RestoreExpiryDateT = Aws::Utils::DateTime>
+    void SetRestoreExpiryDate(RestoreExpiryDateT&& value) { m_restoreExpiryDateHasBeenSet = true; m_restoreExpiryDate = std::forward<RestoreExpiryDateT>(value); }
+    template<typename RestoreExpiryDateT = Aws::Utils::DateTime>
+    RestoreStatus& WithRestoreExpiryDate(RestoreExpiryDateT&& value) { SetRestoreExpiryDate(std::forward<RestoreExpiryDateT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_isRestoreInProgress;
+    bool m_isRestoreInProgress{false};
     bool m_isRestoreInProgressHasBeenSet = false;
 
-    Aws::Utils::DateTime m_restoreExpiryDate;
+    Aws::Utils::DateTime m_restoreExpiryDate{};
     bool m_restoreExpiryDateHasBeenSet = false;
   };
 

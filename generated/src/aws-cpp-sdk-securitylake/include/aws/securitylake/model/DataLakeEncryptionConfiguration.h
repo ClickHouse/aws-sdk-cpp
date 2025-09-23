@@ -32,60 +32,24 @@ namespace Model
   class DataLakeEncryptionConfiguration
   {
   public:
-    AWS_SECURITYLAKE_API DataLakeEncryptionConfiguration();
+    AWS_SECURITYLAKE_API DataLakeEncryptionConfiguration() = default;
     AWS_SECURITYLAKE_API DataLakeEncryptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYLAKE_API DataLakeEncryptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
+     * <p>The identifier of KMS encryption key used by Amazon Security Lake to encrypt
+     * the Security Lake object.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
-    inline DataLakeEncryptionConfiguration& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
-    inline DataLakeEncryptionConfiguration& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The id of KMS encryption key used by Amazon Security Lake to encrypt the
-     * Security Lake object.</p>
-     */
-    inline DataLakeEncryptionConfiguration& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    DataLakeEncryptionConfiguration& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKeyId;

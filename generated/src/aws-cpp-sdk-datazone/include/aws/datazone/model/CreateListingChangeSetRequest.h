@@ -24,7 +24,7 @@ namespace Model
   class CreateListingChangeSetRequest : public DataZoneRequest
   {
   public:
-    AWS_DATAZONE_API CreateListingChangeSetRequest();
+    AWS_DATAZONE_API CreateListingChangeSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,238 +35,81 @@ namespace Model
     AWS_DATAZONE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p/>
+     * <p>Specifies whether to publish or unpublish a listing.</p>
      */
-    inline const ChangeAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p/>
-     */
+    inline ChangeAction GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(ChangeAction value) { m_actionHasBeenSet = true; m_action = value; }
+    inline CreateListingChangeSetRequest& WithAction(ChangeAction value) { SetAction(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p/>
+     * <p>A unique, case-sensitive identifier that is provided to ensure the
+     * idempotency of the request.</p>
      */
-    inline void SetAction(const ChangeAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithAction(const ChangeAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateListingChangeSetRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p/>
+     * <p>The ID of the Amazon DataZone domain.</p>
      */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetDomainIdentifier() const{ return m_domainIdentifier; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetDomainIdentifier() const { return m_domainIdentifier; }
     inline bool DomainIdentifierHasBeenSet() const { return m_domainIdentifierHasBeenSet; }
+    template<typename DomainIdentifierT = Aws::String>
+    void SetDomainIdentifier(DomainIdentifierT&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::forward<DomainIdentifierT>(value); }
+    template<typename DomainIdentifierT = Aws::String>
+    CreateListingChangeSetRequest& WithDomainIdentifier(DomainIdentifierT&& value) { SetDomainIdentifier(std::forward<DomainIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p/>
+     * <p>The ID of the asset.</p>
      */
-    inline void SetDomainIdentifier(const Aws::String& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetDomainIdentifier(Aws::String&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetDomainIdentifier(const char* value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithDomainIdentifier(const Aws::String& value) { SetDomainIdentifier(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithDomainIdentifier(Aws::String&& value) { SetDomainIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithDomainIdentifier(const char* value) { SetDomainIdentifier(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetEntityIdentifier() const{ return m_entityIdentifier; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetEntityIdentifier() const { return m_entityIdentifier; }
     inline bool EntityIdentifierHasBeenSet() const { return m_entityIdentifierHasBeenSet; }
+    template<typename EntityIdentifierT = Aws::String>
+    void SetEntityIdentifier(EntityIdentifierT&& value) { m_entityIdentifierHasBeenSet = true; m_entityIdentifier = std::forward<EntityIdentifierT>(value); }
+    template<typename EntityIdentifierT = Aws::String>
+    CreateListingChangeSetRequest& WithEntityIdentifier(EntityIdentifierT&& value) { SetEntityIdentifier(std::forward<EntityIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p/>
+     * <p>The revision of an asset.</p>
      */
-    inline void SetEntityIdentifier(const Aws::String& value) { m_entityIdentifierHasBeenSet = true; m_entityIdentifier = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetEntityIdentifier(Aws::String&& value) { m_entityIdentifierHasBeenSet = true; m_entityIdentifier = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetEntityIdentifier(const char* value) { m_entityIdentifierHasBeenSet = true; m_entityIdentifier.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityIdentifier(const Aws::String& value) { SetEntityIdentifier(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityIdentifier(Aws::String&& value) { SetEntityIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityIdentifier(const char* value) { SetEntityIdentifier(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetEntityRevision() const{ return m_entityRevision; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetEntityRevision() const { return m_entityRevision; }
     inline bool EntityRevisionHasBeenSet() const { return m_entityRevisionHasBeenSet; }
+    template<typename EntityRevisionT = Aws::String>
+    void SetEntityRevision(EntityRevisionT&& value) { m_entityRevisionHasBeenSet = true; m_entityRevision = std::forward<EntityRevisionT>(value); }
+    template<typename EntityRevisionT = Aws::String>
+    CreateListingChangeSetRequest& WithEntityRevision(EntityRevisionT&& value) { SetEntityRevision(std::forward<EntityRevisionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p/>
+     * <p>The type of an entity.</p>
      */
-    inline void SetEntityRevision(const Aws::String& value) { m_entityRevisionHasBeenSet = true; m_entityRevision = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetEntityRevision(Aws::String&& value) { m_entityRevisionHasBeenSet = true; m_entityRevision = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetEntityRevision(const char* value) { m_entityRevisionHasBeenSet = true; m_entityRevision.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityRevision(const Aws::String& value) { SetEntityRevision(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityRevision(Aws::String&& value) { SetEntityRevision(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityRevision(const char* value) { SetEntityRevision(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const EntityType& GetEntityType() const{ return m_entityType; }
-
-    /**
-     * <p/>
-     */
+    inline EntityType GetEntityType() const { return m_entityType; }
     inline bool EntityTypeHasBeenSet() const { return m_entityTypeHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetEntityType(const EntityType& value) { m_entityTypeHasBeenSet = true; m_entityType = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetEntityType(EntityType&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityType(const EntityType& value) { SetEntityType(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline CreateListingChangeSetRequest& WithEntityType(EntityType&& value) { SetEntityType(std::move(value)); return *this;}
-
+    inline void SetEntityType(EntityType value) { m_entityTypeHasBeenSet = true; m_entityType = value; }
+    inline CreateListingChangeSetRequest& WithEntityType(EntityType value) { SetEntityType(value); return *this;}
+    ///@}
   private:
 
-    ChangeAction m_action;
+    ChangeAction m_action{ChangeAction::NOT_SET};
     bool m_actionHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_domainIdentifier;
     bool m_domainIdentifierHasBeenSet = false;
@@ -277,7 +120,7 @@ namespace Model
     Aws::String m_entityRevision;
     bool m_entityRevisionHasBeenSet = false;
 
-    EntityType m_entityType;
+    EntityType m_entityType{EntityType::NOT_SET};
     bool m_entityTypeHasBeenSet = false;
   };
 

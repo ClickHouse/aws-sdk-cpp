@@ -18,19 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ResourceCount::ResourceCount() : 
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
-{
-}
-
-ResourceCount::ResourceCount(JsonView jsonValue) : 
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
+ResourceCount::ResourceCount(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ResourceCount& ResourceCount::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = ResourceTypeMapper::GetResourceTypeForName(jsonValue.GetString("resourceType"));
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("count"))
   {
     m_count = jsonValue.GetInt64("count");
-
     m_countHasBeenSet = true;
   }
-
   return *this;
 }
 

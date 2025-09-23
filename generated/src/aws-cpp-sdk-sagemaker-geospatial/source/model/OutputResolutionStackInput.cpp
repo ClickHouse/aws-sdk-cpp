@@ -18,17 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-OutputResolutionStackInput::OutputResolutionStackInput() : 
-    m_predefined(PredefinedResolution::NOT_SET),
-    m_predefinedHasBeenSet(false),
-    m_userDefinedHasBeenSet(false)
-{
-}
-
-OutputResolutionStackInput::OutputResolutionStackInput(JsonView jsonValue) : 
-    m_predefined(PredefinedResolution::NOT_SET),
-    m_predefinedHasBeenSet(false),
-    m_userDefinedHasBeenSet(false)
+OutputResolutionStackInput::OutputResolutionStackInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ OutputResolutionStackInput& OutputResolutionStackInput::operator =(JsonView json
   if(jsonValue.ValueExists("Predefined"))
   {
     m_predefined = PredefinedResolutionMapper::GetPredefinedResolutionForName(jsonValue.GetString("Predefined"));
-
     m_predefinedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserDefined"))
   {
     m_userDefined = jsonValue.GetObject("UserDefined");
-
     m_userDefinedHasBeenSet = true;
   }
-
   return *this;
 }
 

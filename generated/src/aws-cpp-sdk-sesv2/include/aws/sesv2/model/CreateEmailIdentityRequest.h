@@ -28,7 +28,7 @@ namespace Model
   class CreateEmailIdentityRequest : public SESV2Request
   {
   public:
-    AWS_SESV2_API CreateEmailIdentityRequest();
+    AWS_SESV2_API CreateEmailIdentityRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,96 +39,34 @@ namespace Model
     AWS_SESV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The email address or domain to verify.</p>
      */
-    inline const Aws::String& GetEmailIdentity() const{ return m_emailIdentity; }
-
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
+    inline const Aws::String& GetEmailIdentity() const { return m_emailIdentity; }
     inline bool EmailIdentityHasBeenSet() const { return m_emailIdentityHasBeenSet; }
+    template<typename EmailIdentityT = Aws::String>
+    void SetEmailIdentity(EmailIdentityT&& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = std::forward<EmailIdentityT>(value); }
+    template<typename EmailIdentityT = Aws::String>
+    CreateEmailIdentityRequest& WithEmailIdentity(EmailIdentityT&& value) { SetEmailIdentity(std::forward<EmailIdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
-    inline void SetEmailIdentity(const Aws::String& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = value; }
-
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
-    inline void SetEmailIdentity(Aws::String&& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = std::move(value); }
-
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
-    inline void SetEmailIdentity(const char* value) { m_emailIdentityHasBeenSet = true; m_emailIdentity.assign(value); }
-
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
-    inline CreateEmailIdentityRequest& WithEmailIdentity(const Aws::String& value) { SetEmailIdentity(value); return *this;}
-
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
-    inline CreateEmailIdentityRequest& WithEmailIdentity(Aws::String&& value) { SetEmailIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address or domain to verify.</p>
-     */
-    inline CreateEmailIdentityRequest& WithEmailIdentity(const char* value) { SetEmailIdentity(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of objects that define the tags (keys and values) to associate with
      * the email identity.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateEmailIdentityRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateEmailIdentityRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
-    inline CreateEmailIdentityRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
-    inline CreateEmailIdentityRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
-    inline CreateEmailIdentityRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects that define the tags (keys and values) to associate with
-     * the email identity.</p>
-     */
-    inline CreateEmailIdentityRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If your request includes this object, Amazon SES configures the identity to
      * use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes, or,
@@ -137,115 +75,27 @@ namespace Model
      * DKIM</a>.</p> <p>You can only specify this object if the email identity is a
      * domain, as opposed to an address.</p>
      */
-    inline const DkimSigningAttributes& GetDkimSigningAttributes() const{ return m_dkimSigningAttributes; }
-
-    /**
-     * <p>If your request includes this object, Amazon SES configures the identity to
-     * use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes, or,
-     * configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> <p>You can only specify this object if the email identity is a
-     * domain, as opposed to an address.</p>
-     */
+    inline const DkimSigningAttributes& GetDkimSigningAttributes() const { return m_dkimSigningAttributes; }
     inline bool DkimSigningAttributesHasBeenSet() const { return m_dkimSigningAttributesHasBeenSet; }
+    template<typename DkimSigningAttributesT = DkimSigningAttributes>
+    void SetDkimSigningAttributes(DkimSigningAttributesT&& value) { m_dkimSigningAttributesHasBeenSet = true; m_dkimSigningAttributes = std::forward<DkimSigningAttributesT>(value); }
+    template<typename DkimSigningAttributesT = DkimSigningAttributes>
+    CreateEmailIdentityRequest& WithDkimSigningAttributes(DkimSigningAttributesT&& value) { SetDkimSigningAttributes(std::forward<DkimSigningAttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If your request includes this object, Amazon SES configures the identity to
-     * use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes, or,
-     * configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> <p>You can only specify this object if the email identity is a
-     * domain, as opposed to an address.</p>
-     */
-    inline void SetDkimSigningAttributes(const DkimSigningAttributes& value) { m_dkimSigningAttributesHasBeenSet = true; m_dkimSigningAttributes = value; }
-
-    /**
-     * <p>If your request includes this object, Amazon SES configures the identity to
-     * use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes, or,
-     * configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> <p>You can only specify this object if the email identity is a
-     * domain, as opposed to an address.</p>
-     */
-    inline void SetDkimSigningAttributes(DkimSigningAttributes&& value) { m_dkimSigningAttributesHasBeenSet = true; m_dkimSigningAttributes = std::move(value); }
-
-    /**
-     * <p>If your request includes this object, Amazon SES configures the identity to
-     * use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes, or,
-     * configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> <p>You can only specify this object if the email identity is a
-     * domain, as opposed to an address.</p>
-     */
-    inline CreateEmailIdentityRequest& WithDkimSigningAttributes(const DkimSigningAttributes& value) { SetDkimSigningAttributes(value); return *this;}
-
-    /**
-     * <p>If your request includes this object, Amazon SES configures the identity to
-     * use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes, or,
-     * configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> <p>You can only specify this object if the email identity is a
-     * domain, as opposed to an address.</p>
-     */
-    inline CreateEmailIdentityRequest& WithDkimSigningAttributes(DkimSigningAttributes&& value) { SetDkimSigningAttributes(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration set to use by default when sending from this identity. Note
      * that any configuration set defined in the email sending request takes
      * precedence. </p>
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
-    inline CreateEmailIdentityRequest& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
-    inline CreateEmailIdentityRequest& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration set to use by default when sending from this identity. Note
-     * that any configuration set defined in the email sending request takes
-     * precedence. </p>
-     */
-    inline CreateEmailIdentityRequest& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    CreateEmailIdentityRequest& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_emailIdentity;

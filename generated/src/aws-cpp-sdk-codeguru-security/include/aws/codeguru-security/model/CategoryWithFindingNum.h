@@ -32,87 +32,40 @@ namespace Model
   class CategoryWithFindingNum
   {
   public:
-    AWS_CODEGURUSECURITY_API CategoryWithFindingNum();
+    AWS_CODEGURUSECURITY_API CategoryWithFindingNum() = default;
     AWS_CODEGURUSECURITY_API CategoryWithFindingNum(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API CategoryWithFindingNum& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the finding category. A finding category is determined by the
      * detector that detected the finding.</p>
      */
-    inline const Aws::String& GetCategoryName() const{ return m_categoryName; }
-
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
+    inline const Aws::String& GetCategoryName() const { return m_categoryName; }
     inline bool CategoryNameHasBeenSet() const { return m_categoryNameHasBeenSet; }
+    template<typename CategoryNameT = Aws::String>
+    void SetCategoryName(CategoryNameT&& value) { m_categoryNameHasBeenSet = true; m_categoryName = std::forward<CategoryNameT>(value); }
+    template<typename CategoryNameT = Aws::String>
+    CategoryWithFindingNum& WithCategoryName(CategoryNameT&& value) { SetCategoryName(std::forward<CategoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
-    inline void SetCategoryName(const Aws::String& value) { m_categoryNameHasBeenSet = true; m_categoryName = value; }
-
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
-    inline void SetCategoryName(Aws::String&& value) { m_categoryNameHasBeenSet = true; m_categoryName = std::move(value); }
-
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
-    inline void SetCategoryName(const char* value) { m_categoryNameHasBeenSet = true; m_categoryName.assign(value); }
-
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
-    inline CategoryWithFindingNum& WithCategoryName(const Aws::String& value) { SetCategoryName(value); return *this;}
-
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
-    inline CategoryWithFindingNum& WithCategoryName(Aws::String&& value) { SetCategoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the finding category. A finding category is determined by the
-     * detector that detected the finding.</p>
-     */
-    inline CategoryWithFindingNum& WithCategoryName(const char* value) { SetCategoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of open findings in the category.</p>
      */
-    inline int GetFindingNumber() const{ return m_findingNumber; }
-
-    /**
-     * <p>The number of open findings in the category.</p>
-     */
+    inline int GetFindingNumber() const { return m_findingNumber; }
     inline bool FindingNumberHasBeenSet() const { return m_findingNumberHasBeenSet; }
-
-    /**
-     * <p>The number of open findings in the category.</p>
-     */
     inline void SetFindingNumber(int value) { m_findingNumberHasBeenSet = true; m_findingNumber = value; }
-
-    /**
-     * <p>The number of open findings in the category.</p>
-     */
     inline CategoryWithFindingNum& WithFindingNumber(int value) { SetFindingNumber(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_categoryName;
     bool m_categoryNameHasBeenSet = false;
 
-    int m_findingNumber;
+    int m_findingNumber{0};
     bool m_findingNumberHasBeenSet = false;
   };
 

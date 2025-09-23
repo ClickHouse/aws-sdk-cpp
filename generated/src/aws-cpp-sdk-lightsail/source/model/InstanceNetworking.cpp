@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-InstanceNetworking::InstanceNetworking() : 
-    m_monthlyTransferHasBeenSet(false),
-    m_portsHasBeenSet(false)
-{
-}
-
-InstanceNetworking::InstanceNetworking(JsonView jsonValue) : 
-    m_monthlyTransferHasBeenSet(false),
-    m_portsHasBeenSet(false)
+InstanceNetworking::InstanceNetworking(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InstanceNetworking& InstanceNetworking::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("monthlyTransfer"))
   {
     m_monthlyTransfer = jsonValue.GetObject("monthlyTransfer");
-
     m_monthlyTransferHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ports"))
   {
     Aws::Utils::Array<JsonView> portsJsonList = jsonValue.GetArray("ports");
@@ -49,7 +39,6 @@ InstanceNetworking& InstanceNetworking::operator =(JsonView jsonValue)
     }
     m_portsHasBeenSet = true;
   }
-
   return *this;
 }
 

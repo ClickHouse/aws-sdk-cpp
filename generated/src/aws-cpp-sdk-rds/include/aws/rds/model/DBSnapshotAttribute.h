@@ -35,7 +35,7 @@ namespace Model
   class DBSnapshotAttribute
   {
   public:
-    AWS_RDS_API DBSnapshotAttribute();
+    AWS_RDS_API DBSnapshotAttribute() = default;
     AWS_RDS_API DBSnapshotAttribute(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API DBSnapshotAttribute& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,71 +43,22 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
      * <code>restore</code> refers to the list of Amazon Web Services accounts that
      * have permission to copy or restore the manual DB cluster snapshot. For more
      * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
      */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    DBSnapshotAttribute& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
-    inline DBSnapshotAttribute& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
-    inline DBSnapshotAttribute& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
-     * <code>restore</code> refers to the list of Amazon Web Services accounts that
-     * have permission to copy or restore the manual DB cluster snapshot. For more
-     * information, see the <code>ModifyDBSnapshotAttribute</code> API action.</p>
-     */
-    inline DBSnapshotAttribute& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
      * <code>AttributeName</code> field is set to <code>restore</code>, then this
@@ -116,88 +67,15 @@ namespace Model
      * <code>all</code> is in the list, then the manual DB snapshot is public and
      * available for any Amazon Web Services account to copy or restore.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAttributeValues() const{ return m_attributeValues; }
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAttributeValues() const { return m_attributeValues; }
     inline bool AttributeValuesHasBeenSet() const { return m_attributeValuesHasBeenSet; }
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline void SetAttributeValues(const Aws::Vector<Aws::String>& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = value; }
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline void SetAttributeValues(Aws::Vector<Aws::String>&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = std::move(value); }
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline DBSnapshotAttribute& WithAttributeValues(const Aws::Vector<Aws::String>& value) { SetAttributeValues(value); return *this;}
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline DBSnapshotAttribute& WithAttributeValues(Aws::Vector<Aws::String>&& value) { SetAttributeValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline DBSnapshotAttribute& AddAttributeValues(const Aws::String& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(value); return *this; }
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline DBSnapshotAttribute& AddAttributeValues(Aws::String&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
-     * <code>AttributeName</code> field is set to <code>restore</code>, then this
-     * element returns a list of IDs of the Amazon Web Services accounts that are
-     * authorized to copy or restore the manual DB snapshot. If a value of
-     * <code>all</code> is in the list, then the manual DB snapshot is public and
-     * available for any Amazon Web Services account to copy or restore.</p>
-     */
-    inline DBSnapshotAttribute& AddAttributeValues(const char* value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(value); return *this; }
-
+    template<typename AttributeValuesT = Aws::Vector<Aws::String>>
+    void SetAttributeValues(AttributeValuesT&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = std::forward<AttributeValuesT>(value); }
+    template<typename AttributeValuesT = Aws::Vector<Aws::String>>
+    DBSnapshotAttribute& WithAttributeValues(AttributeValuesT&& value) { SetAttributeValues(std::forward<AttributeValuesT>(value)); return *this;}
+    template<typename AttributeValuesT = Aws::String>
+    DBSnapshotAttribute& AddAttributeValues(AttributeValuesT&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.emplace_back(std::forward<AttributeValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_attributeName;

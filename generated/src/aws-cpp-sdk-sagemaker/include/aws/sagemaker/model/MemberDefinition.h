@@ -33,43 +33,25 @@ namespace Model
   class MemberDefinition
   {
   public:
-    AWS_SAGEMAKER_API MemberDefinition();
+    AWS_SAGEMAKER_API MemberDefinition() = default;
     AWS_SAGEMAKER_API MemberDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API MemberDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Cognito user group that is part of the work team.</p>
      */
-    inline const CognitoMemberDefinition& GetCognitoMemberDefinition() const{ return m_cognitoMemberDefinition; }
-
-    /**
-     * <p>The Amazon Cognito user group that is part of the work team.</p>
-     */
+    inline const CognitoMemberDefinition& GetCognitoMemberDefinition() const { return m_cognitoMemberDefinition; }
     inline bool CognitoMemberDefinitionHasBeenSet() const { return m_cognitoMemberDefinitionHasBeenSet; }
+    template<typename CognitoMemberDefinitionT = CognitoMemberDefinition>
+    void SetCognitoMemberDefinition(CognitoMemberDefinitionT&& value) { m_cognitoMemberDefinitionHasBeenSet = true; m_cognitoMemberDefinition = std::forward<CognitoMemberDefinitionT>(value); }
+    template<typename CognitoMemberDefinitionT = CognitoMemberDefinition>
+    MemberDefinition& WithCognitoMemberDefinition(CognitoMemberDefinitionT&& value) { SetCognitoMemberDefinition(std::forward<CognitoMemberDefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Cognito user group that is part of the work team.</p>
-     */
-    inline void SetCognitoMemberDefinition(const CognitoMemberDefinition& value) { m_cognitoMemberDefinitionHasBeenSet = true; m_cognitoMemberDefinition = value; }
-
-    /**
-     * <p>The Amazon Cognito user group that is part of the work team.</p>
-     */
-    inline void SetCognitoMemberDefinition(CognitoMemberDefinition&& value) { m_cognitoMemberDefinitionHasBeenSet = true; m_cognitoMemberDefinition = std::move(value); }
-
-    /**
-     * <p>The Amazon Cognito user group that is part of the work team.</p>
-     */
-    inline MemberDefinition& WithCognitoMemberDefinition(const CognitoMemberDefinition& value) { SetCognitoMemberDefinition(value); return *this;}
-
-    /**
-     * <p>The Amazon Cognito user group that is part of the work team.</p>
-     */
-    inline MemberDefinition& WithCognitoMemberDefinition(CognitoMemberDefinition&& value) { SetCognitoMemberDefinition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list user groups that exist in your OIDC Identity Provider (IdP). One to
      * ten groups can be used to create a single private work team. When you add a user
@@ -77,53 +59,13 @@ namespace Model
      * more private work teams. If you add a user group to a private work team, all
      * workers in that user group are added to the work team.</p>
      */
-    inline const OidcMemberDefinition& GetOidcMemberDefinition() const{ return m_oidcMemberDefinition; }
-
-    /**
-     * <p>A list user groups that exist in your OIDC Identity Provider (IdP). One to
-     * ten groups can be used to create a single private work team. When you add a user
-     * group to the list of <code>Groups</code>, you can add that user group to one or
-     * more private work teams. If you add a user group to a private work team, all
-     * workers in that user group are added to the work team.</p>
-     */
+    inline const OidcMemberDefinition& GetOidcMemberDefinition() const { return m_oidcMemberDefinition; }
     inline bool OidcMemberDefinitionHasBeenSet() const { return m_oidcMemberDefinitionHasBeenSet; }
-
-    /**
-     * <p>A list user groups that exist in your OIDC Identity Provider (IdP). One to
-     * ten groups can be used to create a single private work team. When you add a user
-     * group to the list of <code>Groups</code>, you can add that user group to one or
-     * more private work teams. If you add a user group to a private work team, all
-     * workers in that user group are added to the work team.</p>
-     */
-    inline void SetOidcMemberDefinition(const OidcMemberDefinition& value) { m_oidcMemberDefinitionHasBeenSet = true; m_oidcMemberDefinition = value; }
-
-    /**
-     * <p>A list user groups that exist in your OIDC Identity Provider (IdP). One to
-     * ten groups can be used to create a single private work team. When you add a user
-     * group to the list of <code>Groups</code>, you can add that user group to one or
-     * more private work teams. If you add a user group to a private work team, all
-     * workers in that user group are added to the work team.</p>
-     */
-    inline void SetOidcMemberDefinition(OidcMemberDefinition&& value) { m_oidcMemberDefinitionHasBeenSet = true; m_oidcMemberDefinition = std::move(value); }
-
-    /**
-     * <p>A list user groups that exist in your OIDC Identity Provider (IdP). One to
-     * ten groups can be used to create a single private work team. When you add a user
-     * group to the list of <code>Groups</code>, you can add that user group to one or
-     * more private work teams. If you add a user group to a private work team, all
-     * workers in that user group are added to the work team.</p>
-     */
-    inline MemberDefinition& WithOidcMemberDefinition(const OidcMemberDefinition& value) { SetOidcMemberDefinition(value); return *this;}
-
-    /**
-     * <p>A list user groups that exist in your OIDC Identity Provider (IdP). One to
-     * ten groups can be used to create a single private work team. When you add a user
-     * group to the list of <code>Groups</code>, you can add that user group to one or
-     * more private work teams. If you add a user group to a private work team, all
-     * workers in that user group are added to the work team.</p>
-     */
-    inline MemberDefinition& WithOidcMemberDefinition(OidcMemberDefinition&& value) { SetOidcMemberDefinition(std::move(value)); return *this;}
-
+    template<typename OidcMemberDefinitionT = OidcMemberDefinition>
+    void SetOidcMemberDefinition(OidcMemberDefinitionT&& value) { m_oidcMemberDefinitionHasBeenSet = true; m_oidcMemberDefinition = std::forward<OidcMemberDefinitionT>(value); }
+    template<typename OidcMemberDefinitionT = OidcMemberDefinition>
+    MemberDefinition& WithOidcMemberDefinition(OidcMemberDefinitionT&& value) { SetOidcMemberDefinition(std::forward<OidcMemberDefinitionT>(value)); return *this;}
+    ///@}
   private:
 
     CognitoMemberDefinition m_cognitoMemberDefinition;

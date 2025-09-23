@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-GatewayRouteHostnameRewrite::GatewayRouteHostnameRewrite() : 
-    m_defaultTargetHostname(DefaultGatewayRouteRewrite::NOT_SET),
-    m_defaultTargetHostnameHasBeenSet(false)
-{
-}
-
-GatewayRouteHostnameRewrite::GatewayRouteHostnameRewrite(JsonView jsonValue) : 
-    m_defaultTargetHostname(DefaultGatewayRouteRewrite::NOT_SET),
-    m_defaultTargetHostnameHasBeenSet(false)
+GatewayRouteHostnameRewrite::GatewayRouteHostnameRewrite(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ GatewayRouteHostnameRewrite& GatewayRouteHostnameRewrite::operator =(JsonView js
   if(jsonValue.ValueExists("defaultTargetHostname"))
   {
     m_defaultTargetHostname = DefaultGatewayRouteRewriteMapper::GetDefaultGatewayRouteRewriteForName(jsonValue.GetString("defaultTargetHostname"));
-
     m_defaultTargetHostnameHasBeenSet = true;
   }
-
   return *this;
 }
 

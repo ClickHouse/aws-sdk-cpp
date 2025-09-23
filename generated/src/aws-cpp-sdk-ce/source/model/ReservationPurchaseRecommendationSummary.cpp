@@ -18,17 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-ReservationPurchaseRecommendationSummary::ReservationPurchaseRecommendationSummary() : 
-    m_totalEstimatedMonthlySavingsAmountHasBeenSet(false),
-    m_totalEstimatedMonthlySavingsPercentageHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false)
-{
-}
-
-ReservationPurchaseRecommendationSummary::ReservationPurchaseRecommendationSummary(JsonView jsonValue) : 
-    m_totalEstimatedMonthlySavingsAmountHasBeenSet(false),
-    m_totalEstimatedMonthlySavingsPercentageHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false)
+ReservationPurchaseRecommendationSummary::ReservationPurchaseRecommendationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ReservationPurchaseRecommendationSummary& ReservationPurchaseRecommendationSumma
   if(jsonValue.ValueExists("TotalEstimatedMonthlySavingsAmount"))
   {
     m_totalEstimatedMonthlySavingsAmount = jsonValue.GetString("TotalEstimatedMonthlySavingsAmount");
-
     m_totalEstimatedMonthlySavingsAmountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TotalEstimatedMonthlySavingsPercentage"))
   {
     m_totalEstimatedMonthlySavingsPercentage = jsonValue.GetString("TotalEstimatedMonthlySavingsPercentage");
-
     m_totalEstimatedMonthlySavingsPercentageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CurrencyCode"))
   {
     m_currencyCode = jsonValue.GetString("CurrencyCode");
-
     m_currencyCodeHasBeenSet = true;
   }
-
   return *this;
 }
 

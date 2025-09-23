@@ -20,15 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-EventCategoriesMap::EventCategoriesMap() : 
-    m_sourceTypeHasBeenSet(false),
-    m_eventsHasBeenSet(false)
-{
-}
-
-EventCategoriesMap::EventCategoriesMap(const XmlNode& xmlNode) : 
-    m_sourceTypeHasBeenSet(false),
-    m_eventsHasBeenSet(false)
+EventCategoriesMap::EventCategoriesMap(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ EventCategoriesMap& EventCategoriesMap::operator =(const XmlNode& xmlNode)
     if(!eventsNode.IsNull())
     {
       XmlNode eventsMember = eventsNode.FirstChild("EventInfoMap");
+      m_eventsHasBeenSet = !eventsMember.IsNull();
       while(!eventsMember.IsNull())
       {
         m_events.push_back(eventsMember);
@@ -75,7 +68,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_events)
       {
         Aws::StringStream eventsSs;
-        eventsSs << location << index << locationValue << ".EventInfoMap." << eventsIdx++;
+        eventsSs << location << index << locationValue << ".Events.EventInfoMap." << eventsIdx++;
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_events)
       {
         Aws::StringStream eventsSs;
-        eventsSs << location <<  ".EventInfoMap." << eventsIdx++;
+        eventsSs << location << ".Events.EventInfoMap." << eventsIdx++;
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }

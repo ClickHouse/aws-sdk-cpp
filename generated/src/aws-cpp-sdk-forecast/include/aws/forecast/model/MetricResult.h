@@ -36,79 +36,39 @@ namespace Model
   class MetricResult
   {
   public:
-    AWS_FORECASTSERVICE_API MetricResult();
+    AWS_FORECASTSERVICE_API MetricResult() = default;
     AWS_FORECASTSERVICE_API MetricResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API MetricResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the metric.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    MetricResult& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline MetricResult& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline MetricResult& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline MetricResult& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the metric.</p>
      */
-    inline double GetMetricValue() const{ return m_metricValue; }
-
-    /**
-     * <p>The value for the metric.</p>
-     */
+    inline double GetMetricValue() const { return m_metricValue; }
     inline bool MetricValueHasBeenSet() const { return m_metricValueHasBeenSet; }
-
-    /**
-     * <p>The value for the metric.</p>
-     */
     inline void SetMetricValue(double value) { m_metricValueHasBeenSet = true; m_metricValue = value; }
-
-    /**
-     * <p>The value for the metric.</p>
-     */
     inline MetricResult& WithMetricValue(double value) { SetMetricValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_metricName;
     bool m_metricNameHasBeenSet = false;
 
-    double m_metricValue;
+    double m_metricValue{0.0};
     bool m_metricValueHasBeenSet = false;
   };
 

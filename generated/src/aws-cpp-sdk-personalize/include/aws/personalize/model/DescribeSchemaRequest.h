@@ -21,7 +21,7 @@ namespace Model
   class DescribeSchemaRequest : public PersonalizeRequest
   {
   public:
-    AWS_PERSONALIZE_API DescribeSchemaRequest();
+    AWS_PERSONALIZE_API DescribeSchemaRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_PERSONALIZE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
      */
-    inline const Aws::String& GetSchemaArn() const{ return m_schemaArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
+    inline const Aws::String& GetSchemaArn() const { return m_schemaArn; }
     inline bool SchemaArnHasBeenSet() const { return m_schemaArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
-    inline void SetSchemaArn(const Aws::String& value) { m_schemaArnHasBeenSet = true; m_schemaArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
-    inline void SetSchemaArn(Aws::String&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
-    inline void SetSchemaArn(const char* value) { m_schemaArnHasBeenSet = true; m_schemaArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
-    inline DescribeSchemaRequest& WithSchemaArn(const Aws::String& value) { SetSchemaArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
-    inline DescribeSchemaRequest& WithSchemaArn(Aws::String&& value) { SetSchemaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schema to retrieve.</p>
-     */
-    inline DescribeSchemaRequest& WithSchemaArn(const char* value) { SetSchemaArn(value); return *this;}
-
+    template<typename SchemaArnT = Aws::String>
+    void SetSchemaArn(SchemaArnT&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::forward<SchemaArnT>(value); }
+    template<typename SchemaArnT = Aws::String>
+    DescribeSchemaRequest& WithSchemaArn(SchemaArnT&& value) { SetSchemaArn(std::forward<SchemaArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_schemaArn;

@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-InferenceExecutionConfig::InferenceExecutionConfig() : 
-    m_mode(InferenceExecutionMode::NOT_SET),
-    m_modeHasBeenSet(false)
-{
-}
-
-InferenceExecutionConfig::InferenceExecutionConfig(JsonView jsonValue) : 
-    m_mode(InferenceExecutionMode::NOT_SET),
-    m_modeHasBeenSet(false)
+InferenceExecutionConfig::InferenceExecutionConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InferenceExecutionConfig& InferenceExecutionConfig::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Mode"))
   {
     m_mode = InferenceExecutionModeMapper::GetInferenceExecutionModeForName(jsonValue.GetString("Mode"));
-
     m_modeHasBeenSet = true;
   }
-
   return *this;
 }
 

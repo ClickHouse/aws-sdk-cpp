@@ -18,13 +18,7 @@ namespace finspace
 namespace Model
 {
 
-TickerplantLogConfiguration::TickerplantLogConfiguration() : 
-    m_tickerplantLogVolumesHasBeenSet(false)
-{
-}
-
-TickerplantLogConfiguration::TickerplantLogConfiguration(JsonView jsonValue) : 
-    m_tickerplantLogVolumesHasBeenSet(false)
+TickerplantLogConfiguration::TickerplantLogConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ TickerplantLogConfiguration& TickerplantLogConfiguration::operator =(JsonView js
     }
     m_tickerplantLogVolumesHasBeenSet = true;
   }
-
   return *this;
 }
 

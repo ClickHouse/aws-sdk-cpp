@@ -18,23 +18,7 @@ namespace TranscribeService
 namespace Model
 {
 
-CategoryProperties::CategoryProperties() : 
-    m_categoryNameHasBeenSet(false),
-    m_rulesHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_lastUpdateTimeHasBeenSet(false),
-    m_inputType(InputType::NOT_SET),
-    m_inputTypeHasBeenSet(false)
-{
-}
-
-CategoryProperties::CategoryProperties(JsonView jsonValue) : 
-    m_categoryNameHasBeenSet(false),
-    m_rulesHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_lastUpdateTimeHasBeenSet(false),
-    m_inputType(InputType::NOT_SET),
-    m_inputTypeHasBeenSet(false)
+CategoryProperties::CategoryProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,10 +28,8 @@ CategoryProperties& CategoryProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CategoryName"))
   {
     m_categoryName = jsonValue.GetString("CategoryName");
-
     m_categoryNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Rules"))
   {
     Aws::Utils::Array<JsonView> rulesJsonList = jsonValue.GetArray("Rules");
@@ -57,28 +39,30 @@ CategoryProperties& CategoryProperties::operator =(JsonView jsonValue)
     }
     m_rulesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreateTime"))
   {
     m_createTime = jsonValue.GetDouble("CreateTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdateTime"))
   {
     m_lastUpdateTime = jsonValue.GetDouble("LastUpdateTime");
-
     m_lastUpdateTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Tags"))
+  {
+    Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
+    for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+    {
+      m_tags.push_back(tagsJsonList[tagsIndex].AsObject());
+    }
+    m_tagsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("InputType"))
   {
     m_inputType = InputTypeMapper::GetInputTypeForName(jsonValue.GetString("InputType"));
-
     m_inputTypeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -111,6 +95,17 @@ JsonValue CategoryProperties::Jsonize() const
   if(m_lastUpdateTimeHasBeenSet)
   {
    payload.WithDouble("LastUpdateTime", m_lastUpdateTime.SecondsWithMSPrecision());
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
+
   }
 
   if(m_inputTypeHasBeenSet)

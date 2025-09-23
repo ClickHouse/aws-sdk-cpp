@@ -36,134 +36,47 @@ namespace Model
   class IpAddressRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API IpAddressRequest();
+    AWS_ROUTE53RESOLVER_API IpAddressRequest() = default;
     AWS_ROUTE53RESOLVER_API IpAddressRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RESOLVER_API IpAddressRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RESOLVER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the subnet that contains the IP address. </p>
      */
-    inline const Aws::String& GetSubnetId() const{ return m_subnetId; }
-
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
+    inline const Aws::String& GetSubnetId() const { return m_subnetId; }
     inline bool SubnetIdHasBeenSet() const { return m_subnetIdHasBeenSet; }
+    template<typename SubnetIdT = Aws::String>
+    void SetSubnetId(SubnetIdT&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::forward<SubnetIdT>(value); }
+    template<typename SubnetIdT = Aws::String>
+    IpAddressRequest& WithSubnetId(SubnetIdT&& value) { SetSubnetId(std::forward<SubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
-    inline void SetSubnetId(const Aws::String& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
-
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
-    inline void SetSubnetId(const char* value) { m_subnetIdHasBeenSet = true; m_subnetId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
-    inline IpAddressRequest& WithSubnetId(const Aws::String& value) { SetSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
-    inline IpAddressRequest& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet that contains the IP address. </p>
-     */
-    inline IpAddressRequest& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IPv4 address that you want to use for DNS queries.</p>
      */
-    inline const Aws::String& GetIp() const{ return m_ip; }
-
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
+    inline const Aws::String& GetIp() const { return m_ip; }
     inline bool IpHasBeenSet() const { return m_ipHasBeenSet; }
+    template<typename IpT = Aws::String>
+    void SetIp(IpT&& value) { m_ipHasBeenSet = true; m_ip = std::forward<IpT>(value); }
+    template<typename IpT = Aws::String>
+    IpAddressRequest& WithIp(IpT&& value) { SetIp(std::forward<IpT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
-    inline void SetIp(const Aws::String& value) { m_ipHasBeenSet = true; m_ip = value; }
-
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
-    inline void SetIp(Aws::String&& value) { m_ipHasBeenSet = true; m_ip = std::move(value); }
-
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
-    inline void SetIp(const char* value) { m_ipHasBeenSet = true; m_ip.assign(value); }
-
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
-    inline IpAddressRequest& WithIp(const Aws::String& value) { SetIp(value); return *this;}
-
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
-    inline IpAddressRequest& WithIp(Aws::String&& value) { SetIp(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPv4 address that you want to use for DNS queries.</p>
-     */
-    inline IpAddressRequest& WithIp(const char* value) { SetIp(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The IPv6 address that you want to use for DNS queries. </p>
      */
-    inline const Aws::String& GetIpv6() const{ return m_ipv6; }
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
+    inline const Aws::String& GetIpv6() const { return m_ipv6; }
     inline bool Ipv6HasBeenSet() const { return m_ipv6HasBeenSet; }
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
-    inline void SetIpv6(const Aws::String& value) { m_ipv6HasBeenSet = true; m_ipv6 = value; }
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
-    inline void SetIpv6(Aws::String&& value) { m_ipv6HasBeenSet = true; m_ipv6 = std::move(value); }
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
-    inline void SetIpv6(const char* value) { m_ipv6HasBeenSet = true; m_ipv6.assign(value); }
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
-    inline IpAddressRequest& WithIpv6(const Aws::String& value) { SetIpv6(value); return *this;}
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
-    inline IpAddressRequest& WithIpv6(Aws::String&& value) { SetIpv6(std::move(value)); return *this;}
-
-    /**
-     * <p> The IPv6 address that you want to use for DNS queries. </p>
-     */
-    inline IpAddressRequest& WithIpv6(const char* value) { SetIpv6(value); return *this;}
-
+    template<typename Ipv6T = Aws::String>
+    void SetIpv6(Ipv6T&& value) { m_ipv6HasBeenSet = true; m_ipv6 = std::forward<Ipv6T>(value); }
+    template<typename Ipv6T = Aws::String>
+    IpAddressRequest& WithIpv6(Ipv6T&& value) { SetIpv6(std::forward<Ipv6T>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_subnetId;

@@ -33,183 +33,63 @@ namespace Model
   class ApiCallDetails
   {
   public:
-    AWS_MACIE2_API ApiCallDetails();
+    AWS_MACIE2_API ApiCallDetails() = default;
     AWS_MACIE2_API ApiCallDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API ApiCallDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the operation that was invoked most recently and produced the
      * finding.</p>
      */
-    inline const Aws::String& GetApi() const{ return m_api; }
-
-    /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
-     */
+    inline const Aws::String& GetApi() const { return m_api; }
     inline bool ApiHasBeenSet() const { return m_apiHasBeenSet; }
+    template<typename ApiT = Aws::String>
+    void SetApi(ApiT&& value) { m_apiHasBeenSet = true; m_api = std::forward<ApiT>(value); }
+    template<typename ApiT = Aws::String>
+    ApiCallDetails& WithApi(ApiT&& value) { SetApi(std::forward<ApiT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
+     * <p>The URL of the Amazon Web Services service that provides the operation, for
+     * example: s3.amazonaws.com.</p>
      */
-    inline void SetApi(const Aws::String& value) { m_apiHasBeenSet = true; m_api = value; }
-
-    /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
-     */
-    inline void SetApi(Aws::String&& value) { m_apiHasBeenSet = true; m_api = std::move(value); }
-
-    /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
-     */
-    inline void SetApi(const char* value) { m_apiHasBeenSet = true; m_api.assign(value); }
-
-    /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
-     */
-    inline ApiCallDetails& WithApi(const Aws::String& value) { SetApi(value); return *this;}
-
-    /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
-     */
-    inline ApiCallDetails& WithApi(Aws::String&& value) { SetApi(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the operation that was invoked most recently and produced the
-     * finding.</p>
-     */
-    inline ApiCallDetails& WithApi(const char* value) { SetApi(value); return *this;}
-
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline const Aws::String& GetApiServiceName() const{ return m_apiServiceName; }
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
+    inline const Aws::String& GetApiServiceName() const { return m_apiServiceName; }
     inline bool ApiServiceNameHasBeenSet() const { return m_apiServiceNameHasBeenSet; }
+    template<typename ApiServiceNameT = Aws::String>
+    void SetApiServiceName(ApiServiceNameT&& value) { m_apiServiceNameHasBeenSet = true; m_apiServiceName = std::forward<ApiServiceNameT>(value); }
+    template<typename ApiServiceNameT = Aws::String>
+    ApiCallDetails& WithApiServiceName(ApiServiceNameT&& value) { SetApiServiceName(std::forward<ApiServiceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline void SetApiServiceName(const Aws::String& value) { m_apiServiceNameHasBeenSet = true; m_apiServiceName = value; }
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline void SetApiServiceName(Aws::String&& value) { m_apiServiceNameHasBeenSet = true; m_apiServiceName = std::move(value); }
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline void SetApiServiceName(const char* value) { m_apiServiceNameHasBeenSet = true; m_apiServiceName.assign(value); }
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline ApiCallDetails& WithApiServiceName(const Aws::String& value) { SetApiServiceName(value); return *this;}
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline ApiCallDetails& WithApiServiceName(Aws::String&& value) { SetApiServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the Amazon Web Service that provides the operation, for example:
-     * s3.amazonaws.com.</p>
-     */
-    inline ApiCallDetails& WithApiServiceName(const char* value) { SetApiServiceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The first date and time, in UTC and extended ISO 8601 format, when any
      * operation was invoked and produced the finding.</p>
      */
-    inline const Aws::Utils::DateTime& GetFirstSeen() const{ return m_firstSeen; }
-
-    /**
-     * <p>The first date and time, in UTC and extended ISO 8601 format, when any
-     * operation was invoked and produced the finding.</p>
-     */
+    inline const Aws::Utils::DateTime& GetFirstSeen() const { return m_firstSeen; }
     inline bool FirstSeenHasBeenSet() const { return m_firstSeenHasBeenSet; }
+    template<typename FirstSeenT = Aws::Utils::DateTime>
+    void SetFirstSeen(FirstSeenT&& value) { m_firstSeenHasBeenSet = true; m_firstSeen = std::forward<FirstSeenT>(value); }
+    template<typename FirstSeenT = Aws::Utils::DateTime>
+    ApiCallDetails& WithFirstSeen(FirstSeenT&& value) { SetFirstSeen(std::forward<FirstSeenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The first date and time, in UTC and extended ISO 8601 format, when any
-     * operation was invoked and produced the finding.</p>
-     */
-    inline void SetFirstSeen(const Aws::Utils::DateTime& value) { m_firstSeenHasBeenSet = true; m_firstSeen = value; }
-
-    /**
-     * <p>The first date and time, in UTC and extended ISO 8601 format, when any
-     * operation was invoked and produced the finding.</p>
-     */
-    inline void SetFirstSeen(Aws::Utils::DateTime&& value) { m_firstSeenHasBeenSet = true; m_firstSeen = std::move(value); }
-
-    /**
-     * <p>The first date and time, in UTC and extended ISO 8601 format, when any
-     * operation was invoked and produced the finding.</p>
-     */
-    inline ApiCallDetails& WithFirstSeen(const Aws::Utils::DateTime& value) { SetFirstSeen(value); return *this;}
-
-    /**
-     * <p>The first date and time, in UTC and extended ISO 8601 format, when any
-     * operation was invoked and produced the finding.</p>
-     */
-    inline ApiCallDetails& WithFirstSeen(Aws::Utils::DateTime&& value) { SetFirstSeen(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The most recent date and time, in UTC and extended ISO 8601 format, when the
      * specified operation (api) was invoked and produced the finding.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastSeen() const{ return m_lastSeen; }
-
-    /**
-     * <p>The most recent date and time, in UTC and extended ISO 8601 format, when the
-     * specified operation (api) was invoked and produced the finding.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastSeen() const { return m_lastSeen; }
     inline bool LastSeenHasBeenSet() const { return m_lastSeenHasBeenSet; }
-
-    /**
-     * <p>The most recent date and time, in UTC and extended ISO 8601 format, when the
-     * specified operation (api) was invoked and produced the finding.</p>
-     */
-    inline void SetLastSeen(const Aws::Utils::DateTime& value) { m_lastSeenHasBeenSet = true; m_lastSeen = value; }
-
-    /**
-     * <p>The most recent date and time, in UTC and extended ISO 8601 format, when the
-     * specified operation (api) was invoked and produced the finding.</p>
-     */
-    inline void SetLastSeen(Aws::Utils::DateTime&& value) { m_lastSeenHasBeenSet = true; m_lastSeen = std::move(value); }
-
-    /**
-     * <p>The most recent date and time, in UTC and extended ISO 8601 format, when the
-     * specified operation (api) was invoked and produced the finding.</p>
-     */
-    inline ApiCallDetails& WithLastSeen(const Aws::Utils::DateTime& value) { SetLastSeen(value); return *this;}
-
-    /**
-     * <p>The most recent date and time, in UTC and extended ISO 8601 format, when the
-     * specified operation (api) was invoked and produced the finding.</p>
-     */
-    inline ApiCallDetails& WithLastSeen(Aws::Utils::DateTime&& value) { SetLastSeen(std::move(value)); return *this;}
-
+    template<typename LastSeenT = Aws::Utils::DateTime>
+    void SetLastSeen(LastSeenT&& value) { m_lastSeenHasBeenSet = true; m_lastSeen = std::forward<LastSeenT>(value); }
+    template<typename LastSeenT = Aws::Utils::DateTime>
+    ApiCallDetails& WithLastSeen(LastSeenT&& value) { SetLastSeen(std::forward<LastSeenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_api;
@@ -218,10 +98,10 @@ namespace Model
     Aws::String m_apiServiceName;
     bool m_apiServiceNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_firstSeen;
+    Aws::Utils::DateTime m_firstSeen{};
     bool m_firstSeenHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastSeen;
+    Aws::Utils::DateTime m_lastSeen{};
     bool m_lastSeenHasBeenSet = false;
   };
 

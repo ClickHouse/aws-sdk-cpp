@@ -27,7 +27,7 @@ namespace Model
   class ListNetworksRequest : public ManagedBlockchainRequest
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API ListNetworksRequest();
+    AWS_MANAGEDBLOCKCHAIN_API ListNetworksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,194 +40,73 @@ namespace Model
     AWS_MANAGEDBLOCKCHAIN_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the network.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the network.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ListNetworksRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the network.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the network.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the network.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the network.</p>
-     */
-    inline ListNetworksRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the network.</p>
-     */
-    inline ListNetworksRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the network.</p>
-     */
-    inline ListNetworksRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional framework specifier. If provided, only networks of this framework
      * type are listed.</p>
      */
-    inline const Framework& GetFramework() const{ return m_framework; }
-
-    /**
-     * <p>An optional framework specifier. If provided, only networks of this framework
-     * type are listed.</p>
-     */
+    inline Framework GetFramework() const { return m_framework; }
     inline bool FrameworkHasBeenSet() const { return m_frameworkHasBeenSet; }
+    inline void SetFramework(Framework value) { m_frameworkHasBeenSet = true; m_framework = value; }
+    inline ListNetworksRequest& WithFramework(Framework value) { SetFramework(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional framework specifier. If provided, only networks of this framework
-     * type are listed.</p>
-     */
-    inline void SetFramework(const Framework& value) { m_frameworkHasBeenSet = true; m_framework = value; }
-
-    /**
-     * <p>An optional framework specifier. If provided, only networks of this framework
-     * type are listed.</p>
-     */
-    inline void SetFramework(Framework&& value) { m_frameworkHasBeenSet = true; m_framework = std::move(value); }
-
-    /**
-     * <p>An optional framework specifier. If provided, only networks of this framework
-     * type are listed.</p>
-     */
-    inline ListNetworksRequest& WithFramework(const Framework& value) { SetFramework(value); return *this;}
-
-    /**
-     * <p>An optional framework specifier. If provided, only networks of this framework
-     * type are listed.</p>
-     */
-    inline ListNetworksRequest& WithFramework(Framework&& value) { SetFramework(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional status specifier. If provided, only networks currently in this
      * status are listed.</p> <p>Applies only to Hyperledger Fabric.</p>
      */
-    inline const NetworkStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>An optional status specifier. If provided, only networks currently in this
-     * status are listed.</p> <p>Applies only to Hyperledger Fabric.</p>
-     */
+    inline NetworkStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(NetworkStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListNetworksRequest& WithStatus(NetworkStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional status specifier. If provided, only networks currently in this
-     * status are listed.</p> <p>Applies only to Hyperledger Fabric.</p>
-     */
-    inline void SetStatus(const NetworkStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>An optional status specifier. If provided, only networks currently in this
-     * status are listed.</p> <p>Applies only to Hyperledger Fabric.</p>
-     */
-    inline void SetStatus(NetworkStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>An optional status specifier. If provided, only networks currently in this
-     * status are listed.</p> <p>Applies only to Hyperledger Fabric.</p>
-     */
-    inline ListNetworksRequest& WithStatus(const NetworkStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>An optional status specifier. If provided, only networks currently in this
-     * status are listed.</p> <p>Applies only to Hyperledger Fabric.</p>
-     */
-    inline ListNetworksRequest& WithStatus(NetworkStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of networks to list.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of networks to list.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of networks to list.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of networks to list.</p>
-     */
     inline ListNetworksRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListNetworksRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListNetworksRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListNetworksRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListNetworksRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Framework m_framework;
+    Framework m_framework{Framework::NOT_SET};
     bool m_frameworkHasBeenSet = false;
 
-    NetworkStatus m_status;
+    NetworkStatus m_status{NetworkStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

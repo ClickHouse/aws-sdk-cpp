@@ -12,16 +12,15 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DisconnectParticipantRequest::DisconnectParticipantRequest() : 
-    m_participantIdHasBeenSet(false),
-    m_reasonHasBeenSet(false),
-    m_stageArnHasBeenSet(false)
-{
-}
-
 Aws::String DisconnectParticipantRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_stageArnHasBeenSet)
+  {
+   payload.WithString("stageArn", m_stageArn);
+
+  }
 
   if(m_participantIdHasBeenSet)
   {
@@ -32,12 +31,6 @@ Aws::String DisconnectParticipantRequest::SerializePayload() const
   if(m_reasonHasBeenSet)
   {
    payload.WithString("reason", m_reason);
-
-  }
-
-  if(m_stageArnHasBeenSet)
-  {
-   payload.WithString("stageArn", m_stageArn);
 
   }
 

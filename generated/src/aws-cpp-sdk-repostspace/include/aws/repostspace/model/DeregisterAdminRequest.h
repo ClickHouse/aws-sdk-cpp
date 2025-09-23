@@ -21,7 +21,7 @@ namespace Model
   class DeregisterAdminRequest : public RepostspaceRequest
   {
   public:
-    AWS_REPOSTSPACE_API DeregisterAdminRequest();
+    AWS_REPOSTSPACE_API DeregisterAdminRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,94 +32,36 @@ namespace Model
     AWS_REPOSTSPACE_API Aws::String SerializePayload() const override;
 
 
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline const Aws::String& GetAdminId() const{ return m_adminId; }
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline bool AdminIdHasBeenSet() const { return m_adminIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline void SetAdminId(const Aws::String& value) { m_adminIdHasBeenSet = true; m_adminId = value; }
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline void SetAdminId(Aws::String&& value) { m_adminIdHasBeenSet = true; m_adminId = std::move(value); }
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline void SetAdminId(const char* value) { m_adminIdHasBeenSet = true; m_adminId.assign(value); }
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline DeregisterAdminRequest& WithAdminId(const Aws::String& value) { SetAdminId(value); return *this;}
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline DeregisterAdminRequest& WithAdminId(Aws::String&& value) { SetAdminId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the admin to remove.</p>
-     */
-    inline DeregisterAdminRequest& WithAdminId(const char* value) { SetAdminId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the private re:Post to remove the admin from.</p>
      */
-    inline const Aws::String& GetSpaceId() const{ return m_spaceId; }
-
-    /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
-     */
+    inline const Aws::String& GetSpaceId() const { return m_spaceId; }
     inline bool SpaceIdHasBeenSet() const { return m_spaceIdHasBeenSet; }
+    template<typename SpaceIdT = Aws::String>
+    void SetSpaceId(SpaceIdT&& value) { m_spaceIdHasBeenSet = true; m_spaceId = std::forward<SpaceIdT>(value); }
+    template<typename SpaceIdT = Aws::String>
+    DeregisterAdminRequest& WithSpaceId(SpaceIdT&& value) { SetSpaceId(std::forward<SpaceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
+     * <p>The ID of the admin to remove.</p>
      */
-    inline void SetSpaceId(const Aws::String& value) { m_spaceIdHasBeenSet = true; m_spaceId = value; }
-
-    /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
-     */
-    inline void SetSpaceId(Aws::String&& value) { m_spaceIdHasBeenSet = true; m_spaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
-     */
-    inline void SetSpaceId(const char* value) { m_spaceIdHasBeenSet = true; m_spaceId.assign(value); }
-
-    /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
-     */
-    inline DeregisterAdminRequest& WithSpaceId(const Aws::String& value) { SetSpaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
-     */
-    inline DeregisterAdminRequest& WithSpaceId(Aws::String&& value) { SetSpaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the private re:Post to remove the admin from.</p>
-     */
-    inline DeregisterAdminRequest& WithSpaceId(const char* value) { SetSpaceId(value); return *this;}
-
+    inline const Aws::String& GetAdminId() const { return m_adminId; }
+    inline bool AdminIdHasBeenSet() const { return m_adminIdHasBeenSet; }
+    template<typename AdminIdT = Aws::String>
+    void SetAdminId(AdminIdT&& value) { m_adminIdHasBeenSet = true; m_adminId = std::forward<AdminIdT>(value); }
+    template<typename AdminIdT = Aws::String>
+    DeregisterAdminRequest& WithAdminId(AdminIdT&& value) { SetAdminId(std::forward<AdminIdT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_adminId;
-    bool m_adminIdHasBeenSet = false;
 
     Aws::String m_spaceId;
     bool m_spaceIdHasBeenSet = false;
+
+    Aws::String m_adminId;
+    bool m_adminIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -20,15 +20,7 @@ namespace Route53
 namespace Model
 {
 
-LinkedService::LinkedService() : 
-    m_servicePrincipalHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-LinkedService::LinkedService(const XmlNode& xmlNode) : 
-    m_servicePrincipalHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+LinkedService::LinkedService(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

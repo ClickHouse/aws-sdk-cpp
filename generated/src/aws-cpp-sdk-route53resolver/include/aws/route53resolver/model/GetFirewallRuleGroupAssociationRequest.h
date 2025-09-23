@@ -21,7 +21,7 @@ namespace Model
   class GetFirewallRuleGroupAssociationRequest : public Route53ResolverRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API GetFirewallRuleGroupAssociationRequest();
+    AWS_ROUTE53RESOLVER_API GetFirewallRuleGroupAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_ROUTE53RESOLVER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
      */
-    inline const Aws::String& GetFirewallRuleGroupAssociationId() const{ return m_firewallRuleGroupAssociationId; }
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
+    inline const Aws::String& GetFirewallRuleGroupAssociationId() const { return m_firewallRuleGroupAssociationId; }
     inline bool FirewallRuleGroupAssociationIdHasBeenSet() const { return m_firewallRuleGroupAssociationIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
-    inline void SetFirewallRuleGroupAssociationId(const Aws::String& value) { m_firewallRuleGroupAssociationIdHasBeenSet = true; m_firewallRuleGroupAssociationId = value; }
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
-    inline void SetFirewallRuleGroupAssociationId(Aws::String&& value) { m_firewallRuleGroupAssociationIdHasBeenSet = true; m_firewallRuleGroupAssociationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
-    inline void SetFirewallRuleGroupAssociationId(const char* value) { m_firewallRuleGroupAssociationIdHasBeenSet = true; m_firewallRuleGroupAssociationId.assign(value); }
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
-    inline GetFirewallRuleGroupAssociationRequest& WithFirewallRuleGroupAssociationId(const Aws::String& value) { SetFirewallRuleGroupAssociationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
-    inline GetFirewallRuleGroupAssociationRequest& WithFirewallRuleGroupAssociationId(Aws::String&& value) { SetFirewallRuleGroupAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the <a>FirewallRuleGroupAssociation</a>. </p>
-     */
-    inline GetFirewallRuleGroupAssociationRequest& WithFirewallRuleGroupAssociationId(const char* value) { SetFirewallRuleGroupAssociationId(value); return *this;}
-
+    template<typename FirewallRuleGroupAssociationIdT = Aws::String>
+    void SetFirewallRuleGroupAssociationId(FirewallRuleGroupAssociationIdT&& value) { m_firewallRuleGroupAssociationIdHasBeenSet = true; m_firewallRuleGroupAssociationId = std::forward<FirewallRuleGroupAssociationIdT>(value); }
+    template<typename FirewallRuleGroupAssociationIdT = Aws::String>
+    GetFirewallRuleGroupAssociationRequest& WithFirewallRuleGroupAssociationId(FirewallRuleGroupAssociationIdT&& value) { SetFirewallRuleGroupAssociationId(std::forward<FirewallRuleGroupAssociationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_firewallRuleGroupAssociationId;

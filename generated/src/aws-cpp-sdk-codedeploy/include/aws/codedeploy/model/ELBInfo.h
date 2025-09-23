@@ -33,12 +33,13 @@ namespace Model
   class ELBInfo
   {
   public:
-    AWS_CODEDEPLOY_API ELBInfo();
+    AWS_CODEDEPLOY_API ELBInfo() = default;
     AWS_CODEDEPLOY_API ELBInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API ELBInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>For blue/green deployments, the name of the Classic Load Balancer that is
      * used to route traffic from original instances to replacement instances in a
@@ -47,78 +48,13 @@ namespace Model
      * during a deployment, and then re-registered with after the deployment is
      * complete.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
-    inline ELBInfo& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
-    inline ELBInfo& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>For blue/green deployments, the name of the Classic Load Balancer that is
-     * used to route traffic from original instances to replacement instances in a
-     * blue/green deployment. For in-place deployments, the name of the Classic Load
-     * Balancer that instances are deregistered from so they are not serving traffic
-     * during a deployment, and then re-registered with after the deployment is
-     * complete.</p>
-     */
-    inline ELBInfo& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ELBInfo& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

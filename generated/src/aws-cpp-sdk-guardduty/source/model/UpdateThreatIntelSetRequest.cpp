@@ -12,16 +12,6 @@ using namespace Aws::GuardDuty::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateThreatIntelSetRequest::UpdateThreatIntelSetRequest() : 
-    m_detectorIdHasBeenSet(false),
-    m_threatIntelSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_activate(false),
-    m_activateHasBeenSet(false)
-{
-}
-
 Aws::String UpdateThreatIntelSetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -41,6 +31,12 @@ Aws::String UpdateThreatIntelSetRequest::SerializePayload() const
   if(m_activateHasBeenSet)
   {
    payload.WithBool("activate", m_activate);
+
+  }
+
+  if(m_expectedBucketOwnerHasBeenSet)
+  {
+   payload.WithString("expectedBucketOwner", m_expectedBucketOwner);
 
   }
 

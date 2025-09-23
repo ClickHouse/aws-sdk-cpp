@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ClusterParameterGroupStatus::ClusterParameterGroupStatus() : 
-    m_parameterGroupNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false),
-    m_clusterParameterStatusListHasBeenSet(false)
-{
-}
-
-ClusterParameterGroupStatus::ClusterParameterGroupStatus(const XmlNode& xmlNode) : 
-    m_parameterGroupNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false),
-    m_clusterParameterStatusListHasBeenSet(false)
+ClusterParameterGroupStatus::ClusterParameterGroupStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ ClusterParameterGroupStatus& ClusterParameterGroupStatus::operator =(const XmlNo
     if(!clusterParameterStatusListNode.IsNull())
     {
       XmlNode clusterParameterStatusListMember = clusterParameterStatusListNode.FirstChild("member");
+      m_clusterParameterStatusListHasBeenSet = !clusterParameterStatusListMember.IsNull();
       while(!clusterParameterStatusListMember.IsNull())
       {
         m_clusterParameterStatusList.push_back(clusterParameterStatusListMember);
@@ -111,7 +102,7 @@ void ClusterParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const ch
       for(auto& item : m_clusterParameterStatusList)
       {
         Aws::StringStream clusterParameterStatusListSs;
-        clusterParameterStatusListSs << location <<  ".ClusterParameterStatusList.member." << clusterParameterStatusListIdx++;
+        clusterParameterStatusListSs << location << ".ClusterParameterStatusList.member." << clusterParameterStatusListIdx++;
         item.OutputToStream(oStream, clusterParameterStatusListSs.str().c_str());
       }
   }

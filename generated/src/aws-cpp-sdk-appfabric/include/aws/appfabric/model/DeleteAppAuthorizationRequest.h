@@ -21,7 +21,7 @@ namespace Model
   class DeleteAppAuthorizationRequest : public AppFabricRequest
   {
   public:
-    AWS_APPFABRIC_API DeleteAppAuthorizationRequest();
+    AWS_APPFABRIC_API DeleteAppAuthorizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_APPFABRIC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
      * app bundle to use for the request.</p>
      */
-    inline const Aws::String& GetAppBundleIdentifier() const{ return m_appBundleIdentifier; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
+    inline const Aws::String& GetAppBundleIdentifier() const { return m_appBundleIdentifier; }
     inline bool AppBundleIdentifierHasBeenSet() const { return m_appBundleIdentifierHasBeenSet; }
+    template<typename AppBundleIdentifierT = Aws::String>
+    void SetAppBundleIdentifier(AppBundleIdentifierT&& value) { m_appBundleIdentifierHasBeenSet = true; m_appBundleIdentifier = std::forward<AppBundleIdentifierT>(value); }
+    template<typename AppBundleIdentifierT = Aws::String>
+    DeleteAppAuthorizationRequest& WithAppBundleIdentifier(AppBundleIdentifierT&& value) { SetAppBundleIdentifier(std::forward<AppBundleIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
-    inline void SetAppBundleIdentifier(const Aws::String& value) { m_appBundleIdentifierHasBeenSet = true; m_appBundleIdentifier = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
-    inline void SetAppBundleIdentifier(Aws::String&& value) { m_appBundleIdentifierHasBeenSet = true; m_appBundleIdentifier = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
-    inline void SetAppBundleIdentifier(const char* value) { m_appBundleIdentifierHasBeenSet = true; m_appBundleIdentifier.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
-    inline DeleteAppAuthorizationRequest& WithAppBundleIdentifier(const Aws::String& value) { SetAppBundleIdentifier(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
-    inline DeleteAppAuthorizationRequest& WithAppBundleIdentifier(Aws::String&& value) { SetAppBundleIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app bundle to use for the request.</p>
-     */
-    inline DeleteAppAuthorizationRequest& WithAppBundleIdentifier(const char* value) { SetAppBundleIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
      * app authorization to use for the request.</p>
      */
-    inline const Aws::String& GetAppAuthorizationIdentifier() const{ return m_appAuthorizationIdentifier; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
+    inline const Aws::String& GetAppAuthorizationIdentifier() const { return m_appAuthorizationIdentifier; }
     inline bool AppAuthorizationIdentifierHasBeenSet() const { return m_appAuthorizationIdentifierHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
-    inline void SetAppAuthorizationIdentifier(const Aws::String& value) { m_appAuthorizationIdentifierHasBeenSet = true; m_appAuthorizationIdentifier = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
-    inline void SetAppAuthorizationIdentifier(Aws::String&& value) { m_appAuthorizationIdentifierHasBeenSet = true; m_appAuthorizationIdentifier = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
-    inline void SetAppAuthorizationIdentifier(const char* value) { m_appAuthorizationIdentifierHasBeenSet = true; m_appAuthorizationIdentifier.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
-    inline DeleteAppAuthorizationRequest& WithAppAuthorizationIdentifier(const Aws::String& value) { SetAppAuthorizationIdentifier(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
-    inline DeleteAppAuthorizationRequest& WithAppAuthorizationIdentifier(Aws::String&& value) { SetAppAuthorizationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the
-     * app authorization to use for the request.</p>
-     */
-    inline DeleteAppAuthorizationRequest& WithAppAuthorizationIdentifier(const char* value) { SetAppAuthorizationIdentifier(value); return *this;}
-
+    template<typename AppAuthorizationIdentifierT = Aws::String>
+    void SetAppAuthorizationIdentifier(AppAuthorizationIdentifierT&& value) { m_appAuthorizationIdentifierHasBeenSet = true; m_appAuthorizationIdentifier = std::forward<AppAuthorizationIdentifierT>(value); }
+    template<typename AppAuthorizationIdentifierT = Aws::String>
+    DeleteAppAuthorizationRequest& WithAppAuthorizationIdentifier(AppAuthorizationIdentifierT&& value) { SetAppAuthorizationIdentifier(std::forward<AppAuthorizationIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appBundleIdentifier;

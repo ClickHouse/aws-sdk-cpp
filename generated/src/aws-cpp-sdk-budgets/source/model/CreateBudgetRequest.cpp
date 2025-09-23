@@ -12,13 +12,6 @@ using namespace Aws::Budgets::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateBudgetRequest::CreateBudgetRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_budgetHasBeenSet(false),
-    m_notificationsWithSubscribersHasBeenSet(false)
-{
-}
-
 Aws::String CreateBudgetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -43,6 +36,17 @@ Aws::String CreateBudgetRequest::SerializePayload() const
      notificationsWithSubscribersJsonList[notificationsWithSubscribersIndex].AsObject(m_notificationsWithSubscribers[notificationsWithSubscribersIndex].Jsonize());
    }
    payload.WithArray("NotificationsWithSubscribers", std::move(notificationsWithSubscribersJsonList));
+
+  }
+
+  if(m_resourceTagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> resourceTagsJsonList(m_resourceTags.size());
+   for(unsigned resourceTagsIndex = 0; resourceTagsIndex < resourceTagsJsonList.GetLength(); ++resourceTagsIndex)
+   {
+     resourceTagsJsonList[resourceTagsIndex].AsObject(m_resourceTags[resourceTagsIndex].Jsonize());
+   }
+   payload.WithArray("ResourceTags", std::move(resourceTagsJsonList));
 
   }
 

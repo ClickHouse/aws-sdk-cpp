@@ -26,7 +26,7 @@ namespace Model
   class UpdateRadiusRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API UpdateRadiusRequest();
+    AWS_DIRECTORYSERVICE_API UpdateRadiusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,91 +39,31 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the directory for which to update the RADIUS server
      * information.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    UpdateRadiusRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
-    inline UpdateRadiusRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
-    inline UpdateRadiusRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the directory for which to update the RADIUS server
-     * information.</p>
-     */
-    inline UpdateRadiusRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
      * server.</p>
      */
-    inline const RadiusSettings& GetRadiusSettings() const{ return m_radiusSettings; }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
+    inline const RadiusSettings& GetRadiusSettings() const { return m_radiusSettings; }
     inline bool RadiusSettingsHasBeenSet() const { return m_radiusSettingsHasBeenSet; }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline void SetRadiusSettings(const RadiusSettings& value) { m_radiusSettingsHasBeenSet = true; m_radiusSettings = value; }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline void SetRadiusSettings(RadiusSettings&& value) { m_radiusSettingsHasBeenSet = true; m_radiusSettings = std::move(value); }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline UpdateRadiusRequest& WithRadiusSettings(const RadiusSettings& value) { SetRadiusSettings(value); return *this;}
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline UpdateRadiusRequest& WithRadiusSettings(RadiusSettings&& value) { SetRadiusSettings(std::move(value)); return *this;}
-
+    template<typename RadiusSettingsT = RadiusSettings>
+    void SetRadiusSettings(RadiusSettingsT&& value) { m_radiusSettingsHasBeenSet = true; m_radiusSettings = std::forward<RadiusSettingsT>(value); }
+    template<typename RadiusSettingsT = RadiusSettings>
+    UpdateRadiusRequest& WithRadiusSettings(RadiusSettingsT&& value) { SetRadiusSettings(std::forward<RadiusSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryId;

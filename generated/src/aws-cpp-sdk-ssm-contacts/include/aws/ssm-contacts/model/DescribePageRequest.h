@@ -21,7 +21,7 @@ namespace Model
   class DescribePageRequest : public SSMContactsRequest
   {
   public:
-    AWS_SSMCONTACTS_API DescribePageRequest();
+    AWS_SSMCONTACTS_API DescribePageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SSMCONTACTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the engagement to a contact channel.</p>
      */
-    inline const Aws::String& GetPageId() const{ return m_pageId; }
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
+    inline const Aws::String& GetPageId() const { return m_pageId; }
     inline bool PageIdHasBeenSet() const { return m_pageIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
-    inline void SetPageId(const Aws::String& value) { m_pageIdHasBeenSet = true; m_pageId = value; }
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
-    inline void SetPageId(Aws::String&& value) { m_pageIdHasBeenSet = true; m_pageId = std::move(value); }
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
-    inline void SetPageId(const char* value) { m_pageIdHasBeenSet = true; m_pageId.assign(value); }
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
-    inline DescribePageRequest& WithPageId(const Aws::String& value) { SetPageId(value); return *this;}
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
-    inline DescribePageRequest& WithPageId(Aws::String&& value) { SetPageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the engagement to a contact channel.</p>
-     */
-    inline DescribePageRequest& WithPageId(const char* value) { SetPageId(value); return *this;}
-
+    template<typename PageIdT = Aws::String>
+    void SetPageId(PageIdT&& value) { m_pageIdHasBeenSet = true; m_pageId = std::forward<PageIdT>(value); }
+    template<typename PageIdT = Aws::String>
+    DescribePageRequest& WithPageId(PageIdT&& value) { SetPageId(std::forward<PageIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pageId;

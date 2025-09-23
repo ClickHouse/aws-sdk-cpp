@@ -18,17 +18,7 @@ namespace Athena
 namespace Model
 {
 
-QueryRuntimeStatistics::QueryRuntimeStatistics() : 
-    m_timelineHasBeenSet(false),
-    m_rowsHasBeenSet(false),
-    m_outputStageHasBeenSet(false)
-{
-}
-
-QueryRuntimeStatistics::QueryRuntimeStatistics(JsonView jsonValue) : 
-    m_timelineHasBeenSet(false),
-    m_rowsHasBeenSet(false),
-    m_outputStageHasBeenSet(false)
+QueryRuntimeStatistics::QueryRuntimeStatistics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ QueryRuntimeStatistics& QueryRuntimeStatistics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Timeline"))
   {
     m_timeline = jsonValue.GetObject("Timeline");
-
     m_timelineHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Rows"))
   {
     m_rows = jsonValue.GetObject("Rows");
-
     m_rowsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputStage"))
   {
     m_outputStage = jsonValue.GetObject("OutputStage");
-
     m_outputStageHasBeenSet = true;
   }
-
   return *this;
 }
 

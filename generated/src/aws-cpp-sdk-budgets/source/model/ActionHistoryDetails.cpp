@@ -18,15 +18,7 @@ namespace Budgets
 namespace Model
 {
 
-ActionHistoryDetails::ActionHistoryDetails() : 
-    m_messageHasBeenSet(false),
-    m_actionHasBeenSet(false)
-{
-}
-
-ActionHistoryDetails::ActionHistoryDetails(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_actionHasBeenSet(false)
+ActionHistoryDetails::ActionHistoryDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ActionHistoryDetails& ActionHistoryDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Action"))
   {
     m_action = jsonValue.GetObject("Action");
-
     m_actionHasBeenSet = true;
   }
-
   return *this;
 }
 

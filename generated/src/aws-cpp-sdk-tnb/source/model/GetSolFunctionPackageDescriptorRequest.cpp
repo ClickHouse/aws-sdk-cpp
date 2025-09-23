@@ -13,13 +13,6 @@ using namespace Aws::tnb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetSolFunctionPackageDescriptorRequest::GetSolFunctionPackageDescriptorRequest() : 
-    m_accept(DescriptorContentType::NOT_SET),
-    m_acceptHasBeenSet(false),
-    m_vnfPkgIdHasBeenSet(false)
-{
-}
-
 Aws::String GetSolFunctionPackageDescriptorRequest::SerializePayload() const
 {
   return {};
@@ -29,7 +22,7 @@ Aws::Http::HeaderValueCollection GetSolFunctionPackageDescriptorRequest::GetRequ
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_acceptHasBeenSet)
+  if(m_acceptHasBeenSet && m_accept != DescriptorContentType::NOT_SET)
   {
     headers.emplace("accept", DescriptorContentTypeMapper::GetNameForDescriptorContentType(m_accept));
   }

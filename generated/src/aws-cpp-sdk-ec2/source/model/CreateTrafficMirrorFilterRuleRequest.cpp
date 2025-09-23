@@ -10,28 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateTrafficMirrorFilterRuleRequest::CreateTrafficMirrorFilterRuleRequest() : 
-    m_trafficMirrorFilterIdHasBeenSet(false),
-    m_trafficDirection(TrafficDirection::NOT_SET),
-    m_trafficDirectionHasBeenSet(false),
-    m_ruleNumber(0),
-    m_ruleNumberHasBeenSet(false),
-    m_ruleAction(TrafficMirrorRuleAction::NOT_SET),
-    m_ruleActionHasBeenSet(false),
-    m_destinationPortRangeHasBeenSet(false),
-    m_sourcePortRangeHasBeenSet(false),
-    m_protocol(0),
-    m_protocolHasBeenSet(false),
-    m_destinationCidrBlockHasBeenSet(false),
-    m_sourceCidrBlockHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String CreateTrafficMirrorFilterRuleRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -43,7 +21,7 @@ Aws::String CreateTrafficMirrorFilterRuleRequest::SerializePayload() const
 
   if(m_trafficDirectionHasBeenSet)
   {
-    ss << "TrafficDirection=" << TrafficDirectionMapper::GetNameForTrafficDirection(m_trafficDirection) << "&";
+    ss << "TrafficDirection=" << StringUtils::URLEncode(TrafficDirectionMapper::GetNameForTrafficDirection(m_trafficDirection)) << "&";
   }
 
   if(m_ruleNumberHasBeenSet)
@@ -53,7 +31,7 @@ Aws::String CreateTrafficMirrorFilterRuleRequest::SerializePayload() const
 
   if(m_ruleActionHasBeenSet)
   {
-    ss << "RuleAction=" << TrafficMirrorRuleActionMapper::GetNameForTrafficMirrorRuleAction(m_ruleAction) << "&";
+    ss << "RuleAction=" << StringUtils::URLEncode(TrafficMirrorRuleActionMapper::GetNameForTrafficMirrorRuleAction(m_ruleAction)) << "&";
   }
 
   if(m_destinationPortRangeHasBeenSet)
@@ -94,6 +72,16 @@ Aws::String CreateTrafficMirrorFilterRuleRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
+  }
+
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
   }
 
   ss << "Version=2016-11-15";

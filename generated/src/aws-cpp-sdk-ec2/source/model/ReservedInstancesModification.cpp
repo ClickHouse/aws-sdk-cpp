@@ -20,29 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ReservedInstancesModification::ReservedInstancesModification() : 
-    m_clientTokenHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_effectiveDateHasBeenSet(false),
-    m_modificationResultsHasBeenSet(false),
-    m_reservedInstancesIdsHasBeenSet(false),
-    m_reservedInstancesModificationIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_updateDateHasBeenSet(false)
-{
-}
-
-ReservedInstancesModification::ReservedInstancesModification(const XmlNode& xmlNode) : 
-    m_clientTokenHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_effectiveDateHasBeenSet(false),
-    m_modificationResultsHasBeenSet(false),
-    m_reservedInstancesIdsHasBeenSet(false),
-    m_reservedInstancesModificationIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_updateDateHasBeenSet(false)
+ReservedInstancesModification::ReservedInstancesModification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -75,6 +53,7 @@ ReservedInstancesModification& ReservedInstancesModification::operator =(const X
     if(!modificationResultsNode.IsNull())
     {
       XmlNode modificationResultsMember = modificationResultsNode.FirstChild("item");
+      m_modificationResultsHasBeenSet = !modificationResultsMember.IsNull();
       while(!modificationResultsMember.IsNull())
       {
         m_modificationResults.push_back(modificationResultsMember);
@@ -87,6 +66,7 @@ ReservedInstancesModification& ReservedInstancesModification::operator =(const X
     if(!reservedInstancesIdsNode.IsNull())
     {
       XmlNode reservedInstancesIdsMember = reservedInstancesIdsNode.FirstChild("item");
+      m_reservedInstancesIdsHasBeenSet = !reservedInstancesIdsMember.IsNull();
       while(!reservedInstancesIdsMember.IsNull())
       {
         m_reservedInstancesIds.push_back(reservedInstancesIdsMember);
@@ -205,7 +185,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_modificationResults)
       {
         Aws::StringStream modificationResultsSs;
-        modificationResultsSs << location <<  ".ModificationResultSet." << modificationResultsIdx++;
+        modificationResultsSs << location << ".ModificationResultSet." << modificationResultsIdx++;
         item.OutputToStream(oStream, modificationResultsSs.str().c_str());
       }
   }
@@ -215,7 +195,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_reservedInstancesIds)
       {
         Aws::StringStream reservedInstancesIdsSs;
-        reservedInstancesIdsSs << location <<  ".ReservedInstancesSet." << reservedInstancesIdsIdx++;
+        reservedInstancesIdsSs << location << ".ReservedInstancesSet." << reservedInstancesIdsIdx++;
         item.OutputToStream(oStream, reservedInstancesIdsSs.str().c_str());
       }
   }

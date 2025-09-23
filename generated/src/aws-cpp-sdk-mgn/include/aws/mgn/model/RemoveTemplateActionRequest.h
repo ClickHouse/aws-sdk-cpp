@@ -21,7 +21,7 @@ namespace Model
   class RemoveTemplateActionRequest : public MgnRequest
   {
   public:
-    AWS_MGN_API RemoveTemplateActionRequest();
+    AWS_MGN_API RemoveTemplateActionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_MGN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Template post migration custom action ID to remove.</p>
      */
-    inline const Aws::String& GetActionID() const{ return m_actionID; }
-
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
+    inline const Aws::String& GetActionID() const { return m_actionID; }
     inline bool ActionIDHasBeenSet() const { return m_actionIDHasBeenSet; }
+    template<typename ActionIDT = Aws::String>
+    void SetActionID(ActionIDT&& value) { m_actionIDHasBeenSet = true; m_actionID = std::forward<ActionIDT>(value); }
+    template<typename ActionIDT = Aws::String>
+    RemoveTemplateActionRequest& WithActionID(ActionIDT&& value) { SetActionID(std::forward<ActionIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
-    inline void SetActionID(const Aws::String& value) { m_actionIDHasBeenSet = true; m_actionID = value; }
-
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
-    inline void SetActionID(Aws::String&& value) { m_actionIDHasBeenSet = true; m_actionID = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
-    inline void SetActionID(const char* value) { m_actionIDHasBeenSet = true; m_actionID.assign(value); }
-
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
-    inline RemoveTemplateActionRequest& WithActionID(const Aws::String& value) { SetActionID(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
-    inline RemoveTemplateActionRequest& WithActionID(Aws::String&& value) { SetActionID(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action ID to remove.</p>
-     */
-    inline RemoveTemplateActionRequest& WithActionID(const char* value) { SetActionID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Launch configuration template ID of the post migration custom action to
      * remove.</p>
      */
-    inline const Aws::String& GetLaunchConfigurationTemplateID() const{ return m_launchConfigurationTemplateID; }
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
+    inline const Aws::String& GetLaunchConfigurationTemplateID() const { return m_launchConfigurationTemplateID; }
     inline bool LaunchConfigurationTemplateIDHasBeenSet() const { return m_launchConfigurationTemplateIDHasBeenSet; }
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
-    inline void SetLaunchConfigurationTemplateID(const Aws::String& value) { m_launchConfigurationTemplateIDHasBeenSet = true; m_launchConfigurationTemplateID = value; }
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
-    inline void SetLaunchConfigurationTemplateID(Aws::String&& value) { m_launchConfigurationTemplateIDHasBeenSet = true; m_launchConfigurationTemplateID = std::move(value); }
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
-    inline void SetLaunchConfigurationTemplateID(const char* value) { m_launchConfigurationTemplateIDHasBeenSet = true; m_launchConfigurationTemplateID.assign(value); }
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
-    inline RemoveTemplateActionRequest& WithLaunchConfigurationTemplateID(const Aws::String& value) { SetLaunchConfigurationTemplateID(value); return *this;}
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
-    inline RemoveTemplateActionRequest& WithLaunchConfigurationTemplateID(Aws::String&& value) { SetLaunchConfigurationTemplateID(std::move(value)); return *this;}
-
-    /**
-     * <p>Launch configuration template ID of the post migration custom action to
-     * remove.</p>
-     */
-    inline RemoveTemplateActionRequest& WithLaunchConfigurationTemplateID(const char* value) { SetLaunchConfigurationTemplateID(value); return *this;}
-
+    template<typename LaunchConfigurationTemplateIDT = Aws::String>
+    void SetLaunchConfigurationTemplateID(LaunchConfigurationTemplateIDT&& value) { m_launchConfigurationTemplateIDHasBeenSet = true; m_launchConfigurationTemplateID = std::forward<LaunchConfigurationTemplateIDT>(value); }
+    template<typename LaunchConfigurationTemplateIDT = Aws::String>
+    RemoveTemplateActionRequest& WithLaunchConfigurationTemplateID(LaunchConfigurationTemplateIDT&& value) { SetLaunchConfigurationTemplateID(std::forward<LaunchConfigurationTemplateIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionID;

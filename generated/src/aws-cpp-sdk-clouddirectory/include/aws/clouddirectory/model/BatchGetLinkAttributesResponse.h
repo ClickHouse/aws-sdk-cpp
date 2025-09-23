@@ -33,52 +33,25 @@ namespace Model
   class BatchGetLinkAttributesResponse
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchGetLinkAttributesResponse();
+    AWS_CLOUDDIRECTORY_API BatchGetLinkAttributesResponse() = default;
     AWS_CLOUDDIRECTORY_API BatchGetLinkAttributesResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchGetLinkAttributesResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attributes that are associated with the typed link.</p>
      */
-    inline const Aws::Vector<AttributeKeyAndValue>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
+    inline const Aws::Vector<AttributeKeyAndValue>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
-    inline void SetAttributes(const Aws::Vector<AttributeKeyAndValue>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
-    inline void SetAttributes(Aws::Vector<AttributeKeyAndValue>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
-    inline BatchGetLinkAttributesResponse& WithAttributes(const Aws::Vector<AttributeKeyAndValue>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
-    inline BatchGetLinkAttributesResponse& WithAttributes(Aws::Vector<AttributeKeyAndValue>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
-    inline BatchGetLinkAttributesResponse& AddAttributes(const AttributeKeyAndValue& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
-
-    /**
-     * <p>The attributes that are associated with the typed link.</p>
-     */
-    inline BatchGetLinkAttributesResponse& AddAttributes(AttributeKeyAndValue&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
-
+    template<typename AttributesT = Aws::Vector<AttributeKeyAndValue>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Vector<AttributeKeyAndValue>>
+    BatchGetLinkAttributesResponse& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesT = AttributeKeyAndValue>
+    BatchGetLinkAttributesResponse& AddAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes.emplace_back(std::forward<AttributesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AttributeKeyAndValue> m_attributes;

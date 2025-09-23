@@ -18,17 +18,7 @@ namespace WellArchitected
 namespace Model
 {
 
-LensReviewReport::LensReviewReport() : 
-    m_lensAliasHasBeenSet(false),
-    m_lensArnHasBeenSet(false),
-    m_base64StringHasBeenSet(false)
-{
-}
-
-LensReviewReport::LensReviewReport(JsonView jsonValue) : 
-    m_lensAliasHasBeenSet(false),
-    m_lensArnHasBeenSet(false),
-    m_base64StringHasBeenSet(false)
+LensReviewReport::LensReviewReport(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ LensReviewReport& LensReviewReport::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("LensAlias"))
   {
     m_lensAlias = jsonValue.GetString("LensAlias");
-
     m_lensAliasHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LensArn"))
   {
     m_lensArn = jsonValue.GetString("LensArn");
-
     m_lensArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Base64String"))
   {
     m_base64String = jsonValue.GetString("Base64String");
-
     m_base64StringHasBeenSet = true;
   }
-
   return *this;
 }
 

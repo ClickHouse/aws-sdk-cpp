@@ -12,17 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTableRequest::UpdateTableRequest() : 
-    m_catalogIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_tableInputHasBeenSet(false),
-    m_skipArchive(false),
-    m_skipArchiveHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_versionIdHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +25,12 @@ Aws::String UpdateTableRequest::SerializePayload() const
   if(m_databaseNameHasBeenSet)
   {
    payload.WithString("DatabaseName", m_databaseName);
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
 
   }
 
@@ -60,6 +55,23 @@ Aws::String UpdateTableRequest::SerializePayload() const
   if(m_versionIdHasBeenSet)
   {
    payload.WithString("VersionId", m_versionId);
+
+  }
+
+  if(m_viewUpdateActionHasBeenSet)
+  {
+   payload.WithString("ViewUpdateAction", ViewUpdateActionMapper::GetNameForViewUpdateAction(m_viewUpdateAction));
+  }
+
+  if(m_forceHasBeenSet)
+  {
+   payload.WithBool("Force", m_force);
+
+  }
+
+  if(m_updateOpenTableFormatInputHasBeenSet)
+  {
+   payload.WithObject("UpdateOpenTableFormatInput", m_updateOpenTableFormatInput.Jsonize());
 
   }
 

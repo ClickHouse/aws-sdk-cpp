@@ -24,42 +24,33 @@ namespace Model
   /**
    * <p>Options that specify the configuration of a persistent buffer. To configure
    * how OpenSearch Ingestion encrypts this data, set the
-   * EncryptionAtRestOptions.</p><p><h3>See Also:</h3>   <a
+   * <code>EncryptionAtRestOptions</code>. For more information, see <a
+   * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/osis-features-overview.html#persistent-buffering">Persistent
+   * buffering</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/BufferOptions">AWS
    * API Reference</a></p>
    */
   class BufferOptions
   {
   public:
-    AWS_OSIS_API BufferOptions();
+    AWS_OSIS_API BufferOptions() = default;
     AWS_OSIS_API BufferOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API BufferOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether persistent buffering should be enabled.</p>
      */
-    inline bool GetPersistentBufferEnabled() const{ return m_persistentBufferEnabled; }
-
-    /**
-     * <p>Whether persistent buffering should be enabled.</p>
-     */
+    inline bool GetPersistentBufferEnabled() const { return m_persistentBufferEnabled; }
     inline bool PersistentBufferEnabledHasBeenSet() const { return m_persistentBufferEnabledHasBeenSet; }
-
-    /**
-     * <p>Whether persistent buffering should be enabled.</p>
-     */
     inline void SetPersistentBufferEnabled(bool value) { m_persistentBufferEnabledHasBeenSet = true; m_persistentBufferEnabled = value; }
-
-    /**
-     * <p>Whether persistent buffering should be enabled.</p>
-     */
     inline BufferOptions& WithPersistentBufferEnabled(bool value) { SetPersistentBufferEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_persistentBufferEnabled;
+    bool m_persistentBufferEnabled{false};
     bool m_persistentBufferEnabledHasBeenSet = false;
   };
 

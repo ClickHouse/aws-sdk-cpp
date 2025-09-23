@@ -33,161 +33,65 @@ namespace Model
   class AwsWafRegionalRuleGroupRulesDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsWafRegionalRuleGroupRulesDetails();
+    AWS_SECURITYHUB_API AwsWafRegionalRuleGroupRulesDetails() = default;
     AWS_SECURITYHUB_API AwsWafRegionalRuleGroupRulesDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsWafRegionalRuleGroupRulesDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The action that WAF should take on a web request when it matches the criteria
      * defined in the rule. </p>
      */
-    inline const AwsWafRegionalRuleGroupRulesActionDetails& GetAction() const{ return m_action; }
-
-    /**
-     * <p>The action that WAF should take on a web request when it matches the criteria
-     * defined in the rule. </p>
-     */
+    inline const AwsWafRegionalRuleGroupRulesActionDetails& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = AwsWafRegionalRuleGroupRulesActionDetails>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = AwsWafRegionalRuleGroupRulesActionDetails>
+    AwsWafRegionalRuleGroupRulesDetails& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The action that WAF should take on a web request when it matches the criteria
-     * defined in the rule. </p>
-     */
-    inline void SetAction(const AwsWafRegionalRuleGroupRulesActionDetails& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>The action that WAF should take on a web request when it matches the criteria
-     * defined in the rule. </p>
-     */
-    inline void SetAction(AwsWafRegionalRuleGroupRulesActionDetails&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>The action that WAF should take on a web request when it matches the criteria
-     * defined in the rule. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithAction(const AwsWafRegionalRuleGroupRulesActionDetails& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>The action that WAF should take on a web request when it matches the criteria
-     * defined in the rule. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithAction(AwsWafRegionalRuleGroupRulesActionDetails&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If you define more than one rule in a web ACL, WAF evaluates each request
      * against the rules in order based on the value of <code>Priority</code>. </p>
      */
-    inline int GetPriority() const{ return m_priority; }
-
-    /**
-     * <p>If you define more than one rule in a web ACL, WAF evaluates each request
-     * against the rules in order based on the value of <code>Priority</code>. </p>
-     */
+    inline int GetPriority() const { return m_priority; }
     inline bool PriorityHasBeenSet() const { return m_priorityHasBeenSet; }
-
-    /**
-     * <p>If you define more than one rule in a web ACL, WAF evaluates each request
-     * against the rules in order based on the value of <code>Priority</code>. </p>
-     */
     inline void SetPriority(int value) { m_priorityHasBeenSet = true; m_priority = value; }
-
-    /**
-     * <p>If you define more than one rule in a web ACL, WAF evaluates each request
-     * against the rules in order based on the value of <code>Priority</code>. </p>
-     */
     inline AwsWafRegionalRuleGroupRulesDetails& WithPriority(int value) { SetPriority(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID for a rule. </p>
      */
-    inline const Aws::String& GetRuleId() const{ return m_ruleId; }
-
-    /**
-     * <p>The ID for a rule. </p>
-     */
+    inline const Aws::String& GetRuleId() const { return m_ruleId; }
     inline bool RuleIdHasBeenSet() const { return m_ruleIdHasBeenSet; }
+    template<typename RuleIdT = Aws::String>
+    void SetRuleId(RuleIdT&& value) { m_ruleIdHasBeenSet = true; m_ruleId = std::forward<RuleIdT>(value); }
+    template<typename RuleIdT = Aws::String>
+    AwsWafRegionalRuleGroupRulesDetails& WithRuleId(RuleIdT&& value) { SetRuleId(std::forward<RuleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for a rule. </p>
-     */
-    inline void SetRuleId(const Aws::String& value) { m_ruleIdHasBeenSet = true; m_ruleId = value; }
-
-    /**
-     * <p>The ID for a rule. </p>
-     */
-    inline void SetRuleId(Aws::String&& value) { m_ruleIdHasBeenSet = true; m_ruleId = std::move(value); }
-
-    /**
-     * <p>The ID for a rule. </p>
-     */
-    inline void SetRuleId(const char* value) { m_ruleIdHasBeenSet = true; m_ruleId.assign(value); }
-
-    /**
-     * <p>The ID for a rule. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithRuleId(const Aws::String& value) { SetRuleId(value); return *this;}
-
-    /**
-     * <p>The ID for a rule. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithRuleId(Aws::String&& value) { SetRuleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for a rule. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithRuleId(const char* value) { SetRuleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of rule in the rule group. </p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of rule in the rule group. </p>
-     */
-    inline AwsWafRegionalRuleGroupRulesDetails& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    AwsWafRegionalRuleGroupRulesDetails& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     AwsWafRegionalRuleGroupRulesActionDetails m_action;
     bool m_actionHasBeenSet = false;
 
-    int m_priority;
+    int m_priority{0};
     bool m_priorityHasBeenSet = false;
 
     Aws::String m_ruleId;

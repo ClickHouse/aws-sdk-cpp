@@ -18,13 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-IpCity::IpCity() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-IpCity::IpCity(JsonView jsonValue) : 
-    m_nameHasBeenSet(false)
+IpCity::IpCity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ IpCity& IpCity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -30,59 +30,37 @@ namespace Model
   class TrialMinutes
   {
   public:
-    AWS_DEVICEFARM_API TrialMinutes();
+    AWS_DEVICEFARM_API TrialMinutes() = default;
     AWS_DEVICEFARM_API TrialMinutes(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API TrialMinutes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of free trial minutes that the account started with.</p>
      */
-    inline double GetTotal() const{ return m_total; }
-
-    /**
-     * <p>The total number of free trial minutes that the account started with.</p>
-     */
+    inline double GetTotal() const { return m_total; }
     inline bool TotalHasBeenSet() const { return m_totalHasBeenSet; }
-
-    /**
-     * <p>The total number of free trial minutes that the account started with.</p>
-     */
     inline void SetTotal(double value) { m_totalHasBeenSet = true; m_total = value; }
-
-    /**
-     * <p>The total number of free trial minutes that the account started with.</p>
-     */
     inline TrialMinutes& WithTotal(double value) { SetTotal(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of free trial minutes remaining in the account.</p>
      */
-    inline double GetRemaining() const{ return m_remaining; }
-
-    /**
-     * <p>The number of free trial minutes remaining in the account.</p>
-     */
+    inline double GetRemaining() const { return m_remaining; }
     inline bool RemainingHasBeenSet() const { return m_remainingHasBeenSet; }
-
-    /**
-     * <p>The number of free trial minutes remaining in the account.</p>
-     */
     inline void SetRemaining(double value) { m_remainingHasBeenSet = true; m_remaining = value; }
-
-    /**
-     * <p>The number of free trial minutes remaining in the account.</p>
-     */
     inline TrialMinutes& WithRemaining(double value) { SetRemaining(value); return *this;}
-
+    ///@}
   private:
 
-    double m_total;
+    double m_total{0.0};
     bool m_totalHasBeenSet = false;
 
-    double m_remaining;
+    double m_remaining{0.0};
     bool m_remainingHasBeenSet = false;
   };
 

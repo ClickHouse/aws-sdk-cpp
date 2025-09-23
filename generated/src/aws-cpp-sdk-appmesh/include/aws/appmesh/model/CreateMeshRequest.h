@@ -28,7 +28,7 @@ namespace Model
   class CreateMeshRequest : public AppMeshRequest
   {
   public:
-    AWS_APPMESH_API CreateMeshRequest();
+    AWS_APPMESH_API CreateMeshRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,203 +39,64 @@ namespace Model
     AWS_APPMESH_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. Up to 36 letters, numbers, hyphens, and underscores are
      * allowed.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateMeshRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline CreateMeshRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline CreateMeshRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. Up to 36 letters, numbers, hyphens, and underscores are
-     * allowed.</p>
-     */
-    inline CreateMeshRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name to use for the service mesh.</p>
      */
-    inline const Aws::String& GetMeshName() const{ return m_meshName; }
-
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
+    inline const Aws::String& GetMeshName() const { return m_meshName; }
     inline bool MeshNameHasBeenSet() const { return m_meshNameHasBeenSet; }
+    template<typename MeshNameT = Aws::String>
+    void SetMeshName(MeshNameT&& value) { m_meshNameHasBeenSet = true; m_meshName = std::forward<MeshNameT>(value); }
+    template<typename MeshNameT = Aws::String>
+    CreateMeshRequest& WithMeshName(MeshNameT&& value) { SetMeshName(std::forward<MeshNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
-    inline void SetMeshName(const Aws::String& value) { m_meshNameHasBeenSet = true; m_meshName = value; }
-
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
-    inline void SetMeshName(Aws::String&& value) { m_meshNameHasBeenSet = true; m_meshName = std::move(value); }
-
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
-    inline void SetMeshName(const char* value) { m_meshNameHasBeenSet = true; m_meshName.assign(value); }
-
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
-    inline CreateMeshRequest& WithMeshName(const Aws::String& value) { SetMeshName(value); return *this;}
-
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
-    inline CreateMeshRequest& WithMeshName(Aws::String&& value) { SetMeshName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name to use for the service mesh.</p>
-     */
-    inline CreateMeshRequest& WithMeshName(const char* value) { SetMeshName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service mesh specification to apply.</p>
      */
-    inline const MeshSpec& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>The service mesh specification to apply.</p>
-     */
+    inline const MeshSpec& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
+    template<typename SpecT = MeshSpec>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = MeshSpec>
+    CreateMeshRequest& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service mesh specification to apply.</p>
-     */
-    inline void SetSpec(const MeshSpec& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>The service mesh specification to apply.</p>
-     */
-    inline void SetSpec(MeshSpec&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>The service mesh specification to apply.</p>
-     */
-    inline CreateMeshRequest& WithSpec(const MeshSpec& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>The service mesh specification to apply.</p>
-     */
-    inline CreateMeshRequest& WithSpec(MeshSpec&& value) { SetSpec(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional metadata that you can apply to the service mesh to assist with
      * categorization and organization. Each tag consists of a key and an optional
      * value, both of which you define. Tag keys can have a maximum character length of
      * 128 characters, and tag values can have a maximum length of 256 characters.</p>
      */
-    inline const Aws::Vector<TagRef>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
+    inline const Aws::Vector<TagRef>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
-    inline void SetTags(const Aws::Vector<TagRef>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
-    inline void SetTags(Aws::Vector<TagRef>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
-    inline CreateMeshRequest& WithTags(const Aws::Vector<TagRef>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
-    inline CreateMeshRequest& WithTags(Aws::Vector<TagRef>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
-    inline CreateMeshRequest& AddTags(const TagRef& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Optional metadata that you can apply to the service mesh to assist with
-     * categorization and organization. Each tag consists of a key and an optional
-     * value, both of which you define. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.</p>
-     */
-    inline CreateMeshRequest& AddTags(TagRef&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<TagRef>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<TagRef>>
+    CreateMeshRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = TagRef>
+    CreateMeshRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_meshName;
     bool m_meshNameHasBeenSet = false;

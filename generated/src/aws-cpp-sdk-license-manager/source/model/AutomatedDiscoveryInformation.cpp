@@ -18,13 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-AutomatedDiscoveryInformation::AutomatedDiscoveryInformation() : 
-    m_lastRunTimeHasBeenSet(false)
-{
-}
-
-AutomatedDiscoveryInformation::AutomatedDiscoveryInformation(JsonView jsonValue) : 
-    m_lastRunTimeHasBeenSet(false)
+AutomatedDiscoveryInformation::AutomatedDiscoveryInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AutomatedDiscoveryInformation& AutomatedDiscoveryInformation::operator =(JsonVie
   if(jsonValue.ValueExists("LastRunTime"))
   {
     m_lastRunTime = jsonValue.GetDouble("LastRunTime");
-
     m_lastRunTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

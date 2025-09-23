@@ -18,19 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-VariableImpactExplanation::VariableImpactExplanation() : 
-    m_eventVariableNameHasBeenSet(false),
-    m_relativeImpactHasBeenSet(false),
-    m_logOddsImpact(0.0),
-    m_logOddsImpactHasBeenSet(false)
-{
-}
-
-VariableImpactExplanation::VariableImpactExplanation(JsonView jsonValue) : 
-    m_eventVariableNameHasBeenSet(false),
-    m_relativeImpactHasBeenSet(false),
-    m_logOddsImpact(0.0),
-    m_logOddsImpactHasBeenSet(false)
+VariableImpactExplanation::VariableImpactExplanation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ VariableImpactExplanation& VariableImpactExplanation::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("eventVariableName"))
   {
     m_eventVariableName = jsonValue.GetString("eventVariableName");
-
     m_eventVariableNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("relativeImpact"))
   {
     m_relativeImpact = jsonValue.GetString("relativeImpact");
-
     m_relativeImpactHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logOddsImpact"))
   {
     m_logOddsImpact = jsonValue.GetDouble("logOddsImpact");
-
     m_logOddsImpactHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,11 +12,6 @@ using namespace Aws::DirectConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeLagsRequest::DescribeLagsRequest() : 
-    m_lagIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeLagsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,18 @@ Aws::String DescribeLagsRequest::SerializePayload() const
   if(m_lagIdHasBeenSet)
   {
    payload.WithString("lagId", m_lagId);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
 
   }
 

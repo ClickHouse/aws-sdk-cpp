@@ -26,96 +26,52 @@ namespace Model
 {
 
   /**
-   * <p>The transcript object used to search results.</p><p><h3>See Also:</h3>   <a
+   * <p>A structure that defines search criteria and matching logic to search for
+   * contacts by matching text with transcripts analyzed by Amazon Connect Contact
+   * Lens.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08/Transcript">AWS
    * API Reference</a></p>
    */
   class Transcript
   {
   public:
-    AWS_CONNECT_API Transcript();
+    AWS_CONNECT_API Transcript() = default;
     AWS_CONNECT_API Transcript(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Transcript& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The array of transcript search criteria</p>
+     * <p>The list of search criteria based on Contact Lens conversational analytics
+     * transcript.</p>
      */
-    inline const Aws::Vector<TranscriptCriteria>& GetCriteria() const{ return m_criteria; }
-
-    /**
-     * <p>The array of transcript search criteria</p>
-     */
+    inline const Aws::Vector<TranscriptCriteria>& GetCriteria() const { return m_criteria; }
     inline bool CriteriaHasBeenSet() const { return m_criteriaHasBeenSet; }
+    template<typename CriteriaT = Aws::Vector<TranscriptCriteria>>
+    void SetCriteria(CriteriaT&& value) { m_criteriaHasBeenSet = true; m_criteria = std::forward<CriteriaT>(value); }
+    template<typename CriteriaT = Aws::Vector<TranscriptCriteria>>
+    Transcript& WithCriteria(CriteriaT&& value) { SetCriteria(std::forward<CriteriaT>(value)); return *this;}
+    template<typename CriteriaT = TranscriptCriteria>
+    Transcript& AddCriteria(CriteriaT&& value) { m_criteriaHasBeenSet = true; m_criteria.emplace_back(std::forward<CriteriaT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The array of transcript search criteria</p>
+     * <p>The match type combining search criteria using multiple transcript
+     * criteria.</p>
      */
-    inline void SetCriteria(const Aws::Vector<TranscriptCriteria>& value) { m_criteriaHasBeenSet = true; m_criteria = value; }
-
-    /**
-     * <p>The array of transcript search criteria</p>
-     */
-    inline void SetCriteria(Aws::Vector<TranscriptCriteria>&& value) { m_criteriaHasBeenSet = true; m_criteria = std::move(value); }
-
-    /**
-     * <p>The array of transcript search criteria</p>
-     */
-    inline Transcript& WithCriteria(const Aws::Vector<TranscriptCriteria>& value) { SetCriteria(value); return *this;}
-
-    /**
-     * <p>The array of transcript search criteria</p>
-     */
-    inline Transcript& WithCriteria(Aws::Vector<TranscriptCriteria>&& value) { SetCriteria(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of transcript search criteria</p>
-     */
-    inline Transcript& AddCriteria(const TranscriptCriteria& value) { m_criteriaHasBeenSet = true; m_criteria.push_back(value); return *this; }
-
-    /**
-     * <p>The array of transcript search criteria</p>
-     */
-    inline Transcript& AddCriteria(TranscriptCriteria&& value) { m_criteriaHasBeenSet = true; m_criteria.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The match type of multiple transcript criteira</p>
-     */
-    inline const SearchContactsMatchType& GetMatchType() const{ return m_matchType; }
-
-    /**
-     * <p>The match type of multiple transcript criteira</p>
-     */
+    inline SearchContactsMatchType GetMatchType() const { return m_matchType; }
     inline bool MatchTypeHasBeenSet() const { return m_matchTypeHasBeenSet; }
-
-    /**
-     * <p>The match type of multiple transcript criteira</p>
-     */
-    inline void SetMatchType(const SearchContactsMatchType& value) { m_matchTypeHasBeenSet = true; m_matchType = value; }
-
-    /**
-     * <p>The match type of multiple transcript criteira</p>
-     */
-    inline void SetMatchType(SearchContactsMatchType&& value) { m_matchTypeHasBeenSet = true; m_matchType = std::move(value); }
-
-    /**
-     * <p>The match type of multiple transcript criteira</p>
-     */
-    inline Transcript& WithMatchType(const SearchContactsMatchType& value) { SetMatchType(value); return *this;}
-
-    /**
-     * <p>The match type of multiple transcript criteira</p>
-     */
-    inline Transcript& WithMatchType(SearchContactsMatchType&& value) { SetMatchType(std::move(value)); return *this;}
-
+    inline void SetMatchType(SearchContactsMatchType value) { m_matchTypeHasBeenSet = true; m_matchType = value; }
+    inline Transcript& WithMatchType(SearchContactsMatchType value) { SetMatchType(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TranscriptCriteria> m_criteria;
     bool m_criteriaHasBeenSet = false;
 
-    SearchContactsMatchType m_matchType;
+    SearchContactsMatchType m_matchType{SearchContactsMatchType::NOT_SET};
     bool m_matchTypeHasBeenSet = false;
   };
 

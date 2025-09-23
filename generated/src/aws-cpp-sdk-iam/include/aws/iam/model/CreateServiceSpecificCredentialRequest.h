@@ -21,7 +21,7 @@ namespace Model
   class CreateServiceSpecificCredentialRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API CreateServiceSpecificCredentialRequest();
+    AWS_IAM_API CreateServiceSpecificCredentialRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the IAM user that is to be associated with the credentials. The
      * new service-specific credentials have the same permissions as the associated
@@ -45,142 +46,39 @@ namespace Model
      * consisting of upper and lowercase alphanumeric characters with no spaces. You
      * can also include any of the following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    CreateServiceSpecificCredentialRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline CreateServiceSpecificCredentialRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline CreateServiceSpecificCredentialRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IAM user that is to be associated with the credentials. The
-     * new service-specific credentials have the same permissions as the associated
-     * user except that they can be used only to access the specified service.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline CreateServiceSpecificCredentialRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Amazon Web Services service that is to be associated with the
      * credentials. The service you specify here is the only service that can be
      * accessed using these credentials.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    CreateServiceSpecificCredentialRequest& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
+     * <p>The number of days until the service specific credential expires. This field
+     * is only valid for Bedrock API keys and must be a positive integer. When not
+     * specified, the credential will not expire.</p>
      */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
-     */
-    inline CreateServiceSpecificCredentialRequest& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
-     */
-    inline CreateServiceSpecificCredentialRequest& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services service that is to be associated with the
-     * credentials. The service you specify here is the only service that can be
-     * accessed using these credentials.</p>
-     */
-    inline CreateServiceSpecificCredentialRequest& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
+    inline int GetCredentialAgeDays() const { return m_credentialAgeDays; }
+    inline bool CredentialAgeDaysHasBeenSet() const { return m_credentialAgeDaysHasBeenSet; }
+    inline void SetCredentialAgeDays(int value) { m_credentialAgeDaysHasBeenSet = true; m_credentialAgeDays = value; }
+    inline CreateServiceSpecificCredentialRequest& WithCredentialAgeDays(int value) { SetCredentialAgeDays(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;
@@ -188,6 +86,9 @@ namespace Model
 
     Aws::String m_serviceName;
     bool m_serviceNameHasBeenSet = false;
+
+    int m_credentialAgeDays{0};
+    bool m_credentialAgeDaysHasBeenSet = false;
   };
 
 } // namespace Model

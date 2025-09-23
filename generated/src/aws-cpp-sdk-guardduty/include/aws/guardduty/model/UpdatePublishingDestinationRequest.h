@@ -22,7 +22,7 @@ namespace Model
   class UpdatePublishingDestinationRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API UpdatePublishingDestinationRequest();
+    AWS_GUARDDUTY_API UpdatePublishingDestinationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,138 +33,47 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
+     * update.</p> <p>To find the <code>detectorId</code> in the current Region, see
+     * the Settings page in the GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    UpdatePublishingDestinationRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the detector associated with the publishing destinations to
-     * update.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the publishing destination to update.</p>
      */
-    inline const Aws::String& GetDestinationId() const{ return m_destinationId; }
-
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
+    inline const Aws::String& GetDestinationId() const { return m_destinationId; }
     inline bool DestinationIdHasBeenSet() const { return m_destinationIdHasBeenSet; }
+    template<typename DestinationIdT = Aws::String>
+    void SetDestinationId(DestinationIdT&& value) { m_destinationIdHasBeenSet = true; m_destinationId = std::forward<DestinationIdT>(value); }
+    template<typename DestinationIdT = Aws::String>
+    UpdatePublishingDestinationRequest& WithDestinationId(DestinationIdT&& value) { SetDestinationId(std::forward<DestinationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
-    inline void SetDestinationId(const Aws::String& value) { m_destinationIdHasBeenSet = true; m_destinationId = value; }
-
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
-    inline void SetDestinationId(Aws::String&& value) { m_destinationIdHasBeenSet = true; m_destinationId = std::move(value); }
-
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
-    inline void SetDestinationId(const char* value) { m_destinationIdHasBeenSet = true; m_destinationId.assign(value); }
-
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDestinationId(const Aws::String& value) { SetDestinationId(value); return *this;}
-
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDestinationId(Aws::String&& value) { SetDestinationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the publishing destination to update.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDestinationId(const char* value) { SetDestinationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A <code>DestinationProperties</code> object that includes the
      * <code>DestinationArn</code> and <code>KmsKeyArn</code> of the publishing
      * destination.</p>
      */
-    inline const DestinationProperties& GetDestinationProperties() const{ return m_destinationProperties; }
-
-    /**
-     * <p>A <code>DestinationProperties</code> object that includes the
-     * <code>DestinationArn</code> and <code>KmsKeyArn</code> of the publishing
-     * destination.</p>
-     */
+    inline const DestinationProperties& GetDestinationProperties() const { return m_destinationProperties; }
     inline bool DestinationPropertiesHasBeenSet() const { return m_destinationPropertiesHasBeenSet; }
-
-    /**
-     * <p>A <code>DestinationProperties</code> object that includes the
-     * <code>DestinationArn</code> and <code>KmsKeyArn</code> of the publishing
-     * destination.</p>
-     */
-    inline void SetDestinationProperties(const DestinationProperties& value) { m_destinationPropertiesHasBeenSet = true; m_destinationProperties = value; }
-
-    /**
-     * <p>A <code>DestinationProperties</code> object that includes the
-     * <code>DestinationArn</code> and <code>KmsKeyArn</code> of the publishing
-     * destination.</p>
-     */
-    inline void SetDestinationProperties(DestinationProperties&& value) { m_destinationPropertiesHasBeenSet = true; m_destinationProperties = std::move(value); }
-
-    /**
-     * <p>A <code>DestinationProperties</code> object that includes the
-     * <code>DestinationArn</code> and <code>KmsKeyArn</code> of the publishing
-     * destination.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDestinationProperties(const DestinationProperties& value) { SetDestinationProperties(value); return *this;}
-
-    /**
-     * <p>A <code>DestinationProperties</code> object that includes the
-     * <code>DestinationArn</code> and <code>KmsKeyArn</code> of the publishing
-     * destination.</p>
-     */
-    inline UpdatePublishingDestinationRequest& WithDestinationProperties(DestinationProperties&& value) { SetDestinationProperties(std::move(value)); return *this;}
-
+    template<typename DestinationPropertiesT = DestinationProperties>
+    void SetDestinationProperties(DestinationPropertiesT&& value) { m_destinationPropertiesHasBeenSet = true; m_destinationProperties = std::forward<DestinationPropertiesT>(value); }
+    template<typename DestinationPropertiesT = DestinationProperties>
+    UpdatePublishingDestinationRequest& WithDestinationProperties(DestinationPropertiesT&& value) { SetDestinationProperties(std::forward<DestinationPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorId;

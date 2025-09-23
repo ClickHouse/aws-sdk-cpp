@@ -18,34 +18,35 @@ namespace ivsrealtime
 namespace Model
 {
 
-RecordingConfiguration::RecordingConfiguration() : 
-    m_format(RecordingConfigurationFormat::NOT_SET),
-    m_formatHasBeenSet(false)
-{
-}
-
-RecordingConfiguration::RecordingConfiguration(JsonView jsonValue) : 
-    m_format(RecordingConfigurationFormat::NOT_SET),
-    m_formatHasBeenSet(false)
+RecordingConfiguration::RecordingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 RecordingConfiguration& RecordingConfiguration::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("hlsConfiguration"))
+  {
+    m_hlsConfiguration = jsonValue.GetObject("hlsConfiguration");
+    m_hlsConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("format"))
   {
     m_format = RecordingConfigurationFormatMapper::GetRecordingConfigurationFormatForName(jsonValue.GetString("format"));
-
     m_formatHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue RecordingConfiguration::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_hlsConfigurationHasBeenSet)
+  {
+   payload.WithObject("hlsConfiguration", m_hlsConfiguration.Jsonize());
+
+  }
 
   if(m_formatHasBeenSet)
   {

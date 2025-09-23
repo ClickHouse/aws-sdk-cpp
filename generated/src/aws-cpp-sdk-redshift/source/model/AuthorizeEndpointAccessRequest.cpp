@@ -10,13 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-AuthorizeEndpointAccessRequest::AuthorizeEndpointAccessRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_vpcIdsHasBeenSet(false)
-{
-}
-
 Aws::String AuthorizeEndpointAccessRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,12 +26,19 @@ Aws::String AuthorizeEndpointAccessRequest::SerializePayload() const
 
   if(m_vpcIdsHasBeenSet)
   {
-    unsigned vpcIdsCount = 1;
-    for(auto& item : m_vpcIds)
+    if (m_vpcIds.empty())
     {
-      ss << "VpcIds.member." << vpcIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcIdsCount++;
+      ss << "VpcIds=&";
+    }
+    else
+    {
+      unsigned vpcIdsCount = 1;
+      for(auto& item : m_vpcIds)
+      {
+        ss << "VpcIds.VpcIdentifier." << vpcIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcIdsCount++;
+      }
     }
   }
 

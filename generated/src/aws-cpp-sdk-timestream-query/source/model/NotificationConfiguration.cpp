@@ -18,13 +18,7 @@ namespace TimestreamQuery
 namespace Model
 {
 
-NotificationConfiguration::NotificationConfiguration() : 
-    m_snsConfigurationHasBeenSet(false)
-{
-}
-
-NotificationConfiguration::NotificationConfiguration(JsonView jsonValue) : 
-    m_snsConfigurationHasBeenSet(false)
+NotificationConfiguration::NotificationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ NotificationConfiguration& NotificationConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("SnsConfiguration"))
   {
     m_snsConfiguration = jsonValue.GetObject("SnsConfiguration");
-
     m_snsConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -6,10 +6,10 @@
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/ec2/model/PlacementStrategy.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/SpreadLevel.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/ec2/model/PlacementStrategy.h>
 #include <aws/ec2/model/TagSpecification.h>
 #include <utility>
 
@@ -25,7 +25,7 @@ namespace Model
   class CreatePlacementGroupRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreatePlacementGroupRequest();
+    AWS_EC2_API CreatePlacementGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,246 +40,97 @@ namespace Model
 
   public:
 
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline CreatePlacementGroupRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline CreatePlacementGroupRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline CreatePlacementGroupRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for the placement group. Must be unique within the scope of your
-     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
-     */
-    inline CreatePlacementGroupRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
-    /**
-     * <p>The placement strategy.</p>
-     */
-    inline const PlacementStrategy& GetStrategy() const{ return m_strategy; }
-
-    /**
-     * <p>The placement strategy.</p>
-     */
-    inline bool StrategyHasBeenSet() const { return m_strategyHasBeenSet; }
-
-    /**
-     * <p>The placement strategy.</p>
-     */
-    inline void SetStrategy(const PlacementStrategy& value) { m_strategyHasBeenSet = true; m_strategy = value; }
-
-    /**
-     * <p>The placement strategy.</p>
-     */
-    inline void SetStrategy(PlacementStrategy&& value) { m_strategyHasBeenSet = true; m_strategy = std::move(value); }
-
-    /**
-     * <p>The placement strategy.</p>
-     */
-    inline CreatePlacementGroupRequest& WithStrategy(const PlacementStrategy& value) { SetStrategy(value); return *this;}
-
-    /**
-     * <p>The placement strategy.</p>
-     */
-    inline CreatePlacementGroupRequest& WithStrategy(PlacementStrategy&& value) { SetStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of partitions. Valid only when <b>Strategy</b> is set to
      * <code>partition</code>.</p>
      */
-    inline int GetPartitionCount() const{ return m_partitionCount; }
-
-    /**
-     * <p>The number of partitions. Valid only when <b>Strategy</b> is set to
-     * <code>partition</code>.</p>
-     */
+    inline int GetPartitionCount() const { return m_partitionCount; }
     inline bool PartitionCountHasBeenSet() const { return m_partitionCountHasBeenSet; }
-
-    /**
-     * <p>The number of partitions. Valid only when <b>Strategy</b> is set to
-     * <code>partition</code>.</p>
-     */
     inline void SetPartitionCount(int value) { m_partitionCountHasBeenSet = true; m_partitionCount = value; }
-
-    /**
-     * <p>The number of partitions. Valid only when <b>Strategy</b> is set to
-     * <code>partition</code>.</p>
-     */
     inline CreatePlacementGroupRequest& WithPartitionCount(int value) { SetPartitionCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The tags to apply to the new placement group.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    CreatePlacementGroupRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    CreatePlacementGroupRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
-
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
-
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
-    inline CreatePlacementGroupRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
-    inline CreatePlacementGroupRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
-    inline CreatePlacementGroupRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to apply to the new placement group.</p>
-     */
-    inline CreatePlacementGroupRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Determines how placement groups spread instances. </p> <ul> <li> <p>Host –
      * You can use <code>host</code> only with Outpost placement groups.</p> </li> <li>
      * <p>Rack – No usage restrictions.</p> </li> </ul>
      */
-    inline const SpreadLevel& GetSpreadLevel() const{ return m_spreadLevel; }
-
-    /**
-     * <p>Determines how placement groups spread instances. </p> <ul> <li> <p>Host –
-     * You can use <code>host</code> only with Outpost placement groups.</p> </li> <li>
-     * <p>Rack – No usage restrictions.</p> </li> </ul>
-     */
+    inline SpreadLevel GetSpreadLevel() const { return m_spreadLevel; }
     inline bool SpreadLevelHasBeenSet() const { return m_spreadLevelHasBeenSet; }
+    inline void SetSpreadLevel(SpreadLevel value) { m_spreadLevelHasBeenSet = true; m_spreadLevel = value; }
+    inline CreatePlacementGroupRequest& WithSpreadLevel(SpreadLevel value) { SetSpreadLevel(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Determines how placement groups spread instances. </p> <ul> <li> <p>Host –
-     * You can use <code>host</code> only with Outpost placement groups.</p> </li> <li>
-     * <p>Rack – No usage restrictions.</p> </li> </ul>
+     * <p>Checks whether you have the required permissions for the operation, without
+     * actually making the request, and provides an error response. If you have the
+     * required permissions, the error response is <code>DryRunOperation</code>.
+     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline void SetSpreadLevel(const SpreadLevel& value) { m_spreadLevelHasBeenSet = true; m_spreadLevel = value; }
+    inline bool GetDryRun() const { return m_dryRun; }
+    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
+    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
+    inline CreatePlacementGroupRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Determines how placement groups spread instances. </p> <ul> <li> <p>Host –
-     * You can use <code>host</code> only with Outpost placement groups.</p> </li> <li>
-     * <p>Rack – No usage restrictions.</p> </li> </ul>
+     * <p>A name for the placement group. Must be unique within the scope of your
+     * account for the Region.</p> <p>Constraints: Up to 255 ASCII characters</p>
      */
-    inline void SetSpreadLevel(SpreadLevel&& value) { m_spreadLevelHasBeenSet = true; m_spreadLevel = std::move(value); }
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
+    inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    CreatePlacementGroupRequest& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Determines how placement groups spread instances. </p> <ul> <li> <p>Host –
-     * You can use <code>host</code> only with Outpost placement groups.</p> </li> <li>
-     * <p>Rack – No usage restrictions.</p> </li> </ul>
+     * <p>The placement strategy.</p>
      */
-    inline CreatePlacementGroupRequest& WithSpreadLevel(const SpreadLevel& value) { SetSpreadLevel(value); return *this;}
-
-    /**
-     * <p>Determines how placement groups spread instances. </p> <ul> <li> <p>Host –
-     * You can use <code>host</code> only with Outpost placement groups.</p> </li> <li>
-     * <p>Rack – No usage restrictions.</p> </li> </ul>
-     */
-    inline CreatePlacementGroupRequest& WithSpreadLevel(SpreadLevel&& value) { SetSpreadLevel(std::move(value)); return *this;}
-
+    inline PlacementStrategy GetStrategy() const { return m_strategy; }
+    inline bool StrategyHasBeenSet() const { return m_strategyHasBeenSet; }
+    inline void SetStrategy(PlacementStrategy value) { m_strategyHasBeenSet = true; m_strategy = value; }
+    inline CreatePlacementGroupRequest& WithStrategy(PlacementStrategy value) { SetStrategy(value); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
-    bool m_dryRunHasBeenSet = false;
-
-    Aws::String m_groupName;
-    bool m_groupNameHasBeenSet = false;
-
-    PlacementStrategy m_strategy;
-    bool m_strategyHasBeenSet = false;
-
-    int m_partitionCount;
+    int m_partitionCount{0};
     bool m_partitionCountHasBeenSet = false;
 
     Aws::Vector<TagSpecification> m_tagSpecifications;
     bool m_tagSpecificationsHasBeenSet = false;
 
-    SpreadLevel m_spreadLevel;
+    SpreadLevel m_spreadLevel{SpreadLevel::NOT_SET};
     bool m_spreadLevelHasBeenSet = false;
+
+    bool m_dryRun{false};
+    bool m_dryRunHasBeenSet = false;
+
+    Aws::String m_groupName;
+    bool m_groupNameHasBeenSet = false;
+
+    PlacementStrategy m_strategy{PlacementStrategy::NOT_SET};
+    bool m_strategyHasBeenSet = false;
   };
 
 } // namespace Model

@@ -21,7 +21,7 @@ namespace Model
   class DeleteExportRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API DeleteExportRequest();
+    AWS_LEXMODELSV2_API DeleteExportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the export to delete.</p>
      */
-    inline const Aws::String& GetExportId() const{ return m_exportId; }
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
+    inline const Aws::String& GetExportId() const { return m_exportId; }
     inline bool ExportIdHasBeenSet() const { return m_exportIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
-    inline void SetExportId(const Aws::String& value) { m_exportIdHasBeenSet = true; m_exportId = value; }
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
-    inline void SetExportId(Aws::String&& value) { m_exportIdHasBeenSet = true; m_exportId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
-    inline void SetExportId(const char* value) { m_exportIdHasBeenSet = true; m_exportId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
-    inline DeleteExportRequest& WithExportId(const Aws::String& value) { SetExportId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
-    inline DeleteExportRequest& WithExportId(Aws::String&& value) { SetExportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the export to delete.</p>
-     */
-    inline DeleteExportRequest& WithExportId(const char* value) { SetExportId(value); return *this;}
-
+    template<typename ExportIdT = Aws::String>
+    void SetExportId(ExportIdT&& value) { m_exportIdHasBeenSet = true; m_exportId = std::forward<ExportIdT>(value); }
+    template<typename ExportIdT = Aws::String>
+    DeleteExportRequest& WithExportId(ExportIdT&& value) { SetExportId(std::forward<ExportIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exportId;

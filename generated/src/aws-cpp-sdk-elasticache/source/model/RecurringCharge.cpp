@@ -20,17 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-RecurringCharge::RecurringCharge() : 
-    m_recurringChargeAmount(0.0),
-    m_recurringChargeAmountHasBeenSet(false),
-    m_recurringChargeFrequencyHasBeenSet(false)
-{
-}
-
-RecurringCharge::RecurringCharge(const XmlNode& xmlNode) : 
-    m_recurringChargeAmount(0.0),
-    m_recurringChargeAmountHasBeenSet(false),
-    m_recurringChargeFrequencyHasBeenSet(false)
+RecurringCharge::RecurringCharge(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -76,7 +66,7 @@ void RecurringCharge::OutputToStream(Aws::OStream& oStream, const char* location
 {
   if(m_recurringChargeAmountHasBeenSet)
   {
-        oStream << location << ".RecurringChargeAmount=" << StringUtils::URLEncode(m_recurringChargeAmount) << "&";
+      oStream << location << ".RecurringChargeAmount=" << StringUtils::URLEncode(m_recurringChargeAmount) << "&";
   }
   if(m_recurringChargeFrequencyHasBeenSet)
   {

@@ -18,17 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-NielsenConfiguration::NielsenConfiguration() : 
-    m_breakoutCode(0),
-    m_breakoutCodeHasBeenSet(false),
-    m_distributorIdHasBeenSet(false)
-{
-}
-
-NielsenConfiguration::NielsenConfiguration(JsonView jsonValue) : 
-    m_breakoutCode(0),
-    m_breakoutCodeHasBeenSet(false),
-    m_distributorIdHasBeenSet(false)
+NielsenConfiguration::NielsenConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ NielsenConfiguration& NielsenConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("breakoutCode"))
   {
     m_breakoutCode = jsonValue.GetInteger("breakoutCode");
-
     m_breakoutCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("distributorId"))
   {
     m_distributorId = jsonValue.GetString("distributorId");
-
     m_distributorIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,33 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-ConfiguredTableAssociation::ConfiguredTableAssociation() : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_configuredTableIdHasBeenSet(false),
-    m_configuredTableArnHasBeenSet(false),
-    m_membershipIdHasBeenSet(false),
-    m_membershipArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false)
-{
-}
-
-ConfiguredTableAssociation::ConfiguredTableAssociation(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_configuredTableIdHasBeenSet(false),
-    m_configuredTableArnHasBeenSet(false),
-    m_membershipIdHasBeenSet(false),
-    m_membershipArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false)
+ConfiguredTableAssociation::ConfiguredTableAssociation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,80 +28,67 @@ ConfiguredTableAssociation& ConfiguredTableAssociation::operator =(JsonView json
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("configuredTableId"))
   {
     m_configuredTableId = jsonValue.GetString("configuredTableId");
-
     m_configuredTableIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("configuredTableArn"))
   {
     m_configuredTableArn = jsonValue.GetString("configuredTableArn");
-
     m_configuredTableArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("membershipId"))
   {
     m_membershipId = jsonValue.GetString("membershipId");
-
     m_membershipIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("membershipArn"))
   {
     m_membershipArn = jsonValue.GetString("membershipArn");
-
     m_membershipArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("analysisRuleTypes"))
+  {
+    Aws::Utils::Array<JsonView> analysisRuleTypesJsonList = jsonValue.GetArray("analysisRuleTypes");
+    for(unsigned analysisRuleTypesIndex = 0; analysisRuleTypesIndex < analysisRuleTypesJsonList.GetLength(); ++analysisRuleTypesIndex)
+    {
+      m_analysisRuleTypes.push_back(ConfiguredTableAssociationAnalysisRuleTypeMapper::GetConfiguredTableAssociationAnalysisRuleTypeForName(analysisRuleTypesJsonList[analysisRuleTypesIndex].AsString()));
+    }
+    m_analysisRuleTypesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetDouble("createTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updateTime"))
   {
     m_updateTime = jsonValue.GetDouble("updateTime");
-
     m_updateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -186,6 +147,17 @@ JsonValue ConfiguredTableAssociation::Jsonize() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
+
+  }
+
+  if(m_analysisRuleTypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> analysisRuleTypesJsonList(m_analysisRuleTypes.size());
+   for(unsigned analysisRuleTypesIndex = 0; analysisRuleTypesIndex < analysisRuleTypesJsonList.GetLength(); ++analysisRuleTypesIndex)
+   {
+     analysisRuleTypesJsonList[analysisRuleTypesIndex].AsString(ConfiguredTableAssociationAnalysisRuleTypeMapper::GetNameForConfiguredTableAssociationAnalysisRuleType(m_analysisRuleTypes[analysisRuleTypesIndex]));
+   }
+   payload.WithArray("analysisRuleTypes", std::move(analysisRuleTypesJsonList));
 
   }
 

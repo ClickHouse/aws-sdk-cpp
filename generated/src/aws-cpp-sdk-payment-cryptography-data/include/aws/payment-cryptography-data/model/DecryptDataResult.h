@@ -27,191 +27,69 @@ namespace Model
   class DecryptDataResult
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API DecryptDataResult();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API DecryptDataResult() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API DecryptDataResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API DecryptDataResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
      * Payment Cryptography uses for ciphertext decryption.</p>
      */
-    inline const Aws::String& GetKeyArn() const{ return m_keyArn; }
+    inline const Aws::String& GetKeyArn() const { return m_keyArn; }
+    template<typename KeyArnT = Aws::String>
+    void SetKeyArn(KeyArnT&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::forward<KeyArnT>(value); }
+    template<typename KeyArnT = Aws::String>
+    DecryptDataResult& WithKeyArn(KeyArnT&& value) { SetKeyArn(std::forward<KeyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses for ciphertext decryption.</p>
-     */
-    inline void SetKeyArn(const Aws::String& value) { m_keyArn = value; }
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses for ciphertext decryption.</p>
-     */
-    inline void SetKeyArn(Aws::String&& value) { m_keyArn = std::move(value); }
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses for ciphertext decryption.</p>
-     */
-    inline void SetKeyArn(const char* value) { m_keyArn.assign(value); }
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses for ciphertext decryption.</p>
-     */
-    inline DecryptDataResult& WithKeyArn(const Aws::String& value) { SetKeyArn(value); return *this;}
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses for ciphertext decryption.</p>
-     */
-    inline DecryptDataResult& WithKeyArn(Aws::String&& value) { SetKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses for ciphertext decryption.</p>
-     */
-    inline DecryptDataResult& WithKeyArn(const char* value) { SetKeyArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
      * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
+     * changed.</p> <p>Amazon Web Services Payment Cryptography computes the KCV
+     * according to the CMAC specification.</p>
      */
-    inline const Aws::String& GetKeyCheckValue() const{ return m_keyCheckValue; }
+    inline const Aws::String& GetKeyCheckValue() const { return m_keyCheckValue; }
+    template<typename KeyCheckValueT = Aws::String>
+    void SetKeyCheckValue(KeyCheckValueT&& value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue = std::forward<KeyCheckValueT>(value); }
+    template<typename KeyCheckValueT = Aws::String>
+    DecryptDataResult& WithKeyCheckValue(KeyCheckValueT&& value) { SetKeyCheckValue(std::forward<KeyCheckValueT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
+     * <p>The decrypted plaintext data in hexBinary format.</p>
      */
-    inline void SetKeyCheckValue(const Aws::String& value) { m_keyCheckValue = value; }
+    inline const Aws::String& GetPlainText() const { return m_plainText; }
+    template<typename PlainTextT = Aws::String>
+    void SetPlainText(PlainTextT&& value) { m_plainTextHasBeenSet = true; m_plainText = std::forward<PlainTextT>(value); }
+    template<typename PlainTextT = Aws::String>
+    DecryptDataResult& WithPlainText(PlainTextT&& value) { SetPlainText(std::forward<PlainTextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(Aws::String&& value) { m_keyCheckValue = std::move(value); }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(const char* value) { m_keyCheckValue.assign(value); }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline DecryptDataResult& WithKeyCheckValue(const Aws::String& value) { SetKeyCheckValue(value); return *this;}
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline DecryptDataResult& WithKeyCheckValue(Aws::String&& value) { SetKeyCheckValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline DecryptDataResult& WithKeyCheckValue(const char* value) { SetKeyCheckValue(value); return *this;}
-
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline const Aws::String& GetPlainText() const{ return m_plainText; }
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline void SetPlainText(const Aws::String& value) { m_plainText = value; }
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline void SetPlainText(Aws::String&& value) { m_plainText = std::move(value); }
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline void SetPlainText(const char* value) { m_plainText.assign(value); }
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline DecryptDataResult& WithPlainText(const Aws::String& value) { SetPlainText(value); return *this;}
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline DecryptDataResult& WithPlainText(Aws::String&& value) { SetPlainText(std::move(value)); return *this;}
-
-    /**
-     * <p>The decrypted plaintext data.</p>
-     */
-    inline DecryptDataResult& WithPlainText(const char* value) { SetPlainText(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DecryptDataResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DecryptDataResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DecryptDataResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DecryptDataResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyArn;
+    bool m_keyArnHasBeenSet = false;
 
     Aws::String m_keyCheckValue;
+    bool m_keyCheckValueHasBeenSet = false;
 
     Aws::String m_plainText;
+    bool m_plainTextHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -29,132 +29,56 @@ namespace Model
   class ListContactListsResult
   {
   public:
-    AWS_SESV2_API ListContactListsResult();
+    AWS_SESV2_API ListContactListsResult() = default;
     AWS_SESV2_API ListContactListsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SESV2_API ListContactListsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The available contact lists.</p>
      */
-    inline const Aws::Vector<ContactList>& GetContactLists() const{ return m_contactLists; }
+    inline const Aws::Vector<ContactList>& GetContactLists() const { return m_contactLists; }
+    template<typename ContactListsT = Aws::Vector<ContactList>>
+    void SetContactLists(ContactListsT&& value) { m_contactListsHasBeenSet = true; m_contactLists = std::forward<ContactListsT>(value); }
+    template<typename ContactListsT = Aws::Vector<ContactList>>
+    ListContactListsResult& WithContactLists(ContactListsT&& value) { SetContactLists(std::forward<ContactListsT>(value)); return *this;}
+    template<typename ContactListsT = ContactList>
+    ListContactListsResult& AddContactLists(ContactListsT&& value) { m_contactListsHasBeenSet = true; m_contactLists.emplace_back(std::forward<ContactListsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The available contact lists.</p>
-     */
-    inline void SetContactLists(const Aws::Vector<ContactList>& value) { m_contactLists = value; }
-
-    /**
-     * <p>The available contact lists.</p>
-     */
-    inline void SetContactLists(Aws::Vector<ContactList>&& value) { m_contactLists = std::move(value); }
-
-    /**
-     * <p>The available contact lists.</p>
-     */
-    inline ListContactListsResult& WithContactLists(const Aws::Vector<ContactList>& value) { SetContactLists(value); return *this;}
-
-    /**
-     * <p>The available contact lists.</p>
-     */
-    inline ListContactListsResult& WithContactLists(Aws::Vector<ContactList>&& value) { SetContactLists(std::move(value)); return *this;}
-
-    /**
-     * <p>The available contact lists.</p>
-     */
-    inline ListContactListsResult& AddContactLists(const ContactList& value) { m_contactLists.push_back(value); return *this; }
-
-    /**
-     * <p>The available contact lists.</p>
-     */
-    inline ListContactListsResult& AddContactLists(ContactList&& value) { m_contactLists.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A string token indicating that there might be additional contact lists
      * available to be listed. Copy this token to a subsequent call to
      * <code>ListContactLists</code> with the same parameters to retrieve the next page
      * of contact lists.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListContactListsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string token indicating that there might be additional contact lists
-     * available to be listed. Copy this token to a subsequent call to
-     * <code>ListContactLists</code> with the same parameters to retrieve the next page
-     * of contact lists.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A string token indicating that there might be additional contact lists
-     * available to be listed. Copy this token to a subsequent call to
-     * <code>ListContactLists</code> with the same parameters to retrieve the next page
-     * of contact lists.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A string token indicating that there might be additional contact lists
-     * available to be listed. Copy this token to a subsequent call to
-     * <code>ListContactLists</code> with the same parameters to retrieve the next page
-     * of contact lists.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A string token indicating that there might be additional contact lists
-     * available to be listed. Copy this token to a subsequent call to
-     * <code>ListContactLists</code> with the same parameters to retrieve the next page
-     * of contact lists.</p>
-     */
-    inline ListContactListsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A string token indicating that there might be additional contact lists
-     * available to be listed. Copy this token to a subsequent call to
-     * <code>ListContactLists</code> with the same parameters to retrieve the next page
-     * of contact lists.</p>
-     */
-    inline ListContactListsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A string token indicating that there might be additional contact lists
-     * available to be listed. Copy this token to a subsequent call to
-     * <code>ListContactLists</code> with the same parameters to retrieve the next page
-     * of contact lists.</p>
-     */
-    inline ListContactListsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListContactListsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListContactListsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListContactListsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListContactListsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ContactList> m_contactLists;
+    bool m_contactListsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

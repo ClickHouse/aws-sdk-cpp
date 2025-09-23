@@ -21,7 +21,7 @@ namespace Model
   class GetWorkflowRunRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API GetWorkflowRunRequest();
+    AWS_GLUE_API GetWorkflowRunRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,108 +34,39 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Name of the workflow being run.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetWorkflowRunRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
-    inline GetWorkflowRunRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
-    inline GetWorkflowRunRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the workflow being run.</p>
-     */
-    inline GetWorkflowRunRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the workflow run.</p>
      */
-    inline const Aws::String& GetRunId() const{ return m_runId; }
-
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
+    inline const Aws::String& GetRunId() const { return m_runId; }
     inline bool RunIdHasBeenSet() const { return m_runIdHasBeenSet; }
+    template<typename RunIdT = Aws::String>
+    void SetRunId(RunIdT&& value) { m_runIdHasBeenSet = true; m_runId = std::forward<RunIdT>(value); }
+    template<typename RunIdT = Aws::String>
+    GetWorkflowRunRequest& WithRunId(RunIdT&& value) { SetRunId(std::forward<RunIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
-    inline void SetRunId(const Aws::String& value) { m_runIdHasBeenSet = true; m_runId = value; }
-
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
-
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
-    inline void SetRunId(const char* value) { m_runIdHasBeenSet = true; m_runId.assign(value); }
-
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
-    inline GetWorkflowRunRequest& WithRunId(const Aws::String& value) { SetRunId(value); return *this;}
-
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
-    inline GetWorkflowRunRequest& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the workflow run.</p>
-     */
-    inline GetWorkflowRunRequest& WithRunId(const char* value) { SetRunId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to include the workflow graph in response or not.</p>
      */
-    inline bool GetIncludeGraph() const{ return m_includeGraph; }
-
-    /**
-     * <p>Specifies whether to include the workflow graph in response or not.</p>
-     */
+    inline bool GetIncludeGraph() const { return m_includeGraph; }
     inline bool IncludeGraphHasBeenSet() const { return m_includeGraphHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to include the workflow graph in response or not.</p>
-     */
     inline void SetIncludeGraph(bool value) { m_includeGraphHasBeenSet = true; m_includeGraph = value; }
-
-    /**
-     * <p>Specifies whether to include the workflow graph in response or not.</p>
-     */
     inline GetWorkflowRunRequest& WithIncludeGraph(bool value) { SetIncludeGraph(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
@@ -144,7 +75,7 @@ namespace Model
     Aws::String m_runId;
     bool m_runIdHasBeenSet = false;
 
-    bool m_includeGraph;
+    bool m_includeGraph{false};
     bool m_includeGraphHasBeenSet = false;
   };
 

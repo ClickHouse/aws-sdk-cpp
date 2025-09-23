@@ -26,7 +26,7 @@ namespace Model
   class CreateWorkspaceBundleRequest : public WorkSpacesRequest
   {
   public:
-    AWS_WORKSPACES_API CreateWorkspaceBundleRequest();
+    AWS_WORKSPACES_API CreateWorkspaceBundleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,250 +39,88 @@ namespace Model
     AWS_WORKSPACES_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the bundle.</p>
      */
-    inline const Aws::String& GetBundleName() const{ return m_bundleName; }
-
-    /**
-     * <p>The name of the bundle.</p>
-     */
+    inline const Aws::String& GetBundleName() const { return m_bundleName; }
     inline bool BundleNameHasBeenSet() const { return m_bundleNameHasBeenSet; }
+    template<typename BundleNameT = Aws::String>
+    void SetBundleName(BundleNameT&& value) { m_bundleNameHasBeenSet = true; m_bundleName = std::forward<BundleNameT>(value); }
+    template<typename BundleNameT = Aws::String>
+    CreateWorkspaceBundleRequest& WithBundleName(BundleNameT&& value) { SetBundleName(std::forward<BundleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bundle.</p>
-     */
-    inline void SetBundleName(const Aws::String& value) { m_bundleNameHasBeenSet = true; m_bundleName = value; }
-
-    /**
-     * <p>The name of the bundle.</p>
-     */
-    inline void SetBundleName(Aws::String&& value) { m_bundleNameHasBeenSet = true; m_bundleName = std::move(value); }
-
-    /**
-     * <p>The name of the bundle.</p>
-     */
-    inline void SetBundleName(const char* value) { m_bundleNameHasBeenSet = true; m_bundleName.assign(value); }
-
-    /**
-     * <p>The name of the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithBundleName(const Aws::String& value) { SetBundleName(value); return *this;}
-
-    /**
-     * <p>The name of the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithBundleName(Aws::String&& value) { SetBundleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithBundleName(const char* value) { SetBundleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the bundle.</p>
      */
-    inline const Aws::String& GetBundleDescription() const{ return m_bundleDescription; }
-
-    /**
-     * <p>The description of the bundle.</p>
-     */
+    inline const Aws::String& GetBundleDescription() const { return m_bundleDescription; }
     inline bool BundleDescriptionHasBeenSet() const { return m_bundleDescriptionHasBeenSet; }
+    template<typename BundleDescriptionT = Aws::String>
+    void SetBundleDescription(BundleDescriptionT&& value) { m_bundleDescriptionHasBeenSet = true; m_bundleDescription = std::forward<BundleDescriptionT>(value); }
+    template<typename BundleDescriptionT = Aws::String>
+    CreateWorkspaceBundleRequest& WithBundleDescription(BundleDescriptionT&& value) { SetBundleDescription(std::forward<BundleDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the bundle.</p>
-     */
-    inline void SetBundleDescription(const Aws::String& value) { m_bundleDescriptionHasBeenSet = true; m_bundleDescription = value; }
-
-    /**
-     * <p>The description of the bundle.</p>
-     */
-    inline void SetBundleDescription(Aws::String&& value) { m_bundleDescriptionHasBeenSet = true; m_bundleDescription = std::move(value); }
-
-    /**
-     * <p>The description of the bundle.</p>
-     */
-    inline void SetBundleDescription(const char* value) { m_bundleDescriptionHasBeenSet = true; m_bundleDescription.assign(value); }
-
-    /**
-     * <p>The description of the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithBundleDescription(const Aws::String& value) { SetBundleDescription(value); return *this;}
-
-    /**
-     * <p>The description of the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithBundleDescription(Aws::String&& value) { SetBundleDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithBundleDescription(const char* value) { SetBundleDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the image that is used to create the bundle.</p>
      */
-    inline const Aws::String& GetImageId() const{ return m_imageId; }
-
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
+    inline const Aws::String& GetImageId() const { return m_imageId; }
     inline bool ImageIdHasBeenSet() const { return m_imageIdHasBeenSet; }
+    template<typename ImageIdT = Aws::String>
+    void SetImageId(ImageIdT&& value) { m_imageIdHasBeenSet = true; m_imageId = std::forward<ImageIdT>(value); }
+    template<typename ImageIdT = Aws::String>
+    CreateWorkspaceBundleRequest& WithImageId(ImageIdT&& value) { SetImageId(std::forward<ImageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
-    inline void SetImageId(const Aws::String& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
-
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
-
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
-    inline void SetImageId(const char* value) { m_imageIdHasBeenSet = true; m_imageId.assign(value); }
-
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithImageId(const Aws::String& value) { SetImageId(value); return *this;}
-
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the image that is used to create the bundle.</p>
-     */
-    inline CreateWorkspaceBundleRequest& WithImageId(const char* value) { SetImageId(value); return *this;}
-
-
+    ///@{
     
-    inline const ComputeType& GetComputeType() const{ return m_computeType; }
-
-    
+    inline const ComputeType& GetComputeType() const { return m_computeType; }
     inline bool ComputeTypeHasBeenSet() const { return m_computeTypeHasBeenSet; }
+    template<typename ComputeTypeT = ComputeType>
+    void SetComputeType(ComputeTypeT&& value) { m_computeTypeHasBeenSet = true; m_computeType = std::forward<ComputeTypeT>(value); }
+    template<typename ComputeTypeT = ComputeType>
+    CreateWorkspaceBundleRequest& WithComputeType(ComputeTypeT&& value) { SetComputeType(std::forward<ComputeTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetComputeType(const ComputeType& value) { m_computeTypeHasBeenSet = true; m_computeType = value; }
-
-    
-    inline void SetComputeType(ComputeType&& value) { m_computeTypeHasBeenSet = true; m_computeType = std::move(value); }
-
-    
-    inline CreateWorkspaceBundleRequest& WithComputeType(const ComputeType& value) { SetComputeType(value); return *this;}
-
-    
-    inline CreateWorkspaceBundleRequest& WithComputeType(ComputeType&& value) { SetComputeType(std::move(value)); return *this;}
-
-
-    
-    inline const UserStorage& GetUserStorage() const{ return m_userStorage; }
-
-    
+    inline const UserStorage& GetUserStorage() const { return m_userStorage; }
     inline bool UserStorageHasBeenSet() const { return m_userStorageHasBeenSet; }
+    template<typename UserStorageT = UserStorage>
+    void SetUserStorage(UserStorageT&& value) { m_userStorageHasBeenSet = true; m_userStorage = std::forward<UserStorageT>(value); }
+    template<typename UserStorageT = UserStorage>
+    CreateWorkspaceBundleRequest& WithUserStorage(UserStorageT&& value) { SetUserStorage(std::forward<UserStorageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetUserStorage(const UserStorage& value) { m_userStorageHasBeenSet = true; m_userStorage = value; }
-
-    
-    inline void SetUserStorage(UserStorage&& value) { m_userStorageHasBeenSet = true; m_userStorage = std::move(value); }
-
-    
-    inline CreateWorkspaceBundleRequest& WithUserStorage(const UserStorage& value) { SetUserStorage(value); return *this;}
-
-    
-    inline CreateWorkspaceBundleRequest& WithUserStorage(UserStorage&& value) { SetUserStorage(std::move(value)); return *this;}
-
-
-    
-    inline const RootStorage& GetRootStorage() const{ return m_rootStorage; }
-
-    
+    inline const RootStorage& GetRootStorage() const { return m_rootStorage; }
     inline bool RootStorageHasBeenSet() const { return m_rootStorageHasBeenSet; }
+    template<typename RootStorageT = RootStorage>
+    void SetRootStorage(RootStorageT&& value) { m_rootStorageHasBeenSet = true; m_rootStorage = std::forward<RootStorageT>(value); }
+    template<typename RootStorageT = RootStorage>
+    CreateWorkspaceBundleRequest& WithRootStorage(RootStorageT&& value) { SetRootStorage(std::forward<RootStorageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRootStorage(const RootStorage& value) { m_rootStorageHasBeenSet = true; m_rootStorage = value; }
-
-    
-    inline void SetRootStorage(RootStorage&& value) { m_rootStorageHasBeenSet = true; m_rootStorage = std::move(value); }
-
-    
-    inline CreateWorkspaceBundleRequest& WithRootStorage(const RootStorage& value) { SetRootStorage(value); return *this;}
-
-    
-    inline CreateWorkspaceBundleRequest& WithRootStorage(RootStorage&& value) { SetRootStorage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
      * time when you're creating the bundle, you must create an IAM policy that grants
      * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
      * 
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
-    inline CreateWorkspaceBundleRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
-    inline CreateWorkspaceBundleRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
-    inline CreateWorkspaceBundleRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags associated with the bundle.</p>  <p>To add tags at the same
-     * time when you're creating the bundle, you must create an IAM policy that grants
-     * your IAM user permissions to use <code>workspaces:CreateTags</code>. </p>
-     * 
-     */
-    inline CreateWorkspaceBundleRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateWorkspaceBundleRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateWorkspaceBundleRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_bundleName;

@@ -33,85 +33,38 @@ namespace Model
   class AmiProductSort
   {
   public:
-    AWS_MARKETPLACECATALOG_API AmiProductSort();
+    AWS_MARKETPLACECATALOG_API AmiProductSort() = default;
     AWS_MARKETPLACECATALOG_API AmiProductSort(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API AmiProductSort& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Field to sort the AMI products by.</p>
      */
-    inline const AmiProductSortBy& GetSortBy() const{ return m_sortBy; }
-
-    /**
-     * <p>Field to sort the AMI products by.</p>
-     */
+    inline AmiProductSortBy GetSortBy() const { return m_sortBy; }
     inline bool SortByHasBeenSet() const { return m_sortByHasBeenSet; }
+    inline void SetSortBy(AmiProductSortBy value) { m_sortByHasBeenSet = true; m_sortBy = value; }
+    inline AmiProductSort& WithSortBy(AmiProductSortBy value) { SetSortBy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Field to sort the AMI products by.</p>
-     */
-    inline void SetSortBy(const AmiProductSortBy& value) { m_sortByHasBeenSet = true; m_sortBy = value; }
-
-    /**
-     * <p>Field to sort the AMI products by.</p>
-     */
-    inline void SetSortBy(AmiProductSortBy&& value) { m_sortByHasBeenSet = true; m_sortBy = std::move(value); }
-
-    /**
-     * <p>Field to sort the AMI products by.</p>
-     */
-    inline AmiProductSort& WithSortBy(const AmiProductSortBy& value) { SetSortBy(value); return *this;}
-
-    /**
-     * <p>Field to sort the AMI products by.</p>
-     */
-    inline AmiProductSort& WithSortBy(AmiProductSortBy&& value) { SetSortBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
      * The default value is <code>DESCENDING</code>.</p>
      */
-    inline const SortOrder& GetSortOrder() const{ return m_sortOrder; }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
+    inline SortOrder GetSortOrder() const { return m_sortOrder; }
     inline bool SortOrderHasBeenSet() const { return m_sortOrderHasBeenSet; }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline void SetSortOrder(const SortOrder& value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline void SetSortOrder(SortOrder&& value) { m_sortOrderHasBeenSet = true; m_sortOrder = std::move(value); }
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline AmiProductSort& WithSortOrder(const SortOrder& value) { SetSortOrder(value); return *this;}
-
-    /**
-     * <p>The sorting order. Can be <code>ASCENDING</code> or <code>DESCENDING</code>.
-     * The default value is <code>DESCENDING</code>.</p>
-     */
-    inline AmiProductSort& WithSortOrder(SortOrder&& value) { SetSortOrder(std::move(value)); return *this;}
-
+    inline void SetSortOrder(SortOrder value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
+    inline AmiProductSort& WithSortOrder(SortOrder value) { SetSortOrder(value); return *this;}
+    ///@}
   private:
 
-    AmiProductSortBy m_sortBy;
+    AmiProductSortBy m_sortBy{AmiProductSortBy::NOT_SET};
     bool m_sortByHasBeenSet = false;
 
-    SortOrder m_sortOrder;
+    SortOrder m_sortOrder{SortOrder::NOT_SET};
     bool m_sortOrderHasBeenSet = false;
   };
 

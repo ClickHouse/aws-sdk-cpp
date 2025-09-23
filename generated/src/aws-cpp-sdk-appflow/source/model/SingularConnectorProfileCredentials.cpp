@@ -18,13 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-SingularConnectorProfileCredentials::SingularConnectorProfileCredentials() : 
-    m_apiKeyHasBeenSet(false)
-{
-}
-
-SingularConnectorProfileCredentials::SingularConnectorProfileCredentials(JsonView jsonValue) : 
-    m_apiKeyHasBeenSet(false)
+SingularConnectorProfileCredentials::SingularConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ SingularConnectorProfileCredentials& SingularConnectorProfileCredentials::operat
   if(jsonValue.ValueExists("apiKey"))
   {
     m_apiKey = jsonValue.GetString("apiKey");
-
     m_apiKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

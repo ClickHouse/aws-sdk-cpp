@@ -18,21 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-Topic::Topic() : 
-    m_topicNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_defaultSubscriptionStatus(SubscriptionStatus::NOT_SET),
-    m_defaultSubscriptionStatusHasBeenSet(false)
-{
-}
-
-Topic::Topic(JsonView jsonValue) : 
-    m_topicNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_defaultSubscriptionStatus(SubscriptionStatus::NOT_SET),
-    m_defaultSubscriptionStatusHasBeenSet(false)
+Topic::Topic(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ Topic& Topic::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TopicName"))
   {
     m_topicName = jsonValue.GetString("TopicName");
-
     m_topicNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DefaultSubscriptionStatus"))
   {
     m_defaultSubscriptionStatus = SubscriptionStatusMapper::GetSubscriptionStatusForName(jsonValue.GetString("DefaultSubscriptionStatus"));
-
     m_defaultSubscriptionStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

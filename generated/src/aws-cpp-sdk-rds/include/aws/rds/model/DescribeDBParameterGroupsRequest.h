@@ -26,7 +26,7 @@ namespace Model
   class DescribeDBParameterGroupsRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API DescribeDBParameterGroupsRequest();
+    AWS_RDS_API DescribeDBParameterGroupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,104 +41,35 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of a specific DB parameter group to return details for.</p>
      * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
      * DBClusterParameterGroup.</p> </li> </ul>
      */
-    inline const Aws::String& GetDBParameterGroupName() const{ return m_dBParameterGroupName; }
-
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
+    inline const Aws::String& GetDBParameterGroupName() const { return m_dBParameterGroupName; }
     inline bool DBParameterGroupNameHasBeenSet() const { return m_dBParameterGroupNameHasBeenSet; }
+    template<typename DBParameterGroupNameT = Aws::String>
+    void SetDBParameterGroupName(DBParameterGroupNameT&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::forward<DBParameterGroupNameT>(value); }
+    template<typename DBParameterGroupNameT = Aws::String>
+    DescribeDBParameterGroupsRequest& WithDBParameterGroupName(DBParameterGroupNameT&& value) { SetDBParameterGroupName(std::forward<DBParameterGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
-    inline void SetDBParameterGroupName(const Aws::String& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
-
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
-    inline void SetDBParameterGroupName(const char* value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
-    inline DescribeDBParameterGroupsRequest& WithDBParameterGroupName(const Aws::String& value) { SetDBParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
-    inline DescribeDBParameterGroupsRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a specific DB parameter group to return details for.</p>
-     * <p>Constraints:</p> <ul> <li> <p>If supplied, must match the name of an existing
-     * DBClusterParameterGroup.</p> </li> </ul>
-     */
-    inline DescribeDBParameterGroupsRequest& WithDBParameterGroupName(const char* value) { SetDBParameterGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This parameter isn't currently supported.</p>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    DescribeDBParameterGroupsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    DescribeDBParameterGroupsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of records to include in the response. If more records
      * exist than the specified <code>MaxRecords</code> value, a pagination token
@@ -146,100 +77,26 @@ namespace Model
      * remaining results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum
      * 100.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so that you can retrieve the
-     * remaining results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum
-     * 100.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so that you can retrieve the
-     * remaining results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum
-     * 100.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so that you can retrieve the
-     * remaining results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum
-     * 100.</p>
-     */
     inline DescribeDBParameterGroupsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional pagination token provided by a previous
      * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
      * the response includes only records beyond the marker, up to the value specified
      * by <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeDBParameterGroups</code> request. If this parameter is specified,
-     * the response includes only records beyond the marker, up to the value specified
-     * by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBParameterGroupsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeDBParameterGroupsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBParameterGroupName;
@@ -248,7 +105,7 @@ namespace Model
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_marker;

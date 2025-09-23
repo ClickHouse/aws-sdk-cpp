@@ -12,22 +12,9 @@ using namespace Aws::ivschat::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLoggingConfigurationRequest::UpdateLoggingConfigurationRequest() : 
-    m_destinationConfigurationHasBeenSet(false),
-    m_identifierHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLoggingConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_destinationConfigurationHasBeenSet)
-  {
-   payload.WithObject("destinationConfiguration", m_destinationConfiguration.Jsonize());
-
-  }
 
   if(m_identifierHasBeenSet)
   {
@@ -38,6 +25,12 @@ Aws::String UpdateLoggingConfigurationRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_destinationConfigurationHasBeenSet)
+  {
+   payload.WithObject("destinationConfiguration", m_destinationConfiguration.Jsonize());
 
   }
 

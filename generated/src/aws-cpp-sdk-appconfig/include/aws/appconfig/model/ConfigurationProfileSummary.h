@@ -33,217 +33,74 @@ namespace Model
   class ConfigurationProfileSummary
   {
   public:
-    AWS_APPCONFIG_API ConfigurationProfileSummary();
+    AWS_APPCONFIG_API ConfigurationProfileSummary() = default;
     AWS_APPCONFIG_API ConfigurationProfileSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API ConfigurationProfileSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The application ID.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The application ID.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    ConfigurationProfileSummary& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ConfigurationProfileSummary& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ConfigurationProfileSummary& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ConfigurationProfileSummary& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the configuration profile.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ConfigurationProfileSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the configuration profile.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ConfigurationProfileSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URI location of the configuration.</p>
      */
-    inline const Aws::String& GetLocationUri() const{ return m_locationUri; }
-
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
+    inline const Aws::String& GetLocationUri() const { return m_locationUri; }
     inline bool LocationUriHasBeenSet() const { return m_locationUriHasBeenSet; }
+    template<typename LocationUriT = Aws::String>
+    void SetLocationUri(LocationUriT&& value) { m_locationUriHasBeenSet = true; m_locationUri = std::forward<LocationUriT>(value); }
+    template<typename LocationUriT = Aws::String>
+    ConfigurationProfileSummary& WithLocationUri(LocationUriT&& value) { SetLocationUri(std::forward<LocationUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
-    inline void SetLocationUri(const Aws::String& value) { m_locationUriHasBeenSet = true; m_locationUri = value; }
-
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
-    inline void SetLocationUri(Aws::String&& value) { m_locationUriHasBeenSet = true; m_locationUri = std::move(value); }
-
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
-    inline void SetLocationUri(const char* value) { m_locationUriHasBeenSet = true; m_locationUri.assign(value); }
-
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
-    inline ConfigurationProfileSummary& WithLocationUri(const Aws::String& value) { SetLocationUri(value); return *this;}
-
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
-    inline ConfigurationProfileSummary& WithLocationUri(Aws::String&& value) { SetLocationUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The URI location of the configuration.</p>
-     */
-    inline ConfigurationProfileSummary& WithLocationUri(const char* value) { SetLocationUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The types of validators in the configuration profile.</p>
      */
-    inline const Aws::Vector<ValidatorType>& GetValidatorTypes() const{ return m_validatorTypes; }
-
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
+    inline const Aws::Vector<ValidatorType>& GetValidatorTypes() const { return m_validatorTypes; }
     inline bool ValidatorTypesHasBeenSet() const { return m_validatorTypesHasBeenSet; }
+    template<typename ValidatorTypesT = Aws::Vector<ValidatorType>>
+    void SetValidatorTypes(ValidatorTypesT&& value) { m_validatorTypesHasBeenSet = true; m_validatorTypes = std::forward<ValidatorTypesT>(value); }
+    template<typename ValidatorTypesT = Aws::Vector<ValidatorType>>
+    ConfigurationProfileSummary& WithValidatorTypes(ValidatorTypesT&& value) { SetValidatorTypes(std::forward<ValidatorTypesT>(value)); return *this;}
+    inline ConfigurationProfileSummary& AddValidatorTypes(ValidatorType value) { m_validatorTypesHasBeenSet = true; m_validatorTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
-    inline void SetValidatorTypes(const Aws::Vector<ValidatorType>& value) { m_validatorTypesHasBeenSet = true; m_validatorTypes = value; }
-
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
-    inline void SetValidatorTypes(Aws::Vector<ValidatorType>&& value) { m_validatorTypesHasBeenSet = true; m_validatorTypes = std::move(value); }
-
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithValidatorTypes(const Aws::Vector<ValidatorType>& value) { SetValidatorTypes(value); return *this;}
-
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& WithValidatorTypes(Aws::Vector<ValidatorType>&& value) { SetValidatorTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& AddValidatorTypes(const ValidatorType& value) { m_validatorTypesHasBeenSet = true; m_validatorTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The types of validators in the configuration profile.</p>
-     */
-    inline ConfigurationProfileSummary& AddValidatorTypes(ValidatorType&& value) { m_validatorTypesHasBeenSet = true; m_validatorTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The type of configurations contained in the profile. AppConfig supports
      * <code>feature flags</code> and <code>freeform</code> configurations. We
@@ -253,85 +110,13 @@ namespace Model
      * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
      * <code>AWS.Freeform</code> </p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
-    inline ConfigurationProfileSummary& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
-    inline ConfigurationProfileSummary& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of configurations contained in the profile. AppConfig supports
-     * <code>feature flags</code> and <code>freeform</code> configurations. We
-     * recommend you create feature flag configurations to enable or disable new
-     * features and freeform configurations to distribute configurations to an
-     * application. When calling this API, enter one of the following values for
-     * <code>Type</code>:</p> <p> <code>AWS.AppConfig.FeatureFlags</code> </p> <p>
-     * <code>AWS.Freeform</code> </p>
-     */
-    inline ConfigurationProfileSummary& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ConfigurationProfileSummary& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

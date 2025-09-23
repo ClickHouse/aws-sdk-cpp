@@ -35,322 +35,129 @@ namespace Model
   class DataValue
   {
   public:
-    AWS_IOTTWINMAKER_API DataValue();
+    AWS_IOTTWINMAKER_API DataValue() = default;
     AWS_IOTTWINMAKER_API DataValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API DataValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A Boolean value.</p>
      */
-    inline bool GetBooleanValue() const{ return m_booleanValue; }
-
-    /**
-     * <p>A Boolean value.</p>
-     */
+    inline bool GetBooleanValue() const { return m_booleanValue; }
     inline bool BooleanValueHasBeenSet() const { return m_booleanValueHasBeenSet; }
-
-    /**
-     * <p>A Boolean value.</p>
-     */
     inline void SetBooleanValue(bool value) { m_booleanValueHasBeenSet = true; m_booleanValue = value; }
-
-    /**
-     * <p>A Boolean value.</p>
-     */
     inline DataValue& WithBooleanValue(bool value) { SetBooleanValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A double value.</p>
      */
-    inline double GetDoubleValue() const{ return m_doubleValue; }
-
-    /**
-     * <p>A double value.</p>
-     */
+    inline double GetDoubleValue() const { return m_doubleValue; }
     inline bool DoubleValueHasBeenSet() const { return m_doubleValueHasBeenSet; }
-
-    /**
-     * <p>A double value.</p>
-     */
     inline void SetDoubleValue(double value) { m_doubleValueHasBeenSet = true; m_doubleValue = value; }
-
-    /**
-     * <p>A double value.</p>
-     */
     inline DataValue& WithDoubleValue(double value) { SetDoubleValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An integer value.</p>
      */
-    inline int GetIntegerValue() const{ return m_integerValue; }
-
-    /**
-     * <p>An integer value.</p>
-     */
+    inline int GetIntegerValue() const { return m_integerValue; }
     inline bool IntegerValueHasBeenSet() const { return m_integerValueHasBeenSet; }
-
-    /**
-     * <p>An integer value.</p>
-     */
     inline void SetIntegerValue(int value) { m_integerValueHasBeenSet = true; m_integerValue = value; }
-
-    /**
-     * <p>An integer value.</p>
-     */
     inline DataValue& WithIntegerValue(int value) { SetIntegerValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A long value.</p>
      */
-    inline long long GetLongValue() const{ return m_longValue; }
-
-    /**
-     * <p>A long value.</p>
-     */
+    inline long long GetLongValue() const { return m_longValue; }
     inline bool LongValueHasBeenSet() const { return m_longValueHasBeenSet; }
-
-    /**
-     * <p>A long value.</p>
-     */
     inline void SetLongValue(long long value) { m_longValueHasBeenSet = true; m_longValue = value; }
-
-    /**
-     * <p>A long value.</p>
-     */
     inline DataValue& WithLongValue(long long value) { SetLongValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A string value.</p>
      */
-    inline const Aws::String& GetStringValue() const{ return m_stringValue; }
-
-    /**
-     * <p>A string value.</p>
-     */
+    inline const Aws::String& GetStringValue() const { return m_stringValue; }
     inline bool StringValueHasBeenSet() const { return m_stringValueHasBeenSet; }
+    template<typename StringValueT = Aws::String>
+    void SetStringValue(StringValueT&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::forward<StringValueT>(value); }
+    template<typename StringValueT = Aws::String>
+    DataValue& WithStringValue(StringValueT&& value) { SetStringValue(std::forward<StringValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string value.</p>
-     */
-    inline void SetStringValue(const Aws::String& value) { m_stringValueHasBeenSet = true; m_stringValue = value; }
-
-    /**
-     * <p>A string value.</p>
-     */
-    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::move(value); }
-
-    /**
-     * <p>A string value.</p>
-     */
-    inline void SetStringValue(const char* value) { m_stringValueHasBeenSet = true; m_stringValue.assign(value); }
-
-    /**
-     * <p>A string value.</p>
-     */
-    inline DataValue& WithStringValue(const Aws::String& value) { SetStringValue(value); return *this;}
-
-    /**
-     * <p>A string value.</p>
-     */
-    inline DataValue& WithStringValue(Aws::String&& value) { SetStringValue(std::move(value)); return *this;}
-
-    /**
-     * <p>A string value.</p>
-     */
-    inline DataValue& WithStringValue(const char* value) { SetStringValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of multiple values.</p>
      */
-    inline const Aws::Vector<DataValue>& GetListValue() const{ return m_listValue; }
-
-    /**
-     * <p>A list of multiple values.</p>
-     */
+    inline const Aws::Vector<DataValue>& GetListValue() const { return m_listValue; }
     inline bool ListValueHasBeenSet() const { return m_listValueHasBeenSet; }
+    template<typename ListValueT = Aws::Vector<DataValue>>
+    void SetListValue(ListValueT&& value) { m_listValueHasBeenSet = true; m_listValue = std::forward<ListValueT>(value); }
+    template<typename ListValueT = Aws::Vector<DataValue>>
+    DataValue& WithListValue(ListValueT&& value) { SetListValue(std::forward<ListValueT>(value)); return *this;}
+    template<typename ListValueT = DataValue>
+    DataValue& AddListValue(ListValueT&& value) { m_listValueHasBeenSet = true; m_listValue.emplace_back(std::forward<ListValueT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of multiple values.</p>
-     */
-    inline void SetListValue(const Aws::Vector<DataValue>& value) { m_listValueHasBeenSet = true; m_listValue = value; }
-
-    /**
-     * <p>A list of multiple values.</p>
-     */
-    inline void SetListValue(Aws::Vector<DataValue>&& value) { m_listValueHasBeenSet = true; m_listValue = std::move(value); }
-
-    /**
-     * <p>A list of multiple values.</p>
-     */
-    inline DataValue& WithListValue(const Aws::Vector<DataValue>& value) { SetListValue(value); return *this;}
-
-    /**
-     * <p>A list of multiple values.</p>
-     */
-    inline DataValue& WithListValue(Aws::Vector<DataValue>&& value) { SetListValue(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of multiple values.</p>
-     */
-    inline DataValue& AddListValue(const DataValue& value) { m_listValueHasBeenSet = true; m_listValue.push_back(value); return *this; }
-
-    /**
-     * <p>A list of multiple values.</p>
-     */
-    inline DataValue& AddListValue(DataValue&& value) { m_listValueHasBeenSet = true; m_listValue.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
      */
-    inline const Aws::Map<Aws::String, DataValue>& GetMapValue() const{ return m_mapValue; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
+    inline const Aws::Map<Aws::String, DataValue>& GetMapValue() const { return m_mapValue; }
     inline bool MapValueHasBeenSet() const { return m_mapValueHasBeenSet; }
+    template<typename MapValueT = Aws::Map<Aws::String, DataValue>>
+    void SetMapValue(MapValueT&& value) { m_mapValueHasBeenSet = true; m_mapValue = std::forward<MapValueT>(value); }
+    template<typename MapValueT = Aws::Map<Aws::String, DataValue>>
+    DataValue& WithMapValue(MapValueT&& value) { SetMapValue(std::forward<MapValueT>(value)); return *this;}
+    template<typename MapValueKeyT = Aws::String, typename MapValueValueT = DataValue>
+    DataValue& AddMapValue(MapValueKeyT&& key, MapValueValueT&& value) {
+      m_mapValueHasBeenSet = true; m_mapValue.emplace(std::forward<MapValueKeyT>(key), std::forward<MapValueValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline void SetMapValue(const Aws::Map<Aws::String, DataValue>& value) { m_mapValueHasBeenSet = true; m_mapValue = value; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline void SetMapValue(Aws::Map<Aws::String, DataValue>&& value) { m_mapValueHasBeenSet = true; m_mapValue = std::move(value); }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& WithMapValue(const Aws::Map<Aws::String, DataValue>& value) { SetMapValue(value); return *this;}
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& WithMapValue(Aws::Map<Aws::String, DataValue>&& value) { SetMapValue(std::move(value)); return *this;}
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& AddMapValue(const Aws::String& key, const DataValue& value) { m_mapValueHasBeenSet = true; m_mapValue.emplace(key, value); return *this; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& AddMapValue(Aws::String&& key, const DataValue& value) { m_mapValueHasBeenSet = true; m_mapValue.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& AddMapValue(const Aws::String& key, DataValue&& value) { m_mapValueHasBeenSet = true; m_mapValue.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& AddMapValue(Aws::String&& key, DataValue&& value) { m_mapValueHasBeenSet = true; m_mapValue.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& AddMapValue(const char* key, DataValue&& value) { m_mapValueHasBeenSet = true; m_mapValue.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that maps strings to multiple <code>DataValue</code> objects.</p>
-     */
-    inline DataValue& AddMapValue(const char* key, const DataValue& value) { m_mapValueHasBeenSet = true; m_mapValue.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A value that relates a component to another component.</p>
      */
-    inline const RelationshipValue& GetRelationshipValue() const{ return m_relationshipValue; }
-
-    /**
-     * <p>A value that relates a component to another component.</p>
-     */
+    inline const RelationshipValue& GetRelationshipValue() const { return m_relationshipValue; }
     inline bool RelationshipValueHasBeenSet() const { return m_relationshipValueHasBeenSet; }
+    template<typename RelationshipValueT = RelationshipValue>
+    void SetRelationshipValue(RelationshipValueT&& value) { m_relationshipValueHasBeenSet = true; m_relationshipValue = std::forward<RelationshipValueT>(value); }
+    template<typename RelationshipValueT = RelationshipValue>
+    DataValue& WithRelationshipValue(RelationshipValueT&& value) { SetRelationshipValue(std::forward<RelationshipValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A value that relates a component to another component.</p>
-     */
-    inline void SetRelationshipValue(const RelationshipValue& value) { m_relationshipValueHasBeenSet = true; m_relationshipValue = value; }
-
-    /**
-     * <p>A value that relates a component to another component.</p>
-     */
-    inline void SetRelationshipValue(RelationshipValue&& value) { m_relationshipValueHasBeenSet = true; m_relationshipValue = std::move(value); }
-
-    /**
-     * <p>A value that relates a component to another component.</p>
-     */
-    inline DataValue& WithRelationshipValue(const RelationshipValue& value) { SetRelationshipValue(value); return *this;}
-
-    /**
-     * <p>A value that relates a component to another component.</p>
-     */
-    inline DataValue& WithRelationshipValue(RelationshipValue&& value) { SetRelationshipValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An expression that produces the value.</p>
      */
-    inline const Aws::String& GetExpression() const{ return m_expression; }
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
+    inline const Aws::String& GetExpression() const { return m_expression; }
     inline bool ExpressionHasBeenSet() const { return m_expressionHasBeenSet; }
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
-    inline void SetExpression(const Aws::String& value) { m_expressionHasBeenSet = true; m_expression = value; }
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
-    inline void SetExpression(Aws::String&& value) { m_expressionHasBeenSet = true; m_expression = std::move(value); }
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
-    inline void SetExpression(const char* value) { m_expressionHasBeenSet = true; m_expression.assign(value); }
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
-    inline DataValue& WithExpression(const Aws::String& value) { SetExpression(value); return *this;}
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
-    inline DataValue& WithExpression(Aws::String&& value) { SetExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>An expression that produces the value.</p>
-     */
-    inline DataValue& WithExpression(const char* value) { SetExpression(value); return *this;}
-
+    template<typename ExpressionT = Aws::String>
+    void SetExpression(ExpressionT&& value) { m_expressionHasBeenSet = true; m_expression = std::forward<ExpressionT>(value); }
+    template<typename ExpressionT = Aws::String>
+    DataValue& WithExpression(ExpressionT&& value) { SetExpression(std::forward<ExpressionT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_booleanValue;
+    bool m_booleanValue{false};
     bool m_booleanValueHasBeenSet = false;
 
-    double m_doubleValue;
+    double m_doubleValue{0.0};
     bool m_doubleValueHasBeenSet = false;
 
-    int m_integerValue;
+    int m_integerValue{0};
     bool m_integerValueHasBeenSet = false;
 
-    long long m_longValue;
+    long long m_longValue{0};
     bool m_longValueHasBeenSet = false;
 
     Aws::String m_stringValue;

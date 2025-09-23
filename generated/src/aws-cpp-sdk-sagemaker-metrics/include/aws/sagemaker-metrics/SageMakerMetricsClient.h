@@ -26,8 +26,8 @@ namespace SageMakerMetrics
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef SageMakerMetricsClientConfiguration ClientConfigurationType;
       typedef SageMakerMetricsEndpointProvider EndpointProviderType;
@@ -37,14 +37,14 @@ namespace SageMakerMetrics
         * is not specified, it will be initialized to default values.
         */
         SageMakerMetricsClient(const Aws::SageMakerMetrics::SageMakerMetricsClientConfiguration& clientConfiguration = Aws::SageMakerMetrics::SageMakerMetricsClientConfiguration(),
-                               std::shared_ptr<SageMakerMetricsEndpointProviderBase> endpointProvider = Aws::MakeShared<SageMakerMetricsEndpointProvider>(ALLOCATION_TAG));
+                               std::shared_ptr<SageMakerMetricsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SageMakerMetricsClient(const Aws::Auth::AWSCredentials& credentials,
-                               std::shared_ptr<SageMakerMetricsEndpointProviderBase> endpointProvider = Aws::MakeShared<SageMakerMetricsEndpointProvider>(ALLOCATION_TAG),
+                               std::shared_ptr<SageMakerMetricsEndpointProviderBase> endpointProvider = nullptr,
                                const Aws::SageMakerMetrics::SageMakerMetricsClientConfiguration& clientConfiguration = Aws::SageMakerMetrics::SageMakerMetricsClientConfiguration());
 
        /**
@@ -52,7 +52,7 @@ namespace SageMakerMetrics
         * the default http client factory will be used
         */
         SageMakerMetricsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                               std::shared_ptr<SageMakerMetricsEndpointProviderBase> endpointProvider = Aws::MakeShared<SageMakerMetricsEndpointProvider>(ALLOCATION_TAG),
+                               std::shared_ptr<SageMakerMetricsEndpointProviderBase> endpointProvider = nullptr,
                                const Aws::SageMakerMetrics::SageMakerMetricsClientConfiguration& clientConfiguration = Aws::SageMakerMetrics::SageMakerMetricsClientConfiguration());
 
 
@@ -81,9 +81,34 @@ namespace SageMakerMetrics
         virtual ~SageMakerMetricsClient();
 
         /**
+         * <p>Used to retrieve training metrics from SageMaker.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-metrics-2022-09-30/BatchGetMetrics">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::BatchGetMetricsOutcome BatchGetMetrics(const Model::BatchGetMetricsRequest& request) const;
+
+        /**
+         * A Callable wrapper for BatchGetMetrics that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename BatchGetMetricsRequestT = Model::BatchGetMetricsRequest>
+        Model::BatchGetMetricsOutcomeCallable BatchGetMetricsCallable(const BatchGetMetricsRequestT& request) const
+        {
+            return SubmitCallable(&SageMakerMetricsClient::BatchGetMetrics, request);
+        }
+
+        /**
+         * An Async wrapper for BatchGetMetrics that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename BatchGetMetricsRequestT = Model::BatchGetMetricsRequest>
+        void BatchGetMetricsAsync(const BatchGetMetricsRequestT& request, const BatchGetMetricsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SageMakerMetricsClient::BatchGetMetrics, request, handler, context);
+        }
+
+        /**
          * <p>Used to ingest training metrics into SageMaker. These metrics can be
-         * visualized in SageMaker Studio and retrieved with the <code>GetMetrics</code>
-         * API. </p><p><h3>See Also:</h3>   <a
+         * visualized in SageMaker Studio. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-metrics-2022-09-30/BatchPutMetrics">AWS
          * API Reference</a></p>
          */
@@ -115,7 +140,6 @@ namespace SageMakerMetrics
       void init(const SageMakerMetricsClientConfiguration& clientConfiguration);
 
       SageMakerMetricsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<SageMakerMetricsEndpointProviderBase> m_endpointProvider;
   };
 

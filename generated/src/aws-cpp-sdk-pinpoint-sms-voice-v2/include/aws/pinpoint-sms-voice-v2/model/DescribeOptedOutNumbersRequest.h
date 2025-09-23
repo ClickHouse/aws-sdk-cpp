@@ -23,7 +23,7 @@ namespace Model
   class DescribeOptedOutNumbersRequest : public PinpointSMSVoiceV2Request
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API DescribeOptedOutNumbersRequest();
+    AWS_PINPOINTSMSVOICEV2_API DescribeOptedOutNumbersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,219 +36,73 @@ namespace Model
     AWS_PINPOINTSMSVOICEV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
      * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
+     * OptOutListArn.</p>  <p>If you are using a shared AWS End User
+     * Messaging SMS and Voice resource then you must use the full Amazon Resource
+     * Name(ARN).</p> 
      */
-    inline const Aws::String& GetOptOutListName() const{ return m_optOutListName; }
-
-    /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
-     */
+    inline const Aws::String& GetOptOutListName() const { return m_optOutListName; }
     inline bool OptOutListNameHasBeenSet() const { return m_optOutListNameHasBeenSet; }
+    template<typename OptOutListNameT = Aws::String>
+    void SetOptOutListName(OptOutListNameT&& value) { m_optOutListNameHasBeenSet = true; m_optOutListName = std::forward<OptOutListNameT>(value); }
+    template<typename OptOutListNameT = Aws::String>
+    DescribeOptedOutNumbersRequest& WithOptOutListName(OptOutListNameT&& value) { SetOptOutListName(std::forward<OptOutListNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
+     * <p>An array of phone numbers to search for in the OptOutList.</p> <p>If you
+     * specify an opted out number that isn't valid, an exception is returned.</p>
      */
-    inline void SetOptOutListName(const Aws::String& value) { m_optOutListNameHasBeenSet = true; m_optOutListName = value; }
-
-    /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
-     */
-    inline void SetOptOutListName(Aws::String&& value) { m_optOutListNameHasBeenSet = true; m_optOutListName = std::move(value); }
-
-    /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
-     */
-    inline void SetOptOutListName(const char* value) { m_optOutListNameHasBeenSet = true; m_optOutListName.assign(value); }
-
-    /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithOptOutListName(const Aws::String& value) { SetOptOutListName(value); return *this;}
-
-    /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithOptOutListName(Aws::String&& value) { SetOptOutListName(std::move(value)); return *this;}
-
-    /**
-     * <p>The OptOutListName or OptOutListArn of the OptOutList. You can use
-     * <a>DescribeOptOutLists</a> to find the values for OptOutListName and
-     * OptOutListArn.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithOptOutListName(const char* value) { SetOptOutListName(value); return *this;}
-
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetOptedOutNumbers() const{ return m_optedOutNumbers; }
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOptedOutNumbers() const { return m_optedOutNumbers; }
     inline bool OptedOutNumbersHasBeenSet() const { return m_optedOutNumbersHasBeenSet; }
+    template<typename OptedOutNumbersT = Aws::Vector<Aws::String>>
+    void SetOptedOutNumbers(OptedOutNumbersT&& value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers = std::forward<OptedOutNumbersT>(value); }
+    template<typename OptedOutNumbersT = Aws::Vector<Aws::String>>
+    DescribeOptedOutNumbersRequest& WithOptedOutNumbers(OptedOutNumbersT&& value) { SetOptedOutNumbers(std::forward<OptedOutNumbersT>(value)); return *this;}
+    template<typename OptedOutNumbersT = Aws::String>
+    DescribeOptedOutNumbersRequest& AddOptedOutNumbers(OptedOutNumbersT&& value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers.emplace_back(std::forward<OptedOutNumbersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline void SetOptedOutNumbers(const Aws::Vector<Aws::String>& value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers = value; }
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline void SetOptedOutNumbers(Aws::Vector<Aws::String>&& value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers = std::move(value); }
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithOptedOutNumbers(const Aws::Vector<Aws::String>& value) { SetOptedOutNumbers(value); return *this;}
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithOptedOutNumbers(Aws::Vector<Aws::String>&& value) { SetOptedOutNumbers(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& AddOptedOutNumbers(const Aws::String& value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers.push_back(value); return *this; }
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& AddOptedOutNumbers(Aws::String&& value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of phone numbers to search for in the OptOutList.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& AddOptedOutNumbers(const char* value) { m_optedOutNumbersHasBeenSet = true; m_optedOutNumbers.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of OptedOutFilter objects to filter the results on.</p>
      */
-    inline const Aws::Vector<OptedOutFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
+    inline const Aws::Vector<OptedOutFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<OptedOutFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<OptedOutFilter>>
+    DescribeOptedOutNumbersRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = OptedOutFilter>
+    DescribeOptedOutNumbersRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
-    inline void SetFilters(const Aws::Vector<OptedOutFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
-    inline void SetFilters(Aws::Vector<OptedOutFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithFilters(const Aws::Vector<OptedOutFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithFilters(Aws::Vector<OptedOutFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& AddFilters(const OptedOutFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>An array of OptedOutFilter objects to filter the results on.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& AddFilters(OptedOutFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token to be used for the next set of paginated results. You don't need to
      * supply a value for this field in the initial request.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeOptedOutNumbersRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to be used for the next set of paginated results. You don't need to
-     * supply a value for this field in the initial request.</p>
-     */
-    inline DescribeOptedOutNumbersRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return per each request.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return per each request.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return per each request.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return per each request.</p>
-     */
     inline DescribeOptedOutNumbersRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_optOutListName;
@@ -263,7 +117,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

@@ -19,17 +19,7 @@ namespace EFS
 namespace Model
 {
 
-FileSystemProtectionDescription::FileSystemProtectionDescription() : 
-    m_replicationOverwriteProtection(ReplicationOverwriteProtection::NOT_SET),
-    m_replicationOverwriteProtectionHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-FileSystemProtectionDescription::FileSystemProtectionDescription(JsonView jsonValue) : 
-    m_replicationOverwriteProtection(ReplicationOverwriteProtection::NOT_SET),
-    m_replicationOverwriteProtectionHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+FileSystemProtectionDescription::FileSystemProtectionDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,10 +29,8 @@ FileSystemProtectionDescription& FileSystemProtectionDescription::operator =(Jso
   if(jsonValue.ValueExists("ReplicationOverwriteProtection"))
   {
     m_replicationOverwriteProtection = ReplicationOverwriteProtectionMapper::GetReplicationOverwriteProtectionForName(jsonValue.GetString("ReplicationOverwriteProtection"));
-
     m_replicationOverwriteProtectionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,123 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Explanation::Explanation() : 
-    m_aclHasBeenSet(false),
-    m_aclRuleHasBeenSet(false),
-    m_addressHasBeenSet(false),
-    m_addressesHasBeenSet(false),
-    m_attachedToHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_cidrsHasBeenSet(false),
-    m_componentHasBeenSet(false),
-    m_customerGatewayHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_destinationVpcHasBeenSet(false),
-    m_directionHasBeenSet(false),
-    m_explanationCodeHasBeenSet(false),
-    m_ingressRouteTableHasBeenSet(false),
-    m_internetGatewayHasBeenSet(false),
-    m_loadBalancerArnHasBeenSet(false),
-    m_classicLoadBalancerListenerHasBeenSet(false),
-    m_loadBalancerListenerPort(0),
-    m_loadBalancerListenerPortHasBeenSet(false),
-    m_loadBalancerTargetHasBeenSet(false),
-    m_loadBalancerTargetGroupHasBeenSet(false),
-    m_loadBalancerTargetGroupsHasBeenSet(false),
-    m_loadBalancerTargetPort(0),
-    m_loadBalancerTargetPortHasBeenSet(false),
-    m_elasticLoadBalancerListenerHasBeenSet(false),
-    m_missingComponentHasBeenSet(false),
-    m_natGatewayHasBeenSet(false),
-    m_networkInterfaceHasBeenSet(false),
-    m_packetFieldHasBeenSet(false),
-    m_vpcPeeringConnectionHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_portRangesHasBeenSet(false),
-    m_prefixListHasBeenSet(false),
-    m_protocolsHasBeenSet(false),
-    m_routeTableRouteHasBeenSet(false),
-    m_routeTableHasBeenSet(false),
-    m_securityGroupHasBeenSet(false),
-    m_securityGroupRuleHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_sourceVpcHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_subnetHasBeenSet(false),
-    m_subnetRouteTableHasBeenSet(false),
-    m_vpcHasBeenSet(false),
-    m_vpcEndpointHasBeenSet(false),
-    m_vpnConnectionHasBeenSet(false),
-    m_vpnGatewayHasBeenSet(false),
-    m_transitGatewayHasBeenSet(false),
-    m_transitGatewayRouteTableHasBeenSet(false),
-    m_transitGatewayRouteTableRouteHasBeenSet(false),
-    m_transitGatewayAttachmentHasBeenSet(false),
-    m_componentAccountHasBeenSet(false),
-    m_componentRegionHasBeenSet(false),
-    m_firewallStatelessRuleHasBeenSet(false),
-    m_firewallStatefulRuleHasBeenSet(false)
-{
-}
-
-Explanation::Explanation(const XmlNode& xmlNode) : 
-    m_aclHasBeenSet(false),
-    m_aclRuleHasBeenSet(false),
-    m_addressHasBeenSet(false),
-    m_addressesHasBeenSet(false),
-    m_attachedToHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_cidrsHasBeenSet(false),
-    m_componentHasBeenSet(false),
-    m_customerGatewayHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_destinationVpcHasBeenSet(false),
-    m_directionHasBeenSet(false),
-    m_explanationCodeHasBeenSet(false),
-    m_ingressRouteTableHasBeenSet(false),
-    m_internetGatewayHasBeenSet(false),
-    m_loadBalancerArnHasBeenSet(false),
-    m_classicLoadBalancerListenerHasBeenSet(false),
-    m_loadBalancerListenerPort(0),
-    m_loadBalancerListenerPortHasBeenSet(false),
-    m_loadBalancerTargetHasBeenSet(false),
-    m_loadBalancerTargetGroupHasBeenSet(false),
-    m_loadBalancerTargetGroupsHasBeenSet(false),
-    m_loadBalancerTargetPort(0),
-    m_loadBalancerTargetPortHasBeenSet(false),
-    m_elasticLoadBalancerListenerHasBeenSet(false),
-    m_missingComponentHasBeenSet(false),
-    m_natGatewayHasBeenSet(false),
-    m_networkInterfaceHasBeenSet(false),
-    m_packetFieldHasBeenSet(false),
-    m_vpcPeeringConnectionHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_portRangesHasBeenSet(false),
-    m_prefixListHasBeenSet(false),
-    m_protocolsHasBeenSet(false),
-    m_routeTableRouteHasBeenSet(false),
-    m_routeTableHasBeenSet(false),
-    m_securityGroupHasBeenSet(false),
-    m_securityGroupRuleHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_sourceVpcHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_subnetHasBeenSet(false),
-    m_subnetRouteTableHasBeenSet(false),
-    m_vpcHasBeenSet(false),
-    m_vpcEndpointHasBeenSet(false),
-    m_vpnConnectionHasBeenSet(false),
-    m_vpnGatewayHasBeenSet(false),
-    m_transitGatewayHasBeenSet(false),
-    m_transitGatewayRouteTableHasBeenSet(false),
-    m_transitGatewayRouteTableRouteHasBeenSet(false),
-    m_transitGatewayAttachmentHasBeenSet(false),
-    m_componentAccountHasBeenSet(false),
-    m_componentRegionHasBeenSet(false),
-    m_firewallStatelessRuleHasBeenSet(false),
-    m_firewallStatefulRuleHasBeenSet(false)
+Explanation::Explanation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -169,6 +53,7 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
     if(!addressesNode.IsNull())
     {
       XmlNode addressesMember = addressesNode.FirstChild("item");
+      m_addressesHasBeenSet = !addressesMember.IsNull();
       while(!addressesMember.IsNull())
       {
         m_addresses.push_back(addressesMember.GetText());
@@ -187,6 +72,7 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("item");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember.GetText());
@@ -195,10 +81,24 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
 
       m_availabilityZonesHasBeenSet = true;
     }
+    XmlNode availabilityZoneIdsNode = resultNode.FirstChild("availabilityZoneIdSet");
+    if(!availabilityZoneIdsNode.IsNull())
+    {
+      XmlNode availabilityZoneIdsMember = availabilityZoneIdsNode.FirstChild("item");
+      m_availabilityZoneIdsHasBeenSet = !availabilityZoneIdsMember.IsNull();
+      while(!availabilityZoneIdsMember.IsNull())
+      {
+        m_availabilityZoneIds.push_back(availabilityZoneIdsMember.GetText());
+        availabilityZoneIdsMember = availabilityZoneIdsMember.NextNode("item");
+      }
+
+      m_availabilityZoneIdsHasBeenSet = true;
+    }
     XmlNode cidrsNode = resultNode.FirstChild("cidrSet");
     if(!cidrsNode.IsNull())
     {
       XmlNode cidrsMember = cidrsNode.FirstChild("item");
+      m_cidrsHasBeenSet = !cidrsMember.IsNull();
       while(!cidrsMember.IsNull())
       {
         m_cidrs.push_back(cidrsMember.GetText());
@@ -289,6 +189,7 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
     if(!loadBalancerTargetGroupsNode.IsNull())
     {
       XmlNode loadBalancerTargetGroupsMember = loadBalancerTargetGroupsNode.FirstChild("item");
+      m_loadBalancerTargetGroupsHasBeenSet = !loadBalancerTargetGroupsMember.IsNull();
       while(!loadBalancerTargetGroupsMember.IsNull())
       {
         m_loadBalancerTargetGroups.push_back(loadBalancerTargetGroupsMember);
@@ -349,6 +250,7 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
     if(!portRangesNode.IsNull())
     {
       XmlNode portRangesMember = portRangesNode.FirstChild("item");
+      m_portRangesHasBeenSet = !portRangesMember.IsNull();
       while(!portRangesMember.IsNull())
       {
         m_portRanges.push_back(portRangesMember);
@@ -367,6 +269,7 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
     if(!protocolsNode.IsNull())
     {
       XmlNode protocolsMember = protocolsNode.FirstChild("item");
+      m_protocolsHasBeenSet = !protocolsMember.IsNull();
       while(!protocolsMember.IsNull())
       {
         m_protocols.push_back(protocolsMember.GetText());
@@ -403,6 +306,7 @@ Explanation& Explanation::operator =(const XmlNode& xmlNode)
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember);
@@ -555,6 +459,15 @@ void Explanation::OutputToStream(Aws::OStream& oStream, const char* location, un
       for(auto& item : m_availabilityZones)
       {
         oStream << location << index << locationValue << ".AvailabilityZoneSet." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
+  if(m_availabilityZoneIdsHasBeenSet)
+  {
+      unsigned availabilityZoneIdsIdx = 1;
+      for(auto& item : m_availabilityZoneIds)
+      {
+        oStream << location << index << locationValue << ".AvailabilityZoneIdSet." << availabilityZoneIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -923,6 +836,14 @@ void Explanation::OutputToStream(Aws::OStream& oStream, const char* location) co
         oStream << location << ".AvailabilityZoneSet." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+  if(m_availabilityZoneIdsHasBeenSet)
+  {
+      unsigned availabilityZoneIdsIdx = 1;
+      for(auto& item : m_availabilityZoneIds)
+      {
+        oStream << location << ".AvailabilityZoneIdSet." << availabilityZoneIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
   if(m_cidrsHasBeenSet)
   {
       unsigned cidrsIdx = 1;
@@ -1007,7 +928,7 @@ void Explanation::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_loadBalancerTargetGroups)
       {
         Aws::StringStream loadBalancerTargetGroupsSs;
-        loadBalancerTargetGroupsSs << location <<  ".LoadBalancerTargetGroupSet." << loadBalancerTargetGroupsIdx++;
+        loadBalancerTargetGroupsSs << location << ".LoadBalancerTargetGroupSet." << loadBalancerTargetGroupsIdx++;
         item.OutputToStream(oStream, loadBalancerTargetGroupsSs.str().c_str());
       }
   }
@@ -1057,7 +978,7 @@ void Explanation::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_portRanges)
       {
         Aws::StringStream portRangesSs;
-        portRangesSs << location <<  ".PortRangeSet." << portRangesIdx++;
+        portRangesSs << location << ".PortRangeSet." << portRangesIdx++;
         item.OutputToStream(oStream, portRangesSs.str().c_str());
       }
   }
@@ -1105,7 +1026,7 @@ void Explanation::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location <<  ".SecurityGroupSet." << securityGroupsIdx++;
+        securityGroupsSs << location << ".SecurityGroupSet." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }

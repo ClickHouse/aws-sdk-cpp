@@ -22,7 +22,7 @@ namespace Model
   class DisableClientAuthenticationRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API DisableClientAuthenticationRequest();
+    AWS_DIRECTORYSERVICE_API DisableClientAuthenticationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,89 +35,34 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the directory </p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The identifier of the directory </p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    DisableClientAuthenticationRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the directory </p>
+     * <p>The type of client authentication to disable. Currently the only parameter
+     * <code>"SmartCard"</code> is supported.</p>
      */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The identifier of the directory </p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The identifier of the directory </p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The identifier of the directory </p>
-     */
-    inline DisableClientAuthenticationRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The identifier of the directory </p>
-     */
-    inline DisableClientAuthenticationRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the directory </p>
-     */
-    inline DisableClientAuthenticationRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
-    /**
-     * <p>The type of client authentication to disable. Currently, only the parameter,
-     * <code>SmartCard</code> is supported.</p>
-     */
-    inline const ClientAuthenticationType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of client authentication to disable. Currently, only the parameter,
-     * <code>SmartCard</code> is supported.</p>
-     */
+    inline ClientAuthenticationType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of client authentication to disable. Currently, only the parameter,
-     * <code>SmartCard</code> is supported.</p>
-     */
-    inline void SetType(const ClientAuthenticationType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of client authentication to disable. Currently, only the parameter,
-     * <code>SmartCard</code> is supported.</p>
-     */
-    inline void SetType(ClientAuthenticationType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of client authentication to disable. Currently, only the parameter,
-     * <code>SmartCard</code> is supported.</p>
-     */
-    inline DisableClientAuthenticationRequest& WithType(const ClientAuthenticationType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of client authentication to disable. Currently, only the parameter,
-     * <code>SmartCard</code> is supported.</p>
-     */
-    inline DisableClientAuthenticationRequest& WithType(ClientAuthenticationType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(ClientAuthenticationType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DisableClientAuthenticationRequest& WithType(ClientAuthenticationType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryId;
     bool m_directoryIdHasBeenSet = false;
 
-    ClientAuthenticationType m_type;
+    ClientAuthenticationType m_type{ClientAuthenticationType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

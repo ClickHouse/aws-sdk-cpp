@@ -19,15 +19,7 @@ namespace APIGateway
 namespace Model
 {
 
-ServiceUnavailableException::ServiceUnavailableException() : 
-    m_retryAfterSecondsHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ServiceUnavailableException::ServiceUnavailableException(JsonView jsonValue) : 
-    m_retryAfterSecondsHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ServiceUnavailableException::ServiceUnavailableException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ ServiceUnavailableException& ServiceUnavailableException::operator =(JsonView js
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

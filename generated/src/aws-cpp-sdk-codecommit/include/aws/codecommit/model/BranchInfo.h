@@ -31,93 +31,35 @@ namespace Model
   class BranchInfo
   {
   public:
-    AWS_CODECOMMIT_API BranchInfo();
+    AWS_CODECOMMIT_API BranchInfo() = default;
     AWS_CODECOMMIT_API BranchInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API BranchInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the branch.</p>
      */
-    inline const Aws::String& GetBranchName() const{ return m_branchName; }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
+    inline const Aws::String& GetBranchName() const { return m_branchName; }
     inline bool BranchNameHasBeenSet() const { return m_branchNameHasBeenSet; }
+    template<typename BranchNameT = Aws::String>
+    void SetBranchName(BranchNameT&& value) { m_branchNameHasBeenSet = true; m_branchName = std::forward<BranchNameT>(value); }
+    template<typename BranchNameT = Aws::String>
+    BranchInfo& WithBranchName(BranchNameT&& value) { SetBranchName(std::forward<BranchNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline void SetBranchName(const Aws::String& value) { m_branchNameHasBeenSet = true; m_branchName = value; }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = std::move(value); }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline void SetBranchName(const char* value) { m_branchNameHasBeenSet = true; m_branchName.assign(value); }
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline BranchInfo& WithBranchName(const Aws::String& value) { SetBranchName(value); return *this;}
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline BranchInfo& WithBranchName(Aws::String&& value) { SetBranchName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the branch.</p>
-     */
-    inline BranchInfo& WithBranchName(const char* value) { SetBranchName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the last commit made to the branch.</p>
      */
-    inline const Aws::String& GetCommitId() const{ return m_commitId; }
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
+    inline const Aws::String& GetCommitId() const { return m_commitId; }
     inline bool CommitIdHasBeenSet() const { return m_commitIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
-    inline void SetCommitId(const Aws::String& value) { m_commitIdHasBeenSet = true; m_commitId = value; }
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
-    inline void SetCommitId(Aws::String&& value) { m_commitIdHasBeenSet = true; m_commitId = std::move(value); }
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
-    inline void SetCommitId(const char* value) { m_commitIdHasBeenSet = true; m_commitId.assign(value); }
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
-    inline BranchInfo& WithCommitId(const Aws::String& value) { SetCommitId(value); return *this;}
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
-    inline BranchInfo& WithCommitId(Aws::String&& value) { SetCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the last commit made to the branch.</p>
-     */
-    inline BranchInfo& WithCommitId(const char* value) { SetCommitId(value); return *this;}
-
+    template<typename CommitIdT = Aws::String>
+    void SetCommitId(CommitIdT&& value) { m_commitIdHasBeenSet = true; m_commitId = std::forward<CommitIdT>(value); }
+    template<typename CommitIdT = Aws::String>
+    BranchInfo& WithCommitId(CommitIdT&& value) { SetCommitId(std::forward<CommitIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_branchName;

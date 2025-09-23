@@ -21,7 +21,7 @@ namespace Model
   class DeleteLifecyclePolicyRequest : public DLMRequest
   {
   public:
-    AWS_DLM_API DeleteLifecyclePolicyRequest();
+    AWS_DLM_API DeleteLifecyclePolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_DLM_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the lifecycle policy.</p>
      */
-    inline const Aws::String& GetPolicyId() const{ return m_policyId; }
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
+    inline const Aws::String& GetPolicyId() const { return m_policyId; }
     inline bool PolicyIdHasBeenSet() const { return m_policyIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
-    inline void SetPolicyId(const Aws::String& value) { m_policyIdHasBeenSet = true; m_policyId = value; }
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
-    inline void SetPolicyId(Aws::String&& value) { m_policyIdHasBeenSet = true; m_policyId = std::move(value); }
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
-    inline void SetPolicyId(const char* value) { m_policyIdHasBeenSet = true; m_policyId.assign(value); }
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
-    inline DeleteLifecyclePolicyRequest& WithPolicyId(const Aws::String& value) { SetPolicyId(value); return *this;}
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
-    inline DeleteLifecyclePolicyRequest& WithPolicyId(Aws::String&& value) { SetPolicyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the lifecycle policy.</p>
-     */
-    inline DeleteLifecyclePolicyRequest& WithPolicyId(const char* value) { SetPolicyId(value); return *this;}
-
+    template<typename PolicyIdT = Aws::String>
+    void SetPolicyId(PolicyIdT&& value) { m_policyIdHasBeenSet = true; m_policyId = std::forward<PolicyIdT>(value); }
+    template<typename PolicyIdT = Aws::String>
+    DeleteLifecyclePolicyRequest& WithPolicyId(PolicyIdT&& value) { SetPolicyId(std::forward<PolicyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyId;

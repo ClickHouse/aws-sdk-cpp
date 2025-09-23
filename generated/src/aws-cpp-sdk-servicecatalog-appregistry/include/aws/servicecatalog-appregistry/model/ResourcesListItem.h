@@ -31,175 +31,59 @@ namespace Model
   class ResourcesListItem
   {
   public:
-    AWS_APPREGISTRY_API ResourcesListItem();
+    AWS_APPREGISTRY_API ResourcesListItem() = default;
     AWS_APPREGISTRY_API ResourcesListItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API ResourcesListItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Amazon resource name (ARN) of the resource. </p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    ResourcesListItem& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
-    inline ResourcesListItem& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
-    inline ResourcesListItem& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon resource name (ARN) of the resource. </p>
-     */
-    inline ResourcesListItem& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The message returned if the call fails. </p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    ResourcesListItem& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
-    inline ResourcesListItem& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
-    inline ResourcesListItem& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> The message returned if the call fails. </p>
-     */
-    inline ResourcesListItem& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of the list item. </p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of the list item. </p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    ResourcesListItem& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of the list item. </p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of the list item. </p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of the list item. </p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p> The status of the list item. </p>
-     */
-    inline ResourcesListItem& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of the list item. </p>
-     */
-    inline ResourcesListItem& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p> The status of the list item. </p>
-     */
-    inline ResourcesListItem& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Provides information about the AppRegistry resource type. </p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
-    inline ResourcesListItem& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
-    inline ResourcesListItem& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p> Provides information about the AppRegistry resource type. </p>
-     */
-    inline ResourcesListItem& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    ResourcesListItem& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;

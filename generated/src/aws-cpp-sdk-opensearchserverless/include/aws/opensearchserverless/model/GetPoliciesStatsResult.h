@@ -6,9 +6,9 @@
 #pragma once
 #include <aws/opensearchserverless/OpenSearchServerless_EXPORTS.h>
 #include <aws/opensearchserverless/model/AccessPolicyStats.h>
-#include <aws/opensearchserverless/model/LifecyclePolicyStats.h>
-#include <aws/opensearchserverless/model/SecurityConfigStats.h>
 #include <aws/opensearchserverless/model/SecurityPolicyStats.h>
+#include <aws/opensearchserverless/model/SecurityConfigStats.h>
+#include <aws/opensearchserverless/model/LifecyclePolicyStats.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -31,168 +31,92 @@ namespace Model
   class GetPoliciesStatsResult
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API GetPoliciesStatsResult();
+    AWS_OPENSEARCHSERVERLESS_API GetPoliciesStatsResult() = default;
     AWS_OPENSEARCHSERVERLESS_API GetPoliciesStatsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OPENSEARCHSERVERLESS_API GetPoliciesStatsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the data access policies in your account.</p>
      */
-    inline const AccessPolicyStats& GetAccessPolicyStats() const{ return m_accessPolicyStats; }
+    inline const AccessPolicyStats& GetAccessPolicyStats() const { return m_accessPolicyStats; }
+    template<typename AccessPolicyStatsT = AccessPolicyStats>
+    void SetAccessPolicyStats(AccessPolicyStatsT&& value) { m_accessPolicyStatsHasBeenSet = true; m_accessPolicyStats = std::forward<AccessPolicyStatsT>(value); }
+    template<typename AccessPolicyStatsT = AccessPolicyStats>
+    GetPoliciesStatsResult& WithAccessPolicyStats(AccessPolicyStatsT&& value) { SetAccessPolicyStats(std::forward<AccessPolicyStatsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the data access policies in your account.</p>
-     */
-    inline void SetAccessPolicyStats(const AccessPolicyStats& value) { m_accessPolicyStats = value; }
-
-    /**
-     * <p>Information about the data access policies in your account.</p>
-     */
-    inline void SetAccessPolicyStats(AccessPolicyStats&& value) { m_accessPolicyStats = std::move(value); }
-
-    /**
-     * <p>Information about the data access policies in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithAccessPolicyStats(const AccessPolicyStats& value) { SetAccessPolicyStats(value); return *this;}
-
-    /**
-     * <p>Information about the data access policies in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithAccessPolicyStats(AccessPolicyStats&& value) { SetAccessPolicyStats(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Information about the lifecycle policies in your account.</p>
-     */
-    inline const LifecyclePolicyStats& GetLifecyclePolicyStats() const{ return m_lifecyclePolicyStats; }
-
-    /**
-     * <p>Information about the lifecycle policies in your account.</p>
-     */
-    inline void SetLifecyclePolicyStats(const LifecyclePolicyStats& value) { m_lifecyclePolicyStats = value; }
-
-    /**
-     * <p>Information about the lifecycle policies in your account.</p>
-     */
-    inline void SetLifecyclePolicyStats(LifecyclePolicyStats&& value) { m_lifecyclePolicyStats = std::move(value); }
-
-    /**
-     * <p>Information about the lifecycle policies in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithLifecyclePolicyStats(const LifecyclePolicyStats& value) { SetLifecyclePolicyStats(value); return *this;}
-
-    /**
-     * <p>Information about the lifecycle policies in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithLifecyclePolicyStats(LifecyclePolicyStats&& value) { SetLifecyclePolicyStats(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Information about the security configurations in your account.</p>
-     */
-    inline const SecurityConfigStats& GetSecurityConfigStats() const{ return m_securityConfigStats; }
-
-    /**
-     * <p>Information about the security configurations in your account.</p>
-     */
-    inline void SetSecurityConfigStats(const SecurityConfigStats& value) { m_securityConfigStats = value; }
-
-    /**
-     * <p>Information about the security configurations in your account.</p>
-     */
-    inline void SetSecurityConfigStats(SecurityConfigStats&& value) { m_securityConfigStats = std::move(value); }
-
-    /**
-     * <p>Information about the security configurations in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithSecurityConfigStats(const SecurityConfigStats& value) { SetSecurityConfigStats(value); return *this;}
-
-    /**
-     * <p>Information about the security configurations in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithSecurityConfigStats(SecurityConfigStats&& value) { SetSecurityConfigStats(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the security policies in your account.</p>
      */
-    inline const SecurityPolicyStats& GetSecurityPolicyStats() const{ return m_securityPolicyStats; }
+    inline const SecurityPolicyStats& GetSecurityPolicyStats() const { return m_securityPolicyStats; }
+    template<typename SecurityPolicyStatsT = SecurityPolicyStats>
+    void SetSecurityPolicyStats(SecurityPolicyStatsT&& value) { m_securityPolicyStatsHasBeenSet = true; m_securityPolicyStats = std::forward<SecurityPolicyStatsT>(value); }
+    template<typename SecurityPolicyStatsT = SecurityPolicyStats>
+    GetPoliciesStatsResult& WithSecurityPolicyStats(SecurityPolicyStatsT&& value) { SetSecurityPolicyStats(std::forward<SecurityPolicyStatsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Information about the security policies in your account.</p>
+     * <p>Information about the security configurations in your account.</p>
      */
-    inline void SetSecurityPolicyStats(const SecurityPolicyStats& value) { m_securityPolicyStats = value; }
+    inline const SecurityConfigStats& GetSecurityConfigStats() const { return m_securityConfigStats; }
+    template<typename SecurityConfigStatsT = SecurityConfigStats>
+    void SetSecurityConfigStats(SecurityConfigStatsT&& value) { m_securityConfigStatsHasBeenSet = true; m_securityConfigStats = std::forward<SecurityConfigStatsT>(value); }
+    template<typename SecurityConfigStatsT = SecurityConfigStats>
+    GetPoliciesStatsResult& WithSecurityConfigStats(SecurityConfigStatsT&& value) { SetSecurityConfigStats(std::forward<SecurityConfigStatsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Information about the security policies in your account.</p>
+     * <p>Information about the lifecycle policies in your account.</p>
      */
-    inline void SetSecurityPolicyStats(SecurityPolicyStats&& value) { m_securityPolicyStats = std::move(value); }
+    inline const LifecyclePolicyStats& GetLifecyclePolicyStats() const { return m_lifecyclePolicyStats; }
+    template<typename LifecyclePolicyStatsT = LifecyclePolicyStats>
+    void SetLifecyclePolicyStats(LifecyclePolicyStatsT&& value) { m_lifecyclePolicyStatsHasBeenSet = true; m_lifecyclePolicyStats = std::forward<LifecyclePolicyStatsT>(value); }
+    template<typename LifecyclePolicyStatsT = LifecyclePolicyStats>
+    GetPoliciesStatsResult& WithLifecyclePolicyStats(LifecyclePolicyStatsT&& value) { SetLifecyclePolicyStats(std::forward<LifecyclePolicyStatsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the security policies in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithSecurityPolicyStats(const SecurityPolicyStats& value) { SetSecurityPolicyStats(value); return *this;}
-
-    /**
-     * <p>Information about the security policies in your account.</p>
-     */
-    inline GetPoliciesStatsResult& WithSecurityPolicyStats(SecurityPolicyStats&& value) { SetSecurityPolicyStats(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total number of OpenSearch Serverless security policies and
      * configurations in your account.</p>
      */
-    inline long long GetTotalPolicyCount() const{ return m_totalPolicyCount; }
-
-    /**
-     * <p>The total number of OpenSearch Serverless security policies and
-     * configurations in your account.</p>
-     */
-    inline void SetTotalPolicyCount(long long value) { m_totalPolicyCount = value; }
-
-    /**
-     * <p>The total number of OpenSearch Serverless security policies and
-     * configurations in your account.</p>
-     */
+    inline long long GetTotalPolicyCount() const { return m_totalPolicyCount; }
+    inline void SetTotalPolicyCount(long long value) { m_totalPolicyCountHasBeenSet = true; m_totalPolicyCount = value; }
     inline GetPoliciesStatsResult& WithTotalPolicyCount(long long value) { SetTotalPolicyCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetPoliciesStatsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetPoliciesStatsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetPoliciesStatsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetPoliciesStatsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     AccessPolicyStats m_accessPolicyStats;
-
-    LifecyclePolicyStats m_lifecyclePolicyStats;
-
-    SecurityConfigStats m_securityConfigStats;
+    bool m_accessPolicyStatsHasBeenSet = false;
 
     SecurityPolicyStats m_securityPolicyStats;
+    bool m_securityPolicyStatsHasBeenSet = false;
 
-    long long m_totalPolicyCount;
+    SecurityConfigStats m_securityConfigStats;
+    bool m_securityConfigStatsHasBeenSet = false;
+
+    LifecyclePolicyStats m_lifecyclePolicyStats;
+    bool m_lifecyclePolicyStatsHasBeenSet = false;
+
+    long long m_totalPolicyCount{0};
+    bool m_totalPolicyCountHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

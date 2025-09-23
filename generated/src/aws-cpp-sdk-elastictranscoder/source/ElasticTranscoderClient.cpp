@@ -51,20 +51,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ElasticTranscoderClient::SERVICE_NAME = "elastictranscoder";
-const char* ElasticTranscoderClient::ALLOCATION_TAG = "ElasticTranscoderClient";
+namespace Aws
+{
+  namespace ElasticTranscoder
+  {
+    const char SERVICE_NAME[] = "elastictranscoder";
+    const char ALLOCATION_TAG[] = "ElasticTranscoderClient";
+  }
+}
+const char* ElasticTranscoderClient::GetServiceName() {return SERVICE_NAME;}
+const char* ElasticTranscoderClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ElasticTranscoderClient::ElasticTranscoderClient(const ElasticTranscoder::ElasticTranscoderClientConfiguration& clientConfiguration,
                                                  std::shared_ptr<ElasticTranscoderEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ElasticTranscoderErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ElasticTranscoderEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -79,8 +86,7 @@ ElasticTranscoderClient::ElasticTranscoderClient(const AWSCredentials& credentia
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ElasticTranscoderErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ElasticTranscoderEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -95,8 +101,7 @@ ElasticTranscoderClient::ElasticTranscoderClient(const std::shared_ptr<AWSCreden
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ElasticTranscoderErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ElasticTranscoderEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -105,12 +110,11 @@ ElasticTranscoderClient::ElasticTranscoderClient(const std::shared_ptr<AWSCreden
   ElasticTranscoderClient::ElasticTranscoderClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ElasticTranscoderErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ElasticTranscoderEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -125,7 +129,6 @@ ElasticTranscoderClient::ElasticTranscoderClient(const AWSCredentials& credentia
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ElasticTranscoderErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ElasticTranscoderEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -140,7 +143,6 @@ ElasticTranscoderClient::ElasticTranscoderClient(const std::shared_ptr<AWSCreden
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ElasticTranscoderErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ElasticTranscoderEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -160,6 +162,14 @@ std::shared_ptr<ElasticTranscoderEndpointProviderBase>& ElasticTranscoderClient:
 void ElasticTranscoderClient::init(const ElasticTranscoder::ElasticTranscoderClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Elastic Transcoder");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

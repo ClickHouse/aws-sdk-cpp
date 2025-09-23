@@ -18,17 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-ContainerProductSummary::ContainerProductSummary() : 
-    m_productTitleHasBeenSet(false),
-    m_visibility(ContainerProductVisibilityString::NOT_SET),
-    m_visibilityHasBeenSet(false)
-{
-}
-
-ContainerProductSummary::ContainerProductSummary(JsonView jsonValue) : 
-    m_productTitleHasBeenSet(false),
-    m_visibility(ContainerProductVisibilityString::NOT_SET),
-    m_visibilityHasBeenSet(false)
+ContainerProductSummary::ContainerProductSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ContainerProductSummary& ContainerProductSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProductTitle"))
   {
     m_productTitle = jsonValue.GetString("ProductTitle");
-
     m_productTitleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Visibility"))
   {
     m_visibility = ContainerProductVisibilityStringMapper::GetContainerProductVisibilityStringForName(jsonValue.GetString("Visibility"));
-
     m_visibilityHasBeenSet = true;
   }
-
   return *this;
 }
 

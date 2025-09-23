@@ -34,137 +34,53 @@ namespace Model
   class DeploymentPolicies
   {
   public:
-    AWS_GREENGRASSV2_API DeploymentPolicies();
+    AWS_GREENGRASSV2_API DeploymentPolicies() = default;
     AWS_GREENGRASSV2_API DeploymentPolicies(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API DeploymentPolicies& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The failure handling policy for the configuration deployment. This policy
      * defines what to do if the deployment fails.</p> <p>Default:
      * <code>ROLLBACK</code> </p>
      */
-    inline const DeploymentFailureHandlingPolicy& GetFailureHandlingPolicy() const{ return m_failureHandlingPolicy; }
-
-    /**
-     * <p>The failure handling policy for the configuration deployment. This policy
-     * defines what to do if the deployment fails.</p> <p>Default:
-     * <code>ROLLBACK</code> </p>
-     */
+    inline DeploymentFailureHandlingPolicy GetFailureHandlingPolicy() const { return m_failureHandlingPolicy; }
     inline bool FailureHandlingPolicyHasBeenSet() const { return m_failureHandlingPolicyHasBeenSet; }
+    inline void SetFailureHandlingPolicy(DeploymentFailureHandlingPolicy value) { m_failureHandlingPolicyHasBeenSet = true; m_failureHandlingPolicy = value; }
+    inline DeploymentPolicies& WithFailureHandlingPolicy(DeploymentFailureHandlingPolicy value) { SetFailureHandlingPolicy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The failure handling policy for the configuration deployment. This policy
-     * defines what to do if the deployment fails.</p> <p>Default:
-     * <code>ROLLBACK</code> </p>
-     */
-    inline void SetFailureHandlingPolicy(const DeploymentFailureHandlingPolicy& value) { m_failureHandlingPolicyHasBeenSet = true; m_failureHandlingPolicy = value; }
-
-    /**
-     * <p>The failure handling policy for the configuration deployment. This policy
-     * defines what to do if the deployment fails.</p> <p>Default:
-     * <code>ROLLBACK</code> </p>
-     */
-    inline void SetFailureHandlingPolicy(DeploymentFailureHandlingPolicy&& value) { m_failureHandlingPolicyHasBeenSet = true; m_failureHandlingPolicy = std::move(value); }
-
-    /**
-     * <p>The failure handling policy for the configuration deployment. This policy
-     * defines what to do if the deployment fails.</p> <p>Default:
-     * <code>ROLLBACK</code> </p>
-     */
-    inline DeploymentPolicies& WithFailureHandlingPolicy(const DeploymentFailureHandlingPolicy& value) { SetFailureHandlingPolicy(value); return *this;}
-
-    /**
-     * <p>The failure handling policy for the configuration deployment. This policy
-     * defines what to do if the deployment fails.</p> <p>Default:
-     * <code>ROLLBACK</code> </p>
-     */
-    inline DeploymentPolicies& WithFailureHandlingPolicy(DeploymentFailureHandlingPolicy&& value) { SetFailureHandlingPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The component update policy for the configuration deployment. This policy
      * defines when it's safe to deploy the configuration to devices.</p>
      */
-    inline const DeploymentComponentUpdatePolicy& GetComponentUpdatePolicy() const{ return m_componentUpdatePolicy; }
-
-    /**
-     * <p>The component update policy for the configuration deployment. This policy
-     * defines when it's safe to deploy the configuration to devices.</p>
-     */
+    inline const DeploymentComponentUpdatePolicy& GetComponentUpdatePolicy() const { return m_componentUpdatePolicy; }
     inline bool ComponentUpdatePolicyHasBeenSet() const { return m_componentUpdatePolicyHasBeenSet; }
+    template<typename ComponentUpdatePolicyT = DeploymentComponentUpdatePolicy>
+    void SetComponentUpdatePolicy(ComponentUpdatePolicyT&& value) { m_componentUpdatePolicyHasBeenSet = true; m_componentUpdatePolicy = std::forward<ComponentUpdatePolicyT>(value); }
+    template<typename ComponentUpdatePolicyT = DeploymentComponentUpdatePolicy>
+    DeploymentPolicies& WithComponentUpdatePolicy(ComponentUpdatePolicyT&& value) { SetComponentUpdatePolicy(std::forward<ComponentUpdatePolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The component update policy for the configuration deployment. This policy
-     * defines when it's safe to deploy the configuration to devices.</p>
-     */
-    inline void SetComponentUpdatePolicy(const DeploymentComponentUpdatePolicy& value) { m_componentUpdatePolicyHasBeenSet = true; m_componentUpdatePolicy = value; }
-
-    /**
-     * <p>The component update policy for the configuration deployment. This policy
-     * defines when it's safe to deploy the configuration to devices.</p>
-     */
-    inline void SetComponentUpdatePolicy(DeploymentComponentUpdatePolicy&& value) { m_componentUpdatePolicyHasBeenSet = true; m_componentUpdatePolicy = std::move(value); }
-
-    /**
-     * <p>The component update policy for the configuration deployment. This policy
-     * defines when it's safe to deploy the configuration to devices.</p>
-     */
-    inline DeploymentPolicies& WithComponentUpdatePolicy(const DeploymentComponentUpdatePolicy& value) { SetComponentUpdatePolicy(value); return *this;}
-
-    /**
-     * <p>The component update policy for the configuration deployment. This policy
-     * defines when it's safe to deploy the configuration to devices.</p>
-     */
-    inline DeploymentPolicies& WithComponentUpdatePolicy(DeploymentComponentUpdatePolicy&& value) { SetComponentUpdatePolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration validation policy for the configuration deployment. This
      * policy defines how long each component has to validate its configure
      * updates.</p>
      */
-    inline const DeploymentConfigurationValidationPolicy& GetConfigurationValidationPolicy() const{ return m_configurationValidationPolicy; }
-
-    /**
-     * <p>The configuration validation policy for the configuration deployment. This
-     * policy defines how long each component has to validate its configure
-     * updates.</p>
-     */
+    inline const DeploymentConfigurationValidationPolicy& GetConfigurationValidationPolicy() const { return m_configurationValidationPolicy; }
     inline bool ConfigurationValidationPolicyHasBeenSet() const { return m_configurationValidationPolicyHasBeenSet; }
-
-    /**
-     * <p>The configuration validation policy for the configuration deployment. This
-     * policy defines how long each component has to validate its configure
-     * updates.</p>
-     */
-    inline void SetConfigurationValidationPolicy(const DeploymentConfigurationValidationPolicy& value) { m_configurationValidationPolicyHasBeenSet = true; m_configurationValidationPolicy = value; }
-
-    /**
-     * <p>The configuration validation policy for the configuration deployment. This
-     * policy defines how long each component has to validate its configure
-     * updates.</p>
-     */
-    inline void SetConfigurationValidationPolicy(DeploymentConfigurationValidationPolicy&& value) { m_configurationValidationPolicyHasBeenSet = true; m_configurationValidationPolicy = std::move(value); }
-
-    /**
-     * <p>The configuration validation policy for the configuration deployment. This
-     * policy defines how long each component has to validate its configure
-     * updates.</p>
-     */
-    inline DeploymentPolicies& WithConfigurationValidationPolicy(const DeploymentConfigurationValidationPolicy& value) { SetConfigurationValidationPolicy(value); return *this;}
-
-    /**
-     * <p>The configuration validation policy for the configuration deployment. This
-     * policy defines how long each component has to validate its configure
-     * updates.</p>
-     */
-    inline DeploymentPolicies& WithConfigurationValidationPolicy(DeploymentConfigurationValidationPolicy&& value) { SetConfigurationValidationPolicy(std::move(value)); return *this;}
-
+    template<typename ConfigurationValidationPolicyT = DeploymentConfigurationValidationPolicy>
+    void SetConfigurationValidationPolicy(ConfigurationValidationPolicyT&& value) { m_configurationValidationPolicyHasBeenSet = true; m_configurationValidationPolicy = std::forward<ConfigurationValidationPolicyT>(value); }
+    template<typename ConfigurationValidationPolicyT = DeploymentConfigurationValidationPolicy>
+    DeploymentPolicies& WithConfigurationValidationPolicy(ConfigurationValidationPolicyT&& value) { SetConfigurationValidationPolicy(std::forward<ConfigurationValidationPolicyT>(value)); return *this;}
+    ///@}
   private:
 
-    DeploymentFailureHandlingPolicy m_failureHandlingPolicy;
+    DeploymentFailureHandlingPolicy m_failureHandlingPolicy{DeploymentFailureHandlingPolicy::NOT_SET};
     bool m_failureHandlingPolicyHasBeenSet = false;
 
     DeploymentComponentUpdatePolicy m_componentUpdatePolicy;

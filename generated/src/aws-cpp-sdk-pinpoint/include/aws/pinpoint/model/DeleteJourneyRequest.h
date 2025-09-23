@@ -21,7 +21,7 @@ namespace Model
   class DeleteJourneyRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API DeleteJourneyRequest();
+    AWS_PINPOINT_API DeleteJourneyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application. This identifier is displayed as
      * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    DeleteJourneyRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline DeleteJourneyRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline DeleteJourneyRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline DeleteJourneyRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the journey.</p>
      */
-    inline const Aws::String& GetJourneyId() const{ return m_journeyId; }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
+    inline const Aws::String& GetJourneyId() const { return m_journeyId; }
     inline bool JourneyIdHasBeenSet() const { return m_journeyIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline void SetJourneyId(const Aws::String& value) { m_journeyIdHasBeenSet = true; m_journeyId = value; }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline void SetJourneyId(Aws::String&& value) { m_journeyIdHasBeenSet = true; m_journeyId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline void SetJourneyId(const char* value) { m_journeyIdHasBeenSet = true; m_journeyId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline DeleteJourneyRequest& WithJourneyId(const Aws::String& value) { SetJourneyId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline DeleteJourneyRequest& WithJourneyId(Aws::String&& value) { SetJourneyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the journey.</p>
-     */
-    inline DeleteJourneyRequest& WithJourneyId(const char* value) { SetJourneyId(value); return *this;}
-
+    template<typename JourneyIdT = Aws::String>
+    void SetJourneyId(JourneyIdT&& value) { m_journeyIdHasBeenSet = true; m_journeyId = std::forward<JourneyIdT>(value); }
+    template<typename JourneyIdT = Aws::String>
+    DeleteJourneyRequest& WithJourneyId(JourneyIdT&& value) { SetJourneyId(std::forward<JourneyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

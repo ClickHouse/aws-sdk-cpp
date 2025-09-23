@@ -18,15 +18,7 @@ namespace FMS
 namespace Model
 {
 
-StatefulEngineOptions::StatefulEngineOptions() : 
-    m_ruleOrder(RuleOrder::NOT_SET),
-    m_ruleOrderHasBeenSet(false)
-{
-}
-
-StatefulEngineOptions::StatefulEngineOptions(JsonView jsonValue) : 
-    m_ruleOrder(RuleOrder::NOT_SET),
-    m_ruleOrderHasBeenSet(false)
+StatefulEngineOptions::StatefulEngineOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ StatefulEngineOptions& StatefulEngineOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RuleOrder"))
   {
     m_ruleOrder = RuleOrderMapper::GetRuleOrderForName(jsonValue.GetString("RuleOrder"));
-
     m_ruleOrderHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("StreamExceptionPolicy"))
+  {
+    m_streamExceptionPolicy = StreamExceptionPolicyMapper::GetStreamExceptionPolicyForName(jsonValue.GetString("StreamExceptionPolicy"));
+    m_streamExceptionPolicyHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,11 @@ JsonValue StatefulEngineOptions::Jsonize() const
   if(m_ruleOrderHasBeenSet)
   {
    payload.WithString("RuleOrder", RuleOrderMapper::GetNameForRuleOrder(m_ruleOrder));
+  }
+
+  if(m_streamExceptionPolicyHasBeenSet)
+  {
+   payload.WithString("StreamExceptionPolicy", StreamExceptionPolicyMapper::GetNameForStreamExceptionPolicy(m_streamExceptionPolicy));
   }
 
   return payload;

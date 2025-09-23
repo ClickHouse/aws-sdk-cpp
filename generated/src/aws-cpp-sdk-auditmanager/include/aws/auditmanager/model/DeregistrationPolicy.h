@@ -47,12 +47,13 @@ namespace Model
   class DeregistrationPolicy
   {
   public:
-    AWS_AUDITMANAGER_API DeregistrationPolicy();
+    AWS_AUDITMANAGER_API DeregistrationPolicy() = default;
     AWS_AUDITMANAGER_API DeregistrationPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API DeregistrationPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies which Audit Manager data will be deleted when you deregister Audit
      * Manager.</p> <ul> <li> <p>If you set the value to <code>ALL</code>, all of your
@@ -63,71 +64,14 @@ namespace Model
      * after its creation date. Your other Audit Manager resources will continue to
      * exist indefinitely.</p> </li> </ul>
      */
-    inline const DeleteResources& GetDeleteResources() const{ return m_deleteResources; }
-
-    /**
-     * <p>Specifies which Audit Manager data will be deleted when you deregister Audit
-     * Manager.</p> <ul> <li> <p>If you set the value to <code>ALL</code>, all of your
-     * data is deleted within seven days of deregistration.</p> </li> <li> <p>If you
-     * set the value to <code>DEFAULT</code>, none of your data is deleted at the time
-     * of deregistration. However, keep in mind that the Audit Manager data retention
-     * policy still applies. As a result, any evidence data will be deleted two years
-     * after its creation date. Your other Audit Manager resources will continue to
-     * exist indefinitely.</p> </li> </ul>
-     */
+    inline DeleteResources GetDeleteResources() const { return m_deleteResources; }
     inline bool DeleteResourcesHasBeenSet() const { return m_deleteResourcesHasBeenSet; }
-
-    /**
-     * <p>Specifies which Audit Manager data will be deleted when you deregister Audit
-     * Manager.</p> <ul> <li> <p>If you set the value to <code>ALL</code>, all of your
-     * data is deleted within seven days of deregistration.</p> </li> <li> <p>If you
-     * set the value to <code>DEFAULT</code>, none of your data is deleted at the time
-     * of deregistration. However, keep in mind that the Audit Manager data retention
-     * policy still applies. As a result, any evidence data will be deleted two years
-     * after its creation date. Your other Audit Manager resources will continue to
-     * exist indefinitely.</p> </li> </ul>
-     */
-    inline void SetDeleteResources(const DeleteResources& value) { m_deleteResourcesHasBeenSet = true; m_deleteResources = value; }
-
-    /**
-     * <p>Specifies which Audit Manager data will be deleted when you deregister Audit
-     * Manager.</p> <ul> <li> <p>If you set the value to <code>ALL</code>, all of your
-     * data is deleted within seven days of deregistration.</p> </li> <li> <p>If you
-     * set the value to <code>DEFAULT</code>, none of your data is deleted at the time
-     * of deregistration. However, keep in mind that the Audit Manager data retention
-     * policy still applies. As a result, any evidence data will be deleted two years
-     * after its creation date. Your other Audit Manager resources will continue to
-     * exist indefinitely.</p> </li> </ul>
-     */
-    inline void SetDeleteResources(DeleteResources&& value) { m_deleteResourcesHasBeenSet = true; m_deleteResources = std::move(value); }
-
-    /**
-     * <p>Specifies which Audit Manager data will be deleted when you deregister Audit
-     * Manager.</p> <ul> <li> <p>If you set the value to <code>ALL</code>, all of your
-     * data is deleted within seven days of deregistration.</p> </li> <li> <p>If you
-     * set the value to <code>DEFAULT</code>, none of your data is deleted at the time
-     * of deregistration. However, keep in mind that the Audit Manager data retention
-     * policy still applies. As a result, any evidence data will be deleted two years
-     * after its creation date. Your other Audit Manager resources will continue to
-     * exist indefinitely.</p> </li> </ul>
-     */
-    inline DeregistrationPolicy& WithDeleteResources(const DeleteResources& value) { SetDeleteResources(value); return *this;}
-
-    /**
-     * <p>Specifies which Audit Manager data will be deleted when you deregister Audit
-     * Manager.</p> <ul> <li> <p>If you set the value to <code>ALL</code>, all of your
-     * data is deleted within seven days of deregistration.</p> </li> <li> <p>If you
-     * set the value to <code>DEFAULT</code>, none of your data is deleted at the time
-     * of deregistration. However, keep in mind that the Audit Manager data retention
-     * policy still applies. As a result, any evidence data will be deleted two years
-     * after its creation date. Your other Audit Manager resources will continue to
-     * exist indefinitely.</p> </li> </ul>
-     */
-    inline DeregistrationPolicy& WithDeleteResources(DeleteResources&& value) { SetDeleteResources(std::move(value)); return *this;}
-
+    inline void SetDeleteResources(DeleteResources value) { m_deleteResourcesHasBeenSet = true; m_deleteResources = value; }
+    inline DeregistrationPolicy& WithDeleteResources(DeleteResources value) { SetDeleteResources(value); return *this;}
+    ///@}
   private:
 
-    DeleteResources m_deleteResources;
+    DeleteResources m_deleteResources{DeleteResources::NOT_SET};
     bool m_deleteResourcesHasBeenSet = false;
   };
 

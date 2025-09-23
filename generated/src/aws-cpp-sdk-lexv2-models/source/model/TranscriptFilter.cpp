@@ -18,13 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-TranscriptFilter::TranscriptFilter() : 
-    m_lexTranscriptFilterHasBeenSet(false)
-{
-}
-
-TranscriptFilter::TranscriptFilter(JsonView jsonValue) : 
-    m_lexTranscriptFilterHasBeenSet(false)
+TranscriptFilter::TranscriptFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TranscriptFilter& TranscriptFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("lexTranscriptFilter"))
   {
     m_lexTranscriptFilter = jsonValue.GetObject("lexTranscriptFilter");
-
     m_lexTranscriptFilterHasBeenSet = true;
   }
-
   return *this;
 }
 

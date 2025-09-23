@@ -34,129 +34,53 @@ namespace Model
   class InputColumn
   {
   public:
-    AWS_QUICKSIGHT_API InputColumn();
+    AWS_QUICKSIGHT_API InputColumn() = default;
     AWS_QUICKSIGHT_API InputColumn(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API InputColumn& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of this column in the underlying data source.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    InputColumn& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
-    inline InputColumn& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
-    inline InputColumn& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of this column in the underlying data source.</p>
-     */
-    inline InputColumn& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the column.</p>
      */
-    inline const InputColumnDataType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
+    inline InputColumnDataType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(InputColumnDataType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline InputColumn& WithType(InputColumnDataType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline void SetType(const InputColumnDataType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline void SetType(InputColumnDataType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline InputColumn& WithType(const InputColumnDataType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The data type of the column.</p>
-     */
-    inline InputColumn& WithType(InputColumnDataType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sub data type of the column. Sub types are only available for decimal
      * columns that are part of a SPICE dataset.</p>
      */
-    inline const ColumnDataSubType& GetSubType() const{ return m_subType; }
-
-    /**
-     * <p>The sub data type of the column. Sub types are only available for decimal
-     * columns that are part of a SPICE dataset.</p>
-     */
+    inline ColumnDataSubType GetSubType() const { return m_subType; }
     inline bool SubTypeHasBeenSet() const { return m_subTypeHasBeenSet; }
-
-    /**
-     * <p>The sub data type of the column. Sub types are only available for decimal
-     * columns that are part of a SPICE dataset.</p>
-     */
-    inline void SetSubType(const ColumnDataSubType& value) { m_subTypeHasBeenSet = true; m_subType = value; }
-
-    /**
-     * <p>The sub data type of the column. Sub types are only available for decimal
-     * columns that are part of a SPICE dataset.</p>
-     */
-    inline void SetSubType(ColumnDataSubType&& value) { m_subTypeHasBeenSet = true; m_subType = std::move(value); }
-
-    /**
-     * <p>The sub data type of the column. Sub types are only available for decimal
-     * columns that are part of a SPICE dataset.</p>
-     */
-    inline InputColumn& WithSubType(const ColumnDataSubType& value) { SetSubType(value); return *this;}
-
-    /**
-     * <p>The sub data type of the column. Sub types are only available for decimal
-     * columns that are part of a SPICE dataset.</p>
-     */
-    inline InputColumn& WithSubType(ColumnDataSubType&& value) { SetSubType(std::move(value)); return *this;}
-
+    inline void SetSubType(ColumnDataSubType value) { m_subTypeHasBeenSet = true; m_subType = value; }
+    inline InputColumn& WithSubType(ColumnDataSubType value) { SetSubType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    InputColumnDataType m_type;
+    InputColumnDataType m_type{InputColumnDataType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    ColumnDataSubType m_subType;
+    ColumnDataSubType m_subType{ColumnDataSubType::NOT_SET};
     bool m_subTypeHasBeenSet = false;
   };
 

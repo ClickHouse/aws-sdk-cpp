@@ -32,52 +32,23 @@ namespace Model
   class RedshiftServerlessStorage
   {
   public:
-    AWS_DATAZONE_API RedshiftServerlessStorage();
+    AWS_DATAZONE_API RedshiftServerlessStorage() = default;
     AWS_DATAZONE_API RedshiftServerlessStorage(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API RedshiftServerlessStorage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Redshift Serverless workgroup.</p>
      */
-    inline const Aws::String& GetWorkgroupName() const{ return m_workgroupName; }
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
+    inline const Aws::String& GetWorkgroupName() const { return m_workgroupName; }
     inline bool WorkgroupNameHasBeenSet() const { return m_workgroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
-    inline void SetWorkgroupName(const Aws::String& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = value; }
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
-    inline void SetWorkgroupName(Aws::String&& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
-    inline void SetWorkgroupName(const char* value) { m_workgroupNameHasBeenSet = true; m_workgroupName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
-    inline RedshiftServerlessStorage& WithWorkgroupName(const Aws::String& value) { SetWorkgroupName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
-    inline RedshiftServerlessStorage& WithWorkgroupName(Aws::String&& value) { SetWorkgroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Redshift Serverless workgroup.</p>
-     */
-    inline RedshiftServerlessStorage& WithWorkgroupName(const char* value) { SetWorkgroupName(value); return *this;}
-
+    template<typename WorkgroupNameT = Aws::String>
+    void SetWorkgroupName(WorkgroupNameT&& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = std::forward<WorkgroupNameT>(value); }
+    template<typename WorkgroupNameT = Aws::String>
+    RedshiftServerlessStorage& WithWorkgroupName(WorkgroupNameT&& value) { SetWorkgroupName(std::forward<WorkgroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workgroupName;

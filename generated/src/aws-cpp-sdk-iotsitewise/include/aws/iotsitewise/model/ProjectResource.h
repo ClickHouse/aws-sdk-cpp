@@ -32,52 +32,23 @@ namespace Model
   class ProjectResource
   {
   public:
-    AWS_IOTSITEWISE_API ProjectResource();
+    AWS_IOTSITEWISE_API ProjectResource() = default;
     AWS_IOTSITEWISE_API ProjectResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API ProjectResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the project.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline ProjectResource& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline ProjectResource& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline ProjectResource& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ProjectResource& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

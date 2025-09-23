@@ -21,7 +21,7 @@ namespace Model
   class PutFeedbackRequest : public DevOpsGuruRequest
   {
   public:
-    AWS_DEVOPSGURU_API PutFeedbackRequest();
+    AWS_DEVOPSGURU_API PutFeedbackRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,42 +32,18 @@ namespace Model
     AWS_DEVOPSGURU_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The feedback from customers is about the recommendations in this insight.
      * </p>
      */
-    inline const InsightFeedback& GetInsightFeedback() const{ return m_insightFeedback; }
-
-    /**
-     * <p> The feedback from customers is about the recommendations in this insight.
-     * </p>
-     */
+    inline const InsightFeedback& GetInsightFeedback() const { return m_insightFeedback; }
     inline bool InsightFeedbackHasBeenSet() const { return m_insightFeedbackHasBeenSet; }
-
-    /**
-     * <p> The feedback from customers is about the recommendations in this insight.
-     * </p>
-     */
-    inline void SetInsightFeedback(const InsightFeedback& value) { m_insightFeedbackHasBeenSet = true; m_insightFeedback = value; }
-
-    /**
-     * <p> The feedback from customers is about the recommendations in this insight.
-     * </p>
-     */
-    inline void SetInsightFeedback(InsightFeedback&& value) { m_insightFeedbackHasBeenSet = true; m_insightFeedback = std::move(value); }
-
-    /**
-     * <p> The feedback from customers is about the recommendations in this insight.
-     * </p>
-     */
-    inline PutFeedbackRequest& WithInsightFeedback(const InsightFeedback& value) { SetInsightFeedback(value); return *this;}
-
-    /**
-     * <p> The feedback from customers is about the recommendations in this insight.
-     * </p>
-     */
-    inline PutFeedbackRequest& WithInsightFeedback(InsightFeedback&& value) { SetInsightFeedback(std::move(value)); return *this;}
-
+    template<typename InsightFeedbackT = InsightFeedback>
+    void SetInsightFeedback(InsightFeedbackT&& value) { m_insightFeedbackHasBeenSet = true; m_insightFeedback = std::forward<InsightFeedbackT>(value); }
+    template<typename InsightFeedbackT = InsightFeedback>
+    PutFeedbackRequest& WithInsightFeedback(InsightFeedbackT&& value) { SetInsightFeedback(std::forward<InsightFeedbackT>(value)); return *this;}
+    ///@}
   private:
 
     InsightFeedback m_insightFeedback;

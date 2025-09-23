@@ -31,48 +31,24 @@ namespace Model
   class LogDelivery
   {
   public:
-    AWS_KAFKACONNECT_API LogDelivery();
+    AWS_KAFKACONNECT_API LogDelivery() = default;
     AWS_KAFKACONNECT_API LogDelivery(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API LogDelivery& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The workers can send worker logs to different destination types. This
      * configuration specifies the details of these destinations.</p>
      */
-    inline const WorkerLogDelivery& GetWorkerLogDelivery() const{ return m_workerLogDelivery; }
-
-    /**
-     * <p>The workers can send worker logs to different destination types. This
-     * configuration specifies the details of these destinations.</p>
-     */
+    inline const WorkerLogDelivery& GetWorkerLogDelivery() const { return m_workerLogDelivery; }
     inline bool WorkerLogDeliveryHasBeenSet() const { return m_workerLogDeliveryHasBeenSet; }
-
-    /**
-     * <p>The workers can send worker logs to different destination types. This
-     * configuration specifies the details of these destinations.</p>
-     */
-    inline void SetWorkerLogDelivery(const WorkerLogDelivery& value) { m_workerLogDeliveryHasBeenSet = true; m_workerLogDelivery = value; }
-
-    /**
-     * <p>The workers can send worker logs to different destination types. This
-     * configuration specifies the details of these destinations.</p>
-     */
-    inline void SetWorkerLogDelivery(WorkerLogDelivery&& value) { m_workerLogDeliveryHasBeenSet = true; m_workerLogDelivery = std::move(value); }
-
-    /**
-     * <p>The workers can send worker logs to different destination types. This
-     * configuration specifies the details of these destinations.</p>
-     */
-    inline LogDelivery& WithWorkerLogDelivery(const WorkerLogDelivery& value) { SetWorkerLogDelivery(value); return *this;}
-
-    /**
-     * <p>The workers can send worker logs to different destination types. This
-     * configuration specifies the details of these destinations.</p>
-     */
-    inline LogDelivery& WithWorkerLogDelivery(WorkerLogDelivery&& value) { SetWorkerLogDelivery(std::move(value)); return *this;}
-
+    template<typename WorkerLogDeliveryT = WorkerLogDelivery>
+    void SetWorkerLogDelivery(WorkerLogDeliveryT&& value) { m_workerLogDeliveryHasBeenSet = true; m_workerLogDelivery = std::forward<WorkerLogDeliveryT>(value); }
+    template<typename WorkerLogDeliveryT = WorkerLogDelivery>
+    LogDelivery& WithWorkerLogDelivery(WorkerLogDeliveryT&& value) { SetWorkerLogDelivery(std::forward<WorkerLogDeliveryT>(value)); return *this;}
+    ///@}
   private:
 
     WorkerLogDelivery m_workerLogDelivery;

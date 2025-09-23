@@ -12,25 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartJobRunRequest::StartJobRunRequest() : 
-    m_jobNameHasBeenSet(false),
-    m_jobRunIdHasBeenSet(false),
-    m_argumentsHasBeenSet(false),
-    m_timeout(0),
-    m_timeoutHasBeenSet(false),
-    m_maxCapacity(0.0),
-    m_maxCapacityHasBeenSet(false),
-    m_securityConfigurationHasBeenSet(false),
-    m_notificationPropertyHasBeenSet(false),
-    m_workerType(WorkerType::NOT_SET),
-    m_workerTypeHasBeenSet(false),
-    m_numberOfWorkers(0),
-    m_numberOfWorkersHasBeenSet(false),
-    m_executionClass(ExecutionClass::NOT_SET),
-    m_executionClassHasBeenSet(false)
-{
-}
-
 Aws::String StartJobRunRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +19,12 @@ Aws::String StartJobRunRequest::SerializePayload() const
   if(m_jobNameHasBeenSet)
   {
    payload.WithString("JobName", m_jobName);
+
+  }
+
+  if(m_jobRunQueuingEnabledHasBeenSet)
+  {
+   payload.WithBool("JobRunQueuingEnabled", m_jobRunQueuingEnabled);
 
   }
 
@@ -96,6 +83,12 @@ Aws::String StartJobRunRequest::SerializePayload() const
   if(m_executionClassHasBeenSet)
   {
    payload.WithString("ExecutionClass", ExecutionClassMapper::GetNameForExecutionClass(m_executionClass));
+  }
+
+  if(m_executionRoleSessionPolicyHasBeenSet)
+  {
+   payload.WithString("ExecutionRoleSessionPolicy", m_executionRoleSessionPolicy);
+
   }
 
   return payload.View().WriteReadable();

@@ -39,404 +39,145 @@ namespace Model
   class Tunnel
   {
   public:
-    AWS_IOTSECURETUNNELING_API Tunnel();
+    AWS_IOTSECURETUNNELING_API Tunnel() = default;
     AWS_IOTSECURETUNNELING_API Tunnel(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSECURETUNNELING_API Tunnel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSECURETUNNELING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
      */
-    inline const Aws::String& GetTunnelId() const{ return m_tunnelId; }
-
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
+    inline const Aws::String& GetTunnelId() const { return m_tunnelId; }
     inline bool TunnelIdHasBeenSet() const { return m_tunnelIdHasBeenSet; }
+    template<typename TunnelIdT = Aws::String>
+    void SetTunnelId(TunnelIdT&& value) { m_tunnelIdHasBeenSet = true; m_tunnelId = std::forward<TunnelIdT>(value); }
+    template<typename TunnelIdT = Aws::String>
+    Tunnel& WithTunnelId(TunnelIdT&& value) { SetTunnelId(std::forward<TunnelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
-    inline void SetTunnelId(const Aws::String& value) { m_tunnelIdHasBeenSet = true; m_tunnelId = value; }
-
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
-    inline void SetTunnelId(Aws::String&& value) { m_tunnelIdHasBeenSet = true; m_tunnelId = std::move(value); }
-
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
-    inline void SetTunnelId(const char* value) { m_tunnelIdHasBeenSet = true; m_tunnelId.assign(value); }
-
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
-    inline Tunnel& WithTunnelId(const Aws::String& value) { SetTunnelId(value); return *this;}
-
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
-    inline Tunnel& WithTunnelId(Aws::String&& value) { SetTunnelId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique alpha-numeric ID that identifies a tunnel.</p>
-     */
-    inline Tunnel& WithTunnelId(const char* value) { SetTunnelId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
      */
-    inline const Aws::String& GetTunnelArn() const{ return m_tunnelArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
+    inline const Aws::String& GetTunnelArn() const { return m_tunnelArn; }
     inline bool TunnelArnHasBeenSet() const { return m_tunnelArnHasBeenSet; }
+    template<typename TunnelArnT = Aws::String>
+    void SetTunnelArn(TunnelArnT&& value) { m_tunnelArnHasBeenSet = true; m_tunnelArn = std::forward<TunnelArnT>(value); }
+    template<typename TunnelArnT = Aws::String>
+    Tunnel& WithTunnelArn(TunnelArnT&& value) { SetTunnelArn(std::forward<TunnelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
-    inline void SetTunnelArn(const Aws::String& value) { m_tunnelArnHasBeenSet = true; m_tunnelArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
-    inline void SetTunnelArn(Aws::String&& value) { m_tunnelArnHasBeenSet = true; m_tunnelArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
-    inline void SetTunnelArn(const char* value) { m_tunnelArnHasBeenSet = true; m_tunnelArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
-    inline Tunnel& WithTunnelArn(const Aws::String& value) { SetTunnelArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
-    inline Tunnel& WithTunnelArn(Aws::String&& value) { SetTunnelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a tunnel.</p>
-     */
-    inline Tunnel& WithTunnelArn(const char* value) { SetTunnelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of a tunnel. Valid values are: Open and Closed.</p>
      */
-    inline const TunnelStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of a tunnel. Valid values are: Open and Closed.</p>
-     */
+    inline TunnelStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(TunnelStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Tunnel& WithStatus(TunnelStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of a tunnel. Valid values are: Open and Closed.</p>
-     */
-    inline void SetStatus(const TunnelStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of a tunnel. Valid values are: Open and Closed.</p>
-     */
-    inline void SetStatus(TunnelStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of a tunnel. Valid values are: Open and Closed.</p>
-     */
-    inline Tunnel& WithStatus(const TunnelStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of a tunnel. Valid values are: Open and Closed.</p>
-     */
-    inline Tunnel& WithStatus(TunnelStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The connection state of the source application.</p>
      */
-    inline const ConnectionState& GetSourceConnectionState() const{ return m_sourceConnectionState; }
-
-    /**
-     * <p>The connection state of the source application.</p>
-     */
+    inline const ConnectionState& GetSourceConnectionState() const { return m_sourceConnectionState; }
     inline bool SourceConnectionStateHasBeenSet() const { return m_sourceConnectionStateHasBeenSet; }
+    template<typename SourceConnectionStateT = ConnectionState>
+    void SetSourceConnectionState(SourceConnectionStateT&& value) { m_sourceConnectionStateHasBeenSet = true; m_sourceConnectionState = std::forward<SourceConnectionStateT>(value); }
+    template<typename SourceConnectionStateT = ConnectionState>
+    Tunnel& WithSourceConnectionState(SourceConnectionStateT&& value) { SetSourceConnectionState(std::forward<SourceConnectionStateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The connection state of the source application.</p>
-     */
-    inline void SetSourceConnectionState(const ConnectionState& value) { m_sourceConnectionStateHasBeenSet = true; m_sourceConnectionState = value; }
-
-    /**
-     * <p>The connection state of the source application.</p>
-     */
-    inline void SetSourceConnectionState(ConnectionState&& value) { m_sourceConnectionStateHasBeenSet = true; m_sourceConnectionState = std::move(value); }
-
-    /**
-     * <p>The connection state of the source application.</p>
-     */
-    inline Tunnel& WithSourceConnectionState(const ConnectionState& value) { SetSourceConnectionState(value); return *this;}
-
-    /**
-     * <p>The connection state of the source application.</p>
-     */
-    inline Tunnel& WithSourceConnectionState(ConnectionState&& value) { SetSourceConnectionState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The connection state of the destination application.</p>
      */
-    inline const ConnectionState& GetDestinationConnectionState() const{ return m_destinationConnectionState; }
-
-    /**
-     * <p>The connection state of the destination application.</p>
-     */
+    inline const ConnectionState& GetDestinationConnectionState() const { return m_destinationConnectionState; }
     inline bool DestinationConnectionStateHasBeenSet() const { return m_destinationConnectionStateHasBeenSet; }
+    template<typename DestinationConnectionStateT = ConnectionState>
+    void SetDestinationConnectionState(DestinationConnectionStateT&& value) { m_destinationConnectionStateHasBeenSet = true; m_destinationConnectionState = std::forward<DestinationConnectionStateT>(value); }
+    template<typename DestinationConnectionStateT = ConnectionState>
+    Tunnel& WithDestinationConnectionState(DestinationConnectionStateT&& value) { SetDestinationConnectionState(std::forward<DestinationConnectionStateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The connection state of the destination application.</p>
-     */
-    inline void SetDestinationConnectionState(const ConnectionState& value) { m_destinationConnectionStateHasBeenSet = true; m_destinationConnectionState = value; }
-
-    /**
-     * <p>The connection state of the destination application.</p>
-     */
-    inline void SetDestinationConnectionState(ConnectionState&& value) { m_destinationConnectionStateHasBeenSet = true; m_destinationConnectionState = std::move(value); }
-
-    /**
-     * <p>The connection state of the destination application.</p>
-     */
-    inline Tunnel& WithDestinationConnectionState(const ConnectionState& value) { SetDestinationConnectionState(value); return *this;}
-
-    /**
-     * <p>The connection state of the destination application.</p>
-     */
-    inline Tunnel& WithDestinationConnectionState(ConnectionState&& value) { SetDestinationConnectionState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the tunnel.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the tunnel.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Tunnel& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the tunnel.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the tunnel.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the tunnel.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the tunnel.</p>
-     */
-    inline Tunnel& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the tunnel.</p>
-     */
-    inline Tunnel& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the tunnel.</p>
-     */
-    inline Tunnel& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination configuration that specifies the thing name of the
      * destination device and a service name that the local proxy uses to connect to
      * the destination application.</p>
      */
-    inline const DestinationConfig& GetDestinationConfig() const{ return m_destinationConfig; }
-
-    /**
-     * <p>The destination configuration that specifies the thing name of the
-     * destination device and a service name that the local proxy uses to connect to
-     * the destination application.</p>
-     */
+    inline const DestinationConfig& GetDestinationConfig() const { return m_destinationConfig; }
     inline bool DestinationConfigHasBeenSet() const { return m_destinationConfigHasBeenSet; }
+    template<typename DestinationConfigT = DestinationConfig>
+    void SetDestinationConfig(DestinationConfigT&& value) { m_destinationConfigHasBeenSet = true; m_destinationConfig = std::forward<DestinationConfigT>(value); }
+    template<typename DestinationConfigT = DestinationConfig>
+    Tunnel& WithDestinationConfig(DestinationConfigT&& value) { SetDestinationConfig(std::forward<DestinationConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination configuration that specifies the thing name of the
-     * destination device and a service name that the local proxy uses to connect to
-     * the destination application.</p>
-     */
-    inline void SetDestinationConfig(const DestinationConfig& value) { m_destinationConfigHasBeenSet = true; m_destinationConfig = value; }
-
-    /**
-     * <p>The destination configuration that specifies the thing name of the
-     * destination device and a service name that the local proxy uses to connect to
-     * the destination application.</p>
-     */
-    inline void SetDestinationConfig(DestinationConfig&& value) { m_destinationConfigHasBeenSet = true; m_destinationConfig = std::move(value); }
-
-    /**
-     * <p>The destination configuration that specifies the thing name of the
-     * destination device and a service name that the local proxy uses to connect to
-     * the destination application.</p>
-     */
-    inline Tunnel& WithDestinationConfig(const DestinationConfig& value) { SetDestinationConfig(value); return *this;}
-
-    /**
-     * <p>The destination configuration that specifies the thing name of the
-     * destination device and a service name that the local proxy uses to connect to
-     * the destination application.</p>
-     */
-    inline Tunnel& WithDestinationConfig(DestinationConfig&& value) { SetDestinationConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Timeout configuration for the tunnel.</p>
      */
-    inline const TimeoutConfig& GetTimeoutConfig() const{ return m_timeoutConfig; }
-
-    /**
-     * <p>Timeout configuration for the tunnel.</p>
-     */
+    inline const TimeoutConfig& GetTimeoutConfig() const { return m_timeoutConfig; }
     inline bool TimeoutConfigHasBeenSet() const { return m_timeoutConfigHasBeenSet; }
+    template<typename TimeoutConfigT = TimeoutConfig>
+    void SetTimeoutConfig(TimeoutConfigT&& value) { m_timeoutConfigHasBeenSet = true; m_timeoutConfig = std::forward<TimeoutConfigT>(value); }
+    template<typename TimeoutConfigT = TimeoutConfig>
+    Tunnel& WithTimeoutConfig(TimeoutConfigT&& value) { SetTimeoutConfig(std::forward<TimeoutConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Timeout configuration for the tunnel.</p>
-     */
-    inline void SetTimeoutConfig(const TimeoutConfig& value) { m_timeoutConfigHasBeenSet = true; m_timeoutConfig = value; }
-
-    /**
-     * <p>Timeout configuration for the tunnel.</p>
-     */
-    inline void SetTimeoutConfig(TimeoutConfig&& value) { m_timeoutConfigHasBeenSet = true; m_timeoutConfig = std::move(value); }
-
-    /**
-     * <p>Timeout configuration for the tunnel.</p>
-     */
-    inline Tunnel& WithTimeoutConfig(const TimeoutConfig& value) { SetTimeoutConfig(value); return *this;}
-
-    /**
-     * <p>Timeout configuration for the tunnel.</p>
-     */
-    inline Tunnel& WithTimeoutConfig(TimeoutConfig&& value) { SetTimeoutConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tag metadata associated with the secure tunnel.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    Tunnel& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    Tunnel& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
-    inline Tunnel& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
-    inline Tunnel& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
-    inline Tunnel& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag metadata associated with the secure tunnel.</p>
-     */
-    inline Tunnel& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The time when the tunnel was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time when the tunnel was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Tunnel& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the tunnel was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time when the tunnel was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time when the tunnel was created.</p>
-     */
-    inline Tunnel& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time when the tunnel was created.</p>
-     */
-    inline Tunnel& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the tunnel was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The last time the tunnel was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
-
-    /**
-     * <p>The last time the tunnel was updated.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The last time the tunnel was updated.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The last time the tunnel was updated.</p>
-     */
-    inline Tunnel& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The last time the tunnel was updated.</p>
-     */
-    inline Tunnel& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    Tunnel& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tunnelId;
@@ -445,7 +186,7 @@ namespace Model
     Aws::String m_tunnelArn;
     bool m_tunnelArnHasBeenSet = false;
 
-    TunnelStatus m_status;
+    TunnelStatus m_status{TunnelStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     ConnectionState m_sourceConnectionState;
@@ -466,10 +207,10 @@ namespace Model
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
   };
 

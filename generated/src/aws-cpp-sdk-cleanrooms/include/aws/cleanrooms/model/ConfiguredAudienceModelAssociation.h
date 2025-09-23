@@ -33,388 +33,115 @@ namespace Model
   class ConfiguredAudienceModelAssociation
   {
   public:
-    AWS_CLEANROOMS_API ConfiguredAudienceModelAssociation();
+    AWS_CLEANROOMS_API ConfiguredAudienceModelAssociation() = default;
     AWS_CLEANROOMS_API ConfiguredAudienceModelAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API ConfiguredAudienceModelAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier of the configured audience model association.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the configured audience model
      * association.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model
-     * association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
      * for this configured audience model association.</p>
      */
-    inline const Aws::String& GetConfiguredAudienceModelArn() const{ return m_configuredAudienceModelArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
+    inline const Aws::String& GetConfiguredAudienceModelArn() const { return m_configuredAudienceModelArn; }
     inline bool ConfiguredAudienceModelArnHasBeenSet() const { return m_configuredAudienceModelArnHasBeenSet; }
+    template<typename ConfiguredAudienceModelArnT = Aws::String>
+    void SetConfiguredAudienceModelArn(ConfiguredAudienceModelArnT&& value) { m_configuredAudienceModelArnHasBeenSet = true; m_configuredAudienceModelArn = std::forward<ConfiguredAudienceModelArnT>(value); }
+    template<typename ConfiguredAudienceModelArnT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithConfiguredAudienceModelArn(ConfiguredAudienceModelArnT&& value) { SetConfiguredAudienceModelArn(std::forward<ConfiguredAudienceModelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
-    inline void SetConfiguredAudienceModelArn(const Aws::String& value) { m_configuredAudienceModelArnHasBeenSet = true; m_configuredAudienceModelArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
-    inline void SetConfiguredAudienceModelArn(Aws::String&& value) { m_configuredAudienceModelArnHasBeenSet = true; m_configuredAudienceModelArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
-    inline void SetConfiguredAudienceModelArn(const char* value) { m_configuredAudienceModelArnHasBeenSet = true; m_configuredAudienceModelArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithConfiguredAudienceModelArn(const Aws::String& value) { SetConfiguredAudienceModelArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithConfiguredAudienceModelArn(Aws::String&& value) { SetConfiguredAudienceModelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the configured audience model that was used
-     * for this configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithConfiguredAudienceModelArn(const char* value) { SetConfiguredAudienceModelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the membership that contains this configured audience
      * model association.</p>
      */
-    inline const Aws::String& GetMembershipId() const{ return m_membershipId; }
-
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
+    inline const Aws::String& GetMembershipId() const { return m_membershipId; }
     inline bool MembershipIdHasBeenSet() const { return m_membershipIdHasBeenSet; }
+    template<typename MembershipIdT = Aws::String>
+    void SetMembershipId(MembershipIdT&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::forward<MembershipIdT>(value); }
+    template<typename MembershipIdT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithMembershipId(MembershipIdT&& value) { SetMembershipId(std::forward<MembershipIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
-    inline void SetMembershipId(const Aws::String& value) { m_membershipIdHasBeenSet = true; m_membershipId = value; }
-
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
-    inline void SetMembershipId(Aws::String&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
-    inline void SetMembershipId(const char* value) { m_membershipIdHasBeenSet = true; m_membershipId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithMembershipId(const Aws::String& value) { SetMembershipId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithMembershipId(Aws::String&& value) { SetMembershipId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the membership that contains this configured audience
-     * model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithMembershipId(const char* value) { SetMembershipId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the membership that contains this
      * configured audience model association.</p>
      */
-    inline const Aws::String& GetMembershipArn() const{ return m_membershipArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
+    inline const Aws::String& GetMembershipArn() const { return m_membershipArn; }
     inline bool MembershipArnHasBeenSet() const { return m_membershipArnHasBeenSet; }
+    template<typename MembershipArnT = Aws::String>
+    void SetMembershipArn(MembershipArnT&& value) { m_membershipArnHasBeenSet = true; m_membershipArn = std::forward<MembershipArnT>(value); }
+    template<typename MembershipArnT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithMembershipArn(MembershipArnT&& value) { SetMembershipArn(std::forward<MembershipArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
-    inline void SetMembershipArn(const Aws::String& value) { m_membershipArnHasBeenSet = true; m_membershipArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
-    inline void SetMembershipArn(Aws::String&& value) { m_membershipArnHasBeenSet = true; m_membershipArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
-    inline void SetMembershipArn(const char* value) { m_membershipArnHasBeenSet = true; m_membershipArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithMembershipArn(const Aws::String& value) { SetMembershipArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithMembershipArn(Aws::String&& value) { SetMembershipArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the membership that contains this
-     * configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithMembershipArn(const char* value) { SetMembershipArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier of the collaboration that contains this configured
      * audience model association.</p>
      */
-    inline const Aws::String& GetCollaborationId() const{ return m_collaborationId; }
-
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
+    inline const Aws::String& GetCollaborationId() const { return m_collaborationId; }
     inline bool CollaborationIdHasBeenSet() const { return m_collaborationIdHasBeenSet; }
+    template<typename CollaborationIdT = Aws::String>
+    void SetCollaborationId(CollaborationIdT&& value) { m_collaborationIdHasBeenSet = true; m_collaborationId = std::forward<CollaborationIdT>(value); }
+    template<typename CollaborationIdT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithCollaborationId(CollaborationIdT&& value) { SetCollaborationId(std::forward<CollaborationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
-    inline void SetCollaborationId(const Aws::String& value) { m_collaborationIdHasBeenSet = true; m_collaborationId = value; }
-
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
-    inline void SetCollaborationId(Aws::String&& value) { m_collaborationIdHasBeenSet = true; m_collaborationId = std::move(value); }
-
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
-    inline void SetCollaborationId(const char* value) { m_collaborationIdHasBeenSet = true; m_collaborationId.assign(value); }
-
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCollaborationId(const Aws::String& value) { SetCollaborationId(value); return *this;}
-
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCollaborationId(Aws::String&& value) { SetCollaborationId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier of the collaboration that contains this configured
-     * audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCollaborationId(const char* value) { SetCollaborationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
      * configured audience model association.</p>
      */
-    inline const Aws::String& GetCollaborationArn() const{ return m_collaborationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
+    inline const Aws::String& GetCollaborationArn() const { return m_collaborationArn; }
     inline bool CollaborationArnHasBeenSet() const { return m_collaborationArnHasBeenSet; }
+    template<typename CollaborationArnT = Aws::String>
+    void SetCollaborationArn(CollaborationArnT&& value) { m_collaborationArnHasBeenSet = true; m_collaborationArn = std::forward<CollaborationArnT>(value); }
+    template<typename CollaborationArnT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithCollaborationArn(CollaborationArnT&& value) { SetCollaborationArn(std::forward<CollaborationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
-    inline void SetCollaborationArn(const Aws::String& value) { m_collaborationArnHasBeenSet = true; m_collaborationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
-    inline void SetCollaborationArn(Aws::String&& value) { m_collaborationArnHasBeenSet = true; m_collaborationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
-    inline void SetCollaborationArn(const char* value) { m_collaborationArnHasBeenSet = true; m_collaborationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCollaborationArn(const Aws::String& value) { SetCollaborationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCollaborationArn(Aws::String&& value) { SetCollaborationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the collaboration that contains this
-     * configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCollaborationArn(const char* value) { SetCollaborationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the configured audience model association.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When <code>TRUE</code>, indicates that the resource policy for the configured
      * audience model resource being associated is configured for Clean Rooms to manage
@@ -422,144 +149,48 @@ namespace Model
      * indicates that the configured audience model resource owner will manage
      * permissions related to the given collaboration.</p>
      */
-    inline bool GetManageResourcePolicies() const{ return m_manageResourcePolicies; }
-
-    /**
-     * <p>When <code>TRUE</code>, indicates that the resource policy for the configured
-     * audience model resource being associated is configured for Clean Rooms to manage
-     * permissions related to the given collaboration. When <code>FALSE</code>,
-     * indicates that the configured audience model resource owner will manage
-     * permissions related to the given collaboration.</p>
-     */
+    inline bool GetManageResourcePolicies() const { return m_manageResourcePolicies; }
     inline bool ManageResourcePoliciesHasBeenSet() const { return m_manageResourcePoliciesHasBeenSet; }
-
-    /**
-     * <p>When <code>TRUE</code>, indicates that the resource policy for the configured
-     * audience model resource being associated is configured for Clean Rooms to manage
-     * permissions related to the given collaboration. When <code>FALSE</code>,
-     * indicates that the configured audience model resource owner will manage
-     * permissions related to the given collaboration.</p>
-     */
     inline void SetManageResourcePolicies(bool value) { m_manageResourcePoliciesHasBeenSet = true; m_manageResourcePolicies = value; }
-
-    /**
-     * <p>When <code>TRUE</code>, indicates that the resource policy for the configured
-     * audience model resource being associated is configured for Clean Rooms to manage
-     * permissions related to the given collaboration. When <code>FALSE</code>,
-     * indicates that the configured audience model resource owner will manage
-     * permissions related to the given collaboration.</p>
-     */
     inline ConfiguredAudienceModelAssociation& WithManageResourcePolicies(bool value) { SetManageResourcePolicies(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The description of the configured audience model association.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ConfiguredAudienceModelAssociation& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the configured audience model association.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the configured audience model association was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The time at which the configured audience model association was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    ConfiguredAudienceModelAssociation& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the configured audience model association was created.</p>
-     */
-    inline void SetCreateTime(const Aws::Utils::DateTime& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The time at which the configured audience model association was created.</p>
-     */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The time at which the configured audience model association was created.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCreateTime(const Aws::Utils::DateTime& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The time at which the configured audience model association was created.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The most recent time at which the configured audience model association was
      * updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateTime() const{ return m_updateTime; }
-
-    /**
-     * <p>The most recent time at which the configured audience model association was
-     * updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdateTime() const { return m_updateTime; }
     inline bool UpdateTimeHasBeenSet() const { return m_updateTimeHasBeenSet; }
-
-    /**
-     * <p>The most recent time at which the configured audience model association was
-     * updated.</p>
-     */
-    inline void SetUpdateTime(const Aws::Utils::DateTime& value) { m_updateTimeHasBeenSet = true; m_updateTime = value; }
-
-    /**
-     * <p>The most recent time at which the configured audience model association was
-     * updated.</p>
-     */
-    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::move(value); }
-
-    /**
-     * <p>The most recent time at which the configured audience model association was
-     * updated.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithUpdateTime(const Aws::Utils::DateTime& value) { SetUpdateTime(value); return *this;}
-
-    /**
-     * <p>The most recent time at which the configured audience model association was
-     * updated.</p>
-     */
-    inline ConfiguredAudienceModelAssociation& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(std::move(value)); return *this;}
-
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    void SetUpdateTime(UpdateTimeT&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::forward<UpdateTimeT>(value); }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    ConfiguredAudienceModelAssociation& WithUpdateTime(UpdateTimeT&& value) { SetUpdateTime(std::forward<UpdateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -586,16 +217,16 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    bool m_manageResourcePolicies;
+    bool m_manageResourcePolicies{false};
     bool m_manageResourcePoliciesHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createTime;
+    Aws::Utils::DateTime m_createTime{};
     bool m_createTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateTime;
+    Aws::Utils::DateTime m_updateTime{};
     bool m_updateTimeHasBeenSet = false;
   };
 

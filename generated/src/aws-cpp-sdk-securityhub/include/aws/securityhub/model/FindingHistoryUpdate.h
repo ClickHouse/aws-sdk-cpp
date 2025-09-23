@@ -34,158 +34,50 @@ namespace Model
   class FindingHistoryUpdate
   {
   public:
-    AWS_SECURITYHUB_API FindingHistoryUpdate();
+    AWS_SECURITYHUB_API FindingHistoryUpdate() = default;
     AWS_SECURITYHUB_API FindingHistoryUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API FindingHistoryUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The ASFF field that changed during the finding change event. </p>
      */
-    inline const Aws::String& GetUpdatedField() const{ return m_updatedField; }
-
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
+    inline const Aws::String& GetUpdatedField() const { return m_updatedField; }
     inline bool UpdatedFieldHasBeenSet() const { return m_updatedFieldHasBeenSet; }
+    template<typename UpdatedFieldT = Aws::String>
+    void SetUpdatedField(UpdatedFieldT&& value) { m_updatedFieldHasBeenSet = true; m_updatedField = std::forward<UpdatedFieldT>(value); }
+    template<typename UpdatedFieldT = Aws::String>
+    FindingHistoryUpdate& WithUpdatedField(UpdatedFieldT&& value) { SetUpdatedField(std::forward<UpdatedFieldT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
-    inline void SetUpdatedField(const Aws::String& value) { m_updatedFieldHasBeenSet = true; m_updatedField = value; }
-
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
-    inline void SetUpdatedField(Aws::String&& value) { m_updatedFieldHasBeenSet = true; m_updatedField = std::move(value); }
-
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
-    inline void SetUpdatedField(const char* value) { m_updatedFieldHasBeenSet = true; m_updatedField.assign(value); }
-
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
-    inline FindingHistoryUpdate& WithUpdatedField(const Aws::String& value) { SetUpdatedField(value); return *this;}
-
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
-    inline FindingHistoryUpdate& WithUpdatedField(Aws::String&& value) { SetUpdatedField(std::move(value)); return *this;}
-
-    /**
-     * <p> The ASFF field that changed during the finding change event. </p>
-     */
-    inline FindingHistoryUpdate& WithUpdatedField(const char* value) { SetUpdatedField(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The value of the ASFF field before the finding change event. </p>
      */
-    inline const Aws::String& GetOldValue() const{ return m_oldValue; }
-
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
+    inline const Aws::String& GetOldValue() const { return m_oldValue; }
     inline bool OldValueHasBeenSet() const { return m_oldValueHasBeenSet; }
+    template<typename OldValueT = Aws::String>
+    void SetOldValue(OldValueT&& value) { m_oldValueHasBeenSet = true; m_oldValue = std::forward<OldValueT>(value); }
+    template<typename OldValueT = Aws::String>
+    FindingHistoryUpdate& WithOldValue(OldValueT&& value) { SetOldValue(std::forward<OldValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
-    inline void SetOldValue(const Aws::String& value) { m_oldValueHasBeenSet = true; m_oldValue = value; }
-
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
-    inline void SetOldValue(Aws::String&& value) { m_oldValueHasBeenSet = true; m_oldValue = std::move(value); }
-
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
-    inline void SetOldValue(const char* value) { m_oldValueHasBeenSet = true; m_oldValue.assign(value); }
-
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
-    inline FindingHistoryUpdate& WithOldValue(const Aws::String& value) { SetOldValue(value); return *this;}
-
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
-    inline FindingHistoryUpdate& WithOldValue(Aws::String&& value) { SetOldValue(std::move(value)); return *this;}
-
-    /**
-     * <p> The value of the ASFF field before the finding change event. </p>
-     */
-    inline FindingHistoryUpdate& WithOldValue(const char* value) { SetOldValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The value of the ASFF field after the finding change event. To preserve
      * storage and readability, Security Hub omits this value if <a
      * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
      * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
      */
-    inline const Aws::String& GetNewValue() const{ return m_newValue; }
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
+    inline const Aws::String& GetNewValue() const { return m_newValue; }
     inline bool NewValueHasBeenSet() const { return m_newValueHasBeenSet; }
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
-    inline void SetNewValue(const Aws::String& value) { m_newValueHasBeenSet = true; m_newValue = value; }
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
-    inline void SetNewValue(Aws::String&& value) { m_newValueHasBeenSet = true; m_newValue = std::move(value); }
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
-    inline void SetNewValue(const char* value) { m_newValueHasBeenSet = true; m_newValue.assign(value); }
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
-    inline FindingHistoryUpdate& WithNewValue(const Aws::String& value) { SetNewValue(value); return *this;}
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
-    inline FindingHistoryUpdate& WithNewValue(Aws::String&& value) { SetNewValue(std::move(value)); return *this;}
-
-    /**
-     * <p> The value of the ASFF field after the finding change event. To preserve
-     * storage and readability, Security Hub omits this value if <a
-     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_FindingHistoryRecord.html">
-     * <code>FindingHistoryRecord</code> </a> exceeds database limits. </p>
-     */
-    inline FindingHistoryUpdate& WithNewValue(const char* value) { SetNewValue(value); return *this;}
-
+    template<typename NewValueT = Aws::String>
+    void SetNewValue(NewValueT&& value) { m_newValueHasBeenSet = true; m_newValue = std::forward<NewValueT>(value); }
+    template<typename NewValueT = Aws::String>
+    FindingHistoryUpdate& WithNewValue(NewValueT&& value) { SetNewValue(std::forward<NewValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_updatedField;

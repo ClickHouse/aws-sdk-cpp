@@ -33,6 +33,11 @@ namespace Aws
         static const int OpenSearchReservedInstances_HASH = HashingUtils::HashString("OpenSearchReservedInstances");
         static const int RedshiftReservedInstances_HASH = HashingUtils::HashString("RedshiftReservedInstances");
         static const int ElastiCacheReservedInstances_HASH = HashingUtils::HashString("ElastiCacheReservedInstances");
+        static const int RdsDbInstanceStorage_HASH = HashingUtils::HashString("RdsDbInstanceStorage");
+        static const int RdsDbInstance_HASH = HashingUtils::HashString("RdsDbInstance");
+        static const int AuroraDbClusterStorage_HASH = HashingUtils::HashString("AuroraDbClusterStorage");
+        static const int DynamoDbReservedCapacity_HASH = HashingUtils::HashString("DynamoDbReservedCapacity");
+        static const int MemoryDbReservedInstances_HASH = HashingUtils::HashString("MemoryDbReservedInstances");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -90,6 +95,26 @@ namespace Aws
           {
             return ResourceType::ElastiCacheReservedInstances;
           }
+          else if (hashCode == RdsDbInstanceStorage_HASH)
+          {
+            return ResourceType::RdsDbInstanceStorage;
+          }
+          else if (hashCode == RdsDbInstance_HASH)
+          {
+            return ResourceType::RdsDbInstance;
+          }
+          else if (hashCode == AuroraDbClusterStorage_HASH)
+          {
+            return ResourceType::AuroraDbClusterStorage;
+          }
+          else if (hashCode == DynamoDbReservedCapacity_HASH)
+          {
+            return ResourceType::DynamoDbReservedCapacity;
+          }
+          else if (hashCode == MemoryDbReservedInstances_HASH)
+          {
+            return ResourceType::MemoryDbReservedInstances;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -132,6 +157,16 @@ namespace Aws
             return "RedshiftReservedInstances";
           case ResourceType::ElastiCacheReservedInstances:
             return "ElastiCacheReservedInstances";
+          case ResourceType::RdsDbInstanceStorage:
+            return "RdsDbInstanceStorage";
+          case ResourceType::RdsDbInstance:
+            return "RdsDbInstance";
+          case ResourceType::AuroraDbClusterStorage:
+            return "AuroraDbClusterStorage";
+          case ResourceType::DynamoDbReservedCapacity:
+            return "DynamoDbReservedCapacity";
+          case ResourceType::MemoryDbReservedInstances:
+            return "MemoryDbReservedInstances";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-F4vSettings::F4vSettings() : 
-    m_moovPlacement(F4vMoovPlacement::NOT_SET),
-    m_moovPlacementHasBeenSet(false)
-{
-}
-
-F4vSettings::F4vSettings(JsonView jsonValue) : 
-    m_moovPlacement(F4vMoovPlacement::NOT_SET),
-    m_moovPlacementHasBeenSet(false)
+F4vSettings::F4vSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ F4vSettings& F4vSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("moovPlacement"))
   {
     m_moovPlacement = F4vMoovPlacementMapper::GetF4vMoovPlacementForName(jsonValue.GetString("moovPlacement"));
-
     m_moovPlacementHasBeenSet = true;
   }
-
   return *this;
 }
 

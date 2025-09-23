@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-SpaceSharingSettingsSummary::SpaceSharingSettingsSummary() : 
-    m_sharingType(SharingType::NOT_SET),
-    m_sharingTypeHasBeenSet(false)
-{
-}
-
-SpaceSharingSettingsSummary::SpaceSharingSettingsSummary(JsonView jsonValue) : 
-    m_sharingType(SharingType::NOT_SET),
-    m_sharingTypeHasBeenSet(false)
+SpaceSharingSettingsSummary::SpaceSharingSettingsSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SpaceSharingSettingsSummary& SpaceSharingSettingsSummary::operator =(JsonView js
   if(jsonValue.ValueExists("SharingType"))
   {
     m_sharingType = SharingTypeMapper::GetSharingTypeForName(jsonValue.GetString("SharingType"));
-
     m_sharingTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

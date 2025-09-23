@@ -32,134 +32,47 @@ namespace Model
   class MLResourceNotFoundException
   {
   public:
-    AWS_NEPTUNEDATA_API MLResourceNotFoundException();
+    AWS_NEPTUNEDATA_API MLResourceNotFoundException() = default;
     AWS_NEPTUNEDATA_API MLResourceNotFoundException(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API MLResourceNotFoundException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A detailed message describing the problem.</p>
      */
-    inline const Aws::String& GetDetailedMessage() const{ return m_detailedMessage; }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
+    inline const Aws::String& GetDetailedMessage() const { return m_detailedMessage; }
     inline bool DetailedMessageHasBeenSet() const { return m_detailedMessageHasBeenSet; }
+    template<typename DetailedMessageT = Aws::String>
+    void SetDetailedMessage(DetailedMessageT&& value) { m_detailedMessageHasBeenSet = true; m_detailedMessage = std::forward<DetailedMessageT>(value); }
+    template<typename DetailedMessageT = Aws::String>
+    MLResourceNotFoundException& WithDetailedMessage(DetailedMessageT&& value) { SetDetailedMessage(std::forward<DetailedMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline void SetDetailedMessage(const Aws::String& value) { m_detailedMessageHasBeenSet = true; m_detailedMessage = value; }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline void SetDetailedMessage(Aws::String&& value) { m_detailedMessageHasBeenSet = true; m_detailedMessage = std::move(value); }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline void SetDetailedMessage(const char* value) { m_detailedMessageHasBeenSet = true; m_detailedMessage.assign(value); }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline MLResourceNotFoundException& WithDetailedMessage(const Aws::String& value) { SetDetailedMessage(value); return *this;}
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline MLResourceNotFoundException& WithDetailedMessage(Aws::String&& value) { SetDetailedMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline MLResourceNotFoundException& WithDetailedMessage(const char* value) { SetDetailedMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the request in question.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    /**
-     * <p>The ID of the request in question.</p>
-     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    MLResourceNotFoundException& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the request in question.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    /**
-     * <p>The ID of the request in question.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    /**
-     * <p>The ID of the request in question.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    /**
-     * <p>The ID of the request in question.</p>
-     */
-    inline MLResourceNotFoundException& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The ID of the request in question.</p>
-     */
-    inline MLResourceNotFoundException& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the request in question.</p>
-     */
-    inline MLResourceNotFoundException& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status code returned with the exception.</p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline MLResourceNotFoundException& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline MLResourceNotFoundException& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline MLResourceNotFoundException& WithCode(const char* value) { SetCode(value); return *this;}
-
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    MLResourceNotFoundException& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detailedMessage;

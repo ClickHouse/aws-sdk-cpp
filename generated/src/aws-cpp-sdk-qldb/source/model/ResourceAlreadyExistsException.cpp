@@ -18,17 +18,7 @@ namespace QLDB
 namespace Model
 {
 
-ResourceAlreadyExistsException::ResourceAlreadyExistsException() : 
-    m_messageHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceNameHasBeenSet(false)
-{
-}
-
-ResourceAlreadyExistsException::ResourceAlreadyExistsException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceNameHasBeenSet(false)
+ResourceAlreadyExistsException::ResourceAlreadyExistsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ResourceAlreadyExistsException& ResourceAlreadyExistsException::operator =(JsonV
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = jsonValue.GetString("ResourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceName"))
   {
     m_resourceName = jsonValue.GetString("ResourceName");
-
     m_resourceNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,7 +27,7 @@ namespace Model
   class ListApplicationsRequest : public EMRServerlessRequest
   {
   public:
-    AWS_EMRSERVERLESS_API ListApplicationsRequest();
+    AWS_EMRSERVERLESS_API ListApplicationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,122 +40,47 @@ namespace Model
     AWS_EMRSERVERLESS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The token for the next set of application results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListApplicationsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
-    inline ListApplicationsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
-    inline ListApplicationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of application results.</p>
-     */
-    inline ListApplicationsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of applications that can be listed.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of applications that can be listed.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of applications that can be listed.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of applications that can be listed.</p>
-     */
     inline ListApplicationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional filter for application states. Note that if this filter contains
      * multiple states, the resulting list will be grouped by the state.</p>
      */
-    inline const Aws::Vector<ApplicationState>& GetStates() const{ return m_states; }
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
+    inline const Aws::Vector<ApplicationState>& GetStates() const { return m_states; }
     inline bool StatesHasBeenSet() const { return m_statesHasBeenSet; }
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
-    inline void SetStates(const Aws::Vector<ApplicationState>& value) { m_statesHasBeenSet = true; m_states = value; }
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
-    inline void SetStates(Aws::Vector<ApplicationState>&& value) { m_statesHasBeenSet = true; m_states = std::move(value); }
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
-    inline ListApplicationsRequest& WithStates(const Aws::Vector<ApplicationState>& value) { SetStates(value); return *this;}
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
-    inline ListApplicationsRequest& WithStates(Aws::Vector<ApplicationState>&& value) { SetStates(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
-    inline ListApplicationsRequest& AddStates(const ApplicationState& value) { m_statesHasBeenSet = true; m_states.push_back(value); return *this; }
-
-    /**
-     * <p>An optional filter for application states. Note that if this filter contains
-     * multiple states, the resulting list will be grouped by the state.</p>
-     */
-    inline ListApplicationsRequest& AddStates(ApplicationState&& value) { m_statesHasBeenSet = true; m_states.push_back(std::move(value)); return *this; }
-
+    template<typename StatesT = Aws::Vector<ApplicationState>>
+    void SetStates(StatesT&& value) { m_statesHasBeenSet = true; m_states = std::forward<StatesT>(value); }
+    template<typename StatesT = Aws::Vector<ApplicationState>>
+    ListApplicationsRequest& WithStates(StatesT&& value) { SetStates(std::forward<StatesT>(value)); return *this;}
+    inline ListApplicationsRequest& AddStates(ApplicationState value) { m_statesHasBeenSet = true; m_states.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::Vector<ApplicationState> m_states;

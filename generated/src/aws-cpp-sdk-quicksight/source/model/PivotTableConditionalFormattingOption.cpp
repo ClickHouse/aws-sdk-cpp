@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableConditionalFormattingOption::PivotTableConditionalFormattingOption() : 
-    m_cellHasBeenSet(false)
-{
-}
-
-PivotTableConditionalFormattingOption::PivotTableConditionalFormattingOption(JsonView jsonValue) : 
-    m_cellHasBeenSet(false)
+PivotTableConditionalFormattingOption::PivotTableConditionalFormattingOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ PivotTableConditionalFormattingOption& PivotTableConditionalFormattingOption::op
   if(jsonValue.ValueExists("Cell"))
   {
     m_cell = jsonValue.GetObject("Cell");
-
     m_cellHasBeenSet = true;
   }
-
   return *this;
 }
 

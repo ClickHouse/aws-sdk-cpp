@@ -32,93 +32,35 @@ namespace Model
   class HttpEndpointDescription
   {
   public:
-    AWS_FIREHOSE_API HttpEndpointDescription();
+    AWS_FIREHOSE_API HttpEndpointDescription() = default;
     AWS_FIREHOSE_API HttpEndpointDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API HttpEndpointDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL of the HTTP endpoint selected as the destination.</p>
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    HttpEndpointDescription& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
-    inline HttpEndpointDescription& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
-    inline HttpEndpointDescription& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the HTTP endpoint selected as the destination.</p>
-     */
-    inline HttpEndpointDescription& WithUrl(const char* value) { SetUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the HTTP endpoint selected as the destination.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
-    inline HttpEndpointDescription& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
-    inline HttpEndpointDescription& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the HTTP endpoint selected as the destination.</p>
-     */
-    inline HttpEndpointDescription& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    HttpEndpointDescription& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_url;

@@ -18,41 +18,23 @@ namespace LocationService
 namespace Model
 {
 
-ListDevicePositionsResponseEntry::ListDevicePositionsResponseEntry() : 
-    m_accuracyHasBeenSet(false),
-    m_deviceIdHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_positionPropertiesHasBeenSet(false),
-    m_sampleTimeHasBeenSet(false)
-{
-}
-
-ListDevicePositionsResponseEntry::ListDevicePositionsResponseEntry(JsonView jsonValue) : 
-    m_accuracyHasBeenSet(false),
-    m_deviceIdHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_positionPropertiesHasBeenSet(false),
-    m_sampleTimeHasBeenSet(false)
+ListDevicePositionsResponseEntry::ListDevicePositionsResponseEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ListDevicePositionsResponseEntry& ListDevicePositionsResponseEntry::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("Accuracy"))
-  {
-    m_accuracy = jsonValue.GetObject("Accuracy");
-
-    m_accuracyHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("DeviceId"))
   {
     m_deviceId = jsonValue.GetString("DeviceId");
-
     m_deviceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SampleTime"))
+  {
+    m_sampleTime = jsonValue.GetString("SampleTime");
+    m_sampleTimeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Position"))
   {
     Aws::Utils::Array<JsonView> positionJsonList = jsonValue.GetArray("Position");
@@ -62,7 +44,11 @@ ListDevicePositionsResponseEntry& ListDevicePositionsResponseEntry::operator =(J
     }
     m_positionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Accuracy"))
+  {
+    m_accuracy = jsonValue.GetObject("Accuracy");
+    m_accuracyHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("PositionProperties"))
   {
     Aws::Map<Aws::String, JsonView> positionPropertiesJsonMap = jsonValue.GetObject("PositionProperties").GetAllObjects();
@@ -72,14 +58,6 @@ ListDevicePositionsResponseEntry& ListDevicePositionsResponseEntry::operator =(J
     }
     m_positionPropertiesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("SampleTime"))
-  {
-    m_sampleTime = jsonValue.GetString("SampleTime");
-
-    m_sampleTimeHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -87,16 +65,15 @@ JsonValue ListDevicePositionsResponseEntry::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_accuracyHasBeenSet)
-  {
-   payload.WithObject("Accuracy", m_accuracy.Jsonize());
-
-  }
-
   if(m_deviceIdHasBeenSet)
   {
    payload.WithString("DeviceId", m_deviceId);
 
+  }
+
+  if(m_sampleTimeHasBeenSet)
+  {
+   payload.WithString("SampleTime", m_sampleTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   if(m_positionHasBeenSet)
@@ -110,6 +87,12 @@ JsonValue ListDevicePositionsResponseEntry::Jsonize() const
 
   }
 
+  if(m_accuracyHasBeenSet)
+  {
+   payload.WithObject("Accuracy", m_accuracy.Jsonize());
+
+  }
+
   if(m_positionPropertiesHasBeenSet)
   {
    JsonValue positionPropertiesJsonMap;
@@ -119,11 +102,6 @@ JsonValue ListDevicePositionsResponseEntry::Jsonize() const
    }
    payload.WithObject("PositionProperties", std::move(positionPropertiesJsonMap));
 
-  }
-
-  if(m_sampleTimeHasBeenSet)
-  {
-   payload.WithString("SampleTime", m_sampleTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   return payload;

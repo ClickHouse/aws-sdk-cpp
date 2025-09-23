@@ -18,23 +18,18 @@ namespace QBusiness
 namespace Model
 {
 
-ActionExecution::ActionExecution() : 
-    m_payloadHasBeenSet(false),
-    m_payloadFieldNameSeparatorHasBeenSet(false),
-    m_pluginIdHasBeenSet(false)
-{
-}
-
-ActionExecution::ActionExecution(JsonView jsonValue) : 
-    m_payloadHasBeenSet(false),
-    m_payloadFieldNameSeparatorHasBeenSet(false),
-    m_pluginIdHasBeenSet(false)
+ActionExecution::ActionExecution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ActionExecution& ActionExecution::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("pluginId"))
+  {
+    m_pluginId = jsonValue.GetString("pluginId");
+    m_pluginIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("payload"))
   {
     Aws::Map<Aws::String, JsonView> payloadJsonMap = jsonValue.GetObject("payload").GetAllObjects();
@@ -44,27 +39,23 @@ ActionExecution& ActionExecution::operator =(JsonView jsonValue)
     }
     m_payloadHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("payloadFieldNameSeparator"))
   {
     m_payloadFieldNameSeparator = jsonValue.GetString("payloadFieldNameSeparator");
-
     m_payloadFieldNameSeparatorHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("pluginId"))
-  {
-    m_pluginId = jsonValue.GetString("pluginId");
-
-    m_pluginIdHasBeenSet = true;
-  }
-
   return *this;
 }
 
 JsonValue ActionExecution::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_pluginIdHasBeenSet)
+  {
+   payload.WithString("pluginId", m_pluginId);
+
+  }
 
   if(m_payloadHasBeenSet)
   {
@@ -80,12 +71,6 @@ JsonValue ActionExecution::Jsonize() const
   if(m_payloadFieldNameSeparatorHasBeenSet)
   {
    payload.WithString("payloadFieldNameSeparator", m_payloadFieldNameSeparator);
-
-  }
-
-  if(m_pluginIdHasBeenSet)
-  {
-   payload.WithString("pluginId", m_pluginId);
 
   }
 

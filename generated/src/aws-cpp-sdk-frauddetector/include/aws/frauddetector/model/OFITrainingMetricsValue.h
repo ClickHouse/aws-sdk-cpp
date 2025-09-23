@@ -34,83 +34,37 @@ namespace Model
   class OFITrainingMetricsValue
   {
   public:
-    AWS_FRAUDDETECTOR_API OFITrainingMetricsValue();
+    AWS_FRAUDDETECTOR_API OFITrainingMetricsValue() = default;
     AWS_FRAUDDETECTOR_API OFITrainingMetricsValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API OFITrainingMetricsValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The model's performance metrics data points. </p>
      */
-    inline const Aws::Vector<OFIMetricDataPoint>& GetMetricDataPoints() const{ return m_metricDataPoints; }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
+    inline const Aws::Vector<OFIMetricDataPoint>& GetMetricDataPoints() const { return m_metricDataPoints; }
     inline bool MetricDataPointsHasBeenSet() const { return m_metricDataPointsHasBeenSet; }
+    template<typename MetricDataPointsT = Aws::Vector<OFIMetricDataPoint>>
+    void SetMetricDataPoints(MetricDataPointsT&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints = std::forward<MetricDataPointsT>(value); }
+    template<typename MetricDataPointsT = Aws::Vector<OFIMetricDataPoint>>
+    OFITrainingMetricsValue& WithMetricDataPoints(MetricDataPointsT&& value) { SetMetricDataPoints(std::forward<MetricDataPointsT>(value)); return *this;}
+    template<typename MetricDataPointsT = OFIMetricDataPoint>
+    OFITrainingMetricsValue& AddMetricDataPoints(MetricDataPointsT&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints.emplace_back(std::forward<MetricDataPointsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline void SetMetricDataPoints(const Aws::Vector<OFIMetricDataPoint>& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints = value; }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline void SetMetricDataPoints(Aws::Vector<OFIMetricDataPoint>&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints = std::move(value); }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline OFITrainingMetricsValue& WithMetricDataPoints(const Aws::Vector<OFIMetricDataPoint>& value) { SetMetricDataPoints(value); return *this;}
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline OFITrainingMetricsValue& WithMetricDataPoints(Aws::Vector<OFIMetricDataPoint>&& value) { SetMetricDataPoints(std::move(value)); return *this;}
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline OFITrainingMetricsValue& AddMetricDataPoints(const OFIMetricDataPoint& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints.push_back(value); return *this; }
-
-    /**
-     * <p> The model's performance metrics data points. </p>
-     */
-    inline OFITrainingMetricsValue& AddMetricDataPoints(OFIMetricDataPoint&& value) { m_metricDataPointsHasBeenSet = true; m_metricDataPoints.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The model's overall performance score. </p>
      */
-    inline const OFIModelPerformance& GetModelPerformance() const{ return m_modelPerformance; }
-
-    /**
-     * <p> The model's overall performance score. </p>
-     */
+    inline const OFIModelPerformance& GetModelPerformance() const { return m_modelPerformance; }
     inline bool ModelPerformanceHasBeenSet() const { return m_modelPerformanceHasBeenSet; }
-
-    /**
-     * <p> The model's overall performance score. </p>
-     */
-    inline void SetModelPerformance(const OFIModelPerformance& value) { m_modelPerformanceHasBeenSet = true; m_modelPerformance = value; }
-
-    /**
-     * <p> The model's overall performance score. </p>
-     */
-    inline void SetModelPerformance(OFIModelPerformance&& value) { m_modelPerformanceHasBeenSet = true; m_modelPerformance = std::move(value); }
-
-    /**
-     * <p> The model's overall performance score. </p>
-     */
-    inline OFITrainingMetricsValue& WithModelPerformance(const OFIModelPerformance& value) { SetModelPerformance(value); return *this;}
-
-    /**
-     * <p> The model's overall performance score. </p>
-     */
-    inline OFITrainingMetricsValue& WithModelPerformance(OFIModelPerformance&& value) { SetModelPerformance(std::move(value)); return *this;}
-
+    template<typename ModelPerformanceT = OFIModelPerformance>
+    void SetModelPerformance(ModelPerformanceT&& value) { m_modelPerformanceHasBeenSet = true; m_modelPerformance = std::forward<ModelPerformanceT>(value); }
+    template<typename ModelPerformanceT = OFIModelPerformance>
+    OFITrainingMetricsValue& WithModelPerformance(ModelPerformanceT&& value) { SetModelPerformance(std::forward<ModelPerformanceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<OFIMetricDataPoint> m_metricDataPoints;

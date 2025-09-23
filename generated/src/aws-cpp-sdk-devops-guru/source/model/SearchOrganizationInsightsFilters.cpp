@@ -18,19 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-SearchOrganizationInsightsFilters::SearchOrganizationInsightsFilters() : 
-    m_severitiesHasBeenSet(false),
-    m_statusesHasBeenSet(false),
-    m_resourceCollectionHasBeenSet(false),
-    m_serviceCollectionHasBeenSet(false)
-{
-}
-
-SearchOrganizationInsightsFilters::SearchOrganizationInsightsFilters(JsonView jsonValue) : 
-    m_severitiesHasBeenSet(false),
-    m_statusesHasBeenSet(false),
-    m_resourceCollectionHasBeenSet(false),
-    m_serviceCollectionHasBeenSet(false)
+SearchOrganizationInsightsFilters::SearchOrganizationInsightsFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ SearchOrganizationInsightsFilters& SearchOrganizationInsightsFilters::operator =
     }
     m_severitiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Statuses"))
   {
     Aws::Utils::Array<JsonView> statusesJsonList = jsonValue.GetArray("Statuses");
@@ -56,21 +43,16 @@ SearchOrganizationInsightsFilters& SearchOrganizationInsightsFilters::operator =
     }
     m_statusesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceCollection"))
   {
     m_resourceCollection = jsonValue.GetObject("ResourceCollection");
-
     m_resourceCollectionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceCollection"))
   {
     m_serviceCollection = jsonValue.GetObject("ServiceCollection");
-
     m_serviceCollectionHasBeenSet = true;
   }
-
   return *this;
 }
 

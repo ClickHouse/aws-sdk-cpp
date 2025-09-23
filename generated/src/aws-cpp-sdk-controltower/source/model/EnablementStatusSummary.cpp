@@ -18,17 +18,7 @@ namespace ControlTower
 namespace Model
 {
 
-EnablementStatusSummary::EnablementStatusSummary() : 
-    m_lastOperationIdentifierHasBeenSet(false),
-    m_status(EnablementStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-EnablementStatusSummary::EnablementStatusSummary(JsonView jsonValue) : 
-    m_lastOperationIdentifierHasBeenSet(false),
-    m_status(EnablementStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+EnablementStatusSummary::EnablementStatusSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EnablementStatusSummary& EnablementStatusSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("lastOperationIdentifier"))
   {
     m_lastOperationIdentifier = jsonValue.GetString("lastOperationIdentifier");
-
     m_lastOperationIdentifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = EnablementStatusMapper::GetEnablementStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,125 +27,53 @@ namespace Model
   class ImportComponentResult
   {
   public:
-    AWS_IMAGEBUILDER_API ImportComponentResult();
+    AWS_IMAGEBUILDER_API ImportComponentResult() = default;
     AWS_IMAGEBUILDER_API ImportComponentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IMAGEBUILDER_API ImportComponentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The request ID that uniquely identifies this request.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ImportComponentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline ImportComponentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline ImportComponentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The request ID that uniquely identifies this request.</p>
-     */
-    inline ImportComponentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The client token that uniquely identifies the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    ImportComponentResult& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The client token that uniquely identifies the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientToken = value; }
-
-    /**
-     * <p>The client token that uniquely identifies the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientToken = std::move(value); }
-
-    /**
-     * <p>The client token that uniquely identifies the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientToken.assign(value); }
-
-    /**
-     * <p>The client token that uniquely identifies the request.</p>
-     */
-    inline ImportComponentResult& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The client token that uniquely identifies the request.</p>
-     */
-    inline ImportComponentResult& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The client token that uniquely identifies the request.</p>
-     */
-    inline ImportComponentResult& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the imported component.</p>
      */
-    inline const Aws::String& GetComponentBuildVersionArn() const{ return m_componentBuildVersionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the imported component.</p>
-     */
-    inline void SetComponentBuildVersionArn(const Aws::String& value) { m_componentBuildVersionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the imported component.</p>
-     */
-    inline void SetComponentBuildVersionArn(Aws::String&& value) { m_componentBuildVersionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the imported component.</p>
-     */
-    inline void SetComponentBuildVersionArn(const char* value) { m_componentBuildVersionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the imported component.</p>
-     */
-    inline ImportComponentResult& WithComponentBuildVersionArn(const Aws::String& value) { SetComponentBuildVersionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the imported component.</p>
-     */
-    inline ImportComponentResult& WithComponentBuildVersionArn(Aws::String&& value) { SetComponentBuildVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the imported component.</p>
-     */
-    inline ImportComponentResult& WithComponentBuildVersionArn(const char* value) { SetComponentBuildVersionArn(value); return *this;}
-
+    inline const Aws::String& GetComponentBuildVersionArn() const { return m_componentBuildVersionArn; }
+    template<typename ComponentBuildVersionArnT = Aws::String>
+    void SetComponentBuildVersionArn(ComponentBuildVersionArnT&& value) { m_componentBuildVersionArnHasBeenSet = true; m_componentBuildVersionArn = std::forward<ComponentBuildVersionArnT>(value); }
+    template<typename ComponentBuildVersionArnT = Aws::String>
+    ImportComponentResult& WithComponentBuildVersionArn(ComponentBuildVersionArnT&& value) { SetComponentBuildVersionArn(std::forward<ComponentBuildVersionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
     Aws::String m_clientToken;
+    bool m_clientTokenHasBeenSet = false;
 
     Aws::String m_componentBuildVersionArn;
+    bool m_componentBuildVersionArnHasBeenSet = false;
   };
 
 } // namespace Model

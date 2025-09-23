@@ -18,23 +18,7 @@ namespace finspace
 namespace Model
 {
 
-FederationParameters::FederationParameters() : 
-    m_samlMetadataDocumentHasBeenSet(false),
-    m_samlMetadataURLHasBeenSet(false),
-    m_applicationCallBackURLHasBeenSet(false),
-    m_federationURNHasBeenSet(false),
-    m_federationProviderNameHasBeenSet(false),
-    m_attributeMapHasBeenSet(false)
-{
-}
-
-FederationParameters::FederationParameters(JsonView jsonValue) : 
-    m_samlMetadataDocumentHasBeenSet(false),
-    m_samlMetadataURLHasBeenSet(false),
-    m_applicationCallBackURLHasBeenSet(false),
-    m_federationURNHasBeenSet(false),
-    m_federationProviderNameHasBeenSet(false),
-    m_attributeMapHasBeenSet(false)
+FederationParameters::FederationParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,38 +28,28 @@ FederationParameters& FederationParameters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("samlMetadataDocument"))
   {
     m_samlMetadataDocument = jsonValue.GetString("samlMetadataDocument");
-
     m_samlMetadataDocumentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("samlMetadataURL"))
   {
     m_samlMetadataURL = jsonValue.GetString("samlMetadataURL");
-
     m_samlMetadataURLHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("applicationCallBackURL"))
   {
     m_applicationCallBackURL = jsonValue.GetString("applicationCallBackURL");
-
     m_applicationCallBackURLHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("federationURN"))
   {
     m_federationURN = jsonValue.GetString("federationURN");
-
     m_federationURNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("federationProviderName"))
   {
     m_federationProviderName = jsonValue.GetString("federationProviderName");
-
     m_federationProviderNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("attributeMap"))
   {
     Aws::Map<Aws::String, JsonView> attributeMapJsonMap = jsonValue.GetObject("attributeMap").GetAllObjects();
@@ -85,7 +59,6 @@ FederationParameters& FederationParameters::operator =(JsonView jsonValue)
     }
     m_attributeMapHasBeenSet = true;
   }
-
   return *this;
 }
 

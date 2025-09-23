@@ -18,15 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-Participant::Participant() : 
-    m_phoneNumberHasBeenSet(false),
-    m_proxyPhoneNumberHasBeenSet(false)
-{
-}
-
-Participant::Participant(JsonView jsonValue) : 
-    m_phoneNumberHasBeenSet(false),
-    m_proxyPhoneNumberHasBeenSet(false)
+Participant::Participant(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Participant& Participant::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PhoneNumber"))
   {
     m_phoneNumber = jsonValue.GetString("PhoneNumber");
-
     m_phoneNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProxyPhoneNumber"))
   {
     m_proxyPhoneNumber = jsonValue.GetString("ProxyPhoneNumber");
-
     m_proxyPhoneNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

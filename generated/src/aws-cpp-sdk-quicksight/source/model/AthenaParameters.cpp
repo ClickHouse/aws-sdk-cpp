@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AthenaParameters::AthenaParameters() : 
-    m_workGroupHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
-{
-}
-
-AthenaParameters::AthenaParameters(JsonView jsonValue) : 
-    m_workGroupHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
+AthenaParameters::AthenaParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ AthenaParameters& AthenaParameters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("WorkGroup"))
   {
     m_workGroup = jsonValue.GetString("WorkGroup");
-
     m_workGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoleArn"))
   {
     m_roleArn = jsonValue.GetString("RoleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IdentityCenterConfiguration"))
+  {
+    m_identityCenterConfiguration = jsonValue.GetObject("IdentityCenterConfiguration");
+    m_identityCenterConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue AthenaParameters::Jsonize() const
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("RoleArn", m_roleArn);
+
+  }
+
+  if(m_identityCenterConfigurationHasBeenSet)
+  {
+   payload.WithObject("IdentityCenterConfiguration", m_identityCenterConfiguration.Jsonize());
 
   }
 

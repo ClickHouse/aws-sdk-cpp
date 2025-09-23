@@ -18,17 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-RandomSplitEntry::RandomSplitEntry() : 
-    m_nextActivityHasBeenSet(false),
-    m_percentage(0),
-    m_percentageHasBeenSet(false)
-{
-}
-
-RandomSplitEntry::RandomSplitEntry(JsonView jsonValue) : 
-    m_nextActivityHasBeenSet(false),
-    m_percentage(0),
-    m_percentageHasBeenSet(false)
+RandomSplitEntry::RandomSplitEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RandomSplitEntry& RandomSplitEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("NextActivity"))
   {
     m_nextActivity = jsonValue.GetString("NextActivity");
-
     m_nextActivityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Percentage"))
   {
     m_percentage = jsonValue.GetInteger("Percentage");
-
     m_percentageHasBeenSet = true;
   }
-
   return *this;
 }
 

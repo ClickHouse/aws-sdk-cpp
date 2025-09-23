@@ -33,121 +33,41 @@ namespace Model
   class S3DataAccessDetails
   {
   public:
-    AWS_DATAEXCHANGE_API S3DataAccessDetails();
+    AWS_DATAEXCHANGE_API S3DataAccessDetails() = default;
     AWS_DATAEXCHANGE_API S3DataAccessDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API S3DataAccessDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of the key prefixes affected by this notification. This can have up to
      * 50 entries.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetKeyPrefixes() const{ return m_keyPrefixes; }
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKeyPrefixes() const { return m_keyPrefixes; }
     inline bool KeyPrefixesHasBeenSet() const { return m_keyPrefixesHasBeenSet; }
+    template<typename KeyPrefixesT = Aws::Vector<Aws::String>>
+    void SetKeyPrefixes(KeyPrefixesT&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes = std::forward<KeyPrefixesT>(value); }
+    template<typename KeyPrefixesT = Aws::Vector<Aws::String>>
+    S3DataAccessDetails& WithKeyPrefixes(KeyPrefixesT&& value) { SetKeyPrefixes(std::forward<KeyPrefixesT>(value)); return *this;}
+    template<typename KeyPrefixesT = Aws::String>
+    S3DataAccessDetails& AddKeyPrefixes(KeyPrefixesT&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.emplace_back(std::forward<KeyPrefixesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline void SetKeyPrefixes(const Aws::Vector<Aws::String>& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes = value; }
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline void SetKeyPrefixes(Aws::Vector<Aws::String>&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes = std::move(value); }
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline S3DataAccessDetails& WithKeyPrefixes(const Aws::Vector<Aws::String>& value) { SetKeyPrefixes(value); return *this;}
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline S3DataAccessDetails& WithKeyPrefixes(Aws::Vector<Aws::String>&& value) { SetKeyPrefixes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline S3DataAccessDetails& AddKeyPrefixes(const Aws::String& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline S3DataAccessDetails& AddKeyPrefixes(Aws::String&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the key prefixes affected by this notification. This can have up to
-     * 50 entries.</p>
-     */
-    inline S3DataAccessDetails& AddKeyPrefixes(const char* value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the keys affected by this notification. This can have up to 50
      * entries.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetKeys() const{ return m_keys; }
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKeys() const { return m_keys; }
     inline bool KeysHasBeenSet() const { return m_keysHasBeenSet; }
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline void SetKeys(const Aws::Vector<Aws::String>& value) { m_keysHasBeenSet = true; m_keys = value; }
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline void SetKeys(Aws::Vector<Aws::String>&& value) { m_keysHasBeenSet = true; m_keys = std::move(value); }
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline S3DataAccessDetails& WithKeys(const Aws::Vector<Aws::String>& value) { SetKeys(value); return *this;}
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline S3DataAccessDetails& WithKeys(Aws::Vector<Aws::String>&& value) { SetKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline S3DataAccessDetails& AddKeys(const Aws::String& value) { m_keysHasBeenSet = true; m_keys.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline S3DataAccessDetails& AddKeys(Aws::String&& value) { m_keysHasBeenSet = true; m_keys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the keys affected by this notification. This can have up to 50
-     * entries.</p>
-     */
-    inline S3DataAccessDetails& AddKeys(const char* value) { m_keysHasBeenSet = true; m_keys.push_back(value); return *this; }
-
+    template<typename KeysT = Aws::Vector<Aws::String>>
+    void SetKeys(KeysT&& value) { m_keysHasBeenSet = true; m_keys = std::forward<KeysT>(value); }
+    template<typename KeysT = Aws::Vector<Aws::String>>
+    S3DataAccessDetails& WithKeys(KeysT&& value) { SetKeys(std::forward<KeysT>(value)); return *this;}
+    template<typename KeysT = Aws::String>
+    S3DataAccessDetails& AddKeys(KeysT&& value) { m_keysHasBeenSet = true; m_keys.emplace_back(std::forward<KeysT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_keyPrefixes;

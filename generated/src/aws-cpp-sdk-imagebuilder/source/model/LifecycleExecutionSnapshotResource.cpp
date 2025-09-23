@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LifecycleExecutionSnapshotResource::LifecycleExecutionSnapshotResource() : 
-    m_snapshotIdHasBeenSet(false),
-    m_stateHasBeenSet(false)
-{
-}
-
-LifecycleExecutionSnapshotResource::LifecycleExecutionSnapshotResource(JsonView jsonValue) : 
-    m_snapshotIdHasBeenSet(false),
-    m_stateHasBeenSet(false)
+LifecycleExecutionSnapshotResource::LifecycleExecutionSnapshotResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LifecycleExecutionSnapshotResource& LifecycleExecutionSnapshotResource::operator
   if(jsonValue.ValueExists("snapshotId"))
   {
     m_snapshotId = jsonValue.GetString("snapshotId");
-
     m_snapshotIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("state"))
   {
     m_state = jsonValue.GetObject("state");
-
     m_stateHasBeenSet = true;
   }
-
   return *this;
 }
 

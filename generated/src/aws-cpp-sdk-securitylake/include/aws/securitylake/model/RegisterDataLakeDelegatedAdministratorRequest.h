@@ -21,7 +21,7 @@ namespace Model
   class RegisterDataLakeDelegatedAdministratorRequest : public SecurityLakeRequest
   {
   public:
-    AWS_SECURITYLAKE_API RegisterDataLakeDelegatedAdministratorRequest();
+    AWS_SECURITYLAKE_API RegisterDataLakeDelegatedAdministratorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_SECURITYLAKE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the Security Lake delegated
      * administrator.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
-    inline RegisterDataLakeDelegatedAdministratorRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
-    inline RegisterDataLakeDelegatedAdministratorRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the Security Lake delegated
-     * administrator.</p>
-     */
-    inline RegisterDataLakeDelegatedAdministratorRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    RegisterDataLakeDelegatedAdministratorRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

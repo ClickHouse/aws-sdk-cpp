@@ -12,17 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateSecurityProfileRequest::UpdateSecurityProfileRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_securityProfileIdHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_allowedAccessControlTagsHasBeenSet(false),
-    m_tagRestrictedResourcesHasBeenSet(false),
-    m_applicationsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSecurityProfileRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -74,6 +63,23 @@ Aws::String UpdateSecurityProfileRequest::SerializePayload() const
      applicationsJsonList[applicationsIndex].AsObject(m_applications[applicationsIndex].Jsonize());
    }
    payload.WithArray("Applications", std::move(applicationsJsonList));
+
+  }
+
+  if(m_hierarchyRestrictedResourcesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> hierarchyRestrictedResourcesJsonList(m_hierarchyRestrictedResources.size());
+   for(unsigned hierarchyRestrictedResourcesIndex = 0; hierarchyRestrictedResourcesIndex < hierarchyRestrictedResourcesJsonList.GetLength(); ++hierarchyRestrictedResourcesIndex)
+   {
+     hierarchyRestrictedResourcesJsonList[hierarchyRestrictedResourcesIndex].AsString(m_hierarchyRestrictedResources[hierarchyRestrictedResourcesIndex]);
+   }
+   payload.WithArray("HierarchyRestrictedResources", std::move(hierarchyRestrictedResourcesJsonList));
+
+  }
+
+  if(m_allowedAccessControlHierarchyGroupIdHasBeenSet)
+  {
+   payload.WithString("AllowedAccessControlHierarchyGroupId", m_allowedAccessControlHierarchyGroupId);
 
   }
 

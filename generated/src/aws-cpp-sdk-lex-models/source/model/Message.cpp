@@ -18,21 +18,7 @@ namespace LexModelBuildingService
 namespace Model
 {
 
-Message::Message() : 
-    m_contentType(ContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false),
-    m_contentHasBeenSet(false),
-    m_groupNumber(0),
-    m_groupNumberHasBeenSet(false)
-{
-}
-
-Message::Message(JsonView jsonValue) : 
-    m_contentType(ContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false),
-    m_contentHasBeenSet(false),
-    m_groupNumber(0),
-    m_groupNumberHasBeenSet(false)
+Message::Message(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ Message& Message::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("contentType"))
   {
     m_contentType = ContentTypeMapper::GetContentTypeForName(jsonValue.GetString("contentType"));
-
     m_contentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("content"))
   {
     m_content = jsonValue.GetString("content");
-
     m_contentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupNumber"))
   {
     m_groupNumber = jsonValue.GetInteger("groupNumber");
-
     m_groupNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

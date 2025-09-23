@@ -22,7 +22,7 @@ namespace Model
   class UpdateIndexingConfigurationRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API UpdateIndexingConfigurationRequest();
+    AWS_IOT_API UpdateIndexingConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,67 +33,29 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Thing indexing configuration.</p>
      */
-    inline const ThingIndexingConfiguration& GetThingIndexingConfiguration() const{ return m_thingIndexingConfiguration; }
-
-    /**
-     * <p>Thing indexing configuration.</p>
-     */
+    inline const ThingIndexingConfiguration& GetThingIndexingConfiguration() const { return m_thingIndexingConfiguration; }
     inline bool ThingIndexingConfigurationHasBeenSet() const { return m_thingIndexingConfigurationHasBeenSet; }
+    template<typename ThingIndexingConfigurationT = ThingIndexingConfiguration>
+    void SetThingIndexingConfiguration(ThingIndexingConfigurationT&& value) { m_thingIndexingConfigurationHasBeenSet = true; m_thingIndexingConfiguration = std::forward<ThingIndexingConfigurationT>(value); }
+    template<typename ThingIndexingConfigurationT = ThingIndexingConfiguration>
+    UpdateIndexingConfigurationRequest& WithThingIndexingConfiguration(ThingIndexingConfigurationT&& value) { SetThingIndexingConfiguration(std::forward<ThingIndexingConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Thing indexing configuration.</p>
-     */
-    inline void SetThingIndexingConfiguration(const ThingIndexingConfiguration& value) { m_thingIndexingConfigurationHasBeenSet = true; m_thingIndexingConfiguration = value; }
-
-    /**
-     * <p>Thing indexing configuration.</p>
-     */
-    inline void SetThingIndexingConfiguration(ThingIndexingConfiguration&& value) { m_thingIndexingConfigurationHasBeenSet = true; m_thingIndexingConfiguration = std::move(value); }
-
-    /**
-     * <p>Thing indexing configuration.</p>
-     */
-    inline UpdateIndexingConfigurationRequest& WithThingIndexingConfiguration(const ThingIndexingConfiguration& value) { SetThingIndexingConfiguration(value); return *this;}
-
-    /**
-     * <p>Thing indexing configuration.</p>
-     */
-    inline UpdateIndexingConfigurationRequest& WithThingIndexingConfiguration(ThingIndexingConfiguration&& value) { SetThingIndexingConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Thing group indexing configuration.</p>
      */
-    inline const ThingGroupIndexingConfiguration& GetThingGroupIndexingConfiguration() const{ return m_thingGroupIndexingConfiguration; }
-
-    /**
-     * <p>Thing group indexing configuration.</p>
-     */
+    inline const ThingGroupIndexingConfiguration& GetThingGroupIndexingConfiguration() const { return m_thingGroupIndexingConfiguration; }
     inline bool ThingGroupIndexingConfigurationHasBeenSet() const { return m_thingGroupIndexingConfigurationHasBeenSet; }
-
-    /**
-     * <p>Thing group indexing configuration.</p>
-     */
-    inline void SetThingGroupIndexingConfiguration(const ThingGroupIndexingConfiguration& value) { m_thingGroupIndexingConfigurationHasBeenSet = true; m_thingGroupIndexingConfiguration = value; }
-
-    /**
-     * <p>Thing group indexing configuration.</p>
-     */
-    inline void SetThingGroupIndexingConfiguration(ThingGroupIndexingConfiguration&& value) { m_thingGroupIndexingConfigurationHasBeenSet = true; m_thingGroupIndexingConfiguration = std::move(value); }
-
-    /**
-     * <p>Thing group indexing configuration.</p>
-     */
-    inline UpdateIndexingConfigurationRequest& WithThingGroupIndexingConfiguration(const ThingGroupIndexingConfiguration& value) { SetThingGroupIndexingConfiguration(value); return *this;}
-
-    /**
-     * <p>Thing group indexing configuration.</p>
-     */
-    inline UpdateIndexingConfigurationRequest& WithThingGroupIndexingConfiguration(ThingGroupIndexingConfiguration&& value) { SetThingGroupIndexingConfiguration(std::move(value)); return *this;}
-
+    template<typename ThingGroupIndexingConfigurationT = ThingGroupIndexingConfiguration>
+    void SetThingGroupIndexingConfiguration(ThingGroupIndexingConfigurationT&& value) { m_thingGroupIndexingConfigurationHasBeenSet = true; m_thingGroupIndexingConfiguration = std::forward<ThingGroupIndexingConfigurationT>(value); }
+    template<typename ThingGroupIndexingConfigurationT = ThingGroupIndexingConfiguration>
+    UpdateIndexingConfigurationRequest& WithThingGroupIndexingConfiguration(ThingGroupIndexingConfigurationT&& value) { SetThingGroupIndexingConfiguration(std::forward<ThingGroupIndexingConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     ThingIndexingConfiguration m_thingIndexingConfiguration;

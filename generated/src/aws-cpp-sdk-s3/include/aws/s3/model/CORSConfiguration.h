@@ -35,61 +35,27 @@ namespace Model
   class CORSConfiguration
   {
   public:
-    AWS_S3_API CORSConfiguration();
+    AWS_S3_API CORSConfiguration() = default;
     AWS_S3_API CORSConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API CORSConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A set of origins and methods (cross-origin access that you want to allow).
      * You can add up to 100 rules to the configuration.</p>
      */
-    inline const Aws::Vector<CORSRule>& GetCORSRules() const{ return m_cORSRules; }
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
+    inline const Aws::Vector<CORSRule>& GetCORSRules() const { return m_cORSRules; }
     inline bool CORSRulesHasBeenSet() const { return m_cORSRulesHasBeenSet; }
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
-    inline void SetCORSRules(const Aws::Vector<CORSRule>& value) { m_cORSRulesHasBeenSet = true; m_cORSRules = value; }
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
-    inline void SetCORSRules(Aws::Vector<CORSRule>&& value) { m_cORSRulesHasBeenSet = true; m_cORSRules = std::move(value); }
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
-    inline CORSConfiguration& WithCORSRules(const Aws::Vector<CORSRule>& value) { SetCORSRules(value); return *this;}
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
-    inline CORSConfiguration& WithCORSRules(Aws::Vector<CORSRule>&& value) { SetCORSRules(std::move(value)); return *this;}
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
-    inline CORSConfiguration& AddCORSRules(const CORSRule& value) { m_cORSRulesHasBeenSet = true; m_cORSRules.push_back(value); return *this; }
-
-    /**
-     * <p>A set of origins and methods (cross-origin access that you want to allow).
-     * You can add up to 100 rules to the configuration.</p>
-     */
-    inline CORSConfiguration& AddCORSRules(CORSRule&& value) { m_cORSRulesHasBeenSet = true; m_cORSRules.push_back(std::move(value)); return *this; }
-
+    template<typename CORSRulesT = Aws::Vector<CORSRule>>
+    void SetCORSRules(CORSRulesT&& value) { m_cORSRulesHasBeenSet = true; m_cORSRules = std::forward<CORSRulesT>(value); }
+    template<typename CORSRulesT = Aws::Vector<CORSRule>>
+    CORSConfiguration& WithCORSRules(CORSRulesT&& value) { SetCORSRules(std::forward<CORSRulesT>(value)); return *this;}
+    template<typename CORSRulesT = CORSRule>
+    CORSConfiguration& AddCORSRules(CORSRulesT&& value) { m_cORSRulesHasBeenSet = true; m_cORSRules.emplace_back(std::forward<CORSRulesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CORSRule> m_cORSRules;

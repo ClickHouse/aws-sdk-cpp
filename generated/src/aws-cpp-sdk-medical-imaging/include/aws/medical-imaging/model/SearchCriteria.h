@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/medical-imaging/MedicalImaging_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/medical-imaging/model/Sort.h>
 #include <aws/medical-imaging/model/SearchFilter.h>
 #include <utility>
 
@@ -32,56 +33,44 @@ namespace Model
   class SearchCriteria
   {
   public:
-    AWS_MEDICALIMAGING_API SearchCriteria();
+    AWS_MEDICALIMAGING_API SearchCriteria() = default;
     AWS_MEDICALIMAGING_API SearchCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDICALIMAGING_API SearchCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDICALIMAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The filters for the search criteria.</p>
      */
-    inline const Aws::Vector<SearchFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>The filters for the search criteria.</p>
-     */
+    inline const Aws::Vector<SearchFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<SearchFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<SearchFilter>>
+    SearchCriteria& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = SearchFilter>
+    SearchCriteria& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The filters for the search criteria.</p>
+     * <p>The sort input for search criteria.</p>
      */
-    inline void SetFilters(const Aws::Vector<SearchFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>The filters for the search criteria.</p>
-     */
-    inline void SetFilters(Aws::Vector<SearchFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>The filters for the search criteria.</p>
-     */
-    inline SearchCriteria& WithFilters(const Aws::Vector<SearchFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>The filters for the search criteria.</p>
-     */
-    inline SearchCriteria& WithFilters(Aws::Vector<SearchFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The filters for the search criteria.</p>
-     */
-    inline SearchCriteria& AddFilters(const SearchFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>The filters for the search criteria.</p>
-     */
-    inline SearchCriteria& AddFilters(SearchFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
+    inline const Sort& GetSort() const { return m_sort; }
+    inline bool SortHasBeenSet() const { return m_sortHasBeenSet; }
+    template<typename SortT = Sort>
+    void SetSort(SortT&& value) { m_sortHasBeenSet = true; m_sort = std::forward<SortT>(value); }
+    template<typename SortT = Sort>
+    SearchCriteria& WithSort(SortT&& value) { SetSort(std::forward<SortT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SearchFilter> m_filters;
     bool m_filtersHasBeenSet = false;
+
+    Sort m_sort;
+    bool m_sortHasBeenSet = false;
   };
 
 } // namespace Model

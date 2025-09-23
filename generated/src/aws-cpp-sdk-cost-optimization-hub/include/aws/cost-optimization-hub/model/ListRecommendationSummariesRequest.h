@@ -8,6 +8,8 @@
 #include <aws/cost-optimization-hub/CostOptimizationHubRequest.h>
 #include <aws/cost-optimization-hub/model/Filter.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/cost-optimization-hub/model/SummaryMetrics.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +24,7 @@ namespace Model
   class ListRecommendationSummariesRequest : public CostOptimizationHubRequest
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API ListRecommendationSummariesRequest();
+    AWS_COSTOPTIMIZATIONHUB_API ListRecommendationSummariesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,127 +37,63 @@ namespace Model
     AWS_COSTOPTIMIZATIONHUB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     
-    inline const Filter& GetFilter() const{ return m_filter; }
-
-    
+    inline const Filter& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
+    template<typename FilterT = Filter>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = Filter>
+    ListRecommendationSummariesRequest& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetFilter(const Filter& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    
-    inline void SetFilter(Filter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    
-    inline ListRecommendationSummariesRequest& WithFilter(const Filter& value) { SetFilter(value); return *this;}
-
-    
-    inline ListRecommendationSummariesRequest& WithFilter(Filter&& value) { SetFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The grouping of recommendations by a dimension.</p>
      */
-    inline const Aws::String& GetGroupBy() const{ return m_groupBy; }
-
-    /**
-     * <p>The grouping of recommendations by a dimension.</p>
-     */
+    inline const Aws::String& GetGroupBy() const { return m_groupBy; }
     inline bool GroupByHasBeenSet() const { return m_groupByHasBeenSet; }
+    template<typename GroupByT = Aws::String>
+    void SetGroupBy(GroupByT&& value) { m_groupByHasBeenSet = true; m_groupBy = std::forward<GroupByT>(value); }
+    template<typename GroupByT = Aws::String>
+    ListRecommendationSummariesRequest& WithGroupBy(GroupByT&& value) { SetGroupBy(std::forward<GroupByT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The grouping of recommendations by a dimension.</p>
+     * <p>The maximum number of recommendations to be returned for the request.</p>
      */
-    inline void SetGroupBy(const Aws::String& value) { m_groupByHasBeenSet = true; m_groupBy = value; }
-
-    /**
-     * <p>The grouping of recommendations by a dimension.</p>
-     */
-    inline void SetGroupBy(Aws::String&& value) { m_groupByHasBeenSet = true; m_groupBy = std::move(value); }
-
-    /**
-     * <p>The grouping of recommendations by a dimension.</p>
-     */
-    inline void SetGroupBy(const char* value) { m_groupByHasBeenSet = true; m_groupBy.assign(value); }
-
-    /**
-     * <p>The grouping of recommendations by a dimension.</p>
-     */
-    inline ListRecommendationSummariesRequest& WithGroupBy(const Aws::String& value) { SetGroupBy(value); return *this;}
-
-    /**
-     * <p>The grouping of recommendations by a dimension.</p>
-     */
-    inline ListRecommendationSummariesRequest& WithGroupBy(Aws::String&& value) { SetGroupBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The grouping of recommendations by a dimension.</p>
-     */
-    inline ListRecommendationSummariesRequest& WithGroupBy(const char* value) { SetGroupBy(value); return *this;}
-
-
-    /**
-     * <p>The maximum number of recommendations that are returned for the request.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of recommendations that are returned for the request.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of recommendations that are returned for the request.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of recommendations that are returned for the request.</p>
-     */
     inline ListRecommendationSummariesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Additional metrics to be returned for the request. The only valid value is
+     * <code>savingsPercentage</code>.</p>
+     */
+    inline const Aws::Vector<SummaryMetrics>& GetMetrics() const { return m_metrics; }
+    inline bool MetricsHasBeenSet() const { return m_metricsHasBeenSet; }
+    template<typename MetricsT = Aws::Vector<SummaryMetrics>>
+    void SetMetrics(MetricsT&& value) { m_metricsHasBeenSet = true; m_metrics = std::forward<MetricsT>(value); }
+    template<typename MetricsT = Aws::Vector<SummaryMetrics>>
+    ListRecommendationSummariesRequest& WithMetrics(MetricsT&& value) { SetMetrics(std::forward<MetricsT>(value)); return *this;}
+    inline ListRecommendationSummariesRequest& AddMetrics(SummaryMetrics value) { m_metricsHasBeenSet = true; m_metrics.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
      * <p>The token to retrieve the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
-    inline ListRecommendationSummariesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
-    inline ListRecommendationSummariesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to retrieve the next set of results.</p>
-     */
-    inline ListRecommendationSummariesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListRecommendationSummariesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Filter m_filter;
@@ -164,8 +102,11 @@ namespace Model
     Aws::String m_groupBy;
     bool m_groupByHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
+
+    Aws::Vector<SummaryMetrics> m_metrics;
+    bool m_metricsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;

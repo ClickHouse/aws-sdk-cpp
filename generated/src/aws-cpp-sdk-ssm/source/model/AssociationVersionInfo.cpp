@@ -18,57 +18,7 @@ namespace SSM
 namespace Model
 {
 
-AssociationVersionInfo::AssociationVersionInfo() : 
-    m_associationIdHasBeenSet(false),
-    m_associationVersionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_documentVersionHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_scheduleExpressionHasBeenSet(false),
-    m_outputLocationHasBeenSet(false),
-    m_associationNameHasBeenSet(false),
-    m_maxErrorsHasBeenSet(false),
-    m_maxConcurrencyHasBeenSet(false),
-    m_complianceSeverity(AssociationComplianceSeverity::NOT_SET),
-    m_complianceSeverityHasBeenSet(false),
-    m_syncCompliance(AssociationSyncCompliance::NOT_SET),
-    m_syncComplianceHasBeenSet(false),
-    m_applyOnlyAtCronInterval(false),
-    m_applyOnlyAtCronIntervalHasBeenSet(false),
-    m_calendarNamesHasBeenSet(false),
-    m_targetLocationsHasBeenSet(false),
-    m_scheduleOffset(0),
-    m_scheduleOffsetHasBeenSet(false),
-    m_targetMapsHasBeenSet(false)
-{
-}
-
-AssociationVersionInfo::AssociationVersionInfo(JsonView jsonValue) : 
-    m_associationIdHasBeenSet(false),
-    m_associationVersionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_documentVersionHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_scheduleExpressionHasBeenSet(false),
-    m_outputLocationHasBeenSet(false),
-    m_associationNameHasBeenSet(false),
-    m_maxErrorsHasBeenSet(false),
-    m_maxConcurrencyHasBeenSet(false),
-    m_complianceSeverity(AssociationComplianceSeverity::NOT_SET),
-    m_complianceSeverityHasBeenSet(false),
-    m_syncCompliance(AssociationSyncCompliance::NOT_SET),
-    m_syncComplianceHasBeenSet(false),
-    m_applyOnlyAtCronInterval(false),
-    m_applyOnlyAtCronIntervalHasBeenSet(false),
-    m_calendarNamesHasBeenSet(false),
-    m_targetLocationsHasBeenSet(false),
-    m_scheduleOffset(0),
-    m_scheduleOffsetHasBeenSet(false),
-    m_targetMapsHasBeenSet(false)
+AssociationVersionInfo::AssociationVersionInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -78,38 +28,28 @@ AssociationVersionInfo& AssociationVersionInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AssociationId"))
   {
     m_associationId = jsonValue.GetString("AssociationId");
-
     m_associationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AssociationVersion"))
   {
     m_associationVersion = jsonValue.GetString("AssociationVersion");
-
     m_associationVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedDate"))
   {
     m_createdDate = jsonValue.GetDouble("CreatedDate");
-
     m_createdDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DocumentVersion"))
   {
     m_documentVersion = jsonValue.GetString("DocumentVersion");
-
     m_documentVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Parameters"))
   {
     Aws::Map<Aws::String, JsonView> parametersJsonMap = jsonValue.GetObject("Parameters").GetAllObjects();
@@ -126,7 +66,6 @@ AssociationVersionInfo& AssociationVersionInfo::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Targets"))
   {
     Aws::Utils::Array<JsonView> targetsJsonList = jsonValue.GetArray("Targets");
@@ -136,63 +75,46 @@ AssociationVersionInfo& AssociationVersionInfo::operator =(JsonView jsonValue)
     }
     m_targetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScheduleExpression"))
   {
     m_scheduleExpression = jsonValue.GetString("ScheduleExpression");
-
     m_scheduleExpressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputLocation"))
   {
     m_outputLocation = jsonValue.GetObject("OutputLocation");
-
     m_outputLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AssociationName"))
   {
     m_associationName = jsonValue.GetString("AssociationName");
-
     m_associationNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxErrors"))
   {
     m_maxErrors = jsonValue.GetString("MaxErrors");
-
     m_maxErrorsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxConcurrency"))
   {
     m_maxConcurrency = jsonValue.GetString("MaxConcurrency");
-
     m_maxConcurrencyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceSeverity"))
   {
     m_complianceSeverity = AssociationComplianceSeverityMapper::GetAssociationComplianceSeverityForName(jsonValue.GetString("ComplianceSeverity"));
-
     m_complianceSeverityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SyncCompliance"))
   {
     m_syncCompliance = AssociationSyncComplianceMapper::GetAssociationSyncComplianceForName(jsonValue.GetString("SyncCompliance"));
-
     m_syncComplianceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplyOnlyAtCronInterval"))
   {
     m_applyOnlyAtCronInterval = jsonValue.GetBool("ApplyOnlyAtCronInterval");
-
     m_applyOnlyAtCronIntervalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CalendarNames"))
   {
     Aws::Utils::Array<JsonView> calendarNamesJsonList = jsonValue.GetArray("CalendarNames");
@@ -202,7 +124,6 @@ AssociationVersionInfo& AssociationVersionInfo::operator =(JsonView jsonValue)
     }
     m_calendarNamesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetLocations"))
   {
     Aws::Utils::Array<JsonView> targetLocationsJsonList = jsonValue.GetArray("TargetLocations");
@@ -212,14 +133,16 @@ AssociationVersionInfo& AssociationVersionInfo::operator =(JsonView jsonValue)
     }
     m_targetLocationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScheduleOffset"))
   {
     m_scheduleOffset = jsonValue.GetInteger("ScheduleOffset");
-
     m_scheduleOffsetHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Duration"))
+  {
+    m_duration = jsonValue.GetInteger("Duration");
+    m_durationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("TargetMaps"))
   {
     Aws::Utils::Array<JsonView> targetMapsJsonList = jsonValue.GetArray("TargetMaps");
@@ -242,7 +165,6 @@ AssociationVersionInfo& AssociationVersionInfo::operator =(JsonView jsonValue)
     }
     m_targetMapsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -377,6 +299,12 @@ JsonValue AssociationVersionInfo::Jsonize() const
   if(m_scheduleOffsetHasBeenSet)
   {
    payload.WithInteger("ScheduleOffset", m_scheduleOffset);
+
+  }
+
+  if(m_durationHasBeenSet)
+  {
+   payload.WithInteger("Duration", m_duration);
 
   }
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeEventBusRequest : public CloudWatchEventsRequest
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API DescribeEventBusRequest();
+    AWS_CLOUDWATCHEVENTS_API DescribeEventBusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_CLOUDWATCHEVENTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name or ARN of the event bus to show details for. If you omit this, the
      * default event bus is displayed.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
-    inline DescribeEventBusRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
-    inline DescribeEventBusRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the event bus to show details for. If you omit this, the
-     * default event bus is displayed.</p>
-     */
-    inline DescribeEventBusRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DescribeEventBusRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -32,91 +32,41 @@ namespace Model
   class EndpointItemResponse
   {
   public:
-    AWS_PINPOINT_API EndpointItemResponse();
+    AWS_PINPOINT_API EndpointItemResponse() = default;
     AWS_PINPOINT_API EndpointItemResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API EndpointItemResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The custom message that's returned in the response as a result of processing
      * the endpoint data.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    EndpointItemResponse& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
-    inline EndpointItemResponse& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
-    inline EndpointItemResponse& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom message that's returned in the response as a result of processing
-     * the endpoint data.</p>
-     */
-    inline EndpointItemResponse& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status code that's returned in the response as a result of processing the
      * endpoint data.</p>
      */
-    inline int GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>The status code that's returned in the response as a result of processing the
-     * endpoint data.</p>
-     */
+    inline int GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
-
-    /**
-     * <p>The status code that's returned in the response as a result of processing the
-     * endpoint data.</p>
-     */
     inline void SetStatusCode(int value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>The status code that's returned in the response as a result of processing the
-     * endpoint data.</p>
-     */
     inline EndpointItemResponse& WithStatusCode(int value) { SetStatusCode(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    int m_statusCode;
+    int m_statusCode{0};
     bool m_statusCodeHasBeenSet = false;
   };
 

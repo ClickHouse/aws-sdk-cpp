@@ -32,52 +32,23 @@ namespace Model
   class RedshiftClusterStorage
   {
   public:
-    AWS_DATAZONE_API RedshiftClusterStorage();
+    AWS_DATAZONE_API RedshiftClusterStorage() = default;
     AWS_DATAZONE_API RedshiftClusterStorage(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API RedshiftClusterStorage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an Amazon Redshift cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
-    inline RedshiftClusterStorage& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
-    inline RedshiftClusterStorage& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an Amazon Redshift cluster.</p>
-     */
-    inline RedshiftClusterStorage& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    RedshiftClusterStorage& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;

@@ -22,7 +22,7 @@ namespace Model
   class PutEventsRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API PutEventsRequest();
+    AWS_PINPOINT_API PutEventsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,73 +33,28 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application. This identifier is displayed as
      * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    PutEventsRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline PutEventsRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline PutEventsRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline PutEventsRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     
-    inline const EventsRequest& GetEventsRequest() const{ return m_eventsRequest; }
-
-    
+    inline const EventsRequest& GetEventsRequest() const { return m_eventsRequest; }
     inline bool EventsRequestHasBeenSet() const { return m_eventsRequestHasBeenSet; }
-
-    
-    inline void SetEventsRequest(const EventsRequest& value) { m_eventsRequestHasBeenSet = true; m_eventsRequest = value; }
-
-    
-    inline void SetEventsRequest(EventsRequest&& value) { m_eventsRequestHasBeenSet = true; m_eventsRequest = std::move(value); }
-
-    
-    inline PutEventsRequest& WithEventsRequest(const EventsRequest& value) { SetEventsRequest(value); return *this;}
-
-    
-    inline PutEventsRequest& WithEventsRequest(EventsRequest&& value) { SetEventsRequest(std::move(value)); return *this;}
-
+    template<typename EventsRequestT = EventsRequest>
+    void SetEventsRequest(EventsRequestT&& value) { m_eventsRequestHasBeenSet = true; m_eventsRequest = std::forward<EventsRequestT>(value); }
+    template<typename EventsRequestT = EventsRequest>
+    PutEventsRequest& WithEventsRequest(EventsRequestT&& value) { SetEventsRequest(std::forward<EventsRequestT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

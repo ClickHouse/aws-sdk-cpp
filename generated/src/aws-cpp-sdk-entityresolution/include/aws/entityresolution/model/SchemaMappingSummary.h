@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/entityresolution/EntityResolution_EXPORTS.h>
-#include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/DateTime.h>
 #include <utility>
 
 namespace Aws
@@ -25,208 +25,95 @@ namespace Model
 {
 
   /**
-   * <p>An object containing <code>SchemaName</code>, <code>SchemaArn</code>,
-   * <code>CreatedAt</code>, and<code>UpdatedAt</code>.</p><p><h3>See Also:</h3>   <a
+   * <p>An object containing <code>schemaName</code>, <code>schemaArn</code>,
+   * <code>createdAt</code>, <code>updatedAt</code>, and
+   * <code>hasWorkflows</code>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/entityresolution-2018-05-10/SchemaMappingSummary">AWS
    * API Reference</a></p>
    */
   class SchemaMappingSummary
   {
   public:
-    AWS_ENTITYRESOLUTION_API SchemaMappingSummary();
+    AWS_ENTITYRESOLUTION_API SchemaMappingSummary() = default;
     AWS_ENTITYRESOLUTION_API SchemaMappingSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API SchemaMappingSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
-     */
-    inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
-     */
-    inline SchemaMappingSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
-     */
-    inline SchemaMappingSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies whether the schema mapping has been applied to a workflow.</p>
-     */
-    inline bool GetHasWorkflows() const{ return m_hasWorkflows; }
-
-    /**
-     * <p>Specifies whether the schema mapping has been applied to a workflow.</p>
-     */
-    inline bool HasWorkflowsHasBeenSet() const { return m_hasWorkflowsHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the schema mapping has been applied to a workflow.</p>
-     */
-    inline void SetHasWorkflows(bool value) { m_hasWorkflowsHasBeenSet = true; m_hasWorkflows = value; }
-
-    /**
-     * <p>Specifies whether the schema mapping has been applied to a workflow.</p>
-     */
-    inline SchemaMappingSummary& WithHasWorkflows(bool value) { SetHasWorkflows(value); return *this;}
-
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline const Aws::String& GetSchemaArn() const{ return m_schemaArn; }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline bool SchemaArnHasBeenSet() const { return m_schemaArnHasBeenSet; }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline void SetSchemaArn(const Aws::String& value) { m_schemaArnHasBeenSet = true; m_schemaArn = value; }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline void SetSchemaArn(Aws::String&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::move(value); }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline void SetSchemaArn(const char* value) { m_schemaArnHasBeenSet = true; m_schemaArn.assign(value); }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline SchemaMappingSummary& WithSchemaArn(const Aws::String& value) { SetSchemaArn(value); return *this;}
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline SchemaMappingSummary& WithSchemaArn(Aws::String&& value) { SetSchemaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
-     * <code>SchemaMapping</code>.</p>
-     */
-    inline SchemaMappingSummary& WithSchemaArn(const char* value) { SetSchemaArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the schema.</p>
      */
-    inline const Aws::String& GetSchemaName() const{ return m_schemaName; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
+    inline const Aws::String& GetSchemaName() const { return m_schemaName; }
     inline bool SchemaNameHasBeenSet() const { return m_schemaNameHasBeenSet; }
+    template<typename SchemaNameT = Aws::String>
+    void SetSchemaName(SchemaNameT&& value) { m_schemaNameHasBeenSet = true; m_schemaName = std::forward<SchemaNameT>(value); }
+    template<typename SchemaNameT = Aws::String>
+    SchemaMappingSummary& WithSchemaName(SchemaNameT&& value) { SetSchemaName(std::forward<SchemaNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the schema.</p>
+     * <p>The ARN (Amazon Resource Name) that Entity Resolution generated for the
+     * <code>SchemaMapping</code>.</p>
      */
-    inline void SetSchemaName(const Aws::String& value) { m_schemaNameHasBeenSet = true; m_schemaName = value; }
+    inline const Aws::String& GetSchemaArn() const { return m_schemaArn; }
+    inline bool SchemaArnHasBeenSet() const { return m_schemaArnHasBeenSet; }
+    template<typename SchemaArnT = Aws::String>
+    void SetSchemaArn(SchemaArnT&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::forward<SchemaArnT>(value); }
+    template<typename SchemaArnT = Aws::String>
+    SchemaMappingSummary& WithSchemaArn(SchemaArnT&& value) { SetSchemaArn(std::forward<SchemaArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the schema.</p>
+     * <p>The timestamp of when the <code>SchemaMapping</code> was created.</p>
      */
-    inline void SetSchemaName(Aws::String&& value) { m_schemaNameHasBeenSet = true; m_schemaName = std::move(value); }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    SchemaMappingSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetSchemaName(const char* value) { m_schemaNameHasBeenSet = true; m_schemaName.assign(value); }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline SchemaMappingSummary& WithSchemaName(const Aws::String& value) { SetSchemaName(value); return *this;}
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline SchemaMappingSummary& WithSchemaName(Aws::String&& value) { SetSchemaName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline SchemaMappingSummary& WithSchemaName(const char* value) { SetSchemaName(value); return *this;}
-
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was last updated.</p>
-     */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
+    ///@{
     /**
      * <p>The timestamp of when the <code>SchemaMapping</code> was last updated.</p>
      */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    SchemaMappingSummary& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was last updated.</p>
+     * <p>Specifies whether the schema mapping has been applied to a workflow.</p>
      */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was last updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was last updated.</p>
-     */
-    inline SchemaMappingSummary& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the <code>SchemaMapping</code> was last updated.</p>
-     */
-    inline SchemaMappingSummary& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    inline bool GetHasWorkflows() const { return m_hasWorkflows; }
+    inline bool HasWorkflowsHasBeenSet() const { return m_hasWorkflowsHasBeenSet; }
+    inline void SetHasWorkflows(bool value) { m_hasWorkflowsHasBeenSet = true; m_hasWorkflows = value; }
+    inline SchemaMappingSummary& WithHasWorkflows(bool value) { SetHasWorkflows(value); return *this;}
+    ///@}
   private:
-
-    Aws::Utils::DateTime m_createdAt;
-    bool m_createdAtHasBeenSet = false;
-
-    bool m_hasWorkflows;
-    bool m_hasWorkflowsHasBeenSet = false;
-
-    Aws::String m_schemaArn;
-    bool m_schemaArnHasBeenSet = false;
 
     Aws::String m_schemaName;
     bool m_schemaNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::String m_schemaArn;
+    bool m_schemaArnHasBeenSet = false;
+
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
+
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
+
+    bool m_hasWorkflows{false};
+    bool m_hasWorkflowsHasBeenSet = false;
   };
 
 } // namespace Model

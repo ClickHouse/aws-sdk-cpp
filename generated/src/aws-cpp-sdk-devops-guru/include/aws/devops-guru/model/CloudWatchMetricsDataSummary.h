@@ -34,95 +34,42 @@ namespace Model
   class CloudWatchMetricsDataSummary
   {
   public:
-    AWS_DEVOPSGURU_API CloudWatchMetricsDataSummary();
+    AWS_DEVOPSGURU_API CloudWatchMetricsDataSummary() = default;
     AWS_DEVOPSGURU_API CloudWatchMetricsDataSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API CloudWatchMetricsDataSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
      */
-    inline const Aws::Vector<TimestampMetricValuePair>& GetTimestampMetricValuePairList() const{ return m_timestampMetricValuePairList; }
-
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
+    inline const Aws::Vector<TimestampMetricValuePair>& GetTimestampMetricValuePairList() const { return m_timestampMetricValuePairList; }
     inline bool TimestampMetricValuePairListHasBeenSet() const { return m_timestampMetricValuePairListHasBeenSet; }
+    template<typename TimestampMetricValuePairListT = Aws::Vector<TimestampMetricValuePair>>
+    void SetTimestampMetricValuePairList(TimestampMetricValuePairListT&& value) { m_timestampMetricValuePairListHasBeenSet = true; m_timestampMetricValuePairList = std::forward<TimestampMetricValuePairListT>(value); }
+    template<typename TimestampMetricValuePairListT = Aws::Vector<TimestampMetricValuePair>>
+    CloudWatchMetricsDataSummary& WithTimestampMetricValuePairList(TimestampMetricValuePairListT&& value) { SetTimestampMetricValuePairList(std::forward<TimestampMetricValuePairListT>(value)); return *this;}
+    template<typename TimestampMetricValuePairListT = TimestampMetricValuePair>
+    CloudWatchMetricsDataSummary& AddTimestampMetricValuePairList(TimestampMetricValuePairListT&& value) { m_timestampMetricValuePairListHasBeenSet = true; m_timestampMetricValuePairList.emplace_back(std::forward<TimestampMetricValuePairListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
-    inline void SetTimestampMetricValuePairList(const Aws::Vector<TimestampMetricValuePair>& value) { m_timestampMetricValuePairListHasBeenSet = true; m_timestampMetricValuePairList = value; }
-
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
-    inline void SetTimestampMetricValuePairList(Aws::Vector<TimestampMetricValuePair>&& value) { m_timestampMetricValuePairListHasBeenSet = true; m_timestampMetricValuePairList = std::move(value); }
-
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
-    inline CloudWatchMetricsDataSummary& WithTimestampMetricValuePairList(const Aws::Vector<TimestampMetricValuePair>& value) { SetTimestampMetricValuePairList(value); return *this;}
-
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
-    inline CloudWatchMetricsDataSummary& WithTimestampMetricValuePairList(Aws::Vector<TimestampMetricValuePair>&& value) { SetTimestampMetricValuePairList(std::move(value)); return *this;}
-
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
-    inline CloudWatchMetricsDataSummary& AddTimestampMetricValuePairList(const TimestampMetricValuePair& value) { m_timestampMetricValuePairListHasBeenSet = true; m_timestampMetricValuePairList.push_back(value); return *this; }
-
-    /**
-     * <p>This is a list of Amazon CloudWatch metric values at given timestamp.</p>
-     */
-    inline CloudWatchMetricsDataSummary& AddTimestampMetricValuePairList(TimestampMetricValuePair&& value) { m_timestampMetricValuePairListHasBeenSet = true; m_timestampMetricValuePairList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>This is an enum of the status showing whether the metric value pair list has
      * partial or complete data, or if there was an error.</p>
      */
-    inline const CloudWatchMetricDataStatusCode& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>This is an enum of the status showing whether the metric value pair list has
-     * partial or complete data, or if there was an error.</p>
-     */
+    inline CloudWatchMetricDataStatusCode GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
-
-    /**
-     * <p>This is an enum of the status showing whether the metric value pair list has
-     * partial or complete data, or if there was an error.</p>
-     */
-    inline void SetStatusCode(const CloudWatchMetricDataStatusCode& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>This is an enum of the status showing whether the metric value pair list has
-     * partial or complete data, or if there was an error.</p>
-     */
-    inline void SetStatusCode(CloudWatchMetricDataStatusCode&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>This is an enum of the status showing whether the metric value pair list has
-     * partial or complete data, or if there was an error.</p>
-     */
-    inline CloudWatchMetricsDataSummary& WithStatusCode(const CloudWatchMetricDataStatusCode& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>This is an enum of the status showing whether the metric value pair list has
-     * partial or complete data, or if there was an error.</p>
-     */
-    inline CloudWatchMetricsDataSummary& WithStatusCode(CloudWatchMetricDataStatusCode&& value) { SetStatusCode(std::move(value)); return *this;}
-
+    inline void SetStatusCode(CloudWatchMetricDataStatusCode value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
+    inline CloudWatchMetricsDataSummary& WithStatusCode(CloudWatchMetricDataStatusCode value) { SetStatusCode(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TimestampMetricValuePair> m_timestampMetricValuePairList;
     bool m_timestampMetricValuePairListHasBeenSet = false;
 
-    CloudWatchMetricDataStatusCode m_statusCode;
+    CloudWatchMetricDataStatusCode m_statusCode{CloudWatchMetricDataStatusCode::NOT_SET};
     bool m_statusCodeHasBeenSet = false;
   };
 

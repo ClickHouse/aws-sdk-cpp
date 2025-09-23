@@ -32,124 +32,47 @@ namespace Model
   class UpdateWirelessGatewayTaskCreate
   {
   public:
-    AWS_IOTWIRELESS_API UpdateWirelessGatewayTaskCreate();
+    AWS_IOTWIRELESS_API UpdateWirelessGatewayTaskCreate() = default;
     AWS_IOTWIRELESS_API UpdateWirelessGatewayTaskCreate(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API UpdateWirelessGatewayTaskCreate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The link to the S3 bucket.</p>
      */
-    inline const Aws::String& GetUpdateDataSource() const{ return m_updateDataSource; }
-
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
+    inline const Aws::String& GetUpdateDataSource() const { return m_updateDataSource; }
     inline bool UpdateDataSourceHasBeenSet() const { return m_updateDataSourceHasBeenSet; }
+    template<typename UpdateDataSourceT = Aws::String>
+    void SetUpdateDataSource(UpdateDataSourceT&& value) { m_updateDataSourceHasBeenSet = true; m_updateDataSource = std::forward<UpdateDataSourceT>(value); }
+    template<typename UpdateDataSourceT = Aws::String>
+    UpdateWirelessGatewayTaskCreate& WithUpdateDataSource(UpdateDataSourceT&& value) { SetUpdateDataSource(std::forward<UpdateDataSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
-    inline void SetUpdateDataSource(const Aws::String& value) { m_updateDataSourceHasBeenSet = true; m_updateDataSource = value; }
-
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
-    inline void SetUpdateDataSource(Aws::String&& value) { m_updateDataSourceHasBeenSet = true; m_updateDataSource = std::move(value); }
-
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
-    inline void SetUpdateDataSource(const char* value) { m_updateDataSourceHasBeenSet = true; m_updateDataSource.assign(value); }
-
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithUpdateDataSource(const Aws::String& value) { SetUpdateDataSource(value); return *this;}
-
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithUpdateDataSource(Aws::String&& value) { SetUpdateDataSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The link to the S3 bucket.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithUpdateDataSource(const char* value) { SetUpdateDataSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IAM role used to read data from the S3 bucket.</p>
      */
-    inline const Aws::String& GetUpdateDataRole() const{ return m_updateDataRole; }
-
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
+    inline const Aws::String& GetUpdateDataRole() const { return m_updateDataRole; }
     inline bool UpdateDataRoleHasBeenSet() const { return m_updateDataRoleHasBeenSet; }
+    template<typename UpdateDataRoleT = Aws::String>
+    void SetUpdateDataRole(UpdateDataRoleT&& value) { m_updateDataRoleHasBeenSet = true; m_updateDataRole = std::forward<UpdateDataRoleT>(value); }
+    template<typename UpdateDataRoleT = Aws::String>
+    UpdateWirelessGatewayTaskCreate& WithUpdateDataRole(UpdateDataRoleT&& value) { SetUpdateDataRole(std::forward<UpdateDataRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
-    inline void SetUpdateDataRole(const Aws::String& value) { m_updateDataRoleHasBeenSet = true; m_updateDataRole = value; }
-
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
-    inline void SetUpdateDataRole(Aws::String&& value) { m_updateDataRoleHasBeenSet = true; m_updateDataRole = std::move(value); }
-
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
-    inline void SetUpdateDataRole(const char* value) { m_updateDataRoleHasBeenSet = true; m_updateDataRole.assign(value); }
-
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithUpdateDataRole(const Aws::String& value) { SetUpdateDataRole(value); return *this;}
-
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithUpdateDataRole(Aws::String&& value) { SetUpdateDataRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role used to read data from the S3 bucket.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithUpdateDataRole(const char* value) { SetUpdateDataRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The properties that relate to the LoRaWAN wireless gateway.</p>
      */
-    inline const LoRaWANUpdateGatewayTaskCreate& GetLoRaWAN() const{ return m_loRaWAN; }
-
-    /**
-     * <p>The properties that relate to the LoRaWAN wireless gateway.</p>
-     */
+    inline const LoRaWANUpdateGatewayTaskCreate& GetLoRaWAN() const { return m_loRaWAN; }
     inline bool LoRaWANHasBeenSet() const { return m_loRaWANHasBeenSet; }
-
-    /**
-     * <p>The properties that relate to the LoRaWAN wireless gateway.</p>
-     */
-    inline void SetLoRaWAN(const LoRaWANUpdateGatewayTaskCreate& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = value; }
-
-    /**
-     * <p>The properties that relate to the LoRaWAN wireless gateway.</p>
-     */
-    inline void SetLoRaWAN(LoRaWANUpdateGatewayTaskCreate&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::move(value); }
-
-    /**
-     * <p>The properties that relate to the LoRaWAN wireless gateway.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithLoRaWAN(const LoRaWANUpdateGatewayTaskCreate& value) { SetLoRaWAN(value); return *this;}
-
-    /**
-     * <p>The properties that relate to the LoRaWAN wireless gateway.</p>
-     */
-    inline UpdateWirelessGatewayTaskCreate& WithLoRaWAN(LoRaWANUpdateGatewayTaskCreate&& value) { SetLoRaWAN(std::move(value)); return *this;}
-
+    template<typename LoRaWANT = LoRaWANUpdateGatewayTaskCreate>
+    void SetLoRaWAN(LoRaWANT&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::forward<LoRaWANT>(value); }
+    template<typename LoRaWANT = LoRaWANUpdateGatewayTaskCreate>
+    UpdateWirelessGatewayTaskCreate& WithLoRaWAN(LoRaWANT&& value) { SetLoRaWAN(std::forward<LoRaWANT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_updateDataSource;

@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-KubernetesAuditLogsConfigurationResult::KubernetesAuditLogsConfigurationResult() : 
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-KubernetesAuditLogsConfigurationResult::KubernetesAuditLogsConfigurationResult(JsonView jsonValue) : 
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+KubernetesAuditLogsConfigurationResult::KubernetesAuditLogsConfigurationResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ KubernetesAuditLogsConfigurationResult& KubernetesAuditLogsConfigurationResult::
   if(jsonValue.ValueExists("status"))
   {
     m_status = DataSourceStatusMapper::GetDataSourceStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

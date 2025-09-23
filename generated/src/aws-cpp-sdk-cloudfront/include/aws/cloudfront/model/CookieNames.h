@@ -31,82 +31,39 @@ namespace Model
   class CookieNames
   {
   public:
-    AWS_CLOUDFRONT_API CookieNames();
+    AWS_CLOUDFRONT_API CookieNames() = default;
     AWS_CLOUDFRONT_API CookieNames(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API CookieNames& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The number of cookie names in the <code>Items</code> list.</p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The number of cookie names in the <code>Items</code> list.</p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The number of cookie names in the <code>Items</code> list.</p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The number of cookie names in the <code>Items</code> list.</p>
-     */
     inline CookieNames& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of cookie names.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline void SetItems(const Aws::Vector<Aws::String>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline CookieNames& WithItems(const Aws::Vector<Aws::String>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline CookieNames& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline CookieNames& AddItems(const Aws::String& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline CookieNames& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of cookie names.</p>
-     */
-    inline CookieNames& AddItems(const char* value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
+    template<typename ItemsT = Aws::Vector<Aws::String>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<Aws::String>>
+    CookieNames& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = Aws::String>
+    CookieNames& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_items;

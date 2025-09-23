@@ -31,68 +31,25 @@ namespace Model
   class RegistryCatalogData
   {
   public:
-    AWS_ECRPUBLIC_API RegistryCatalogData();
+    AWS_ECRPUBLIC_API RegistryCatalogData() = default;
     AWS_ECRPUBLIC_API RegistryCatalogData(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECRPUBLIC_API RegistryCatalogData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECRPUBLIC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The display name for a public registry. This appears on the Amazon ECR Public
      * Gallery.</p>  <p>Only accounts that have the verified account badge
      * can have a registry display name.</p> 
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
-    inline RegistryCatalogData& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
-    inline RegistryCatalogData& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name for a public registry. This appears on the Amazon ECR Public
-     * Gallery.</p>  <p>Only accounts that have the verified account badge
-     * can have a registry display name.</p> 
-     */
-    inline RegistryCatalogData& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    RegistryCatalogData& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_displayName;

@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAssetModelCompositeModelsRequest::ListAssetModelCompositeModelsRequest() : 
-    m_assetModelIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListAssetModelCompositeModelsRequest::SerializePayload() const
 {
   return {};
@@ -42,6 +34,13 @@ void ListAssetModelCompositeModelsRequest::AddQueryStringParameters(URI& uri) co
     {
       ss << m_maxResults;
       uri.AddQueryStringParameter("maxResults", ss.str());
+      ss.str("");
+    }
+
+    if(m_assetModelVersionHasBeenSet)
+    {
+      ss << m_assetModelVersion;
+      uri.AddQueryStringParameter("assetModelVersion", ss.str());
       ss.str("");
     }
 

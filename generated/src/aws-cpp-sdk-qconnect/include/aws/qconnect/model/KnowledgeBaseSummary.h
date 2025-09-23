@@ -7,10 +7,11 @@
 #include <aws/qconnect/QConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/qconnect/model/KnowledgeBaseType.h>
+#include <aws/qconnect/model/KnowledgeBaseStatus.h>
+#include <aws/qconnect/model/SourceConfiguration.h>
+#include <aws/qconnect/model/VectorIngestionConfiguration.h>
 #include <aws/qconnect/model/RenderingConfiguration.h>
 #include <aws/qconnect/model/ServerSideEncryptionConfiguration.h>
-#include <aws/qconnect/model/SourceConfiguration.h>
-#include <aws/qconnect/model/KnowledgeBaseStatus.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
@@ -37,462 +38,173 @@ namespace Model
   class KnowledgeBaseSummary
   {
   public:
-    AWS_QCONNECT_API KnowledgeBaseSummary();
+    AWS_QCONNECT_API KnowledgeBaseSummary() = default;
     AWS_QCONNECT_API KnowledgeBaseSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API KnowledgeBaseSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The description of the knowledge base.</p>
+     * <p>The identifier of the knowledge base.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline const Aws::String& GetKnowledgeBaseArn() const{ return m_knowledgeBaseArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline bool KnowledgeBaseArnHasBeenSet() const { return m_knowledgeBaseArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(const Aws::String& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(Aws::String&& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(const char* value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseArn(const Aws::String& value) { SetKnowledgeBaseArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseArn(Aws::String&& value) { SetKnowledgeBaseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseArn(const char* value) { SetKnowledgeBaseArn(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline const Aws::String& GetKnowledgeBaseId() const{ return m_knowledgeBaseId; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseId() const { return m_knowledgeBaseId; }
     inline bool KnowledgeBaseIdHasBeenSet() const { return m_knowledgeBaseIdHasBeenSet; }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    void SetKnowledgeBaseId(KnowledgeBaseIdT&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::forward<KnowledgeBaseIdT>(value); }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    KnowledgeBaseSummary& WithKnowledgeBaseId(KnowledgeBaseIdT&& value) { SetKnowledgeBaseId(std::forward<KnowledgeBaseIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
+     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
      */
-    inline void SetKnowledgeBaseId(const Aws::String& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = value; }
+    inline const Aws::String& GetKnowledgeBaseArn() const { return m_knowledgeBaseArn; }
+    inline bool KnowledgeBaseArnHasBeenSet() const { return m_knowledgeBaseArnHasBeenSet; }
+    template<typename KnowledgeBaseArnT = Aws::String>
+    void SetKnowledgeBaseArn(KnowledgeBaseArnT&& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = std::forward<KnowledgeBaseArnT>(value); }
+    template<typename KnowledgeBaseArnT = Aws::String>
+    KnowledgeBaseSummary& WithKnowledgeBaseArn(KnowledgeBaseArnT&& value) { SetKnowledgeBaseArn(std::forward<KnowledgeBaseArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(Aws::String&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::move(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const char* value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId.assign(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseId(const Aws::String& value) { SetKnowledgeBaseId(value); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseId(Aws::String&& value) { SetKnowledgeBaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseId(const char* value) { SetKnowledgeBaseId(value); return *this;}
-
-
-    /**
-     * <p>The type of knowledge base.</p>
-     */
-    inline const KnowledgeBaseType& GetKnowledgeBaseType() const{ return m_knowledgeBaseType; }
-
-    /**
-     * <p>The type of knowledge base.</p>
-     */
-    inline bool KnowledgeBaseTypeHasBeenSet() const { return m_knowledgeBaseTypeHasBeenSet; }
-
-    /**
-     * <p>The type of knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseType(const KnowledgeBaseType& value) { m_knowledgeBaseTypeHasBeenSet = true; m_knowledgeBaseType = value; }
-
-    /**
-     * <p>The type of knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseType(KnowledgeBaseType&& value) { m_knowledgeBaseTypeHasBeenSet = true; m_knowledgeBaseType = std::move(value); }
-
-    /**
-     * <p>The type of knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseType(const KnowledgeBaseType& value) { SetKnowledgeBaseType(value); return *this;}
-
-    /**
-     * <p>The type of knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithKnowledgeBaseType(KnowledgeBaseType&& value) { SetKnowledgeBaseType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the knowledge base.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the knowledge base.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    KnowledgeBaseSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the knowledge base.</p>
+     * <p>The type of knowledge base.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline KnowledgeBaseType GetKnowledgeBaseType() const { return m_knowledgeBaseType; }
+    inline bool KnowledgeBaseTypeHasBeenSet() const { return m_knowledgeBaseTypeHasBeenSet; }
+    inline void SetKnowledgeBaseType(KnowledgeBaseType value) { m_knowledgeBaseTypeHasBeenSet = true; m_knowledgeBaseType = value; }
+    inline KnowledgeBaseSummary& WithKnowledgeBaseType(KnowledgeBaseType value) { SetKnowledgeBaseType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the knowledge base.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the knowledge base.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the knowledge base.</p>
-     */
-    inline KnowledgeBaseSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>Information about how to render the content.</p>
-     */
-    inline const RenderingConfiguration& GetRenderingConfiguration() const{ return m_renderingConfiguration; }
-
-    /**
-     * <p>Information about how to render the content.</p>
-     */
-    inline bool RenderingConfigurationHasBeenSet() const { return m_renderingConfigurationHasBeenSet; }
-
-    /**
-     * <p>Information about how to render the content.</p>
-     */
-    inline void SetRenderingConfiguration(const RenderingConfiguration& value) { m_renderingConfigurationHasBeenSet = true; m_renderingConfiguration = value; }
-
-    /**
-     * <p>Information about how to render the content.</p>
-     */
-    inline void SetRenderingConfiguration(RenderingConfiguration&& value) { m_renderingConfigurationHasBeenSet = true; m_renderingConfiguration = std::move(value); }
-
-    /**
-     * <p>Information about how to render the content.</p>
-     */
-    inline KnowledgeBaseSummary& WithRenderingConfiguration(const RenderingConfiguration& value) { SetRenderingConfiguration(value); return *this;}
-
-    /**
-     * <p>Information about how to render the content.</p>
-     */
-    inline KnowledgeBaseSummary& WithRenderingConfiguration(RenderingConfiguration&& value) { SetRenderingConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The configuration information for the customer managed key used for
-     * encryption. </p> <p>This KMS key must have a policy that allows
-     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
-     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
-     * the IAM identity using the key to invoke Amazon Q. </p> <p>For more information
-     * about setting up a customer managed key for Amazon Q, see <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
-     * Amazon Q in Connect for your instance</a>.</p>
-     */
-    inline const ServerSideEncryptionConfiguration& GetServerSideEncryptionConfiguration() const{ return m_serverSideEncryptionConfiguration; }
-
-    /**
-     * <p>The configuration information for the customer managed key used for
-     * encryption. </p> <p>This KMS key must have a policy that allows
-     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
-     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
-     * the IAM identity using the key to invoke Amazon Q. </p> <p>For more information
-     * about setting up a customer managed key for Amazon Q, see <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
-     * Amazon Q in Connect for your instance</a>.</p>
-     */
-    inline bool ServerSideEncryptionConfigurationHasBeenSet() const { return m_serverSideEncryptionConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration information for the customer managed key used for
-     * encryption. </p> <p>This KMS key must have a policy that allows
-     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
-     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
-     * the IAM identity using the key to invoke Amazon Q. </p> <p>For more information
-     * about setting up a customer managed key for Amazon Q, see <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
-     * Amazon Q in Connect for your instance</a>.</p>
-     */
-    inline void SetServerSideEncryptionConfiguration(const ServerSideEncryptionConfiguration& value) { m_serverSideEncryptionConfigurationHasBeenSet = true; m_serverSideEncryptionConfiguration = value; }
-
-    /**
-     * <p>The configuration information for the customer managed key used for
-     * encryption. </p> <p>This KMS key must have a policy that allows
-     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
-     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
-     * the IAM identity using the key to invoke Amazon Q. </p> <p>For more information
-     * about setting up a customer managed key for Amazon Q, see <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
-     * Amazon Q in Connect for your instance</a>.</p>
-     */
-    inline void SetServerSideEncryptionConfiguration(ServerSideEncryptionConfiguration&& value) { m_serverSideEncryptionConfigurationHasBeenSet = true; m_serverSideEncryptionConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration information for the customer managed key used for
-     * encryption. </p> <p>This KMS key must have a policy that allows
-     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
-     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
-     * the IAM identity using the key to invoke Amazon Q. </p> <p>For more information
-     * about setting up a customer managed key for Amazon Q, see <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
-     * Amazon Q in Connect for your instance</a>.</p>
-     */
-    inline KnowledgeBaseSummary& WithServerSideEncryptionConfiguration(const ServerSideEncryptionConfiguration& value) { SetServerSideEncryptionConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration information for the customer managed key used for
-     * encryption. </p> <p>This KMS key must have a policy that allows
-     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
-     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
-     * the IAM identity using the key to invoke Amazon Q. </p> <p>For more information
-     * about setting up a customer managed key for Amazon Q, see <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
-     * Amazon Q in Connect for your instance</a>.</p>
-     */
-    inline KnowledgeBaseSummary& WithServerSideEncryptionConfiguration(ServerSideEncryptionConfiguration&& value) { SetServerSideEncryptionConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Configuration information about the external data source.</p>
-     */
-    inline const SourceConfiguration& GetSourceConfiguration() const{ return m_sourceConfiguration; }
-
-    /**
-     * <p>Configuration information about the external data source.</p>
-     */
-    inline bool SourceConfigurationHasBeenSet() const { return m_sourceConfigurationHasBeenSet; }
-
-    /**
-     * <p>Configuration information about the external data source.</p>
-     */
-    inline void SetSourceConfiguration(const SourceConfiguration& value) { m_sourceConfigurationHasBeenSet = true; m_sourceConfiguration = value; }
-
-    /**
-     * <p>Configuration information about the external data source.</p>
-     */
-    inline void SetSourceConfiguration(SourceConfiguration&& value) { m_sourceConfigurationHasBeenSet = true; m_sourceConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration information about the external data source.</p>
-     */
-    inline KnowledgeBaseSummary& WithSourceConfiguration(const SourceConfiguration& value) { SetSourceConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration information about the external data source.</p>
-     */
-    inline KnowledgeBaseSummary& WithSourceConfiguration(SourceConfiguration&& value) { SetSourceConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the knowledge base summary.</p>
      */
-    inline const KnowledgeBaseStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the knowledge base summary.</p>
-     */
+    inline KnowledgeBaseStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(KnowledgeBaseStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline KnowledgeBaseSummary& WithStatus(KnowledgeBaseStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the knowledge base summary.</p>
+     * <p>Configuration information about the external data source.</p>
      */
-    inline void SetStatus(const KnowledgeBaseStatus& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline const SourceConfiguration& GetSourceConfiguration() const { return m_sourceConfiguration; }
+    inline bool SourceConfigurationHasBeenSet() const { return m_sourceConfigurationHasBeenSet; }
+    template<typename SourceConfigurationT = SourceConfiguration>
+    void SetSourceConfiguration(SourceConfigurationT&& value) { m_sourceConfigurationHasBeenSet = true; m_sourceConfiguration = std::forward<SourceConfigurationT>(value); }
+    template<typename SourceConfigurationT = SourceConfiguration>
+    KnowledgeBaseSummary& WithSourceConfiguration(SourceConfigurationT&& value) { SetSourceConfiguration(std::forward<SourceConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the knowledge base summary.</p>
+     * <p>Contains details about how to ingest the documents in a data source.</p>
      */
-    inline void SetStatus(KnowledgeBaseStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
+    inline const VectorIngestionConfiguration& GetVectorIngestionConfiguration() const { return m_vectorIngestionConfiguration; }
+    inline bool VectorIngestionConfigurationHasBeenSet() const { return m_vectorIngestionConfigurationHasBeenSet; }
+    template<typename VectorIngestionConfigurationT = VectorIngestionConfiguration>
+    void SetVectorIngestionConfiguration(VectorIngestionConfigurationT&& value) { m_vectorIngestionConfigurationHasBeenSet = true; m_vectorIngestionConfiguration = std::forward<VectorIngestionConfigurationT>(value); }
+    template<typename VectorIngestionConfigurationT = VectorIngestionConfiguration>
+    KnowledgeBaseSummary& WithVectorIngestionConfiguration(VectorIngestionConfigurationT&& value) { SetVectorIngestionConfiguration(std::forward<VectorIngestionConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the knowledge base summary.</p>
+     * <p>Information about how to render the content.</p>
      */
-    inline KnowledgeBaseSummary& WithStatus(const KnowledgeBaseStatus& value) { SetStatus(value); return *this;}
+    inline const RenderingConfiguration& GetRenderingConfiguration() const { return m_renderingConfiguration; }
+    inline bool RenderingConfigurationHasBeenSet() const { return m_renderingConfigurationHasBeenSet; }
+    template<typename RenderingConfigurationT = RenderingConfiguration>
+    void SetRenderingConfiguration(RenderingConfigurationT&& value) { m_renderingConfigurationHasBeenSet = true; m_renderingConfiguration = std::forward<RenderingConfigurationT>(value); }
+    template<typename RenderingConfigurationT = RenderingConfiguration>
+    KnowledgeBaseSummary& WithRenderingConfiguration(RenderingConfigurationT&& value) { SetRenderingConfiguration(std::forward<RenderingConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the knowledge base summary.</p>
+     * <p>The configuration information for the customer managed key used for
+     * encryption. </p> <p>This KMS key must have a policy that allows
+     * <code>kms:CreateGrant</code>, <code>kms:DescribeKey</code>,
+     * <code>kms:Decrypt</code>, and <code>kms:GenerateDataKey*</code> permissions to
+     * the IAM identity using the key to invoke Amazon Q in Connect. </p> <p>For more
+     * information about setting up a customer managed key for Amazon Q in Connect, see
+     * <a
+     * href="https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html">Enable
+     * Amazon Q in Connect for your instance</a>.</p>
      */
-    inline KnowledgeBaseSummary& WithStatus(KnowledgeBaseStatus&& value) { SetStatus(std::move(value)); return *this;}
+    inline const ServerSideEncryptionConfiguration& GetServerSideEncryptionConfiguration() const { return m_serverSideEncryptionConfiguration; }
+    inline bool ServerSideEncryptionConfigurationHasBeenSet() const { return m_serverSideEncryptionConfigurationHasBeenSet; }
+    template<typename ServerSideEncryptionConfigurationT = ServerSideEncryptionConfiguration>
+    void SetServerSideEncryptionConfiguration(ServerSideEncryptionConfigurationT&& value) { m_serverSideEncryptionConfigurationHasBeenSet = true; m_serverSideEncryptionConfiguration = std::forward<ServerSideEncryptionConfigurationT>(value); }
+    template<typename ServerSideEncryptionConfigurationT = ServerSideEncryptionConfiguration>
+    KnowledgeBaseSummary& WithServerSideEncryptionConfiguration(ServerSideEncryptionConfigurationT&& value) { SetServerSideEncryptionConfiguration(std::forward<ServerSideEncryptionConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The description of the knowledge base.</p>
+     */
+    inline const Aws::String& GetDescription() const { return m_description; }
+    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    KnowledgeBaseSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline KnowledgeBaseSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    KnowledgeBaseSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    KnowledgeBaseSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
-
-    Aws::String m_description;
-    bool m_descriptionHasBeenSet = false;
-
-    Aws::String m_knowledgeBaseArn;
-    bool m_knowledgeBaseArnHasBeenSet = false;
 
     Aws::String m_knowledgeBaseId;
     bool m_knowledgeBaseIdHasBeenSet = false;
 
-    KnowledgeBaseType m_knowledgeBaseType;
-    bool m_knowledgeBaseTypeHasBeenSet = false;
+    Aws::String m_knowledgeBaseArn;
+    bool m_knowledgeBaseArnHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    KnowledgeBaseType m_knowledgeBaseType{KnowledgeBaseType::NOT_SET};
+    bool m_knowledgeBaseTypeHasBeenSet = false;
+
+    KnowledgeBaseStatus m_status{KnowledgeBaseStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
+
+    SourceConfiguration m_sourceConfiguration;
+    bool m_sourceConfigurationHasBeenSet = false;
+
+    VectorIngestionConfiguration m_vectorIngestionConfiguration;
+    bool m_vectorIngestionConfigurationHasBeenSet = false;
 
     RenderingConfiguration m_renderingConfiguration;
     bool m_renderingConfigurationHasBeenSet = false;
@@ -500,11 +212,8 @@ namespace Model
     ServerSideEncryptionConfiguration m_serverSideEncryptionConfiguration;
     bool m_serverSideEncryptionConfigurationHasBeenSet = false;
 
-    SourceConfiguration m_sourceConfiguration;
-    bool m_sourceConfigurationHasBeenSet = false;
-
-    KnowledgeBaseStatus m_status;
-    bool m_statusHasBeenSet = false;
+    Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;

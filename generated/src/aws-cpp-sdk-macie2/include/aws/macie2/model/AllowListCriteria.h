@@ -34,97 +34,37 @@ namespace Model
   class AllowListCriteria
   {
   public:
-    AWS_MACIE2_API AllowListCriteria();
+    AWS_MACIE2_API AllowListCriteria() = default;
     AWS_MACIE2_API AllowListCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API AllowListCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The regular expression (<i>regex</i>) that defines the text pattern to
      * ignore. The expression can contain as many as 512 characters.</p>
      */
-    inline const Aws::String& GetRegex() const{ return m_regex; }
-
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
+    inline const Aws::String& GetRegex() const { return m_regex; }
     inline bool RegexHasBeenSet() const { return m_regexHasBeenSet; }
+    template<typename RegexT = Aws::String>
+    void SetRegex(RegexT&& value) { m_regexHasBeenSet = true; m_regex = std::forward<RegexT>(value); }
+    template<typename RegexT = Aws::String>
+    AllowListCriteria& WithRegex(RegexT&& value) { SetRegex(std::forward<RegexT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
-    inline void SetRegex(const Aws::String& value) { m_regexHasBeenSet = true; m_regex = value; }
-
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
-    inline void SetRegex(Aws::String&& value) { m_regexHasBeenSet = true; m_regex = std::move(value); }
-
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
-    inline void SetRegex(const char* value) { m_regexHasBeenSet = true; m_regex.assign(value); }
-
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
-    inline AllowListCriteria& WithRegex(const Aws::String& value) { SetRegex(value); return *this;}
-
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
-    inline AllowListCriteria& WithRegex(Aws::String&& value) { SetRegex(std::move(value)); return *this;}
-
-    /**
-     * <p>The regular expression (<i>regex</i>) that defines the text pattern to
-     * ignore. The expression can contain as many as 512 characters.</p>
-     */
-    inline AllowListCriteria& WithRegex(const char* value) { SetRegex(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location and name of the S3 object that lists specific text to
      * ignore.</p>
      */
-    inline const S3WordsList& GetS3WordsList() const{ return m_s3WordsList; }
-
-    /**
-     * <p>The location and name of the S3 object that lists specific text to
-     * ignore.</p>
-     */
+    inline const S3WordsList& GetS3WordsList() const { return m_s3WordsList; }
     inline bool S3WordsListHasBeenSet() const { return m_s3WordsListHasBeenSet; }
-
-    /**
-     * <p>The location and name of the S3 object that lists specific text to
-     * ignore.</p>
-     */
-    inline void SetS3WordsList(const S3WordsList& value) { m_s3WordsListHasBeenSet = true; m_s3WordsList = value; }
-
-    /**
-     * <p>The location and name of the S3 object that lists specific text to
-     * ignore.</p>
-     */
-    inline void SetS3WordsList(S3WordsList&& value) { m_s3WordsListHasBeenSet = true; m_s3WordsList = std::move(value); }
-
-    /**
-     * <p>The location and name of the S3 object that lists specific text to
-     * ignore.</p>
-     */
-    inline AllowListCriteria& WithS3WordsList(const S3WordsList& value) { SetS3WordsList(value); return *this;}
-
-    /**
-     * <p>The location and name of the S3 object that lists specific text to
-     * ignore.</p>
-     */
-    inline AllowListCriteria& WithS3WordsList(S3WordsList&& value) { SetS3WordsList(std::move(value)); return *this;}
-
+    template<typename S3WordsListT = S3WordsList>
+    void SetS3WordsList(S3WordsListT&& value) { m_s3WordsListHasBeenSet = true; m_s3WordsList = std::forward<S3WordsListT>(value); }
+    template<typename S3WordsListT = S3WordsList>
+    AllowListCriteria& WithS3WordsList(S3WordsListT&& value) { SetS3WordsList(std::forward<S3WordsListT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regex;

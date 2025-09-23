@@ -28,73 +28,39 @@ namespace Model
   class DeleteDomainResult
   {
   public:
-    AWS_LIGHTSAIL_API DeleteDomainResult();
+    AWS_LIGHTSAIL_API DeleteDomainResult() = default;
     AWS_LIGHTSAIL_API DeleteDomainResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LIGHTSAIL_API DeleteDomainResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of objects that describe the result of the action, such as the
      * status of the request, the timestamp of the request, and the resources affected
      * by the request.</p>
      */
-    inline const Operation& GetOperation() const{ return m_operation; }
+    inline const Operation& GetOperation() const { return m_operation; }
+    template<typename OperationT = Operation>
+    void SetOperation(OperationT&& value) { m_operationHasBeenSet = true; m_operation = std::forward<OperationT>(value); }
+    template<typename OperationT = Operation>
+    DeleteDomainResult& WithOperation(OperationT&& value) { SetOperation(std::forward<OperationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An array of objects that describe the result of the action, such as the
-     * status of the request, the timestamp of the request, and the resources affected
-     * by the request.</p>
-     */
-    inline void SetOperation(const Operation& value) { m_operation = value; }
-
-    /**
-     * <p>An array of objects that describe the result of the action, such as the
-     * status of the request, the timestamp of the request, and the resources affected
-     * by the request.</p>
-     */
-    inline void SetOperation(Operation&& value) { m_operation = std::move(value); }
-
-    /**
-     * <p>An array of objects that describe the result of the action, such as the
-     * status of the request, the timestamp of the request, and the resources affected
-     * by the request.</p>
-     */
-    inline DeleteDomainResult& WithOperation(const Operation& value) { SetOperation(value); return *this;}
-
-    /**
-     * <p>An array of objects that describe the result of the action, such as the
-     * status of the request, the timestamp of the request, and the resources affected
-     * by the request.</p>
-     */
-    inline DeleteDomainResult& WithOperation(Operation&& value) { SetOperation(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteDomainResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteDomainResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteDomainResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteDomainResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Operation m_operation;
+    bool m_operationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

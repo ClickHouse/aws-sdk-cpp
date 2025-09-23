@@ -7,6 +7,8 @@
 #include <aws/memorydb/MemoryDB_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/memorydb/model/AvailabilityZone.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/memorydb/model/NetworkType.h>
 #include <utility>
 
 namespace Aws
@@ -34,83 +36,50 @@ namespace Model
   class Subnet
   {
   public:
-    AWS_MEMORYDB_API Subnet();
+    AWS_MEMORYDB_API Subnet() = default;
     AWS_MEMORYDB_API Subnet(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Subnet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the subnet.</p>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    Subnet& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
-    inline Subnet& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
-    inline Subnet& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the subnet.</p>
-     */
-    inline Subnet& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone where the subnet resides</p>
      */
-    inline const AvailabilityZone& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone where the subnet resides</p>
-     */
+    inline const AvailabilityZone& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = AvailabilityZone>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = AvailabilityZone>
+    Subnet& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Availability Zone where the subnet resides</p>
+     * <p>The network types supported by this subnet. Returns an array of strings that
+     * can include 'ipv4', 'ipv6', or both, indicating whether the subnet supports IPv4
+     * only, IPv6 only, or dual-stack deployments.</p>
      */
-    inline void SetAvailabilityZone(const AvailabilityZone& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone where the subnet resides</p>
-     */
-    inline void SetAvailabilityZone(AvailabilityZone&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone where the subnet resides</p>
-     */
-    inline Subnet& WithAvailabilityZone(const AvailabilityZone& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone where the subnet resides</p>
-     */
-    inline Subnet& WithAvailabilityZone(AvailabilityZone&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
+    inline const Aws::Vector<NetworkType>& GetSupportedNetworkTypes() const { return m_supportedNetworkTypes; }
+    inline bool SupportedNetworkTypesHasBeenSet() const { return m_supportedNetworkTypesHasBeenSet; }
+    template<typename SupportedNetworkTypesT = Aws::Vector<NetworkType>>
+    void SetSupportedNetworkTypes(SupportedNetworkTypesT&& value) { m_supportedNetworkTypesHasBeenSet = true; m_supportedNetworkTypes = std::forward<SupportedNetworkTypesT>(value); }
+    template<typename SupportedNetworkTypesT = Aws::Vector<NetworkType>>
+    Subnet& WithSupportedNetworkTypes(SupportedNetworkTypesT&& value) { SetSupportedNetworkTypes(std::forward<SupportedNetworkTypesT>(value)); return *this;}
+    inline Subnet& AddSupportedNetworkTypes(NetworkType value) { m_supportedNetworkTypesHasBeenSet = true; m_supportedNetworkTypes.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_identifier;
@@ -118,6 +87,9 @@ namespace Model
 
     AvailabilityZone m_availabilityZone;
     bool m_availabilityZoneHasBeenSet = false;
+
+    Aws::Vector<NetworkType> m_supportedNetworkTypes;
+    bool m_supportedNetworkTypesHasBeenSet = false;
   };
 
 } // namespace Model

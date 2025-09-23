@@ -21,7 +21,7 @@ namespace Model
   class DeletePermissionPolicyRequest : public WAFV2Request
   {
   public:
-    AWS_WAFV2_API DeletePermissionPolicyRequest();
+    AWS_WAFV2_API DeletePermissionPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,19 @@ namespace Model
     AWS_WAFV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
      * delete the policy.</p> <p>You must be the owner of the rule group to perform
      * this operation.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
-    inline DeletePermissionPolicyRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
-    inline DeletePermissionPolicyRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule group from which you want to
-     * delete the policy.</p> <p>You must be the owner of the rule group to perform
-     * this operation.</p>
-     */
-    inline DeletePermissionPolicyRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    DeletePermissionPolicyRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;

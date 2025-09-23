@@ -18,15 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-AcknowledgeFlow::AcknowledgeFlow() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-AcknowledgeFlow::AcknowledgeFlow(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+AcknowledgeFlow::AcknowledgeFlow(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AcknowledgeFlow& AcknowledgeFlow::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,7 +25,7 @@ namespace Model
   class DescribeConfigRuleEvaluationStatusRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API DescribeConfigRuleEvaluationStatusRequest();
+    AWS_CONFIGSERVICE_API DescribeConfigRuleEvaluationStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,159 +38,49 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the Config managed rules for which you want status information.
      * If you do not specify any names, Config returns status information for all
      * Config managed rules that you use.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetConfigRuleNames() const{ return m_configRuleNames; }
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetConfigRuleNames() const { return m_configRuleNames; }
     inline bool ConfigRuleNamesHasBeenSet() const { return m_configRuleNamesHasBeenSet; }
+    template<typename ConfigRuleNamesT = Aws::Vector<Aws::String>>
+    void SetConfigRuleNames(ConfigRuleNamesT&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames = std::forward<ConfigRuleNamesT>(value); }
+    template<typename ConfigRuleNamesT = Aws::Vector<Aws::String>>
+    DescribeConfigRuleEvaluationStatusRequest& WithConfigRuleNames(ConfigRuleNamesT&& value) { SetConfigRuleNames(std::forward<ConfigRuleNamesT>(value)); return *this;}
+    template<typename ConfigRuleNamesT = Aws::String>
+    DescribeConfigRuleEvaluationStatusRequest& AddConfigRuleNames(ConfigRuleNamesT&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames.emplace_back(std::forward<ConfigRuleNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline void SetConfigRuleNames(const Aws::Vector<Aws::String>& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames = value; }
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline void SetConfigRuleNames(Aws::Vector<Aws::String>&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames = std::move(value); }
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& WithConfigRuleNames(const Aws::Vector<Aws::String>& value) { SetConfigRuleNames(value); return *this;}
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& WithConfigRuleNames(Aws::Vector<Aws::String>&& value) { SetConfigRuleNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& AddConfigRuleNames(const Aws::String& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames.push_back(value); return *this; }
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& AddConfigRuleNames(Aws::String&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The name of the Config managed rules for which you want status information.
-     * If you do not specify any names, Config returns status information for all
-     * Config managed rules that you use.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& AddConfigRuleNames(const char* value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The <code>nextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeConfigRuleEvaluationStatusRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
-     * get the next page of results in a paginated response.</p>
-     */
-    inline DescribeConfigRuleEvaluationStatusRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of rule evaluation results that you want returned.</p> <p>This
      * parameter is required if the rule limit for your account is more than the
-     * default of 150 rules.</p> <p>For information about requesting a rule limit
+     * default of 1000 rules.</p> <p>For information about requesting a rule limit
      * increase, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">Config
      * Limits</a> in the <i>Amazon Web Services General Reference Guide</i>.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The number of rule evaluation results that you want returned.</p> <p>This
-     * parameter is required if the rule limit for your account is more than the
-     * default of 150 rules.</p> <p>For information about requesting a rule limit
-     * increase, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">Config
-     * Limits</a> in the <i>Amazon Web Services General Reference Guide</i>.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The number of rule evaluation results that you want returned.</p> <p>This
-     * parameter is required if the rule limit for your account is more than the
-     * default of 150 rules.</p> <p>For information about requesting a rule limit
-     * increase, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">Config
-     * Limits</a> in the <i>Amazon Web Services General Reference Guide</i>.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The number of rule evaluation results that you want returned.</p> <p>This
-     * parameter is required if the rule limit for your account is more than the
-     * default of 150 rules.</p> <p>For information about requesting a rule limit
-     * increase, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">Config
-     * Limits</a> in the <i>Amazon Web Services General Reference Guide</i>.</p>
-     */
     inline DescribeConfigRuleEvaluationStatusRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_configRuleNames;
@@ -199,7 +89,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

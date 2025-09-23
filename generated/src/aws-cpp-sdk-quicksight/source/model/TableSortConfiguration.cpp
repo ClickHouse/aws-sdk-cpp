@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TableSortConfiguration::TableSortConfiguration() : 
-    m_rowSortHasBeenSet(false),
-    m_paginationConfigurationHasBeenSet(false)
-{
-}
-
-TableSortConfiguration::TableSortConfiguration(JsonView jsonValue) : 
-    m_rowSortHasBeenSet(false),
-    m_paginationConfigurationHasBeenSet(false)
+TableSortConfiguration::TableSortConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ TableSortConfiguration& TableSortConfiguration::operator =(JsonView jsonValue)
     }
     m_rowSortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PaginationConfiguration"))
   {
     m_paginationConfiguration = jsonValue.GetObject("PaginationConfiguration");
-
     m_paginationConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

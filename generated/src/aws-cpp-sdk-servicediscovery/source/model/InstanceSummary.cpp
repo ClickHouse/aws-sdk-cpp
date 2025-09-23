@@ -18,15 +18,7 @@ namespace ServiceDiscovery
 namespace Model
 {
 
-InstanceSummary::InstanceSummary() : 
-    m_idHasBeenSet(false),
-    m_attributesHasBeenSet(false)
-{
-}
-
-InstanceSummary::InstanceSummary(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_attributesHasBeenSet(false)
+InstanceSummary::InstanceSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InstanceSummary& InstanceSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Attributes"))
   {
     Aws::Map<Aws::String, JsonView> attributesJsonMap = jsonValue.GetObject("Attributes").GetAllObjects();
@@ -49,7 +39,11 @@ InstanceSummary& InstanceSummary::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CreatedByAccount"))
+  {
+    m_createdByAccount = jsonValue.GetString("CreatedByAccount");
+    m_createdByAccountHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,6 +65,12 @@ JsonValue InstanceSummary::Jsonize() const
      attributesJsonMap.WithString(attributesItem.first, attributesItem.second);
    }
    payload.WithObject("Attributes", std::move(attributesJsonMap));
+
+  }
+
+  if(m_createdByAccountHasBeenSet)
+  {
+   payload.WithString("CreatedByAccount", m_createdByAccount);
 
   }
 

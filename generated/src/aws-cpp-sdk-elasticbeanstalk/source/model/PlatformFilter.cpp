@@ -20,17 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-PlatformFilter::PlatformFilter() : 
-    m_typeHasBeenSet(false),
-    m_operatorHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-PlatformFilter::PlatformFilter(const XmlNode& xmlNode) : 
-    m_typeHasBeenSet(false),
-    m_operatorHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+PlatformFilter::PlatformFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ PlatformFilter& PlatformFilter::operator =(const XmlNode& xmlNode)
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("member");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember.GetText());

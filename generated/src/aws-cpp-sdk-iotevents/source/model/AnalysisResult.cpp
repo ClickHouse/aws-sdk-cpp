@@ -18,21 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-AnalysisResult::AnalysisResult() : 
-    m_typeHasBeenSet(false),
-    m_level(AnalysisResultLevel::NOT_SET),
-    m_levelHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_locationsHasBeenSet(false)
-{
-}
-
-AnalysisResult::AnalysisResult(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_level(AnalysisResultLevel::NOT_SET),
-    m_levelHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_locationsHasBeenSet(false)
+AnalysisResult::AnalysisResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ AnalysisResult& AnalysisResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("level"))
   {
     m_level = AnalysisResultLevelMapper::GetAnalysisResultLevelForName(jsonValue.GetString("level"));
-
     m_levelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("locations"))
   {
     Aws::Utils::Array<JsonView> locationsJsonList = jsonValue.GetArray("locations");
@@ -69,7 +49,6 @@ AnalysisResult& AnalysisResult::operator =(JsonView jsonValue)
     }
     m_locationsHasBeenSet = true;
   }
-
   return *this;
 }
 

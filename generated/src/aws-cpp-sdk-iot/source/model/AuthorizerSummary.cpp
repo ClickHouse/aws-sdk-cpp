@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-AuthorizerSummary::AuthorizerSummary() : 
-    m_authorizerNameHasBeenSet(false),
-    m_authorizerArnHasBeenSet(false)
-{
-}
-
-AuthorizerSummary::AuthorizerSummary(JsonView jsonValue) : 
-    m_authorizerNameHasBeenSet(false),
-    m_authorizerArnHasBeenSet(false)
+AuthorizerSummary::AuthorizerSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AuthorizerSummary& AuthorizerSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("authorizerName"))
   {
     m_authorizerName = jsonValue.GetString("authorizerName");
-
     m_authorizerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("authorizerArn"))
   {
     m_authorizerArn = jsonValue.GetString("authorizerArn");
-
     m_authorizerArnHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -23,7 +23,7 @@ namespace Model
   class DeleteRemediationExceptionsRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API DeleteRemediationExceptionsRequest();
+    AWS_CONFIGSERVICE_API DeleteRemediationExceptionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,111 +36,34 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the Config rule for which you want to delete remediation
      * exception configuration.</p>
      */
-    inline const Aws::String& GetConfigRuleName() const{ return m_configRuleName; }
-
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
+    inline const Aws::String& GetConfigRuleName() const { return m_configRuleName; }
     inline bool ConfigRuleNameHasBeenSet() const { return m_configRuleNameHasBeenSet; }
+    template<typename ConfigRuleNameT = Aws::String>
+    void SetConfigRuleName(ConfigRuleNameT&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::forward<ConfigRuleNameT>(value); }
+    template<typename ConfigRuleNameT = Aws::String>
+    DeleteRemediationExceptionsRequest& WithConfigRuleName(ConfigRuleNameT&& value) { SetConfigRuleName(std::forward<ConfigRuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
-    inline void SetConfigRuleName(const Aws::String& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = value; }
-
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
-    inline void SetConfigRuleName(Aws::String&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::move(value); }
-
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
-    inline void SetConfigRuleName(const char* value) { m_configRuleNameHasBeenSet = true; m_configRuleName.assign(value); }
-
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
-    inline DeleteRemediationExceptionsRequest& WithConfigRuleName(const Aws::String& value) { SetConfigRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
-    inline DeleteRemediationExceptionsRequest& WithConfigRuleName(Aws::String&& value) { SetConfigRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Config rule for which you want to delete remediation
-     * exception configuration.</p>
-     */
-    inline DeleteRemediationExceptionsRequest& WithConfigRuleName(const char* value) { SetConfigRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An exception list of resource exception keys to be processed with the current
      * request. Config adds exception for each resource key. For example, Config adds 3
      * exceptions for 3 resource keys. </p>
      */
-    inline const Aws::Vector<RemediationExceptionResourceKey>& GetResourceKeys() const{ return m_resourceKeys; }
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
+    inline const Aws::Vector<RemediationExceptionResourceKey>& GetResourceKeys() const { return m_resourceKeys; }
     inline bool ResourceKeysHasBeenSet() const { return m_resourceKeysHasBeenSet; }
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
-    inline void SetResourceKeys(const Aws::Vector<RemediationExceptionResourceKey>& value) { m_resourceKeysHasBeenSet = true; m_resourceKeys = value; }
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
-    inline void SetResourceKeys(Aws::Vector<RemediationExceptionResourceKey>&& value) { m_resourceKeysHasBeenSet = true; m_resourceKeys = std::move(value); }
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
-    inline DeleteRemediationExceptionsRequest& WithResourceKeys(const Aws::Vector<RemediationExceptionResourceKey>& value) { SetResourceKeys(value); return *this;}
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
-    inline DeleteRemediationExceptionsRequest& WithResourceKeys(Aws::Vector<RemediationExceptionResourceKey>&& value) { SetResourceKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
-    inline DeleteRemediationExceptionsRequest& AddResourceKeys(const RemediationExceptionResourceKey& value) { m_resourceKeysHasBeenSet = true; m_resourceKeys.push_back(value); return *this; }
-
-    /**
-     * <p>An exception list of resource exception keys to be processed with the current
-     * request. Config adds exception for each resource key. For example, Config adds 3
-     * exceptions for 3 resource keys. </p>
-     */
-    inline DeleteRemediationExceptionsRequest& AddResourceKeys(RemediationExceptionResourceKey&& value) { m_resourceKeysHasBeenSet = true; m_resourceKeys.push_back(std::move(value)); return *this; }
-
+    template<typename ResourceKeysT = Aws::Vector<RemediationExceptionResourceKey>>
+    void SetResourceKeys(ResourceKeysT&& value) { m_resourceKeysHasBeenSet = true; m_resourceKeys = std::forward<ResourceKeysT>(value); }
+    template<typename ResourceKeysT = Aws::Vector<RemediationExceptionResourceKey>>
+    DeleteRemediationExceptionsRequest& WithResourceKeys(ResourceKeysT&& value) { SetResourceKeys(std::forward<ResourceKeysT>(value)); return *this;}
+    template<typename ResourceKeysT = RemediationExceptionResourceKey>
+    DeleteRemediationExceptionsRequest& AddResourceKeys(ResourceKeysT&& value) { m_resourceKeysHasBeenSet = true; m_resourceKeys.emplace_back(std::forward<ResourceKeysT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_configRuleName;

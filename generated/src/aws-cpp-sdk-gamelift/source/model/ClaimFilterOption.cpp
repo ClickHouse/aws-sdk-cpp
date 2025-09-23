@@ -18,13 +18,7 @@ namespace GameLift
 namespace Model
 {
 
-ClaimFilterOption::ClaimFilterOption() : 
-    m_instanceStatusesHasBeenSet(false)
-{
-}
-
-ClaimFilterOption::ClaimFilterOption(JsonView jsonValue) : 
-    m_instanceStatusesHasBeenSet(false)
+ClaimFilterOption::ClaimFilterOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ClaimFilterOption& ClaimFilterOption::operator =(JsonView jsonValue)
     }
     m_instanceStatusesHasBeenSet = true;
   }
-
   return *this;
 }
 

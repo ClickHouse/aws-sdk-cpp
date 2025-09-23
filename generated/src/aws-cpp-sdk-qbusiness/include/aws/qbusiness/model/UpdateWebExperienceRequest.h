@@ -7,8 +7,11 @@
 #include <aws/qbusiness/QBusiness_EXPORTS.h>
 #include <aws/qbusiness/QBusinessRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/qbusiness/model/WebExperienceAuthConfiguration.h>
 #include <aws/qbusiness/model/WebExperienceSamplePromptsControlMode.h>
+#include <aws/qbusiness/model/IdentityProviderConfiguration.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/qbusiness/model/BrowserExtensionConfiguration.h>
+#include <aws/qbusiness/model/CustomizationConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -23,7 +26,7 @@ namespace Model
   class UpdateWebExperienceRequest : public QBusinessRequest
   {
   public:
-    AWS_QBUSINESS_API UpdateWebExperienceRequest();
+    AWS_QBUSINESS_API UpdateWebExperienceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,316 +37,190 @@ namespace Model
     AWS_QBUSINESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q application attached to the web
+     * <p>The identifier of the Amazon Q Business application attached to the web
      * experience.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    UpdateWebExperienceRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
+     * <p>The identifier of the Amazon Q Business web experience.</p>
      */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q application attached to the web
-     * experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
-    /**
-     * <p>The authentication configuration of the Amazon Q web experience.</p>
-     */
-    inline const WebExperienceAuthConfiguration& GetAuthenticationConfiguration() const{ return m_authenticationConfiguration; }
-
-    /**
-     * <p>The authentication configuration of the Amazon Q web experience.</p>
-     */
-    inline bool AuthenticationConfigurationHasBeenSet() const { return m_authenticationConfigurationHasBeenSet; }
-
-    /**
-     * <p>The authentication configuration of the Amazon Q web experience.</p>
-     */
-    inline void SetAuthenticationConfiguration(const WebExperienceAuthConfiguration& value) { m_authenticationConfigurationHasBeenSet = true; m_authenticationConfiguration = value; }
-
-    /**
-     * <p>The authentication configuration of the Amazon Q web experience.</p>
-     */
-    inline void SetAuthenticationConfiguration(WebExperienceAuthConfiguration&& value) { m_authenticationConfigurationHasBeenSet = true; m_authenticationConfiguration = std::move(value); }
-
-    /**
-     * <p>The authentication configuration of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithAuthenticationConfiguration(const WebExperienceAuthConfiguration& value) { SetAuthenticationConfiguration(value); return *this;}
-
-    /**
-     * <p>The authentication configuration of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithAuthenticationConfiguration(WebExperienceAuthConfiguration&& value) { SetAuthenticationConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Determines whether sample prompts are enabled in the web experience for an
-     * end user.</p>
-     */
-    inline const WebExperienceSamplePromptsControlMode& GetSamplePromptsControlMode() const{ return m_samplePromptsControlMode; }
-
-    /**
-     * <p>Determines whether sample prompts are enabled in the web experience for an
-     * end user.</p>
-     */
-    inline bool SamplePromptsControlModeHasBeenSet() const { return m_samplePromptsControlModeHasBeenSet; }
-
-    /**
-     * <p>Determines whether sample prompts are enabled in the web experience for an
-     * end user.</p>
-     */
-    inline void SetSamplePromptsControlMode(const WebExperienceSamplePromptsControlMode& value) { m_samplePromptsControlModeHasBeenSet = true; m_samplePromptsControlMode = value; }
-
-    /**
-     * <p>Determines whether sample prompts are enabled in the web experience for an
-     * end user.</p>
-     */
-    inline void SetSamplePromptsControlMode(WebExperienceSamplePromptsControlMode&& value) { m_samplePromptsControlModeHasBeenSet = true; m_samplePromptsControlMode = std::move(value); }
-
-    /**
-     * <p>Determines whether sample prompts are enabled in the web experience for an
-     * end user.</p>
-     */
-    inline UpdateWebExperienceRequest& WithSamplePromptsControlMode(const WebExperienceSamplePromptsControlMode& value) { SetSamplePromptsControlMode(value); return *this;}
-
-    /**
-     * <p>Determines whether sample prompts are enabled in the web experience for an
-     * end user.</p>
-     */
-    inline UpdateWebExperienceRequest& WithSamplePromptsControlMode(WebExperienceSamplePromptsControlMode&& value) { SetSamplePromptsControlMode(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline const Aws::String& GetSubtitle() const{ return m_subtitle; }
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline bool SubtitleHasBeenSet() const { return m_subtitleHasBeenSet; }
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline void SetSubtitle(const Aws::String& value) { m_subtitleHasBeenSet = true; m_subtitle = value; }
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline void SetSubtitle(Aws::String&& value) { m_subtitleHasBeenSet = true; m_subtitle = std::move(value); }
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline void SetSubtitle(const char* value) { m_subtitleHasBeenSet = true; m_subtitle.assign(value); }
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithSubtitle(const Aws::String& value) { SetSubtitle(value); return *this;}
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithSubtitle(Aws::String&& value) { SetSubtitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The subtitle of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithSubtitle(const char* value) { SetSubtitle(value); return *this;}
-
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the Amazon Q web experience.</p>
-     */
-    inline const Aws::String& GetWebExperienceId() const{ return m_webExperienceId; }
-
-    /**
-     * <p>The identifier of the Amazon Q web experience.</p>
-     */
+    inline const Aws::String& GetWebExperienceId() const { return m_webExperienceId; }
     inline bool WebExperienceIdHasBeenSet() const { return m_webExperienceIdHasBeenSet; }
+    template<typename WebExperienceIdT = Aws::String>
+    void SetWebExperienceId(WebExperienceIdT&& value) { m_webExperienceIdHasBeenSet = true; m_webExperienceId = std::forward<WebExperienceIdT>(value); }
+    template<typename WebExperienceIdT = Aws::String>
+    UpdateWebExperienceRequest& WithWebExperienceId(WebExperienceIdT&& value) { SetWebExperienceId(std::forward<WebExperienceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q web experience.</p>
+     * <p>The Amazon Resource Name (ARN) of the role with permission to access the
+     * Amazon Q Business web experience and required resources.</p>
      */
-    inline void SetWebExperienceId(const Aws::String& value) { m_webExperienceIdHasBeenSet = true; m_webExperienceId = value; }
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
+    inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    UpdateWebExperienceRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q web experience.</p>
+     * <p>The title of the Amazon Q Business web experience.</p>
      */
-    inline void SetWebExperienceId(Aws::String&& value) { m_webExperienceIdHasBeenSet = true; m_webExperienceId = std::move(value); }
+    inline const Aws::String& GetTitle() const { return m_title; }
+    inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    UpdateWebExperienceRequest& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q web experience.</p>
+     * <p>The subtitle of the Amazon Q Business web experience.</p>
      */
-    inline void SetWebExperienceId(const char* value) { m_webExperienceIdHasBeenSet = true; m_webExperienceId.assign(value); }
+    inline const Aws::String& GetSubtitle() const { return m_subtitle; }
+    inline bool SubtitleHasBeenSet() const { return m_subtitleHasBeenSet; }
+    template<typename SubtitleT = Aws::String>
+    void SetSubtitle(SubtitleT&& value) { m_subtitleHasBeenSet = true; m_subtitle = std::forward<SubtitleT>(value); }
+    template<typename SubtitleT = Aws::String>
+    UpdateWebExperienceRequest& WithSubtitle(SubtitleT&& value) { SetSubtitle(std::forward<SubtitleT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithWebExperienceId(const Aws::String& value) { SetWebExperienceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithWebExperienceId(Aws::String&& value) { SetWebExperienceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q web experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithWebExperienceId(const char* value) { SetWebExperienceId(value); return *this;}
-
-
-    /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
+     * <p>A customized welcome message for an end user in an Amazon Q Business web
      * experience.</p>
      */
-    inline const Aws::String& GetWelcomeMessage() const{ return m_welcomeMessage; }
-
-    /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
-     */
+    inline const Aws::String& GetWelcomeMessage() const { return m_welcomeMessage; }
     inline bool WelcomeMessageHasBeenSet() const { return m_welcomeMessageHasBeenSet; }
+    template<typename WelcomeMessageT = Aws::String>
+    void SetWelcomeMessage(WelcomeMessageT&& value) { m_welcomeMessageHasBeenSet = true; m_welcomeMessage = std::forward<WelcomeMessageT>(value); }
+    template<typename WelcomeMessageT = Aws::String>
+    UpdateWebExperienceRequest& WithWelcomeMessage(WelcomeMessageT&& value) { SetWelcomeMessage(std::forward<WelcomeMessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
+     * <p>Determines whether sample prompts are enabled in the web experience for an
+     * end user.</p>
      */
-    inline void SetWelcomeMessage(const Aws::String& value) { m_welcomeMessageHasBeenSet = true; m_welcomeMessage = value; }
+    inline WebExperienceSamplePromptsControlMode GetSamplePromptsControlMode() const { return m_samplePromptsControlMode; }
+    inline bool SamplePromptsControlModeHasBeenSet() const { return m_samplePromptsControlModeHasBeenSet; }
+    inline void SetSamplePromptsControlMode(WebExperienceSamplePromptsControlMode value) { m_samplePromptsControlModeHasBeenSet = true; m_samplePromptsControlMode = value; }
+    inline UpdateWebExperienceRequest& WithSamplePromptsControlMode(WebExperienceSamplePromptsControlMode value) { SetSamplePromptsControlMode(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
+     * <p>Information about the identity provider (IdP) used to authenticate end users
+     * of an Amazon Q Business web experience.</p>
      */
-    inline void SetWelcomeMessage(Aws::String&& value) { m_welcomeMessageHasBeenSet = true; m_welcomeMessage = std::move(value); }
+    inline const IdentityProviderConfiguration& GetIdentityProviderConfiguration() const { return m_identityProviderConfiguration; }
+    inline bool IdentityProviderConfigurationHasBeenSet() const { return m_identityProviderConfigurationHasBeenSet; }
+    template<typename IdentityProviderConfigurationT = IdentityProviderConfiguration>
+    void SetIdentityProviderConfiguration(IdentityProviderConfigurationT&& value) { m_identityProviderConfigurationHasBeenSet = true; m_identityProviderConfiguration = std::forward<IdentityProviderConfigurationT>(value); }
+    template<typename IdentityProviderConfigurationT = IdentityProviderConfiguration>
+    UpdateWebExperienceRequest& WithIdentityProviderConfiguration(IdentityProviderConfigurationT&& value) { SetIdentityProviderConfiguration(std::forward<IdentityProviderConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
+     * <p>Updates the website domain origins that are allowed to embed the Amazon Q
+     * Business web experience. The <i>domain origin</i> refers to the <i>base URL</i>
+     * for accessing a website including the protocol (<code>http/https</code>), the
+     * domain name, and the port number (if specified).</p>  <ul> <li> <p>Any
+     * values except <code>null</code> submitted as part of this update will replace
+     * all previous values.</p> </li> <li> <p>You must only submit a <i>base URL</i>
+     * and not a full path. For example, <code>https://docs.aws.amazon.com</code>.</p>
+     * </li> </ul> 
      */
-    inline void SetWelcomeMessage(const char* value) { m_welcomeMessageHasBeenSet = true; m_welcomeMessage.assign(value); }
+    inline const Aws::Vector<Aws::String>& GetOrigins() const { return m_origins; }
+    inline bool OriginsHasBeenSet() const { return m_originsHasBeenSet; }
+    template<typename OriginsT = Aws::Vector<Aws::String>>
+    void SetOrigins(OriginsT&& value) { m_originsHasBeenSet = true; m_origins = std::forward<OriginsT>(value); }
+    template<typename OriginsT = Aws::Vector<Aws::String>>
+    UpdateWebExperienceRequest& WithOrigins(OriginsT&& value) { SetOrigins(std::forward<OriginsT>(value)); return *this;}
+    template<typename OriginsT = Aws::String>
+    UpdateWebExperienceRequest& AddOrigins(OriginsT&& value) { m_originsHasBeenSet = true; m_origins.emplace_back(std::forward<OriginsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
+     * <p>The browser extension configuration for an Amazon Q Business web
+     * experience.</p>  <p> For Amazon Q Business application using external
+     * OIDC-compliant identity providers (IdPs). The IdP administrator must add the
+     * browser extension sign-in redirect URLs to the IdP application. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/browser-extensions.html">Configure
+     * external OIDC identity provider for your browser extensions.</a>. </p> 
      */
-    inline UpdateWebExperienceRequest& WithWelcomeMessage(const Aws::String& value) { SetWelcomeMessage(value); return *this;}
+    inline const BrowserExtensionConfiguration& GetBrowserExtensionConfiguration() const { return m_browserExtensionConfiguration; }
+    inline bool BrowserExtensionConfigurationHasBeenSet() const { return m_browserExtensionConfigurationHasBeenSet; }
+    template<typename BrowserExtensionConfigurationT = BrowserExtensionConfiguration>
+    void SetBrowserExtensionConfiguration(BrowserExtensionConfigurationT&& value) { m_browserExtensionConfigurationHasBeenSet = true; m_browserExtensionConfiguration = std::forward<BrowserExtensionConfigurationT>(value); }
+    template<typename BrowserExtensionConfigurationT = BrowserExtensionConfiguration>
+    UpdateWebExperienceRequest& WithBrowserExtensionConfiguration(BrowserExtensionConfigurationT&& value) { SetBrowserExtensionConfiguration(std::forward<BrowserExtensionConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
+     * <p>Updates the custom logo, favicon, font, and color used in the Amazon Q web
+     * experience. </p>
      */
-    inline UpdateWebExperienceRequest& WithWelcomeMessage(Aws::String&& value) { SetWelcomeMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A customized welcome message for an end user in an Amazon Q web
-     * experience.</p>
-     */
-    inline UpdateWebExperienceRequest& WithWelcomeMessage(const char* value) { SetWelcomeMessage(value); return *this;}
-
+    inline const CustomizationConfiguration& GetCustomizationConfiguration() const { return m_customizationConfiguration; }
+    inline bool CustomizationConfigurationHasBeenSet() const { return m_customizationConfigurationHasBeenSet; }
+    template<typename CustomizationConfigurationT = CustomizationConfiguration>
+    void SetCustomizationConfiguration(CustomizationConfigurationT&& value) { m_customizationConfigurationHasBeenSet = true; m_customizationConfiguration = std::forward<CustomizationConfigurationT>(value); }
+    template<typename CustomizationConfigurationT = CustomizationConfiguration>
+    UpdateWebExperienceRequest& WithCustomizationConfiguration(CustomizationConfigurationT&& value) { SetCustomizationConfiguration(std::forward<CustomizationConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
     bool m_applicationIdHasBeenSet = false;
 
-    WebExperienceAuthConfiguration m_authenticationConfiguration;
-    bool m_authenticationConfigurationHasBeenSet = false;
+    Aws::String m_webExperienceId;
+    bool m_webExperienceIdHasBeenSet = false;
 
-    WebExperienceSamplePromptsControlMode m_samplePromptsControlMode;
-    bool m_samplePromptsControlModeHasBeenSet = false;
-
-    Aws::String m_subtitle;
-    bool m_subtitleHasBeenSet = false;
+    Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet = false;
 
     Aws::String m_title;
     bool m_titleHasBeenSet = false;
 
-    Aws::String m_webExperienceId;
-    bool m_webExperienceIdHasBeenSet = false;
+    Aws::String m_subtitle;
+    bool m_subtitleHasBeenSet = false;
 
     Aws::String m_welcomeMessage;
     bool m_welcomeMessageHasBeenSet = false;
+
+    WebExperienceSamplePromptsControlMode m_samplePromptsControlMode{WebExperienceSamplePromptsControlMode::NOT_SET};
+    bool m_samplePromptsControlModeHasBeenSet = false;
+
+    IdentityProviderConfiguration m_identityProviderConfiguration;
+    bool m_identityProviderConfigurationHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_origins;
+    bool m_originsHasBeenSet = false;
+
+    BrowserExtensionConfiguration m_browserExtensionConfiguration;
+    bool m_browserExtensionConfigurationHasBeenSet = false;
+
+    CustomizationConfiguration m_customizationConfiguration;
+    bool m_customizationConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

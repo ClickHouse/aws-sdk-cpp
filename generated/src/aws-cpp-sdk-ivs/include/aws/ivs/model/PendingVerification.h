@@ -31,52 +31,23 @@ namespace Model
   class PendingVerification
   {
   public:
-    AWS_IVS_API PendingVerification();
+    AWS_IVS_API PendingVerification() = default;
     AWS_IVS_API PendingVerification(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API PendingVerification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Your account is pending verification. </p>
      */
-    inline const Aws::String& GetExceptionMessage() const{ return m_exceptionMessage; }
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
+    inline const Aws::String& GetExceptionMessage() const { return m_exceptionMessage; }
     inline bool ExceptionMessageHasBeenSet() const { return m_exceptionMessageHasBeenSet; }
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
-    inline void SetExceptionMessage(const Aws::String& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = value; }
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
-    inline void SetExceptionMessage(Aws::String&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::move(value); }
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
-    inline void SetExceptionMessage(const char* value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage.assign(value); }
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
-    inline PendingVerification& WithExceptionMessage(const Aws::String& value) { SetExceptionMessage(value); return *this;}
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
-    inline PendingVerification& WithExceptionMessage(Aws::String&& value) { SetExceptionMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> Your account is pending verification. </p>
-     */
-    inline PendingVerification& WithExceptionMessage(const char* value) { SetExceptionMessage(value); return *this;}
-
+    template<typename ExceptionMessageT = Aws::String>
+    void SetExceptionMessage(ExceptionMessageT&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::forward<ExceptionMessageT>(value); }
+    template<typename ExceptionMessageT = Aws::String>
+    PendingVerification& WithExceptionMessage(ExceptionMessageT&& value) { SetExceptionMessage(std::forward<ExceptionMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exceptionMessage;

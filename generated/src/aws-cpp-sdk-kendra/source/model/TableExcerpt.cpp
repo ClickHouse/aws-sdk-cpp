@@ -18,17 +18,7 @@ namespace kendra
 namespace Model
 {
 
-TableExcerpt::TableExcerpt() : 
-    m_rowsHasBeenSet(false),
-    m_totalNumberOfRows(0),
-    m_totalNumberOfRowsHasBeenSet(false)
-{
-}
-
-TableExcerpt::TableExcerpt(JsonView jsonValue) : 
-    m_rowsHasBeenSet(false),
-    m_totalNumberOfRows(0),
-    m_totalNumberOfRowsHasBeenSet(false)
+TableExcerpt::TableExcerpt(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ TableExcerpt& TableExcerpt::operator =(JsonView jsonValue)
     }
     m_rowsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TotalNumberOfRows"))
   {
     m_totalNumberOfRows = jsonValue.GetInteger("TotalNumberOfRows");
-
     m_totalNumberOfRowsHasBeenSet = true;
   }
-
   return *this;
 }
 

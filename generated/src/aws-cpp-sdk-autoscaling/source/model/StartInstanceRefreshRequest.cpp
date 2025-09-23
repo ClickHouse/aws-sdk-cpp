@@ -10,15 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-StartInstanceRefreshRequest::StartInstanceRefreshRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_strategy(RefreshStrategy::NOT_SET),
-    m_strategyHasBeenSet(false),
-    m_desiredConfigurationHasBeenSet(false),
-    m_preferencesHasBeenSet(false)
-{
-}
-
 Aws::String StartInstanceRefreshRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,7 +21,7 @@ Aws::String StartInstanceRefreshRequest::SerializePayload() const
 
   if(m_strategyHasBeenSet)
   {
-    ss << "Strategy=" << RefreshStrategyMapper::GetNameForRefreshStrategy(m_strategy) << "&";
+    ss << "Strategy=" << StringUtils::URLEncode(RefreshStrategyMapper::GetNameForRefreshStrategy(m_strategy)) << "&";
   }
 
   if(m_desiredConfigurationHasBeenSet)

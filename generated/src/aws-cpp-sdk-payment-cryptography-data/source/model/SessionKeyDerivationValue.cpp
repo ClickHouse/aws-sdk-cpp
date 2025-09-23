@@ -18,15 +18,7 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-SessionKeyDerivationValue::SessionKeyDerivationValue() : 
-    m_applicationCryptogramHasBeenSet(false),
-    m_applicationTransactionCounterHasBeenSet(false)
-{
-}
-
-SessionKeyDerivationValue::SessionKeyDerivationValue(JsonView jsonValue) : 
-    m_applicationCryptogramHasBeenSet(false),
-    m_applicationTransactionCounterHasBeenSet(false)
+SessionKeyDerivationValue::SessionKeyDerivationValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SessionKeyDerivationValue& SessionKeyDerivationValue::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ApplicationCryptogram"))
   {
     m_applicationCryptogram = jsonValue.GetString("ApplicationCryptogram");
-
     m_applicationCryptogramHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationTransactionCounter"))
   {
     m_applicationTransactionCounter = jsonValue.GetString("ApplicationTransactionCounter");
-
     m_applicationTransactionCounterHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,57 +33,25 @@ namespace Model
   class PortSet
   {
   public:
-    AWS_NETWORKFIREWALL_API PortSet();
+    AWS_NETWORKFIREWALL_API PortSet() = default;
     AWS_NETWORKFIREWALL_API PortSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API PortSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The set of port ranges. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetDefinition() const{ return m_definition; }
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDefinition() const { return m_definition; }
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline void SetDefinition(const Aws::Vector<Aws::String>& value) { m_definitionHasBeenSet = true; m_definition = value; }
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline void SetDefinition(Aws::Vector<Aws::String>&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline PortSet& WithDefinition(const Aws::Vector<Aws::String>& value) { SetDefinition(value); return *this;}
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline PortSet& WithDefinition(Aws::Vector<Aws::String>&& value) { SetDefinition(std::move(value)); return *this;}
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline PortSet& AddDefinition(const Aws::String& value) { m_definitionHasBeenSet = true; m_definition.push_back(value); return *this; }
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline PortSet& AddDefinition(Aws::String&& value) { m_definitionHasBeenSet = true; m_definition.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The set of port ranges. </p>
-     */
-    inline PortSet& AddDefinition(const char* value) { m_definitionHasBeenSet = true; m_definition.push_back(value); return *this; }
-
+    template<typename DefinitionT = Aws::Vector<Aws::String>>
+    void SetDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition = std::forward<DefinitionT>(value); }
+    template<typename DefinitionT = Aws::Vector<Aws::String>>
+    PortSet& WithDefinition(DefinitionT&& value) { SetDefinition(std::forward<DefinitionT>(value)); return *this;}
+    template<typename DefinitionT = Aws::String>
+    PortSet& AddDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition.emplace_back(std::forward<DefinitionT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_definition;

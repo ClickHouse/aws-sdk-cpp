@@ -12,14 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateWorkforceRequest::UpdateWorkforceRequest() : 
-    m_workforceNameHasBeenSet(false),
-    m_sourceIpConfigHasBeenSet(false),
-    m_oidcConfigHasBeenSet(false),
-    m_workforceVpcConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateWorkforceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +38,11 @@ Aws::String UpdateWorkforceRequest::SerializePayload() const
   {
    payload.WithObject("WorkforceVpcConfig", m_workforceVpcConfig.Jsonize());
 
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("IpAddressType", WorkforceIpAddressTypeMapper::GetNameForWorkforceIpAddressType(m_ipAddressType));
   }
 
   return payload.View().WriteReadable();

@@ -18,19 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-ClusterOperationV2Provisioned::ClusterOperationV2Provisioned() : 
-    m_operationStepsHasBeenSet(false),
-    m_sourceClusterInfoHasBeenSet(false),
-    m_targetClusterInfoHasBeenSet(false),
-    m_vpcConnectionInfoHasBeenSet(false)
-{
-}
-
-ClusterOperationV2Provisioned::ClusterOperationV2Provisioned(JsonView jsonValue) : 
-    m_operationStepsHasBeenSet(false),
-    m_sourceClusterInfoHasBeenSet(false),
-    m_targetClusterInfoHasBeenSet(false),
-    m_vpcConnectionInfoHasBeenSet(false)
+ClusterOperationV2Provisioned::ClusterOperationV2Provisioned(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,28 +34,21 @@ ClusterOperationV2Provisioned& ClusterOperationV2Provisioned::operator =(JsonVie
     }
     m_operationStepsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceClusterInfo"))
   {
     m_sourceClusterInfo = jsonValue.GetObject("sourceClusterInfo");
-
     m_sourceClusterInfoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("targetClusterInfo"))
   {
     m_targetClusterInfo = jsonValue.GetObject("targetClusterInfo");
-
     m_targetClusterInfoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcConnectionInfo"))
   {
     m_vpcConnectionInfo = jsonValue.GetObject("vpcConnectionInfo");
-
     m_vpcConnectionInfoHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,12 +33,13 @@ namespace Model
   class ResourceGroup
   {
   public:
-    AWS_APPREGISTRY_API ResourceGroup();
+    AWS_APPREGISTRY_API ResourceGroup() = default;
     AWS_APPREGISTRY_API ResourceGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API ResourceGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The state of the propagation process for the resource group. The states
      * includes:</p> <p> <code>CREATING </code>if the resource group is in the process
@@ -49,161 +50,39 @@ namespace Model
      * resource group updated successfully.</p> <p> <code>UPDATE_FAILED</code> if the
      * resource group could not update successfully.</p>
      */
-    inline const ResourceGroupState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the propagation process for the resource group. The states
-     * includes:</p> <p> <code>CREATING </code>if the resource group is in the process
-     * of being created.</p> <p> <code>CREATE_COMPLETE</code> if the resource group was
-     * created successfully.</p> <p> <code>CREATE_FAILED</code> if the resource group
-     * failed to be created.</p> <p> <code>UPDATING</code> if the resource group is in
-     * the process of being updated.</p> <p> <code>UPDATE_COMPLETE</code> if the
-     * resource group updated successfully.</p> <p> <code>UPDATE_FAILED</code> if the
-     * resource group could not update successfully.</p>
-     */
+    inline ResourceGroupState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ResourceGroupState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ResourceGroup& WithState(ResourceGroupState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the propagation process for the resource group. The states
-     * includes:</p> <p> <code>CREATING </code>if the resource group is in the process
-     * of being created.</p> <p> <code>CREATE_COMPLETE</code> if the resource group was
-     * created successfully.</p> <p> <code>CREATE_FAILED</code> if the resource group
-     * failed to be created.</p> <p> <code>UPDATING</code> if the resource group is in
-     * the process of being updated.</p> <p> <code>UPDATE_COMPLETE</code> if the
-     * resource group updated successfully.</p> <p> <code>UPDATE_FAILED</code> if the
-     * resource group could not update successfully.</p>
-     */
-    inline void SetState(const ResourceGroupState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the propagation process for the resource group. The states
-     * includes:</p> <p> <code>CREATING </code>if the resource group is in the process
-     * of being created.</p> <p> <code>CREATE_COMPLETE</code> if the resource group was
-     * created successfully.</p> <p> <code>CREATE_FAILED</code> if the resource group
-     * failed to be created.</p> <p> <code>UPDATING</code> if the resource group is in
-     * the process of being updated.</p> <p> <code>UPDATE_COMPLETE</code> if the
-     * resource group updated successfully.</p> <p> <code>UPDATE_FAILED</code> if the
-     * resource group could not update successfully.</p>
-     */
-    inline void SetState(ResourceGroupState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the propagation process for the resource group. The states
-     * includes:</p> <p> <code>CREATING </code>if the resource group is in the process
-     * of being created.</p> <p> <code>CREATE_COMPLETE</code> if the resource group was
-     * created successfully.</p> <p> <code>CREATE_FAILED</code> if the resource group
-     * failed to be created.</p> <p> <code>UPDATING</code> if the resource group is in
-     * the process of being updated.</p> <p> <code>UPDATE_COMPLETE</code> if the
-     * resource group updated successfully.</p> <p> <code>UPDATE_FAILED</code> if the
-     * resource group could not update successfully.</p>
-     */
-    inline ResourceGroup& WithState(const ResourceGroupState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the propagation process for the resource group. The states
-     * includes:</p> <p> <code>CREATING </code>if the resource group is in the process
-     * of being created.</p> <p> <code>CREATE_COMPLETE</code> if the resource group was
-     * created successfully.</p> <p> <code>CREATE_FAILED</code> if the resource group
-     * failed to be created.</p> <p> <code>UPDATING</code> if the resource group is in
-     * the process of being updated.</p> <p> <code>UPDATE_COMPLETE</code> if the
-     * resource group updated successfully.</p> <p> <code>UPDATE_FAILED</code> if the
-     * resource group could not update successfully.</p>
-     */
-    inline ResourceGroup& WithState(ResourceGroupState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon resource name (ARN) of the resource group.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ResourceGroup& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
-    inline ResourceGroup& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
-    inline ResourceGroup& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon resource name (ARN) of the resource group.</p>
-     */
-    inline ResourceGroup& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message that generates when the propagation process for the
      * resource group fails.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
-    inline ResourceGroup& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
-    inline ResourceGroup& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message that generates when the propagation process for the
-     * resource group fails.</p>
-     */
-    inline ResourceGroup& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    ResourceGroup& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
-    ResourceGroupState m_state;
+    ResourceGroupState m_state{ResourceGroupState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_arn;

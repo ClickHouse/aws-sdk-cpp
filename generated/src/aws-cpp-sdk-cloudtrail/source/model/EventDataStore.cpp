@@ -18,15 +18,7 @@ namespace CloudTrail
 namespace Model
 {
 
-EventDataStore::EventDataStore() : 
-    m_eventDataStoreArnHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-EventDataStore::EventDataStore(JsonView jsonValue) : 
-    m_eventDataStoreArnHasBeenSet(false),
-    m_nameHasBeenSet(false)
+EventDataStore::EventDataStore(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EventDataStore& EventDataStore::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EventDataStoreArn"))
   {
     m_eventDataStoreArn = jsonValue.GetString("EventDataStoreArn");
-
     m_eventDataStoreArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

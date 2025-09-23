@@ -10,14 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-GetSSHPublicKeyRequest::GetSSHPublicKeyRequest() : 
-    m_userNameHasBeenSet(false),
-    m_sSHPublicKeyIdHasBeenSet(false),
-    m_encoding(EncodingType::NOT_SET),
-    m_encodingHasBeenSet(false)
-{
-}
-
 Aws::String GetSSHPublicKeyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +26,7 @@ Aws::String GetSSHPublicKeyRequest::SerializePayload() const
 
   if(m_encodingHasBeenSet)
   {
-    ss << "Encoding=" << EncodingTypeMapper::GetNameForEncodingType(m_encoding) << "&";
+    ss << "Encoding=" << StringUtils::URLEncode(EncodingTypeMapper::GetNameForEncodingType(m_encoding)) << "&";
   }
 
   ss << "Version=2010-05-08";

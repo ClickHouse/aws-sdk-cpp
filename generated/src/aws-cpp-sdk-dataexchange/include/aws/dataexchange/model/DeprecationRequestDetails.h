@@ -32,45 +32,26 @@ namespace Model
   class DeprecationRequestDetails
   {
   public:
-    AWS_DATAEXCHANGE_API DeprecationRequestDetails();
+    AWS_DATAEXCHANGE_API DeprecationRequestDetails() = default;
     AWS_DATAEXCHANGE_API DeprecationRequestDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API DeprecationRequestDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A datetime in the future when the data set will be deprecated.</p>
      */
-    inline const Aws::Utils::DateTime& GetDeprecationAt() const{ return m_deprecationAt; }
-
-    /**
-     * <p>A datetime in the future when the data set will be deprecated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDeprecationAt() const { return m_deprecationAt; }
     inline bool DeprecationAtHasBeenSet() const { return m_deprecationAtHasBeenSet; }
-
-    /**
-     * <p>A datetime in the future when the data set will be deprecated.</p>
-     */
-    inline void SetDeprecationAt(const Aws::Utils::DateTime& value) { m_deprecationAtHasBeenSet = true; m_deprecationAt = value; }
-
-    /**
-     * <p>A datetime in the future when the data set will be deprecated.</p>
-     */
-    inline void SetDeprecationAt(Aws::Utils::DateTime&& value) { m_deprecationAtHasBeenSet = true; m_deprecationAt = std::move(value); }
-
-    /**
-     * <p>A datetime in the future when the data set will be deprecated.</p>
-     */
-    inline DeprecationRequestDetails& WithDeprecationAt(const Aws::Utils::DateTime& value) { SetDeprecationAt(value); return *this;}
-
-    /**
-     * <p>A datetime in the future when the data set will be deprecated.</p>
-     */
-    inline DeprecationRequestDetails& WithDeprecationAt(Aws::Utils::DateTime&& value) { SetDeprecationAt(std::move(value)); return *this;}
-
+    template<typename DeprecationAtT = Aws::Utils::DateTime>
+    void SetDeprecationAt(DeprecationAtT&& value) { m_deprecationAtHasBeenSet = true; m_deprecationAt = std::forward<DeprecationAtT>(value); }
+    template<typename DeprecationAtT = Aws::Utils::DateTime>
+    DeprecationRequestDetails& WithDeprecationAt(DeprecationAtT&& value) { SetDeprecationAt(std::forward<DeprecationAtT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_deprecationAt;
+    Aws::Utils::DateTime m_deprecationAt{};
     bool m_deprecationAtHasBeenSet = false;
   };
 

@@ -32,42 +32,23 @@ namespace Model
   class ApplicationSourceConfig
   {
   public:
-    AWS_APPINTEGRATIONSSERVICE_API ApplicationSourceConfig();
+    AWS_APPINTEGRATIONSSERVICE_API ApplicationSourceConfig() = default;
     AWS_APPINTEGRATIONSSERVICE_API ApplicationSourceConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPINTEGRATIONSSERVICE_API ApplicationSourceConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPINTEGRATIONSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The external URL source for the application.</p>
      */
-    inline const ExternalUrlConfig& GetExternalUrlConfig() const{ return m_externalUrlConfig; }
-
-    /**
-     * <p>The external URL source for the application.</p>
-     */
+    inline const ExternalUrlConfig& GetExternalUrlConfig() const { return m_externalUrlConfig; }
     inline bool ExternalUrlConfigHasBeenSet() const { return m_externalUrlConfigHasBeenSet; }
-
-    /**
-     * <p>The external URL source for the application.</p>
-     */
-    inline void SetExternalUrlConfig(const ExternalUrlConfig& value) { m_externalUrlConfigHasBeenSet = true; m_externalUrlConfig = value; }
-
-    /**
-     * <p>The external URL source for the application.</p>
-     */
-    inline void SetExternalUrlConfig(ExternalUrlConfig&& value) { m_externalUrlConfigHasBeenSet = true; m_externalUrlConfig = std::move(value); }
-
-    /**
-     * <p>The external URL source for the application.</p>
-     */
-    inline ApplicationSourceConfig& WithExternalUrlConfig(const ExternalUrlConfig& value) { SetExternalUrlConfig(value); return *this;}
-
-    /**
-     * <p>The external URL source for the application.</p>
-     */
-    inline ApplicationSourceConfig& WithExternalUrlConfig(ExternalUrlConfig&& value) { SetExternalUrlConfig(std::move(value)); return *this;}
-
+    template<typename ExternalUrlConfigT = ExternalUrlConfig>
+    void SetExternalUrlConfig(ExternalUrlConfigT&& value) { m_externalUrlConfigHasBeenSet = true; m_externalUrlConfig = std::forward<ExternalUrlConfigT>(value); }
+    template<typename ExternalUrlConfigT = ExternalUrlConfig>
+    ApplicationSourceConfig& WithExternalUrlConfig(ExternalUrlConfigT&& value) { SetExternalUrlConfig(std::forward<ExternalUrlConfigT>(value)); return *this;}
+    ///@}
   private:
 
     ExternalUrlConfig m_externalUrlConfig;

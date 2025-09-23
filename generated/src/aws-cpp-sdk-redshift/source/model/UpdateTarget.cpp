@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-UpdateTarget::UpdateTarget() : 
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_databaseVersionHasBeenSet(false),
-    m_supportedOperationsHasBeenSet(false)
-{
-}
-
-UpdateTarget::UpdateTarget(const XmlNode& xmlNode) : 
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_databaseVersionHasBeenSet(false),
-    m_supportedOperationsHasBeenSet(false)
+UpdateTarget::UpdateTarget(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ UpdateTarget& UpdateTarget::operator =(const XmlNode& xmlNode)
     if(!supportedOperationsNode.IsNull())
     {
       XmlNode supportedOperationsMember = supportedOperationsNode.FirstChild("SupportedOperation");
+      m_supportedOperationsHasBeenSet = !supportedOperationsMember.IsNull();
       while(!supportedOperationsMember.IsNull())
       {
         m_supportedOperations.push_back(supportedOperationsMember);
@@ -88,7 +79,7 @@ void UpdateTarget::OutputToStream(Aws::OStream& oStream, const char* location, u
       for(auto& item : m_supportedOperations)
       {
         Aws::StringStream supportedOperationsSs;
-        supportedOperationsSs << location << index << locationValue << ".SupportedOperation." << supportedOperationsIdx++;
+        supportedOperationsSs << location << index << locationValue << ".SupportedOperations.SupportedOperation." << supportedOperationsIdx++;
         item.OutputToStream(oStream, supportedOperationsSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void UpdateTarget::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_supportedOperations)
       {
         Aws::StringStream supportedOperationsSs;
-        supportedOperationsSs << location <<  ".SupportedOperation." << supportedOperationsIdx++;
+        supportedOperationsSs << location << ".SupportedOperations.SupportedOperation." << supportedOperationsIdx++;
         item.OutputToStream(oStream, supportedOperationsSs.str().c_str());
       }
   }

@@ -33,79 +33,39 @@ namespace Model
   class ModuleLoggingConfigurationInput
   {
   public:
-    AWS_MWAA_API ModuleLoggingConfigurationInput();
+    AWS_MWAA_API ModuleLoggingConfigurationInput() = default;
     AWS_MWAA_API ModuleLoggingConfigurationInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_MWAA_API ModuleLoggingConfigurationInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MWAA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether to enable the Apache Airflow log type (e.g.
      * <code>DagProcessingLogs</code>).</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Indicates whether to enable the Apache Airflow log type (e.g.
-     * <code>DagProcessingLogs</code>).</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to enable the Apache Airflow log type (e.g.
-     * <code>DagProcessingLogs</code>).</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Indicates whether to enable the Apache Airflow log type (e.g.
-     * <code>DagProcessingLogs</code>).</p>
-     */
     inline ModuleLoggingConfigurationInput& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Defines the Apache Airflow log level (e.g. <code>INFO</code>) to send to
      * CloudWatch Logs.</p>
      */
-    inline const LoggingLevel& GetLogLevel() const{ return m_logLevel; }
-
-    /**
-     * <p>Defines the Apache Airflow log level (e.g. <code>INFO</code>) to send to
-     * CloudWatch Logs.</p>
-     */
+    inline LoggingLevel GetLogLevel() const { return m_logLevel; }
     inline bool LogLevelHasBeenSet() const { return m_logLevelHasBeenSet; }
-
-    /**
-     * <p>Defines the Apache Airflow log level (e.g. <code>INFO</code>) to send to
-     * CloudWatch Logs.</p>
-     */
-    inline void SetLogLevel(const LoggingLevel& value) { m_logLevelHasBeenSet = true; m_logLevel = value; }
-
-    /**
-     * <p>Defines the Apache Airflow log level (e.g. <code>INFO</code>) to send to
-     * CloudWatch Logs.</p>
-     */
-    inline void SetLogLevel(LoggingLevel&& value) { m_logLevelHasBeenSet = true; m_logLevel = std::move(value); }
-
-    /**
-     * <p>Defines the Apache Airflow log level (e.g. <code>INFO</code>) to send to
-     * CloudWatch Logs.</p>
-     */
-    inline ModuleLoggingConfigurationInput& WithLogLevel(const LoggingLevel& value) { SetLogLevel(value); return *this;}
-
-    /**
-     * <p>Defines the Apache Airflow log level (e.g. <code>INFO</code>) to send to
-     * CloudWatch Logs.</p>
-     */
-    inline ModuleLoggingConfigurationInput& WithLogLevel(LoggingLevel&& value) { SetLogLevel(std::move(value)); return *this;}
-
+    inline void SetLogLevel(LoggingLevel value) { m_logLevelHasBeenSet = true; m_logLevel = value; }
+    inline ModuleLoggingConfigurationInput& WithLogLevel(LoggingLevel value) { SetLogLevel(value); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
-    LoggingLevel m_logLevel;
+    LoggingLevel m_logLevel{LoggingLevel::NOT_SET};
     bool m_logLevelHasBeenSet = false;
   };
 

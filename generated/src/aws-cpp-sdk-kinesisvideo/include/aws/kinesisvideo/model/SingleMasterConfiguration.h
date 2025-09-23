@@ -30,39 +30,25 @@ namespace Model
   class SingleMasterConfiguration
   {
   public:
-    AWS_KINESISVIDEO_API SingleMasterConfiguration();
+    AWS_KINESISVIDEO_API SingleMasterConfiguration() = default;
     AWS_KINESISVIDEO_API SingleMasterConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API SingleMasterConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The period of time a signaling channel retains undelivered messages before
      * they are discarded.</p>
      */
-    inline int GetMessageTtlSeconds() const{ return m_messageTtlSeconds; }
-
-    /**
-     * <p>The period of time a signaling channel retains undelivered messages before
-     * they are discarded.</p>
-     */
+    inline int GetMessageTtlSeconds() const { return m_messageTtlSeconds; }
     inline bool MessageTtlSecondsHasBeenSet() const { return m_messageTtlSecondsHasBeenSet; }
-
-    /**
-     * <p>The period of time a signaling channel retains undelivered messages before
-     * they are discarded.</p>
-     */
     inline void SetMessageTtlSeconds(int value) { m_messageTtlSecondsHasBeenSet = true; m_messageTtlSeconds = value; }
-
-    /**
-     * <p>The period of time a signaling channel retains undelivered messages before
-     * they are discarded.</p>
-     */
     inline SingleMasterConfiguration& WithMessageTtlSeconds(int value) { SetMessageTtlSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_messageTtlSeconds;
+    int m_messageTtlSeconds{0};
     bool m_messageTtlSecondsHasBeenSet = false;
   };
 

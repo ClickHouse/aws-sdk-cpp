@@ -17,13 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-DescribeInstanceResult::DescribeInstanceResult() : 
-    m_status(InstanceStatus::NOT_SET)
-{
-}
-
-DescribeInstanceResult::DescribeInstanceResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_status(InstanceStatus::NOT_SET)
+DescribeInstanceResult::DescribeInstanceResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -31,48 +25,43 @@ DescribeInstanceResult::DescribeInstanceResult(const Aws::AmazonWebServiceResult
 DescribeInstanceResult& DescribeInstanceResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("CreatedDate"))
-  {
-    m_createdDate = jsonValue.GetDouble("CreatedDate");
-
-  }
-
-  if(jsonValue.ValueExists("IdentityStoreId"))
-  {
-    m_identityStoreId = jsonValue.GetString("IdentityStoreId");
-
-  }
-
   if(jsonValue.ValueExists("InstanceArn"))
   {
     m_instanceArn = jsonValue.GetString("InstanceArn");
-
+    m_instanceArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Name"))
+  if(jsonValue.ValueExists("IdentityStoreId"))
   {
-    m_name = jsonValue.GetString("Name");
-
+    m_identityStoreId = jsonValue.GetString("IdentityStoreId");
+    m_identityStoreIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OwnerAccountId"))
   {
     m_ownerAccountId = jsonValue.GetString("OwnerAccountId");
-
+    m_ownerAccountIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Name"))
+  {
+    m_name = jsonValue.GetString("Name");
+    m_nameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("CreatedDate"))
+  {
+    m_createdDate = jsonValue.GetDouble("CreatedDate");
+    m_createdDateHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Status"))
   {
     m_status = InstanceStatusMapper::GetInstanceStatusForName(jsonValue.GetString("Status"));
-
+    m_statusHasBeenSet = true;
   }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

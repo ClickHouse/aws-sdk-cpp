@@ -18,13 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RealTimeContactAnalysisSegmentIssues::RealTimeContactAnalysisSegmentIssues() : 
-    m_issuesDetectedHasBeenSet(false)
-{
-}
-
-RealTimeContactAnalysisSegmentIssues::RealTimeContactAnalysisSegmentIssues(JsonView jsonValue) : 
-    m_issuesDetectedHasBeenSet(false)
+RealTimeContactAnalysisSegmentIssues::RealTimeContactAnalysisSegmentIssues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ RealTimeContactAnalysisSegmentIssues& RealTimeContactAnalysisSegmentIssues::oper
     }
     m_issuesDetectedHasBeenSet = true;
   }
-
   return *this;
 }
 

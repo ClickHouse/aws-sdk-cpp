@@ -33,85 +33,37 @@ namespace Model
   class ProjectDataDeliveryConfig
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API ProjectDataDeliveryConfig();
+    AWS_CLOUDWATCHEVIDENTLY_API ProjectDataDeliveryConfig() = default;
     AWS_CLOUDWATCHEVIDENTLY_API ProjectDataDeliveryConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API ProjectDataDeliveryConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If the project stores evaluation events in CloudWatch Logs, this structure
      * stores the log group name.</p>
      */
-    inline const CloudWatchLogsDestinationConfig& GetCloudWatchLogs() const{ return m_cloudWatchLogs; }
-
-    /**
-     * <p>If the project stores evaluation events in CloudWatch Logs, this structure
-     * stores the log group name.</p>
-     */
+    inline const CloudWatchLogsDestinationConfig& GetCloudWatchLogs() const { return m_cloudWatchLogs; }
     inline bool CloudWatchLogsHasBeenSet() const { return m_cloudWatchLogsHasBeenSet; }
+    template<typename CloudWatchLogsT = CloudWatchLogsDestinationConfig>
+    void SetCloudWatchLogs(CloudWatchLogsT&& value) { m_cloudWatchLogsHasBeenSet = true; m_cloudWatchLogs = std::forward<CloudWatchLogsT>(value); }
+    template<typename CloudWatchLogsT = CloudWatchLogsDestinationConfig>
+    ProjectDataDeliveryConfig& WithCloudWatchLogs(CloudWatchLogsT&& value) { SetCloudWatchLogs(std::forward<CloudWatchLogsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the project stores evaluation events in CloudWatch Logs, this structure
-     * stores the log group name.</p>
-     */
-    inline void SetCloudWatchLogs(const CloudWatchLogsDestinationConfig& value) { m_cloudWatchLogsHasBeenSet = true; m_cloudWatchLogs = value; }
-
-    /**
-     * <p>If the project stores evaluation events in CloudWatch Logs, this structure
-     * stores the log group name.</p>
-     */
-    inline void SetCloudWatchLogs(CloudWatchLogsDestinationConfig&& value) { m_cloudWatchLogsHasBeenSet = true; m_cloudWatchLogs = std::move(value); }
-
-    /**
-     * <p>If the project stores evaluation events in CloudWatch Logs, this structure
-     * stores the log group name.</p>
-     */
-    inline ProjectDataDeliveryConfig& WithCloudWatchLogs(const CloudWatchLogsDestinationConfig& value) { SetCloudWatchLogs(value); return *this;}
-
-    /**
-     * <p>If the project stores evaluation events in CloudWatch Logs, this structure
-     * stores the log group name.</p>
-     */
-    inline ProjectDataDeliveryConfig& WithCloudWatchLogs(CloudWatchLogsDestinationConfig&& value) { SetCloudWatchLogs(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the project stores evaluation events in an Amazon S3 bucket, this
      * structure stores the bucket name and bucket prefix.</p>
      */
-    inline const S3DestinationConfig& GetS3Destination() const{ return m_s3Destination; }
-
-    /**
-     * <p>If the project stores evaluation events in an Amazon S3 bucket, this
-     * structure stores the bucket name and bucket prefix.</p>
-     */
+    inline const S3DestinationConfig& GetS3Destination() const { return m_s3Destination; }
     inline bool S3DestinationHasBeenSet() const { return m_s3DestinationHasBeenSet; }
-
-    /**
-     * <p>If the project stores evaluation events in an Amazon S3 bucket, this
-     * structure stores the bucket name and bucket prefix.</p>
-     */
-    inline void SetS3Destination(const S3DestinationConfig& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = value; }
-
-    /**
-     * <p>If the project stores evaluation events in an Amazon S3 bucket, this
-     * structure stores the bucket name and bucket prefix.</p>
-     */
-    inline void SetS3Destination(S3DestinationConfig&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::move(value); }
-
-    /**
-     * <p>If the project stores evaluation events in an Amazon S3 bucket, this
-     * structure stores the bucket name and bucket prefix.</p>
-     */
-    inline ProjectDataDeliveryConfig& WithS3Destination(const S3DestinationConfig& value) { SetS3Destination(value); return *this;}
-
-    /**
-     * <p>If the project stores evaluation events in an Amazon S3 bucket, this
-     * structure stores the bucket name and bucket prefix.</p>
-     */
-    inline ProjectDataDeliveryConfig& WithS3Destination(S3DestinationConfig&& value) { SetS3Destination(std::move(value)); return *this;}
-
+    template<typename S3DestinationT = S3DestinationConfig>
+    void SetS3Destination(S3DestinationT&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::forward<S3DestinationT>(value); }
+    template<typename S3DestinationT = S3DestinationConfig>
+    ProjectDataDeliveryConfig& WithS3Destination(S3DestinationT&& value) { SetS3Destination(std::forward<S3DestinationT>(value)); return *this;}
+    ///@}
   private:
 
     CloudWatchLogsDestinationConfig m_cloudWatchLogs;

@@ -34,63 +34,27 @@ namespace Model
   class ValidationStrategy
   {
   public:
-    AWS_QUICKSIGHT_API ValidationStrategy();
+    AWS_QUICKSIGHT_API ValidationStrategy() = default;
     AWS_QUICKSIGHT_API ValidationStrategy(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ValidationStrategy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The mode of validation for the asset to be created or updated. When you set
      * this value to <code>STRICT</code>, strict validation for every error is
      * enforced. When you set this value to <code>LENIENT</code>, validation is skipped
      * for specific UI errors.</p>
      */
-    inline const ValidationStrategyMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The mode of validation for the asset to be created or updated. When you set
-     * this value to <code>STRICT</code>, strict validation for every error is
-     * enforced. When you set this value to <code>LENIENT</code>, validation is skipped
-     * for specific UI errors.</p>
-     */
+    inline ValidationStrategyMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The mode of validation for the asset to be created or updated. When you set
-     * this value to <code>STRICT</code>, strict validation for every error is
-     * enforced. When you set this value to <code>LENIENT</code>, validation is skipped
-     * for specific UI errors.</p>
-     */
-    inline void SetMode(const ValidationStrategyMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The mode of validation for the asset to be created or updated. When you set
-     * this value to <code>STRICT</code>, strict validation for every error is
-     * enforced. When you set this value to <code>LENIENT</code>, validation is skipped
-     * for specific UI errors.</p>
-     */
-    inline void SetMode(ValidationStrategyMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The mode of validation for the asset to be created or updated. When you set
-     * this value to <code>STRICT</code>, strict validation for every error is
-     * enforced. When you set this value to <code>LENIENT</code>, validation is skipped
-     * for specific UI errors.</p>
-     */
-    inline ValidationStrategy& WithMode(const ValidationStrategyMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The mode of validation for the asset to be created or updated. When you set
-     * this value to <code>STRICT</code>, strict validation for every error is
-     * enforced. When you set this value to <code>LENIENT</code>, validation is skipped
-     * for specific UI errors.</p>
-     */
-    inline ValidationStrategy& WithMode(ValidationStrategyMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(ValidationStrategyMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline ValidationStrategy& WithMode(ValidationStrategyMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    ValidationStrategyMode m_mode;
+    ValidationStrategyMode m_mode{ValidationStrategyMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

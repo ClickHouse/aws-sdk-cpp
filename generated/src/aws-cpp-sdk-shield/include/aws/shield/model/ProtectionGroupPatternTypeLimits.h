@@ -32,42 +32,23 @@ namespace Model
   class ProtectionGroupPatternTypeLimits
   {
   public:
-    AWS_SHIELD_API ProtectionGroupPatternTypeLimits();
+    AWS_SHIELD_API ProtectionGroupPatternTypeLimits() = default;
     AWS_SHIELD_API ProtectionGroupPatternTypeLimits(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API ProtectionGroupPatternTypeLimits& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Limits settings on protection groups with arbitrary pattern type. </p>
      */
-    inline const ProtectionGroupArbitraryPatternLimits& GetArbitraryPatternLimits() const{ return m_arbitraryPatternLimits; }
-
-    /**
-     * <p>Limits settings on protection groups with arbitrary pattern type. </p>
-     */
+    inline const ProtectionGroupArbitraryPatternLimits& GetArbitraryPatternLimits() const { return m_arbitraryPatternLimits; }
     inline bool ArbitraryPatternLimitsHasBeenSet() const { return m_arbitraryPatternLimitsHasBeenSet; }
-
-    /**
-     * <p>Limits settings on protection groups with arbitrary pattern type. </p>
-     */
-    inline void SetArbitraryPatternLimits(const ProtectionGroupArbitraryPatternLimits& value) { m_arbitraryPatternLimitsHasBeenSet = true; m_arbitraryPatternLimits = value; }
-
-    /**
-     * <p>Limits settings on protection groups with arbitrary pattern type. </p>
-     */
-    inline void SetArbitraryPatternLimits(ProtectionGroupArbitraryPatternLimits&& value) { m_arbitraryPatternLimitsHasBeenSet = true; m_arbitraryPatternLimits = std::move(value); }
-
-    /**
-     * <p>Limits settings on protection groups with arbitrary pattern type. </p>
-     */
-    inline ProtectionGroupPatternTypeLimits& WithArbitraryPatternLimits(const ProtectionGroupArbitraryPatternLimits& value) { SetArbitraryPatternLimits(value); return *this;}
-
-    /**
-     * <p>Limits settings on protection groups with arbitrary pattern type. </p>
-     */
-    inline ProtectionGroupPatternTypeLimits& WithArbitraryPatternLimits(ProtectionGroupArbitraryPatternLimits&& value) { SetArbitraryPatternLimits(std::move(value)); return *this;}
-
+    template<typename ArbitraryPatternLimitsT = ProtectionGroupArbitraryPatternLimits>
+    void SetArbitraryPatternLimits(ArbitraryPatternLimitsT&& value) { m_arbitraryPatternLimitsHasBeenSet = true; m_arbitraryPatternLimits = std::forward<ArbitraryPatternLimitsT>(value); }
+    template<typename ArbitraryPatternLimitsT = ProtectionGroupArbitraryPatternLimits>
+    ProtectionGroupPatternTypeLimits& WithArbitraryPatternLimits(ArbitraryPatternLimitsT&& value) { SetArbitraryPatternLimits(std::forward<ArbitraryPatternLimitsT>(value)); return *this;}
+    ///@}
   private:
 
     ProtectionGroupArbitraryPatternLimits m_arbitraryPatternLimits;

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-CloudWatchEncryption::CloudWatchEncryption() : 
-    m_cloudWatchEncryptionMode(CloudWatchEncryptionMode::NOT_SET),
-    m_cloudWatchEncryptionModeHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
-{
-}
-
-CloudWatchEncryption::CloudWatchEncryption(JsonView jsonValue) : 
-    m_cloudWatchEncryptionMode(CloudWatchEncryptionMode::NOT_SET),
-    m_cloudWatchEncryptionModeHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
+CloudWatchEncryption::CloudWatchEncryption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CloudWatchEncryption& CloudWatchEncryption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CloudWatchEncryptionMode"))
   {
     m_cloudWatchEncryptionMode = CloudWatchEncryptionModeMapper::GetCloudWatchEncryptionModeForName(jsonValue.GetString("CloudWatchEncryptionMode"));
-
     m_cloudWatchEncryptionModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KmsKeyArn"))
   {
     m_kmsKeyArn = jsonValue.GetString("KmsKeyArn");
-
     m_kmsKeyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

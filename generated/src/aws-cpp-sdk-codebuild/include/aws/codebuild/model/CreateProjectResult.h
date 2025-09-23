@@ -28,63 +28,37 @@ namespace Model
   class CreateProjectResult
   {
   public:
-    AWS_CODEBUILD_API CreateProjectResult();
+    AWS_CODEBUILD_API CreateProjectResult() = default;
     AWS_CODEBUILD_API CreateProjectResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEBUILD_API CreateProjectResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the build project that was created.</p>
      */
-    inline const Project& GetProject() const{ return m_project; }
+    inline const Project& GetProject() const { return m_project; }
+    template<typename ProjectT = Project>
+    void SetProject(ProjectT&& value) { m_projectHasBeenSet = true; m_project = std::forward<ProjectT>(value); }
+    template<typename ProjectT = Project>
+    CreateProjectResult& WithProject(ProjectT&& value) { SetProject(std::forward<ProjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the build project that was created.</p>
-     */
-    inline void SetProject(const Project& value) { m_project = value; }
-
-    /**
-     * <p>Information about the build project that was created.</p>
-     */
-    inline void SetProject(Project&& value) { m_project = std::move(value); }
-
-    /**
-     * <p>Information about the build project that was created.</p>
-     */
-    inline CreateProjectResult& WithProject(const Project& value) { SetProject(value); return *this;}
-
-    /**
-     * <p>Information about the build project that was created.</p>
-     */
-    inline CreateProjectResult& WithProject(Project&& value) { SetProject(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateProjectResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateProjectResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateProjectResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateProjectResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Project m_project;
+    bool m_projectHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

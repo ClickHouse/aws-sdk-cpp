@@ -31,72 +31,37 @@ namespace Model
   class AwsJobExecutionsRolloutConfig
   {
   public:
-    AWS_IOT_API AwsJobExecutionsRolloutConfig();
+    AWS_IOT_API AwsJobExecutionsRolloutConfig() = default;
     AWS_IOT_API AwsJobExecutionsRolloutConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API AwsJobExecutionsRolloutConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum number of OTA update job executions started per minute.</p>
      */
-    inline int GetMaximumPerMinute() const{ return m_maximumPerMinute; }
-
-    /**
-     * <p>The maximum number of OTA update job executions started per minute.</p>
-     */
+    inline int GetMaximumPerMinute() const { return m_maximumPerMinute; }
     inline bool MaximumPerMinuteHasBeenSet() const { return m_maximumPerMinuteHasBeenSet; }
-
-    /**
-     * <p>The maximum number of OTA update job executions started per minute.</p>
-     */
     inline void SetMaximumPerMinute(int value) { m_maximumPerMinuteHasBeenSet = true; m_maximumPerMinute = value; }
-
-    /**
-     * <p>The maximum number of OTA update job executions started per minute.</p>
-     */
     inline AwsJobExecutionsRolloutConfig& WithMaximumPerMinute(int value) { SetMaximumPerMinute(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The rate of increase for a job rollout. This parameter allows you to define
      * an exponential rate increase for a job rollout.</p>
      */
-    inline const AwsJobExponentialRolloutRate& GetExponentialRate() const{ return m_exponentialRate; }
-
-    /**
-     * <p>The rate of increase for a job rollout. This parameter allows you to define
-     * an exponential rate increase for a job rollout.</p>
-     */
+    inline const AwsJobExponentialRolloutRate& GetExponentialRate() const { return m_exponentialRate; }
     inline bool ExponentialRateHasBeenSet() const { return m_exponentialRateHasBeenSet; }
-
-    /**
-     * <p>The rate of increase for a job rollout. This parameter allows you to define
-     * an exponential rate increase for a job rollout.</p>
-     */
-    inline void SetExponentialRate(const AwsJobExponentialRolloutRate& value) { m_exponentialRateHasBeenSet = true; m_exponentialRate = value; }
-
-    /**
-     * <p>The rate of increase for a job rollout. This parameter allows you to define
-     * an exponential rate increase for a job rollout.</p>
-     */
-    inline void SetExponentialRate(AwsJobExponentialRolloutRate&& value) { m_exponentialRateHasBeenSet = true; m_exponentialRate = std::move(value); }
-
-    /**
-     * <p>The rate of increase for a job rollout. This parameter allows you to define
-     * an exponential rate increase for a job rollout.</p>
-     */
-    inline AwsJobExecutionsRolloutConfig& WithExponentialRate(const AwsJobExponentialRolloutRate& value) { SetExponentialRate(value); return *this;}
-
-    /**
-     * <p>The rate of increase for a job rollout. This parameter allows you to define
-     * an exponential rate increase for a job rollout.</p>
-     */
-    inline AwsJobExecutionsRolloutConfig& WithExponentialRate(AwsJobExponentialRolloutRate&& value) { SetExponentialRate(std::move(value)); return *this;}
-
+    template<typename ExponentialRateT = AwsJobExponentialRolloutRate>
+    void SetExponentialRate(ExponentialRateT&& value) { m_exponentialRateHasBeenSet = true; m_exponentialRate = std::forward<ExponentialRateT>(value); }
+    template<typename ExponentialRateT = AwsJobExponentialRolloutRate>
+    AwsJobExecutionsRolloutConfig& WithExponentialRate(ExponentialRateT&& value) { SetExponentialRate(std::forward<ExponentialRateT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maximumPerMinute;
+    int m_maximumPerMinute{0};
     bool m_maximumPerMinuteHasBeenSet = false;
 
     AwsJobExponentialRolloutRate m_exponentialRate;

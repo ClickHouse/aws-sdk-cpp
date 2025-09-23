@@ -18,19 +18,7 @@ namespace CodeStarconnections
 namespace Model
 {
 
-VpcConfiguration::VpcConfiguration() : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_tlsCertificateHasBeenSet(false)
-{
-}
-
-VpcConfiguration::VpcConfiguration(JsonView jsonValue) : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_tlsCertificateHasBeenSet(false)
+VpcConfiguration::VpcConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VpcId"))
   {
     m_vpcId = jsonValue.GetString("VpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("SubnetIds");
@@ -53,7 +39,6 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("SecurityGroupIds");
@@ -63,14 +48,11 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TlsCertificate"))
   {
     m_tlsCertificate = jsonValue.GetString("TlsCertificate");
-
     m_tlsCertificateHasBeenSet = true;
   }
-
   return *this;
 }
 

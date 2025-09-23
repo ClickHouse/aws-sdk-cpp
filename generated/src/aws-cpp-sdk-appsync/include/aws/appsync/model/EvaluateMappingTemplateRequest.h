@@ -21,7 +21,7 @@ namespace Model
   class EvaluateMappingTemplateRequest : public AppSyncRequest
   {
   public:
-    AWS_APPSYNC_API EvaluateMappingTemplateRequest();
+    AWS_APPSYNC_API EvaluateMappingTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_APPSYNC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The mapping template; this can be a request or response template. A
      * <code>template</code> is required for this action.</p>
      */
-    inline const Aws::String& GetTemplate() const{ return m_template; }
-
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
+    inline const Aws::String& GetTemplate() const { return m_template; }
     inline bool TemplateHasBeenSet() const { return m_templateHasBeenSet; }
+    template<typename TemplateT = Aws::String>
+    void SetTemplate(TemplateT&& value) { m_templateHasBeenSet = true; m_template = std::forward<TemplateT>(value); }
+    template<typename TemplateT = Aws::String>
+    EvaluateMappingTemplateRequest& WithTemplate(TemplateT&& value) { SetTemplate(std::forward<TemplateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
-    inline void SetTemplate(const Aws::String& value) { m_templateHasBeenSet = true; m_template = value; }
-
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
-    inline void SetTemplate(Aws::String&& value) { m_templateHasBeenSet = true; m_template = std::move(value); }
-
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
-    inline void SetTemplate(const char* value) { m_templateHasBeenSet = true; m_template.assign(value); }
-
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
-    inline EvaluateMappingTemplateRequest& WithTemplate(const Aws::String& value) { SetTemplate(value); return *this;}
-
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
-    inline EvaluateMappingTemplateRequest& WithTemplate(Aws::String&& value) { SetTemplate(std::move(value)); return *this;}
-
-    /**
-     * <p>The mapping template; this can be a request or response template. A
-     * <code>template</code> is required for this action.</p>
-     */
-    inline EvaluateMappingTemplateRequest& WithTemplate(const char* value) { SetTemplate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The map that holds all of the contextual information for your resolver
      * invocation. A <code>context</code> is required for this action.</p>
      */
-    inline const Aws::String& GetContext() const{ return m_context; }
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
+    inline const Aws::String& GetContext() const { return m_context; }
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
-    inline void SetContext(const Aws::String& value) { m_contextHasBeenSet = true; m_context = value; }
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
-    inline void SetContext(Aws::String&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
-    inline void SetContext(const char* value) { m_contextHasBeenSet = true; m_context.assign(value); }
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
-    inline EvaluateMappingTemplateRequest& WithContext(const Aws::String& value) { SetContext(value); return *this;}
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
-    inline EvaluateMappingTemplateRequest& WithContext(Aws::String&& value) { SetContext(std::move(value)); return *this;}
-
-    /**
-     * <p>The map that holds all of the contextual information for your resolver
-     * invocation. A <code>context</code> is required for this action.</p>
-     */
-    inline EvaluateMappingTemplateRequest& WithContext(const char* value) { SetContext(value); return *this;}
-
+    template<typename ContextT = Aws::String>
+    void SetContext(ContextT&& value) { m_contextHasBeenSet = true; m_context = std::forward<ContextT>(value); }
+    template<typename ContextT = Aws::String>
+    EvaluateMappingTemplateRequest& WithContext(ContextT&& value) { SetContext(std::forward<ContextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_template;

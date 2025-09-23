@@ -27,73 +27,37 @@ namespace Model
   class GetEncryptionKeyResult
   {
   public:
-    AWS_INSPECTOR2_API GetEncryptionKeyResult();
+    AWS_INSPECTOR2_API GetEncryptionKeyResult() = default;
     AWS_INSPECTOR2_API GetEncryptionKeyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_INSPECTOR2_API GetEncryptionKeyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A kms key ID.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    GetEncryptionKeyResult& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A kms key ID.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyId = value; }
-
-    /**
-     * <p>A kms key ID.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>A kms key ID.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>A kms key ID.</p>
-     */
-    inline GetEncryptionKeyResult& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>A kms key ID.</p>
-     */
-    inline GetEncryptionKeyResult& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>A kms key ID.</p>
-     */
-    inline GetEncryptionKeyResult& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetEncryptionKeyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetEncryptionKeyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetEncryptionKeyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetEncryptionKeyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKeyId;
+    bool m_kmsKeyIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

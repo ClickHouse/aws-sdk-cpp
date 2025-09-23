@@ -22,7 +22,7 @@ namespace OpenSearchServerless
    * OpenSearch Service. OpenSearch Serverless removes the operational complexities
    * of provisioning, configuring, and tuning your OpenSearch clusters. It enables
    * you to easily search and analyze petabytes of data without having to worry about
-   * the underlying infrastructure and data management.</p> <p> To learn more about
+   * the underlying infrastructure and data management.</p> <p>To learn more about
    * OpenSearch Serverless, see <a
    * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-overview.html">What
    * is Amazon OpenSearch Serverless?</a> </p>
@@ -31,8 +31,8 @@ namespace OpenSearchServerless
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef OpenSearchServerlessClientConfiguration ClientConfigurationType;
       typedef OpenSearchServerlessEndpointProvider EndpointProviderType;
@@ -42,14 +42,14 @@ namespace OpenSearchServerless
         * is not specified, it will be initialized to default values.
         */
         OpenSearchServerlessClient(const Aws::OpenSearchServerless::OpenSearchServerlessClientConfiguration& clientConfiguration = Aws::OpenSearchServerless::OpenSearchServerlessClientConfiguration(),
-                                   std::shared_ptr<OpenSearchServerlessEndpointProviderBase> endpointProvider = Aws::MakeShared<OpenSearchServerlessEndpointProvider>(ALLOCATION_TAG));
+                                   std::shared_ptr<OpenSearchServerlessEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         OpenSearchServerlessClient(const Aws::Auth::AWSCredentials& credentials,
-                                   std::shared_ptr<OpenSearchServerlessEndpointProviderBase> endpointProvider = Aws::MakeShared<OpenSearchServerlessEndpointProvider>(ALLOCATION_TAG),
+                                   std::shared_ptr<OpenSearchServerlessEndpointProviderBase> endpointProvider = nullptr,
                                    const Aws::OpenSearchServerless::OpenSearchServerlessClientConfiguration& clientConfiguration = Aws::OpenSearchServerless::OpenSearchServerlessClientConfiguration());
 
        /**
@@ -57,7 +57,7 @@ namespace OpenSearchServerless
         * the default http client factory will be used
         */
         OpenSearchServerlessClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                   std::shared_ptr<OpenSearchServerlessEndpointProviderBase> endpointProvider = Aws::MakeShared<OpenSearchServerlessEndpointProvider>(ALLOCATION_TAG),
+                                   std::shared_ptr<OpenSearchServerlessEndpointProviderBase> endpointProvider = nullptr,
                                    const Aws::OpenSearchServerless::OpenSearchServerlessClientConfiguration& clientConfiguration = Aws::OpenSearchServerless::OpenSearchServerlessClientConfiguration());
 
 
@@ -87,20 +87,21 @@ namespace OpenSearchServerless
 
         /**
          * <p>Returns attributes for one or more collections, including the collection
-         * endpoint and the OpenSearch Dashboards endpoint. For more information, see <a
+         * endpoint, the OpenSearch Dashboards endpoint, and FIPS-compliant endpoints. For
+         * more information, see <a
          * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html">Creating
          * and managing Amazon OpenSearch Serverless collections</a>.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/BatchGetCollection">AWS
          * API Reference</a></p>
          */
-        virtual Model::BatchGetCollectionOutcome BatchGetCollection(const Model::BatchGetCollectionRequest& request) const;
+        virtual Model::BatchGetCollectionOutcome BatchGetCollection(const Model::BatchGetCollectionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for BatchGetCollection that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename BatchGetCollectionRequestT = Model::BatchGetCollectionRequest>
-        Model::BatchGetCollectionOutcomeCallable BatchGetCollectionCallable(const BatchGetCollectionRequestT& request) const
+        Model::BatchGetCollectionOutcomeCallable BatchGetCollectionCallable(const BatchGetCollectionRequestT& request = {}) const
         {
             return SubmitCallable(&OpenSearchServerlessClient::BatchGetCollection, request);
         }
@@ -109,7 +110,7 @@ namespace OpenSearchServerless
          * An Async wrapper for BatchGetCollection that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename BatchGetCollectionRequestT = Model::BatchGetCollectionRequest>
-        void BatchGetCollectionAsync(const BatchGetCollectionRequestT& request, const BatchGetCollectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void BatchGetCollectionAsync(const BatchGetCollectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const BatchGetCollectionRequestT& request = {}) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::BatchGetCollection, request, handler, context);
         }
@@ -259,6 +260,37 @@ namespace OpenSearchServerless
         }
 
         /**
+         * <p>Creates an index within an OpenSearch Serverless collection. Unlike other
+         * OpenSearch indexes, indexes created by this API are automatically configured to
+         * conduct automatic semantic enrichment ingestion and search. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment">About
+         * automatic semantic enrichment</a> in the <i>OpenSearch User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/CreateIndex">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateIndexOutcome CreateIndex(const Model::CreateIndexRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateIndex that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateIndexRequestT = Model::CreateIndexRequest>
+        Model::CreateIndexOutcomeCallable CreateIndexCallable(const CreateIndexRequestT& request) const
+        {
+            return SubmitCallable(&OpenSearchServerlessClient::CreateIndex, request);
+        }
+
+        /**
+         * An Async wrapper for CreateIndex that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateIndexRequestT = Model::CreateIndexRequest>
+        void CreateIndexAsync(const CreateIndexRequestT& request, const CreateIndexResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OpenSearchServerlessClient::CreateIndex, request, handler, context);
+        }
+
+        /**
          * <p>Creates a lifecyle policy to be applied to OpenSearch Serverless indexes.
          * Lifecycle policies define the number of days or hours to retain the data on an
          * OpenSearch Serverless index. For more information, see <a
@@ -291,7 +323,7 @@ namespace OpenSearchServerless
          * <p>Specifies a security configuration for OpenSearch Serverless. For more
          * information, see <a
          * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html">SAML
-         * authentication for Amazon OpenSearch Serverless</a>. </p><p><h3>See Also:</h3>  
+         * authentication for Amazon OpenSearch Serverless</a>.</p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/CreateSecurityConfig">AWS
          * API Reference</a></p>
@@ -432,6 +464,35 @@ namespace OpenSearchServerless
         void DeleteCollectionAsync(const DeleteCollectionRequestT& request, const DeleteCollectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::DeleteCollection, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes an index from an OpenSearch Serverless collection. Be aware that the
+         * index might be configured to conduct automatic semantic enrichment ingestion and
+         * search. For more information, see <a
+         * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment">About
+         * automatic semantic enrichment</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/DeleteIndex">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteIndexOutcome DeleteIndex(const Model::DeleteIndexRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteIndex that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteIndexRequestT = Model::DeleteIndexRequest>
+        Model::DeleteIndexOutcomeCallable DeleteIndexCallable(const DeleteIndexRequestT& request) const
+        {
+            return SubmitCallable(&OpenSearchServerlessClient::DeleteIndex, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteIndex that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteIndexRequestT = Model::DeleteIndexRequest>
+        void DeleteIndexAsync(const DeleteIndexRequestT& request, const DeleteIndexResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OpenSearchServerlessClient::DeleteIndex, request, handler, context);
         }
 
         /**
@@ -580,13 +641,13 @@ namespace OpenSearchServerless
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/GetAccountSettings">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAccountSettingsOutcome GetAccountSettings(const Model::GetAccountSettingsRequest& request) const;
+        virtual Model::GetAccountSettingsOutcome GetAccountSettings(const Model::GetAccountSettingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetAccountSettings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetAccountSettingsRequestT = Model::GetAccountSettingsRequest>
-        Model::GetAccountSettingsOutcomeCallable GetAccountSettingsCallable(const GetAccountSettingsRequestT& request) const
+        Model::GetAccountSettingsOutcomeCallable GetAccountSettingsCallable(const GetAccountSettingsRequestT& request = {}) const
         {
             return SubmitCallable(&OpenSearchServerlessClient::GetAccountSettings, request);
         }
@@ -595,9 +656,38 @@ namespace OpenSearchServerless
          * An Async wrapper for GetAccountSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetAccountSettingsRequestT = Model::GetAccountSettingsRequest>
-        void GetAccountSettingsAsync(const GetAccountSettingsRequestT& request, const GetAccountSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetAccountSettingsAsync(const GetAccountSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAccountSettingsRequestT& request = {}) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::GetAccountSettings, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves information about an index in an OpenSearch Serverless collection,
+         * including its schema definition. The index might be configured to conduct
+         * automatic semantic enrichment ingestion and search. For more information, see <a
+         * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment">About
+         * automatic semantic enrichment</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/GetIndex">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetIndexOutcome GetIndex(const Model::GetIndexRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetIndex that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetIndexRequestT = Model::GetIndexRequest>
+        Model::GetIndexOutcomeCallable GetIndexCallable(const GetIndexRequestT& request) const
+        {
+            return SubmitCallable(&OpenSearchServerlessClient::GetIndex, request);
+        }
+
+        /**
+         * An Async wrapper for GetIndex that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetIndexRequestT = Model::GetIndexRequest>
+        void GetIndexAsync(const GetIndexRequestT& request, const GetIndexResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OpenSearchServerlessClient::GetIndex, request, handler, context);
         }
 
         /**
@@ -607,13 +697,13 @@ namespace OpenSearchServerless
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/GetPoliciesStats">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetPoliciesStatsOutcome GetPoliciesStats(const Model::GetPoliciesStatsRequest& request) const;
+        virtual Model::GetPoliciesStatsOutcome GetPoliciesStats(const Model::GetPoliciesStatsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetPoliciesStats that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetPoliciesStatsRequestT = Model::GetPoliciesStatsRequest>
-        Model::GetPoliciesStatsOutcomeCallable GetPoliciesStatsCallable(const GetPoliciesStatsRequestT& request) const
+        Model::GetPoliciesStatsOutcomeCallable GetPoliciesStatsCallable(const GetPoliciesStatsRequestT& request = {}) const
         {
             return SubmitCallable(&OpenSearchServerlessClient::GetPoliciesStats, request);
         }
@@ -622,7 +712,7 @@ namespace OpenSearchServerless
          * An Async wrapper for GetPoliciesStats that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetPoliciesStatsRequestT = Model::GetPoliciesStatsRequest>
-        void GetPoliciesStatsAsync(const GetPoliciesStatsRequestT& request, const GetPoliciesStatsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetPoliciesStatsAsync(const GetPoliciesStatsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetPoliciesStatsRequestT& request = {}) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::GetPoliciesStats, request, handler, context);
         }
@@ -721,13 +811,13 @@ namespace OpenSearchServerless
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/ListCollections">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCollectionsOutcome ListCollections(const Model::ListCollectionsRequest& request) const;
+        virtual Model::ListCollectionsOutcome ListCollections(const Model::ListCollectionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCollections that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCollectionsRequestT = Model::ListCollectionsRequest>
-        Model::ListCollectionsOutcomeCallable ListCollectionsCallable(const ListCollectionsRequestT& request) const
+        Model::ListCollectionsOutcomeCallable ListCollectionsCallable(const ListCollectionsRequestT& request = {}) const
         {
             return SubmitCallable(&OpenSearchServerlessClient::ListCollections, request);
         }
@@ -736,7 +826,7 @@ namespace OpenSearchServerless
          * An Async wrapper for ListCollections that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCollectionsRequestT = Model::ListCollectionsRequest>
-        void ListCollectionsAsync(const ListCollectionsRequestT& request, const ListCollectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCollectionsAsync(const ListCollectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCollectionsRequestT& request = {}) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::ListCollections, request, handler, context);
         }
@@ -861,13 +951,13 @@ namespace OpenSearchServerless
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/ListVpcEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListVpcEndpointsOutcome ListVpcEndpoints(const Model::ListVpcEndpointsRequest& request) const;
+        virtual Model::ListVpcEndpointsOutcome ListVpcEndpoints(const Model::ListVpcEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListVpcEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListVpcEndpointsRequestT = Model::ListVpcEndpointsRequest>
-        Model::ListVpcEndpointsOutcomeCallable ListVpcEndpointsCallable(const ListVpcEndpointsRequestT& request) const
+        Model::ListVpcEndpointsOutcomeCallable ListVpcEndpointsCallable(const ListVpcEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&OpenSearchServerlessClient::ListVpcEndpoints, request);
         }
@@ -876,7 +966,7 @@ namespace OpenSearchServerless
          * An Async wrapper for ListVpcEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListVpcEndpointsRequestT = Model::ListVpcEndpointsRequest>
-        void ListVpcEndpointsAsync(const ListVpcEndpointsRequestT& request, const ListVpcEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListVpcEndpointsAsync(const ListVpcEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListVpcEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::ListVpcEndpoints, request, handler, context);
         }
@@ -974,13 +1064,13 @@ namespace OpenSearchServerless
          * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/UpdateAccountSettings">AWS
          * API Reference</a></p>
          */
-        virtual Model::UpdateAccountSettingsOutcome UpdateAccountSettings(const Model::UpdateAccountSettingsRequest& request) const;
+        virtual Model::UpdateAccountSettingsOutcome UpdateAccountSettings(const Model::UpdateAccountSettingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for UpdateAccountSettings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename UpdateAccountSettingsRequestT = Model::UpdateAccountSettingsRequest>
-        Model::UpdateAccountSettingsOutcomeCallable UpdateAccountSettingsCallable(const UpdateAccountSettingsRequestT& request) const
+        Model::UpdateAccountSettingsOutcomeCallable UpdateAccountSettingsCallable(const UpdateAccountSettingsRequestT& request = {}) const
         {
             return SubmitCallable(&OpenSearchServerlessClient::UpdateAccountSettings, request);
         }
@@ -989,7 +1079,7 @@ namespace OpenSearchServerless
          * An Async wrapper for UpdateAccountSettings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename UpdateAccountSettingsRequestT = Model::UpdateAccountSettingsRequest>
-        void UpdateAccountSettingsAsync(const UpdateAccountSettingsRequestT& request, const UpdateAccountSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void UpdateAccountSettingsAsync(const UpdateAccountSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const UpdateAccountSettingsRequestT& request = {}) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::UpdateAccountSettings, request, handler, context);
         }
@@ -1017,6 +1107,36 @@ namespace OpenSearchServerless
         void UpdateCollectionAsync(const UpdateCollectionRequestT& request, const UpdateCollectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&OpenSearchServerlessClient::UpdateCollection, request, handler, context);
+        }
+
+        /**
+         * <p>Updates an existing index in an OpenSearch Serverless collection. This
+         * operation allows you to modify the index schema, including adding new fields or
+         * changing field mappings. You can also enable automatic semantic enrichment
+         * ingestion and search. For more information, see <a
+         * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment">About
+         * automatic semantic enrichment</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/opensearchserverless-2021-11-01/UpdateIndex">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateIndexOutcome UpdateIndex(const Model::UpdateIndexRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateIndex that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateIndexRequestT = Model::UpdateIndexRequest>
+        Model::UpdateIndexOutcomeCallable UpdateIndexCallable(const UpdateIndexRequestT& request) const
+        {
+            return SubmitCallable(&OpenSearchServerlessClient::UpdateIndex, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateIndex that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateIndexRequestT = Model::UpdateIndexRequest>
+        void UpdateIndexAsync(const UpdateIndexRequestT& request, const UpdateIndexResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OpenSearchServerlessClient::UpdateIndex, request, handler, context);
         }
 
         /**
@@ -1142,7 +1262,6 @@ namespace OpenSearchServerless
       void init(const OpenSearchServerlessClientConfiguration& clientConfiguration);
 
       OpenSearchServerlessClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<OpenSearchServerlessEndpointProviderBase> m_endpointProvider;
   };
 

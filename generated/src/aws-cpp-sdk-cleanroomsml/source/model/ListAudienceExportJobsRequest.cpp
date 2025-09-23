@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAudienceExportJobsRequest::ListAudienceExportJobsRequest() : 
-    m_audienceGenerationJobArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAudienceExportJobsRequest::SerializePayload() const
 {
   return {};
@@ -31,10 +23,10 @@ Aws::String ListAudienceExportJobsRequest::SerializePayload() const
 void ListAudienceExportJobsRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_audienceGenerationJobArnHasBeenSet)
+    if(m_nextTokenHasBeenSet)
     {
-      ss << m_audienceGenerationJobArn;
-      uri.AddQueryStringParameter("audienceGenerationJobArn", ss.str());
+      ss << m_nextToken;
+      uri.AddQueryStringParameter("nextToken", ss.str());
       ss.str("");
     }
 
@@ -45,10 +37,10 @@ void ListAudienceExportJobsRequest::AddQueryStringParameters(URI& uri) const
       ss.str("");
     }
 
-    if(m_nextTokenHasBeenSet)
+    if(m_audienceGenerationJobArnHasBeenSet)
     {
-      ss << m_nextToken;
-      uri.AddQueryStringParameter("nextToken", ss.str());
+      ss << m_audienceGenerationJobArn;
+      uri.AddQueryStringParameter("audienceGenerationJobArn", ss.str());
       ss.str("");
     }
 

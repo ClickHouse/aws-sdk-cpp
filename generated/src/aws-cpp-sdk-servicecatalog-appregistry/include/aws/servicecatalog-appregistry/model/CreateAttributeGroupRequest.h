@@ -23,7 +23,7 @@ namespace Model
   class CreateAttributeGroupRequest : public AppRegistryRequest
   {
   public:
-    AWS_APPREGISTRY_API CreateAttributeGroupRequest();
+    AWS_APPREGISTRY_API CreateAttributeGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,203 +34,60 @@ namespace Model
     AWS_APPREGISTRY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the attribute group.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the attribute group.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateAttributeGroupRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the attribute group.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the attribute group.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the attribute group.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the attribute group that the user provides.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateAttributeGroupRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
-    inline CreateAttributeGroupRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
-    inline CreateAttributeGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the attribute group that the user provides.</p>
-     */
-    inline CreateAttributeGroupRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A JSON string in the form of nested key-value pairs that represent the
      * attributes in the group and describes an application and its components.</p>
      */
-    inline const Aws::String& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
+    inline const Aws::String& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = Aws::String>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::String>
+    CreateAttributeGroupRequest& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
-    inline void SetAttributes(const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
-    inline void SetAttributes(Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
-    inline void SetAttributes(const char* value) { m_attributesHasBeenSet = true; m_attributes.assign(value); }
-
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
-    inline CreateAttributeGroupRequest& WithAttributes(const Aws::String& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
-    inline CreateAttributeGroupRequest& WithAttributes(Aws::String&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>A JSON string in the form of nested key-value pairs that represent the
-     * attributes in the group and describes an application and its components.</p>
-     */
-    inline CreateAttributeGroupRequest& WithAttributes(const char* value) { SetAttributes(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Key-value pairs you can use to associate with the attribute group.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateAttributeGroupRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateAttributeGroupRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Key-value pairs you can use to associate with the attribute group.</p>
-     */
-    inline CreateAttributeGroupRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A unique identifier that you provide to ensure idempotency. If you retry a
      * request that completed successfully using the same client token and the same
@@ -238,71 +95,13 @@ namespace Model
      * retry a successful request using the same client token, but one or more of the
      * parameters are different, the retry fails.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
-    inline CreateAttributeGroupRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
-    inline CreateAttributeGroupRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier that you provide to ensure idempotency. If you retry a
-     * request that completed successfully using the same client token and the same
-     * parameters, the retry succeeds without performing any further actions. If you
-     * retry a successful request using the same client token, but one or more of the
-     * parameters are different, the retry fails.</p>
-     */
-    inline CreateAttributeGroupRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateAttributeGroupRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -317,8 +116,8 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

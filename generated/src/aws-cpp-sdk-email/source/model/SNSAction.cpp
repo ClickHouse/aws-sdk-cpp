@@ -20,17 +20,7 @@ namespace SES
 namespace Model
 {
 
-SNSAction::SNSAction() : 
-    m_topicArnHasBeenSet(false),
-    m_encoding(SNSActionEncoding::NOT_SET),
-    m_encodingHasBeenSet(false)
-{
-}
-
-SNSAction::SNSAction(const XmlNode& xmlNode) : 
-    m_topicArnHasBeenSet(false),
-    m_encoding(SNSActionEncoding::NOT_SET),
-    m_encodingHasBeenSet(false)
+SNSAction::SNSAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ SNSAction& SNSAction::operator =(const XmlNode& xmlNode)
     XmlNode encodingNode = resultNode.FirstChild("Encoding");
     if(!encodingNode.IsNull())
     {
-      m_encoding = SNSActionEncodingMapper::GetSNSActionEncodingForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(encodingNode.GetText()).c_str()).c_str());
+      m_encoding = SNSActionEncodingMapper::GetSNSActionEncodingForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(encodingNode.GetText()).c_str()));
       m_encodingHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void SNSAction::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_encodingHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Encoding=" << SNSActionEncodingMapper::GetNameForSNSActionEncoding(m_encoding) << "&";
+      oStream << location << index << locationValue << ".Encoding=" << StringUtils::URLEncode(SNSActionEncodingMapper::GetNameForSNSActionEncoding(m_encoding)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void SNSAction::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_encodingHasBeenSet)
   {
-      oStream << location << ".Encoding=" << SNSActionEncodingMapper::GetNameForSNSActionEncoding(m_encoding) << "&";
+      oStream << location << ".Encoding=" << StringUtils::URLEncode(SNSActionEncodingMapper::GetNameForSNSActionEncoding(m_encoding)) << "&";
   }
 }
 

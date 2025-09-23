@@ -33,73 +33,35 @@ namespace Model
   class AttributeKeyAndValue
   {
   public:
-    AWS_CLOUDDIRECTORY_API AttributeKeyAndValue();
+    AWS_CLOUDDIRECTORY_API AttributeKeyAndValue() = default;
     AWS_CLOUDDIRECTORY_API AttributeKeyAndValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API AttributeKeyAndValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key of the attribute.</p>
      */
-    inline const AttributeKey& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The key of the attribute.</p>
-     */
+    inline const AttributeKey& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = AttributeKey>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = AttributeKey>
+    AttributeKeyAndValue& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key of the attribute.</p>
-     */
-    inline void SetKey(const AttributeKey& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The key of the attribute.</p>
-     */
-    inline void SetKey(AttributeKey&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The key of the attribute.</p>
-     */
-    inline AttributeKeyAndValue& WithKey(const AttributeKey& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The key of the attribute.</p>
-     */
-    inline AttributeKeyAndValue& WithKey(AttributeKey&& value) { SetKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the attribute.</p>
      */
-    inline const TypedAttributeValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
+    inline const TypedAttributeValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetValue(const TypedAttributeValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetValue(TypedAttributeValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AttributeKeyAndValue& WithValue(const TypedAttributeValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AttributeKeyAndValue& WithValue(TypedAttributeValue&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = TypedAttributeValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = TypedAttributeValue>
+    AttributeKeyAndValue& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     AttributeKey m_key;

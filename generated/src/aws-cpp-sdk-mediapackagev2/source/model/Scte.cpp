@@ -18,13 +18,7 @@ namespace mediapackagev2
 namespace Model
 {
 
-Scte::Scte() : 
-    m_scteFilterHasBeenSet(false)
-{
-}
-
-Scte::Scte(JsonView jsonValue) : 
-    m_scteFilterHasBeenSet(false)
+Scte::Scte(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ Scte& Scte::operator =(JsonView jsonValue)
     }
     m_scteFilterHasBeenSet = true;
   }
-
   return *this;
 }
 

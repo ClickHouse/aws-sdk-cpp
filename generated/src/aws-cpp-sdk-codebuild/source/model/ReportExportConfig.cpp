@@ -18,17 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-ReportExportConfig::ReportExportConfig() : 
-    m_exportConfigType(ReportExportConfigType::NOT_SET),
-    m_exportConfigTypeHasBeenSet(false),
-    m_s3DestinationHasBeenSet(false)
-{
-}
-
-ReportExportConfig::ReportExportConfig(JsonView jsonValue) : 
-    m_exportConfigType(ReportExportConfigType::NOT_SET),
-    m_exportConfigTypeHasBeenSet(false),
-    m_s3DestinationHasBeenSet(false)
+ReportExportConfig::ReportExportConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ReportExportConfig& ReportExportConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("exportConfigType"))
   {
     m_exportConfigType = ReportExportConfigTypeMapper::GetReportExportConfigTypeForName(jsonValue.GetString("exportConfigType"));
-
     m_exportConfigTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("s3Destination"))
   {
     m_s3Destination = jsonValue.GetObject("s3Destination");
-
     m_s3DestinationHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsSecretsManagerSecretRotationRules::AwsSecretsManagerSecretRotationRules() : 
-    m_automaticallyAfterDays(0),
-    m_automaticallyAfterDaysHasBeenSet(false)
-{
-}
-
-AwsSecretsManagerSecretRotationRules::AwsSecretsManagerSecretRotationRules(JsonView jsonValue) : 
-    m_automaticallyAfterDays(0),
-    m_automaticallyAfterDaysHasBeenSet(false)
+AwsSecretsManagerSecretRotationRules::AwsSecretsManagerSecretRotationRules(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsSecretsManagerSecretRotationRules& AwsSecretsManagerSecretRotationRules::oper
   if(jsonValue.ValueExists("AutomaticallyAfterDays"))
   {
     m_automaticallyAfterDays = jsonValue.GetInteger("AutomaticallyAfterDays");
-
     m_automaticallyAfterDaysHasBeenSet = true;
   }
-
   return *this;
 }
 

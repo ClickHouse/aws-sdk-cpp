@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TimeSeriesForecastingSettings::TimeSeriesForecastingSettings() : 
-    m_status(FeatureStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_amazonForecastRoleArnHasBeenSet(false)
-{
-}
-
-TimeSeriesForecastingSettings::TimeSeriesForecastingSettings(JsonView jsonValue) : 
-    m_status(FeatureStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_amazonForecastRoleArnHasBeenSet(false)
+TimeSeriesForecastingSettings::TimeSeriesForecastingSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TimeSeriesForecastingSettings& TimeSeriesForecastingSettings::operator =(JsonVie
   if(jsonValue.ValueExists("Status"))
   {
     m_status = FeatureStatusMapper::GetFeatureStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AmazonForecastRoleArn"))
   {
     m_amazonForecastRoleArn = jsonValue.GetString("AmazonForecastRoleArn");
-
     m_amazonForecastRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

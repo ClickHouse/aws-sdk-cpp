@@ -20,55 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotFleetLaunchSpecification::SpotFleetLaunchSpecification() : 
-    m_securityGroupsHasBeenSet(false),
-    m_addressingTypeHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_weightedCapacity(0.0),
-    m_weightedCapacityHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
-{
-}
-
-SpotFleetLaunchSpecification::SpotFleetLaunchSpecification(const XmlNode& xmlNode) : 
-    m_securityGroupsHasBeenSet(false),
-    m_addressingTypeHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_weightedCapacity(0.0),
-    m_weightedCapacityHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
+SpotFleetLaunchSpecification::SpotFleetLaunchSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -79,18 +31,6 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
 
   if(!resultNode.IsNull())
   {
-    XmlNode securityGroupsNode = resultNode.FirstChild("groupSet");
-    if(!securityGroupsNode.IsNull())
-    {
-      XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
-      while(!securityGroupsMember.IsNull())
-      {
-        m_securityGroups.push_back(securityGroupsMember);
-        securityGroupsMember = securityGroupsMember.NextNode("item");
-      }
-
-      m_securityGroupsHasBeenSet = true;
-    }
     XmlNode addressingTypeNode = resultNode.FirstChild("addressingType");
     if(!addressingTypeNode.IsNull())
     {
@@ -101,6 +41,7 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("item");
+      m_blockDeviceMappingsHasBeenSet = !blockDeviceMappingsMember.IsNull();
       while(!blockDeviceMappingsMember.IsNull())
       {
         m_blockDeviceMappings.push_back(blockDeviceMappingsMember);
@@ -130,7 +71,7 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode kernelIdNode = resultNode.FirstChild("kernelId");
@@ -155,6 +96,7 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
     if(!networkInterfacesNode.IsNull())
     {
       XmlNode networkInterfacesMember = networkInterfacesNode.FirstChild("item");
+      m_networkInterfacesHasBeenSet = !networkInterfacesMember.IsNull();
       while(!networkInterfacesMember.IsNull())
       {
         m_networkInterfaces.push_back(networkInterfacesMember);
@@ -203,6 +145,7 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
     if(!tagSpecificationsNode.IsNull())
     {
       XmlNode tagSpecificationsMember = tagSpecificationsNode.FirstChild("item");
+      m_tagSpecificationsHasBeenSet = !tagSpecificationsMember.IsNull();
       while(!tagSpecificationsMember.IsNull())
       {
         m_tagSpecifications.push_back(tagSpecificationsMember);
@@ -217,6 +160,19 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
       m_instanceRequirements = instanceRequirementsNode;
       m_instanceRequirementsHasBeenSet = true;
     }
+    XmlNode securityGroupsNode = resultNode.FirstChild("groupSet");
+    if(!securityGroupsNode.IsNull())
+    {
+      XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
+      while(!securityGroupsMember.IsNull())
+      {
+        m_securityGroups.push_back(securityGroupsMember);
+        securityGroupsMember = securityGroupsMember.NextNode("item");
+      }
+
+      m_securityGroupsHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -224,17 +180,6 @@ SpotFleetLaunchSpecification& SpotFleetLaunchSpecification::operator =(const Xml
 
 void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* location, unsigned index, const char* locationValue) const
 {
-  if(m_securityGroupsHasBeenSet)
-  {
-      unsigned securityGroupsIdx = 1;
-      for(auto& item : m_securityGroups)
-      {
-        Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location << index << locationValue << ".GroupSet." << securityGroupsIdx++;
-        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
-      }
-  }
-
   if(m_addressingTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".AddressingType=" << StringUtils::URLEncode(m_addressingType.c_str()) << "&";
@@ -270,7 +215,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_kernelIdHasBeenSet)
@@ -351,20 +296,21 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       m_instanceRequirements.OutputToStream(oStream, instanceRequirementsLocationAndMemberSs.str().c_str());
   }
 
-}
-
-void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* location) const
-{
   if(m_securityGroupsHasBeenSet)
   {
       unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location <<  ".GroupSet." << securityGroupsIdx++;
+        securityGroupsSs << location << index << locationValue << ".GroupSet." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
+
+}
+
+void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* location) const
+{
   if(m_addressingTypeHasBeenSet)
   {
       oStream << location << ".AddressingType=" << StringUtils::URLEncode(m_addressingType.c_str()) << "&";
@@ -375,7 +321,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -395,7 +341,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_kernelIdHasBeenSet)
   {
@@ -417,7 +363,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".NetworkInterfaceSet." << networkInterfacesIdx++;
+        networkInterfacesSs << location << ".NetworkInterfaceSet." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -445,7 +391,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_weightedCapacityHasBeenSet)
   {
-        oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity) << "&";
+      oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity) << "&";
   }
   if(m_tagSpecificationsHasBeenSet)
   {
@@ -453,7 +399,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_tagSpecifications)
       {
         Aws::StringStream tagSpecificationsSs;
-        tagSpecificationsSs << location <<  ".TagSpecificationSet." << tagSpecificationsIdx++;
+        tagSpecificationsSs << location << ".TagSpecificationSet." << tagSpecificationsIdx++;
         item.OutputToStream(oStream, tagSpecificationsSs.str().c_str());
       }
   }
@@ -462,6 +408,16 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       Aws::String instanceRequirementsLocationAndMember(location);
       instanceRequirementsLocationAndMember += ".InstanceRequirements";
       m_instanceRequirements.OutputToStream(oStream, instanceRequirementsLocationAndMember.c_str());
+  }
+  if(m_securityGroupsHasBeenSet)
+  {
+      unsigned securityGroupsIdx = 1;
+      for(auto& item : m_securityGroups)
+      {
+        Aws::StringStream securityGroupsSs;
+        securityGroupsSs << location << ".GroupSet." << securityGroupsIdx++;
+        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
+      }
   }
 }
 

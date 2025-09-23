@@ -21,7 +21,7 @@ namespace Model
   class GetSolNetworkInstanceRequest : public TnbRequest
   {
   public:
-    AWS_TNB_API GetSolNetworkInstanceRequest();
+    AWS_TNB_API GetSolNetworkInstanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_TNB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>ID of the network instance.</p>
      */
-    inline const Aws::String& GetNsInstanceId() const{ return m_nsInstanceId; }
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
+    inline const Aws::String& GetNsInstanceId() const { return m_nsInstanceId; }
     inline bool NsInstanceIdHasBeenSet() const { return m_nsInstanceIdHasBeenSet; }
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
-    inline void SetNsInstanceId(const Aws::String& value) { m_nsInstanceIdHasBeenSet = true; m_nsInstanceId = value; }
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
-    inline void SetNsInstanceId(Aws::String&& value) { m_nsInstanceIdHasBeenSet = true; m_nsInstanceId = std::move(value); }
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
-    inline void SetNsInstanceId(const char* value) { m_nsInstanceIdHasBeenSet = true; m_nsInstanceId.assign(value); }
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
-    inline GetSolNetworkInstanceRequest& WithNsInstanceId(const Aws::String& value) { SetNsInstanceId(value); return *this;}
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
-    inline GetSolNetworkInstanceRequest& WithNsInstanceId(Aws::String&& value) { SetNsInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the network instance.</p>
-     */
-    inline GetSolNetworkInstanceRequest& WithNsInstanceId(const char* value) { SetNsInstanceId(value); return *this;}
-
+    template<typename NsInstanceIdT = Aws::String>
+    void SetNsInstanceId(NsInstanceIdT&& value) { m_nsInstanceIdHasBeenSet = true; m_nsInstanceId = std::forward<NsInstanceIdT>(value); }
+    template<typename NsInstanceIdT = Aws::String>
+    GetSolNetworkInstanceRequest& WithNsInstanceId(NsInstanceIdT&& value) { SetNsInstanceId(std::forward<NsInstanceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nsInstanceId;

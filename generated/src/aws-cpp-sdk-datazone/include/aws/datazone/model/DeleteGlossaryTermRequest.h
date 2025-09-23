@@ -21,7 +21,7 @@ namespace Model
   class DeleteGlossaryTermRequest : public DataZoneRequest
   {
   public:
-    AWS_DATAZONE_API DeleteGlossaryTermRequest();
+    AWS_DATAZONE_API DeleteGlossaryTermRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_DATAZONE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon DataZone domain in which the business glossary term is
      * deleted.</p>
      */
-    inline const Aws::String& GetDomainIdentifier() const{ return m_domainIdentifier; }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
+    inline const Aws::String& GetDomainIdentifier() const { return m_domainIdentifier; }
     inline bool DomainIdentifierHasBeenSet() const { return m_domainIdentifierHasBeenSet; }
+    template<typename DomainIdentifierT = Aws::String>
+    void SetDomainIdentifier(DomainIdentifierT&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::forward<DomainIdentifierT>(value); }
+    template<typename DomainIdentifierT = Aws::String>
+    DeleteGlossaryTermRequest& WithDomainIdentifier(DomainIdentifierT&& value) { SetDomainIdentifier(std::forward<DomainIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
-    inline void SetDomainIdentifier(const Aws::String& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = value; }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
-    inline void SetDomainIdentifier(Aws::String&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
-    inline void SetDomainIdentifier(const char* value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
-    inline DeleteGlossaryTermRequest& WithDomainIdentifier(const Aws::String& value) { SetDomainIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
-    inline DeleteGlossaryTermRequest& WithDomainIdentifier(Aws::String&& value) { SetDomainIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the business glossary term is
-     * deleted.</p>
-     */
-    inline DeleteGlossaryTermRequest& WithDomainIdentifier(const char* value) { SetDomainIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the business glossary term that is deleted.</p>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
-    inline DeleteGlossaryTermRequest& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
-    inline DeleteGlossaryTermRequest& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the business glossary term that is deleted.</p>
-     */
-    inline DeleteGlossaryTermRequest& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    DeleteGlossaryTermRequest& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainIdentifier;

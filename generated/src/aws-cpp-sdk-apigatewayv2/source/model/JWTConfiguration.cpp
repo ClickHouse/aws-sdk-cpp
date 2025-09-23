@@ -18,15 +18,7 @@ namespace ApiGatewayV2
 namespace Model
 {
 
-JWTConfiguration::JWTConfiguration() : 
-    m_audienceHasBeenSet(false),
-    m_issuerHasBeenSet(false)
-{
-}
-
-JWTConfiguration::JWTConfiguration(JsonView jsonValue) : 
-    m_audienceHasBeenSet(false),
-    m_issuerHasBeenSet(false)
+JWTConfiguration::JWTConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ JWTConfiguration& JWTConfiguration::operator =(JsonView jsonValue)
     }
     m_audienceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("issuer"))
   {
     m_issuer = jsonValue.GetString("issuer");
-
     m_issuerHasBeenSet = true;
   }
-
   return *this;
 }
 

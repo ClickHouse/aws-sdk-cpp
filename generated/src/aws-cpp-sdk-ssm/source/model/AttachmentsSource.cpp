@@ -18,19 +18,7 @@ namespace SSM
 namespace Model
 {
 
-AttachmentsSource::AttachmentsSource() : 
-    m_key(AttachmentsSourceKey::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-AttachmentsSource::AttachmentsSource(JsonView jsonValue) : 
-    m_key(AttachmentsSourceKey::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_nameHasBeenSet(false)
+AttachmentsSource::AttachmentsSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ AttachmentsSource& AttachmentsSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Key"))
   {
     m_key = AttachmentsSourceKeyMapper::GetAttachmentsSourceKeyForName(jsonValue.GetString("Key"));
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -53,14 +39,11 @@ AttachmentsSource& AttachmentsSource::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

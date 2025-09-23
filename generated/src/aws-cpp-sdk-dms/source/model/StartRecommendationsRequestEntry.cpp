@@ -18,15 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-StartRecommendationsRequestEntry::StartRecommendationsRequestEntry() : 
-    m_databaseIdHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
-StartRecommendationsRequestEntry::StartRecommendationsRequestEntry(JsonView jsonValue) : 
-    m_databaseIdHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+StartRecommendationsRequestEntry::StartRecommendationsRequestEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ StartRecommendationsRequestEntry& StartRecommendationsRequestEntry::operator =(J
   if(jsonValue.ValueExists("DatabaseId"))
   {
     m_databaseId = jsonValue.GetString("DatabaseId");
-
     m_databaseIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Settings"))
   {
     m_settings = jsonValue.GetObject("Settings");
-
     m_settingsHasBeenSet = true;
   }
-
   return *this;
 }
 

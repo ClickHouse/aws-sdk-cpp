@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CancelSpotFleetRequestsError::CancelSpotFleetRequestsError() : 
-    m_code(CancelBatchErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-CancelSpotFleetRequestsError::CancelSpotFleetRequestsError(const XmlNode& xmlNode) : 
-    m_code(CancelBatchErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+CancelSpotFleetRequestsError::CancelSpotFleetRequestsError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ CancelSpotFleetRequestsError& CancelSpotFleetRequestsError::operator =(const Xml
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = CancelBatchErrorCodeMapper::GetCancelBatchErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = CancelBatchErrorCodeMapper::GetCancelBatchErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void CancelSpotFleetRequestsError::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << CancelBatchErrorCodeMapper::GetNameForCancelBatchErrorCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(CancelBatchErrorCodeMapper::GetNameForCancelBatchErrorCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void CancelSpotFleetRequestsError::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << CancelBatchErrorCodeMapper::GetNameForCancelBatchErrorCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(CancelBatchErrorCodeMapper::GetNameForCancelBatchErrorCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

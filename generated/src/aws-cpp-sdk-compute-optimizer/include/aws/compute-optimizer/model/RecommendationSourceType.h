@@ -21,7 +21,10 @@ namespace Model
     EbsVolume,
     LambdaFunction,
     EcsService,
-    License
+    License,
+    RdsDBInstance,
+    RdsDBInstanceStorage,
+    AuroraDBClusterStorage
   };
 
 namespace RecommendationSourceTypeMapper

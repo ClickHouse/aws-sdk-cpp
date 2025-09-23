@@ -33,83 +33,35 @@ namespace Model
   class SheetElementRenderingRule
   {
   public:
-    AWS_QUICKSIGHT_API SheetElementRenderingRule();
+    AWS_QUICKSIGHT_API SheetElementRenderingRule() = default;
     AWS_QUICKSIGHT_API SheetElementRenderingRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SheetElementRenderingRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The expression of the rendering rules of a sheet.</p>
      */
-    inline const Aws::String& GetExpression() const{ return m_expression; }
-
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
+    inline const Aws::String& GetExpression() const { return m_expression; }
     inline bool ExpressionHasBeenSet() const { return m_expressionHasBeenSet; }
+    template<typename ExpressionT = Aws::String>
+    void SetExpression(ExpressionT&& value) { m_expressionHasBeenSet = true; m_expression = std::forward<ExpressionT>(value); }
+    template<typename ExpressionT = Aws::String>
+    SheetElementRenderingRule& WithExpression(ExpressionT&& value) { SetExpression(std::forward<ExpressionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
-    inline void SetExpression(const Aws::String& value) { m_expressionHasBeenSet = true; m_expression = value; }
-
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
-    inline void SetExpression(Aws::String&& value) { m_expressionHasBeenSet = true; m_expression = std::move(value); }
-
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
-    inline void SetExpression(const char* value) { m_expressionHasBeenSet = true; m_expression.assign(value); }
-
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
-    inline SheetElementRenderingRule& WithExpression(const Aws::String& value) { SetExpression(value); return *this;}
-
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
-    inline SheetElementRenderingRule& WithExpression(Aws::String&& value) { SetExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The expression of the rendering rules of a sheet.</p>
-     */
-    inline SheetElementRenderingRule& WithExpression(const char* value) { SetExpression(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The override configuration of the rendering rules of a sheet.</p>
      */
-    inline const SheetElementConfigurationOverrides& GetConfigurationOverrides() const{ return m_configurationOverrides; }
-
-    /**
-     * <p>The override configuration of the rendering rules of a sheet.</p>
-     */
+    inline const SheetElementConfigurationOverrides& GetConfigurationOverrides() const { return m_configurationOverrides; }
     inline bool ConfigurationOverridesHasBeenSet() const { return m_configurationOverridesHasBeenSet; }
-
-    /**
-     * <p>The override configuration of the rendering rules of a sheet.</p>
-     */
-    inline void SetConfigurationOverrides(const SheetElementConfigurationOverrides& value) { m_configurationOverridesHasBeenSet = true; m_configurationOverrides = value; }
-
-    /**
-     * <p>The override configuration of the rendering rules of a sheet.</p>
-     */
-    inline void SetConfigurationOverrides(SheetElementConfigurationOverrides&& value) { m_configurationOverridesHasBeenSet = true; m_configurationOverrides = std::move(value); }
-
-    /**
-     * <p>The override configuration of the rendering rules of a sheet.</p>
-     */
-    inline SheetElementRenderingRule& WithConfigurationOverrides(const SheetElementConfigurationOverrides& value) { SetConfigurationOverrides(value); return *this;}
-
-    /**
-     * <p>The override configuration of the rendering rules of a sheet.</p>
-     */
-    inline SheetElementRenderingRule& WithConfigurationOverrides(SheetElementConfigurationOverrides&& value) { SetConfigurationOverrides(std::move(value)); return *this;}
-
+    template<typename ConfigurationOverridesT = SheetElementConfigurationOverrides>
+    void SetConfigurationOverrides(ConfigurationOverridesT&& value) { m_configurationOverridesHasBeenSet = true; m_configurationOverrides = std::forward<ConfigurationOverridesT>(value); }
+    template<typename ConfigurationOverridesT = SheetElementConfigurationOverrides>
+    SheetElementRenderingRule& WithConfigurationOverrides(ConfigurationOverridesT&& value) { SetConfigurationOverrides(std::forward<ConfigurationOverridesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_expression;

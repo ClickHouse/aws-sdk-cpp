@@ -12,14 +12,6 @@ using namespace Aws::ServiceCatalog::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DisassociateServiceActionFromProvisioningArtifactRequest::DisassociateServiceActionFromProvisioningArtifactRequest() : 
-    m_productIdHasBeenSet(false),
-    m_provisioningArtifactIdHasBeenSet(false),
-    m_serviceActionIdHasBeenSet(false),
-    m_acceptLanguageHasBeenSet(false)
-{
-}
-
 Aws::String DisassociateServiceActionFromProvisioningArtifactRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +37,12 @@ Aws::String DisassociateServiceActionFromProvisioningArtifactRequest::SerializeP
   if(m_acceptLanguageHasBeenSet)
   {
    payload.WithString("AcceptLanguage", m_acceptLanguage);
+
+  }
+
+  if(m_idempotencyTokenHasBeenSet)
+  {
+   payload.WithString("IdempotencyToken", m_idempotencyToken);
 
   }
 

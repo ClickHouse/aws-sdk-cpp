@@ -18,23 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-EbuTtDDestinationSettings::EbuTtDDestinationSettings() : 
-    m_copyrightHolderHasBeenSet(false),
-    m_fillLineGap(EbuTtDFillLineGapControl::NOT_SET),
-    m_fillLineGapHasBeenSet(false),
-    m_fontFamilyHasBeenSet(false),
-    m_styleControl(EbuTtDDestinationStyleControl::NOT_SET),
-    m_styleControlHasBeenSet(false)
-{
-}
-
-EbuTtDDestinationSettings::EbuTtDDestinationSettings(JsonView jsonValue) : 
-    m_copyrightHolderHasBeenSet(false),
-    m_fillLineGap(EbuTtDFillLineGapControl::NOT_SET),
-    m_fillLineGapHasBeenSet(false),
-    m_fontFamilyHasBeenSet(false),
-    m_styleControl(EbuTtDDestinationStyleControl::NOT_SET),
-    m_styleControlHasBeenSet(false)
+EbuTtDDestinationSettings::EbuTtDDestinationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,33 @@ EbuTtDDestinationSettings& EbuTtDDestinationSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("copyrightHolder"))
   {
     m_copyrightHolder = jsonValue.GetString("copyrightHolder");
-
     m_copyrightHolderHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fillLineGap"))
   {
     m_fillLineGap = EbuTtDFillLineGapControlMapper::GetEbuTtDFillLineGapControlForName(jsonValue.GetString("fillLineGap"));
-
     m_fillLineGapHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fontFamily"))
   {
     m_fontFamily = jsonValue.GetString("fontFamily");
-
     m_fontFamilyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("styleControl"))
   {
     m_styleControl = EbuTtDDestinationStyleControlMapper::GetEbuTtDDestinationStyleControlForName(jsonValue.GetString("styleControl"));
-
     m_styleControlHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("defaultFontSize"))
+  {
+    m_defaultFontSize = jsonValue.GetInteger("defaultFontSize");
+    m_defaultFontSizeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("defaultLineHeight"))
+  {
+    m_defaultLineHeight = jsonValue.GetInteger("defaultLineHeight");
+    m_defaultLineHeightHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -96,6 +82,18 @@ JsonValue EbuTtDDestinationSettings::Jsonize() const
   if(m_styleControlHasBeenSet)
   {
    payload.WithString("styleControl", EbuTtDDestinationStyleControlMapper::GetNameForEbuTtDDestinationStyleControl(m_styleControl));
+  }
+
+  if(m_defaultFontSizeHasBeenSet)
+  {
+   payload.WithInteger("defaultFontSize", m_defaultFontSize);
+
+  }
+
+  if(m_defaultLineHeightHasBeenSet)
+  {
+   payload.WithInteger("defaultLineHeight", m_defaultLineHeight);
+
   }
 
   return payload;

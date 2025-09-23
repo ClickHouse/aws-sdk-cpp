@@ -157,20 +157,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* PinpointClient::SERVICE_NAME = "mobiletargeting";
-const char* PinpointClient::ALLOCATION_TAG = "PinpointClient";
+namespace Aws
+{
+  namespace Pinpoint
+  {
+    const char SERVICE_NAME[] = "mobiletargeting";
+    const char ALLOCATION_TAG[] = "PinpointClient";
+  }
+}
+const char* PinpointClient::GetServiceName() {return SERVICE_NAME;}
+const char* PinpointClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 PinpointClient::PinpointClient(const Pinpoint::PinpointClientConfiguration& clientConfiguration,
                                std::shared_ptr<PinpointEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PinpointErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -185,8 +192,7 @@ PinpointClient::PinpointClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PinpointErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -201,8 +207,7 @@ PinpointClient::PinpointClient(const std::shared_ptr<AWSCredentialsProvider>& cr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PinpointErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -211,12 +216,11 @@ PinpointClient::PinpointClient(const std::shared_ptr<AWSCredentialsProvider>& cr
   PinpointClient::PinpointClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PinpointErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -231,7 +235,6 @@ PinpointClient::PinpointClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PinpointErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -246,7 +249,6 @@ PinpointClient::PinpointClient(const std::shared_ptr<AWSCredentialsProvider>& cr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PinpointErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PinpointEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -266,6 +268,14 @@ std::shared_ptr<PinpointEndpointProviderBase>& PinpointClient::accessEndpointPro
 void PinpointClient::init(const Pinpoint::PinpointClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Pinpoint");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

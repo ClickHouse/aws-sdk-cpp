@@ -21,7 +21,7 @@ namespace Model
   class GetRecommendationRequest : public CostOptimizationHubRequest
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API GetRecommendationRequest();
+    AWS_COSTOPTIMIZATIONHUB_API GetRecommendationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_COSTOPTIMIZATIONHUB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID for the recommendation.</p>
      */
-    inline const Aws::String& GetRecommendationId() const{ return m_recommendationId; }
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
+    inline const Aws::String& GetRecommendationId() const { return m_recommendationId; }
     inline bool RecommendationIdHasBeenSet() const { return m_recommendationIdHasBeenSet; }
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
-    inline void SetRecommendationId(const Aws::String& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = value; }
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
-    inline void SetRecommendationId(Aws::String&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::move(value); }
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
-    inline void SetRecommendationId(const char* value) { m_recommendationIdHasBeenSet = true; m_recommendationId.assign(value); }
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
-    inline GetRecommendationRequest& WithRecommendationId(const Aws::String& value) { SetRecommendationId(value); return *this;}
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
-    inline GetRecommendationRequest& WithRecommendationId(Aws::String&& value) { SetRecommendationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the recommendation.</p>
-     */
-    inline GetRecommendationRequest& WithRecommendationId(const char* value) { SetRecommendationId(value); return *this;}
-
+    template<typename RecommendationIdT = Aws::String>
+    void SetRecommendationId(RecommendationIdT&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::forward<RecommendationIdT>(value); }
+    template<typename RecommendationIdT = Aws::String>
+    GetRecommendationRequest& WithRecommendationId(RecommendationIdT&& value) { SetRecommendationId(std::forward<RecommendationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recommendationId;

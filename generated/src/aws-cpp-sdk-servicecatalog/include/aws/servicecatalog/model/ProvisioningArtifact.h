@@ -34,202 +34,70 @@ namespace Model
   class ProvisioningArtifact
   {
   public:
-    AWS_SERVICECATALOG_API ProvisioningArtifact();
+    AWS_SERVICECATALOG_API ProvisioningArtifact() = default;
     AWS_SERVICECATALOG_API ProvisioningArtifact(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API ProvisioningArtifact& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the provisioning artifact.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ProvisioningArtifact& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the provisioning artifact.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ProvisioningArtifact& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the provisioning artifact.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ProvisioningArtifact& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the provisioning artifact.</p>
-     */
-    inline ProvisioningArtifact& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The UTC time stamp of the creation time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The UTC time stamp of the creation time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    ProvisioningArtifact& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The UTC time stamp of the creation time.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The UTC time stamp of the creation time.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The UTC time stamp of the creation time.</p>
-     */
-    inline ProvisioningArtifact& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The UTC time stamp of the creation time.</p>
-     */
-    inline ProvisioningArtifact& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information set by the administrator to provide guidance to end users about
      * which provisioning artifacts to use.</p>
      */
-    inline const ProvisioningArtifactGuidance& GetGuidance() const{ return m_guidance; }
-
-    /**
-     * <p>Information set by the administrator to provide guidance to end users about
-     * which provisioning artifacts to use.</p>
-     */
+    inline ProvisioningArtifactGuidance GetGuidance() const { return m_guidance; }
     inline bool GuidanceHasBeenSet() const { return m_guidanceHasBeenSet; }
-
-    /**
-     * <p>Information set by the administrator to provide guidance to end users about
-     * which provisioning artifacts to use.</p>
-     */
-    inline void SetGuidance(const ProvisioningArtifactGuidance& value) { m_guidanceHasBeenSet = true; m_guidance = value; }
-
-    /**
-     * <p>Information set by the administrator to provide guidance to end users about
-     * which provisioning artifacts to use.</p>
-     */
-    inline void SetGuidance(ProvisioningArtifactGuidance&& value) { m_guidanceHasBeenSet = true; m_guidance = std::move(value); }
-
-    /**
-     * <p>Information set by the administrator to provide guidance to end users about
-     * which provisioning artifacts to use.</p>
-     */
-    inline ProvisioningArtifact& WithGuidance(const ProvisioningArtifactGuidance& value) { SetGuidance(value); return *this;}
-
-    /**
-     * <p>Information set by the administrator to provide guidance to end users about
-     * which provisioning artifacts to use.</p>
-     */
-    inline ProvisioningArtifact& WithGuidance(ProvisioningArtifactGuidance&& value) { SetGuidance(std::move(value)); return *this;}
-
+    inline void SetGuidance(ProvisioningArtifactGuidance value) { m_guidanceHasBeenSet = true; m_guidance = value; }
+    inline ProvisioningArtifact& WithGuidance(ProvisioningArtifactGuidance value) { SetGuidance(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -241,10 +109,10 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
-    ProvisioningArtifactGuidance m_guidance;
+    ProvisioningArtifactGuidance m_guidance{ProvisioningArtifactGuidance::NOT_SET};
     bool m_guidanceHasBeenSet = false;
   };
 

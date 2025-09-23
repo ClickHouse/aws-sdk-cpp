@@ -21,7 +21,7 @@ namespace Model
   class DeleteResourceServerRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API DeleteResourceServerRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API DeleteResourceServerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
+     * <p>The ID of the user pool where you want to delete the resource server.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    DeleteResourceServerRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
+     * <p>The identifier of the resource server that you want to delete.</p>
      */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
-     */
-    inline DeleteResourceServerRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
-     */
-    inline DeleteResourceServerRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID for the user pool that hosts the resource server.</p>
-     */
-    inline DeleteResourceServerRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline DeleteResourceServerRequest& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline DeleteResourceServerRequest& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the resource server.</p>
-     */
-    inline DeleteResourceServerRequest& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    DeleteResourceServerRequest& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userPoolId;

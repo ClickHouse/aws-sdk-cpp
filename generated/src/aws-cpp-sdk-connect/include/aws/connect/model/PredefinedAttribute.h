@@ -7,6 +7,8 @@
 #include <aws/connect/Connect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/connect/model/PredefinedAttributeValues.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/connect/model/PredefinedAttributeConfiguration.h>
 #include <aws/core/utils/DateTime.h>
 #include <utility>
 
@@ -33,155 +35,88 @@ namespace Model
   class PredefinedAttribute
   {
   public:
-    AWS_CONNECT_API PredefinedAttribute();
+    AWS_CONNECT_API PredefinedAttribute() = default;
     AWS_CONNECT_API PredefinedAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API PredefinedAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the predefined attribute.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    PredefinedAttribute& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
-    inline PredefinedAttribute& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
-    inline PredefinedAttribute& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the predefined attribute.</p>
-     */
-    inline PredefinedAttribute& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The values of the predefined attribute.</p>
      */
-    inline const PredefinedAttributeValues& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The values of the predefined attribute.</p>
-     */
+    inline const PredefinedAttributeValues& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
+    template<typename ValuesT = PredefinedAttributeValues>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = PredefinedAttributeValues>
+    PredefinedAttribute& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The values of the predefined attribute.</p>
+     * <p>Values that enable you to categorize your predefined attributes. You can use
+     * them in custom UI elements across the Amazon Connect admin website.</p>
      */
-    inline void SetValues(const PredefinedAttributeValues& value) { m_valuesHasBeenSet = true; m_values = value; }
+    inline const Aws::Vector<Aws::String>& GetPurposes() const { return m_purposes; }
+    inline bool PurposesHasBeenSet() const { return m_purposesHasBeenSet; }
+    template<typename PurposesT = Aws::Vector<Aws::String>>
+    void SetPurposes(PurposesT&& value) { m_purposesHasBeenSet = true; m_purposes = std::forward<PurposesT>(value); }
+    template<typename PurposesT = Aws::Vector<Aws::String>>
+    PredefinedAttribute& WithPurposes(PurposesT&& value) { SetPurposes(std::forward<PurposesT>(value)); return *this;}
+    template<typename PurposesT = Aws::String>
+    PredefinedAttribute& AddPurposes(PurposesT&& value) { m_purposesHasBeenSet = true; m_purposes.emplace_back(std::forward<PurposesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The values of the predefined attribute.</p>
+     * <p>Custom metadata that is associated to predefined attributes to control
+     * behavior in upstream services, such as controlling how a predefined attribute
+     * should be displayed in the Amazon Connect admin website.</p>
      */
-    inline void SetValues(PredefinedAttributeValues&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
+    inline const PredefinedAttributeConfiguration& GetAttributeConfiguration() const { return m_attributeConfiguration; }
+    inline bool AttributeConfigurationHasBeenSet() const { return m_attributeConfigurationHasBeenSet; }
+    template<typename AttributeConfigurationT = PredefinedAttributeConfiguration>
+    void SetAttributeConfiguration(AttributeConfigurationT&& value) { m_attributeConfigurationHasBeenSet = true; m_attributeConfiguration = std::forward<AttributeConfigurationT>(value); }
+    template<typename AttributeConfigurationT = PredefinedAttributeConfiguration>
+    PredefinedAttribute& WithAttributeConfiguration(AttributeConfigurationT&& value) { SetAttributeConfiguration(std::forward<AttributeConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The values of the predefined attribute.</p>
-     */
-    inline PredefinedAttribute& WithValues(const PredefinedAttributeValues& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The values of the predefined attribute.</p>
-     */
-    inline PredefinedAttribute& WithValues(PredefinedAttributeValues&& value) { SetValues(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Last modified time.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>Last modified time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    PredefinedAttribute& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Last modified time.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>Last modified time.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>Last modified time.</p>
-     */
-    inline PredefinedAttribute& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>Last modified time.</p>
-     */
-    inline PredefinedAttribute& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Last modified region.</p>
      */
-    inline const Aws::String& GetLastModifiedRegion() const{ return m_lastModifiedRegion; }
-
-    /**
-     * <p>Last modified region.</p>
-     */
+    inline const Aws::String& GetLastModifiedRegion() const { return m_lastModifiedRegion; }
     inline bool LastModifiedRegionHasBeenSet() const { return m_lastModifiedRegionHasBeenSet; }
-
-    /**
-     * <p>Last modified region.</p>
-     */
-    inline void SetLastModifiedRegion(const Aws::String& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = value; }
-
-    /**
-     * <p>Last modified region.</p>
-     */
-    inline void SetLastModifiedRegion(Aws::String&& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = std::move(value); }
-
-    /**
-     * <p>Last modified region.</p>
-     */
-    inline void SetLastModifiedRegion(const char* value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion.assign(value); }
-
-    /**
-     * <p>Last modified region.</p>
-     */
-    inline PredefinedAttribute& WithLastModifiedRegion(const Aws::String& value) { SetLastModifiedRegion(value); return *this;}
-
-    /**
-     * <p>Last modified region.</p>
-     */
-    inline PredefinedAttribute& WithLastModifiedRegion(Aws::String&& value) { SetLastModifiedRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>Last modified region.</p>
-     */
-    inline PredefinedAttribute& WithLastModifiedRegion(const char* value) { SetLastModifiedRegion(value); return *this;}
-
+    template<typename LastModifiedRegionT = Aws::String>
+    void SetLastModifiedRegion(LastModifiedRegionT&& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = std::forward<LastModifiedRegionT>(value); }
+    template<typename LastModifiedRegionT = Aws::String>
+    PredefinedAttribute& WithLastModifiedRegion(LastModifiedRegionT&& value) { SetLastModifiedRegion(std::forward<LastModifiedRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -190,7 +125,13 @@ namespace Model
     PredefinedAttributeValues m_values;
     bool m_valuesHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Vector<Aws::String> m_purposes;
+    bool m_purposesHasBeenSet = false;
+
+    PredefinedAttributeConfiguration m_attributeConfiguration;
+    bool m_attributeConfigurationHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::String m_lastModifiedRegion;

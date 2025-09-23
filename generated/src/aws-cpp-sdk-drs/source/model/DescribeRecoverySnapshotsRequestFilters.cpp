@@ -18,15 +18,7 @@ namespace drs
 namespace Model
 {
 
-DescribeRecoverySnapshotsRequestFilters::DescribeRecoverySnapshotsRequestFilters() : 
-    m_fromDateTimeHasBeenSet(false),
-    m_toDateTimeHasBeenSet(false)
-{
-}
-
-DescribeRecoverySnapshotsRequestFilters::DescribeRecoverySnapshotsRequestFilters(JsonView jsonValue) : 
-    m_fromDateTimeHasBeenSet(false),
-    m_toDateTimeHasBeenSet(false)
+DescribeRecoverySnapshotsRequestFilters::DescribeRecoverySnapshotsRequestFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DescribeRecoverySnapshotsRequestFilters& DescribeRecoverySnapshotsRequestFilters
   if(jsonValue.ValueExists("fromDateTime"))
   {
     m_fromDateTime = jsonValue.GetString("fromDateTime");
-
     m_fromDateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("toDateTime"))
   {
     m_toDateTime = jsonValue.GetString("toDateTime");
-
     m_toDateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,33 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SnapshotDetail::SnapshotDetail() : 
-    m_descriptionHasBeenSet(false),
-    m_deviceNameHasBeenSet(false),
-    m_diskImageSize(0.0),
-    m_diskImageSizeHasBeenSet(false),
-    m_formatHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_userBucketHasBeenSet(false)
-{
-}
-
-SnapshotDetail::SnapshotDetail(const XmlNode& xmlNode) : 
-    m_descriptionHasBeenSet(false),
-    m_deviceNameHasBeenSet(false),
-    m_diskImageSize(0.0),
-    m_diskImageSizeHasBeenSet(false),
-    m_formatHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_userBucketHasBeenSet(false)
+SnapshotDetail::SnapshotDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -190,7 +164,7 @@ void SnapshotDetail::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_diskImageSizeHasBeenSet)
   {
-        oStream << location << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
+      oStream << location << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
   }
   if(m_formatHasBeenSet)
   {

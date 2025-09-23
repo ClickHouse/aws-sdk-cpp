@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VgwTelemetry::VgwTelemetry() : 
-    m_acceptedRouteCount(0),
-    m_acceptedRouteCountHasBeenSet(false),
-    m_lastStatusChangeHasBeenSet(false),
-    m_outsideIpAddressHasBeenSet(false),
-    m_status(TelemetryStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
-{
-}
-
-VgwTelemetry::VgwTelemetry(const XmlNode& xmlNode) : 
-    m_acceptedRouteCount(0),
-    m_acceptedRouteCountHasBeenSet(false),
-    m_lastStatusChangeHasBeenSet(false),
-    m_outsideIpAddressHasBeenSet(false),
-    m_status(TelemetryStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
+VgwTelemetry::VgwTelemetry(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +52,7 @@ VgwTelemetry& VgwTelemetry::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = TelemetryStatusMapper::GetTelemetryStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = TelemetryStatusMapper::GetTelemetryStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -111,7 +91,7 @@ void VgwTelemetry::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << TelemetryStatusMapper::GetNameForTelemetryStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(TelemetryStatusMapper::GetNameForTelemetryStatus(m_status)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -142,7 +122,7 @@ void VgwTelemetry::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << TelemetryStatusMapper::GetNameForTelemetryStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(TelemetryStatusMapper::GetNameForTelemetryStatus(m_status)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {

@@ -33,42 +33,23 @@ namespace Model
   class BoxPlotFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API BoxPlotFieldWells();
+    AWS_QUICKSIGHT_API BoxPlotFieldWells() = default;
     AWS_QUICKSIGHT_API BoxPlotFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API BoxPlotFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The aggregated field wells of a box plot.</p>
      */
-    inline const BoxPlotAggregatedFieldWells& GetBoxPlotAggregatedFieldWells() const{ return m_boxPlotAggregatedFieldWells; }
-
-    /**
-     * <p>The aggregated field wells of a box plot.</p>
-     */
+    inline const BoxPlotAggregatedFieldWells& GetBoxPlotAggregatedFieldWells() const { return m_boxPlotAggregatedFieldWells; }
     inline bool BoxPlotAggregatedFieldWellsHasBeenSet() const { return m_boxPlotAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The aggregated field wells of a box plot.</p>
-     */
-    inline void SetBoxPlotAggregatedFieldWells(const BoxPlotAggregatedFieldWells& value) { m_boxPlotAggregatedFieldWellsHasBeenSet = true; m_boxPlotAggregatedFieldWells = value; }
-
-    /**
-     * <p>The aggregated field wells of a box plot.</p>
-     */
-    inline void SetBoxPlotAggregatedFieldWells(BoxPlotAggregatedFieldWells&& value) { m_boxPlotAggregatedFieldWellsHasBeenSet = true; m_boxPlotAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The aggregated field wells of a box plot.</p>
-     */
-    inline BoxPlotFieldWells& WithBoxPlotAggregatedFieldWells(const BoxPlotAggregatedFieldWells& value) { SetBoxPlotAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The aggregated field wells of a box plot.</p>
-     */
-    inline BoxPlotFieldWells& WithBoxPlotAggregatedFieldWells(BoxPlotAggregatedFieldWells&& value) { SetBoxPlotAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename BoxPlotAggregatedFieldWellsT = BoxPlotAggregatedFieldWells>
+    void SetBoxPlotAggregatedFieldWells(BoxPlotAggregatedFieldWellsT&& value) { m_boxPlotAggregatedFieldWellsHasBeenSet = true; m_boxPlotAggregatedFieldWells = std::forward<BoxPlotAggregatedFieldWellsT>(value); }
+    template<typename BoxPlotAggregatedFieldWellsT = BoxPlotAggregatedFieldWells>
+    BoxPlotFieldWells& WithBoxPlotAggregatedFieldWells(BoxPlotAggregatedFieldWellsT&& value) { SetBoxPlotAggregatedFieldWells(std::forward<BoxPlotAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     BoxPlotAggregatedFieldWells m_boxPlotAggregatedFieldWells;

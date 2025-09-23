@@ -33,89 +33,36 @@ namespace Model
   class DataQualityObservation
   {
   public:
-    AWS_GLUE_API DataQualityObservation();
+    AWS_GLUE_API DataQualityObservation() = default;
     AWS_GLUE_API DataQualityObservation(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API DataQualityObservation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of the data quality observation.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DataQualityObservation& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
-    inline DataQualityObservation& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
-    inline DataQualityObservation& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the data quality observation.</p>
-     */
-    inline DataQualityObservation& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object of type <code>MetricBasedObservation</code> representing the
      * observation that is based on evaluated data quality metrics.</p>
      */
-    inline const MetricBasedObservation& GetMetricBasedObservation() const{ return m_metricBasedObservation; }
-
-    /**
-     * <p>An object of type <code>MetricBasedObservation</code> representing the
-     * observation that is based on evaluated data quality metrics.</p>
-     */
+    inline const MetricBasedObservation& GetMetricBasedObservation() const { return m_metricBasedObservation; }
     inline bool MetricBasedObservationHasBeenSet() const { return m_metricBasedObservationHasBeenSet; }
-
-    /**
-     * <p>An object of type <code>MetricBasedObservation</code> representing the
-     * observation that is based on evaluated data quality metrics.</p>
-     */
-    inline void SetMetricBasedObservation(const MetricBasedObservation& value) { m_metricBasedObservationHasBeenSet = true; m_metricBasedObservation = value; }
-
-    /**
-     * <p>An object of type <code>MetricBasedObservation</code> representing the
-     * observation that is based on evaluated data quality metrics.</p>
-     */
-    inline void SetMetricBasedObservation(MetricBasedObservation&& value) { m_metricBasedObservationHasBeenSet = true; m_metricBasedObservation = std::move(value); }
-
-    /**
-     * <p>An object of type <code>MetricBasedObservation</code> representing the
-     * observation that is based on evaluated data quality metrics.</p>
-     */
-    inline DataQualityObservation& WithMetricBasedObservation(const MetricBasedObservation& value) { SetMetricBasedObservation(value); return *this;}
-
-    /**
-     * <p>An object of type <code>MetricBasedObservation</code> representing the
-     * observation that is based on evaluated data quality metrics.</p>
-     */
-    inline DataQualityObservation& WithMetricBasedObservation(MetricBasedObservation&& value) { SetMetricBasedObservation(std::move(value)); return *this;}
-
+    template<typename MetricBasedObservationT = MetricBasedObservation>
+    void SetMetricBasedObservation(MetricBasedObservationT&& value) { m_metricBasedObservationHasBeenSet = true; m_metricBasedObservation = std::forward<MetricBasedObservationT>(value); }
+    template<typename MetricBasedObservationT = MetricBasedObservation>
+    DataQualityObservation& WithMetricBasedObservation(MetricBasedObservationT&& value) { SetMetricBasedObservation(std::forward<MetricBasedObservationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

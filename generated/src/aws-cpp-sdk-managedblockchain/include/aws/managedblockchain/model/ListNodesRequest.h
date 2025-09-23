@@ -26,7 +26,7 @@ namespace Model
   class ListNodesRequest : public ManagedBlockchainRequest
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API ListNodesRequest();
+    AWS_MANAGEDBLOCKCHAIN_API ListNodesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,202 +39,64 @@ namespace Model
     AWS_MANAGEDBLOCKCHAIN_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the network for which to list nodes.</p>
      */
-    inline const Aws::String& GetNetworkId() const{ return m_networkId; }
-
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
+    inline const Aws::String& GetNetworkId() const { return m_networkId; }
     inline bool NetworkIdHasBeenSet() const { return m_networkIdHasBeenSet; }
+    template<typename NetworkIdT = Aws::String>
+    void SetNetworkId(NetworkIdT&& value) { m_networkIdHasBeenSet = true; m_networkId = std::forward<NetworkIdT>(value); }
+    template<typename NetworkIdT = Aws::String>
+    ListNodesRequest& WithNetworkId(NetworkIdT&& value) { SetNetworkId(std::forward<NetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
-    inline void SetNetworkId(const Aws::String& value) { m_networkIdHasBeenSet = true; m_networkId = value; }
-
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
-    inline void SetNetworkId(Aws::String&& value) { m_networkIdHasBeenSet = true; m_networkId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
-    inline void SetNetworkId(const char* value) { m_networkIdHasBeenSet = true; m_networkId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
-    inline ListNodesRequest& WithNetworkId(const Aws::String& value) { SetNetworkId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
-    inline ListNodesRequest& WithNetworkId(Aws::String&& value) { SetNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the network for which to list nodes.</p>
-     */
-    inline ListNodesRequest& WithNetworkId(const char* value) { SetNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the member who owns the nodes to list.</p>
      * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
      * Fabric.</p>
      */
-    inline const Aws::String& GetMemberId() const{ return m_memberId; }
-
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
+    inline const Aws::String& GetMemberId() const { return m_memberId; }
     inline bool MemberIdHasBeenSet() const { return m_memberIdHasBeenSet; }
+    template<typename MemberIdT = Aws::String>
+    void SetMemberId(MemberIdT&& value) { m_memberIdHasBeenSet = true; m_memberId = std::forward<MemberIdT>(value); }
+    template<typename MemberIdT = Aws::String>
+    ListNodesRequest& WithMemberId(MemberIdT&& value) { SetMemberId(std::forward<MemberIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
-    inline void SetMemberId(const Aws::String& value) { m_memberIdHasBeenSet = true; m_memberId = value; }
-
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
-    inline void SetMemberId(Aws::String&& value) { m_memberIdHasBeenSet = true; m_memberId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
-    inline void SetMemberId(const char* value) { m_memberIdHasBeenSet = true; m_memberId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
-    inline ListNodesRequest& WithMemberId(const Aws::String& value) { SetMemberId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
-    inline ListNodesRequest& WithMemberId(Aws::String&& value) { SetMemberId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the member who owns the nodes to list.</p>
-     * <p>Applies only to Hyperledger Fabric and is required for Hyperledger
-     * Fabric.</p>
-     */
-    inline ListNodesRequest& WithMemberId(const char* value) { SetMemberId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional status specifier. If provided, only nodes currently in this
      * status are listed.</p>
      */
-    inline const NodeStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>An optional status specifier. If provided, only nodes currently in this
-     * status are listed.</p>
-     */
+    inline NodeStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(NodeStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListNodesRequest& WithStatus(NodeStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional status specifier. If provided, only nodes currently in this
-     * status are listed.</p>
-     */
-    inline void SetStatus(const NodeStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>An optional status specifier. If provided, only nodes currently in this
-     * status are listed.</p>
-     */
-    inline void SetStatus(NodeStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>An optional status specifier. If provided, only nodes currently in this
-     * status are listed.</p>
-     */
-    inline ListNodesRequest& WithStatus(const NodeStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>An optional status specifier. If provided, only nodes currently in this
-     * status are listed.</p>
-     */
-    inline ListNodesRequest& WithStatus(NodeStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of nodes to list.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of nodes to list.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of nodes to list.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of nodes to list.</p>
-     */
     inline ListNodesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListNodesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListNodesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListNodesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListNodesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_networkId;
@@ -243,10 +105,10 @@ namespace Model
     Aws::String m_memberId;
     bool m_memberIdHasBeenSet = false;
 
-    NodeStatus m_status;
+    NodeStatus m_status{NodeStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

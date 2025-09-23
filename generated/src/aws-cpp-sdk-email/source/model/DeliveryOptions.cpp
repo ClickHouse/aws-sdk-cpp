@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-DeliveryOptions::DeliveryOptions() : 
-    m_tlsPolicy(TlsPolicy::NOT_SET),
-    m_tlsPolicyHasBeenSet(false)
-{
-}
-
-DeliveryOptions::DeliveryOptions(const XmlNode& xmlNode) : 
-    m_tlsPolicy(TlsPolicy::NOT_SET),
-    m_tlsPolicyHasBeenSet(false)
+DeliveryOptions::DeliveryOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ DeliveryOptions& DeliveryOptions::operator =(const XmlNode& xmlNode)
     XmlNode tlsPolicyNode = resultNode.FirstChild("TlsPolicy");
     if(!tlsPolicyNode.IsNull())
     {
-      m_tlsPolicy = TlsPolicyMapper::GetTlsPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tlsPolicyNode.GetText()).c_str()).c_str());
+      m_tlsPolicy = TlsPolicyMapper::GetTlsPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tlsPolicyNode.GetText()).c_str()));
       m_tlsPolicyHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void DeliveryOptions::OutputToStream(Aws::OStream& oStream, const char* location
 {
   if(m_tlsPolicyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TlsPolicy=" << TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy) << "&";
+      oStream << location << index << locationValue << ".TlsPolicy=" << StringUtils::URLEncode(TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void DeliveryOptions::OutputToStream(Aws::OStream& oStream, const char* location
 {
   if(m_tlsPolicyHasBeenSet)
   {
-      oStream << location << ".TlsPolicy=" << TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy) << "&";
+      oStream << location << ".TlsPolicy=" << StringUtils::URLEncode(TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy)) << "&";
   }
 }
 

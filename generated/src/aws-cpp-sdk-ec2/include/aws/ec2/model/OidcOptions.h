@@ -32,7 +32,7 @@ namespace Model
   class OidcOptions
   {
   public:
-    AWS_EC2_API OidcOptions();
+    AWS_EC2_API OidcOptions() = default;
     AWS_EC2_API OidcOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API OidcOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,292 +40,89 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The OIDC issuer.</p>
      */
-    inline const Aws::String& GetIssuer() const{ return m_issuer; }
-
-    /**
-     * <p>The OIDC issuer.</p>
-     */
+    inline const Aws::String& GetIssuer() const { return m_issuer; }
     inline bool IssuerHasBeenSet() const { return m_issuerHasBeenSet; }
+    template<typename IssuerT = Aws::String>
+    void SetIssuer(IssuerT&& value) { m_issuerHasBeenSet = true; m_issuer = std::forward<IssuerT>(value); }
+    template<typename IssuerT = Aws::String>
+    OidcOptions& WithIssuer(IssuerT&& value) { SetIssuer(std::forward<IssuerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The OIDC issuer.</p>
-     */
-    inline void SetIssuer(const Aws::String& value) { m_issuerHasBeenSet = true; m_issuer = value; }
-
-    /**
-     * <p>The OIDC issuer.</p>
-     */
-    inline void SetIssuer(Aws::String&& value) { m_issuerHasBeenSet = true; m_issuer = std::move(value); }
-
-    /**
-     * <p>The OIDC issuer.</p>
-     */
-    inline void SetIssuer(const char* value) { m_issuerHasBeenSet = true; m_issuer.assign(value); }
-
-    /**
-     * <p>The OIDC issuer.</p>
-     */
-    inline OidcOptions& WithIssuer(const Aws::String& value) { SetIssuer(value); return *this;}
-
-    /**
-     * <p>The OIDC issuer.</p>
-     */
-    inline OidcOptions& WithIssuer(Aws::String&& value) { SetIssuer(std::move(value)); return *this;}
-
-    /**
-     * <p>The OIDC issuer.</p>
-     */
-    inline OidcOptions& WithIssuer(const char* value) { SetIssuer(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The OIDC authorization endpoint.</p>
      */
-    inline const Aws::String& GetAuthorizationEndpoint() const{ return m_authorizationEndpoint; }
-
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
+    inline const Aws::String& GetAuthorizationEndpoint() const { return m_authorizationEndpoint; }
     inline bool AuthorizationEndpointHasBeenSet() const { return m_authorizationEndpointHasBeenSet; }
+    template<typename AuthorizationEndpointT = Aws::String>
+    void SetAuthorizationEndpoint(AuthorizationEndpointT&& value) { m_authorizationEndpointHasBeenSet = true; m_authorizationEndpoint = std::forward<AuthorizationEndpointT>(value); }
+    template<typename AuthorizationEndpointT = Aws::String>
+    OidcOptions& WithAuthorizationEndpoint(AuthorizationEndpointT&& value) { SetAuthorizationEndpoint(std::forward<AuthorizationEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
-    inline void SetAuthorizationEndpoint(const Aws::String& value) { m_authorizationEndpointHasBeenSet = true; m_authorizationEndpoint = value; }
-
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
-    inline void SetAuthorizationEndpoint(Aws::String&& value) { m_authorizationEndpointHasBeenSet = true; m_authorizationEndpoint = std::move(value); }
-
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
-    inline void SetAuthorizationEndpoint(const char* value) { m_authorizationEndpointHasBeenSet = true; m_authorizationEndpoint.assign(value); }
-
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
-    inline OidcOptions& WithAuthorizationEndpoint(const Aws::String& value) { SetAuthorizationEndpoint(value); return *this;}
-
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
-    inline OidcOptions& WithAuthorizationEndpoint(Aws::String&& value) { SetAuthorizationEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The OIDC authorization endpoint.</p>
-     */
-    inline OidcOptions& WithAuthorizationEndpoint(const char* value) { SetAuthorizationEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The OIDC token endpoint.</p>
      */
-    inline const Aws::String& GetTokenEndpoint() const{ return m_tokenEndpoint; }
-
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
+    inline const Aws::String& GetTokenEndpoint() const { return m_tokenEndpoint; }
     inline bool TokenEndpointHasBeenSet() const { return m_tokenEndpointHasBeenSet; }
+    template<typename TokenEndpointT = Aws::String>
+    void SetTokenEndpoint(TokenEndpointT&& value) { m_tokenEndpointHasBeenSet = true; m_tokenEndpoint = std::forward<TokenEndpointT>(value); }
+    template<typename TokenEndpointT = Aws::String>
+    OidcOptions& WithTokenEndpoint(TokenEndpointT&& value) { SetTokenEndpoint(std::forward<TokenEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
-    inline void SetTokenEndpoint(const Aws::String& value) { m_tokenEndpointHasBeenSet = true; m_tokenEndpoint = value; }
-
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
-    inline void SetTokenEndpoint(Aws::String&& value) { m_tokenEndpointHasBeenSet = true; m_tokenEndpoint = std::move(value); }
-
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
-    inline void SetTokenEndpoint(const char* value) { m_tokenEndpointHasBeenSet = true; m_tokenEndpoint.assign(value); }
-
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
-    inline OidcOptions& WithTokenEndpoint(const Aws::String& value) { SetTokenEndpoint(value); return *this;}
-
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
-    inline OidcOptions& WithTokenEndpoint(Aws::String&& value) { SetTokenEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The OIDC token endpoint.</p>
-     */
-    inline OidcOptions& WithTokenEndpoint(const char* value) { SetTokenEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The OIDC user info endpoint.</p>
      */
-    inline const Aws::String& GetUserInfoEndpoint() const{ return m_userInfoEndpoint; }
-
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
+    inline const Aws::String& GetUserInfoEndpoint() const { return m_userInfoEndpoint; }
     inline bool UserInfoEndpointHasBeenSet() const { return m_userInfoEndpointHasBeenSet; }
+    template<typename UserInfoEndpointT = Aws::String>
+    void SetUserInfoEndpoint(UserInfoEndpointT&& value) { m_userInfoEndpointHasBeenSet = true; m_userInfoEndpoint = std::forward<UserInfoEndpointT>(value); }
+    template<typename UserInfoEndpointT = Aws::String>
+    OidcOptions& WithUserInfoEndpoint(UserInfoEndpointT&& value) { SetUserInfoEndpoint(std::forward<UserInfoEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
-    inline void SetUserInfoEndpoint(const Aws::String& value) { m_userInfoEndpointHasBeenSet = true; m_userInfoEndpoint = value; }
-
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
-    inline void SetUserInfoEndpoint(Aws::String&& value) { m_userInfoEndpointHasBeenSet = true; m_userInfoEndpoint = std::move(value); }
-
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
-    inline void SetUserInfoEndpoint(const char* value) { m_userInfoEndpointHasBeenSet = true; m_userInfoEndpoint.assign(value); }
-
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
-    inline OidcOptions& WithUserInfoEndpoint(const Aws::String& value) { SetUserInfoEndpoint(value); return *this;}
-
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
-    inline OidcOptions& WithUserInfoEndpoint(Aws::String&& value) { SetUserInfoEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The OIDC user info endpoint.</p>
-     */
-    inline OidcOptions& WithUserInfoEndpoint(const char* value) { SetUserInfoEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The client identifier.</p>
      */
-    inline const Aws::String& GetClientId() const{ return m_clientId; }
-
-    /**
-     * <p>The client identifier.</p>
-     */
+    inline const Aws::String& GetClientId() const { return m_clientId; }
     inline bool ClientIdHasBeenSet() const { return m_clientIdHasBeenSet; }
+    template<typename ClientIdT = Aws::String>
+    void SetClientId(ClientIdT&& value) { m_clientIdHasBeenSet = true; m_clientId = std::forward<ClientIdT>(value); }
+    template<typename ClientIdT = Aws::String>
+    OidcOptions& WithClientId(ClientIdT&& value) { SetClientId(std::forward<ClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The client identifier.</p>
-     */
-    inline void SetClientId(const Aws::String& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
-
-    /**
-     * <p>The client identifier.</p>
-     */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
-
-    /**
-     * <p>The client identifier.</p>
-     */
-    inline void SetClientId(const char* value) { m_clientIdHasBeenSet = true; m_clientId.assign(value); }
-
-    /**
-     * <p>The client identifier.</p>
-     */
-    inline OidcOptions& WithClientId(const Aws::String& value) { SetClientId(value); return *this;}
-
-    /**
-     * <p>The client identifier.</p>
-     */
-    inline OidcOptions& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The client identifier.</p>
-     */
-    inline OidcOptions& WithClientId(const char* value) { SetClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The client secret.</p>
      */
-    inline const Aws::String& GetClientSecret() const{ return m_clientSecret; }
-
-    /**
-     * <p>The client secret.</p>
-     */
+    inline const Aws::String& GetClientSecret() const { return m_clientSecret; }
     inline bool ClientSecretHasBeenSet() const { return m_clientSecretHasBeenSet; }
+    template<typename ClientSecretT = Aws::String>
+    void SetClientSecret(ClientSecretT&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::forward<ClientSecretT>(value); }
+    template<typename ClientSecretT = Aws::String>
+    OidcOptions& WithClientSecret(ClientSecretT&& value) { SetClientSecret(std::forward<ClientSecretT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The client secret.</p>
-     */
-    inline void SetClientSecret(const Aws::String& value) { m_clientSecretHasBeenSet = true; m_clientSecret = value; }
-
-    /**
-     * <p>The client secret.</p>
-     */
-    inline void SetClientSecret(Aws::String&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::move(value); }
-
-    /**
-     * <p>The client secret.</p>
-     */
-    inline void SetClientSecret(const char* value) { m_clientSecretHasBeenSet = true; m_clientSecret.assign(value); }
-
-    /**
-     * <p>The client secret.</p>
-     */
-    inline OidcOptions& WithClientSecret(const Aws::String& value) { SetClientSecret(value); return *this;}
-
-    /**
-     * <p>The client secret.</p>
-     */
-    inline OidcOptions& WithClientSecret(Aws::String&& value) { SetClientSecret(std::move(value)); return *this;}
-
-    /**
-     * <p>The client secret.</p>
-     */
-    inline OidcOptions& WithClientSecret(const char* value) { SetClientSecret(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The OpenID Connect (OIDC) scope specified.</p>
      */
-    inline const Aws::String& GetScope() const{ return m_scope; }
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
+    inline const Aws::String& GetScope() const { return m_scope; }
     inline bool ScopeHasBeenSet() const { return m_scopeHasBeenSet; }
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
-    inline void SetScope(const Aws::String& value) { m_scopeHasBeenSet = true; m_scope = value; }
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
-    inline void SetScope(Aws::String&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
-    inline void SetScope(const char* value) { m_scopeHasBeenSet = true; m_scope.assign(value); }
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
-    inline OidcOptions& WithScope(const Aws::String& value) { SetScope(value); return *this;}
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
-    inline OidcOptions& WithScope(Aws::String&& value) { SetScope(std::move(value)); return *this;}
-
-    /**
-     * <p>The OpenID Connect (OIDC) scope specified.</p>
-     */
-    inline OidcOptions& WithScope(const char* value) { SetScope(value); return *this;}
-
+    template<typename ScopeT = Aws::String>
+    void SetScope(ScopeT&& value) { m_scopeHasBeenSet = true; m_scope = std::forward<ScopeT>(value); }
+    template<typename ScopeT = Aws::String>
+    OidcOptions& WithScope(ScopeT&& value) { SetScope(std::forward<ScopeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_issuer;

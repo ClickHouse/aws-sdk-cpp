@@ -29,7 +29,7 @@ namespace Model
   class Range
   {
   public:
-    AWS_RDS_API Range();
+    AWS_RDS_API Range() = default;
     AWS_RDS_API Range(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API Range& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -37,89 +37,47 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The minimum value in the range.</p>
      */
-    inline int GetFrom() const{ return m_from; }
-
-    /**
-     * <p>The minimum value in the range.</p>
-     */
+    inline int GetFrom() const { return m_from; }
     inline bool FromHasBeenSet() const { return m_fromHasBeenSet; }
-
-    /**
-     * <p>The minimum value in the range.</p>
-     */
     inline void SetFrom(int value) { m_fromHasBeenSet = true; m_from = value; }
-
-    /**
-     * <p>The minimum value in the range.</p>
-     */
     inline Range& WithFrom(int value) { SetFrom(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum value in the range.</p>
      */
-    inline int GetTo() const{ return m_to; }
-
-    /**
-     * <p>The maximum value in the range.</p>
-     */
+    inline int GetTo() const { return m_to; }
     inline bool ToHasBeenSet() const { return m_toHasBeenSet; }
-
-    /**
-     * <p>The maximum value in the range.</p>
-     */
     inline void SetTo(int value) { m_toHasBeenSet = true; m_to = value; }
-
-    /**
-     * <p>The maximum value in the range.</p>
-     */
     inline Range& WithTo(int value) { SetTo(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The step value for the range. For example, if you have a range of 5,000 to
      * 10,000, with a step value of 1,000, the valid values start at 5,000 and step up
      * by 1,000. Even though 7,500 is within the range, it isn't a valid value for the
      * range. The valid values are 5,000, 6,000, 7,000, 8,000...</p>
      */
-    inline int GetStep() const{ return m_step; }
-
-    /**
-     * <p>The step value for the range. For example, if you have a range of 5,000 to
-     * 10,000, with a step value of 1,000, the valid values start at 5,000 and step up
-     * by 1,000. Even though 7,500 is within the range, it isn't a valid value for the
-     * range. The valid values are 5,000, 6,000, 7,000, 8,000...</p>
-     */
+    inline int GetStep() const { return m_step; }
     inline bool StepHasBeenSet() const { return m_stepHasBeenSet; }
-
-    /**
-     * <p>The step value for the range. For example, if you have a range of 5,000 to
-     * 10,000, with a step value of 1,000, the valid values start at 5,000 and step up
-     * by 1,000. Even though 7,500 is within the range, it isn't a valid value for the
-     * range. The valid values are 5,000, 6,000, 7,000, 8,000...</p>
-     */
     inline void SetStep(int value) { m_stepHasBeenSet = true; m_step = value; }
-
-    /**
-     * <p>The step value for the range. For example, if you have a range of 5,000 to
-     * 10,000, with a step value of 1,000, the valid values start at 5,000 and step up
-     * by 1,000. Even though 7,500 is within the range, it isn't a valid value for the
-     * range. The valid values are 5,000, 6,000, 7,000, 8,000...</p>
-     */
     inline Range& WithStep(int value) { SetStep(value); return *this;}
-
+    ///@}
   private:
 
-    int m_from;
+    int m_from{0};
     bool m_fromHasBeenSet = false;
 
-    int m_to;
+    int m_to{0};
     bool m_toHasBeenSet = false;
 
-    int m_step;
+    int m_step{0};
     bool m_stepHasBeenSet = false;
   };
 

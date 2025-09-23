@@ -33,130 +33,46 @@ namespace Model
   class ConversationLevelSlotResolutionResultItem
   {
   public:
-    AWS_LEXMODELSV2_API ConversationLevelSlotResolutionResultItem();
+    AWS_LEXMODELSV2_API ConversationLevelSlotResolutionResultItem() = default;
     AWS_LEXMODELSV2_API ConversationLevelSlotResolutionResultItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ConversationLevelSlotResolutionResultItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The intents used in the slots list for the slot resolution details.</p>
      */
-    inline const Aws::String& GetIntentName() const{ return m_intentName; }
-
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
+    inline const Aws::String& GetIntentName() const { return m_intentName; }
     inline bool IntentNameHasBeenSet() const { return m_intentNameHasBeenSet; }
+    template<typename IntentNameT = Aws::String>
+    void SetIntentName(IntentNameT&& value) { m_intentNameHasBeenSet = true; m_intentName = std::forward<IntentNameT>(value); }
+    template<typename IntentNameT = Aws::String>
+    ConversationLevelSlotResolutionResultItem& WithIntentName(IntentNameT&& value) { SetIntentName(std::forward<IntentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
-    inline void SetIntentName(const Aws::String& value) { m_intentNameHasBeenSet = true; m_intentName = value; }
-
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
-    inline void SetIntentName(Aws::String&& value) { m_intentNameHasBeenSet = true; m_intentName = std::move(value); }
-
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
-    inline void SetIntentName(const char* value) { m_intentNameHasBeenSet = true; m_intentName.assign(value); }
-
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithIntentName(const Aws::String& value) { SetIntentName(value); return *this;}
-
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithIntentName(Aws::String&& value) { SetIntentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The intents used in the slots list for the slot resolution details.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithIntentName(const char* value) { SetIntentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The slot name in the slots list for the slot resolution details.</p>
      */
-    inline const Aws::String& GetSlotName() const{ return m_slotName; }
-
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
+    inline const Aws::String& GetSlotName() const { return m_slotName; }
     inline bool SlotNameHasBeenSet() const { return m_slotNameHasBeenSet; }
+    template<typename SlotNameT = Aws::String>
+    void SetSlotName(SlotNameT&& value) { m_slotNameHasBeenSet = true; m_slotName = std::forward<SlotNameT>(value); }
+    template<typename SlotNameT = Aws::String>
+    ConversationLevelSlotResolutionResultItem& WithSlotName(SlotNameT&& value) { SetSlotName(std::forward<SlotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
-    inline void SetSlotName(const Aws::String& value) { m_slotNameHasBeenSet = true; m_slotName = value; }
-
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
-    inline void SetSlotName(Aws::String&& value) { m_slotNameHasBeenSet = true; m_slotName = std::move(value); }
-
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
-    inline void SetSlotName(const char* value) { m_slotNameHasBeenSet = true; m_slotName.assign(value); }
-
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithSlotName(const Aws::String& value) { SetSlotName(value); return *this;}
-
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithSlotName(Aws::String&& value) { SetSlotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The slot name in the slots list for the slot resolution details.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithSlotName(const char* value) { SetSlotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of matching slots used in the slots listings for the slot
      * resolution evaluation.</p>
      */
-    inline const TestResultMatchStatus& GetMatchResult() const{ return m_matchResult; }
-
-    /**
-     * <p>The number of matching slots used in the slots listings for the slot
-     * resolution evaluation.</p>
-     */
+    inline TestResultMatchStatus GetMatchResult() const { return m_matchResult; }
     inline bool MatchResultHasBeenSet() const { return m_matchResultHasBeenSet; }
-
-    /**
-     * <p>The number of matching slots used in the slots listings for the slot
-     * resolution evaluation.</p>
-     */
-    inline void SetMatchResult(const TestResultMatchStatus& value) { m_matchResultHasBeenSet = true; m_matchResult = value; }
-
-    /**
-     * <p>The number of matching slots used in the slots listings for the slot
-     * resolution evaluation.</p>
-     */
-    inline void SetMatchResult(TestResultMatchStatus&& value) { m_matchResultHasBeenSet = true; m_matchResult = std::move(value); }
-
-    /**
-     * <p>The number of matching slots used in the slots listings for the slot
-     * resolution evaluation.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithMatchResult(const TestResultMatchStatus& value) { SetMatchResult(value); return *this;}
-
-    /**
-     * <p>The number of matching slots used in the slots listings for the slot
-     * resolution evaluation.</p>
-     */
-    inline ConversationLevelSlotResolutionResultItem& WithMatchResult(TestResultMatchStatus&& value) { SetMatchResult(std::move(value)); return *this;}
-
+    inline void SetMatchResult(TestResultMatchStatus value) { m_matchResultHasBeenSet = true; m_matchResult = value; }
+    inline ConversationLevelSlotResolutionResultItem& WithMatchResult(TestResultMatchStatus value) { SetMatchResult(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_intentName;
@@ -165,7 +81,7 @@ namespace Model
     Aws::String m_slotName;
     bool m_slotNameHasBeenSet = false;
 
-    TestResultMatchStatus m_matchResult;
+    TestResultMatchStatus m_matchResult{TestResultMatchStatus::NOT_SET};
     bool m_matchResultHasBeenSet = false;
   };
 

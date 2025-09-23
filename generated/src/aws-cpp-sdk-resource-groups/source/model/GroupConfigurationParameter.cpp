@@ -18,15 +18,7 @@ namespace ResourceGroups
 namespace Model
 {
 
-GroupConfigurationParameter::GroupConfigurationParameter() : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-GroupConfigurationParameter::GroupConfigurationParameter(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+GroupConfigurationParameter::GroupConfigurationParameter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ GroupConfigurationParameter& GroupConfigurationParameter::operator =(JsonView js
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -49,7 +39,6 @@ GroupConfigurationParameter& GroupConfigurationParameter::operator =(JsonView js
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

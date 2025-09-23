@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsWafv2RulesActionDetails::AwsWafv2RulesActionDetails() : 
-    m_allowHasBeenSet(false),
-    m_blockHasBeenSet(false),
-    m_captchaHasBeenSet(false),
-    m_countHasBeenSet(false)
-{
-}
-
-AwsWafv2RulesActionDetails::AwsWafv2RulesActionDetails(JsonView jsonValue) : 
-    m_allowHasBeenSet(false),
-    m_blockHasBeenSet(false),
-    m_captchaHasBeenSet(false),
-    m_countHasBeenSet(false)
+AwsWafv2RulesActionDetails::AwsWafv2RulesActionDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ AwsWafv2RulesActionDetails& AwsWafv2RulesActionDetails::operator =(JsonView json
   if(jsonValue.ValueExists("Allow"))
   {
     m_allow = jsonValue.GetObject("Allow");
-
     m_allowHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Block"))
   {
     m_block = jsonValue.GetObject("Block");
-
     m_blockHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Captcha"))
   {
     m_captcha = jsonValue.GetObject("Captcha");
-
     m_captchaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Count"))
   {
     m_count = jsonValue.GetObject("Count");
-
     m_countHasBeenSet = true;
   }
-
   return *this;
 }
 

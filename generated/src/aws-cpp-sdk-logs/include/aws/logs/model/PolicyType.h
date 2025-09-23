@@ -16,7 +16,11 @@ namespace Model
   enum class PolicyType
   {
     NOT_SET,
-    DATA_PROTECTION_POLICY
+    DATA_PROTECTION_POLICY,
+    SUBSCRIPTION_FILTER_POLICY,
+    FIELD_INDEX_POLICY,
+    TRANSFORMER_POLICY,
+    METRIC_EXTRACTION_POLICY
   };
 
 namespace PolicyTypeMapper

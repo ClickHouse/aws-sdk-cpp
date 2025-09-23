@@ -12,25 +12,6 @@ using namespace Aws::ECS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartTaskRequest::StartTaskRequest() : 
-    m_clusterHasBeenSet(false),
-    m_containerInstancesHasBeenSet(false),
-    m_enableECSManagedTags(false),
-    m_enableECSManagedTagsHasBeenSet(false),
-    m_enableExecuteCommand(false),
-    m_enableExecuteCommandHasBeenSet(false),
-    m_groupHasBeenSet(false),
-    m_networkConfigurationHasBeenSet(false),
-    m_overridesHasBeenSet(false),
-    m_propagateTags(PropagateTags::NOT_SET),
-    m_propagateTagsHasBeenSet(false),
-    m_referenceIdHasBeenSet(false),
-    m_startedByHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_taskDefinitionHasBeenSet(false)
-{
-}
-
 Aws::String StartTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -113,6 +94,17 @@ Aws::String StartTaskRequest::SerializePayload() const
   if(m_taskDefinitionHasBeenSet)
   {
    payload.WithString("taskDefinition", m_taskDefinition);
+
+  }
+
+  if(m_volumeConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> volumeConfigurationsJsonList(m_volumeConfigurations.size());
+   for(unsigned volumeConfigurationsIndex = 0; volumeConfigurationsIndex < volumeConfigurationsJsonList.GetLength(); ++volumeConfigurationsIndex)
+   {
+     volumeConfigurationsJsonList[volumeConfigurationsIndex].AsObject(m_volumeConfigurations[volumeConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("volumeConfigurations", std::move(volumeConfigurationsJsonList));
 
   }
 

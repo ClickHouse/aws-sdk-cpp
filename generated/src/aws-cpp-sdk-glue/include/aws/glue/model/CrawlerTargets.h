@@ -39,339 +39,123 @@ namespace Model
   class CrawlerTargets
   {
   public:
-    AWS_GLUE_API CrawlerTargets();
+    AWS_GLUE_API CrawlerTargets() = default;
     AWS_GLUE_API CrawlerTargets(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API CrawlerTargets& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
      */
-    inline const Aws::Vector<S3Target>& GetS3Targets() const{ return m_s3Targets; }
-
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
+    inline const Aws::Vector<S3Target>& GetS3Targets() const { return m_s3Targets; }
     inline bool S3TargetsHasBeenSet() const { return m_s3TargetsHasBeenSet; }
+    template<typename S3TargetsT = Aws::Vector<S3Target>>
+    void SetS3Targets(S3TargetsT&& value) { m_s3TargetsHasBeenSet = true; m_s3Targets = std::forward<S3TargetsT>(value); }
+    template<typename S3TargetsT = Aws::Vector<S3Target>>
+    CrawlerTargets& WithS3Targets(S3TargetsT&& value) { SetS3Targets(std::forward<S3TargetsT>(value)); return *this;}
+    template<typename S3TargetsT = S3Target>
+    CrawlerTargets& AddS3Targets(S3TargetsT&& value) { m_s3TargetsHasBeenSet = true; m_s3Targets.emplace_back(std::forward<S3TargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
-    inline void SetS3Targets(const Aws::Vector<S3Target>& value) { m_s3TargetsHasBeenSet = true; m_s3Targets = value; }
-
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
-    inline void SetS3Targets(Aws::Vector<S3Target>&& value) { m_s3TargetsHasBeenSet = true; m_s3Targets = std::move(value); }
-
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
-    inline CrawlerTargets& WithS3Targets(const Aws::Vector<S3Target>& value) { SetS3Targets(value); return *this;}
-
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
-    inline CrawlerTargets& WithS3Targets(Aws::Vector<S3Target>&& value) { SetS3Targets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
-    inline CrawlerTargets& AddS3Targets(const S3Target& value) { m_s3TargetsHasBeenSet = true; m_s3Targets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Amazon Simple Storage Service (Amazon S3) targets.</p>
-     */
-    inline CrawlerTargets& AddS3Targets(S3Target&& value) { m_s3TargetsHasBeenSet = true; m_s3Targets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies JDBC targets.</p>
      */
-    inline const Aws::Vector<JdbcTarget>& GetJdbcTargets() const{ return m_jdbcTargets; }
-
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
+    inline const Aws::Vector<JdbcTarget>& GetJdbcTargets() const { return m_jdbcTargets; }
     inline bool JdbcTargetsHasBeenSet() const { return m_jdbcTargetsHasBeenSet; }
+    template<typename JdbcTargetsT = Aws::Vector<JdbcTarget>>
+    void SetJdbcTargets(JdbcTargetsT&& value) { m_jdbcTargetsHasBeenSet = true; m_jdbcTargets = std::forward<JdbcTargetsT>(value); }
+    template<typename JdbcTargetsT = Aws::Vector<JdbcTarget>>
+    CrawlerTargets& WithJdbcTargets(JdbcTargetsT&& value) { SetJdbcTargets(std::forward<JdbcTargetsT>(value)); return *this;}
+    template<typename JdbcTargetsT = JdbcTarget>
+    CrawlerTargets& AddJdbcTargets(JdbcTargetsT&& value) { m_jdbcTargetsHasBeenSet = true; m_jdbcTargets.emplace_back(std::forward<JdbcTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
-    inline void SetJdbcTargets(const Aws::Vector<JdbcTarget>& value) { m_jdbcTargetsHasBeenSet = true; m_jdbcTargets = value; }
-
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
-    inline void SetJdbcTargets(Aws::Vector<JdbcTarget>&& value) { m_jdbcTargetsHasBeenSet = true; m_jdbcTargets = std::move(value); }
-
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
-    inline CrawlerTargets& WithJdbcTargets(const Aws::Vector<JdbcTarget>& value) { SetJdbcTargets(value); return *this;}
-
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
-    inline CrawlerTargets& WithJdbcTargets(Aws::Vector<JdbcTarget>&& value) { SetJdbcTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
-    inline CrawlerTargets& AddJdbcTargets(const JdbcTarget& value) { m_jdbcTargetsHasBeenSet = true; m_jdbcTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies JDBC targets.</p>
-     */
-    inline CrawlerTargets& AddJdbcTargets(JdbcTarget&& value) { m_jdbcTargetsHasBeenSet = true; m_jdbcTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
      */
-    inline const Aws::Vector<MongoDBTarget>& GetMongoDBTargets() const{ return m_mongoDBTargets; }
-
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
+    inline const Aws::Vector<MongoDBTarget>& GetMongoDBTargets() const { return m_mongoDBTargets; }
     inline bool MongoDBTargetsHasBeenSet() const { return m_mongoDBTargetsHasBeenSet; }
+    template<typename MongoDBTargetsT = Aws::Vector<MongoDBTarget>>
+    void SetMongoDBTargets(MongoDBTargetsT&& value) { m_mongoDBTargetsHasBeenSet = true; m_mongoDBTargets = std::forward<MongoDBTargetsT>(value); }
+    template<typename MongoDBTargetsT = Aws::Vector<MongoDBTarget>>
+    CrawlerTargets& WithMongoDBTargets(MongoDBTargetsT&& value) { SetMongoDBTargets(std::forward<MongoDBTargetsT>(value)); return *this;}
+    template<typename MongoDBTargetsT = MongoDBTarget>
+    CrawlerTargets& AddMongoDBTargets(MongoDBTargetsT&& value) { m_mongoDBTargetsHasBeenSet = true; m_mongoDBTargets.emplace_back(std::forward<MongoDBTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
-    inline void SetMongoDBTargets(const Aws::Vector<MongoDBTarget>& value) { m_mongoDBTargetsHasBeenSet = true; m_mongoDBTargets = value; }
-
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
-    inline void SetMongoDBTargets(Aws::Vector<MongoDBTarget>&& value) { m_mongoDBTargetsHasBeenSet = true; m_mongoDBTargets = std::move(value); }
-
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
-    inline CrawlerTargets& WithMongoDBTargets(const Aws::Vector<MongoDBTarget>& value) { SetMongoDBTargets(value); return *this;}
-
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
-    inline CrawlerTargets& WithMongoDBTargets(Aws::Vector<MongoDBTarget>&& value) { SetMongoDBTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
-    inline CrawlerTargets& AddMongoDBTargets(const MongoDBTarget& value) { m_mongoDBTargetsHasBeenSet = true; m_mongoDBTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Amazon DocumentDB or MongoDB targets.</p>
-     */
-    inline CrawlerTargets& AddMongoDBTargets(MongoDBTarget&& value) { m_mongoDBTargetsHasBeenSet = true; m_mongoDBTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies Amazon DynamoDB targets.</p>
      */
-    inline const Aws::Vector<DynamoDBTarget>& GetDynamoDBTargets() const{ return m_dynamoDBTargets; }
-
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
+    inline const Aws::Vector<DynamoDBTarget>& GetDynamoDBTargets() const { return m_dynamoDBTargets; }
     inline bool DynamoDBTargetsHasBeenSet() const { return m_dynamoDBTargetsHasBeenSet; }
+    template<typename DynamoDBTargetsT = Aws::Vector<DynamoDBTarget>>
+    void SetDynamoDBTargets(DynamoDBTargetsT&& value) { m_dynamoDBTargetsHasBeenSet = true; m_dynamoDBTargets = std::forward<DynamoDBTargetsT>(value); }
+    template<typename DynamoDBTargetsT = Aws::Vector<DynamoDBTarget>>
+    CrawlerTargets& WithDynamoDBTargets(DynamoDBTargetsT&& value) { SetDynamoDBTargets(std::forward<DynamoDBTargetsT>(value)); return *this;}
+    template<typename DynamoDBTargetsT = DynamoDBTarget>
+    CrawlerTargets& AddDynamoDBTargets(DynamoDBTargetsT&& value) { m_dynamoDBTargetsHasBeenSet = true; m_dynamoDBTargets.emplace_back(std::forward<DynamoDBTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
-    inline void SetDynamoDBTargets(const Aws::Vector<DynamoDBTarget>& value) { m_dynamoDBTargetsHasBeenSet = true; m_dynamoDBTargets = value; }
-
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
-    inline void SetDynamoDBTargets(Aws::Vector<DynamoDBTarget>&& value) { m_dynamoDBTargetsHasBeenSet = true; m_dynamoDBTargets = std::move(value); }
-
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
-    inline CrawlerTargets& WithDynamoDBTargets(const Aws::Vector<DynamoDBTarget>& value) { SetDynamoDBTargets(value); return *this;}
-
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
-    inline CrawlerTargets& WithDynamoDBTargets(Aws::Vector<DynamoDBTarget>&& value) { SetDynamoDBTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
-    inline CrawlerTargets& AddDynamoDBTargets(const DynamoDBTarget& value) { m_dynamoDBTargetsHasBeenSet = true; m_dynamoDBTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Amazon DynamoDB targets.</p>
-     */
-    inline CrawlerTargets& AddDynamoDBTargets(DynamoDBTarget&& value) { m_dynamoDBTargetsHasBeenSet = true; m_dynamoDBTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies Glue Data Catalog targets.</p>
      */
-    inline const Aws::Vector<CatalogTarget>& GetCatalogTargets() const{ return m_catalogTargets; }
-
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
+    inline const Aws::Vector<CatalogTarget>& GetCatalogTargets() const { return m_catalogTargets; }
     inline bool CatalogTargetsHasBeenSet() const { return m_catalogTargetsHasBeenSet; }
+    template<typename CatalogTargetsT = Aws::Vector<CatalogTarget>>
+    void SetCatalogTargets(CatalogTargetsT&& value) { m_catalogTargetsHasBeenSet = true; m_catalogTargets = std::forward<CatalogTargetsT>(value); }
+    template<typename CatalogTargetsT = Aws::Vector<CatalogTarget>>
+    CrawlerTargets& WithCatalogTargets(CatalogTargetsT&& value) { SetCatalogTargets(std::forward<CatalogTargetsT>(value)); return *this;}
+    template<typename CatalogTargetsT = CatalogTarget>
+    CrawlerTargets& AddCatalogTargets(CatalogTargetsT&& value) { m_catalogTargetsHasBeenSet = true; m_catalogTargets.emplace_back(std::forward<CatalogTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
-    inline void SetCatalogTargets(const Aws::Vector<CatalogTarget>& value) { m_catalogTargetsHasBeenSet = true; m_catalogTargets = value; }
-
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
-    inline void SetCatalogTargets(Aws::Vector<CatalogTarget>&& value) { m_catalogTargetsHasBeenSet = true; m_catalogTargets = std::move(value); }
-
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
-    inline CrawlerTargets& WithCatalogTargets(const Aws::Vector<CatalogTarget>& value) { SetCatalogTargets(value); return *this;}
-
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
-    inline CrawlerTargets& WithCatalogTargets(Aws::Vector<CatalogTarget>&& value) { SetCatalogTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
-    inline CrawlerTargets& AddCatalogTargets(const CatalogTarget& value) { m_catalogTargetsHasBeenSet = true; m_catalogTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Glue Data Catalog targets.</p>
-     */
-    inline CrawlerTargets& AddCatalogTargets(CatalogTarget&& value) { m_catalogTargetsHasBeenSet = true; m_catalogTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies Delta data store targets.</p>
      */
-    inline const Aws::Vector<DeltaTarget>& GetDeltaTargets() const{ return m_deltaTargets; }
-
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
+    inline const Aws::Vector<DeltaTarget>& GetDeltaTargets() const { return m_deltaTargets; }
     inline bool DeltaTargetsHasBeenSet() const { return m_deltaTargetsHasBeenSet; }
+    template<typename DeltaTargetsT = Aws::Vector<DeltaTarget>>
+    void SetDeltaTargets(DeltaTargetsT&& value) { m_deltaTargetsHasBeenSet = true; m_deltaTargets = std::forward<DeltaTargetsT>(value); }
+    template<typename DeltaTargetsT = Aws::Vector<DeltaTarget>>
+    CrawlerTargets& WithDeltaTargets(DeltaTargetsT&& value) { SetDeltaTargets(std::forward<DeltaTargetsT>(value)); return *this;}
+    template<typename DeltaTargetsT = DeltaTarget>
+    CrawlerTargets& AddDeltaTargets(DeltaTargetsT&& value) { m_deltaTargetsHasBeenSet = true; m_deltaTargets.emplace_back(std::forward<DeltaTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
-    inline void SetDeltaTargets(const Aws::Vector<DeltaTarget>& value) { m_deltaTargetsHasBeenSet = true; m_deltaTargets = value; }
-
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
-    inline void SetDeltaTargets(Aws::Vector<DeltaTarget>&& value) { m_deltaTargetsHasBeenSet = true; m_deltaTargets = std::move(value); }
-
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
-    inline CrawlerTargets& WithDeltaTargets(const Aws::Vector<DeltaTarget>& value) { SetDeltaTargets(value); return *this;}
-
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
-    inline CrawlerTargets& WithDeltaTargets(Aws::Vector<DeltaTarget>&& value) { SetDeltaTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
-    inline CrawlerTargets& AddDeltaTargets(const DeltaTarget& value) { m_deltaTargetsHasBeenSet = true; m_deltaTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Delta data store targets.</p>
-     */
-    inline CrawlerTargets& AddDeltaTargets(DeltaTarget&& value) { m_deltaTargetsHasBeenSet = true; m_deltaTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies Apache Iceberg data store targets.</p>
      */
-    inline const Aws::Vector<IcebergTarget>& GetIcebergTargets() const{ return m_icebergTargets; }
-
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
+    inline const Aws::Vector<IcebergTarget>& GetIcebergTargets() const { return m_icebergTargets; }
     inline bool IcebergTargetsHasBeenSet() const { return m_icebergTargetsHasBeenSet; }
+    template<typename IcebergTargetsT = Aws::Vector<IcebergTarget>>
+    void SetIcebergTargets(IcebergTargetsT&& value) { m_icebergTargetsHasBeenSet = true; m_icebergTargets = std::forward<IcebergTargetsT>(value); }
+    template<typename IcebergTargetsT = Aws::Vector<IcebergTarget>>
+    CrawlerTargets& WithIcebergTargets(IcebergTargetsT&& value) { SetIcebergTargets(std::forward<IcebergTargetsT>(value)); return *this;}
+    template<typename IcebergTargetsT = IcebergTarget>
+    CrawlerTargets& AddIcebergTargets(IcebergTargetsT&& value) { m_icebergTargetsHasBeenSet = true; m_icebergTargets.emplace_back(std::forward<IcebergTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
-    inline void SetIcebergTargets(const Aws::Vector<IcebergTarget>& value) { m_icebergTargetsHasBeenSet = true; m_icebergTargets = value; }
-
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
-    inline void SetIcebergTargets(Aws::Vector<IcebergTarget>&& value) { m_icebergTargetsHasBeenSet = true; m_icebergTargets = std::move(value); }
-
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
-    inline CrawlerTargets& WithIcebergTargets(const Aws::Vector<IcebergTarget>& value) { SetIcebergTargets(value); return *this;}
-
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
-    inline CrawlerTargets& WithIcebergTargets(Aws::Vector<IcebergTarget>&& value) { SetIcebergTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
-    inline CrawlerTargets& AddIcebergTargets(const IcebergTarget& value) { m_icebergTargetsHasBeenSet = true; m_icebergTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Apache Iceberg data store targets.</p>
-     */
-    inline CrawlerTargets& AddIcebergTargets(IcebergTarget&& value) { m_icebergTargetsHasBeenSet = true; m_icebergTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies Apache Hudi data store targets.</p>
      */
-    inline const Aws::Vector<HudiTarget>& GetHudiTargets() const{ return m_hudiTargets; }
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
+    inline const Aws::Vector<HudiTarget>& GetHudiTargets() const { return m_hudiTargets; }
     inline bool HudiTargetsHasBeenSet() const { return m_hudiTargetsHasBeenSet; }
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
-    inline void SetHudiTargets(const Aws::Vector<HudiTarget>& value) { m_hudiTargetsHasBeenSet = true; m_hudiTargets = value; }
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
-    inline void SetHudiTargets(Aws::Vector<HudiTarget>&& value) { m_hudiTargetsHasBeenSet = true; m_hudiTargets = std::move(value); }
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
-    inline CrawlerTargets& WithHudiTargets(const Aws::Vector<HudiTarget>& value) { SetHudiTargets(value); return *this;}
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
-    inline CrawlerTargets& WithHudiTargets(Aws::Vector<HudiTarget>&& value) { SetHudiTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
-    inline CrawlerTargets& AddHudiTargets(const HudiTarget& value) { m_hudiTargetsHasBeenSet = true; m_hudiTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies Apache Hudi data store targets.</p>
-     */
-    inline CrawlerTargets& AddHudiTargets(HudiTarget&& value) { m_hudiTargetsHasBeenSet = true; m_hudiTargets.push_back(std::move(value)); return *this; }
-
+    template<typename HudiTargetsT = Aws::Vector<HudiTarget>>
+    void SetHudiTargets(HudiTargetsT&& value) { m_hudiTargetsHasBeenSet = true; m_hudiTargets = std::forward<HudiTargetsT>(value); }
+    template<typename HudiTargetsT = Aws::Vector<HudiTarget>>
+    CrawlerTargets& WithHudiTargets(HudiTargetsT&& value) { SetHudiTargets(std::forward<HudiTargetsT>(value)); return *this;}
+    template<typename HudiTargetsT = HudiTarget>
+    CrawlerTargets& AddHudiTargets(HudiTargetsT&& value) { m_hudiTargetsHasBeenSet = true; m_hudiTargets.emplace_back(std::forward<HudiTargetsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<S3Target> m_s3Targets;

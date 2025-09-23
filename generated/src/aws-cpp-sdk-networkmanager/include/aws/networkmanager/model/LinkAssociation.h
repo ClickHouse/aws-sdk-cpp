@@ -33,165 +33,57 @@ namespace Model
   class LinkAssociation
   {
   public:
-    AWS_NETWORKMANAGER_API LinkAssociation();
+    AWS_NETWORKMANAGER_API LinkAssociation() = default;
     AWS_NETWORKMANAGER_API LinkAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKMANAGER_API LinkAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the global network.</p>
      */
-    inline const Aws::String& GetGlobalNetworkId() const{ return m_globalNetworkId; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
+    inline const Aws::String& GetGlobalNetworkId() const { return m_globalNetworkId; }
     inline bool GlobalNetworkIdHasBeenSet() const { return m_globalNetworkIdHasBeenSet; }
+    template<typename GlobalNetworkIdT = Aws::String>
+    void SetGlobalNetworkId(GlobalNetworkIdT&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::forward<GlobalNetworkIdT>(value); }
+    template<typename GlobalNetworkIdT = Aws::String>
+    LinkAssociation& WithGlobalNetworkId(GlobalNetworkIdT&& value) { SetGlobalNetworkId(std::forward<GlobalNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const Aws::String& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = value; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(Aws::String&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const char* value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline LinkAssociation& WithGlobalNetworkId(const Aws::String& value) { SetGlobalNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline LinkAssociation& WithGlobalNetworkId(Aws::String&& value) { SetGlobalNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline LinkAssociation& WithGlobalNetworkId(const char* value) { SetGlobalNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The device ID for the link association.</p>
      */
-    inline const Aws::String& GetDeviceId() const{ return m_deviceId; }
-
-    /**
-     * <p>The device ID for the link association.</p>
-     */
+    inline const Aws::String& GetDeviceId() const { return m_deviceId; }
     inline bool DeviceIdHasBeenSet() const { return m_deviceIdHasBeenSet; }
+    template<typename DeviceIdT = Aws::String>
+    void SetDeviceId(DeviceIdT&& value) { m_deviceIdHasBeenSet = true; m_deviceId = std::forward<DeviceIdT>(value); }
+    template<typename DeviceIdT = Aws::String>
+    LinkAssociation& WithDeviceId(DeviceIdT&& value) { SetDeviceId(std::forward<DeviceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The device ID for the link association.</p>
-     */
-    inline void SetDeviceId(const Aws::String& value) { m_deviceIdHasBeenSet = true; m_deviceId = value; }
-
-    /**
-     * <p>The device ID for the link association.</p>
-     */
-    inline void SetDeviceId(Aws::String&& value) { m_deviceIdHasBeenSet = true; m_deviceId = std::move(value); }
-
-    /**
-     * <p>The device ID for the link association.</p>
-     */
-    inline void SetDeviceId(const char* value) { m_deviceIdHasBeenSet = true; m_deviceId.assign(value); }
-
-    /**
-     * <p>The device ID for the link association.</p>
-     */
-    inline LinkAssociation& WithDeviceId(const Aws::String& value) { SetDeviceId(value); return *this;}
-
-    /**
-     * <p>The device ID for the link association.</p>
-     */
-    inline LinkAssociation& WithDeviceId(Aws::String&& value) { SetDeviceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The device ID for the link association.</p>
-     */
-    inline LinkAssociation& WithDeviceId(const char* value) { SetDeviceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the link.</p>
      */
-    inline const Aws::String& GetLinkId() const{ return m_linkId; }
-
-    /**
-     * <p>The ID of the link.</p>
-     */
+    inline const Aws::String& GetLinkId() const { return m_linkId; }
     inline bool LinkIdHasBeenSet() const { return m_linkIdHasBeenSet; }
+    template<typename LinkIdT = Aws::String>
+    void SetLinkId(LinkIdT&& value) { m_linkIdHasBeenSet = true; m_linkId = std::forward<LinkIdT>(value); }
+    template<typename LinkIdT = Aws::String>
+    LinkAssociation& WithLinkId(LinkIdT&& value) { SetLinkId(std::forward<LinkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the link.</p>
-     */
-    inline void SetLinkId(const Aws::String& value) { m_linkIdHasBeenSet = true; m_linkId = value; }
-
-    /**
-     * <p>The ID of the link.</p>
-     */
-    inline void SetLinkId(Aws::String&& value) { m_linkIdHasBeenSet = true; m_linkId = std::move(value); }
-
-    /**
-     * <p>The ID of the link.</p>
-     */
-    inline void SetLinkId(const char* value) { m_linkIdHasBeenSet = true; m_linkId.assign(value); }
-
-    /**
-     * <p>The ID of the link.</p>
-     */
-    inline LinkAssociation& WithLinkId(const Aws::String& value) { SetLinkId(value); return *this;}
-
-    /**
-     * <p>The ID of the link.</p>
-     */
-    inline LinkAssociation& WithLinkId(Aws::String&& value) { SetLinkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the link.</p>
-     */
-    inline LinkAssociation& WithLinkId(const char* value) { SetLinkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the association.</p>
      */
-    inline const LinkAssociationState& GetLinkAssociationState() const{ return m_linkAssociationState; }
-
-    /**
-     * <p>The state of the association.</p>
-     */
+    inline LinkAssociationState GetLinkAssociationState() const { return m_linkAssociationState; }
     inline bool LinkAssociationStateHasBeenSet() const { return m_linkAssociationStateHasBeenSet; }
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline void SetLinkAssociationState(const LinkAssociationState& value) { m_linkAssociationStateHasBeenSet = true; m_linkAssociationState = value; }
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline void SetLinkAssociationState(LinkAssociationState&& value) { m_linkAssociationStateHasBeenSet = true; m_linkAssociationState = std::move(value); }
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline LinkAssociation& WithLinkAssociationState(const LinkAssociationState& value) { SetLinkAssociationState(value); return *this;}
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline LinkAssociation& WithLinkAssociationState(LinkAssociationState&& value) { SetLinkAssociationState(std::move(value)); return *this;}
-
+    inline void SetLinkAssociationState(LinkAssociationState value) { m_linkAssociationStateHasBeenSet = true; m_linkAssociationState = value; }
+    inline LinkAssociation& WithLinkAssociationState(LinkAssociationState value) { SetLinkAssociationState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalNetworkId;
@@ -203,7 +95,7 @@ namespace Model
     Aws::String m_linkId;
     bool m_linkIdHasBeenSet = false;
 
-    LinkAssociationState m_linkAssociationState;
+    LinkAssociationState m_linkAssociationState{LinkAssociationState::NOT_SET};
     bool m_linkAssociationStateHasBeenSet = false;
   };
 

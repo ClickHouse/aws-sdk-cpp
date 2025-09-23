@@ -18,21 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-AnalyticsIntentStageFilter::AnalyticsIntentStageFilter() : 
-    m_name(AnalyticsIntentStageFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_operator(AnalyticsFilterOperator::NOT_SET),
-    m_operatorHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-AnalyticsIntentStageFilter::AnalyticsIntentStageFilter(JsonView jsonValue) : 
-    m_name(AnalyticsIntentStageFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_operator(AnalyticsFilterOperator::NOT_SET),
-    m_operatorHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+AnalyticsIntentStageFilter::AnalyticsIntentStageFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ AnalyticsIntentStageFilter& AnalyticsIntentStageFilter::operator =(JsonView json
   if(jsonValue.ValueExists("name"))
   {
     m_name = AnalyticsIntentStageFilterNameMapper::GetAnalyticsIntentStageFilterNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("operator"))
   {
     m_operator = AnalyticsFilterOperatorMapper::GetAnalyticsFilterOperatorForName(jsonValue.GetString("operator"));
-
     m_operatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -62,7 +44,6 @@ AnalyticsIntentStageFilter& AnalyticsIntentStageFilter::operator =(JsonView json
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

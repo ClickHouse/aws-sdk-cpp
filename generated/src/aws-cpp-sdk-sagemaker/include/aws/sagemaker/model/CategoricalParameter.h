@@ -33,98 +33,37 @@ namespace Model
   class CategoricalParameter
   {
   public:
-    AWS_SAGEMAKER_API CategoricalParameter();
+    AWS_SAGEMAKER_API CategoricalParameter() = default;
     AWS_SAGEMAKER_API CategoricalParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API CategoricalParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Name of the environment variable.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CategoricalParameter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
-    inline CategoricalParameter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
-    inline CategoricalParameter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Name of the environment variable.</p>
-     */
-    inline CategoricalParameter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of values you can pass.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline void SetValue(const Aws::Vector<Aws::String>& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline void SetValue(Aws::Vector<Aws::String>&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline CategoricalParameter& WithValue(const Aws::Vector<Aws::String>& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline CategoricalParameter& WithValue(Aws::Vector<Aws::String>&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline CategoricalParameter& AddValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value.push_back(value); return *this; }
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline CategoricalParameter& AddValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of values you can pass.</p>
-     */
-    inline CategoricalParameter& AddValue(const char* value) { m_valueHasBeenSet = true; m_value.push_back(value); return *this; }
-
+    template<typename ValueT = Aws::Vector<Aws::String>>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::Vector<Aws::String>>
+    CategoricalParameter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    template<typename ValueT = Aws::String>
+    CategoricalParameter& AddValue(ValueT&& value) { m_valueHasBeenSet = true; m_value.emplace_back(std::forward<ValueT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

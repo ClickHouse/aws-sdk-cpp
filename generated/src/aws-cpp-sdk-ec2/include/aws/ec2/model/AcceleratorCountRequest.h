@@ -32,7 +32,7 @@ namespace Model
   class AcceleratorCountRequest
   {
   public:
-    AWS_EC2_API AcceleratorCountRequest();
+    AWS_EC2_API AcceleratorCountRequest() = default;
     AWS_EC2_API AcceleratorCountRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AcceleratorCountRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,65 +40,34 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The minimum number of accelerators. To specify no minimum limit, omit this
      * parameter.</p>
      */
-    inline int GetMin() const{ return m_min; }
-
-    /**
-     * <p>The minimum number of accelerators. To specify no minimum limit, omit this
-     * parameter.</p>
-     */
+    inline int GetMin() const { return m_min; }
     inline bool MinHasBeenSet() const { return m_minHasBeenSet; }
-
-    /**
-     * <p>The minimum number of accelerators. To specify no minimum limit, omit this
-     * parameter.</p>
-     */
     inline void SetMin(int value) { m_minHasBeenSet = true; m_min = value; }
-
-    /**
-     * <p>The minimum number of accelerators. To specify no minimum limit, omit this
-     * parameter.</p>
-     */
     inline AcceleratorCountRequest& WithMin(int value) { SetMin(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum number of accelerators. To specify no maximum limit, omit this
      * parameter. To exclude accelerator-enabled instance types, set <code>Max</code>
      * to <code>0</code>.</p>
      */
-    inline int GetMax() const{ return m_max; }
-
-    /**
-     * <p>The maximum number of accelerators. To specify no maximum limit, omit this
-     * parameter. To exclude accelerator-enabled instance types, set <code>Max</code>
-     * to <code>0</code>.</p>
-     */
+    inline int GetMax() const { return m_max; }
     inline bool MaxHasBeenSet() const { return m_maxHasBeenSet; }
-
-    /**
-     * <p>The maximum number of accelerators. To specify no maximum limit, omit this
-     * parameter. To exclude accelerator-enabled instance types, set <code>Max</code>
-     * to <code>0</code>.</p>
-     */
     inline void SetMax(int value) { m_maxHasBeenSet = true; m_max = value; }
-
-    /**
-     * <p>The maximum number of accelerators. To specify no maximum limit, omit this
-     * parameter. To exclude accelerator-enabled instance types, set <code>Max</code>
-     * to <code>0</code>.</p>
-     */
     inline AcceleratorCountRequest& WithMax(int value) { SetMax(value); return *this;}
-
+    ///@}
   private:
 
-    int m_min;
+    int m_min{0};
     bool m_minHasBeenSet = false;
 
-    int m_max;
+    int m_max{0};
     bool m_maxHasBeenSet = false;
   };
 

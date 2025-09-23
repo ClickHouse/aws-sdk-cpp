@@ -33,79 +33,36 @@ namespace Model
   class FailoverConfig
   {
   public:
-    AWS_EVENTBRIDGE_API FailoverConfig();
+    AWS_EVENTBRIDGE_API FailoverConfig() = default;
     AWS_EVENTBRIDGE_API FailoverConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API FailoverConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The main Region of the endpoint.</p>
      */
-    inline const Primary& GetPrimary() const{ return m_primary; }
-
-    /**
-     * <p>The main Region of the endpoint.</p>
-     */
+    inline const Primary& GetPrimary() const { return m_primary; }
     inline bool PrimaryHasBeenSet() const { return m_primaryHasBeenSet; }
+    template<typename PrimaryT = Primary>
+    void SetPrimary(PrimaryT&& value) { m_primaryHasBeenSet = true; m_primary = std::forward<PrimaryT>(value); }
+    template<typename PrimaryT = Primary>
+    FailoverConfig& WithPrimary(PrimaryT&& value) { SetPrimary(std::forward<PrimaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The main Region of the endpoint.</p>
-     */
-    inline void SetPrimary(const Primary& value) { m_primaryHasBeenSet = true; m_primary = value; }
-
-    /**
-     * <p>The main Region of the endpoint.</p>
-     */
-    inline void SetPrimary(Primary&& value) { m_primaryHasBeenSet = true; m_primary = std::move(value); }
-
-    /**
-     * <p>The main Region of the endpoint.</p>
-     */
-    inline FailoverConfig& WithPrimary(const Primary& value) { SetPrimary(value); return *this;}
-
-    /**
-     * <p>The main Region of the endpoint.</p>
-     */
-    inline FailoverConfig& WithPrimary(Primary&& value) { SetPrimary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Region that events are routed to when failover is triggered or event
      * replication is enabled.</p>
      */
-    inline const Secondary& GetSecondary() const{ return m_secondary; }
-
-    /**
-     * <p>The Region that events are routed to when failover is triggered or event
-     * replication is enabled.</p>
-     */
+    inline const Secondary& GetSecondary() const { return m_secondary; }
     inline bool SecondaryHasBeenSet() const { return m_secondaryHasBeenSet; }
-
-    /**
-     * <p>The Region that events are routed to when failover is triggered or event
-     * replication is enabled.</p>
-     */
-    inline void SetSecondary(const Secondary& value) { m_secondaryHasBeenSet = true; m_secondary = value; }
-
-    /**
-     * <p>The Region that events are routed to when failover is triggered or event
-     * replication is enabled.</p>
-     */
-    inline void SetSecondary(Secondary&& value) { m_secondaryHasBeenSet = true; m_secondary = std::move(value); }
-
-    /**
-     * <p>The Region that events are routed to when failover is triggered or event
-     * replication is enabled.</p>
-     */
-    inline FailoverConfig& WithSecondary(const Secondary& value) { SetSecondary(value); return *this;}
-
-    /**
-     * <p>The Region that events are routed to when failover is triggered or event
-     * replication is enabled.</p>
-     */
-    inline FailoverConfig& WithSecondary(Secondary&& value) { SetSecondary(std::move(value)); return *this;}
-
+    template<typename SecondaryT = Secondary>
+    void SetSecondary(SecondaryT&& value) { m_secondaryHasBeenSet = true; m_secondary = std::forward<SecondaryT>(value); }
+    template<typename SecondaryT = Secondary>
+    FailoverConfig& WithSecondary(SecondaryT&& value) { SetSecondary(std::forward<SecondaryT>(value)); return *this;}
+    ///@}
   private:
 
     Primary m_primary;

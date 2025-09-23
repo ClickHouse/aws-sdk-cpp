@@ -31,52 +31,23 @@ namespace Model
   class LambdaDataSourceConfig
   {
   public:
-    AWS_APPSYNC_API LambdaDataSourceConfig();
+    AWS_APPSYNC_API LambdaDataSourceConfig() = default;
     AWS_APPSYNC_API LambdaDataSourceConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API LambdaDataSourceConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
      */
-    inline const Aws::String& GetLambdaFunctionArn() const{ return m_lambdaFunctionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
+    inline const Aws::String& GetLambdaFunctionArn() const { return m_lambdaFunctionArn; }
     inline bool LambdaFunctionArnHasBeenSet() const { return m_lambdaFunctionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
-    inline void SetLambdaFunctionArn(const Aws::String& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
-    inline void SetLambdaFunctionArn(Aws::String&& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
-    inline void SetLambdaFunctionArn(const char* value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
-    inline LambdaDataSourceConfig& WithLambdaFunctionArn(const Aws::String& value) { SetLambdaFunctionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
-    inline LambdaDataSourceConfig& WithLambdaFunctionArn(Aws::String&& value) { SetLambdaFunctionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the Lambda function.</p>
-     */
-    inline LambdaDataSourceConfig& WithLambdaFunctionArn(const char* value) { SetLambdaFunctionArn(value); return *this;}
-
+    template<typename LambdaFunctionArnT = Aws::String>
+    void SetLambdaFunctionArn(LambdaFunctionArnT&& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = std::forward<LambdaFunctionArnT>(value); }
+    template<typename LambdaFunctionArnT = Aws::String>
+    LambdaDataSourceConfig& WithLambdaFunctionArn(LambdaFunctionArnT&& value) { SetLambdaFunctionArn(std::forward<LambdaFunctionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_lambdaFunctionArn;

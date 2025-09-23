@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/qconnect/QConnect_EXPORTS.h>
 #include <aws/qconnect/model/DataReference.h>
+#include <aws/core/utils/memory/stl/AWSAllocator.h>
 #include <utility>
-#include <memory>
 
 namespace Aws
 {
@@ -33,80 +33,47 @@ namespace Model
   class DataSummary
   {
   public:
-    AWS_QCONNECT_API DataSummary();
+    AWS_QCONNECT_API DataSummary() = default;
     AWS_QCONNECT_API DataSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API DataSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Details about the data.</p>
-     */
-    AWS_QCONNECT_API const DataDetails& GetDetails() const;
-
-    /**
-     * <p>Details about the data.</p>
-     */
-    AWS_QCONNECT_API bool DetailsHasBeenSet() const;
-
-    /**
-     * <p>Details about the data.</p>
-     */
-    AWS_QCONNECT_API void SetDetails(const DataDetails& value);
-
-    /**
-     * <p>Details about the data.</p>
-     */
-    AWS_QCONNECT_API void SetDetails(DataDetails&& value);
-
-    /**
-     * <p>Details about the data.</p>
-     */
-    AWS_QCONNECT_API DataSummary& WithDetails(const DataDetails& value);
-
-    /**
-     * <p>Details about the data.</p>
-     */
-    AWS_QCONNECT_API DataSummary& WithDetails(DataDetails&& value);
-
-
+    ///@{
     /**
      * <p>Reference information about the content.</p>
      */
-    inline const DataReference& GetReference() const{ return m_reference; }
-
-    /**
-     * <p>Reference information about the content.</p>
-     */
+    inline const DataReference& GetReference() const { return m_reference; }
     inline bool ReferenceHasBeenSet() const { return m_referenceHasBeenSet; }
+    template<typename ReferenceT = DataReference>
+    void SetReference(ReferenceT&& value) { m_referenceHasBeenSet = true; m_reference = std::forward<ReferenceT>(value); }
+    template<typename ReferenceT = DataReference>
+    DataSummary& WithReference(ReferenceT&& value) { SetReference(std::forward<ReferenceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Reference information about the content.</p>
+     * <p>Details about the data.</p>
      */
-    inline void SetReference(const DataReference& value) { m_referenceHasBeenSet = true; m_reference = value; }
-
-    /**
-     * <p>Reference information about the content.</p>
-     */
-    inline void SetReference(DataReference&& value) { m_referenceHasBeenSet = true; m_reference = std::move(value); }
-
-    /**
-     * <p>Reference information about the content.</p>
-     */
-    inline DataSummary& WithReference(const DataReference& value) { SetReference(value); return *this;}
-
-    /**
-     * <p>Reference information about the content.</p>
-     */
-    inline DataSummary& WithReference(DataReference&& value) { SetReference(std::move(value)); return *this;}
-
+    inline const DataDetails& GetDetails() const{
+      return *m_details;
+    }
+    inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
+    template<typename DetailsT = DataDetails>
+    void SetDetails(DetailsT&& value) {
+      m_detailsHasBeenSet = true; 
+      m_details = Aws::MakeShared<DataDetails>("DataSummary", std::forward<DetailsT>(value));
+    }
+    template<typename DetailsT = DataDetails>
+    DataSummary& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
   private:
-
-    std::shared_ptr<DataDetails> m_details;
-    bool m_detailsHasBeenSet = false;
 
     DataReference m_reference;
     bool m_referenceHasBeenSet = false;
+
+    std::shared_ptr<DataDetails> m_details;
+    bool m_detailsHasBeenSet = false;
   };
 
 } // namespace Model

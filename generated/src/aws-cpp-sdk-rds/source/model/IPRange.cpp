@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-IPRange::IPRange() : 
-    m_statusHasBeenSet(false),
-    m_cIDRIPHasBeenSet(false)
-{
-}
-
-IPRange::IPRange(const XmlNode& xmlNode) : 
-    m_statusHasBeenSet(false),
-    m_cIDRIPHasBeenSet(false)
+IPRange::IPRange(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

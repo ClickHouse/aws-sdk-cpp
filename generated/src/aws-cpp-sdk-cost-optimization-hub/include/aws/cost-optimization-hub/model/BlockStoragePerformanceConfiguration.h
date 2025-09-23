@@ -31,59 +31,37 @@ namespace Model
   class BlockStoragePerformanceConfiguration
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API BlockStoragePerformanceConfiguration();
+    AWS_COSTOPTIMIZATIONHUB_API BlockStoragePerformanceConfiguration() = default;
     AWS_COSTOPTIMIZATIONHUB_API BlockStoragePerformanceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API BlockStoragePerformanceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of I/O operations per second.</p>
      */
-    inline double GetIops() const{ return m_iops; }
-
-    /**
-     * <p>The number of I/O operations per second.</p>
-     */
+    inline double GetIops() const { return m_iops; }
     inline bool IopsHasBeenSet() const { return m_iopsHasBeenSet; }
-
-    /**
-     * <p>The number of I/O operations per second.</p>
-     */
     inline void SetIops(double value) { m_iopsHasBeenSet = true; m_iops = value; }
-
-    /**
-     * <p>The number of I/O operations per second.</p>
-     */
     inline BlockStoragePerformanceConfiguration& WithIops(double value) { SetIops(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The throughput that the volume supports.</p>
      */
-    inline double GetThroughput() const{ return m_throughput; }
-
-    /**
-     * <p>The throughput that the volume supports.</p>
-     */
+    inline double GetThroughput() const { return m_throughput; }
     inline bool ThroughputHasBeenSet() const { return m_throughputHasBeenSet; }
-
-    /**
-     * <p>The throughput that the volume supports.</p>
-     */
     inline void SetThroughput(double value) { m_throughputHasBeenSet = true; m_throughput = value; }
-
-    /**
-     * <p>The throughput that the volume supports.</p>
-     */
     inline BlockStoragePerformanceConfiguration& WithThroughput(double value) { SetThroughput(value); return *this;}
-
+    ///@}
   private:
 
-    double m_iops;
+    double m_iops{0.0};
     bool m_iopsHasBeenSet = false;
 
-    double m_throughput;
+    double m_throughput{0.0};
     bool m_throughputHasBeenSet = false;
   };
 

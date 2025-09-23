@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyFleetRequest::ModifyFleetRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_excessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy::NOT_SET),
-    m_excessCapacityTerminationPolicyHasBeenSet(false),
-    m_launchTemplateConfigsHasBeenSet(false),
-    m_fleetIdHasBeenSet(false),
-    m_targetCapacitySpecificationHasBeenSet(false),
-    m_contextHasBeenSet(false)
-{
-}
-
 Aws::String ModifyFleetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,7 +21,7 @@ Aws::String ModifyFleetRequest::SerializePayload() const
 
   if(m_excessCapacityTerminationPolicyHasBeenSet)
   {
-    ss << "ExcessCapacityTerminationPolicy=" << FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy) << "&";
+    ss << "ExcessCapacityTerminationPolicy=" << StringUtils::URLEncode(FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy)) << "&";
   }
 
   if(m_launchTemplateConfigsHasBeenSet)

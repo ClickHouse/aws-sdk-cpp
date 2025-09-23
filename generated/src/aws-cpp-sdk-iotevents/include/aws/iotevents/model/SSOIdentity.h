@@ -34,93 +34,35 @@ namespace Model
   class SSOIdentity
   {
   public:
-    AWS_IOTEVENTS_API SSOIdentity();
+    AWS_IOTEVENTS_API SSOIdentity() = default;
     AWS_IOTEVENTS_API SSOIdentity(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API SSOIdentity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the AWS SSO identity store.</p>
      */
-    inline const Aws::String& GetIdentityStoreId() const{ return m_identityStoreId; }
-
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
+    inline const Aws::String& GetIdentityStoreId() const { return m_identityStoreId; }
     inline bool IdentityStoreIdHasBeenSet() const { return m_identityStoreIdHasBeenSet; }
+    template<typename IdentityStoreIdT = Aws::String>
+    void SetIdentityStoreId(IdentityStoreIdT&& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = std::forward<IdentityStoreIdT>(value); }
+    template<typename IdentityStoreIdT = Aws::String>
+    SSOIdentity& WithIdentityStoreId(IdentityStoreIdT&& value) { SetIdentityStoreId(std::forward<IdentityStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
-    inline void SetIdentityStoreId(const Aws::String& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = value; }
-
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
-    inline void SetIdentityStoreId(Aws::String&& value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId = std::move(value); }
-
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
-    inline void SetIdentityStoreId(const char* value) { m_identityStoreIdHasBeenSet = true; m_identityStoreId.assign(value); }
-
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
-    inline SSOIdentity& WithIdentityStoreId(const Aws::String& value) { SetIdentityStoreId(value); return *this;}
-
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
-    inline SSOIdentity& WithIdentityStoreId(Aws::String&& value) { SetIdentityStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the AWS SSO identity store.</p>
-     */
-    inline SSOIdentity& WithIdentityStoreId(const char* value) { SetIdentityStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user ID.</p>
      */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p>The user ID.</p>
-     */
+    inline const Aws::String& GetUserId() const { return m_userId; }
     inline bool UserIdHasBeenSet() const { return m_userIdHasBeenSet; }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userIdHasBeenSet = true; m_userId = value; }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline void SetUserId(const char* value) { m_userIdHasBeenSet = true; m_userId.assign(value); }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline SSOIdentity& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline SSOIdentity& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline SSOIdentity& WithUserId(const char* value) { SetUserId(value); return *this;}
-
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    SSOIdentity& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityStoreId;

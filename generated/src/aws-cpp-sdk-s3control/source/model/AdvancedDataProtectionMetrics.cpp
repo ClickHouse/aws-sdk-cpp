@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-AdvancedDataProtectionMetrics::AdvancedDataProtectionMetrics() : 
-    m_isEnabled(false),
-    m_isEnabledHasBeenSet(false)
-{
-}
-
-AdvancedDataProtectionMetrics::AdvancedDataProtectionMetrics(const XmlNode& xmlNode) : 
-    m_isEnabled(false),
-    m_isEnabledHasBeenSet(false)
+AdvancedDataProtectionMetrics::AdvancedDataProtectionMetrics(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

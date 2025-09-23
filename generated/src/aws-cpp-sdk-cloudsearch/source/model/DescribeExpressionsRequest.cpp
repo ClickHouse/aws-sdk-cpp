@@ -10,14 +10,6 @@
 using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils;
 
-DescribeExpressionsRequest::DescribeExpressionsRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_expressionNamesHasBeenSet(false),
-    m_deployed(false),
-    m_deployedHasBeenSet(false)
-{
-}
-
 Aws::String DescribeExpressionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,12 +21,19 @@ Aws::String DescribeExpressionsRequest::SerializePayload() const
 
   if(m_expressionNamesHasBeenSet)
   {
-    unsigned expressionNamesCount = 1;
-    for(auto& item : m_expressionNames)
+    if (m_expressionNames.empty())
     {
-      ss << "ExpressionNames.member." << expressionNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      expressionNamesCount++;
+      ss << "ExpressionNames=&";
+    }
+    else
+    {
+      unsigned expressionNamesCount = 1;
+      for(auto& item : m_expressionNames)
+      {
+        ss << "ExpressionNames.member." << expressionNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        expressionNamesCount++;
+      }
     }
   }
 

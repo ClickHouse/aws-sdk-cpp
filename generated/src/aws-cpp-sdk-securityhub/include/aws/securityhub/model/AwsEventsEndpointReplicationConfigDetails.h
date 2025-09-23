@@ -33,52 +33,23 @@ namespace Model
   class AwsEventsEndpointReplicationConfigDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEventsEndpointReplicationConfigDetails();
+    AWS_SECURITYHUB_API AwsEventsEndpointReplicationConfigDetails() = default;
     AWS_SECURITYHUB_API AwsEventsEndpointReplicationConfigDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEventsEndpointReplicationConfigDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The state of event replication.</p>
      */
-    inline const Aws::String& GetState() const{ return m_state; }
-
-    /**
-     * <p> The state of event replication.</p>
-     */
+    inline const Aws::String& GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p> The state of event replication.</p>
-     */
-    inline void SetState(const Aws::String& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p> The state of event replication.</p>
-     */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p> The state of event replication.</p>
-     */
-    inline void SetState(const char* value) { m_stateHasBeenSet = true; m_state.assign(value); }
-
-    /**
-     * <p> The state of event replication.</p>
-     */
-    inline AwsEventsEndpointReplicationConfigDetails& WithState(const Aws::String& value) { SetState(value); return *this;}
-
-    /**
-     * <p> The state of event replication.</p>
-     */
-    inline AwsEventsEndpointReplicationConfigDetails& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
-
-    /**
-     * <p> The state of event replication.</p>
-     */
-    inline AwsEventsEndpointReplicationConfigDetails& WithState(const char* value) { SetState(value); return *this;}
-
+    template<typename StateT = Aws::String>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = Aws::String>
+    AwsEventsEndpointReplicationConfigDetails& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_state;

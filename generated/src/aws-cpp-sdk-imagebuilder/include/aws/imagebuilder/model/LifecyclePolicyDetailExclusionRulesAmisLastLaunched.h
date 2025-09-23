@@ -32,85 +32,40 @@ namespace Model
   class LifecyclePolicyDetailExclusionRulesAmisLastLaunched
   {
   public:
-    AWS_IMAGEBUILDER_API LifecyclePolicyDetailExclusionRulesAmisLastLaunched();
+    AWS_IMAGEBUILDER_API LifecyclePolicyDetailExclusionRulesAmisLastLaunched() = default;
     AWS_IMAGEBUILDER_API LifecyclePolicyDetailExclusionRulesAmisLastLaunched(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API LifecyclePolicyDetailExclusionRulesAmisLastLaunched& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The integer number of units for the time period. For example <code>6</code>
      * (months).</p>
      */
-    inline int GetValue() const{ return m_value; }
-
-    /**
-     * <p>The integer number of units for the time period. For example <code>6</code>
-     * (months).</p>
-     */
+    inline int GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The integer number of units for the time period. For example <code>6</code>
-     * (months).</p>
-     */
     inline void SetValue(int value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The integer number of units for the time period. For example <code>6</code>
-     * (months).</p>
-     */
     inline LifecyclePolicyDetailExclusionRulesAmisLastLaunched& WithValue(int value) { SetValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Defines the unit of time that the lifecycle policy uses to calculate elapsed
      * time since the last instance launched from the AMI. For example: days, weeks,
      * months, or years.</p>
      */
-    inline const LifecyclePolicyTimeUnit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>Defines the unit of time that the lifecycle policy uses to calculate elapsed
-     * time since the last instance launched from the AMI. For example: days, weeks,
-     * months, or years.</p>
-     */
+    inline LifecyclePolicyTimeUnit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>Defines the unit of time that the lifecycle policy uses to calculate elapsed
-     * time since the last instance launched from the AMI. For example: days, weeks,
-     * months, or years.</p>
-     */
-    inline void SetUnit(const LifecyclePolicyTimeUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>Defines the unit of time that the lifecycle policy uses to calculate elapsed
-     * time since the last instance launched from the AMI. For example: days, weeks,
-     * months, or years.</p>
-     */
-    inline void SetUnit(LifecyclePolicyTimeUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>Defines the unit of time that the lifecycle policy uses to calculate elapsed
-     * time since the last instance launched from the AMI. For example: days, weeks,
-     * months, or years.</p>
-     */
-    inline LifecyclePolicyDetailExclusionRulesAmisLastLaunched& WithUnit(const LifecyclePolicyTimeUnit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>Defines the unit of time that the lifecycle policy uses to calculate elapsed
-     * time since the last instance launched from the AMI. For example: days, weeks,
-     * months, or years.</p>
-     */
-    inline LifecyclePolicyDetailExclusionRulesAmisLastLaunched& WithUnit(LifecyclePolicyTimeUnit&& value) { SetUnit(std::move(value)); return *this;}
-
+    inline void SetUnit(LifecyclePolicyTimeUnit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline LifecyclePolicyDetailExclusionRulesAmisLastLaunched& WithUnit(LifecyclePolicyTimeUnit value) { SetUnit(value); return *this;}
+    ///@}
   private:
 
-    int m_value;
+    int m_value{0};
     bool m_valueHasBeenSet = false;
 
-    LifecyclePolicyTimeUnit m_unit;
+    LifecyclePolicyTimeUnit m_unit{LifecyclePolicyTimeUnit::NOT_SET};
     bool m_unitHasBeenSet = false;
   };
 

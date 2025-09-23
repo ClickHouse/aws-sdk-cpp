@@ -25,7 +25,7 @@ namespace Model
   class ListSecurityProfilePermissionsRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API ListSecurityProfilePermissionsRequest();
+    AWS_CONNECT_API ListSecurityProfilePermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,173 +38,54 @@ namespace Model
     AWS_CONNECT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The identifier for the security profle.</p>
      */
-    inline const Aws::String& GetSecurityProfileId() const{ return m_securityProfileId; }
-
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
+    inline const Aws::String& GetSecurityProfileId() const { return m_securityProfileId; }
     inline bool SecurityProfileIdHasBeenSet() const { return m_securityProfileIdHasBeenSet; }
+    template<typename SecurityProfileIdT = Aws::String>
+    void SetSecurityProfileId(SecurityProfileIdT&& value) { m_securityProfileIdHasBeenSet = true; m_securityProfileId = std::forward<SecurityProfileIdT>(value); }
+    template<typename SecurityProfileIdT = Aws::String>
+    ListSecurityProfilePermissionsRequest& WithSecurityProfileId(SecurityProfileIdT&& value) { SetSecurityProfileId(std::forward<SecurityProfileIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
-    inline void SetSecurityProfileId(const Aws::String& value) { m_securityProfileIdHasBeenSet = true; m_securityProfileId = value; }
-
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
-    inline void SetSecurityProfileId(Aws::String&& value) { m_securityProfileIdHasBeenSet = true; m_securityProfileId = std::move(value); }
-
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
-    inline void SetSecurityProfileId(const char* value) { m_securityProfileIdHasBeenSet = true; m_securityProfileId.assign(value); }
-
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithSecurityProfileId(const Aws::String& value) { SetSecurityProfileId(value); return *this;}
-
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithSecurityProfileId(Aws::String&& value) { SetSecurityProfileId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the security profle.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithSecurityProfileId(const char* value) { SetSecurityProfileId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can <a
      * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
      * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    ListSecurityProfilePermissionsRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The token for the next set of results. Use the value returned in the previous
      * response in the next request to retrieve the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSecurityProfilePermissionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListSecurityProfilePermissionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return per page.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
     inline ListSecurityProfilePermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_securityProfileId;
@@ -216,7 +97,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

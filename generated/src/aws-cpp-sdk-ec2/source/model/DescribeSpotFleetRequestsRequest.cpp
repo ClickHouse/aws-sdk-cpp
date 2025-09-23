@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeSpotFleetRequestsRequest::DescribeSpotFleetRequestsRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_spotFleetRequestIdsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSpotFleetRequestsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,16 +17,6 @@ Aws::String DescribeSpotFleetRequestsRequest::SerializePayload() const
   if(m_dryRunHasBeenSet)
   {
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_maxResultsHasBeenSet)
-  {
-    ss << "MaxResults=" << m_maxResults << "&";
-  }
-
-  if(m_nextTokenHasBeenSet)
-  {
-    ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
   }
 
   if(m_spotFleetRequestIdsHasBeenSet)
@@ -48,6 +28,16 @@ Aws::String DescribeSpotFleetRequestsRequest::SerializePayload() const
           << StringUtils::URLEncode(item.c_str()) << "&";
       spotFleetRequestIdsCount++;
     }
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+    ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+    ss << "MaxResults=" << m_maxResults << "&";
   }
 
   ss << "Version=2016-11-15";

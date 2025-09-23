@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TopicNamedEntity::TopicNamedEntity() : 
-    m_entityNameHasBeenSet(false),
-    m_entityDescriptionHasBeenSet(false),
-    m_entitySynonymsHasBeenSet(false),
-    m_semanticEntityTypeHasBeenSet(false),
-    m_definitionHasBeenSet(false)
-{
-}
-
-TopicNamedEntity::TopicNamedEntity(JsonView jsonValue) : 
-    m_entityNameHasBeenSet(false),
-    m_entityDescriptionHasBeenSet(false),
-    m_entitySynonymsHasBeenSet(false),
-    m_semanticEntityTypeHasBeenSet(false),
-    m_definitionHasBeenSet(false)
+TopicNamedEntity::TopicNamedEntity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ TopicNamedEntity& TopicNamedEntity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EntityName"))
   {
     m_entityName = jsonValue.GetString("EntityName");
-
     m_entityNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EntityDescription"))
   {
     m_entityDescription = jsonValue.GetString("EntityDescription");
-
     m_entityDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EntitySynonyms"))
   {
     Aws::Utils::Array<JsonView> entitySynonymsJsonList = jsonValue.GetArray("EntitySynonyms");
@@ -62,14 +44,11 @@ TopicNamedEntity& TopicNamedEntity::operator =(JsonView jsonValue)
     }
     m_entitySynonymsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SemanticEntityType"))
   {
     m_semanticEntityType = jsonValue.GetObject("SemanticEntityType");
-
     m_semanticEntityTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Definition"))
   {
     Aws::Utils::Array<JsonView> definitionJsonList = jsonValue.GetArray("Definition");
@@ -79,7 +58,6 @@ TopicNamedEntity& TopicNamedEntity::operator =(JsonView jsonValue)
     }
     m_definitionHasBeenSet = true;
   }
-
   return *this;
 }
 

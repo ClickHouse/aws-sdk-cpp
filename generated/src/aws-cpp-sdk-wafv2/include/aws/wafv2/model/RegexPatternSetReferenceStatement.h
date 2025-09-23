@@ -43,92 +43,38 @@ namespace Model
   class RegexPatternSetReferenceStatement
   {
   public:
-    AWS_WAFV2_API RegexPatternSetReferenceStatement();
+    AWS_WAFV2_API RegexPatternSetReferenceStatement() = default;
     AWS_WAFV2_API RegexPatternSetReferenceStatement(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API RegexPatternSetReferenceStatement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
      * statement references.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    RegexPatternSetReferenceStatement& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
-    inline RegexPatternSetReferenceStatement& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
-    inline RegexPatternSetReferenceStatement& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the <a>RegexPatternSet</a> that this
-     * statement references.</p>
-     */
-    inline RegexPatternSetReferenceStatement& WithARN(const char* value) { SetARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The part of the web request that you want WAF to inspect. </p>
      */
-    inline const FieldToMatch& GetFieldToMatch() const{ return m_fieldToMatch; }
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
+    inline const FieldToMatch& GetFieldToMatch() const { return m_fieldToMatch; }
     inline bool FieldToMatchHasBeenSet() const { return m_fieldToMatchHasBeenSet; }
+    template<typename FieldToMatchT = FieldToMatch>
+    void SetFieldToMatch(FieldToMatchT&& value) { m_fieldToMatchHasBeenSet = true; m_fieldToMatch = std::forward<FieldToMatchT>(value); }
+    template<typename FieldToMatchT = FieldToMatch>
+    RegexPatternSetReferenceStatement& WithFieldToMatch(FieldToMatchT&& value) { SetFieldToMatch(std::forward<FieldToMatchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline void SetFieldToMatch(const FieldToMatch& value) { m_fieldToMatchHasBeenSet = true; m_fieldToMatch = value; }
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline void SetFieldToMatch(FieldToMatch&& value) { m_fieldToMatchHasBeenSet = true; m_fieldToMatch = std::move(value); }
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline RegexPatternSetReferenceStatement& WithFieldToMatch(const FieldToMatch& value) { SetFieldToMatch(value); return *this;}
-
-    /**
-     * <p>The part of the web request that you want WAF to inspect. </p>
-     */
-    inline RegexPatternSetReferenceStatement& WithFieldToMatch(FieldToMatch&& value) { SetFieldToMatch(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Text transformations eliminate some of the unusual formatting that attackers
      * use in web requests in an effort to bypass detection. Text transformations are
@@ -139,92 +85,15 @@ namespace Model
      * performs all transformations on the specified content, starting from the lowest
      * priority setting, and then uses the transformed component contents. </p>
      */
-    inline const Aws::Vector<TextTransformation>& GetTextTransformations() const{ return m_textTransformations; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
+    inline const Aws::Vector<TextTransformation>& GetTextTransformations() const { return m_textTransformations; }
     inline bool TextTransformationsHasBeenSet() const { return m_textTransformationsHasBeenSet; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline void SetTextTransformations(const Aws::Vector<TextTransformation>& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = value; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline void SetTextTransformations(Aws::Vector<TextTransformation>&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = std::move(value); }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RegexPatternSetReferenceStatement& WithTextTransformations(const Aws::Vector<TextTransformation>& value) { SetTextTransformations(value); return *this;}
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RegexPatternSetReferenceStatement& WithTextTransformations(Aws::Vector<TextTransformation>&& value) { SetTextTransformations(std::move(value)); return *this;}
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RegexPatternSetReferenceStatement& AddTextTransformations(const TextTransformation& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.push_back(value); return *this; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RegexPatternSetReferenceStatement& AddTextTransformations(TextTransformation&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.push_back(std::move(value)); return *this; }
-
+    template<typename TextTransformationsT = Aws::Vector<TextTransformation>>
+    void SetTextTransformations(TextTransformationsT&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = std::forward<TextTransformationsT>(value); }
+    template<typename TextTransformationsT = Aws::Vector<TextTransformation>>
+    RegexPatternSetReferenceStatement& WithTextTransformations(TextTransformationsT&& value) { SetTextTransformations(std::forward<TextTransformationsT>(value)); return *this;}
+    template<typename TextTransformationsT = TextTransformation>
+    RegexPatternSetReferenceStatement& AddTextTransformations(TextTransformationsT&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.emplace_back(std::forward<TextTransformationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_aRN;

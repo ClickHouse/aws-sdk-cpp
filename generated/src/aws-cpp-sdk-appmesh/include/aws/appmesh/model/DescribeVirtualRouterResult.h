@@ -33,63 +33,37 @@ namespace Model
   class DescribeVirtualRouterResult
   {
   public:
-    AWS_APPMESH_API DescribeVirtualRouterResult();
+    AWS_APPMESH_API DescribeVirtualRouterResult() = default;
     AWS_APPMESH_API DescribeVirtualRouterResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPMESH_API DescribeVirtualRouterResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The full description of your virtual router.</p>
      */
-    inline const VirtualRouterData& GetVirtualRouter() const{ return m_virtualRouter; }
+    inline const VirtualRouterData& GetVirtualRouter() const { return m_virtualRouter; }
+    template<typename VirtualRouterT = VirtualRouterData>
+    void SetVirtualRouter(VirtualRouterT&& value) { m_virtualRouterHasBeenSet = true; m_virtualRouter = std::forward<VirtualRouterT>(value); }
+    template<typename VirtualRouterT = VirtualRouterData>
+    DescribeVirtualRouterResult& WithVirtualRouter(VirtualRouterT&& value) { SetVirtualRouter(std::forward<VirtualRouterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The full description of your virtual router.</p>
-     */
-    inline void SetVirtualRouter(const VirtualRouterData& value) { m_virtualRouter = value; }
-
-    /**
-     * <p>The full description of your virtual router.</p>
-     */
-    inline void SetVirtualRouter(VirtualRouterData&& value) { m_virtualRouter = std::move(value); }
-
-    /**
-     * <p>The full description of your virtual router.</p>
-     */
-    inline DescribeVirtualRouterResult& WithVirtualRouter(const VirtualRouterData& value) { SetVirtualRouter(value); return *this;}
-
-    /**
-     * <p>The full description of your virtual router.</p>
-     */
-    inline DescribeVirtualRouterResult& WithVirtualRouter(VirtualRouterData&& value) { SetVirtualRouter(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeVirtualRouterResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeVirtualRouterResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeVirtualRouterResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeVirtualRouterResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     VirtualRouterData m_virtualRouter;
+    bool m_virtualRouterHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DataSetRefreshProperties::DataSetRefreshProperties() : 
-    m_refreshConfigurationHasBeenSet(false)
-{
-}
-
-DataSetRefreshProperties::DataSetRefreshProperties(JsonView jsonValue) : 
-    m_refreshConfigurationHasBeenSet(false)
+DataSetRefreshProperties::DataSetRefreshProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ DataSetRefreshProperties& DataSetRefreshProperties::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("RefreshConfiguration"))
   {
     m_refreshConfiguration = jsonValue.GetObject("RefreshConfiguration");
-
     m_refreshConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("FailureConfiguration"))
+  {
+    m_failureConfiguration = jsonValue.GetObject("FailureConfiguration");
+    m_failureConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue DataSetRefreshProperties::Jsonize() const
   if(m_refreshConfigurationHasBeenSet)
   {
    payload.WithObject("RefreshConfiguration", m_refreshConfiguration.Jsonize());
+
+  }
+
+  if(m_failureConfigurationHasBeenSet)
+  {
+   payload.WithObject("FailureConfiguration", m_failureConfiguration.Jsonize());
 
   }
 

@@ -24,7 +24,7 @@ namespace Model
   class DescribeAnomalyDetectorsRequest : public CloudWatchRequest
   {
   public:
-    AWS_CLOUDWATCH_API DescribeAnomalyDetectorsRequest();
+    AWS_CLOUDWATCH_API DescribeAnomalyDetectorsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,325 +39,96 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Use the token returned by the previous operation to request the next page of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeAnomalyDetectorsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Use the token returned by the previous operation to request the next page of
-     * results.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return in one operation. The maximum value
      * that you can specify is 100.</p> <p>To retrieve the remaining results, make
      * another call with the returned <code>NextToken</code> value. </p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in one operation. The maximum value
-     * that you can specify is 100.</p> <p>To retrieve the remaining results, make
-     * another call with the returned <code>NextToken</code> value. </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in one operation. The maximum value
-     * that you can specify is 100.</p> <p>To retrieve the remaining results, make
-     * another call with the returned <code>NextToken</code> value. </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in one operation. The maximum value
-     * that you can specify is 100.</p> <p>To retrieve the remaining results, make
-     * another call with the returned <code>NextToken</code> value. </p>
-     */
     inline DescribeAnomalyDetectorsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Limits the results to only the anomaly detection models that are associated
      * with the specified namespace.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    DescribeAnomalyDetectorsRequest& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified namespace.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Limits the results to only the anomaly detection models that are associated
      * with the specified metric name. If there are multiple metrics with this name in
      * different namespaces that have anomaly detection models, they're all
      * returned.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    DescribeAnomalyDetectorsRequest& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric name. If there are multiple metrics with this name in
-     * different namespaces that have anomaly detection models, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Limits the results to only the anomaly detection models that are associated
      * with the specified metric dimensions. If there are multiple metrics that have
      * these dimensions and have anomaly detection models associated, they're all
      * returned.</p>
      */
-    inline const Aws::Vector<Dimension>& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
+    inline const Aws::Vector<Dimension>& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
+    template<typename DimensionsT = Aws::Vector<Dimension>>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = Aws::Vector<Dimension>>
+    DescribeAnomalyDetectorsRequest& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    template<typename DimensionsT = Dimension>
+    DescribeAnomalyDetectorsRequest& AddDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions.emplace_back(std::forward<DimensionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
-    inline void SetDimensions(const Aws::Vector<Dimension>& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
-    inline void SetDimensions(Aws::Vector<Dimension>&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithDimensions(const Aws::Vector<Dimension>& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithDimensions(Aws::Vector<Dimension>&& value) { SetDimensions(std::move(value)); return *this;}
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& AddDimensions(const Dimension& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
-
-    /**
-     * <p>Limits the results to only the anomaly detection models that are associated
-     * with the specified metric dimensions. If there are multiple metrics that have
-     * these dimensions and have anomaly detection models associated, they're all
-     * returned.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& AddDimensions(Dimension&& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The anomaly detector types to request when using
      * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
      * <code>SINGLE_METRIC</code>.</p>
      */
-    inline const Aws::Vector<AnomalyDetectorType>& GetAnomalyDetectorTypes() const{ return m_anomalyDetectorTypes; }
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
+    inline const Aws::Vector<AnomalyDetectorType>& GetAnomalyDetectorTypes() const { return m_anomalyDetectorTypes; }
     inline bool AnomalyDetectorTypesHasBeenSet() const { return m_anomalyDetectorTypesHasBeenSet; }
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
-    inline void SetAnomalyDetectorTypes(const Aws::Vector<AnomalyDetectorType>& value) { m_anomalyDetectorTypesHasBeenSet = true; m_anomalyDetectorTypes = value; }
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
-    inline void SetAnomalyDetectorTypes(Aws::Vector<AnomalyDetectorType>&& value) { m_anomalyDetectorTypesHasBeenSet = true; m_anomalyDetectorTypes = std::move(value); }
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithAnomalyDetectorTypes(const Aws::Vector<AnomalyDetectorType>& value) { SetAnomalyDetectorTypes(value); return *this;}
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& WithAnomalyDetectorTypes(Aws::Vector<AnomalyDetectorType>&& value) { SetAnomalyDetectorTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& AddAnomalyDetectorTypes(const AnomalyDetectorType& value) { m_anomalyDetectorTypesHasBeenSet = true; m_anomalyDetectorTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The anomaly detector types to request when using
-     * <code>DescribeAnomalyDetectorsInput</code>. If empty, defaults to
-     * <code>SINGLE_METRIC</code>.</p>
-     */
-    inline DescribeAnomalyDetectorsRequest& AddAnomalyDetectorTypes(AnomalyDetectorType&& value) { m_anomalyDetectorTypesHasBeenSet = true; m_anomalyDetectorTypes.push_back(std::move(value)); return *this; }
-
+    template<typename AnomalyDetectorTypesT = Aws::Vector<AnomalyDetectorType>>
+    void SetAnomalyDetectorTypes(AnomalyDetectorTypesT&& value) { m_anomalyDetectorTypesHasBeenSet = true; m_anomalyDetectorTypes = std::forward<AnomalyDetectorTypesT>(value); }
+    template<typename AnomalyDetectorTypesT = Aws::Vector<AnomalyDetectorType>>
+    DescribeAnomalyDetectorsRequest& WithAnomalyDetectorTypes(AnomalyDetectorTypesT&& value) { SetAnomalyDetectorTypes(std::forward<AnomalyDetectorTypesT>(value)); return *this;}
+    inline DescribeAnomalyDetectorsRequest& AddAnomalyDetectorTypes(AnomalyDetectorType value) { m_anomalyDetectorTypesHasBeenSet = true; m_anomalyDetectorTypes.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_namespace;

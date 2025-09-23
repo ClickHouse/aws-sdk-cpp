@@ -34,170 +34,70 @@ namespace Model
   class ListFileSharesResult
   {
   public:
-    AWS_STORAGEGATEWAY_API ListFileSharesResult();
+    AWS_STORAGEGATEWAY_API ListFileSharesResult() = default;
     AWS_STORAGEGATEWAY_API ListFileSharesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_STORAGEGATEWAY_API ListFileSharesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>If the request includes <code>Marker</code>, the response returns that value
      * in this field.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    ListFileSharesResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the request includes <code>Marker</code>, the response returns that value
-     * in this field.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>If the request includes <code>Marker</code>, the response returns that value
-     * in this field.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>If the request includes <code>Marker</code>, the response returns that value
-     * in this field.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>If the request includes <code>Marker</code>, the response returns that value
-     * in this field.</p>
-     */
-    inline ListFileSharesResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>If the request includes <code>Marker</code>, the response returns that value
-     * in this field.</p>
-     */
-    inline ListFileSharesResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If the request includes <code>Marker</code>, the response returns that value
-     * in this field.</p>
-     */
-    inline ListFileSharesResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If a value is present, there are more file shares to return. In a subsequent
      * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
      * retrieve the next set of file shares.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ListFileSharesResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If a value is present, there are more file shares to return. In a subsequent
-     * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
-     * retrieve the next set of file shares.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
-
-    /**
-     * <p>If a value is present, there are more file shares to return. In a subsequent
-     * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
-     * retrieve the next set of file shares.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>If a value is present, there are more file shares to return. In a subsequent
-     * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
-     * retrieve the next set of file shares.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>If a value is present, there are more file shares to return. In a subsequent
-     * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
-     * retrieve the next set of file shares.</p>
-     */
-    inline ListFileSharesResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>If a value is present, there are more file shares to return. In a subsequent
-     * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
-     * retrieve the next set of file shares.</p>
-     */
-    inline ListFileSharesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If a value is present, there are more file shares to return. In a subsequent
-     * request, use <code>NextMarker</code> as the value for <code>Marker</code> to
-     * retrieve the next set of file shares.</p>
-     */
-    inline ListFileSharesResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of information about the S3 File Gateway's file shares.</p>
      */
-    inline const Aws::Vector<FileShareInfo>& GetFileShareInfoList() const{ return m_fileShareInfoList; }
+    inline const Aws::Vector<FileShareInfo>& GetFileShareInfoList() const { return m_fileShareInfoList; }
+    template<typename FileShareInfoListT = Aws::Vector<FileShareInfo>>
+    void SetFileShareInfoList(FileShareInfoListT&& value) { m_fileShareInfoListHasBeenSet = true; m_fileShareInfoList = std::forward<FileShareInfoListT>(value); }
+    template<typename FileShareInfoListT = Aws::Vector<FileShareInfo>>
+    ListFileSharesResult& WithFileShareInfoList(FileShareInfoListT&& value) { SetFileShareInfoList(std::forward<FileShareInfoListT>(value)); return *this;}
+    template<typename FileShareInfoListT = FileShareInfo>
+    ListFileSharesResult& AddFileShareInfoList(FileShareInfoListT&& value) { m_fileShareInfoListHasBeenSet = true; m_fileShareInfoList.emplace_back(std::forward<FileShareInfoListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of information about the S3 File Gateway's file shares.</p>
-     */
-    inline void SetFileShareInfoList(const Aws::Vector<FileShareInfo>& value) { m_fileShareInfoList = value; }
-
-    /**
-     * <p>An array of information about the S3 File Gateway's file shares.</p>
-     */
-    inline void SetFileShareInfoList(Aws::Vector<FileShareInfo>&& value) { m_fileShareInfoList = std::move(value); }
-
-    /**
-     * <p>An array of information about the S3 File Gateway's file shares.</p>
-     */
-    inline ListFileSharesResult& WithFileShareInfoList(const Aws::Vector<FileShareInfo>& value) { SetFileShareInfoList(value); return *this;}
-
-    /**
-     * <p>An array of information about the S3 File Gateway's file shares.</p>
-     */
-    inline ListFileSharesResult& WithFileShareInfoList(Aws::Vector<FileShareInfo>&& value) { SetFileShareInfoList(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of information about the S3 File Gateway's file shares.</p>
-     */
-    inline ListFileSharesResult& AddFileShareInfoList(const FileShareInfo& value) { m_fileShareInfoList.push_back(value); return *this; }
-
-    /**
-     * <p>An array of information about the S3 File Gateway's file shares.</p>
-     */
-    inline ListFileSharesResult& AddFileShareInfoList(FileShareInfo&& value) { m_fileShareInfoList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListFileSharesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListFileSharesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListFileSharesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListFileSharesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
     Aws::Vector<FileShareInfo> m_fileShareInfoList;
+    bool m_fileShareInfoListHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

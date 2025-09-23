@@ -33,233 +33,84 @@ namespace Model
   class AppInstanceUser
   {
   public:
-    AWS_CHIMESDKIDENTITY_API AppInstanceUser();
+    AWS_CHIMESDKIDENTITY_API AppInstanceUser() = default;
     AWS_CHIMESDKIDENTITY_API AppInstanceUser(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKIDENTITY_API AppInstanceUser& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKIDENTITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetAppInstanceUserArn() const{ return m_appInstanceUserArn; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetAppInstanceUserArn() const { return m_appInstanceUserArn; }
     inline bool AppInstanceUserArnHasBeenSet() const { return m_appInstanceUserArnHasBeenSet; }
+    template<typename AppInstanceUserArnT = Aws::String>
+    void SetAppInstanceUserArn(AppInstanceUserArnT&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::forward<AppInstanceUserArnT>(value); }
+    template<typename AppInstanceUserArnT = Aws::String>
+    AppInstanceUser& WithAppInstanceUserArn(AppInstanceUserArnT&& value) { SetAppInstanceUserArn(std::forward<AppInstanceUserArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(const Aws::String& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(Aws::String&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(const char* value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithAppInstanceUserArn(const Aws::String& value) { SetAppInstanceUserArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithAppInstanceUserArn(Aws::String&& value) { SetAppInstanceUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithAppInstanceUserArn(const char* value) { SetAppInstanceUserArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AppInstanceUser& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata of the <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetMetadata() const{ return m_metadata; }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetMetadata() const { return m_metadata; }
     inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
+    template<typename MetadataT = Aws::String>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = Aws::String>
+    AppInstanceUser& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetMetadata(const Aws::String& value) { m_metadataHasBeenSet = true; m_metadata = value; }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetMetadata(Aws::String&& value) { m_metadataHasBeenSet = true; m_metadata = std::move(value); }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetMetadata(const char* value) { m_metadataHasBeenSet = true; m_metadata.assign(value); }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithMetadata(const Aws::String& value) { SetMetadata(value); return *this;}
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithMetadata(Aws::String&& value) { SetMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUser& WithMetadata(const char* value) { SetMetadata(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
     inline bool CreatedTimestampHasBeenSet() const { return m_createdTimestampHasBeenSet; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    AppInstanceUser& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
-     */
-    inline AppInstanceUser& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
-     */
-    inline AppInstanceUser& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTimestamp() const{ return m_lastUpdatedTimestamp; }
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTimestamp() const { return m_lastUpdatedTimestamp; }
     inline bool LastUpdatedTimestampHasBeenSet() const { return m_lastUpdatedTimestampHasBeenSet; }
+    template<typename LastUpdatedTimestampT = Aws::Utils::DateTime>
+    void SetLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::forward<LastUpdatedTimestampT>(value); }
+    template<typename LastUpdatedTimestampT = Aws::Utils::DateTime>
+    AppInstanceUser& WithLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { SetLastUpdatedTimestamp(std::forward<LastUpdatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
-     */
-    inline void SetLastUpdatedTimestamp(const Aws::Utils::DateTime& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = value; }
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
-     */
-    inline void SetLastUpdatedTimestamp(Aws::Utils::DateTime&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::move(value); }
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
-     */
-    inline AppInstanceUser& WithLastUpdatedTimestamp(const Aws::Utils::DateTime& value) { SetLastUpdatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
-     */
-    inline AppInstanceUser& WithLastUpdatedTimestamp(Aws::Utils::DateTime&& value) { SetLastUpdatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The interval after which an <code>AppInstanceUser</code> is automatically
      * deleted.</p>
      */
-    inline const ExpirationSettings& GetExpirationSettings() const{ return m_expirationSettings; }
-
-    /**
-     * <p>The interval after which an <code>AppInstanceUser</code> is automatically
-     * deleted.</p>
-     */
+    inline const ExpirationSettings& GetExpirationSettings() const { return m_expirationSettings; }
     inline bool ExpirationSettingsHasBeenSet() const { return m_expirationSettingsHasBeenSet; }
-
-    /**
-     * <p>The interval after which an <code>AppInstanceUser</code> is automatically
-     * deleted.</p>
-     */
-    inline void SetExpirationSettings(const ExpirationSettings& value) { m_expirationSettingsHasBeenSet = true; m_expirationSettings = value; }
-
-    /**
-     * <p>The interval after which an <code>AppInstanceUser</code> is automatically
-     * deleted.</p>
-     */
-    inline void SetExpirationSettings(ExpirationSettings&& value) { m_expirationSettingsHasBeenSet = true; m_expirationSettings = std::move(value); }
-
-    /**
-     * <p>The interval after which an <code>AppInstanceUser</code> is automatically
-     * deleted.</p>
-     */
-    inline AppInstanceUser& WithExpirationSettings(const ExpirationSettings& value) { SetExpirationSettings(value); return *this;}
-
-    /**
-     * <p>The interval after which an <code>AppInstanceUser</code> is automatically
-     * deleted.</p>
-     */
-    inline AppInstanceUser& WithExpirationSettings(ExpirationSettings&& value) { SetExpirationSettings(std::move(value)); return *this;}
-
+    template<typename ExpirationSettingsT = ExpirationSettings>
+    void SetExpirationSettings(ExpirationSettingsT&& value) { m_expirationSettingsHasBeenSet = true; m_expirationSettings = std::forward<ExpirationSettingsT>(value); }
+    template<typename ExpirationSettingsT = ExpirationSettings>
+    AppInstanceUser& WithExpirationSettings(ExpirationSettingsT&& value) { SetExpirationSettings(std::forward<ExpirationSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appInstanceUserArn;
@@ -271,10 +122,10 @@ namespace Model
     Aws::String m_metadata;
     bool m_metadataHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
     bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTimestamp;
+    Aws::Utils::DateTime m_lastUpdatedTimestamp{};
     bool m_lastUpdatedTimestampHasBeenSet = false;
 
     ExpirationSettings m_expirationSettings;

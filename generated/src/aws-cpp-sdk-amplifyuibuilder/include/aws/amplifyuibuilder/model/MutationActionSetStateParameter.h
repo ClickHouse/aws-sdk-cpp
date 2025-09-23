@@ -33,124 +33,47 @@ namespace Model
   class MutationActionSetStateParameter
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API MutationActionSetStateParameter();
+    AWS_AMPLIFYUIBUILDER_API MutationActionSetStateParameter() = default;
     AWS_AMPLIFYUIBUILDER_API MutationActionSetStateParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API MutationActionSetStateParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the component that is being modified.</p>
      */
-    inline const Aws::String& GetComponentName() const{ return m_componentName; }
-
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
+    inline const Aws::String& GetComponentName() const { return m_componentName; }
     inline bool ComponentNameHasBeenSet() const { return m_componentNameHasBeenSet; }
+    template<typename ComponentNameT = Aws::String>
+    void SetComponentName(ComponentNameT&& value) { m_componentNameHasBeenSet = true; m_componentName = std::forward<ComponentNameT>(value); }
+    template<typename ComponentNameT = Aws::String>
+    MutationActionSetStateParameter& WithComponentName(ComponentNameT&& value) { SetComponentName(std::forward<ComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
-    inline void SetComponentName(const Aws::String& value) { m_componentNameHasBeenSet = true; m_componentName = value; }
-
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
-    inline void SetComponentName(Aws::String&& value) { m_componentNameHasBeenSet = true; m_componentName = std::move(value); }
-
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
-    inline void SetComponentName(const char* value) { m_componentNameHasBeenSet = true; m_componentName.assign(value); }
-
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
-    inline MutationActionSetStateParameter& WithComponentName(const Aws::String& value) { SetComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
-    inline MutationActionSetStateParameter& WithComponentName(Aws::String&& value) { SetComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component that is being modified.</p>
-     */
-    inline MutationActionSetStateParameter& WithComponentName(const char* value) { SetComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the component property to apply the state configuration to.</p>
      */
-    inline const Aws::String& GetProperty() const{ return m_property; }
-
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
+    inline const Aws::String& GetProperty() const { return m_property; }
     inline bool PropertyHasBeenSet() const { return m_propertyHasBeenSet; }
+    template<typename PropertyT = Aws::String>
+    void SetProperty(PropertyT&& value) { m_propertyHasBeenSet = true; m_property = std::forward<PropertyT>(value); }
+    template<typename PropertyT = Aws::String>
+    MutationActionSetStateParameter& WithProperty(PropertyT&& value) { SetProperty(std::forward<PropertyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
-    inline void SetProperty(const Aws::String& value) { m_propertyHasBeenSet = true; m_property = value; }
-
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
-    inline void SetProperty(Aws::String&& value) { m_propertyHasBeenSet = true; m_property = std::move(value); }
-
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
-    inline void SetProperty(const char* value) { m_propertyHasBeenSet = true; m_property.assign(value); }
-
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
-    inline MutationActionSetStateParameter& WithProperty(const Aws::String& value) { SetProperty(value); return *this;}
-
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
-    inline MutationActionSetStateParameter& WithProperty(Aws::String&& value) { SetProperty(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component property to apply the state configuration to.</p>
-     */
-    inline MutationActionSetStateParameter& WithProperty(const char* value) { SetProperty(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state configuration to assign to the property.</p>
      */
-    inline const ComponentProperty& GetSet() const{ return m_set; }
-
-    /**
-     * <p>The state configuration to assign to the property.</p>
-     */
+    inline const ComponentProperty& GetSet() const { return m_set; }
     inline bool SetHasBeenSet() const { return m_setHasBeenSet; }
-
-    /**
-     * <p>The state configuration to assign to the property.</p>
-     */
-    inline void SetSet(const ComponentProperty& value) { m_setHasBeenSet = true; m_set = value; }
-
-    /**
-     * <p>The state configuration to assign to the property.</p>
-     */
-    inline void SetSet(ComponentProperty&& value) { m_setHasBeenSet = true; m_set = std::move(value); }
-
-    /**
-     * <p>The state configuration to assign to the property.</p>
-     */
-    inline MutationActionSetStateParameter& WithSet(const ComponentProperty& value) { SetSet(value); return *this;}
-
-    /**
-     * <p>The state configuration to assign to the property.</p>
-     */
-    inline MutationActionSetStateParameter& WithSet(ComponentProperty&& value) { SetSet(std::move(value)); return *this;}
-
+    template<typename SetT = ComponentProperty>
+    void SetSet(SetT&& value) { m_setHasBeenSet = true; m_set = std::forward<SetT>(value); }
+    template<typename SetT = ComponentProperty>
+    MutationActionSetStateParameter& WithSet(SetT&& value) { SetSet(std::forward<SetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_componentName;

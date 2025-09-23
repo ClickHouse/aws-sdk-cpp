@@ -42,321 +42,131 @@ namespace Model
   class Computation
   {
   public:
-    AWS_QUICKSIGHT_API Computation();
+    AWS_QUICKSIGHT_API Computation() = default;
     AWS_QUICKSIGHT_API Computation(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Computation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The top ranked and bottom ranked computation configuration.</p>
      */
-    inline const TopBottomRankedComputation& GetTopBottomRanked() const{ return m_topBottomRanked; }
-
-    /**
-     * <p>The top ranked and bottom ranked computation configuration.</p>
-     */
+    inline const TopBottomRankedComputation& GetTopBottomRanked() const { return m_topBottomRanked; }
     inline bool TopBottomRankedHasBeenSet() const { return m_topBottomRankedHasBeenSet; }
+    template<typename TopBottomRankedT = TopBottomRankedComputation>
+    void SetTopBottomRanked(TopBottomRankedT&& value) { m_topBottomRankedHasBeenSet = true; m_topBottomRanked = std::forward<TopBottomRankedT>(value); }
+    template<typename TopBottomRankedT = TopBottomRankedComputation>
+    Computation& WithTopBottomRanked(TopBottomRankedT&& value) { SetTopBottomRanked(std::forward<TopBottomRankedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The top ranked and bottom ranked computation configuration.</p>
-     */
-    inline void SetTopBottomRanked(const TopBottomRankedComputation& value) { m_topBottomRankedHasBeenSet = true; m_topBottomRanked = value; }
-
-    /**
-     * <p>The top ranked and bottom ranked computation configuration.</p>
-     */
-    inline void SetTopBottomRanked(TopBottomRankedComputation&& value) { m_topBottomRankedHasBeenSet = true; m_topBottomRanked = std::move(value); }
-
-    /**
-     * <p>The top ranked and bottom ranked computation configuration.</p>
-     */
-    inline Computation& WithTopBottomRanked(const TopBottomRankedComputation& value) { SetTopBottomRanked(value); return *this;}
-
-    /**
-     * <p>The top ranked and bottom ranked computation configuration.</p>
-     */
-    inline Computation& WithTopBottomRanked(TopBottomRankedComputation&& value) { SetTopBottomRanked(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The top movers and bottom movers computation configuration.</p>
      */
-    inline const TopBottomMoversComputation& GetTopBottomMovers() const{ return m_topBottomMovers; }
-
-    /**
-     * <p>The top movers and bottom movers computation configuration.</p>
-     */
+    inline const TopBottomMoversComputation& GetTopBottomMovers() const { return m_topBottomMovers; }
     inline bool TopBottomMoversHasBeenSet() const { return m_topBottomMoversHasBeenSet; }
+    template<typename TopBottomMoversT = TopBottomMoversComputation>
+    void SetTopBottomMovers(TopBottomMoversT&& value) { m_topBottomMoversHasBeenSet = true; m_topBottomMovers = std::forward<TopBottomMoversT>(value); }
+    template<typename TopBottomMoversT = TopBottomMoversComputation>
+    Computation& WithTopBottomMovers(TopBottomMoversT&& value) { SetTopBottomMovers(std::forward<TopBottomMoversT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The top movers and bottom movers computation configuration.</p>
-     */
-    inline void SetTopBottomMovers(const TopBottomMoversComputation& value) { m_topBottomMoversHasBeenSet = true; m_topBottomMovers = value; }
-
-    /**
-     * <p>The top movers and bottom movers computation configuration.</p>
-     */
-    inline void SetTopBottomMovers(TopBottomMoversComputation&& value) { m_topBottomMoversHasBeenSet = true; m_topBottomMovers = std::move(value); }
-
-    /**
-     * <p>The top movers and bottom movers computation configuration.</p>
-     */
-    inline Computation& WithTopBottomMovers(const TopBottomMoversComputation& value) { SetTopBottomMovers(value); return *this;}
-
-    /**
-     * <p>The top movers and bottom movers computation configuration.</p>
-     */
-    inline Computation& WithTopBottomMovers(TopBottomMoversComputation&& value) { SetTopBottomMovers(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total aggregation computation configuration.</p>
      */
-    inline const TotalAggregationComputation& GetTotalAggregation() const{ return m_totalAggregation; }
-
-    /**
-     * <p>The total aggregation computation configuration.</p>
-     */
+    inline const TotalAggregationComputation& GetTotalAggregation() const { return m_totalAggregation; }
     inline bool TotalAggregationHasBeenSet() const { return m_totalAggregationHasBeenSet; }
+    template<typename TotalAggregationT = TotalAggregationComputation>
+    void SetTotalAggregation(TotalAggregationT&& value) { m_totalAggregationHasBeenSet = true; m_totalAggregation = std::forward<TotalAggregationT>(value); }
+    template<typename TotalAggregationT = TotalAggregationComputation>
+    Computation& WithTotalAggregation(TotalAggregationT&& value) { SetTotalAggregation(std::forward<TotalAggregationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The total aggregation computation configuration.</p>
-     */
-    inline void SetTotalAggregation(const TotalAggregationComputation& value) { m_totalAggregationHasBeenSet = true; m_totalAggregation = value; }
-
-    /**
-     * <p>The total aggregation computation configuration.</p>
-     */
-    inline void SetTotalAggregation(TotalAggregationComputation&& value) { m_totalAggregationHasBeenSet = true; m_totalAggregation = std::move(value); }
-
-    /**
-     * <p>The total aggregation computation configuration.</p>
-     */
-    inline Computation& WithTotalAggregation(const TotalAggregationComputation& value) { SetTotalAggregation(value); return *this;}
-
-    /**
-     * <p>The total aggregation computation configuration.</p>
-     */
-    inline Computation& WithTotalAggregation(TotalAggregationComputation&& value) { SetTotalAggregation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum and minimum computation configuration.</p>
      */
-    inline const MaximumMinimumComputation& GetMaximumMinimum() const{ return m_maximumMinimum; }
-
-    /**
-     * <p>The maximum and minimum computation configuration.</p>
-     */
+    inline const MaximumMinimumComputation& GetMaximumMinimum() const { return m_maximumMinimum; }
     inline bool MaximumMinimumHasBeenSet() const { return m_maximumMinimumHasBeenSet; }
+    template<typename MaximumMinimumT = MaximumMinimumComputation>
+    void SetMaximumMinimum(MaximumMinimumT&& value) { m_maximumMinimumHasBeenSet = true; m_maximumMinimum = std::forward<MaximumMinimumT>(value); }
+    template<typename MaximumMinimumT = MaximumMinimumComputation>
+    Computation& WithMaximumMinimum(MaximumMinimumT&& value) { SetMaximumMinimum(std::forward<MaximumMinimumT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The maximum and minimum computation configuration.</p>
-     */
-    inline void SetMaximumMinimum(const MaximumMinimumComputation& value) { m_maximumMinimumHasBeenSet = true; m_maximumMinimum = value; }
-
-    /**
-     * <p>The maximum and minimum computation configuration.</p>
-     */
-    inline void SetMaximumMinimum(MaximumMinimumComputation&& value) { m_maximumMinimumHasBeenSet = true; m_maximumMinimum = std::move(value); }
-
-    /**
-     * <p>The maximum and minimum computation configuration.</p>
-     */
-    inline Computation& WithMaximumMinimum(const MaximumMinimumComputation& value) { SetMaximumMinimum(value); return *this;}
-
-    /**
-     * <p>The maximum and minimum computation configuration.</p>
-     */
-    inline Computation& WithMaximumMinimum(MaximumMinimumComputation&& value) { SetMaximumMinimum(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The metric comparison computation configuration.</p>
      */
-    inline const MetricComparisonComputation& GetMetricComparison() const{ return m_metricComparison; }
-
-    /**
-     * <p>The metric comparison computation configuration.</p>
-     */
+    inline const MetricComparisonComputation& GetMetricComparison() const { return m_metricComparison; }
     inline bool MetricComparisonHasBeenSet() const { return m_metricComparisonHasBeenSet; }
+    template<typename MetricComparisonT = MetricComparisonComputation>
+    void SetMetricComparison(MetricComparisonT&& value) { m_metricComparisonHasBeenSet = true; m_metricComparison = std::forward<MetricComparisonT>(value); }
+    template<typename MetricComparisonT = MetricComparisonComputation>
+    Computation& WithMetricComparison(MetricComparisonT&& value) { SetMetricComparison(std::forward<MetricComparisonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metric comparison computation configuration.</p>
-     */
-    inline void SetMetricComparison(const MetricComparisonComputation& value) { m_metricComparisonHasBeenSet = true; m_metricComparison = value; }
-
-    /**
-     * <p>The metric comparison computation configuration.</p>
-     */
-    inline void SetMetricComparison(MetricComparisonComputation&& value) { m_metricComparisonHasBeenSet = true; m_metricComparison = std::move(value); }
-
-    /**
-     * <p>The metric comparison computation configuration.</p>
-     */
-    inline Computation& WithMetricComparison(const MetricComparisonComputation& value) { SetMetricComparison(value); return *this;}
-
-    /**
-     * <p>The metric comparison computation configuration.</p>
-     */
-    inline Computation& WithMetricComparison(MetricComparisonComputation&& value) { SetMetricComparison(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The period over period computation configuration.</p>
      */
-    inline const PeriodOverPeriodComputation& GetPeriodOverPeriod() const{ return m_periodOverPeriod; }
-
-    /**
-     * <p>The period over period computation configuration.</p>
-     */
+    inline const PeriodOverPeriodComputation& GetPeriodOverPeriod() const { return m_periodOverPeriod; }
     inline bool PeriodOverPeriodHasBeenSet() const { return m_periodOverPeriodHasBeenSet; }
+    template<typename PeriodOverPeriodT = PeriodOverPeriodComputation>
+    void SetPeriodOverPeriod(PeriodOverPeriodT&& value) { m_periodOverPeriodHasBeenSet = true; m_periodOverPeriod = std::forward<PeriodOverPeriodT>(value); }
+    template<typename PeriodOverPeriodT = PeriodOverPeriodComputation>
+    Computation& WithPeriodOverPeriod(PeriodOverPeriodT&& value) { SetPeriodOverPeriod(std::forward<PeriodOverPeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The period over period computation configuration.</p>
-     */
-    inline void SetPeriodOverPeriod(const PeriodOverPeriodComputation& value) { m_periodOverPeriodHasBeenSet = true; m_periodOverPeriod = value; }
-
-    /**
-     * <p>The period over period computation configuration.</p>
-     */
-    inline void SetPeriodOverPeriod(PeriodOverPeriodComputation&& value) { m_periodOverPeriodHasBeenSet = true; m_periodOverPeriod = std::move(value); }
-
-    /**
-     * <p>The period over period computation configuration.</p>
-     */
-    inline Computation& WithPeriodOverPeriod(const PeriodOverPeriodComputation& value) { SetPeriodOverPeriod(value); return *this;}
-
-    /**
-     * <p>The period over period computation configuration.</p>
-     */
-    inline Computation& WithPeriodOverPeriod(PeriodOverPeriodComputation&& value) { SetPeriodOverPeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The period to <code>DataSetIdentifier</code> computation configuration.</p>
      */
-    inline const PeriodToDateComputation& GetPeriodToDate() const{ return m_periodToDate; }
-
-    /**
-     * <p>The period to <code>DataSetIdentifier</code> computation configuration.</p>
-     */
+    inline const PeriodToDateComputation& GetPeriodToDate() const { return m_periodToDate; }
     inline bool PeriodToDateHasBeenSet() const { return m_periodToDateHasBeenSet; }
+    template<typename PeriodToDateT = PeriodToDateComputation>
+    void SetPeriodToDate(PeriodToDateT&& value) { m_periodToDateHasBeenSet = true; m_periodToDate = std::forward<PeriodToDateT>(value); }
+    template<typename PeriodToDateT = PeriodToDateComputation>
+    Computation& WithPeriodToDate(PeriodToDateT&& value) { SetPeriodToDate(std::forward<PeriodToDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The period to <code>DataSetIdentifier</code> computation configuration.</p>
-     */
-    inline void SetPeriodToDate(const PeriodToDateComputation& value) { m_periodToDateHasBeenSet = true; m_periodToDate = value; }
-
-    /**
-     * <p>The period to <code>DataSetIdentifier</code> computation configuration.</p>
-     */
-    inline void SetPeriodToDate(PeriodToDateComputation&& value) { m_periodToDateHasBeenSet = true; m_periodToDate = std::move(value); }
-
-    /**
-     * <p>The period to <code>DataSetIdentifier</code> computation configuration.</p>
-     */
-    inline Computation& WithPeriodToDate(const PeriodToDateComputation& value) { SetPeriodToDate(value); return *this;}
-
-    /**
-     * <p>The period to <code>DataSetIdentifier</code> computation configuration.</p>
-     */
-    inline Computation& WithPeriodToDate(PeriodToDateComputation&& value) { SetPeriodToDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The growth rate computation configuration.</p>
      */
-    inline const GrowthRateComputation& GetGrowthRate() const{ return m_growthRate; }
-
-    /**
-     * <p>The growth rate computation configuration.</p>
-     */
+    inline const GrowthRateComputation& GetGrowthRate() const { return m_growthRate; }
     inline bool GrowthRateHasBeenSet() const { return m_growthRateHasBeenSet; }
+    template<typename GrowthRateT = GrowthRateComputation>
+    void SetGrowthRate(GrowthRateT&& value) { m_growthRateHasBeenSet = true; m_growthRate = std::forward<GrowthRateT>(value); }
+    template<typename GrowthRateT = GrowthRateComputation>
+    Computation& WithGrowthRate(GrowthRateT&& value) { SetGrowthRate(std::forward<GrowthRateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The growth rate computation configuration.</p>
-     */
-    inline void SetGrowthRate(const GrowthRateComputation& value) { m_growthRateHasBeenSet = true; m_growthRate = value; }
-
-    /**
-     * <p>The growth rate computation configuration.</p>
-     */
-    inline void SetGrowthRate(GrowthRateComputation&& value) { m_growthRateHasBeenSet = true; m_growthRate = std::move(value); }
-
-    /**
-     * <p>The growth rate computation configuration.</p>
-     */
-    inline Computation& WithGrowthRate(const GrowthRateComputation& value) { SetGrowthRate(value); return *this;}
-
-    /**
-     * <p>The growth rate computation configuration.</p>
-     */
-    inline Computation& WithGrowthRate(GrowthRateComputation&& value) { SetGrowthRate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique values computation configuration.</p>
      */
-    inline const UniqueValuesComputation& GetUniqueValues() const{ return m_uniqueValues; }
-
-    /**
-     * <p>The unique values computation configuration.</p>
-     */
+    inline const UniqueValuesComputation& GetUniqueValues() const { return m_uniqueValues; }
     inline bool UniqueValuesHasBeenSet() const { return m_uniqueValuesHasBeenSet; }
+    template<typename UniqueValuesT = UniqueValuesComputation>
+    void SetUniqueValues(UniqueValuesT&& value) { m_uniqueValuesHasBeenSet = true; m_uniqueValues = std::forward<UniqueValuesT>(value); }
+    template<typename UniqueValuesT = UniqueValuesComputation>
+    Computation& WithUniqueValues(UniqueValuesT&& value) { SetUniqueValues(std::forward<UniqueValuesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique values computation configuration.</p>
-     */
-    inline void SetUniqueValues(const UniqueValuesComputation& value) { m_uniqueValuesHasBeenSet = true; m_uniqueValues = value; }
-
-    /**
-     * <p>The unique values computation configuration.</p>
-     */
-    inline void SetUniqueValues(UniqueValuesComputation&& value) { m_uniqueValuesHasBeenSet = true; m_uniqueValues = std::move(value); }
-
-    /**
-     * <p>The unique values computation configuration.</p>
-     */
-    inline Computation& WithUniqueValues(const UniqueValuesComputation& value) { SetUniqueValues(value); return *this;}
-
-    /**
-     * <p>The unique values computation configuration.</p>
-     */
-    inline Computation& WithUniqueValues(UniqueValuesComputation&& value) { SetUniqueValues(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The forecast computation configuration.</p>
      */
-    inline const ForecastComputation& GetForecast() const{ return m_forecast; }
-
-    /**
-     * <p>The forecast computation configuration.</p>
-     */
+    inline const ForecastComputation& GetForecast() const { return m_forecast; }
     inline bool ForecastHasBeenSet() const { return m_forecastHasBeenSet; }
-
-    /**
-     * <p>The forecast computation configuration.</p>
-     */
-    inline void SetForecast(const ForecastComputation& value) { m_forecastHasBeenSet = true; m_forecast = value; }
-
-    /**
-     * <p>The forecast computation configuration.</p>
-     */
-    inline void SetForecast(ForecastComputation&& value) { m_forecastHasBeenSet = true; m_forecast = std::move(value); }
-
-    /**
-     * <p>The forecast computation configuration.</p>
-     */
-    inline Computation& WithForecast(const ForecastComputation& value) { SetForecast(value); return *this;}
-
-    /**
-     * <p>The forecast computation configuration.</p>
-     */
-    inline Computation& WithForecast(ForecastComputation&& value) { SetForecast(std::move(value)); return *this;}
-
+    template<typename ForecastT = ForecastComputation>
+    void SetForecast(ForecastT&& value) { m_forecastHasBeenSet = true; m_forecast = std::forward<ForecastT>(value); }
+    template<typename ForecastT = ForecastComputation>
+    Computation& WithForecast(ForecastT&& value) { SetForecast(std::forward<ForecastT>(value)); return *this;}
+    ///@}
   private:
 
     TopBottomRankedComputation m_topBottomRanked;

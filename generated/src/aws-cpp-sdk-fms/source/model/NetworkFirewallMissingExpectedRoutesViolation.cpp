@@ -18,17 +18,7 @@ namespace FMS
 namespace Model
 {
 
-NetworkFirewallMissingExpectedRoutesViolation::NetworkFirewallMissingExpectedRoutesViolation() : 
-    m_violationTargetHasBeenSet(false),
-    m_expectedRoutesHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-NetworkFirewallMissingExpectedRoutesViolation::NetworkFirewallMissingExpectedRoutesViolation(JsonView jsonValue) : 
-    m_violationTargetHasBeenSet(false),
-    m_expectedRoutesHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+NetworkFirewallMissingExpectedRoutesViolation::NetworkFirewallMissingExpectedRoutesViolation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ NetworkFirewallMissingExpectedRoutesViolation& NetworkFirewallMissingExpectedRou
   if(jsonValue.ValueExists("ViolationTarget"))
   {
     m_violationTarget = jsonValue.GetString("ViolationTarget");
-
     m_violationTargetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExpectedRoutes"))
   {
     Aws::Utils::Array<JsonView> expectedRoutesJsonList = jsonValue.GetArray("ExpectedRoutes");
@@ -51,14 +39,11 @@ NetworkFirewallMissingExpectedRoutesViolation& NetworkFirewallMissingExpectedRou
     }
     m_expectedRoutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcId"))
   {
     m_vpcId = jsonValue.GetString("VpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   return *this;
 }
 

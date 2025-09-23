@@ -27,111 +27,51 @@ namespace Model
   class DeleteAssociationResult
   {
   public:
-    AWS_SAGEMAKER_API DeleteAssociationResult();
+    AWS_SAGEMAKER_API DeleteAssociationResult() = default;
     AWS_SAGEMAKER_API DeleteAssociationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API DeleteAssociationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the source.</p>
      */
-    inline const Aws::String& GetSourceArn() const{ return m_sourceArn; }
+    inline const Aws::String& GetSourceArn() const { return m_sourceArn; }
+    template<typename SourceArnT = Aws::String>
+    void SetSourceArn(SourceArnT&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::forward<SourceArnT>(value); }
+    template<typename SourceArnT = Aws::String>
+    DeleteAssociationResult& WithSourceArn(SourceArnT&& value) { SetSourceArn(std::forward<SourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the source.</p>
-     */
-    inline void SetSourceArn(const Aws::String& value) { m_sourceArn = value; }
-
-    /**
-     * <p>The ARN of the source.</p>
-     */
-    inline void SetSourceArn(Aws::String&& value) { m_sourceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the source.</p>
-     */
-    inline void SetSourceArn(const char* value) { m_sourceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the source.</p>
-     */
-    inline DeleteAssociationResult& WithSourceArn(const Aws::String& value) { SetSourceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the source.</p>
-     */
-    inline DeleteAssociationResult& WithSourceArn(Aws::String&& value) { SetSourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the source.</p>
-     */
-    inline DeleteAssociationResult& WithSourceArn(const char* value) { SetSourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the destination.</p>
      */
-    inline const Aws::String& GetDestinationArn() const{ return m_destinationArn; }
+    inline const Aws::String& GetDestinationArn() const { return m_destinationArn; }
+    template<typename DestinationArnT = Aws::String>
+    void SetDestinationArn(DestinationArnT&& value) { m_destinationArnHasBeenSet = true; m_destinationArn = std::forward<DestinationArnT>(value); }
+    template<typename DestinationArnT = Aws::String>
+    DeleteAssociationResult& WithDestinationArn(DestinationArnT&& value) { SetDestinationArn(std::forward<DestinationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination.</p>
-     */
-    inline void SetDestinationArn(const Aws::String& value) { m_destinationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination.</p>
-     */
-    inline void SetDestinationArn(Aws::String&& value) { m_destinationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination.</p>
-     */
-    inline void SetDestinationArn(const char* value) { m_destinationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination.</p>
-     */
-    inline DeleteAssociationResult& WithDestinationArn(const Aws::String& value) { SetDestinationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination.</p>
-     */
-    inline DeleteAssociationResult& WithDestinationArn(Aws::String&& value) { SetDestinationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the destination.</p>
-     */
-    inline DeleteAssociationResult& WithDestinationArn(const char* value) { SetDestinationArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteAssociationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteAssociationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteAssociationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteAssociationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceArn;
+    bool m_sourceArnHasBeenSet = false;
 
     Aws::String m_destinationArn;
+    bool m_destinationArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

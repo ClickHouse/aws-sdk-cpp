@@ -18,19 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-DeviceConfigurationType::DeviceConfigurationType() : 
-    m_challengeRequiredOnNewDevice(false),
-    m_challengeRequiredOnNewDeviceHasBeenSet(false),
-    m_deviceOnlyRememberedOnUserPrompt(false),
-    m_deviceOnlyRememberedOnUserPromptHasBeenSet(false)
-{
-}
-
-DeviceConfigurationType::DeviceConfigurationType(JsonView jsonValue) : 
-    m_challengeRequiredOnNewDevice(false),
-    m_challengeRequiredOnNewDeviceHasBeenSet(false),
-    m_deviceOnlyRememberedOnUserPrompt(false),
-    m_deviceOnlyRememberedOnUserPromptHasBeenSet(false)
+DeviceConfigurationType::DeviceConfigurationType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DeviceConfigurationType& DeviceConfigurationType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ChallengeRequiredOnNewDevice"))
   {
     m_challengeRequiredOnNewDevice = jsonValue.GetBool("ChallengeRequiredOnNewDevice");
-
     m_challengeRequiredOnNewDeviceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceOnlyRememberedOnUserPrompt"))
   {
     m_deviceOnlyRememberedOnUserPrompt = jsonValue.GetBool("DeviceOnlyRememberedOnUserPrompt");
-
     m_deviceOnlyRememberedOnUserPromptHasBeenSet = true;
   }
-
   return *this;
 }
 

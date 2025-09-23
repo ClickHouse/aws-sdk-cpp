@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SignupResponse::SignupResponse() : 
-    m_iAMUser(false),
-    m_iAMUserHasBeenSet(false),
-    m_userLoginNameHasBeenSet(false),
-    m_accountNameHasBeenSet(false),
-    m_directoryTypeHasBeenSet(false)
-{
-}
-
-SignupResponse::SignupResponse(JsonView jsonValue) : 
-    m_iAMUser(false),
-    m_iAMUserHasBeenSet(false),
-    m_userLoginNameHasBeenSet(false),
-    m_accountNameHasBeenSet(false),
-    m_directoryTypeHasBeenSet(false)
+SignupResponse::SignupResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ SignupResponse& SignupResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("IAMUser"))
   {
     m_iAMUser = jsonValue.GetBool("IAMUser");
-
     m_iAMUserHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userLoginName"))
   {
     m_userLoginName = jsonValue.GetString("userLoginName");
-
     m_userLoginNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("accountName"))
   {
     m_accountName = jsonValue.GetString("accountName");
-
     m_accountNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("directoryType"))
   {
     m_directoryType = jsonValue.GetString("directoryType");
-
     m_directoryTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -40,42 +40,23 @@ namespace Model
   class HyperParameterTuningJobConfig
   {
   public:
-    AWS_FORECASTSERVICE_API HyperParameterTuningJobConfig();
+    AWS_FORECASTSERVICE_API HyperParameterTuningJobConfig() = default;
     AWS_FORECASTSERVICE_API HyperParameterTuningJobConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API HyperParameterTuningJobConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the ranges of valid values for the hyperparameters.</p>
      */
-    inline const ParameterRanges& GetParameterRanges() const{ return m_parameterRanges; }
-
-    /**
-     * <p>Specifies the ranges of valid values for the hyperparameters.</p>
-     */
+    inline const ParameterRanges& GetParameterRanges() const { return m_parameterRanges; }
     inline bool ParameterRangesHasBeenSet() const { return m_parameterRangesHasBeenSet; }
-
-    /**
-     * <p>Specifies the ranges of valid values for the hyperparameters.</p>
-     */
-    inline void SetParameterRanges(const ParameterRanges& value) { m_parameterRangesHasBeenSet = true; m_parameterRanges = value; }
-
-    /**
-     * <p>Specifies the ranges of valid values for the hyperparameters.</p>
-     */
-    inline void SetParameterRanges(ParameterRanges&& value) { m_parameterRangesHasBeenSet = true; m_parameterRanges = std::move(value); }
-
-    /**
-     * <p>Specifies the ranges of valid values for the hyperparameters.</p>
-     */
-    inline HyperParameterTuningJobConfig& WithParameterRanges(const ParameterRanges& value) { SetParameterRanges(value); return *this;}
-
-    /**
-     * <p>Specifies the ranges of valid values for the hyperparameters.</p>
-     */
-    inline HyperParameterTuningJobConfig& WithParameterRanges(ParameterRanges&& value) { SetParameterRanges(std::move(value)); return *this;}
-
+    template<typename ParameterRangesT = ParameterRanges>
+    void SetParameterRanges(ParameterRangesT&& value) { m_parameterRangesHasBeenSet = true; m_parameterRanges = std::forward<ParameterRangesT>(value); }
+    template<typename ParameterRangesT = ParameterRanges>
+    HyperParameterTuningJobConfig& WithParameterRanges(ParameterRangesT&& value) { SetParameterRanges(std::forward<ParameterRangesT>(value)); return *this;}
+    ///@}
   private:
 
     ParameterRanges m_parameterRanges;

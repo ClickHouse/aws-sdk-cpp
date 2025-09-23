@@ -31,134 +31,47 @@ namespace Model
   class SigningProfileParameter
   {
   public:
-    AWS_IOT_API SigningProfileParameter();
+    AWS_IOT_API SigningProfileParameter() = default;
     AWS_IOT_API SigningProfileParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API SigningProfileParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Certificate ARN.</p>
      */
-    inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
-
-    /**
-     * <p>Certificate ARN.</p>
-     */
+    inline const Aws::String& GetCertificateArn() const { return m_certificateArn; }
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
+    template<typename CertificateArnT = Aws::String>
+    void SetCertificateArn(CertificateArnT&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::forward<CertificateArnT>(value); }
+    template<typename CertificateArnT = Aws::String>
+    SigningProfileParameter& WithCertificateArn(CertificateArnT&& value) { SetCertificateArn(std::forward<CertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Certificate ARN.</p>
-     */
-    inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
-
-    /**
-     * <p>Certificate ARN.</p>
-     */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
-
-    /**
-     * <p>Certificate ARN.</p>
-     */
-    inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
-
-    /**
-     * <p>Certificate ARN.</p>
-     */
-    inline SigningProfileParameter& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
-
-    /**
-     * <p>Certificate ARN.</p>
-     */
-    inline SigningProfileParameter& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Certificate ARN.</p>
-     */
-    inline SigningProfileParameter& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The hardware platform of your device.</p>
      */
-    inline const Aws::String& GetPlatform() const{ return m_platform; }
-
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
+    inline const Aws::String& GetPlatform() const { return m_platform; }
     inline bool PlatformHasBeenSet() const { return m_platformHasBeenSet; }
+    template<typename PlatformT = Aws::String>
+    void SetPlatform(PlatformT&& value) { m_platformHasBeenSet = true; m_platform = std::forward<PlatformT>(value); }
+    template<typename PlatformT = Aws::String>
+    SigningProfileParameter& WithPlatform(PlatformT&& value) { SetPlatform(std::forward<PlatformT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
-    inline void SetPlatform(const Aws::String& value) { m_platformHasBeenSet = true; m_platform = value; }
-
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
-    inline void SetPlatform(Aws::String&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
-
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
-    inline void SetPlatform(const char* value) { m_platformHasBeenSet = true; m_platform.assign(value); }
-
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
-    inline SigningProfileParameter& WithPlatform(const Aws::String& value) { SetPlatform(value); return *this;}
-
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
-    inline SigningProfileParameter& WithPlatform(Aws::String&& value) { SetPlatform(std::move(value)); return *this;}
-
-    /**
-     * <p>The hardware platform of your device.</p>
-     */
-    inline SigningProfileParameter& WithPlatform(const char* value) { SetPlatform(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the code-signing certificate on your device.</p>
      */
-    inline const Aws::String& GetCertificatePathOnDevice() const{ return m_certificatePathOnDevice; }
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
+    inline const Aws::String& GetCertificatePathOnDevice() const { return m_certificatePathOnDevice; }
     inline bool CertificatePathOnDeviceHasBeenSet() const { return m_certificatePathOnDeviceHasBeenSet; }
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
-    inline void SetCertificatePathOnDevice(const Aws::String& value) { m_certificatePathOnDeviceHasBeenSet = true; m_certificatePathOnDevice = value; }
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
-    inline void SetCertificatePathOnDevice(Aws::String&& value) { m_certificatePathOnDeviceHasBeenSet = true; m_certificatePathOnDevice = std::move(value); }
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
-    inline void SetCertificatePathOnDevice(const char* value) { m_certificatePathOnDeviceHasBeenSet = true; m_certificatePathOnDevice.assign(value); }
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
-    inline SigningProfileParameter& WithCertificatePathOnDevice(const Aws::String& value) { SetCertificatePathOnDevice(value); return *this;}
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
-    inline SigningProfileParameter& WithCertificatePathOnDevice(Aws::String&& value) { SetCertificatePathOnDevice(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the code-signing certificate on your device.</p>
-     */
-    inline SigningProfileParameter& WithCertificatePathOnDevice(const char* value) { SetCertificatePathOnDevice(value); return *this;}
-
+    template<typename CertificatePathOnDeviceT = Aws::String>
+    void SetCertificatePathOnDevice(CertificatePathOnDeviceT&& value) { m_certificatePathOnDeviceHasBeenSet = true; m_certificatePathOnDevice = std::forward<CertificatePathOnDeviceT>(value); }
+    template<typename CertificatePathOnDeviceT = Aws::String>
+    SigningProfileParameter& WithCertificatePathOnDevice(CertificatePathOnDeviceT&& value) { SetCertificatePathOnDevice(std::forward<CertificatePathOnDeviceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateArn;

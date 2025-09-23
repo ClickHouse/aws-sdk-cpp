@@ -18,19 +18,7 @@ namespace ManagedBlockchain
 namespace Model
 {
 
-VoteSummary::VoteSummary() : 
-    m_vote(VoteValue::NOT_SET),
-    m_voteHasBeenSet(false),
-    m_memberNameHasBeenSet(false),
-    m_memberIdHasBeenSet(false)
-{
-}
-
-VoteSummary::VoteSummary(JsonView jsonValue) : 
-    m_vote(VoteValue::NOT_SET),
-    m_voteHasBeenSet(false),
-    m_memberNameHasBeenSet(false),
-    m_memberIdHasBeenSet(false)
+VoteSummary::VoteSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ VoteSummary& VoteSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Vote"))
   {
     m_vote = VoteValueMapper::GetVoteValueForName(jsonValue.GetString("Vote"));
-
     m_voteHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MemberName"))
   {
     m_memberName = jsonValue.GetString("MemberName");
-
     m_memberNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MemberId"))
   {
     m_memberId = jsonValue.GetString("MemberId");
-
     m_memberIdHasBeenSet = true;
   }
-
   return *this;
 }
 

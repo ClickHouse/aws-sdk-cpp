@@ -34,334 +34,118 @@ namespace Model
   class EntitySummary
   {
   public:
-    AWS_IOTTWINMAKER_API EntitySummary();
+    AWS_IOTTWINMAKER_API EntitySummary() = default;
     AWS_IOTTWINMAKER_API EntitySummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API EntitySummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the entity.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    EntitySummary& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline EntitySummary& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline EntitySummary& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline EntitySummary& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the entity.</p>
      */
-    inline const Aws::String& GetEntityName() const{ return m_entityName; }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
+    inline const Aws::String& GetEntityName() const { return m_entityName; }
     inline bool EntityNameHasBeenSet() const { return m_entityNameHasBeenSet; }
+    template<typename EntityNameT = Aws::String>
+    void SetEntityName(EntityNameT&& value) { m_entityNameHasBeenSet = true; m_entityName = std::forward<EntityNameT>(value); }
+    template<typename EntityNameT = Aws::String>
+    EntitySummary& WithEntityName(EntityNameT&& value) { SetEntityName(std::forward<EntityNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline void SetEntityName(const Aws::String& value) { m_entityNameHasBeenSet = true; m_entityName = value; }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline void SetEntityName(Aws::String&& value) { m_entityNameHasBeenSet = true; m_entityName = std::move(value); }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline void SetEntityName(const char* value) { m_entityNameHasBeenSet = true; m_entityName.assign(value); }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline EntitySummary& WithEntityName(const Aws::String& value) { SetEntityName(value); return *this;}
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline EntitySummary& WithEntityName(Aws::String&& value) { SetEntityName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline EntitySummary& WithEntityName(const char* value) { SetEntityName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the entity.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the entity.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    EntitySummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the entity.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the entity.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the entity.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the entity.</p>
-     */
-    inline EntitySummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the entity.</p>
-     */
-    inline EntitySummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the entity.</p>
-     */
-    inline EntitySummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the parent entity.</p>
      */
-    inline const Aws::String& GetParentEntityId() const{ return m_parentEntityId; }
-
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
+    inline const Aws::String& GetParentEntityId() const { return m_parentEntityId; }
     inline bool ParentEntityIdHasBeenSet() const { return m_parentEntityIdHasBeenSet; }
+    template<typename ParentEntityIdT = Aws::String>
+    void SetParentEntityId(ParentEntityIdT&& value) { m_parentEntityIdHasBeenSet = true; m_parentEntityId = std::forward<ParentEntityIdT>(value); }
+    template<typename ParentEntityIdT = Aws::String>
+    EntitySummary& WithParentEntityId(ParentEntityIdT&& value) { SetParentEntityId(std::forward<ParentEntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
-    inline void SetParentEntityId(const Aws::String& value) { m_parentEntityIdHasBeenSet = true; m_parentEntityId = value; }
-
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
-    inline void SetParentEntityId(Aws::String&& value) { m_parentEntityIdHasBeenSet = true; m_parentEntityId = std::move(value); }
-
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
-    inline void SetParentEntityId(const char* value) { m_parentEntityIdHasBeenSet = true; m_parentEntityId.assign(value); }
-
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
-    inline EntitySummary& WithParentEntityId(const Aws::String& value) { SetParentEntityId(value); return *this;}
-
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
-    inline EntitySummary& WithParentEntityId(Aws::String&& value) { SetParentEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the parent entity.</p>
-     */
-    inline EntitySummary& WithParentEntityId(const char* value) { SetParentEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the entity.</p>
      */
-    inline const Status& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the entity.</p>
-     */
+    inline const Status& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Status>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Status>
+    EntitySummary& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the entity.</p>
-     */
-    inline void SetStatus(const Status& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the entity.</p>
-     */
-    inline void SetStatus(Status&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the entity.</p>
-     */
-    inline EntitySummary& WithStatus(const Status& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the entity.</p>
-     */
-    inline EntitySummary& WithStatus(Status&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the entity.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    EntitySummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline EntitySummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline EntitySummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline EntitySummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An <b>eventual</b> Boolean value that specifies whether the entity has child
      * entities or not.</p>
      */
-    inline bool GetHasChildEntities() const{ return m_hasChildEntities; }
-
-    /**
-     * <p>An <b>eventual</b> Boolean value that specifies whether the entity has child
-     * entities or not.</p>
-     */
+    inline bool GetHasChildEntities() const { return m_hasChildEntities; }
     inline bool HasChildEntitiesHasBeenSet() const { return m_hasChildEntitiesHasBeenSet; }
-
-    /**
-     * <p>An <b>eventual</b> Boolean value that specifies whether the entity has child
-     * entities or not.</p>
-     */
     inline void SetHasChildEntities(bool value) { m_hasChildEntitiesHasBeenSet = true; m_hasChildEntities = value; }
-
-    /**
-     * <p>An <b>eventual</b> Boolean value that specifies whether the entity has child
-     * entities or not.</p>
-     */
     inline EntitySummary& WithHasChildEntities(bool value) { SetHasChildEntities(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The date and time when the entity was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDateTime() const{ return m_creationDateTime; }
-
-    /**
-     * <p>The date and time when the entity was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDateTime() const { return m_creationDateTime; }
     inline bool CreationDateTimeHasBeenSet() const { return m_creationDateTimeHasBeenSet; }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    void SetCreationDateTime(CreationDateTimeT&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::forward<CreationDateTimeT>(value); }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    EntitySummary& WithCreationDateTime(CreationDateTimeT&& value) { SetCreationDateTime(std::forward<CreationDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the entity was created.</p>
-     */
-    inline void SetCreationDateTime(const Aws::Utils::DateTime& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = value; }
-
-    /**
-     * <p>The date and time when the entity was created.</p>
-     */
-    inline void SetCreationDateTime(Aws::Utils::DateTime&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the entity was created.</p>
-     */
-    inline EntitySummary& WithCreationDateTime(const Aws::Utils::DateTime& value) { SetCreationDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the entity was created.</p>
-     */
-    inline EntitySummary& WithCreationDateTime(Aws::Utils::DateTime&& value) { SetCreationDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last date and time when the entity was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateDateTime() const{ return m_updateDateTime; }
-
-    /**
-     * <p>The last date and time when the entity was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdateDateTime() const { return m_updateDateTime; }
     inline bool UpdateDateTimeHasBeenSet() const { return m_updateDateTimeHasBeenSet; }
-
-    /**
-     * <p>The last date and time when the entity was updated.</p>
-     */
-    inline void SetUpdateDateTime(const Aws::Utils::DateTime& value) { m_updateDateTimeHasBeenSet = true; m_updateDateTime = value; }
-
-    /**
-     * <p>The last date and time when the entity was updated.</p>
-     */
-    inline void SetUpdateDateTime(Aws::Utils::DateTime&& value) { m_updateDateTimeHasBeenSet = true; m_updateDateTime = std::move(value); }
-
-    /**
-     * <p>The last date and time when the entity was updated.</p>
-     */
-    inline EntitySummary& WithUpdateDateTime(const Aws::Utils::DateTime& value) { SetUpdateDateTime(value); return *this;}
-
-    /**
-     * <p>The last date and time when the entity was updated.</p>
-     */
-    inline EntitySummary& WithUpdateDateTime(Aws::Utils::DateTime&& value) { SetUpdateDateTime(std::move(value)); return *this;}
-
+    template<typename UpdateDateTimeT = Aws::Utils::DateTime>
+    void SetUpdateDateTime(UpdateDateTimeT&& value) { m_updateDateTimeHasBeenSet = true; m_updateDateTime = std::forward<UpdateDateTimeT>(value); }
+    template<typename UpdateDateTimeT = Aws::Utils::DateTime>
+    EntitySummary& WithUpdateDateTime(UpdateDateTimeT&& value) { SetUpdateDateTime(std::forward<UpdateDateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entityId;
@@ -382,13 +166,13 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    bool m_hasChildEntities;
+    bool m_hasChildEntities{false};
     bool m_hasChildEntitiesHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDateTime;
+    Aws::Utils::DateTime m_creationDateTime{};
     bool m_creationDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateDateTime;
+    Aws::Utils::DateTime m_updateDateTime{};
     bool m_updateDateTimeHasBeenSet = false;
   };
 

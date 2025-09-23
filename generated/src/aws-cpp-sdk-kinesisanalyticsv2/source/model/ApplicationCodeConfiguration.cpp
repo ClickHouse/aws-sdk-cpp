@@ -18,17 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-ApplicationCodeConfiguration::ApplicationCodeConfiguration() : 
-    m_codeContentHasBeenSet(false),
-    m_codeContentType(CodeContentType::NOT_SET),
-    m_codeContentTypeHasBeenSet(false)
-{
-}
-
-ApplicationCodeConfiguration::ApplicationCodeConfiguration(JsonView jsonValue) : 
-    m_codeContentHasBeenSet(false),
-    m_codeContentType(CodeContentType::NOT_SET),
-    m_codeContentTypeHasBeenSet(false)
+ApplicationCodeConfiguration::ApplicationCodeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ApplicationCodeConfiguration& ApplicationCodeConfiguration::operator =(JsonView 
   if(jsonValue.ValueExists("CodeContent"))
   {
     m_codeContent = jsonValue.GetObject("CodeContent");
-
     m_codeContentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CodeContentType"))
   {
     m_codeContentType = CodeContentTypeMapper::GetCodeContentTypeForName(jsonValue.GetString("CodeContentType"));
-
     m_codeContentTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LifecyclePolicyResourceSelectionRecipe::LifecyclePolicyResourceSelectionRecipe() : 
-    m_nameHasBeenSet(false),
-    m_semanticVersionHasBeenSet(false)
-{
-}
-
-LifecyclePolicyResourceSelectionRecipe::LifecyclePolicyResourceSelectionRecipe(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_semanticVersionHasBeenSet(false)
+LifecyclePolicyResourceSelectionRecipe::LifecyclePolicyResourceSelectionRecipe(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LifecyclePolicyResourceSelectionRecipe& LifecyclePolicyResourceSelectionRecipe::
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("semanticVersion"))
   {
     m_semanticVersion = jsonValue.GetString("semanticVersion");
-
     m_semanticVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

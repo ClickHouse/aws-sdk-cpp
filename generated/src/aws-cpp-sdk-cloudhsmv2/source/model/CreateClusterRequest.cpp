@@ -12,15 +12,6 @@ using namespace Aws::CloudHSMV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateClusterRequest::CreateClusterRequest() : 
-    m_backupRetentionPolicyHasBeenSet(false),
-    m_hsmTypeHasBeenSet(false),
-    m_sourceBackupIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_tagListHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +45,11 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   }
 
+  if(m_networkTypeHasBeenSet)
+  {
+   payload.WithString("NetworkType", NetworkTypeMapper::GetNameForNetworkType(m_networkType));
+  }
+
   if(m_tagListHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagListJsonList(m_tagList.size());
@@ -63,6 +59,11 @@ Aws::String CreateClusterRequest::SerializePayload() const
    }
    payload.WithArray("TagList", std::move(tagListJsonList));
 
+  }
+
+  if(m_modeHasBeenSet)
+  {
+   payload.WithString("Mode", ClusterModeMapper::GetNameForClusterMode(m_mode));
   }
 
   return payload.View().WriteReadable();

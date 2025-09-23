@@ -34,157 +34,69 @@ namespace Model
   class VoiceToneAnalysisTask
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API VoiceToneAnalysisTask();
+    AWS_CHIMESDKMEDIAPIPELINES_API VoiceToneAnalysisTask() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API VoiceToneAnalysisTask(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API VoiceToneAnalysisTask& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the voice tone analysis task.</p>
      */
-    inline const Aws::String& GetVoiceToneAnalysisTaskId() const{ return m_voiceToneAnalysisTaskId; }
-
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
+    inline const Aws::String& GetVoiceToneAnalysisTaskId() const { return m_voiceToneAnalysisTaskId; }
     inline bool VoiceToneAnalysisTaskIdHasBeenSet() const { return m_voiceToneAnalysisTaskIdHasBeenSet; }
+    template<typename VoiceToneAnalysisTaskIdT = Aws::String>
+    void SetVoiceToneAnalysisTaskId(VoiceToneAnalysisTaskIdT&& value) { m_voiceToneAnalysisTaskIdHasBeenSet = true; m_voiceToneAnalysisTaskId = std::forward<VoiceToneAnalysisTaskIdT>(value); }
+    template<typename VoiceToneAnalysisTaskIdT = Aws::String>
+    VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskId(VoiceToneAnalysisTaskIdT&& value) { SetVoiceToneAnalysisTaskId(std::forward<VoiceToneAnalysisTaskIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTaskId(const Aws::String& value) { m_voiceToneAnalysisTaskIdHasBeenSet = true; m_voiceToneAnalysisTaskId = value; }
-
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTaskId(Aws::String&& value) { m_voiceToneAnalysisTaskIdHasBeenSet = true; m_voiceToneAnalysisTaskId = std::move(value); }
-
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTaskId(const char* value) { m_voiceToneAnalysisTaskIdHasBeenSet = true; m_voiceToneAnalysisTaskId.assign(value); }
-
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
-    inline VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskId(const Aws::String& value) { SetVoiceToneAnalysisTaskId(value); return *this;}
-
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
-    inline VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskId(Aws::String&& value) { SetVoiceToneAnalysisTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the voice tone analysis task.</p>
-     */
-    inline VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskId(const char* value) { SetVoiceToneAnalysisTaskId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of a voice tone analysis task.</p>
      */
-    inline const MediaPipelineTaskStatus& GetVoiceToneAnalysisTaskStatus() const{ return m_voiceToneAnalysisTaskStatus; }
-
-    /**
-     * <p>The status of a voice tone analysis task.</p>
-     */
+    inline MediaPipelineTaskStatus GetVoiceToneAnalysisTaskStatus() const { return m_voiceToneAnalysisTaskStatus; }
     inline bool VoiceToneAnalysisTaskStatusHasBeenSet() const { return m_voiceToneAnalysisTaskStatusHasBeenSet; }
+    inline void SetVoiceToneAnalysisTaskStatus(MediaPipelineTaskStatus value) { m_voiceToneAnalysisTaskStatusHasBeenSet = true; m_voiceToneAnalysisTaskStatus = value; }
+    inline VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskStatus(MediaPipelineTaskStatus value) { SetVoiceToneAnalysisTaskStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of a voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTaskStatus(const MediaPipelineTaskStatus& value) { m_voiceToneAnalysisTaskStatusHasBeenSet = true; m_voiceToneAnalysisTaskStatus = value; }
-
-    /**
-     * <p>The status of a voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTaskStatus(MediaPipelineTaskStatus&& value) { m_voiceToneAnalysisTaskStatusHasBeenSet = true; m_voiceToneAnalysisTaskStatus = std::move(value); }
-
-    /**
-     * <p>The status of a voice tone analysis task.</p>
-     */
-    inline VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskStatus(const MediaPipelineTaskStatus& value) { SetVoiceToneAnalysisTaskStatus(value); return *this;}
-
-    /**
-     * <p>The status of a voice tone analysis task.</p>
-     */
-    inline VoiceToneAnalysisTask& WithVoiceToneAnalysisTaskStatus(MediaPipelineTaskStatus&& value) { SetVoiceToneAnalysisTaskStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which a voice tone analysis task was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
-
-    /**
-     * <p>The time at which a voice tone analysis task was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
     inline bool CreatedTimestampHasBeenSet() const { return m_createdTimestampHasBeenSet; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    VoiceToneAnalysisTask& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which a voice tone analysis task was created.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
-
-    /**
-     * <p>The time at which a voice tone analysis task was created.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The time at which a voice tone analysis task was created.</p>
-     */
-    inline VoiceToneAnalysisTask& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The time at which a voice tone analysis task was created.</p>
-     */
-    inline VoiceToneAnalysisTask& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which a voice tone analysis task was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedTimestamp() const{ return m_updatedTimestamp; }
-
-    /**
-     * <p>The time at which a voice tone analysis task was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedTimestamp() const { return m_updatedTimestamp; }
     inline bool UpdatedTimestampHasBeenSet() const { return m_updatedTimestampHasBeenSet; }
-
-    /**
-     * <p>The time at which a voice tone analysis task was updated.</p>
-     */
-    inline void SetUpdatedTimestamp(const Aws::Utils::DateTime& value) { m_updatedTimestampHasBeenSet = true; m_updatedTimestamp = value; }
-
-    /**
-     * <p>The time at which a voice tone analysis task was updated.</p>
-     */
-    inline void SetUpdatedTimestamp(Aws::Utils::DateTime&& value) { m_updatedTimestampHasBeenSet = true; m_updatedTimestamp = std::move(value); }
-
-    /**
-     * <p>The time at which a voice tone analysis task was updated.</p>
-     */
-    inline VoiceToneAnalysisTask& WithUpdatedTimestamp(const Aws::Utils::DateTime& value) { SetUpdatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The time at which a voice tone analysis task was updated.</p>
-     */
-    inline VoiceToneAnalysisTask& WithUpdatedTimestamp(Aws::Utils::DateTime&& value) { SetUpdatedTimestamp(std::move(value)); return *this;}
-
+    template<typename UpdatedTimestampT = Aws::Utils::DateTime>
+    void SetUpdatedTimestamp(UpdatedTimestampT&& value) { m_updatedTimestampHasBeenSet = true; m_updatedTimestamp = std::forward<UpdatedTimestampT>(value); }
+    template<typename UpdatedTimestampT = Aws::Utils::DateTime>
+    VoiceToneAnalysisTask& WithUpdatedTimestamp(UpdatedTimestampT&& value) { SetUpdatedTimestamp(std::forward<UpdatedTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_voiceToneAnalysisTaskId;
     bool m_voiceToneAnalysisTaskIdHasBeenSet = false;
 
-    MediaPipelineTaskStatus m_voiceToneAnalysisTaskStatus;
+    MediaPipelineTaskStatus m_voiceToneAnalysisTaskStatus{MediaPipelineTaskStatus::NOT_SET};
     bool m_voiceToneAnalysisTaskStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
     bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedTimestamp;
+    Aws::Utils::DateTime m_updatedTimestamp{};
     bool m_updatedTimestampHasBeenSet = false;
   };
 

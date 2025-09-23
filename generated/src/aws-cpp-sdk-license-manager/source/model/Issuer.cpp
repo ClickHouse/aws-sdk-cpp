@@ -18,15 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-Issuer::Issuer() : 
-    m_nameHasBeenSet(false),
-    m_signKeyHasBeenSet(false)
-{
-}
-
-Issuer::Issuer(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_signKeyHasBeenSet(false)
+Issuer::Issuer(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Issuer& Issuer::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SignKey"))
   {
     m_signKey = jsonValue.GetString("SignKey");
-
     m_signKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

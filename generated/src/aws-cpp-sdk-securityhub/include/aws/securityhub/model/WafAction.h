@@ -32,12 +32,13 @@ namespace Model
   class WafAction
   {
   public:
-    AWS_SECURITYHUB_API WafAction();
+    AWS_SECURITYHUB_API WafAction() = default;
     AWS_SECURITYHUB_API WafAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API WafAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies how you want WAF to respond to requests that match the settings in
      * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
@@ -48,92 +49,13 @@ namespace Model
      * ACL. You can't specify <code>COUNT</code> for the default action for a web
      * ACL.</p> </li> </ul>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
-    inline WafAction& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
-    inline WafAction& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies how you want WAF to respond to requests that match the settings in
-     * a rule.</p> <p>Valid settings include the following:</p> <ul> <li> <p>
-     * <code>ALLOW</code> - WAF allows requests</p> </li> <li> <p> <code>BLOCK</code> -
-     * WAF blocks requests</p> </li> <li> <p> <code>COUNT</code> - WAF increments a
-     * counter of the requests that match all of the conditions in the rule. WAF then
-     * continues to inspect the web request based on the remaining rules in the web
-     * ACL. You can't specify <code>COUNT</code> for the default action for a web
-     * ACL.</p> </li> </ul>
-     */
-    inline WafAction& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    WafAction& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

@@ -65,20 +65,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* KinesisVideoClient::SERVICE_NAME = "kinesisvideo";
-const char* KinesisVideoClient::ALLOCATION_TAG = "KinesisVideoClient";
+namespace Aws
+{
+  namespace KinesisVideo
+  {
+    const char SERVICE_NAME[] = "kinesisvideo";
+    const char ALLOCATION_TAG[] = "KinesisVideoClient";
+  }
+}
+const char* KinesisVideoClient::GetServiceName() {return SERVICE_NAME;}
+const char* KinesisVideoClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 KinesisVideoClient::KinesisVideoClient(const KinesisVideo::KinesisVideoClientConfiguration& clientConfiguration,
                                        std::shared_ptr<KinesisVideoEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisVideoErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<KinesisVideoEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -93,8 +100,7 @@ KinesisVideoClient::KinesisVideoClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisVideoErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<KinesisVideoEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -109,8 +115,7 @@ KinesisVideoClient::KinesisVideoClient(const std::shared_ptr<AWSCredentialsProvi
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisVideoErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<KinesisVideoEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -119,12 +124,11 @@ KinesisVideoClient::KinesisVideoClient(const std::shared_ptr<AWSCredentialsProvi
   KinesisVideoClient::KinesisVideoClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisVideoErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<KinesisVideoEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -139,7 +143,6 @@ KinesisVideoClient::KinesisVideoClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisVideoErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<KinesisVideoEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -154,7 +157,6 @@ KinesisVideoClient::KinesisVideoClient(const std::shared_ptr<AWSCredentialsProvi
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisVideoErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<KinesisVideoEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -174,6 +176,14 @@ std::shared_ptr<KinesisVideoEndpointProviderBase>& KinesisVideoClient::accessEnd
 void KinesisVideoClient::init(const KinesisVideo::KinesisVideoClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Kinesis Video");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

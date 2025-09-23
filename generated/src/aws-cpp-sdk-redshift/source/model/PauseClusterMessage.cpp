@@ -20,13 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-PauseClusterMessage::PauseClusterMessage() : 
-    m_clusterIdentifierHasBeenSet(false)
-{
-}
-
-PauseClusterMessage::PauseClusterMessage(const XmlNode& xmlNode) : 
-    m_clusterIdentifierHasBeenSet(false)
+PauseClusterMessage::PauseClusterMessage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

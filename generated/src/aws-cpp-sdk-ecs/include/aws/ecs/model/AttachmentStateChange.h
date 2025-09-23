@@ -32,93 +32,35 @@ namespace Model
   class AttachmentStateChange
   {
   public:
-    AWS_ECS_API AttachmentStateChange();
+    AWS_ECS_API AttachmentStateChange() = default;
     AWS_ECS_API AttachmentStateChange(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API AttachmentStateChange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the attachment.</p>
      */
-    inline const Aws::String& GetAttachmentArn() const{ return m_attachmentArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
+    inline const Aws::String& GetAttachmentArn() const { return m_attachmentArn; }
     inline bool AttachmentArnHasBeenSet() const { return m_attachmentArnHasBeenSet; }
+    template<typename AttachmentArnT = Aws::String>
+    void SetAttachmentArn(AttachmentArnT&& value) { m_attachmentArnHasBeenSet = true; m_attachmentArn = std::forward<AttachmentArnT>(value); }
+    template<typename AttachmentArnT = Aws::String>
+    AttachmentStateChange& WithAttachmentArn(AttachmentArnT&& value) { SetAttachmentArn(std::forward<AttachmentArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
-    inline void SetAttachmentArn(const Aws::String& value) { m_attachmentArnHasBeenSet = true; m_attachmentArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
-    inline void SetAttachmentArn(Aws::String&& value) { m_attachmentArnHasBeenSet = true; m_attachmentArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
-    inline void SetAttachmentArn(const char* value) { m_attachmentArnHasBeenSet = true; m_attachmentArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
-    inline AttachmentStateChange& WithAttachmentArn(const Aws::String& value) { SetAttachmentArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
-    inline AttachmentStateChange& WithAttachmentArn(Aws::String&& value) { SetAttachmentArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the attachment.</p>
-     */
-    inline AttachmentStateChange& WithAttachmentArn(const char* value) { SetAttachmentArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the attachment.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
-    inline AttachmentStateChange& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
-    inline AttachmentStateChange& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the attachment.</p>
-     */
-    inline AttachmentStateChange& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    AttachmentStateChange& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_attachmentArn;

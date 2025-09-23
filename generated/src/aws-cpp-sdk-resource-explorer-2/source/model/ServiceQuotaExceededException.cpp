@@ -18,17 +18,7 @@ namespace ResourceExplorer2
 namespace Model
 {
 
-ServiceQuotaExceededException::ServiceQuotaExceededException() : 
-    m_messageHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ServiceQuotaExceededException::ServiceQuotaExceededException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ServiceQuotaExceededException::ServiceQuotaExceededException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ServiceQuotaExceededException& ServiceQuotaExceededException::operator =(JsonVie
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

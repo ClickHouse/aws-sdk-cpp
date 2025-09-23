@@ -21,7 +21,7 @@ namespace Model
   class DescribeQueryRequest : public CloudTrailRequest
   {
   public:
-    AWS_CLOUDTRAIL_API DescribeQueryRequest();
+    AWS_CLOUDTRAIL_API DescribeQueryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,53 @@ namespace Model
     AWS_CLOUDTRAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The query ID.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
-
-    /**
-     * <p>The query ID.</p>
-     */
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
     inline bool QueryIdHasBeenSet() const { return m_queryIdHasBeenSet; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    DescribeQueryRequest& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The query ID.</p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryIdHasBeenSet = true; m_queryId = value; }
-
-    /**
-     * <p>The query ID.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryIdHasBeenSet = true; m_queryId = std::move(value); }
-
-    /**
-     * <p>The query ID.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryIdHasBeenSet = true; m_queryId.assign(value); }
-
-    /**
-     * <p>The query ID.</p>
-     */
-    inline DescribeQueryRequest& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The query ID.</p>
-     */
-    inline DescribeQueryRequest& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The query ID.</p>
-     */
-    inline DescribeQueryRequest& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The alias that identifies a query template. </p>
      */
-    inline const Aws::String& GetQueryAlias() const{ return m_queryAlias; }
-
-    /**
-     * <p> The alias that identifies a query template. </p>
-     */
+    inline const Aws::String& GetQueryAlias() const { return m_queryAlias; }
     inline bool QueryAliasHasBeenSet() const { return m_queryAliasHasBeenSet; }
+    template<typename QueryAliasT = Aws::String>
+    void SetQueryAlias(QueryAliasT&& value) { m_queryAliasHasBeenSet = true; m_queryAlias = std::forward<QueryAliasT>(value); }
+    template<typename QueryAliasT = Aws::String>
+    DescribeQueryRequest& WithQueryAlias(QueryAliasT&& value) { SetQueryAlias(std::forward<QueryAliasT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The alias that identifies a query template. </p>
+     * <p> The ID of the dashboard refresh. </p>
      */
-    inline void SetQueryAlias(const Aws::String& value) { m_queryAliasHasBeenSet = true; m_queryAlias = value; }
+    inline const Aws::String& GetRefreshId() const { return m_refreshId; }
+    inline bool RefreshIdHasBeenSet() const { return m_refreshIdHasBeenSet; }
+    template<typename RefreshIdT = Aws::String>
+    void SetRefreshId(RefreshIdT&& value) { m_refreshIdHasBeenSet = true; m_refreshId = std::forward<RefreshIdT>(value); }
+    template<typename RefreshIdT = Aws::String>
+    DescribeQueryRequest& WithRefreshId(RefreshIdT&& value) { SetRefreshId(std::forward<RefreshIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The alias that identifies a query template. </p>
+     * <p> The account ID of the event data store owner. </p>
      */
-    inline void SetQueryAlias(Aws::String&& value) { m_queryAliasHasBeenSet = true; m_queryAlias = std::move(value); }
-
-    /**
-     * <p> The alias that identifies a query template. </p>
-     */
-    inline void SetQueryAlias(const char* value) { m_queryAliasHasBeenSet = true; m_queryAlias.assign(value); }
-
-    /**
-     * <p> The alias that identifies a query template. </p>
-     */
-    inline DescribeQueryRequest& WithQueryAlias(const Aws::String& value) { SetQueryAlias(value); return *this;}
-
-    /**
-     * <p> The alias that identifies a query template. </p>
-     */
-    inline DescribeQueryRequest& WithQueryAlias(Aws::String&& value) { SetQueryAlias(std::move(value)); return *this;}
-
-    /**
-     * <p> The alias that identifies a query template. </p>
-     */
-    inline DescribeQueryRequest& WithQueryAlias(const char* value) { SetQueryAlias(value); return *this;}
-
+    inline const Aws::String& GetEventDataStoreOwnerAccountId() const { return m_eventDataStoreOwnerAccountId; }
+    inline bool EventDataStoreOwnerAccountIdHasBeenSet() const { return m_eventDataStoreOwnerAccountIdHasBeenSet; }
+    template<typename EventDataStoreOwnerAccountIdT = Aws::String>
+    void SetEventDataStoreOwnerAccountId(EventDataStoreOwnerAccountIdT&& value) { m_eventDataStoreOwnerAccountIdHasBeenSet = true; m_eventDataStoreOwnerAccountId = std::forward<EventDataStoreOwnerAccountIdT>(value); }
+    template<typename EventDataStoreOwnerAccountIdT = Aws::String>
+    DescribeQueryRequest& WithEventDataStoreOwnerAccountId(EventDataStoreOwnerAccountIdT&& value) { SetEventDataStoreOwnerAccountId(std::forward<EventDataStoreOwnerAccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;
@@ -122,6 +88,12 @@ namespace Model
 
     Aws::String m_queryAlias;
     bool m_queryAliasHasBeenSet = false;
+
+    Aws::String m_refreshId;
+    bool m_refreshIdHasBeenSet = false;
+
+    Aws::String m_eventDataStoreOwnerAccountId;
+    bool m_eventDataStoreOwnerAccountIdHasBeenSet = false;
   };
 
 } // namespace Model

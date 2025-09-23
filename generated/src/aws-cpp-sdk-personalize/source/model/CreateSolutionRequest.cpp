@@ -12,20 +12,6 @@ using namespace Aws::Personalize::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSolutionRequest::CreateSolutionRequest() : 
-    m_nameHasBeenSet(false),
-    m_performHPO(false),
-    m_performHPOHasBeenSet(false),
-    m_performAutoML(false),
-    m_performAutoMLHasBeenSet(false),
-    m_recipeArnHasBeenSet(false),
-    m_datasetGroupArnHasBeenSet(false),
-    m_eventTypeHasBeenSet(false),
-    m_solutionConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateSolutionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +31,12 @@ Aws::String CreateSolutionRequest::SerializePayload() const
   if(m_performAutoMLHasBeenSet)
   {
    payload.WithBool("performAutoML", m_performAutoML);
+
+  }
+
+  if(m_performAutoTrainingHasBeenSet)
+  {
+   payload.WithBool("performAutoTraining", m_performAutoTraining);
 
   }
 

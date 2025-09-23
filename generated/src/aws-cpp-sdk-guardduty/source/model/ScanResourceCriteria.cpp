@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-ScanResourceCriteria::ScanResourceCriteria() : 
-    m_includeHasBeenSet(false),
-    m_excludeHasBeenSet(false)
-{
-}
-
-ScanResourceCriteria::ScanResourceCriteria(JsonView jsonValue) : 
-    m_includeHasBeenSet(false),
-    m_excludeHasBeenSet(false)
+ScanResourceCriteria::ScanResourceCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ScanResourceCriteria& ScanResourceCriteria::operator =(JsonView jsonValue)
     }
     m_includeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("exclude"))
   {
     Aws::Map<Aws::String, JsonView> excludeJsonMap = jsonValue.GetObject("exclude").GetAllObjects();
@@ -52,7 +43,6 @@ ScanResourceCriteria& ScanResourceCriteria::operator =(JsonView jsonValue)
     }
     m_excludeHasBeenSet = true;
   }
-
   return *this;
 }
 

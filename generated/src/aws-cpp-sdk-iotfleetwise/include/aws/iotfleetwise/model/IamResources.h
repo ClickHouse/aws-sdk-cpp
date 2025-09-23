@@ -35,68 +35,25 @@ namespace Model
   class IamResources
   {
   public:
-    AWS_IOTFLEETWISE_API IamResources();
+    AWS_IOTFLEETWISE_API IamResources() = default;
     AWS_IOTFLEETWISE_API IamResources(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API IamResources& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
      * Services IoT FleetWise to send data to Amazon Timestream. For example,
      * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
-    inline IamResources& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
-    inline IamResources& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM resource that allows Amazon Web
-     * Services IoT FleetWise to send data to Amazon Timestream. For example,
-     * <code>arn:aws:iam::123456789012:role/SERVICE-ROLE-ARN</code>. </p>
-     */
-    inline IamResources& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    IamResources& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_roleArn;

@@ -40,237 +40,75 @@ namespace Model
   class IPSet
   {
   public:
-    AWS_WAFV2_API IPSet();
+    AWS_WAFV2_API IPSet() = default;
     AWS_WAFV2_API IPSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API IPSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
      * after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    IPSet& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline IPSet& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline IPSet& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IP set. You cannot change the name of an <code>IPSet</code>
-     * after you create it.</p>
-     */
-    inline IPSet& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the set. This ID is returned in the responses to
      * create and list commands. You provide it to operations like update and
      * delete.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    IPSet& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline IPSet& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline IPSet& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline IPSet& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the entity.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    IPSet& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline IPSet& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline IPSet& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline IPSet& WithARN(const char* value) { SetARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the IP set that helps with identification. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    IPSet& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline IPSet& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline IPSet& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the IP set that helps with identification. </p>
-     */
-    inline IPSet& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the IP addresses, either <code>IPV4</code> or
      * <code>IPV6</code>. </p>
      */
-    inline const IPAddressVersion& GetIPAddressVersion() const{ return m_iPAddressVersion; }
-
-    /**
-     * <p>The version of the IP addresses, either <code>IPV4</code> or
-     * <code>IPV6</code>. </p>
-     */
+    inline IPAddressVersion GetIPAddressVersion() const { return m_iPAddressVersion; }
     inline bool IPAddressVersionHasBeenSet() const { return m_iPAddressVersionHasBeenSet; }
+    inline void SetIPAddressVersion(IPAddressVersion value) { m_iPAddressVersionHasBeenSet = true; m_iPAddressVersion = value; }
+    inline IPSet& WithIPAddressVersion(IPAddressVersion value) { SetIPAddressVersion(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the IP addresses, either <code>IPV4</code> or
-     * <code>IPV6</code>. </p>
-     */
-    inline void SetIPAddressVersion(const IPAddressVersion& value) { m_iPAddressVersionHasBeenSet = true; m_iPAddressVersion = value; }
-
-    /**
-     * <p>The version of the IP addresses, either <code>IPV4</code> or
-     * <code>IPV6</code>. </p>
-     */
-    inline void SetIPAddressVersion(IPAddressVersion&& value) { m_iPAddressVersionHasBeenSet = true; m_iPAddressVersion = std::move(value); }
-
-    /**
-     * <p>The version of the IP addresses, either <code>IPV4</code> or
-     * <code>IPV6</code>. </p>
-     */
-    inline IPSet& WithIPAddressVersion(const IPAddressVersion& value) { SetIPAddressVersion(value); return *this;}
-
-    /**
-     * <p>The version of the IP addresses, either <code>IPV4</code> or
-     * <code>IPV6</code>. </p>
-     */
-    inline IPSet& WithIPAddressVersion(IPAddressVersion&& value) { SetIPAddressVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains an array of strings that specifies zero or more IP addresses or
      * blocks of IP addresses that you want WAF to inspect for in incoming requests.
@@ -296,224 +134,15 @@ namespace Model
      * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
      * </li> </ul>
      */
-    inline const Aws::Vector<Aws::String>& GetAddresses() const{ return m_addresses; }
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
+    inline const Aws::Vector<Aws::String>& GetAddresses() const { return m_addresses; }
     inline bool AddressesHasBeenSet() const { return m_addressesHasBeenSet; }
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline void SetAddresses(const Aws::Vector<Aws::String>& value) { m_addressesHasBeenSet = true; m_addresses = value; }
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline void SetAddresses(Aws::Vector<Aws::String>&& value) { m_addressesHasBeenSet = true; m_addresses = std::move(value); }
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline IPSet& WithAddresses(const Aws::Vector<Aws::String>& value) { SetAddresses(value); return *this;}
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline IPSet& WithAddresses(Aws::Vector<Aws::String>&& value) { SetAddresses(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline IPSet& AddAddresses(const Aws::String& value) { m_addressesHasBeenSet = true; m_addresses.push_back(value); return *this; }
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline IPSet& AddAddresses(Aws::String&& value) { m_addressesHasBeenSet = true; m_addresses.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Contains an array of strings that specifies zero or more IP addresses or
-     * blocks of IP addresses that you want WAF to inspect for in incoming requests.
-     * All addresses must be specified using Classless Inter-Domain Routing (CIDR)
-     * notation. WAF supports all IPv4 and IPv6 CIDR ranges except for <code>/0</code>.
-     * </p> <p>Example address strings: </p> <ul> <li> <p>For requests that originated
-     * from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li>
-     * <li> <p>For requests that originated from IP addresses from 192.0.2.0 to
-     * 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> <li> <p>For requests
-     * that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111,
-     * specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li>
-     * <p>For requests that originated from IP addresses
-     * 1111:0000:0000:0000:0000:0000:0000:0000 to
-     * 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-     * <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul> <p>For
-     * more information about CIDR notation, see the Wikipedia entry <a
-     * href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless
-     * Inter-Domain Routing</a>.</p> <p>Example JSON <code>Addresses</code>
-     * specifications: </p> <ul> <li> <p>Empty array: <code>"Addresses": []</code> </p>
-     * </li> <li> <p>Array with one address: <code>"Addresses":
-     * ["192.0.2.44/32"]</code> </p> </li> <li> <p>Array with three addresses:
-     * <code>"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]</code> </p>
-     * </li> <li> <p>INVALID specification: <code>"Addresses": [""]</code> INVALID </p>
-     * </li> </ul>
-     */
-    inline IPSet& AddAddresses(const char* value) { m_addressesHasBeenSet = true; m_addresses.push_back(value); return *this; }
-
+    template<typename AddressesT = Aws::Vector<Aws::String>>
+    void SetAddresses(AddressesT&& value) { m_addressesHasBeenSet = true; m_addresses = std::forward<AddressesT>(value); }
+    template<typename AddressesT = Aws::Vector<Aws::String>>
+    IPSet& WithAddresses(AddressesT&& value) { SetAddresses(std::forward<AddressesT>(value)); return *this;}
+    template<typename AddressesT = Aws::String>
+    IPSet& AddAddresses(AddressesT&& value) { m_addressesHasBeenSet = true; m_addresses.emplace_back(std::forward<AddressesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;
@@ -528,7 +157,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    IPAddressVersion m_iPAddressVersion;
+    IPAddressVersion m_iPAddressVersion{IPAddressVersion::NOT_SET};
     bool m_iPAddressVersionHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_addresses;

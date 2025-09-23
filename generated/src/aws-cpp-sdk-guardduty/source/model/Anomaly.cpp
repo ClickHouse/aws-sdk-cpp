@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-Anomaly::Anomaly() : 
-    m_profilesHasBeenSet(false),
-    m_unusualHasBeenSet(false)
-{
-}
-
-Anomaly::Anomaly(JsonView jsonValue) : 
-    m_profilesHasBeenSet(false),
-    m_unusualHasBeenSet(false)
+Anomaly::Anomaly(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -55,14 +47,11 @@ Anomaly& Anomaly::operator =(JsonView jsonValue)
     }
     m_profilesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unusual"))
   {
     m_unusual = jsonValue.GetObject("unusual");
-
     m_unusualHasBeenSet = true;
   }
-
   return *this;
 }
 

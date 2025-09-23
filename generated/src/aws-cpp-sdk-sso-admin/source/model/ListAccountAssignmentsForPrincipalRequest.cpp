@@ -12,43 +12,13 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAccountAssignmentsForPrincipalRequest::ListAccountAssignmentsForPrincipalRequest() : 
-    m_filterHasBeenSet(false),
-    m_instanceArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_principalIdHasBeenSet(false),
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false)
-{
-}
-
 Aws::String ListAccountAssignmentsForPrincipalRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_filterHasBeenSet)
-  {
-   payload.WithObject("Filter", m_filter.Jsonize());
-
-  }
-
   if(m_instanceArnHasBeenSet)
   {
    payload.WithString("InstanceArn", m_instanceArn);
-
-  }
-
-  if(m_maxResultsHasBeenSet)
-  {
-   payload.WithInteger("MaxResults", m_maxResults);
-
-  }
-
-  if(m_nextTokenHasBeenSet)
-  {
-   payload.WithString("NextToken", m_nextToken);
 
   }
 
@@ -61,6 +31,24 @@ Aws::String ListAccountAssignmentsForPrincipalRequest::SerializePayload() const
   if(m_principalTypeHasBeenSet)
   {
    payload.WithString("PrincipalType", PrincipalTypeMapper::GetNameForPrincipalType(m_principalType));
+  }
+
+  if(m_filterHasBeenSet)
+  {
+   payload.WithObject("Filter", m_filter.Jsonize());
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("MaxResults", m_maxResults);
+
   }
 
   return payload.View().WriteReadable();

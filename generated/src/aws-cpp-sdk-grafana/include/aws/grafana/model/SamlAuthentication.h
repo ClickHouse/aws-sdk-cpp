@@ -33,79 +33,39 @@ namespace Model
   class SamlAuthentication
   {
   public:
-    AWS_MANAGEDGRAFANA_API SamlAuthentication();
+    AWS_MANAGEDGRAFANA_API SamlAuthentication() = default;
     AWS_MANAGEDGRAFANA_API SamlAuthentication(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDGRAFANA_API SamlAuthentication& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDGRAFANA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A structure containing details about how this workspace works with SAML. </p>
      */
-    inline const SamlConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>A structure containing details about how this workspace works with SAML. </p>
-     */
+    inline const SamlConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = SamlConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = SamlConfiguration>
+    SamlAuthentication& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure containing details about how this workspace works with SAML. </p>
-     */
-    inline void SetConfiguration(const SamlConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>A structure containing details about how this workspace works with SAML. </p>
-     */
-    inline void SetConfiguration(SamlConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>A structure containing details about how this workspace works with SAML. </p>
-     */
-    inline SamlAuthentication& WithConfiguration(const SamlConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>A structure containing details about how this workspace works with SAML. </p>
-     */
-    inline SamlAuthentication& WithConfiguration(SamlConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the workspace's SAML configuration is complete.</p>
      */
-    inline const SamlConfigurationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Specifies whether the workspace's SAML configuration is complete.</p>
-     */
+    inline SamlConfigurationStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the workspace's SAML configuration is complete.</p>
-     */
-    inline void SetStatus(const SamlConfigurationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Specifies whether the workspace's SAML configuration is complete.</p>
-     */
-    inline void SetStatus(SamlConfigurationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Specifies whether the workspace's SAML configuration is complete.</p>
-     */
-    inline SamlAuthentication& WithStatus(const SamlConfigurationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Specifies whether the workspace's SAML configuration is complete.</p>
-     */
-    inline SamlAuthentication& WithStatus(SamlConfigurationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(SamlConfigurationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline SamlAuthentication& WithStatus(SamlConfigurationStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     SamlConfiguration m_configuration;
     bool m_configurationHasBeenSet = false;
 
-    SamlConfigurationStatus m_status;
+    SamlConfigurationStatus m_status{SamlConfigurationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

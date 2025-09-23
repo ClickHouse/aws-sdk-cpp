@@ -10,31 +10,24 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeAccountAttributesRequest::DescribeAccountAttributesRequest() : 
-    m_attributeNamesHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAccountAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeAccountAttributes&";
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
   if(m_attributeNamesHasBeenSet)
   {
     unsigned attributeNamesCount = 1;
     for(auto& item : m_attributeNames)
     {
       ss << "AttributeName." << attributeNamesCount << "="
-          << StringUtils::URLEncode(AccountAttributeNameMapper::GetNameForAccountAttributeName(item).c_str()) << "&";
+          << StringUtils::URLEncode(AccountAttributeNameMapper::GetNameForAccountAttributeName(item)) << "&";
       attributeNamesCount++;
     }
-  }
-
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

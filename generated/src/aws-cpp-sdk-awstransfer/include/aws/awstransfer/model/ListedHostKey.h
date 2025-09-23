@@ -33,192 +33,63 @@ namespace Model
   class ListedHostKey
   {
   public:
-    AWS_TRANSFER_API ListedHostKey();
+    AWS_TRANSFER_API ListedHostKey() = default;
     AWS_TRANSFER_API ListedHostKey(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API ListedHostKey& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ListedHostKey& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
-    inline ListedHostKey& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
-    inline ListedHostKey& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique Amazon Resource Name (ARN) of the host key.</p>
-     */
-    inline ListedHostKey& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the host key.</p>
      */
-    inline const Aws::String& GetHostKeyId() const{ return m_hostKeyId; }
-
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
+    inline const Aws::String& GetHostKeyId() const { return m_hostKeyId; }
     inline bool HostKeyIdHasBeenSet() const { return m_hostKeyIdHasBeenSet; }
+    template<typename HostKeyIdT = Aws::String>
+    void SetHostKeyId(HostKeyIdT&& value) { m_hostKeyIdHasBeenSet = true; m_hostKeyId = std::forward<HostKeyIdT>(value); }
+    template<typename HostKeyIdT = Aws::String>
+    ListedHostKey& WithHostKeyId(HostKeyIdT&& value) { SetHostKeyId(std::forward<HostKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
-    inline void SetHostKeyId(const Aws::String& value) { m_hostKeyIdHasBeenSet = true; m_hostKeyId = value; }
-
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
-    inline void SetHostKeyId(Aws::String&& value) { m_hostKeyIdHasBeenSet = true; m_hostKeyId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
-    inline void SetHostKeyId(const char* value) { m_hostKeyIdHasBeenSet = true; m_hostKeyId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
-    inline ListedHostKey& WithHostKeyId(const Aws::String& value) { SetHostKeyId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
-    inline ListedHostKey& WithHostKeyId(Aws::String&& value) { SetHostKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the host key.</p>
-     */
-    inline ListedHostKey& WithHostKeyId(const char* value) { SetHostKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The public key fingerprint, which is a short sequence of bytes used to
      * identify the longer public key.</p>
      */
-    inline const Aws::String& GetFingerprint() const{ return m_fingerprint; }
-
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
+    inline const Aws::String& GetFingerprint() const { return m_fingerprint; }
     inline bool FingerprintHasBeenSet() const { return m_fingerprintHasBeenSet; }
+    template<typename FingerprintT = Aws::String>
+    void SetFingerprint(FingerprintT&& value) { m_fingerprintHasBeenSet = true; m_fingerprint = std::forward<FingerprintT>(value); }
+    template<typename FingerprintT = Aws::String>
+    ListedHostKey& WithFingerprint(FingerprintT&& value) { SetFingerprint(std::forward<FingerprintT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
-    inline void SetFingerprint(const Aws::String& value) { m_fingerprintHasBeenSet = true; m_fingerprint = value; }
-
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
-    inline void SetFingerprint(Aws::String&& value) { m_fingerprintHasBeenSet = true; m_fingerprint = std::move(value); }
-
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
-    inline void SetFingerprint(const char* value) { m_fingerprintHasBeenSet = true; m_fingerprint.assign(value); }
-
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
-    inline ListedHostKey& WithFingerprint(const Aws::String& value) { SetFingerprint(value); return *this;}
-
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
-    inline ListedHostKey& WithFingerprint(Aws::String&& value) { SetFingerprint(std::move(value)); return *this;}
-
-    /**
-     * <p>The public key fingerprint, which is a short sequence of bytes used to
-     * identify the longer public key.</p>
-     */
-    inline ListedHostKey& WithFingerprint(const char* value) { SetFingerprint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current description for the host key. You can change it by calling the
      * <code>UpdateHostKey</code> operation and providing a new description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ListedHostKey& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
-    inline ListedHostKey& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
-    inline ListedHostKey& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The current description for the host key. You can change it by calling the
-     * <code>UpdateHostKey</code> operation and providing a new description.</p>
-     */
-    inline ListedHostKey& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
      * parameter is specified by using one of the following values:</p> <ul> <li> <p>
@@ -227,109 +98,25 @@ namespace Model
      * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
      * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ListedHostKey& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
-    inline ListedHostKey& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
-    inline ListedHostKey& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The encryption algorithm that is used for the host key. The <code>Type</code>
-     * parameter is specified by using one of the following values:</p> <ul> <li> <p>
-     * <code>ssh-rsa</code> </p> </li> <li> <p> <code>ssh-ed25519</code> </p> </li>
-     * <li> <p> <code>ecdsa-sha2-nistp256</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp384</code> </p> </li> <li> <p>
-     * <code>ecdsa-sha2-nistp521</code> </p> </li> </ul>
-     */
-    inline ListedHostKey& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date on which the host key was added to the server.</p>
      */
-    inline const Aws::Utils::DateTime& GetDateImported() const{ return m_dateImported; }
-
-    /**
-     * <p>The date on which the host key was added to the server.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDateImported() const { return m_dateImported; }
     inline bool DateImportedHasBeenSet() const { return m_dateImportedHasBeenSet; }
-
-    /**
-     * <p>The date on which the host key was added to the server.</p>
-     */
-    inline void SetDateImported(const Aws::Utils::DateTime& value) { m_dateImportedHasBeenSet = true; m_dateImported = value; }
-
-    /**
-     * <p>The date on which the host key was added to the server.</p>
-     */
-    inline void SetDateImported(Aws::Utils::DateTime&& value) { m_dateImportedHasBeenSet = true; m_dateImported = std::move(value); }
-
-    /**
-     * <p>The date on which the host key was added to the server.</p>
-     */
-    inline ListedHostKey& WithDateImported(const Aws::Utils::DateTime& value) { SetDateImported(value); return *this;}
-
-    /**
-     * <p>The date on which the host key was added to the server.</p>
-     */
-    inline ListedHostKey& WithDateImported(Aws::Utils::DateTime&& value) { SetDateImported(std::move(value)); return *this;}
-
+    template<typename DateImportedT = Aws::Utils::DateTime>
+    void SetDateImported(DateImportedT&& value) { m_dateImportedHasBeenSet = true; m_dateImported = std::forward<DateImportedT>(value); }
+    template<typename DateImportedT = Aws::Utils::DateTime>
+    ListedHostKey& WithDateImported(DateImportedT&& value) { SetDateImported(std::forward<DateImportedT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -347,7 +134,7 @@ namespace Model
     Aws::String m_type;
     bool m_typeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_dateImported;
+    Aws::Utils::DateTime m_dateImported{};
     bool m_dateImportedHasBeenSet = false;
   };
 

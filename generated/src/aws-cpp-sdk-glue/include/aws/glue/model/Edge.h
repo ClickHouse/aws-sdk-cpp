@@ -32,93 +32,35 @@ namespace Model
   class Edge
   {
   public:
-    AWS_GLUE_API Edge();
+    AWS_GLUE_API Edge() = default;
     AWS_GLUE_API Edge(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Edge& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique of the node within the workflow where the edge starts.</p>
      */
-    inline const Aws::String& GetSourceId() const{ return m_sourceId; }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
+    inline const Aws::String& GetSourceId() const { return m_sourceId; }
     inline bool SourceIdHasBeenSet() const { return m_sourceIdHasBeenSet; }
+    template<typename SourceIdT = Aws::String>
+    void SetSourceId(SourceIdT&& value) { m_sourceIdHasBeenSet = true; m_sourceId = std::forward<SourceIdT>(value); }
+    template<typename SourceIdT = Aws::String>
+    Edge& WithSourceId(SourceIdT&& value) { SetSourceId(std::forward<SourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
-    inline void SetSourceId(const Aws::String& value) { m_sourceIdHasBeenSet = true; m_sourceId = value; }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
-    inline void SetSourceId(Aws::String&& value) { m_sourceIdHasBeenSet = true; m_sourceId = std::move(value); }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
-    inline void SetSourceId(const char* value) { m_sourceIdHasBeenSet = true; m_sourceId.assign(value); }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
-    inline Edge& WithSourceId(const Aws::String& value) { SetSourceId(value); return *this;}
-
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
-    inline Edge& WithSourceId(Aws::String&& value) { SetSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique of the node within the workflow where the edge starts.</p>
-     */
-    inline Edge& WithSourceId(const char* value) { SetSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique of the node within the workflow where the edge ends.</p>
      */
-    inline const Aws::String& GetDestinationId() const{ return m_destinationId; }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
+    inline const Aws::String& GetDestinationId() const { return m_destinationId; }
     inline bool DestinationIdHasBeenSet() const { return m_destinationIdHasBeenSet; }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
-    inline void SetDestinationId(const Aws::String& value) { m_destinationIdHasBeenSet = true; m_destinationId = value; }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
-    inline void SetDestinationId(Aws::String&& value) { m_destinationIdHasBeenSet = true; m_destinationId = std::move(value); }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
-    inline void SetDestinationId(const char* value) { m_destinationIdHasBeenSet = true; m_destinationId.assign(value); }
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
-    inline Edge& WithDestinationId(const Aws::String& value) { SetDestinationId(value); return *this;}
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
-    inline Edge& WithDestinationId(Aws::String&& value) { SetDestinationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique of the node within the workflow where the edge ends.</p>
-     */
-    inline Edge& WithDestinationId(const char* value) { SetDestinationId(value); return *this;}
-
+    template<typename DestinationIdT = Aws::String>
+    void SetDestinationId(DestinationIdT&& value) { m_destinationIdHasBeenSet = true; m_destinationId = std::forward<DestinationIdT>(value); }
+    template<typename DestinationIdT = Aws::String>
+    Edge& WithDestinationId(DestinationIdT&& value) { SetDestinationId(std::forward<DestinationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceId;

@@ -34,7 +34,7 @@ namespace Model
   class EnvironmentInfoDescription
   {
   public:
-    AWS_ELASTICBEANSTALK_API EnvironmentInfoDescription();
+    AWS_ELASTICBEANSTALK_API EnvironmentInfoDescription() = default;
     AWS_ELASTICBEANSTALK_API EnvironmentInfoDescription(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICBEANSTALK_API EnvironmentInfoDescription& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,182 +42,63 @@ namespace Model
     AWS_ELASTICBEANSTALK_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The type of information retrieved.</p>
      */
-    inline const EnvironmentInfoType& GetInfoType() const{ return m_infoType; }
-
-    /**
-     * <p>The type of information retrieved.</p>
-     */
+    inline EnvironmentInfoType GetInfoType() const { return m_infoType; }
     inline bool InfoTypeHasBeenSet() const { return m_infoTypeHasBeenSet; }
+    inline void SetInfoType(EnvironmentInfoType value) { m_infoTypeHasBeenSet = true; m_infoType = value; }
+    inline EnvironmentInfoDescription& WithInfoType(EnvironmentInfoType value) { SetInfoType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of information retrieved.</p>
-     */
-    inline void SetInfoType(const EnvironmentInfoType& value) { m_infoTypeHasBeenSet = true; m_infoType = value; }
-
-    /**
-     * <p>The type of information retrieved.</p>
-     */
-    inline void SetInfoType(EnvironmentInfoType&& value) { m_infoTypeHasBeenSet = true; m_infoType = std::move(value); }
-
-    /**
-     * <p>The type of information retrieved.</p>
-     */
-    inline EnvironmentInfoDescription& WithInfoType(const EnvironmentInfoType& value) { SetInfoType(value); return *this;}
-
-    /**
-     * <p>The type of information retrieved.</p>
-     */
-    inline EnvironmentInfoDescription& WithInfoType(EnvironmentInfoType&& value) { SetInfoType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon EC2 Instance ID for this information.</p>
      */
-    inline const Aws::String& GetEc2InstanceId() const{ return m_ec2InstanceId; }
-
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
+    inline const Aws::String& GetEc2InstanceId() const { return m_ec2InstanceId; }
     inline bool Ec2InstanceIdHasBeenSet() const { return m_ec2InstanceIdHasBeenSet; }
+    template<typename Ec2InstanceIdT = Aws::String>
+    void SetEc2InstanceId(Ec2InstanceIdT&& value) { m_ec2InstanceIdHasBeenSet = true; m_ec2InstanceId = std::forward<Ec2InstanceIdT>(value); }
+    template<typename Ec2InstanceIdT = Aws::String>
+    EnvironmentInfoDescription& WithEc2InstanceId(Ec2InstanceIdT&& value) { SetEc2InstanceId(std::forward<Ec2InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
-    inline void SetEc2InstanceId(const Aws::String& value) { m_ec2InstanceIdHasBeenSet = true; m_ec2InstanceId = value; }
-
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
-    inline void SetEc2InstanceId(Aws::String&& value) { m_ec2InstanceIdHasBeenSet = true; m_ec2InstanceId = std::move(value); }
-
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
-    inline void SetEc2InstanceId(const char* value) { m_ec2InstanceIdHasBeenSet = true; m_ec2InstanceId.assign(value); }
-
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
-    inline EnvironmentInfoDescription& WithEc2InstanceId(const Aws::String& value) { SetEc2InstanceId(value); return *this;}
-
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
-    inline EnvironmentInfoDescription& WithEc2InstanceId(Aws::String&& value) { SetEc2InstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EC2 Instance ID for this information.</p>
-     */
-    inline EnvironmentInfoDescription& WithEc2InstanceId(const char* value) { SetEc2InstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time stamp when this information was retrieved.</p>
      */
-    inline const Aws::Utils::DateTime& GetSampleTimestamp() const{ return m_sampleTimestamp; }
-
-    /**
-     * <p>The time stamp when this information was retrieved.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSampleTimestamp() const { return m_sampleTimestamp; }
     inline bool SampleTimestampHasBeenSet() const { return m_sampleTimestampHasBeenSet; }
+    template<typename SampleTimestampT = Aws::Utils::DateTime>
+    void SetSampleTimestamp(SampleTimestampT&& value) { m_sampleTimestampHasBeenSet = true; m_sampleTimestamp = std::forward<SampleTimestampT>(value); }
+    template<typename SampleTimestampT = Aws::Utils::DateTime>
+    EnvironmentInfoDescription& WithSampleTimestamp(SampleTimestampT&& value) { SetSampleTimestamp(std::forward<SampleTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time stamp when this information was retrieved.</p>
-     */
-    inline void SetSampleTimestamp(const Aws::Utils::DateTime& value) { m_sampleTimestampHasBeenSet = true; m_sampleTimestamp = value; }
-
-    /**
-     * <p>The time stamp when this information was retrieved.</p>
-     */
-    inline void SetSampleTimestamp(Aws::Utils::DateTime&& value) { m_sampleTimestampHasBeenSet = true; m_sampleTimestamp = std::move(value); }
-
-    /**
-     * <p>The time stamp when this information was retrieved.</p>
-     */
-    inline EnvironmentInfoDescription& WithSampleTimestamp(const Aws::Utils::DateTime& value) { SetSampleTimestamp(value); return *this;}
-
-    /**
-     * <p>The time stamp when this information was retrieved.</p>
-     */
-    inline EnvironmentInfoDescription& WithSampleTimestamp(Aws::Utils::DateTime&& value) { SetSampleTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
      * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
      * access the files before they are deleted. Make the URL available only to trusted
      * parties.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
-    inline EnvironmentInfoDescription& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
-    inline EnvironmentInfoDescription& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The retrieved information. Currently contains a presigned Amazon S3 URL. The
-     * files are deleted after 15 minutes.</p> <p>Anyone in possession of this URL can
-     * access the files before they are deleted. Make the URL available only to trusted
-     * parties.</p>
-     */
-    inline EnvironmentInfoDescription& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    EnvironmentInfoDescription& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    EnvironmentInfoType m_infoType;
+    EnvironmentInfoType m_infoType{EnvironmentInfoType::NOT_SET};
     bool m_infoTypeHasBeenSet = false;
 
     Aws::String m_ec2InstanceId;
     bool m_ec2InstanceIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_sampleTimestamp;
+    Aws::Utils::DateTime m_sampleTimestamp{};
     bool m_sampleTimestampHasBeenSet = false;
 
     Aws::String m_message;

@@ -29,257 +29,137 @@ namespace Model
   class UpdateDomainResult
   {
   public:
-    AWS_DATAZONE_API UpdateDomainResult();
+    AWS_DATAZONE_API UpdateDomainResult() = default;
     AWS_DATAZONE_API UpdateDomainResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAZONE_API UpdateDomainResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The description to be updated as part of the <code>UpdateDomain</code>
      * action.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateDomainResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description to be updated as part of the <code>UpdateDomain</code>
-     * action.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description to be updated as part of the <code>UpdateDomain</code>
-     * action.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description to be updated as part of the <code>UpdateDomain</code>
-     * action.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description to be updated as part of the <code>UpdateDomain</code>
-     * action.</p>
-     */
-    inline UpdateDomainResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description to be updated as part of the <code>UpdateDomain</code>
-     * action.</p>
-     */
-    inline UpdateDomainResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description to be updated as part of the <code>UpdateDomain</code>
-     * action.</p>
-     */
-    inline UpdateDomainResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The domain execution role to be updated as part of the
      * <code>UpdateDomain</code> action.</p>
      */
-    inline const Aws::String& GetDomainExecutionRole() const{ return m_domainExecutionRole; }
+    inline const Aws::String& GetDomainExecutionRole() const { return m_domainExecutionRole; }
+    template<typename DomainExecutionRoleT = Aws::String>
+    void SetDomainExecutionRole(DomainExecutionRoleT&& value) { m_domainExecutionRoleHasBeenSet = true; m_domainExecutionRole = std::forward<DomainExecutionRoleT>(value); }
+    template<typename DomainExecutionRoleT = Aws::String>
+    UpdateDomainResult& WithDomainExecutionRole(DomainExecutionRoleT&& value) { SetDomainExecutionRole(std::forward<DomainExecutionRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain execution role to be updated as part of the
-     * <code>UpdateDomain</code> action.</p>
-     */
-    inline void SetDomainExecutionRole(const Aws::String& value) { m_domainExecutionRole = value; }
-
-    /**
-     * <p>The domain execution role to be updated as part of the
-     * <code>UpdateDomain</code> action.</p>
-     */
-    inline void SetDomainExecutionRole(Aws::String&& value) { m_domainExecutionRole = std::move(value); }
-
-    /**
-     * <p>The domain execution role to be updated as part of the
-     * <code>UpdateDomain</code> action.</p>
-     */
-    inline void SetDomainExecutionRole(const char* value) { m_domainExecutionRole.assign(value); }
-
-    /**
-     * <p>The domain execution role to be updated as part of the
-     * <code>UpdateDomain</code> action.</p>
-     */
-    inline UpdateDomainResult& WithDomainExecutionRole(const Aws::String& value) { SetDomainExecutionRole(value); return *this;}
-
-    /**
-     * <p>The domain execution role to be updated as part of the
-     * <code>UpdateDomain</code> action.</p>
-     */
-    inline UpdateDomainResult& WithDomainExecutionRole(Aws::String&& value) { SetDomainExecutionRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain execution role to be updated as part of the
-     * <code>UpdateDomain</code> action.</p>
-     */
-    inline UpdateDomainResult& WithDomainExecutionRole(const char* value) { SetDomainExecutionRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon DataZone domain.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdateDomainResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon DataZone domain.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain.</p>
-     */
-    inline UpdateDomainResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain.</p>
-     */
-    inline UpdateDomainResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain.</p>
-     */
-    inline UpdateDomainResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the timestamp of when the domain was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    UpdateDomainResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the timestamp of when the domain was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>Specifies the timestamp of when the domain was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>Specifies the timestamp of when the domain was last updated.</p>
-     */
-    inline UpdateDomainResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>Specifies the timestamp of when the domain was last updated.</p>
-     */
-    inline UpdateDomainResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateDomainResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
+     * <p>The ID of the root domain unit.</p>
      */
-    inline void SetName(const Aws::String& value) { m_name = value; }
+    inline const Aws::String& GetRootDomainUnitId() const { return m_rootDomainUnitId; }
+    template<typename RootDomainUnitIdT = Aws::String>
+    void SetRootDomainUnitId(RootDomainUnitIdT&& value) { m_rootDomainUnitIdHasBeenSet = true; m_rootDomainUnitId = std::forward<RootDomainUnitIdT>(value); }
+    template<typename RootDomainUnitIdT = Aws::String>
+    UpdateDomainResult& WithRootDomainUnitId(RootDomainUnitIdT&& value) { SetRootDomainUnitId(std::forward<RootDomainUnitIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
+     * <p>The service role of the domain.</p>
      */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
+    inline const Aws::String& GetServiceRole() const { return m_serviceRole; }
+    template<typename ServiceRoleT = Aws::String>
+    void SetServiceRole(ServiceRoleT&& value) { m_serviceRoleHasBeenSet = true; m_serviceRole = std::forward<ServiceRoleT>(value); }
+    template<typename ServiceRoleT = Aws::String>
+    UpdateDomainResult& WithServiceRole(ServiceRoleT&& value) { SetServiceRole(std::forward<ServiceRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
-     */
-    inline UpdateDomainResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
-     */
-    inline UpdateDomainResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name to be updated as part of the <code>UpdateDomain</code> action.</p>
-     */
-    inline UpdateDomainResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The single sign-on option of the Amazon DataZone domain.</p>
      */
-    inline const SingleSignOn& GetSingleSignOn() const{ return m_singleSignOn; }
+    inline const SingleSignOn& GetSingleSignOn() const { return m_singleSignOn; }
+    template<typename SingleSignOnT = SingleSignOn>
+    void SetSingleSignOn(SingleSignOnT&& value) { m_singleSignOnHasBeenSet = true; m_singleSignOn = std::forward<SingleSignOnT>(value); }
+    template<typename SingleSignOnT = SingleSignOn>
+    UpdateDomainResult& WithSingleSignOn(SingleSignOnT&& value) { SetSingleSignOn(std::forward<SingleSignOnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The single sign-on option of the Amazon DataZone domain.</p>
-     */
-    inline void SetSingleSignOn(const SingleSignOn& value) { m_singleSignOn = value; }
-
-    /**
-     * <p>The single sign-on option of the Amazon DataZone domain.</p>
-     */
-    inline void SetSingleSignOn(SingleSignOn&& value) { m_singleSignOn = std::move(value); }
-
-    /**
-     * <p>The single sign-on option of the Amazon DataZone domain.</p>
-     */
-    inline UpdateDomainResult& WithSingleSignOn(const SingleSignOn& value) { SetSingleSignOn(value); return *this;}
-
-    /**
-     * <p>The single sign-on option of the Amazon DataZone domain.</p>
-     */
-    inline UpdateDomainResult& WithSingleSignOn(SingleSignOn&& value) { SetSingleSignOn(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateDomainResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateDomainResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateDomainResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateDomainResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_domainExecutionRole;
+    bool m_domainExecutionRoleHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
+
+    Aws::String m_rootDomainUnitId;
+    bool m_rootDomainUnitIdHasBeenSet = false;
+
+    Aws::String m_serviceRole;
+    bool m_serviceRoleHasBeenSet = false;
 
     SingleSignOn m_singleSignOn;
+    bool m_singleSignOnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

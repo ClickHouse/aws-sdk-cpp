@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-Span::Span() : 
-    m_startHasBeenSet(false),
-    m_endHasBeenSet(false)
-{
-}
-
-Span::Span(JsonView jsonValue) : 
-    m_startHasBeenSet(false),
-    m_endHasBeenSet(false)
+Span::Span(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Span& Span::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("start"))
   {
     m_start = jsonValue.GetObject("start");
-
     m_startHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("end"))
   {
     m_end = jsonValue.GetObject("end");
-
     m_endHasBeenSet = true;
   }
-
   return *this;
 }
 

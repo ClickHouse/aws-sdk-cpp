@@ -18,15 +18,7 @@ namespace SavingsPlans
 namespace Model
 {
 
-SavingsPlanOfferingRateProperty::SavingsPlanOfferingRateProperty() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-SavingsPlanOfferingRateProperty::SavingsPlanOfferingRateProperty(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+SavingsPlanOfferingRateProperty::SavingsPlanOfferingRateProperty(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SavingsPlanOfferingRateProperty& SavingsPlanOfferingRateProperty::operator =(Jso
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

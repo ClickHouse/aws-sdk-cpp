@@ -33,107 +33,48 @@ namespace Model
   class InstanceStatus
   {
   public:
-    AWS_EMR_API InstanceStatus();
+    AWS_EMR_API InstanceStatus() = default;
     AWS_EMR_API InstanceStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API InstanceStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current state of the instance.</p>
      */
-    inline const InstanceState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the instance.</p>
-     */
+    inline InstanceState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(InstanceState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline InstanceStatus& WithState(InstanceState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the instance.</p>
-     */
-    inline void SetState(const InstanceState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the instance.</p>
-     */
-    inline void SetState(InstanceState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the instance.</p>
-     */
-    inline InstanceStatus& WithState(const InstanceState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the instance.</p>
-     */
-    inline InstanceStatus& WithState(InstanceState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The details of the status change reason for the instance.</p>
      */
-    inline const InstanceStateChangeReason& GetStateChangeReason() const{ return m_stateChangeReason; }
-
-    /**
-     * <p>The details of the status change reason for the instance.</p>
-     */
+    inline const InstanceStateChangeReason& GetStateChangeReason() const { return m_stateChangeReason; }
     inline bool StateChangeReasonHasBeenSet() const { return m_stateChangeReasonHasBeenSet; }
+    template<typename StateChangeReasonT = InstanceStateChangeReason>
+    void SetStateChangeReason(StateChangeReasonT&& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = std::forward<StateChangeReasonT>(value); }
+    template<typename StateChangeReasonT = InstanceStateChangeReason>
+    InstanceStatus& WithStateChangeReason(StateChangeReasonT&& value) { SetStateChangeReason(std::forward<StateChangeReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The details of the status change reason for the instance.</p>
-     */
-    inline void SetStateChangeReason(const InstanceStateChangeReason& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = value; }
-
-    /**
-     * <p>The details of the status change reason for the instance.</p>
-     */
-    inline void SetStateChangeReason(InstanceStateChangeReason&& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = std::move(value); }
-
-    /**
-     * <p>The details of the status change reason for the instance.</p>
-     */
-    inline InstanceStatus& WithStateChangeReason(const InstanceStateChangeReason& value) { SetStateChangeReason(value); return *this;}
-
-    /**
-     * <p>The details of the status change reason for the instance.</p>
-     */
-    inline InstanceStatus& WithStateChangeReason(InstanceStateChangeReason&& value) { SetStateChangeReason(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timeline of the instance status over time.</p>
      */
-    inline const InstanceTimeline& GetTimeline() const{ return m_timeline; }
-
-    /**
-     * <p>The timeline of the instance status over time.</p>
-     */
+    inline const InstanceTimeline& GetTimeline() const { return m_timeline; }
     inline bool TimelineHasBeenSet() const { return m_timelineHasBeenSet; }
-
-    /**
-     * <p>The timeline of the instance status over time.</p>
-     */
-    inline void SetTimeline(const InstanceTimeline& value) { m_timelineHasBeenSet = true; m_timeline = value; }
-
-    /**
-     * <p>The timeline of the instance status over time.</p>
-     */
-    inline void SetTimeline(InstanceTimeline&& value) { m_timelineHasBeenSet = true; m_timeline = std::move(value); }
-
-    /**
-     * <p>The timeline of the instance status over time.</p>
-     */
-    inline InstanceStatus& WithTimeline(const InstanceTimeline& value) { SetTimeline(value); return *this;}
-
-    /**
-     * <p>The timeline of the instance status over time.</p>
-     */
-    inline InstanceStatus& WithTimeline(InstanceTimeline&& value) { SetTimeline(std::move(value)); return *this;}
-
+    template<typename TimelineT = InstanceTimeline>
+    void SetTimeline(TimelineT&& value) { m_timelineHasBeenSet = true; m_timeline = std::forward<TimelineT>(value); }
+    template<typename TimelineT = InstanceTimeline>
+    InstanceStatus& WithTimeline(TimelineT&& value) { SetTimeline(std::forward<TimelineT>(value)); return *this;}
+    ///@}
   private:
 
-    InstanceState m_state;
+    InstanceState m_state{InstanceState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     InstanceStateChangeReason m_stateChangeReason;

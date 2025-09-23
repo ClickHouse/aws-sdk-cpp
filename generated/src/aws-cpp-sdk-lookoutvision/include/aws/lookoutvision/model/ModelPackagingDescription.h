@@ -36,446 +36,146 @@ namespace Model
   class ModelPackagingDescription
   {
   public:
-    AWS_LOOKOUTFORVISION_API ModelPackagingDescription();
+    AWS_LOOKOUTFORVISION_API ModelPackagingDescription() = default;
     AWS_LOOKOUTFORVISION_API ModelPackagingDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API ModelPackagingDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The name of the model packaging job. </p>
      */
-    inline const Aws::String& GetJobName() const{ return m_jobName; }
-
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
+    inline const Aws::String& GetJobName() const { return m_jobName; }
     inline bool JobNameHasBeenSet() const { return m_jobNameHasBeenSet; }
+    template<typename JobNameT = Aws::String>
+    void SetJobName(JobNameT&& value) { m_jobNameHasBeenSet = true; m_jobName = std::forward<JobNameT>(value); }
+    template<typename JobNameT = Aws::String>
+    ModelPackagingDescription& WithJobName(JobNameT&& value) { SetJobName(std::forward<JobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
-    inline void SetJobName(const Aws::String& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
-
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
-
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
-    inline void SetJobName(const char* value) { m_jobNameHasBeenSet = true; m_jobName.assign(value); }
-
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithJobName(const Aws::String& value) { SetJobName(value); return *this;}
-
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithJobName(const char* value) { SetJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the project that's associated with a model that's in the model
      * package. </p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    ModelPackagingDescription& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
-    inline ModelPackagingDescription& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
-    inline ModelPackagingDescription& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project that's associated with a model that's in the model
-     * package. </p>
-     */
-    inline ModelPackagingDescription& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the model used in the model packaging job. </p>
      */
-    inline const Aws::String& GetModelVersion() const{ return m_modelVersion; }
-
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
+    inline const Aws::String& GetModelVersion() const { return m_modelVersion; }
     inline bool ModelVersionHasBeenSet() const { return m_modelVersionHasBeenSet; }
+    template<typename ModelVersionT = Aws::String>
+    void SetModelVersion(ModelVersionT&& value) { m_modelVersionHasBeenSet = true; m_modelVersion = std::forward<ModelVersionT>(value); }
+    template<typename ModelVersionT = Aws::String>
+    ModelPackagingDescription& WithModelVersion(ModelVersionT&& value) { SetModelVersion(std::forward<ModelVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
-    inline void SetModelVersion(const Aws::String& value) { m_modelVersionHasBeenSet = true; m_modelVersion = value; }
-
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
-    inline void SetModelVersion(Aws::String&& value) { m_modelVersionHasBeenSet = true; m_modelVersion = std::move(value); }
-
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
-    inline void SetModelVersion(const char* value) { m_modelVersionHasBeenSet = true; m_modelVersion.assign(value); }
-
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelVersion(const Aws::String& value) { SetModelVersion(value); return *this;}
-
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelVersion(Aws::String&& value) { SetModelVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the model used in the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelVersion(const char* value) { SetModelVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The configuration information used in the model packaging job. </p>
      */
-    inline const ModelPackagingConfiguration& GetModelPackagingConfiguration() const{ return m_modelPackagingConfiguration; }
-
-    /**
-     * <p> The configuration information used in the model packaging job. </p>
-     */
+    inline const ModelPackagingConfiguration& GetModelPackagingConfiguration() const { return m_modelPackagingConfiguration; }
     inline bool ModelPackagingConfigurationHasBeenSet() const { return m_modelPackagingConfigurationHasBeenSet; }
+    template<typename ModelPackagingConfigurationT = ModelPackagingConfiguration>
+    void SetModelPackagingConfiguration(ModelPackagingConfigurationT&& value) { m_modelPackagingConfigurationHasBeenSet = true; m_modelPackagingConfiguration = std::forward<ModelPackagingConfigurationT>(value); }
+    template<typename ModelPackagingConfigurationT = ModelPackagingConfiguration>
+    ModelPackagingDescription& WithModelPackagingConfiguration(ModelPackagingConfigurationT&& value) { SetModelPackagingConfiguration(std::forward<ModelPackagingConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The configuration information used in the model packaging job. </p>
-     */
-    inline void SetModelPackagingConfiguration(const ModelPackagingConfiguration& value) { m_modelPackagingConfigurationHasBeenSet = true; m_modelPackagingConfiguration = value; }
-
-    /**
-     * <p> The configuration information used in the model packaging job. </p>
-     */
-    inline void SetModelPackagingConfiguration(ModelPackagingConfiguration&& value) { m_modelPackagingConfigurationHasBeenSet = true; m_modelPackagingConfiguration = std::move(value); }
-
-    /**
-     * <p> The configuration information used in the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingConfiguration(const ModelPackagingConfiguration& value) { SetModelPackagingConfiguration(value); return *this;}
-
-    /**
-     * <p> The configuration information used in the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingConfiguration(ModelPackagingConfiguration&& value) { SetModelPackagingConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description for the model packaging job. </p>
      */
-    inline const Aws::String& GetModelPackagingJobDescription() const{ return m_modelPackagingJobDescription; }
-
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
+    inline const Aws::String& GetModelPackagingJobDescription() const { return m_modelPackagingJobDescription; }
     inline bool ModelPackagingJobDescriptionHasBeenSet() const { return m_modelPackagingJobDescriptionHasBeenSet; }
+    template<typename ModelPackagingJobDescriptionT = Aws::String>
+    void SetModelPackagingJobDescription(ModelPackagingJobDescriptionT&& value) { m_modelPackagingJobDescriptionHasBeenSet = true; m_modelPackagingJobDescription = std::forward<ModelPackagingJobDescriptionT>(value); }
+    template<typename ModelPackagingJobDescriptionT = Aws::String>
+    ModelPackagingDescription& WithModelPackagingJobDescription(ModelPackagingJobDescriptionT&& value) { SetModelPackagingJobDescription(std::forward<ModelPackagingJobDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
-    inline void SetModelPackagingJobDescription(const Aws::String& value) { m_modelPackagingJobDescriptionHasBeenSet = true; m_modelPackagingJobDescription = value; }
-
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
-    inline void SetModelPackagingJobDescription(Aws::String&& value) { m_modelPackagingJobDescriptionHasBeenSet = true; m_modelPackagingJobDescription = std::move(value); }
-
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
-    inline void SetModelPackagingJobDescription(const char* value) { m_modelPackagingJobDescriptionHasBeenSet = true; m_modelPackagingJobDescription.assign(value); }
-
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingJobDescription(const Aws::String& value) { SetModelPackagingJobDescription(value); return *this;}
-
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingJobDescription(Aws::String&& value) { SetModelPackagingJobDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingJobDescription(const char* value) { SetModelPackagingJobDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The AWS service used to package the job. Currently Lookout for Vision can
      * package jobs with AWS IoT Greengrass. </p>
      */
-    inline const Aws::String& GetModelPackagingMethod() const{ return m_modelPackagingMethod; }
-
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
+    inline const Aws::String& GetModelPackagingMethod() const { return m_modelPackagingMethod; }
     inline bool ModelPackagingMethodHasBeenSet() const { return m_modelPackagingMethodHasBeenSet; }
+    template<typename ModelPackagingMethodT = Aws::String>
+    void SetModelPackagingMethod(ModelPackagingMethodT&& value) { m_modelPackagingMethodHasBeenSet = true; m_modelPackagingMethod = std::forward<ModelPackagingMethodT>(value); }
+    template<typename ModelPackagingMethodT = Aws::String>
+    ModelPackagingDescription& WithModelPackagingMethod(ModelPackagingMethodT&& value) { SetModelPackagingMethod(std::forward<ModelPackagingMethodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
-    inline void SetModelPackagingMethod(const Aws::String& value) { m_modelPackagingMethodHasBeenSet = true; m_modelPackagingMethod = value; }
-
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
-    inline void SetModelPackagingMethod(Aws::String&& value) { m_modelPackagingMethodHasBeenSet = true; m_modelPackagingMethod = std::move(value); }
-
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
-    inline void SetModelPackagingMethod(const char* value) { m_modelPackagingMethodHasBeenSet = true; m_modelPackagingMethod.assign(value); }
-
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingMethod(const Aws::String& value) { SetModelPackagingMethod(value); return *this;}
-
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingMethod(Aws::String&& value) { SetModelPackagingMethod(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS service used to package the job. Currently Lookout for Vision can
-     * package jobs with AWS IoT Greengrass. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingMethod(const char* value) { SetModelPackagingMethod(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the output of the model packaging job. For more
      * information, see <a>DescribeModelPackagingJob</a>. </p>
      */
-    inline const ModelPackagingOutputDetails& GetModelPackagingOutputDetails() const{ return m_modelPackagingOutputDetails; }
-
-    /**
-     * <p>Information about the output of the model packaging job. For more
-     * information, see <a>DescribeModelPackagingJob</a>. </p>
-     */
+    inline const ModelPackagingOutputDetails& GetModelPackagingOutputDetails() const { return m_modelPackagingOutputDetails; }
     inline bool ModelPackagingOutputDetailsHasBeenSet() const { return m_modelPackagingOutputDetailsHasBeenSet; }
+    template<typename ModelPackagingOutputDetailsT = ModelPackagingOutputDetails>
+    void SetModelPackagingOutputDetails(ModelPackagingOutputDetailsT&& value) { m_modelPackagingOutputDetailsHasBeenSet = true; m_modelPackagingOutputDetails = std::forward<ModelPackagingOutputDetailsT>(value); }
+    template<typename ModelPackagingOutputDetailsT = ModelPackagingOutputDetails>
+    ModelPackagingDescription& WithModelPackagingOutputDetails(ModelPackagingOutputDetailsT&& value) { SetModelPackagingOutputDetails(std::forward<ModelPackagingOutputDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the output of the model packaging job. For more
-     * information, see <a>DescribeModelPackagingJob</a>. </p>
-     */
-    inline void SetModelPackagingOutputDetails(const ModelPackagingOutputDetails& value) { m_modelPackagingOutputDetailsHasBeenSet = true; m_modelPackagingOutputDetails = value; }
-
-    /**
-     * <p>Information about the output of the model packaging job. For more
-     * information, see <a>DescribeModelPackagingJob</a>. </p>
-     */
-    inline void SetModelPackagingOutputDetails(ModelPackagingOutputDetails&& value) { m_modelPackagingOutputDetailsHasBeenSet = true; m_modelPackagingOutputDetails = std::move(value); }
-
-    /**
-     * <p>Information about the output of the model packaging job. For more
-     * information, see <a>DescribeModelPackagingJob</a>. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingOutputDetails(const ModelPackagingOutputDetails& value) { SetModelPackagingOutputDetails(value); return *this;}
-
-    /**
-     * <p>Information about the output of the model packaging job. For more
-     * information, see <a>DescribeModelPackagingJob</a>. </p>
-     */
-    inline ModelPackagingDescription& WithModelPackagingOutputDetails(ModelPackagingOutputDetails&& value) { SetModelPackagingOutputDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of the model packaging job. </p>
      */
-    inline const ModelPackagingJobStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of the model packaging job. </p>
-     */
+    inline ModelPackagingJobStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ModelPackagingJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ModelPackagingDescription& WithStatus(ModelPackagingJobStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of the model packaging job. </p>
-     */
-    inline void SetStatus(const ModelPackagingJobStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of the model packaging job. </p>
-     */
-    inline void SetStatus(ModelPackagingJobStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithStatus(const ModelPackagingJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithStatus(ModelPackagingJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The status message for the model packaging job. </p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    ModelPackagingDescription& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> The status message for the model packaging job. </p>
-     */
-    inline ModelPackagingDescription& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Unix timestamp for the time and date that the model packaging job was
      * created. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTimestamp() const{ return m_creationTimestamp; }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * created. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTimestamp() const { return m_creationTimestamp; }
     inline bool CreationTimestampHasBeenSet() const { return m_creationTimestampHasBeenSet; }
+    template<typename CreationTimestampT = Aws::Utils::DateTime>
+    void SetCreationTimestamp(CreationTimestampT&& value) { m_creationTimestampHasBeenSet = true; m_creationTimestamp = std::forward<CreationTimestampT>(value); }
+    template<typename CreationTimestampT = Aws::Utils::DateTime>
+    ModelPackagingDescription& WithCreationTimestamp(CreationTimestampT&& value) { SetCreationTimestamp(std::forward<CreationTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * created. </p>
-     */
-    inline void SetCreationTimestamp(const Aws::Utils::DateTime& value) { m_creationTimestampHasBeenSet = true; m_creationTimestamp = value; }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * created. </p>
-     */
-    inline void SetCreationTimestamp(Aws::Utils::DateTime&& value) { m_creationTimestampHasBeenSet = true; m_creationTimestamp = std::move(value); }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * created. </p>
-     */
-    inline ModelPackagingDescription& WithCreationTimestamp(const Aws::Utils::DateTime& value) { SetCreationTimestamp(value); return *this;}
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * created. </p>
-     */
-    inline ModelPackagingDescription& WithCreationTimestamp(Aws::Utils::DateTime&& value) { SetCreationTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The Unix timestamp for the time and date that the model packaging job was
      * last updated. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTimestamp() const{ return m_lastUpdatedTimestamp; }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * last updated. </p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTimestamp() const { return m_lastUpdatedTimestamp; }
     inline bool LastUpdatedTimestampHasBeenSet() const { return m_lastUpdatedTimestampHasBeenSet; }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * last updated. </p>
-     */
-    inline void SetLastUpdatedTimestamp(const Aws::Utils::DateTime& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = value; }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * last updated. </p>
-     */
-    inline void SetLastUpdatedTimestamp(Aws::Utils::DateTime&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::move(value); }
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * last updated. </p>
-     */
-    inline ModelPackagingDescription& WithLastUpdatedTimestamp(const Aws::Utils::DateTime& value) { SetLastUpdatedTimestamp(value); return *this;}
-
-    /**
-     * <p> The Unix timestamp for the time and date that the model packaging job was
-     * last updated. </p>
-     */
-    inline ModelPackagingDescription& WithLastUpdatedTimestamp(Aws::Utils::DateTime&& value) { SetLastUpdatedTimestamp(std::move(value)); return *this;}
-
+    template<typename LastUpdatedTimestampT = Aws::Utils::DateTime>
+    void SetLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::forward<LastUpdatedTimestampT>(value); }
+    template<typename LastUpdatedTimestampT = Aws::Utils::DateTime>
+    ModelPackagingDescription& WithLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { SetLastUpdatedTimestamp(std::forward<LastUpdatedTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobName;
@@ -499,16 +199,16 @@ namespace Model
     ModelPackagingOutputDetails m_modelPackagingOutputDetails;
     bool m_modelPackagingOutputDetailsHasBeenSet = false;
 
-    ModelPackagingJobStatus m_status;
+    ModelPackagingJobStatus m_status{ModelPackagingJobStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusMessage;
     bool m_statusMessageHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTimestamp;
+    Aws::Utils::DateTime m_creationTimestamp{};
     bool m_creationTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTimestamp;
+    Aws::Utils::DateTime m_lastUpdatedTimestamp{};
     bool m_lastUpdatedTimestampHasBeenSet = false;
   };
 

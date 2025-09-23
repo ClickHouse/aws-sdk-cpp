@@ -18,15 +18,7 @@ namespace TranscribeStreamingService
 namespace Model
 {
 
-CategoryEvent::CategoryEvent() : 
-    m_matchedCategoriesHasBeenSet(false),
-    m_matchedDetailsHasBeenSet(false)
-{
-}
-
-CategoryEvent::CategoryEvent(JsonView jsonValue) : 
-    m_matchedCategoriesHasBeenSet(false),
-    m_matchedDetailsHasBeenSet(false)
+CategoryEvent::CategoryEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ CategoryEvent& CategoryEvent::operator =(JsonView jsonValue)
     }
     m_matchedCategoriesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MatchedDetails"))
   {
     Aws::Map<Aws::String, JsonView> matchedDetailsJsonMap = jsonValue.GetObject("MatchedDetails").GetAllObjects();
@@ -52,7 +43,6 @@ CategoryEvent& CategoryEvent::operator =(JsonView jsonValue)
     }
     m_matchedDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 

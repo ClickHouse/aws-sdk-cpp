@@ -18,15 +18,7 @@ namespace Athena
 namespace Model
 {
 
-NotebookSessionSummary::NotebookSessionSummary() : 
-    m_sessionIdHasBeenSet(false),
-    m_creationTimeHasBeenSet(false)
-{
-}
-
-NotebookSessionSummary::NotebookSessionSummary(JsonView jsonValue) : 
-    m_sessionIdHasBeenSet(false),
-    m_creationTimeHasBeenSet(false)
+NotebookSessionSummary::NotebookSessionSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NotebookSessionSummary& NotebookSessionSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SessionId"))
   {
     m_sessionId = jsonValue.GetString("SessionId");
-
     m_sessionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetDouble("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

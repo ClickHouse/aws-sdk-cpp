@@ -21,7 +21,7 @@ namespace Model
   class DescribeCodeRepositoryRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DescribeCodeRepositoryRequest();
+    AWS_SAGEMAKER_API DescribeCodeRepositoryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the Git repository to describe.</p>
      */
-    inline const Aws::String& GetCodeRepositoryName() const{ return m_codeRepositoryName; }
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
+    inline const Aws::String& GetCodeRepositoryName() const { return m_codeRepositoryName; }
     inline bool CodeRepositoryNameHasBeenSet() const { return m_codeRepositoryNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
-    inline void SetCodeRepositoryName(const Aws::String& value) { m_codeRepositoryNameHasBeenSet = true; m_codeRepositoryName = value; }
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
-    inline void SetCodeRepositoryName(Aws::String&& value) { m_codeRepositoryNameHasBeenSet = true; m_codeRepositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
-    inline void SetCodeRepositoryName(const char* value) { m_codeRepositoryNameHasBeenSet = true; m_codeRepositoryName.assign(value); }
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
-    inline DescribeCodeRepositoryRequest& WithCodeRepositoryName(const Aws::String& value) { SetCodeRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
-    inline DescribeCodeRepositoryRequest& WithCodeRepositoryName(Aws::String&& value) { SetCodeRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Git repository to describe.</p>
-     */
-    inline DescribeCodeRepositoryRequest& WithCodeRepositoryName(const char* value) { SetCodeRepositoryName(value); return *this;}
-
+    template<typename CodeRepositoryNameT = Aws::String>
+    void SetCodeRepositoryName(CodeRepositoryNameT&& value) { m_codeRepositoryNameHasBeenSet = true; m_codeRepositoryName = std::forward<CodeRepositoryNameT>(value); }
+    template<typename CodeRepositoryNameT = Aws::String>
+    DescribeCodeRepositoryRequest& WithCodeRepositoryName(CodeRepositoryNameT&& value) { SetCodeRepositoryName(std::forward<CodeRepositoryNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_codeRepositoryName;

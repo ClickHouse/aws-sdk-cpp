@@ -33,176 +33,67 @@ namespace Model
   class RelationalDatabaseEvent
   {
   public:
-    AWS_LIGHTSAIL_API RelationalDatabaseEvent();
+    AWS_LIGHTSAIL_API RelationalDatabaseEvent() = default;
     AWS_LIGHTSAIL_API RelationalDatabaseEvent(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API RelationalDatabaseEvent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The database that the database event relates to.</p>
      */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
+    inline const Aws::String& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    RelationalDatabaseEvent& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
-    inline RelationalDatabaseEvent& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
-    inline RelationalDatabaseEvent& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The database that the database event relates to.</p>
-     */
-    inline RelationalDatabaseEvent& WithResource(const char* value) { SetResource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the database event was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp when the database event was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    RelationalDatabaseEvent& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the database event was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp when the database event was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp when the database event was created.</p>
-     */
-    inline RelationalDatabaseEvent& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp when the database event was created.</p>
-     */
-    inline RelationalDatabaseEvent& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message of the database event.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message of the database event.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    RelationalDatabaseEvent& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message of the database event.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message of the database event.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message of the database event.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message of the database event.</p>
-     */
-    inline RelationalDatabaseEvent& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message of the database event.</p>
-     */
-    inline RelationalDatabaseEvent& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message of the database event.</p>
-     */
-    inline RelationalDatabaseEvent& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The category that the database event belongs to.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEventCategories() const{ return m_eventCategories; }
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEventCategories() const { return m_eventCategories; }
     inline bool EventCategoriesHasBeenSet() const { return m_eventCategoriesHasBeenSet; }
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline void SetEventCategories(const Aws::Vector<Aws::String>& value) { m_eventCategoriesHasBeenSet = true; m_eventCategories = value; }
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline void SetEventCategories(Aws::Vector<Aws::String>&& value) { m_eventCategoriesHasBeenSet = true; m_eventCategories = std::move(value); }
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline RelationalDatabaseEvent& WithEventCategories(const Aws::Vector<Aws::String>& value) { SetEventCategories(value); return *this;}
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline RelationalDatabaseEvent& WithEventCategories(Aws::Vector<Aws::String>&& value) { SetEventCategories(std::move(value)); return *this;}
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline RelationalDatabaseEvent& AddEventCategories(const Aws::String& value) { m_eventCategoriesHasBeenSet = true; m_eventCategories.push_back(value); return *this; }
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline RelationalDatabaseEvent& AddEventCategories(Aws::String&& value) { m_eventCategoriesHasBeenSet = true; m_eventCategories.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The category that the database event belongs to.</p>
-     */
-    inline RelationalDatabaseEvent& AddEventCategories(const char* value) { m_eventCategoriesHasBeenSet = true; m_eventCategories.push_back(value); return *this; }
-
+    template<typename EventCategoriesT = Aws::Vector<Aws::String>>
+    void SetEventCategories(EventCategoriesT&& value) { m_eventCategoriesHasBeenSet = true; m_eventCategories = std::forward<EventCategoriesT>(value); }
+    template<typename EventCategoriesT = Aws::Vector<Aws::String>>
+    RelationalDatabaseEvent& WithEventCategories(EventCategoriesT&& value) { SetEventCategories(std::forward<EventCategoriesT>(value)); return *this;}
+    template<typename EventCategoriesT = Aws::String>
+    RelationalDatabaseEvent& AddEventCategories(EventCategoriesT&& value) { m_eventCategoriesHasBeenSet = true; m_eventCategories.emplace_back(std::forward<EventCategoriesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_resource;
     bool m_resourceHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     Aws::String m_message;

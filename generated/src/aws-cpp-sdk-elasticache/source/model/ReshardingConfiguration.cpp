@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-ReshardingConfiguration::ReshardingConfiguration() : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_preferredAvailabilityZonesHasBeenSet(false)
-{
-}
-
-ReshardingConfiguration::ReshardingConfiguration(const XmlNode& xmlNode) : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_preferredAvailabilityZonesHasBeenSet(false)
+ReshardingConfiguration::ReshardingConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ ReshardingConfiguration& ReshardingConfiguration::operator =(const XmlNode& xmlN
     if(!preferredAvailabilityZonesNode.IsNull())
     {
       XmlNode preferredAvailabilityZonesMember = preferredAvailabilityZonesNode.FirstChild("AvailabilityZone");
+      m_preferredAvailabilityZonesHasBeenSet = !preferredAvailabilityZonesMember.IsNull();
       while(!preferredAvailabilityZonesMember.IsNull())
       {
         m_preferredAvailabilityZones.push_back(preferredAvailabilityZonesMember.GetText());
@@ -74,7 +67,7 @@ void ReshardingConfiguration::OutputToStream(Aws::OStream& oStream, const char* 
       unsigned preferredAvailabilityZonesIdx = 1;
       for(auto& item : m_preferredAvailabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZone." << preferredAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".PreferredAvailabilityZones.AvailabilityZone." << preferredAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -91,7 +84,7 @@ void ReshardingConfiguration::OutputToStream(Aws::OStream& oStream, const char* 
       unsigned preferredAvailabilityZonesIdx = 1;
       for(auto& item : m_preferredAvailabilityZones)
       {
-        oStream << location << ".AvailabilityZone." << preferredAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".PreferredAvailabilityZones.AvailabilityZone." << preferredAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

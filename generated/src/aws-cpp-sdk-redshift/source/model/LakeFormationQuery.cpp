@@ -20,15 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-LakeFormationQuery::LakeFormationQuery() : 
-    m_authorization(ServiceAuthorization::NOT_SET),
-    m_authorizationHasBeenSet(false)
-{
-}
-
-LakeFormationQuery::LakeFormationQuery(const XmlNode& xmlNode) : 
-    m_authorization(ServiceAuthorization::NOT_SET),
-    m_authorizationHasBeenSet(false)
+LakeFormationQuery::LakeFormationQuery(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ LakeFormationQuery& LakeFormationQuery::operator =(const XmlNode& xmlNode)
     XmlNode authorizationNode = resultNode.FirstChild("Authorization");
     if(!authorizationNode.IsNull())
     {
-      m_authorization = ServiceAuthorizationMapper::GetServiceAuthorizationForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(authorizationNode.GetText()).c_str()).c_str());
+      m_authorization = ServiceAuthorizationMapper::GetServiceAuthorizationForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(authorizationNode.GetText()).c_str()));
       m_authorizationHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void LakeFormationQuery::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_authorizationHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Authorization=" << ServiceAuthorizationMapper::GetNameForServiceAuthorization(m_authorization) << "&";
+      oStream << location << index << locationValue << ".Authorization=" << StringUtils::URLEncode(ServiceAuthorizationMapper::GetNameForServiceAuthorization(m_authorization)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void LakeFormationQuery::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_authorizationHasBeenSet)
   {
-      oStream << location << ".Authorization=" << ServiceAuthorizationMapper::GetNameForServiceAuthorization(m_authorization) << "&";
+      oStream << location << ".Authorization=" << StringUtils::URLEncode(ServiceAuthorizationMapper::GetNameForServiceAuthorization(m_authorization)) << "&";
   }
 }
 

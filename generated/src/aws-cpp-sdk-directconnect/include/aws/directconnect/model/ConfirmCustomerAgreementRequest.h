@@ -21,7 +21,7 @@ namespace Model
   class ConfirmCustomerAgreementRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API ConfirmCustomerAgreementRequest();
+    AWS_DIRECTCONNECT_API ConfirmCustomerAgreementRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> The name of the customer agreement. </p>
      */
-    inline const Aws::String& GetAgreementName() const{ return m_agreementName; }
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
+    inline const Aws::String& GetAgreementName() const { return m_agreementName; }
     inline bool AgreementNameHasBeenSet() const { return m_agreementNameHasBeenSet; }
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
-    inline void SetAgreementName(const Aws::String& value) { m_agreementNameHasBeenSet = true; m_agreementName = value; }
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
-    inline void SetAgreementName(Aws::String&& value) { m_agreementNameHasBeenSet = true; m_agreementName = std::move(value); }
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
-    inline void SetAgreementName(const char* value) { m_agreementNameHasBeenSet = true; m_agreementName.assign(value); }
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
-    inline ConfirmCustomerAgreementRequest& WithAgreementName(const Aws::String& value) { SetAgreementName(value); return *this;}
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
-    inline ConfirmCustomerAgreementRequest& WithAgreementName(Aws::String&& value) { SetAgreementName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the customer agreement. </p>
-     */
-    inline ConfirmCustomerAgreementRequest& WithAgreementName(const char* value) { SetAgreementName(value); return *this;}
-
+    template<typename AgreementNameT = Aws::String>
+    void SetAgreementName(AgreementNameT&& value) { m_agreementNameHasBeenSet = true; m_agreementName = std::forward<AgreementNameT>(value); }
+    template<typename AgreementNameT = Aws::String>
+    ConfirmCustomerAgreementRequest& WithAgreementName(AgreementNameT&& value) { SetAgreementName(std::forward<AgreementNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_agreementName;

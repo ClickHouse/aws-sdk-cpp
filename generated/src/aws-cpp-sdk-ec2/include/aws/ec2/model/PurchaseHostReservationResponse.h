@@ -31,247 +31,99 @@ namespace Model
   class PurchaseHostReservationResponse
   {
   public:
-    AWS_EC2_API PurchaseHostReservationResponse();
+    AWS_EC2_API PurchaseHostReservationResponse() = default;
     AWS_EC2_API PurchaseHostReservationResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API PurchaseHostReservationResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * Idempotency</a>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    PurchaseHostReservationResponse& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline PurchaseHostReservationResponse& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline PurchaseHostReservationResponse& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline PurchaseHostReservationResponse& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The currency in which the <code>totalUpfrontPrice</code> and
      * <code>totalHourlyPrice</code> amounts are specified. At this time, the only
      * supported currency is <code>USD</code>.</p>
      */
-    inline const CurrencyCodeValues& GetCurrencyCode() const{ return m_currencyCode; }
+    inline CurrencyCodeValues GetCurrencyCode() const { return m_currencyCode; }
+    inline void SetCurrencyCode(CurrencyCodeValues value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
+    inline PurchaseHostReservationResponse& WithCurrencyCode(CurrencyCodeValues value) { SetCurrencyCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The currency in which the <code>totalUpfrontPrice</code> and
-     * <code>totalHourlyPrice</code> amounts are specified. At this time, the only
-     * supported currency is <code>USD</code>.</p>
-     */
-    inline void SetCurrencyCode(const CurrencyCodeValues& value) { m_currencyCode = value; }
-
-    /**
-     * <p>The currency in which the <code>totalUpfrontPrice</code> and
-     * <code>totalHourlyPrice</code> amounts are specified. At this time, the only
-     * supported currency is <code>USD</code>.</p>
-     */
-    inline void SetCurrencyCode(CurrencyCodeValues&& value) { m_currencyCode = std::move(value); }
-
-    /**
-     * <p>The currency in which the <code>totalUpfrontPrice</code> and
-     * <code>totalHourlyPrice</code> amounts are specified. At this time, the only
-     * supported currency is <code>USD</code>.</p>
-     */
-    inline PurchaseHostReservationResponse& WithCurrencyCode(const CurrencyCodeValues& value) { SetCurrencyCode(value); return *this;}
-
-    /**
-     * <p>The currency in which the <code>totalUpfrontPrice</code> and
-     * <code>totalHourlyPrice</code> amounts are specified. At this time, the only
-     * supported currency is <code>USD</code>.</p>
-     */
-    inline PurchaseHostReservationResponse& WithCurrencyCode(CurrencyCodeValues&& value) { SetCurrencyCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the details of the purchase.</p>
      */
-    inline const Aws::Vector<Purchase>& GetPurchase() const{ return m_purchase; }
+    inline const Aws::Vector<Purchase>& GetPurchase() const { return m_purchase; }
+    template<typename PurchaseT = Aws::Vector<Purchase>>
+    void SetPurchase(PurchaseT&& value) { m_purchaseHasBeenSet = true; m_purchase = std::forward<PurchaseT>(value); }
+    template<typename PurchaseT = Aws::Vector<Purchase>>
+    PurchaseHostReservationResponse& WithPurchase(PurchaseT&& value) { SetPurchase(std::forward<PurchaseT>(value)); return *this;}
+    template<typename PurchaseT = Purchase>
+    PurchaseHostReservationResponse& AddPurchase(PurchaseT&& value) { m_purchaseHasBeenSet = true; m_purchase.emplace_back(std::forward<PurchaseT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Describes the details of the purchase.</p>
-     */
-    inline void SetPurchase(const Aws::Vector<Purchase>& value) { m_purchase = value; }
-
-    /**
-     * <p>Describes the details of the purchase.</p>
-     */
-    inline void SetPurchase(Aws::Vector<Purchase>&& value) { m_purchase = std::move(value); }
-
-    /**
-     * <p>Describes the details of the purchase.</p>
-     */
-    inline PurchaseHostReservationResponse& WithPurchase(const Aws::Vector<Purchase>& value) { SetPurchase(value); return *this;}
-
-    /**
-     * <p>Describes the details of the purchase.</p>
-     */
-    inline PurchaseHostReservationResponse& WithPurchase(Aws::Vector<Purchase>&& value) { SetPurchase(std::move(value)); return *this;}
-
-    /**
-     * <p>Describes the details of the purchase.</p>
-     */
-    inline PurchaseHostReservationResponse& AddPurchase(const Purchase& value) { m_purchase.push_back(value); return *this; }
-
-    /**
-     * <p>Describes the details of the purchase.</p>
-     */
-    inline PurchaseHostReservationResponse& AddPurchase(Purchase&& value) { m_purchase.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The total hourly price of the reservation calculated per hour.</p>
      */
-    inline const Aws::String& GetTotalHourlyPrice() const{ return m_totalHourlyPrice; }
+    inline const Aws::String& GetTotalHourlyPrice() const { return m_totalHourlyPrice; }
+    template<typename TotalHourlyPriceT = Aws::String>
+    void SetTotalHourlyPrice(TotalHourlyPriceT&& value) { m_totalHourlyPriceHasBeenSet = true; m_totalHourlyPrice = std::forward<TotalHourlyPriceT>(value); }
+    template<typename TotalHourlyPriceT = Aws::String>
+    PurchaseHostReservationResponse& WithTotalHourlyPrice(TotalHourlyPriceT&& value) { SetTotalHourlyPrice(std::forward<TotalHourlyPriceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The total hourly price of the reservation calculated per hour.</p>
-     */
-    inline void SetTotalHourlyPrice(const Aws::String& value) { m_totalHourlyPrice = value; }
-
-    /**
-     * <p>The total hourly price of the reservation calculated per hour.</p>
-     */
-    inline void SetTotalHourlyPrice(Aws::String&& value) { m_totalHourlyPrice = std::move(value); }
-
-    /**
-     * <p>The total hourly price of the reservation calculated per hour.</p>
-     */
-    inline void SetTotalHourlyPrice(const char* value) { m_totalHourlyPrice.assign(value); }
-
-    /**
-     * <p>The total hourly price of the reservation calculated per hour.</p>
-     */
-    inline PurchaseHostReservationResponse& WithTotalHourlyPrice(const Aws::String& value) { SetTotalHourlyPrice(value); return *this;}
-
-    /**
-     * <p>The total hourly price of the reservation calculated per hour.</p>
-     */
-    inline PurchaseHostReservationResponse& WithTotalHourlyPrice(Aws::String&& value) { SetTotalHourlyPrice(std::move(value)); return *this;}
-
-    /**
-     * <p>The total hourly price of the reservation calculated per hour.</p>
-     */
-    inline PurchaseHostReservationResponse& WithTotalHourlyPrice(const char* value) { SetTotalHourlyPrice(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The total amount charged to your account when you purchase the
      * reservation.</p>
      */
-    inline const Aws::String& GetTotalUpfrontPrice() const{ return m_totalUpfrontPrice; }
+    inline const Aws::String& GetTotalUpfrontPrice() const { return m_totalUpfrontPrice; }
+    template<typename TotalUpfrontPriceT = Aws::String>
+    void SetTotalUpfrontPrice(TotalUpfrontPriceT&& value) { m_totalUpfrontPriceHasBeenSet = true; m_totalUpfrontPrice = std::forward<TotalUpfrontPriceT>(value); }
+    template<typename TotalUpfrontPriceT = Aws::String>
+    PurchaseHostReservationResponse& WithTotalUpfrontPrice(TotalUpfrontPriceT&& value) { SetTotalUpfrontPrice(std::forward<TotalUpfrontPriceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The total amount charged to your account when you purchase the
-     * reservation.</p>
-     */
-    inline void SetTotalUpfrontPrice(const Aws::String& value) { m_totalUpfrontPrice = value; }
-
-    /**
-     * <p>The total amount charged to your account when you purchase the
-     * reservation.</p>
-     */
-    inline void SetTotalUpfrontPrice(Aws::String&& value) { m_totalUpfrontPrice = std::move(value); }
-
-    /**
-     * <p>The total amount charged to your account when you purchase the
-     * reservation.</p>
-     */
-    inline void SetTotalUpfrontPrice(const char* value) { m_totalUpfrontPrice.assign(value); }
-
-    /**
-     * <p>The total amount charged to your account when you purchase the
-     * reservation.</p>
-     */
-    inline PurchaseHostReservationResponse& WithTotalUpfrontPrice(const Aws::String& value) { SetTotalUpfrontPrice(value); return *this;}
-
-    /**
-     * <p>The total amount charged to your account when you purchase the
-     * reservation.</p>
-     */
-    inline PurchaseHostReservationResponse& WithTotalUpfrontPrice(Aws::String&& value) { SetTotalUpfrontPrice(std::move(value)); return *this;}
-
-    /**
-     * <p>The total amount charged to your account when you purchase the
-     * reservation.</p>
-     */
-    inline PurchaseHostReservationResponse& WithTotalUpfrontPrice(const char* value) { SetTotalUpfrontPrice(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline PurchaseHostReservationResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline PurchaseHostReservationResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    PurchaseHostReservationResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clientToken;
+    bool m_clientTokenHasBeenSet = false;
 
-    CurrencyCodeValues m_currencyCode;
+    CurrencyCodeValues m_currencyCode{CurrencyCodeValues::NOT_SET};
+    bool m_currencyCodeHasBeenSet = false;
 
     Aws::Vector<Purchase> m_purchase;
+    bool m_purchaseHasBeenSet = false;
 
     Aws::String m_totalHourlyPrice;
+    bool m_totalHourlyPriceHasBeenSet = false;
 
     Aws::String m_totalUpfrontPrice;
+    bool m_totalUpfrontPriceHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AlternatePathHint::AlternatePathHint() : 
-    m_componentIdHasBeenSet(false),
-    m_componentArnHasBeenSet(false)
-{
-}
-
-AlternatePathHint::AlternatePathHint(const XmlNode& xmlNode) : 
-    m_componentIdHasBeenSet(false),
-    m_componentArnHasBeenSet(false)
+AlternatePathHint::AlternatePathHint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

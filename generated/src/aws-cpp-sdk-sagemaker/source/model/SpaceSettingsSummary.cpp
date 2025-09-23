@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-SpaceSettingsSummary::SpaceSettingsSummary() : 
-    m_appType(AppType::NOT_SET),
-    m_appTypeHasBeenSet(false),
-    m_spaceStorageSettingsHasBeenSet(false)
-{
-}
-
-SpaceSettingsSummary::SpaceSettingsSummary(JsonView jsonValue) : 
-    m_appType(AppType::NOT_SET),
-    m_appTypeHasBeenSet(false),
-    m_spaceStorageSettingsHasBeenSet(false)
+SpaceSettingsSummary::SpaceSettingsSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ SpaceSettingsSummary& SpaceSettingsSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AppType"))
   {
     m_appType = AppTypeMapper::GetAppTypeForName(jsonValue.GetString("AppType"));
-
     m_appTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RemoteAccess"))
+  {
+    m_remoteAccess = FeatureStatusMapper::GetFeatureStatusForName(jsonValue.GetString("RemoteAccess"));
+    m_remoteAccessHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("SpaceStorageSettings"))
   {
     m_spaceStorageSettings = jsonValue.GetObject("SpaceStorageSettings");
-
     m_spaceStorageSettingsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -59,6 +50,11 @@ JsonValue SpaceSettingsSummary::Jsonize() const
   if(m_appTypeHasBeenSet)
   {
    payload.WithString("AppType", AppTypeMapper::GetNameForAppType(m_appType));
+  }
+
+  if(m_remoteAccessHasBeenSet)
+  {
+   payload.WithString("RemoteAccess", FeatureStatusMapper::GetNameForFeatureStatus(m_remoteAccess));
   }
 
   if(m_spaceStorageSettingsHasBeenSet)

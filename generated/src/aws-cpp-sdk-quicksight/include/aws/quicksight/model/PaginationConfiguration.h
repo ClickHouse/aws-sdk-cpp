@@ -30,59 +30,37 @@ namespace Model
   class PaginationConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API PaginationConfiguration();
+    AWS_QUICKSIGHT_API PaginationConfiguration() = default;
     AWS_QUICKSIGHT_API PaginationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PaginationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates how many items render in one page.</p>
      */
-    inline long long GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>Indicates how many items render in one page.</p>
-     */
+    inline long long GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>Indicates how many items render in one page.</p>
-     */
     inline void SetPageSize(long long value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>Indicates how many items render in one page.</p>
-     */
     inline PaginationConfiguration& WithPageSize(long long value) { SetPageSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates the page number.</p>
      */
-    inline long long GetPageNumber() const{ return m_pageNumber; }
-
-    /**
-     * <p>Indicates the page number.</p>
-     */
+    inline long long GetPageNumber() const { return m_pageNumber; }
     inline bool PageNumberHasBeenSet() const { return m_pageNumberHasBeenSet; }
-
-    /**
-     * <p>Indicates the page number.</p>
-     */
     inline void SetPageNumber(long long value) { m_pageNumberHasBeenSet = true; m_pageNumber = value; }
-
-    /**
-     * <p>Indicates the page number.</p>
-     */
     inline PaginationConfiguration& WithPageNumber(long long value) { SetPageNumber(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_pageSize;
+    long long m_pageSize{0};
     bool m_pageSizeHasBeenSet = false;
 
-    long long m_pageNumber;
+    long long m_pageNumber{0};
     bool m_pageNumberHasBeenSet = false;
   };
 

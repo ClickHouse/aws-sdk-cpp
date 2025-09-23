@@ -21,7 +21,7 @@ namespace Model
   class GetUserSettingsRequest : public WorkSpacesWebRequest
   {
   public:
-    AWS_WORKSPACESWEB_API GetUserSettingsRequest();
+    AWS_WORKSPACESWEB_API GetUserSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_WORKSPACESWEB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the user settings.</p>
      */
-    inline const Aws::String& GetUserSettingsArn() const{ return m_userSettingsArn; }
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
+    inline const Aws::String& GetUserSettingsArn() const { return m_userSettingsArn; }
     inline bool UserSettingsArnHasBeenSet() const { return m_userSettingsArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
-    inline void SetUserSettingsArn(const Aws::String& value) { m_userSettingsArnHasBeenSet = true; m_userSettingsArn = value; }
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
-    inline void SetUserSettingsArn(Aws::String&& value) { m_userSettingsArnHasBeenSet = true; m_userSettingsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
-    inline void SetUserSettingsArn(const char* value) { m_userSettingsArnHasBeenSet = true; m_userSettingsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
-    inline GetUserSettingsRequest& WithUserSettingsArn(const Aws::String& value) { SetUserSettingsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
-    inline GetUserSettingsRequest& WithUserSettingsArn(Aws::String&& value) { SetUserSettingsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the user settings.</p>
-     */
-    inline GetUserSettingsRequest& WithUserSettingsArn(const char* value) { SetUserSettingsArn(value); return *this;}
-
+    template<typename UserSettingsArnT = Aws::String>
+    void SetUserSettingsArn(UserSettingsArnT&& value) { m_userSettingsArnHasBeenSet = true; m_userSettingsArn = std::forward<UserSettingsArnT>(value); }
+    template<typename UserSettingsArnT = Aws::String>
+    GetUserSettingsRequest& WithUserSettingsArn(UserSettingsArnT&& value) { SetUserSettingsArn(std::forward<UserSettingsArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userSettingsArn;

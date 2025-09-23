@@ -32,42 +32,23 @@ namespace Model
   class ErrorReportLocation
   {
   public:
-    AWS_TIMESTREAMQUERY_API ErrorReportLocation();
+    AWS_TIMESTREAMQUERY_API ErrorReportLocation() = default;
     AWS_TIMESTREAMQUERY_API ErrorReportLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMQUERY_API ErrorReportLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMQUERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 location where error reports are written.</p>
      */
-    inline const S3ReportLocation& GetS3ReportLocation() const{ return m_s3ReportLocation; }
-
-    /**
-     * <p>The S3 location where error reports are written.</p>
-     */
+    inline const S3ReportLocation& GetS3ReportLocation() const { return m_s3ReportLocation; }
     inline bool S3ReportLocationHasBeenSet() const { return m_s3ReportLocationHasBeenSet; }
-
-    /**
-     * <p>The S3 location where error reports are written.</p>
-     */
-    inline void SetS3ReportLocation(const S3ReportLocation& value) { m_s3ReportLocationHasBeenSet = true; m_s3ReportLocation = value; }
-
-    /**
-     * <p>The S3 location where error reports are written.</p>
-     */
-    inline void SetS3ReportLocation(S3ReportLocation&& value) { m_s3ReportLocationHasBeenSet = true; m_s3ReportLocation = std::move(value); }
-
-    /**
-     * <p>The S3 location where error reports are written.</p>
-     */
-    inline ErrorReportLocation& WithS3ReportLocation(const S3ReportLocation& value) { SetS3ReportLocation(value); return *this;}
-
-    /**
-     * <p>The S3 location where error reports are written.</p>
-     */
-    inline ErrorReportLocation& WithS3ReportLocation(S3ReportLocation&& value) { SetS3ReportLocation(std::move(value)); return *this;}
-
+    template<typename S3ReportLocationT = S3ReportLocation>
+    void SetS3ReportLocation(S3ReportLocationT&& value) { m_s3ReportLocationHasBeenSet = true; m_s3ReportLocation = std::forward<S3ReportLocationT>(value); }
+    template<typename S3ReportLocationT = S3ReportLocation>
+    ErrorReportLocation& WithS3ReportLocation(S3ReportLocationT&& value) { SetS3ReportLocation(std::forward<S3ReportLocationT>(value)); return *this;}
+    ///@}
   private:
 
     S3ReportLocation m_s3ReportLocation;

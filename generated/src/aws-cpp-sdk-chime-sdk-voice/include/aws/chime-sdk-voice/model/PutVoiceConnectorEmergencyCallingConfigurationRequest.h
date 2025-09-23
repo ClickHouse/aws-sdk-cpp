@@ -22,7 +22,7 @@ namespace Model
   class PutVoiceConnectorEmergencyCallingConfigurationRequest : public ChimeSDKVoiceRequest
   {
   public:
-    AWS_CHIMESDKVOICE_API PutVoiceConnectorEmergencyCallingConfigurationRequest();
+    AWS_CHIMESDKVOICE_API PutVoiceConnectorEmergencyCallingConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,77 +33,29 @@ namespace Model
     AWS_CHIMESDKVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Voice Connector ID.</p>
      */
-    inline const Aws::String& GetVoiceConnectorId() const{ return m_voiceConnectorId; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
+    inline const Aws::String& GetVoiceConnectorId() const { return m_voiceConnectorId; }
     inline bool VoiceConnectorIdHasBeenSet() const { return m_voiceConnectorIdHasBeenSet; }
+    template<typename VoiceConnectorIdT = Aws::String>
+    void SetVoiceConnectorId(VoiceConnectorIdT&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::forward<VoiceConnectorIdT>(value); }
+    template<typename VoiceConnectorIdT = Aws::String>
+    PutVoiceConnectorEmergencyCallingConfigurationRequest& WithVoiceConnectorId(VoiceConnectorIdT&& value) { SetVoiceConnectorId(std::forward<VoiceConnectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const Aws::String& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = value; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(Aws::String&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::move(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const char* value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId.assign(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorEmergencyCallingConfigurationRequest& WithVoiceConnectorId(const Aws::String& value) { SetVoiceConnectorId(value); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorEmergencyCallingConfigurationRequest& WithVoiceConnectorId(Aws::String&& value) { SetVoiceConnectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorEmergencyCallingConfigurationRequest& WithVoiceConnectorId(const char* value) { SetVoiceConnectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration being updated.</p>
      */
-    inline const EmergencyCallingConfiguration& GetEmergencyCallingConfiguration() const{ return m_emergencyCallingConfiguration; }
-
-    /**
-     * <p>The configuration being updated.</p>
-     */
+    inline const EmergencyCallingConfiguration& GetEmergencyCallingConfiguration() const { return m_emergencyCallingConfiguration; }
     inline bool EmergencyCallingConfigurationHasBeenSet() const { return m_emergencyCallingConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration being updated.</p>
-     */
-    inline void SetEmergencyCallingConfiguration(const EmergencyCallingConfiguration& value) { m_emergencyCallingConfigurationHasBeenSet = true; m_emergencyCallingConfiguration = value; }
-
-    /**
-     * <p>The configuration being updated.</p>
-     */
-    inline void SetEmergencyCallingConfiguration(EmergencyCallingConfiguration&& value) { m_emergencyCallingConfigurationHasBeenSet = true; m_emergencyCallingConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration being updated.</p>
-     */
-    inline PutVoiceConnectorEmergencyCallingConfigurationRequest& WithEmergencyCallingConfiguration(const EmergencyCallingConfiguration& value) { SetEmergencyCallingConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration being updated.</p>
-     */
-    inline PutVoiceConnectorEmergencyCallingConfigurationRequest& WithEmergencyCallingConfiguration(EmergencyCallingConfiguration&& value) { SetEmergencyCallingConfiguration(std::move(value)); return *this;}
-
+    template<typename EmergencyCallingConfigurationT = EmergencyCallingConfiguration>
+    void SetEmergencyCallingConfiguration(EmergencyCallingConfigurationT&& value) { m_emergencyCallingConfigurationHasBeenSet = true; m_emergencyCallingConfiguration = std::forward<EmergencyCallingConfigurationT>(value); }
+    template<typename EmergencyCallingConfigurationT = EmergencyCallingConfiguration>
+    PutVoiceConnectorEmergencyCallingConfigurationRequest& WithEmergencyCallingConfiguration(EmergencyCallingConfigurationT&& value) { SetEmergencyCallingConfiguration(std::forward<EmergencyCallingConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_voiceConnectorId;

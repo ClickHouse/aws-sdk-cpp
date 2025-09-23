@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-EventBatchingCondition::EventBatchingCondition() : 
-    m_batchSize(0),
-    m_batchSizeHasBeenSet(false),
-    m_batchWindow(0),
-    m_batchWindowHasBeenSet(false)
-{
-}
-
-EventBatchingCondition::EventBatchingCondition(JsonView jsonValue) : 
-    m_batchSize(0),
-    m_batchSizeHasBeenSet(false),
-    m_batchWindow(0),
-    m_batchWindowHasBeenSet(false)
+EventBatchingCondition::EventBatchingCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ EventBatchingCondition& EventBatchingCondition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BatchSize"))
   {
     m_batchSize = jsonValue.GetInteger("BatchSize");
-
     m_batchSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BatchWindow"))
   {
     m_batchWindow = jsonValue.GetInteger("BatchWindow");
-
     m_batchWindowHasBeenSet = true;
   }
-
   return *this;
 }
 

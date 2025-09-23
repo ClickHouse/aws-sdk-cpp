@@ -18,17 +18,7 @@ namespace TimestreamWrite
 namespace Model
 {
 
-MagneticStoreWriteProperties::MagneticStoreWriteProperties() : 
-    m_enableMagneticStoreWrites(false),
-    m_enableMagneticStoreWritesHasBeenSet(false),
-    m_magneticStoreRejectedDataLocationHasBeenSet(false)
-{
-}
-
-MagneticStoreWriteProperties::MagneticStoreWriteProperties(JsonView jsonValue) : 
-    m_enableMagneticStoreWrites(false),
-    m_enableMagneticStoreWritesHasBeenSet(false),
-    m_magneticStoreRejectedDataLocationHasBeenSet(false)
+MagneticStoreWriteProperties::MagneticStoreWriteProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ MagneticStoreWriteProperties& MagneticStoreWriteProperties::operator =(JsonView 
   if(jsonValue.ValueExists("EnableMagneticStoreWrites"))
   {
     m_enableMagneticStoreWrites = jsonValue.GetBool("EnableMagneticStoreWrites");
-
     m_enableMagneticStoreWritesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MagneticStoreRejectedDataLocation"))
   {
     m_magneticStoreRejectedDataLocation = jsonValue.GetObject("MagneticStoreRejectedDataLocation");
-
     m_magneticStoreRejectedDataLocationHasBeenSet = true;
   }
-
   return *this;
 }
 

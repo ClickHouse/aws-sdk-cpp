@@ -24,7 +24,7 @@ namespace Model
   class CreateMetadataTransferJobRequest : public IoTTwinMakerRequest
   {
   public:
-    AWS_IOTTWINMAKER_API CreateMetadataTransferJobRequest();
+    AWS_IOTTWINMAKER_API CreateMetadataTransferJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,159 +35,55 @@ namespace Model
     AWS_IOTTWINMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The metadata transfer job Id.</p>
      */
-    inline const Aws::String& GetMetadataTransferJobId() const{ return m_metadataTransferJobId; }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
+    inline const Aws::String& GetMetadataTransferJobId() const { return m_metadataTransferJobId; }
     inline bool MetadataTransferJobIdHasBeenSet() const { return m_metadataTransferJobIdHasBeenSet; }
+    template<typename MetadataTransferJobIdT = Aws::String>
+    void SetMetadataTransferJobId(MetadataTransferJobIdT&& value) { m_metadataTransferJobIdHasBeenSet = true; m_metadataTransferJobId = std::forward<MetadataTransferJobIdT>(value); }
+    template<typename MetadataTransferJobIdT = Aws::String>
+    CreateMetadataTransferJobRequest& WithMetadataTransferJobId(MetadataTransferJobIdT&& value) { SetMetadataTransferJobId(std::forward<MetadataTransferJobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline void SetMetadataTransferJobId(const Aws::String& value) { m_metadataTransferJobIdHasBeenSet = true; m_metadataTransferJobId = value; }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline void SetMetadataTransferJobId(Aws::String&& value) { m_metadataTransferJobIdHasBeenSet = true; m_metadataTransferJobId = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline void SetMetadataTransferJobId(const char* value) { m_metadataTransferJobIdHasBeenSet = true; m_metadataTransferJobId.assign(value); }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithMetadataTransferJobId(const Aws::String& value) { SetMetadataTransferJobId(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithMetadataTransferJobId(Aws::String&& value) { SetMetadataTransferJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithMetadataTransferJobId(const char* value) { SetMetadataTransferJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateMetadataTransferJobRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job sources.</p>
      */
-    inline const Aws::Vector<SourceConfiguration>& GetSources() const{ return m_sources; }
-
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
+    inline const Aws::Vector<SourceConfiguration>& GetSources() const { return m_sources; }
     inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+    template<typename SourcesT = Aws::Vector<SourceConfiguration>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<SourceConfiguration>>
+    CreateMetadataTransferJobRequest& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = SourceConfiguration>
+    CreateMetadataTransferJobRequest& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
-    inline void SetSources(const Aws::Vector<SourceConfiguration>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
-
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
-    inline void SetSources(Aws::Vector<SourceConfiguration>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithSources(const Aws::Vector<SourceConfiguration>& value) { SetSources(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithSources(Aws::Vector<SourceConfiguration>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
-    inline CreateMetadataTransferJobRequest& AddSources(const SourceConfiguration& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
-
-    /**
-     * <p>The metadata transfer job sources.</p>
-     */
-    inline CreateMetadataTransferJobRequest& AddSources(SourceConfiguration&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The metadata transfer job destination.</p>
      */
-    inline const DestinationConfiguration& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The metadata transfer job destination.</p>
-     */
+    inline const DestinationConfiguration& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
-
-    /**
-     * <p>The metadata transfer job destination.</p>
-     */
-    inline void SetDestination(const DestinationConfiguration& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The metadata transfer job destination.</p>
-     */
-    inline void SetDestination(DestinationConfiguration&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job destination.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithDestination(const DestinationConfiguration& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job destination.</p>
-     */
-    inline CreateMetadataTransferJobRequest& WithDestination(DestinationConfiguration&& value) { SetDestination(std::move(value)); return *this;}
-
+    template<typename DestinationT = DestinationConfiguration>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = DestinationConfiguration>
+    CreateMetadataTransferJobRequest& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_metadataTransferJobId;

@@ -10,23 +10,25 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-StartMetricStreamsRequest::StartMetricStreamsRequest() : 
-    m_namesHasBeenSet(false)
-{
-}
-
 Aws::String StartMetricStreamsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=StartMetricStreams&";
   if(m_namesHasBeenSet)
   {
-    unsigned namesCount = 1;
-    for(auto& item : m_names)
+    if (m_names.empty())
     {
-      ss << "Names.member." << namesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      namesCount++;
+      ss << "Names=&";
+    }
+    else
+    {
+      unsigned namesCount = 1;
+      for(auto& item : m_names)
+      {
+        ss << "Names.member." << namesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        namesCount++;
+      }
     }
   }
 

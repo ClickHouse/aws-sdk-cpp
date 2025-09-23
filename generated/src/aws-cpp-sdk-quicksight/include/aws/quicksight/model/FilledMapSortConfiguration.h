@@ -33,52 +33,25 @@ namespace Model
   class FilledMapSortConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API FilledMapSortConfiguration();
+    AWS_QUICKSIGHT_API FilledMapSortConfiguration() = default;
     AWS_QUICKSIGHT_API FilledMapSortConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API FilledMapSortConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The sort configuration of the location fields.</p>
      */
-    inline const Aws::Vector<FieldSortOptions>& GetCategorySort() const{ return m_categorySort; }
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
+    inline const Aws::Vector<FieldSortOptions>& GetCategorySort() const { return m_categorySort; }
     inline bool CategorySortHasBeenSet() const { return m_categorySortHasBeenSet; }
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
-    inline void SetCategorySort(const Aws::Vector<FieldSortOptions>& value) { m_categorySortHasBeenSet = true; m_categorySort = value; }
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
-    inline void SetCategorySort(Aws::Vector<FieldSortOptions>&& value) { m_categorySortHasBeenSet = true; m_categorySort = std::move(value); }
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
-    inline FilledMapSortConfiguration& WithCategorySort(const Aws::Vector<FieldSortOptions>& value) { SetCategorySort(value); return *this;}
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
-    inline FilledMapSortConfiguration& WithCategorySort(Aws::Vector<FieldSortOptions>&& value) { SetCategorySort(std::move(value)); return *this;}
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
-    inline FilledMapSortConfiguration& AddCategorySort(const FieldSortOptions& value) { m_categorySortHasBeenSet = true; m_categorySort.push_back(value); return *this; }
-
-    /**
-     * <p>The sort configuration of the location fields.</p>
-     */
-    inline FilledMapSortConfiguration& AddCategorySort(FieldSortOptions&& value) { m_categorySortHasBeenSet = true; m_categorySort.push_back(std::move(value)); return *this; }
-
+    template<typename CategorySortT = Aws::Vector<FieldSortOptions>>
+    void SetCategorySort(CategorySortT&& value) { m_categorySortHasBeenSet = true; m_categorySort = std::forward<CategorySortT>(value); }
+    template<typename CategorySortT = Aws::Vector<FieldSortOptions>>
+    FilledMapSortConfiguration& WithCategorySort(CategorySortT&& value) { SetCategorySort(std::forward<CategorySortT>(value)); return *this;}
+    template<typename CategorySortT = FieldSortOptions>
+    FilledMapSortConfiguration& AddCategorySort(CategorySortT&& value) { m_categorySortHasBeenSet = true; m_categorySort.emplace_back(std::forward<CategorySortT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<FieldSortOptions> m_categorySort;

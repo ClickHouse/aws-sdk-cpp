@@ -32,51 +32,25 @@ namespace Model
   class AnalyticsIntentGroupBySpecification
   {
   public:
-    AWS_LEXMODELSV2_API AnalyticsIntentGroupBySpecification();
+    AWS_LEXMODELSV2_API AnalyticsIntentGroupBySpecification() = default;
     AWS_LEXMODELSV2_API AnalyticsIntentGroupBySpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API AnalyticsIntentGroupBySpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether to group the intent stages by their name or their end
      * state.</p>
      */
-    inline const AnalyticsIntentField& GetName() const{ return m_name; }
-
-    /**
-     * <p>Specifies whether to group the intent stages by their name or their end
-     * state.</p>
-     */
+    inline AnalyticsIntentField GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to group the intent stages by their name or their end
-     * state.</p>
-     */
-    inline void SetName(const AnalyticsIntentField& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Specifies whether to group the intent stages by their name or their end
-     * state.</p>
-     */
-    inline void SetName(AnalyticsIntentField&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Specifies whether to group the intent stages by their name or their end
-     * state.</p>
-     */
-    inline AnalyticsIntentGroupBySpecification& WithName(const AnalyticsIntentField& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Specifies whether to group the intent stages by their name or their end
-     * state.</p>
-     */
-    inline AnalyticsIntentGroupBySpecification& WithName(AnalyticsIntentField&& value) { SetName(std::move(value)); return *this;}
-
+    inline void SetName(AnalyticsIntentField value) { m_nameHasBeenSet = true; m_name = value; }
+    inline AnalyticsIntentGroupBySpecification& WithName(AnalyticsIntentField value) { SetName(value); return *this;}
+    ///@}
   private:
 
-    AnalyticsIntentField m_name;
+    AnalyticsIntentField m_name{AnalyticsIntentField::NOT_SET};
     bool m_nameHasBeenSet = false;
   };
 

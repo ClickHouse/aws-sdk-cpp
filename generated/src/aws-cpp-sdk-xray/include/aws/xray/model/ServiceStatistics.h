@@ -32,151 +32,70 @@ namespace Model
   class ServiceStatistics
   {
   public:
-    AWS_XRAY_API ServiceStatistics();
+    AWS_XRAY_API ServiceStatistics() = default;
     AWS_XRAY_API ServiceStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API ServiceStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of requests that completed with a 2xx Success status code.</p>
      */
-    inline long long GetOkCount() const{ return m_okCount; }
-
-    /**
-     * <p>The number of requests that completed with a 2xx Success status code.</p>
-     */
+    inline long long GetOkCount() const { return m_okCount; }
     inline bool OkCountHasBeenSet() const { return m_okCountHasBeenSet; }
-
-    /**
-     * <p>The number of requests that completed with a 2xx Success status code.</p>
-     */
     inline void SetOkCount(long long value) { m_okCountHasBeenSet = true; m_okCount = value; }
-
-    /**
-     * <p>The number of requests that completed with a 2xx Success status code.</p>
-     */
     inline ServiceStatistics& WithOkCount(long long value) { SetOkCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Information about requests that failed with a 4xx Client Error status
      * code.</p>
      */
-    inline const ErrorStatistics& GetErrorStatistics() const{ return m_errorStatistics; }
-
-    /**
-     * <p>Information about requests that failed with a 4xx Client Error status
-     * code.</p>
-     */
+    inline const ErrorStatistics& GetErrorStatistics() const { return m_errorStatistics; }
     inline bool ErrorStatisticsHasBeenSet() const { return m_errorStatisticsHasBeenSet; }
+    template<typename ErrorStatisticsT = ErrorStatistics>
+    void SetErrorStatistics(ErrorStatisticsT&& value) { m_errorStatisticsHasBeenSet = true; m_errorStatistics = std::forward<ErrorStatisticsT>(value); }
+    template<typename ErrorStatisticsT = ErrorStatistics>
+    ServiceStatistics& WithErrorStatistics(ErrorStatisticsT&& value) { SetErrorStatistics(std::forward<ErrorStatisticsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about requests that failed with a 4xx Client Error status
-     * code.</p>
-     */
-    inline void SetErrorStatistics(const ErrorStatistics& value) { m_errorStatisticsHasBeenSet = true; m_errorStatistics = value; }
-
-    /**
-     * <p>Information about requests that failed with a 4xx Client Error status
-     * code.</p>
-     */
-    inline void SetErrorStatistics(ErrorStatistics&& value) { m_errorStatisticsHasBeenSet = true; m_errorStatistics = std::move(value); }
-
-    /**
-     * <p>Information about requests that failed with a 4xx Client Error status
-     * code.</p>
-     */
-    inline ServiceStatistics& WithErrorStatistics(const ErrorStatistics& value) { SetErrorStatistics(value); return *this;}
-
-    /**
-     * <p>Information about requests that failed with a 4xx Client Error status
-     * code.</p>
-     */
-    inline ServiceStatistics& WithErrorStatistics(ErrorStatistics&& value) { SetErrorStatistics(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about requests that failed with a 5xx Server Error status
      * code.</p>
      */
-    inline const FaultStatistics& GetFaultStatistics() const{ return m_faultStatistics; }
-
-    /**
-     * <p>Information about requests that failed with a 5xx Server Error status
-     * code.</p>
-     */
+    inline const FaultStatistics& GetFaultStatistics() const { return m_faultStatistics; }
     inline bool FaultStatisticsHasBeenSet() const { return m_faultStatisticsHasBeenSet; }
+    template<typename FaultStatisticsT = FaultStatistics>
+    void SetFaultStatistics(FaultStatisticsT&& value) { m_faultStatisticsHasBeenSet = true; m_faultStatistics = std::forward<FaultStatisticsT>(value); }
+    template<typename FaultStatisticsT = FaultStatistics>
+    ServiceStatistics& WithFaultStatistics(FaultStatisticsT&& value) { SetFaultStatistics(std::forward<FaultStatisticsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about requests that failed with a 5xx Server Error status
-     * code.</p>
-     */
-    inline void SetFaultStatistics(const FaultStatistics& value) { m_faultStatisticsHasBeenSet = true; m_faultStatistics = value; }
-
-    /**
-     * <p>Information about requests that failed with a 5xx Server Error status
-     * code.</p>
-     */
-    inline void SetFaultStatistics(FaultStatistics&& value) { m_faultStatisticsHasBeenSet = true; m_faultStatistics = std::move(value); }
-
-    /**
-     * <p>Information about requests that failed with a 5xx Server Error status
-     * code.</p>
-     */
-    inline ServiceStatistics& WithFaultStatistics(const FaultStatistics& value) { SetFaultStatistics(value); return *this;}
-
-    /**
-     * <p>Information about requests that failed with a 5xx Server Error status
-     * code.</p>
-     */
-    inline ServiceStatistics& WithFaultStatistics(FaultStatistics&& value) { SetFaultStatistics(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total number of completed requests.</p>
      */
-    inline long long GetTotalCount() const{ return m_totalCount; }
-
-    /**
-     * <p>The total number of completed requests.</p>
-     */
+    inline long long GetTotalCount() const { return m_totalCount; }
     inline bool TotalCountHasBeenSet() const { return m_totalCountHasBeenSet; }
-
-    /**
-     * <p>The total number of completed requests.</p>
-     */
     inline void SetTotalCount(long long value) { m_totalCountHasBeenSet = true; m_totalCount = value; }
-
-    /**
-     * <p>The total number of completed requests.</p>
-     */
     inline ServiceStatistics& WithTotalCount(long long value) { SetTotalCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The aggregate response time of completed requests.</p>
      */
-    inline double GetTotalResponseTime() const{ return m_totalResponseTime; }
-
-    /**
-     * <p>The aggregate response time of completed requests.</p>
-     */
+    inline double GetTotalResponseTime() const { return m_totalResponseTime; }
     inline bool TotalResponseTimeHasBeenSet() const { return m_totalResponseTimeHasBeenSet; }
-
-    /**
-     * <p>The aggregate response time of completed requests.</p>
-     */
     inline void SetTotalResponseTime(double value) { m_totalResponseTimeHasBeenSet = true; m_totalResponseTime = value; }
-
-    /**
-     * <p>The aggregate response time of completed requests.</p>
-     */
     inline ServiceStatistics& WithTotalResponseTime(double value) { SetTotalResponseTime(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_okCount;
+    long long m_okCount{0};
     bool m_okCountHasBeenSet = false;
 
     ErrorStatistics m_errorStatistics;
@@ -185,10 +104,10 @@ namespace Model
     FaultStatistics m_faultStatistics;
     bool m_faultStatisticsHasBeenSet = false;
 
-    long long m_totalCount;
+    long long m_totalCount{0};
     bool m_totalCountHasBeenSet = false;
 
-    double m_totalResponseTime;
+    double m_totalResponseTime{0.0};
     bool m_totalResponseTimeHasBeenSet = false;
   };
 

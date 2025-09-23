@@ -18,15 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-DatasetContentDeliveryDestination::DatasetContentDeliveryDestination() : 
-    m_iotEventsDestinationConfigurationHasBeenSet(false),
-    m_s3DestinationConfigurationHasBeenSet(false)
-{
-}
-
-DatasetContentDeliveryDestination::DatasetContentDeliveryDestination(JsonView jsonValue) : 
-    m_iotEventsDestinationConfigurationHasBeenSet(false),
-    m_s3DestinationConfigurationHasBeenSet(false)
+DatasetContentDeliveryDestination::DatasetContentDeliveryDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DatasetContentDeliveryDestination& DatasetContentDeliveryDestination::operator =
   if(jsonValue.ValueExists("iotEventsDestinationConfiguration"))
   {
     m_iotEventsDestinationConfiguration = jsonValue.GetObject("iotEventsDestinationConfiguration");
-
     m_iotEventsDestinationConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("s3DestinationConfiguration"))
   {
     m_s3DestinationConfiguration = jsonValue.GetObject("s3DestinationConfiguration");
-
     m_s3DestinationConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

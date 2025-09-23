@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ProductionVariantRoutingConfig::ProductionVariantRoutingConfig() : 
-    m_routingStrategy(RoutingStrategy::NOT_SET),
-    m_routingStrategyHasBeenSet(false)
-{
-}
-
-ProductionVariantRoutingConfig::ProductionVariantRoutingConfig(JsonView jsonValue) : 
-    m_routingStrategy(RoutingStrategy::NOT_SET),
-    m_routingStrategyHasBeenSet(false)
+ProductionVariantRoutingConfig::ProductionVariantRoutingConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ProductionVariantRoutingConfig& ProductionVariantRoutingConfig::operator =(JsonV
   if(jsonValue.ValueExists("RoutingStrategy"))
   {
     m_routingStrategy = RoutingStrategyMapper::GetRoutingStrategyForName(jsonValue.GetString("RoutingStrategy"));
-
     m_routingStrategyHasBeenSet = true;
   }
-
   return *this;
 }
 

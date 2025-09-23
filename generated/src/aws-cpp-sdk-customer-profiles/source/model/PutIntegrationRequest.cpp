@@ -12,16 +12,6 @@ using namespace Aws::CustomerProfiles::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutIntegrationRequest::PutIntegrationRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_uriHasBeenSet(false),
-    m_objectTypeNameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_flowDefinitionHasBeenSet(false),
-    m_objectTypeNamesHasBeenSet(false)
-{
-}
-
 Aws::String PutIntegrationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -63,6 +53,23 @@ Aws::String PutIntegrationRequest::SerializePayload() const
      objectTypeNamesJsonMap.WithString(objectTypeNamesItem.first, objectTypeNamesItem.second);
    }
    payload.WithObject("ObjectTypeNames", std::move(objectTypeNamesJsonMap));
+
+  }
+
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("RoleArn", m_roleArn);
+
+  }
+
+  if(m_eventTriggerNamesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> eventTriggerNamesJsonList(m_eventTriggerNames.size());
+   for(unsigned eventTriggerNamesIndex = 0; eventTriggerNamesIndex < eventTriggerNamesJsonList.GetLength(); ++eventTriggerNamesIndex)
+   {
+     eventTriggerNamesJsonList[eventTriggerNamesIndex].AsString(m_eventTriggerNames[eventTriggerNamesIndex]);
+   }
+   payload.WithArray("EventTriggerNames", std::move(eventTriggerNamesJsonList));
 
   }
 

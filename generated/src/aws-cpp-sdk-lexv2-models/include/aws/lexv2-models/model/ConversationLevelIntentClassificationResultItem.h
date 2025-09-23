@@ -33,103 +33,41 @@ namespace Model
   class ConversationLevelIntentClassificationResultItem
   {
   public:
-    AWS_LEXMODELSV2_API ConversationLevelIntentClassificationResultItem();
+    AWS_LEXMODELSV2_API ConversationLevelIntentClassificationResultItem() = default;
     AWS_LEXMODELSV2_API ConversationLevelIntentClassificationResultItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ConversationLevelIntentClassificationResultItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The intent name used in the evaluation of intent level success or
      * failure.</p>
      */
-    inline const Aws::String& GetIntentName() const{ return m_intentName; }
-
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
+    inline const Aws::String& GetIntentName() const { return m_intentName; }
     inline bool IntentNameHasBeenSet() const { return m_intentNameHasBeenSet; }
+    template<typename IntentNameT = Aws::String>
+    void SetIntentName(IntentNameT&& value) { m_intentNameHasBeenSet = true; m_intentName = std::forward<IntentNameT>(value); }
+    template<typename IntentNameT = Aws::String>
+    ConversationLevelIntentClassificationResultItem& WithIntentName(IntentNameT&& value) { SetIntentName(std::forward<IntentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
-    inline void SetIntentName(const Aws::String& value) { m_intentNameHasBeenSet = true; m_intentName = value; }
-
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
-    inline void SetIntentName(Aws::String&& value) { m_intentNameHasBeenSet = true; m_intentName = std::move(value); }
-
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
-    inline void SetIntentName(const char* value) { m_intentNameHasBeenSet = true; m_intentName.assign(value); }
-
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
-    inline ConversationLevelIntentClassificationResultItem& WithIntentName(const Aws::String& value) { SetIntentName(value); return *this;}
-
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
-    inline ConversationLevelIntentClassificationResultItem& WithIntentName(Aws::String&& value) { SetIntentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The intent name used in the evaluation of intent level success or
-     * failure.</p>
-     */
-    inline ConversationLevelIntentClassificationResultItem& WithIntentName(const char* value) { SetIntentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of times the specific intent is used in the evaluation of intent
      * level success or failure.</p>
      */
-    inline const TestResultMatchStatus& GetMatchResult() const{ return m_matchResult; }
-
-    /**
-     * <p>The number of times the specific intent is used in the evaluation of intent
-     * level success or failure.</p>
-     */
+    inline TestResultMatchStatus GetMatchResult() const { return m_matchResult; }
     inline bool MatchResultHasBeenSet() const { return m_matchResultHasBeenSet; }
-
-    /**
-     * <p>The number of times the specific intent is used in the evaluation of intent
-     * level success or failure.</p>
-     */
-    inline void SetMatchResult(const TestResultMatchStatus& value) { m_matchResultHasBeenSet = true; m_matchResult = value; }
-
-    /**
-     * <p>The number of times the specific intent is used in the evaluation of intent
-     * level success or failure.</p>
-     */
-    inline void SetMatchResult(TestResultMatchStatus&& value) { m_matchResultHasBeenSet = true; m_matchResult = std::move(value); }
-
-    /**
-     * <p>The number of times the specific intent is used in the evaluation of intent
-     * level success or failure.</p>
-     */
-    inline ConversationLevelIntentClassificationResultItem& WithMatchResult(const TestResultMatchStatus& value) { SetMatchResult(value); return *this;}
-
-    /**
-     * <p>The number of times the specific intent is used in the evaluation of intent
-     * level success or failure.</p>
-     */
-    inline ConversationLevelIntentClassificationResultItem& WithMatchResult(TestResultMatchStatus&& value) { SetMatchResult(std::move(value)); return *this;}
-
+    inline void SetMatchResult(TestResultMatchStatus value) { m_matchResultHasBeenSet = true; m_matchResult = value; }
+    inline ConversationLevelIntentClassificationResultItem& WithMatchResult(TestResultMatchStatus value) { SetMatchResult(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_intentName;
     bool m_intentNameHasBeenSet = false;
 
-    TestResultMatchStatus m_matchResult;
+    TestResultMatchStatus m_matchResult{TestResultMatchStatus::NOT_SET};
     bool m_matchResultHasBeenSet = false;
   };
 

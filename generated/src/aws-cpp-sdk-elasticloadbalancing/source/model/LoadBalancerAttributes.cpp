@@ -20,21 +20,7 @@ namespace ElasticLoadBalancing
 namespace Model
 {
 
-LoadBalancerAttributes::LoadBalancerAttributes() : 
-    m_crossZoneLoadBalancingHasBeenSet(false),
-    m_accessLogHasBeenSet(false),
-    m_connectionDrainingHasBeenSet(false),
-    m_connectionSettingsHasBeenSet(false),
-    m_additionalAttributesHasBeenSet(false)
-{
-}
-
-LoadBalancerAttributes::LoadBalancerAttributes(const XmlNode& xmlNode) : 
-    m_crossZoneLoadBalancingHasBeenSet(false),
-    m_accessLogHasBeenSet(false),
-    m_connectionDrainingHasBeenSet(false),
-    m_connectionSettingsHasBeenSet(false),
-    m_additionalAttributesHasBeenSet(false)
+LoadBalancerAttributes::LoadBalancerAttributes(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +59,7 @@ LoadBalancerAttributes& LoadBalancerAttributes::operator =(const XmlNode& xmlNod
     if(!additionalAttributesNode.IsNull())
     {
       XmlNode additionalAttributesMember = additionalAttributesNode.FirstChild("member");
+      m_additionalAttributesHasBeenSet = !additionalAttributesMember.IsNull();
       while(!additionalAttributesMember.IsNull())
       {
         m_additionalAttributes.push_back(additionalAttributesMember);
@@ -161,7 +148,7 @@ void LoadBalancerAttributes::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_additionalAttributes)
       {
         Aws::StringStream additionalAttributesSs;
-        additionalAttributesSs << location <<  ".AdditionalAttributes.member." << additionalAttributesIdx++;
+        additionalAttributesSs << location << ".AdditionalAttributes.member." << additionalAttributesIdx++;
         item.OutputToStream(oStream, additionalAttributesSs.str().c_str());
       }
   }

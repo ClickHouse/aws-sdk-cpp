@@ -25,7 +25,7 @@ namespace Model
   class ListSqlInjectionMatchSetsRequest : public WAFRequest
   {
   public:
-    AWS_WAF_API ListSqlInjectionMatchSetsRequest();
+    AWS_WAF_API ListSqlInjectionMatchSetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
     AWS_WAF_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>If you specify a value for <code>Limit</code> and you have more
      * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
@@ -47,86 +48,15 @@ namespace Model
      * <code>NextMarker</code> from the previous response to get information about
      * another batch of <code>SqlInjectionMatchSets</code>.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
-
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
     inline bool NextMarkerHasBeenSet() const { return m_nextMarkerHasBeenSet; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ListSqlInjectionMatchSetsRequest& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = value; }
-
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::move(value); }
-
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarkerHasBeenSet = true; m_nextMarker.assign(value); }
-
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
-    inline ListSqlInjectionMatchSetsRequest& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
-    inline ListSqlInjectionMatchSetsRequest& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If you specify a value for <code>Limit</code> and you have more
-     * <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS
-     * WAF returns a <code>NextMarker</code> value in the response that allows you to
-     * list another group of <code>SqlInjectionMatchSets</code>. For the second and
-     * subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of
-     * <code>NextMarker</code> from the previous response to get information about
-     * another batch of <code>SqlInjectionMatchSets</code>.</p>
-     */
-    inline ListSqlInjectionMatchSetsRequest& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS
      * WAF to return for this request. If you have more
@@ -134,41 +64,17 @@ namespace Model
      * <code>Limit</code>, the response includes a <code>NextMarker</code> value that
      * you can use to get another batch of <code>Rules</code>.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS
-     * WAF to return for this request. If you have more
-     * <code>SqlInjectionMatchSet</code> objects than the number you specify for
-     * <code>Limit</code>, the response includes a <code>NextMarker</code> value that
-     * you can use to get another batch of <code>Rules</code>.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS
-     * WAF to return for this request. If you have more
-     * <code>SqlInjectionMatchSet</code> objects than the number you specify for
-     * <code>Limit</code>, the response includes a <code>NextMarker</code> value that
-     * you can use to get another batch of <code>Rules</code>.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS
-     * WAF to return for this request. If you have more
-     * <code>SqlInjectionMatchSet</code> objects than the number you specify for
-     * <code>Limit</code>, the response includes a <code>NextMarker</code> value that
-     * you can use to get another batch of <code>Rules</code>.</p>
-     */
     inline ListSqlInjectionMatchSetsRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_nextMarker;
     bool m_nextMarkerHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

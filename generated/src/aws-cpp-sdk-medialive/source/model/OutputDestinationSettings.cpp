@@ -18,19 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-OutputDestinationSettings::OutputDestinationSettings() : 
-    m_passwordParamHasBeenSet(false),
-    m_streamNameHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_usernameHasBeenSet(false)
-{
-}
-
-OutputDestinationSettings::OutputDestinationSettings(JsonView jsonValue) : 
-    m_passwordParamHasBeenSet(false),
-    m_streamNameHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_usernameHasBeenSet(false)
+OutputDestinationSettings::OutputDestinationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ OutputDestinationSettings& OutputDestinationSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("passwordParam"))
   {
     m_passwordParam = jsonValue.GetString("passwordParam");
-
     m_passwordParamHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("streamName"))
   {
     m_streamName = jsonValue.GetString("streamName");
-
     m_streamNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("url"))
   {
     m_url = jsonValue.GetString("url");
-
     m_urlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("username"))
   {
     m_username = jsonValue.GetString("username");
-
     m_usernameHasBeenSet = true;
   }
-
   return *this;
 }
 

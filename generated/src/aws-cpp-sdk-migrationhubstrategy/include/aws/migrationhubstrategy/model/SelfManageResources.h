@@ -32,52 +32,24 @@ namespace Model
   class SelfManageResources
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API SelfManageResources();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API SelfManageResources() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API SelfManageResources(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API SelfManageResources& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Self-managed resources target destination. </p>
      */
-    inline const Aws::Vector<SelfManageTargetDestination>& GetTargetDestination() const{ return m_targetDestination; }
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
+    inline const Aws::Vector<SelfManageTargetDestination>& GetTargetDestination() const { return m_targetDestination; }
     inline bool TargetDestinationHasBeenSet() const { return m_targetDestinationHasBeenSet; }
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
-    inline void SetTargetDestination(const Aws::Vector<SelfManageTargetDestination>& value) { m_targetDestinationHasBeenSet = true; m_targetDestination = value; }
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
-    inline void SetTargetDestination(Aws::Vector<SelfManageTargetDestination>&& value) { m_targetDestinationHasBeenSet = true; m_targetDestination = std::move(value); }
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
-    inline SelfManageResources& WithTargetDestination(const Aws::Vector<SelfManageTargetDestination>& value) { SetTargetDestination(value); return *this;}
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
-    inline SelfManageResources& WithTargetDestination(Aws::Vector<SelfManageTargetDestination>&& value) { SetTargetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
-    inline SelfManageResources& AddTargetDestination(const SelfManageTargetDestination& value) { m_targetDestinationHasBeenSet = true; m_targetDestination.push_back(value); return *this; }
-
-    /**
-     * <p> Self-managed resources target destination. </p>
-     */
-    inline SelfManageResources& AddTargetDestination(SelfManageTargetDestination&& value) { m_targetDestinationHasBeenSet = true; m_targetDestination.push_back(std::move(value)); return *this; }
-
+    template<typename TargetDestinationT = Aws::Vector<SelfManageTargetDestination>>
+    void SetTargetDestination(TargetDestinationT&& value) { m_targetDestinationHasBeenSet = true; m_targetDestination = std::forward<TargetDestinationT>(value); }
+    template<typename TargetDestinationT = Aws::Vector<SelfManageTargetDestination>>
+    SelfManageResources& WithTargetDestination(TargetDestinationT&& value) { SetTargetDestination(std::forward<TargetDestinationT>(value)); return *this;}
+    inline SelfManageResources& AddTargetDestination(SelfManageTargetDestination value) { m_targetDestinationHasBeenSet = true; m_targetDestination.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SelfManageTargetDestination> m_targetDestination;

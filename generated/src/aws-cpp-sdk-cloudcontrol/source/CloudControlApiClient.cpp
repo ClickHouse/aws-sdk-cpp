@@ -43,20 +43,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* CloudControlApiClient::SERVICE_NAME = "cloudcontrolapi";
-const char* CloudControlApiClient::ALLOCATION_TAG = "CloudControlApiClient";
+namespace Aws
+{
+  namespace CloudControlApi
+  {
+    const char SERVICE_NAME[] = "cloudcontrolapi";
+    const char ALLOCATION_TAG[] = "CloudControlApiClient";
+  }
+}
+const char* CloudControlApiClient::GetServiceName() {return SERVICE_NAME;}
+const char* CloudControlApiClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 CloudControlApiClient::CloudControlApiClient(const CloudControlApi::CloudControlApiClientConfiguration& clientConfiguration,
                                              std::shared_ptr<CloudControlApiEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudControlApiErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudControlApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -71,8 +78,7 @@ CloudControlApiClient::CloudControlApiClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudControlApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudControlApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -87,8 +93,7 @@ CloudControlApiClient::CloudControlApiClient(const std::shared_ptr<AWSCredential
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudControlApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudControlApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -97,12 +102,11 @@ CloudControlApiClient::CloudControlApiClient(const std::shared_ptr<AWSCredential
   CloudControlApiClient::CloudControlApiClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudControlApiErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<CloudControlApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -117,7 +121,6 @@ CloudControlApiClient::CloudControlApiClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudControlApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CloudControlApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -132,7 +135,6 @@ CloudControlApiClient::CloudControlApiClient(const std::shared_ptr<AWSCredential
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudControlApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CloudControlApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -152,6 +154,14 @@ std::shared_ptr<CloudControlApiEndpointProviderBase>& CloudControlApiClient::acc
 void CloudControlApiClient::init(const CloudControlApi::CloudControlApiClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("CloudControl");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

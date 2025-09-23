@@ -18,54 +18,40 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-DukptDerivationAttributes::DukptDerivationAttributes() : 
-    m_dukptKeyDerivationType(DukptDerivationType::NOT_SET),
-    m_dukptKeyDerivationTypeHasBeenSet(false),
-    m_dukptKeyVariant(DukptKeyVariant::NOT_SET),
-    m_dukptKeyVariantHasBeenSet(false),
-    m_keySerialNumberHasBeenSet(false)
-{
-}
-
-DukptDerivationAttributes::DukptDerivationAttributes(JsonView jsonValue) : 
-    m_dukptKeyDerivationType(DukptDerivationType::NOT_SET),
-    m_dukptKeyDerivationTypeHasBeenSet(false),
-    m_dukptKeyVariant(DukptKeyVariant::NOT_SET),
-    m_dukptKeyVariantHasBeenSet(false),
-    m_keySerialNumberHasBeenSet(false)
+DukptDerivationAttributes::DukptDerivationAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 DukptDerivationAttributes& DukptDerivationAttributes::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("DukptKeyDerivationType"))
-  {
-    m_dukptKeyDerivationType = DukptDerivationTypeMapper::GetDukptDerivationTypeForName(jsonValue.GetString("DukptKeyDerivationType"));
-
-    m_dukptKeyDerivationTypeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("DukptKeyVariant"))
-  {
-    m_dukptKeyVariant = DukptKeyVariantMapper::GetDukptKeyVariantForName(jsonValue.GetString("DukptKeyVariant"));
-
-    m_dukptKeyVariantHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("KeySerialNumber"))
   {
     m_keySerialNumber = jsonValue.GetString("KeySerialNumber");
-
     m_keySerialNumberHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DukptKeyDerivationType"))
+  {
+    m_dukptKeyDerivationType = DukptDerivationTypeMapper::GetDukptDerivationTypeForName(jsonValue.GetString("DukptKeyDerivationType"));
+    m_dukptKeyDerivationTypeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DukptKeyVariant"))
+  {
+    m_dukptKeyVariant = DukptKeyVariantMapper::GetDukptKeyVariantForName(jsonValue.GetString("DukptKeyVariant"));
+    m_dukptKeyVariantHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue DukptDerivationAttributes::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_keySerialNumberHasBeenSet)
+  {
+   payload.WithString("KeySerialNumber", m_keySerialNumber);
+
+  }
 
   if(m_dukptKeyDerivationTypeHasBeenSet)
   {
@@ -75,12 +61,6 @@ JsonValue DukptDerivationAttributes::Jsonize() const
   if(m_dukptKeyVariantHasBeenSet)
   {
    payload.WithString("DukptKeyVariant", DukptKeyVariantMapper::GetNameForDukptKeyVariant(m_dukptKeyVariant));
-  }
-
-  if(m_keySerialNumberHasBeenSet)
-  {
-   payload.WithString("KeySerialNumber", m_keySerialNumber);
-
   }
 
   return payload;

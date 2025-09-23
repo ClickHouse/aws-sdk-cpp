@@ -22,7 +22,7 @@ namespace Model
   class BatchDeleteAgentsRequest : public ApplicationDiscoveryServiceRequest
   {
   public:
-    AWS_APPLICATIONDISCOVERYSERVICE_API BatchDeleteAgentsRequest();
+    AWS_APPLICATIONDISCOVERYSERVICE_API BatchDeleteAgentsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,19 @@ namespace Model
     AWS_APPLICATIONDISCOVERYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> The list of agents to delete. </p>
      */
-    inline const Aws::Vector<DeleteAgent>& GetDeleteAgents() const{ return m_deleteAgents; }
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
+    inline const Aws::Vector<DeleteAgent>& GetDeleteAgents() const { return m_deleteAgents; }
     inline bool DeleteAgentsHasBeenSet() const { return m_deleteAgentsHasBeenSet; }
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
-    inline void SetDeleteAgents(const Aws::Vector<DeleteAgent>& value) { m_deleteAgentsHasBeenSet = true; m_deleteAgents = value; }
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
-    inline void SetDeleteAgents(Aws::Vector<DeleteAgent>&& value) { m_deleteAgentsHasBeenSet = true; m_deleteAgents = std::move(value); }
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
-    inline BatchDeleteAgentsRequest& WithDeleteAgents(const Aws::Vector<DeleteAgent>& value) { SetDeleteAgents(value); return *this;}
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
-    inline BatchDeleteAgentsRequest& WithDeleteAgents(Aws::Vector<DeleteAgent>&& value) { SetDeleteAgents(std::move(value)); return *this;}
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
-    inline BatchDeleteAgentsRequest& AddDeleteAgents(const DeleteAgent& value) { m_deleteAgentsHasBeenSet = true; m_deleteAgents.push_back(value); return *this; }
-
-    /**
-     * <p> The list of agents to delete. </p>
-     */
-    inline BatchDeleteAgentsRequest& AddDeleteAgents(DeleteAgent&& value) { m_deleteAgentsHasBeenSet = true; m_deleteAgents.push_back(std::move(value)); return *this; }
-
+    template<typename DeleteAgentsT = Aws::Vector<DeleteAgent>>
+    void SetDeleteAgents(DeleteAgentsT&& value) { m_deleteAgentsHasBeenSet = true; m_deleteAgents = std::forward<DeleteAgentsT>(value); }
+    template<typename DeleteAgentsT = Aws::Vector<DeleteAgent>>
+    BatchDeleteAgentsRequest& WithDeleteAgents(DeleteAgentsT&& value) { SetDeleteAgents(std::forward<DeleteAgentsT>(value)); return *this;}
+    template<typename DeleteAgentsT = DeleteAgent>
+    BatchDeleteAgentsRequest& AddDeleteAgents(DeleteAgentsT&& value) { m_deleteAgentsHasBeenSet = true; m_deleteAgents.emplace_back(std::forward<DeleteAgentsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DeleteAgent> m_deleteAgents;

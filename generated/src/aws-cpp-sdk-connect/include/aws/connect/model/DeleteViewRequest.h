@@ -21,7 +21,7 @@ namespace Model
   class DeleteViewRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API DeleteViewRequest();
+    AWS_CONNECT_API DeleteViewRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_CONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
      * the ARN of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    DeleteViewRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline DeleteViewRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline DeleteViewRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline DeleteViewRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
      * can be used.</p>
      */
-    inline const Aws::String& GetViewId() const{ return m_viewId; }
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
+    inline const Aws::String& GetViewId() const { return m_viewId; }
     inline bool ViewIdHasBeenSet() const { return m_viewIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
-    inline void SetViewId(const Aws::String& value) { m_viewIdHasBeenSet = true; m_viewId = value; }
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
-    inline void SetViewId(Aws::String&& value) { m_viewIdHasBeenSet = true; m_viewId = std::move(value); }
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
-    inline void SetViewId(const char* value) { m_viewIdHasBeenSet = true; m_viewId.assign(value); }
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
-    inline DeleteViewRequest& WithViewId(const Aws::String& value) { SetViewId(value); return *this;}
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
-    inline DeleteViewRequest& WithViewId(Aws::String&& value) { SetViewId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the view. Both <code>ViewArn</code> and <code>ViewId</code>
-     * can be used.</p>
-     */
-    inline DeleteViewRequest& WithViewId(const char* value) { SetViewId(value); return *this;}
-
+    template<typename ViewIdT = Aws::String>
+    void SetViewId(ViewIdT&& value) { m_viewIdHasBeenSet = true; m_viewId = std::forward<ViewIdT>(value); }
+    template<typename ViewIdT = Aws::String>
+    DeleteViewRequest& WithViewId(ViewIdT&& value) { SetViewId(std::forward<ViewIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;

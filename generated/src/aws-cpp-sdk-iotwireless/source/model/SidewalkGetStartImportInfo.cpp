@@ -18,15 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-SidewalkGetStartImportInfo::SidewalkGetStartImportInfo() : 
-    m_deviceCreationFileListHasBeenSet(false),
-    m_roleHasBeenSet(false)
-{
-}
-
-SidewalkGetStartImportInfo::SidewalkGetStartImportInfo(JsonView jsonValue) : 
-    m_deviceCreationFileListHasBeenSet(false),
-    m_roleHasBeenSet(false)
+SidewalkGetStartImportInfo::SidewalkGetStartImportInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ SidewalkGetStartImportInfo& SidewalkGetStartImportInfo::operator =(JsonView json
     }
     m_deviceCreationFileListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Role"))
   {
     m_role = jsonValue.GetString("Role");
-
     m_roleHasBeenSet = true;
   }
-
   return *this;
 }
 

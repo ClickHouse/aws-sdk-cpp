@@ -32,7 +32,7 @@ namespace Model
   class CloudWatchLogsDestinationDetails
   {
   public:
-    AWS_ELASTICACHE_API CloudWatchLogsDestinationDetails();
+    AWS_ELASTICACHE_API CloudWatchLogsDestinationDetails() = default;
     AWS_ELASTICACHE_API CloudWatchLogsDestinationDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API CloudWatchLogsDestinationDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,46 +40,17 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the CloudWatch Logs log group.</p>
      */
-    inline const Aws::String& GetLogGroup() const{ return m_logGroup; }
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
+    inline const Aws::String& GetLogGroup() const { return m_logGroup; }
     inline bool LogGroupHasBeenSet() const { return m_logGroupHasBeenSet; }
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
-    inline void SetLogGroup(const Aws::String& value) { m_logGroupHasBeenSet = true; m_logGroup = value; }
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
-    inline void SetLogGroup(Aws::String&& value) { m_logGroupHasBeenSet = true; m_logGroup = std::move(value); }
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
-    inline void SetLogGroup(const char* value) { m_logGroupHasBeenSet = true; m_logGroup.assign(value); }
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
-    inline CloudWatchLogsDestinationDetails& WithLogGroup(const Aws::String& value) { SetLogGroup(value); return *this;}
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
-    inline CloudWatchLogsDestinationDetails& WithLogGroup(Aws::String&& value) { SetLogGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the CloudWatch Logs log group.</p>
-     */
-    inline CloudWatchLogsDestinationDetails& WithLogGroup(const char* value) { SetLogGroup(value); return *this;}
-
+    template<typename LogGroupT = Aws::String>
+    void SetLogGroup(LogGroupT&& value) { m_logGroupHasBeenSet = true; m_logGroup = std::forward<LogGroupT>(value); }
+    template<typename LogGroupT = Aws::String>
+    CloudWatchLogsDestinationDetails& WithLogGroup(LogGroupT&& value) { SetLogGroup(std::forward<LogGroupT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_logGroup;

@@ -33,97 +33,37 @@ namespace Model
   class PublicAccess
   {
   public:
-    AWS_GUARDDUTY_API PublicAccess();
+    AWS_GUARDDUTY_API PublicAccess() = default;
     AWS_GUARDDUTY_API PublicAccess(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API PublicAccess& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about how permissions are configured for the S3
      * bucket.</p>
      */
-    inline const PermissionConfiguration& GetPermissionConfiguration() const{ return m_permissionConfiguration; }
-
-    /**
-     * <p>Contains information about how permissions are configured for the S3
-     * bucket.</p>
-     */
+    inline const PermissionConfiguration& GetPermissionConfiguration() const { return m_permissionConfiguration; }
     inline bool PermissionConfigurationHasBeenSet() const { return m_permissionConfigurationHasBeenSet; }
+    template<typename PermissionConfigurationT = PermissionConfiguration>
+    void SetPermissionConfiguration(PermissionConfigurationT&& value) { m_permissionConfigurationHasBeenSet = true; m_permissionConfiguration = std::forward<PermissionConfigurationT>(value); }
+    template<typename PermissionConfigurationT = PermissionConfiguration>
+    PublicAccess& WithPermissionConfiguration(PermissionConfigurationT&& value) { SetPermissionConfiguration(std::forward<PermissionConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about how permissions are configured for the S3
-     * bucket.</p>
-     */
-    inline void SetPermissionConfiguration(const PermissionConfiguration& value) { m_permissionConfigurationHasBeenSet = true; m_permissionConfiguration = value; }
-
-    /**
-     * <p>Contains information about how permissions are configured for the S3
-     * bucket.</p>
-     */
-    inline void SetPermissionConfiguration(PermissionConfiguration&& value) { m_permissionConfigurationHasBeenSet = true; m_permissionConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains information about how permissions are configured for the S3
-     * bucket.</p>
-     */
-    inline PublicAccess& WithPermissionConfiguration(const PermissionConfiguration& value) { SetPermissionConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains information about how permissions are configured for the S3
-     * bucket.</p>
-     */
-    inline PublicAccess& WithPermissionConfiguration(PermissionConfiguration&& value) { SetPermissionConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the effective permission on this bucket after factoring all
      * attached policies.</p>
      */
-    inline const Aws::String& GetEffectivePermission() const{ return m_effectivePermission; }
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
+    inline const Aws::String& GetEffectivePermission() const { return m_effectivePermission; }
     inline bool EffectivePermissionHasBeenSet() const { return m_effectivePermissionHasBeenSet; }
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
-    inline void SetEffectivePermission(const Aws::String& value) { m_effectivePermissionHasBeenSet = true; m_effectivePermission = value; }
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
-    inline void SetEffectivePermission(Aws::String&& value) { m_effectivePermissionHasBeenSet = true; m_effectivePermission = std::move(value); }
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
-    inline void SetEffectivePermission(const char* value) { m_effectivePermissionHasBeenSet = true; m_effectivePermission.assign(value); }
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
-    inline PublicAccess& WithEffectivePermission(const Aws::String& value) { SetEffectivePermission(value); return *this;}
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
-    inline PublicAccess& WithEffectivePermission(Aws::String&& value) { SetEffectivePermission(std::move(value)); return *this;}
-
-    /**
-     * <p>Describes the effective permission on this bucket after factoring all
-     * attached policies.</p>
-     */
-    inline PublicAccess& WithEffectivePermission(const char* value) { SetEffectivePermission(value); return *this;}
-
+    template<typename EffectivePermissionT = Aws::String>
+    void SetEffectivePermission(EffectivePermissionT&& value) { m_effectivePermissionHasBeenSet = true; m_effectivePermission = std::forward<EffectivePermissionT>(value); }
+    template<typename EffectivePermissionT = Aws::String>
+    PublicAccess& WithEffectivePermission(EffectivePermissionT&& value) { SetEffectivePermission(std::forward<EffectivePermissionT>(value)); return *this;}
+    ///@}
   private:
 
     PermissionConfiguration m_permissionConfiguration;

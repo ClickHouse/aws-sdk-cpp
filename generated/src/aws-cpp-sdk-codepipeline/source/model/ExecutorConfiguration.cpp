@@ -18,15 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-ExecutorConfiguration::ExecutorConfiguration() : 
-    m_lambdaExecutorConfigurationHasBeenSet(false),
-    m_jobWorkerExecutorConfigurationHasBeenSet(false)
-{
-}
-
-ExecutorConfiguration::ExecutorConfiguration(JsonView jsonValue) : 
-    m_lambdaExecutorConfigurationHasBeenSet(false),
-    m_jobWorkerExecutorConfigurationHasBeenSet(false)
+ExecutorConfiguration::ExecutorConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExecutorConfiguration& ExecutorConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("lambdaExecutorConfiguration"))
   {
     m_lambdaExecutorConfiguration = jsonValue.GetObject("lambdaExecutorConfiguration");
-
     m_lambdaExecutorConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("jobWorkerExecutorConfiguration"))
   {
     m_jobWorkerExecutorConfiguration = jsonValue.GetObject("jobWorkerExecutorConfiguration");
-
     m_jobWorkerExecutorConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

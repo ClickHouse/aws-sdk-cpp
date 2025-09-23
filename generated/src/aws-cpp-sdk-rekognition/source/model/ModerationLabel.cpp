@@ -18,19 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-ModerationLabel::ModerationLabel() : 
-    m_confidence(0.0),
-    m_confidenceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_parentNameHasBeenSet(false)
-{
-}
-
-ModerationLabel::ModerationLabel(JsonView jsonValue) : 
-    m_confidence(0.0),
-    m_confidenceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_parentNameHasBeenSet(false)
+ModerationLabel::ModerationLabel(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ ModerationLabel& ModerationLabel::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Confidence"))
   {
     m_confidence = jsonValue.GetDouble("Confidence");
-
     m_confidenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParentName"))
   {
     m_parentName = jsonValue.GetString("ParentName");
-
     m_parentNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TaxonomyLevel"))
+  {
+    m_taxonomyLevel = jsonValue.GetInteger("TaxonomyLevel");
+    m_taxonomyLevelHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,12 @@ JsonValue ModerationLabel::Jsonize() const
   if(m_parentNameHasBeenSet)
   {
    payload.WithString("ParentName", m_parentName);
+
+  }
+
+  if(m_taxonomyLevelHasBeenSet)
+  {
+   payload.WithInteger("TaxonomyLevel", m_taxonomyLevel);
 
   }
 

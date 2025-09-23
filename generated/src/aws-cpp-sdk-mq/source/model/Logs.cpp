@@ -18,19 +18,7 @@ namespace MQ
 namespace Model
 {
 
-Logs::Logs() : 
-    m_audit(false),
-    m_auditHasBeenSet(false),
-    m_general(false),
-    m_generalHasBeenSet(false)
-{
-}
-
-Logs::Logs(JsonView jsonValue) : 
-    m_audit(false),
-    m_auditHasBeenSet(false),
-    m_general(false),
-    m_generalHasBeenSet(false)
+Logs::Logs(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ Logs& Logs::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("audit"))
   {
     m_audit = jsonValue.GetBool("audit");
-
     m_auditHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("general"))
   {
     m_general = jsonValue.GetBool("general");
-
     m_generalHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,42 +31,23 @@ namespace Model
   class Event
   {
   public:
-    AWS_DATAEXCHANGE_API Event();
+    AWS_DATAEXCHANGE_API Event() = default;
     AWS_DATAEXCHANGE_API Event(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Event& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>What occurs to start the revision publish action.</p>
      */
-    inline const RevisionPublished& GetRevisionPublished() const{ return m_revisionPublished; }
-
-    /**
-     * <p>What occurs to start the revision publish action.</p>
-     */
+    inline const RevisionPublished& GetRevisionPublished() const { return m_revisionPublished; }
     inline bool RevisionPublishedHasBeenSet() const { return m_revisionPublishedHasBeenSet; }
-
-    /**
-     * <p>What occurs to start the revision publish action.</p>
-     */
-    inline void SetRevisionPublished(const RevisionPublished& value) { m_revisionPublishedHasBeenSet = true; m_revisionPublished = value; }
-
-    /**
-     * <p>What occurs to start the revision publish action.</p>
-     */
-    inline void SetRevisionPublished(RevisionPublished&& value) { m_revisionPublishedHasBeenSet = true; m_revisionPublished = std::move(value); }
-
-    /**
-     * <p>What occurs to start the revision publish action.</p>
-     */
-    inline Event& WithRevisionPublished(const RevisionPublished& value) { SetRevisionPublished(value); return *this;}
-
-    /**
-     * <p>What occurs to start the revision publish action.</p>
-     */
-    inline Event& WithRevisionPublished(RevisionPublished&& value) { SetRevisionPublished(std::move(value)); return *this;}
-
+    template<typename RevisionPublishedT = RevisionPublished>
+    void SetRevisionPublished(RevisionPublishedT&& value) { m_revisionPublishedHasBeenSet = true; m_revisionPublished = std::forward<RevisionPublishedT>(value); }
+    template<typename RevisionPublishedT = RevisionPublished>
+    Event& WithRevisionPublished(RevisionPublishedT&& value) { SetRevisionPublished(std::forward<RevisionPublishedT>(value)); return *this;}
+    ///@}
   private:
 
     RevisionPublished m_revisionPublished;

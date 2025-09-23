@@ -33,80 +33,38 @@ namespace Model
   class GetModelTemplateResult
   {
   public:
-    AWS_APIGATEWAY_API GetModelTemplateResult();
+    AWS_APIGATEWAY_API GetModelTemplateResult() = default;
     AWS_APIGATEWAY_API GetModelTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APIGATEWAY_API GetModelTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Apache Velocity Template Language (VTL) template content used for the
      * template resource.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
+    inline const Aws::String& GetValue() const { return m_value; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    GetModelTemplateResult& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Apache Velocity Template Language (VTL) template content used for the
-     * template resource.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_value = value; }
-
-    /**
-     * <p>The Apache Velocity Template Language (VTL) template content used for the
-     * template resource.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_value = std::move(value); }
-
-    /**
-     * <p>The Apache Velocity Template Language (VTL) template content used for the
-     * template resource.</p>
-     */
-    inline void SetValue(const char* value) { m_value.assign(value); }
-
-    /**
-     * <p>The Apache Velocity Template Language (VTL) template content used for the
-     * template resource.</p>
-     */
-    inline GetModelTemplateResult& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The Apache Velocity Template Language (VTL) template content used for the
-     * template resource.</p>
-     */
-    inline GetModelTemplateResult& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The Apache Velocity Template Language (VTL) template content used for the
-     * template resource.</p>
-     */
-    inline GetModelTemplateResult& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetModelTemplateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetModelTemplateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetModelTemplateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetModelTemplateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;
+    bool m_valueHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

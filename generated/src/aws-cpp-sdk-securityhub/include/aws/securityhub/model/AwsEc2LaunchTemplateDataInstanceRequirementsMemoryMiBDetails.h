@@ -30,59 +30,37 @@ namespace Model
   class AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails();
+    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails() = default;
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The maximum amount of memory, in MiB. </p>
      */
-    inline int GetMax() const{ return m_max; }
-
-    /**
-     * <p> The maximum amount of memory, in MiB. </p>
-     */
+    inline int GetMax() const { return m_max; }
     inline bool MaxHasBeenSet() const { return m_maxHasBeenSet; }
-
-    /**
-     * <p> The maximum amount of memory, in MiB. </p>
-     */
     inline void SetMax(int value) { m_maxHasBeenSet = true; m_max = value; }
-
-    /**
-     * <p> The maximum amount of memory, in MiB. </p>
-     */
     inline AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails& WithMax(int value) { SetMax(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The minimum amount of memory, in MiB. </p>
      */
-    inline int GetMin() const{ return m_min; }
-
-    /**
-     * <p> The minimum amount of memory, in MiB. </p>
-     */
+    inline int GetMin() const { return m_min; }
     inline bool MinHasBeenSet() const { return m_minHasBeenSet; }
-
-    /**
-     * <p> The minimum amount of memory, in MiB. </p>
-     */
     inline void SetMin(int value) { m_minHasBeenSet = true; m_min = value; }
-
-    /**
-     * <p> The minimum amount of memory, in MiB. </p>
-     */
     inline AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails& WithMin(int value) { SetMin(value); return *this;}
-
+    ///@}
   private:
 
-    int m_max;
+    int m_max{0};
     bool m_maxHasBeenSet = false;
 
-    int m_min;
+    int m_min{0};
     bool m_minHasBeenSet = false;
   };
 

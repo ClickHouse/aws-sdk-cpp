@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-QueueInfo::QueueInfo() : 
-    m_waitingOnIngestionHasBeenSet(false),
-    m_queuedIngestionHasBeenSet(false)
-{
-}
-
-QueueInfo::QueueInfo(JsonView jsonValue) : 
-    m_waitingOnIngestionHasBeenSet(false),
-    m_queuedIngestionHasBeenSet(false)
+QueueInfo::QueueInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ QueueInfo& QueueInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("WaitingOnIngestion"))
   {
     m_waitingOnIngestion = jsonValue.GetString("WaitingOnIngestion");
-
     m_waitingOnIngestionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueuedIngestion"))
   {
     m_queuedIngestion = jsonValue.GetString("QueuedIngestion");
-
     m_queuedIngestionHasBeenSet = true;
   }
-
   return *this;
 }
 

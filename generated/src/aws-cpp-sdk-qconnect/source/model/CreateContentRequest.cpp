@@ -12,26 +12,25 @@ using namespace Aws::QConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateContentRequest::CreateContentRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_metadataHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_overrideLinkOutUriHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_uploadIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateContentRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
+   payload.WithString("name", m_name);
+
+  }
+
+  if(m_titleHasBeenSet)
+  {
+   payload.WithString("title", m_title);
+
+  }
+
+  if(m_overrideLinkOutUriHasBeenSet)
+  {
+   payload.WithString("overrideLinkOutUri", m_overrideLinkOutUri);
 
   }
 
@@ -46,15 +45,15 @@ Aws::String CreateContentRequest::SerializePayload() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_uploadIdHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithString("uploadId", m_uploadId);
 
   }
 
-  if(m_overrideLinkOutUriHasBeenSet)
+  if(m_clientTokenHasBeenSet)
   {
-   payload.WithString("overrideLinkOutUri", m_overrideLinkOutUri);
+   payload.WithString("clientToken", m_clientToken);
 
   }
 
@@ -66,18 +65,6 @@ Aws::String CreateContentRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
-
-  }
-
-  if(m_titleHasBeenSet)
-  {
-   payload.WithString("title", m_title);
-
-  }
-
-  if(m_uploadIdHasBeenSet)
-  {
-   payload.WithString("uploadId", m_uploadId);
 
   }
 

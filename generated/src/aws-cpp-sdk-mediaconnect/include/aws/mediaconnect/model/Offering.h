@@ -27,334 +27,124 @@ namespace Model
 {
 
   /**
-   * A savings plan that reserves a certain amount of outbound bandwidth usage at a
-   * discounted rate each month over a period of time.<p><h3>See Also:</h3>   <a
+   * <p> A savings plan that reserves a certain amount of outbound bandwidth usage at
+   * a discounted rate each month over a period of time. </p><p><h3>See Also:</h3>  
+   * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/Offering">AWS
    * API Reference</a></p>
    */
   class Offering
   {
   public:
-    AWS_MEDIACONNECT_API Offering();
+    AWS_MEDIACONNECT_API Offering() = default;
     AWS_MEDIACONNECT_API Offering(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Offering& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
+     * <p> The type of currency that is used for billing. The currencyCode used for all
+     * reservations is US dollars.</p>
      */
-    inline const Aws::String& GetCurrencyCode() const{ return m_currencyCode; }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
-     */
+    inline const Aws::String& GetCurrencyCode() const { return m_currencyCode; }
     inline bool CurrencyCodeHasBeenSet() const { return m_currencyCodeHasBeenSet; }
+    template<typename CurrencyCodeT = Aws::String>
+    void SetCurrencyCode(CurrencyCodeT&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::forward<CurrencyCodeT>(value); }
+    template<typename CurrencyCodeT = Aws::String>
+    Offering& WithCurrencyCode(CurrencyCodeT&& value) { SetCurrencyCode(std::forward<CurrencyCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
+     * <p> The length of time that your reservation would be active.</p>
      */
-    inline void SetCurrencyCode(const Aws::String& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
-     */
-    inline void SetCurrencyCode(Aws::String&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::move(value); }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
-     */
-    inline void SetCurrencyCode(const char* value) { m_currencyCodeHasBeenSet = true; m_currencyCode.assign(value); }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
-     */
-    inline Offering& WithCurrencyCode(const Aws::String& value) { SetCurrencyCode(value); return *this;}
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
-     */
-    inline Offering& WithCurrencyCode(Aws::String&& value) { SetCurrencyCode(std::move(value)); return *this;}
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for all
-     * reservations is US dollars.
-     */
-    inline Offering& WithCurrencyCode(const char* value) { SetCurrencyCode(value); return *this;}
-
-
-    /**
-     * The length of time that your reservation would be active.
-     */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * The length of time that your reservation would be active.
-     */
+    inline int GetDuration() const { return m_duration; }
     inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
-
-    /**
-     * The length of time that your reservation would be active.
-     */
     inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
-
-    /**
-     * The length of time that your reservation would be active.
-     */
     inline Offering& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * The unit of measurement for the duration of the offering.
+     * <p> The unit of measurement for the duration of the offering.</p>
      */
-    inline const DurationUnits& GetDurationUnits() const{ return m_durationUnits; }
-
-    /**
-     * The unit of measurement for the duration of the offering.
-     */
+    inline DurationUnits GetDurationUnits() const { return m_durationUnits; }
     inline bool DurationUnitsHasBeenSet() const { return m_durationUnitsHasBeenSet; }
+    inline void SetDurationUnits(DurationUnits value) { m_durationUnitsHasBeenSet = true; m_durationUnits = value; }
+    inline Offering& WithDurationUnits(DurationUnits value) { SetDurationUnits(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The unit of measurement for the duration of the offering.
+     * <p> The Amazon Resource Name (ARN) that MediaConnect assigns to the
+     * offering.</p>
      */
-    inline void SetDurationUnits(const DurationUnits& value) { m_durationUnitsHasBeenSet = true; m_durationUnits = value; }
-
-    /**
-     * The unit of measurement for the duration of the offering.
-     */
-    inline void SetDurationUnits(DurationUnits&& value) { m_durationUnitsHasBeenSet = true; m_durationUnits = std::move(value); }
-
-    /**
-     * The unit of measurement for the duration of the offering.
-     */
-    inline Offering& WithDurationUnits(const DurationUnits& value) { SetDurationUnits(value); return *this;}
-
-    /**
-     * The unit of measurement for the duration of the offering.
-     */
-    inline Offering& WithDurationUnits(DurationUnits&& value) { SetDurationUnits(std::move(value)); return *this;}
-
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline const Aws::String& GetOfferingArn() const{ return m_offeringArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
+    inline const Aws::String& GetOfferingArn() const { return m_offeringArn; }
     inline bool OfferingArnHasBeenSet() const { return m_offeringArnHasBeenSet; }
+    template<typename OfferingArnT = Aws::String>
+    void SetOfferingArn(OfferingArnT&& value) { m_offeringArnHasBeenSet = true; m_offeringArn = std::forward<OfferingArnT>(value); }
+    template<typename OfferingArnT = Aws::String>
+    Offering& WithOfferingArn(OfferingArnT&& value) { SetOfferingArn(std::forward<OfferingArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
+     * <p> A description of the offering.</p>
      */
-    inline void SetOfferingArn(const Aws::String& value) { m_offeringArnHasBeenSet = true; m_offeringArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline void SetOfferingArn(Aws::String&& value) { m_offeringArnHasBeenSet = true; m_offeringArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline void SetOfferingArn(const char* value) { m_offeringArnHasBeenSet = true; m_offeringArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline Offering& WithOfferingArn(const Aws::String& value) { SetOfferingArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline Offering& WithOfferingArn(Aws::String&& value) { SetOfferingArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline Offering& WithOfferingArn(const char* value) { SetOfferingArn(value); return *this;}
-
-
-    /**
-     * A description of the offering.
-     */
-    inline const Aws::String& GetOfferingDescription() const{ return m_offeringDescription; }
-
-    /**
-     * A description of the offering.
-     */
+    inline const Aws::String& GetOfferingDescription() const { return m_offeringDescription; }
     inline bool OfferingDescriptionHasBeenSet() const { return m_offeringDescriptionHasBeenSet; }
+    template<typename OfferingDescriptionT = Aws::String>
+    void SetOfferingDescription(OfferingDescriptionT&& value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription = std::forward<OfferingDescriptionT>(value); }
+    template<typename OfferingDescriptionT = Aws::String>
+    Offering& WithOfferingDescription(OfferingDescriptionT&& value) { SetOfferingDescription(std::forward<OfferingDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A description of the offering.
+     * <p> The cost of a single unit. This value, in combination with priceUnits, makes
+     * up the rate.</p>
      */
-    inline void SetOfferingDescription(const Aws::String& value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription = value; }
-
-    /**
-     * A description of the offering.
-     */
-    inline void SetOfferingDescription(Aws::String&& value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription = std::move(value); }
-
-    /**
-     * A description of the offering.
-     */
-    inline void SetOfferingDescription(const char* value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription.assign(value); }
-
-    /**
-     * A description of the offering.
-     */
-    inline Offering& WithOfferingDescription(const Aws::String& value) { SetOfferingDescription(value); return *this;}
-
-    /**
-     * A description of the offering.
-     */
-    inline Offering& WithOfferingDescription(Aws::String&& value) { SetOfferingDescription(std::move(value)); return *this;}
-
-    /**
-     * A description of the offering.
-     */
-    inline Offering& WithOfferingDescription(const char* value) { SetOfferingDescription(value); return *this;}
-
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
-    inline const Aws::String& GetPricePerUnit() const{ return m_pricePerUnit; }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
+    inline const Aws::String& GetPricePerUnit() const { return m_pricePerUnit; }
     inline bool PricePerUnitHasBeenSet() const { return m_pricePerUnitHasBeenSet; }
+    template<typename PricePerUnitT = Aws::String>
+    void SetPricePerUnit(PricePerUnitT&& value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit = std::forward<PricePerUnitT>(value); }
+    template<typename PricePerUnitT = Aws::String>
+    Offering& WithPricePerUnit(PricePerUnitT&& value) { SetPricePerUnit(std::forward<PricePerUnitT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
+     * <p> The unit of measurement that is used for billing. This value, in combination
+     * with pricePerUnit, makes up the rate.</p>
      */
-    inline void SetPricePerUnit(const Aws::String& value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit = value; }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
-    inline void SetPricePerUnit(Aws::String&& value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit = std::move(value); }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
-    inline void SetPricePerUnit(const char* value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit.assign(value); }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
-    inline Offering& WithPricePerUnit(const Aws::String& value) { SetPricePerUnit(value); return *this;}
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
-    inline Offering& WithPricePerUnit(Aws::String&& value) { SetPricePerUnit(std::move(value)); return *this;}
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate.
-     */
-    inline Offering& WithPricePerUnit(const char* value) { SetPricePerUnit(value); return *this;}
-
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate.
-     */
-    inline const PriceUnits& GetPriceUnits() const{ return m_priceUnits; }
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate.
-     */
+    inline PriceUnits GetPriceUnits() const { return m_priceUnits; }
     inline bool PriceUnitsHasBeenSet() const { return m_priceUnitsHasBeenSet; }
+    inline void SetPriceUnits(PriceUnits value) { m_priceUnitsHasBeenSet = true; m_priceUnits = value; }
+    inline Offering& WithPriceUnits(PriceUnits value) { SetPriceUnits(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate.
+     * <p> A definition of the amount of outbound bandwidth that you would be reserving
+     * if you purchase the offering.</p>
      */
-    inline void SetPriceUnits(const PriceUnits& value) { m_priceUnitsHasBeenSet = true; m_priceUnits = value; }
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate.
-     */
-    inline void SetPriceUnits(PriceUnits&& value) { m_priceUnitsHasBeenSet = true; m_priceUnits = std::move(value); }
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate.
-     */
-    inline Offering& WithPriceUnits(const PriceUnits& value) { SetPriceUnits(value); return *this;}
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate.
-     */
-    inline Offering& WithPriceUnits(PriceUnits&& value) { SetPriceUnits(std::move(value)); return *this;}
-
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering.
-     */
-    inline const ResourceSpecification& GetResourceSpecification() const{ return m_resourceSpecification; }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering.
-     */
+    inline const ResourceSpecification& GetResourceSpecification() const { return m_resourceSpecification; }
     inline bool ResourceSpecificationHasBeenSet() const { return m_resourceSpecificationHasBeenSet; }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering.
-     */
-    inline void SetResourceSpecification(const ResourceSpecification& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = value; }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering.
-     */
-    inline void SetResourceSpecification(ResourceSpecification&& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = std::move(value); }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering.
-     */
-    inline Offering& WithResourceSpecification(const ResourceSpecification& value) { SetResourceSpecification(value); return *this;}
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering.
-     */
-    inline Offering& WithResourceSpecification(ResourceSpecification&& value) { SetResourceSpecification(std::move(value)); return *this;}
-
+    template<typename ResourceSpecificationT = ResourceSpecification>
+    void SetResourceSpecification(ResourceSpecificationT&& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = std::forward<ResourceSpecificationT>(value); }
+    template<typename ResourceSpecificationT = ResourceSpecification>
+    Offering& WithResourceSpecification(ResourceSpecificationT&& value) { SetResourceSpecification(std::forward<ResourceSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_currencyCode;
     bool m_currencyCodeHasBeenSet = false;
 
-    int m_duration;
+    int m_duration{0};
     bool m_durationHasBeenSet = false;
 
-    DurationUnits m_durationUnits;
+    DurationUnits m_durationUnits{DurationUnits::NOT_SET};
     bool m_durationUnitsHasBeenSet = false;
 
     Aws::String m_offeringArn;
@@ -366,7 +156,7 @@ namespace Model
     Aws::String m_pricePerUnit;
     bool m_pricePerUnitHasBeenSet = false;
 
-    PriceUnits m_priceUnits;
+    PriceUnits m_priceUnits{PriceUnits::NOT_SET};
     bool m_priceUnitsHasBeenSet = false;
 
     ResourceSpecification m_resourceSpecification;

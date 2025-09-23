@@ -27,73 +27,37 @@ namespace Model
   class UpdateCodeRepositoryResult
   {
   public:
-    AWS_SAGEMAKER_API UpdateCodeRepositoryResult();
+    AWS_SAGEMAKER_API UpdateCodeRepositoryResult() = default;
     AWS_SAGEMAKER_API UpdateCodeRepositoryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API UpdateCodeRepositoryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the Git repository.</p>
      */
-    inline const Aws::String& GetCodeRepositoryArn() const{ return m_codeRepositoryArn; }
+    inline const Aws::String& GetCodeRepositoryArn() const { return m_codeRepositoryArn; }
+    template<typename CodeRepositoryArnT = Aws::String>
+    void SetCodeRepositoryArn(CodeRepositoryArnT&& value) { m_codeRepositoryArnHasBeenSet = true; m_codeRepositoryArn = std::forward<CodeRepositoryArnT>(value); }
+    template<typename CodeRepositoryArnT = Aws::String>
+    UpdateCodeRepositoryResult& WithCodeRepositoryArn(CodeRepositoryArnT&& value) { SetCodeRepositoryArn(std::forward<CodeRepositoryArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Git repository.</p>
-     */
-    inline void SetCodeRepositoryArn(const Aws::String& value) { m_codeRepositoryArn = value; }
-
-    /**
-     * <p>The ARN of the Git repository.</p>
-     */
-    inline void SetCodeRepositoryArn(Aws::String&& value) { m_codeRepositoryArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Git repository.</p>
-     */
-    inline void SetCodeRepositoryArn(const char* value) { m_codeRepositoryArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Git repository.</p>
-     */
-    inline UpdateCodeRepositoryResult& WithCodeRepositoryArn(const Aws::String& value) { SetCodeRepositoryArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Git repository.</p>
-     */
-    inline UpdateCodeRepositoryResult& WithCodeRepositoryArn(Aws::String&& value) { SetCodeRepositoryArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Git repository.</p>
-     */
-    inline UpdateCodeRepositoryResult& WithCodeRepositoryArn(const char* value) { SetCodeRepositoryArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateCodeRepositoryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateCodeRepositoryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateCodeRepositoryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateCodeRepositoryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_codeRepositoryArn;
+    bool m_codeRepositoryArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,19 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-DeploymentReadyOption::DeploymentReadyOption() : 
-    m_actionOnTimeout(DeploymentReadyAction::NOT_SET),
-    m_actionOnTimeoutHasBeenSet(false),
-    m_waitTimeInMinutes(0),
-    m_waitTimeInMinutesHasBeenSet(false)
-{
-}
-
-DeploymentReadyOption::DeploymentReadyOption(JsonView jsonValue) : 
-    m_actionOnTimeout(DeploymentReadyAction::NOT_SET),
-    m_actionOnTimeoutHasBeenSet(false),
-    m_waitTimeInMinutes(0),
-    m_waitTimeInMinutesHasBeenSet(false)
+DeploymentReadyOption::DeploymentReadyOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DeploymentReadyOption& DeploymentReadyOption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("actionOnTimeout"))
   {
     m_actionOnTimeout = DeploymentReadyActionMapper::GetDeploymentReadyActionForName(jsonValue.GetString("actionOnTimeout"));
-
     m_actionOnTimeoutHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("waitTimeInMinutes"))
   {
     m_waitTimeInMinutes = jsonValue.GetInteger("waitTimeInMinutes");
-
     m_waitTimeInMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

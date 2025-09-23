@@ -37,196 +37,76 @@ namespace Model
   class UpdateBackendAuthUserPoolConfig
   {
   public:
-    AWS_AMPLIFYBACKEND_API UpdateBackendAuthUserPoolConfig();
+    AWS_AMPLIFYBACKEND_API UpdateBackendAuthUserPoolConfig() = default;
     AWS_AMPLIFYBACKEND_API UpdateBackendAuthUserPoolConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API UpdateBackendAuthUserPoolConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p><b>(DEPRECATED)</b> Describes the forgot password policy for your Amazon
      * Cognito user pool, configured as a part of your Amplify project.</p>
      */
-    inline const UpdateBackendAuthForgotPasswordConfig& GetForgotPassword() const{ return m_forgotPassword; }
-
-    /**
-     * <p><b>(DEPRECATED)</b> Describes the forgot password policy for your Amazon
-     * Cognito user pool, configured as a part of your Amplify project.</p>
-     */
+    inline const UpdateBackendAuthForgotPasswordConfig& GetForgotPassword() const { return m_forgotPassword; }
     inline bool ForgotPasswordHasBeenSet() const { return m_forgotPasswordHasBeenSet; }
+    template<typename ForgotPasswordT = UpdateBackendAuthForgotPasswordConfig>
+    void SetForgotPassword(ForgotPasswordT&& value) { m_forgotPasswordHasBeenSet = true; m_forgotPassword = std::forward<ForgotPasswordT>(value); }
+    template<typename ForgotPasswordT = UpdateBackendAuthForgotPasswordConfig>
+    UpdateBackendAuthUserPoolConfig& WithForgotPassword(ForgotPasswordT&& value) { SetForgotPassword(std::forward<ForgotPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p><b>(DEPRECATED)</b> Describes the forgot password policy for your Amazon
-     * Cognito user pool, configured as a part of your Amplify project.</p>
-     */
-    inline void SetForgotPassword(const UpdateBackendAuthForgotPasswordConfig& value) { m_forgotPasswordHasBeenSet = true; m_forgotPassword = value; }
-
-    /**
-     * <p><b>(DEPRECATED)</b> Describes the forgot password policy for your Amazon
-     * Cognito user pool, configured as a part of your Amplify project.</p>
-     */
-    inline void SetForgotPassword(UpdateBackendAuthForgotPasswordConfig&& value) { m_forgotPasswordHasBeenSet = true; m_forgotPassword = std::move(value); }
-
-    /**
-     * <p><b>(DEPRECATED)</b> Describes the forgot password policy for your Amazon
-     * Cognito user pool, configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithForgotPassword(const UpdateBackendAuthForgotPasswordConfig& value) { SetForgotPassword(value); return *this;}
-
-    /**
-     * <p><b>(DEPRECATED)</b> Describes the forgot password policy for your Amazon
-     * Cognito user pool, configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithForgotPassword(UpdateBackendAuthForgotPasswordConfig&& value) { SetForgotPassword(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes whether to apply multi-factor authentication policies for your
      * Amazon Cognito user pool configured as a part of your Amplify project.</p>
      */
-    inline const UpdateBackendAuthMFAConfig& GetMfa() const{ return m_mfa; }
-
-    /**
-     * <p>Describes whether to apply multi-factor authentication policies for your
-     * Amazon Cognito user pool configured as a part of your Amplify project.</p>
-     */
+    inline const UpdateBackendAuthMFAConfig& GetMfa() const { return m_mfa; }
     inline bool MfaHasBeenSet() const { return m_mfaHasBeenSet; }
+    template<typename MfaT = UpdateBackendAuthMFAConfig>
+    void SetMfa(MfaT&& value) { m_mfaHasBeenSet = true; m_mfa = std::forward<MfaT>(value); }
+    template<typename MfaT = UpdateBackendAuthMFAConfig>
+    UpdateBackendAuthUserPoolConfig& WithMfa(MfaT&& value) { SetMfa(std::forward<MfaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes whether to apply multi-factor authentication policies for your
-     * Amazon Cognito user pool configured as a part of your Amplify project.</p>
-     */
-    inline void SetMfa(const UpdateBackendAuthMFAConfig& value) { m_mfaHasBeenSet = true; m_mfa = value; }
-
-    /**
-     * <p>Describes whether to apply multi-factor authentication policies for your
-     * Amazon Cognito user pool configured as a part of your Amplify project.</p>
-     */
-    inline void SetMfa(UpdateBackendAuthMFAConfig&& value) { m_mfaHasBeenSet = true; m_mfa = std::move(value); }
-
-    /**
-     * <p>Describes whether to apply multi-factor authentication policies for your
-     * Amazon Cognito user pool configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithMfa(const UpdateBackendAuthMFAConfig& value) { SetMfa(value); return *this;}
-
-    /**
-     * <p>Describes whether to apply multi-factor authentication policies for your
-     * Amazon Cognito user pool configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithMfa(UpdateBackendAuthMFAConfig&& value) { SetMfa(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the OAuth policy and rules for your Amazon Cognito user pool,
      * configured as a part of your Amplify project.</p>
      */
-    inline const UpdateBackendAuthOAuthConfig& GetOAuth() const{ return m_oAuth; }
-
-    /**
-     * <p>Describes the OAuth policy and rules for your Amazon Cognito user pool,
-     * configured as a part of your Amplify project.</p>
-     */
+    inline const UpdateBackendAuthOAuthConfig& GetOAuth() const { return m_oAuth; }
     inline bool OAuthHasBeenSet() const { return m_oAuthHasBeenSet; }
+    template<typename OAuthT = UpdateBackendAuthOAuthConfig>
+    void SetOAuth(OAuthT&& value) { m_oAuthHasBeenSet = true; m_oAuth = std::forward<OAuthT>(value); }
+    template<typename OAuthT = UpdateBackendAuthOAuthConfig>
+    UpdateBackendAuthUserPoolConfig& WithOAuth(OAuthT&& value) { SetOAuth(std::forward<OAuthT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the OAuth policy and rules for your Amazon Cognito user pool,
-     * configured as a part of your Amplify project.</p>
-     */
-    inline void SetOAuth(const UpdateBackendAuthOAuthConfig& value) { m_oAuthHasBeenSet = true; m_oAuth = value; }
-
-    /**
-     * <p>Describes the OAuth policy and rules for your Amazon Cognito user pool,
-     * configured as a part of your Amplify project.</p>
-     */
-    inline void SetOAuth(UpdateBackendAuthOAuthConfig&& value) { m_oAuthHasBeenSet = true; m_oAuth = std::move(value); }
-
-    /**
-     * <p>Describes the OAuth policy and rules for your Amazon Cognito user pool,
-     * configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithOAuth(const UpdateBackendAuthOAuthConfig& value) { SetOAuth(value); return *this;}
-
-    /**
-     * <p>Describes the OAuth policy and rules for your Amazon Cognito user pool,
-     * configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithOAuth(UpdateBackendAuthOAuthConfig&& value) { SetOAuth(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the password policy for your Amazon Cognito user pool, configured
      * as a part of your Amplify project.</p>
      */
-    inline const UpdateBackendAuthPasswordPolicyConfig& GetPasswordPolicy() const{ return m_passwordPolicy; }
-
-    /**
-     * <p>Describes the password policy for your Amazon Cognito user pool, configured
-     * as a part of your Amplify project.</p>
-     */
+    inline const UpdateBackendAuthPasswordPolicyConfig& GetPasswordPolicy() const { return m_passwordPolicy; }
     inline bool PasswordPolicyHasBeenSet() const { return m_passwordPolicyHasBeenSet; }
+    template<typename PasswordPolicyT = UpdateBackendAuthPasswordPolicyConfig>
+    void SetPasswordPolicy(PasswordPolicyT&& value) { m_passwordPolicyHasBeenSet = true; m_passwordPolicy = std::forward<PasswordPolicyT>(value); }
+    template<typename PasswordPolicyT = UpdateBackendAuthPasswordPolicyConfig>
+    UpdateBackendAuthUserPoolConfig& WithPasswordPolicy(PasswordPolicyT&& value) { SetPasswordPolicy(std::forward<PasswordPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the password policy for your Amazon Cognito user pool, configured
-     * as a part of your Amplify project.</p>
-     */
-    inline void SetPasswordPolicy(const UpdateBackendAuthPasswordPolicyConfig& value) { m_passwordPolicyHasBeenSet = true; m_passwordPolicy = value; }
-
-    /**
-     * <p>Describes the password policy for your Amazon Cognito user pool, configured
-     * as a part of your Amplify project.</p>
-     */
-    inline void SetPasswordPolicy(UpdateBackendAuthPasswordPolicyConfig&& value) { m_passwordPolicyHasBeenSet = true; m_passwordPolicy = std::move(value); }
-
-    /**
-     * <p>Describes the password policy for your Amazon Cognito user pool, configured
-     * as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithPasswordPolicy(const UpdateBackendAuthPasswordPolicyConfig& value) { SetPasswordPolicy(value); return *this;}
-
-    /**
-     * <p>Describes the password policy for your Amazon Cognito user pool, configured
-     * as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithPasswordPolicy(UpdateBackendAuthPasswordPolicyConfig&& value) { SetPasswordPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the email or SMS verification message for your Amazon Cognito user
      * pool, configured as a part of your Amplify project.</p>
      */
-    inline const UpdateBackendAuthVerificationMessageConfig& GetVerificationMessage() const{ return m_verificationMessage; }
-
-    /**
-     * <p>Describes the email or SMS verification message for your Amazon Cognito user
-     * pool, configured as a part of your Amplify project.</p>
-     */
+    inline const UpdateBackendAuthVerificationMessageConfig& GetVerificationMessage() const { return m_verificationMessage; }
     inline bool VerificationMessageHasBeenSet() const { return m_verificationMessageHasBeenSet; }
-
-    /**
-     * <p>Describes the email or SMS verification message for your Amazon Cognito user
-     * pool, configured as a part of your Amplify project.</p>
-     */
-    inline void SetVerificationMessage(const UpdateBackendAuthVerificationMessageConfig& value) { m_verificationMessageHasBeenSet = true; m_verificationMessage = value; }
-
-    /**
-     * <p>Describes the email or SMS verification message for your Amazon Cognito user
-     * pool, configured as a part of your Amplify project.</p>
-     */
-    inline void SetVerificationMessage(UpdateBackendAuthVerificationMessageConfig&& value) { m_verificationMessageHasBeenSet = true; m_verificationMessage = std::move(value); }
-
-    /**
-     * <p>Describes the email or SMS verification message for your Amazon Cognito user
-     * pool, configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithVerificationMessage(const UpdateBackendAuthVerificationMessageConfig& value) { SetVerificationMessage(value); return *this;}
-
-    /**
-     * <p>Describes the email or SMS verification message for your Amazon Cognito user
-     * pool, configured as a part of your Amplify project.</p>
-     */
-    inline UpdateBackendAuthUserPoolConfig& WithVerificationMessage(UpdateBackendAuthVerificationMessageConfig&& value) { SetVerificationMessage(std::move(value)); return *this;}
-
+    template<typename VerificationMessageT = UpdateBackendAuthVerificationMessageConfig>
+    void SetVerificationMessage(VerificationMessageT&& value) { m_verificationMessageHasBeenSet = true; m_verificationMessage = std::forward<VerificationMessageT>(value); }
+    template<typename VerificationMessageT = UpdateBackendAuthVerificationMessageConfig>
+    UpdateBackendAuthUserPoolConfig& WithVerificationMessage(VerificationMessageT&& value) { SetVerificationMessage(std::forward<VerificationMessageT>(value)); return *this;}
+    ///@}
   private:
 
     UpdateBackendAuthForgotPasswordConfig m_forgotPassword;

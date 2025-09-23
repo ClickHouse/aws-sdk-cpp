@@ -33,60 +33,26 @@ namespace Model
   class RealTimeContactAnalysisPointOfInterest
   {
   public:
-    AWS_CONNECT_API RealTimeContactAnalysisPointOfInterest();
+    AWS_CONNECT_API RealTimeContactAnalysisPointOfInterest() = default;
     AWS_CONNECT_API RealTimeContactAnalysisPointOfInterest(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API RealTimeContactAnalysisPointOfInterest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>List of the transcript items (segments) that are associated with a given
      * point of interest. </p>
      */
-    inline const Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>& GetTranscriptItems() const{ return m_transcriptItems; }
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
+    inline const Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>& GetTranscriptItems() const { return m_transcriptItems; }
     inline bool TranscriptItemsHasBeenSet() const { return m_transcriptItemsHasBeenSet; }
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
-    inline void SetTranscriptItems(const Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>& value) { m_transcriptItemsHasBeenSet = true; m_transcriptItems = value; }
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
-    inline void SetTranscriptItems(Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>&& value) { m_transcriptItemsHasBeenSet = true; m_transcriptItems = std::move(value); }
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
-    inline RealTimeContactAnalysisPointOfInterest& WithTranscriptItems(const Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>& value) { SetTranscriptItems(value); return *this;}
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
-    inline RealTimeContactAnalysisPointOfInterest& WithTranscriptItems(Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>&& value) { SetTranscriptItems(std::move(value)); return *this;}
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
-    inline RealTimeContactAnalysisPointOfInterest& AddTranscriptItems(const RealTimeContactAnalysisTranscriptItemWithCharacterOffsets& value) { m_transcriptItemsHasBeenSet = true; m_transcriptItems.push_back(value); return *this; }
-
-    /**
-     * <p>List of the transcript items (segments) that are associated with a given
-     * point of interest. </p>
-     */
-    inline RealTimeContactAnalysisPointOfInterest& AddTranscriptItems(RealTimeContactAnalysisTranscriptItemWithCharacterOffsets&& value) { m_transcriptItemsHasBeenSet = true; m_transcriptItems.push_back(std::move(value)); return *this; }
-
+    template<typename TranscriptItemsT = Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>>
+    void SetTranscriptItems(TranscriptItemsT&& value) { m_transcriptItemsHasBeenSet = true; m_transcriptItems = std::forward<TranscriptItemsT>(value); }
+    template<typename TranscriptItemsT = Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>>
+    RealTimeContactAnalysisPointOfInterest& WithTranscriptItems(TranscriptItemsT&& value) { SetTranscriptItems(std::forward<TranscriptItemsT>(value)); return *this;}
+    template<typename TranscriptItemsT = RealTimeContactAnalysisTranscriptItemWithCharacterOffsets>
+    RealTimeContactAnalysisPointOfInterest& AddTranscriptItems(TranscriptItemsT&& value) { m_transcriptItemsHasBeenSet = true; m_transcriptItems.emplace_back(std::forward<TranscriptItemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<RealTimeContactAnalysisTranscriptItemWithCharacterOffsets> m_transcriptItems;

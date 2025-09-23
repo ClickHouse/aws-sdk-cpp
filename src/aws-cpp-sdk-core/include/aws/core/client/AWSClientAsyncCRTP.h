@@ -14,6 +14,8 @@ namespace Aws
 namespace Client
 {
     class AsyncCallerContext;
+    template <typename OutcomeT, typename ClientT, typename AWSEndpointT, typename RequestT, typename HandlerT>
+    class BidirectionalEventStreamingTask;
 
     /**
      * A helper to determine if AWS Operation is EventStream-enabled or not (based on const-ness of the request)
@@ -47,7 +49,7 @@ namespace Client
            m_operationsProcessed(0)
         {
             AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
-            Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::SERVICE_NAME,
+            Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
                                                              pThis,
                                                              &AwsServiceClientT::ShutdownSdkClient);
 
@@ -58,7 +60,7 @@ namespace Client
            m_operationsProcessed(0)
         {
             AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
-            Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::SERVICE_NAME,
+            Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
                                                              pThis,
                                                              &AwsServiceClientT::ShutdownSdkClient);
         }
@@ -67,6 +69,8 @@ namespace Client
         {
             if (&other != this)
             {
+                ShutdownSdkClient(static_cast<AwsServiceClientT*>(this));
+                m_operationsProcessed = 0;
                 m_isInitialized = other.m_isInitialized.load();
             }
 
@@ -88,7 +92,7 @@ namespace Client
         static void ShutdownSdkClient(void* pThis, int64_t timeoutMs = -1)
         {
             AwsServiceClientT* pClient = reinterpret_cast<AwsServiceClientT*>(pThis);
-            AWS_CHECK_PTR(AwsServiceClientT::SERVICE_NAME, pClient);
+            AWS_CHECK_PTR(AwsServiceClientT::GetServiceName(), pClient);
             if(!pClient->m_isInitialized)
             {
                 return;
@@ -97,7 +101,10 @@ namespace Client
             std::unique_lock<std::mutex> lock(pClient->m_shutdownMutex);
 
             pClient->m_isInitialized = false;
-
+            if (pClient->GetHttpClient().use_count() == 1)
+            {
+                pClient->DisableRequestProcessing();
+            }
 
             if (timeoutMs == -1)
             {
@@ -107,10 +114,15 @@ namespace Client
                                       std::chrono::milliseconds(timeoutMs),
                                       [&](){ return pClient->m_operationsProcessed.load() == 0; });
 
-            pClient->m_endpointProvider.reset();
-            pClient->m_executor.reset();
+            if (pClient->m_operationsProcessed.load())
+            {
+                AWS_LOGSTREAM_FATAL(AwsServiceClientT::GetAllocationTag(), "Service client "
+                    << AwsServiceClientT::GetServiceName() << " is shutting down while async tasks are present.");
+            }
+
             pClient->m_clientConfiguration.executor.reset();
             pClient->m_clientConfiguration.retryStrategy.reset();
+            pClient->m_endpointProvider.reset();
         }
 
         /**
@@ -124,7 +136,7 @@ namespace Client
                          const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             const AwsServiceClientT* clientThis = static_cast<const AwsServiceClientT*>(this);
-            Aws::Client::MakeAsyncOperation(operationFunc, clientThis, request, handler, context, clientThis->m_executor.get());
+            Aws::Client::MakeAsyncOperation(operationFunc, clientThis, request, handler, context, clientThis->m_clientConfiguration.executor.get());
         }
 
         /**
@@ -139,7 +151,7 @@ namespace Client
                          const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             const AwsServiceClientT* clientThis = static_cast<const AwsServiceClientT*>(this);
-            Aws::Client::MakeAsyncStreamingOperation(operationFunc, clientThis, request, handler, context, clientThis->m_executor.get());
+            Aws::Client::MakeAsyncStreamingOperation(operationFunc, clientThis, request, handler, context, clientThis->m_clientConfiguration.executor.get());
         }
 
         /**
@@ -152,7 +164,7 @@ namespace Client
                          const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             const AwsServiceClientT* clientThis = static_cast<const AwsServiceClientT*>(this);
-            Aws::Client::MakeAsyncOperation(operationFunc, clientThis, handler, context, clientThis->m_executor.get());
+            Aws::Client::MakeAsyncOperation(operationFunc, clientThis, handler, context, clientThis->m_clientConfiguration.executor.get());
         }
 
         /**
@@ -165,7 +177,7 @@ namespace Client
             -> std::future<decltype((static_cast<const AwsServiceClientT*>(nullptr)->*operationFunc)(request))>
         {
             const AwsServiceClientT* clientThis = static_cast<const AwsServiceClientT*>(this);
-            return Aws::Client::MakeCallableOperation(AwsServiceClientT::ALLOCATION_TAG, operationFunc, clientThis, request, clientThis->m_executor.get());
+            return Aws::Client::MakeCallableOperation(AwsServiceClientT::GetAllocationTag(), operationFunc, clientThis, request, clientThis->m_clientConfiguration.executor.get());
         }
 
         /**
@@ -178,7 +190,7 @@ namespace Client
             -> std::future<decltype((static_cast<const AwsServiceClientT*>(nullptr)->*operationFunc)(request))>
         {
             const AwsServiceClientT* clientThis = static_cast<const AwsServiceClientT*>(this);
-            return Aws::Client::MakeCallableStreamingOperation(AwsServiceClientT::ALLOCATION_TAG, operationFunc, clientThis, request, clientThis->m_executor.get());
+            return Aws::Client::MakeCallableStreamingOperation(AwsServiceClientT::GetAllocationTag(), operationFunc, clientThis, request, clientThis->m_clientConfiguration.executor.get());
         }
 
         /**
@@ -191,9 +203,12 @@ namespace Client
             -> std::future<decltype((static_cast<const AwsServiceClientT*>(nullptr)->*operationFunc)())>
         {
             const AwsServiceClientT* clientThis = static_cast<const AwsServiceClientT*>(this);
-            return Aws::Client::MakeCallableOperation(AwsServiceClientT::ALLOCATION_TAG, operationFunc, clientThis, clientThis->m_executor.get());
+            return Aws::Client::MakeCallableOperation(AwsServiceClientT::GetAllocationTag(), operationFunc, clientThis, clientThis->m_clientConfiguration.executor.get());
         }
     protected:
+        template <typename OutcomeT, typename ClientT, typename AWSEndpointT, typename RequestT, typename HandlerT>
+        friend class BidirectionalEventStreamingTask; // allow BidirectionalEventStreamingTask to access m_isInitialized
+
         std::atomic<bool> m_isInitialized;
         mutable std::atomic<size_t> m_operationsProcessed;
         mutable std::condition_variable m_shutdownSignal;

@@ -34,189 +34,57 @@ namespace Model
   class AssessmentTemplateFilter
   {
   public:
-    AWS_INSPECTOR_API AssessmentTemplateFilter();
+    AWS_INSPECTOR_API AssessmentTemplateFilter() = default;
     AWS_INSPECTOR_API AssessmentTemplateFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API AssessmentTemplateFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>For a record to match a filter, an explicit value or a string that contains a
      * wildcard that is specified for this data type property must match the value of
      * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
      * type.</p>
      */
-    inline const Aws::String& GetNamePattern() const{ return m_namePattern; }
-
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
+    inline const Aws::String& GetNamePattern() const { return m_namePattern; }
     inline bool NamePatternHasBeenSet() const { return m_namePatternHasBeenSet; }
+    template<typename NamePatternT = Aws::String>
+    void SetNamePattern(NamePatternT&& value) { m_namePatternHasBeenSet = true; m_namePattern = std::forward<NamePatternT>(value); }
+    template<typename NamePatternT = Aws::String>
+    AssessmentTemplateFilter& WithNamePattern(NamePatternT&& value) { SetNamePattern(std::forward<NamePatternT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
-    inline void SetNamePattern(const Aws::String& value) { m_namePatternHasBeenSet = true; m_namePattern = value; }
-
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
-    inline void SetNamePattern(Aws::String&& value) { m_namePatternHasBeenSet = true; m_namePattern = std::move(value); }
-
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
-    inline void SetNamePattern(const char* value) { m_namePatternHasBeenSet = true; m_namePattern.assign(value); }
-
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
-    inline AssessmentTemplateFilter& WithNamePattern(const Aws::String& value) { SetNamePattern(value); return *this;}
-
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
-    inline AssessmentTemplateFilter& WithNamePattern(Aws::String&& value) { SetNamePattern(std::move(value)); return *this;}
-
-    /**
-     * <p>For a record to match a filter, an explicit value or a string that contains a
-     * wildcard that is specified for this data type property must match the value of
-     * the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data
-     * type.</p>
-     */
-    inline AssessmentTemplateFilter& WithNamePattern(const char* value) { SetNamePattern(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For a record to match a filter, the value specified for this data type
      * property must inclusively match any value between the specified minimum and
      * maximum values of the <b>durationInSeconds</b> property of the
      * <a>AssessmentTemplate</a> data type.</p>
      */
-    inline const DurationRange& GetDurationRange() const{ return m_durationRange; }
-
-    /**
-     * <p>For a record to match a filter, the value specified for this data type
-     * property must inclusively match any value between the specified minimum and
-     * maximum values of the <b>durationInSeconds</b> property of the
-     * <a>AssessmentTemplate</a> data type.</p>
-     */
+    inline const DurationRange& GetDurationRange() const { return m_durationRange; }
     inline bool DurationRangeHasBeenSet() const { return m_durationRangeHasBeenSet; }
+    template<typename DurationRangeT = DurationRange>
+    void SetDurationRange(DurationRangeT&& value) { m_durationRangeHasBeenSet = true; m_durationRange = std::forward<DurationRangeT>(value); }
+    template<typename DurationRangeT = DurationRange>
+    AssessmentTemplateFilter& WithDurationRange(DurationRangeT&& value) { SetDurationRange(std::forward<DurationRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For a record to match a filter, the value specified for this data type
-     * property must inclusively match any value between the specified minimum and
-     * maximum values of the <b>durationInSeconds</b> property of the
-     * <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline void SetDurationRange(const DurationRange& value) { m_durationRangeHasBeenSet = true; m_durationRange = value; }
-
-    /**
-     * <p>For a record to match a filter, the value specified for this data type
-     * property must inclusively match any value between the specified minimum and
-     * maximum values of the <b>durationInSeconds</b> property of the
-     * <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline void SetDurationRange(DurationRange&& value) { m_durationRangeHasBeenSet = true; m_durationRange = std::move(value); }
-
-    /**
-     * <p>For a record to match a filter, the value specified for this data type
-     * property must inclusively match any value between the specified minimum and
-     * maximum values of the <b>durationInSeconds</b> property of the
-     * <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& WithDurationRange(const DurationRange& value) { SetDurationRange(value); return *this;}
-
-    /**
-     * <p>For a record to match a filter, the value specified for this data type
-     * property must inclusively match any value between the specified minimum and
-     * maximum values of the <b>durationInSeconds</b> property of the
-     * <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& WithDurationRange(DurationRange&& value) { SetDurationRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>For a record to match a filter, the values that are specified for this data
      * type property must be contained in the list of values of the
      * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRulesPackageArns() const{ return m_rulesPackageArns; }
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRulesPackageArns() const { return m_rulesPackageArns; }
     inline bool RulesPackageArnsHasBeenSet() const { return m_rulesPackageArnsHasBeenSet; }
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline void SetRulesPackageArns(const Aws::Vector<Aws::String>& value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns = value; }
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline void SetRulesPackageArns(Aws::Vector<Aws::String>&& value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns = std::move(value); }
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& WithRulesPackageArns(const Aws::Vector<Aws::String>& value) { SetRulesPackageArns(value); return *this;}
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& WithRulesPackageArns(Aws::Vector<Aws::String>&& value) { SetRulesPackageArns(std::move(value)); return *this;}
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& AddRulesPackageArns(const Aws::String& value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns.push_back(value); return *this; }
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& AddRulesPackageArns(Aws::String&& value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>For a record to match a filter, the values that are specified for this data
-     * type property must be contained in the list of values of the
-     * <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-     */
-    inline AssessmentTemplateFilter& AddRulesPackageArns(const char* value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns.push_back(value); return *this; }
-
+    template<typename RulesPackageArnsT = Aws::Vector<Aws::String>>
+    void SetRulesPackageArns(RulesPackageArnsT&& value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns = std::forward<RulesPackageArnsT>(value); }
+    template<typename RulesPackageArnsT = Aws::Vector<Aws::String>>
+    AssessmentTemplateFilter& WithRulesPackageArns(RulesPackageArnsT&& value) { SetRulesPackageArns(std::forward<RulesPackageArnsT>(value)); return *this;}
+    template<typename RulesPackageArnsT = Aws::String>
+    AssessmentTemplateFilter& AddRulesPackageArns(RulesPackageArnsT&& value) { m_rulesPackageArnsHasBeenSet = true; m_rulesPackageArns.emplace_back(std::forward<RulesPackageArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_namePattern;

@@ -18,33 +18,7 @@ namespace BedrockAgent
 namespace Model
 {
 
-DataSource::DataSource() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dataSourceConfigurationHasBeenSet(false),
-    m_serverSideEncryptionConfigurationHasBeenSet(false),
-    m_vectorIngestionConfigurationHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
-{
-}
-
-DataSource::DataSource(JsonView jsonValue) : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dataSourceConfigurationHasBeenSet(false),
-    m_serverSideEncryptionConfigurationHasBeenSet(false),
-    m_vectorIngestionConfigurationHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
+DataSource::DataSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,73 +28,67 @@ DataSource& DataSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("knowledgeBaseId"))
   {
     m_knowledgeBaseId = jsonValue.GetString("knowledgeBaseId");
-
     m_knowledgeBaseIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataSourceId"))
   {
     m_dataSourceId = jsonValue.GetString("dataSourceId");
-
     m_dataSourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = DataSourceStatusMapper::GetDataSourceStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataSourceConfiguration"))
   {
     m_dataSourceConfiguration = jsonValue.GetObject("dataSourceConfiguration");
-
     m_dataSourceConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serverSideEncryptionConfiguration"))
   {
     m_serverSideEncryptionConfiguration = jsonValue.GetObject("serverSideEncryptionConfiguration");
-
     m_serverSideEncryptionConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vectorIngestionConfiguration"))
   {
     m_vectorIngestionConfiguration = jsonValue.GetObject("vectorIngestionConfiguration");
-
     m_vectorIngestionConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("dataDeletionPolicy"))
+  {
+    m_dataDeletionPolicy = DataDeletionPolicyMapper::GetDataDeletionPolicyForName(jsonValue.GetString("dataDeletionPolicy"));
+    m_dataDeletionPolicyHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetString("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updatedAt"))
   {
     m_updatedAt = jsonValue.GetString("updatedAt");
-
     m_updatedAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("failureReasons"))
+  {
+    Aws::Utils::Array<JsonView> failureReasonsJsonList = jsonValue.GetArray("failureReasons");
+    for(unsigned failureReasonsIndex = 0; failureReasonsIndex < failureReasonsJsonList.GetLength(); ++failureReasonsIndex)
+    {
+      m_failureReasons.push_back(failureReasonsJsonList[failureReasonsIndex].AsString());
+    }
+    m_failureReasonsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -175,6 +143,11 @@ JsonValue DataSource::Jsonize() const
 
   }
 
+  if(m_dataDeletionPolicyHasBeenSet)
+  {
+   payload.WithString("dataDeletionPolicy", DataDeletionPolicyMapper::GetNameForDataDeletionPolicy(m_dataDeletionPolicy));
+  }
+
   if(m_createdAtHasBeenSet)
   {
    payload.WithString("createdAt", m_createdAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
@@ -183,6 +156,17 @@ JsonValue DataSource::Jsonize() const
   if(m_updatedAtHasBeenSet)
   {
    payload.WithString("updatedAt", m_updatedAt.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_failureReasonsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> failureReasonsJsonList(m_failureReasons.size());
+   for(unsigned failureReasonsIndex = 0; failureReasonsIndex < failureReasonsJsonList.GetLength(); ++failureReasonsIndex)
+   {
+     failureReasonsJsonList[failureReasonsIndex].AsString(m_failureReasons[failureReasonsIndex]);
+   }
+   payload.WithArray("failureReasons", std::move(failureReasonsJsonList));
+
   }
 
   return payload;

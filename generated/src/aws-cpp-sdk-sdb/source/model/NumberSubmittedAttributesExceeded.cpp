@@ -20,15 +20,7 @@ namespace SimpleDB
 namespace Model
 {
 
-NumberSubmittedAttributesExceeded::NumberSubmittedAttributesExceeded() : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
-{
-}
-
-NumberSubmittedAttributesExceeded::NumberSubmittedAttributesExceeded(const XmlNode& xmlNode) : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
+NumberSubmittedAttributesExceeded::NumberSubmittedAttributesExceeded(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

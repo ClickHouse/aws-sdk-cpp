@@ -12,21 +12,6 @@ using namespace Aws::OSIS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreatePipelineRequest::CreatePipelineRequest() : 
-    m_pipelineNameHasBeenSet(false),
-    m_minUnits(0),
-    m_minUnitsHasBeenSet(false),
-    m_maxUnits(0),
-    m_maxUnitsHasBeenSet(false),
-    m_pipelineConfigurationBodyHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_vpcOptionsHasBeenSet(false),
-    m_bufferOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreatePipelineRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -87,6 +72,12 @@ Aws::String CreatePipelineRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_pipelineRoleArnHasBeenSet)
+  {
+   payload.WithString("PipelineRoleArn", m_pipelineRoleArn);
 
   }
 

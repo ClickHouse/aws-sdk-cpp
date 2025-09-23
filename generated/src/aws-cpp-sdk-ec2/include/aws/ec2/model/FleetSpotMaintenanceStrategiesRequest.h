@@ -32,7 +32,7 @@ namespace Model
   class FleetSpotMaintenanceStrategiesRequest
   {
   public:
-    AWS_EC2_API FleetSpotMaintenanceStrategiesRequest();
+    AWS_EC2_API FleetSpotMaintenanceStrategiesRequest() = default;
     AWS_EC2_API FleetSpotMaintenanceStrategiesRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API FleetSpotMaintenanceStrategiesRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,42 +40,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The strategy to use when Amazon EC2 emits a signal that your Spot Instance is
      * at an elevated risk of being interrupted.</p>
      */
-    inline const FleetSpotCapacityRebalanceRequest& GetCapacityRebalance() const{ return m_capacityRebalance; }
-
-    /**
-     * <p>The strategy to use when Amazon EC2 emits a signal that your Spot Instance is
-     * at an elevated risk of being interrupted.</p>
-     */
+    inline const FleetSpotCapacityRebalanceRequest& GetCapacityRebalance() const { return m_capacityRebalance; }
     inline bool CapacityRebalanceHasBeenSet() const { return m_capacityRebalanceHasBeenSet; }
-
-    /**
-     * <p>The strategy to use when Amazon EC2 emits a signal that your Spot Instance is
-     * at an elevated risk of being interrupted.</p>
-     */
-    inline void SetCapacityRebalance(const FleetSpotCapacityRebalanceRequest& value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = value; }
-
-    /**
-     * <p>The strategy to use when Amazon EC2 emits a signal that your Spot Instance is
-     * at an elevated risk of being interrupted.</p>
-     */
-    inline void SetCapacityRebalance(FleetSpotCapacityRebalanceRequest&& value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = std::move(value); }
-
-    /**
-     * <p>The strategy to use when Amazon EC2 emits a signal that your Spot Instance is
-     * at an elevated risk of being interrupted.</p>
-     */
-    inline FleetSpotMaintenanceStrategiesRequest& WithCapacityRebalance(const FleetSpotCapacityRebalanceRequest& value) { SetCapacityRebalance(value); return *this;}
-
-    /**
-     * <p>The strategy to use when Amazon EC2 emits a signal that your Spot Instance is
-     * at an elevated risk of being interrupted.</p>
-     */
-    inline FleetSpotMaintenanceStrategiesRequest& WithCapacityRebalance(FleetSpotCapacityRebalanceRequest&& value) { SetCapacityRebalance(std::move(value)); return *this;}
-
+    template<typename CapacityRebalanceT = FleetSpotCapacityRebalanceRequest>
+    void SetCapacityRebalance(CapacityRebalanceT&& value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = std::forward<CapacityRebalanceT>(value); }
+    template<typename CapacityRebalanceT = FleetSpotCapacityRebalanceRequest>
+    FleetSpotMaintenanceStrategiesRequest& WithCapacityRebalance(CapacityRebalanceT&& value) { SetCapacityRebalance(std::forward<CapacityRebalanceT>(value)); return *this;}
+    ///@}
   private:
 
     FleetSpotCapacityRebalanceRequest m_capacityRebalance;

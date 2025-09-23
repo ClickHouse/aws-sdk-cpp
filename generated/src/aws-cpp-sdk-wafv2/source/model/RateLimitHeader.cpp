@@ -18,15 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-RateLimitHeader::RateLimitHeader() : 
-    m_nameHasBeenSet(false),
-    m_textTransformationsHasBeenSet(false)
-{
-}
-
-RateLimitHeader::RateLimitHeader(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_textTransformationsHasBeenSet(false)
+RateLimitHeader::RateLimitHeader(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RateLimitHeader& RateLimitHeader::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TextTransformations"))
   {
     Aws::Utils::Array<JsonView> textTransformationsJsonList = jsonValue.GetArray("TextTransformations");
@@ -49,7 +39,6 @@ RateLimitHeader& RateLimitHeader::operator =(JsonView jsonValue)
     }
     m_textTransformationsHasBeenSet = true;
   }
-
   return *this;
 }
 

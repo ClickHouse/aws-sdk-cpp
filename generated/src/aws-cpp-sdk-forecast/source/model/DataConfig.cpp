@@ -18,17 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-DataConfig::DataConfig() : 
-    m_datasetGroupArnHasBeenSet(false),
-    m_attributeConfigsHasBeenSet(false),
-    m_additionalDatasetsHasBeenSet(false)
-{
-}
-
-DataConfig::DataConfig(JsonView jsonValue) : 
-    m_datasetGroupArnHasBeenSet(false),
-    m_attributeConfigsHasBeenSet(false),
-    m_additionalDatasetsHasBeenSet(false)
+DataConfig::DataConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ DataConfig& DataConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DatasetGroupArn"))
   {
     m_datasetGroupArn = jsonValue.GetString("DatasetGroupArn");
-
     m_datasetGroupArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttributeConfigs"))
   {
     Aws::Utils::Array<JsonView> attributeConfigsJsonList = jsonValue.GetArray("AttributeConfigs");
@@ -51,7 +39,6 @@ DataConfig& DataConfig::operator =(JsonView jsonValue)
     }
     m_attributeConfigsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalDatasets"))
   {
     Aws::Utils::Array<JsonView> additionalDatasetsJsonList = jsonValue.GetArray("AdditionalDatasets");
@@ -61,7 +48,6 @@ DataConfig& DataConfig::operator =(JsonView jsonValue)
     }
     m_additionalDatasetsHasBeenSet = true;
   }
-
   return *this;
 }
 

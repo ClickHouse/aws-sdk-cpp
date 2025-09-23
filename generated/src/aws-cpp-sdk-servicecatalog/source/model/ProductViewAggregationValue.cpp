@@ -18,17 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-ProductViewAggregationValue::ProductViewAggregationValue() : 
-    m_valueHasBeenSet(false),
-    m_approximateCount(0),
-    m_approximateCountHasBeenSet(false)
-{
-}
-
-ProductViewAggregationValue::ProductViewAggregationValue(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_approximateCount(0),
-    m_approximateCountHasBeenSet(false)
+ProductViewAggregationValue::ProductViewAggregationValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ProductViewAggregationValue& ProductViewAggregationValue::operator =(JsonView js
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApproximateCount"))
   {
     m_approximateCount = jsonValue.GetInteger("ApproximateCount");
-
     m_approximateCountHasBeenSet = true;
   }
-
   return *this;
 }
 

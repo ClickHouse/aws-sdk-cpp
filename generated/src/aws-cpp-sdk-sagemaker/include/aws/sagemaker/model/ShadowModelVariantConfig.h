@@ -32,83 +32,40 @@ namespace Model
   class ShadowModelVariantConfig
   {
   public:
-    AWS_SAGEMAKER_API ShadowModelVariantConfig();
+    AWS_SAGEMAKER_API ShadowModelVariantConfig() = default;
     AWS_SAGEMAKER_API ShadowModelVariantConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ShadowModelVariantConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the shadow variant.</p>
      */
-    inline const Aws::String& GetShadowModelVariantName() const{ return m_shadowModelVariantName; }
-
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
+    inline const Aws::String& GetShadowModelVariantName() const { return m_shadowModelVariantName; }
     inline bool ShadowModelVariantNameHasBeenSet() const { return m_shadowModelVariantNameHasBeenSet; }
+    template<typename ShadowModelVariantNameT = Aws::String>
+    void SetShadowModelVariantName(ShadowModelVariantNameT&& value) { m_shadowModelVariantNameHasBeenSet = true; m_shadowModelVariantName = std::forward<ShadowModelVariantNameT>(value); }
+    template<typename ShadowModelVariantNameT = Aws::String>
+    ShadowModelVariantConfig& WithShadowModelVariantName(ShadowModelVariantNameT&& value) { SetShadowModelVariantName(std::forward<ShadowModelVariantNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
-    inline void SetShadowModelVariantName(const Aws::String& value) { m_shadowModelVariantNameHasBeenSet = true; m_shadowModelVariantName = value; }
-
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
-    inline void SetShadowModelVariantName(Aws::String&& value) { m_shadowModelVariantNameHasBeenSet = true; m_shadowModelVariantName = std::move(value); }
-
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
-    inline void SetShadowModelVariantName(const char* value) { m_shadowModelVariantNameHasBeenSet = true; m_shadowModelVariantName.assign(value); }
-
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
-    inline ShadowModelVariantConfig& WithShadowModelVariantName(const Aws::String& value) { SetShadowModelVariantName(value); return *this;}
-
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
-    inline ShadowModelVariantConfig& WithShadowModelVariantName(Aws::String&& value) { SetShadowModelVariantName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the shadow variant.</p>
-     */
-    inline ShadowModelVariantConfig& WithShadowModelVariantName(const char* value) { SetShadowModelVariantName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The percentage of inference requests that Amazon SageMaker replicates from
      * the production variant to the shadow variant. </p>
      */
-    inline int GetSamplingPercentage() const{ return m_samplingPercentage; }
-
-    /**
-     * <p> The percentage of inference requests that Amazon SageMaker replicates from
-     * the production variant to the shadow variant. </p>
-     */
+    inline int GetSamplingPercentage() const { return m_samplingPercentage; }
     inline bool SamplingPercentageHasBeenSet() const { return m_samplingPercentageHasBeenSet; }
-
-    /**
-     * <p> The percentage of inference requests that Amazon SageMaker replicates from
-     * the production variant to the shadow variant. </p>
-     */
     inline void SetSamplingPercentage(int value) { m_samplingPercentageHasBeenSet = true; m_samplingPercentage = value; }
-
-    /**
-     * <p> The percentage of inference requests that Amazon SageMaker replicates from
-     * the production variant to the shadow variant. </p>
-     */
     inline ShadowModelVariantConfig& WithSamplingPercentage(int value) { SetSamplingPercentage(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_shadowModelVariantName;
     bool m_shadowModelVariantNameHasBeenSet = false;
 
-    int m_samplingPercentage;
+    int m_samplingPercentage{0};
     bool m_samplingPercentageHasBeenSet = false;
   };
 

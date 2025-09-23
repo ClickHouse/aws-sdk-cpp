@@ -18,13 +18,7 @@ namespace EKS
 namespace Model
 {
 
-AddonHealth::AddonHealth() : 
-    m_issuesHasBeenSet(false)
-{
-}
-
-AddonHealth::AddonHealth(JsonView jsonValue) : 
-    m_issuesHasBeenSet(false)
+AddonHealth::AddonHealth(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AddonHealth& AddonHealth::operator =(JsonView jsonValue)
     }
     m_issuesHasBeenSet = true;
   }
-
   return *this;
 }
 

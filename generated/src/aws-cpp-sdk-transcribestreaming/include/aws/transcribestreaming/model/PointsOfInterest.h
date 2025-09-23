@@ -32,60 +32,26 @@ namespace Model
   class PointsOfInterest
   {
   public:
-    AWS_TRANSCRIBESTREAMINGSERVICE_API PointsOfInterest();
+    AWS_TRANSCRIBESTREAMINGSERVICE_API PointsOfInterest() = default;
     AWS_TRANSCRIBESTREAMINGSERVICE_API PointsOfInterest(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API PointsOfInterest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains the timestamp ranges (start time through end time) of matched
      * categories and rules.</p>
      */
-    inline const Aws::Vector<TimestampRange>& GetTimestampRanges() const{ return m_timestampRanges; }
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
+    inline const Aws::Vector<TimestampRange>& GetTimestampRanges() const { return m_timestampRanges; }
     inline bool TimestampRangesHasBeenSet() const { return m_timestampRangesHasBeenSet; }
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
-    inline void SetTimestampRanges(const Aws::Vector<TimestampRange>& value) { m_timestampRangesHasBeenSet = true; m_timestampRanges = value; }
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
-    inline void SetTimestampRanges(Aws::Vector<TimestampRange>&& value) { m_timestampRangesHasBeenSet = true; m_timestampRanges = std::move(value); }
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
-    inline PointsOfInterest& WithTimestampRanges(const Aws::Vector<TimestampRange>& value) { SetTimestampRanges(value); return *this;}
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
-    inline PointsOfInterest& WithTimestampRanges(Aws::Vector<TimestampRange>&& value) { SetTimestampRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
-    inline PointsOfInterest& AddTimestampRanges(const TimestampRange& value) { m_timestampRangesHasBeenSet = true; m_timestampRanges.push_back(value); return *this; }
-
-    /**
-     * <p>Contains the timestamp ranges (start time through end time) of matched
-     * categories and rules.</p>
-     */
-    inline PointsOfInterest& AddTimestampRanges(TimestampRange&& value) { m_timestampRangesHasBeenSet = true; m_timestampRanges.push_back(std::move(value)); return *this; }
-
+    template<typename TimestampRangesT = Aws::Vector<TimestampRange>>
+    void SetTimestampRanges(TimestampRangesT&& value) { m_timestampRangesHasBeenSet = true; m_timestampRanges = std::forward<TimestampRangesT>(value); }
+    template<typename TimestampRangesT = Aws::Vector<TimestampRange>>
+    PointsOfInterest& WithTimestampRanges(TimestampRangesT&& value) { SetTimestampRanges(std::forward<TimestampRangesT>(value)); return *this;}
+    template<typename TimestampRangesT = TimestampRange>
+    PointsOfInterest& AddTimestampRanges(TimestampRangesT&& value) { m_timestampRangesHasBeenSet = true; m_timestampRanges.emplace_back(std::forward<TimestampRangesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<TimestampRange> m_timestampRanges;

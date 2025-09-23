@@ -5,11 +5,11 @@
 
 #pragma once
 #include <aws/ivs-realtime/Ivsrealtime_EXPORTS.h>
-#include <aws/ivs-realtime/model/DestinationConfiguration.h>
-#include <aws/ivs-realtime/model/DestinationDetail.h>
-#include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ivs-realtime/model/DestinationState.h>
+#include <aws/core/utils/DateTime.h>
+#include <aws/ivs-realtime/model/DestinationConfiguration.h>
+#include <aws/ivs-realtime/model/DestinationDetail.h>
 #include <utility>
 
 namespace Aws
@@ -35,238 +35,102 @@ namespace Model
   class Destination
   {
   public:
-    AWS_IVSREALTIME_API Destination();
+    AWS_IVSREALTIME_API Destination() = default;
     AWS_IVSREALTIME_API Destination(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVSREALTIME_API Destination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVSREALTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Configuration used to create this destination.</p>
-     */
-    inline const DestinationConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>Configuration used to create this destination.</p>
-     */
-    inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
-
-    /**
-     * <p>Configuration used to create this destination.</p>
-     */
-    inline void SetConfiguration(const DestinationConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>Configuration used to create this destination.</p>
-     */
-    inline void SetConfiguration(DestinationConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>Configuration used to create this destination.</p>
-     */
-    inline Destination& WithConfiguration(const DestinationConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration used to create this destination.</p>
-     */
-    inline Destination& WithConfiguration(DestinationConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Optional details regarding the status of the destination.</p>
-     */
-    inline const DestinationDetail& GetDetail() const{ return m_detail; }
-
-    /**
-     * <p>Optional details regarding the status of the destination.</p>
-     */
-    inline bool DetailHasBeenSet() const { return m_detailHasBeenSet; }
-
-    /**
-     * <p>Optional details regarding the status of the destination.</p>
-     */
-    inline void SetDetail(const DestinationDetail& value) { m_detailHasBeenSet = true; m_detail = value; }
-
-    /**
-     * <p>Optional details regarding the status of the destination.</p>
-     */
-    inline void SetDetail(DestinationDetail&& value) { m_detailHasBeenSet = true; m_detail = std::move(value); }
-
-    /**
-     * <p>Optional details regarding the status of the destination.</p>
-     */
-    inline Destination& WithDetail(const DestinationDetail& value) { SetDetail(value); return *this;}
-
-    /**
-     * <p>Optional details regarding the status of the destination.</p>
-     */
-    inline Destination& WithDetail(DestinationDetail&& value) { SetDetail(std::move(value)); return *this;}
-
-
-    /**
-     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
-     * this is returned as a string</i>.</p>
-     */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
-     * this is returned as a string</i>.</p>
-     */
-    inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
-
-    /**
-     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
-     * this is returned as a string</i>.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
-     * this is returned as a string</i>.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
-     * this is returned as a string</i>.</p>
-     */
-    inline Destination& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
-     * this is returned as a string</i>.</p>
-     */
-    inline Destination& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Unique identifier for this destination, assigned by IVS.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Destination& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
-    inline Destination& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
-    inline Destination& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique identifier for this destination, assigned by IVS.</p>
-     */
-    inline Destination& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
-     * that this is returned as a string</i>.</p>
-     */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
-     * that this is returned as a string</i>.</p>
-     */
-    inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
-
-    /**
-     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
-     * that this is returned as a string</i>.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
-     * that this is returned as a string</i>.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
-     * that this is returned as a string</i>.</p>
-     */
-    inline Destination& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
-     * that this is returned as a string</i>.</p>
-     */
-    inline Destination& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>State of the Composition Destination.</p>
      */
-    inline const DestinationState& GetState() const{ return m_state; }
-
-    /**
-     * <p>State of the Composition Destination.</p>
-     */
+    inline DestinationState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(DestinationState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline Destination& WithState(DestinationState value) { SetState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>State of the Composition Destination.</p>
+     * <p>UTC time of the destination start. This is an ISO 8601 timestamp; <i>note
+     * that this is returned as a string</i>.</p>
      */
-    inline void SetState(const DestinationState& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
+    inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    Destination& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>State of the Composition Destination.</p>
+     * <p>UTC time of the destination end. This is an ISO 8601 timestamp; <i>note that
+     * this is returned as a string</i>.</p>
      */
-    inline void SetState(DestinationState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
+    inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    Destination& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>State of the Composition Destination.</p>
+     * <p>Configuration used to create this destination.</p>
      */
-    inline Destination& WithState(const DestinationState& value) { SetState(value); return *this;}
+    inline const DestinationConfiguration& GetConfiguration() const { return m_configuration; }
+    inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = DestinationConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = DestinationConfiguration>
+    Destination& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>State of the Composition Destination.</p>
+     * <p>Optional details regarding the status of the destination.</p>
      */
-    inline Destination& WithState(DestinationState&& value) { SetState(std::move(value)); return *this;}
-
+    inline const DestinationDetail& GetDetail() const { return m_detail; }
+    inline bool DetailHasBeenSet() const { return m_detailHasBeenSet; }
+    template<typename DetailT = DestinationDetail>
+    void SetDetail(DetailT&& value) { m_detailHasBeenSet = true; m_detail = std::forward<DetailT>(value); }
+    template<typename DetailT = DestinationDetail>
+    Destination& WithDetail(DetailT&& value) { SetDetail(std::forward<DetailT>(value)); return *this;}
+    ///@}
   private:
+
+    Aws::String m_id;
+    bool m_idHasBeenSet = false;
+
+    DestinationState m_state{DestinationState::NOT_SET};
+    bool m_stateHasBeenSet = false;
+
+    Aws::Utils::DateTime m_startTime{};
+    bool m_startTimeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_endTime{};
+    bool m_endTimeHasBeenSet = false;
 
     DestinationConfiguration m_configuration;
     bool m_configurationHasBeenSet = false;
 
     DestinationDetail m_detail;
     bool m_detailHasBeenSet = false;
-
-    Aws::Utils::DateTime m_endTime;
-    bool m_endTimeHasBeenSet = false;
-
-    Aws::String m_id;
-    bool m_idHasBeenSet = false;
-
-    Aws::Utils::DateTime m_startTime;
-    bool m_startTimeHasBeenSet = false;
-
-    DestinationState m_state;
-    bool m_stateHasBeenSet = false;
   };
 
 } // namespace Model

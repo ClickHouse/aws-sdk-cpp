@@ -115,6 +115,11 @@ namespace Aws
         static const int Zayd_HASH = HashingUtils::HashString("Zayd");
         static const int Danielle_HASH = HashingUtils::HashString("Danielle");
         static const int Gregory_HASH = HashingUtils::HashString("Gregory");
+        static const int Burcu_HASH = HashingUtils::HashString("Burcu");
+        static const int Jitka_HASH = HashingUtils::HashString("Jitka");
+        static const int Sabrina_HASH = HashingUtils::HashString("Sabrina");
+        static const int Jasmine_HASH = HashingUtils::HashString("Jasmine");
+        static const int Jihye_HASH = HashingUtils::HashString("Jihye");
 
 
         VoiceId GetVoiceIdForName(const Aws::String& name)
@@ -500,6 +505,26 @@ namespace Aws
           {
             return VoiceId::Gregory;
           }
+          else if (hashCode == Burcu_HASH)
+          {
+            return VoiceId::Burcu;
+          }
+          else if (hashCode == Jitka_HASH)
+          {
+            return VoiceId::Jitka;
+          }
+          else if (hashCode == Sabrina_HASH)
+          {
+            return VoiceId::Sabrina;
+          }
+          else if (hashCode == Jasmine_HASH)
+          {
+            return VoiceId::Jasmine;
+          }
+          else if (hashCode == Jihye_HASH)
+          {
+            return VoiceId::Jihye;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -706,6 +731,16 @@ namespace Aws
             return "Danielle";
           case VoiceId::Gregory:
             return "Gregory";
+          case VoiceId::Burcu:
+            return "Burcu";
+          case VoiceId::Jitka:
+            return "Jitka";
+          case VoiceId::Sabrina:
+            return "Sabrina";
+          case VoiceId::Jasmine:
+            return "Jasmine";
+          case VoiceId::Jihye:
+            return "Jihye";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

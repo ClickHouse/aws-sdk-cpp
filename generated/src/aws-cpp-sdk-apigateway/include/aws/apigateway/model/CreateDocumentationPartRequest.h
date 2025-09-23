@@ -26,7 +26,7 @@ namespace Model
   class CreateDocumentationPartRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API CreateDocumentationPartRequest();
+    AWS_APIGATEWAY_API CreateDocumentationPartRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,140 +37,44 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    CreateDocumentationPartRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline CreateDocumentationPartRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline CreateDocumentationPartRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline CreateDocumentationPartRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the targeted API entity of the to-be-created documentation
      * part.</p>
      */
-    inline const DocumentationPartLocation& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>The location of the targeted API entity of the to-be-created documentation
-     * part.</p>
-     */
+    inline const DocumentationPartLocation& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = DocumentationPartLocation>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = DocumentationPartLocation>
+    CreateDocumentationPartRequest& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the targeted API entity of the to-be-created documentation
-     * part.</p>
-     */
-    inline void SetLocation(const DocumentationPartLocation& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>The location of the targeted API entity of the to-be-created documentation
-     * part.</p>
-     */
-    inline void SetLocation(DocumentationPartLocation&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>The location of the targeted API entity of the to-be-created documentation
-     * part.</p>
-     */
-    inline CreateDocumentationPartRequest& WithLocation(const DocumentationPartLocation& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The location of the targeted API entity of the to-be-created documentation
-     * part.</p>
-     */
-    inline CreateDocumentationPartRequest& WithLocation(DocumentationPartLocation&& value) { SetLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The new documentation content map of the targeted API entity. Enclosed
      * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
      * be exported and, hence, published.</p>
      */
-    inline const Aws::String& GetProperties() const{ return m_properties; }
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
+    inline const Aws::String& GetProperties() const { return m_properties; }
     inline bool PropertiesHasBeenSet() const { return m_propertiesHasBeenSet; }
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
-    inline void SetProperties(const Aws::String& value) { m_propertiesHasBeenSet = true; m_properties = value; }
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
-    inline void SetProperties(Aws::String&& value) { m_propertiesHasBeenSet = true; m_properties = std::move(value); }
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
-    inline void SetProperties(const char* value) { m_propertiesHasBeenSet = true; m_properties.assign(value); }
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
-    inline CreateDocumentationPartRequest& WithProperties(const Aws::String& value) { SetProperties(value); return *this;}
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
-    inline CreateDocumentationPartRequest& WithProperties(Aws::String&& value) { SetProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>The new documentation content map of the targeted API entity. Enclosed
-     * key-value pairs are API-specific, but only OpenAPI-compliant key-value pairs can
-     * be exported and, hence, published.</p>
-     */
-    inline CreateDocumentationPartRequest& WithProperties(const char* value) { SetProperties(value); return *this;}
-
+    template<typename PropertiesT = Aws::String>
+    void SetProperties(PropertiesT&& value) { m_propertiesHasBeenSet = true; m_properties = std::forward<PropertiesT>(value); }
+    template<typename PropertiesT = Aws::String>
+    CreateDocumentationPartRequest& WithProperties(PropertiesT&& value) { SetProperties(std::forward<PropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restApiId;

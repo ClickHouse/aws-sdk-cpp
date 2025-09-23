@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-Font::Font() : 
-    m_fontFamilyHasBeenSet(false)
-{
-}
-
-Font::Font(JsonView jsonValue) : 
-    m_fontFamilyHasBeenSet(false)
+Font::Font(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Font& Font::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FontFamily"))
   {
     m_fontFamily = jsonValue.GetString("FontFamily");
-
     m_fontFamilyHasBeenSet = true;
   }
-
   return *this;
 }
 

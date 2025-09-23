@@ -32,224 +32,73 @@ namespace Model
   class LambdaFunctionInfo
   {
   public:
-    AWS_CODEDEPLOY_API LambdaFunctionInfo();
+    AWS_CODEDEPLOY_API LambdaFunctionInfo() = default;
     AWS_CODEDEPLOY_API LambdaFunctionInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API LambdaFunctionInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The name of a Lambda function. </p>
      */
-    inline const Aws::String& GetFunctionName() const{ return m_functionName; }
-
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
+    inline const Aws::String& GetFunctionName() const { return m_functionName; }
     inline bool FunctionNameHasBeenSet() const { return m_functionNameHasBeenSet; }
+    template<typename FunctionNameT = Aws::String>
+    void SetFunctionName(FunctionNameT&& value) { m_functionNameHasBeenSet = true; m_functionName = std::forward<FunctionNameT>(value); }
+    template<typename FunctionNameT = Aws::String>
+    LambdaFunctionInfo& WithFunctionName(FunctionNameT&& value) { SetFunctionName(std::forward<FunctionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
-    inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
-
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
-    inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
-
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
-    inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
-
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
-    inline LambdaFunctionInfo& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
-
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
-    inline LambdaFunctionInfo& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of a Lambda function. </p>
-     */
-    inline LambdaFunctionInfo& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The alias of a Lambda function. For more information, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
      * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
      */
-    inline const Aws::String& GetFunctionAlias() const{ return m_functionAlias; }
-
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
+    inline const Aws::String& GetFunctionAlias() const { return m_functionAlias; }
     inline bool FunctionAliasHasBeenSet() const { return m_functionAliasHasBeenSet; }
+    template<typename FunctionAliasT = Aws::String>
+    void SetFunctionAlias(FunctionAliasT&& value) { m_functionAliasHasBeenSet = true; m_functionAlias = std::forward<FunctionAliasT>(value); }
+    template<typename FunctionAliasT = Aws::String>
+    LambdaFunctionInfo& WithFunctionAlias(FunctionAliasT&& value) { SetFunctionAlias(std::forward<FunctionAliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
-    inline void SetFunctionAlias(const Aws::String& value) { m_functionAliasHasBeenSet = true; m_functionAlias = value; }
-
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
-    inline void SetFunctionAlias(Aws::String&& value) { m_functionAliasHasBeenSet = true; m_functionAlias = std::move(value); }
-
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
-    inline void SetFunctionAlias(const char* value) { m_functionAliasHasBeenSet = true; m_functionAlias.assign(value); }
-
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
-    inline LambdaFunctionInfo& WithFunctionAlias(const Aws::String& value) { SetFunctionAlias(value); return *this;}
-
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
-    inline LambdaFunctionInfo& WithFunctionAlias(Aws::String&& value) { SetFunctionAlias(std::move(value)); return *this;}
-
-    /**
-     * <p> The alias of a Lambda function. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Lambda
-     * Function Aliases</a> in the <i>Lambda Developer Guide</i>.</p>
-     */
-    inline LambdaFunctionInfo& WithFunctionAlias(const char* value) { SetFunctionAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The version of a Lambda function that production traffic points to. </p>
      */
-    inline const Aws::String& GetCurrentVersion() const{ return m_currentVersion; }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
+    inline const Aws::String& GetCurrentVersion() const { return m_currentVersion; }
     inline bool CurrentVersionHasBeenSet() const { return m_currentVersionHasBeenSet; }
+    template<typename CurrentVersionT = Aws::String>
+    void SetCurrentVersion(CurrentVersionT&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::forward<CurrentVersionT>(value); }
+    template<typename CurrentVersionT = Aws::String>
+    LambdaFunctionInfo& WithCurrentVersion(CurrentVersionT&& value) { SetCurrentVersion(std::forward<CurrentVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
-    inline void SetCurrentVersion(const Aws::String& value) { m_currentVersionHasBeenSet = true; m_currentVersion = value; }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
-    inline void SetCurrentVersion(Aws::String&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::move(value); }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
-    inline void SetCurrentVersion(const char* value) { m_currentVersionHasBeenSet = true; m_currentVersion.assign(value); }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
-    inline LambdaFunctionInfo& WithCurrentVersion(const Aws::String& value) { SetCurrentVersion(value); return *this;}
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
-    inline LambdaFunctionInfo& WithCurrentVersion(Aws::String&& value) { SetCurrentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to. </p>
-     */
-    inline LambdaFunctionInfo& WithCurrentVersion(const char* value) { SetCurrentVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The version of a Lambda function that production traffic points to after the
      * Lambda function is deployed. </p>
      */
-    inline const Aws::String& GetTargetVersion() const{ return m_targetVersion; }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
+    inline const Aws::String& GetTargetVersion() const { return m_targetVersion; }
     inline bool TargetVersionHasBeenSet() const { return m_targetVersionHasBeenSet; }
+    template<typename TargetVersionT = Aws::String>
+    void SetTargetVersion(TargetVersionT&& value) { m_targetVersionHasBeenSet = true; m_targetVersion = std::forward<TargetVersionT>(value); }
+    template<typename TargetVersionT = Aws::String>
+    LambdaFunctionInfo& WithTargetVersion(TargetVersionT&& value) { SetTargetVersion(std::forward<TargetVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
-    inline void SetTargetVersion(const Aws::String& value) { m_targetVersionHasBeenSet = true; m_targetVersion = value; }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
-    inline void SetTargetVersion(Aws::String&& value) { m_targetVersionHasBeenSet = true; m_targetVersion = std::move(value); }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
-    inline void SetTargetVersion(const char* value) { m_targetVersionHasBeenSet = true; m_targetVersion.assign(value); }
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
-    inline LambdaFunctionInfo& WithTargetVersion(const Aws::String& value) { SetTargetVersion(value); return *this;}
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
-    inline LambdaFunctionInfo& WithTargetVersion(Aws::String&& value) { SetTargetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p> The version of a Lambda function that production traffic points to after the
-     * Lambda function is deployed. </p>
-     */
-    inline LambdaFunctionInfo& WithTargetVersion(const char* value) { SetTargetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The percentage of production traffic that the target version of a Lambda
      * function receives. </p>
      */
-    inline double GetTargetVersionWeight() const{ return m_targetVersionWeight; }
-
-    /**
-     * <p> The percentage of production traffic that the target version of a Lambda
-     * function receives. </p>
-     */
+    inline double GetTargetVersionWeight() const { return m_targetVersionWeight; }
     inline bool TargetVersionWeightHasBeenSet() const { return m_targetVersionWeightHasBeenSet; }
-
-    /**
-     * <p> The percentage of production traffic that the target version of a Lambda
-     * function receives. </p>
-     */
     inline void SetTargetVersionWeight(double value) { m_targetVersionWeightHasBeenSet = true; m_targetVersionWeight = value; }
-
-    /**
-     * <p> The percentage of production traffic that the target version of a Lambda
-     * function receives. </p>
-     */
     inline LambdaFunctionInfo& WithTargetVersionWeight(double value) { SetTargetVersionWeight(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_functionName;
@@ -264,7 +113,7 @@ namespace Model
     Aws::String m_targetVersion;
     bool m_targetVersionHasBeenSet = false;
 
-    double m_targetVersionWeight;
+    double m_targetVersionWeight{0.0};
     bool m_targetVersionWeightHasBeenSet = false;
   };
 

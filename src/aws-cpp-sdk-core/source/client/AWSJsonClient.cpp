@@ -4,26 +4,13 @@
  */
 
 #include <aws/core/client/AWSJsonClient.h>
-#include <aws/core/AmazonWebServiceRequest.h>
-#include <aws/core/auth/AWSAuthSignerProvider.h>
 #include <aws/core/client/AWSError.h>
 #include <aws/core/client/AWSErrorMarshaller.h>
 #include <aws/core/client/ClientConfiguration.h>
 #include <aws/core/client/CoreErrors.h>
-#include <aws/core/client/RetryStrategy.h>
-#include <aws/core/http/HttpClient.h>
-#include <aws/core/http/HttpResponse.h>
-#include <aws/core/http/URI.h>
 #include <aws/core/utils/json/JsonSerializer.h>
-#include <aws/core/utils/Outcome.h>
-#include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/logging/LogMacros.h>
-#include <aws/core/utils/event/EventStream.h>
-#include <aws/core/utils/UUID.h>
-#include <aws/core/monitoring/MonitoringManager.h>
-
-#include <smithy/tracing/TracingUtils.h>
 
 #include <cassert>
 
@@ -51,35 +38,14 @@ AWSJsonClient::AWSJsonClient(const Aws::Client::ClientConfiguration& configurati
 {
 }
 
-JsonOutcome AWSJsonClient::MakeRequest(const Aws::AmazonWebServiceRequest& request,
-                                       const Aws::Endpoint::AWSEndpoint& endpoint,
-                                       Http::HttpMethod method /* = Http::HttpMethod::HTTP_POST */,
-                                       const char* signerName /* = Aws::Auth::NULL_SIGNER */,
-                                       const char* signerRegionOverride /* = nullptr */,
-                                       const char* signerServiceNameOverride /* = nullptr */) const
+AWSError<CoreErrors> AWSJsonClient::CreateParseError() const
 {
-    const Aws::Http::URI& uri = endpoint.GetURI();
-    if (endpoint.GetAttributes()) {
-        signerName = endpoint.GetAttributes()->authScheme.GetName().c_str();
-        if (endpoint.GetAttributes()->authScheme.GetSigningRegion()) {
-            signerRegionOverride = endpoint.GetAttributes()->authScheme.GetSigningRegion()->c_str();
-        }
-        if (endpoint.GetAttributes()->authScheme.GetSigningRegionSet()) {
-            signerRegionOverride = endpoint.GetAttributes()->authScheme.GetSigningRegionSet()->c_str();
-        }
-        if (endpoint.GetAttributes()->authScheme.GetSigningName()) {
-            signerServiceNameOverride = endpoint.GetAttributes()->authScheme.GetSigningName()->c_str();
-        }
-    }
-    return MakeRequest(uri, request, method, signerName, signerRegionOverride, signerServiceNameOverride);
+    return AWSError<CoreErrors>(CoreErrors::UNKNOWN, "Json Parser Error", "Failed to parse JSON response", false);
 }
 
-JsonOutcome AWSJsonClient::MakeRequest(const Aws::Endpoint::AWSEndpoint& endpoint,
-                                       Http::HttpMethod method /* = Http::HttpMethod::HTTP_POST */,
-                                       const char* signerName /* = Aws::Auth::NULL_SIGNER */,
-                                       const char* signerRegionOverride /* = nullptr */,
-                                       const char* signerServiceNameOverride /* = nullptr */) const
+const char* AWSJsonClient::GetClientLogTag() const
 {
+<<<<<<< HEAD
     const Aws::Http::URI& uri = endpoint.GetURI();
     if (endpoint.GetAttributes()) {
         signerName = endpoint.GetAttributes()->authScheme.GetName().c_str();
@@ -251,3 +217,4 @@ AWSError<CoreErrors> AWSJsonClient::BuildAWSError(
     AWS_LOGSTREAM_ERROR(AWS_JSON_CLIENT_LOG_TAG, error);
     return error;
 }
+

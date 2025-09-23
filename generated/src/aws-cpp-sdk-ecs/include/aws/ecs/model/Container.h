@@ -36,727 +36,225 @@ namespace Model
   class Container
   {
   public:
-    AWS_ECS_API Container();
+    AWS_ECS_API Container() = default;
     AWS_ECS_API Container(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Container& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the container.</p>
      */
-    inline const Aws::String& GetContainerArn() const{ return m_containerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
+    inline const Aws::String& GetContainerArn() const { return m_containerArn; }
     inline bool ContainerArnHasBeenSet() const { return m_containerArnHasBeenSet; }
+    template<typename ContainerArnT = Aws::String>
+    void SetContainerArn(ContainerArnT&& value) { m_containerArnHasBeenSet = true; m_containerArn = std::forward<ContainerArnT>(value); }
+    template<typename ContainerArnT = Aws::String>
+    Container& WithContainerArn(ContainerArnT&& value) { SetContainerArn(std::forward<ContainerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
-    inline void SetContainerArn(const Aws::String& value) { m_containerArnHasBeenSet = true; m_containerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
-    inline void SetContainerArn(Aws::String&& value) { m_containerArnHasBeenSet = true; m_containerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
-    inline void SetContainerArn(const char* value) { m_containerArnHasBeenSet = true; m_containerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
-    inline Container& WithContainerArn(const Aws::String& value) { SetContainerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
-    inline Container& WithContainerArn(Aws::String&& value) { SetContainerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container.</p>
-     */
-    inline Container& WithContainerArn(const char* value) { SetContainerArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the task.</p>
      */
-    inline const Aws::String& GetTaskArn() const{ return m_taskArn; }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
+    inline const Aws::String& GetTaskArn() const { return m_taskArn; }
     inline bool TaskArnHasBeenSet() const { return m_taskArnHasBeenSet; }
+    template<typename TaskArnT = Aws::String>
+    void SetTaskArn(TaskArnT&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::forward<TaskArnT>(value); }
+    template<typename TaskArnT = Aws::String>
+    Container& WithTaskArn(TaskArnT&& value) { SetTaskArn(std::forward<TaskArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline void SetTaskArn(const Aws::String& value) { m_taskArnHasBeenSet = true; m_taskArn = value; }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline void SetTaskArn(const char* value) { m_taskArnHasBeenSet = true; m_taskArn.assign(value); }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline Container& WithTaskArn(const Aws::String& value) { SetTaskArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline Container& WithTaskArn(Aws::String&& value) { SetTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline Container& WithTaskArn(const char* value) { SetTaskArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the container.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the container.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Container& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the container.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the container.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the container.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the container.</p>
-     */
-    inline Container& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the container.</p>
-     */
-    inline Container& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the container.</p>
-     */
-    inline Container& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The image used for the container.</p>
      */
-    inline const Aws::String& GetImage() const{ return m_image; }
-
-    /**
-     * <p>The image used for the container.</p>
-     */
+    inline const Aws::String& GetImage() const { return m_image; }
     inline bool ImageHasBeenSet() const { return m_imageHasBeenSet; }
+    template<typename ImageT = Aws::String>
+    void SetImage(ImageT&& value) { m_imageHasBeenSet = true; m_image = std::forward<ImageT>(value); }
+    template<typename ImageT = Aws::String>
+    Container& WithImage(ImageT&& value) { SetImage(std::forward<ImageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The image used for the container.</p>
-     */
-    inline void SetImage(const Aws::String& value) { m_imageHasBeenSet = true; m_image = value; }
-
-    /**
-     * <p>The image used for the container.</p>
-     */
-    inline void SetImage(Aws::String&& value) { m_imageHasBeenSet = true; m_image = std::move(value); }
-
-    /**
-     * <p>The image used for the container.</p>
-     */
-    inline void SetImage(const char* value) { m_imageHasBeenSet = true; m_image.assign(value); }
-
-    /**
-     * <p>The image used for the container.</p>
-     */
-    inline Container& WithImage(const Aws::String& value) { SetImage(value); return *this;}
-
-    /**
-     * <p>The image used for the container.</p>
-     */
-    inline Container& WithImage(Aws::String&& value) { SetImage(std::move(value)); return *this;}
-
-    /**
-     * <p>The image used for the container.</p>
-     */
-    inline Container& WithImage(const char* value) { SetImage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The container image manifest digest.</p>
      */
-    inline const Aws::String& GetImageDigest() const{ return m_imageDigest; }
-
-    /**
-     * <p>The container image manifest digest.</p>
-     */
+    inline const Aws::String& GetImageDigest() const { return m_imageDigest; }
     inline bool ImageDigestHasBeenSet() const { return m_imageDigestHasBeenSet; }
+    template<typename ImageDigestT = Aws::String>
+    void SetImageDigest(ImageDigestT&& value) { m_imageDigestHasBeenSet = true; m_imageDigest = std::forward<ImageDigestT>(value); }
+    template<typename ImageDigestT = Aws::String>
+    Container& WithImageDigest(ImageDigestT&& value) { SetImageDigest(std::forward<ImageDigestT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The container image manifest digest.</p>
-     */
-    inline void SetImageDigest(const Aws::String& value) { m_imageDigestHasBeenSet = true; m_imageDigest = value; }
-
-    /**
-     * <p>The container image manifest digest.</p>
-     */
-    inline void SetImageDigest(Aws::String&& value) { m_imageDigestHasBeenSet = true; m_imageDigest = std::move(value); }
-
-    /**
-     * <p>The container image manifest digest.</p>
-     */
-    inline void SetImageDigest(const char* value) { m_imageDigestHasBeenSet = true; m_imageDigest.assign(value); }
-
-    /**
-     * <p>The container image manifest digest.</p>
-     */
-    inline Container& WithImageDigest(const Aws::String& value) { SetImageDigest(value); return *this;}
-
-    /**
-     * <p>The container image manifest digest.</p>
-     */
-    inline Container& WithImageDigest(Aws::String&& value) { SetImageDigest(std::move(value)); return *this;}
-
-    /**
-     * <p>The container image manifest digest.</p>
-     */
-    inline Container& WithImageDigest(const char* value) { SetImageDigest(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Docker container.</p>
      */
-    inline const Aws::String& GetRuntimeId() const{ return m_runtimeId; }
-
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
+    inline const Aws::String& GetRuntimeId() const { return m_runtimeId; }
     inline bool RuntimeIdHasBeenSet() const { return m_runtimeIdHasBeenSet; }
+    template<typename RuntimeIdT = Aws::String>
+    void SetRuntimeId(RuntimeIdT&& value) { m_runtimeIdHasBeenSet = true; m_runtimeId = std::forward<RuntimeIdT>(value); }
+    template<typename RuntimeIdT = Aws::String>
+    Container& WithRuntimeId(RuntimeIdT&& value) { SetRuntimeId(std::forward<RuntimeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
-    inline void SetRuntimeId(const Aws::String& value) { m_runtimeIdHasBeenSet = true; m_runtimeId = value; }
-
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
-    inline void SetRuntimeId(Aws::String&& value) { m_runtimeIdHasBeenSet = true; m_runtimeId = std::move(value); }
-
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
-    inline void SetRuntimeId(const char* value) { m_runtimeIdHasBeenSet = true; m_runtimeId.assign(value); }
-
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
-    inline Container& WithRuntimeId(const Aws::String& value) { SetRuntimeId(value); return *this;}
-
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
-    inline Container& WithRuntimeId(Aws::String&& value) { SetRuntimeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Docker container.</p>
-     */
-    inline Container& WithRuntimeId(const char* value) { SetRuntimeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last known status of the container.</p>
      */
-    inline const Aws::String& GetLastStatus() const{ return m_lastStatus; }
-
-    /**
-     * <p>The last known status of the container.</p>
-     */
+    inline const Aws::String& GetLastStatus() const { return m_lastStatus; }
     inline bool LastStatusHasBeenSet() const { return m_lastStatusHasBeenSet; }
+    template<typename LastStatusT = Aws::String>
+    void SetLastStatus(LastStatusT&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::forward<LastStatusT>(value); }
+    template<typename LastStatusT = Aws::String>
+    Container& WithLastStatus(LastStatusT&& value) { SetLastStatus(std::forward<LastStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last known status of the container.</p>
-     */
-    inline void SetLastStatus(const Aws::String& value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
-
-    /**
-     * <p>The last known status of the container.</p>
-     */
-    inline void SetLastStatus(Aws::String&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::move(value); }
-
-    /**
-     * <p>The last known status of the container.</p>
-     */
-    inline void SetLastStatus(const char* value) { m_lastStatusHasBeenSet = true; m_lastStatus.assign(value); }
-
-    /**
-     * <p>The last known status of the container.</p>
-     */
-    inline Container& WithLastStatus(const Aws::String& value) { SetLastStatus(value); return *this;}
-
-    /**
-     * <p>The last known status of the container.</p>
-     */
-    inline Container& WithLastStatus(Aws::String&& value) { SetLastStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The last known status of the container.</p>
-     */
-    inline Container& WithLastStatus(const char* value) { SetLastStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The exit code returned from the container.</p>
      */
-    inline int GetExitCode() const{ return m_exitCode; }
-
-    /**
-     * <p>The exit code returned from the container.</p>
-     */
+    inline int GetExitCode() const { return m_exitCode; }
     inline bool ExitCodeHasBeenSet() const { return m_exitCodeHasBeenSet; }
-
-    /**
-     * <p>The exit code returned from the container.</p>
-     */
     inline void SetExitCode(int value) { m_exitCodeHasBeenSet = true; m_exitCode = value; }
-
-    /**
-     * <p>The exit code returned from the container.</p>
-     */
     inline Container& WithExitCode(int value) { SetExitCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>A short (255 max characters) human-readable string to provide additional
+     * <p>A short (1024 max characters) human-readable string to provide additional
      * details about a running or stopped container.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    Container& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
-    inline Container& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
-    inline Container& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details about a running or stopped container.</p>
-     */
-    inline Container& WithReason(const char* value) { SetReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The network bindings associated with the container.</p>
      */
-    inline const Aws::Vector<NetworkBinding>& GetNetworkBindings() const{ return m_networkBindings; }
-
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
+    inline const Aws::Vector<NetworkBinding>& GetNetworkBindings() const { return m_networkBindings; }
     inline bool NetworkBindingsHasBeenSet() const { return m_networkBindingsHasBeenSet; }
+    template<typename NetworkBindingsT = Aws::Vector<NetworkBinding>>
+    void SetNetworkBindings(NetworkBindingsT&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings = std::forward<NetworkBindingsT>(value); }
+    template<typename NetworkBindingsT = Aws::Vector<NetworkBinding>>
+    Container& WithNetworkBindings(NetworkBindingsT&& value) { SetNetworkBindings(std::forward<NetworkBindingsT>(value)); return *this;}
+    template<typename NetworkBindingsT = NetworkBinding>
+    Container& AddNetworkBindings(NetworkBindingsT&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings.emplace_back(std::forward<NetworkBindingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
-    inline void SetNetworkBindings(const Aws::Vector<NetworkBinding>& value) { m_networkBindingsHasBeenSet = true; m_networkBindings = value; }
-
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
-    inline void SetNetworkBindings(Aws::Vector<NetworkBinding>&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings = std::move(value); }
-
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
-    inline Container& WithNetworkBindings(const Aws::Vector<NetworkBinding>& value) { SetNetworkBindings(value); return *this;}
-
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
-    inline Container& WithNetworkBindings(Aws::Vector<NetworkBinding>&& value) { SetNetworkBindings(std::move(value)); return *this;}
-
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
-    inline Container& AddNetworkBindings(const NetworkBinding& value) { m_networkBindingsHasBeenSet = true; m_networkBindings.push_back(value); return *this; }
-
-    /**
-     * <p>The network bindings associated with the container.</p>
-     */
-    inline Container& AddNetworkBindings(NetworkBinding&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The network interfaces associated with the container.</p>
      */
-    inline const Aws::Vector<NetworkInterface>& GetNetworkInterfaces() const{ return m_networkInterfaces; }
-
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
+    inline const Aws::Vector<NetworkInterface>& GetNetworkInterfaces() const { return m_networkInterfaces; }
     inline bool NetworkInterfacesHasBeenSet() const { return m_networkInterfacesHasBeenSet; }
+    template<typename NetworkInterfacesT = Aws::Vector<NetworkInterface>>
+    void SetNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::forward<NetworkInterfacesT>(value); }
+    template<typename NetworkInterfacesT = Aws::Vector<NetworkInterface>>
+    Container& WithNetworkInterfaces(NetworkInterfacesT&& value) { SetNetworkInterfaces(std::forward<NetworkInterfacesT>(value)); return *this;}
+    template<typename NetworkInterfacesT = NetworkInterface>
+    Container& AddNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.emplace_back(std::forward<NetworkInterfacesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
-    inline void SetNetworkInterfaces(const Aws::Vector<NetworkInterface>& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
-
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
-    inline void SetNetworkInterfaces(Aws::Vector<NetworkInterface>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::move(value); }
-
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
-    inline Container& WithNetworkInterfaces(const Aws::Vector<NetworkInterface>& value) { SetNetworkInterfaces(value); return *this;}
-
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
-    inline Container& WithNetworkInterfaces(Aws::Vector<NetworkInterface>&& value) { SetNetworkInterfaces(std::move(value)); return *this;}
-
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
-    inline Container& AddNetworkInterfaces(const NetworkInterface& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
-
-    /**
-     * <p>The network interfaces associated with the container.</p>
-     */
-    inline Container& AddNetworkInterfaces(NetworkInterface&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The health status of the container. If health checks aren't configured for
      * this container in its task definition, then it reports the health status as
      * <code>UNKNOWN</code>.</p>
      */
-    inline const HealthStatus& GetHealthStatus() const{ return m_healthStatus; }
-
-    /**
-     * <p>The health status of the container. If health checks aren't configured for
-     * this container in its task definition, then it reports the health status as
-     * <code>UNKNOWN</code>.</p>
-     */
+    inline HealthStatus GetHealthStatus() const { return m_healthStatus; }
     inline bool HealthStatusHasBeenSet() const { return m_healthStatusHasBeenSet; }
+    inline void SetHealthStatus(HealthStatus value) { m_healthStatusHasBeenSet = true; m_healthStatus = value; }
+    inline Container& WithHealthStatus(HealthStatus value) { SetHealthStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The health status of the container. If health checks aren't configured for
-     * this container in its task definition, then it reports the health status as
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline void SetHealthStatus(const HealthStatus& value) { m_healthStatusHasBeenSet = true; m_healthStatus = value; }
-
-    /**
-     * <p>The health status of the container. If health checks aren't configured for
-     * this container in its task definition, then it reports the health status as
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline void SetHealthStatus(HealthStatus&& value) { m_healthStatusHasBeenSet = true; m_healthStatus = std::move(value); }
-
-    /**
-     * <p>The health status of the container. If health checks aren't configured for
-     * this container in its task definition, then it reports the health status as
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline Container& WithHealthStatus(const HealthStatus& value) { SetHealthStatus(value); return *this;}
-
-    /**
-     * <p>The health status of the container. If health checks aren't configured for
-     * this container in its task definition, then it reports the health status as
-     * <code>UNKNOWN</code>.</p>
-     */
-    inline Container& WithHealthStatus(HealthStatus&& value) { SetHealthStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The details of any Amazon ECS managed agents associated with the
      * container.</p>
      */
-    inline const Aws::Vector<ManagedAgent>& GetManagedAgents() const{ return m_managedAgents; }
-
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
+    inline const Aws::Vector<ManagedAgent>& GetManagedAgents() const { return m_managedAgents; }
     inline bool ManagedAgentsHasBeenSet() const { return m_managedAgentsHasBeenSet; }
+    template<typename ManagedAgentsT = Aws::Vector<ManagedAgent>>
+    void SetManagedAgents(ManagedAgentsT&& value) { m_managedAgentsHasBeenSet = true; m_managedAgents = std::forward<ManagedAgentsT>(value); }
+    template<typename ManagedAgentsT = Aws::Vector<ManagedAgent>>
+    Container& WithManagedAgents(ManagedAgentsT&& value) { SetManagedAgents(std::forward<ManagedAgentsT>(value)); return *this;}
+    template<typename ManagedAgentsT = ManagedAgent>
+    Container& AddManagedAgents(ManagedAgentsT&& value) { m_managedAgentsHasBeenSet = true; m_managedAgents.emplace_back(std::forward<ManagedAgentsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
-    inline void SetManagedAgents(const Aws::Vector<ManagedAgent>& value) { m_managedAgentsHasBeenSet = true; m_managedAgents = value; }
-
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
-    inline void SetManagedAgents(Aws::Vector<ManagedAgent>&& value) { m_managedAgentsHasBeenSet = true; m_managedAgents = std::move(value); }
-
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
-    inline Container& WithManagedAgents(const Aws::Vector<ManagedAgent>& value) { SetManagedAgents(value); return *this;}
-
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
-    inline Container& WithManagedAgents(Aws::Vector<ManagedAgent>&& value) { SetManagedAgents(std::move(value)); return *this;}
-
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
-    inline Container& AddManagedAgents(const ManagedAgent& value) { m_managedAgentsHasBeenSet = true; m_managedAgents.push_back(value); return *this; }
-
-    /**
-     * <p>The details of any Amazon ECS managed agents associated with the
-     * container.</p>
-     */
-    inline Container& AddManagedAgents(ManagedAgent&& value) { m_managedAgentsHasBeenSet = true; m_managedAgents.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of CPU units set for the container. The value is <code>0</code> if
      * no value was specified in the container definition when the task definition was
      * registered.</p>
      */
-    inline const Aws::String& GetCpu() const{ return m_cpu; }
-
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
+    inline const Aws::String& GetCpu() const { return m_cpu; }
     inline bool CpuHasBeenSet() const { return m_cpuHasBeenSet; }
+    template<typename CpuT = Aws::String>
+    void SetCpu(CpuT&& value) { m_cpuHasBeenSet = true; m_cpu = std::forward<CpuT>(value); }
+    template<typename CpuT = Aws::String>
+    Container& WithCpu(CpuT&& value) { SetCpu(std::forward<CpuT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
-    inline void SetCpu(const Aws::String& value) { m_cpuHasBeenSet = true; m_cpu = value; }
-
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
-    inline void SetCpu(Aws::String&& value) { m_cpuHasBeenSet = true; m_cpu = std::move(value); }
-
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
-    inline void SetCpu(const char* value) { m_cpuHasBeenSet = true; m_cpu.assign(value); }
-
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
-    inline Container& WithCpu(const Aws::String& value) { SetCpu(value); return *this;}
-
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
-    inline Container& WithCpu(Aws::String&& value) { SetCpu(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of CPU units set for the container. The value is <code>0</code> if
-     * no value was specified in the container definition when the task definition was
-     * registered.</p>
-     */
-    inline Container& WithCpu(const char* value) { SetCpu(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The hard limit (in MiB) of memory set for the container.</p>
      */
-    inline const Aws::String& GetMemory() const{ return m_memory; }
-
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
+    inline const Aws::String& GetMemory() const { return m_memory; }
     inline bool MemoryHasBeenSet() const { return m_memoryHasBeenSet; }
+    template<typename MemoryT = Aws::String>
+    void SetMemory(MemoryT&& value) { m_memoryHasBeenSet = true; m_memory = std::forward<MemoryT>(value); }
+    template<typename MemoryT = Aws::String>
+    Container& WithMemory(MemoryT&& value) { SetMemory(std::forward<MemoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
-    inline void SetMemory(const Aws::String& value) { m_memoryHasBeenSet = true; m_memory = value; }
-
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
-    inline void SetMemory(Aws::String&& value) { m_memoryHasBeenSet = true; m_memory = std::move(value); }
-
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
-    inline void SetMemory(const char* value) { m_memoryHasBeenSet = true; m_memory.assign(value); }
-
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
-    inline Container& WithMemory(const Aws::String& value) { SetMemory(value); return *this;}
-
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
-    inline Container& WithMemory(Aws::String&& value) { SetMemory(std::move(value)); return *this;}
-
-    /**
-     * <p>The hard limit (in MiB) of memory set for the container.</p>
-     */
-    inline Container& WithMemory(const char* value) { SetMemory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The soft limit (in MiB) of memory set for the container.</p>
      */
-    inline const Aws::String& GetMemoryReservation() const{ return m_memoryReservation; }
-
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
+    inline const Aws::String& GetMemoryReservation() const { return m_memoryReservation; }
     inline bool MemoryReservationHasBeenSet() const { return m_memoryReservationHasBeenSet; }
+    template<typename MemoryReservationT = Aws::String>
+    void SetMemoryReservation(MemoryReservationT&& value) { m_memoryReservationHasBeenSet = true; m_memoryReservation = std::forward<MemoryReservationT>(value); }
+    template<typename MemoryReservationT = Aws::String>
+    Container& WithMemoryReservation(MemoryReservationT&& value) { SetMemoryReservation(std::forward<MemoryReservationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
-    inline void SetMemoryReservation(const Aws::String& value) { m_memoryReservationHasBeenSet = true; m_memoryReservation = value; }
-
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
-    inline void SetMemoryReservation(Aws::String&& value) { m_memoryReservationHasBeenSet = true; m_memoryReservation = std::move(value); }
-
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
-    inline void SetMemoryReservation(const char* value) { m_memoryReservationHasBeenSet = true; m_memoryReservation.assign(value); }
-
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
-    inline Container& WithMemoryReservation(const Aws::String& value) { SetMemoryReservation(value); return *this;}
-
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
-    inline Container& WithMemoryReservation(Aws::String&& value) { SetMemoryReservation(std::move(value)); return *this;}
-
-    /**
-     * <p>The soft limit (in MiB) of memory set for the container.</p>
-     */
-    inline Container& WithMemoryReservation(const char* value) { SetMemoryReservation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of each GPU assigned to the container.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetGpuIds() const{ return m_gpuIds; }
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetGpuIds() const { return m_gpuIds; }
     inline bool GpuIdsHasBeenSet() const { return m_gpuIdsHasBeenSet; }
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline void SetGpuIds(const Aws::Vector<Aws::String>& value) { m_gpuIdsHasBeenSet = true; m_gpuIds = value; }
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline void SetGpuIds(Aws::Vector<Aws::String>&& value) { m_gpuIdsHasBeenSet = true; m_gpuIds = std::move(value); }
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline Container& WithGpuIds(const Aws::Vector<Aws::String>& value) { SetGpuIds(value); return *this;}
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline Container& WithGpuIds(Aws::Vector<Aws::String>&& value) { SetGpuIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline Container& AddGpuIds(const Aws::String& value) { m_gpuIdsHasBeenSet = true; m_gpuIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline Container& AddGpuIds(Aws::String&& value) { m_gpuIdsHasBeenSet = true; m_gpuIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of each GPU assigned to the container.</p>
-     */
-    inline Container& AddGpuIds(const char* value) { m_gpuIdsHasBeenSet = true; m_gpuIds.push_back(value); return *this; }
-
+    template<typename GpuIdsT = Aws::Vector<Aws::String>>
+    void SetGpuIds(GpuIdsT&& value) { m_gpuIdsHasBeenSet = true; m_gpuIds = std::forward<GpuIdsT>(value); }
+    template<typename GpuIdsT = Aws::Vector<Aws::String>>
+    Container& WithGpuIds(GpuIdsT&& value) { SetGpuIds(std::forward<GpuIdsT>(value)); return *this;}
+    template<typename GpuIdsT = Aws::String>
+    Container& AddGpuIds(GpuIdsT&& value) { m_gpuIdsHasBeenSet = true; m_gpuIds.emplace_back(std::forward<GpuIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_containerArn;
@@ -780,7 +278,7 @@ namespace Model
     Aws::String m_lastStatus;
     bool m_lastStatusHasBeenSet = false;
 
-    int m_exitCode;
+    int m_exitCode{0};
     bool m_exitCodeHasBeenSet = false;
 
     Aws::String m_reason;
@@ -792,7 +290,7 @@ namespace Model
     Aws::Vector<NetworkInterface> m_networkInterfaces;
     bool m_networkInterfacesHasBeenSet = false;
 
-    HealthStatus m_healthStatus;
+    HealthStatus m_healthStatus{HealthStatus::NOT_SET};
     bool m_healthStatusHasBeenSet = false;
 
     Aws::Vector<ManagedAgent> m_managedAgents;

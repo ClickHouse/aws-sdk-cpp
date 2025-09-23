@@ -31,60 +31,24 @@ namespace Model
   class ValidationException
   {
   public:
-    AWS_IVS_API ValidationException();
+    AWS_IVS_API ValidationException() = default;
     AWS_IVS_API ValidationException(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API ValidationException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The input fails to satisfy the constraints specified by an Amazon Web
      * Services service.</p>
      */
-    inline const Aws::String& GetExceptionMessage() const{ return m_exceptionMessage; }
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
+    inline const Aws::String& GetExceptionMessage() const { return m_exceptionMessage; }
     inline bool ExceptionMessageHasBeenSet() const { return m_exceptionMessageHasBeenSet; }
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
-    inline void SetExceptionMessage(const Aws::String& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = value; }
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
-    inline void SetExceptionMessage(Aws::String&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::move(value); }
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
-    inline void SetExceptionMessage(const char* value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage.assign(value); }
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
-    inline ValidationException& WithExceptionMessage(const Aws::String& value) { SetExceptionMessage(value); return *this;}
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
-    inline ValidationException& WithExceptionMessage(Aws::String&& value) { SetExceptionMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The input fails to satisfy the constraints specified by an Amazon Web
-     * Services service.</p>
-     */
-    inline ValidationException& WithExceptionMessage(const char* value) { SetExceptionMessage(value); return *this;}
-
+    template<typename ExceptionMessageT = Aws::String>
+    void SetExceptionMessage(ExceptionMessageT&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::forward<ExceptionMessageT>(value); }
+    template<typename ExceptionMessageT = Aws::String>
+    ValidationException& WithExceptionMessage(ExceptionMessageT&& value) { SetExceptionMessage(std::forward<ExceptionMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exceptionMessage;

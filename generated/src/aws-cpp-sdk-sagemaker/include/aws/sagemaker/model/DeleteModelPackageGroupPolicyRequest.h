@@ -21,7 +21,7 @@ namespace Model
   class DeleteModelPackageGroupPolicyRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteModelPackageGroupPolicyRequest();
+    AWS_SAGEMAKER_API DeleteModelPackageGroupPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the model group for which to delete the policy.</p>
      */
-    inline const Aws::String& GetModelPackageGroupName() const{ return m_modelPackageGroupName; }
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
+    inline const Aws::String& GetModelPackageGroupName() const { return m_modelPackageGroupName; }
     inline bool ModelPackageGroupNameHasBeenSet() const { return m_modelPackageGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
-    inline void SetModelPackageGroupName(const Aws::String& value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName = value; }
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
-    inline void SetModelPackageGroupName(Aws::String&& value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
-    inline void SetModelPackageGroupName(const char* value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName.assign(value); }
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
-    inline DeleteModelPackageGroupPolicyRequest& WithModelPackageGroupName(const Aws::String& value) { SetModelPackageGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
-    inline DeleteModelPackageGroupPolicyRequest& WithModelPackageGroupName(Aws::String&& value) { SetModelPackageGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the model group for which to delete the policy.</p>
-     */
-    inline DeleteModelPackageGroupPolicyRequest& WithModelPackageGroupName(const char* value) { SetModelPackageGroupName(value); return *this;}
-
+    template<typename ModelPackageGroupNameT = Aws::String>
+    void SetModelPackageGroupName(ModelPackageGroupNameT&& value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName = std::forward<ModelPackageGroupNameT>(value); }
+    template<typename ModelPackageGroupNameT = Aws::String>
+    DeleteModelPackageGroupPolicyRequest& WithModelPackageGroupName(ModelPackageGroupNameT&& value) { SetModelPackageGroupName(std::forward<ModelPackageGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelPackageGroupName;

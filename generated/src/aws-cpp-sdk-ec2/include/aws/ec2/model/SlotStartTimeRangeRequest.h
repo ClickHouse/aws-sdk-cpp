@@ -32,7 +32,7 @@ namespace Model
   class SlotStartTimeRangeRequest
   {
   public:
-    AWS_EC2_API SlotStartTimeRangeRequest();
+    AWS_EC2_API SlotStartTimeRangeRequest() = default;
     AWS_EC2_API SlotStartTimeRangeRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API SlotStartTimeRangeRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,73 +40,35 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
      */
-    inline const Aws::Utils::DateTime& GetEarliestTime() const{ return m_earliestTime; }
-
-    /**
-     * <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEarliestTime() const { return m_earliestTime; }
     inline bool EarliestTimeHasBeenSet() const { return m_earliestTimeHasBeenSet; }
+    template<typename EarliestTimeT = Aws::Utils::DateTime>
+    void SetEarliestTime(EarliestTimeT&& value) { m_earliestTimeHasBeenSet = true; m_earliestTime = std::forward<EarliestTimeT>(value); }
+    template<typename EarliestTimeT = Aws::Utils::DateTime>
+    SlotStartTimeRangeRequest& WithEarliestTime(EarliestTimeT&& value) { SetEarliestTime(std::forward<EarliestTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline void SetEarliestTime(const Aws::Utils::DateTime& value) { m_earliestTimeHasBeenSet = true; m_earliestTime = value; }
-
-    /**
-     * <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline void SetEarliestTime(Aws::Utils::DateTime&& value) { m_earliestTimeHasBeenSet = true; m_earliestTime = std::move(value); }
-
-    /**
-     * <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline SlotStartTimeRangeRequest& WithEarliestTime(const Aws::Utils::DateTime& value) { SetEarliestTime(value); return *this;}
-
-    /**
-     * <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline SlotStartTimeRangeRequest& WithEarliestTime(Aws::Utils::DateTime&& value) { SetEarliestTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The latest date and time, in UTC, for the Scheduled Instance to start.</p>
      */
-    inline const Aws::Utils::DateTime& GetLatestTime() const{ return m_latestTime; }
-
-    /**
-     * <p>The latest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLatestTime() const { return m_latestTime; }
     inline bool LatestTimeHasBeenSet() const { return m_latestTimeHasBeenSet; }
-
-    /**
-     * <p>The latest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline void SetLatestTime(const Aws::Utils::DateTime& value) { m_latestTimeHasBeenSet = true; m_latestTime = value; }
-
-    /**
-     * <p>The latest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline void SetLatestTime(Aws::Utils::DateTime&& value) { m_latestTimeHasBeenSet = true; m_latestTime = std::move(value); }
-
-    /**
-     * <p>The latest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline SlotStartTimeRangeRequest& WithLatestTime(const Aws::Utils::DateTime& value) { SetLatestTime(value); return *this;}
-
-    /**
-     * <p>The latest date and time, in UTC, for the Scheduled Instance to start.</p>
-     */
-    inline SlotStartTimeRangeRequest& WithLatestTime(Aws::Utils::DateTime&& value) { SetLatestTime(std::move(value)); return *this;}
-
+    template<typename LatestTimeT = Aws::Utils::DateTime>
+    void SetLatestTime(LatestTimeT&& value) { m_latestTimeHasBeenSet = true; m_latestTime = std::forward<LatestTimeT>(value); }
+    template<typename LatestTimeT = Aws::Utils::DateTime>
+    SlotStartTimeRangeRequest& WithLatestTime(LatestTimeT&& value) { SetLatestTime(std::forward<LatestTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_earliestTime;
+    Aws::Utils::DateTime m_earliestTime{};
     bool m_earliestTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_latestTime;
+    Aws::Utils::DateTime m_latestTime{};
     bool m_latestTimeHasBeenSet = false;
   };
 

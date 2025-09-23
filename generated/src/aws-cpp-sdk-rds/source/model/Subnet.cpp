@@ -20,19 +20,7 @@ namespace RDS
 namespace Model
 {
 
-Subnet::Subnet() : 
-    m_subnetIdentifierHasBeenSet(false),
-    m_subnetAvailabilityZoneHasBeenSet(false),
-    m_subnetOutpostHasBeenSet(false),
-    m_subnetStatusHasBeenSet(false)
-{
-}
-
-Subnet::Subnet(const XmlNode& xmlNode) : 
-    m_subnetIdentifierHasBeenSet(false),
-    m_subnetAvailabilityZoneHasBeenSet(false),
-    m_subnetOutpostHasBeenSet(false),
-    m_subnetStatusHasBeenSet(false)
+Subnet::Subnet(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

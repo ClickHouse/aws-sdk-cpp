@@ -34,60 +34,26 @@ namespace Model
   class CascadingControlConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API CascadingControlConfiguration();
+    AWS_QUICKSIGHT_API CascadingControlConfiguration() = default;
     AWS_QUICKSIGHT_API CascadingControlConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CascadingControlConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of source controls that determine the values that are used in the
      * current control.</p>
      */
-    inline const Aws::Vector<CascadingControlSource>& GetSourceControls() const{ return m_sourceControls; }
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
+    inline const Aws::Vector<CascadingControlSource>& GetSourceControls() const { return m_sourceControls; }
     inline bool SourceControlsHasBeenSet() const { return m_sourceControlsHasBeenSet; }
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
-    inline void SetSourceControls(const Aws::Vector<CascadingControlSource>& value) { m_sourceControlsHasBeenSet = true; m_sourceControls = value; }
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
-    inline void SetSourceControls(Aws::Vector<CascadingControlSource>&& value) { m_sourceControlsHasBeenSet = true; m_sourceControls = std::move(value); }
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
-    inline CascadingControlConfiguration& WithSourceControls(const Aws::Vector<CascadingControlSource>& value) { SetSourceControls(value); return *this;}
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
-    inline CascadingControlConfiguration& WithSourceControls(Aws::Vector<CascadingControlSource>&& value) { SetSourceControls(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
-    inline CascadingControlConfiguration& AddSourceControls(const CascadingControlSource& value) { m_sourceControlsHasBeenSet = true; m_sourceControls.push_back(value); return *this; }
-
-    /**
-     * <p>A list of source controls that determine the values that are used in the
-     * current control.</p>
-     */
-    inline CascadingControlConfiguration& AddSourceControls(CascadingControlSource&& value) { m_sourceControlsHasBeenSet = true; m_sourceControls.push_back(std::move(value)); return *this; }
-
+    template<typename SourceControlsT = Aws::Vector<CascadingControlSource>>
+    void SetSourceControls(SourceControlsT&& value) { m_sourceControlsHasBeenSet = true; m_sourceControls = std::forward<SourceControlsT>(value); }
+    template<typename SourceControlsT = Aws::Vector<CascadingControlSource>>
+    CascadingControlConfiguration& WithSourceControls(SourceControlsT&& value) { SetSourceControls(std::forward<SourceControlsT>(value)); return *this;}
+    template<typename SourceControlsT = CascadingControlSource>
+    CascadingControlConfiguration& AddSourceControls(SourceControlsT&& value) { m_sourceControlsHasBeenSet = true; m_sourceControls.emplace_back(std::forward<SourceControlsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CascadingControlSource> m_sourceControls;

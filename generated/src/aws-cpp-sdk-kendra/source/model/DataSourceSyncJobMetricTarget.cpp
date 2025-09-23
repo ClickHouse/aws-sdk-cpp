@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-DataSourceSyncJobMetricTarget::DataSourceSyncJobMetricTarget() : 
-    m_dataSourceIdHasBeenSet(false),
-    m_dataSourceSyncJobIdHasBeenSet(false)
-{
-}
-
-DataSourceSyncJobMetricTarget::DataSourceSyncJobMetricTarget(JsonView jsonValue) : 
-    m_dataSourceIdHasBeenSet(false),
-    m_dataSourceSyncJobIdHasBeenSet(false)
+DataSourceSyncJobMetricTarget::DataSourceSyncJobMetricTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataSourceSyncJobMetricTarget& DataSourceSyncJobMetricTarget::operator =(JsonVie
   if(jsonValue.ValueExists("DataSourceId"))
   {
     m_dataSourceId = jsonValue.GetString("DataSourceId");
-
     m_dataSourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSourceSyncJobId"))
   {
     m_dataSourceSyncJobId = jsonValue.GetString("DataSourceSyncJobId");
-
     m_dataSourceSyncJobIdHasBeenSet = true;
   }
-
   return *this;
 }
 

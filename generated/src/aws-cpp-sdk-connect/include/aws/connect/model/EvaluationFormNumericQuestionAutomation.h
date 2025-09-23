@@ -32,42 +32,23 @@ namespace Model
   class EvaluationFormNumericQuestionAutomation
   {
   public:
-    AWS_CONNECT_API EvaluationFormNumericQuestionAutomation();
+    AWS_CONNECT_API EvaluationFormNumericQuestionAutomation() = default;
     AWS_CONNECT_API EvaluationFormNumericQuestionAutomation(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API EvaluationFormNumericQuestionAutomation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The property value of the automation.</p>
      */
-    inline const NumericQuestionPropertyValueAutomation& GetPropertyValue() const{ return m_propertyValue; }
-
-    /**
-     * <p>The property value of the automation.</p>
-     */
+    inline const NumericQuestionPropertyValueAutomation& GetPropertyValue() const { return m_propertyValue; }
     inline bool PropertyValueHasBeenSet() const { return m_propertyValueHasBeenSet; }
-
-    /**
-     * <p>The property value of the automation.</p>
-     */
-    inline void SetPropertyValue(const NumericQuestionPropertyValueAutomation& value) { m_propertyValueHasBeenSet = true; m_propertyValue = value; }
-
-    /**
-     * <p>The property value of the automation.</p>
-     */
-    inline void SetPropertyValue(NumericQuestionPropertyValueAutomation&& value) { m_propertyValueHasBeenSet = true; m_propertyValue = std::move(value); }
-
-    /**
-     * <p>The property value of the automation.</p>
-     */
-    inline EvaluationFormNumericQuestionAutomation& WithPropertyValue(const NumericQuestionPropertyValueAutomation& value) { SetPropertyValue(value); return *this;}
-
-    /**
-     * <p>The property value of the automation.</p>
-     */
-    inline EvaluationFormNumericQuestionAutomation& WithPropertyValue(NumericQuestionPropertyValueAutomation&& value) { SetPropertyValue(std::move(value)); return *this;}
-
+    template<typename PropertyValueT = NumericQuestionPropertyValueAutomation>
+    void SetPropertyValue(PropertyValueT&& value) { m_propertyValueHasBeenSet = true; m_propertyValue = std::forward<PropertyValueT>(value); }
+    template<typename PropertyValueT = NumericQuestionPropertyValueAutomation>
+    EvaluationFormNumericQuestionAutomation& WithPropertyValue(PropertyValueT&& value) { SetPropertyValue(std::forward<PropertyValueT>(value)); return *this;}
+    ///@}
   private:
 
     NumericQuestionPropertyValueAutomation m_propertyValue;

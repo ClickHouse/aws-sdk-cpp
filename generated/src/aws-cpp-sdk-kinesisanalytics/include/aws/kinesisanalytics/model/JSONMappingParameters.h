@@ -32,52 +32,23 @@ namespace Model
   class JSONMappingParameters
   {
   public:
-    AWS_KINESISANALYTICS_API JSONMappingParameters();
+    AWS_KINESISANALYTICS_API JSONMappingParameters() = default;
     AWS_KINESISANALYTICS_API JSONMappingParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API JSONMappingParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Path to the top-level parent that contains the records.</p>
      */
-    inline const Aws::String& GetRecordRowPath() const{ return m_recordRowPath; }
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
+    inline const Aws::String& GetRecordRowPath() const { return m_recordRowPath; }
     inline bool RecordRowPathHasBeenSet() const { return m_recordRowPathHasBeenSet; }
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
-    inline void SetRecordRowPath(const Aws::String& value) { m_recordRowPathHasBeenSet = true; m_recordRowPath = value; }
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
-    inline void SetRecordRowPath(Aws::String&& value) { m_recordRowPathHasBeenSet = true; m_recordRowPath = std::move(value); }
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
-    inline void SetRecordRowPath(const char* value) { m_recordRowPathHasBeenSet = true; m_recordRowPath.assign(value); }
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
-    inline JSONMappingParameters& WithRecordRowPath(const Aws::String& value) { SetRecordRowPath(value); return *this;}
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
-    inline JSONMappingParameters& WithRecordRowPath(Aws::String&& value) { SetRecordRowPath(std::move(value)); return *this;}
-
-    /**
-     * <p>Path to the top-level parent that contains the records.</p>
-     */
-    inline JSONMappingParameters& WithRecordRowPath(const char* value) { SetRecordRowPath(value); return *this;}
-
+    template<typename RecordRowPathT = Aws::String>
+    void SetRecordRowPath(RecordRowPathT&& value) { m_recordRowPathHasBeenSet = true; m_recordRowPath = std::forward<RecordRowPathT>(value); }
+    template<typename RecordRowPathT = Aws::String>
+    JSONMappingParameters& WithRecordRowPath(RecordRowPathT&& value) { SetRecordRowPath(std::forward<RecordRowPathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recordRowPath;

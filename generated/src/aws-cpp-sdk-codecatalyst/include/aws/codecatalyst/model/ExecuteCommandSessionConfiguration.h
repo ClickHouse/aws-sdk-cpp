@@ -33,106 +33,38 @@ namespace Model
   class ExecuteCommandSessionConfiguration
   {
   public:
-    AWS_CODECATALYST_API ExecuteCommandSessionConfiguration();
+    AWS_CODECATALYST_API ExecuteCommandSessionConfiguration() = default;
     AWS_CODECATALYST_API ExecuteCommandSessionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API ExecuteCommandSessionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The command used at the beginning of the SSH session to a Dev
      * Environment.</p>
      */
-    inline const Aws::String& GetCommand() const{ return m_command; }
-
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
+    inline const Aws::String& GetCommand() const { return m_command; }
     inline bool CommandHasBeenSet() const { return m_commandHasBeenSet; }
+    template<typename CommandT = Aws::String>
+    void SetCommand(CommandT&& value) { m_commandHasBeenSet = true; m_command = std::forward<CommandT>(value); }
+    template<typename CommandT = Aws::String>
+    ExecuteCommandSessionConfiguration& WithCommand(CommandT&& value) { SetCommand(std::forward<CommandT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
-    inline void SetCommand(const Aws::String& value) { m_commandHasBeenSet = true; m_command = value; }
-
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
-    inline void SetCommand(Aws::String&& value) { m_commandHasBeenSet = true; m_command = std::move(value); }
-
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
-    inline void SetCommand(const char* value) { m_commandHasBeenSet = true; m_command.assign(value); }
-
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& WithCommand(const Aws::String& value) { SetCommand(value); return *this;}
-
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& WithCommand(Aws::String&& value) { SetCommand(std::move(value)); return *this;}
-
-    /**
-     * <p>The command used at the beginning of the SSH session to a Dev
-     * Environment.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& WithCommand(const char* value) { SetCommand(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of arguments containing arguments and members.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetArguments() const{ return m_arguments; }
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetArguments() const { return m_arguments; }
     inline bool ArgumentsHasBeenSet() const { return m_argumentsHasBeenSet; }
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline void SetArguments(const Aws::Vector<Aws::String>& value) { m_argumentsHasBeenSet = true; m_arguments = value; }
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline void SetArguments(Aws::Vector<Aws::String>&& value) { m_argumentsHasBeenSet = true; m_arguments = std::move(value); }
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& WithArguments(const Aws::Vector<Aws::String>& value) { SetArguments(value); return *this;}
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& WithArguments(Aws::Vector<Aws::String>&& value) { SetArguments(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& AddArguments(const Aws::String& value) { m_argumentsHasBeenSet = true; m_arguments.push_back(value); return *this; }
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& AddArguments(Aws::String&& value) { m_argumentsHasBeenSet = true; m_arguments.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of arguments containing arguments and members.</p>
-     */
-    inline ExecuteCommandSessionConfiguration& AddArguments(const char* value) { m_argumentsHasBeenSet = true; m_arguments.push_back(value); return *this; }
-
+    template<typename ArgumentsT = Aws::Vector<Aws::String>>
+    void SetArguments(ArgumentsT&& value) { m_argumentsHasBeenSet = true; m_arguments = std::forward<ArgumentsT>(value); }
+    template<typename ArgumentsT = Aws::Vector<Aws::String>>
+    ExecuteCommandSessionConfiguration& WithArguments(ArgumentsT&& value) { SetArguments(std::forward<ArgumentsT>(value)); return *this;}
+    template<typename ArgumentsT = Aws::String>
+    ExecuteCommandSessionConfiguration& AddArguments(ArgumentsT&& value) { m_argumentsHasBeenSet = true; m_arguments.emplace_back(std::forward<ArgumentsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_command;

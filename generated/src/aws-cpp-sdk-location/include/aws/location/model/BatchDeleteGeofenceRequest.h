@@ -22,7 +22,7 @@ namespace Model
   class BatchDeleteGeofenceRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API BatchDeleteGeofenceRequest();
+    AWS_LOCATIONSERVICE_API BatchDeleteGeofenceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,92 +33,31 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The geofence collection storing the geofences to be deleted.</p>
      */
-    inline const Aws::String& GetCollectionName() const{ return m_collectionName; }
-
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
+    inline const Aws::String& GetCollectionName() const { return m_collectionName; }
     inline bool CollectionNameHasBeenSet() const { return m_collectionNameHasBeenSet; }
+    template<typename CollectionNameT = Aws::String>
+    void SetCollectionName(CollectionNameT&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::forward<CollectionNameT>(value); }
+    template<typename CollectionNameT = Aws::String>
+    BatchDeleteGeofenceRequest& WithCollectionName(CollectionNameT&& value) { SetCollectionName(std::forward<CollectionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
-    inline void SetCollectionName(const Aws::String& value) { m_collectionNameHasBeenSet = true; m_collectionName = value; }
-
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
-    inline void SetCollectionName(Aws::String&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::move(value); }
-
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
-    inline void SetCollectionName(const char* value) { m_collectionNameHasBeenSet = true; m_collectionName.assign(value); }
-
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& WithCollectionName(const Aws::String& value) { SetCollectionName(value); return *this;}
-
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& WithCollectionName(Aws::String&& value) { SetCollectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The geofence collection storing the geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& WithCollectionName(const char* value) { SetCollectionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The batch of geofences to be deleted.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetGeofenceIds() const{ return m_geofenceIds; }
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetGeofenceIds() const { return m_geofenceIds; }
     inline bool GeofenceIdsHasBeenSet() const { return m_geofenceIdsHasBeenSet; }
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline void SetGeofenceIds(const Aws::Vector<Aws::String>& value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds = value; }
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline void SetGeofenceIds(Aws::Vector<Aws::String>&& value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds = std::move(value); }
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& WithGeofenceIds(const Aws::Vector<Aws::String>& value) { SetGeofenceIds(value); return *this;}
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& WithGeofenceIds(Aws::Vector<Aws::String>&& value) { SetGeofenceIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& AddGeofenceIds(const Aws::String& value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds.push_back(value); return *this; }
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& AddGeofenceIds(Aws::String&& value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The batch of geofences to be deleted.</p>
-     */
-    inline BatchDeleteGeofenceRequest& AddGeofenceIds(const char* value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds.push_back(value); return *this; }
-
+    template<typename GeofenceIdsT = Aws::Vector<Aws::String>>
+    void SetGeofenceIds(GeofenceIdsT&& value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds = std::forward<GeofenceIdsT>(value); }
+    template<typename GeofenceIdsT = Aws::Vector<Aws::String>>
+    BatchDeleteGeofenceRequest& WithGeofenceIds(GeofenceIdsT&& value) { SetGeofenceIds(std::forward<GeofenceIdsT>(value)); return *this;}
+    template<typename GeofenceIdsT = Aws::String>
+    BatchDeleteGeofenceRequest& AddGeofenceIds(GeofenceIdsT&& value) { m_geofenceIdsHasBeenSet = true; m_geofenceIds.emplace_back(std::forward<GeofenceIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_collectionName;

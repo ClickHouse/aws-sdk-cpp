@@ -18,15 +18,7 @@ namespace tnb
 namespace Model
 {
 
-ListSolNetworkOperationsMetadata::ListSolNetworkOperationsMetadata() : 
-    m_createdAtHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false)
-{
-}
-
-ListSolNetworkOperationsMetadata::ListSolNetworkOperationsMetadata(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false)
+ListSolNetworkOperationsMetadata::ListSolNetworkOperationsMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,23 @@ ListSolNetworkOperationsMetadata& ListSolNetworkOperationsMetadata::operator =(J
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetString("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastModified"))
   {
     m_lastModified = jsonValue.GetString("lastModified");
-
     m_lastModifiedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nsdInfoId"))
+  {
+    m_nsdInfoId = jsonValue.GetString("nsdInfoId");
+    m_nsdInfoIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("vnfInstanceId"))
+  {
+    m_vnfInstanceId = jsonValue.GetString("vnfInstanceId");
+    m_vnfInstanceIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -62,6 +60,18 @@ JsonValue ListSolNetworkOperationsMetadata::Jsonize() const
   if(m_lastModifiedHasBeenSet)
   {
    payload.WithString("lastModified", m_lastModified.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_nsdInfoIdHasBeenSet)
+  {
+   payload.WithString("nsdInfoId", m_nsdInfoId);
+
+  }
+
+  if(m_vnfInstanceIdHasBeenSet)
+  {
+   payload.WithString("vnfInstanceId", m_vnfInstanceId);
+
   }
 
   return payload;

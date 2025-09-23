@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-HubContentDependency::HubContentDependency() : 
-    m_dependencyOriginPathHasBeenSet(false),
-    m_dependencyCopyPathHasBeenSet(false)
-{
-}
-
-HubContentDependency::HubContentDependency(JsonView jsonValue) : 
-    m_dependencyOriginPathHasBeenSet(false),
-    m_dependencyCopyPathHasBeenSet(false)
+HubContentDependency::HubContentDependency(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HubContentDependency& HubContentDependency::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DependencyOriginPath"))
   {
     m_dependencyOriginPath = jsonValue.GetString("DependencyOriginPath");
-
     m_dependencyOriginPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DependencyCopyPath"))
   {
     m_dependencyCopyPath = jsonValue.GetString("DependencyCopyPath");
-
     m_dependencyCopyPathHasBeenSet = true;
   }
-
   return *this;
 }
 

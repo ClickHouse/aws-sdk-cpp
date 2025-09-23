@@ -10,13 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateDBSnapshotRequest::CreateDBSnapshotRequest() : 
-    m_dBSnapshotIdentifierHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDBSnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,11 +26,18 @@ Aws::String CreateDBSnapshotRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

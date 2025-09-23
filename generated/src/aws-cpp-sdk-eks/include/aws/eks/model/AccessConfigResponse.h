@@ -31,73 +31,38 @@ namespace Model
   class AccessConfigResponse
   {
   public:
-    AWS_EKS_API AccessConfigResponse();
+    AWS_EKS_API AccessConfigResponse() = default;
     AWS_EKS_API AccessConfigResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API AccessConfigResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether or not the cluster creator IAM principal was set as a
      * cluster admin access entry during cluster creation time.</p>
      */
-    inline bool GetBootstrapClusterCreatorAdminPermissions() const{ return m_bootstrapClusterCreatorAdminPermissions; }
-
-    /**
-     * <p>Specifies whether or not the cluster creator IAM principal was set as a
-     * cluster admin access entry during cluster creation time.</p>
-     */
+    inline bool GetBootstrapClusterCreatorAdminPermissions() const { return m_bootstrapClusterCreatorAdminPermissions; }
     inline bool BootstrapClusterCreatorAdminPermissionsHasBeenSet() const { return m_bootstrapClusterCreatorAdminPermissionsHasBeenSet; }
-
-    /**
-     * <p>Specifies whether or not the cluster creator IAM principal was set as a
-     * cluster admin access entry during cluster creation time.</p>
-     */
     inline void SetBootstrapClusterCreatorAdminPermissions(bool value) { m_bootstrapClusterCreatorAdminPermissionsHasBeenSet = true; m_bootstrapClusterCreatorAdminPermissions = value; }
-
-    /**
-     * <p>Specifies whether or not the cluster creator IAM principal was set as a
-     * cluster admin access entry during cluster creation time.</p>
-     */
     inline AccessConfigResponse& WithBootstrapClusterCreatorAdminPermissions(bool value) { SetBootstrapClusterCreatorAdminPermissions(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The current authentication mode of the cluster.</p>
      */
-    inline const AuthenticationMode& GetAuthenticationMode() const{ return m_authenticationMode; }
-
-    /**
-     * <p>The current authentication mode of the cluster.</p>
-     */
+    inline AuthenticationMode GetAuthenticationMode() const { return m_authenticationMode; }
     inline bool AuthenticationModeHasBeenSet() const { return m_authenticationModeHasBeenSet; }
-
-    /**
-     * <p>The current authentication mode of the cluster.</p>
-     */
-    inline void SetAuthenticationMode(const AuthenticationMode& value) { m_authenticationModeHasBeenSet = true; m_authenticationMode = value; }
-
-    /**
-     * <p>The current authentication mode of the cluster.</p>
-     */
-    inline void SetAuthenticationMode(AuthenticationMode&& value) { m_authenticationModeHasBeenSet = true; m_authenticationMode = std::move(value); }
-
-    /**
-     * <p>The current authentication mode of the cluster.</p>
-     */
-    inline AccessConfigResponse& WithAuthenticationMode(const AuthenticationMode& value) { SetAuthenticationMode(value); return *this;}
-
-    /**
-     * <p>The current authentication mode of the cluster.</p>
-     */
-    inline AccessConfigResponse& WithAuthenticationMode(AuthenticationMode&& value) { SetAuthenticationMode(std::move(value)); return *this;}
-
+    inline void SetAuthenticationMode(AuthenticationMode value) { m_authenticationModeHasBeenSet = true; m_authenticationMode = value; }
+    inline AccessConfigResponse& WithAuthenticationMode(AuthenticationMode value) { SetAuthenticationMode(value); return *this;}
+    ///@}
   private:
 
-    bool m_bootstrapClusterCreatorAdminPermissions;
+    bool m_bootstrapClusterCreatorAdminPermissions{false};
     bool m_bootstrapClusterCreatorAdminPermissionsHasBeenSet = false;
 
-    AuthenticationMode m_authenticationMode;
+    AuthenticationMode m_authenticationMode{AuthenticationMode::NOT_SET};
     bool m_authenticationModeHasBeenSet = false;
   };
 

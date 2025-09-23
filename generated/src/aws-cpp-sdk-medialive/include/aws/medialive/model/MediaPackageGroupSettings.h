@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/medialive/MediaLive_EXPORTS.h>
 #include <aws/medialive/model/OutputLocationRef.h>
+#include <aws/medialive/model/MediaPackageV2GroupSettings.h>
 #include <utility>
 
 namespace Aws
@@ -31,46 +32,44 @@ namespace Model
   class MediaPackageGroupSettings
   {
   public:
-    AWS_MEDIALIVE_API MediaPackageGroupSettings();
+    AWS_MEDIALIVE_API MediaPackageGroupSettings() = default;
     AWS_MEDIALIVE_API MediaPackageGroupSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MediaPackageGroupSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * MediaPackage channel destination.
      */
-    inline const OutputLocationRef& GetDestination() const{ return m_destination; }
-
-    /**
-     * MediaPackage channel destination.
-     */
+    inline const OutputLocationRef& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
+    template<typename DestinationT = OutputLocationRef>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = OutputLocationRef>
+    MediaPackageGroupSettings& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * MediaPackage channel destination.
+     * Parameters that apply only if the destination parameter (for the output group)
+     * specifies a channelGroup and channelName. Use of these two paramters indicates
+     * that the output group is for MediaPackage V2 (CMAF Ingest).
      */
-    inline void SetDestination(const OutputLocationRef& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * MediaPackage channel destination.
-     */
-    inline void SetDestination(OutputLocationRef&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * MediaPackage channel destination.
-     */
-    inline MediaPackageGroupSettings& WithDestination(const OutputLocationRef& value) { SetDestination(value); return *this;}
-
-    /**
-     * MediaPackage channel destination.
-     */
-    inline MediaPackageGroupSettings& WithDestination(OutputLocationRef&& value) { SetDestination(std::move(value)); return *this;}
-
+    inline const MediaPackageV2GroupSettings& GetMediapackageV2GroupSettings() const { return m_mediapackageV2GroupSettings; }
+    inline bool MediapackageV2GroupSettingsHasBeenSet() const { return m_mediapackageV2GroupSettingsHasBeenSet; }
+    template<typename MediapackageV2GroupSettingsT = MediaPackageV2GroupSettings>
+    void SetMediapackageV2GroupSettings(MediapackageV2GroupSettingsT&& value) { m_mediapackageV2GroupSettingsHasBeenSet = true; m_mediapackageV2GroupSettings = std::forward<MediapackageV2GroupSettingsT>(value); }
+    template<typename MediapackageV2GroupSettingsT = MediaPackageV2GroupSettings>
+    MediaPackageGroupSettings& WithMediapackageV2GroupSettings(MediapackageV2GroupSettingsT&& value) { SetMediapackageV2GroupSettings(std::forward<MediapackageV2GroupSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     OutputLocationRef m_destination;
     bool m_destinationHasBeenSet = false;
+
+    MediaPackageV2GroupSettings m_mediapackageV2GroupSettings;
+    bool m_mediapackageV2GroupSettingsHasBeenSet = false;
   };
 
 } // namespace Model

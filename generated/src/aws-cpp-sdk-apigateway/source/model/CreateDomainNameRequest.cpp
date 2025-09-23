@@ -12,24 +12,6 @@ using namespace Aws::APIGateway::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainNameRequest::CreateDomainNameRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_certificateNameHasBeenSet(false),
-    m_certificateBodyHasBeenSet(false),
-    m_certificatePrivateKeyHasBeenSet(false),
-    m_certificateChainHasBeenSet(false),
-    m_certificateArnHasBeenSet(false),
-    m_regionalCertificateNameHasBeenSet(false),
-    m_regionalCertificateArnHasBeenSet(false),
-    m_endpointConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_securityPolicy(SecurityPolicy::NOT_SET),
-    m_securityPolicyHasBeenSet(false),
-    m_mutualTlsAuthenticationHasBeenSet(false),
-    m_ownershipVerificationCertificateArnHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainNameRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -114,6 +96,17 @@ Aws::String CreateDomainNameRequest::SerializePayload() const
   {
    payload.WithString("ownershipVerificationCertificateArn", m_ownershipVerificationCertificateArn);
 
+  }
+
+  if(m_policyHasBeenSet)
+  {
+   payload.WithString("policy", m_policy);
+
+  }
+
+  if(m_routingModeHasBeenSet)
+  {
+   payload.WithString("routingMode", RoutingModeMapper::GetNameForRoutingMode(m_routingMode));
   }
 
   return payload.View().WriteReadable();

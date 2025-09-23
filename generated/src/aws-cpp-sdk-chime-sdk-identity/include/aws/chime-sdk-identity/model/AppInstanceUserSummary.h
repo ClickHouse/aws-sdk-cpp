@@ -32,134 +32,47 @@ namespace Model
   class AppInstanceUserSummary
   {
   public:
-    AWS_CHIMESDKIDENTITY_API AppInstanceUserSummary();
+    AWS_CHIMESDKIDENTITY_API AppInstanceUserSummary() = default;
     AWS_CHIMESDKIDENTITY_API AppInstanceUserSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKIDENTITY_API AppInstanceUserSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKIDENTITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetAppInstanceUserArn() const{ return m_appInstanceUserArn; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetAppInstanceUserArn() const { return m_appInstanceUserArn; }
     inline bool AppInstanceUserArnHasBeenSet() const { return m_appInstanceUserArnHasBeenSet; }
+    template<typename AppInstanceUserArnT = Aws::String>
+    void SetAppInstanceUserArn(AppInstanceUserArnT&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::forward<AppInstanceUserArnT>(value); }
+    template<typename AppInstanceUserArnT = Aws::String>
+    AppInstanceUserSummary& WithAppInstanceUserArn(AppInstanceUserArnT&& value) { SetAppInstanceUserArn(std::forward<AppInstanceUserArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(const Aws::String& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(Aws::String&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(const char* value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithAppInstanceUserArn(const Aws::String& value) { SetAppInstanceUserArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithAppInstanceUserArn(Aws::String&& value) { SetAppInstanceUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithAppInstanceUserArn(const char* value) { SetAppInstanceUserArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of an <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AppInstanceUserSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata of the <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetMetadata() const{ return m_metadata; }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetMetadata() const { return m_metadata; }
     inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetMetadata(const Aws::String& value) { m_metadataHasBeenSet = true; m_metadata = value; }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetMetadata(Aws::String&& value) { m_metadataHasBeenSet = true; m_metadata = std::move(value); }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetMetadata(const char* value) { m_metadataHasBeenSet = true; m_metadata.assign(value); }
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithMetadata(const Aws::String& value) { SetMetadata(value); return *this;}
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithMetadata(Aws::String&& value) { SetMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata of the <code>AppInstanceUser</code>.</p>
-     */
-    inline AppInstanceUserSummary& WithMetadata(const char* value) { SetMetadata(value); return *this;}
-
+    template<typename MetadataT = Aws::String>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = Aws::String>
+    AppInstanceUserSummary& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appInstanceUserArn;

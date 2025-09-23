@@ -26,179 +26,78 @@ namespace Model
 {
 
   /**
-   * <p>Specifies that you want Kinesis Data Firehose to convert data from the JSON
-   * format to the Parquet or ORC format before writing it to Amazon S3. Kinesis Data
-   * Firehose uses the serializer and deserializer that you specify, in addition to
-   * the column information from the Amazon Web Services Glue table, to deserialize
-   * your input data from JSON and then serialize it to the Parquet or ORC format.
-   * For more information, see <a
-   * href="https://docs.aws.amazon.com/firehose/latest/dev/record-format-conversion.html">Kinesis
-   * Data Firehose Record Format Conversion</a>.</p><p><h3>See Also:</h3>   <a
+   * <p>Specifies that you want Firehose to convert data from the JSON format to the
+   * Parquet or ORC format before writing it to Amazon S3. Firehose uses the
+   * serializer and deserializer that you specify, in addition to the column
+   * information from the Amazon Web Services Glue table, to deserialize your input
+   * data from JSON and then serialize it to the Parquet or ORC format. For more
+   * information, see <a
+   * href="https://docs.aws.amazon.com/firehose/latest/dev/record-format-conversion.html">Firehose
+   * Record Format Conversion</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/DataFormatConversionConfiguration">AWS
    * API Reference</a></p>
    */
   class DataFormatConversionConfiguration
   {
   public:
-    AWS_FIREHOSE_API DataFormatConversionConfiguration();
+    AWS_FIREHOSE_API DataFormatConversionConfiguration() = default;
     AWS_FIREHOSE_API DataFormatConversionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API DataFormatConversionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the Amazon Web Services Glue Data Catalog table that contains the
      * column information. This parameter is required if <code>Enabled</code> is set to
      * true.</p>
      */
-    inline const SchemaConfiguration& GetSchemaConfiguration() const{ return m_schemaConfiguration; }
-
-    /**
-     * <p>Specifies the Amazon Web Services Glue Data Catalog table that contains the
-     * column information. This parameter is required if <code>Enabled</code> is set to
-     * true.</p>
-     */
+    inline const SchemaConfiguration& GetSchemaConfiguration() const { return m_schemaConfiguration; }
     inline bool SchemaConfigurationHasBeenSet() const { return m_schemaConfigurationHasBeenSet; }
+    template<typename SchemaConfigurationT = SchemaConfiguration>
+    void SetSchemaConfiguration(SchemaConfigurationT&& value) { m_schemaConfigurationHasBeenSet = true; m_schemaConfiguration = std::forward<SchemaConfigurationT>(value); }
+    template<typename SchemaConfigurationT = SchemaConfiguration>
+    DataFormatConversionConfiguration& WithSchemaConfiguration(SchemaConfigurationT&& value) { SetSchemaConfiguration(std::forward<SchemaConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the Amazon Web Services Glue Data Catalog table that contains the
-     * column information. This parameter is required if <code>Enabled</code> is set to
-     * true.</p>
-     */
-    inline void SetSchemaConfiguration(const SchemaConfiguration& value) { m_schemaConfigurationHasBeenSet = true; m_schemaConfiguration = value; }
-
-    /**
-     * <p>Specifies the Amazon Web Services Glue Data Catalog table that contains the
-     * column information. This parameter is required if <code>Enabled</code> is set to
-     * true.</p>
-     */
-    inline void SetSchemaConfiguration(SchemaConfiguration&& value) { m_schemaConfigurationHasBeenSet = true; m_schemaConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Web Services Glue Data Catalog table that contains the
-     * column information. This parameter is required if <code>Enabled</code> is set to
-     * true.</p>
-     */
-    inline DataFormatConversionConfiguration& WithSchemaConfiguration(const SchemaConfiguration& value) { SetSchemaConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Web Services Glue Data Catalog table that contains the
-     * column information. This parameter is required if <code>Enabled</code> is set to
-     * true.</p>
-     */
-    inline DataFormatConversionConfiguration& WithSchemaConfiguration(SchemaConfiguration&& value) { SetSchemaConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies the deserializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data from JSON. This parameter is required if
+     * <p>Specifies the deserializer that you want Firehose to use to convert the
+     * format of your data from JSON. This parameter is required if
      * <code>Enabled</code> is set to true.</p>
      */
-    inline const InputFormatConfiguration& GetInputFormatConfiguration() const{ return m_inputFormatConfiguration; }
-
-    /**
-     * <p>Specifies the deserializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data from JSON. This parameter is required if
-     * <code>Enabled</code> is set to true.</p>
-     */
+    inline const InputFormatConfiguration& GetInputFormatConfiguration() const { return m_inputFormatConfiguration; }
     inline bool InputFormatConfigurationHasBeenSet() const { return m_inputFormatConfigurationHasBeenSet; }
+    template<typename InputFormatConfigurationT = InputFormatConfiguration>
+    void SetInputFormatConfiguration(InputFormatConfigurationT&& value) { m_inputFormatConfigurationHasBeenSet = true; m_inputFormatConfiguration = std::forward<InputFormatConfigurationT>(value); }
+    template<typename InputFormatConfigurationT = InputFormatConfiguration>
+    DataFormatConversionConfiguration& WithInputFormatConfiguration(InputFormatConfigurationT&& value) { SetInputFormatConfiguration(std::forward<InputFormatConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the deserializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data from JSON. This parameter is required if
+     * <p>Specifies the serializer that you want Firehose to use to convert the format
+     * of your data to the Parquet or ORC format. This parameter is required if
      * <code>Enabled</code> is set to true.</p>
      */
-    inline void SetInputFormatConfiguration(const InputFormatConfiguration& value) { m_inputFormatConfigurationHasBeenSet = true; m_inputFormatConfiguration = value; }
-
-    /**
-     * <p>Specifies the deserializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data from JSON. This parameter is required if
-     * <code>Enabled</code> is set to true.</p>
-     */
-    inline void SetInputFormatConfiguration(InputFormatConfiguration&& value) { m_inputFormatConfigurationHasBeenSet = true; m_inputFormatConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies the deserializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data from JSON. This parameter is required if
-     * <code>Enabled</code> is set to true.</p>
-     */
-    inline DataFormatConversionConfiguration& WithInputFormatConfiguration(const InputFormatConfiguration& value) { SetInputFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies the deserializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data from JSON. This parameter is required if
-     * <code>Enabled</code> is set to true.</p>
-     */
-    inline DataFormatConversionConfiguration& WithInputFormatConfiguration(InputFormatConfiguration&& value) { SetInputFormatConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data to the Parquet or ORC format. This parameter is
-     * required if <code>Enabled</code> is set to true.</p>
-     */
-    inline const OutputFormatConfiguration& GetOutputFormatConfiguration() const{ return m_outputFormatConfiguration; }
-
-    /**
-     * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data to the Parquet or ORC format. This parameter is
-     * required if <code>Enabled</code> is set to true.</p>
-     */
+    inline const OutputFormatConfiguration& GetOutputFormatConfiguration() const { return m_outputFormatConfiguration; }
     inline bool OutputFormatConfigurationHasBeenSet() const { return m_outputFormatConfigurationHasBeenSet; }
+    template<typename OutputFormatConfigurationT = OutputFormatConfiguration>
+    void SetOutputFormatConfiguration(OutputFormatConfigurationT&& value) { m_outputFormatConfigurationHasBeenSet = true; m_outputFormatConfiguration = std::forward<OutputFormatConfigurationT>(value); }
+    template<typename OutputFormatConfigurationT = OutputFormatConfiguration>
+    DataFormatConversionConfiguration& WithOutputFormatConfiguration(OutputFormatConfigurationT&& value) { SetOutputFormatConfiguration(std::forward<OutputFormatConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data to the Parquet or ORC format. This parameter is
-     * required if <code>Enabled</code> is set to true.</p>
-     */
-    inline void SetOutputFormatConfiguration(const OutputFormatConfiguration& value) { m_outputFormatConfigurationHasBeenSet = true; m_outputFormatConfiguration = value; }
-
-    /**
-     * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data to the Parquet or ORC format. This parameter is
-     * required if <code>Enabled</code> is set to true.</p>
-     */
-    inline void SetOutputFormatConfiguration(OutputFormatConfiguration&& value) { m_outputFormatConfigurationHasBeenSet = true; m_outputFormatConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data to the Parquet or ORC format. This parameter is
-     * required if <code>Enabled</code> is set to true.</p>
-     */
-    inline DataFormatConversionConfiguration& WithOutputFormatConfiguration(const OutputFormatConfiguration& value) { SetOutputFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-     * convert the format of your data to the Parquet or ORC format. This parameter is
-     * required if <code>Enabled</code> is set to true.</p>
-     */
-    inline DataFormatConversionConfiguration& WithOutputFormatConfiguration(OutputFormatConfiguration&& value) { SetOutputFormatConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Defaults to <code>true</code>. Set it to <code>false</code> if you want to
      * disable format conversion while preserving the configuration details.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Defaults to <code>true</code>. Set it to <code>false</code> if you want to
-     * disable format conversion while preserving the configuration details.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Defaults to <code>true</code>. Set it to <code>false</code> if you want to
-     * disable format conversion while preserving the configuration details.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Defaults to <code>true</code>. Set it to <code>false</code> if you want to
-     * disable format conversion while preserving the configuration details.</p>
-     */
     inline DataFormatConversionConfiguration& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
     SchemaConfiguration m_schemaConfiguration;
@@ -210,7 +109,7 @@ namespace Model
     OutputFormatConfiguration m_outputFormatConfiguration;
     bool m_outputFormatConfigurationHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

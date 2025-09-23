@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/qconnect/QConnect_EXPORTS.h>
-#include <aws/qconnect/model/QueryConditionComparisonOperator.h>
 #include <aws/qconnect/model/QueryConditionFieldName.h>
+#include <aws/qconnect/model/QueryConditionComparisonOperator.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -33,121 +33,50 @@ namespace Model
   class QueryConditionItem
   {
   public:
-    AWS_QCONNECT_API QueryConditionItem();
+    AWS_QCONNECT_API QueryConditionItem() = default;
     AWS_QCONNECT_API QueryConditionItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API QueryConditionItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The comparison operator for query condition to query on.</p>
-     */
-    inline const QueryConditionComparisonOperator& GetComparator() const{ return m_comparator; }
-
-    /**
-     * <p>The comparison operator for query condition to query on.</p>
-     */
-    inline bool ComparatorHasBeenSet() const { return m_comparatorHasBeenSet; }
-
-    /**
-     * <p>The comparison operator for query condition to query on.</p>
-     */
-    inline void SetComparator(const QueryConditionComparisonOperator& value) { m_comparatorHasBeenSet = true; m_comparator = value; }
-
-    /**
-     * <p>The comparison operator for query condition to query on.</p>
-     */
-    inline void SetComparator(QueryConditionComparisonOperator&& value) { m_comparatorHasBeenSet = true; m_comparator = std::move(value); }
-
-    /**
-     * <p>The comparison operator for query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithComparator(const QueryConditionComparisonOperator& value) { SetComparator(value); return *this;}
-
-    /**
-     * <p>The comparison operator for query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithComparator(QueryConditionComparisonOperator&& value) { SetComparator(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the field for query condition to query on.</p>
      */
-    inline const QueryConditionFieldName& GetField() const{ return m_field; }
-
-    /**
-     * <p> The name of the field for query condition to query on.</p>
-     */
+    inline QueryConditionFieldName GetField() const { return m_field; }
     inline bool FieldHasBeenSet() const { return m_fieldHasBeenSet; }
+    inline void SetField(QueryConditionFieldName value) { m_fieldHasBeenSet = true; m_field = value; }
+    inline QueryConditionItem& WithField(QueryConditionFieldName value) { SetField(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The name of the field for query condition to query on.</p>
+     * <p>The comparison operator for query condition to query on.</p>
      */
-    inline void SetField(const QueryConditionFieldName& value) { m_fieldHasBeenSet = true; m_field = value; }
+    inline QueryConditionComparisonOperator GetComparator() const { return m_comparator; }
+    inline bool ComparatorHasBeenSet() const { return m_comparatorHasBeenSet; }
+    inline void SetComparator(QueryConditionComparisonOperator value) { m_comparatorHasBeenSet = true; m_comparator = value; }
+    inline QueryConditionItem& WithComparator(QueryConditionComparisonOperator value) { SetComparator(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the field for query condition to query on.</p>
-     */
-    inline void SetField(QueryConditionFieldName&& value) { m_fieldHasBeenSet = true; m_field = std::move(value); }
-
-    /**
-     * <p> The name of the field for query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithField(const QueryConditionFieldName& value) { SetField(value); return *this;}
-
-    /**
-     * <p> The name of the field for query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithField(QueryConditionFieldName&& value) { SetField(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the query condition to query on.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value for the query condition to query on.</p>
-     */
-    inline QueryConditionItem& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    QueryConditionItem& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    QueryConditionComparisonOperator m_comparator;
-    bool m_comparatorHasBeenSet = false;
-
-    QueryConditionFieldName m_field;
+    QueryConditionFieldName m_field{QueryConditionFieldName::NOT_SET};
     bool m_fieldHasBeenSet = false;
+
+    QueryConditionComparisonOperator m_comparator{QueryConditionComparisonOperator::NOT_SET};
+    bool m_comparatorHasBeenSet = false;
 
     Aws::String m_value;
     bool m_valueHasBeenSet = false;

@@ -21,7 +21,7 @@ namespace Model
   class RetryBuildRequest : public CodeBuildRequest
   {
   public:
-    AWS_CODEBUILD_API RetryBuildRequest();
+    AWS_CODEBUILD_API RetryBuildRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,19 @@ namespace Model
     AWS_CODEBUILD_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the identifier of the build to restart.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    RetryBuildRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
-    inline RetryBuildRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
-    inline RetryBuildRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the identifier of the build to restart.</p>
-     */
-    inline RetryBuildRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
      * the <code>RetryBuild</code> request. The token is included in the
@@ -82,71 +54,13 @@ namespace Model
      * <code>RetryBuild</code> request with the same token, but change a parameter,
      * CodeBuild returns a parameter mismatch error.</p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
-    inline RetryBuildRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
-    inline RetryBuildRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case sensitive identifier you provide to ensure the idempotency of
-     * the <code>RetryBuild</code> request. The token is included in the
-     * <code>RetryBuild</code> request and is valid for five minutes. If you repeat the
-     * <code>RetryBuild</code> request with the same token, but change a parameter,
-     * CodeBuild returns a parameter mismatch error.</p>
-     */
-    inline RetryBuildRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    RetryBuildRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

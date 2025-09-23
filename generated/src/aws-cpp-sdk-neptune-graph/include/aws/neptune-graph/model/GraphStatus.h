@@ -22,7 +22,11 @@ namespace Model
     RESETTING,
     UPDATING,
     SNAPSHOTTING,
-    FAILED
+    FAILED,
+    IMPORTING,
+    STARTING,
+    STOPPING,
+    STOPPED
   };
 
 namespace GraphStatusMapper

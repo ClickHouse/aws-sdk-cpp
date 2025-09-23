@@ -32,89 +32,39 @@ namespace Model
   class BlockerDeclaration
   {
   public:
-    AWS_CODEPIPELINE_API BlockerDeclaration();
+    AWS_CODEPIPELINE_API BlockerDeclaration() = default;
     AWS_CODEPIPELINE_API BlockerDeclaration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API BlockerDeclaration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BlockerDeclaration& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline BlockerDeclaration& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline BlockerDeclaration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline BlockerDeclaration& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline const BlockerType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
+    inline BlockerType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetType(const BlockerType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetType(BlockerType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline BlockerDeclaration& WithType(const BlockerType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline BlockerDeclaration& WithType(BlockerType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(BlockerType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline BlockerDeclaration& WithType(BlockerType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    BlockerType m_type;
+    BlockerType m_type{BlockerType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

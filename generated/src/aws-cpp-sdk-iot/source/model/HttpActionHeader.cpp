@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-HttpActionHeader::HttpActionHeader() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-HttpActionHeader::HttpActionHeader(JsonView jsonValue) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+HttpActionHeader::HttpActionHeader(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HttpActionHeader& HttpActionHeader::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

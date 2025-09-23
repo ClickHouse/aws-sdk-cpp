@@ -20,15 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-PhysicalResourceIdContextKeyValuePair::PhysicalResourceIdContextKeyValuePair() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-PhysicalResourceIdContextKeyValuePair::PhysicalResourceIdContextKeyValuePair(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+PhysicalResourceIdContextKeyValuePair::PhysicalResourceIdContextKeyValuePair(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

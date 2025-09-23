@@ -34,91 +34,38 @@ namespace Model
   class RegistrationAssociationFilter
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API RegistrationAssociationFilter();
+    AWS_PINPOINTSMSVOICEV2_API RegistrationAssociationFilter() = default;
     AWS_PINPOINTSMSVOICEV2_API RegistrationAssociationFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICEV2_API RegistrationAssociationFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the attribute to filter on.</p>
      */
-    inline const RegistrationAssociationFilterName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the attribute to filter on.</p>
-     */
+    inline RegistrationAssociationFilterName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(RegistrationAssociationFilterName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline RegistrationAssociationFilter& WithName(RegistrationAssociationFilterName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the attribute to filter on.</p>
-     */
-    inline void SetName(const RegistrationAssociationFilterName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the attribute to filter on.</p>
-     */
-    inline void SetName(RegistrationAssociationFilterName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the attribute to filter on.</p>
-     */
-    inline RegistrationAssociationFilter& WithName(const RegistrationAssociationFilterName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the attribute to filter on.</p>
-     */
-    inline RegistrationAssociationFilter& WithName(RegistrationAssociationFilterName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of values to filter for.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline RegistrationAssociationFilter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline RegistrationAssociationFilter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline RegistrationAssociationFilter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline RegistrationAssociationFilter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of values to filter for.</p>
-     */
-    inline RegistrationAssociationFilter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    RegistrationAssociationFilter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    RegistrationAssociationFilter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    RegistrationAssociationFilterName m_name;
+    RegistrationAssociationFilterName m_name{RegistrationAssociationFilterName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

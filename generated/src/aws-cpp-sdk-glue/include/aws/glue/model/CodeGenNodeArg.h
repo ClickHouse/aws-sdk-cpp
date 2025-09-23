@@ -31,114 +31,45 @@ namespace Model
   class CodeGenNodeArg
   {
   public:
-    AWS_GLUE_API CodeGenNodeArg();
+    AWS_GLUE_API CodeGenNodeArg() = default;
     AWS_GLUE_API CodeGenNodeArg(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API CodeGenNodeArg& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the argument or property.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the argument or property.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CodeGenNodeArg& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the argument or property.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the argument or property.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the argument or property.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the argument or property.</p>
-     */
-    inline CodeGenNodeArg& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the argument or property.</p>
-     */
-    inline CodeGenNodeArg& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the argument or property.</p>
-     */
-    inline CodeGenNodeArg& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the argument or property.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the argument or property.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    CodeGenNodeArg& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the argument or property.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the argument or property.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the argument or property.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the argument or property.</p>
-     */
-    inline CodeGenNodeArg& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the argument or property.</p>
-     */
-    inline CodeGenNodeArg& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the argument or property.</p>
-     */
-    inline CodeGenNodeArg& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>True if the value is used as a parameter.</p>
      */
-    inline bool GetParam() const{ return m_param; }
-
-    /**
-     * <p>True if the value is used as a parameter.</p>
-     */
+    inline bool GetParam() const { return m_param; }
     inline bool ParamHasBeenSet() const { return m_paramHasBeenSet; }
-
-    /**
-     * <p>True if the value is used as a parameter.</p>
-     */
     inline void SetParam(bool value) { m_paramHasBeenSet = true; m_param = value; }
-
-    /**
-     * <p>True if the value is used as a parameter.</p>
-     */
     inline CodeGenNodeArg& WithParam(bool value) { SetParam(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
@@ -147,7 +78,7 @@ namespace Model
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    bool m_param;
+    bool m_param{false};
     bool m_paramHasBeenSet = false;
   };
 

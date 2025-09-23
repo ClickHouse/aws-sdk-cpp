@@ -20,29 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TrafficMirrorTarget::TrafficMirrorTarget() : 
-    m_trafficMirrorTargetIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_networkLoadBalancerArnHasBeenSet(false),
-    m_type(TrafficMirrorTargetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_gatewayLoadBalancerEndpointIdHasBeenSet(false)
-{
-}
-
-TrafficMirrorTarget::TrafficMirrorTarget(const XmlNode& xmlNode) : 
-    m_trafficMirrorTargetIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_networkLoadBalancerArnHasBeenSet(false),
-    m_type(TrafficMirrorTargetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_gatewayLoadBalancerEndpointIdHasBeenSet(false)
+TrafficMirrorTarget::TrafficMirrorTarget(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -74,7 +52,7 @@ TrafficMirrorTarget& TrafficMirrorTarget::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("type");
     if(!typeNode.IsNull())
     {
-      m_type = TrafficMirrorTargetTypeMapper::GetTrafficMirrorTargetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = TrafficMirrorTargetTypeMapper::GetTrafficMirrorTargetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode descriptionNode = resultNode.FirstChild("description");
@@ -93,6 +71,7 @@ TrafficMirrorTarget& TrafficMirrorTarget::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -131,7 +110,7 @@ void TrafficMirrorTarget::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << TrafficMirrorTargetTypeMapper::GetNameForTrafficMirrorTargetType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(TrafficMirrorTargetTypeMapper::GetNameForTrafficMirrorTargetType(m_type)) << "&";
   }
 
   if(m_descriptionHasBeenSet)
@@ -178,7 +157,7 @@ void TrafficMirrorTarget::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << TrafficMirrorTargetTypeMapper::GetNameForTrafficMirrorTargetType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(TrafficMirrorTargetTypeMapper::GetNameForTrafficMirrorTargetType(m_type)) << "&";
   }
   if(m_descriptionHasBeenSet)
   {
@@ -194,7 +173,7 @@ void TrafficMirrorTarget::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

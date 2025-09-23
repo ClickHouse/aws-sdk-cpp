@@ -18,19 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-OnDeviceServiceConfiguration::OnDeviceServiceConfiguration() : 
-    m_nFSOnDeviceServiceHasBeenSet(false),
-    m_tGWOnDeviceServiceHasBeenSet(false),
-    m_eKSOnDeviceServiceHasBeenSet(false),
-    m_s3OnDeviceServiceHasBeenSet(false)
-{
-}
-
-OnDeviceServiceConfiguration::OnDeviceServiceConfiguration(JsonView jsonValue) : 
-    m_nFSOnDeviceServiceHasBeenSet(false),
-    m_tGWOnDeviceServiceHasBeenSet(false),
-    m_eKSOnDeviceServiceHasBeenSet(false),
-    m_s3OnDeviceServiceHasBeenSet(false)
+OnDeviceServiceConfiguration::OnDeviceServiceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ OnDeviceServiceConfiguration& OnDeviceServiceConfiguration::operator =(JsonView 
   if(jsonValue.ValueExists("NFSOnDeviceService"))
   {
     m_nFSOnDeviceService = jsonValue.GetObject("NFSOnDeviceService");
-
     m_nFSOnDeviceServiceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TGWOnDeviceService"))
   {
     m_tGWOnDeviceService = jsonValue.GetObject("TGWOnDeviceService");
-
     m_tGWOnDeviceServiceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EKSOnDeviceService"))
   {
     m_eKSOnDeviceService = jsonValue.GetObject("EKSOnDeviceService");
-
     m_eKSOnDeviceServiceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3OnDeviceService"))
   {
     m_s3OnDeviceService = jsonValue.GetObject("S3OnDeviceService");
-
     m_s3OnDeviceServiceHasBeenSet = true;
   }
-
   return *this;
 }
 

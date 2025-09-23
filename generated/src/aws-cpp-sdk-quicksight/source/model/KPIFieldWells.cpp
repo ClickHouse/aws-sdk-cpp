@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-KPIFieldWells::KPIFieldWells() : 
-    m_valuesHasBeenSet(false),
-    m_targetValuesHasBeenSet(false),
-    m_trendGroupsHasBeenSet(false)
-{
-}
-
-KPIFieldWells::KPIFieldWells(JsonView jsonValue) : 
-    m_valuesHasBeenSet(false),
-    m_targetValuesHasBeenSet(false),
-    m_trendGroupsHasBeenSet(false)
+KPIFieldWells::KPIFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ KPIFieldWells& KPIFieldWells::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetValues"))
   {
     Aws::Utils::Array<JsonView> targetValuesJsonList = jsonValue.GetArray("TargetValues");
@@ -54,7 +43,6 @@ KPIFieldWells& KPIFieldWells::operator =(JsonView jsonValue)
     }
     m_targetValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrendGroups"))
   {
     Aws::Utils::Array<JsonView> trendGroupsJsonList = jsonValue.GetArray("TrendGroups");
@@ -64,7 +52,6 @@ KPIFieldWells& KPIFieldWells::operator =(JsonView jsonValue)
     }
     m_trendGroupsHasBeenSet = true;
   }
-
   return *this;
 }
 

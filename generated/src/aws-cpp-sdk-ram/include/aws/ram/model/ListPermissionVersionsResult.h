@@ -29,54 +29,26 @@ namespace Model
   class ListPermissionVersionsResult
   {
   public:
-    AWS_RAM_API ListPermissionVersionsResult();
+    AWS_RAM_API ListPermissionVersionsResult() = default;
     AWS_RAM_API ListPermissionVersionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RAM_API ListPermissionVersionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of objects that contain details for each of the available
      * versions.</p>
      */
-    inline const Aws::Vector<ResourceSharePermissionSummary>& GetPermissions() const{ return m_permissions; }
+    inline const Aws::Vector<ResourceSharePermissionSummary>& GetPermissions() const { return m_permissions; }
+    template<typename PermissionsT = Aws::Vector<ResourceSharePermissionSummary>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<ResourceSharePermissionSummary>>
+    ListPermissionVersionsResult& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    template<typename PermissionsT = ResourceSharePermissionSummary>
+    ListPermissionVersionsResult& AddPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions.emplace_back(std::forward<PermissionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of objects that contain details for each of the available
-     * versions.</p>
-     */
-    inline void SetPermissions(const Aws::Vector<ResourceSharePermissionSummary>& value) { m_permissions = value; }
-
-    /**
-     * <p>An array of objects that contain details for each of the available
-     * versions.</p>
-     */
-    inline void SetPermissions(Aws::Vector<ResourceSharePermissionSummary>&& value) { m_permissions = std::move(value); }
-
-    /**
-     * <p>An array of objects that contain details for each of the available
-     * versions.</p>
-     */
-    inline ListPermissionVersionsResult& WithPermissions(const Aws::Vector<ResourceSharePermissionSummary>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>An array of objects that contain details for each of the available
-     * versions.</p>
-     */
-    inline ListPermissionVersionsResult& WithPermissions(Aws::Vector<ResourceSharePermissionSummary>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects that contain details for each of the available
-     * versions.</p>
-     */
-    inline ListPermissionVersionsResult& AddPermissions(const ResourceSharePermissionSummary& value) { m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects that contain details for each of the available
-     * versions.</p>
-     */
-    inline ListPermissionVersionsResult& AddPermissions(ResourceSharePermissionSummary&& value) { m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If present, this value indicates that more output is available than is
      * included in the current response. Use this value in the <code>NextToken</code>
@@ -85,97 +57,31 @@ namespace Model
      * element comes back as <code>null</code>. This indicates that this is the last
      * page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPermissionVersionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If present, this value indicates that more output is available than is
-     * included in the current response. Use this value in the <code>NextToken</code>
-     * request parameter in a subsequent call to the operation to get the next part of
-     * the output. You should repeat this until the <code>NextToken</code> response
-     * element comes back as <code>null</code>. This indicates that this is the last
-     * page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If present, this value indicates that more output is available than is
-     * included in the current response. Use this value in the <code>NextToken</code>
-     * request parameter in a subsequent call to the operation to get the next part of
-     * the output. You should repeat this until the <code>NextToken</code> response
-     * element comes back as <code>null</code>. This indicates that this is the last
-     * page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If present, this value indicates that more output is available than is
-     * included in the current response. Use this value in the <code>NextToken</code>
-     * request parameter in a subsequent call to the operation to get the next part of
-     * the output. You should repeat this until the <code>NextToken</code> response
-     * element comes back as <code>null</code>. This indicates that this is the last
-     * page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If present, this value indicates that more output is available than is
-     * included in the current response. Use this value in the <code>NextToken</code>
-     * request parameter in a subsequent call to the operation to get the next part of
-     * the output. You should repeat this until the <code>NextToken</code> response
-     * element comes back as <code>null</code>. This indicates that this is the last
-     * page of results.</p>
-     */
-    inline ListPermissionVersionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If present, this value indicates that more output is available than is
-     * included in the current response. Use this value in the <code>NextToken</code>
-     * request parameter in a subsequent call to the operation to get the next part of
-     * the output. You should repeat this until the <code>NextToken</code> response
-     * element comes back as <code>null</code>. This indicates that this is the last
-     * page of results.</p>
-     */
-    inline ListPermissionVersionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If present, this value indicates that more output is available than is
-     * included in the current response. Use this value in the <code>NextToken</code>
-     * request parameter in a subsequent call to the operation to get the next part of
-     * the output. You should repeat this until the <code>NextToken</code> response
-     * element comes back as <code>null</code>. This indicates that this is the last
-     * page of results.</p>
-     */
-    inline ListPermissionVersionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListPermissionVersionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListPermissionVersionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListPermissionVersionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListPermissionVersionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ResourceSharePermissionSummary> m_permissions;
+    bool m_permissionsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

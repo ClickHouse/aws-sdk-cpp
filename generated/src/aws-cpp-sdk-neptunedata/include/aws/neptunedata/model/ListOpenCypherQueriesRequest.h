@@ -23,7 +23,7 @@ namespace Model
   class ListOpenCypherQueriesRequest : public NeptunedataRequest
   {
   public:
-    AWS_NEPTUNEDATA_API ListOpenCypherQueriesRequest();
+    AWS_NEPTUNEDATA_API ListOpenCypherQueriesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,37 +36,20 @@ namespace Model
     AWS_NEPTUNEDATA_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p> When set to <code>TRUE</code> and other parameters are not present, causes
      * status information to be returned for waiting queries as well as for running
      * queries.</p>
      */
-    inline bool GetIncludeWaiting() const{ return m_includeWaiting; }
-
-    /**
-     * <p> When set to <code>TRUE</code> and other parameters are not present, causes
-     * status information to be returned for waiting queries as well as for running
-     * queries.</p>
-     */
+    inline bool GetIncludeWaiting() const { return m_includeWaiting; }
     inline bool IncludeWaitingHasBeenSet() const { return m_includeWaitingHasBeenSet; }
-
-    /**
-     * <p> When set to <code>TRUE</code> and other parameters are not present, causes
-     * status information to be returned for waiting queries as well as for running
-     * queries.</p>
-     */
     inline void SetIncludeWaiting(bool value) { m_includeWaitingHasBeenSet = true; m_includeWaiting = value; }
-
-    /**
-     * <p> When set to <code>TRUE</code> and other parameters are not present, causes
-     * status information to be returned for waiting queries as well as for running
-     * queries.</p>
-     */
     inline ListOpenCypherQueriesRequest& WithIncludeWaiting(bool value) { SetIncludeWaiting(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_includeWaiting;
+    bool m_includeWaiting{false};
     bool m_includeWaitingHasBeenSet = false;
   };
 

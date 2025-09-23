@@ -32,98 +32,37 @@ namespace Model
   class ExternalUrlConfig
   {
   public:
-    AWS_APPINTEGRATIONSSERVICE_API ExternalUrlConfig();
+    AWS_APPINTEGRATIONSSERVICE_API ExternalUrlConfig() = default;
     AWS_APPINTEGRATIONSSERVICE_API ExternalUrlConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPINTEGRATIONSSERVICE_API ExternalUrlConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPINTEGRATIONSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL to access the application.</p>
      */
-    inline const Aws::String& GetAccessUrl() const{ return m_accessUrl; }
-
-    /**
-     * <p>The URL to access the application.</p>
-     */
+    inline const Aws::String& GetAccessUrl() const { return m_accessUrl; }
     inline bool AccessUrlHasBeenSet() const { return m_accessUrlHasBeenSet; }
+    template<typename AccessUrlT = Aws::String>
+    void SetAccessUrl(AccessUrlT&& value) { m_accessUrlHasBeenSet = true; m_accessUrl = std::forward<AccessUrlT>(value); }
+    template<typename AccessUrlT = Aws::String>
+    ExternalUrlConfig& WithAccessUrl(AccessUrlT&& value) { SetAccessUrl(std::forward<AccessUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL to access the application.</p>
-     */
-    inline void SetAccessUrl(const Aws::String& value) { m_accessUrlHasBeenSet = true; m_accessUrl = value; }
-
-    /**
-     * <p>The URL to access the application.</p>
-     */
-    inline void SetAccessUrl(Aws::String&& value) { m_accessUrlHasBeenSet = true; m_accessUrl = std::move(value); }
-
-    /**
-     * <p>The URL to access the application.</p>
-     */
-    inline void SetAccessUrl(const char* value) { m_accessUrlHasBeenSet = true; m_accessUrl.assign(value); }
-
-    /**
-     * <p>The URL to access the application.</p>
-     */
-    inline ExternalUrlConfig& WithAccessUrl(const Aws::String& value) { SetAccessUrl(value); return *this;}
-
-    /**
-     * <p>The URL to access the application.</p>
-     */
-    inline ExternalUrlConfig& WithAccessUrl(Aws::String&& value) { SetAccessUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL to access the application.</p>
-     */
-    inline ExternalUrlConfig& WithAccessUrl(const char* value) { SetAccessUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional URLs to allow list if different than the access URL.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetApprovedOrigins() const{ return m_approvedOrigins; }
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetApprovedOrigins() const { return m_approvedOrigins; }
     inline bool ApprovedOriginsHasBeenSet() const { return m_approvedOriginsHasBeenSet; }
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline void SetApprovedOrigins(const Aws::Vector<Aws::String>& value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins = value; }
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline void SetApprovedOrigins(Aws::Vector<Aws::String>&& value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins = std::move(value); }
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline ExternalUrlConfig& WithApprovedOrigins(const Aws::Vector<Aws::String>& value) { SetApprovedOrigins(value); return *this;}
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline ExternalUrlConfig& WithApprovedOrigins(Aws::Vector<Aws::String>&& value) { SetApprovedOrigins(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline ExternalUrlConfig& AddApprovedOrigins(const Aws::String& value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins.push_back(value); return *this; }
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline ExternalUrlConfig& AddApprovedOrigins(Aws::String&& value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Additional URLs to allow list if different than the access URL.</p>
-     */
-    inline ExternalUrlConfig& AddApprovedOrigins(const char* value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins.push_back(value); return *this; }
-
+    template<typename ApprovedOriginsT = Aws::Vector<Aws::String>>
+    void SetApprovedOrigins(ApprovedOriginsT&& value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins = std::forward<ApprovedOriginsT>(value); }
+    template<typename ApprovedOriginsT = Aws::Vector<Aws::String>>
+    ExternalUrlConfig& WithApprovedOrigins(ApprovedOriginsT&& value) { SetApprovedOrigins(std::forward<ApprovedOriginsT>(value)); return *this;}
+    template<typename ApprovedOriginsT = Aws::String>
+    ExternalUrlConfig& AddApprovedOrigins(ApprovedOriginsT&& value) { m_approvedOriginsHasBeenSet = true; m_approvedOrigins.emplace_back(std::forward<ApprovedOriginsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_accessUrl;

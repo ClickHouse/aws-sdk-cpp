@@ -28,106 +28,50 @@ namespace Model
   class DeleteBotResult
   {
   public:
-    AWS_LEXMODELSV2_API DeleteBotResult();
+    AWS_LEXMODELSV2_API DeleteBotResult() = default;
     AWS_LEXMODELSV2_API DeleteBotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELSV2_API DeleteBotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
+    inline const Aws::String& GetBotId() const { return m_botId; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    DeleteBotResult& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botId = value; }
-
-    /**
-     * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
-     */
-    inline void SetBotId(const char* value) { m_botId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
-     */
-    inline DeleteBotResult& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
-     */
-    inline DeleteBotResult& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the bot that Amazon Lex is deleting.</p>
-     */
-    inline DeleteBotResult& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the bot. The status is <code>Deleting</code> while the
      * bot and its associated resources are being deleted.</p>
      */
-    inline const BotStatus& GetBotStatus() const{ return m_botStatus; }
+    inline BotStatus GetBotStatus() const { return m_botStatus; }
+    inline void SetBotStatus(BotStatus value) { m_botStatusHasBeenSet = true; m_botStatus = value; }
+    inline DeleteBotResult& WithBotStatus(BotStatus value) { SetBotStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the bot. The status is <code>Deleting</code> while the
-     * bot and its associated resources are being deleted.</p>
-     */
-    inline void SetBotStatus(const BotStatus& value) { m_botStatus = value; }
-
-    /**
-     * <p>The current status of the bot. The status is <code>Deleting</code> while the
-     * bot and its associated resources are being deleted.</p>
-     */
-    inline void SetBotStatus(BotStatus&& value) { m_botStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the bot. The status is <code>Deleting</code> while the
-     * bot and its associated resources are being deleted.</p>
-     */
-    inline DeleteBotResult& WithBotStatus(const BotStatus& value) { SetBotStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the bot. The status is <code>Deleting</code> while the
-     * bot and its associated resources are being deleted.</p>
-     */
-    inline DeleteBotResult& WithBotStatus(BotStatus&& value) { SetBotStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteBotResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteBotResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteBotResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteBotResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_botId;
+    bool m_botIdHasBeenSet = false;
 
-    BotStatus m_botStatus;
+    BotStatus m_botStatus{BotStatus::NOT_SET};
+    bool m_botStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-FileSystemConfig::FileSystemConfig() : 
-    m_arnHasBeenSet(false),
-    m_localMountPathHasBeenSet(false)
-{
-}
-
-FileSystemConfig::FileSystemConfig(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_localMountPathHasBeenSet(false)
+FileSystemConfig::FileSystemConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FileSystemConfig& FileSystemConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LocalMountPath"))
   {
     m_localMountPath = jsonValue.GetString("LocalMountPath");
-
     m_localMountPathHasBeenSet = true;
   }
-
   return *this;
 }
 

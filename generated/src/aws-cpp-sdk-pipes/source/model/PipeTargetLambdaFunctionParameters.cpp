@@ -18,15 +18,7 @@ namespace Pipes
 namespace Model
 {
 
-PipeTargetLambdaFunctionParameters::PipeTargetLambdaFunctionParameters() : 
-    m_invocationType(PipeTargetInvocationType::NOT_SET),
-    m_invocationTypeHasBeenSet(false)
-{
-}
-
-PipeTargetLambdaFunctionParameters::PipeTargetLambdaFunctionParameters(JsonView jsonValue) : 
-    m_invocationType(PipeTargetInvocationType::NOT_SET),
-    m_invocationTypeHasBeenSet(false)
+PipeTargetLambdaFunctionParameters::PipeTargetLambdaFunctionParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PipeTargetLambdaFunctionParameters& PipeTargetLambdaFunctionParameters::operator
   if(jsonValue.ValueExists("InvocationType"))
   {
     m_invocationType = PipeTargetInvocationTypeMapper::GetPipeTargetInvocationTypeForName(jsonValue.GetString("InvocationType"));
-
     m_invocationTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,19 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-EC2SecurityGroup::EC2SecurityGroup() : 
-    m_statusHasBeenSet(false),
-    m_eC2SecurityGroupNameHasBeenSet(false),
-    m_eC2SecurityGroupOwnerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-EC2SecurityGroup::EC2SecurityGroup(const XmlNode& xmlNode) : 
-    m_statusHasBeenSet(false),
-    m_eC2SecurityGroupNameHasBeenSet(false),
-    m_eC2SecurityGroupOwnerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+EC2SecurityGroup::EC2SecurityGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +53,7 @@ EC2SecurityGroup& EC2SecurityGroup::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -101,7 +90,7 @@ void EC2SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -128,7 +117,7 @@ void EC2SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tag." << tagsIdx++;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

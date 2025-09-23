@@ -18,17 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-Timing::Timing() : 
-    m_finishTimeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_submitTimeHasBeenSet(false)
-{
-}
-
-Timing::Timing(JsonView jsonValue) : 
-    m_finishTimeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_submitTimeHasBeenSet(false)
+Timing::Timing(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ Timing& Timing::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("finishTime"))
   {
     m_finishTime = jsonValue.GetDouble("finishTime");
-
     m_finishTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetDouble("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("submitTime"))
   {
     m_submitTime = jsonValue.GetDouble("submitTime");
-
     m_submitTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

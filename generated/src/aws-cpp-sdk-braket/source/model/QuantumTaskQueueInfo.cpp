@@ -18,57 +18,33 @@ namespace Braket
 namespace Model
 {
 
-QuantumTaskQueueInfo::QuantumTaskQueueInfo() : 
-    m_messageHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_queue(QueueName::NOT_SET),
-    m_queueHasBeenSet(false),
-    m_queuePriority(QueuePriority::NOT_SET),
-    m_queuePriorityHasBeenSet(false)
-{
-}
-
-QuantumTaskQueueInfo::QuantumTaskQueueInfo(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_queue(QueueName::NOT_SET),
-    m_queueHasBeenSet(false),
-    m_queuePriority(QueuePriority::NOT_SET),
-    m_queuePriorityHasBeenSet(false)
+QuantumTaskQueueInfo::QuantumTaskQueueInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 QuantumTaskQueueInfo& QuantumTaskQueueInfo::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("message"))
-  {
-    m_message = jsonValue.GetString("message");
-
-    m_messageHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("position"))
-  {
-    m_position = jsonValue.GetString("position");
-
-    m_positionHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("queue"))
   {
     m_queue = QueueNameMapper::GetQueueNameForName(jsonValue.GetString("queue"));
-
     m_queueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("position"))
+  {
+    m_position = jsonValue.GetString("position");
+    m_positionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("queuePriority"))
   {
     m_queuePriority = QueuePriorityMapper::GetQueuePriorityForName(jsonValue.GetString("queuePriority"));
-
     m_queuePriorityHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("message"))
+  {
+    m_message = jsonValue.GetString("message");
+    m_messageHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -76,10 +52,9 @@ JsonValue QuantumTaskQueueInfo::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_messageHasBeenSet)
+  if(m_queueHasBeenSet)
   {
-   payload.WithString("message", m_message);
-
+   payload.WithString("queue", QueueNameMapper::GetNameForQueueName(m_queue));
   }
 
   if(m_positionHasBeenSet)
@@ -88,14 +63,15 @@ JsonValue QuantumTaskQueueInfo::Jsonize() const
 
   }
 
-  if(m_queueHasBeenSet)
-  {
-   payload.WithString("queue", QueueNameMapper::GetNameForQueueName(m_queue));
-  }
-
   if(m_queuePriorityHasBeenSet)
   {
    payload.WithString("queuePriority", QueuePriorityMapper::GetNameForQueuePriority(m_queuePriority));
+  }
+
+  if(m_messageHasBeenSet)
+  {
+   payload.WithString("message", m_message);
+
   }
 
   return payload;

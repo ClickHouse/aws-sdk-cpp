@@ -21,7 +21,7 @@ namespace Model
   class GetIdMappingJobRequest : public EntityResolutionRequest
   {
   public:
-    AWS_ENTITYRESOLUTION_API GetIdMappingJobRequest();
+    AWS_ENTITYRESOLUTION_API GetIdMappingJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,94 +32,36 @@ namespace Model
     AWS_ENTITYRESOLUTION_API Aws::String SerializePayload() const override;
 
 
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline GetIdMappingJobRequest& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline GetIdMappingJobRequest& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the job.</p>
-     */
-    inline GetIdMappingJobRequest& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the workflow.</p>
      */
-    inline const Aws::String& GetWorkflowName() const{ return m_workflowName; }
-
-    /**
-     * <p>The name of the workflow.</p>
-     */
+    inline const Aws::String& GetWorkflowName() const { return m_workflowName; }
     inline bool WorkflowNameHasBeenSet() const { return m_workflowNameHasBeenSet; }
+    template<typename WorkflowNameT = Aws::String>
+    void SetWorkflowName(WorkflowNameT&& value) { m_workflowNameHasBeenSet = true; m_workflowName = std::forward<WorkflowNameT>(value); }
+    template<typename WorkflowNameT = Aws::String>
+    GetIdMappingJobRequest& WithWorkflowName(WorkflowNameT&& value) { SetWorkflowName(std::forward<WorkflowNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the workflow.</p>
+     * <p>The ID of the job.</p>
      */
-    inline void SetWorkflowName(const Aws::String& value) { m_workflowNameHasBeenSet = true; m_workflowName = value; }
-
-    /**
-     * <p>The name of the workflow.</p>
-     */
-    inline void SetWorkflowName(Aws::String&& value) { m_workflowNameHasBeenSet = true; m_workflowName = std::move(value); }
-
-    /**
-     * <p>The name of the workflow.</p>
-     */
-    inline void SetWorkflowName(const char* value) { m_workflowNameHasBeenSet = true; m_workflowName.assign(value); }
-
-    /**
-     * <p>The name of the workflow.</p>
-     */
-    inline GetIdMappingJobRequest& WithWorkflowName(const Aws::String& value) { SetWorkflowName(value); return *this;}
-
-    /**
-     * <p>The name of the workflow.</p>
-     */
-    inline GetIdMappingJobRequest& WithWorkflowName(Aws::String&& value) { SetWorkflowName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the workflow.</p>
-     */
-    inline GetIdMappingJobRequest& WithWorkflowName(const char* value) { SetWorkflowName(value); return *this;}
-
+    inline const Aws::String& GetJobId() const { return m_jobId; }
+    inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    GetIdMappingJobRequest& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_jobId;
-    bool m_jobIdHasBeenSet = false;
 
     Aws::String m_workflowName;
     bool m_workflowNameHasBeenSet = false;
+
+    Aws::String m_jobId;
+    bool m_jobIdHasBeenSet = false;
   };
 
 } // namespace Model

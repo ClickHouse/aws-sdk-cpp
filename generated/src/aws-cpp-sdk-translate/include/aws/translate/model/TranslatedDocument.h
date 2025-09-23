@@ -31,45 +31,26 @@ namespace Model
   class TranslatedDocument
   {
   public:
-    AWS_TRANSLATE_API TranslatedDocument();
+    AWS_TRANSLATE_API TranslatedDocument() = default;
     AWS_TRANSLATE_API TranslatedDocument(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API TranslatedDocument& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The document containing the translated content.</p>
      */
-    inline const Aws::Utils::CryptoBuffer& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The document containing the translated content.</p>
-     */
+    inline const Aws::Utils::CryptoBuffer& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
-
-    /**
-     * <p>The document containing the translated content.</p>
-     */
-    inline void SetContent(const Aws::Utils::CryptoBuffer& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The document containing the translated content.</p>
-     */
-    inline void SetContent(Aws::Utils::CryptoBuffer&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The document containing the translated content.</p>
-     */
-    inline TranslatedDocument& WithContent(const Aws::Utils::CryptoBuffer& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The document containing the translated content.</p>
-     */
-    inline TranslatedDocument& WithContent(Aws::Utils::CryptoBuffer&& value) { SetContent(std::move(value)); return *this;}
-
+    template<typename ContentT = Aws::Utils::CryptoBuffer>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::Utils::CryptoBuffer>
+    TranslatedDocument& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::CryptoBuffer m_content;
+    Aws::Utils::CryptoBuffer m_content{};
     bool m_contentHasBeenSet = false;
   };
 

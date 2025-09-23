@@ -32,93 +32,35 @@ namespace Model
   class ActivityTimedOutEventDetails
   {
   public:
-    AWS_SFN_API ActivityTimedOutEventDetails();
+    AWS_SFN_API ActivityTimedOutEventDetails() = default;
     AWS_SFN_API ActivityTimedOutEventDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API ActivityTimedOutEventDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code of the failure.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
+    inline const Aws::String& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    ActivityTimedOutEventDetails& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const char* value) { m_errorHasBeenSet = true; m_error.assign(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline ActivityTimedOutEventDetails& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline ActivityTimedOutEventDetails& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline ActivityTimedOutEventDetails& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A more detailed explanation of the cause of the timeout.</p>
      */
-    inline const Aws::String& GetCause() const{ return m_cause; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
+    inline const Aws::String& GetCause() const { return m_cause; }
     inline bool CauseHasBeenSet() const { return m_causeHasBeenSet; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
-    inline void SetCause(const Aws::String& value) { m_causeHasBeenSet = true; m_cause = value; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
-    inline void SetCause(Aws::String&& value) { m_causeHasBeenSet = true; m_cause = std::move(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
-    inline void SetCause(const char* value) { m_causeHasBeenSet = true; m_cause.assign(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
-    inline ActivityTimedOutEventDetails& WithCause(const Aws::String& value) { SetCause(value); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
-    inline ActivityTimedOutEventDetails& WithCause(Aws::String&& value) { SetCause(std::move(value)); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the timeout.</p>
-     */
-    inline ActivityTimedOutEventDetails& WithCause(const char* value) { SetCause(value); return *this;}
-
+    template<typename CauseT = Aws::String>
+    void SetCause(CauseT&& value) { m_causeHasBeenSet = true; m_cause = std::forward<CauseT>(value); }
+    template<typename CauseT = Aws::String>
+    ActivityTimedOutEventDetails& WithCause(CauseT&& value) { SetCause(std::forward<CauseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_error;

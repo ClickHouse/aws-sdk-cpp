@@ -18,15 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-PreProcessingTrace::PreProcessingTrace() : 
-    m_modelInvocationInputHasBeenSet(false),
-    m_modelInvocationOutputHasBeenSet(false)
-{
-}
-
-PreProcessingTrace::PreProcessingTrace(JsonView jsonValue) : 
-    m_modelInvocationInputHasBeenSet(false),
-    m_modelInvocationOutputHasBeenSet(false)
+PreProcessingTrace::PreProcessingTrace(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PreProcessingTrace& PreProcessingTrace::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("modelInvocationInput"))
   {
     m_modelInvocationInput = jsonValue.GetObject("modelInvocationInput");
-
     m_modelInvocationInputHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelInvocationOutput"))
   {
     m_modelInvocationOutput = jsonValue.GetObject("modelInvocationOutput");
-
     m_modelInvocationOutputHasBeenSet = true;
   }
-
   return *this;
 }
 

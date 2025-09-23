@@ -25,7 +25,7 @@ namespace Model
   class DescribeUpdateActionsRequest : public ElastiCacheRequest
   {
   public:
-    AWS_ELASTICACHE_API DescribeUpdateActionsRequest();
+    AWS_ELASTICACHE_API DescribeUpdateActionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,413 +40,132 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The unique ID of the service update</p>
      */
-    inline const Aws::String& GetServiceUpdateName() const{ return m_serviceUpdateName; }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
+    inline const Aws::String& GetServiceUpdateName() const { return m_serviceUpdateName; }
     inline bool ServiceUpdateNameHasBeenSet() const { return m_serviceUpdateNameHasBeenSet; }
+    template<typename ServiceUpdateNameT = Aws::String>
+    void SetServiceUpdateName(ServiceUpdateNameT&& value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName = std::forward<ServiceUpdateNameT>(value); }
+    template<typename ServiceUpdateNameT = Aws::String>
+    DescribeUpdateActionsRequest& WithServiceUpdateName(ServiceUpdateNameT&& value) { SetServiceUpdateName(std::forward<ServiceUpdateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline void SetServiceUpdateName(const Aws::String& value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName = value; }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline void SetServiceUpdateName(Aws::String&& value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName = std::move(value); }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline void SetServiceUpdateName(const char* value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName.assign(value); }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateName(const Aws::String& value) { SetServiceUpdateName(value); return *this;}
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateName(Aws::String&& value) { SetServiceUpdateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateName(const char* value) { SetServiceUpdateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The replication group IDs</p>
      */
-    inline const Aws::Vector<Aws::String>& GetReplicationGroupIds() const{ return m_replicationGroupIds; }
-
-    /**
-     * <p>The replication group IDs</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetReplicationGroupIds() const { return m_replicationGroupIds; }
     inline bool ReplicationGroupIdsHasBeenSet() const { return m_replicationGroupIdsHasBeenSet; }
+    template<typename ReplicationGroupIdsT = Aws::Vector<Aws::String>>
+    void SetReplicationGroupIds(ReplicationGroupIdsT&& value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds = std::forward<ReplicationGroupIdsT>(value); }
+    template<typename ReplicationGroupIdsT = Aws::Vector<Aws::String>>
+    DescribeUpdateActionsRequest& WithReplicationGroupIds(ReplicationGroupIdsT&& value) { SetReplicationGroupIds(std::forward<ReplicationGroupIdsT>(value)); return *this;}
+    template<typename ReplicationGroupIdsT = Aws::String>
+    DescribeUpdateActionsRequest& AddReplicationGroupIds(ReplicationGroupIdsT&& value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds.emplace_back(std::forward<ReplicationGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline void SetReplicationGroupIds(const Aws::Vector<Aws::String>& value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds = value; }
-
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline void SetReplicationGroupIds(Aws::Vector<Aws::String>&& value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds = std::move(value); }
-
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& WithReplicationGroupIds(const Aws::Vector<Aws::String>& value) { SetReplicationGroupIds(value); return *this;}
-
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& WithReplicationGroupIds(Aws::Vector<Aws::String>&& value) { SetReplicationGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& AddReplicationGroupIds(const Aws::String& value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& AddReplicationGroupIds(Aws::String&& value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The replication group IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& AddReplicationGroupIds(const char* value) { m_replicationGroupIdsHasBeenSet = true; m_replicationGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The cache cluster IDs</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCacheClusterIds() const{ return m_cacheClusterIds; }
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCacheClusterIds() const { return m_cacheClusterIds; }
     inline bool CacheClusterIdsHasBeenSet() const { return m_cacheClusterIdsHasBeenSet; }
+    template<typename CacheClusterIdsT = Aws::Vector<Aws::String>>
+    void SetCacheClusterIds(CacheClusterIdsT&& value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds = std::forward<CacheClusterIdsT>(value); }
+    template<typename CacheClusterIdsT = Aws::Vector<Aws::String>>
+    DescribeUpdateActionsRequest& WithCacheClusterIds(CacheClusterIdsT&& value) { SetCacheClusterIds(std::forward<CacheClusterIdsT>(value)); return *this;}
+    template<typename CacheClusterIdsT = Aws::String>
+    DescribeUpdateActionsRequest& AddCacheClusterIds(CacheClusterIdsT&& value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds.emplace_back(std::forward<CacheClusterIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The cache cluster IDs</p>
+     * <p>The Elasticache engine to which the update applies. Either Valkey, Redis OSS
+     * or Memcached.</p>
      */
-    inline void SetCacheClusterIds(const Aws::Vector<Aws::String>& value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds = value; }
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
-    inline void SetCacheClusterIds(Aws::Vector<Aws::String>&& value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds = std::move(value); }
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& WithCacheClusterIds(const Aws::Vector<Aws::String>& value) { SetCacheClusterIds(value); return *this;}
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& WithCacheClusterIds(Aws::Vector<Aws::String>&& value) { SetCacheClusterIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& AddCacheClusterIds(const Aws::String& value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds.push_back(value); return *this; }
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& AddCacheClusterIds(Aws::String&& value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The cache cluster IDs</p>
-     */
-    inline DescribeUpdateActionsRequest& AddCacheClusterIds(const char* value) { m_cacheClusterIdsHasBeenSet = true; m_cacheClusterIds.push_back(value); return *this; }
-
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline const Aws::String& GetEngine() const{ return m_engine; }
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
+    inline const Aws::String& GetEngine() const { return m_engine; }
     inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
+    template<typename EngineT = Aws::String>
+    void SetEngine(EngineT&& value) { m_engineHasBeenSet = true; m_engine = std::forward<EngineT>(value); }
+    template<typename EngineT = Aws::String>
+    DescribeUpdateActionsRequest& WithEngine(EngineT&& value) { SetEngine(std::forward<EngineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline void SetEngine(const Aws::String& value) { m_engineHasBeenSet = true; m_engine = value; }
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline void SetEngine(const char* value) { m_engineHasBeenSet = true; m_engine.assign(value); }
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline DescribeUpdateActionsRequest& WithEngine(const Aws::String& value) { SetEngine(value); return *this;}
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline DescribeUpdateActionsRequest& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
-
-    /**
-     * <p>The Elasticache engine to which the update applies. Either Redis or Memcached
-     * </p>
-     */
-    inline DescribeUpdateActionsRequest& WithEngine(const char* value) { SetEngine(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the service update</p>
      */
-    inline const Aws::Vector<ServiceUpdateStatus>& GetServiceUpdateStatus() const{ return m_serviceUpdateStatus; }
-
-    /**
-     * <p>The status of the service update</p>
-     */
+    inline const Aws::Vector<ServiceUpdateStatus>& GetServiceUpdateStatus() const { return m_serviceUpdateStatus; }
     inline bool ServiceUpdateStatusHasBeenSet() const { return m_serviceUpdateStatusHasBeenSet; }
+    template<typename ServiceUpdateStatusT = Aws::Vector<ServiceUpdateStatus>>
+    void SetServiceUpdateStatus(ServiceUpdateStatusT&& value) { m_serviceUpdateStatusHasBeenSet = true; m_serviceUpdateStatus = std::forward<ServiceUpdateStatusT>(value); }
+    template<typename ServiceUpdateStatusT = Aws::Vector<ServiceUpdateStatus>>
+    DescribeUpdateActionsRequest& WithServiceUpdateStatus(ServiceUpdateStatusT&& value) { SetServiceUpdateStatus(std::forward<ServiceUpdateStatusT>(value)); return *this;}
+    inline DescribeUpdateActionsRequest& AddServiceUpdateStatus(ServiceUpdateStatus value) { m_serviceUpdateStatusHasBeenSet = true; m_serviceUpdateStatus.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline void SetServiceUpdateStatus(const Aws::Vector<ServiceUpdateStatus>& value) { m_serviceUpdateStatusHasBeenSet = true; m_serviceUpdateStatus = value; }
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline void SetServiceUpdateStatus(Aws::Vector<ServiceUpdateStatus>&& value) { m_serviceUpdateStatusHasBeenSet = true; m_serviceUpdateStatus = std::move(value); }
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateStatus(const Aws::Vector<ServiceUpdateStatus>& value) { SetServiceUpdateStatus(value); return *this;}
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateStatus(Aws::Vector<ServiceUpdateStatus>&& value) { SetServiceUpdateStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& AddServiceUpdateStatus(const ServiceUpdateStatus& value) { m_serviceUpdateStatusHasBeenSet = true; m_serviceUpdateStatus.push_back(value); return *this; }
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline DescribeUpdateActionsRequest& AddServiceUpdateStatus(ServiceUpdateStatus&& value) { m_serviceUpdateStatusHasBeenSet = true; m_serviceUpdateStatus.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The range of time specified to search for service updates that are in
      * available status</p>
      */
-    inline const TimeRangeFilter& GetServiceUpdateTimeRange() const{ return m_serviceUpdateTimeRange; }
-
-    /**
-     * <p>The range of time specified to search for service updates that are in
-     * available status</p>
-     */
+    inline const TimeRangeFilter& GetServiceUpdateTimeRange() const { return m_serviceUpdateTimeRange; }
     inline bool ServiceUpdateTimeRangeHasBeenSet() const { return m_serviceUpdateTimeRangeHasBeenSet; }
+    template<typename ServiceUpdateTimeRangeT = TimeRangeFilter>
+    void SetServiceUpdateTimeRange(ServiceUpdateTimeRangeT&& value) { m_serviceUpdateTimeRangeHasBeenSet = true; m_serviceUpdateTimeRange = std::forward<ServiceUpdateTimeRangeT>(value); }
+    template<typename ServiceUpdateTimeRangeT = TimeRangeFilter>
+    DescribeUpdateActionsRequest& WithServiceUpdateTimeRange(ServiceUpdateTimeRangeT&& value) { SetServiceUpdateTimeRange(std::forward<ServiceUpdateTimeRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The range of time specified to search for service updates that are in
-     * available status</p>
-     */
-    inline void SetServiceUpdateTimeRange(const TimeRangeFilter& value) { m_serviceUpdateTimeRangeHasBeenSet = true; m_serviceUpdateTimeRange = value; }
-
-    /**
-     * <p>The range of time specified to search for service updates that are in
-     * available status</p>
-     */
-    inline void SetServiceUpdateTimeRange(TimeRangeFilter&& value) { m_serviceUpdateTimeRangeHasBeenSet = true; m_serviceUpdateTimeRange = std::move(value); }
-
-    /**
-     * <p>The range of time specified to search for service updates that are in
-     * available status</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateTimeRange(const TimeRangeFilter& value) { SetServiceUpdateTimeRange(value); return *this;}
-
-    /**
-     * <p>The range of time specified to search for service updates that are in
-     * available status</p>
-     */
-    inline DescribeUpdateActionsRequest& WithServiceUpdateTimeRange(TimeRangeFilter&& value) { SetServiceUpdateTimeRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the update action.</p>
      */
-    inline const Aws::Vector<UpdateActionStatus>& GetUpdateActionStatus() const{ return m_updateActionStatus; }
-
-    /**
-     * <p>The status of the update action.</p>
-     */
+    inline const Aws::Vector<UpdateActionStatus>& GetUpdateActionStatus() const { return m_updateActionStatus; }
     inline bool UpdateActionStatusHasBeenSet() const { return m_updateActionStatusHasBeenSet; }
+    template<typename UpdateActionStatusT = Aws::Vector<UpdateActionStatus>>
+    void SetUpdateActionStatus(UpdateActionStatusT&& value) { m_updateActionStatusHasBeenSet = true; m_updateActionStatus = std::forward<UpdateActionStatusT>(value); }
+    template<typename UpdateActionStatusT = Aws::Vector<UpdateActionStatus>>
+    DescribeUpdateActionsRequest& WithUpdateActionStatus(UpdateActionStatusT&& value) { SetUpdateActionStatus(std::forward<UpdateActionStatusT>(value)); return *this;}
+    inline DescribeUpdateActionsRequest& AddUpdateActionStatus(UpdateActionStatus value) { m_updateActionStatusHasBeenSet = true; m_updateActionStatus.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The status of the update action.</p>
-     */
-    inline void SetUpdateActionStatus(const Aws::Vector<UpdateActionStatus>& value) { m_updateActionStatusHasBeenSet = true; m_updateActionStatus = value; }
-
-    /**
-     * <p>The status of the update action.</p>
-     */
-    inline void SetUpdateActionStatus(Aws::Vector<UpdateActionStatus>&& value) { m_updateActionStatusHasBeenSet = true; m_updateActionStatus = std::move(value); }
-
-    /**
-     * <p>The status of the update action.</p>
-     */
-    inline DescribeUpdateActionsRequest& WithUpdateActionStatus(const Aws::Vector<UpdateActionStatus>& value) { SetUpdateActionStatus(value); return *this;}
-
-    /**
-     * <p>The status of the update action.</p>
-     */
-    inline DescribeUpdateActionsRequest& WithUpdateActionStatus(Aws::Vector<UpdateActionStatus>&& value) { SetUpdateActionStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the update action.</p>
-     */
-    inline DescribeUpdateActionsRequest& AddUpdateActionStatus(const UpdateActionStatus& value) { m_updateActionStatusHasBeenSet = true; m_updateActionStatus.push_back(value); return *this; }
-
-    /**
-     * <p>The status of the update action.</p>
-     */
-    inline DescribeUpdateActionsRequest& AddUpdateActionStatus(UpdateActionStatus&& value) { m_updateActionStatusHasBeenSet = true; m_updateActionStatus.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Dictates whether to include node level update status in the response </p>
      */
-    inline bool GetShowNodeLevelUpdateStatus() const{ return m_showNodeLevelUpdateStatus; }
-
-    /**
-     * <p>Dictates whether to include node level update status in the response </p>
-     */
+    inline bool GetShowNodeLevelUpdateStatus() const { return m_showNodeLevelUpdateStatus; }
     inline bool ShowNodeLevelUpdateStatusHasBeenSet() const { return m_showNodeLevelUpdateStatusHasBeenSet; }
-
-    /**
-     * <p>Dictates whether to include node level update status in the response </p>
-     */
     inline void SetShowNodeLevelUpdateStatus(bool value) { m_showNodeLevelUpdateStatusHasBeenSet = true; m_showNodeLevelUpdateStatus = value; }
-
-    /**
-     * <p>Dictates whether to include node level update status in the response </p>
-     */
     inline DescribeUpdateActionsRequest& WithShowNodeLevelUpdateStatus(bool value) { SetShowNodeLevelUpdateStatus(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum number of records to include in the response</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of records to include in the response</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of records to include in the response</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of records to include in the response</p>
-     */
     inline DescribeUpdateActionsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
      * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeUpdateActionsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeUpdateActionsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this operation. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeUpdateActionsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeUpdateActionsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceUpdateName;
@@ -470,10 +189,10 @@ namespace Model
     Aws::Vector<UpdateActionStatus> m_updateActionStatus;
     bool m_updateActionStatusHasBeenSet = false;
 
-    bool m_showNodeLevelUpdateStatus;
+    bool m_showNodeLevelUpdateStatus{false};
     bool m_showNodeLevelUpdateStatusHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_marker;

@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-ResponseMetadata::ResponseMetadata() : 
-    m_requestIdHasBeenSet(false)
-{
-}
-
-ResponseMetadata::ResponseMetadata(const XmlNode& xmlNode) : 
-    m_requestIdHasBeenSet(false)
+ResponseMetadata::ResponseMetadata(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

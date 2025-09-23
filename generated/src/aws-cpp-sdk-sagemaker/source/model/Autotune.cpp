@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-Autotune::Autotune() : 
-    m_mode(AutotuneMode::NOT_SET),
-    m_modeHasBeenSet(false)
-{
-}
-
-Autotune::Autotune(JsonView jsonValue) : 
-    m_mode(AutotuneMode::NOT_SET),
-    m_modeHasBeenSet(false)
+Autotune::Autotune(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Autotune& Autotune::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Mode"))
   {
     m_mode = AutotuneModeMapper::GetAutotuneModeForName(jsonValue.GetString("Mode"));
-
     m_modeHasBeenSet = true;
   }
-
   return *this;
 }
 

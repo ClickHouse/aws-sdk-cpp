@@ -33,86 +33,36 @@ namespace Model
   class TimeToLiveDescription
   {
   public:
-    AWS_DYNAMODB_API TimeToLiveDescription();
+    AWS_DYNAMODB_API TimeToLiveDescription() = default;
     AWS_DYNAMODB_API TimeToLiveDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API TimeToLiveDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The TTL status for the table.</p>
      */
-    inline const TimeToLiveStatus& GetTimeToLiveStatus() const{ return m_timeToLiveStatus; }
-
-    /**
-     * <p> The TTL status for the table.</p>
-     */
+    inline TimeToLiveStatus GetTimeToLiveStatus() const { return m_timeToLiveStatus; }
     inline bool TimeToLiveStatusHasBeenSet() const { return m_timeToLiveStatusHasBeenSet; }
+    inline void SetTimeToLiveStatus(TimeToLiveStatus value) { m_timeToLiveStatusHasBeenSet = true; m_timeToLiveStatus = value; }
+    inline TimeToLiveDescription& WithTimeToLiveStatus(TimeToLiveStatus value) { SetTimeToLiveStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The TTL status for the table.</p>
-     */
-    inline void SetTimeToLiveStatus(const TimeToLiveStatus& value) { m_timeToLiveStatusHasBeenSet = true; m_timeToLiveStatus = value; }
-
-    /**
-     * <p> The TTL status for the table.</p>
-     */
-    inline void SetTimeToLiveStatus(TimeToLiveStatus&& value) { m_timeToLiveStatusHasBeenSet = true; m_timeToLiveStatus = std::move(value); }
-
-    /**
-     * <p> The TTL status for the table.</p>
-     */
-    inline TimeToLiveDescription& WithTimeToLiveStatus(const TimeToLiveStatus& value) { SetTimeToLiveStatus(value); return *this;}
-
-    /**
-     * <p> The TTL status for the table.</p>
-     */
-    inline TimeToLiveDescription& WithTimeToLiveStatus(TimeToLiveStatus&& value) { SetTimeToLiveStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the TTL attribute for items in the table.</p>
      */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
-    inline TimeToLiveDescription& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
-    inline TimeToLiveDescription& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the TTL attribute for items in the table.</p>
-     */
-    inline TimeToLiveDescription& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    TimeToLiveDescription& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
   private:
 
-    TimeToLiveStatus m_timeToLiveStatus;
+    TimeToLiveStatus m_timeToLiveStatus{TimeToLiveStatus::NOT_SET};
     bool m_timeToLiveStatusHasBeenSet = false;
 
     Aws::String m_attributeName;

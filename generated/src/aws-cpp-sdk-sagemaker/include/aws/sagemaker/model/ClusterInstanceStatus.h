@@ -20,7 +20,9 @@ namespace Model
     Failure,
     Pending,
     ShuttingDown,
-    SystemUpdating
+    SystemUpdating,
+    DeepHealthCheckInProgress,
+    NotFound
   };
 
 namespace ClusterInstanceStatusMapper

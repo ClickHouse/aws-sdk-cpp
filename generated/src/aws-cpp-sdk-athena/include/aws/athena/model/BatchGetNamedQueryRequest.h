@@ -25,7 +25,7 @@ namespace Model
   class BatchGetNamedQueryRequest : public AthenaRequest
   {
   public:
-    AWS_ATHENA_API BatchGetNamedQueryRequest();
+    AWS_ATHENA_API BatchGetNamedQueryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,51 +38,19 @@ namespace Model
     AWS_ATHENA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An array of query IDs.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNamedQueryIds() const{ return m_namedQueryIds; }
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNamedQueryIds() const { return m_namedQueryIds; }
     inline bool NamedQueryIdsHasBeenSet() const { return m_namedQueryIdsHasBeenSet; }
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline void SetNamedQueryIds(const Aws::Vector<Aws::String>& value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds = value; }
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline void SetNamedQueryIds(Aws::Vector<Aws::String>&& value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds = std::move(value); }
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline BatchGetNamedQueryRequest& WithNamedQueryIds(const Aws::Vector<Aws::String>& value) { SetNamedQueryIds(value); return *this;}
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline BatchGetNamedQueryRequest& WithNamedQueryIds(Aws::Vector<Aws::String>&& value) { SetNamedQueryIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline BatchGetNamedQueryRequest& AddNamedQueryIds(const Aws::String& value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline BatchGetNamedQueryRequest& AddNamedQueryIds(Aws::String&& value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of query IDs.</p>
-     */
-    inline BatchGetNamedQueryRequest& AddNamedQueryIds(const char* value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds.push_back(value); return *this; }
-
+    template<typename NamedQueryIdsT = Aws::Vector<Aws::String>>
+    void SetNamedQueryIds(NamedQueryIdsT&& value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds = std::forward<NamedQueryIdsT>(value); }
+    template<typename NamedQueryIdsT = Aws::Vector<Aws::String>>
+    BatchGetNamedQueryRequest& WithNamedQueryIds(NamedQueryIdsT&& value) { SetNamedQueryIds(std::forward<NamedQueryIdsT>(value)); return *this;}
+    template<typename NamedQueryIdsT = Aws::String>
+    BatchGetNamedQueryRequest& AddNamedQueryIds(NamedQueryIdsT&& value) { m_namedQueryIdsHasBeenSet = true; m_namedQueryIds.emplace_back(std::forward<NamedQueryIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_namedQueryIds;

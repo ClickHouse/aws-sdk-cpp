@@ -33,125 +33,39 @@ namespace Model
   class KeyValue
   {
   public:
-    AWS_BACKUP_API KeyValue();
+    AWS_BACKUP_API KeyValue() = default;
     AWS_BACKUP_API KeyValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API KeyValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
      * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
      * <p>Pattern:
      * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    KeyValue& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
-    inline KeyValue& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
-    inline KeyValue& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The tag key (String). The key can't start with <code>aws:</code>.</p>
-     * <p>Length Constraints: Minimum length of 1. Maximum length of 128.</p>
-     * <p>Pattern:
-     * <code>^(?![aA]{1}[wW]{1}[sS]{1}:)([\p{L}\p{Z}\p{N}_.:/=+\-@]+)$</code> </p>
-     */
-    inline KeyValue& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
      * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
-    inline KeyValue& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
-    inline KeyValue& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the key.</p> <p>Length Constraints: Maximum length of 256.</p>
-     * <p>Pattern: <code>^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$</code> </p>
-     */
-    inline KeyValue& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    KeyValue& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

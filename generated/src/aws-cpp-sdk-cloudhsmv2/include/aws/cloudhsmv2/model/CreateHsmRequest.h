@@ -21,7 +21,7 @@ namespace Model
   class CreateHsmRequest : public CloudHSMV2Request
   {
   public:
-    AWS_CLOUDHSMV2_API CreateHsmRequest();
+    AWS_CLOUDHSMV2_API CreateHsmRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,168 +34,46 @@ namespace Model
     AWS_CLOUDHSMV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
      * <a>DescribeClusters</a>.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    CreateHsmRequest& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
-    inline CreateHsmRequest& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
-    inline CreateHsmRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-     * <a>DescribeClusters</a>.</p>
-     */
-    inline CreateHsmRequest& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone where you are creating the HSM. To find the cluster's
      * Availability Zones, use <a>DescribeClusters</a>.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    CreateHsmRequest& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
-    inline CreateHsmRequest& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
-    inline CreateHsmRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone where you are creating the HSM. To find the cluster's
-     * Availability Zones, use <a>DescribeClusters</a>.</p>
-     */
-    inline CreateHsmRequest& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HSM's IP address. If you specify an IP address, use an available address
      * from the subnet that maps to the Availability Zone where you are creating the
      * HSM. If you don't specify an IP address, one is chosen for you from that
      * subnet.</p>
      */
-    inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
+    inline const Aws::String& GetIpAddress() const { return m_ipAddress; }
     inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
-    inline void SetIpAddress(const Aws::String& value) { m_ipAddressHasBeenSet = true; m_ipAddress = value; }
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
-    inline void SetIpAddress(Aws::String&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::move(value); }
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
-    inline void SetIpAddress(const char* value) { m_ipAddressHasBeenSet = true; m_ipAddress.assign(value); }
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
-    inline CreateHsmRequest& WithIpAddress(const Aws::String& value) { SetIpAddress(value); return *this;}
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
-    inline CreateHsmRequest& WithIpAddress(Aws::String&& value) { SetIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The HSM's IP address. If you specify an IP address, use an available address
-     * from the subnet that maps to the Availability Zone where you are creating the
-     * HSM. If you don't specify an IP address, one is chosen for you from that
-     * subnet.</p>
-     */
-    inline CreateHsmRequest& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
-
+    template<typename IpAddressT = Aws::String>
+    void SetIpAddress(IpAddressT&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::forward<IpAddressT>(value); }
+    template<typename IpAddressT = Aws::String>
+    CreateHsmRequest& WithIpAddress(IpAddressT&& value) { SetIpAddress(std::forward<IpAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterId;

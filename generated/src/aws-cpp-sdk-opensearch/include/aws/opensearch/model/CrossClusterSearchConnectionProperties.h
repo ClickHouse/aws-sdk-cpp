@@ -32,63 +32,27 @@ namespace Model
   class CrossClusterSearchConnectionProperties
   {
   public:
-    AWS_OPENSEARCHSERVICE_API CrossClusterSearchConnectionProperties();
+    AWS_OPENSEARCHSERVICE_API CrossClusterSearchConnectionProperties() = default;
     AWS_OPENSEARCHSERVICE_API CrossClusterSearchConnectionProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API CrossClusterSearchConnectionProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the <code>SkipUnavailable</code> setting for the outbound
      * connection. This feature allows you to specify some clusters as optional and
      * ensure that your cross-cluster queries return partial results despite failures
      * on one or more remote clusters.</p>
      */
-    inline const SkipUnavailableStatus& GetSkipUnavailable() const{ return m_skipUnavailable; }
-
-    /**
-     * <p>The status of the <code>SkipUnavailable</code> setting for the outbound
-     * connection. This feature allows you to specify some clusters as optional and
-     * ensure that your cross-cluster queries return partial results despite failures
-     * on one or more remote clusters.</p>
-     */
+    inline SkipUnavailableStatus GetSkipUnavailable() const { return m_skipUnavailable; }
     inline bool SkipUnavailableHasBeenSet() const { return m_skipUnavailableHasBeenSet; }
-
-    /**
-     * <p>The status of the <code>SkipUnavailable</code> setting for the outbound
-     * connection. This feature allows you to specify some clusters as optional and
-     * ensure that your cross-cluster queries return partial results despite failures
-     * on one or more remote clusters.</p>
-     */
-    inline void SetSkipUnavailable(const SkipUnavailableStatus& value) { m_skipUnavailableHasBeenSet = true; m_skipUnavailable = value; }
-
-    /**
-     * <p>The status of the <code>SkipUnavailable</code> setting for the outbound
-     * connection. This feature allows you to specify some clusters as optional and
-     * ensure that your cross-cluster queries return partial results despite failures
-     * on one or more remote clusters.</p>
-     */
-    inline void SetSkipUnavailable(SkipUnavailableStatus&& value) { m_skipUnavailableHasBeenSet = true; m_skipUnavailable = std::move(value); }
-
-    /**
-     * <p>The status of the <code>SkipUnavailable</code> setting for the outbound
-     * connection. This feature allows you to specify some clusters as optional and
-     * ensure that your cross-cluster queries return partial results despite failures
-     * on one or more remote clusters.</p>
-     */
-    inline CrossClusterSearchConnectionProperties& WithSkipUnavailable(const SkipUnavailableStatus& value) { SetSkipUnavailable(value); return *this;}
-
-    /**
-     * <p>The status of the <code>SkipUnavailable</code> setting for the outbound
-     * connection. This feature allows you to specify some clusters as optional and
-     * ensure that your cross-cluster queries return partial results despite failures
-     * on one or more remote clusters.</p>
-     */
-    inline CrossClusterSearchConnectionProperties& WithSkipUnavailable(SkipUnavailableStatus&& value) { SetSkipUnavailable(std::move(value)); return *this;}
-
+    inline void SetSkipUnavailable(SkipUnavailableStatus value) { m_skipUnavailableHasBeenSet = true; m_skipUnavailable = value; }
+    inline CrossClusterSearchConnectionProperties& WithSkipUnavailable(SkipUnavailableStatus value) { SetSkipUnavailable(value); return *this;}
+    ///@}
   private:
 
-    SkipUnavailableStatus m_skipUnavailable;
+    SkipUnavailableStatus m_skipUnavailable{SkipUnavailableStatus::NOT_SET};
     bool m_skipUnavailableHasBeenSet = false;
   };
 

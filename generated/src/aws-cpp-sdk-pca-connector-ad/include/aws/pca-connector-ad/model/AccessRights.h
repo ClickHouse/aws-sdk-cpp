@@ -32,97 +32,40 @@ namespace Model
   class AccessRights
   {
   public:
-    AWS_PCACONNECTORAD_API AccessRights();
+    AWS_PCACONNECTORAD_API AccessRights() = default;
     AWS_PCACONNECTORAD_API AccessRights(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API AccessRights& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Allow or deny an Active Directory group from autoenrolling certificates
      * issued against a template. The Active Directory group must be allowed to enroll
      * to allow autoenrollment</p>
      */
-    inline const AccessRight& GetAutoEnroll() const{ return m_autoEnroll; }
-
-    /**
-     * <p>Allow or deny an Active Directory group from autoenrolling certificates
-     * issued against a template. The Active Directory group must be allowed to enroll
-     * to allow autoenrollment</p>
-     */
+    inline AccessRight GetAutoEnroll() const { return m_autoEnroll; }
     inline bool AutoEnrollHasBeenSet() const { return m_autoEnrollHasBeenSet; }
+    inline void SetAutoEnroll(AccessRight value) { m_autoEnrollHasBeenSet = true; m_autoEnroll = value; }
+    inline AccessRights& WithAutoEnroll(AccessRight value) { SetAutoEnroll(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Allow or deny an Active Directory group from autoenrolling certificates
-     * issued against a template. The Active Directory group must be allowed to enroll
-     * to allow autoenrollment</p>
-     */
-    inline void SetAutoEnroll(const AccessRight& value) { m_autoEnrollHasBeenSet = true; m_autoEnroll = value; }
-
-    /**
-     * <p>Allow or deny an Active Directory group from autoenrolling certificates
-     * issued against a template. The Active Directory group must be allowed to enroll
-     * to allow autoenrollment</p>
-     */
-    inline void SetAutoEnroll(AccessRight&& value) { m_autoEnrollHasBeenSet = true; m_autoEnroll = std::move(value); }
-
-    /**
-     * <p>Allow or deny an Active Directory group from autoenrolling certificates
-     * issued against a template. The Active Directory group must be allowed to enroll
-     * to allow autoenrollment</p>
-     */
-    inline AccessRights& WithAutoEnroll(const AccessRight& value) { SetAutoEnroll(value); return *this;}
-
-    /**
-     * <p>Allow or deny an Active Directory group from autoenrolling certificates
-     * issued against a template. The Active Directory group must be allowed to enroll
-     * to allow autoenrollment</p>
-     */
-    inline AccessRights& WithAutoEnroll(AccessRight&& value) { SetAutoEnroll(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Allow or deny an Active Directory group from enrolling certificates issued
      * against a template.</p>
      */
-    inline const AccessRight& GetEnroll() const{ return m_enroll; }
-
-    /**
-     * <p>Allow or deny an Active Directory group from enrolling certificates issued
-     * against a template.</p>
-     */
+    inline AccessRight GetEnroll() const { return m_enroll; }
     inline bool EnrollHasBeenSet() const { return m_enrollHasBeenSet; }
-
-    /**
-     * <p>Allow or deny an Active Directory group from enrolling certificates issued
-     * against a template.</p>
-     */
-    inline void SetEnroll(const AccessRight& value) { m_enrollHasBeenSet = true; m_enroll = value; }
-
-    /**
-     * <p>Allow or deny an Active Directory group from enrolling certificates issued
-     * against a template.</p>
-     */
-    inline void SetEnroll(AccessRight&& value) { m_enrollHasBeenSet = true; m_enroll = std::move(value); }
-
-    /**
-     * <p>Allow or deny an Active Directory group from enrolling certificates issued
-     * against a template.</p>
-     */
-    inline AccessRights& WithEnroll(const AccessRight& value) { SetEnroll(value); return *this;}
-
-    /**
-     * <p>Allow or deny an Active Directory group from enrolling certificates issued
-     * against a template.</p>
-     */
-    inline AccessRights& WithEnroll(AccessRight&& value) { SetEnroll(std::move(value)); return *this;}
-
+    inline void SetEnroll(AccessRight value) { m_enrollHasBeenSet = true; m_enroll = value; }
+    inline AccessRights& WithEnroll(AccessRight value) { SetEnroll(value); return *this;}
+    ///@}
   private:
 
-    AccessRight m_autoEnroll;
+    AccessRight m_autoEnroll{AccessRight::NOT_SET};
     bool m_autoEnrollHasBeenSet = false;
 
-    AccessRight m_enroll;
+    AccessRight m_enroll{AccessRight::NOT_SET};
     bool m_enrollHasBeenSet = false;
   };
 

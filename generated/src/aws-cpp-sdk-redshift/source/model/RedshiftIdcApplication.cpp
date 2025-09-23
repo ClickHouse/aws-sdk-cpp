@@ -20,31 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-RedshiftIdcApplication::RedshiftIdcApplication() : 
-    m_idcInstanceArnHasBeenSet(false),
-    m_redshiftIdcApplicationNameHasBeenSet(false),
-    m_redshiftIdcApplicationArnHasBeenSet(false),
-    m_identityNamespaceHasBeenSet(false),
-    m_idcDisplayNameHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_idcManagedApplicationArnHasBeenSet(false),
-    m_idcOnboardStatusHasBeenSet(false),
-    m_authorizedTokenIssuerListHasBeenSet(false),
-    m_serviceIntegrationsHasBeenSet(false)
-{
-}
-
-RedshiftIdcApplication::RedshiftIdcApplication(const XmlNode& xmlNode) : 
-    m_idcInstanceArnHasBeenSet(false),
-    m_redshiftIdcApplicationNameHasBeenSet(false),
-    m_redshiftIdcApplicationArnHasBeenSet(false),
-    m_identityNamespaceHasBeenSet(false),
-    m_idcDisplayNameHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_idcManagedApplicationArnHasBeenSet(false),
-    m_idcOnboardStatusHasBeenSet(false),
-    m_authorizedTokenIssuerListHasBeenSet(false),
-    m_serviceIntegrationsHasBeenSet(false)
+RedshiftIdcApplication::RedshiftIdcApplication(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -107,6 +83,7 @@ RedshiftIdcApplication& RedshiftIdcApplication::operator =(const XmlNode& xmlNod
     if(!authorizedTokenIssuerListNode.IsNull())
     {
       XmlNode authorizedTokenIssuerListMember = authorizedTokenIssuerListNode.FirstChild("member");
+      m_authorizedTokenIssuerListHasBeenSet = !authorizedTokenIssuerListMember.IsNull();
       while(!authorizedTokenIssuerListMember.IsNull())
       {
         m_authorizedTokenIssuerList.push_back(authorizedTokenIssuerListMember);
@@ -119,6 +96,7 @@ RedshiftIdcApplication& RedshiftIdcApplication::operator =(const XmlNode& xmlNod
     if(!serviceIntegrationsNode.IsNull())
     {
       XmlNode serviceIntegrationsMember = serviceIntegrationsNode.FirstChild("member");
+      m_serviceIntegrationsHasBeenSet = !serviceIntegrationsMember.IsNull();
       while(!serviceIntegrationsMember.IsNull())
       {
         m_serviceIntegrations.push_back(serviceIntegrationsMember);
@@ -238,7 +216,7 @@ void RedshiftIdcApplication::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_authorizedTokenIssuerList)
       {
         Aws::StringStream authorizedTokenIssuerListSs;
-        authorizedTokenIssuerListSs << location <<  ".AuthorizedTokenIssuerList.member." << authorizedTokenIssuerListIdx++;
+        authorizedTokenIssuerListSs << location << ".AuthorizedTokenIssuerList.member." << authorizedTokenIssuerListIdx++;
         item.OutputToStream(oStream, authorizedTokenIssuerListSs.str().c_str());
       }
   }
@@ -248,7 +226,7 @@ void RedshiftIdcApplication::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_serviceIntegrations)
       {
         Aws::StringStream serviceIntegrationsSs;
-        serviceIntegrationsSs << location <<  ".ServiceIntegrations.member." << serviceIntegrationsIdx++;
+        serviceIntegrationsSs << location << ".ServiceIntegrations.member." << serviceIntegrationsIdx++;
         item.OutputToStream(oStream, serviceIntegrationsSs.str().c_str());
       }
   }

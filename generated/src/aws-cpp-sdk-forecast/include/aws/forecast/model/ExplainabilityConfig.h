@@ -40,12 +40,13 @@ namespace Model
   class ExplainabilityConfig
   {
   public:
-    AWS_FORECASTSERVICE_API ExplainabilityConfig();
+    AWS_FORECASTSERVICE_API ExplainabilityConfig() = default;
     AWS_FORECASTSERVICE_API ExplainabilityConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API ExplainabilityConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>To create an Explainability for all time series in your datasets, use
      * <code>ALL</code>. To create an Explainability for specific time series in your
@@ -53,54 +54,13 @@ namespace Model
      * CSV or Parquet file to an Amazon S3 bucket and set the location within the
      * <a>DataDestination</a> data type.</p>
      */
-    inline const TimeSeriesGranularity& GetTimeSeriesGranularity() const{ return m_timeSeriesGranularity; }
-
-    /**
-     * <p>To create an Explainability for all time series in your datasets, use
-     * <code>ALL</code>. To create an Explainability for specific time series in your
-     * datasets, use <code>SPECIFIC</code>.</p> <p>Specify time series by uploading a
-     * CSV or Parquet file to an Amazon S3 bucket and set the location within the
-     * <a>DataDestination</a> data type.</p>
-     */
+    inline TimeSeriesGranularity GetTimeSeriesGranularity() const { return m_timeSeriesGranularity; }
     inline bool TimeSeriesGranularityHasBeenSet() const { return m_timeSeriesGranularityHasBeenSet; }
+    inline void SetTimeSeriesGranularity(TimeSeriesGranularity value) { m_timeSeriesGranularityHasBeenSet = true; m_timeSeriesGranularity = value; }
+    inline ExplainabilityConfig& WithTimeSeriesGranularity(TimeSeriesGranularity value) { SetTimeSeriesGranularity(value); return *this;}
+    ///@}
 
-    /**
-     * <p>To create an Explainability for all time series in your datasets, use
-     * <code>ALL</code>. To create an Explainability for specific time series in your
-     * datasets, use <code>SPECIFIC</code>.</p> <p>Specify time series by uploading a
-     * CSV or Parquet file to an Amazon S3 bucket and set the location within the
-     * <a>DataDestination</a> data type.</p>
-     */
-    inline void SetTimeSeriesGranularity(const TimeSeriesGranularity& value) { m_timeSeriesGranularityHasBeenSet = true; m_timeSeriesGranularity = value; }
-
-    /**
-     * <p>To create an Explainability for all time series in your datasets, use
-     * <code>ALL</code>. To create an Explainability for specific time series in your
-     * datasets, use <code>SPECIFIC</code>.</p> <p>Specify time series by uploading a
-     * CSV or Parquet file to an Amazon S3 bucket and set the location within the
-     * <a>DataDestination</a> data type.</p>
-     */
-    inline void SetTimeSeriesGranularity(TimeSeriesGranularity&& value) { m_timeSeriesGranularityHasBeenSet = true; m_timeSeriesGranularity = std::move(value); }
-
-    /**
-     * <p>To create an Explainability for all time series in your datasets, use
-     * <code>ALL</code>. To create an Explainability for specific time series in your
-     * datasets, use <code>SPECIFIC</code>.</p> <p>Specify time series by uploading a
-     * CSV or Parquet file to an Amazon S3 bucket and set the location within the
-     * <a>DataDestination</a> data type.</p>
-     */
-    inline ExplainabilityConfig& WithTimeSeriesGranularity(const TimeSeriesGranularity& value) { SetTimeSeriesGranularity(value); return *this;}
-
-    /**
-     * <p>To create an Explainability for all time series in your datasets, use
-     * <code>ALL</code>. To create an Explainability for specific time series in your
-     * datasets, use <code>SPECIFIC</code>.</p> <p>Specify time series by uploading a
-     * CSV or Parquet file to an Amazon S3 bucket and set the location within the
-     * <a>DataDestination</a> data type.</p>
-     */
-    inline ExplainabilityConfig& WithTimeSeriesGranularity(TimeSeriesGranularity&& value) { SetTimeSeriesGranularity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>To create an Explainability for all time points in your forecast horizon, use
      * <code>ALL</code>. To create an Explainability for specific time points in your
@@ -108,59 +68,17 @@ namespace Model
      * <code>StartDateTime</code> and <code>EndDateTime</code> parameters within the
      * <a>CreateExplainability</a> operation.</p>
      */
-    inline const TimePointGranularity& GetTimePointGranularity() const{ return m_timePointGranularity; }
-
-    /**
-     * <p>To create an Explainability for all time points in your forecast horizon, use
-     * <code>ALL</code>. To create an Explainability for specific time points in your
-     * forecast horizon, use <code>SPECIFIC</code>.</p> <p>Specify time points with the
-     * <code>StartDateTime</code> and <code>EndDateTime</code> parameters within the
-     * <a>CreateExplainability</a> operation.</p>
-     */
+    inline TimePointGranularity GetTimePointGranularity() const { return m_timePointGranularity; }
     inline bool TimePointGranularityHasBeenSet() const { return m_timePointGranularityHasBeenSet; }
-
-    /**
-     * <p>To create an Explainability for all time points in your forecast horizon, use
-     * <code>ALL</code>. To create an Explainability for specific time points in your
-     * forecast horizon, use <code>SPECIFIC</code>.</p> <p>Specify time points with the
-     * <code>StartDateTime</code> and <code>EndDateTime</code> parameters within the
-     * <a>CreateExplainability</a> operation.</p>
-     */
-    inline void SetTimePointGranularity(const TimePointGranularity& value) { m_timePointGranularityHasBeenSet = true; m_timePointGranularity = value; }
-
-    /**
-     * <p>To create an Explainability for all time points in your forecast horizon, use
-     * <code>ALL</code>. To create an Explainability for specific time points in your
-     * forecast horizon, use <code>SPECIFIC</code>.</p> <p>Specify time points with the
-     * <code>StartDateTime</code> and <code>EndDateTime</code> parameters within the
-     * <a>CreateExplainability</a> operation.</p>
-     */
-    inline void SetTimePointGranularity(TimePointGranularity&& value) { m_timePointGranularityHasBeenSet = true; m_timePointGranularity = std::move(value); }
-
-    /**
-     * <p>To create an Explainability for all time points in your forecast horizon, use
-     * <code>ALL</code>. To create an Explainability for specific time points in your
-     * forecast horizon, use <code>SPECIFIC</code>.</p> <p>Specify time points with the
-     * <code>StartDateTime</code> and <code>EndDateTime</code> parameters within the
-     * <a>CreateExplainability</a> operation.</p>
-     */
-    inline ExplainabilityConfig& WithTimePointGranularity(const TimePointGranularity& value) { SetTimePointGranularity(value); return *this;}
-
-    /**
-     * <p>To create an Explainability for all time points in your forecast horizon, use
-     * <code>ALL</code>. To create an Explainability for specific time points in your
-     * forecast horizon, use <code>SPECIFIC</code>.</p> <p>Specify time points with the
-     * <code>StartDateTime</code> and <code>EndDateTime</code> parameters within the
-     * <a>CreateExplainability</a> operation.</p>
-     */
-    inline ExplainabilityConfig& WithTimePointGranularity(TimePointGranularity&& value) { SetTimePointGranularity(std::move(value)); return *this;}
-
+    inline void SetTimePointGranularity(TimePointGranularity value) { m_timePointGranularityHasBeenSet = true; m_timePointGranularity = value; }
+    inline ExplainabilityConfig& WithTimePointGranularity(TimePointGranularity value) { SetTimePointGranularity(value); return *this;}
+    ///@}
   private:
 
-    TimeSeriesGranularity m_timeSeriesGranularity;
+    TimeSeriesGranularity m_timeSeriesGranularity{TimeSeriesGranularity::NOT_SET};
     bool m_timeSeriesGranularityHasBeenSet = false;
 
-    TimePointGranularity m_timePointGranularity;
+    TimePointGranularity m_timePointGranularity{TimePointGranularity::NOT_SET};
     bool m_timePointGranularityHasBeenSet = false;
   };
 

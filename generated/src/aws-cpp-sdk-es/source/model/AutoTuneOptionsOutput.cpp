@@ -18,17 +18,7 @@ namespace ElasticsearchService
 namespace Model
 {
 
-AutoTuneOptionsOutput::AutoTuneOptionsOutput() : 
-    m_state(AutoTuneState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-AutoTuneOptionsOutput::AutoTuneOptionsOutput(JsonView jsonValue) : 
-    m_state(AutoTuneState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+AutoTuneOptionsOutput::AutoTuneOptionsOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AutoTuneOptionsOutput& AutoTuneOptionsOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("State"))
   {
     m_state = AutoTuneStateMapper::GetAutoTuneStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

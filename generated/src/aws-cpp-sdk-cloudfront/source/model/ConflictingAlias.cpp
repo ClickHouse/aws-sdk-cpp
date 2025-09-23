@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-ConflictingAlias::ConflictingAlias() : 
-    m_aliasHasBeenSet(false),
-    m_distributionIdHasBeenSet(false),
-    m_accountIdHasBeenSet(false)
-{
-}
-
-ConflictingAlias::ConflictingAlias(const XmlNode& xmlNode) : 
-    m_aliasHasBeenSet(false),
-    m_distributionIdHasBeenSet(false),
-    m_accountIdHasBeenSet(false)
+ConflictingAlias::ConflictingAlias(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

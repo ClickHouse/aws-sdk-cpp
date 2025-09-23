@@ -32,52 +32,23 @@ namespace Model
   class GeospatialHeatmapDataColor
   {
   public:
-    AWS_QUICKSIGHT_API GeospatialHeatmapDataColor();
+    AWS_QUICKSIGHT_API GeospatialHeatmapDataColor() = default;
     AWS_QUICKSIGHT_API GeospatialHeatmapDataColor(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GeospatialHeatmapDataColor& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The hex color to be used in the heatmap point style.</p>
      */
-    inline const Aws::String& GetColor() const{ return m_color; }
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
+    inline const Aws::String& GetColor() const { return m_color; }
     inline bool ColorHasBeenSet() const { return m_colorHasBeenSet; }
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
-    inline void SetColor(const Aws::String& value) { m_colorHasBeenSet = true; m_color = value; }
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
-    inline void SetColor(Aws::String&& value) { m_colorHasBeenSet = true; m_color = std::move(value); }
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
-    inline void SetColor(const char* value) { m_colorHasBeenSet = true; m_color.assign(value); }
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
-    inline GeospatialHeatmapDataColor& WithColor(const Aws::String& value) { SetColor(value); return *this;}
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
-    inline GeospatialHeatmapDataColor& WithColor(Aws::String&& value) { SetColor(std::move(value)); return *this;}
-
-    /**
-     * <p>The hex color to be used in the heatmap point style.</p>
-     */
-    inline GeospatialHeatmapDataColor& WithColor(const char* value) { SetColor(value); return *this;}
-
+    template<typename ColorT = Aws::String>
+    void SetColor(ColorT&& value) { m_colorHasBeenSet = true; m_color = std::forward<ColorT>(value); }
+    template<typename ColorT = Aws::String>
+    GeospatialHeatmapDataColor& WithColor(ColorT&& value) { SetColor(std::forward<ColorT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_color;

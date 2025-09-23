@@ -12,14 +12,6 @@ using namespace Aws::WellArchitected::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateGlobalSettingsRequest::UpdateGlobalSettingsRequest() : 
-    m_organizationSharingStatus(OrganizationSharingStatus::NOT_SET),
-    m_organizationSharingStatusHasBeenSet(false),
-    m_discoveryIntegrationStatus(DiscoveryIntegrationStatus::NOT_SET),
-    m_discoveryIntegrationStatusHasBeenSet(false)
-{
-}
-
 Aws::String UpdateGlobalSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +24,12 @@ Aws::String UpdateGlobalSettingsRequest::SerializePayload() const
   if(m_discoveryIntegrationStatusHasBeenSet)
   {
    payload.WithString("DiscoveryIntegrationStatus", DiscoveryIntegrationStatusMapper::GetNameForDiscoveryIntegrationStatus(m_discoveryIntegrationStatus));
+  }
+
+  if(m_jiraConfigurationHasBeenSet)
+  {
+   payload.WithObject("JiraConfiguration", m_jiraConfiguration.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

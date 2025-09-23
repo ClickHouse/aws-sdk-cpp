@@ -20,33 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-DataTransferProgress::DataTransferProgress() : 
-    m_statusHasBeenSet(false),
-    m_currentRateInMegaBytesPerSecond(0.0),
-    m_currentRateInMegaBytesPerSecondHasBeenSet(false),
-    m_totalDataInMegaBytes(0),
-    m_totalDataInMegaBytesHasBeenSet(false),
-    m_dataTransferredInMegaBytes(0),
-    m_dataTransferredInMegaBytesHasBeenSet(false),
-    m_estimatedTimeToCompletionInSeconds(0),
-    m_estimatedTimeToCompletionInSecondsHasBeenSet(false),
-    m_elapsedTimeInSeconds(0),
-    m_elapsedTimeInSecondsHasBeenSet(false)
-{
-}
-
-DataTransferProgress::DataTransferProgress(const XmlNode& xmlNode) : 
-    m_statusHasBeenSet(false),
-    m_currentRateInMegaBytesPerSecond(0.0),
-    m_currentRateInMegaBytesPerSecondHasBeenSet(false),
-    m_totalDataInMegaBytes(0),
-    m_totalDataInMegaBytesHasBeenSet(false),
-    m_dataTransferredInMegaBytes(0),
-    m_dataTransferredInMegaBytesHasBeenSet(false),
-    m_estimatedTimeToCompletionInSeconds(0),
-    m_estimatedTimeToCompletionInSecondsHasBeenSet(false),
-    m_elapsedTimeInSeconds(0),
-    m_elapsedTimeInSecondsHasBeenSet(false)
+DataTransferProgress::DataTransferProgress(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -140,7 +114,7 @@ void DataTransferProgress::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_currentRateInMegaBytesPerSecondHasBeenSet)
   {
-        oStream << location << ".CurrentRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentRateInMegaBytesPerSecond) << "&";
+      oStream << location << ".CurrentRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentRateInMegaBytesPerSecond) << "&";
   }
   if(m_totalDataInMegaBytesHasBeenSet)
   {

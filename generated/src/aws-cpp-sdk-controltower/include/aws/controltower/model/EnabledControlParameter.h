@@ -25,8 +25,7 @@ namespace Model
 {
 
   /**
-   * <p> A set of parameters that configure the behavior of the enabled control. A
-   * key/value pair, where <code>Key</code> is of type <code>String</code> and
+   * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
    * <code>Value</code> is of type <code>Document</code>.</p><p><h3>See Also:</h3>  
    * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/controltower-2018-05-10/EnabledControlParameter">AWS
@@ -35,95 +34,35 @@ namespace Model
   class EnabledControlParameter
   {
   public:
-    AWS_CONTROLTOWER_API EnabledControlParameter();
+    AWS_CONTROLTOWER_API EnabledControlParameter() = default;
     AWS_CONTROLTOWER_API EnabledControlParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONTROLTOWER_API EnabledControlParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONTROLTOWER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
+     * <p>The key of a key/value pair.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    EnabledControlParameter& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
+     * <p>The value of a key/value pair.</p>
      */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
-     */
-    inline EnabledControlParameter& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
-     */
-    inline EnabledControlParameter& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key of a key/value pair. It is of type <code>string</code>.</p>
-     */
-    inline EnabledControlParameter& WithKey(const char* value) { SetKey(value); return *this;}
-
-
-    /**
-     * <p>The value of a key/value pair. It can be of type <code>array</code>
-     * <code>string</code>, <code>number</code>, <code>object</code>, or
-     * <code>boolean</code>. </p>
-     */
-    inline Aws::Utils::DocumentView GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of a key/value pair. It can be of type <code>array</code>
-     * <code>string</code>, <code>number</code>, <code>object</code>, or
-     * <code>boolean</code>. </p>
-     */
+    inline Aws::Utils::DocumentView GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of a key/value pair. It can be of type <code>array</code>
-     * <code>string</code>, <code>number</code>, <code>object</code>, or
-     * <code>boolean</code>. </p>
-     */
-    inline void SetValue(const Aws::Utils::Document& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of a key/value pair. It can be of type <code>array</code>
-     * <code>string</code>, <code>number</code>, <code>object</code>, or
-     * <code>boolean</code>. </p>
-     */
-    inline void SetValue(Aws::Utils::Document&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of a key/value pair. It can be of type <code>array</code>
-     * <code>string</code>, <code>number</code>, <code>object</code>, or
-     * <code>boolean</code>. </p>
-     */
-    inline EnabledControlParameter& WithValue(const Aws::Utils::Document& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of a key/value pair. It can be of type <code>array</code>
-     * <code>string</code>, <code>number</code>, <code>object</code>, or
-     * <code>boolean</code>. </p>
-     */
-    inline EnabledControlParameter& WithValue(Aws::Utils::Document&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = Aws::Utils::Document>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::Utils::Document>
+    EnabledControlParameter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

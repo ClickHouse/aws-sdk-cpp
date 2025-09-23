@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-MeshServiceDiscovery::MeshServiceDiscovery() : 
-    m_ipPreference(IpPreference::NOT_SET),
-    m_ipPreferenceHasBeenSet(false)
-{
-}
-
-MeshServiceDiscovery::MeshServiceDiscovery(JsonView jsonValue) : 
-    m_ipPreference(IpPreference::NOT_SET),
-    m_ipPreferenceHasBeenSet(false)
+MeshServiceDiscovery::MeshServiceDiscovery(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MeshServiceDiscovery& MeshServiceDiscovery::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ipPreference"))
   {
     m_ipPreference = IpPreferenceMapper::GetIpPreferenceForName(jsonValue.GetString("ipPreference"));
-
     m_ipPreferenceHasBeenSet = true;
   }
-
   return *this;
 }
 

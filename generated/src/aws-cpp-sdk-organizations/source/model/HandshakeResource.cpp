@@ -18,19 +18,7 @@ namespace Organizations
 namespace Model
 {
 
-HandshakeResource::HandshakeResource() : 
-    m_valueHasBeenSet(false),
-    m_type(HandshakeResourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
-{
-}
-
-HandshakeResource::HandshakeResource(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_type(HandshakeResourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
+HandshakeResource::HandshakeResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ HandshakeResource& HandshakeResource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = HandshakeResourceTypeMapper::GetHandshakeResourceTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Resources"))
   {
     Aws::Utils::Array<JsonView> resourcesJsonList = jsonValue.GetArray("Resources");
@@ -60,7 +44,6 @@ HandshakeResource& HandshakeResource::operator =(JsonView jsonValue)
     }
     m_resourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

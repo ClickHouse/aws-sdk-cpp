@@ -10,16 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-DescribeDataSharesForConsumerRequest::DescribeDataSharesForConsumerRequest() : 
-    m_consumerArnHasBeenSet(false),
-    m_status(DataShareStatusForConsumer::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeDataSharesForConsumerRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -31,7 +21,7 @@ Aws::String DescribeDataSharesForConsumerRequest::SerializePayload() const
 
   if(m_statusHasBeenSet)
   {
-    ss << "Status=" << DataShareStatusForConsumerMapper::GetNameForDataShareStatusForConsumer(m_status) << "&";
+    ss << "Status=" << StringUtils::URLEncode(DataShareStatusForConsumerMapper::GetNameForDataShareStatusForConsumer(m_status)) << "&";
   }
 
   if(m_maxRecordsHasBeenSet)

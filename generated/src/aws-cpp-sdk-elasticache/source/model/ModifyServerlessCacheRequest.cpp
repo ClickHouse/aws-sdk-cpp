@@ -10,20 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-ModifyServerlessCacheRequest::ModifyServerlessCacheRequest() : 
-    m_serverlessCacheNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_cacheUsageLimitsHasBeenSet(false),
-    m_removeUserGroup(false),
-    m_removeUserGroupHasBeenSet(false),
-    m_userGroupIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_dailySnapshotTimeHasBeenSet(false)
-{
-}
-
 Aws::String ModifyServerlessCacheRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -55,12 +41,19 @@ Aws::String ModifyServerlessCacheRequest::SerializePayload() const
 
   if(m_securityGroupIdsHasBeenSet)
   {
-    unsigned securityGroupIdsCount = 1;
-    for(auto& item : m_securityGroupIds)
+    if (m_securityGroupIds.empty())
     {
-      ss << "SecurityGroupIds.member." << securityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupIdsCount++;
+      ss << "SecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned securityGroupIdsCount = 1;
+      for(auto& item : m_securityGroupIds)
+      {
+        ss << "SecurityGroupIds.SecurityGroupId." << securityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupIdsCount++;
+      }
     }
   }
 
@@ -72,6 +65,16 @@ Aws::String ModifyServerlessCacheRequest::SerializePayload() const
   if(m_dailySnapshotTimeHasBeenSet)
   {
     ss << "DailySnapshotTime=" << StringUtils::URLEncode(m_dailySnapshotTime.c_str()) << "&";
+  }
+
+  if(m_engineHasBeenSet)
+  {
+    ss << "Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
+  }
+
+  if(m_majorEngineVersionHasBeenSet)
+  {
+    ss << "MajorEngineVersion=" << StringUtils::URLEncode(m_majorEngineVersion.c_str()) << "&";
   }
 
   ss << "Version=2015-02-02";

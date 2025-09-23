@@ -20,97 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheCluster::CacheCluster() : 
-    m_cacheClusterIdHasBeenSet(false),
-    m_configurationEndpointHasBeenSet(false),
-    m_clientDownloadLandingPageHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_cacheClusterStatusHasBeenSet(false),
-    m_numCacheNodes(0),
-    m_numCacheNodesHasBeenSet(false),
-    m_preferredAvailabilityZoneHasBeenSet(false),
-    m_preferredOutpostArnHasBeenSet(false),
-    m_cacheClusterCreateTimeHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_notificationConfigurationHasBeenSet(false),
-    m_cacheSecurityGroupsHasBeenSet(false),
-    m_cacheParameterGroupHasBeenSet(false),
-    m_cacheSubnetGroupNameHasBeenSet(false),
-    m_cacheNodesHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_replicationGroupIdHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false),
-    m_authTokenEnabled(false),
-    m_authTokenEnabledHasBeenSet(false),
-    m_authTokenLastModifiedDateHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_atRestEncryptionEnabled(false),
-    m_atRestEncryptionEnabledHasBeenSet(false),
-    m_aRNHasBeenSet(false),
-    m_replicationGroupLogDeliveryEnabled(false),
-    m_replicationGroupLogDeliveryEnabledHasBeenSet(false),
-    m_logDeliveryConfigurationsHasBeenSet(false),
-    m_networkType(NetworkType::NOT_SET),
-    m_networkTypeHasBeenSet(false),
-    m_ipDiscovery(IpDiscovery::NOT_SET),
-    m_ipDiscoveryHasBeenSet(false),
-    m_transitEncryptionMode(TransitEncryptionMode::NOT_SET),
-    m_transitEncryptionModeHasBeenSet(false)
-{
-}
-
-CacheCluster::CacheCluster(const XmlNode& xmlNode) : 
-    m_cacheClusterIdHasBeenSet(false),
-    m_configurationEndpointHasBeenSet(false),
-    m_clientDownloadLandingPageHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_cacheClusterStatusHasBeenSet(false),
-    m_numCacheNodes(0),
-    m_numCacheNodesHasBeenSet(false),
-    m_preferredAvailabilityZoneHasBeenSet(false),
-    m_preferredOutpostArnHasBeenSet(false),
-    m_cacheClusterCreateTimeHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_notificationConfigurationHasBeenSet(false),
-    m_cacheSecurityGroupsHasBeenSet(false),
-    m_cacheParameterGroupHasBeenSet(false),
-    m_cacheSubnetGroupNameHasBeenSet(false),
-    m_cacheNodesHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_replicationGroupIdHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false),
-    m_authTokenEnabled(false),
-    m_authTokenEnabledHasBeenSet(false),
-    m_authTokenLastModifiedDateHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_atRestEncryptionEnabled(false),
-    m_atRestEncryptionEnabledHasBeenSet(false),
-    m_aRNHasBeenSet(false),
-    m_replicationGroupLogDeliveryEnabled(false),
-    m_replicationGroupLogDeliveryEnabledHasBeenSet(false),
-    m_logDeliveryConfigurationsHasBeenSet(false),
-    m_networkType(NetworkType::NOT_SET),
-    m_networkTypeHasBeenSet(false),
-    m_ipDiscovery(IpDiscovery::NOT_SET),
-    m_ipDiscoveryHasBeenSet(false),
-    m_transitEncryptionMode(TransitEncryptionMode::NOT_SET),
-    m_transitEncryptionModeHasBeenSet(false)
+CacheCluster::CacheCluster(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -209,6 +119,7 @@ CacheCluster& CacheCluster::operator =(const XmlNode& xmlNode)
     if(!cacheSecurityGroupsNode.IsNull())
     {
       XmlNode cacheSecurityGroupsMember = cacheSecurityGroupsNode.FirstChild("CacheSecurityGroup");
+      m_cacheSecurityGroupsHasBeenSet = !cacheSecurityGroupsMember.IsNull();
       while(!cacheSecurityGroupsMember.IsNull())
       {
         m_cacheSecurityGroups.push_back(cacheSecurityGroupsMember);
@@ -233,6 +144,7 @@ CacheCluster& CacheCluster::operator =(const XmlNode& xmlNode)
     if(!cacheNodesNode.IsNull())
     {
       XmlNode cacheNodesMember = cacheNodesNode.FirstChild("CacheNode");
+      m_cacheNodesHasBeenSet = !cacheNodesMember.IsNull();
       while(!cacheNodesMember.IsNull())
       {
         m_cacheNodes.push_back(cacheNodesMember);
@@ -251,6 +163,7 @@ CacheCluster& CacheCluster::operator =(const XmlNode& xmlNode)
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("member");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember);
@@ -317,6 +230,7 @@ CacheCluster& CacheCluster::operator =(const XmlNode& xmlNode)
     if(!logDeliveryConfigurationsNode.IsNull())
     {
       XmlNode logDeliveryConfigurationsMember = logDeliveryConfigurationsNode.FirstChild("LogDeliveryConfiguration");
+      m_logDeliveryConfigurationsHasBeenSet = !logDeliveryConfigurationsMember.IsNull();
       while(!logDeliveryConfigurationsMember.IsNull())
       {
         m_logDeliveryConfigurations.push_back(logDeliveryConfigurationsMember);
@@ -328,19 +242,19 @@ CacheCluster& CacheCluster::operator =(const XmlNode& xmlNode)
     XmlNode networkTypeNode = resultNode.FirstChild("NetworkType");
     if(!networkTypeNode.IsNull())
     {
-      m_networkType = NetworkTypeMapper::GetNetworkTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(networkTypeNode.GetText()).c_str()).c_str());
+      m_networkType = NetworkTypeMapper::GetNetworkTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(networkTypeNode.GetText()).c_str()));
       m_networkTypeHasBeenSet = true;
     }
     XmlNode ipDiscoveryNode = resultNode.FirstChild("IpDiscovery");
     if(!ipDiscoveryNode.IsNull())
     {
-      m_ipDiscovery = IpDiscoveryMapper::GetIpDiscoveryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipDiscoveryNode.GetText()).c_str()).c_str());
+      m_ipDiscovery = IpDiscoveryMapper::GetIpDiscoveryForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipDiscoveryNode.GetText()).c_str()));
       m_ipDiscoveryHasBeenSet = true;
     }
     XmlNode transitEncryptionModeNode = resultNode.FirstChild("TransitEncryptionMode");
     if(!transitEncryptionModeNode.IsNull())
     {
-      m_transitEncryptionMode = TransitEncryptionModeMapper::GetTransitEncryptionModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transitEncryptionModeNode.GetText()).c_str()).c_str());
+      m_transitEncryptionMode = TransitEncryptionModeMapper::GetTransitEncryptionModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transitEncryptionModeNode.GetText()).c_str()));
       m_transitEncryptionModeHasBeenSet = true;
     }
   }
@@ -432,7 +346,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
       for(auto& item : m_cacheSecurityGroups)
       {
         Aws::StringStream cacheSecurityGroupsSs;
-        cacheSecurityGroupsSs << location << index << locationValue << ".CacheSecurityGroup." << cacheSecurityGroupsIdx++;
+        cacheSecurityGroupsSs << location << index << locationValue << ".CacheSecurityGroups.CacheSecurityGroup." << cacheSecurityGroupsIdx++;
         item.OutputToStream(oStream, cacheSecurityGroupsSs.str().c_str());
       }
   }
@@ -455,7 +369,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
       for(auto& item : m_cacheNodes)
       {
         Aws::StringStream cacheNodesSs;
-        cacheNodesSs << location << index << locationValue << ".CacheNode." << cacheNodesIdx++;
+        cacheNodesSs << location << index << locationValue << ".CacheNodes.CacheNode." << cacheNodesIdx++;
         item.OutputToStream(oStream, cacheNodesSs.str().c_str());
       }
   }
@@ -527,24 +441,24 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
       for(auto& item : m_logDeliveryConfigurations)
       {
         Aws::StringStream logDeliveryConfigurationsSs;
-        logDeliveryConfigurationsSs << location << index << locationValue << ".LogDeliveryConfiguration." << logDeliveryConfigurationsIdx++;
+        logDeliveryConfigurationsSs << location << index << locationValue << ".LogDeliveryConfigurations.LogDeliveryConfiguration." << logDeliveryConfigurationsIdx++;
         item.OutputToStream(oStream, logDeliveryConfigurationsSs.str().c_str());
       }
   }
 
   if(m_networkTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NetworkType=" << NetworkTypeMapper::GetNameForNetworkType(m_networkType) << "&";
+      oStream << location << index << locationValue << ".NetworkType=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(m_networkType)) << "&";
   }
 
   if(m_ipDiscoveryHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IpDiscovery=" << IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery) << "&";
+      oStream << location << index << locationValue << ".IpDiscovery=" << StringUtils::URLEncode(IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery)) << "&";
   }
 
   if(m_transitEncryptionModeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TransitEncryptionMode=" << TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode) << "&";
+      oStream << location << index << locationValue << ".TransitEncryptionMode=" << StringUtils::URLEncode(TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode)) << "&";
   }
 
 }
@@ -619,7 +533,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_cacheSecurityGroups)
       {
         Aws::StringStream cacheSecurityGroupsSs;
-        cacheSecurityGroupsSs << location <<  ".CacheSecurityGroup." << cacheSecurityGroupsIdx++;
+        cacheSecurityGroupsSs << location << ".CacheSecurityGroups.CacheSecurityGroup." << cacheSecurityGroupsIdx++;
         item.OutputToStream(oStream, cacheSecurityGroupsSs.str().c_str());
       }
   }
@@ -639,7 +553,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_cacheNodes)
       {
         Aws::StringStream cacheNodesSs;
-        cacheNodesSs << location <<  ".CacheNode." << cacheNodesIdx++;
+        cacheNodesSs << location << ".CacheNodes.CacheNode." << cacheNodesIdx++;
         item.OutputToStream(oStream, cacheNodesSs.str().c_str());
       }
   }
@@ -653,7 +567,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location <<  ".SecurityGroups.member." << securityGroupsIdx++;
+        securityGroupsSs << location << ".SecurityGroups.member." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
@@ -699,21 +613,21 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_logDeliveryConfigurations)
       {
         Aws::StringStream logDeliveryConfigurationsSs;
-        logDeliveryConfigurationsSs << location <<  ".LogDeliveryConfiguration." << logDeliveryConfigurationsIdx++;
+        logDeliveryConfigurationsSs << location << ".LogDeliveryConfigurations.LogDeliveryConfiguration." << logDeliveryConfigurationsIdx++;
         item.OutputToStream(oStream, logDeliveryConfigurationsSs.str().c_str());
       }
   }
   if(m_networkTypeHasBeenSet)
   {
-      oStream << location << ".NetworkType=" << NetworkTypeMapper::GetNameForNetworkType(m_networkType) << "&";
+      oStream << location << ".NetworkType=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(m_networkType)) << "&";
   }
   if(m_ipDiscoveryHasBeenSet)
   {
-      oStream << location << ".IpDiscovery=" << IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery) << "&";
+      oStream << location << ".IpDiscovery=" << StringUtils::URLEncode(IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery)) << "&";
   }
   if(m_transitEncryptionModeHasBeenSet)
   {
-      oStream << location << ".TransitEncryptionMode=" << TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode) << "&";
+      oStream << location << ".TransitEncryptionMode=" << StringUtils::URLEncode(TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode)) << "&";
   }
 }
 

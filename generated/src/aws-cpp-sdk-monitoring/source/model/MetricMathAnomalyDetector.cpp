@@ -20,13 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-MetricMathAnomalyDetector::MetricMathAnomalyDetector() : 
-    m_metricDataQueriesHasBeenSet(false)
-{
-}
-
-MetricMathAnomalyDetector::MetricMathAnomalyDetector(const XmlNode& xmlNode) : 
-    m_metricDataQueriesHasBeenSet(false)
+MetricMathAnomalyDetector::MetricMathAnomalyDetector(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ MetricMathAnomalyDetector& MetricMathAnomalyDetector::operator =(const XmlNode& 
     if(!metricDataQueriesNode.IsNull())
     {
       XmlNode metricDataQueriesMember = metricDataQueriesNode.FirstChild("member");
+      m_metricDataQueriesHasBeenSet = !metricDataQueriesMember.IsNull();
       while(!metricDataQueriesMember.IsNull())
       {
         m_metricDataQueries.push_back(metricDataQueriesMember);
@@ -77,7 +72,7 @@ void MetricMathAnomalyDetector::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_metricDataQueries)
       {
         Aws::StringStream metricDataQueriesSs;
-        metricDataQueriesSs << location <<  ".MetricDataQueries.member." << metricDataQueriesIdx++;
+        metricDataQueriesSs << location << ".MetricDataQueries.member." << metricDataQueriesIdx++;
         item.OutputToStream(oStream, metricDataQueriesSs.str().c_str());
       }
   }

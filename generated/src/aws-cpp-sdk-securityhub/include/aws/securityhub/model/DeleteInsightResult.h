@@ -27,73 +27,37 @@ namespace Model
   class DeleteInsightResult
   {
   public:
-    AWS_SECURITYHUB_API DeleteInsightResult();
+    AWS_SECURITYHUB_API DeleteInsightResult() = default;
     AWS_SECURITYHUB_API DeleteInsightResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SECURITYHUB_API DeleteInsightResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the insight that was deleted.</p>
      */
-    inline const Aws::String& GetInsightArn() const{ return m_insightArn; }
+    inline const Aws::String& GetInsightArn() const { return m_insightArn; }
+    template<typename InsightArnT = Aws::String>
+    void SetInsightArn(InsightArnT&& value) { m_insightArnHasBeenSet = true; m_insightArn = std::forward<InsightArnT>(value); }
+    template<typename InsightArnT = Aws::String>
+    DeleteInsightResult& WithInsightArn(InsightArnT&& value) { SetInsightArn(std::forward<InsightArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the insight that was deleted.</p>
-     */
-    inline void SetInsightArn(const Aws::String& value) { m_insightArn = value; }
-
-    /**
-     * <p>The ARN of the insight that was deleted.</p>
-     */
-    inline void SetInsightArn(Aws::String&& value) { m_insightArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the insight that was deleted.</p>
-     */
-    inline void SetInsightArn(const char* value) { m_insightArn.assign(value); }
-
-    /**
-     * <p>The ARN of the insight that was deleted.</p>
-     */
-    inline DeleteInsightResult& WithInsightArn(const Aws::String& value) { SetInsightArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the insight that was deleted.</p>
-     */
-    inline DeleteInsightResult& WithInsightArn(Aws::String&& value) { SetInsightArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the insight that was deleted.</p>
-     */
-    inline DeleteInsightResult& WithInsightArn(const char* value) { SetInsightArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteInsightResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteInsightResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteInsightResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteInsightResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_insightArn;
+    bool m_insightArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

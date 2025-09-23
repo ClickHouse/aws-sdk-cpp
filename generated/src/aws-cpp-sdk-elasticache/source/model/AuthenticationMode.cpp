@@ -20,17 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-AuthenticationMode::AuthenticationMode() : 
-    m_type(InputAuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_passwordsHasBeenSet(false)
-{
-}
-
-AuthenticationMode::AuthenticationMode(const XmlNode& xmlNode) : 
-    m_type(InputAuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_passwordsHasBeenSet(false)
+AuthenticationMode::AuthenticationMode(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,13 +34,14 @@ AuthenticationMode& AuthenticationMode::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = InputAuthenticationTypeMapper::GetInputAuthenticationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = InputAuthenticationTypeMapper::GetInputAuthenticationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode passwordsNode = resultNode.FirstChild("Passwords");
     if(!passwordsNode.IsNull())
     {
       XmlNode passwordsMember = passwordsNode.FirstChild("member");
+      m_passwordsHasBeenSet = !passwordsMember.IsNull();
       while(!passwordsMember.IsNull())
       {
         m_passwords.push_back(passwordsMember.GetText());
@@ -68,7 +59,7 @@ void AuthenticationMode::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << InputAuthenticationTypeMapper::GetNameForInputAuthenticationType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(InputAuthenticationTypeMapper::GetNameForInputAuthenticationType(m_type)) << "&";
   }
 
   if(m_passwordsHasBeenSet)
@@ -86,7 +77,7 @@ void AuthenticationMode::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << InputAuthenticationTypeMapper::GetNameForInputAuthenticationType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(InputAuthenticationTypeMapper::GetNameForInputAuthenticationType(m_type)) << "&";
   }
   if(m_passwordsHasBeenSet)
   {

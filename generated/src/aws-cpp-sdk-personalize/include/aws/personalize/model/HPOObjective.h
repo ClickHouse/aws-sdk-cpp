@@ -33,142 +33,48 @@ namespace Model
   class HPOObjective
   {
   public:
-    AWS_PERSONALIZE_API HPOObjective();
+    AWS_PERSONALIZE_API HPOObjective() = default;
     AWS_PERSONALIZE_API HPOObjective(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API HPOObjective& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of the metric. Valid values are <code>Maximize</code> and
      * <code>Minimize</code>.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    HPOObjective& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
-    inline HPOObjective& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
-    inline HPOObjective& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the metric. Valid values are <code>Maximize</code> and
-     * <code>Minimize</code>.</p>
-     */
-    inline HPOObjective& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the metric.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    HPOObjective& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline HPOObjective& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline HPOObjective& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline HPOObjective& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A regular expression for finding the metric in the training job logs.</p>
      */
-    inline const Aws::String& GetMetricRegex() const{ return m_metricRegex; }
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
+    inline const Aws::String& GetMetricRegex() const { return m_metricRegex; }
     inline bool MetricRegexHasBeenSet() const { return m_metricRegexHasBeenSet; }
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
-    inline void SetMetricRegex(const Aws::String& value) { m_metricRegexHasBeenSet = true; m_metricRegex = value; }
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
-    inline void SetMetricRegex(Aws::String&& value) { m_metricRegexHasBeenSet = true; m_metricRegex = std::move(value); }
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
-    inline void SetMetricRegex(const char* value) { m_metricRegexHasBeenSet = true; m_metricRegex.assign(value); }
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
-    inline HPOObjective& WithMetricRegex(const Aws::String& value) { SetMetricRegex(value); return *this;}
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
-    inline HPOObjective& WithMetricRegex(Aws::String&& value) { SetMetricRegex(std::move(value)); return *this;}
-
-    /**
-     * <p>A regular expression for finding the metric in the training job logs.</p>
-     */
-    inline HPOObjective& WithMetricRegex(const char* value) { SetMetricRegex(value); return *this;}
-
+    template<typename MetricRegexT = Aws::String>
+    void SetMetricRegex(MetricRegexT&& value) { m_metricRegexHasBeenSet = true; m_metricRegex = std::forward<MetricRegexT>(value); }
+    template<typename MetricRegexT = Aws::String>
+    HPOObjective& WithMetricRegex(MetricRegexT&& value) { SetMetricRegex(std::forward<MetricRegexT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

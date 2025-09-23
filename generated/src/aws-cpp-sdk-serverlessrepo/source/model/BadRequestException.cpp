@@ -18,15 +18,7 @@ namespace ServerlessApplicationRepository
 namespace Model
 {
 
-BadRequestException::BadRequestException() : 
-    m_errorCodeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-BadRequestException::BadRequestException(JsonView jsonValue) : 
-    m_errorCodeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+BadRequestException::BadRequestException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BadRequestException& BadRequestException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = jsonValue.GetString("errorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

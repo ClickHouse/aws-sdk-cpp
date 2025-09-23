@@ -26,8 +26,8 @@ namespace S3Control
     {
     public:
         typedef Aws::Client::AWSXMLClient BASECLASS;
-        static const char* SERVICE_NAME;
-        static const char* ALLOCATION_TAG;
+        static const char* GetServiceName();
+        static const char* GetAllocationTag();
 
       typedef S3ControlClientConfiguration ClientConfigurationType;
       typedef S3ControlEndpointProvider EndpointProviderType;
@@ -37,14 +37,14 @@ namespace S3Control
         * is not specified, it will be initialized to default values.
         */
         S3ControlClient(const Aws::S3Control::S3ControlClientConfiguration& clientConfiguration = Aws::S3Control::S3ControlClientConfiguration(),
-                        std::shared_ptr<S3ControlEndpointProviderBase> endpointProvider = Aws::MakeShared<S3ControlEndpointProvider>(ALLOCATION_TAG));
+                        std::shared_ptr<S3ControlEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         S3ControlClient(const Aws::Auth::AWSCredentials& credentials,
-                        std::shared_ptr<S3ControlEndpointProviderBase> endpointProvider = Aws::MakeShared<S3ControlEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<S3ControlEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::S3Control::S3ControlClientConfiguration& clientConfiguration = Aws::S3Control::S3ControlClientConfiguration());
 
        /**
@@ -52,7 +52,7 @@ namespace S3Control
         * the default http client factory will be used
         */
         S3ControlClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                        std::shared_ptr<S3ControlEndpointProviderBase> endpointProvider = Aws::MakeShared<S3ControlEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<S3ControlEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::S3Control::S3ControlClientConfiguration& clientConfiguration = Aws::S3Control::S3ControlClientConfiguration());
 
 
@@ -91,8 +91,11 @@ namespace S3Control
          * operation. </p> </dd> <dt>Additional Permissions</dt> <dd> <p>You must also have
          * the following permissions: <code>sso:CreateApplication</code>,
          * <code>sso:PutApplicationGrant</code>, and
-         * <code>sso:PutApplicationAuthenticationMethod</code>. </p> </dd> </dl><p><h3>See
-         * Also:</h3>   <a
+         * <code>sso:PutApplicationAuthenticationMethod</code>. </p> </dd> </dl>
+         *  <p>You must URL encode any signed header values that contain spaces.
+         * For example, if your header value is <code>my file.txt</code>, containing two
+         * spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/AssociateAccessGrantsIdentityCenter">AWS
          * API Reference</a></p>
          */
@@ -130,8 +133,11 @@ namespace S3Control
          * <dt>Additional Permissions</dt> <dd> <p>For any directory identity -
          * <code>sso:DescribeInstance</code> and <code>sso:DescribeApplication</code> </p>
          * <p>For directory users - <code>identitystore:DescribeUser</code> </p> <p>For
-         * directory groups - <code>identitystore:DescribeGroup</code> </p> </dd>
-         * </dl><p><h3>See Also:</h3>   <a
+         * directory groups - <code>identitystore:DescribeGroup</code> </p> </dd> </dl>
+         *  <p>You must URL encode any signed header values that contain spaces.
+         * For example, if your header value is <code>my file.txt</code>, containing two
+         * spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateAccessGrant">AWS
          * API Reference</a></p>
          */
@@ -165,7 +171,10 @@ namespace S3Control
          * <code>sso:DescribeInstance</code>, <code>sso:CreateApplication</code>,
          * <code>sso:PutApplicationGrant</code>, and
          * <code>sso:PutApplicationAuthenticationMethod</code> permissions. </p> </dd>
-         * </dl><p><h3>See Also:</h3>   <a
+         * </dl>  <p>You must URL encode any signed header values that contain
+         * spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateAccessGrantsInstance">AWS
          * API Reference</a></p>
          */
@@ -206,7 +215,10 @@ namespace S3Control
          * <code>s3:CreateAccessGrantsLocation</code> permission to use this operation.
          * </p> </dd> <dt>Additional Permissions</dt> <dd> <p>You must also have the
          * following permission for the specified IAM role: <code>iam:PassRole</code> </p>
-         * </dd> </dl><p><h3>See Also:</h3>   <a
+         * </dd> </dl>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateAccessGrantsLocation">AWS
          * API Reference</a></p>
          */
@@ -231,13 +243,17 @@ namespace S3Control
         }
 
         /**
-         *  <p>This operation is not supported by directory buckets.</p> 
-         * <p>Creates an access point and associates it with the specified bucket. For more
+         * <p>Creates an access point and associates it to a specified bucket. For more
          * information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
-         * Data Access with Amazon S3 Access Points</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p/>  <p>S3 on Outposts only supports VPC-style access
-         * points. </p> <p>For more information, see <a
+         * access to shared datasets with access points</a> or <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html">Managing
+         * access to shared datasets in directory buckets with access points</a> in the
+         * <i>Amazon S3 User Guide</i>.</p> <p>To create an access point and attach it to a
+         * volume on an Amazon FSx file system, see <a
+         * href="https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateAndAttachS3AccessPoint.html">CreateAndAttachS3AccessPoint</a>
+         * in the <i>Amazon FSx API Reference</i>.</p> <p/>  <p>S3 on Outposts only
+         * supports VPC-style access points. </p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">
          * Accessing Amazon S3 on Outposts using virtual private cloud (VPC) only access
          * points</a> in the <i>Amazon S3 User Guide</i>.</p>  <p>All Amazon S3 on
@@ -255,7 +271,13 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html">DeleteAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html">ListAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForDirectoryBuckets.html">ListAccessPointsForDirectoryBuckets</a>
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateAccessPoint">AWS
          * API Reference</a></p>
          */
@@ -291,7 +313,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html">GetAccessPointForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html">ListAccessPointsForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateAccessPointForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -381,7 +407,7 @@ namespace S3Control
          * Batch Operations</a> in the <i>Amazon S3 User Guide</i>.</p> <dl>
          * <dt>Permissions</dt> <dd> <p>For information about permissions required to use
          * the Batch Operations, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html">Granting
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-iam-role-policies.html">Granting
          * permissions for S3 Batch Operations</a> in the <i>Amazon S3 User Guide</i>.</p>
          * </dd> </dl> <p/> <p>Related actions include:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html">DescribeJob</a>
@@ -393,7 +419,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html">UpdateJobStatus</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html">JobOperation</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateJob">AWS
          * API Reference</a></p>
          */
@@ -424,16 +454,16 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html">Creating
          * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>This
          * action will always be routed to the US West (Oregon) Region. For more
-         * information about the restrictions around managing Multi-Region Access Points,
-         * see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>This
-         * request is asynchronous, meaning that you might receive a response before the
-         * command has completed. When this request provides a response, it provides a
-         * token that you can use to monitor the status of the request with
-         * <code>DescribeMultiRegionAccessPointOperation</code>.</p> <p>The following
-         * actions are related to <code>CreateMultiRegionAccessPoint</code>:</p> <ul> <li>
-         * <p> <a
+         * information about the restrictions around working with Multi-Region Access
+         * Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>This request is asynchronous, meaning that you might receive a
+         * response before the command has completed. When this request provides a
+         * response, it provides a token that you can use to monitor the status of the
+         * request with <code>DescribeMultiRegionAccessPointOperation</code>.</p> <p>The
+         * following actions are related to <code>CreateMultiRegionAccessPoint</code>:</p>
+         * <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html">DeleteMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
@@ -441,7 +471,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html">GetMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html">ListMultiRegionAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateMultiRegionAccessPoint">AWS
          * API Reference</a></p>
          */
@@ -483,7 +517,11 @@ namespace S3Control
          * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
          * about Storage Lens groups errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList">List
-         * of Amazon S3 Storage Lens error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Storage Lens error codes</a>.</p>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/CreateStorageLensGroup">AWS
          * API Reference</a></p>
          */
@@ -512,7 +550,10 @@ namespace S3Control
          * an access grant deletion and the grantee will no longer have access to the S3
          * data.</p> <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:DeleteAccessGrant</code> permission to use this operation. </p> </dd>
-         * </dl><p><h3>See Also:</h3>   <a
+         * </dl>  <p>You must URL encode any signed header values that contain
+         * spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessGrant">AWS
          * API Reference</a></p>
          */
@@ -551,7 +592,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DissociateAccessGrantsIdentityCenter.html">DissociateAccessGrantsIdentityCenter</a>.</p>
          * <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:DeleteAccessGrantsInstance</code> permission to use this operation.
-         * </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * </p> </dd> </dl>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessGrantsInstance">AWS
          * API Reference</a></p>
          */
@@ -581,7 +626,11 @@ namespace S3Control
          * By deleting the resource policy, you delete any cross-account permissions to
          * your S3 Access Grants instance. </p> <dl> <dt>Permissions</dt> <dd> <p>You must
          * have the <code>s3:DeleteAccessGrantsInstanceResourcePolicy</code> permission to
-         * use this operation. </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * use this operation. </p> </dd> </dl>  <p>You must URL encode any
+         * signed header values that contain spaces. For example, if your header value is
+         * <code>my file.txt</code>, containing two spaces after <code>my</code>, you must
+         * URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessGrantsInstanceResourcePolicy">AWS
          * API Reference</a></p>
          */
@@ -614,7 +663,11 @@ namespace S3Control
          * one registered location in your S3 Access Grants instance in order to create
          * access grants. </p> <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:DeleteAccessGrantsLocation</code> permission to use this operation.
-         * </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * </p> </dd> </dl>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessGrantsLocation">AWS
          * API Reference</a></p>
          */
@@ -639,7 +692,6 @@ namespace S3Control
         }
 
         /**
-         *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Deletes the specified access point.</p> <p>All Amazon S3 on Outposts REST API
          * requests for this action require an additional parameter of
          * <code>x-amz-outpost-id</code> to be passed with the request. In addition, you
@@ -655,7 +707,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html">GetAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html">ListAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessPoint">AWS
          * API Reference</a></p>
          */
@@ -689,7 +745,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html">GetAccessPointForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html">ListAccessPointsForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessPointForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -714,7 +774,6 @@ namespace S3Control
         }
 
         /**
-         *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Deletes the access point policy for the specified access point.</p> <p/>
          * <p>All Amazon S3 on Outposts REST API requests for this action require an
          * additional parameter of <code>x-amz-outpost-id</code> to be passed with the
@@ -729,7 +788,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html">PutAccessPointPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html">GetAccessPointPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessPointPolicy">AWS
          * API Reference</a></p>
          */
@@ -761,7 +824,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html">GetAccessPointPolicyForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html">PutAccessPointPolicyForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessPointPolicyForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -783,6 +850,41 @@ namespace S3Control
         void DeleteAccessPointPolicyForObjectLambdaAsync(const DeleteAccessPointPolicyForObjectLambdaRequestT& request, const DeleteAccessPointPolicyForObjectLambdaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&S3ControlClient::DeleteAccessPointPolicyForObjectLambda, request, handler, context);
+        }
+
+        /**
+         * <p> Deletes an existing access point scope for a directory bucket.</p> 
+         * <p>When you delete the scope of an access point, all prefixes and permissions
+         * are deleted.</p>  <p>To use this operation, you must have the permission
+         * to perform the <code>s3express:DeleteAccessPointScope</code> action.</p> <p>For
+         * information about REST API errors, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses">REST
+         * error responses</a>.</p>  <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteAccessPointScope">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteAccessPointScopeOutcome DeleteAccessPointScope(const Model::DeleteAccessPointScopeRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteAccessPointScope that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteAccessPointScopeRequestT = Model::DeleteAccessPointScopeRequest>
+        Model::DeleteAccessPointScopeOutcomeCallable DeleteAccessPointScopeCallable(const DeleteAccessPointScopeRequestT& request) const
+        {
+            return SubmitCallable(&S3ControlClient::DeleteAccessPointScope, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteAccessPointScope that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteAccessPointScopeRequestT = Model::DeleteAccessPointScopeRequest>
+        void DeleteAccessPointScopeAsync(const DeleteAccessPointScopeRequestT& request, const DeleteAccessPointScopeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&S3ControlClient::DeleteAccessPointScope, request, handler, context);
         }
 
         /**
@@ -862,7 +964,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html">PutBucketLifecycleConfiguration</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html">GetBucketLifecycleConfiguration</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteBucketLifecycleConfiguration">AWS
          * API Reference</a></p>
          */
@@ -921,7 +1027,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketPolicy.html">GetBucketPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html">PutBucketPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteBucketPolicy">AWS
          * API Reference</a></p>
          */
@@ -982,7 +1092,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketReplication.html">PutBucketReplication</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketReplication.html">GetBucketReplication</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteBucketReplication">AWS
          * API Reference</a></p>
          */
@@ -1029,7 +1143,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketTagging.html">GetBucketTagging</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html">PutBucketTagging</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteBucketTagging">AWS
          * API Reference</a></p>
          */
@@ -1066,7 +1184,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html">GetJobTagging</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html">PutJobTagging</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteJobTagging">AWS
          * API Reference</a></p>
          */
@@ -1095,16 +1217,16 @@ namespace S3Control
          * <p>Deletes a Multi-Region Access Point. This action does not delete the buckets
          * associated with the Multi-Region Access Point, only the Multi-Region Access
          * Point itself.</p> <p>This action will always be routed to the US West (Oregon)
-         * Region. For more information about the restrictions around managing Multi-Region
-         * Access Points, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>This
-         * request is asynchronous, meaning that you might receive a response before the
-         * command has completed. When this request provides a response, it provides a
-         * token that you can use to monitor the status of the request with
-         * <code>DescribeMultiRegionAccessPointOperation</code>.</p> <p>The following
-         * actions are related to <code>DeleteMultiRegionAccessPoint</code>:</p> <ul> <li>
-         * <p> <a
+         * Region. For more information about the restrictions around working with
+         * Multi-Region Access Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>This request is asynchronous, meaning that you might receive a
+         * response before the command has completed. When this request provides a
+         * response, it provides a token that you can use to monitor the status of the
+         * request with <code>DescribeMultiRegionAccessPointOperation</code>.</p> <p>The
+         * following actions are related to <code>DeleteMultiRegionAccessPoint</code>:</p>
+         * <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html">CreateMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
@@ -1112,7 +1234,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html">GetMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html">ListMultiRegionAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteMultiRegionAccessPoint">AWS
          * API Reference</a></p>
          */
@@ -1146,7 +1272,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html">GetPublicAccessBlock</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html">PutPublicAccessBlock</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeletePublicAccessBlock">AWS
          * API Reference</a></p>
          */
@@ -1181,7 +1311,11 @@ namespace S3Control
          * For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteStorageLensConfiguration">AWS
          * API Reference</a></p>
          */
@@ -1216,7 +1350,11 @@ namespace S3Control
          * action. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteStorageLensConfigurationTagging">AWS
          * API Reference</a></p>
          */
@@ -1249,7 +1387,11 @@ namespace S3Control
          * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
          * about Storage Lens groups errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList">List
-         * of Amazon S3 Storage Lens error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Storage Lens error codes</a>.</p>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DeleteStorageLensGroup">AWS
          * API Reference</a></p>
          */
@@ -1288,7 +1430,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html">UpdateJobPriority</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html">UpdateJobStatus</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DescribeJob">AWS
          * API Reference</a></p>
          */
@@ -1317,7 +1463,7 @@ namespace S3Control
          * <p>Retrieves the status of an asynchronous request to manage a Multi-Region
          * Access Point. For more information about managing Multi-Region Access Points and
          * how asynchronous requests work, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MrapOperations.html">Using
          * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>The
          * following actions are related to <code>GetMultiRegionAccessPoint</code>:</p>
          * <ul> <li> <p> <a
@@ -1328,7 +1474,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html">GetMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html">ListMultiRegionAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DescribeMultiRegionAccessPointOperation">AWS
          * API Reference</a></p>
          */
@@ -1358,7 +1508,10 @@ namespace S3Control
          * <code>s3:DissociateAccessGrantsIdentityCenter</code> permission to use this
          * operation. </p> </dd> <dt>Additional Permissions</dt> <dd> <p>You must have the
          * <code>sso:DeleteApplication</code> permission to use this operation. </p> </dd>
-         * </dl><p><h3>See Also:</h3>   <a
+         * </dl>  <p>You must URL encode any signed header values that contain
+         * spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/DissociateAccessGrantsIdentityCenter">AWS
          * API Reference</a></p>
          */
@@ -1386,7 +1539,10 @@ namespace S3Control
          * <p>Get the details of an access grant from your S3 Access Grants instance.</p>
          * <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:GetAccessGrant</code> permission to use this operation. </p> </dd>
-         * </dl><p><h3>See Also:</h3>   <a
+         * </dl>  <p>You must URL encode any signed header values that contain
+         * spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessGrant">AWS
          * API Reference</a></p>
          */
@@ -1414,7 +1570,13 @@ namespace S3Control
          * <p>Retrieves the S3 Access Grants instance for a Region in your account. </p>
          * <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:GetAccessGrantsInstance</code> permission to use this operation. </p>
-         * </dd> </dl><p><h3>See Also:</h3>   <a
+         * </dd> </dl>  <p> <code>GetAccessGrantsInstance</code> is not supported for
+         * cross-account access. You can only call the API from the account that owns the
+         * S3 Access Grants instance.</p>   <p>You must URL encode any
+         * signed header values that contain spaces. For example, if your header value is
+         * <code>my file.txt</code>, containing two spaces after <code>my</code>, you must
+         * URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessGrantsInstance">AWS
          * API Reference</a></p>
          */
@@ -1445,7 +1607,10 @@ namespace S3Control
          * account to use this operation. </p> </dd> <dt>Additional Permissions</dt> <dd>
          * <p>The prefix owner account must grant you the following permissions to their S3
          * Access Grants instance: <code>s3:GetAccessGrantsInstanceForPrefix</code>. </p>
-         * </dd> </dl><p><h3>See Also:</h3>   <a
+         * </dd> </dl>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessGrantsInstanceForPrefix">AWS
          * API Reference</a></p>
          */
@@ -1473,7 +1638,11 @@ namespace S3Control
          * <p>Returns the resource policy of the S3 Access Grants instance. </p> <dl>
          * <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:GetAccessGrantsInstanceResourcePolicy</code> permission to use this
-         * operation. </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * operation. </p> </dd> </dl>  <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessGrantsInstanceResourcePolicy">AWS
          * API Reference</a></p>
          */
@@ -1501,7 +1670,10 @@ namespace S3Control
          * <p>Retrieves the details of a particular location registered in your S3 Access
          * Grants instance. </p> <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:GetAccessGrantsLocation</code> permission to use this operation. </p>
-         * </dd> </dl><p><h3>See Also:</h3>   <a
+         * </dd> </dl>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessGrantsLocation">AWS
          * API Reference</a></p>
          */
@@ -1526,7 +1698,6 @@ namespace S3Control
         }
 
         /**
-         *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Returns configuration information about the specified access point.</p> <p/>
          * <p>All Amazon S3 on Outposts REST API requests for this action require an
          * additional parameter of <code>x-amz-outpost-id</code> to be passed with the
@@ -1543,7 +1714,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html">DeleteAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html">ListAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPoint">AWS
          * API Reference</a></p>
          */
@@ -1573,7 +1748,11 @@ namespace S3Control
          * actions are related to
          * <code>GetAccessPointConfigurationForObjectLambda</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointConfigurationForObjectLambda.html">PutAccessPointConfigurationForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointConfigurationForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -1607,7 +1786,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointForObjectLambda.html">DeleteAccessPointForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html">ListAccessPointsForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -1632,14 +1815,17 @@ namespace S3Control
         }
 
         /**
-         *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Returns the access point policy associated with the specified access
          * point.</p> <p>The following actions are related to
          * <code>GetAccessPointPolicy</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html">PutAccessPointPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html">DeleteAccessPointPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointPolicy">AWS
          * API Reference</a></p>
          */
@@ -1671,7 +1857,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicyForObjectLambda.html">DeleteAccessPointPolicyForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html">PutAccessPointPolicyForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointPolicyForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -1702,7 +1892,10 @@ namespace S3Control
          * points, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing
          * Data Access with Amazon S3 access points</a> in the <i>Amazon S3 User
-         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointPolicyStatus">AWS
          * API Reference</a></p>
          */
@@ -1729,7 +1922,11 @@ namespace S3Control
         /**
          *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Returns the status of the resource policy associated with an Object Lambda
-         * Access Point.</p><p><h3>See Also:</h3>   <a
+         * Access Point.</p>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointPolicyStatusForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -1754,15 +1951,49 @@ namespace S3Control
         }
 
         /**
-         *  <p>Gets an Amazon S3 on Outposts bucket. For more information, see <a
+         * <p> Returns the access point scope for a directory bucket.</p> <p>To use this
+         * operation, you must have the permission to perform the
+         * <code>s3express:GetAccessPointScope</code> action.</p> <p>For information about
+         * REST API errors, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses">REST
+         * error responses</a>.</p>  <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetAccessPointScope">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetAccessPointScopeOutcome GetAccessPointScope(const Model::GetAccessPointScopeRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetAccessPointScope that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetAccessPointScopeRequestT = Model::GetAccessPointScopeRequest>
+        Model::GetAccessPointScopeOutcomeCallable GetAccessPointScopeCallable(const GetAccessPointScopeRequestT& request) const
+        {
+            return SubmitCallable(&S3ControlClient::GetAccessPointScope, request);
+        }
+
+        /**
+         * An Async wrapper for GetAccessPointScope that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetAccessPointScopeRequestT = Model::GetAccessPointScopeRequest>
+        void GetAccessPointScopeAsync(const GetAccessPointScopeRequestT& request, const GetAccessPointScopeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&S3ControlClient::GetAccessPointScope, request, handler, context);
+        }
+
+        /**
+         * <p>Gets an Amazon S3 on Outposts bucket. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">
-         * Using Amazon S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p> 
-         * <p>If you are using an identity other than the root user of the Amazon Web
-         * Services account that owns the Outposts bucket, the calling identity must have
-         * the <code>s3-outposts:GetBucket</code> permissions on the specified Outposts
-         * bucket and belong to the Outposts bucket owner's account in order to use this
-         * action. Only users from Outposts bucket owner account with the right permissions
-         * can perform actions on an Outposts bucket. </p> <p> If you don't have
+         * Using Amazon S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p> <p>If
+         * you are using an identity other than the root user of the Amazon Web Services
+         * account that owns the Outposts bucket, the calling identity must have the
+         * <code>s3-outposts:GetBucket</code> permissions on the specified Outposts bucket
+         * and belong to the Outposts bucket owner's account in order to use this action.
+         * Only users from Outposts bucket owner account with the right permissions can
+         * perform actions on an Outposts bucket. </p> <p>If you don't have
          * <code>s3-outposts:GetBucket</code> permissions or you're not using an identity
          * that belongs to the bucket owner's account, Amazon S3 returns a <code>403 Access
          * Denied</code> error.</p> <p>The following actions are related to
@@ -1780,7 +2011,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html">CreateBucket</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html">DeleteBucket</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetBucket">AWS
          * API Reference</a></p>
          */
@@ -1841,7 +2076,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html">PutBucketLifecycleConfiguration</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html">DeleteBucketLifecycleConfiguration</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetBucketLifecycleConfiguration">AWS
          * API Reference</a></p>
          */
@@ -1901,7 +2140,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html">PutBucketPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html">DeleteBucketPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetBucketPolicy">AWS
          * API Reference</a></p>
          */
@@ -2107,7 +2350,11 @@ namespace S3Control
          * assumes must have the following permissions specified in the trust policy when
          * registering the location: <code>sts:AssumeRole</code>, for directory users or
          * groups <code>sts:SetContext</code>, and for IAM users or roles
-         * <code>sts:SourceIdentity</code>. </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * <code>sts:SetSourceIdentity</code>. </p> </dd> </dl>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetDataAccess">AWS
          * API Reference</a></p>
          */
@@ -2144,7 +2391,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html">PutJobTagging</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html">DeleteJobTagging</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetJobTagging">AWS
          * API Reference</a></p>
          */
@@ -2172,12 +2423,12 @@ namespace S3Control
          *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Returns configuration information about the specified Multi-Region Access
          * Point.</p> <p>This action will always be routed to the US West (Oregon) Region.
-         * For more information about the restrictions around managing Multi-Region Access
-         * Points, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>The
-         * following actions are related to <code>GetMultiRegionAccessPoint</code>:</p>
-         * <ul> <li> <p> <a
+         * For more information about the restrictions around working with Multi-Region
+         * Access Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>The following actions are related to
+         * <code>GetMultiRegionAccessPoint</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html">CreateMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html">DeleteMultiRegionAccessPoint</a>
@@ -2185,7 +2436,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html">ListMultiRegionAccessPoints</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetMultiRegionAccessPoint">AWS
          * API Reference</a></p>
          */
@@ -2213,16 +2468,20 @@ namespace S3Control
          *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Returns the access control policy of the specified Multi-Region Access
          * Point.</p> <p>This action will always be routed to the US West (Oregon) Region.
-         * For more information about the restrictions around managing Multi-Region Access
-         * Points, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>The
-         * following actions are related to
+         * For more information about the restrictions around working with Multi-Region
+         * Access Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>The following actions are related to
          * <code>GetMultiRegionAccessPointPolicy</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html">GetMultiRegionAccessPointPolicyStatus</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html">PutMultiRegionAccessPointPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetMultiRegionAccessPointPolicy">AWS
          * API Reference</a></p>
          */
@@ -2251,15 +2510,19 @@ namespace S3Control
          * <p>Indicates whether the specified Multi-Region Access Point has an access
          * control policy that allows public access.</p> <p>This action will always be
          * routed to the US West (Oregon) Region. For more information about the
-         * restrictions around managing Multi-Region Access Points, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>The
-         * following actions are related to
+         * restrictions around working with Multi-Region Access Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>The following actions are related to
          * <code>GetMultiRegionAccessPointPolicyStatus</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicy.html">GetMultiRegionAccessPointPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html">PutMultiRegionAccessPointPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetMultiRegionAccessPointPolicyStatus">AWS
          * API Reference</a></p>
          */
@@ -2292,8 +2555,10 @@ namespace S3Control
          * <code>us-east-1</code> </p> </li> <li> <p> <code>us-west-2</code> </p> </li>
          * <li> <p> <code>ap-southeast-2</code> </p> </li> <li> <p>
          * <code>ap-northeast-1</code> </p> </li> <li> <p> <code>eu-west-1</code> </p>
-         * </li> </ul>  <p>Your Amazon S3 bucket does not need to be in these five
-         * Regions.</p> <p><h3>See Also:</h3>   <a
+         * </li> </ul>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetMultiRegionAccessPointRoutes">AWS
          * API Reference</a></p>
          */
@@ -2327,7 +2592,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html">DeletePublicAccessBlock</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html">PutPublicAccessBlock</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetPublicAccessBlock">AWS
          * API Reference</a></p>
          */
@@ -2364,7 +2633,11 @@ namespace S3Control
          * <code>s3:GetStorageLensConfiguration</code> action. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetStorageLensConfiguration">AWS
          * API Reference</a></p>
          */
@@ -2399,7 +2672,11 @@ namespace S3Control
          * action. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetStorageLensConfigurationTagging">AWS
          * API Reference</a></p>
          */
@@ -2432,7 +2709,11 @@ namespace S3Control
          * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
          * about Storage Lens groups errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList">List
-         * of Amazon S3 Storage Lens error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Storage Lens error codes</a>.</p>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/GetStorageLensGroup">AWS
          * API Reference</a></p>
          */
@@ -2459,7 +2740,11 @@ namespace S3Control
         /**
          * <p>Returns the list of access grants in your S3 Access Grants instance.</p> <dl>
          * <dt>Permissions</dt> <dd> <p>You must have the <code>s3:ListAccessGrants</code>
-         * permission to use this operation. </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * permission to use this operation. </p> </dd> </dl>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListAccessGrants">AWS
          * API Reference</a></p>
          */
@@ -2489,7 +2774,10 @@ namespace S3Control
          * have one S3 Access Grants instance per Region per account.</p> <dl>
          * <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:ListAccessGrantsInstances</code> permission to use this operation. </p>
-         * </dd> </dl><p><h3>See Also:</h3>   <a
+         * </dd> </dl>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListAccessGrantsInstances">AWS
          * API Reference</a></p>
          */
@@ -2517,7 +2805,10 @@ namespace S3Control
          * <p>Returns a list of the locations registered in your S3 Access Grants
          * instance.</p> <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:ListAccessGrantsLocations</code> permission to use this operation. </p>
-         * </dd> </dl><p><h3>See Also:</h3>   <a
+         * </dd> </dl>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListAccessGrantsLocations">AWS
          * API Reference</a></p>
          */
@@ -2543,18 +2834,19 @@ namespace S3Control
 
         /**
          *  <p>This operation is not supported by directory buckets.</p> 
-         * <p>Returns a list of the access points that are owned by the current account
-         * that's associated with the specified bucket. You can retrieve up to 1000 access
-         * points per call. If the specified bucket has more than 1,000 access points (or
-         * the number specified in <code>maxResults</code>, whichever is less), the
-         * response will include a continuation token that you can use to list the
-         * additional access points.</p> <p/> <p>All Amazon S3 on Outposts REST API
-         * requests for this action require an additional parameter of
-         * <code>x-amz-outpost-id</code> to be passed with the request. In addition, you
-         * must use an S3 on Outposts endpoint hostname prefix instead of
-         * <code>s3-control</code>. For an example of the request syntax for Amazon S3 on
-         * Outposts that uses the S3 on Outposts endpoint hostname prefix and the
-         * <code>x-amz-outpost-id</code> derived by using the access point ARN, see the <a
+         * <p>Returns a list of the access points. You can retrieve up to 1,000 access
+         * points per call. If the call returns more than 1,000 access points (or the
+         * number specified in <code>maxResults</code>, whichever is less), the response
+         * will include a continuation token that you can use to list the additional access
+         * points.</p> <p>Returns only access points attached to S3 buckets by default. To
+         * return all access points specify <code>DataSourceType</code> as
+         * <code>ALL</code>.</p> <p/> <p>All Amazon S3 on Outposts REST API requests for
+         * this action require an additional parameter of <code>x-amz-outpost-id</code> to
+         * be passed with the request. In addition, you must use an S3 on Outposts endpoint
+         * hostname prefix instead of <code>s3-control</code>. For an example of the
+         * request syntax for Amazon S3 on Outposts that uses the S3 on Outposts endpoint
+         * hostname prefix and the <code>x-amz-outpost-id</code> derived by using the
+         * access point ARN, see the <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html#API_control_GetAccessPoint_Examples">Examples</a>
          * section.</p> <p>The following actions are related to
          * <code>ListAccessPoints</code>:</p> <ul> <li> <p> <a
@@ -2563,7 +2855,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html">DeleteAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html">GetAccessPoint</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListAccessPoints">AWS
          * API Reference</a></p>
          */
@@ -2588,6 +2884,43 @@ namespace S3Control
         }
 
         /**
+         * <p>Returns a list of the access points that are owned by the Amazon Web Services
+         * account and that are associated with the specified directory bucket.</p> <p>To
+         * list access points for general purpose buckets, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html">ListAccesspoints</a>.</p>
+         * <p>To use this operation, you must have the permission to perform the
+         * <code>s3express:ListAccessPointsForDirectoryBuckets</code> action.</p> <p>For
+         * information about REST API errors, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses">REST
+         * error responses</a>.</p>  <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListAccessPointsForDirectoryBuckets">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListAccessPointsForDirectoryBucketsOutcome ListAccessPointsForDirectoryBuckets(const Model::ListAccessPointsForDirectoryBucketsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListAccessPointsForDirectoryBuckets that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListAccessPointsForDirectoryBucketsRequestT = Model::ListAccessPointsForDirectoryBucketsRequest>
+        Model::ListAccessPointsForDirectoryBucketsOutcomeCallable ListAccessPointsForDirectoryBucketsCallable(const ListAccessPointsForDirectoryBucketsRequestT& request) const
+        {
+            return SubmitCallable(&S3ControlClient::ListAccessPointsForDirectoryBuckets, request);
+        }
+
+        /**
+         * An Async wrapper for ListAccessPointsForDirectoryBuckets that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListAccessPointsForDirectoryBucketsRequestT = Model::ListAccessPointsForDirectoryBucketsRequest>
+        void ListAccessPointsForDirectoryBucketsAsync(const ListAccessPointsForDirectoryBucketsRequestT& request, const ListAccessPointsForDirectoryBucketsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&S3ControlClient::ListAccessPointsForDirectoryBuckets, request, handler, context);
+        }
+
+        /**
          *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Returns some or all (up to 1,000) access points associated with the Object
          * Lambda Access Point per call. If there are more access points than what can be
@@ -2599,7 +2932,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointForObjectLambda.html">DeleteAccessPointForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html">GetAccessPointForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListAccessPointsForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -2624,8 +2961,51 @@ namespace S3Control
         }
 
         /**
+         * <p>Use this API to list the access grants that grant the caller access to Amazon
+         * S3 data through S3 Access Grants. The caller (grantee) can be an Identity and
+         * Access Management (IAM) identity or Amazon Web Services Identity Center
+         * corporate directory identity. You must pass the Amazon Web Services account of
+         * the S3 data owner (grantor) in the request. You can, optionally, narrow the
+         * results by <code>GrantScope</code>, using a fragment of the data's S3 path, and
+         * S3 Access Grants will return only the grants with a path that contains the path
+         * fragment. You can also pass the <code>AllowedByApplication</code> filter in the
+         * request, which returns only the grants authorized for applications, whether the
+         * application is the caller's Identity Center application or any other application
+         * (<code>ALL</code>). For more information, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-list-grants.html">List
+         * the caller's access grants</a> in the <i>Amazon S3 User Guide</i>.</p> <dl>
+         * <dt>Permissions</dt> <dd> <p>You must have the
+         * <code>s3:ListCallerAccessGrants</code> permission to use this operation. </p>
+         * </dd> </dl>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListCallerAccessGrants">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListCallerAccessGrantsOutcome ListCallerAccessGrants(const Model::ListCallerAccessGrantsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListCallerAccessGrants that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListCallerAccessGrantsRequestT = Model::ListCallerAccessGrantsRequest>
+        Model::ListCallerAccessGrantsOutcomeCallable ListCallerAccessGrantsCallable(const ListCallerAccessGrantsRequestT& request) const
+        {
+            return SubmitCallable(&S3ControlClient::ListCallerAccessGrants, request);
+        }
+
+        /**
+         * An Async wrapper for ListCallerAccessGrants that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListCallerAccessGrantsRequestT = Model::ListCallerAccessGrantsRequest>
+        void ListCallerAccessGrantsAsync(const ListCallerAccessGrantsRequestT& request, const ListCallerAccessGrantsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&S3ControlClient::ListCallerAccessGrants, request, handler, context);
+        }
+
+        /**
          * <p>Lists current S3 Batch Operations jobs as well as the jobs that have ended
-         * within the last 30 days for the Amazon Web Services account making the request.
+         * within the last 90 days for the Amazon Web Services account making the request.
          * For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html">S3
          * Batch Operations</a> in the <i>Amazon S3 User Guide</i>.</p> <dl>
@@ -2639,7 +3019,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html">UpdateJobPriority</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html">UpdateJobStatus</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListJobs">AWS
          * API Reference</a></p>
          */
@@ -2670,11 +3054,11 @@ namespace S3Control
          * Multi-Region Access Points, the maximum number of Multi-Region Access Points
          * that can be associated with a single account.</p> <p>This action will always be
          * routed to the US West (Oregon) Region. For more information about the
-         * restrictions around managing Multi-Region Access Points, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>The
-         * following actions are related to <code>ListMultiRegionAccessPoint</code>:</p>
-         * <ul> <li> <p> <a
+         * restrictions around working with Multi-Region Access Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>The following actions are related to
+         * <code>ListMultiRegionAccessPoint</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateMultiRegionAccessPoint.html">CreateMultiRegionAccessPoint</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteMultiRegionAccessPoint.html">DeleteMultiRegionAccessPoint</a>
@@ -2682,7 +3066,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html">GetMultiRegionAccessPoint</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListMultiRegionAccessPoints">AWS
          * API Reference</a></p>
          */
@@ -2716,7 +3104,10 @@ namespace S3Control
          * Outposts endpoint hostname prefix and <code>x-amz-outpost-id</code> in your
          * request, see the <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html#API_control_ListRegionalBuckets_Examples">Examples</a>
-         * section.</p><p><h3>See Also:</h3>   <a
+         * section.</p>  <p>You must URL encode any signed header values that
+         * contain spaces. For example, if your header value is <code>my file.txt</code>,
+         * containing two spaces after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListRegionalBuckets">AWS
          * API Reference</a></p>
          */
@@ -2751,7 +3142,11 @@ namespace S3Control
          * For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListStorageLensConfigurations">AWS
          * API Reference</a></p>
          */
@@ -2784,7 +3179,11 @@ namespace S3Control
          * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
          * about Storage Lens groups errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList">List
-         * of Amazon S3 Storage Lens error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Storage Lens error codes</a>.</p>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListStorageLensGroups">AWS
          * API Reference</a></p>
          */
@@ -2809,23 +3208,42 @@ namespace S3Control
         }
 
         /**
-         * <p>This operation allows you to list all the Amazon Web Services resource tags
-         * for a specified resource. Each tag is a label consisting of a user-defined key
-         * and value. Tags can help you manage, identify, organize, search for, and filter
-         * resources. </p> <dl> <dt>Permissions</dt> <dd> <p>You must have the
-         * <code>s3:ListTagsForResource</code> permission to use this operation. </p> </dd>
-         * </dl>  <p>This operation is only supported for <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html">S3
-         * Storage Lens groups</a> and for <a
+         * <p>This operation allows you to list all of the tags for a specified resource.
+         * Each tag is a label consisting of a key and value. Tags can help you organize,
+         * track costs for, and control access to resources. </p>  <p>This operation
+         * is only supported for the following Amazon S3 resources:</p> <ul> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html">Access
+         * Points for directory buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html">Access
+         * Points for general purpose buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html">Directory
+         * buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html">Storage
+         * Lens groups</a> </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html">S3
-         * Access Grants</a>. The tagged resource can be an S3 Storage Lens group or S3
-         * Access Grants instance, registered location, or grant. </p>  <p>For more
-         * information about the required Storage Lens Groups permissions, see <a
+         * Access Grants instances, registered locations, and grants</a>.</p> </li> </ul>
+         *  <dl> <dt>Permissions</dt> <dd> <p>For Storage Lens groups and S3 Access
+         * Grants, you must have the <code>s3:ListTagsForResource</code> permission to use
+         * this operation. </p> <p>For more information about the required Storage Lens
+         * Groups permissions, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions">Setting
-         * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
-         * about S3 Tagging errors, see <a
+         * account permissions to use S3 Storage Lens groups</a>.</p> </dd> <dt>Directory
+         * bucket permissions</dt> <dd> <p>For directory buckets and access points for
+         * directory buckets, you must have the <code>s3express:ListTagsForResource</code>
+         * permission to use this operation. For more information about directory buckets
+         * policies and permissions, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-permissions.html">Identity
+         * and Access Management (IAM) for S3 Express One Zone</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> </dd> <dt>HTTP Host header syntax</dt> <dd> <p> <b>Directory
+         * buckets </b> - The HTTP Host header syntax is
+         * <code>s3express-control.<i>region</i>.amazonaws.com</code>.</p> </dd> </dl>
+         * <p>For information about S3 Tagging errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList">List
-         * of Amazon S3 Tagging error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Tagging error codes</a>.</p>  <p>You must URL encode any
+         * signed header values that contain spaces. For example, if your header value is
+         * <code>my file.txt</code>, containing two spaces after <code>my</code>, you must
+         * URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -2853,7 +3271,11 @@ namespace S3Control
          * <p>Updates the resource policy of the S3 Access Grants instance. </p> <dl>
          * <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:PutAccessGrantsInstanceResourcePolicy</code> permission to use this
-         * operation. </p> </dd> </dl><p><h3>See Also:</h3>   <a
+         * operation. </p> </dd> </dl>  <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutAccessGrantsInstanceResourcePolicy">AWS
          * API Reference</a></p>
          */
@@ -2883,7 +3305,11 @@ namespace S3Control
          * following actions are related to
          * <code>PutAccessPointConfigurationForObjectLambda</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointConfigurationForObjectLambda.html">GetAccessPointConfigurationForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutAccessPointConfigurationForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -2908,7 +3334,6 @@ namespace S3Control
         }
 
         /**
-         *  <p>This operation is not supported by directory buckets.</p> 
          * <p>Associates an access policy with the specified access point. Each access
          * point can have only one policy, so a request made to this API replaces any
          * existing policy associated with the specified access point.</p> <p/> <p>All
@@ -2924,7 +3349,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html">GetAccessPointPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html">DeleteAccessPointPolicy</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutAccessPointPolicy">AWS
          * API Reference</a></p>
          */
@@ -2959,7 +3388,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicyForObjectLambda.html">DeleteAccessPointPolicyForObjectLambda</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html">GetAccessPointPolicyForObjectLambda</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutAccessPointPolicyForObjectLambda">AWS
          * API Reference</a></p>
          */
@@ -2981,6 +3414,43 @@ namespace S3Control
         void PutAccessPointPolicyForObjectLambdaAsync(const PutAccessPointPolicyForObjectLambdaRequestT& request, const PutAccessPointPolicyForObjectLambdaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&S3ControlClient::PutAccessPointPolicyForObjectLambda, request, handler, context);
+        }
+
+        /**
+         * <p>Creates or replaces the access point scope for a directory bucket. You can
+         * use the access point scope to restrict access to specific prefixes, API
+         * operations, or a combination of both.</p>  <p>You can specify any amount
+         * of prefixes, but the total length of characters of all prefixes must be less
+         * than 256 bytes in size.</p>  <p>To use this operation, you must have the
+         * permission to perform the <code>s3express:PutAccessPointScope</code> action.</p>
+         * <p>For information about REST API errors, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses">REST
+         * error responses</a>.</p>  <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutAccessPointScope">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutAccessPointScopeOutcome PutAccessPointScope(const Model::PutAccessPointScopeRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutAccessPointScope that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutAccessPointScopeRequestT = Model::PutAccessPointScopeRequest>
+        Model::PutAccessPointScopeOutcomeCallable PutAccessPointScopeCallable(const PutAccessPointScopeRequestT& request) const
+        {
+            return SubmitCallable(&S3ControlClient::PutAccessPointScope, request);
+        }
+
+        /**
+         * An Async wrapper for PutAccessPointScope that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutAccessPointScopeRequestT = Model::PutAccessPointScopeRequest>
+        void PutAccessPointScopeAsync(const PutAccessPointScopeRequestT& request, const PutAccessPointScopeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&S3ControlClient::PutAccessPointScope, request, handler, context);
         }
 
         /**
@@ -3304,7 +3774,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html">PutBucketLifecycleConfiguration</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html">GetBucketLifecycleConfiguration</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutBucketVersioning">AWS
          * API Reference</a></p>
          */
@@ -3365,7 +3839,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html">GetJobTagging</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html">DeleteJobTagging</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutJobTagging">AWS
          * API Reference</a></p>
          */
@@ -3396,15 +3874,19 @@ namespace S3Control
          * made to this action replaces any existing policy that is associated with the
          * specified Multi-Region Access Point.</p> <p>This action will always be routed to
          * the US West (Oregon) Region. For more information about the restrictions around
-         * managing Multi-Region Access Points, see <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html">Managing
-         * Multi-Region Access Points</a> in the <i>Amazon S3 User Guide</i>.</p> <p>The
-         * following actions are related to
+         * working with Multi-Region Access Points, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPointRestrictions.html">Multi-Region
+         * Access Point restrictions and limitations</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> <p>The following actions are related to
          * <code>PutMultiRegionAccessPointPolicy</code>:</p> <ul> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicy.html">GetMultiRegionAccessPointPolicy</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html">GetMultiRegionAccessPointPolicyStatus</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutMultiRegionAccessPointPolicy">AWS
          * API Reference</a></p>
          */
@@ -3440,7 +3922,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html">GetPublicAccessBlock</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html">DeletePublicAccessBlock</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutPublicAccessBlock">AWS
          * API Reference</a></p>
          */
@@ -3477,7 +3963,11 @@ namespace S3Control
          * <code>s3:PutStorageLensConfiguration</code> action. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutStorageLensConfiguration">AWS
          * API Reference</a></p>
          */
@@ -3512,7 +4002,11 @@ namespace S3Control
          * action. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting
          * permissions to use Amazon S3 Storage Lens</a> in the <i>Amazon S3 User
-         * Guide</i>.</p> <p><h3>See Also:</h3>   <a
+         * Guide</i>.</p>   <p>You must URL encode any signed header
+         * values that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/PutStorageLensConfigurationTagging">AWS
          * API Reference</a></p>
          */
@@ -3555,8 +4049,11 @@ namespace S3Control
          * Services Regions:</p> <ul> <li> <p> <code>us-east-1</code> </p> </li> <li> <p>
          * <code>us-west-2</code> </p> </li> <li> <p> <code>ap-southeast-2</code> </p>
          * </li> <li> <p> <code>ap-northeast-1</code> </p> </li> <li> <p>
-         * <code>eu-west-1</code> </p> </li> </ul>  <p>Your Amazon S3 bucket does not
-         * need to be in these five Regions.</p> <p><h3>See Also:</h3>   <a
+         * <code>eu-west-1</code> </p> </li> </ul>  <p>You must URL encode any
+         * signed header values that contain spaces. For example, if your header value is
+         * <code>my file.txt</code>, containing two spaces after <code>my</code>, you must
+         * URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/SubmitMultiRegionAccessPointRoutes">AWS
          * API Reference</a></p>
          */
@@ -3581,24 +4078,52 @@ namespace S3Control
         }
 
         /**
-         * <p> Creates a new Amazon Web Services resource tag or updates an existing
-         * resource tag. Each tag is a label consisting of a user-defined key and value.
-         * Tags can help you manage, identify, organize, search for, and filter resources.
-         * You can add up to 50 Amazon Web Services resource tags for each S3 resource.
-         * </p>  <p>This operation is only supported for <a
+         * <p> Creates a new user-defined tag or updates an existing tag. Each tag is a
+         * label consisting of a key and value that is applied to your resource. Tags can
+         * help you organize, track costs for, and control access to your resources. You
+         * can add up to 50 Amazon Web Services resource tags for each S3 resource. </p>
+         *  <p>This operation is only supported for the following Amazon S3
+         * resource:</p> <ul> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html">Access
+         * Points for directory buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html">Access
+         * Points for general purpose buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html">Directory
+         * buckets</a> </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html">S3
-         * Storage Lens groups</a> and for <a
+         * Storage Lens groups</a> </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html">S3
-         * Access Grants</a>. The tagged resource can be an S3 Storage Lens group or S3
-         * Access Grants instance, registered location, or grant. </p>  <dl>
-         * <dt>Permissions</dt> <dd> <p>You must have the <code>s3:TagResource</code>
-         * permission to use this operation. </p> </dd> </dl> <p>For more information about
-         * the required Storage Lens Groups permissions, see <a
+         * Access Grants instances, registered locations, or grants</a>.</p> </li> </ul>
+         *   <p>This operation is only supported for the following Amazon S3
+         * resource:</p> <ul> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html">Directory
+         * buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html">S3
+         * Storage Lens groups</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html">S3
+         * Access Grants instances, registered locations, or grants</a>.</p> </li> </ul>
+         *  <dl> <dt>Permissions</dt> <dd> <p>For Storage Lens groups and S3 Access
+         * Grants, you must have the <code>s3:TagResource</code> permission to use this
+         * operation. </p> <p>For more information about the required Storage Lens Groups
+         * permissions, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions">Setting
-         * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
-         * about S3 Tagging errors, see <a
+         * account permissions to use S3 Storage Lens groups</a>.</p> </dd> <dt>Directory
+         * bucket permissions</dt> <dd> <p>For directory buckets and access points for
+         * directory buckets, you must have the <code>s3express:TagResource</code>
+         * permission to use this operation. For more information about directory buckets
+         * policies and permissions, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-permissions.html">Identity
+         * and Access Management (IAM) for S3 Express One Zone</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> </dd> <dt>HTTP Host header syntax</dt> <dd> <p> <b>Directory
+         * buckets </b> - The HTTP Host header syntax is
+         * <code>s3express-control.<i>region</i>.amazonaws.com</code>.</p> </dd> </dl>
+         * <p>For information about S3 Tagging errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList">List
-         * of Amazon S3 Tagging error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Tagging error codes</a>.</p>  <p>You must URL encode any
+         * signed header values that contain spaces. For example, if your header value is
+         * <code>my file.txt</code>, containing two spaces after <code>my</code>, you must
+         * URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/TagResource">AWS
          * API Reference</a></p>
          */
@@ -3623,23 +4148,41 @@ namespace S3Control
         }
 
         /**
-         * <p> This operation removes the specified Amazon Web Services resource tags from
-         * an S3 resource. Each tag is a label consisting of a user-defined key and value.
-         * Tags can help you manage, identify, organize, search for, and filter resources.
-         * </p>  <p>This operation is only supported for <a
-         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html">S3
-         * Storage Lens groups</a> and for <a
+         * <p>This operation removes the specified user-defined tags from an S3 resource.
+         * You can pass one or more tag keys. </p>  <p>This operation is only
+         * supported for the following Amazon S3 resources:</p> <ul> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html">Access
+         * Points for directory buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html">Access
+         * Points for general purpose buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html">Directory
+         * buckets</a> </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html">Storage
+         * Lens groups</a> </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html">S3
-         * Access Grants</a>. The tagged resource can be an S3 Storage Lens group or S3
-         * Access Grants instance, registered location, or grant. </p>  <dl>
-         * <dt>Permissions</dt> <dd> <p>You must have the <code>s3:UntagResource</code>
-         * permission to use this operation. </p> </dd> </dl> <p>For more information about
-         * the required Storage Lens Groups permissions, see <a
+         * Access Grants instances, registered locations, and grants</a>.</p> </li> </ul>
+         *  <dl> <dt>Permissions</dt> <dd> <p>For Storage Lens groups and S3 Access
+         * Grants, you must have the <code>s3:UntagResource</code> permission to use this
+         * operation. </p> <p>For more information about the required Storage Lens Groups
+         * permissions, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions">Setting
-         * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
-         * about S3 Tagging errors, see <a
+         * account permissions to use S3 Storage Lens groups</a>.</p> </dd> <dt>Directory
+         * bucket permissions</dt> <dd> <p>For directory buckets and access points for
+         * directory buckets, you must have the <code>s3express:UntagResource</code>
+         * permission to use this operation. For more information about directory buckets
+         * policies and permissions, see <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-permissions.html">Identity
+         * and Access Management (IAM) for S3 Express One Zone</a> in the <i>Amazon S3 User
+         * Guide</i>.</p> </dd> <dt>HTTP Host header syntax</dt> <dd> <p> <b>Directory
+         * buckets </b> - The HTTP Host header syntax is
+         * <code>s3express-control.<i>region</i>.amazonaws.com</code>.</p> </dd> </dl>
+         * <p>For information about S3 Tagging errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList">List
-         * of Amazon S3 Tagging error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Tagging error codes</a>.</p>  <p>You must URL encode any
+         * signed header values that contain spaces. For example, if your header value is
+         * <code>my file.txt</code>, containing two spaces after <code>my</code>, you must
+         * URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/UntagResource">AWS
          * API Reference</a></p>
          */
@@ -3668,8 +4211,11 @@ namespace S3Control
          * instance.</p> <dl> <dt>Permissions</dt> <dd> <p>You must have the
          * <code>s3:UpdateAccessGrantsLocation</code> permission to use this operation.
          * </p> </dd> <dt>Additional Permissions</dt> <dd> <p>You must also have the
-         * following permission: <code>iam:PassRole</code> </p> </dd> </dl><p><h3>See
-         * Also:</h3>   <a
+         * following permission: <code>iam:PassRole</code> </p> </dd> </dl> 
+         * <p>You must URL encode any signed header values that contain spaces. For
+         * example, if your header value is <code>my file.txt</code>, containing two spaces
+         * after <code>my</code>, you must URL encode this value to
+         * <code>my%20%20file.txt</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/UpdateAccessGrantsLocation">AWS
          * API Reference</a></p>
          */
@@ -3709,7 +4255,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html">DescribeJob</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html">UpdateJobStatus</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/UpdateJobPriority">AWS
          * API Reference</a></p>
          */
@@ -3748,7 +4298,11 @@ namespace S3Control
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html">DescribeJob</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html">UpdateJobStatus</a>
-         * </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * </p> </li> </ul>  <p>You must URL encode any signed header values
+         * that contain spaces. For example, if your header value is <code>my
+         * file.txt</code>, containing two spaces after <code>my</code>, you must URL
+         * encode this value to <code>my%20%20file.txt</code>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/UpdateJobStatus">AWS
          * API Reference</a></p>
          */
@@ -3781,7 +4335,11 @@ namespace S3Control
          * account permissions to use S3 Storage Lens groups</a>.</p> <p>For information
          * about Storage Lens groups errors, see <a
          * href="https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList">List
-         * of Amazon S3 Storage Lens error codes</a>.</p><p><h3>See Also:</h3>   <a
+         * of Amazon S3 Storage Lens error codes</a>.</p>  <p>You must URL
+         * encode any signed header values that contain spaces. For example, if your header
+         * value is <code>my file.txt</code>, containing two spaces after <code>my</code>,
+         * you must URL encode this value to <code>my%20%20file.txt</code>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/s3control-2018-08-20/UpdateStorageLensGroup">AWS
          * API Reference</a></p>
          */
@@ -3812,7 +4370,6 @@ namespace S3Control
         friend class Aws::Client::ClientWithAsyncTemplateMethods<S3ControlClient>;
         void init(const S3ControlClientConfiguration& clientConfiguration);
         S3ControlClientConfiguration m_clientConfiguration;
-        std::shared_ptr<Utils::Threading::Executor> m_executor;
         std::shared_ptr<S3ControlEndpointProviderBase> m_endpointProvider;
     };
 

@@ -21,7 +21,7 @@ namespace Model
   class DeleteQueuedSavingsPlanRequest : public SavingsPlansRequest
   {
   public:
-    AWS_SAVINGSPLANS_API DeleteQueuedSavingsPlanRequest();
+    AWS_SAVINGSPLANS_API DeleteQueuedSavingsPlanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SAVINGSPLANS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Savings Plan.</p>
      */
-    inline const Aws::String& GetSavingsPlanId() const{ return m_savingsPlanId; }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
+    inline const Aws::String& GetSavingsPlanId() const { return m_savingsPlanId; }
     inline bool SavingsPlanIdHasBeenSet() const { return m_savingsPlanIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanId(const Aws::String& value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId = value; }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanId(Aws::String&& value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId = std::move(value); }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline void SetSavingsPlanId(const char* value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId.assign(value); }
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline DeleteQueuedSavingsPlanRequest& WithSavingsPlanId(const Aws::String& value) { SetSavingsPlanId(value); return *this;}
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline DeleteQueuedSavingsPlanRequest& WithSavingsPlanId(Aws::String&& value) { SetSavingsPlanId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Savings Plan.</p>
-     */
-    inline DeleteQueuedSavingsPlanRequest& WithSavingsPlanId(const char* value) { SetSavingsPlanId(value); return *this;}
-
+    template<typename SavingsPlanIdT = Aws::String>
+    void SetSavingsPlanId(SavingsPlanIdT&& value) { m_savingsPlanIdHasBeenSet = true; m_savingsPlanId = std::forward<SavingsPlanIdT>(value); }
+    template<typename SavingsPlanIdT = Aws::String>
+    DeleteQueuedSavingsPlanRequest& WithSavingsPlanId(SavingsPlanIdT&& value) { SetSavingsPlanId(std::forward<SavingsPlanIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_savingsPlanId;

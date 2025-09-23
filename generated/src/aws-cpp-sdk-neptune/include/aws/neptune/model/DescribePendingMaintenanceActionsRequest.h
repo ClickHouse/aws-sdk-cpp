@@ -23,7 +23,7 @@ namespace Model
   class DescribePendingMaintenanceActionsRequest : public NeptuneRequest
   {
   public:
-    AWS_NEPTUNE_API DescribePendingMaintenanceActionsRequest();
+    AWS_NEPTUNE_API DescribePendingMaintenanceActionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,47 +38,19 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ARN of a resource to return pending maintenance actions for.</p>
      */
-    inline const Aws::String& GetResourceIdentifier() const{ return m_resourceIdentifier; }
-
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
+    inline const Aws::String& GetResourceIdentifier() const { return m_resourceIdentifier; }
     inline bool ResourceIdentifierHasBeenSet() const { return m_resourceIdentifierHasBeenSet; }
+    template<typename ResourceIdentifierT = Aws::String>
+    void SetResourceIdentifier(ResourceIdentifierT&& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = std::forward<ResourceIdentifierT>(value); }
+    template<typename ResourceIdentifierT = Aws::String>
+    DescribePendingMaintenanceActionsRequest& WithResourceIdentifier(ResourceIdentifierT&& value) { SetResourceIdentifier(std::forward<ResourceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
-    inline void SetResourceIdentifier(const Aws::String& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = value; }
-
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
-    inline void SetResourceIdentifier(Aws::String&& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = std::move(value); }
-
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
-    inline void SetResourceIdentifier(const char* value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier.assign(value); }
-
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithResourceIdentifier(const Aws::String& value) { SetResourceIdentifier(value); return *this;}
-
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithResourceIdentifier(Aws::String&& value) { SetResourceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a resource to return pending maintenance actions for.</p>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithResourceIdentifier(const char* value) { SetResourceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter that specifies one or more resources to return pending maintenance
      * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
@@ -89,190 +61,43 @@ namespace Model
      * instance ARNs. The results list will only include pending maintenance actions
      * for the DB instances identified by these ARNs.</p> </li> </ul>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    DescribePendingMaintenanceActionsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    DescribePendingMaintenanceActionsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
-    inline DescribePendingMaintenanceActionsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>A filter that specifies one or more resources to return pending maintenance
-     * actions for.</p> <p>Supported filters:</p> <ul> <li> <p>
-     * <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster
-     * Amazon Resource Names (ARNs). The results list will only include pending
-     * maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li>
-     * <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB
-     * instance ARNs. The results list will only include pending maintenance actions
-     * for the DB instances identified by these ARNs.</p> </li> </ul>
-     */
-    inline DescribePendingMaintenanceActionsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> An optional pagination token provided by a previous
      * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
      * specified, the response includes only records beyond the marker, up to a number
      * of records specified by <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribePendingMaintenanceActionsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p> An optional pagination token provided by a previous
-     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
-     * specified, the response includes only records beyond the marker, up to a number
-     * of records specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribePendingMaintenanceActionsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The maximum number of records to include in the response. If more records
      * exist than the specified <code>MaxRecords</code> value, a pagination token
      * called a marker is included in the response so that the remaining results can be
      * retrieved.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p> The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so that the remaining results can be
-     * retrieved.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p> The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so that the remaining results can be
-     * retrieved.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p> The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so that the remaining results can be
-     * retrieved.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-     */
     inline DescribePendingMaintenanceActionsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_resourceIdentifier;
@@ -284,7 +109,7 @@ namespace Model
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
   };
 

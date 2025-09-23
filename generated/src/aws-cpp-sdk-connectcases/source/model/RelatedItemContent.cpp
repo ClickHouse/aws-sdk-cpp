@@ -18,15 +18,7 @@ namespace ConnectCases
 namespace Model
 {
 
-RelatedItemContent::RelatedItemContent() : 
-    m_commentHasBeenSet(false),
-    m_contactHasBeenSet(false)
-{
-}
-
-RelatedItemContent::RelatedItemContent(JsonView jsonValue) : 
-    m_commentHasBeenSet(false),
-    m_contactHasBeenSet(false)
+RelatedItemContent::RelatedItemContent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,23 @@ RelatedItemContent& RelatedItemContent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("comment"))
   {
     m_comment = jsonValue.GetObject("comment");
-
     m_commentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("contact"))
   {
     m_contact = jsonValue.GetObject("contact");
-
     m_contactHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("file"))
+  {
+    m_file = jsonValue.GetObject("file");
+    m_fileHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("sla"))
+  {
+    m_sla = jsonValue.GetObject("sla");
+    m_slaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +61,18 @@ JsonValue RelatedItemContent::Jsonize() const
   if(m_contactHasBeenSet)
   {
    payload.WithObject("contact", m_contact.Jsonize());
+
+  }
+
+  if(m_fileHasBeenSet)
+  {
+   payload.WithObject("file", m_file.Jsonize());
+
+  }
+
+  if(m_slaHasBeenSet)
+  {
+   payload.WithObject("sla", m_sla.Jsonize());
 
   }
 

@@ -7,6 +7,7 @@
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/quicksight/model/RelativeDateTimeControlDisplayOptions.h>
+#include <aws/quicksight/model/CommitMode.h>
 #include <utility>
 
 namespace Aws
@@ -33,165 +34,70 @@ namespace Model
   class FilterRelativeDateTimeControl
   {
   public:
-    AWS_QUICKSIGHT_API FilterRelativeDateTimeControl();
+    AWS_QUICKSIGHT_API FilterRelativeDateTimeControl() = default;
     AWS_QUICKSIGHT_API FilterRelativeDateTimeControl(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API FilterRelativeDateTimeControl& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
      */
-    inline const Aws::String& GetFilterControlId() const{ return m_filterControlId; }
-
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
+    inline const Aws::String& GetFilterControlId() const { return m_filterControlId; }
     inline bool FilterControlIdHasBeenSet() const { return m_filterControlIdHasBeenSet; }
+    template<typename FilterControlIdT = Aws::String>
+    void SetFilterControlId(FilterControlIdT&& value) { m_filterControlIdHasBeenSet = true; m_filterControlId = std::forward<FilterControlIdT>(value); }
+    template<typename FilterControlIdT = Aws::String>
+    FilterRelativeDateTimeControl& WithFilterControlId(FilterControlIdT&& value) { SetFilterControlId(std::forward<FilterControlIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetFilterControlId(const Aws::String& value) { m_filterControlIdHasBeenSet = true; m_filterControlId = value; }
-
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetFilterControlId(Aws::String&& value) { m_filterControlIdHasBeenSet = true; m_filterControlId = std::move(value); }
-
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetFilterControlId(const char* value) { m_filterControlIdHasBeenSet = true; m_filterControlId.assign(value); }
-
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithFilterControlId(const Aws::String& value) { SetFilterControlId(value); return *this;}
-
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithFilterControlId(Aws::String&& value) { SetFilterControlId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithFilterControlId(const char* value) { SetFilterControlId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The title of the <code>FilterTextAreaControl</code>.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    FilterRelativeDateTimeControl& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
      */
-    inline const Aws::String& GetSourceFilterId() const{ return m_sourceFilterId; }
-
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
+    inline const Aws::String& GetSourceFilterId() const { return m_sourceFilterId; }
     inline bool SourceFilterIdHasBeenSet() const { return m_sourceFilterIdHasBeenSet; }
+    template<typename SourceFilterIdT = Aws::String>
+    void SetSourceFilterId(SourceFilterIdT&& value) { m_sourceFilterIdHasBeenSet = true; m_sourceFilterId = std::forward<SourceFilterIdT>(value); }
+    template<typename SourceFilterIdT = Aws::String>
+    FilterRelativeDateTimeControl& WithSourceFilterId(SourceFilterIdT&& value) { SetSourceFilterId(std::forward<SourceFilterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetSourceFilterId(const Aws::String& value) { m_sourceFilterIdHasBeenSet = true; m_sourceFilterId = value; }
-
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetSourceFilterId(Aws::String&& value) { m_sourceFilterIdHasBeenSet = true; m_sourceFilterId = std::move(value); }
-
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline void SetSourceFilterId(const char* value) { m_sourceFilterIdHasBeenSet = true; m_sourceFilterId.assign(value); }
-
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithSourceFilterId(const Aws::String& value) { SetSourceFilterId(value); return *this;}
-
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithSourceFilterId(Aws::String&& value) { SetSourceFilterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The source filter ID of the <code>FilterTextAreaControl</code>.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithSourceFilterId(const char* value) { SetSourceFilterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display options of a control.</p>
      */
-    inline const RelativeDateTimeControlDisplayOptions& GetDisplayOptions() const{ return m_displayOptions; }
-
-    /**
-     * <p>The display options of a control.</p>
-     */
+    inline const RelativeDateTimeControlDisplayOptions& GetDisplayOptions() const { return m_displayOptions; }
     inline bool DisplayOptionsHasBeenSet() const { return m_displayOptionsHasBeenSet; }
+    template<typename DisplayOptionsT = RelativeDateTimeControlDisplayOptions>
+    void SetDisplayOptions(DisplayOptionsT&& value) { m_displayOptionsHasBeenSet = true; m_displayOptions = std::forward<DisplayOptionsT>(value); }
+    template<typename DisplayOptionsT = RelativeDateTimeControlDisplayOptions>
+    FilterRelativeDateTimeControl& WithDisplayOptions(DisplayOptionsT&& value) { SetDisplayOptions(std::forward<DisplayOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The display options of a control.</p>
+     * <p>The visibility configuration of the Apply button on a
+     * <code>FilterRelativeDateTimeControl</code>.</p>
      */
-    inline void SetDisplayOptions(const RelativeDateTimeControlDisplayOptions& value) { m_displayOptionsHasBeenSet = true; m_displayOptions = value; }
-
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline void SetDisplayOptions(RelativeDateTimeControlDisplayOptions&& value) { m_displayOptionsHasBeenSet = true; m_displayOptions = std::move(value); }
-
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithDisplayOptions(const RelativeDateTimeControlDisplayOptions& value) { SetDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline FilterRelativeDateTimeControl& WithDisplayOptions(RelativeDateTimeControlDisplayOptions&& value) { SetDisplayOptions(std::move(value)); return *this;}
-
+    inline CommitMode GetCommitMode() const { return m_commitMode; }
+    inline bool CommitModeHasBeenSet() const { return m_commitModeHasBeenSet; }
+    inline void SetCommitMode(CommitMode value) { m_commitModeHasBeenSet = true; m_commitMode = value; }
+    inline FilterRelativeDateTimeControl& WithCommitMode(CommitMode value) { SetCommitMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_filterControlId;
@@ -205,6 +111,9 @@ namespace Model
 
     RelativeDateTimeControlDisplayOptions m_displayOptions;
     bool m_displayOptionsHasBeenSet = false;
+
+    CommitMode m_commitMode{CommitMode::NOT_SET};
+    bool m_commitModeHasBeenSet = false;
   };
 
 } // namespace Model

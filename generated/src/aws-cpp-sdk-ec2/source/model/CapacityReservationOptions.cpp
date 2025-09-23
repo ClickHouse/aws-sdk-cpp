@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CapacityReservationOptions::CapacityReservationOptions() : 
-    m_usageStrategy(FleetCapacityReservationUsageStrategy::NOT_SET),
-    m_usageStrategyHasBeenSet(false)
-{
-}
-
-CapacityReservationOptions::CapacityReservationOptions(const XmlNode& xmlNode) : 
-    m_usageStrategy(FleetCapacityReservationUsageStrategy::NOT_SET),
-    m_usageStrategyHasBeenSet(false)
+CapacityReservationOptions::CapacityReservationOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ CapacityReservationOptions& CapacityReservationOptions::operator =(const XmlNode
     XmlNode usageStrategyNode = resultNode.FirstChild("usageStrategy");
     if(!usageStrategyNode.IsNull())
     {
-      m_usageStrategy = FleetCapacityReservationUsageStrategyMapper::GetFleetCapacityReservationUsageStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(usageStrategyNode.GetText()).c_str()).c_str());
+      m_usageStrategy = FleetCapacityReservationUsageStrategyMapper::GetFleetCapacityReservationUsageStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(usageStrategyNode.GetText()).c_str()));
       m_usageStrategyHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void CapacityReservationOptions::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_usageStrategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".UsageStrategy=" << FleetCapacityReservationUsageStrategyMapper::GetNameForFleetCapacityReservationUsageStrategy(m_usageStrategy) << "&";
+      oStream << location << index << locationValue << ".UsageStrategy=" << StringUtils::URLEncode(FleetCapacityReservationUsageStrategyMapper::GetNameForFleetCapacityReservationUsageStrategy(m_usageStrategy)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void CapacityReservationOptions::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_usageStrategyHasBeenSet)
   {
-      oStream << location << ".UsageStrategy=" << FleetCapacityReservationUsageStrategyMapper::GetNameForFleetCapacityReservationUsageStrategy(m_usageStrategy) << "&";
+      oStream << location << ".UsageStrategy=" << StringUtils::URLEncode(FleetCapacityReservationUsageStrategyMapper::GetNameForFleetCapacityReservationUsageStrategy(m_usageStrategy)) << "&";
   }
 }
 

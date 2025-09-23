@@ -20,21 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-Change::Change() : 
-    m_type(ChangeType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_hookInvocationCount(0),
-    m_hookInvocationCountHasBeenSet(false),
-    m_resourceChangeHasBeenSet(false)
-{
-}
-
-Change::Change(const XmlNode& xmlNode) : 
-    m_type(ChangeType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_hookInvocationCount(0),
-    m_hookInvocationCountHasBeenSet(false),
-    m_resourceChangeHasBeenSet(false)
+Change::Change(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,7 +34,7 @@ Change& Change::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = ChangeTypeMapper::GetChangeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = ChangeTypeMapper::GetChangeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode hookInvocationCountNode = resultNode.FirstChild("HookInvocationCount");
@@ -72,7 +58,7 @@ void Change::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << ChangeTypeMapper::GetNameForChangeType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(ChangeTypeMapper::GetNameForChangeType(m_type)) << "&";
   }
 
   if(m_hookInvocationCountHasBeenSet)
@@ -93,7 +79,7 @@ void Change::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << ChangeTypeMapper::GetNameForChangeType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(ChangeTypeMapper::GetNameForChangeType(m_type)) << "&";
   }
   if(m_hookInvocationCountHasBeenSet)
   {

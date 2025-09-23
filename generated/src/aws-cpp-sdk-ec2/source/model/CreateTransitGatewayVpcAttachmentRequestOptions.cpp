@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CreateTransitGatewayVpcAttachmentRequestOptions::CreateTransitGatewayVpcAttachmentRequestOptions() : 
-    m_dnsSupport(DnsSupportValue::NOT_SET),
-    m_dnsSupportHasBeenSet(false),
-    m_securityGroupReferencingSupport(SecurityGroupReferencingSupportValue::NOT_SET),
-    m_securityGroupReferencingSupportHasBeenSet(false),
-    m_ipv6Support(Ipv6SupportValue::NOT_SET),
-    m_ipv6SupportHasBeenSet(false),
-    m_applianceModeSupport(ApplianceModeSupportValue::NOT_SET),
-    m_applianceModeSupportHasBeenSet(false)
-{
-}
-
-CreateTransitGatewayVpcAttachmentRequestOptions::CreateTransitGatewayVpcAttachmentRequestOptions(const XmlNode& xmlNode) : 
-    m_dnsSupport(DnsSupportValue::NOT_SET),
-    m_dnsSupportHasBeenSet(false),
-    m_securityGroupReferencingSupport(SecurityGroupReferencingSupportValue::NOT_SET),
-    m_securityGroupReferencingSupportHasBeenSet(false),
-    m_ipv6Support(Ipv6SupportValue::NOT_SET),
-    m_ipv6SupportHasBeenSet(false),
-    m_applianceModeSupport(ApplianceModeSupportValue::NOT_SET),
-    m_applianceModeSupportHasBeenSet(false)
+CreateTransitGatewayVpcAttachmentRequestOptions::CreateTransitGatewayVpcAttachmentRequestOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,25 +34,25 @@ CreateTransitGatewayVpcAttachmentRequestOptions& CreateTransitGatewayVpcAttachme
     XmlNode dnsSupportNode = resultNode.FirstChild("DnsSupport");
     if(!dnsSupportNode.IsNull())
     {
-      m_dnsSupport = DnsSupportValueMapper::GetDnsSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsSupportNode.GetText()).c_str()).c_str());
+      m_dnsSupport = DnsSupportValueMapper::GetDnsSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsSupportNode.GetText()).c_str()));
       m_dnsSupportHasBeenSet = true;
     }
     XmlNode securityGroupReferencingSupportNode = resultNode.FirstChild("SecurityGroupReferencingSupport");
     if(!securityGroupReferencingSupportNode.IsNull())
     {
-      m_securityGroupReferencingSupport = SecurityGroupReferencingSupportValueMapper::GetSecurityGroupReferencingSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(securityGroupReferencingSupportNode.GetText()).c_str()).c_str());
+      m_securityGroupReferencingSupport = SecurityGroupReferencingSupportValueMapper::GetSecurityGroupReferencingSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(securityGroupReferencingSupportNode.GetText()).c_str()));
       m_securityGroupReferencingSupportHasBeenSet = true;
     }
     XmlNode ipv6SupportNode = resultNode.FirstChild("Ipv6Support");
     if(!ipv6SupportNode.IsNull())
     {
-      m_ipv6Support = Ipv6SupportValueMapper::GetIpv6SupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipv6SupportNode.GetText()).c_str()).c_str());
+      m_ipv6Support = Ipv6SupportValueMapper::GetIpv6SupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipv6SupportNode.GetText()).c_str()));
       m_ipv6SupportHasBeenSet = true;
     }
     XmlNode applianceModeSupportNode = resultNode.FirstChild("ApplianceModeSupport");
     if(!applianceModeSupportNode.IsNull())
     {
-      m_applianceModeSupport = ApplianceModeSupportValueMapper::GetApplianceModeSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(applianceModeSupportNode.GetText()).c_str()).c_str());
+      m_applianceModeSupport = ApplianceModeSupportValueMapper::GetApplianceModeSupportValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(applianceModeSupportNode.GetText()).c_str()));
       m_applianceModeSupportHasBeenSet = true;
     }
   }
@@ -84,22 +64,22 @@ void CreateTransitGatewayVpcAttachmentRequestOptions::OutputToStream(Aws::OStrea
 {
   if(m_dnsSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DnsSupport=" << DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport) << "&";
+      oStream << location << index << locationValue << ".DnsSupport=" << StringUtils::URLEncode(DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport)) << "&";
   }
 
   if(m_securityGroupReferencingSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SecurityGroupReferencingSupport=" << SecurityGroupReferencingSupportValueMapper::GetNameForSecurityGroupReferencingSupportValue(m_securityGroupReferencingSupport) << "&";
+      oStream << location << index << locationValue << ".SecurityGroupReferencingSupport=" << StringUtils::URLEncode(SecurityGroupReferencingSupportValueMapper::GetNameForSecurityGroupReferencingSupportValue(m_securityGroupReferencingSupport)) << "&";
   }
 
   if(m_ipv6SupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Ipv6Support=" << Ipv6SupportValueMapper::GetNameForIpv6SupportValue(m_ipv6Support) << "&";
+      oStream << location << index << locationValue << ".Ipv6Support=" << StringUtils::URLEncode(Ipv6SupportValueMapper::GetNameForIpv6SupportValue(m_ipv6Support)) << "&";
   }
 
   if(m_applianceModeSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ApplianceModeSupport=" << ApplianceModeSupportValueMapper::GetNameForApplianceModeSupportValue(m_applianceModeSupport) << "&";
+      oStream << location << index << locationValue << ".ApplianceModeSupport=" << StringUtils::URLEncode(ApplianceModeSupportValueMapper::GetNameForApplianceModeSupportValue(m_applianceModeSupport)) << "&";
   }
 
 }
@@ -108,19 +88,19 @@ void CreateTransitGatewayVpcAttachmentRequestOptions::OutputToStream(Aws::OStrea
 {
   if(m_dnsSupportHasBeenSet)
   {
-      oStream << location << ".DnsSupport=" << DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport) << "&";
+      oStream << location << ".DnsSupport=" << StringUtils::URLEncode(DnsSupportValueMapper::GetNameForDnsSupportValue(m_dnsSupport)) << "&";
   }
   if(m_securityGroupReferencingSupportHasBeenSet)
   {
-      oStream << location << ".SecurityGroupReferencingSupport=" << SecurityGroupReferencingSupportValueMapper::GetNameForSecurityGroupReferencingSupportValue(m_securityGroupReferencingSupport) << "&";
+      oStream << location << ".SecurityGroupReferencingSupport=" << StringUtils::URLEncode(SecurityGroupReferencingSupportValueMapper::GetNameForSecurityGroupReferencingSupportValue(m_securityGroupReferencingSupport)) << "&";
   }
   if(m_ipv6SupportHasBeenSet)
   {
-      oStream << location << ".Ipv6Support=" << Ipv6SupportValueMapper::GetNameForIpv6SupportValue(m_ipv6Support) << "&";
+      oStream << location << ".Ipv6Support=" << StringUtils::URLEncode(Ipv6SupportValueMapper::GetNameForIpv6SupportValue(m_ipv6Support)) << "&";
   }
   if(m_applianceModeSupportHasBeenSet)
   {
-      oStream << location << ".ApplianceModeSupport=" << ApplianceModeSupportValueMapper::GetNameForApplianceModeSupportValue(m_applianceModeSupport) << "&";
+      oStream << location << ".ApplianceModeSupport=" << StringUtils::URLEncode(ApplianceModeSupportValueMapper::GetNameForApplianceModeSupportValue(m_applianceModeSupport)) << "&";
   }
 }
 

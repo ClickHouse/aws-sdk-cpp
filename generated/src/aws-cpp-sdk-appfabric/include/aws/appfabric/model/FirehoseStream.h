@@ -32,52 +32,23 @@ namespace Model
   class FirehoseStream
   {
   public:
-    AWS_APPFABRIC_API FirehoseStream();
+    AWS_APPFABRIC_API FirehoseStream() = default;
     AWS_APPFABRIC_API FirehoseStream(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API FirehoseStream& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
      */
-    inline const Aws::String& GetStreamName() const{ return m_streamName; }
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
+    inline const Aws::String& GetStreamName() const { return m_streamName; }
     inline bool StreamNameHasBeenSet() const { return m_streamNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
-    inline void SetStreamName(const Aws::String& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
-    inline void SetStreamName(const char* value) { m_streamNameHasBeenSet = true; m_streamName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
-    inline FirehoseStream& WithStreamName(const Aws::String& value) { SetStreamName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
-    inline FirehoseStream& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Kinesis Data Firehose delivery stream.</p>
-     */
-    inline FirehoseStream& WithStreamName(const char* value) { SetStreamName(value); return *this;}
-
+    template<typename StreamNameT = Aws::String>
+    void SetStreamName(StreamNameT&& value) { m_streamNameHasBeenSet = true; m_streamName = std::forward<StreamNameT>(value); }
+    template<typename StreamNameT = Aws::String>
+    FirehoseStream& WithStreamName(StreamNameT&& value) { SetStreamName(std::forward<StreamNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamName;

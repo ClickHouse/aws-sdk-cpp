@@ -25,7 +25,7 @@ namespace Model
   class UpdateReservationRequest : public MediaLiveRequest
   {
   public:
-    AWS_MEDIALIVE_API UpdateReservationRequest();
+    AWS_MEDIALIVE_API UpdateReservationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,118 +36,41 @@ namespace Model
     AWS_MEDIALIVE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * Name of the reservation
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * Name of the reservation
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateReservationRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Name of the reservation
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * Name of the reservation
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * Name of the reservation
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * Name of the reservation
-     */
-    inline UpdateReservationRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * Name of the reservation
-     */
-    inline UpdateReservationRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * Name of the reservation
-     */
-    inline UpdateReservationRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * Renewal settings for the reservation
      */
-    inline const RenewalSettings& GetRenewalSettings() const{ return m_renewalSettings; }
-
-    /**
-     * Renewal settings for the reservation
-     */
+    inline const RenewalSettings& GetRenewalSettings() const { return m_renewalSettings; }
     inline bool RenewalSettingsHasBeenSet() const { return m_renewalSettingsHasBeenSet; }
+    template<typename RenewalSettingsT = RenewalSettings>
+    void SetRenewalSettings(RenewalSettingsT&& value) { m_renewalSettingsHasBeenSet = true; m_renewalSettings = std::forward<RenewalSettingsT>(value); }
+    template<typename RenewalSettingsT = RenewalSettings>
+    UpdateReservationRequest& WithRenewalSettings(RenewalSettingsT&& value) { SetRenewalSettings(std::forward<RenewalSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Renewal settings for the reservation
-     */
-    inline void SetRenewalSettings(const RenewalSettings& value) { m_renewalSettingsHasBeenSet = true; m_renewalSettings = value; }
-
-    /**
-     * Renewal settings for the reservation
-     */
-    inline void SetRenewalSettings(RenewalSettings&& value) { m_renewalSettingsHasBeenSet = true; m_renewalSettings = std::move(value); }
-
-    /**
-     * Renewal settings for the reservation
-     */
-    inline UpdateReservationRequest& WithRenewalSettings(const RenewalSettings& value) { SetRenewalSettings(value); return *this;}
-
-    /**
-     * Renewal settings for the reservation
-     */
-    inline UpdateReservationRequest& WithRenewalSettings(RenewalSettings&& value) { SetRenewalSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Unique reservation ID, e.g. '1234567'
      */
-    inline const Aws::String& GetReservationId() const{ return m_reservationId; }
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
+    inline const Aws::String& GetReservationId() const { return m_reservationId; }
     inline bool ReservationIdHasBeenSet() const { return m_reservationIdHasBeenSet; }
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
-    inline void SetReservationId(const Aws::String& value) { m_reservationIdHasBeenSet = true; m_reservationId = value; }
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
-    inline void SetReservationId(Aws::String&& value) { m_reservationIdHasBeenSet = true; m_reservationId = std::move(value); }
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
-    inline void SetReservationId(const char* value) { m_reservationIdHasBeenSet = true; m_reservationId.assign(value); }
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
-    inline UpdateReservationRequest& WithReservationId(const Aws::String& value) { SetReservationId(value); return *this;}
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
-    inline UpdateReservationRequest& WithReservationId(Aws::String&& value) { SetReservationId(std::move(value)); return *this;}
-
-    /**
-     * Unique reservation ID, e.g. '1234567'
-     */
-    inline UpdateReservationRequest& WithReservationId(const char* value) { SetReservationId(value); return *this;}
-
+    template<typename ReservationIdT = Aws::String>
+    void SetReservationId(ReservationIdT&& value) { m_reservationIdHasBeenSet = true; m_reservationId = std::forward<ReservationIdT>(value); }
+    template<typename ReservationIdT = Aws::String>
+    UpdateReservationRequest& WithReservationId(ReservationIdT&& value) { SetReservationId(std::forward<ReservationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

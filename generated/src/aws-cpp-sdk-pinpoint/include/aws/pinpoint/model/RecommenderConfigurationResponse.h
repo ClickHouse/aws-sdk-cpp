@@ -34,12 +34,13 @@ namespace Model
   class RecommenderConfigurationResponse
   {
   public:
-    AWS_PINPOINT_API RecommenderConfigurationResponse();
+    AWS_PINPOINT_API RecommenderConfigurationResponse() = default;
     AWS_PINPOINT_API RecommenderConfigurationResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API RecommenderConfigurationResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
      * value for the RecommendationProviderIdType property. Each of these attributes
@@ -50,374 +51,81 @@ namespace Model
      * (RecommendationTransformerUri) to perform additional processing of
      * recommendation data.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = Aws::Map<Aws::String, Aws::String>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Map<Aws::String, Aws::String>>
+    RecommenderConfigurationResponse& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesKeyT = Aws::String, typename AttributesValueT = Aws::String>
+    RecommenderConfigurationResponse& AddAttributes(AttributesKeyT&& key, AttributesValueT&& value) {
+      m_attributesHasBeenSet = true; m_attributes.emplace(std::forward<AttributesKeyT>(key), std::forward<AttributesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline void SetAttributes(const Aws::Map<Aws::String, Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& WithAttributes(const Aws::Map<Aws::String, Aws::String>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(const char* key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(Aws::String&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that defines 1-10 custom endpoint or user attributes, depending on the
-     * value for the RecommendationProviderIdType property. Each of these attributes
-     * temporarily stores a recommended item that's retrieved from the recommender
-     * model and sent to an AWS Lambda function for additional processing. Each
-     * attribute can be used as a message variable in a message template.</p> <p>This
-     * value is null if the configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& AddAttributes(const char* key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The date, in extended ISO 8601 format, when the configuration was created for
      * the recommender model.</p>
      */
-    inline const Aws::String& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
+    inline const Aws::String& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::String>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::String>
+    RecommenderConfigurationResponse& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
-    inline void SetCreationDate(const Aws::String& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
-    inline void SetCreationDate(Aws::String&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
-    inline void SetCreationDate(const char* value) { m_creationDateHasBeenSet = true; m_creationDate.assign(value); }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithCreationDate(const Aws::String& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithCreationDate(Aws::String&& value) { SetCreationDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration was created for
-     * the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithCreationDate(const char* value) { SetCreationDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom description of the configuration for the recommender model.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    RecommenderConfigurationResponse& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom description of the configuration for the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the recommender model configuration.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    RecommenderConfigurationResponse& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
-    inline RecommenderConfigurationResponse& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
-    inline RecommenderConfigurationResponse& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the recommender model configuration.</p>
-     */
-    inline RecommenderConfigurationResponse& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date, in extended ISO 8601 format, when the configuration for the
      * recommender model was last modified.</p>
      */
-    inline const Aws::String& GetLastModifiedDate() const{ return m_lastModifiedDate; }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
+    inline const Aws::String& GetLastModifiedDate() const { return m_lastModifiedDate; }
     inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
+    template<typename LastModifiedDateT = Aws::String>
+    void SetLastModifiedDate(LastModifiedDateT&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::forward<LastModifiedDateT>(value); }
+    template<typename LastModifiedDateT = Aws::String>
+    RecommenderConfigurationResponse& WithLastModifiedDate(LastModifiedDateT&& value) { SetLastModifiedDate(std::forward<LastModifiedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
-    inline void SetLastModifiedDate(const Aws::String& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
-    inline void SetLastModifiedDate(Aws::String&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
-    inline void SetLastModifiedDate(const char* value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate.assign(value); }
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
-    inline RecommenderConfigurationResponse& WithLastModifiedDate(const Aws::String& value) { SetLastModifiedDate(value); return *this;}
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
-    inline RecommenderConfigurationResponse& WithLastModifiedDate(Aws::String&& value) { SetLastModifiedDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The date, in extended ISO 8601 format, when the configuration for the
-     * recommender model was last modified.</p>
-     */
-    inline RecommenderConfigurationResponse& WithLastModifiedDate(const char* value) { SetLastModifiedDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom name of the configuration for the recommender model.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RecommenderConfigurationResponse& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom name of the configuration for the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
      * recommender model. This value enables the model to use attribute and event data
@@ -432,292 +140,57 @@ namespace Model
      * and an endpoint ID. Otherwise, messages won’t be sent to the user's
      * endpoint.</p></li></ul>
      */
-    inline const Aws::String& GetRecommendationProviderIdType() const{ return m_recommendationProviderIdType; }
-
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
+    inline const Aws::String& GetRecommendationProviderIdType() const { return m_recommendationProviderIdType; }
     inline bool RecommendationProviderIdTypeHasBeenSet() const { return m_recommendationProviderIdTypeHasBeenSet; }
+    template<typename RecommendationProviderIdTypeT = Aws::String>
+    void SetRecommendationProviderIdType(RecommendationProviderIdTypeT&& value) { m_recommendationProviderIdTypeHasBeenSet = true; m_recommendationProviderIdType = std::forward<RecommendationProviderIdTypeT>(value); }
+    template<typename RecommendationProviderIdTypeT = Aws::String>
+    RecommenderConfigurationResponse& WithRecommendationProviderIdType(RecommendationProviderIdTypeT&& value) { SetRecommendationProviderIdType(std::forward<RecommendationProviderIdTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
-    inline void SetRecommendationProviderIdType(const Aws::String& value) { m_recommendationProviderIdTypeHasBeenSet = true; m_recommendationProviderIdType = value; }
-
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
-    inline void SetRecommendationProviderIdType(Aws::String&& value) { m_recommendationProviderIdTypeHasBeenSet = true; m_recommendationProviderIdType = std::move(value); }
-
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
-    inline void SetRecommendationProviderIdType(const char* value) { m_recommendationProviderIdTypeHasBeenSet = true; m_recommendationProviderIdType.assign(value); }
-
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderIdType(const Aws::String& value) { SetRecommendationProviderIdType(value); return *this;}
-
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderIdType(Aws::String&& value) { SetRecommendationProviderIdType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of Amazon Pinpoint ID that's associated with unique user IDs in the
-     * recommender model. This value enables the model to use attribute and event data
-     * that’s specific to a particular endpoint or user in an Amazon Pinpoint
-     * application. Possible values are:</p> <ul><li><p>PINPOINT_ENDPOINT_ID - Each
-     * user in the model is associated with a particular endpoint in Amazon Pinpoint.
-     * The data is correlated based on endpoint IDs in Amazon Pinpoint. This is the
-     * default value.</p></li> <li><p>PINPOINT_USER_ID - Each user in the model is
-     * associated with a particular user and endpoint in Amazon Pinpoint. The data is
-     * correlated based on user IDs in Amazon Pinpoint. If this value is specified, an
-     * endpoint definition in Amazon Pinpoint has to specify both a user ID (UserId)
-     * and an endpoint ID. Otherwise, messages won’t be sent to the user's
-     * endpoint.</p></li></ul>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderIdType(const char* value) { SetRecommendationProviderIdType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
      * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
      * the recommender model.</p>
      */
-    inline const Aws::String& GetRecommendationProviderRoleArn() const{ return m_recommendationProviderRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
+    inline const Aws::String& GetRecommendationProviderRoleArn() const { return m_recommendationProviderRoleArn; }
     inline bool RecommendationProviderRoleArnHasBeenSet() const { return m_recommendationProviderRoleArnHasBeenSet; }
+    template<typename RecommendationProviderRoleArnT = Aws::String>
+    void SetRecommendationProviderRoleArn(RecommendationProviderRoleArnT&& value) { m_recommendationProviderRoleArnHasBeenSet = true; m_recommendationProviderRoleArn = std::forward<RecommendationProviderRoleArnT>(value); }
+    template<typename RecommendationProviderRoleArnT = Aws::String>
+    RecommenderConfigurationResponse& WithRecommendationProviderRoleArn(RecommendationProviderRoleArnT&& value) { SetRecommendationProviderRoleArn(std::forward<RecommendationProviderRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
-    inline void SetRecommendationProviderRoleArn(const Aws::String& value) { m_recommendationProviderRoleArnHasBeenSet = true; m_recommendationProviderRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
-    inline void SetRecommendationProviderRoleArn(Aws::String&& value) { m_recommendationProviderRoleArnHasBeenSet = true; m_recommendationProviderRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
-    inline void SetRecommendationProviderRoleArn(const char* value) { m_recommendationProviderRoleArnHasBeenSet = true; m_recommendationProviderRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderRoleArn(const Aws::String& value) { SetRecommendationProviderRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderRoleArn(Aws::String&& value) { SetRecommendationProviderRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorizes Amazon Pinpoint to retrieve recommendation data from
-     * the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderRoleArn(const char* value) { SetRecommendationProviderRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
      * retrieves the recommendation data from. This value is the ARN of an Amazon
      * Personalize campaign.</p>
      */
-    inline const Aws::String& GetRecommendationProviderUri() const{ return m_recommendationProviderUri; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
+    inline const Aws::String& GetRecommendationProviderUri() const { return m_recommendationProviderUri; }
     inline bool RecommendationProviderUriHasBeenSet() const { return m_recommendationProviderUriHasBeenSet; }
+    template<typename RecommendationProviderUriT = Aws::String>
+    void SetRecommendationProviderUri(RecommendationProviderUriT&& value) { m_recommendationProviderUriHasBeenSet = true; m_recommendationProviderUri = std::forward<RecommendationProviderUriT>(value); }
+    template<typename RecommendationProviderUriT = Aws::String>
+    RecommenderConfigurationResponse& WithRecommendationProviderUri(RecommendationProviderUriT&& value) { SetRecommendationProviderUri(std::forward<RecommendationProviderUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
-    inline void SetRecommendationProviderUri(const Aws::String& value) { m_recommendationProviderUriHasBeenSet = true; m_recommendationProviderUri = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
-    inline void SetRecommendationProviderUri(Aws::String&& value) { m_recommendationProviderUriHasBeenSet = true; m_recommendationProviderUri = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
-    inline void SetRecommendationProviderUri(const char* value) { m_recommendationProviderUriHasBeenSet = true; m_recommendationProviderUri.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderUri(const Aws::String& value) { SetRecommendationProviderUri(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderUri(Aws::String&& value) { SetRecommendationProviderUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender model that Amazon Pinpoint
-     * retrieves the recommendation data from. This value is the ARN of an Amazon
-     * Personalize campaign.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationProviderUri(const char* value) { SetRecommendationProviderUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
      * Pinpoint invokes to perform additional processing of recommendation data that it
      * retrieves from the recommender model.</p>
      */
-    inline const Aws::String& GetRecommendationTransformerUri() const{ return m_recommendationTransformerUri; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
+    inline const Aws::String& GetRecommendationTransformerUri() const { return m_recommendationTransformerUri; }
     inline bool RecommendationTransformerUriHasBeenSet() const { return m_recommendationTransformerUriHasBeenSet; }
+    template<typename RecommendationTransformerUriT = Aws::String>
+    void SetRecommendationTransformerUri(RecommendationTransformerUriT&& value) { m_recommendationTransformerUriHasBeenSet = true; m_recommendationTransformerUri = std::forward<RecommendationTransformerUriT>(value); }
+    template<typename RecommendationTransformerUriT = Aws::String>
+    RecommenderConfigurationResponse& WithRecommendationTransformerUri(RecommendationTransformerUriT&& value) { SetRecommendationTransformerUri(std::forward<RecommendationTransformerUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
-    inline void SetRecommendationTransformerUri(const Aws::String& value) { m_recommendationTransformerUriHasBeenSet = true; m_recommendationTransformerUri = value; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
-    inline void SetRecommendationTransformerUri(Aws::String&& value) { m_recommendationTransformerUriHasBeenSet = true; m_recommendationTransformerUri = std::move(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
-    inline void SetRecommendationTransformerUri(const char* value) { m_recommendationTransformerUriHasBeenSet = true; m_recommendationTransformerUri.assign(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationTransformerUri(const Aws::String& value) { SetRecommendationTransformerUri(value); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationTransformerUri(Aws::String&& value) { SetRecommendationTransformerUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
-     * Pinpoint invokes to perform additional processing of recommendation data that it
-     * retrieves from the recommender model.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationTransformerUri(const char* value) { SetRecommendationTransformerUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom display name for the standard endpoint or user attribute
      * (RecommendationItems) that temporarily stores recommended items for each
@@ -728,125 +201,26 @@ namespace Model
      * (RecommendationTransformerUri) to perform additional processing of
      * recommendation data.</p>
      */
-    inline const Aws::String& GetRecommendationsDisplayName() const{ return m_recommendationsDisplayName; }
-
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
+    inline const Aws::String& GetRecommendationsDisplayName() const { return m_recommendationsDisplayName; }
     inline bool RecommendationsDisplayNameHasBeenSet() const { return m_recommendationsDisplayNameHasBeenSet; }
+    template<typename RecommendationsDisplayNameT = Aws::String>
+    void SetRecommendationsDisplayName(RecommendationsDisplayNameT&& value) { m_recommendationsDisplayNameHasBeenSet = true; m_recommendationsDisplayName = std::forward<RecommendationsDisplayNameT>(value); }
+    template<typename RecommendationsDisplayNameT = Aws::String>
+    RecommenderConfigurationResponse& WithRecommendationsDisplayName(RecommendationsDisplayNameT&& value) { SetRecommendationsDisplayName(std::forward<RecommendationsDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline void SetRecommendationsDisplayName(const Aws::String& value) { m_recommendationsDisplayNameHasBeenSet = true; m_recommendationsDisplayName = value; }
-
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline void SetRecommendationsDisplayName(Aws::String&& value) { m_recommendationsDisplayNameHasBeenSet = true; m_recommendationsDisplayName = std::move(value); }
-
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline void SetRecommendationsDisplayName(const char* value) { m_recommendationsDisplayNameHasBeenSet = true; m_recommendationsDisplayName.assign(value); }
-
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationsDisplayName(const Aws::String& value) { SetRecommendationsDisplayName(value); return *this;}
-
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationsDisplayName(Aws::String&& value) { SetRecommendationsDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom display name for the standard endpoint or user attribute
-     * (RecommendationItems) that temporarily stores recommended items for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This name appears in the <b>Attribute finder</b> of the template
-     * editor on the Amazon Pinpoint console.</p> <p>This value is null if the
-     * configuration doesn't invoke an AWS Lambda function
-     * (RecommendationTransformerUri) to perform additional processing of
-     * recommendation data.</p>
-     */
-    inline RecommenderConfigurationResponse& WithRecommendationsDisplayName(const char* value) { SetRecommendationsDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of recommended items that are retrieved from the model for each
      * endpoint or user, depending on the value for the RecommendationProviderIdType
      * property. This number determines how many recommended items are available for
      * use in message variables.</p>
      */
-    inline int GetRecommendationsPerMessage() const{ return m_recommendationsPerMessage; }
-
-    /**
-     * <p>The number of recommended items that are retrieved from the model for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This number determines how many recommended items are available for
-     * use in message variables.</p>
-     */
+    inline int GetRecommendationsPerMessage() const { return m_recommendationsPerMessage; }
     inline bool RecommendationsPerMessageHasBeenSet() const { return m_recommendationsPerMessageHasBeenSet; }
-
-    /**
-     * <p>The number of recommended items that are retrieved from the model for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This number determines how many recommended items are available for
-     * use in message variables.</p>
-     */
     inline void SetRecommendationsPerMessage(int value) { m_recommendationsPerMessageHasBeenSet = true; m_recommendationsPerMessage = value; }
-
-    /**
-     * <p>The number of recommended items that are retrieved from the model for each
-     * endpoint or user, depending on the value for the RecommendationProviderIdType
-     * property. This number determines how many recommended items are available for
-     * use in message variables.</p>
-     */
     inline RecommenderConfigurationResponse& WithRecommendationsPerMessage(int value) { SetRecommendationsPerMessage(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Map<Aws::String, Aws::String> m_attributes;
@@ -882,7 +256,7 @@ namespace Model
     Aws::String m_recommendationsDisplayName;
     bool m_recommendationsDisplayNameHasBeenSet = false;
 
-    int m_recommendationsPerMessage;
+    int m_recommendationsPerMessage{0};
     bool m_recommendationsPerMessageHasBeenSet = false;
   };
 

@@ -21,7 +21,7 @@ namespace Model
   class GetSegmentRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API GetSegmentRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API GetSegmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the segment to return information for.</p>
      */
-    inline const Aws::String& GetSegment() const{ return m_segment; }
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
+    inline const Aws::String& GetSegment() const { return m_segment; }
     inline bool SegmentHasBeenSet() const { return m_segmentHasBeenSet; }
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
-    inline void SetSegment(const Aws::String& value) { m_segmentHasBeenSet = true; m_segment = value; }
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
-    inline void SetSegment(Aws::String&& value) { m_segmentHasBeenSet = true; m_segment = std::move(value); }
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
-    inline void SetSegment(const char* value) { m_segmentHasBeenSet = true; m_segment.assign(value); }
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
-    inline GetSegmentRequest& WithSegment(const Aws::String& value) { SetSegment(value); return *this;}
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
-    inline GetSegmentRequest& WithSegment(Aws::String&& value) { SetSegment(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the segment to return information for.</p>
-     */
-    inline GetSegmentRequest& WithSegment(const char* value) { SetSegment(value); return *this;}
-
+    template<typename SegmentT = Aws::String>
+    void SetSegment(SegmentT&& value) { m_segmentHasBeenSet = true; m_segment = std::forward<SegmentT>(value); }
+    template<typename SegmentT = Aws::String>
+    GetSegmentRequest& WithSegment(SegmentT&& value) { SetSegment(std::forward<SegmentT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_segment;

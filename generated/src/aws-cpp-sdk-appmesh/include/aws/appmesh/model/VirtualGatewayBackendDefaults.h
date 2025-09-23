@@ -32,42 +32,23 @@ namespace Model
   class VirtualGatewayBackendDefaults
   {
   public:
-    AWS_APPMESH_API VirtualGatewayBackendDefaults();
+    AWS_APPMESH_API VirtualGatewayBackendDefaults() = default;
     AWS_APPMESH_API VirtualGatewayBackendDefaults(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualGatewayBackendDefaults& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A reference to an object that represents a client policy.</p>
      */
-    inline const VirtualGatewayClientPolicy& GetClientPolicy() const{ return m_clientPolicy; }
-
-    /**
-     * <p>A reference to an object that represents a client policy.</p>
-     */
+    inline const VirtualGatewayClientPolicy& GetClientPolicy() const { return m_clientPolicy; }
     inline bool ClientPolicyHasBeenSet() const { return m_clientPolicyHasBeenSet; }
-
-    /**
-     * <p>A reference to an object that represents a client policy.</p>
-     */
-    inline void SetClientPolicy(const VirtualGatewayClientPolicy& value) { m_clientPolicyHasBeenSet = true; m_clientPolicy = value; }
-
-    /**
-     * <p>A reference to an object that represents a client policy.</p>
-     */
-    inline void SetClientPolicy(VirtualGatewayClientPolicy&& value) { m_clientPolicyHasBeenSet = true; m_clientPolicy = std::move(value); }
-
-    /**
-     * <p>A reference to an object that represents a client policy.</p>
-     */
-    inline VirtualGatewayBackendDefaults& WithClientPolicy(const VirtualGatewayClientPolicy& value) { SetClientPolicy(value); return *this;}
-
-    /**
-     * <p>A reference to an object that represents a client policy.</p>
-     */
-    inline VirtualGatewayBackendDefaults& WithClientPolicy(VirtualGatewayClientPolicy&& value) { SetClientPolicy(std::move(value)); return *this;}
-
+    template<typename ClientPolicyT = VirtualGatewayClientPolicy>
+    void SetClientPolicy(ClientPolicyT&& value) { m_clientPolicyHasBeenSet = true; m_clientPolicy = std::forward<ClientPolicyT>(value); }
+    template<typename ClientPolicyT = VirtualGatewayClientPolicy>
+    VirtualGatewayBackendDefaults& WithClientPolicy(ClientPolicyT&& value) { SetClientPolicy(std::forward<ClientPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     VirtualGatewayClientPolicy m_clientPolicy;

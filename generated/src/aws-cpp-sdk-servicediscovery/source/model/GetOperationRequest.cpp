@@ -12,11 +12,6 @@ using namespace Aws::ServiceDiscovery::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetOperationRequest::GetOperationRequest() : 
-    m_operationIdHasBeenSet(false)
-{
-}
-
 Aws::String GetOperationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String GetOperationRequest::SerializePayload() const
   if(m_operationIdHasBeenSet)
   {
    payload.WithString("OperationId", m_operationId);
+
+  }
+
+  if(m_ownerAccountHasBeenSet)
+  {
+   payload.WithString("OwnerAccount", m_ownerAccount);
 
   }
 

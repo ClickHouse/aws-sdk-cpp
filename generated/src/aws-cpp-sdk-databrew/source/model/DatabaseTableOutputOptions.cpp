@@ -18,15 +18,7 @@ namespace GlueDataBrew
 namespace Model
 {
 
-DatabaseTableOutputOptions::DatabaseTableOutputOptions() : 
-    m_tempDirectoryHasBeenSet(false),
-    m_tableNameHasBeenSet(false)
-{
-}
-
-DatabaseTableOutputOptions::DatabaseTableOutputOptions(JsonView jsonValue) : 
-    m_tempDirectoryHasBeenSet(false),
-    m_tableNameHasBeenSet(false)
+DatabaseTableOutputOptions::DatabaseTableOutputOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DatabaseTableOutputOptions& DatabaseTableOutputOptions::operator =(JsonView json
   if(jsonValue.ValueExists("TempDirectory"))
   {
     m_tempDirectory = jsonValue.GetObject("TempDirectory");
-
     m_tempDirectoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TableName"))
   {
     m_tableName = jsonValue.GetString("TableName");
-
     m_tableNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,60 +33,26 @@ namespace Model
   class OnExitLifecycle
   {
   public:
-    AWS_IOTEVENTS_API OnExitLifecycle();
+    AWS_IOTEVENTS_API OnExitLifecycle() = default;
     AWS_IOTEVENTS_API OnExitLifecycle(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API OnExitLifecycle& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the <code>actions</code> that are performed when the state is
      * exited and the <code>condition</code> is <code>TRUE</code>.</p>
      */
-    inline const Aws::Vector<Event>& GetEvents() const{ return m_events; }
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
+    inline const Aws::Vector<Event>& GetEvents() const { return m_events; }
     inline bool EventsHasBeenSet() const { return m_eventsHasBeenSet; }
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
-    inline void SetEvents(const Aws::Vector<Event>& value) { m_eventsHasBeenSet = true; m_events = value; }
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
-    inline void SetEvents(Aws::Vector<Event>&& value) { m_eventsHasBeenSet = true; m_events = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
-    inline OnExitLifecycle& WithEvents(const Aws::Vector<Event>& value) { SetEvents(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
-    inline OnExitLifecycle& WithEvents(Aws::Vector<Event>&& value) { SetEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
-    inline OnExitLifecycle& AddEvents(const Event& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the <code>actions</code> that are performed when the state is
-     * exited and the <code>condition</code> is <code>TRUE</code>.</p>
-     */
-    inline OnExitLifecycle& AddEvents(Event&& value) { m_eventsHasBeenSet = true; m_events.push_back(std::move(value)); return *this; }
-
+    template<typename EventsT = Aws::Vector<Event>>
+    void SetEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events = std::forward<EventsT>(value); }
+    template<typename EventsT = Aws::Vector<Event>>
+    OnExitLifecycle& WithEvents(EventsT&& value) { SetEvents(std::forward<EventsT>(value)); return *this;}
+    template<typename EventsT = Event>
+    OnExitLifecycle& AddEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events.emplace_back(std::forward<EventsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Event> m_events;

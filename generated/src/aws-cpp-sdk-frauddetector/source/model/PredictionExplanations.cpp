@@ -18,15 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-PredictionExplanations::PredictionExplanations() : 
-    m_variableImpactExplanationsHasBeenSet(false),
-    m_aggregatedVariablesImpactExplanationsHasBeenSet(false)
-{
-}
-
-PredictionExplanations::PredictionExplanations(JsonView jsonValue) : 
-    m_variableImpactExplanationsHasBeenSet(false),
-    m_aggregatedVariablesImpactExplanationsHasBeenSet(false)
+PredictionExplanations::PredictionExplanations(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ PredictionExplanations& PredictionExplanations::operator =(JsonView jsonValue)
     }
     m_variableImpactExplanationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("aggregatedVariablesImpactExplanations"))
   {
     Aws::Utils::Array<JsonView> aggregatedVariablesImpactExplanationsJsonList = jsonValue.GetArray("aggregatedVariablesImpactExplanations");
@@ -52,7 +43,6 @@ PredictionExplanations& PredictionExplanations::operator =(JsonView jsonValue)
     }
     m_aggregatedVariablesImpactExplanationsHasBeenSet = true;
   }
-
   return *this;
 }
 

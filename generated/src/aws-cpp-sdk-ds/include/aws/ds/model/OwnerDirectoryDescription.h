@@ -36,246 +36,85 @@ namespace Model
   class OwnerDirectoryDescription
   {
   public:
-    AWS_DIRECTORYSERVICE_API OwnerDirectoryDescription();
+    AWS_DIRECTORYSERVICE_API OwnerDirectoryDescription() = default;
     AWS_DIRECTORYSERVICE_API OwnerDirectoryDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API OwnerDirectoryDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifier of the Managed Microsoft AD directory in the directory owner
      * account.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    OwnerDirectoryDescription& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
-    inline OwnerDirectoryDescription& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
-    inline OwnerDirectoryDescription& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifier of the Managed Microsoft AD directory in the directory owner
-     * account.</p>
-     */
-    inline OwnerDirectoryDescription& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifier of the directory owner account.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    OwnerDirectoryDescription& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
-    inline OwnerDirectoryDescription& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
-    inline OwnerDirectoryDescription& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifier of the directory owner account.</p>
-     */
-    inline OwnerDirectoryDescription& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>IP address of the directory’s domain controllers.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDnsIpAddrs() const{ return m_dnsIpAddrs; }
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDnsIpAddrs() const { return m_dnsIpAddrs; }
     inline bool DnsIpAddrsHasBeenSet() const { return m_dnsIpAddrsHasBeenSet; }
+    template<typename DnsIpAddrsT = Aws::Vector<Aws::String>>
+    void SetDnsIpAddrs(DnsIpAddrsT&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = std::forward<DnsIpAddrsT>(value); }
+    template<typename DnsIpAddrsT = Aws::Vector<Aws::String>>
+    OwnerDirectoryDescription& WithDnsIpAddrs(DnsIpAddrsT&& value) { SetDnsIpAddrs(std::forward<DnsIpAddrsT>(value)); return *this;}
+    template<typename DnsIpAddrsT = Aws::String>
+    OwnerDirectoryDescription& AddDnsIpAddrs(DnsIpAddrsT&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.emplace_back(std::forward<DnsIpAddrsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline void SetDnsIpAddrs(const Aws::Vector<Aws::String>& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = value; }
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline void SetDnsIpAddrs(Aws::Vector<Aws::String>&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = std::move(value); }
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline OwnerDirectoryDescription& WithDnsIpAddrs(const Aws::Vector<Aws::String>& value) { SetDnsIpAddrs(value); return *this;}
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline OwnerDirectoryDescription& WithDnsIpAddrs(Aws::Vector<Aws::String>&& value) { SetDnsIpAddrs(std::move(value)); return *this;}
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline OwnerDirectoryDescription& AddDnsIpAddrs(const Aws::String& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(value); return *this; }
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline OwnerDirectoryDescription& AddDnsIpAddrs(Aws::String&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>IP address of the directory’s domain controllers.</p>
-     */
-    inline OwnerDirectoryDescription& AddDnsIpAddrs(const char* value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the VPC settings for the directory.</p>
      */
-    inline const DirectoryVpcSettingsDescription& GetVpcSettings() const{ return m_vpcSettings; }
-
-    /**
-     * <p>Information about the VPC settings for the directory.</p>
-     */
+    inline const DirectoryVpcSettingsDescription& GetVpcSettings() const { return m_vpcSettings; }
     inline bool VpcSettingsHasBeenSet() const { return m_vpcSettingsHasBeenSet; }
+    template<typename VpcSettingsT = DirectoryVpcSettingsDescription>
+    void SetVpcSettings(VpcSettingsT&& value) { m_vpcSettingsHasBeenSet = true; m_vpcSettings = std::forward<VpcSettingsT>(value); }
+    template<typename VpcSettingsT = DirectoryVpcSettingsDescription>
+    OwnerDirectoryDescription& WithVpcSettings(VpcSettingsT&& value) { SetVpcSettings(std::forward<VpcSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the VPC settings for the directory.</p>
-     */
-    inline void SetVpcSettings(const DirectoryVpcSettingsDescription& value) { m_vpcSettingsHasBeenSet = true; m_vpcSettings = value; }
-
-    /**
-     * <p>Information about the VPC settings for the directory.</p>
-     */
-    inline void SetVpcSettings(DirectoryVpcSettingsDescription&& value) { m_vpcSettingsHasBeenSet = true; m_vpcSettings = std::move(value); }
-
-    /**
-     * <p>Information about the VPC settings for the directory.</p>
-     */
-    inline OwnerDirectoryDescription& WithVpcSettings(const DirectoryVpcSettingsDescription& value) { SetVpcSettings(value); return *this;}
-
-    /**
-     * <p>Information about the VPC settings for the directory.</p>
-     */
-    inline OwnerDirectoryDescription& WithVpcSettings(DirectoryVpcSettingsDescription&& value) { SetVpcSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
      * server.</p>
      */
-    inline const RadiusSettings& GetRadiusSettings() const{ return m_radiusSettings; }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
+    inline const RadiusSettings& GetRadiusSettings() const { return m_radiusSettings; }
     inline bool RadiusSettingsHasBeenSet() const { return m_radiusSettingsHasBeenSet; }
+    template<typename RadiusSettingsT = RadiusSettings>
+    void SetRadiusSettings(RadiusSettingsT&& value) { m_radiusSettingsHasBeenSet = true; m_radiusSettings = std::forward<RadiusSettingsT>(value); }
+    template<typename RadiusSettingsT = RadiusSettings>
+    OwnerDirectoryDescription& WithRadiusSettings(RadiusSettingsT&& value) { SetRadiusSettings(std::forward<RadiusSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline void SetRadiusSettings(const RadiusSettings& value) { m_radiusSettingsHasBeenSet = true; m_radiusSettings = value; }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline void SetRadiusSettings(RadiusSettings&& value) { m_radiusSettingsHasBeenSet = true; m_radiusSettings = std::move(value); }
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline OwnerDirectoryDescription& WithRadiusSettings(const RadiusSettings& value) { SetRadiusSettings(value); return *this;}
-
-    /**
-     * <p>A <a>RadiusSettings</a> object that contains information about the RADIUS
-     * server.</p>
-     */
-    inline OwnerDirectoryDescription& WithRadiusSettings(RadiusSettings&& value) { SetRadiusSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the status of the RADIUS server.</p>
      */
-    inline const RadiusStatus& GetRadiusStatus() const{ return m_radiusStatus; }
-
-    /**
-     * <p>Information about the status of the RADIUS server.</p>
-     */
+    inline RadiusStatus GetRadiusStatus() const { return m_radiusStatus; }
     inline bool RadiusStatusHasBeenSet() const { return m_radiusStatusHasBeenSet; }
-
-    /**
-     * <p>Information about the status of the RADIUS server.</p>
-     */
-    inline void SetRadiusStatus(const RadiusStatus& value) { m_radiusStatusHasBeenSet = true; m_radiusStatus = value; }
-
-    /**
-     * <p>Information about the status of the RADIUS server.</p>
-     */
-    inline void SetRadiusStatus(RadiusStatus&& value) { m_radiusStatusHasBeenSet = true; m_radiusStatus = std::move(value); }
-
-    /**
-     * <p>Information about the status of the RADIUS server.</p>
-     */
-    inline OwnerDirectoryDescription& WithRadiusStatus(const RadiusStatus& value) { SetRadiusStatus(value); return *this;}
-
-    /**
-     * <p>Information about the status of the RADIUS server.</p>
-     */
-    inline OwnerDirectoryDescription& WithRadiusStatus(RadiusStatus&& value) { SetRadiusStatus(std::move(value)); return *this;}
-
+    inline void SetRadiusStatus(RadiusStatus value) { m_radiusStatusHasBeenSet = true; m_radiusStatus = value; }
+    inline OwnerDirectoryDescription& WithRadiusStatus(RadiusStatus value) { SetRadiusStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryId;
@@ -293,7 +132,7 @@ namespace Model
     RadiusSettings m_radiusSettings;
     bool m_radiusSettingsHasBeenSet = false;
 
-    RadiusStatus m_radiusStatus;
+    RadiusStatus m_radiusStatus{RadiusStatus::NOT_SET};
     bool m_radiusStatusHasBeenSet = false;
   };
 

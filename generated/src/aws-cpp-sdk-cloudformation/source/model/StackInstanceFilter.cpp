@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackInstanceFilter::StackInstanceFilter() : 
-    m_name(StackInstanceFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-StackInstanceFilter::StackInstanceFilter(const XmlNode& xmlNode) : 
-    m_name(StackInstanceFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+StackInstanceFilter::StackInstanceFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ StackInstanceFilter& StackInstanceFilter::operator =(const XmlNode& xmlNode)
     XmlNode nameNode = resultNode.FirstChild("Name");
     if(!nameNode.IsNull())
     {
-      m_name = StackInstanceFilterNameMapper::GetStackInstanceFilterNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()).c_str());
+      m_name = StackInstanceFilterNameMapper::GetStackInstanceFilterNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()));
       m_nameHasBeenSet = true;
     }
     XmlNode valuesNode = resultNode.FirstChild("Values");
@@ -62,7 +52,7 @@ void StackInstanceFilter::OutputToStream(Aws::OStream& oStream, const char* loca
 {
   if(m_nameHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Name=" << StackInstanceFilterNameMapper::GetNameForStackInstanceFilterName(m_name) << "&";
+      oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(StackInstanceFilterNameMapper::GetNameForStackInstanceFilterName(m_name)) << "&";
   }
 
   if(m_valuesHasBeenSet)
@@ -76,7 +66,7 @@ void StackInstanceFilter::OutputToStream(Aws::OStream& oStream, const char* loca
 {
   if(m_nameHasBeenSet)
   {
-      oStream << location << ".Name=" << StackInstanceFilterNameMapper::GetNameForStackInstanceFilterName(m_name) << "&";
+      oStream << location << ".Name=" << StringUtils::URLEncode(StackInstanceFilterNameMapper::GetNameForStackInstanceFilterName(m_name)) << "&";
   }
   if(m_valuesHasBeenSet)
   {

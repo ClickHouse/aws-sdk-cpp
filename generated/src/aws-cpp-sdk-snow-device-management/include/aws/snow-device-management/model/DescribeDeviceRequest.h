@@ -21,7 +21,7 @@ namespace Model
   class DescribeDeviceRequest : public SnowDeviceManagementRequest
   {
   public:
-    AWS_SNOWDEVICEMANAGEMENT_API DescribeDeviceRequest();
+    AWS_SNOWDEVICEMANAGEMENT_API DescribeDeviceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SNOWDEVICEMANAGEMENT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the device that you are checking the information of.</p>
      */
-    inline const Aws::String& GetManagedDeviceId() const{ return m_managedDeviceId; }
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
+    inline const Aws::String& GetManagedDeviceId() const { return m_managedDeviceId; }
     inline bool ManagedDeviceIdHasBeenSet() const { return m_managedDeviceIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
-    inline void SetManagedDeviceId(const Aws::String& value) { m_managedDeviceIdHasBeenSet = true; m_managedDeviceId = value; }
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
-    inline void SetManagedDeviceId(Aws::String&& value) { m_managedDeviceIdHasBeenSet = true; m_managedDeviceId = std::move(value); }
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
-    inline void SetManagedDeviceId(const char* value) { m_managedDeviceIdHasBeenSet = true; m_managedDeviceId.assign(value); }
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
-    inline DescribeDeviceRequest& WithManagedDeviceId(const Aws::String& value) { SetManagedDeviceId(value); return *this;}
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
-    inline DescribeDeviceRequest& WithManagedDeviceId(Aws::String&& value) { SetManagedDeviceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the device that you are checking the information of.</p>
-     */
-    inline DescribeDeviceRequest& WithManagedDeviceId(const char* value) { SetManagedDeviceId(value); return *this;}
-
+    template<typename ManagedDeviceIdT = Aws::String>
+    void SetManagedDeviceId(ManagedDeviceIdT&& value) { m_managedDeviceIdHasBeenSet = true; m_managedDeviceId = std::forward<ManagedDeviceIdT>(value); }
+    template<typename ManagedDeviceIdT = Aws::String>
+    DescribeDeviceRequest& WithManagedDeviceId(ManagedDeviceIdT&& value) { SetManagedDeviceId(std::forward<ManagedDeviceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_managedDeviceId;

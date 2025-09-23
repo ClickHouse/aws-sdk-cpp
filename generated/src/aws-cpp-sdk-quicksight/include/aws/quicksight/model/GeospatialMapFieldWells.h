@@ -33,42 +33,23 @@ namespace Model
   class GeospatialMapFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API GeospatialMapFieldWells();
+    AWS_QUICKSIGHT_API GeospatialMapFieldWells() = default;
     AWS_QUICKSIGHT_API GeospatialMapFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GeospatialMapFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The aggregated field well for a geospatial map.</p>
      */
-    inline const GeospatialMapAggregatedFieldWells& GetGeospatialMapAggregatedFieldWells() const{ return m_geospatialMapAggregatedFieldWells; }
-
-    /**
-     * <p>The aggregated field well for a geospatial map.</p>
-     */
+    inline const GeospatialMapAggregatedFieldWells& GetGeospatialMapAggregatedFieldWells() const { return m_geospatialMapAggregatedFieldWells; }
     inline bool GeospatialMapAggregatedFieldWellsHasBeenSet() const { return m_geospatialMapAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The aggregated field well for a geospatial map.</p>
-     */
-    inline void SetGeospatialMapAggregatedFieldWells(const GeospatialMapAggregatedFieldWells& value) { m_geospatialMapAggregatedFieldWellsHasBeenSet = true; m_geospatialMapAggregatedFieldWells = value; }
-
-    /**
-     * <p>The aggregated field well for a geospatial map.</p>
-     */
-    inline void SetGeospatialMapAggregatedFieldWells(GeospatialMapAggregatedFieldWells&& value) { m_geospatialMapAggregatedFieldWellsHasBeenSet = true; m_geospatialMapAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The aggregated field well for a geospatial map.</p>
-     */
-    inline GeospatialMapFieldWells& WithGeospatialMapAggregatedFieldWells(const GeospatialMapAggregatedFieldWells& value) { SetGeospatialMapAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The aggregated field well for a geospatial map.</p>
-     */
-    inline GeospatialMapFieldWells& WithGeospatialMapAggregatedFieldWells(GeospatialMapAggregatedFieldWells&& value) { SetGeospatialMapAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename GeospatialMapAggregatedFieldWellsT = GeospatialMapAggregatedFieldWells>
+    void SetGeospatialMapAggregatedFieldWells(GeospatialMapAggregatedFieldWellsT&& value) { m_geospatialMapAggregatedFieldWellsHasBeenSet = true; m_geospatialMapAggregatedFieldWells = std::forward<GeospatialMapAggregatedFieldWellsT>(value); }
+    template<typename GeospatialMapAggregatedFieldWellsT = GeospatialMapAggregatedFieldWells>
+    GeospatialMapFieldWells& WithGeospatialMapAggregatedFieldWells(GeospatialMapAggregatedFieldWellsT&& value) { SetGeospatialMapAggregatedFieldWells(std::forward<GeospatialMapAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     GeospatialMapAggregatedFieldWells m_geospatialMapAggregatedFieldWells;

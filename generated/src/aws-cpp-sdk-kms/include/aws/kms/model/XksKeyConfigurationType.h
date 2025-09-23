@@ -42,60 +42,24 @@ namespace Model
   class XksKeyConfigurationType
   {
   public:
-    AWS_KMS_API XksKeyConfigurationType();
+    AWS_KMS_API XksKeyConfigurationType() = default;
     AWS_KMS_API XksKeyConfigurationType(Aws::Utils::Json::JsonView jsonValue);
     AWS_KMS_API XksKeyConfigurationType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the external key in its external key manager. This is the ID that
      * the external key store proxy uses to identify the external key.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
-    inline XksKeyConfigurationType& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
-    inline XksKeyConfigurationType& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the external key in its external key manager. This is the ID that
-     * the external key store proxy uses to identify the external key.</p>
-     */
-    inline XksKeyConfigurationType& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    XksKeyConfigurationType& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

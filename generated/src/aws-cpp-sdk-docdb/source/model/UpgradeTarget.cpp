@@ -20,25 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-UpgradeTarget::UpgradeTarget() : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_autoUpgrade(false),
-    m_autoUpgradeHasBeenSet(false),
-    m_isMajorVersionUpgrade(false),
-    m_isMajorVersionUpgradeHasBeenSet(false)
-{
-}
-
-UpgradeTarget::UpgradeTarget(const XmlNode& xmlNode) : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_autoUpgrade(false),
-    m_autoUpgradeHasBeenSet(false),
-    m_isMajorVersionUpgrade(false),
-    m_isMajorVersionUpgradeHasBeenSet(false)
+UpgradeTarget::UpgradeTarget(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

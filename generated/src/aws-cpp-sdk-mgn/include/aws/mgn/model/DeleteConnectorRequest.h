@@ -21,7 +21,7 @@ namespace Model
   class DeleteConnectorRequest : public MgnRequest
   {
   public:
-    AWS_MGN_API DeleteConnectorRequest();
+    AWS_MGN_API DeleteConnectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MGN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Delete Connector request connector ID.</p>
      */
-    inline const Aws::String& GetConnectorID() const{ return m_connectorID; }
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
+    inline const Aws::String& GetConnectorID() const { return m_connectorID; }
     inline bool ConnectorIDHasBeenSet() const { return m_connectorIDHasBeenSet; }
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
-    inline void SetConnectorID(const Aws::String& value) { m_connectorIDHasBeenSet = true; m_connectorID = value; }
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
-    inline void SetConnectorID(Aws::String&& value) { m_connectorIDHasBeenSet = true; m_connectorID = std::move(value); }
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
-    inline void SetConnectorID(const char* value) { m_connectorIDHasBeenSet = true; m_connectorID.assign(value); }
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
-    inline DeleteConnectorRequest& WithConnectorID(const Aws::String& value) { SetConnectorID(value); return *this;}
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
-    inline DeleteConnectorRequest& WithConnectorID(Aws::String&& value) { SetConnectorID(std::move(value)); return *this;}
-
-    /**
-     * <p>Delete Connector request connector ID.</p>
-     */
-    inline DeleteConnectorRequest& WithConnectorID(const char* value) { SetConnectorID(value); return *this;}
-
+    template<typename ConnectorIDT = Aws::String>
+    void SetConnectorID(ConnectorIDT&& value) { m_connectorIDHasBeenSet = true; m_connectorID = std::forward<ConnectorIDT>(value); }
+    template<typename ConnectorIDT = Aws::String>
+    DeleteConnectorRequest& WithConnectorID(ConnectorIDT&& value) { SetConnectorID(std::forward<ConnectorIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorID;

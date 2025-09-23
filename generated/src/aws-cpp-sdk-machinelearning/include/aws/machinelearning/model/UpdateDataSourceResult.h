@@ -34,87 +34,39 @@ namespace Model
   class UpdateDataSourceResult
   {
   public:
-    AWS_MACHINELEARNING_API UpdateDataSourceResult();
+    AWS_MACHINELEARNING_API UpdateDataSourceResult() = default;
     AWS_MACHINELEARNING_API UpdateDataSourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MACHINELEARNING_API UpdateDataSourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID assigned to the <code>DataSource</code> during creation. This value
      * should be identical to the value of the <code>DataSourceID</code> in the
      * request.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    UpdateDataSourceResult& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation. This value
-     * should be identical to the value of the <code>DataSourceID</code> in the
-     * request.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceId = value; }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation. This value
-     * should be identical to the value of the <code>DataSourceID</code> in the
-     * request.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation. This value
-     * should be identical to the value of the <code>DataSourceID</code> in the
-     * request.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation. This value
-     * should be identical to the value of the <code>DataSourceID</code> in the
-     * request.</p>
-     */
-    inline UpdateDataSourceResult& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation. This value
-     * should be identical to the value of the <code>DataSourceID</code> in the
-     * request.</p>
-     */
-    inline UpdateDataSourceResult& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation. This value
-     * should be identical to the value of the <code>DataSourceID</code> in the
-     * request.</p>
-     */
-    inline UpdateDataSourceResult& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateDataSourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateDataSourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateDataSourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateDataSourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSourceId;
+    bool m_dataSourceIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

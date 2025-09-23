@@ -18,19 +18,7 @@ namespace CustomerProfiles
 namespace Model
 {
 
-ListCalculatedAttributeForProfileItem::ListCalculatedAttributeForProfileItem() : 
-    m_calculatedAttributeNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_isDataPartialHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ListCalculatedAttributeForProfileItem::ListCalculatedAttributeForProfileItem(JsonView jsonValue) : 
-    m_calculatedAttributeNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_isDataPartialHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ListCalculatedAttributeForProfileItem::ListCalculatedAttributeForProfileItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,28 @@ ListCalculatedAttributeForProfileItem& ListCalculatedAttributeForProfileItem::op
   if(jsonValue.ValueExists("CalculatedAttributeName"))
   {
     m_calculatedAttributeName = jsonValue.GetString("CalculatedAttributeName");
-
     m_calculatedAttributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IsDataPartial"))
   {
     m_isDataPartial = jsonValue.GetString("IsDataPartial");
-
     m_isDataPartialHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("LastObjectTimestamp"))
+  {
+    m_lastObjectTimestamp = jsonValue.GetDouble("LastObjectTimestamp");
+    m_lastObjectTimestampHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -94,6 +79,11 @@ JsonValue ListCalculatedAttributeForProfileItem::Jsonize() const
   {
    payload.WithString("Value", m_value);
 
+  }
+
+  if(m_lastObjectTimestampHasBeenSet)
+  {
+   payload.WithDouble("LastObjectTimestamp", m_lastObjectTimestamp.SecondsWithMSPrecision());
   }
 
   return payload;

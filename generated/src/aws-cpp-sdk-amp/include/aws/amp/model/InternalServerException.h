@@ -24,86 +24,47 @@ namespace Model
 {
 
   /**
-   * <p>Unexpected error during processing of request.</p><p><h3>See Also:</h3>   <a
+   * <p>An unexpected error occurred during the processing of the
+   * request.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/InternalServerException">AWS
    * API Reference</a></p>
    */
   class InternalServerException
   {
   public:
-    AWS_PROMETHEUSSERVICE_API InternalServerException();
+    AWS_PROMETHEUSSERVICE_API InternalServerException() = default;
     AWS_PROMETHEUSSERVICE_API InternalServerException(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API InternalServerException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Description of the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Description of the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InternalServerException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline InternalServerException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline InternalServerException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline InternalServerException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Advice to clients on when the call can be safely retried.</p>
      */
-    inline int GetRetryAfterSeconds() const{ return m_retryAfterSeconds; }
-
-    /**
-     * <p>Advice to clients on when the call can be safely retried.</p>
-     */
+    inline int GetRetryAfterSeconds() const { return m_retryAfterSeconds; }
     inline bool RetryAfterSecondsHasBeenSet() const { return m_retryAfterSecondsHasBeenSet; }
-
-    /**
-     * <p>Advice to clients on when the call can be safely retried.</p>
-     */
     inline void SetRetryAfterSeconds(int value) { m_retryAfterSecondsHasBeenSet = true; m_retryAfterSeconds = value; }
-
-    /**
-     * <p>Advice to clients on when the call can be safely retried.</p>
-     */
     inline InternalServerException& WithRetryAfterSeconds(int value) { SetRetryAfterSeconds(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    int m_retryAfterSeconds;
+    int m_retryAfterSeconds{0};
     bool m_retryAfterSecondsHasBeenSet = false;
   };
 

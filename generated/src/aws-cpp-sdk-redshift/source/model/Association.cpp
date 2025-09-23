@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-Association::Association() : 
-    m_customDomainCertificateArnHasBeenSet(false),
-    m_customDomainCertificateExpiryDateHasBeenSet(false),
-    m_certificateAssociationsHasBeenSet(false)
-{
-}
-
-Association::Association(const XmlNode& xmlNode) : 
-    m_customDomainCertificateArnHasBeenSet(false),
-    m_customDomainCertificateExpiryDateHasBeenSet(false),
-    m_certificateAssociationsHasBeenSet(false)
+Association::Association(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ Association& Association::operator =(const XmlNode& xmlNode)
     if(!certificateAssociationsNode.IsNull())
     {
       XmlNode certificateAssociationsMember = certificateAssociationsNode.FirstChild("CertificateAssociation");
+      m_certificateAssociationsHasBeenSet = !certificateAssociationsMember.IsNull();
       while(!certificateAssociationsMember.IsNull())
       {
         m_certificateAssociations.push_back(certificateAssociationsMember);
@@ -88,7 +79,7 @@ void Association::OutputToStream(Aws::OStream& oStream, const char* location, un
       for(auto& item : m_certificateAssociations)
       {
         Aws::StringStream certificateAssociationsSs;
-        certificateAssociationsSs << location << index << locationValue << ".CertificateAssociation." << certificateAssociationsIdx++;
+        certificateAssociationsSs << location << index << locationValue << ".CertificateAssociations.CertificateAssociation." << certificateAssociationsIdx++;
         item.OutputToStream(oStream, certificateAssociationsSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void Association::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_certificateAssociations)
       {
         Aws::StringStream certificateAssociationsSs;
-        certificateAssociationsSs << location <<  ".CertificateAssociation." << certificateAssociationsIdx++;
+        certificateAssociationsSs << location << ".CertificateAssociations.CertificateAssociation." << certificateAssociationsIdx++;
         item.OutputToStream(oStream, certificateAssociationsSs.str().c_str());
       }
   }

@@ -18,35 +18,23 @@ namespace QConnect
 namespace Model
 {
 
-KnowledgeBaseAssociationData::KnowledgeBaseAssociationData() : 
-    m_knowledgeBaseArnHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false)
-{
-}
-
-KnowledgeBaseAssociationData::KnowledgeBaseAssociationData(JsonView jsonValue) : 
-    m_knowledgeBaseArnHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false)
+KnowledgeBaseAssociationData::KnowledgeBaseAssociationData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 KnowledgeBaseAssociationData& KnowledgeBaseAssociationData::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("knowledgeBaseArn"))
-  {
-    m_knowledgeBaseArn = jsonValue.GetString("knowledgeBaseArn");
-
-    m_knowledgeBaseArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("knowledgeBaseId"))
   {
     m_knowledgeBaseId = jsonValue.GetString("knowledgeBaseId");
-
     m_knowledgeBaseIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("knowledgeBaseArn"))
+  {
+    m_knowledgeBaseArn = jsonValue.GetString("knowledgeBaseArn");
+    m_knowledgeBaseArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue KnowledgeBaseAssociationData::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_knowledgeBaseArnHasBeenSet)
-  {
-   payload.WithString("knowledgeBaseArn", m_knowledgeBaseArn);
-
-  }
-
   if(m_knowledgeBaseIdHasBeenSet)
   {
    payload.WithString("knowledgeBaseId", m_knowledgeBaseId);
+
+  }
+
+  if(m_knowledgeBaseArnHasBeenSet)
+  {
+   payload.WithString("knowledgeBaseArn", m_knowledgeBaseArn);
 
   }
 

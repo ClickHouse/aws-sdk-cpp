@@ -18,15 +18,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-SuccessfulRequest::SuccessfulRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
-SuccessfulRequest::SuccessfulRequest(JsonView jsonValue) : 
-    m_clientTokenHasBeenSet(false),
-    m_idHasBeenSet(false)
+SuccessfulRequest::SuccessfulRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SuccessfulRequest& SuccessfulRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("clientToken"))
   {
     m_clientToken = jsonValue.GetString("clientToken");
-
     m_clientTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   return *this;
 }
 

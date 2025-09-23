@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AssetBundleResourcePermissions::AssetBundleResourcePermissions() : 
-    m_principalsHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-AssetBundleResourcePermissions::AssetBundleResourcePermissions(JsonView jsonValue) : 
-    m_principalsHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+AssetBundleResourcePermissions::AssetBundleResourcePermissions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ AssetBundleResourcePermissions& AssetBundleResourcePermissions::operator =(JsonV
     }
     m_principalsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("Actions");
@@ -52,7 +43,6 @@ AssetBundleResourcePermissions& AssetBundleResourcePermissions::operator =(JsonV
     }
     m_actionsHasBeenSet = true;
   }
-
   return *this;
 }
 

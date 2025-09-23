@@ -12,16 +12,6 @@ using namespace Aws::IoTFleetWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDecoderManifestRequest::CreateDecoderManifestRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_modelManifestArnHasBeenSet(false),
-    m_signalDecodersHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDecoderManifestRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -64,6 +54,11 @@ Aws::String CreateDecoderManifestRequest::SerializePayload() const
    }
    payload.WithArray("networkInterfaces", std::move(networkInterfacesJsonList));
 
+  }
+
+  if(m_defaultForUnmappedSignalsHasBeenSet)
+  {
+   payload.WithString("defaultForUnmappedSignals", DefaultForUnmappedSignalsTypeMapper::GetNameForDefaultForUnmappedSignalsType(m_defaultForUnmappedSignals));
   }
 
   if(m_tagsHasBeenSet)

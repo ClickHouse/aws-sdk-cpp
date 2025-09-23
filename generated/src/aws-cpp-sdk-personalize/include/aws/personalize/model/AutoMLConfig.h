@@ -36,98 +36,37 @@ namespace Model
   class AutoMLConfig
   {
   public:
-    AWS_PERSONALIZE_API AutoMLConfig();
+    AWS_PERSONALIZE_API AutoMLConfig() = default;
     AWS_PERSONALIZE_API AutoMLConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API AutoMLConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The metric to optimize.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>The metric to optimize.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    AutoMLConfig& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metric to optimize.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>The metric to optimize.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>The metric to optimize.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>The metric to optimize.</p>
-     */
-    inline AutoMLConfig& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>The metric to optimize.</p>
-     */
-    inline AutoMLConfig& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>The metric to optimize.</p>
-     */
-    inline AutoMLConfig& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of candidate recipes.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRecipeList() const{ return m_recipeList; }
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRecipeList() const { return m_recipeList; }
     inline bool RecipeListHasBeenSet() const { return m_recipeListHasBeenSet; }
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline void SetRecipeList(const Aws::Vector<Aws::String>& value) { m_recipeListHasBeenSet = true; m_recipeList = value; }
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline void SetRecipeList(Aws::Vector<Aws::String>&& value) { m_recipeListHasBeenSet = true; m_recipeList = std::move(value); }
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline AutoMLConfig& WithRecipeList(const Aws::Vector<Aws::String>& value) { SetRecipeList(value); return *this;}
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline AutoMLConfig& WithRecipeList(Aws::Vector<Aws::String>&& value) { SetRecipeList(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline AutoMLConfig& AddRecipeList(const Aws::String& value) { m_recipeListHasBeenSet = true; m_recipeList.push_back(value); return *this; }
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline AutoMLConfig& AddRecipeList(Aws::String&& value) { m_recipeListHasBeenSet = true; m_recipeList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of candidate recipes.</p>
-     */
-    inline AutoMLConfig& AddRecipeList(const char* value) { m_recipeListHasBeenSet = true; m_recipeList.push_back(value); return *this; }
-
+    template<typename RecipeListT = Aws::Vector<Aws::String>>
+    void SetRecipeList(RecipeListT&& value) { m_recipeListHasBeenSet = true; m_recipeList = std::forward<RecipeListT>(value); }
+    template<typename RecipeListT = Aws::Vector<Aws::String>>
+    AutoMLConfig& WithRecipeList(RecipeListT&& value) { SetRecipeList(std::forward<RecipeListT>(value)); return *this;}
+    template<typename RecipeListT = Aws::String>
+    AutoMLConfig& AddRecipeList(RecipeListT&& value) { m_recipeListHasBeenSet = true; m_recipeList.emplace_back(std::forward<RecipeListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_metricName;

@@ -31,42 +31,23 @@ namespace Model
   class SectionLayoutConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API SectionLayoutConfiguration();
+    AWS_QUICKSIGHT_API SectionLayoutConfiguration() = default;
     AWS_QUICKSIGHT_API SectionLayoutConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SectionLayoutConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The free-form layout configuration of a section.</p>
      */
-    inline const FreeFormSectionLayoutConfiguration& GetFreeFormLayout() const{ return m_freeFormLayout; }
-
-    /**
-     * <p>The free-form layout configuration of a section.</p>
-     */
+    inline const FreeFormSectionLayoutConfiguration& GetFreeFormLayout() const { return m_freeFormLayout; }
     inline bool FreeFormLayoutHasBeenSet() const { return m_freeFormLayoutHasBeenSet; }
-
-    /**
-     * <p>The free-form layout configuration of a section.</p>
-     */
-    inline void SetFreeFormLayout(const FreeFormSectionLayoutConfiguration& value) { m_freeFormLayoutHasBeenSet = true; m_freeFormLayout = value; }
-
-    /**
-     * <p>The free-form layout configuration of a section.</p>
-     */
-    inline void SetFreeFormLayout(FreeFormSectionLayoutConfiguration&& value) { m_freeFormLayoutHasBeenSet = true; m_freeFormLayout = std::move(value); }
-
-    /**
-     * <p>The free-form layout configuration of a section.</p>
-     */
-    inline SectionLayoutConfiguration& WithFreeFormLayout(const FreeFormSectionLayoutConfiguration& value) { SetFreeFormLayout(value); return *this;}
-
-    /**
-     * <p>The free-form layout configuration of a section.</p>
-     */
-    inline SectionLayoutConfiguration& WithFreeFormLayout(FreeFormSectionLayoutConfiguration&& value) { SetFreeFormLayout(std::move(value)); return *this;}
-
+    template<typename FreeFormLayoutT = FreeFormSectionLayoutConfiguration>
+    void SetFreeFormLayout(FreeFormLayoutT&& value) { m_freeFormLayoutHasBeenSet = true; m_freeFormLayout = std::forward<FreeFormLayoutT>(value); }
+    template<typename FreeFormLayoutT = FreeFormSectionLayoutConfiguration>
+    SectionLayoutConfiguration& WithFreeFormLayout(FreeFormLayoutT&& value) { SetFreeFormLayout(std::forward<FreeFormLayoutT>(value)); return *this;}
+    ///@}
   private:
 
     FreeFormSectionLayoutConfiguration m_freeFormLayout;

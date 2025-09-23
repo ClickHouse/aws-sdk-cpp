@@ -28,7 +28,7 @@ namespace Model
   class DeleteVPCAssociationAuthorizationRequest : public Route53Request
   {
   public:
-    AWS_ROUTE53_API DeleteVPCAssociationAuthorizationRequest();
+    AWS_ROUTE53_API DeleteVPCAssociationAuthorizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,111 +39,34 @@ namespace Model
     AWS_ROUTE53_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>When removing authorization to associate a VPC that was created by one Amazon
      * Web Services account with a hosted zone that was created with a different Amazon
      * Web Services account, the ID of the hosted zone.</p>
      */
-    inline const Aws::String& GetHostedZoneId() const{ return m_hostedZoneId; }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
+    inline const Aws::String& GetHostedZoneId() const { return m_hostedZoneId; }
     inline bool HostedZoneIdHasBeenSet() const { return m_hostedZoneIdHasBeenSet; }
+    template<typename HostedZoneIdT = Aws::String>
+    void SetHostedZoneId(HostedZoneIdT&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::forward<HostedZoneIdT>(value); }
+    template<typename HostedZoneIdT = Aws::String>
+    DeleteVPCAssociationAuthorizationRequest& WithHostedZoneId(HostedZoneIdT&& value) { SetHostedZoneId(std::forward<HostedZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
-    inline void SetHostedZoneId(const Aws::String& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
-    inline void SetHostedZoneId(const char* value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId.assign(value); }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
-    inline DeleteVPCAssociationAuthorizationRequest& WithHostedZoneId(const Aws::String& value) { SetHostedZoneId(value); return *this;}
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
-    inline DeleteVPCAssociationAuthorizationRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, the ID of the hosted zone.</p>
-     */
-    inline DeleteVPCAssociationAuthorizationRequest& WithHostedZoneId(const char* value) { SetHostedZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When removing authorization to associate a VPC that was created by one Amazon
      * Web Services account with a hosted zone that was created with a different Amazon
      * Web Services account, a complex type that includes the ID and region of the
      * VPC.</p>
      */
-    inline const VPC& GetVPC() const{ return m_vPC; }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, a complex type that includes the ID and region of the
-     * VPC.</p>
-     */
+    inline const VPC& GetVPC() const { return m_vPC; }
     inline bool VPCHasBeenSet() const { return m_vPCHasBeenSet; }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, a complex type that includes the ID and region of the
-     * VPC.</p>
-     */
-    inline void SetVPC(const VPC& value) { m_vPCHasBeenSet = true; m_vPC = value; }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, a complex type that includes the ID and region of the
-     * VPC.</p>
-     */
-    inline void SetVPC(VPC&& value) { m_vPCHasBeenSet = true; m_vPC = std::move(value); }
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, a complex type that includes the ID and region of the
-     * VPC.</p>
-     */
-    inline DeleteVPCAssociationAuthorizationRequest& WithVPC(const VPC& value) { SetVPC(value); return *this;}
-
-    /**
-     * <p>When removing authorization to associate a VPC that was created by one Amazon
-     * Web Services account with a hosted zone that was created with a different Amazon
-     * Web Services account, a complex type that includes the ID and region of the
-     * VPC.</p>
-     */
-    inline DeleteVPCAssociationAuthorizationRequest& WithVPC(VPC&& value) { SetVPC(std::move(value)); return *this;}
-
+    template<typename VPCT = VPC>
+    void SetVPC(VPCT&& value) { m_vPCHasBeenSet = true; m_vPC = std::forward<VPCT>(value); }
+    template<typename VPCT = VPC>
+    DeleteVPCAssociationAuthorizationRequest& WithVPC(VPCT&& value) { SetVPC(std::forward<VPCT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hostedZoneId;

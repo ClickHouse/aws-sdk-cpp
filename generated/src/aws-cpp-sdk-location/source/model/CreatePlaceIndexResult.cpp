@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreatePlaceIndexResult::CreatePlaceIndexResult()
-{
-}
-
 CreatePlaceIndexResult::CreatePlaceIndexResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,30 +25,28 @@ CreatePlaceIndexResult::CreatePlaceIndexResult(const Aws::AmazonWebServiceResult
 CreatePlaceIndexResult& CreatePlaceIndexResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("CreateTime"))
-  {
-    m_createTime = jsonValue.GetString("CreateTime");
-
-  }
-
-  if(jsonValue.ValueExists("IndexArn"))
-  {
-    m_indexArn = jsonValue.GetString("IndexArn");
-
-  }
-
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
+    m_indexNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IndexArn"))
+  {
+    m_indexArn = jsonValue.GetString("IndexArn");
+    m_indexArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("CreateTime"))
+  {
+    m_createTime = jsonValue.GetString("CreateTime");
+    m_createTimeHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

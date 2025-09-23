@@ -32,73 +32,37 @@ namespace Model
   class UpdateSMBFileShareResult
   {
   public:
-    AWS_STORAGEGATEWAY_API UpdateSMBFileShareResult();
+    AWS_STORAGEGATEWAY_API UpdateSMBFileShareResult() = default;
     AWS_STORAGEGATEWAY_API UpdateSMBFileShareResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_STORAGEGATEWAY_API UpdateSMBFileShareResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
      */
-    inline const Aws::String& GetFileShareARN() const{ return m_fileShareARN; }
+    inline const Aws::String& GetFileShareARN() const { return m_fileShareARN; }
+    template<typename FileShareARNT = Aws::String>
+    void SetFileShareARN(FileShareARNT&& value) { m_fileShareARNHasBeenSet = true; m_fileShareARN = std::forward<FileShareARNT>(value); }
+    template<typename FileShareARNT = Aws::String>
+    UpdateSMBFileShareResult& WithFileShareARN(FileShareARNT&& value) { SetFileShareARN(std::forward<FileShareARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
-     */
-    inline void SetFileShareARN(const Aws::String& value) { m_fileShareARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
-     */
-    inline void SetFileShareARN(Aws::String&& value) { m_fileShareARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
-     */
-    inline void SetFileShareARN(const char* value) { m_fileShareARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
-     */
-    inline UpdateSMBFileShareResult& WithFileShareARN(const Aws::String& value) { SetFileShareARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
-     */
-    inline UpdateSMBFileShareResult& WithFileShareARN(Aws::String&& value) { SetFileShareARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated SMB file share.</p>
-     */
-    inline UpdateSMBFileShareResult& WithFileShareARN(const char* value) { SetFileShareARN(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateSMBFileShareResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateSMBFileShareResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateSMBFileShareResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateSMBFileShareResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fileShareARN;
+    bool m_fileShareARNHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

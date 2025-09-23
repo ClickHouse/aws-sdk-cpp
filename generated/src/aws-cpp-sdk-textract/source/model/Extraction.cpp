@@ -18,17 +18,7 @@ namespace Textract
 namespace Model
 {
 
-Extraction::Extraction() : 
-    m_lendingDocumentHasBeenSet(false),
-    m_expenseDocumentHasBeenSet(false),
-    m_identityDocumentHasBeenSet(false)
-{
-}
-
-Extraction::Extraction(JsonView jsonValue) : 
-    m_lendingDocumentHasBeenSet(false),
-    m_expenseDocumentHasBeenSet(false),
-    m_identityDocumentHasBeenSet(false)
+Extraction::Extraction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ Extraction& Extraction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("LendingDocument"))
   {
     m_lendingDocument = jsonValue.GetObject("LendingDocument");
-
     m_lendingDocumentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExpenseDocument"))
   {
     m_expenseDocument = jsonValue.GetObject("ExpenseDocument");
-
     m_expenseDocumentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IdentityDocument"))
   {
     m_identityDocument = jsonValue.GetObject("IdentityDocument");
-
     m_identityDocumentHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,7 +25,7 @@ namespace Model
   class ListTagsForResourceRequest : public FSxRequest
   {
   public:
-    AWS_FSX_API ListTagsForResourceRequest();
+    AWS_FSX_API ListTagsForResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,142 +38,50 @@ namespace Model
     AWS_FSX_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
      */
-    inline const Aws::String& GetResourceARN() const{ return m_resourceARN; }
-
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
+    inline const Aws::String& GetResourceARN() const { return m_resourceARN; }
     inline bool ResourceARNHasBeenSet() const { return m_resourceARNHasBeenSet; }
+    template<typename ResourceARNT = Aws::String>
+    void SetResourceARN(ResourceARNT&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::forward<ResourceARNT>(value); }
+    template<typename ResourceARNT = Aws::String>
+    ListTagsForResourceRequest& WithResourceARN(ResourceARNT&& value) { SetResourceARN(std::forward<ResourceARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
-    inline void SetResourceARN(const Aws::String& value) { m_resourceARNHasBeenSet = true; m_resourceARN = value; }
-
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
-    inline void SetResourceARN(const char* value) { m_resourceARNHasBeenSet = true; m_resourceARN.assign(value); }
-
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceARN(const Aws::String& value) { SetResourceARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Amazon FSx resource that will have its tags listed.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceARN(const char* value) { SetResourceARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of tags to return in the response (integer). This parameter
      * value must be greater than 0. The number of items that Amazon FSx returns is the
      * minimum of the <code>MaxResults</code> parameter specified in the request and
      * the service's internal maximum number of items per page.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Maximum number of tags to return in the response (integer). This parameter
-     * value must be greater than 0. The number of items that Amazon FSx returns is the
-     * minimum of the <code>MaxResults</code> parameter specified in the request and
-     * the service's internal maximum number of items per page.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of tags to return in the response (integer). This parameter
-     * value must be greater than 0. The number of items that Amazon FSx returns is the
-     * minimum of the <code>MaxResults</code> parameter specified in the request and
-     * the service's internal maximum number of items per page.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Maximum number of tags to return in the response (integer). This parameter
-     * value must be greater than 0. The number of items that Amazon FSx returns is the
-     * minimum of the <code>MaxResults</code> parameter specified in the request and
-     * the service's internal maximum number of items per page.</p>
-     */
     inline ListTagsForResourceRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Opaque pagination token returned from a previous
      * <code>ListTagsForResource</code> operation (String). If a token present, the
      * action continues the list from where the returning call left off.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
-    inline ListTagsForResourceRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
-    inline ListTagsForResourceRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Opaque pagination token returned from a previous
-     * <code>ListTagsForResource</code> operation (String). If a token present, the
-     * action continues the list from where the returning call left off.</p>
-     */
-    inline ListTagsForResourceRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListTagsForResourceRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceARN;
     bool m_resourceARNHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

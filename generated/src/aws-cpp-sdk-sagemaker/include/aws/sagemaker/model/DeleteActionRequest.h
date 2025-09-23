@@ -21,7 +21,7 @@ namespace Model
   class DeleteActionRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteActionRequest();
+    AWS_SAGEMAKER_API DeleteActionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the action to delete.</p>
      */
-    inline const Aws::String& GetActionName() const{ return m_actionName; }
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
+    inline const Aws::String& GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
-    inline void SetActionName(const Aws::String& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
-    inline void SetActionName(const char* value) { m_actionNameHasBeenSet = true; m_actionName.assign(value); }
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
-    inline DeleteActionRequest& WithActionName(const Aws::String& value) { SetActionName(value); return *this;}
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
-    inline DeleteActionRequest& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the action to delete.</p>
-     */
-    inline DeleteActionRequest& WithActionName(const char* value) { SetActionName(value); return *this;}
-
+    template<typename ActionNameT = Aws::String>
+    void SetActionName(ActionNameT&& value) { m_actionNameHasBeenSet = true; m_actionName = std::forward<ActionNameT>(value); }
+    template<typename ActionNameT = Aws::String>
+    DeleteActionRequest& WithActionName(ActionNameT&& value) { SetActionName(std::forward<ActionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionName;

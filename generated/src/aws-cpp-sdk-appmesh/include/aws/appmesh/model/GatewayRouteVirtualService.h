@@ -32,52 +32,23 @@ namespace Model
   class GatewayRouteVirtualService
   {
   public:
-    AWS_APPMESH_API GatewayRouteVirtualService();
+    AWS_APPMESH_API GatewayRouteVirtualService() = default;
     AWS_APPMESH_API GatewayRouteVirtualService(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API GatewayRouteVirtualService& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the virtual service that traffic is routed to.</p>
      */
-    inline const Aws::String& GetVirtualServiceName() const{ return m_virtualServiceName; }
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
+    inline const Aws::String& GetVirtualServiceName() const { return m_virtualServiceName; }
     inline bool VirtualServiceNameHasBeenSet() const { return m_virtualServiceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
-    inline void SetVirtualServiceName(const Aws::String& value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName = value; }
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
-    inline void SetVirtualServiceName(Aws::String&& value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
-    inline void SetVirtualServiceName(const char* value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName.assign(value); }
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
-    inline GatewayRouteVirtualService& WithVirtualServiceName(const Aws::String& value) { SetVirtualServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
-    inline GatewayRouteVirtualService& WithVirtualServiceName(Aws::String&& value) { SetVirtualServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual service that traffic is routed to.</p>
-     */
-    inline GatewayRouteVirtualService& WithVirtualServiceName(const char* value) { SetVirtualServiceName(value); return *this;}
-
+    template<typename VirtualServiceNameT = Aws::String>
+    void SetVirtualServiceName(VirtualServiceNameT&& value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName = std::forward<VirtualServiceNameT>(value); }
+    template<typename VirtualServiceNameT = Aws::String>
+    GatewayRouteVirtualService& WithVirtualServiceName(VirtualServiceNameT&& value) { SetVirtualServiceName(std::forward<VirtualServiceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_virtualServiceName;

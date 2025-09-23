@@ -21,7 +21,7 @@ namespace Model
   class GetWorkUnitsRequest : public LakeFormationRequest
   {
   public:
-    AWS_LAKEFORMATION_API GetWorkUnitsRequest();
+    AWS_LAKEFORMATION_API GetWorkUnitsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,47 +32,19 @@ namespace Model
     AWS_LAKEFORMATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A continuation token, if this is a continuation call.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetWorkUnitsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
-    inline GetWorkUnitsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
-    inline GetWorkUnitsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A continuation token, if this is a continuation call.</p>
-     */
-    inline GetWorkUnitsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of each page to get in the Amazon Web Services service call. This
      * does not affect the number of items returned in the command's output. Setting a
@@ -80,82 +52,29 @@ namespace Model
      * retrieving fewer items in each call. This can help prevent the Amazon Web
      * Services service calls from timing out.</p>
      */
-    inline int GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>The size of each page to get in the Amazon Web Services service call. This
-     * does not affect the number of items returned in the command's output. Setting a
-     * smaller page size results in more calls to the Amazon Web Services service,
-     * retrieving fewer items in each call. This can help prevent the Amazon Web
-     * Services service calls from timing out.</p>
-     */
+    inline int GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>The size of each page to get in the Amazon Web Services service call. This
-     * does not affect the number of items returned in the command's output. Setting a
-     * smaller page size results in more calls to the Amazon Web Services service,
-     * retrieving fewer items in each call. This can help prevent the Amazon Web
-     * Services service calls from timing out.</p>
-     */
     inline void SetPageSize(int value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>The size of each page to get in the Amazon Web Services service call. This
-     * does not affect the number of items returned in the command's output. Setting a
-     * smaller page size results in more calls to the Amazon Web Services service,
-     * retrieving fewer items in each call. This can help prevent the Amazon Web
-     * Services service calls from timing out.</p>
-     */
     inline GetWorkUnitsRequest& WithPageSize(int value) { SetPageSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the plan query operation.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
     inline bool QueryIdHasBeenSet() const { return m_queryIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryIdHasBeenSet = true; m_queryId = value; }
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryIdHasBeenSet = true; m_queryId = std::move(value); }
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryIdHasBeenSet = true; m_queryId.assign(value); }
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
-    inline GetWorkUnitsRequest& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
-    inline GetWorkUnitsRequest& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the plan query operation.</p>
-     */
-    inline GetWorkUnitsRequest& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    GetWorkUnitsRequest& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_pageSize;
+    int m_pageSize{0};
     bool m_pageSizeHasBeenSet = false;
 
     Aws::String m_queryId;

@@ -31,43 +31,26 @@ namespace Model
   class BestObjectiveNotImproving
   {
   public:
-    AWS_SAGEMAKER_API BestObjectiveNotImproving();
+    AWS_SAGEMAKER_API BestObjectiveNotImproving() = default;
     AWS_SAGEMAKER_API BestObjectiveNotImproving(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API BestObjectiveNotImproving& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of training jobs that have failed to improve model performance by
      * 1% or greater over prior training jobs as evaluated against an objective
      * function.</p>
      */
-    inline int GetMaxNumberOfTrainingJobsNotImproving() const{ return m_maxNumberOfTrainingJobsNotImproving; }
-
-    /**
-     * <p>The number of training jobs that have failed to improve model performance by
-     * 1% or greater over prior training jobs as evaluated against an objective
-     * function.</p>
-     */
+    inline int GetMaxNumberOfTrainingJobsNotImproving() const { return m_maxNumberOfTrainingJobsNotImproving; }
     inline bool MaxNumberOfTrainingJobsNotImprovingHasBeenSet() const { return m_maxNumberOfTrainingJobsNotImprovingHasBeenSet; }
-
-    /**
-     * <p>The number of training jobs that have failed to improve model performance by
-     * 1% or greater over prior training jobs as evaluated against an objective
-     * function.</p>
-     */
     inline void SetMaxNumberOfTrainingJobsNotImproving(int value) { m_maxNumberOfTrainingJobsNotImprovingHasBeenSet = true; m_maxNumberOfTrainingJobsNotImproving = value; }
-
-    /**
-     * <p>The number of training jobs that have failed to improve model performance by
-     * 1% or greater over prior training jobs as evaluated against an objective
-     * function.</p>
-     */
     inline BestObjectiveNotImproving& WithMaxNumberOfTrainingJobsNotImproving(int value) { SetMaxNumberOfTrainingJobsNotImproving(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxNumberOfTrainingJobsNotImproving;
+    int m_maxNumberOfTrainingJobsNotImproving{0};
     bool m_maxNumberOfTrainingJobsNotImprovingHasBeenSet = false;
   };
 

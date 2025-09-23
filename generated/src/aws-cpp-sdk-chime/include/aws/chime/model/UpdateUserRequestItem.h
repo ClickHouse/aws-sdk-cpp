@@ -35,154 +35,64 @@ namespace Model
   class UpdateUserRequestItem
   {
   public:
-    AWS_CHIME_API UpdateUserRequestItem();
+    AWS_CHIME_API UpdateUserRequestItem() = default;
     AWS_CHIME_API UpdateUserRequestItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API UpdateUserRequestItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The user ID.</p>
      */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p>The user ID.</p>
-     */
+    inline const Aws::String& GetUserId() const { return m_userId; }
     inline bool UserIdHasBeenSet() const { return m_userIdHasBeenSet; }
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    UpdateUserRequestItem& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user ID.</p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userIdHasBeenSet = true; m_userId = value; }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline void SetUserId(const char* value) { m_userIdHasBeenSet = true; m_userId.assign(value); }
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline UpdateUserRequestItem& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline UpdateUserRequestItem& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user ID.</p>
-     */
-    inline UpdateUserRequestItem& WithUserId(const char* value) { SetUserId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user license type.</p>
      */
-    inline const License& GetLicenseType() const{ return m_licenseType; }
-
-    /**
-     * <p>The user license type.</p>
-     */
+    inline License GetLicenseType() const { return m_licenseType; }
     inline bool LicenseTypeHasBeenSet() const { return m_licenseTypeHasBeenSet; }
+    inline void SetLicenseType(License value) { m_licenseTypeHasBeenSet = true; m_licenseType = value; }
+    inline UpdateUserRequestItem& WithLicenseType(License value) { SetLicenseType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The user license type.</p>
-     */
-    inline void SetLicenseType(const License& value) { m_licenseTypeHasBeenSet = true; m_licenseType = value; }
-
-    /**
-     * <p>The user license type.</p>
-     */
-    inline void SetLicenseType(License&& value) { m_licenseTypeHasBeenSet = true; m_licenseType = std::move(value); }
-
-    /**
-     * <p>The user license type.</p>
-     */
-    inline UpdateUserRequestItem& WithLicenseType(const License& value) { SetLicenseType(value); return *this;}
-
-    /**
-     * <p>The user license type.</p>
-     */
-    inline UpdateUserRequestItem& WithLicenseType(License&& value) { SetLicenseType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The user type.</p>
      */
-    inline const UserType& GetUserType() const{ return m_userType; }
-
-    /**
-     * <p>The user type.</p>
-     */
+    inline UserType GetUserType() const { return m_userType; }
     inline bool UserTypeHasBeenSet() const { return m_userTypeHasBeenSet; }
+    inline void SetUserType(UserType value) { m_userTypeHasBeenSet = true; m_userType = value; }
+    inline UpdateUserRequestItem& WithUserType(UserType value) { SetUserType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The user type.</p>
-     */
-    inline void SetUserType(const UserType& value) { m_userTypeHasBeenSet = true; m_userType = value; }
-
-    /**
-     * <p>The user type.</p>
-     */
-    inline void SetUserType(UserType&& value) { m_userTypeHasBeenSet = true; m_userType = std::move(value); }
-
-    /**
-     * <p>The user type.</p>
-     */
-    inline UpdateUserRequestItem& WithUserType(const UserType& value) { SetUserType(value); return *this;}
-
-    /**
-     * <p>The user type.</p>
-     */
-    inline UpdateUserRequestItem& WithUserType(UserType&& value) { SetUserType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Alexa for Business metadata.</p>
      */
-    inline const AlexaForBusinessMetadata& GetAlexaForBusinessMetadata() const{ return m_alexaForBusinessMetadata; }
-
-    /**
-     * <p>The Alexa for Business metadata.</p>
-     */
+    inline const AlexaForBusinessMetadata& GetAlexaForBusinessMetadata() const { return m_alexaForBusinessMetadata; }
     inline bool AlexaForBusinessMetadataHasBeenSet() const { return m_alexaForBusinessMetadataHasBeenSet; }
-
-    /**
-     * <p>The Alexa for Business metadata.</p>
-     */
-    inline void SetAlexaForBusinessMetadata(const AlexaForBusinessMetadata& value) { m_alexaForBusinessMetadataHasBeenSet = true; m_alexaForBusinessMetadata = value; }
-
-    /**
-     * <p>The Alexa for Business metadata.</p>
-     */
-    inline void SetAlexaForBusinessMetadata(AlexaForBusinessMetadata&& value) { m_alexaForBusinessMetadataHasBeenSet = true; m_alexaForBusinessMetadata = std::move(value); }
-
-    /**
-     * <p>The Alexa for Business metadata.</p>
-     */
-    inline UpdateUserRequestItem& WithAlexaForBusinessMetadata(const AlexaForBusinessMetadata& value) { SetAlexaForBusinessMetadata(value); return *this;}
-
-    /**
-     * <p>The Alexa for Business metadata.</p>
-     */
-    inline UpdateUserRequestItem& WithAlexaForBusinessMetadata(AlexaForBusinessMetadata&& value) { SetAlexaForBusinessMetadata(std::move(value)); return *this;}
-
+    template<typename AlexaForBusinessMetadataT = AlexaForBusinessMetadata>
+    void SetAlexaForBusinessMetadata(AlexaForBusinessMetadataT&& value) { m_alexaForBusinessMetadataHasBeenSet = true; m_alexaForBusinessMetadata = std::forward<AlexaForBusinessMetadataT>(value); }
+    template<typename AlexaForBusinessMetadataT = AlexaForBusinessMetadata>
+    UpdateUserRequestItem& WithAlexaForBusinessMetadata(AlexaForBusinessMetadataT&& value) { SetAlexaForBusinessMetadata(std::forward<AlexaForBusinessMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userId;
     bool m_userIdHasBeenSet = false;
 
-    License m_licenseType;
+    License m_licenseType{License::NOT_SET};
     bool m_licenseTypeHasBeenSet = false;
 
-    UserType m_userType;
+    UserType m_userType{UserType::NOT_SET};
     bool m_userTypeHasBeenSet = false;
 
     AlexaForBusinessMetadata m_alexaForBusinessMetadata;

@@ -20,13 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CloudWatchLogsDestinationDetails::CloudWatchLogsDestinationDetails() : 
-    m_logGroupHasBeenSet(false)
-{
-}
-
-CloudWatchLogsDestinationDetails::CloudWatchLogsDestinationDetails(const XmlNode& xmlNode) : 
-    m_logGroupHasBeenSet(false)
+CloudWatchLogsDestinationDetails::CloudWatchLogsDestinationDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

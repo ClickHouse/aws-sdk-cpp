@@ -21,7 +21,7 @@ namespace Model
   class UpdateDataSourceRequest : public MachineLearningRequest
   {
   public:
-    AWS_MACHINELEARNING_API UpdateDataSourceRequest();
+    AWS_MACHINELEARNING_API UpdateDataSourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_MACHINELEARNING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
     inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    UpdateDataSourceRequest& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
-    inline UpdateDataSourceRequest& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
-    inline UpdateDataSourceRequest& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> during creation.</p>
-     */
-    inline UpdateDataSourceRequest& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A new user-supplied name or description of the <code>DataSource</code> that
      * will replace the current description. </p>
      */
-    inline const Aws::String& GetDataSourceName() const{ return m_dataSourceName; }
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
+    inline const Aws::String& GetDataSourceName() const { return m_dataSourceName; }
     inline bool DataSourceNameHasBeenSet() const { return m_dataSourceNameHasBeenSet; }
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
-    inline void SetDataSourceName(const Aws::String& value) { m_dataSourceNameHasBeenSet = true; m_dataSourceName = value; }
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
-    inline void SetDataSourceName(Aws::String&& value) { m_dataSourceNameHasBeenSet = true; m_dataSourceName = std::move(value); }
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
-    inline void SetDataSourceName(const char* value) { m_dataSourceNameHasBeenSet = true; m_dataSourceName.assign(value); }
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
-    inline UpdateDataSourceRequest& WithDataSourceName(const Aws::String& value) { SetDataSourceName(value); return *this;}
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
-    inline UpdateDataSourceRequest& WithDataSourceName(Aws::String&& value) { SetDataSourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>A new user-supplied name or description of the <code>DataSource</code> that
-     * will replace the current description. </p>
-     */
-    inline UpdateDataSourceRequest& WithDataSourceName(const char* value) { SetDataSourceName(value); return *this;}
-
+    template<typename DataSourceNameT = Aws::String>
+    void SetDataSourceName(DataSourceNameT&& value) { m_dataSourceNameHasBeenSet = true; m_dataSourceName = std::forward<DataSourceNameT>(value); }
+    template<typename DataSourceNameT = Aws::String>
+    UpdateDataSourceRequest& WithDataSourceName(DataSourceNameT&& value) { SetDataSourceName(std::forward<DataSourceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSourceId;

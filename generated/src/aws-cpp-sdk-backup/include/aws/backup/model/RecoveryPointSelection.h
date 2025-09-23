@@ -34,140 +34,51 @@ namespace Model
   class RecoveryPointSelection
   {
   public:
-    AWS_BACKUP_API RecoveryPointSelection();
+    AWS_BACKUP_API RecoveryPointSelection() = default;
     AWS_BACKUP_API RecoveryPointSelection(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API RecoveryPointSelection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>These are the names of the vaults in which the selected recovery points are
      * contained.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetVaultNames() const{ return m_vaultNames; }
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetVaultNames() const { return m_vaultNames; }
     inline bool VaultNamesHasBeenSet() const { return m_vaultNamesHasBeenSet; }
+    template<typename VaultNamesT = Aws::Vector<Aws::String>>
+    void SetVaultNames(VaultNamesT&& value) { m_vaultNamesHasBeenSet = true; m_vaultNames = std::forward<VaultNamesT>(value); }
+    template<typename VaultNamesT = Aws::Vector<Aws::String>>
+    RecoveryPointSelection& WithVaultNames(VaultNamesT&& value) { SetVaultNames(std::forward<VaultNamesT>(value)); return *this;}
+    template<typename VaultNamesT = Aws::String>
+    RecoveryPointSelection& AddVaultNames(VaultNamesT&& value) { m_vaultNamesHasBeenSet = true; m_vaultNames.emplace_back(std::forward<VaultNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline void SetVaultNames(const Aws::Vector<Aws::String>& value) { m_vaultNamesHasBeenSet = true; m_vaultNames = value; }
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline void SetVaultNames(Aws::Vector<Aws::String>&& value) { m_vaultNamesHasBeenSet = true; m_vaultNames = std::move(value); }
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline RecoveryPointSelection& WithVaultNames(const Aws::Vector<Aws::String>& value) { SetVaultNames(value); return *this;}
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline RecoveryPointSelection& WithVaultNames(Aws::Vector<Aws::String>&& value) { SetVaultNames(std::move(value)); return *this;}
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline RecoveryPointSelection& AddVaultNames(const Aws::String& value) { m_vaultNamesHasBeenSet = true; m_vaultNames.push_back(value); return *this; }
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline RecoveryPointSelection& AddVaultNames(Aws::String&& value) { m_vaultNamesHasBeenSet = true; m_vaultNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>These are the names of the vaults in which the selected recovery points are
-     * contained.</p>
-     */
-    inline RecoveryPointSelection& AddVaultNames(const char* value) { m_vaultNamesHasBeenSet = true; m_vaultNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>These are the resources included in the resource selection (including type of
      * resources and vaults).</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResourceIdentifiers() const{ return m_resourceIdentifiers; }
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResourceIdentifiers() const { return m_resourceIdentifiers; }
     inline bool ResourceIdentifiersHasBeenSet() const { return m_resourceIdentifiersHasBeenSet; }
+    template<typename ResourceIdentifiersT = Aws::Vector<Aws::String>>
+    void SetResourceIdentifiers(ResourceIdentifiersT&& value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers = std::forward<ResourceIdentifiersT>(value); }
+    template<typename ResourceIdentifiersT = Aws::Vector<Aws::String>>
+    RecoveryPointSelection& WithResourceIdentifiers(ResourceIdentifiersT&& value) { SetResourceIdentifiers(std::forward<ResourceIdentifiersT>(value)); return *this;}
+    template<typename ResourceIdentifiersT = Aws::String>
+    RecoveryPointSelection& AddResourceIdentifiers(ResourceIdentifiersT&& value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers.emplace_back(std::forward<ResourceIdentifiersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline void SetResourceIdentifiers(const Aws::Vector<Aws::String>& value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers = value; }
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline void SetResourceIdentifiers(Aws::Vector<Aws::String>&& value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers = std::move(value); }
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline RecoveryPointSelection& WithResourceIdentifiers(const Aws::Vector<Aws::String>& value) { SetResourceIdentifiers(value); return *this;}
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline RecoveryPointSelection& WithResourceIdentifiers(Aws::Vector<Aws::String>&& value) { SetResourceIdentifiers(std::move(value)); return *this;}
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline RecoveryPointSelection& AddResourceIdentifiers(const Aws::String& value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers.push_back(value); return *this; }
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline RecoveryPointSelection& AddResourceIdentifiers(Aws::String&& value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>These are the resources included in the resource selection (including type of
-     * resources and vaults).</p>
-     */
-    inline RecoveryPointSelection& AddResourceIdentifiers(const char* value) { m_resourceIdentifiersHasBeenSet = true; m_resourceIdentifiers.push_back(value); return *this; }
-
-
+    ///@{
     
-    inline const DateRange& GetDateRange() const{ return m_dateRange; }
-
-    
+    inline const DateRange& GetDateRange() const { return m_dateRange; }
     inline bool DateRangeHasBeenSet() const { return m_dateRangeHasBeenSet; }
-
-    
-    inline void SetDateRange(const DateRange& value) { m_dateRangeHasBeenSet = true; m_dateRange = value; }
-
-    
-    inline void SetDateRange(DateRange&& value) { m_dateRangeHasBeenSet = true; m_dateRange = std::move(value); }
-
-    
-    inline RecoveryPointSelection& WithDateRange(const DateRange& value) { SetDateRange(value); return *this;}
-
-    
-    inline RecoveryPointSelection& WithDateRange(DateRange&& value) { SetDateRange(std::move(value)); return *this;}
-
+    template<typename DateRangeT = DateRange>
+    void SetDateRange(DateRangeT&& value) { m_dateRangeHasBeenSet = true; m_dateRange = std::forward<DateRangeT>(value); }
+    template<typename DateRangeT = DateRange>
+    RecoveryPointSelection& WithDateRange(DateRangeT&& value) { SetDateRange(std::forward<DateRangeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_vaultNames;

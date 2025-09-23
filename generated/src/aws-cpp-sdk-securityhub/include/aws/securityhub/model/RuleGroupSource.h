@@ -35,169 +35,63 @@ namespace Model
   class RuleGroupSource
   {
   public:
-    AWS_SECURITYHUB_API RuleGroupSource();
+    AWS_SECURITYHUB_API RuleGroupSource() = default;
     AWS_SECURITYHUB_API RuleGroupSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API RuleGroupSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Stateful inspection criteria for a domain list rule group. A domain list rule
      * group determines access by specific protocols to specific domains.</p>
      */
-    inline const RuleGroupSourceListDetails& GetRulesSourceList() const{ return m_rulesSourceList; }
-
-    /**
-     * <p>Stateful inspection criteria for a domain list rule group. A domain list rule
-     * group determines access by specific protocols to specific domains.</p>
-     */
+    inline const RuleGroupSourceListDetails& GetRulesSourceList() const { return m_rulesSourceList; }
     inline bool RulesSourceListHasBeenSet() const { return m_rulesSourceListHasBeenSet; }
+    template<typename RulesSourceListT = RuleGroupSourceListDetails>
+    void SetRulesSourceList(RulesSourceListT&& value) { m_rulesSourceListHasBeenSet = true; m_rulesSourceList = std::forward<RulesSourceListT>(value); }
+    template<typename RulesSourceListT = RuleGroupSourceListDetails>
+    RuleGroupSource& WithRulesSourceList(RulesSourceListT&& value) { SetRulesSourceList(std::forward<RulesSourceListT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Stateful inspection criteria for a domain list rule group. A domain list rule
-     * group determines access by specific protocols to specific domains.</p>
-     */
-    inline void SetRulesSourceList(const RuleGroupSourceListDetails& value) { m_rulesSourceListHasBeenSet = true; m_rulesSourceList = value; }
-
-    /**
-     * <p>Stateful inspection criteria for a domain list rule group. A domain list rule
-     * group determines access by specific protocols to specific domains.</p>
-     */
-    inline void SetRulesSourceList(RuleGroupSourceListDetails&& value) { m_rulesSourceListHasBeenSet = true; m_rulesSourceList = std::move(value); }
-
-    /**
-     * <p>Stateful inspection criteria for a domain list rule group. A domain list rule
-     * group determines access by specific protocols to specific domains.</p>
-     */
-    inline RuleGroupSource& WithRulesSourceList(const RuleGroupSourceListDetails& value) { SetRulesSourceList(value); return *this;}
-
-    /**
-     * <p>Stateful inspection criteria for a domain list rule group. A domain list rule
-     * group determines access by specific protocols to specific domains.</p>
-     */
-    inline RuleGroupSource& WithRulesSourceList(RuleGroupSourceListDetails&& value) { SetRulesSourceList(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
      * prevention system (IPS) rules.</p>
      */
-    inline const Aws::String& GetRulesString() const{ return m_rulesString; }
-
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
+    inline const Aws::String& GetRulesString() const { return m_rulesString; }
     inline bool RulesStringHasBeenSet() const { return m_rulesStringHasBeenSet; }
+    template<typename RulesStringT = Aws::String>
+    void SetRulesString(RulesStringT&& value) { m_rulesStringHasBeenSet = true; m_rulesString = std::forward<RulesStringT>(value); }
+    template<typename RulesStringT = Aws::String>
+    RuleGroupSource& WithRulesString(RulesStringT&& value) { SetRulesString(std::forward<RulesStringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
-    inline void SetRulesString(const Aws::String& value) { m_rulesStringHasBeenSet = true; m_rulesString = value; }
-
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
-    inline void SetRulesString(Aws::String&& value) { m_rulesStringHasBeenSet = true; m_rulesString = std::move(value); }
-
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
-    inline void SetRulesString(const char* value) { m_rulesStringHasBeenSet = true; m_rulesString.assign(value); }
-
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
-    inline RuleGroupSource& WithRulesString(const Aws::String& value) { SetRulesString(value); return *this;}
-
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
-    inline RuleGroupSource& WithRulesString(Aws::String&& value) { SetRulesString(std::move(value)); return *this;}
-
-    /**
-     * <p>Stateful inspection criteria, provided in Suricata compatible intrusion
-     * prevention system (IPS) rules.</p>
-     */
-    inline RuleGroupSource& WithRulesString(const char* value) { SetRulesString(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Suricata rule specifications.</p>
      */
-    inline const Aws::Vector<RuleGroupSourceStatefulRulesDetails>& GetStatefulRules() const{ return m_statefulRules; }
-
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
+    inline const Aws::Vector<RuleGroupSourceStatefulRulesDetails>& GetStatefulRules() const { return m_statefulRules; }
     inline bool StatefulRulesHasBeenSet() const { return m_statefulRulesHasBeenSet; }
+    template<typename StatefulRulesT = Aws::Vector<RuleGroupSourceStatefulRulesDetails>>
+    void SetStatefulRules(StatefulRulesT&& value) { m_statefulRulesHasBeenSet = true; m_statefulRules = std::forward<StatefulRulesT>(value); }
+    template<typename StatefulRulesT = Aws::Vector<RuleGroupSourceStatefulRulesDetails>>
+    RuleGroupSource& WithStatefulRules(StatefulRulesT&& value) { SetStatefulRules(std::forward<StatefulRulesT>(value)); return *this;}
+    template<typename StatefulRulesT = RuleGroupSourceStatefulRulesDetails>
+    RuleGroupSource& AddStatefulRules(StatefulRulesT&& value) { m_statefulRulesHasBeenSet = true; m_statefulRules.emplace_back(std::forward<StatefulRulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
-    inline void SetStatefulRules(const Aws::Vector<RuleGroupSourceStatefulRulesDetails>& value) { m_statefulRulesHasBeenSet = true; m_statefulRules = value; }
-
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
-    inline void SetStatefulRules(Aws::Vector<RuleGroupSourceStatefulRulesDetails>&& value) { m_statefulRulesHasBeenSet = true; m_statefulRules = std::move(value); }
-
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
-    inline RuleGroupSource& WithStatefulRules(const Aws::Vector<RuleGroupSourceStatefulRulesDetails>& value) { SetStatefulRules(value); return *this;}
-
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
-    inline RuleGroupSource& WithStatefulRules(Aws::Vector<RuleGroupSourceStatefulRulesDetails>&& value) { SetStatefulRules(std::move(value)); return *this;}
-
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
-    inline RuleGroupSource& AddStatefulRules(const RuleGroupSourceStatefulRulesDetails& value) { m_statefulRulesHasBeenSet = true; m_statefulRules.push_back(value); return *this; }
-
-    /**
-     * <p>Suricata rule specifications.</p>
-     */
-    inline RuleGroupSource& AddStatefulRules(RuleGroupSourceStatefulRulesDetails&& value) { m_statefulRulesHasBeenSet = true; m_statefulRules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The stateless rules and custom actions used by a stateless rule group.</p>
      */
-    inline const RuleGroupSourceStatelessRulesAndCustomActionsDetails& GetStatelessRulesAndCustomActions() const{ return m_statelessRulesAndCustomActions; }
-
-    /**
-     * <p>The stateless rules and custom actions used by a stateless rule group.</p>
-     */
+    inline const RuleGroupSourceStatelessRulesAndCustomActionsDetails& GetStatelessRulesAndCustomActions() const { return m_statelessRulesAndCustomActions; }
     inline bool StatelessRulesAndCustomActionsHasBeenSet() const { return m_statelessRulesAndCustomActionsHasBeenSet; }
-
-    /**
-     * <p>The stateless rules and custom actions used by a stateless rule group.</p>
-     */
-    inline void SetStatelessRulesAndCustomActions(const RuleGroupSourceStatelessRulesAndCustomActionsDetails& value) { m_statelessRulesAndCustomActionsHasBeenSet = true; m_statelessRulesAndCustomActions = value; }
-
-    /**
-     * <p>The stateless rules and custom actions used by a stateless rule group.</p>
-     */
-    inline void SetStatelessRulesAndCustomActions(RuleGroupSourceStatelessRulesAndCustomActionsDetails&& value) { m_statelessRulesAndCustomActionsHasBeenSet = true; m_statelessRulesAndCustomActions = std::move(value); }
-
-    /**
-     * <p>The stateless rules and custom actions used by a stateless rule group.</p>
-     */
-    inline RuleGroupSource& WithStatelessRulesAndCustomActions(const RuleGroupSourceStatelessRulesAndCustomActionsDetails& value) { SetStatelessRulesAndCustomActions(value); return *this;}
-
-    /**
-     * <p>The stateless rules and custom actions used by a stateless rule group.</p>
-     */
-    inline RuleGroupSource& WithStatelessRulesAndCustomActions(RuleGroupSourceStatelessRulesAndCustomActionsDetails&& value) { SetStatelessRulesAndCustomActions(std::move(value)); return *this;}
-
+    template<typename StatelessRulesAndCustomActionsT = RuleGroupSourceStatelessRulesAndCustomActionsDetails>
+    void SetStatelessRulesAndCustomActions(StatelessRulesAndCustomActionsT&& value) { m_statelessRulesAndCustomActionsHasBeenSet = true; m_statelessRulesAndCustomActions = std::forward<StatelessRulesAndCustomActionsT>(value); }
+    template<typename StatelessRulesAndCustomActionsT = RuleGroupSourceStatelessRulesAndCustomActionsDetails>
+    RuleGroupSource& WithStatelessRulesAndCustomActions(StatelessRulesAndCustomActionsT&& value) { SetStatelessRulesAndCustomActions(std::forward<StatelessRulesAndCustomActionsT>(value)); return *this;}
+    ///@}
   private:
 
     RuleGroupSourceListDetails m_rulesSourceList;

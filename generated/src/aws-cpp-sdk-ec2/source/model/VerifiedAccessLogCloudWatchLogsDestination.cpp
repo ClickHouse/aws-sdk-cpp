@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessLogCloudWatchLogsDestination::VerifiedAccessLogCloudWatchLogsDestination() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_deliveryStatusHasBeenSet(false),
-    m_logGroupHasBeenSet(false)
-{
-}
-
-VerifiedAccessLogCloudWatchLogsDestination::VerifiedAccessLogCloudWatchLogsDestination(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_deliveryStatusHasBeenSet(false),
-    m_logGroupHasBeenSet(false)
+VerifiedAccessLogCloudWatchLogsDestination::VerifiedAccessLogCloudWatchLogsDestination(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

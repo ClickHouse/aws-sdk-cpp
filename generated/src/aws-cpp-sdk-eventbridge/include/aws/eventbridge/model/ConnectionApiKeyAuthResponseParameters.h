@@ -32,60 +32,24 @@ namespace Model
   class ConnectionApiKeyAuthResponseParameters
   {
   public:
-    AWS_EVENTBRIDGE_API ConnectionApiKeyAuthResponseParameters();
+    AWS_EVENTBRIDGE_API ConnectionApiKeyAuthResponseParameters() = default;
     AWS_EVENTBRIDGE_API ConnectionApiKeyAuthResponseParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API ConnectionApiKeyAuthResponseParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the header to use for the <code>APIKeyValue</code> used for
      * authorization.</p>
      */
-    inline const Aws::String& GetApiKeyName() const{ return m_apiKeyName; }
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
+    inline const Aws::String& GetApiKeyName() const { return m_apiKeyName; }
     inline bool ApiKeyNameHasBeenSet() const { return m_apiKeyNameHasBeenSet; }
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
-    inline void SetApiKeyName(const Aws::String& value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName = value; }
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
-    inline void SetApiKeyName(Aws::String&& value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName = std::move(value); }
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
-    inline void SetApiKeyName(const char* value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName.assign(value); }
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
-    inline ConnectionApiKeyAuthResponseParameters& WithApiKeyName(const Aws::String& value) { SetApiKeyName(value); return *this;}
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
-    inline ConnectionApiKeyAuthResponseParameters& WithApiKeyName(Aws::String&& value) { SetApiKeyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the header to use for the <code>APIKeyValue</code> used for
-     * authorization.</p>
-     */
-    inline ConnectionApiKeyAuthResponseParameters& WithApiKeyName(const char* value) { SetApiKeyName(value); return *this;}
-
+    template<typename ApiKeyNameT = Aws::String>
+    void SetApiKeyName(ApiKeyNameT&& value) { m_apiKeyNameHasBeenSet = true; m_apiKeyName = std::forward<ApiKeyNameT>(value); }
+    template<typename ApiKeyNameT = Aws::String>
+    ConnectionApiKeyAuthResponseParameters& WithApiKeyName(ApiKeyNameT&& value) { SetApiKeyName(std::forward<ApiKeyNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiKeyName;

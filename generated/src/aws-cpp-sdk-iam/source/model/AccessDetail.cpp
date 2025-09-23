@@ -20,25 +20,7 @@ namespace IAM
 namespace Model
 {
 
-AccessDetail::AccessDetail() : 
-    m_serviceNameHasBeenSet(false),
-    m_serviceNamespaceHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_entityPathHasBeenSet(false),
-    m_lastAuthenticatedTimeHasBeenSet(false),
-    m_totalAuthenticatedEntities(0),
-    m_totalAuthenticatedEntitiesHasBeenSet(false)
-{
-}
-
-AccessDetail::AccessDetail(const XmlNode& xmlNode) : 
-    m_serviceNameHasBeenSet(false),
-    m_serviceNamespaceHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_entityPathHasBeenSet(false),
-    m_lastAuthenticatedTimeHasBeenSet(false),
-    m_totalAuthenticatedEntities(0),
-    m_totalAuthenticatedEntitiesHasBeenSet(false)
+AccessDetail::AccessDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

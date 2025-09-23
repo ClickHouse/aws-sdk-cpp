@@ -18,15 +18,7 @@ namespace KafkaConnect
 namespace Model
 {
 
-CapacityUpdate::CapacityUpdate() : 
-    m_autoScalingHasBeenSet(false),
-    m_provisionedCapacityHasBeenSet(false)
-{
-}
-
-CapacityUpdate::CapacityUpdate(JsonView jsonValue) : 
-    m_autoScalingHasBeenSet(false),
-    m_provisionedCapacityHasBeenSet(false)
+CapacityUpdate::CapacityUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CapacityUpdate& CapacityUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("autoScaling"))
   {
     m_autoScaling = jsonValue.GetObject("autoScaling");
-
     m_autoScalingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("provisionedCapacity"))
   {
     m_provisionedCapacity = jsonValue.GetObject("provisionedCapacity");
-
     m_provisionedCapacityHasBeenSet = true;
   }
-
   return *this;
 }
 

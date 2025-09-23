@@ -18,19 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-TGWOnDeviceServiceConfiguration::TGWOnDeviceServiceConfiguration() : 
-    m_storageLimit(0),
-    m_storageLimitHasBeenSet(false),
-    m_storageUnit(StorageUnit::NOT_SET),
-    m_storageUnitHasBeenSet(false)
-{
-}
-
-TGWOnDeviceServiceConfiguration::TGWOnDeviceServiceConfiguration(JsonView jsonValue) : 
-    m_storageLimit(0),
-    m_storageLimitHasBeenSet(false),
-    m_storageUnit(StorageUnit::NOT_SET),
-    m_storageUnitHasBeenSet(false)
+TGWOnDeviceServiceConfiguration::TGWOnDeviceServiceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ TGWOnDeviceServiceConfiguration& TGWOnDeviceServiceConfiguration::operator =(Jso
   if(jsonValue.ValueExists("StorageLimit"))
   {
     m_storageLimit = jsonValue.GetInteger("StorageLimit");
-
     m_storageLimitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StorageUnit"))
   {
     m_storageUnit = StorageUnitMapper::GetStorageUnitForName(jsonValue.GetString("StorageUnit"));
-
     m_storageUnitHasBeenSet = true;
   }
-
   return *this;
 }
 

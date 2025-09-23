@@ -32,42 +32,23 @@ namespace Model
   class IotSiteWiseInputIdentifier
   {
   public:
-    AWS_IOTEVENTS_API IotSiteWiseInputIdentifier();
+    AWS_IOTEVENTS_API IotSiteWiseInputIdentifier() = default;
     AWS_IOTEVENTS_API IotSiteWiseInputIdentifier(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API IotSiteWiseInputIdentifier& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The identifier of the AWS IoT SiteWise asset model property. </p>
      */
-    inline const IotSiteWiseAssetModelPropertyIdentifier& GetIotSiteWiseAssetModelPropertyIdentifier() const{ return m_iotSiteWiseAssetModelPropertyIdentifier; }
-
-    /**
-     * <p> The identifier of the AWS IoT SiteWise asset model property. </p>
-     */
+    inline const IotSiteWiseAssetModelPropertyIdentifier& GetIotSiteWiseAssetModelPropertyIdentifier() const { return m_iotSiteWiseAssetModelPropertyIdentifier; }
     inline bool IotSiteWiseAssetModelPropertyIdentifierHasBeenSet() const { return m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet; }
-
-    /**
-     * <p> The identifier of the AWS IoT SiteWise asset model property. </p>
-     */
-    inline void SetIotSiteWiseAssetModelPropertyIdentifier(const IotSiteWiseAssetModelPropertyIdentifier& value) { m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet = true; m_iotSiteWiseAssetModelPropertyIdentifier = value; }
-
-    /**
-     * <p> The identifier of the AWS IoT SiteWise asset model property. </p>
-     */
-    inline void SetIotSiteWiseAssetModelPropertyIdentifier(IotSiteWiseAssetModelPropertyIdentifier&& value) { m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet = true; m_iotSiteWiseAssetModelPropertyIdentifier = std::move(value); }
-
-    /**
-     * <p> The identifier of the AWS IoT SiteWise asset model property. </p>
-     */
-    inline IotSiteWiseInputIdentifier& WithIotSiteWiseAssetModelPropertyIdentifier(const IotSiteWiseAssetModelPropertyIdentifier& value) { SetIotSiteWiseAssetModelPropertyIdentifier(value); return *this;}
-
-    /**
-     * <p> The identifier of the AWS IoT SiteWise asset model property. </p>
-     */
-    inline IotSiteWiseInputIdentifier& WithIotSiteWiseAssetModelPropertyIdentifier(IotSiteWiseAssetModelPropertyIdentifier&& value) { SetIotSiteWiseAssetModelPropertyIdentifier(std::move(value)); return *this;}
-
+    template<typename IotSiteWiseAssetModelPropertyIdentifierT = IotSiteWiseAssetModelPropertyIdentifier>
+    void SetIotSiteWiseAssetModelPropertyIdentifier(IotSiteWiseAssetModelPropertyIdentifierT&& value) { m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet = true; m_iotSiteWiseAssetModelPropertyIdentifier = std::forward<IotSiteWiseAssetModelPropertyIdentifierT>(value); }
+    template<typename IotSiteWiseAssetModelPropertyIdentifierT = IotSiteWiseAssetModelPropertyIdentifier>
+    IotSiteWiseInputIdentifier& WithIotSiteWiseAssetModelPropertyIdentifier(IotSiteWiseAssetModelPropertyIdentifierT&& value) { SetIotSiteWiseAssetModelPropertyIdentifier(std::forward<IotSiteWiseAssetModelPropertyIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     IotSiteWiseAssetModelPropertyIdentifier m_iotSiteWiseAssetModelPropertyIdentifier;

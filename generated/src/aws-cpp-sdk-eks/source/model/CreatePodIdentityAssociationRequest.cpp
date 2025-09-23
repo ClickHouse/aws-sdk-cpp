@@ -12,17 +12,6 @@ using namespace Aws::EKS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreatePodIdentityAssociationRequest::CreatePodIdentityAssociationRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_serviceAccountHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreatePodIdentityAssociationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -59,6 +48,18 @@ Aws::String CreatePodIdentityAssociationRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_disableSessionTagsHasBeenSet)
+  {
+   payload.WithBool("disableSessionTags", m_disableSessionTags);
+
+  }
+
+  if(m_targetRoleArnHasBeenSet)
+  {
+   payload.WithString("targetRoleArn", m_targetRoleArn);
 
   }
 

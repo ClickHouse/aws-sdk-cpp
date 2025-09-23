@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-PartitionIndex::PartitionIndex() : 
-    m_keysHasBeenSet(false),
-    m_indexNameHasBeenSet(false)
-{
-}
-
-PartitionIndex::PartitionIndex(JsonView jsonValue) : 
-    m_keysHasBeenSet(false),
-    m_indexNameHasBeenSet(false)
+PartitionIndex::PartitionIndex(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ PartitionIndex& PartitionIndex::operator =(JsonView jsonValue)
     }
     m_keysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   return *this;
 }
 

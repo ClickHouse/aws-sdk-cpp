@@ -35,86 +35,40 @@ namespace Model
   class LambdaSavingsOpportunityAfterDiscounts
   {
   public:
-    AWS_COMPUTEOPTIMIZER_API LambdaSavingsOpportunityAfterDiscounts();
+    AWS_COMPUTEOPTIMIZER_API LambdaSavingsOpportunityAfterDiscounts() = default;
     AWS_COMPUTEOPTIMIZER_API LambdaSavingsOpportunityAfterDiscounts(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API LambdaSavingsOpportunityAfterDiscounts& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The estimated monthly savings possible as a percentage of monthly cost by
      * adopting Compute Optimizer’s Lambda function recommendations. This includes any
      * applicable Savings Plans discounts. </p>
      */
-    inline double GetSavingsOpportunityPercentage() const{ return m_savingsOpportunityPercentage; }
-
-    /**
-     * <p> The estimated monthly savings possible as a percentage of monthly cost by
-     * adopting Compute Optimizer’s Lambda function recommendations. This includes any
-     * applicable Savings Plans discounts. </p>
-     */
+    inline double GetSavingsOpportunityPercentage() const { return m_savingsOpportunityPercentage; }
     inline bool SavingsOpportunityPercentageHasBeenSet() const { return m_savingsOpportunityPercentageHasBeenSet; }
-
-    /**
-     * <p> The estimated monthly savings possible as a percentage of monthly cost by
-     * adopting Compute Optimizer’s Lambda function recommendations. This includes any
-     * applicable Savings Plans discounts. </p>
-     */
     inline void SetSavingsOpportunityPercentage(double value) { m_savingsOpportunityPercentageHasBeenSet = true; m_savingsOpportunityPercentage = value; }
-
-    /**
-     * <p> The estimated monthly savings possible as a percentage of monthly cost by
-     * adopting Compute Optimizer’s Lambda function recommendations. This includes any
-     * applicable Savings Plans discounts. </p>
-     */
     inline LambdaSavingsOpportunityAfterDiscounts& WithSavingsOpportunityPercentage(double value) { SetSavingsOpportunityPercentage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The estimated monthly savings possible by adopting Compute Optimizer’s
      * Lambda function recommendations. This includes any applicable Savings Plans
      * discounts. </p>
      */
-    inline const LambdaEstimatedMonthlySavings& GetEstimatedMonthlySavings() const{ return m_estimatedMonthlySavings; }
-
-    /**
-     * <p> The estimated monthly savings possible by adopting Compute Optimizer’s
-     * Lambda function recommendations. This includes any applicable Savings Plans
-     * discounts. </p>
-     */
+    inline const LambdaEstimatedMonthlySavings& GetEstimatedMonthlySavings() const { return m_estimatedMonthlySavings; }
     inline bool EstimatedMonthlySavingsHasBeenSet() const { return m_estimatedMonthlySavingsHasBeenSet; }
-
-    /**
-     * <p> The estimated monthly savings possible by adopting Compute Optimizer’s
-     * Lambda function recommendations. This includes any applicable Savings Plans
-     * discounts. </p>
-     */
-    inline void SetEstimatedMonthlySavings(const LambdaEstimatedMonthlySavings& value) { m_estimatedMonthlySavingsHasBeenSet = true; m_estimatedMonthlySavings = value; }
-
-    /**
-     * <p> The estimated monthly savings possible by adopting Compute Optimizer’s
-     * Lambda function recommendations. This includes any applicable Savings Plans
-     * discounts. </p>
-     */
-    inline void SetEstimatedMonthlySavings(LambdaEstimatedMonthlySavings&& value) { m_estimatedMonthlySavingsHasBeenSet = true; m_estimatedMonthlySavings = std::move(value); }
-
-    /**
-     * <p> The estimated monthly savings possible by adopting Compute Optimizer’s
-     * Lambda function recommendations. This includes any applicable Savings Plans
-     * discounts. </p>
-     */
-    inline LambdaSavingsOpportunityAfterDiscounts& WithEstimatedMonthlySavings(const LambdaEstimatedMonthlySavings& value) { SetEstimatedMonthlySavings(value); return *this;}
-
-    /**
-     * <p> The estimated monthly savings possible by adopting Compute Optimizer’s
-     * Lambda function recommendations. This includes any applicable Savings Plans
-     * discounts. </p>
-     */
-    inline LambdaSavingsOpportunityAfterDiscounts& WithEstimatedMonthlySavings(LambdaEstimatedMonthlySavings&& value) { SetEstimatedMonthlySavings(std::move(value)); return *this;}
-
+    template<typename EstimatedMonthlySavingsT = LambdaEstimatedMonthlySavings>
+    void SetEstimatedMonthlySavings(EstimatedMonthlySavingsT&& value) { m_estimatedMonthlySavingsHasBeenSet = true; m_estimatedMonthlySavings = std::forward<EstimatedMonthlySavingsT>(value); }
+    template<typename EstimatedMonthlySavingsT = LambdaEstimatedMonthlySavings>
+    LambdaSavingsOpportunityAfterDiscounts& WithEstimatedMonthlySavings(EstimatedMonthlySavingsT&& value) { SetEstimatedMonthlySavings(std::forward<EstimatedMonthlySavingsT>(value)); return *this;}
+    ///@}
   private:
 
-    double m_savingsOpportunityPercentage;
+    double m_savingsOpportunityPercentage{0.0};
     bool m_savingsOpportunityPercentageHasBeenSet = false;
 
     LambdaEstimatedMonthlySavings m_estimatedMonthlySavings;

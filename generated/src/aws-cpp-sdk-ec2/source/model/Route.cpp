@@ -20,47 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Route::Route() : 
-    m_destinationCidrBlockHasBeenSet(false),
-    m_destinationIpv6CidrBlockHasBeenSet(false),
-    m_destinationPrefixListIdHasBeenSet(false),
-    m_egressOnlyInternetGatewayIdHasBeenSet(false),
-    m_gatewayIdHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceOwnerIdHasBeenSet(false),
-    m_natGatewayIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_localGatewayIdHasBeenSet(false),
-    m_carrierGatewayIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_origin(RouteOrigin::NOT_SET),
-    m_originHasBeenSet(false),
-    m_state(RouteState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false),
-    m_coreNetworkArnHasBeenSet(false)
-{
-}
-
-Route::Route(const XmlNode& xmlNode) : 
-    m_destinationCidrBlockHasBeenSet(false),
-    m_destinationIpv6CidrBlockHasBeenSet(false),
-    m_destinationPrefixListIdHasBeenSet(false),
-    m_egressOnlyInternetGatewayIdHasBeenSet(false),
-    m_gatewayIdHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceOwnerIdHasBeenSet(false),
-    m_natGatewayIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_localGatewayIdHasBeenSet(false),
-    m_carrierGatewayIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_origin(RouteOrigin::NOT_SET),
-    m_originHasBeenSet(false),
-    m_state(RouteState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false),
-    m_coreNetworkArnHasBeenSet(false)
+Route::Route(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -146,13 +106,13 @@ Route& Route::operator =(const XmlNode& xmlNode)
     XmlNode originNode = resultNode.FirstChild("origin");
     if(!originNode.IsNull())
     {
-      m_origin = RouteOriginMapper::GetRouteOriginForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originNode.GetText()).c_str()).c_str());
+      m_origin = RouteOriginMapper::GetRouteOriginForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originNode.GetText()).c_str()));
       m_originHasBeenSet = true;
     }
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = RouteStateMapper::GetRouteStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = RouteStateMapper::GetRouteStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode vpcPeeringConnectionIdNode = resultNode.FirstChild("vpcPeeringConnectionId");
@@ -166,6 +126,18 @@ Route& Route::operator =(const XmlNode& xmlNode)
     {
       m_coreNetworkArn = Aws::Utils::Xml::DecodeEscapedXmlText(coreNetworkArnNode.GetText());
       m_coreNetworkArnHasBeenSet = true;
+    }
+    XmlNode odbNetworkArnNode = resultNode.FirstChild("odbNetworkArn");
+    if(!odbNetworkArnNode.IsNull())
+    {
+      m_odbNetworkArn = Aws::Utils::Xml::DecodeEscapedXmlText(odbNetworkArnNode.GetText());
+      m_odbNetworkArnHasBeenSet = true;
+    }
+    XmlNode ipAddressNode = resultNode.FirstChild("ipAddress");
+    if(!ipAddressNode.IsNull())
+    {
+      m_ipAddress = Aws::Utils::Xml::DecodeEscapedXmlText(ipAddressNode.GetText());
+      m_ipAddressHasBeenSet = true;
     }
   }
 
@@ -236,12 +208,12 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
 
   if(m_originHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Origin=" << RouteOriginMapper::GetNameForRouteOrigin(m_origin) << "&";
+      oStream << location << index << locationValue << ".Origin=" << StringUtils::URLEncode(RouteOriginMapper::GetNameForRouteOrigin(m_origin)) << "&";
   }
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << RouteStateMapper::GetNameForRouteState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(RouteStateMapper::GetNameForRouteState(m_state)) << "&";
   }
 
   if(m_vpcPeeringConnectionIdHasBeenSet)
@@ -252,6 +224,16 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   if(m_coreNetworkArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".CoreNetworkArn=" << StringUtils::URLEncode(m_coreNetworkArn.c_str()) << "&";
+  }
+
+  if(m_odbNetworkArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OdbNetworkArn=" << StringUtils::URLEncode(m_odbNetworkArn.c_str()) << "&";
+  }
+
+  if(m_ipAddressHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".IpAddress=" << StringUtils::URLEncode(m_ipAddress.c_str()) << "&";
   }
 
 }
@@ -308,11 +290,11 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_originHasBeenSet)
   {
-      oStream << location << ".Origin=" << RouteOriginMapper::GetNameForRouteOrigin(m_origin) << "&";
+      oStream << location << ".Origin=" << StringUtils::URLEncode(RouteOriginMapper::GetNameForRouteOrigin(m_origin)) << "&";
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << RouteStateMapper::GetNameForRouteState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(RouteStateMapper::GetNameForRouteState(m_state)) << "&";
   }
   if(m_vpcPeeringConnectionIdHasBeenSet)
   {
@@ -321,6 +303,14 @@ void Route::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_coreNetworkArnHasBeenSet)
   {
       oStream << location << ".CoreNetworkArn=" << StringUtils::URLEncode(m_coreNetworkArn.c_str()) << "&";
+  }
+  if(m_odbNetworkArnHasBeenSet)
+  {
+      oStream << location << ".OdbNetworkArn=" << StringUtils::URLEncode(m_odbNetworkArn.c_str()) << "&";
+  }
+  if(m_ipAddressHasBeenSet)
+  {
+      oStream << location << ".IpAddress=" << StringUtils::URLEncode(m_ipAddress.c_str()) << "&";
   }
 }
 

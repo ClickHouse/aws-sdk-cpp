@@ -18,15 +18,7 @@ namespace Firehose
 namespace Model
 {
 
-ElasticsearchRetryOptions::ElasticsearchRetryOptions() : 
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
-{
-}
-
-ElasticsearchRetryOptions::ElasticsearchRetryOptions(JsonView jsonValue) : 
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
+ElasticsearchRetryOptions::ElasticsearchRetryOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ElasticsearchRetryOptions& ElasticsearchRetryOptions::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("DurationInSeconds"))
   {
     m_durationInSeconds = jsonValue.GetInteger("DurationInSeconds");
-
     m_durationInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-DataSource::DataSource() : 
-    m_s3ConfigHasBeenSet(false)
-{
-}
-
-DataSource::DataSource(JsonView jsonValue) : 
-    m_s3ConfigHasBeenSet(false)
+DataSource::DataSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ DataSource& DataSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3Config"))
   {
     m_s3Config = jsonValue.GetObject("S3Config");
-
     m_s3ConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

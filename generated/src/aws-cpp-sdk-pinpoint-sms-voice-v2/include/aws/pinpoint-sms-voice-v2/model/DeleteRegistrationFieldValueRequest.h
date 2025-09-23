@@ -21,7 +21,7 @@ namespace Model
   class DeleteRegistrationFieldValueRequest : public PinpointSMSVoiceV2Request
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API DeleteRegistrationFieldValueRequest();
+    AWS_PINPOINTSMSVOICEV2_API DeleteRegistrationFieldValueRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_PINPOINTSMSVOICEV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the registration.</p>
      */
-    inline const Aws::String& GetRegistrationId() const{ return m_registrationId; }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
+    inline const Aws::String& GetRegistrationId() const { return m_registrationId; }
     inline bool RegistrationIdHasBeenSet() const { return m_registrationIdHasBeenSet; }
+    template<typename RegistrationIdT = Aws::String>
+    void SetRegistrationId(RegistrationIdT&& value) { m_registrationIdHasBeenSet = true; m_registrationId = std::forward<RegistrationIdT>(value); }
+    template<typename RegistrationIdT = Aws::String>
+    DeleteRegistrationFieldValueRequest& WithRegistrationId(RegistrationIdT&& value) { SetRegistrationId(std::forward<RegistrationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline void SetRegistrationId(const Aws::String& value) { m_registrationIdHasBeenSet = true; m_registrationId = value; }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline void SetRegistrationId(Aws::String&& value) { m_registrationIdHasBeenSet = true; m_registrationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline void SetRegistrationId(const char* value) { m_registrationIdHasBeenSet = true; m_registrationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline DeleteRegistrationFieldValueRequest& WithRegistrationId(const Aws::String& value) { SetRegistrationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline DeleteRegistrationFieldValueRequest& WithRegistrationId(Aws::String&& value) { SetRegistrationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline DeleteRegistrationFieldValueRequest& WithRegistrationId(const char* value) { SetRegistrationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to the registration form field. You can use
      * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
      */
-    inline const Aws::String& GetFieldPath() const{ return m_fieldPath; }
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
+    inline const Aws::String& GetFieldPath() const { return m_fieldPath; }
     inline bool FieldPathHasBeenSet() const { return m_fieldPathHasBeenSet; }
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
-    inline void SetFieldPath(const Aws::String& value) { m_fieldPathHasBeenSet = true; m_fieldPath = value; }
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
-    inline void SetFieldPath(Aws::String&& value) { m_fieldPathHasBeenSet = true; m_fieldPath = std::move(value); }
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
-    inline void SetFieldPath(const char* value) { m_fieldPathHasBeenSet = true; m_fieldPath.assign(value); }
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
-    inline DeleteRegistrationFieldValueRequest& WithFieldPath(const Aws::String& value) { SetFieldPath(value); return *this;}
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
-    inline DeleteRegistrationFieldValueRequest& WithFieldPath(Aws::String&& value) { SetFieldPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the registration form field. You can use
-     * <a>DescribeRegistrationFieldDefinitions</a> for a list of <b>FieldPaths</b>.</p>
-     */
-    inline DeleteRegistrationFieldValueRequest& WithFieldPath(const char* value) { SetFieldPath(value); return *this;}
-
+    template<typename FieldPathT = Aws::String>
+    void SetFieldPath(FieldPathT&& value) { m_fieldPathHasBeenSet = true; m_fieldPath = std::forward<FieldPathT>(value); }
+    template<typename FieldPathT = Aws::String>
+    DeleteRegistrationFieldValueRequest& WithFieldPath(FieldPathT&& value) { SetFieldPath(std::forward<FieldPathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_registrationId;

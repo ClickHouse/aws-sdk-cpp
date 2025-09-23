@@ -32,52 +32,23 @@ namespace Model
   class RemoteSourceCodeAnalysisServerInfo
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API RemoteSourceCodeAnalysisServerInfo();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API RemoteSourceCodeAnalysisServerInfo() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API RemoteSourceCodeAnalysisServerInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API RemoteSourceCodeAnalysisServerInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time when the remote source code server was configured.</p>
      */
-    inline const Aws::String& GetRemoteSourceCodeAnalysisServerConfigurationTimestamp() const{ return m_remoteSourceCodeAnalysisServerConfigurationTimestamp; }
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
+    inline const Aws::String& GetRemoteSourceCodeAnalysisServerConfigurationTimestamp() const { return m_remoteSourceCodeAnalysisServerConfigurationTimestamp; }
     inline bool RemoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet() const { return m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet; }
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
-    inline void SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(const Aws::String& value) { m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet = true; m_remoteSourceCodeAnalysisServerConfigurationTimestamp = value; }
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
-    inline void SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(Aws::String&& value) { m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet = true; m_remoteSourceCodeAnalysisServerConfigurationTimestamp = std::move(value); }
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
-    inline void SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(const char* value) { m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet = true; m_remoteSourceCodeAnalysisServerConfigurationTimestamp.assign(value); }
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
-    inline RemoteSourceCodeAnalysisServerInfo& WithRemoteSourceCodeAnalysisServerConfigurationTimestamp(const Aws::String& value) { SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(value); return *this;}
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
-    inline RemoteSourceCodeAnalysisServerInfo& WithRemoteSourceCodeAnalysisServerConfigurationTimestamp(Aws::String&& value) { SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when the remote source code server was configured.</p>
-     */
-    inline RemoteSourceCodeAnalysisServerInfo& WithRemoteSourceCodeAnalysisServerConfigurationTimestamp(const char* value) { SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(value); return *this;}
-
+    template<typename RemoteSourceCodeAnalysisServerConfigurationTimestampT = Aws::String>
+    void SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(RemoteSourceCodeAnalysisServerConfigurationTimestampT&& value) { m_remoteSourceCodeAnalysisServerConfigurationTimestampHasBeenSet = true; m_remoteSourceCodeAnalysisServerConfigurationTimestamp = std::forward<RemoteSourceCodeAnalysisServerConfigurationTimestampT>(value); }
+    template<typename RemoteSourceCodeAnalysisServerConfigurationTimestampT = Aws::String>
+    RemoteSourceCodeAnalysisServerInfo& WithRemoteSourceCodeAnalysisServerConfigurationTimestamp(RemoteSourceCodeAnalysisServerConfigurationTimestampT&& value) { SetRemoteSourceCodeAnalysisServerConfigurationTimestamp(std::forward<RemoteSourceCodeAnalysisServerConfigurationTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_remoteSourceCodeAnalysisServerConfigurationTimestamp;

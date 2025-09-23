@@ -36,156 +36,61 @@ namespace Model
   class IngestionDestination
   {
   public:
-    AWS_APPFABRIC_API IngestionDestination();
+    AWS_APPFABRIC_API IngestionDestination() = default;
     AWS_APPFABRIC_API IngestionDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API IngestionDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    IngestionDestination& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
-    inline IngestionDestination& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
-    inline IngestionDestination& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion destination.</p>
-     */
-    inline IngestionDestination& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
      */
-    inline const Aws::String& GetIngestionArn() const{ return m_ingestionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
+    inline const Aws::String& GetIngestionArn() const { return m_ingestionArn; }
     inline bool IngestionArnHasBeenSet() const { return m_ingestionArnHasBeenSet; }
+    template<typename IngestionArnT = Aws::String>
+    void SetIngestionArn(IngestionArnT&& value) { m_ingestionArnHasBeenSet = true; m_ingestionArn = std::forward<IngestionArnT>(value); }
+    template<typename IngestionArnT = Aws::String>
+    IngestionDestination& WithIngestionArn(IngestionArnT&& value) { SetIngestionArn(std::forward<IngestionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline void SetIngestionArn(const Aws::String& value) { m_ingestionArnHasBeenSet = true; m_ingestionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline void SetIngestionArn(Aws::String&& value) { m_ingestionArnHasBeenSet = true; m_ingestionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline void SetIngestionArn(const char* value) { m_ingestionArnHasBeenSet = true; m_ingestionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline IngestionDestination& WithIngestionArn(const Aws::String& value) { SetIngestionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline IngestionDestination& WithIngestionArn(Aws::String&& value) { SetIngestionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline IngestionDestination& WithIngestionArn(const char* value) { SetIngestionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about how ingested data is processed.</p>
      */
-    inline const ProcessingConfiguration& GetProcessingConfiguration() const{ return m_processingConfiguration; }
-
-    /**
-     * <p>Contains information about how ingested data is processed.</p>
-     */
+    inline const ProcessingConfiguration& GetProcessingConfiguration() const { return m_processingConfiguration; }
     inline bool ProcessingConfigurationHasBeenSet() const { return m_processingConfigurationHasBeenSet; }
+    template<typename ProcessingConfigurationT = ProcessingConfiguration>
+    void SetProcessingConfiguration(ProcessingConfigurationT&& value) { m_processingConfigurationHasBeenSet = true; m_processingConfiguration = std::forward<ProcessingConfigurationT>(value); }
+    template<typename ProcessingConfigurationT = ProcessingConfiguration>
+    IngestionDestination& WithProcessingConfiguration(ProcessingConfigurationT&& value) { SetProcessingConfiguration(std::forward<ProcessingConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about how ingested data is processed.</p>
-     */
-    inline void SetProcessingConfiguration(const ProcessingConfiguration& value) { m_processingConfigurationHasBeenSet = true; m_processingConfiguration = value; }
-
-    /**
-     * <p>Contains information about how ingested data is processed.</p>
-     */
-    inline void SetProcessingConfiguration(ProcessingConfiguration&& value) { m_processingConfigurationHasBeenSet = true; m_processingConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains information about how ingested data is processed.</p>
-     */
-    inline IngestionDestination& WithProcessingConfiguration(const ProcessingConfiguration& value) { SetProcessingConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains information about how ingested data is processed.</p>
-     */
-    inline IngestionDestination& WithProcessingConfiguration(ProcessingConfiguration&& value) { SetProcessingConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about the destination of ingested data.</p>
      */
-    inline const DestinationConfiguration& GetDestinationConfiguration() const{ return m_destinationConfiguration; }
-
-    /**
-     * <p>Contains information about the destination of ingested data.</p>
-     */
+    inline const DestinationConfiguration& GetDestinationConfiguration() const { return m_destinationConfiguration; }
     inline bool DestinationConfigurationHasBeenSet() const { return m_destinationConfigurationHasBeenSet; }
+    template<typename DestinationConfigurationT = DestinationConfiguration>
+    void SetDestinationConfiguration(DestinationConfigurationT&& value) { m_destinationConfigurationHasBeenSet = true; m_destinationConfiguration = std::forward<DestinationConfigurationT>(value); }
+    template<typename DestinationConfigurationT = DestinationConfiguration>
+    IngestionDestination& WithDestinationConfiguration(DestinationConfigurationT&& value) { SetDestinationConfiguration(std::forward<DestinationConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about the destination of ingested data.</p>
-     */
-    inline void SetDestinationConfiguration(const DestinationConfiguration& value) { m_destinationConfigurationHasBeenSet = true; m_destinationConfiguration = value; }
-
-    /**
-     * <p>Contains information about the destination of ingested data.</p>
-     */
-    inline void SetDestinationConfiguration(DestinationConfiguration&& value) { m_destinationConfigurationHasBeenSet = true; m_destinationConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains information about the destination of ingested data.</p>
-     */
-    inline IngestionDestination& WithDestinationConfiguration(const DestinationConfiguration& value) { SetDestinationConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains information about the destination of ingested data.</p>
-     */
-    inline IngestionDestination& WithDestinationConfiguration(DestinationConfiguration&& value) { SetDestinationConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the ingestion destination.</p> <p>The following states are
      * possible:</p> <ul> <li> <p> <code>Active</code>: The ingestion destination is
@@ -194,177 +99,49 @@ namespace Model
      * you should verify the ingestion destination configuration and try again.</p>
      * </li> </ul>
      */
-    inline const IngestionDestinationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The state of the ingestion destination.</p> <p>The following states are
-     * possible:</p> <ul> <li> <p> <code>Active</code>: The ingestion destination is
-     * active and is ready to be used.</p> </li> <li> <p> <code>Failed</code>: The
-     * ingestion destination has failed. If the ingestion destination is in this state,
-     * you should verify the ingestion destination configuration and try again.</p>
-     * </li> </ul>
-     */
+    inline IngestionDestinationStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(IngestionDestinationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline IngestionDestination& WithStatus(IngestionDestinationStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the ingestion destination.</p> <p>The following states are
-     * possible:</p> <ul> <li> <p> <code>Active</code>: The ingestion destination is
-     * active and is ready to be used.</p> </li> <li> <p> <code>Failed</code>: The
-     * ingestion destination has failed. If the ingestion destination is in this state,
-     * you should verify the ingestion destination configuration and try again.</p>
-     * </li> </ul>
-     */
-    inline void SetStatus(const IngestionDestinationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The state of the ingestion destination.</p> <p>The following states are
-     * possible:</p> <ul> <li> <p> <code>Active</code>: The ingestion destination is
-     * active and is ready to be used.</p> </li> <li> <p> <code>Failed</code>: The
-     * ingestion destination has failed. If the ingestion destination is in this state,
-     * you should verify the ingestion destination configuration and try again.</p>
-     * </li> </ul>
-     */
-    inline void SetStatus(IngestionDestinationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The state of the ingestion destination.</p> <p>The following states are
-     * possible:</p> <ul> <li> <p> <code>Active</code>: The ingestion destination is
-     * active and is ready to be used.</p> </li> <li> <p> <code>Failed</code>: The
-     * ingestion destination has failed. If the ingestion destination is in this state,
-     * you should verify the ingestion destination configuration and try again.</p>
-     * </li> </ul>
-     */
-    inline IngestionDestination& WithStatus(const IngestionDestinationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The state of the ingestion destination.</p> <p>The following states are
-     * possible:</p> <ul> <li> <p> <code>Active</code>: The ingestion destination is
-     * active and is ready to be used.</p> </li> <li> <p> <code>Failed</code>: The
-     * ingestion destination has failed. If the ingestion destination is in this state,
-     * you should verify the ingestion destination configuration and try again.</p>
-     * </li> </ul>
-     */
-    inline IngestionDestination& WithStatus(IngestionDestinationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the current status of the ingestion destination.</p> <p>Only
      * present when the <code>status</code> of ingestion destination is
      * <code>Failed</code>.</p>
      */
-    inline const Aws::String& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
+    inline const Aws::String& GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
+    template<typename StatusReasonT = Aws::String>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = Aws::String>
+    IngestionDestination& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
-    inline void SetStatusReason(const Aws::String& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
-    inline void SetStatusReason(const char* value) { m_statusReasonHasBeenSet = true; m_statusReason.assign(value); }
-
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
-    inline IngestionDestination& WithStatusReason(const Aws::String& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
-    inline IngestionDestination& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the current status of the ingestion destination.</p> <p>Only
-     * present when the <code>status</code> of ingestion destination is
-     * <code>Failed</code>.</p>
-     */
-    inline IngestionDestination& WithStatusReason(const char* value) { SetStatusReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the ingestion destination was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    IngestionDestination& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the ingestion destination was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was created.</p>
-     */
-    inline IngestionDestination& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the ingestion destination was created.</p>
-     */
-    inline IngestionDestination& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the ingestion destination was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was last updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was last updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the ingestion destination was last updated.</p>
-     */
-    inline IngestionDestination& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the ingestion destination was last updated.</p>
-     */
-    inline IngestionDestination& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    IngestionDestination& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -379,16 +156,16 @@ namespace Model
     DestinationConfiguration m_destinationConfiguration;
     bool m_destinationConfigurationHasBeenSet = false;
 
-    IngestionDestinationStatus m_status;
+    IngestionDestinationStatus m_status{IngestionDestinationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusReason;
     bool m_statusReasonHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
   };
 

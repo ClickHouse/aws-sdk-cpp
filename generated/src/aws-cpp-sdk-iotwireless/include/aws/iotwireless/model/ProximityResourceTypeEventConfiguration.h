@@ -32,48 +32,24 @@ namespace Model
   class ProximityResourceTypeEventConfiguration
   {
   public:
-    AWS_IOTWIRELESS_API ProximityResourceTypeEventConfiguration();
+    AWS_IOTWIRELESS_API ProximityResourceTypeEventConfiguration() = default;
     AWS_IOTWIRELESS_API ProximityResourceTypeEventConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API ProximityResourceTypeEventConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Proximity resource type event configuration object for enabling and disabling
      * wireless device topic.</p>
      */
-    inline const SidewalkResourceTypeEventConfiguration& GetSidewalk() const{ return m_sidewalk; }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
+    inline const SidewalkResourceTypeEventConfiguration& GetSidewalk() const { return m_sidewalk; }
     inline bool SidewalkHasBeenSet() const { return m_sidewalkHasBeenSet; }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline void SetSidewalk(const SidewalkResourceTypeEventConfiguration& value) { m_sidewalkHasBeenSet = true; m_sidewalk = value; }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline void SetSidewalk(SidewalkResourceTypeEventConfiguration&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::move(value); }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline ProximityResourceTypeEventConfiguration& WithSidewalk(const SidewalkResourceTypeEventConfiguration& value) { SetSidewalk(value); return *this;}
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline ProximityResourceTypeEventConfiguration& WithSidewalk(SidewalkResourceTypeEventConfiguration&& value) { SetSidewalk(std::move(value)); return *this;}
-
+    template<typename SidewalkT = SidewalkResourceTypeEventConfiguration>
+    void SetSidewalk(SidewalkT&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::forward<SidewalkT>(value); }
+    template<typename SidewalkT = SidewalkResourceTypeEventConfiguration>
+    ProximityResourceTypeEventConfiguration& WithSidewalk(SidewalkT&& value) { SetSidewalk(std::forward<SidewalkT>(value)); return *this;}
+    ///@}
   private:
 
     SidewalkResourceTypeEventConfiguration m_sidewalk;

@@ -18,15 +18,7 @@ namespace GameLift
 namespace Model
 {
 
-InstanceCredentials::InstanceCredentials() : 
-    m_userNameHasBeenSet(false),
-    m_secretHasBeenSet(false)
-{
-}
-
-InstanceCredentials::InstanceCredentials(JsonView jsonValue) : 
-    m_userNameHasBeenSet(false),
-    m_secretHasBeenSet(false)
+InstanceCredentials::InstanceCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InstanceCredentials& InstanceCredentials::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UserName"))
   {
     m_userName = jsonValue.GetString("UserName");
-
     m_userNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Secret"))
   {
     m_secret = jsonValue.GetString("Secret");
-
     m_secretHasBeenSet = true;
   }
-
   return *this;
 }
 

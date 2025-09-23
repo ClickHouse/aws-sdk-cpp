@@ -18,37 +18,23 @@ namespace ARCZonalShift
 namespace Model
 {
 
-ControlCondition::ControlCondition() : 
-    m_alarmIdentifierHasBeenSet(false),
-    m_type(ControlConditionType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-ControlCondition::ControlCondition(JsonView jsonValue) : 
-    m_alarmIdentifierHasBeenSet(false),
-    m_type(ControlConditionType::NOT_SET),
-    m_typeHasBeenSet(false)
+ControlCondition::ControlCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ControlCondition& ControlCondition::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("alarmIdentifier"))
-  {
-    m_alarmIdentifier = jsonValue.GetString("alarmIdentifier");
-
-    m_alarmIdentifierHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = ControlConditionTypeMapper::GetControlConditionTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("alarmIdentifier"))
+  {
+    m_alarmIdentifier = jsonValue.GetString("alarmIdentifier");
+    m_alarmIdentifierHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,15 +42,15 @@ JsonValue ControlCondition::Jsonize() const
 {
   JsonValue payload;
 
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", ControlConditionTypeMapper::GetNameForControlConditionType(m_type));
+  }
+
   if(m_alarmIdentifierHasBeenSet)
   {
    payload.WithString("alarmIdentifier", m_alarmIdentifier);
 
-  }
-
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", ControlConditionTypeMapper::GetNameForControlConditionType(m_type));
   }
 
   return payload;

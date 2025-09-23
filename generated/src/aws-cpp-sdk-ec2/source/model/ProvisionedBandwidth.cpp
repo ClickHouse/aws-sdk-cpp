@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ProvisionedBandwidth::ProvisionedBandwidth() : 
-    m_provisionTimeHasBeenSet(false),
-    m_provisionedHasBeenSet(false),
-    m_requestTimeHasBeenSet(false),
-    m_requestedHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-ProvisionedBandwidth::ProvisionedBandwidth(const XmlNode& xmlNode) : 
-    m_provisionTimeHasBeenSet(false),
-    m_provisionedHasBeenSet(false),
-    m_requestTimeHasBeenSet(false),
-    m_requestedHasBeenSet(false),
-    m_statusHasBeenSet(false)
+ProvisionedBandwidth::ProvisionedBandwidth(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -33,57 +33,25 @@ namespace Model
   class DataProductEntityIdFilter
   {
   public:
-    AWS_MARKETPLACECATALOG_API DataProductEntityIdFilter();
+    AWS_MARKETPLACECATALOG_API DataProductEntityIdFilter() = default;
     AWS_MARKETPLACECATALOG_API DataProductEntityIdFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API DataProductEntityIdFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A string array of unique entity id values to be filtered on.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValueList() const{ return m_valueList; }
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValueList() const { return m_valueList; }
     inline bool ValueListHasBeenSet() const { return m_valueListHasBeenSet; }
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline void SetValueList(const Aws::Vector<Aws::String>& value) { m_valueListHasBeenSet = true; m_valueList = value; }
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline void SetValueList(Aws::Vector<Aws::String>&& value) { m_valueListHasBeenSet = true; m_valueList = std::move(value); }
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline DataProductEntityIdFilter& WithValueList(const Aws::Vector<Aws::String>& value) { SetValueList(value); return *this;}
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline DataProductEntityIdFilter& WithValueList(Aws::Vector<Aws::String>&& value) { SetValueList(std::move(value)); return *this;}
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline DataProductEntityIdFilter& AddValueList(const Aws::String& value) { m_valueListHasBeenSet = true; m_valueList.push_back(value); return *this; }
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline DataProductEntityIdFilter& AddValueList(Aws::String&& value) { m_valueListHasBeenSet = true; m_valueList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A string array of unique entity id values to be filtered on.</p>
-     */
-    inline DataProductEntityIdFilter& AddValueList(const char* value) { m_valueListHasBeenSet = true; m_valueList.push_back(value); return *this; }
-
+    template<typename ValueListT = Aws::Vector<Aws::String>>
+    void SetValueList(ValueListT&& value) { m_valueListHasBeenSet = true; m_valueList = std::forward<ValueListT>(value); }
+    template<typename ValueListT = Aws::Vector<Aws::String>>
+    DataProductEntityIdFilter& WithValueList(ValueListT&& value) { SetValueList(std::forward<ValueListT>(value)); return *this;}
+    template<typename ValueListT = Aws::String>
+    DataProductEntityIdFilter& AddValueList(ValueListT&& value) { m_valueListHasBeenSet = true; m_valueList.emplace_back(std::forward<ValueListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_valueList;

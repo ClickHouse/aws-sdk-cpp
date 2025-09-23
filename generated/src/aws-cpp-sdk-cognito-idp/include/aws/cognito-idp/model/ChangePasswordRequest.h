@@ -25,7 +25,7 @@ namespace Model
   class ChangePasswordRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API ChangePasswordRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API ChangePasswordRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,136 +38,44 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The old password.</p>
+     * <p>The user's previous password. Required if the user has a password. If the
+     * user has no password and only signs in with passwordless authentication options,
+     * you can omit this parameter.</p>
      */
-    inline const Aws::String& GetPreviousPassword() const{ return m_previousPassword; }
-
-    /**
-     * <p>The old password.</p>
-     */
+    inline const Aws::String& GetPreviousPassword() const { return m_previousPassword; }
     inline bool PreviousPasswordHasBeenSet() const { return m_previousPasswordHasBeenSet; }
+    template<typename PreviousPasswordT = Aws::String>
+    void SetPreviousPassword(PreviousPasswordT&& value) { m_previousPasswordHasBeenSet = true; m_previousPassword = std::forward<PreviousPasswordT>(value); }
+    template<typename PreviousPasswordT = Aws::String>
+    ChangePasswordRequest& WithPreviousPassword(PreviousPasswordT&& value) { SetPreviousPassword(std::forward<PreviousPasswordT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The old password.</p>
+     * <p>A new password that you prompted the user to enter in your application.</p>
      */
-    inline void SetPreviousPassword(const Aws::String& value) { m_previousPasswordHasBeenSet = true; m_previousPassword = value; }
-
-    /**
-     * <p>The old password.</p>
-     */
-    inline void SetPreviousPassword(Aws::String&& value) { m_previousPasswordHasBeenSet = true; m_previousPassword = std::move(value); }
-
-    /**
-     * <p>The old password.</p>
-     */
-    inline void SetPreviousPassword(const char* value) { m_previousPasswordHasBeenSet = true; m_previousPassword.assign(value); }
-
-    /**
-     * <p>The old password.</p>
-     */
-    inline ChangePasswordRequest& WithPreviousPassword(const Aws::String& value) { SetPreviousPassword(value); return *this;}
-
-    /**
-     * <p>The old password.</p>
-     */
-    inline ChangePasswordRequest& WithPreviousPassword(Aws::String&& value) { SetPreviousPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The old password.</p>
-     */
-    inline ChangePasswordRequest& WithPreviousPassword(const char* value) { SetPreviousPassword(value); return *this;}
-
-
-    /**
-     * <p>The new password.</p>
-     */
-    inline const Aws::String& GetProposedPassword() const{ return m_proposedPassword; }
-
-    /**
-     * <p>The new password.</p>
-     */
+    inline const Aws::String& GetProposedPassword() const { return m_proposedPassword; }
     inline bool ProposedPasswordHasBeenSet() const { return m_proposedPasswordHasBeenSet; }
+    template<typename ProposedPasswordT = Aws::String>
+    void SetProposedPassword(ProposedPasswordT&& value) { m_proposedPasswordHasBeenSet = true; m_proposedPassword = std::forward<ProposedPasswordT>(value); }
+    template<typename ProposedPasswordT = Aws::String>
+    ChangePasswordRequest& WithProposedPassword(ProposedPasswordT&& value) { SetProposedPassword(std::forward<ProposedPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new password.</p>
-     */
-    inline void SetProposedPassword(const Aws::String& value) { m_proposedPasswordHasBeenSet = true; m_proposedPassword = value; }
-
-    /**
-     * <p>The new password.</p>
-     */
-    inline void SetProposedPassword(Aws::String&& value) { m_proposedPasswordHasBeenSet = true; m_proposedPassword = std::move(value); }
-
-    /**
-     * <p>The new password.</p>
-     */
-    inline void SetProposedPassword(const char* value) { m_proposedPasswordHasBeenSet = true; m_proposedPassword.assign(value); }
-
-    /**
-     * <p>The new password.</p>
-     */
-    inline ChangePasswordRequest& WithProposedPassword(const Aws::String& value) { SetProposedPassword(value); return *this;}
-
-    /**
-     * <p>The new password.</p>
-     */
-    inline ChangePasswordRequest& WithProposedPassword(Aws::String&& value) { SetProposedPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The new password.</p>
-     */
-    inline ChangePasswordRequest& WithProposedPassword(const char* value) { SetProposedPassword(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A valid access token that Amazon Cognito issued to the user whose password
      * you want to change.</p>
      */
-    inline const Aws::String& GetAccessToken() const{ return m_accessToken; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
+    inline const Aws::String& GetAccessToken() const { return m_accessToken; }
     inline bool AccessTokenHasBeenSet() const { return m_accessTokenHasBeenSet; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
-    inline void SetAccessToken(const Aws::String& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
-    inline void SetAccessToken(const char* value) { m_accessTokenHasBeenSet = true; m_accessToken.assign(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
-    inline ChangePasswordRequest& WithAccessToken(const Aws::String& value) { SetAccessToken(value); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
-    inline ChangePasswordRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose password
-     * you want to change.</p>
-     */
-    inline ChangePasswordRequest& WithAccessToken(const char* value) { SetAccessToken(value); return *this;}
-
+    template<typename AccessTokenT = Aws::String>
+    void SetAccessToken(AccessTokenT&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::forward<AccessTokenT>(value); }
+    template<typename AccessTokenT = Aws::String>
+    ChangePasswordRequest& WithAccessToken(AccessTokenT&& value) { SetAccessToken(std::forward<AccessTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_previousPassword;

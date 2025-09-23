@@ -32,48 +32,24 @@ namespace Model
   class JoinResourceTypeEventConfiguration
   {
   public:
-    AWS_IOTWIRELESS_API JoinResourceTypeEventConfiguration();
+    AWS_IOTWIRELESS_API JoinResourceTypeEventConfiguration() = default;
     AWS_IOTWIRELESS_API JoinResourceTypeEventConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API JoinResourceTypeEventConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Join resource type event configuration object for enabling or disabling
      * LoRaWAN related event topics.</p>
      */
-    inline const LoRaWANJoinResourceTypeEventConfiguration& GetLoRaWAN() const{ return m_loRaWAN; }
-
-    /**
-     * <p>Join resource type event configuration object for enabling or disabling
-     * LoRaWAN related event topics.</p>
-     */
+    inline const LoRaWANJoinResourceTypeEventConfiguration& GetLoRaWAN() const { return m_loRaWAN; }
     inline bool LoRaWANHasBeenSet() const { return m_loRaWANHasBeenSet; }
-
-    /**
-     * <p>Join resource type event configuration object for enabling or disabling
-     * LoRaWAN related event topics.</p>
-     */
-    inline void SetLoRaWAN(const LoRaWANJoinResourceTypeEventConfiguration& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = value; }
-
-    /**
-     * <p>Join resource type event configuration object for enabling or disabling
-     * LoRaWAN related event topics.</p>
-     */
-    inline void SetLoRaWAN(LoRaWANJoinResourceTypeEventConfiguration&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::move(value); }
-
-    /**
-     * <p>Join resource type event configuration object for enabling or disabling
-     * LoRaWAN related event topics.</p>
-     */
-    inline JoinResourceTypeEventConfiguration& WithLoRaWAN(const LoRaWANJoinResourceTypeEventConfiguration& value) { SetLoRaWAN(value); return *this;}
-
-    /**
-     * <p>Join resource type event configuration object for enabling or disabling
-     * LoRaWAN related event topics.</p>
-     */
-    inline JoinResourceTypeEventConfiguration& WithLoRaWAN(LoRaWANJoinResourceTypeEventConfiguration&& value) { SetLoRaWAN(std::move(value)); return *this;}
-
+    template<typename LoRaWANT = LoRaWANJoinResourceTypeEventConfiguration>
+    void SetLoRaWAN(LoRaWANT&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::forward<LoRaWANT>(value); }
+    template<typename LoRaWANT = LoRaWANJoinResourceTypeEventConfiguration>
+    JoinResourceTypeEventConfiguration& WithLoRaWAN(LoRaWANT&& value) { SetLoRaWAN(std::forward<LoRaWANT>(value)); return *this;}
+    ///@}
   private:
 
     LoRaWANJoinResourceTypeEventConfiguration m_loRaWAN;

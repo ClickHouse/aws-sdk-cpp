@@ -12,13 +12,6 @@ using namespace Aws::IoTFleetWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListFleetsRequest::ListFleetsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListFleetsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -33,6 +26,11 @@ Aws::String ListFleetsRequest::SerializePayload() const
   {
    payload.WithInteger("maxResults", m_maxResults);
 
+  }
+
+  if(m_listResponseScopeHasBeenSet)
+  {
+   payload.WithString("listResponseScope", ListResponseScopeMapper::GetNameForListResponseScope(m_listResponseScope));
   }
 
   return payload.View().WriteReadable();

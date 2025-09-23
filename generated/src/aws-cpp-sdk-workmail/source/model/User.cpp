@@ -18,31 +18,7 @@ namespace WorkMail
 namespace Model
 {
 
-User::User() : 
-    m_idHasBeenSet(false),
-    m_emailHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_state(EntityState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_userRole(UserRole::NOT_SET),
-    m_userRoleHasBeenSet(false),
-    m_enabledDateHasBeenSet(false),
-    m_disabledDateHasBeenSet(false)
-{
-}
-
-User::User(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_emailHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_state(EntityState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_userRole(UserRole::NOT_SET),
-    m_userRoleHasBeenSet(false),
-    m_enabledDateHasBeenSet(false),
-    m_disabledDateHasBeenSet(false)
+User::User(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,59 +28,53 @@ User& User::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Email"))
   {
     m_email = jsonValue.GetString("Email");
-
     m_emailHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("State"))
   {
     m_state = EntityStateMapper::GetEntityStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserRole"))
   {
     m_userRole = UserRoleMapper::GetUserRoleForName(jsonValue.GetString("UserRole"));
-
     m_userRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EnabledDate"))
   {
     m_enabledDate = jsonValue.GetDouble("EnabledDate");
-
     m_enabledDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisabledDate"))
   {
     m_disabledDate = jsonValue.GetDouble("DisabledDate");
-
     m_disabledDateHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IdentityProviderUserId"))
+  {
+    m_identityProviderUserId = jsonValue.GetString("IdentityProviderUserId");
+    m_identityProviderUserIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("IdentityProviderIdentityStoreId"))
+  {
+    m_identityProviderIdentityStoreId = jsonValue.GetString("IdentityProviderIdentityStoreId");
+    m_identityProviderIdentityStoreIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -154,6 +124,18 @@ JsonValue User::Jsonize() const
   if(m_disabledDateHasBeenSet)
   {
    payload.WithDouble("DisabledDate", m_disabledDate.SecondsWithMSPrecision());
+  }
+
+  if(m_identityProviderUserIdHasBeenSet)
+  {
+   payload.WithString("IdentityProviderUserId", m_identityProviderUserId);
+
+  }
+
+  if(m_identityProviderIdentityStoreIdHasBeenSet)
+  {
+   payload.WithString("IdentityProviderIdentityStoreId", m_identityProviderIdentityStoreId);
+
   }
 
   return payload;

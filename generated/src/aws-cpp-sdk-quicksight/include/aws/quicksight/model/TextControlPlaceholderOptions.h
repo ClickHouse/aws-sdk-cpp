@@ -32,51 +32,25 @@ namespace Model
   class TextControlPlaceholderOptions
   {
   public:
-    AWS_QUICKSIGHT_API TextControlPlaceholderOptions();
+    AWS_QUICKSIGHT_API TextControlPlaceholderOptions() = default;
     AWS_QUICKSIGHT_API TextControlPlaceholderOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TextControlPlaceholderOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The visibility configuration of the placeholder options in a text
      * control.</p>
      */
-    inline const Visibility& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>The visibility configuration of the placeholder options in a text
-     * control.</p>
-     */
+    inline Visibility GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
-
-    /**
-     * <p>The visibility configuration of the placeholder options in a text
-     * control.</p>
-     */
-    inline void SetVisibility(const Visibility& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>The visibility configuration of the placeholder options in a text
-     * control.</p>
-     */
-    inline void SetVisibility(Visibility&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>The visibility configuration of the placeholder options in a text
-     * control.</p>
-     */
-    inline TextControlPlaceholderOptions& WithVisibility(const Visibility& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility configuration of the placeholder options in a text
-     * control.</p>
-     */
-    inline TextControlPlaceholderOptions& WithVisibility(Visibility&& value) { SetVisibility(std::move(value)); return *this;}
-
+    inline void SetVisibility(Visibility value) { m_visibilityHasBeenSet = true; m_visibility = value; }
+    inline TextControlPlaceholderOptions& WithVisibility(Visibility value) { SetVisibility(value); return *this;}
+    ///@}
   private:
 
-    Visibility m_visibility;
+    Visibility m_visibility{Visibility::NOT_SET};
     bool m_visibilityHasBeenSet = false;
   };
 

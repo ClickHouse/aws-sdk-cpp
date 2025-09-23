@@ -18,15 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-MembershipQueryComputePaymentConfig::MembershipQueryComputePaymentConfig() : 
-    m_isResponsible(false),
-    m_isResponsibleHasBeenSet(false)
-{
-}
-
-MembershipQueryComputePaymentConfig::MembershipQueryComputePaymentConfig(JsonView jsonValue) : 
-    m_isResponsible(false),
-    m_isResponsibleHasBeenSet(false)
+MembershipQueryComputePaymentConfig::MembershipQueryComputePaymentConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MembershipQueryComputePaymentConfig& MembershipQueryComputePaymentConfig::operat
   if(jsonValue.ValueExists("isResponsible"))
   {
     m_isResponsible = jsonValue.GetBool("isResponsible");
-
     m_isResponsibleHasBeenSet = true;
   }
-
   return *this;
 }
 

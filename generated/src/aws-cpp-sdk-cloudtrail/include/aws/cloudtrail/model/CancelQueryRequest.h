@@ -21,7 +21,7 @@ namespace Model
   class CancelQueryRequest : public CloudTrailRequest
   {
   public:
-    AWS_CLOUDTRAIL_API CancelQueryRequest();
+    AWS_CLOUDTRAIL_API CancelQueryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,58 +34,37 @@ namespace Model
     AWS_CLOUDTRAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
      * from the response of a <code>StartQuery</code> operation.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
-
-    /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
-     */
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
     inline bool QueryIdHasBeenSet() const { return m_queryIdHasBeenSet; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    CancelQueryRequest& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
+     * <p> The account ID of the event data store owner. </p>
      */
-    inline void SetQueryId(const Aws::String& value) { m_queryIdHasBeenSet = true; m_queryId = value; }
-
-    /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryIdHasBeenSet = true; m_queryId = std::move(value); }
-
-    /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryIdHasBeenSet = true; m_queryId.assign(value); }
-
-    /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
-     */
-    inline CancelQueryRequest& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
-     */
-    inline CancelQueryRequest& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the query that you want to cancel. The <code>QueryId</code> comes
-     * from the response of a <code>StartQuery</code> operation.</p>
-     */
-    inline CancelQueryRequest& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
+    inline const Aws::String& GetEventDataStoreOwnerAccountId() const { return m_eventDataStoreOwnerAccountId; }
+    inline bool EventDataStoreOwnerAccountIdHasBeenSet() const { return m_eventDataStoreOwnerAccountIdHasBeenSet; }
+    template<typename EventDataStoreOwnerAccountIdT = Aws::String>
+    void SetEventDataStoreOwnerAccountId(EventDataStoreOwnerAccountIdT&& value) { m_eventDataStoreOwnerAccountIdHasBeenSet = true; m_eventDataStoreOwnerAccountId = std::forward<EventDataStoreOwnerAccountIdT>(value); }
+    template<typename EventDataStoreOwnerAccountIdT = Aws::String>
+    CancelQueryRequest& WithEventDataStoreOwnerAccountId(EventDataStoreOwnerAccountIdT&& value) { SetEventDataStoreOwnerAccountId(std::forward<EventDataStoreOwnerAccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;
     bool m_queryIdHasBeenSet = false;
+
+    Aws::String m_eventDataStoreOwnerAccountId;
+    bool m_eventDataStoreOwnerAccountIdHasBeenSet = false;
   };
 
 } // namespace Model

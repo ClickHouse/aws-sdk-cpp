@@ -32,7 +32,7 @@ namespace Model
   class DBInstanceStatusInfo
   {
   public:
-    AWS_NEPTUNE_API DBInstanceStatusInfo();
+    AWS_NEPTUNE_API DBInstanceStatusInfo() = default;
     AWS_NEPTUNE_API DBInstanceStatusInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_NEPTUNE_API DBInstanceStatusInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,175 +40,60 @@ namespace Model
     AWS_NEPTUNE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>This value is currently "read replication."</p>
      */
-    inline const Aws::String& GetStatusType() const{ return m_statusType; }
-
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
+    inline const Aws::String& GetStatusType() const { return m_statusType; }
     inline bool StatusTypeHasBeenSet() const { return m_statusTypeHasBeenSet; }
+    template<typename StatusTypeT = Aws::String>
+    void SetStatusType(StatusTypeT&& value) { m_statusTypeHasBeenSet = true; m_statusType = std::forward<StatusTypeT>(value); }
+    template<typename StatusTypeT = Aws::String>
+    DBInstanceStatusInfo& WithStatusType(StatusTypeT&& value) { SetStatusType(std::forward<StatusTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
-    inline void SetStatusType(const Aws::String& value) { m_statusTypeHasBeenSet = true; m_statusType = value; }
-
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
-    inline void SetStatusType(Aws::String&& value) { m_statusTypeHasBeenSet = true; m_statusType = std::move(value); }
-
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
-    inline void SetStatusType(const char* value) { m_statusTypeHasBeenSet = true; m_statusType.assign(value); }
-
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
-    inline DBInstanceStatusInfo& WithStatusType(const Aws::String& value) { SetStatusType(value); return *this;}
-
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
-    inline DBInstanceStatusInfo& WithStatusType(Aws::String&& value) { SetStatusType(std::move(value)); return *this;}
-
-    /**
-     * <p>This value is currently "read replication."</p>
-     */
-    inline DBInstanceStatusInfo& WithStatusType(const char* value) { SetStatusType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Boolean value that is true if the instance is operating normally, or false if
      * the instance is in an error state.</p>
      */
-    inline bool GetNormal() const{ return m_normal; }
-
-    /**
-     * <p>Boolean value that is true if the instance is operating normally, or false if
-     * the instance is in an error state.</p>
-     */
+    inline bool GetNormal() const { return m_normal; }
     inline bool NormalHasBeenSet() const { return m_normalHasBeenSet; }
-
-    /**
-     * <p>Boolean value that is true if the instance is operating normally, or false if
-     * the instance is in an error state.</p>
-     */
     inline void SetNormal(bool value) { m_normalHasBeenSet = true; m_normal = value; }
-
-    /**
-     * <p>Boolean value that is true if the instance is operating normally, or false if
-     * the instance is in an error state.</p>
-     */
     inline DBInstanceStatusInfo& WithNormal(bool value) { SetNormal(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Status of the DB instance. For a StatusType of read replica, the values can
      * be replicating, error, stopped, or terminated.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    DBInstanceStatusInfo& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
-    inline DBInstanceStatusInfo& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
-    inline DBInstanceStatusInfo& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>Status of the DB instance. For a StatusType of read replica, the values can
-     * be replicating, error, stopped, or terminated.</p>
-     */
-    inline DBInstanceStatusInfo& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details of the error if there is an error for the instance. If the instance
      * is not in an error state, this value is blank.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
-    inline DBInstanceStatusInfo& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
-    inline DBInstanceStatusInfo& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Details of the error if there is an error for the instance. If the instance
-     * is not in an error state, this value is blank.</p>
-     */
-    inline DBInstanceStatusInfo& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DBInstanceStatusInfo& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_statusType;
     bool m_statusTypeHasBeenSet = false;
 
-    bool m_normal;
+    bool m_normal{false};
     bool m_normalHasBeenSet = false;
 
     Aws::String m_status;

@@ -21,7 +21,7 @@ namespace Model
   class RestoreKeyRequest : public PaymentCryptographyRequest
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHY_API RestoreKeyRequest();
+    AWS_PAYMENTCRYPTOGRAPHY_API RestoreKeyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_PAYMENTCRYPTOGRAPHY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
      * Payment Cryptography.</p>
      */
-    inline const Aws::String& GetKeyIdentifier() const{ return m_keyIdentifier; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
+    inline const Aws::String& GetKeyIdentifier() const { return m_keyIdentifier; }
     inline bool KeyIdentifierHasBeenSet() const { return m_keyIdentifierHasBeenSet; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline void SetKeyIdentifier(const Aws::String& value) { m_keyIdentifierHasBeenSet = true; m_keyIdentifier = value; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline void SetKeyIdentifier(Aws::String&& value) { m_keyIdentifierHasBeenSet = true; m_keyIdentifier = std::move(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline void SetKeyIdentifier(const char* value) { m_keyIdentifierHasBeenSet = true; m_keyIdentifier.assign(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline RestoreKeyRequest& WithKeyIdentifier(const Aws::String& value) { SetKeyIdentifier(value); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline RestoreKeyRequest& WithKeyIdentifier(Aws::String&& value) { SetKeyIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> of the key to be restored within Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline RestoreKeyRequest& WithKeyIdentifier(const char* value) { SetKeyIdentifier(value); return *this;}
-
+    template<typename KeyIdentifierT = Aws::String>
+    void SetKeyIdentifier(KeyIdentifierT&& value) { m_keyIdentifierHasBeenSet = true; m_keyIdentifier = std::forward<KeyIdentifierT>(value); }
+    template<typename KeyIdentifierT = Aws::String>
+    RestoreKeyRequest& WithKeyIdentifier(KeyIdentifierT&& value) { SetKeyIdentifier(std::forward<KeyIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyIdentifier;

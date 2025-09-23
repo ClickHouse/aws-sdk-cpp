@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/opensearchserverless/OpenSearchServerless_EXPORTS.h>
 #include <aws/opensearchserverless/OpenSearchServerlessRequest.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <utility>
 #include <aws/core/utils/UUID.h>
 
@@ -23,7 +23,7 @@ namespace Model
   class UpdateVpcEndpointRequest : public OpenSearchServerlessRequest
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API UpdateVpcEndpointRequest();
+    AWS_OPENSEARCHSERVERLESS_API UpdateVpcEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,317 +36,107 @@ namespace Model
     AWS_OPENSEARCHSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetAddSecurityGroupIds() const{ return m_addSecurityGroupIds; }
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline bool AddSecurityGroupIdsHasBeenSet() const { return m_addSecurityGroupIdsHasBeenSet; }
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline void SetAddSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds = value; }
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline void SetAddSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds = std::move(value); }
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithAddSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetAddSecurityGroupIds(value); return *this;}
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithAddSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetAddSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddAddSecurityGroupIds(const Aws::String& value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddAddSecurityGroupIds(Aws::String&& value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The unique identifiers of the security groups to add to the endpoint.
-     * Security groups define the ports, protocols, and sources for inbound traffic
-     * that you are authorizing into your endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddAddSecurityGroupIds(const char* value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds.push_back(value); return *this; }
-
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetAddSubnetIds() const{ return m_addSubnetIds; }
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline bool AddSubnetIdsHasBeenSet() const { return m_addSubnetIdsHasBeenSet; }
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline void SetAddSubnetIds(const Aws::Vector<Aws::String>& value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds = value; }
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline void SetAddSubnetIds(Aws::Vector<Aws::String>&& value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds = std::move(value); }
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithAddSubnetIds(const Aws::Vector<Aws::String>& value) { SetAddSubnetIds(value); return *this;}
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithAddSubnetIds(Aws::Vector<Aws::String>&& value) { SetAddSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddAddSubnetIds(const Aws::String& value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddAddSubnetIds(Aws::String&& value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ID of one or more subnets to add to the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddAddSubnetIds(const char* value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds.push_back(value); return *this; }
-
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the interface endpoint to update.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdateVpcEndpointRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
+     * <p>The ID of one or more subnets to add to the endpoint.</p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
+    inline const Aws::Vector<Aws::String>& GetAddSubnetIds() const { return m_addSubnetIds; }
+    inline bool AddSubnetIdsHasBeenSet() const { return m_addSubnetIdsHasBeenSet; }
+    template<typename AddSubnetIdsT = Aws::Vector<Aws::String>>
+    void SetAddSubnetIds(AddSubnetIdsT&& value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds = std::forward<AddSubnetIdsT>(value); }
+    template<typename AddSubnetIdsT = Aws::Vector<Aws::String>>
+    UpdateVpcEndpointRequest& WithAddSubnetIds(AddSubnetIdsT&& value) { SetAddSubnetIds(std::forward<AddSubnetIdsT>(value)); return *this;}
+    template<typename AddSubnetIdsT = Aws::String>
+    UpdateVpcEndpointRequest& AddAddSubnetIds(AddSubnetIdsT&& value) { m_addSubnetIdsHasBeenSet = true; m_addSubnetIds.emplace_back(std::forward<AddSubnetIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the interface endpoint to update.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetRemoveSecurityGroupIds() const{ return m_removeSecurityGroupIds; }
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline bool RemoveSecurityGroupIdsHasBeenSet() const { return m_removeSecurityGroupIdsHasBeenSet; }
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline void SetRemoveSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds = value; }
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline void SetRemoveSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds = std::move(value); }
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithRemoveSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetRemoveSecurityGroupIds(value); return *this;}
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithRemoveSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetRemoveSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddRemoveSecurityGroupIds(const Aws::String& value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddRemoveSecurityGroupIds(Aws::String&& value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The unique identifiers of the security groups to remove from the
-     * endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddRemoveSecurityGroupIds(const char* value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRemoveSubnetIds() const{ return m_removeSubnetIds; }
-
-    /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRemoveSubnetIds() const { return m_removeSubnetIds; }
     inline bool RemoveSubnetIdsHasBeenSet() const { return m_removeSubnetIdsHasBeenSet; }
+    template<typename RemoveSubnetIdsT = Aws::Vector<Aws::String>>
+    void SetRemoveSubnetIds(RemoveSubnetIdsT&& value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds = std::forward<RemoveSubnetIdsT>(value); }
+    template<typename RemoveSubnetIdsT = Aws::Vector<Aws::String>>
+    UpdateVpcEndpointRequest& WithRemoveSubnetIds(RemoveSubnetIdsT&& value) { SetRemoveSubnetIds(std::forward<RemoveSubnetIdsT>(value)); return *this;}
+    template<typename RemoveSubnetIdsT = Aws::String>
+    UpdateVpcEndpointRequest& AddRemoveSubnetIds(RemoveSubnetIdsT&& value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds.emplace_back(std::forward<RemoveSubnetIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
+     * <p>The unique identifiers of the security groups to add to the endpoint.
+     * Security groups define the ports, protocols, and sources for inbound traffic
+     * that you are authorizing into your endpoint.</p>
      */
-    inline void SetRemoveSubnetIds(const Aws::Vector<Aws::String>& value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds = value; }
+    inline const Aws::Vector<Aws::String>& GetAddSecurityGroupIds() const { return m_addSecurityGroupIds; }
+    inline bool AddSecurityGroupIdsHasBeenSet() const { return m_addSecurityGroupIdsHasBeenSet; }
+    template<typename AddSecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetAddSecurityGroupIds(AddSecurityGroupIdsT&& value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds = std::forward<AddSecurityGroupIdsT>(value); }
+    template<typename AddSecurityGroupIdsT = Aws::Vector<Aws::String>>
+    UpdateVpcEndpointRequest& WithAddSecurityGroupIds(AddSecurityGroupIdsT&& value) { SetAddSecurityGroupIds(std::forward<AddSecurityGroupIdsT>(value)); return *this;}
+    template<typename AddSecurityGroupIdsT = Aws::String>
+    UpdateVpcEndpointRequest& AddAddSecurityGroupIds(AddSecurityGroupIdsT&& value) { m_addSecurityGroupIdsHasBeenSet = true; m_addSecurityGroupIds.emplace_back(std::forward<AddSecurityGroupIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
+     * <p>The unique identifiers of the security groups to remove from the
+     * endpoint.</p>
      */
-    inline void SetRemoveSubnetIds(Aws::Vector<Aws::String>&& value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds = std::move(value); }
+    inline const Aws::Vector<Aws::String>& GetRemoveSecurityGroupIds() const { return m_removeSecurityGroupIds; }
+    inline bool RemoveSecurityGroupIdsHasBeenSet() const { return m_removeSecurityGroupIdsHasBeenSet; }
+    template<typename RemoveSecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetRemoveSecurityGroupIds(RemoveSecurityGroupIdsT&& value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds = std::forward<RemoveSecurityGroupIdsT>(value); }
+    template<typename RemoveSecurityGroupIdsT = Aws::Vector<Aws::String>>
+    UpdateVpcEndpointRequest& WithRemoveSecurityGroupIds(RemoveSecurityGroupIdsT&& value) { SetRemoveSecurityGroupIds(std::forward<RemoveSecurityGroupIdsT>(value)); return *this;}
+    template<typename RemoveSecurityGroupIdsT = Aws::String>
+    UpdateVpcEndpointRequest& AddRemoveSecurityGroupIds(RemoveSecurityGroupIdsT&& value) { m_removeSecurityGroupIdsHasBeenSet = true; m_removeSecurityGroupIds.emplace_back(std::forward<RemoveSecurityGroupIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
+     * <p>Unique, case-sensitive identifier to ensure idempotency of the request.</p>
      */
-    inline UpdateVpcEndpointRequest& WithRemoveSubnetIds(const Aws::Vector<Aws::String>& value) { SetRemoveSubnetIds(value); return *this;}
-
-    /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithRemoveSubnetIds(Aws::Vector<Aws::String>&& value) { SetRemoveSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddRemoveSubnetIds(const Aws::String& value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddRemoveSubnetIds(Aws::String&& value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The unique identifiers of the subnets to remove from the endpoint.</p>
-     */
-    inline UpdateVpcEndpointRequest& AddRemoveSubnetIds(const char* value) { m_removeSubnetIdsHasBeenSet = true; m_removeSubnetIds.push_back(value); return *this; }
-
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    UpdateVpcEndpointRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::Vector<Aws::String> m_addSecurityGroupIds;
-    bool m_addSecurityGroupIdsHasBeenSet = false;
-
-    Aws::Vector<Aws::String> m_addSubnetIds;
-    bool m_addSubnetIdsHasBeenSet = false;
-
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    Aws::Vector<Aws::String> m_removeSecurityGroupIds;
-    bool m_removeSecurityGroupIdsHasBeenSet = false;
+    Aws::Vector<Aws::String> m_addSubnetIds;
+    bool m_addSubnetIdsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_removeSubnetIds;
     bool m_removeSubnetIdsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_addSecurityGroupIds;
+    bool m_addSecurityGroupIdsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_removeSecurityGroupIds;
+    bool m_removeSecurityGroupIdsHasBeenSet = false;
+
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

@@ -28,47 +28,23 @@ namespace Model
   class GetContactReachabilityStatusResult
   {
   public:
-    AWS_ROUTE53DOMAINS_API GetContactReachabilityStatusResult();
+    AWS_ROUTE53DOMAINS_API GetContactReachabilityStatusResult() = default;
     AWS_ROUTE53DOMAINS_API GetContactReachabilityStatusResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ROUTE53DOMAINS_API GetContactReachabilityStatusResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The domain name for which you requested the reachability status.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    GetContactReachabilityStatusResult& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain name for which you requested the reachability status.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainName = value; }
-
-    /**
-     * <p>The domain name for which you requested the reachability status.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainName = std::move(value); }
-
-    /**
-     * <p>The domain name for which you requested the reachability status.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainName.assign(value); }
-
-    /**
-     * <p>The domain name for which you requested the reachability status.</p>
-     */
-    inline GetContactReachabilityStatusResult& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The domain name for which you requested the reachability status.</p>
-     */
-    inline GetContactReachabilityStatusResult& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain name for which you requested the reachability status.</p>
-     */
-    inline GetContactReachabilityStatusResult& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the registrant contact has responded. Values include the
      * following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and
@@ -77,77 +53,29 @@ namespace Model
      * <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact
      * responded.</p> </dd> </dl>
      */
-    inline const ReachabilityStatus& GetStatus() const{ return m_status; }
+    inline ReachabilityStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ReachabilityStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetContactReachabilityStatusResult& WithStatus(ReachabilityStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Whether the registrant contact has responded. Values include the
-     * following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and
-     * haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the
-     * email and got confirmation from the registrant contact.</p> </dd>
-     * <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact
-     * responded.</p> </dd> </dl>
-     */
-    inline void SetStatus(const ReachabilityStatus& value) { m_status = value; }
-
-    /**
-     * <p>Whether the registrant contact has responded. Values include the
-     * following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and
-     * haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the
-     * email and got confirmation from the registrant contact.</p> </dd>
-     * <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact
-     * responded.</p> </dd> </dl>
-     */
-    inline void SetStatus(ReachabilityStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Whether the registrant contact has responded. Values include the
-     * following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and
-     * haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the
-     * email and got confirmation from the registrant contact.</p> </dd>
-     * <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact
-     * responded.</p> </dd> </dl>
-     */
-    inline GetContactReachabilityStatusResult& WithStatus(const ReachabilityStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Whether the registrant contact has responded. Values include the
-     * following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and
-     * haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the
-     * email and got confirmation from the registrant contact.</p> </dd>
-     * <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact
-     * responded.</p> </dd> </dl>
-     */
-    inline GetContactReachabilityStatusResult& WithStatus(ReachabilityStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetContactReachabilityStatusResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetContactReachabilityStatusResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetContactReachabilityStatusResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetContactReachabilityStatusResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
+    bool m_domainNameHasBeenSet = false;
 
-    ReachabilityStatus m_status;
+    ReachabilityStatus m_status{ReachabilityStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

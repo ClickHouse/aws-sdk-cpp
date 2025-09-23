@@ -21,21 +21,7 @@ namespace EC2
 namespace Model
 {
 
-S3Storage::S3Storage() : 
-    m_aWSAccessKeyIdHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_prefixHasBeenSet(false),
-    m_uploadPolicyHasBeenSet(false),
-    m_uploadPolicySignatureHasBeenSet(false)
-{
-}
-
-S3Storage::S3Storage(const XmlNode& xmlNode) : 
-    m_aWSAccessKeyIdHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_prefixHasBeenSet(false),
-    m_uploadPolicyHasBeenSet(false),
-    m_uploadPolicySignatureHasBeenSet(false)
+S3Storage::S3Storage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

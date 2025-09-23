@@ -18,15 +18,7 @@ namespace AppConfigData
 namespace Model
 {
 
-InvalidParameterDetail::InvalidParameterDetail() : 
-    m_problem(InvalidParameterProblem::NOT_SET),
-    m_problemHasBeenSet(false)
-{
-}
-
-InvalidParameterDetail::InvalidParameterDetail(JsonView jsonValue) : 
-    m_problem(InvalidParameterProblem::NOT_SET),
-    m_problemHasBeenSet(false)
+InvalidParameterDetail::InvalidParameterDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InvalidParameterDetail& InvalidParameterDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Problem"))
   {
     m_problem = InvalidParameterProblemMapper::GetInvalidParameterProblemForName(jsonValue.GetString("Problem"));
-
     m_problemHasBeenSet = true;
   }
-
   return *this;
 }
 

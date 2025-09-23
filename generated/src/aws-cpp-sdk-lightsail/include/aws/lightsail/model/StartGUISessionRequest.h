@@ -21,7 +21,7 @@ namespace Model
   class StartGUISessionRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API StartGUISessionRequest();
+    AWS_LIGHTSAIL_API StartGUISessionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The resource name.</p>
      */
-    inline const Aws::String& GetResourceName() const{ return m_resourceName; }
-
-    /**
-     * <p>The resource name.</p>
-     */
+    inline const Aws::String& GetResourceName() const { return m_resourceName; }
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
-
-    /**
-     * <p>The resource name.</p>
-     */
-    inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
-
-    /**
-     * <p>The resource name.</p>
-     */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
-
-    /**
-     * <p>The resource name.</p>
-     */
-    inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
-
-    /**
-     * <p>The resource name.</p>
-     */
-    inline StartGUISessionRequest& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
-
-    /**
-     * <p>The resource name.</p>
-     */
-    inline StartGUISessionRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource name.</p>
-     */
-    inline StartGUISessionRequest& WithResourceName(const char* value) { SetResourceName(value); return *this;}
-
+    template<typename ResourceNameT = Aws::String>
+    void SetResourceName(ResourceNameT&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::forward<ResourceNameT>(value); }
+    template<typename ResourceNameT = Aws::String>
+    StartGUISessionRequest& WithResourceName(ResourceNameT&& value) { SetResourceName(std::forward<ResourceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceName;

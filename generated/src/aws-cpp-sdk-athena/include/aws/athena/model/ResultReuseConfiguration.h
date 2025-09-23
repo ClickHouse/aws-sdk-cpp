@@ -32,48 +32,24 @@ namespace Model
   class ResultReuseConfiguration
   {
   public:
-    AWS_ATHENA_API ResultReuseConfiguration();
+    AWS_ATHENA_API ResultReuseConfiguration() = default;
     AWS_ATHENA_API ResultReuseConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API ResultReuseConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether previous query results are reused, and if so, their maximum
      * age.</p>
      */
-    inline const ResultReuseByAgeConfiguration& GetResultReuseByAgeConfiguration() const{ return m_resultReuseByAgeConfiguration; }
-
-    /**
-     * <p>Specifies whether previous query results are reused, and if so, their maximum
-     * age.</p>
-     */
+    inline const ResultReuseByAgeConfiguration& GetResultReuseByAgeConfiguration() const { return m_resultReuseByAgeConfiguration; }
     inline bool ResultReuseByAgeConfigurationHasBeenSet() const { return m_resultReuseByAgeConfigurationHasBeenSet; }
-
-    /**
-     * <p>Specifies whether previous query results are reused, and if so, their maximum
-     * age.</p>
-     */
-    inline void SetResultReuseByAgeConfiguration(const ResultReuseByAgeConfiguration& value) { m_resultReuseByAgeConfigurationHasBeenSet = true; m_resultReuseByAgeConfiguration = value; }
-
-    /**
-     * <p>Specifies whether previous query results are reused, and if so, their maximum
-     * age.</p>
-     */
-    inline void SetResultReuseByAgeConfiguration(ResultReuseByAgeConfiguration&& value) { m_resultReuseByAgeConfigurationHasBeenSet = true; m_resultReuseByAgeConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies whether previous query results are reused, and if so, their maximum
-     * age.</p>
-     */
-    inline ResultReuseConfiguration& WithResultReuseByAgeConfiguration(const ResultReuseByAgeConfiguration& value) { SetResultReuseByAgeConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies whether previous query results are reused, and if so, their maximum
-     * age.</p>
-     */
-    inline ResultReuseConfiguration& WithResultReuseByAgeConfiguration(ResultReuseByAgeConfiguration&& value) { SetResultReuseByAgeConfiguration(std::move(value)); return *this;}
-
+    template<typename ResultReuseByAgeConfigurationT = ResultReuseByAgeConfiguration>
+    void SetResultReuseByAgeConfiguration(ResultReuseByAgeConfigurationT&& value) { m_resultReuseByAgeConfigurationHasBeenSet = true; m_resultReuseByAgeConfiguration = std::forward<ResultReuseByAgeConfigurationT>(value); }
+    template<typename ResultReuseByAgeConfigurationT = ResultReuseByAgeConfiguration>
+    ResultReuseConfiguration& WithResultReuseByAgeConfiguration(ResultReuseByAgeConfigurationT&& value) { SetResultReuseByAgeConfiguration(std::forward<ResultReuseByAgeConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     ResultReuseByAgeConfiguration m_resultReuseByAgeConfiguration;

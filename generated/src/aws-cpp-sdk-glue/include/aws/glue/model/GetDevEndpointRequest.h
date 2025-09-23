@@ -21,7 +21,7 @@ namespace Model
   class GetDevEndpointRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API GetDevEndpointRequest();
+    AWS_GLUE_API GetDevEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
-    inline GetDevEndpointRequest& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
-    inline GetDevEndpointRequest& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the <code>DevEndpoint</code> to retrieve information for.</p>
-     */
-    inline GetDevEndpointRequest& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    GetDevEndpointRequest& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointName;

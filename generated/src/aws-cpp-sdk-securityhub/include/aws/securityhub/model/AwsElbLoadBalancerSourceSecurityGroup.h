@@ -32,93 +32,35 @@ namespace Model
   class AwsElbLoadBalancerSourceSecurityGroup
   {
   public:
-    AWS_SECURITYHUB_API AwsElbLoadBalancerSourceSecurityGroup();
+    AWS_SECURITYHUB_API AwsElbLoadBalancerSourceSecurityGroup() = default;
     AWS_SECURITYHUB_API AwsElbLoadBalancerSourceSecurityGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsElbLoadBalancerSourceSecurityGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the security group.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the security group.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    AwsElbLoadBalancerSourceSecurityGroup& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the security group.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the security group.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the security group.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the security group.</p>
-     */
-    inline AwsElbLoadBalancerSourceSecurityGroup& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the security group.</p>
-     */
-    inline AwsElbLoadBalancerSourceSecurityGroup& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the security group.</p>
-     */
-    inline AwsElbLoadBalancerSourceSecurityGroup& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The owner of the security group.</p>
      */
-    inline const Aws::String& GetOwnerAlias() const{ return m_ownerAlias; }
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
+    inline const Aws::String& GetOwnerAlias() const { return m_ownerAlias; }
     inline bool OwnerAliasHasBeenSet() const { return m_ownerAliasHasBeenSet; }
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
-    inline void SetOwnerAlias(const Aws::String& value) { m_ownerAliasHasBeenSet = true; m_ownerAlias = value; }
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
-    inline void SetOwnerAlias(Aws::String&& value) { m_ownerAliasHasBeenSet = true; m_ownerAlias = std::move(value); }
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
-    inline void SetOwnerAlias(const char* value) { m_ownerAliasHasBeenSet = true; m_ownerAlias.assign(value); }
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
-    inline AwsElbLoadBalancerSourceSecurityGroup& WithOwnerAlias(const Aws::String& value) { SetOwnerAlias(value); return *this;}
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
-    inline AwsElbLoadBalancerSourceSecurityGroup& WithOwnerAlias(Aws::String&& value) { SetOwnerAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The owner of the security group.</p>
-     */
-    inline AwsElbLoadBalancerSourceSecurityGroup& WithOwnerAlias(const char* value) { SetOwnerAlias(value); return *this;}
-
+    template<typename OwnerAliasT = Aws::String>
+    void SetOwnerAlias(OwnerAliasT&& value) { m_ownerAliasHasBeenSet = true; m_ownerAlias = std::forward<OwnerAliasT>(value); }
+    template<typename OwnerAliasT = Aws::String>
+    AwsElbLoadBalancerSourceSecurityGroup& WithOwnerAlias(OwnerAliasT&& value) { SetOwnerAlias(std::forward<OwnerAliasT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupName;

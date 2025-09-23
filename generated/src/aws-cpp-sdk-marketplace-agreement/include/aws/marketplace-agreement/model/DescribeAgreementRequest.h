@@ -21,7 +21,7 @@ namespace Model
   class DescribeAgreementRequest : public AgreementServiceRequest
   {
   public:
-    AWS_AGREEMENTSERVICE_API DescribeAgreementRequest();
+    AWS_AGREEMENTSERVICE_API DescribeAgreementRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_AGREEMENTSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the agreement.</p>
      */
-    inline const Aws::String& GetAgreementId() const{ return m_agreementId; }
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
+    inline const Aws::String& GetAgreementId() const { return m_agreementId; }
     inline bool AgreementIdHasBeenSet() const { return m_agreementIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
-    inline void SetAgreementId(const Aws::String& value) { m_agreementIdHasBeenSet = true; m_agreementId = value; }
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
-    inline void SetAgreementId(Aws::String&& value) { m_agreementIdHasBeenSet = true; m_agreementId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
-    inline void SetAgreementId(const char* value) { m_agreementIdHasBeenSet = true; m_agreementId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
-    inline DescribeAgreementRequest& WithAgreementId(const Aws::String& value) { SetAgreementId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
-    inline DescribeAgreementRequest& WithAgreementId(Aws::String&& value) { SetAgreementId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the agreement.</p>
-     */
-    inline DescribeAgreementRequest& WithAgreementId(const char* value) { SetAgreementId(value); return *this;}
-
+    template<typename AgreementIdT = Aws::String>
+    void SetAgreementId(AgreementIdT&& value) { m_agreementIdHasBeenSet = true; m_agreementId = std::forward<AgreementIdT>(value); }
+    template<typename AgreementIdT = Aws::String>
+    DescribeAgreementRequest& WithAgreementId(AgreementIdT&& value) { SetAgreementId(std::forward<AgreementIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_agreementId;

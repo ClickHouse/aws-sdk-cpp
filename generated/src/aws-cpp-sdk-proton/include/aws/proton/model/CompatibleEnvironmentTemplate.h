@@ -31,93 +31,35 @@ namespace Model
   class CompatibleEnvironmentTemplate
   {
   public:
-    AWS_PROTON_API CompatibleEnvironmentTemplate();
+    AWS_PROTON_API CompatibleEnvironmentTemplate() = default;
     AWS_PROTON_API CompatibleEnvironmentTemplate(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API CompatibleEnvironmentTemplate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The major version of the compatible environment template.</p>
      */
-    inline const Aws::String& GetMajorVersion() const{ return m_majorVersion; }
-
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
+    inline const Aws::String& GetMajorVersion() const { return m_majorVersion; }
     inline bool MajorVersionHasBeenSet() const { return m_majorVersionHasBeenSet; }
+    template<typename MajorVersionT = Aws::String>
+    void SetMajorVersion(MajorVersionT&& value) { m_majorVersionHasBeenSet = true; m_majorVersion = std::forward<MajorVersionT>(value); }
+    template<typename MajorVersionT = Aws::String>
+    CompatibleEnvironmentTemplate& WithMajorVersion(MajorVersionT&& value) { SetMajorVersion(std::forward<MajorVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
-    inline void SetMajorVersion(const Aws::String& value) { m_majorVersionHasBeenSet = true; m_majorVersion = value; }
-
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
-    inline void SetMajorVersion(Aws::String&& value) { m_majorVersionHasBeenSet = true; m_majorVersion = std::move(value); }
-
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
-    inline void SetMajorVersion(const char* value) { m_majorVersionHasBeenSet = true; m_majorVersion.assign(value); }
-
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
-    inline CompatibleEnvironmentTemplate& WithMajorVersion(const Aws::String& value) { SetMajorVersion(value); return *this;}
-
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
-    inline CompatibleEnvironmentTemplate& WithMajorVersion(Aws::String&& value) { SetMajorVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The major version of the compatible environment template.</p>
-     */
-    inline CompatibleEnvironmentTemplate& WithMajorVersion(const char* value) { SetMajorVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The compatible environment template name.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
-    inline CompatibleEnvironmentTemplate& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
-    inline CompatibleEnvironmentTemplate& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The compatible environment template name.</p>
-     */
-    inline CompatibleEnvironmentTemplate& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    CompatibleEnvironmentTemplate& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_majorVersion;

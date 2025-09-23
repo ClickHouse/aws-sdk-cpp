@@ -12,11 +12,6 @@ using namespace Aws::SecurityLake::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDataLakeRequest::UpdateDataLakeRequest() : 
-    m_configurationsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDataLakeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -29,6 +24,12 @@ Aws::String UpdateDataLakeRequest::SerializePayload() const
      configurationsJsonList[configurationsIndex].AsObject(m_configurations[configurationsIndex].Jsonize());
    }
    payload.WithArray("configurations", std::move(configurationsJsonList));
+
+  }
+
+  if(m_metaStoreManagerRoleArnHasBeenSet)
+  {
+   payload.WithString("metaStoreManagerRoleArn", m_metaStoreManagerRoleArn);
 
   }
 

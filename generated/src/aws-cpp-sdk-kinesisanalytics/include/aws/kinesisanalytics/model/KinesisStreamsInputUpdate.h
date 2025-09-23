@@ -32,109 +32,37 @@ namespace Model
   class KinesisStreamsInputUpdate
   {
   public:
-    AWS_KINESISANALYTICS_API KinesisStreamsInputUpdate();
+    AWS_KINESISANALYTICS_API KinesisStreamsInputUpdate() = default;
     AWS_KINESISANALYTICS_API KinesisStreamsInputUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API KinesisStreamsInputUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
      */
-    inline const Aws::String& GetResourceARNUpdate() const{ return m_resourceARNUpdate; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
+    inline const Aws::String& GetResourceARNUpdate() const { return m_resourceARNUpdate; }
     inline bool ResourceARNUpdateHasBeenSet() const { return m_resourceARNUpdateHasBeenSet; }
+    template<typename ResourceARNUpdateT = Aws::String>
+    void SetResourceARNUpdate(ResourceARNUpdateT&& value) { m_resourceARNUpdateHasBeenSet = true; m_resourceARNUpdate = std::forward<ResourceARNUpdateT>(value); }
+    template<typename ResourceARNUpdateT = Aws::String>
+    KinesisStreamsInputUpdate& WithResourceARNUpdate(ResourceARNUpdateT&& value) { SetResourceARNUpdate(std::forward<ResourceARNUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
-    inline void SetResourceARNUpdate(const Aws::String& value) { m_resourceARNUpdateHasBeenSet = true; m_resourceARNUpdate = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
-    inline void SetResourceARNUpdate(Aws::String&& value) { m_resourceARNUpdateHasBeenSet = true; m_resourceARNUpdate = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
-    inline void SetResourceARNUpdate(const char* value) { m_resourceARNUpdateHasBeenSet = true; m_resourceARNUpdate.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
-    inline KinesisStreamsInputUpdate& WithResourceARNUpdate(const Aws::String& value) { SetResourceARNUpdate(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
-    inline KinesisStreamsInputUpdate& WithResourceARNUpdate(Aws::String&& value) { SetResourceARNUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
-     */
-    inline KinesisStreamsInputUpdate& WithResourceARNUpdate(const char* value) { SetResourceARNUpdate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
      * stream on your behalf. You need to grant the necessary permissions to this
      * role.</p>
      */
-    inline const Aws::String& GetRoleARNUpdate() const{ return m_roleARNUpdate; }
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
+    inline const Aws::String& GetRoleARNUpdate() const { return m_roleARNUpdate; }
     inline bool RoleARNUpdateHasBeenSet() const { return m_roleARNUpdateHasBeenSet; }
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
-    inline void SetRoleARNUpdate(const Aws::String& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = value; }
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
-    inline void SetRoleARNUpdate(Aws::String&& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = std::move(value); }
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
-    inline void SetRoleARNUpdate(const char* value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate.assign(value); }
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
-    inline KinesisStreamsInputUpdate& WithRoleARNUpdate(const Aws::String& value) { SetRoleARNUpdate(value); return *this;}
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
-    inline KinesisStreamsInputUpdate& WithRoleARNUpdate(Aws::String&& value) { SetRoleARNUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
-     * stream on your behalf. You need to grant the necessary permissions to this
-     * role.</p>
-     */
-    inline KinesisStreamsInputUpdate& WithRoleARNUpdate(const char* value) { SetRoleARNUpdate(value); return *this;}
-
+    template<typename RoleARNUpdateT = Aws::String>
+    void SetRoleARNUpdate(RoleARNUpdateT&& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = std::forward<RoleARNUpdateT>(value); }
+    template<typename RoleARNUpdateT = Aws::String>
+    KinesisStreamsInputUpdate& WithRoleARNUpdate(RoleARNUpdateT&& value) { SetRoleARNUpdate(std::forward<RoleARNUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceARNUpdate;

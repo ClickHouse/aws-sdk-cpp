@@ -18,25 +18,7 @@ namespace kendra
 namespace Model
 {
 
-GoogleDriveConfiguration::GoogleDriveConfiguration() : 
-    m_secretArnHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false),
-    m_excludeMimeTypesHasBeenSet(false),
-    m_excludeUserAccountsHasBeenSet(false),
-    m_excludeSharedDrivesHasBeenSet(false)
-{
-}
-
-GoogleDriveConfiguration::GoogleDriveConfiguration(JsonView jsonValue) : 
-    m_secretArnHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false),
-    m_excludeMimeTypesHasBeenSet(false),
-    m_excludeUserAccountsHasBeenSet(false),
-    m_excludeSharedDrivesHasBeenSet(false)
+GoogleDriveConfiguration::GoogleDriveConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,10 +28,8 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("SecretArn"))
   {
     m_secretArn = jsonValue.GetString("SecretArn");
-
     m_secretArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> inclusionPatternsJsonList = jsonValue.GetArray("InclusionPatterns");
@@ -59,7 +39,6 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
     }
     m_inclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> exclusionPatternsJsonList = jsonValue.GetArray("ExclusionPatterns");
@@ -69,7 +48,6 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
     }
     m_exclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -79,7 +57,6 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludeMimeTypes"))
   {
     Aws::Utils::Array<JsonView> excludeMimeTypesJsonList = jsonValue.GetArray("ExcludeMimeTypes");
@@ -89,7 +66,6 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
     }
     m_excludeMimeTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludeUserAccounts"))
   {
     Aws::Utils::Array<JsonView> excludeUserAccountsJsonList = jsonValue.GetArray("ExcludeUserAccounts");
@@ -99,7 +75,6 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
     }
     m_excludeUserAccountsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludeSharedDrives"))
   {
     Aws::Utils::Array<JsonView> excludeSharedDrivesJsonList = jsonValue.GetArray("ExcludeSharedDrives");
@@ -109,7 +84,6 @@ GoogleDriveConfiguration& GoogleDriveConfiguration::operator =(JsonView jsonValu
     }
     m_excludeSharedDrivesHasBeenSet = true;
   }
-
   return *this;
 }
 

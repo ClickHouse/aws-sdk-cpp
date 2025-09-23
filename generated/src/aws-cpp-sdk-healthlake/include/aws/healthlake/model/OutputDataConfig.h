@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>The output data configuration that was supplied when the export job was
+   * <p>The output data configuration supplied when the export job was
    * created.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/OutputDataConfig">AWS
    * API Reference</a></p>
@@ -32,48 +32,23 @@ namespace Model
   class OutputDataConfig
   {
   public:
-    AWS_HEALTHLAKE_API OutputDataConfig();
+    AWS_HEALTHLAKE_API OutputDataConfig() = default;
     AWS_HEALTHLAKE_API OutputDataConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API OutputDataConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTHLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The output data configuration that was supplied when the export job was
-     * created. </p>
+     * <p>The output data configuration supplied when the export job was created. </p>
      */
-    inline const S3Configuration& GetS3Configuration() const{ return m_s3Configuration; }
-
-    /**
-     * <p> The output data configuration that was supplied when the export job was
-     * created. </p>
-     */
+    inline const S3Configuration& GetS3Configuration() const { return m_s3Configuration; }
     inline bool S3ConfigurationHasBeenSet() const { return m_s3ConfigurationHasBeenSet; }
-
-    /**
-     * <p> The output data configuration that was supplied when the export job was
-     * created. </p>
-     */
-    inline void SetS3Configuration(const S3Configuration& value) { m_s3ConfigurationHasBeenSet = true; m_s3Configuration = value; }
-
-    /**
-     * <p> The output data configuration that was supplied when the export job was
-     * created. </p>
-     */
-    inline void SetS3Configuration(S3Configuration&& value) { m_s3ConfigurationHasBeenSet = true; m_s3Configuration = std::move(value); }
-
-    /**
-     * <p> The output data configuration that was supplied when the export job was
-     * created. </p>
-     */
-    inline OutputDataConfig& WithS3Configuration(const S3Configuration& value) { SetS3Configuration(value); return *this;}
-
-    /**
-     * <p> The output data configuration that was supplied when the export job was
-     * created. </p>
-     */
-    inline OutputDataConfig& WithS3Configuration(S3Configuration&& value) { SetS3Configuration(std::move(value)); return *this;}
-
+    template<typename S3ConfigurationT = S3Configuration>
+    void SetS3Configuration(S3ConfigurationT&& value) { m_s3ConfigurationHasBeenSet = true; m_s3Configuration = std::forward<S3ConfigurationT>(value); }
+    template<typename S3ConfigurationT = S3Configuration>
+    OutputDataConfig& WithS3Configuration(S3ConfigurationT&& value) { SetS3Configuration(std::forward<S3ConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     S3Configuration m_s3Configuration;

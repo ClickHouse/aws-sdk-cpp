@@ -32,72 +32,28 @@ namespace Model
   class AnonymousUserDashboardVisualEmbeddingConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API AnonymousUserDashboardVisualEmbeddingConfiguration();
+    AWS_QUICKSIGHT_API AnonymousUserDashboardVisualEmbeddingConfiguration() = default;
     AWS_QUICKSIGHT_API AnonymousUserDashboardVisualEmbeddingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AnonymousUserDashboardVisualEmbeddingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The visual ID for the visual that you want the user to see. This ID is
-     * included in the output URL. When the URL in response is accessed, Amazon
-     * QuickSight renders this visual.</p> <p>The Amazon Resource Name (ARN) of the
-     * dashboard that the visual belongs to must be included in the
+     * included in the output URL. When the URL in response is accessed, QuickSight
+     * renders this visual.</p> <p>The Amazon Resource Name (ARN) of the dashboard that
+     * the visual belongs to must be included in the
      * <code>AuthorizedResourceArns</code> parameter. Otherwise, the request will fail
      * with <code>InvalidParameterValueException</code>.</p>
      */
-    inline const DashboardVisualId& GetInitialDashboardVisualId() const{ return m_initialDashboardVisualId; }
-
-    /**
-     * <p>The visual ID for the visual that you want the user to see. This ID is
-     * included in the output URL. When the URL in response is accessed, Amazon
-     * QuickSight renders this visual.</p> <p>The Amazon Resource Name (ARN) of the
-     * dashboard that the visual belongs to must be included in the
-     * <code>AuthorizedResourceArns</code> parameter. Otherwise, the request will fail
-     * with <code>InvalidParameterValueException</code>.</p>
-     */
+    inline const DashboardVisualId& GetInitialDashboardVisualId() const { return m_initialDashboardVisualId; }
     inline bool InitialDashboardVisualIdHasBeenSet() const { return m_initialDashboardVisualIdHasBeenSet; }
-
-    /**
-     * <p>The visual ID for the visual that you want the user to see. This ID is
-     * included in the output URL. When the URL in response is accessed, Amazon
-     * QuickSight renders this visual.</p> <p>The Amazon Resource Name (ARN) of the
-     * dashboard that the visual belongs to must be included in the
-     * <code>AuthorizedResourceArns</code> parameter. Otherwise, the request will fail
-     * with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline void SetInitialDashboardVisualId(const DashboardVisualId& value) { m_initialDashboardVisualIdHasBeenSet = true; m_initialDashboardVisualId = value; }
-
-    /**
-     * <p>The visual ID for the visual that you want the user to see. This ID is
-     * included in the output URL. When the URL in response is accessed, Amazon
-     * QuickSight renders this visual.</p> <p>The Amazon Resource Name (ARN) of the
-     * dashboard that the visual belongs to must be included in the
-     * <code>AuthorizedResourceArns</code> parameter. Otherwise, the request will fail
-     * with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline void SetInitialDashboardVisualId(DashboardVisualId&& value) { m_initialDashboardVisualIdHasBeenSet = true; m_initialDashboardVisualId = std::move(value); }
-
-    /**
-     * <p>The visual ID for the visual that you want the user to see. This ID is
-     * included in the output URL. When the URL in response is accessed, Amazon
-     * QuickSight renders this visual.</p> <p>The Amazon Resource Name (ARN) of the
-     * dashboard that the visual belongs to must be included in the
-     * <code>AuthorizedResourceArns</code> parameter. Otherwise, the request will fail
-     * with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline AnonymousUserDashboardVisualEmbeddingConfiguration& WithInitialDashboardVisualId(const DashboardVisualId& value) { SetInitialDashboardVisualId(value); return *this;}
-
-    /**
-     * <p>The visual ID for the visual that you want the user to see. This ID is
-     * included in the output URL. When the URL in response is accessed, Amazon
-     * QuickSight renders this visual.</p> <p>The Amazon Resource Name (ARN) of the
-     * dashboard that the visual belongs to must be included in the
-     * <code>AuthorizedResourceArns</code> parameter. Otherwise, the request will fail
-     * with <code>InvalidParameterValueException</code>.</p>
-     */
-    inline AnonymousUserDashboardVisualEmbeddingConfiguration& WithInitialDashboardVisualId(DashboardVisualId&& value) { SetInitialDashboardVisualId(std::move(value)); return *this;}
-
+    template<typename InitialDashboardVisualIdT = DashboardVisualId>
+    void SetInitialDashboardVisualId(InitialDashboardVisualIdT&& value) { m_initialDashboardVisualIdHasBeenSet = true; m_initialDashboardVisualId = std::forward<InitialDashboardVisualIdT>(value); }
+    template<typename InitialDashboardVisualIdT = DashboardVisualId>
+    AnonymousUserDashboardVisualEmbeddingConfiguration& WithInitialDashboardVisualId(InitialDashboardVisualIdT&& value) { SetInitialDashboardVisualId(std::forward<InitialDashboardVisualIdT>(value)); return *this;}
+    ///@}
   private:
 
     DashboardVisualId m_initialDashboardVisualId;

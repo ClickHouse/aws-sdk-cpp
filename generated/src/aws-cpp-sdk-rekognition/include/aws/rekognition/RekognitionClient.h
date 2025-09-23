@@ -57,9 +57,13 @@ namespace Rekognition
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetCelebrityInfo.html">GetCelebrityInfo</a>
    * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetMediaAnalysisJob.html">GetMediaAnalysisJob</a>
+   * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_IndexFaces.html">IndexFaces</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListCollections.html">ListCollections</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListMediaAnalysisJob.html">ListMediaAnalysisJob</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListFaces.html">ListFaces</a>
    * </p> </li> <li> <p> <a
@@ -74,6 +78,8 @@ namespace Rekognition
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchUsers.html">SearchUsers</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchUsersByImage.html">SearchUsersByImage</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartMediaAnalysisJob.html">StartMediaAnalysisJob</a>
    * </p> </li> </ul> <p> <b>Amazon Rekognition Custom Labels</b> </p> <ul> <li> <p>
    * <a
    * href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CopyProjectVersion.html">CopyProjectVersion</a>
@@ -169,8 +175,8 @@ namespace Rekognition
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef RekognitionClientConfiguration ClientConfigurationType;
       typedef RekognitionEndpointProvider EndpointProviderType;
@@ -180,14 +186,14 @@ namespace Rekognition
         * is not specified, it will be initialized to default values.
         */
         RekognitionClient(const Aws::Rekognition::RekognitionClientConfiguration& clientConfiguration = Aws::Rekognition::RekognitionClientConfiguration(),
-                          std::shared_ptr<RekognitionEndpointProviderBase> endpointProvider = Aws::MakeShared<RekognitionEndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<RekognitionEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RekognitionClient(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<RekognitionEndpointProviderBase> endpointProvider = Aws::MakeShared<RekognitionEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<RekognitionEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::Rekognition::RekognitionClientConfiguration& clientConfiguration = Aws::Rekognition::RekognitionClientConfiguration());
 
        /**
@@ -195,7 +201,7 @@ namespace Rekognition
         * the default http client factory will be used
         */
         RekognitionClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<RekognitionEndpointProviderBase> endpointProvider = Aws::MakeShared<RekognitionEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<RekognitionEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::Rekognition::RekognitionClientConfiguration& clientConfiguration = Aws::Rekognition::RekognitionClientConfiguration());
 
 
@@ -226,8 +232,13 @@ namespace Rekognition
         /**
          * <p>Associates one or more faces with an existing UserID. Takes an array of
          * <code>FaceIds</code>. Each <code>FaceId</code> that are present in the
-         * <code>FaceIds</code> list is associated with the provided UserID. The maximum
-         * number of total <code>FaceIds</code> per UserID is 100. </p> <p>The
+         * <code>FaceIds</code> list is associated with the provided UserID. The number of
+         * FaceIds that can be used as input in a single request is limited to 100.</p>
+         * <p>Note that the total number of faces that can be associated with a single
+         * <code>UserID</code> is also limited to 100. Once a <code>UserID</code> has 100
+         * faces associated with it, no additional faces can be added. If more API calls
+         * are made after the limit is reached, a
+         * <code>ServiceQuotaExceededException</code> will result.</p> <p>The
          * <code>UserMatchThreshold</code> parameter specifies the minimum user match
          * confidence required for the face to be associated with a UserID that has at
          * least one <code>FaceID</code> already associated. This ensures that the
@@ -480,13 +491,13 @@ namespace Rekognition
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/CreateFaceLivenessSession">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateFaceLivenessSessionOutcome CreateFaceLivenessSession(const Model::CreateFaceLivenessSessionRequest& request) const;
+        virtual Model::CreateFaceLivenessSessionOutcome CreateFaceLivenessSession(const Model::CreateFaceLivenessSessionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateFaceLivenessSession that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateFaceLivenessSessionRequestT = Model::CreateFaceLivenessSessionRequest>
-        Model::CreateFaceLivenessSessionOutcomeCallable CreateFaceLivenessSessionCallable(const CreateFaceLivenessSessionRequestT& request) const
+        Model::CreateFaceLivenessSessionOutcomeCallable CreateFaceLivenessSessionCallable(const CreateFaceLivenessSessionRequestT& request = {}) const
         {
             return SubmitCallable(&RekognitionClient::CreateFaceLivenessSession, request);
         }
@@ -495,7 +506,7 @@ namespace Rekognition
          * An Async wrapper for CreateFaceLivenessSession that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateFaceLivenessSessionRequestT = Model::CreateFaceLivenessSessionRequest>
-        void CreateFaceLivenessSessionAsync(const CreateFaceLivenessSessionRequestT& request, const CreateFaceLivenessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateFaceLivenessSessionAsync(const CreateFaceLivenessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateFaceLivenessSessionRequestT& request = {}) const
         {
             return SubmitAsync(&RekognitionClient::CreateFaceLivenessSession, request, handler, context);
         }
@@ -1010,13 +1021,13 @@ namespace Rekognition
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/DescribeProjects">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeProjectsOutcome DescribeProjects(const Model::DescribeProjectsRequest& request) const;
+        virtual Model::DescribeProjectsOutcome DescribeProjects(const Model::DescribeProjectsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeProjects that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeProjectsRequestT = Model::DescribeProjectsRequest>
-        Model::DescribeProjectsOutcomeCallable DescribeProjectsCallable(const DescribeProjectsRequestT& request) const
+        Model::DescribeProjectsOutcomeCallable DescribeProjectsCallable(const DescribeProjectsRequestT& request = {}) const
         {
             return SubmitCallable(&RekognitionClient::DescribeProjects, request);
         }
@@ -1025,7 +1036,7 @@ namespace Rekognition
          * An Async wrapper for DescribeProjects that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeProjectsRequestT = Model::DescribeProjectsRequest>
-        void DescribeProjectsAsync(const DescribeProjectsRequestT& request, const DescribeProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeProjectsAsync(const DescribeProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeProjectsRequestT& request = {}) const
         {
             return SubmitAsync(&RekognitionClient::DescribeProjects, request, handler, context);
         }
@@ -1796,7 +1807,9 @@ namespace Rekognition
          * getting the next set of results. To get the next page of results, call
          * <code>GetlabelDetection</code> and populate the <code>NextToken</code> request
          * parameter with the token value returned from the previous call to
-         * <code>GetLabelDetection</code>.</p><p><h3>See Also:</h3>   <a
+         * <code>GetLabelDetection</code>.</p> <p>If you are retrieving results while using
+         * the Amazon Simple Notification Service, note that you will receive an "ERROR"
+         * notification if the job encounters an issue.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/GetLabelDetection">AWS
          * API Reference</a></p>
          */
@@ -1848,16 +1861,21 @@ namespace Rekognition
         }
 
         /**
-         * <p>Gets the path tracking results of a Amazon Rekognition Video analysis started
-         * by <a>StartPersonTracking</a>.</p> <p>The person path tracking operation is
-         * started by a call to <code>StartPersonTracking</code> which returns a job
-         * identifier (<code>JobId</code>). When the operation finishes, Amazon Rekognition
-         * Video publishes a completion status to the Amazon Simple Notification Service
-         * topic registered in the initial call to <code>StartPersonTracking</code>.</p>
-         * <p>To get the results of the person path tracking operation, first check that
-         * the status value published to the Amazon SNS topic is <code>SUCCEEDED</code>. If
-         * so, call <a>GetPersonTracking</a> and pass the job identifier
-         * (<code>JobId</code>) from the initial call to
+         *  <p> <i>End of support notice:</i> On October 31, 2025, AWS will
+         * discontinue support for Amazon Rekognition People Pathing. After October 31,
+         * 2025, you will no longer be able to use the Rekognition People Pathing
+         * capability. For more information, visit this <a
+         * href="https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/">blog
+         * post</a>.</p>  <p>Gets the path tracking results of a Amazon Rekognition
+         * Video analysis started by <a>StartPersonTracking</a>.</p> <p>The person path
+         * tracking operation is started by a call to <code>StartPersonTracking</code>
+         * which returns a job identifier (<code>JobId</code>). When the operation
+         * finishes, Amazon Rekognition Video publishes a completion status to the Amazon
+         * Simple Notification Service topic registered in the initial call to
+         * <code>StartPersonTracking</code>.</p> <p>To get the results of the person path
+         * tracking operation, first check that the status value published to the Amazon
+         * SNS topic is <code>SUCCEEDED</code>. If so, call <a>GetPersonTracking</a> and
+         * pass the job identifier (<code>JobId</code>) from the initial call to
          * <code>StartPersonTracking</code>.</p> <p> <code>GetPersonTracking</code> returns
          * an array, <code>Persons</code>, of tracked persons and the time(s) their paths
          * were tracked in the video. </p>  <p> <code>GetPersonTracking</code> only
@@ -2101,13 +2119,13 @@ namespace Rekognition
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/ListCollections">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCollectionsOutcome ListCollections(const Model::ListCollectionsRequest& request) const;
+        virtual Model::ListCollectionsOutcome ListCollections(const Model::ListCollectionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCollections that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCollectionsRequestT = Model::ListCollectionsRequest>
-        Model::ListCollectionsOutcomeCallable ListCollectionsCallable(const ListCollectionsRequestT& request) const
+        Model::ListCollectionsOutcomeCallable ListCollectionsCallable(const ListCollectionsRequestT& request = {}) const
         {
             return SubmitCallable(&RekognitionClient::ListCollections, request);
         }
@@ -2116,7 +2134,7 @@ namespace Rekognition
          * An Async wrapper for ListCollections that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCollectionsRequestT = Model::ListCollectionsRequest>
-        void ListCollectionsAsync(const ListCollectionsRequestT& request, const ListCollectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCollectionsAsync(const ListCollectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCollectionsRequestT& request = {}) const
         {
             return SubmitAsync(&RekognitionClient::ListCollections, request, handler, context);
         }
@@ -2229,13 +2247,13 @@ namespace Rekognition
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/ListMediaAnalysisJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListMediaAnalysisJobsOutcome ListMediaAnalysisJobs(const Model::ListMediaAnalysisJobsRequest& request) const;
+        virtual Model::ListMediaAnalysisJobsOutcome ListMediaAnalysisJobs(const Model::ListMediaAnalysisJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListMediaAnalysisJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListMediaAnalysisJobsRequestT = Model::ListMediaAnalysisJobsRequest>
-        Model::ListMediaAnalysisJobsOutcomeCallable ListMediaAnalysisJobsCallable(const ListMediaAnalysisJobsRequestT& request) const
+        Model::ListMediaAnalysisJobsOutcomeCallable ListMediaAnalysisJobsCallable(const ListMediaAnalysisJobsRequestT& request = {}) const
         {
             return SubmitCallable(&RekognitionClient::ListMediaAnalysisJobs, request);
         }
@@ -2244,7 +2262,7 @@ namespace Rekognition
          * An Async wrapper for ListMediaAnalysisJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListMediaAnalysisJobsRequestT = Model::ListMediaAnalysisJobsRequest>
-        void ListMediaAnalysisJobsAsync(const ListMediaAnalysisJobsRequestT& request, const ListMediaAnalysisJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListMediaAnalysisJobsAsync(const ListMediaAnalysisJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMediaAnalysisJobsRequestT& request = {}) const
         {
             return SubmitAsync(&RekognitionClient::ListMediaAnalysisJobs, request, handler, context);
         }
@@ -2286,13 +2304,13 @@ namespace Rekognition
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/ListStreamProcessors">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListStreamProcessorsOutcome ListStreamProcessors(const Model::ListStreamProcessorsRequest& request) const;
+        virtual Model::ListStreamProcessorsOutcome ListStreamProcessors(const Model::ListStreamProcessorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListStreamProcessors that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListStreamProcessorsRequestT = Model::ListStreamProcessorsRequest>
-        Model::ListStreamProcessorsOutcomeCallable ListStreamProcessorsCallable(const ListStreamProcessorsRequestT& request) const
+        Model::ListStreamProcessorsOutcomeCallable ListStreamProcessorsCallable(const ListStreamProcessorsRequestT& request = {}) const
         {
             return SubmitCallable(&RekognitionClient::ListStreamProcessors, request);
         }
@@ -2301,7 +2319,7 @@ namespace Rekognition
          * An Async wrapper for ListStreamProcessors that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListStreamProcessorsRequestT = Model::ListStreamProcessorsRequest>
-        void ListStreamProcessorsAsync(const ListStreamProcessorsRequestT& request, const ListStreamProcessorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListStreamProcessorsAsync(const ListStreamProcessorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListStreamProcessorsRequestT& request = {}) const
         {
             return SubmitAsync(&RekognitionClient::ListStreamProcessors, request, handler, context);
         }
@@ -2850,17 +2868,22 @@ namespace Rekognition
         }
 
         /**
-         * <p>Starts the asynchronous tracking of a person's path in a stored video.</p>
-         * <p>Amazon Rekognition Video can track the path of people in a video stored in an
-         * Amazon S3 bucket. Use <a>Video</a> to specify the bucket name and the filename
-         * of the video. <code>StartPersonTracking</code> returns a job identifier
-         * (<code>JobId</code>) which you use to get the results of the operation. When
-         * label detection is finished, Amazon Rekognition publishes a completion status to
-         * the Amazon Simple Notification Service topic that you specify in
-         * <code>NotificationChannel</code>. </p> <p>To get the results of the person
-         * detection operation, first check that the status value published to the Amazon
-         * SNS topic is <code>SUCCEEDED</code>. If so, call <a>GetPersonTracking</a> and
-         * pass the job identifier (<code>JobId</code>) from the initial call to
+         *  <p> <i>End of support notice:</i> On October 31, 2025, AWS will
+         * discontinue support for Amazon Rekognition People Pathing. After October 31,
+         * 2025, you will no longer be able to use the Rekognition People Pathing
+         * capability. For more information, visit this <a
+         * href="https://aws.amazon.com/blogs/machine-learning/transitioning-from-amazon-rekognition-people-pathing-exploring-other-alternatives/">blog
+         * post</a>.</p>  <p>Starts the asynchronous tracking of a person's path in
+         * a stored video.</p> <p>Amazon Rekognition Video can track the path of people in
+         * a video stored in an Amazon S3 bucket. Use <a>Video</a> to specify the bucket
+         * name and the filename of the video. <code>StartPersonTracking</code> returns a
+         * job identifier (<code>JobId</code>) which you use to get the results of the
+         * operation. When label detection is finished, Amazon Rekognition publishes a
+         * completion status to the Amazon Simple Notification Service topic that you
+         * specify in <code>NotificationChannel</code>. </p> <p>To get the results of the
+         * person detection operation, first check that the status value published to the
+         * Amazon SNS topic is <code>SUCCEEDED</code>. If so, call <a>GetPersonTracking</a>
+         * and pass the job identifier (<code>JobId</code>) from the initial call to
          * <code>StartPersonTracking</code>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rekognition-2016-06-27/StartPersonTracking">AWS
          * API Reference</a></p>
@@ -3225,7 +3248,6 @@ namespace Rekognition
       void init(const RekognitionClientConfiguration& clientConfiguration);
 
       RekognitionClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<RekognitionEndpointProviderBase> m_endpointProvider;
   };
 

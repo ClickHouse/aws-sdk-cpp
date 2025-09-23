@@ -20,23 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-DataShare::DataShare() : 
-    m_dataShareArnHasBeenSet(false),
-    m_producerArnHasBeenSet(false),
-    m_allowPubliclyAccessibleConsumers(false),
-    m_allowPubliclyAccessibleConsumersHasBeenSet(false),
-    m_dataShareAssociationsHasBeenSet(false),
-    m_managedByHasBeenSet(false)
-{
-}
-
-DataShare::DataShare(const XmlNode& xmlNode) : 
-    m_dataShareArnHasBeenSet(false),
-    m_producerArnHasBeenSet(false),
-    m_allowPubliclyAccessibleConsumers(false),
-    m_allowPubliclyAccessibleConsumersHasBeenSet(false),
-    m_dataShareAssociationsHasBeenSet(false),
-    m_managedByHasBeenSet(false)
+DataShare::DataShare(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +53,7 @@ DataShare& DataShare::operator =(const XmlNode& xmlNode)
     if(!dataShareAssociationsNode.IsNull())
     {
       XmlNode dataShareAssociationsMember = dataShareAssociationsNode.FirstChild("member");
+      m_dataShareAssociationsHasBeenSet = !dataShareAssociationsMember.IsNull();
       while(!dataShareAssociationsMember.IsNull())
       {
         m_dataShareAssociations.push_back(dataShareAssociationsMember);
@@ -82,6 +67,12 @@ DataShare& DataShare::operator =(const XmlNode& xmlNode)
     {
       m_managedBy = Aws::Utils::Xml::DecodeEscapedXmlText(managedByNode.GetText());
       m_managedByHasBeenSet = true;
+    }
+    XmlNode dataShareTypeNode = resultNode.FirstChild("DataShareType");
+    if(!dataShareTypeNode.IsNull())
+    {
+      m_dataShareType = DataShareTypeMapper::GetDataShareTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dataShareTypeNode.GetText()).c_str()));
+      m_dataShareTypeHasBeenSet = true;
     }
   }
 
@@ -121,6 +112,11 @@ void DataShare::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       oStream << location << index << locationValue << ".ManagedBy=" << StringUtils::URLEncode(m_managedBy.c_str()) << "&";
   }
 
+  if(m_dataShareTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DataShareType=" << StringUtils::URLEncode(DataShareTypeMapper::GetNameForDataShareType(m_dataShareType)) << "&";
+  }
+
   Aws::StringStream responseMetadataLocationAndMemberSs;
   responseMetadataLocationAndMemberSs << location << index << locationValue << ".ResponseMetadata";
   m_responseMetadata.OutputToStream(oStream, responseMetadataLocationAndMemberSs.str().c_str());
@@ -146,13 +142,17 @@ void DataShare::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_dataShareAssociations)
       {
         Aws::StringStream dataShareAssociationsSs;
-        dataShareAssociationsSs << location <<  ".DataShareAssociations.member." << dataShareAssociationsIdx++;
+        dataShareAssociationsSs << location << ".DataShareAssociations.member." << dataShareAssociationsIdx++;
         item.OutputToStream(oStream, dataShareAssociationsSs.str().c_str());
       }
   }
   if(m_managedByHasBeenSet)
   {
       oStream << location << ".ManagedBy=" << StringUtils::URLEncode(m_managedBy.c_str()) << "&";
+  }
+  if(m_dataShareTypeHasBeenSet)
+  {
+      oStream << location << ".DataShareType=" << StringUtils::URLEncode(DataShareTypeMapper::GetNameForDataShareType(m_dataShareType)) << "&";
   }
   Aws::String responseMetadataLocationAndMember(location);
   responseMetadataLocationAndMember += ".ResponseMetadata";

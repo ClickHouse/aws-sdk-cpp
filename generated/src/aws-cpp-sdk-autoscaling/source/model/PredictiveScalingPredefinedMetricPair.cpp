@@ -20,17 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-PredictiveScalingPredefinedMetricPair::PredictiveScalingPredefinedMetricPair() : 
-    m_predefinedMetricType(PredefinedMetricPairType::NOT_SET),
-    m_predefinedMetricTypeHasBeenSet(false),
-    m_resourceLabelHasBeenSet(false)
-{
-}
-
-PredictiveScalingPredefinedMetricPair::PredictiveScalingPredefinedMetricPair(const XmlNode& xmlNode) : 
-    m_predefinedMetricType(PredefinedMetricPairType::NOT_SET),
-    m_predefinedMetricTypeHasBeenSet(false),
-    m_resourceLabelHasBeenSet(false)
+PredictiveScalingPredefinedMetricPair::PredictiveScalingPredefinedMetricPair(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ PredictiveScalingPredefinedMetricPair& PredictiveScalingPredefinedMetricPair::op
     XmlNode predefinedMetricTypeNode = resultNode.FirstChild("PredefinedMetricType");
     if(!predefinedMetricTypeNode.IsNull())
     {
-      m_predefinedMetricType = PredefinedMetricPairTypeMapper::GetPredefinedMetricPairTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(predefinedMetricTypeNode.GetText()).c_str()).c_str());
+      m_predefinedMetricType = PredefinedMetricPairTypeMapper::GetPredefinedMetricPairTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(predefinedMetricTypeNode.GetText()).c_str()));
       m_predefinedMetricTypeHasBeenSet = true;
     }
     XmlNode resourceLabelNode = resultNode.FirstChild("ResourceLabel");
@@ -62,7 +52,7 @@ void PredictiveScalingPredefinedMetricPair::OutputToStream(Aws::OStream& oStream
 {
   if(m_predefinedMetricTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PredefinedMetricType=" << PredefinedMetricPairTypeMapper::GetNameForPredefinedMetricPairType(m_predefinedMetricType) << "&";
+      oStream << location << index << locationValue << ".PredefinedMetricType=" << StringUtils::URLEncode(PredefinedMetricPairTypeMapper::GetNameForPredefinedMetricPairType(m_predefinedMetricType)) << "&";
   }
 
   if(m_resourceLabelHasBeenSet)
@@ -76,7 +66,7 @@ void PredictiveScalingPredefinedMetricPair::OutputToStream(Aws::OStream& oStream
 {
   if(m_predefinedMetricTypeHasBeenSet)
   {
-      oStream << location << ".PredefinedMetricType=" << PredefinedMetricPairTypeMapper::GetNameForPredefinedMetricPairType(m_predefinedMetricType) << "&";
+      oStream << location << ".PredefinedMetricType=" << StringUtils::URLEncode(PredefinedMetricPairTypeMapper::GetNameForPredefinedMetricPairType(m_predefinedMetricType)) << "&";
   }
   if(m_resourceLabelHasBeenSet)
   {

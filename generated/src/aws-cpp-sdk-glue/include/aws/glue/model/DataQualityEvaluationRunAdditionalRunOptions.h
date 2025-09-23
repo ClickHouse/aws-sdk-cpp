@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/glue/Glue_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/glue/model/DQCompositeRuleEvaluationMethod.h>
 #include <utility>
 
 namespace Aws
@@ -32,80 +33,54 @@ namespace Model
   class DataQualityEvaluationRunAdditionalRunOptions
   {
   public:
-    AWS_GLUE_API DataQualityEvaluationRunAdditionalRunOptions();
+    AWS_GLUE_API DataQualityEvaluationRunAdditionalRunOptions() = default;
     AWS_GLUE_API DataQualityEvaluationRunAdditionalRunOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API DataQualityEvaluationRunAdditionalRunOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether or not to enable CloudWatch metrics.</p>
      */
-    inline bool GetCloudWatchMetricsEnabled() const{ return m_cloudWatchMetricsEnabled; }
-
-    /**
-     * <p>Whether or not to enable CloudWatch metrics.</p>
-     */
+    inline bool GetCloudWatchMetricsEnabled() const { return m_cloudWatchMetricsEnabled; }
     inline bool CloudWatchMetricsEnabledHasBeenSet() const { return m_cloudWatchMetricsEnabledHasBeenSet; }
-
-    /**
-     * <p>Whether or not to enable CloudWatch metrics.</p>
-     */
     inline void SetCloudWatchMetricsEnabled(bool value) { m_cloudWatchMetricsEnabledHasBeenSet = true; m_cloudWatchMetricsEnabled = value; }
-
-    /**
-     * <p>Whether or not to enable CloudWatch metrics.</p>
-     */
     inline DataQualityEvaluationRunAdditionalRunOptions& WithCloudWatchMetricsEnabled(bool value) { SetCloudWatchMetricsEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Prefix for Amazon S3 to store results.</p>
      */
-    inline const Aws::String& GetResultsS3Prefix() const{ return m_resultsS3Prefix; }
-
-    /**
-     * <p>Prefix for Amazon S3 to store results.</p>
-     */
+    inline const Aws::String& GetResultsS3Prefix() const { return m_resultsS3Prefix; }
     inline bool ResultsS3PrefixHasBeenSet() const { return m_resultsS3PrefixHasBeenSet; }
+    template<typename ResultsS3PrefixT = Aws::String>
+    void SetResultsS3Prefix(ResultsS3PrefixT&& value) { m_resultsS3PrefixHasBeenSet = true; m_resultsS3Prefix = std::forward<ResultsS3PrefixT>(value); }
+    template<typename ResultsS3PrefixT = Aws::String>
+    DataQualityEvaluationRunAdditionalRunOptions& WithResultsS3Prefix(ResultsS3PrefixT&& value) { SetResultsS3Prefix(std::forward<ResultsS3PrefixT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Prefix for Amazon S3 to store results.</p>
+     * <p>Set the evaluation method for composite rules in the ruleset to
+     * ROW/COLUMN</p>
      */
-    inline void SetResultsS3Prefix(const Aws::String& value) { m_resultsS3PrefixHasBeenSet = true; m_resultsS3Prefix = value; }
-
-    /**
-     * <p>Prefix for Amazon S3 to store results.</p>
-     */
-    inline void SetResultsS3Prefix(Aws::String&& value) { m_resultsS3PrefixHasBeenSet = true; m_resultsS3Prefix = std::move(value); }
-
-    /**
-     * <p>Prefix for Amazon S3 to store results.</p>
-     */
-    inline void SetResultsS3Prefix(const char* value) { m_resultsS3PrefixHasBeenSet = true; m_resultsS3Prefix.assign(value); }
-
-    /**
-     * <p>Prefix for Amazon S3 to store results.</p>
-     */
-    inline DataQualityEvaluationRunAdditionalRunOptions& WithResultsS3Prefix(const Aws::String& value) { SetResultsS3Prefix(value); return *this;}
-
-    /**
-     * <p>Prefix for Amazon S3 to store results.</p>
-     */
-    inline DataQualityEvaluationRunAdditionalRunOptions& WithResultsS3Prefix(Aws::String&& value) { SetResultsS3Prefix(std::move(value)); return *this;}
-
-    /**
-     * <p>Prefix for Amazon S3 to store results.</p>
-     */
-    inline DataQualityEvaluationRunAdditionalRunOptions& WithResultsS3Prefix(const char* value) { SetResultsS3Prefix(value); return *this;}
-
+    inline DQCompositeRuleEvaluationMethod GetCompositeRuleEvaluationMethod() const { return m_compositeRuleEvaluationMethod; }
+    inline bool CompositeRuleEvaluationMethodHasBeenSet() const { return m_compositeRuleEvaluationMethodHasBeenSet; }
+    inline void SetCompositeRuleEvaluationMethod(DQCompositeRuleEvaluationMethod value) { m_compositeRuleEvaluationMethodHasBeenSet = true; m_compositeRuleEvaluationMethod = value; }
+    inline DataQualityEvaluationRunAdditionalRunOptions& WithCompositeRuleEvaluationMethod(DQCompositeRuleEvaluationMethod value) { SetCompositeRuleEvaluationMethod(value); return *this;}
+    ///@}
   private:
 
-    bool m_cloudWatchMetricsEnabled;
+    bool m_cloudWatchMetricsEnabled{false};
     bool m_cloudWatchMetricsEnabledHasBeenSet = false;
 
     Aws::String m_resultsS3Prefix;
     bool m_resultsS3PrefixHasBeenSet = false;
+
+    DQCompositeRuleEvaluationMethod m_compositeRuleEvaluationMethod{DQCompositeRuleEvaluationMethod::NOT_SET};
+    bool m_compositeRuleEvaluationMethodHasBeenSet = false;
   };
 
 } // namespace Model

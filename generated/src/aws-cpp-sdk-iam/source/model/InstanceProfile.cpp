@@ -20,25 +20,7 @@ namespace IAM
 namespace Model
 {
 
-InstanceProfile::InstanceProfile() : 
-    m_pathHasBeenSet(false),
-    m_instanceProfileNameHasBeenSet(false),
-    m_instanceProfileIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_rolesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-InstanceProfile::InstanceProfile(const XmlNode& xmlNode) : 
-    m_pathHasBeenSet(false),
-    m_instanceProfileNameHasBeenSet(false),
-    m_instanceProfileIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_rolesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+InstanceProfile::InstanceProfile(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -83,6 +65,7 @@ InstanceProfile& InstanceProfile::operator =(const XmlNode& xmlNode)
     if(!rolesNode.IsNull())
     {
       XmlNode rolesMember = rolesNode.FirstChild("member");
+      m_rolesHasBeenSet = !rolesMember.IsNull();
       while(!rolesMember.IsNull())
       {
         m_roles.push_back(rolesMember);
@@ -95,6 +78,7 @@ InstanceProfile& InstanceProfile::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("member");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -187,7 +171,7 @@ void InstanceProfile::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_roles)
       {
         Aws::StringStream rolesSs;
-        rolesSs << location <<  ".Roles.member." << rolesIdx++;
+        rolesSs << location << ".Roles.member." << rolesIdx++;
         item.OutputToStream(oStream, rolesSs.str().c_str());
       }
   }
@@ -197,7 +181,7 @@ void InstanceProfile::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tags.member." << tagsIdx++;
+        tagsSs << location << ".Tags.member." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

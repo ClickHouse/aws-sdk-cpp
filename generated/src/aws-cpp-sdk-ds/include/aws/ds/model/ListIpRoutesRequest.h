@@ -21,7 +21,7 @@ namespace Model
   class ListIpRoutesRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API ListIpRoutesRequest();
+    AWS_DIRECTORYSERVICE_API ListIpRoutesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,128 +34,42 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Identifier (ID) of the directory for which you want to retrieve the IP
      * addresses.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    ListIpRoutesRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
-    inline ListIpRoutesRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
-    inline ListIpRoutesRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifier (ID) of the directory for which you want to retrieve the IP
-     * addresses.</p>
-     */
-    inline ListIpRoutesRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
      * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListIpRoutesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
-    inline ListIpRoutesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
-    inline ListIpRoutesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
-     * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
-     */
-    inline ListIpRoutesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of items to return. If this value is zero, the maximum number
      * of items is specified by the limitations of the operation.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>Maximum number of items to return. If this value is zero, the maximum number
-     * of items is specified by the limitations of the operation.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>Maximum number of items to return. If this value is zero, the maximum number
-     * of items is specified by the limitations of the operation.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>Maximum number of items to return. If this value is zero, the maximum number
-     * of items is specified by the limitations of the operation.</p>
-     */
     inline ListIpRoutesRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_directoryId;
@@ -164,7 +78,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

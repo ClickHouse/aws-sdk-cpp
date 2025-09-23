@@ -29,35 +29,24 @@ namespace Model
   class ArrayProperties
   {
   public:
-    AWS_BATCH_API ArrayProperties();
+    AWS_BATCH_API ArrayProperties() = default;
     AWS_BATCH_API ArrayProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API ArrayProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The size of the array job.</p>
      */
-    inline int GetSize() const{ return m_size; }
-
-    /**
-     * <p>The size of the array job.</p>
-     */
+    inline int GetSize() const { return m_size; }
     inline bool SizeHasBeenSet() const { return m_sizeHasBeenSet; }
-
-    /**
-     * <p>The size of the array job.</p>
-     */
     inline void SetSize(int value) { m_sizeHasBeenSet = true; m_size = value; }
-
-    /**
-     * <p>The size of the array job.</p>
-     */
     inline ArrayProperties& WithSize(int value) { SetSize(value); return *this;}
-
+    ///@}
   private:
 
-    int m_size;
+    int m_size{0};
     bool m_sizeHasBeenSet = false;
   };
 

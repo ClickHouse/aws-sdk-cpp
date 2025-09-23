@@ -36,295 +36,113 @@ namespace Model
   class TrustAnchorDetail
   {
   public:
-    AWS_ROLESANYWHERE_API TrustAnchorDetail();
+    AWS_ROLESANYWHERE_API TrustAnchorDetail() = default;
     AWS_ROLESANYWHERE_API TrustAnchorDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROLESANYWHERE_API TrustAnchorDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROLESANYWHERE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ISO-8601 timestamp when the trust anchor was created. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was created. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    TrustAnchorDetail& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was created. </p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was created. </p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was created. </p>
-     */
-    inline TrustAnchorDetail& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was created. </p>
-     */
-    inline TrustAnchorDetail& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether the trust anchor is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Indicates whether the trust anchor is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the trust anchor is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Indicates whether the trust anchor is enabled.</p>
-     */
     inline TrustAnchorDetail& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the trust anchor.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TrustAnchorDetail& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of notification settings to be associated to the trust anchor.</p>
      */
-    inline const Aws::Vector<NotificationSettingDetail>& GetNotificationSettings() const{ return m_notificationSettings; }
-
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
+    inline const Aws::Vector<NotificationSettingDetail>& GetNotificationSettings() const { return m_notificationSettings; }
     inline bool NotificationSettingsHasBeenSet() const { return m_notificationSettingsHasBeenSet; }
+    template<typename NotificationSettingsT = Aws::Vector<NotificationSettingDetail>>
+    void SetNotificationSettings(NotificationSettingsT&& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings = std::forward<NotificationSettingsT>(value); }
+    template<typename NotificationSettingsT = Aws::Vector<NotificationSettingDetail>>
+    TrustAnchorDetail& WithNotificationSettings(NotificationSettingsT&& value) { SetNotificationSettings(std::forward<NotificationSettingsT>(value)); return *this;}
+    template<typename NotificationSettingsT = NotificationSettingDetail>
+    TrustAnchorDetail& AddNotificationSettings(NotificationSettingsT&& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings.emplace_back(std::forward<NotificationSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
-    inline void SetNotificationSettings(const Aws::Vector<NotificationSettingDetail>& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings = value; }
-
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
-    inline void SetNotificationSettings(Aws::Vector<NotificationSettingDetail>&& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings = std::move(value); }
-
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithNotificationSettings(const Aws::Vector<NotificationSettingDetail>& value) { SetNotificationSettings(value); return *this;}
-
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithNotificationSettings(Aws::Vector<NotificationSettingDetail>&& value) { SetNotificationSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& AddNotificationSettings(const NotificationSettingDetail& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of notification settings to be associated to the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& AddNotificationSettings(NotificationSettingDetail&& value) { m_notificationSettingsHasBeenSet = true; m_notificationSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The trust anchor type and its related certificate data.</p>
      */
-    inline const Source& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
+    inline const Source& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Source>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Source>
+    TrustAnchorDetail& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline void SetSource(const Source& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline void SetSource(Source&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline TrustAnchorDetail& WithSource(const Source& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The trust anchor type and its related certificate data.</p>
-     */
-    inline TrustAnchorDetail& WithSource(Source&& value) { SetSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the trust anchor.</p>
      */
-    inline const Aws::String& GetTrustAnchorArn() const{ return m_trustAnchorArn; }
-
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
+    inline const Aws::String& GetTrustAnchorArn() const { return m_trustAnchorArn; }
     inline bool TrustAnchorArnHasBeenSet() const { return m_trustAnchorArnHasBeenSet; }
+    template<typename TrustAnchorArnT = Aws::String>
+    void SetTrustAnchorArn(TrustAnchorArnT&& value) { m_trustAnchorArnHasBeenSet = true; m_trustAnchorArn = std::forward<TrustAnchorArnT>(value); }
+    template<typename TrustAnchorArnT = Aws::String>
+    TrustAnchorDetail& WithTrustAnchorArn(TrustAnchorArnT&& value) { SetTrustAnchorArn(std::forward<TrustAnchorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
-    inline void SetTrustAnchorArn(const Aws::String& value) { m_trustAnchorArnHasBeenSet = true; m_trustAnchorArn = value; }
-
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
-    inline void SetTrustAnchorArn(Aws::String&& value) { m_trustAnchorArnHasBeenSet = true; m_trustAnchorArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
-    inline void SetTrustAnchorArn(const char* value) { m_trustAnchorArnHasBeenSet = true; m_trustAnchorArn.assign(value); }
-
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithTrustAnchorArn(const Aws::String& value) { SetTrustAnchorArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithTrustAnchorArn(Aws::String&& value) { SetTrustAnchorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithTrustAnchorArn(const char* value) { SetTrustAnchorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the trust anchor.</p>
      */
-    inline const Aws::String& GetTrustAnchorId() const{ return m_trustAnchorId; }
-
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
+    inline const Aws::String& GetTrustAnchorId() const { return m_trustAnchorId; }
     inline bool TrustAnchorIdHasBeenSet() const { return m_trustAnchorIdHasBeenSet; }
+    template<typename TrustAnchorIdT = Aws::String>
+    void SetTrustAnchorId(TrustAnchorIdT&& value) { m_trustAnchorIdHasBeenSet = true; m_trustAnchorId = std::forward<TrustAnchorIdT>(value); }
+    template<typename TrustAnchorIdT = Aws::String>
+    TrustAnchorDetail& WithTrustAnchorId(TrustAnchorIdT&& value) { SetTrustAnchorId(std::forward<TrustAnchorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
-    inline void SetTrustAnchorId(const Aws::String& value) { m_trustAnchorIdHasBeenSet = true; m_trustAnchorId = value; }
-
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
-    inline void SetTrustAnchorId(Aws::String&& value) { m_trustAnchorIdHasBeenSet = true; m_trustAnchorId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
-    inline void SetTrustAnchorId(const char* value) { m_trustAnchorIdHasBeenSet = true; m_trustAnchorId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithTrustAnchorId(const Aws::String& value) { SetTrustAnchorId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithTrustAnchorId(Aws::String&& value) { SetTrustAnchorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the trust anchor.</p>
-     */
-    inline TrustAnchorDetail& WithTrustAnchorId(const char* value) { SetTrustAnchorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ISO-8601 timestamp when the trust anchor was last updated. </p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was last updated. </p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was last updated. </p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was last updated. </p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was last updated. </p>
-     */
-    inline TrustAnchorDetail& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The ISO-8601 timestamp when the trust anchor was last updated. </p>
-     */
-    inline TrustAnchorDetail& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    TrustAnchorDetail& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_name;
@@ -342,7 +160,7 @@ namespace Model
     Aws::String m_trustAnchorId;
     bool m_trustAnchorIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
   };
 

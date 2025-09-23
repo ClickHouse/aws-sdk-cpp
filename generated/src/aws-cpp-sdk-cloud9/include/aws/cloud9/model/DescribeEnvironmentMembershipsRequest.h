@@ -23,7 +23,7 @@ namespace Model
   class DescribeEnvironmentMembershipsRequest : public Cloud9Request
   {
   public:
-    AWS_CLOUD9_API DescribeEnvironmentMembershipsRequest();
+    AWS_CLOUD9_API DescribeEnvironmentMembershipsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,104 +36,33 @@ namespace Model
     AWS_CLOUD9_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an individual environment member to get
      * information about. If no value is specified, information about all environment
      * members are returned.</p>
      */
-    inline const Aws::String& GetUserArn() const{ return m_userArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
+    inline const Aws::String& GetUserArn() const { return m_userArn; }
     inline bool UserArnHasBeenSet() const { return m_userArnHasBeenSet; }
+    template<typename UserArnT = Aws::String>
+    void SetUserArn(UserArnT&& value) { m_userArnHasBeenSet = true; m_userArn = std::forward<UserArnT>(value); }
+    template<typename UserArnT = Aws::String>
+    DescribeEnvironmentMembershipsRequest& WithUserArn(UserArnT&& value) { SetUserArn(std::forward<UserArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
-    inline void SetUserArn(const Aws::String& value) { m_userArnHasBeenSet = true; m_userArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
-    inline void SetUserArn(Aws::String&& value) { m_userArnHasBeenSet = true; m_userArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
-    inline void SetUserArn(const char* value) { m_userArnHasBeenSet = true; m_userArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithUserArn(const Aws::String& value) { SetUserArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithUserArn(Aws::String&& value) { SetUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an individual environment member to get
-     * information about. If no value is specified, information about all environment
-     * members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithUserArn(const char* value) { SetUserArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the environment to get environment member information about.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    DescribeEnvironmentMembershipsRequest& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the environment to get environment member information about.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of environment member permissions to get information about.
      * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
@@ -142,79 +71,16 @@ namespace Model
      * access to the environment.</p> </li> </ul> <p>If no value is specified,
      * information about all environment members are returned.</p>
      */
-    inline const Aws::Vector<Permissions>& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
+    inline const Aws::Vector<Permissions>& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
+    template<typename PermissionsT = Aws::Vector<Permissions>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<Permissions>>
+    DescribeEnvironmentMembershipsRequest& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    inline DescribeEnvironmentMembershipsRequest& AddPermissions(Permissions value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
-    inline void SetPermissions(const Aws::Vector<Permissions>& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
-    inline void SetPermissions(Aws::Vector<Permissions>&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithPermissions(const Aws::Vector<Permissions>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithPermissions(Aws::Vector<Permissions>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& AddPermissions(const Permissions& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>The type of environment member permissions to get information about.
-     * Available values include:</p> <ul> <li> <p> <code>owner</code>: Owns the
-     * environment.</p> </li> <li> <p> <code>read-only</code>: Has read-only access to
-     * the environment.</p> </li> <li> <p> <code>read-write</code>: Has read-write
-     * access to the environment.</p> </li> </ul> <p>If no value is specified,
-     * information about all environment members are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& AddPermissions(Permissions&& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>During a previous call, if there are more than 25 items in the list, only the
      * first 25 items are returned, along with a unique string called a <i>next
@@ -223,99 +89,23 @@ namespace Model
      * keep calling this operation with each subsequent next token that is returned,
      * until no more next tokens are returned.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeEnvironmentMembershipsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>During a previous call, if there are more than 25 items in the list, only the
-     * first 25 items are returned, along with a unique string called a <i>next
-     * token</i>. To get the next batch of items in the list, call this operation
-     * again, adding the next token to the call. To get all of the items in the list,
-     * keep calling this operation with each subsequent next token that is returned,
-     * until no more next tokens are returned.</p>
-     */
-    inline DescribeEnvironmentMembershipsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of environment members to get information about.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of environment members to get information about.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of environment members to get information about.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of environment members to get information about.</p>
-     */
     inline DescribeEnvironmentMembershipsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_userArn;
@@ -330,7 +120,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

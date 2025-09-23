@@ -38,12 +38,13 @@ namespace Model
   class ValidationSettings
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API ValidationSettings();
+    AWS_VERIFIEDPERMISSIONS_API ValidationSettings() = default;
     AWS_VERIFIEDPERMISSIONS_API ValidationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API ValidationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The validation mode currently configured for this policy store. The valid
      * values are:</p> <ul> <li> <p> <b>OFF</b> – Neither Verified Permissions nor
@@ -58,91 +59,14 @@ namespace Model
      * policy or policy template without a schema, you must turn off validation.</p>
      * 
      */
-    inline const ValidationMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The validation mode currently configured for this policy store. The valid
-     * values are:</p> <ul> <li> <p> <b>OFF</b> – Neither Verified Permissions nor
-     * Cedar perform any validation on policies. No validation errors are reported by
-     * either service.</p> </li> <li> <p> <b>STRICT</b> – Requires a schema to be
-     * present in the policy store. Cedar performs validation on all submitted new or
-     * updated static policies and policy templates. Any that fail validation are
-     * rejected and Cedar doesn't store them in the policy store.</p> </li> </ul>
-     *  <p>If <code>Mode=STRICT</code> and the policy store doesn't contain
-     * a schema, Verified Permissions rejects all static policies and policy templates
-     * because there is no schema to validate against. </p> <p>To submit a static
-     * policy or policy template without a schema, you must turn off validation.</p>
-     * 
-     */
+    inline ValidationMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The validation mode currently configured for this policy store. The valid
-     * values are:</p> <ul> <li> <p> <b>OFF</b> – Neither Verified Permissions nor
-     * Cedar perform any validation on policies. No validation errors are reported by
-     * either service.</p> </li> <li> <p> <b>STRICT</b> – Requires a schema to be
-     * present in the policy store. Cedar performs validation on all submitted new or
-     * updated static policies and policy templates. Any that fail validation are
-     * rejected and Cedar doesn't store them in the policy store.</p> </li> </ul>
-     *  <p>If <code>Mode=STRICT</code> and the policy store doesn't contain
-     * a schema, Verified Permissions rejects all static policies and policy templates
-     * because there is no schema to validate against. </p> <p>To submit a static
-     * policy or policy template without a schema, you must turn off validation.</p>
-     * 
-     */
-    inline void SetMode(const ValidationMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The validation mode currently configured for this policy store. The valid
-     * values are:</p> <ul> <li> <p> <b>OFF</b> – Neither Verified Permissions nor
-     * Cedar perform any validation on policies. No validation errors are reported by
-     * either service.</p> </li> <li> <p> <b>STRICT</b> – Requires a schema to be
-     * present in the policy store. Cedar performs validation on all submitted new or
-     * updated static policies and policy templates. Any that fail validation are
-     * rejected and Cedar doesn't store them in the policy store.</p> </li> </ul>
-     *  <p>If <code>Mode=STRICT</code> and the policy store doesn't contain
-     * a schema, Verified Permissions rejects all static policies and policy templates
-     * because there is no schema to validate against. </p> <p>To submit a static
-     * policy or policy template without a schema, you must turn off validation.</p>
-     * 
-     */
-    inline void SetMode(ValidationMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The validation mode currently configured for this policy store. The valid
-     * values are:</p> <ul> <li> <p> <b>OFF</b> – Neither Verified Permissions nor
-     * Cedar perform any validation on policies. No validation errors are reported by
-     * either service.</p> </li> <li> <p> <b>STRICT</b> – Requires a schema to be
-     * present in the policy store. Cedar performs validation on all submitted new or
-     * updated static policies and policy templates. Any that fail validation are
-     * rejected and Cedar doesn't store them in the policy store.</p> </li> </ul>
-     *  <p>If <code>Mode=STRICT</code> and the policy store doesn't contain
-     * a schema, Verified Permissions rejects all static policies and policy templates
-     * because there is no schema to validate against. </p> <p>To submit a static
-     * policy or policy template without a schema, you must turn off validation.</p>
-     * 
-     */
-    inline ValidationSettings& WithMode(const ValidationMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The validation mode currently configured for this policy store. The valid
-     * values are:</p> <ul> <li> <p> <b>OFF</b> – Neither Verified Permissions nor
-     * Cedar perform any validation on policies. No validation errors are reported by
-     * either service.</p> </li> <li> <p> <b>STRICT</b> – Requires a schema to be
-     * present in the policy store. Cedar performs validation on all submitted new or
-     * updated static policies and policy templates. Any that fail validation are
-     * rejected and Cedar doesn't store them in the policy store.</p> </li> </ul>
-     *  <p>If <code>Mode=STRICT</code> and the policy store doesn't contain
-     * a schema, Verified Permissions rejects all static policies and policy templates
-     * because there is no schema to validate against. </p> <p>To submit a static
-     * policy or policy template without a schema, you must turn off validation.</p>
-     * 
-     */
-    inline ValidationSettings& WithMode(ValidationMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(ValidationMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline ValidationSettings& WithMode(ValidationMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    ValidationMode m_mode;
+    ValidationMode m_mode{ValidationMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

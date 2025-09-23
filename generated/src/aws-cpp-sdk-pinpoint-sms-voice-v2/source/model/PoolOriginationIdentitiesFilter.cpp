@@ -18,17 +18,7 @@ namespace PinpointSMSVoiceV2
 namespace Model
 {
 
-PoolOriginationIdentitiesFilter::PoolOriginationIdentitiesFilter() : 
-    m_name(PoolOriginationIdentitiesFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-PoolOriginationIdentitiesFilter::PoolOriginationIdentitiesFilter(JsonView jsonValue) : 
-    m_name(PoolOriginationIdentitiesFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+PoolOriginationIdentitiesFilter::PoolOriginationIdentitiesFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ PoolOriginationIdentitiesFilter& PoolOriginationIdentitiesFilter::operator =(Jso
   if(jsonValue.ValueExists("Name"))
   {
     m_name = PoolOriginationIdentitiesFilterNameMapper::GetPoolOriginationIdentitiesFilterNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -51,7 +39,6 @@ PoolOriginationIdentitiesFilter& PoolOriginationIdentitiesFilter::operator =(Jso
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

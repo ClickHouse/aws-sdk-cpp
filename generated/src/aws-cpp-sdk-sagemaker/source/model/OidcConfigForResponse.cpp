@@ -18,25 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-OidcConfigForResponse::OidcConfigForResponse() : 
-    m_clientIdHasBeenSet(false),
-    m_issuerHasBeenSet(false),
-    m_authorizationEndpointHasBeenSet(false),
-    m_tokenEndpointHasBeenSet(false),
-    m_userInfoEndpointHasBeenSet(false),
-    m_logoutEndpointHasBeenSet(false),
-    m_jwksUriHasBeenSet(false)
-{
-}
-
-OidcConfigForResponse::OidcConfigForResponse(JsonView jsonValue) : 
-    m_clientIdHasBeenSet(false),
-    m_issuerHasBeenSet(false),
-    m_authorizationEndpointHasBeenSet(false),
-    m_tokenEndpointHasBeenSet(false),
-    m_userInfoEndpointHasBeenSet(false),
-    m_logoutEndpointHasBeenSet(false),
-    m_jwksUriHasBeenSet(false)
+OidcConfigForResponse::OidcConfigForResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,52 +28,52 @@ OidcConfigForResponse& OidcConfigForResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ClientId"))
   {
     m_clientId = jsonValue.GetString("ClientId");
-
     m_clientIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Issuer"))
   {
     m_issuer = jsonValue.GetString("Issuer");
-
     m_issuerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AuthorizationEndpoint"))
   {
     m_authorizationEndpoint = jsonValue.GetString("AuthorizationEndpoint");
-
     m_authorizationEndpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TokenEndpoint"))
   {
     m_tokenEndpoint = jsonValue.GetString("TokenEndpoint");
-
     m_tokenEndpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserInfoEndpoint"))
   {
     m_userInfoEndpoint = jsonValue.GetString("UserInfoEndpoint");
-
     m_userInfoEndpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LogoutEndpoint"))
   {
     m_logoutEndpoint = jsonValue.GetString("LogoutEndpoint");
-
     m_logoutEndpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JwksUri"))
   {
     m_jwksUri = jsonValue.GetString("JwksUri");
-
     m_jwksUriHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Scope"))
+  {
+    m_scope = jsonValue.GetString("Scope");
+    m_scopeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AuthenticationRequestExtraParams"))
+  {
+    Aws::Map<Aws::String, JsonView> authenticationRequestExtraParamsJsonMap = jsonValue.GetObject("AuthenticationRequestExtraParams").GetAllObjects();
+    for(auto& authenticationRequestExtraParamsItem : authenticationRequestExtraParamsJsonMap)
+    {
+      m_authenticationRequestExtraParams[authenticationRequestExtraParamsItem.first] = authenticationRequestExtraParamsItem.second.AsString();
+    }
+    m_authenticationRequestExtraParamsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -138,6 +120,23 @@ JsonValue OidcConfigForResponse::Jsonize() const
   if(m_jwksUriHasBeenSet)
   {
    payload.WithString("JwksUri", m_jwksUri);
+
+  }
+
+  if(m_scopeHasBeenSet)
+  {
+   payload.WithString("Scope", m_scope);
+
+  }
+
+  if(m_authenticationRequestExtraParamsHasBeenSet)
+  {
+   JsonValue authenticationRequestExtraParamsJsonMap;
+   for(auto& authenticationRequestExtraParamsItem : m_authenticationRequestExtraParams)
+   {
+     authenticationRequestExtraParamsJsonMap.WithString(authenticationRequestExtraParamsItem.first, authenticationRequestExtraParamsItem.second);
+   }
+   payload.WithObject("AuthenticationRequestExtraParams", std::move(authenticationRequestExtraParamsJsonMap));
 
   }
 

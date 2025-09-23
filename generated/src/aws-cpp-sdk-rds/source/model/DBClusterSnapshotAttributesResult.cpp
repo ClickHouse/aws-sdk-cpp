@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBClusterSnapshotAttributesResult::DBClusterSnapshotAttributesResult() : 
-    m_dBClusterSnapshotIdentifierHasBeenSet(false),
-    m_dBClusterSnapshotAttributesHasBeenSet(false)
-{
-}
-
-DBClusterSnapshotAttributesResult::DBClusterSnapshotAttributesResult(const XmlNode& xmlNode) : 
-    m_dBClusterSnapshotIdentifierHasBeenSet(false),
-    m_dBClusterSnapshotAttributesHasBeenSet(false)
+DBClusterSnapshotAttributesResult::DBClusterSnapshotAttributesResult(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DBClusterSnapshotAttributesResult& DBClusterSnapshotAttributesResult::operator =
     if(!dBClusterSnapshotAttributesNode.IsNull())
     {
       XmlNode dBClusterSnapshotAttributesMember = dBClusterSnapshotAttributesNode.FirstChild("DBClusterSnapshotAttribute");
+      m_dBClusterSnapshotAttributesHasBeenSet = !dBClusterSnapshotAttributesMember.IsNull();
       while(!dBClusterSnapshotAttributesMember.IsNull())
       {
         m_dBClusterSnapshotAttributes.push_back(dBClusterSnapshotAttributesMember);
@@ -75,7 +68,7 @@ void DBClusterSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, co
       for(auto& item : m_dBClusterSnapshotAttributes)
       {
         Aws::StringStream dBClusterSnapshotAttributesSs;
-        dBClusterSnapshotAttributesSs << location << index << locationValue << ".DBClusterSnapshotAttribute." << dBClusterSnapshotAttributesIdx++;
+        dBClusterSnapshotAttributesSs << location << index << locationValue << ".DBClusterSnapshotAttributes.DBClusterSnapshotAttribute." << dBClusterSnapshotAttributesIdx++;
         item.OutputToStream(oStream, dBClusterSnapshotAttributesSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void DBClusterSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, co
       for(auto& item : m_dBClusterSnapshotAttributes)
       {
         Aws::StringStream dBClusterSnapshotAttributesSs;
-        dBClusterSnapshotAttributesSs << location <<  ".DBClusterSnapshotAttribute." << dBClusterSnapshotAttributesIdx++;
+        dBClusterSnapshotAttributesSs << location << ".DBClusterSnapshotAttributes.DBClusterSnapshotAttribute." << dBClusterSnapshotAttributesIdx++;
         item.OutputToStream(oStream, dBClusterSnapshotAttributesSs.str().c_str());
       }
   }

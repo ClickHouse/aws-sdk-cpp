@@ -26,7 +26,7 @@ namespace Model
   class ModifyTrafficMirrorFilterRuleRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ModifyTrafficMirrorFilterRuleRequest();
+    AWS_EC2_API ModifyTrafficMirrorFilterRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,445 +41,159 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the Traffic Mirror rule.</p>
      */
-    inline const Aws::String& GetTrafficMirrorFilterRuleId() const{ return m_trafficMirrorFilterRuleId; }
-
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
+    inline const Aws::String& GetTrafficMirrorFilterRuleId() const { return m_trafficMirrorFilterRuleId; }
     inline bool TrafficMirrorFilterRuleIdHasBeenSet() const { return m_trafficMirrorFilterRuleIdHasBeenSet; }
+    template<typename TrafficMirrorFilterRuleIdT = Aws::String>
+    void SetTrafficMirrorFilterRuleId(TrafficMirrorFilterRuleIdT&& value) { m_trafficMirrorFilterRuleIdHasBeenSet = true; m_trafficMirrorFilterRuleId = std::forward<TrafficMirrorFilterRuleIdT>(value); }
+    template<typename TrafficMirrorFilterRuleIdT = Aws::String>
+    ModifyTrafficMirrorFilterRuleRequest& WithTrafficMirrorFilterRuleId(TrafficMirrorFilterRuleIdT&& value) { SetTrafficMirrorFilterRuleId(std::forward<TrafficMirrorFilterRuleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
-    inline void SetTrafficMirrorFilterRuleId(const Aws::String& value) { m_trafficMirrorFilterRuleIdHasBeenSet = true; m_trafficMirrorFilterRuleId = value; }
-
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
-    inline void SetTrafficMirrorFilterRuleId(Aws::String&& value) { m_trafficMirrorFilterRuleIdHasBeenSet = true; m_trafficMirrorFilterRuleId = std::move(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
-    inline void SetTrafficMirrorFilterRuleId(const char* value) { m_trafficMirrorFilterRuleIdHasBeenSet = true; m_trafficMirrorFilterRuleId.assign(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithTrafficMirrorFilterRuleId(const Aws::String& value) { SetTrafficMirrorFilterRuleId(value); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithTrafficMirrorFilterRuleId(Aws::String&& value) { SetTrafficMirrorFilterRuleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithTrafficMirrorFilterRuleId(const char* value) { SetTrafficMirrorFilterRuleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of traffic to assign to the rule.</p>
      */
-    inline const TrafficDirection& GetTrafficDirection() const{ return m_trafficDirection; }
-
-    /**
-     * <p>The type of traffic to assign to the rule.</p>
-     */
+    inline TrafficDirection GetTrafficDirection() const { return m_trafficDirection; }
     inline bool TrafficDirectionHasBeenSet() const { return m_trafficDirectionHasBeenSet; }
+    inline void SetTrafficDirection(TrafficDirection value) { m_trafficDirectionHasBeenSet = true; m_trafficDirection = value; }
+    inline ModifyTrafficMirrorFilterRuleRequest& WithTrafficDirection(TrafficDirection value) { SetTrafficDirection(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of traffic to assign to the rule.</p>
-     */
-    inline void SetTrafficDirection(const TrafficDirection& value) { m_trafficDirectionHasBeenSet = true; m_trafficDirection = value; }
-
-    /**
-     * <p>The type of traffic to assign to the rule.</p>
-     */
-    inline void SetTrafficDirection(TrafficDirection&& value) { m_trafficDirectionHasBeenSet = true; m_trafficDirection = std::move(value); }
-
-    /**
-     * <p>The type of traffic to assign to the rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithTrafficDirection(const TrafficDirection& value) { SetTrafficDirection(value); return *this;}
-
-    /**
-     * <p>The type of traffic to assign to the rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithTrafficDirection(TrafficDirection&& value) { SetTrafficDirection(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of the Traffic Mirror rule. This number must be unique for each
      * Traffic Mirror rule in a given direction. The rules are processed in ascending
      * order by rule number.</p>
      */
-    inline int GetRuleNumber() const{ return m_ruleNumber; }
-
-    /**
-     * <p>The number of the Traffic Mirror rule. This number must be unique for each
-     * Traffic Mirror rule in a given direction. The rules are processed in ascending
-     * order by rule number.</p>
-     */
+    inline int GetRuleNumber() const { return m_ruleNumber; }
     inline bool RuleNumberHasBeenSet() const { return m_ruleNumberHasBeenSet; }
-
-    /**
-     * <p>The number of the Traffic Mirror rule. This number must be unique for each
-     * Traffic Mirror rule in a given direction. The rules are processed in ascending
-     * order by rule number.</p>
-     */
     inline void SetRuleNumber(int value) { m_ruleNumberHasBeenSet = true; m_ruleNumber = value; }
-
-    /**
-     * <p>The number of the Traffic Mirror rule. This number must be unique for each
-     * Traffic Mirror rule in a given direction. The rules are processed in ascending
-     * order by rule number.</p>
-     */
     inline ModifyTrafficMirrorFilterRuleRequest& WithRuleNumber(int value) { SetRuleNumber(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The action to assign to the rule.</p>
      */
-    inline const TrafficMirrorRuleAction& GetRuleAction() const{ return m_ruleAction; }
-
-    /**
-     * <p>The action to assign to the rule.</p>
-     */
+    inline TrafficMirrorRuleAction GetRuleAction() const { return m_ruleAction; }
     inline bool RuleActionHasBeenSet() const { return m_ruleActionHasBeenSet; }
+    inline void SetRuleAction(TrafficMirrorRuleAction value) { m_ruleActionHasBeenSet = true; m_ruleAction = value; }
+    inline ModifyTrafficMirrorFilterRuleRequest& WithRuleAction(TrafficMirrorRuleAction value) { SetRuleAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The action to assign to the rule.</p>
-     */
-    inline void SetRuleAction(const TrafficMirrorRuleAction& value) { m_ruleActionHasBeenSet = true; m_ruleAction = value; }
-
-    /**
-     * <p>The action to assign to the rule.</p>
-     */
-    inline void SetRuleAction(TrafficMirrorRuleAction&& value) { m_ruleActionHasBeenSet = true; m_ruleAction = std::move(value); }
-
-    /**
-     * <p>The action to assign to the rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithRuleAction(const TrafficMirrorRuleAction& value) { SetRuleAction(value); return *this;}
-
-    /**
-     * <p>The action to assign to the rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithRuleAction(TrafficMirrorRuleAction&& value) { SetRuleAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination ports that are associated with the Traffic Mirror rule.</p>
      */
-    inline const TrafficMirrorPortRangeRequest& GetDestinationPortRange() const{ return m_destinationPortRange; }
-
-    /**
-     * <p>The destination ports that are associated with the Traffic Mirror rule.</p>
-     */
+    inline const TrafficMirrorPortRangeRequest& GetDestinationPortRange() const { return m_destinationPortRange; }
     inline bool DestinationPortRangeHasBeenSet() const { return m_destinationPortRangeHasBeenSet; }
+    template<typename DestinationPortRangeT = TrafficMirrorPortRangeRequest>
+    void SetDestinationPortRange(DestinationPortRangeT&& value) { m_destinationPortRangeHasBeenSet = true; m_destinationPortRange = std::forward<DestinationPortRangeT>(value); }
+    template<typename DestinationPortRangeT = TrafficMirrorPortRangeRequest>
+    ModifyTrafficMirrorFilterRuleRequest& WithDestinationPortRange(DestinationPortRangeT&& value) { SetDestinationPortRange(std::forward<DestinationPortRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination ports that are associated with the Traffic Mirror rule.</p>
-     */
-    inline void SetDestinationPortRange(const TrafficMirrorPortRangeRequest& value) { m_destinationPortRangeHasBeenSet = true; m_destinationPortRange = value; }
-
-    /**
-     * <p>The destination ports that are associated with the Traffic Mirror rule.</p>
-     */
-    inline void SetDestinationPortRange(TrafficMirrorPortRangeRequest&& value) { m_destinationPortRangeHasBeenSet = true; m_destinationPortRange = std::move(value); }
-
-    /**
-     * <p>The destination ports that are associated with the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDestinationPortRange(const TrafficMirrorPortRangeRequest& value) { SetDestinationPortRange(value); return *this;}
-
-    /**
-     * <p>The destination ports that are associated with the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDestinationPortRange(TrafficMirrorPortRangeRequest&& value) { SetDestinationPortRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The port range to assign to the Traffic Mirror rule.</p>
      */
-    inline const TrafficMirrorPortRangeRequest& GetSourcePortRange() const{ return m_sourcePortRange; }
-
-    /**
-     * <p>The port range to assign to the Traffic Mirror rule.</p>
-     */
+    inline const TrafficMirrorPortRangeRequest& GetSourcePortRange() const { return m_sourcePortRange; }
     inline bool SourcePortRangeHasBeenSet() const { return m_sourcePortRangeHasBeenSet; }
+    template<typename SourcePortRangeT = TrafficMirrorPortRangeRequest>
+    void SetSourcePortRange(SourcePortRangeT&& value) { m_sourcePortRangeHasBeenSet = true; m_sourcePortRange = std::forward<SourcePortRangeT>(value); }
+    template<typename SourcePortRangeT = TrafficMirrorPortRangeRequest>
+    ModifyTrafficMirrorFilterRuleRequest& WithSourcePortRange(SourcePortRangeT&& value) { SetSourcePortRange(std::forward<SourcePortRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The port range to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetSourcePortRange(const TrafficMirrorPortRangeRequest& value) { m_sourcePortRangeHasBeenSet = true; m_sourcePortRange = value; }
-
-    /**
-     * <p>The port range to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetSourcePortRange(TrafficMirrorPortRangeRequest&& value) { m_sourcePortRangeHasBeenSet = true; m_sourcePortRange = std::move(value); }
-
-    /**
-     * <p>The port range to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithSourcePortRange(const TrafficMirrorPortRangeRequest& value) { SetSourcePortRange(value); return *this;}
-
-    /**
-     * <p>The port range to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithSourcePortRange(TrafficMirrorPortRangeRequest&& value) { SetSourcePortRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The protocol, for example TCP, to assign to the Traffic Mirror rule.</p>
      */
-    inline int GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol, for example TCP, to assign to the Traffic Mirror rule.</p>
-     */
+    inline int GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The protocol, for example TCP, to assign to the Traffic Mirror rule.</p>
-     */
     inline void SetProtocol(int value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol, for example TCP, to assign to the Traffic Mirror rule.</p>
-     */
     inline ModifyTrafficMirrorFilterRuleRequest& WithProtocol(int value) { SetProtocol(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
      */
-    inline const Aws::String& GetDestinationCidrBlock() const{ return m_destinationCidrBlock; }
-
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
+    inline const Aws::String& GetDestinationCidrBlock() const { return m_destinationCidrBlock; }
     inline bool DestinationCidrBlockHasBeenSet() const { return m_destinationCidrBlockHasBeenSet; }
+    template<typename DestinationCidrBlockT = Aws::String>
+    void SetDestinationCidrBlock(DestinationCidrBlockT&& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = std::forward<DestinationCidrBlockT>(value); }
+    template<typename DestinationCidrBlockT = Aws::String>
+    ModifyTrafficMirrorFilterRuleRequest& WithDestinationCidrBlock(DestinationCidrBlockT&& value) { SetDestinationCidrBlock(std::forward<DestinationCidrBlockT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetDestinationCidrBlock(const Aws::String& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = value; }
-
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetDestinationCidrBlock(Aws::String&& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = std::move(value); }
-
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetDestinationCidrBlock(const char* value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock.assign(value); }
-
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDestinationCidrBlock(const Aws::String& value) { SetDestinationCidrBlock(value); return *this;}
-
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDestinationCidrBlock(Aws::String&& value) { SetDestinationCidrBlock(std::move(value)); return *this;}
-
-    /**
-     * <p>The destination CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDestinationCidrBlock(const char* value) { SetDestinationCidrBlock(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
      */
-    inline const Aws::String& GetSourceCidrBlock() const{ return m_sourceCidrBlock; }
-
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
+    inline const Aws::String& GetSourceCidrBlock() const { return m_sourceCidrBlock; }
     inline bool SourceCidrBlockHasBeenSet() const { return m_sourceCidrBlockHasBeenSet; }
+    template<typename SourceCidrBlockT = Aws::String>
+    void SetSourceCidrBlock(SourceCidrBlockT&& value) { m_sourceCidrBlockHasBeenSet = true; m_sourceCidrBlock = std::forward<SourceCidrBlockT>(value); }
+    template<typename SourceCidrBlockT = Aws::String>
+    ModifyTrafficMirrorFilterRuleRequest& WithSourceCidrBlock(SourceCidrBlockT&& value) { SetSourceCidrBlock(std::forward<SourceCidrBlockT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetSourceCidrBlock(const Aws::String& value) { m_sourceCidrBlockHasBeenSet = true; m_sourceCidrBlock = value; }
-
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetSourceCidrBlock(Aws::String&& value) { m_sourceCidrBlockHasBeenSet = true; m_sourceCidrBlock = std::move(value); }
-
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetSourceCidrBlock(const char* value) { m_sourceCidrBlockHasBeenSet = true; m_sourceCidrBlock.assign(value); }
-
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithSourceCidrBlock(const Aws::String& value) { SetSourceCidrBlock(value); return *this;}
-
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithSourceCidrBlock(Aws::String&& value) { SetSourceCidrBlock(std::move(value)); return *this;}
-
-    /**
-     * <p>The source CIDR block to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithSourceCidrBlock(const char* value) { SetSourceCidrBlock(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description to assign to the Traffic Mirror rule.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ModifyTrafficMirrorFilterRuleRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description to assign to the Traffic Mirror rule.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The properties that you want to remove from the Traffic Mirror filter
      * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
      * property is set to the default.</p>
      */
-    inline const Aws::Vector<TrafficMirrorFilterRuleField>& GetRemoveFields() const{ return m_removeFields; }
-
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
+    inline const Aws::Vector<TrafficMirrorFilterRuleField>& GetRemoveFields() const { return m_removeFields; }
     inline bool RemoveFieldsHasBeenSet() const { return m_removeFieldsHasBeenSet; }
+    template<typename RemoveFieldsT = Aws::Vector<TrafficMirrorFilterRuleField>>
+    void SetRemoveFields(RemoveFieldsT&& value) { m_removeFieldsHasBeenSet = true; m_removeFields = std::forward<RemoveFieldsT>(value); }
+    template<typename RemoveFieldsT = Aws::Vector<TrafficMirrorFilterRuleField>>
+    ModifyTrafficMirrorFilterRuleRequest& WithRemoveFields(RemoveFieldsT&& value) { SetRemoveFields(std::forward<RemoveFieldsT>(value)); return *this;}
+    inline ModifyTrafficMirrorFilterRuleRequest& AddRemoveFields(TrafficMirrorFilterRuleField value) { m_removeFieldsHasBeenSet = true; m_removeFields.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
-    inline void SetRemoveFields(const Aws::Vector<TrafficMirrorFilterRuleField>& value) { m_removeFieldsHasBeenSet = true; m_removeFields = value; }
-
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
-    inline void SetRemoveFields(Aws::Vector<TrafficMirrorFilterRuleField>&& value) { m_removeFieldsHasBeenSet = true; m_removeFields = std::move(value); }
-
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithRemoveFields(const Aws::Vector<TrafficMirrorFilterRuleField>& value) { SetRemoveFields(value); return *this;}
-
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& WithRemoveFields(Aws::Vector<TrafficMirrorFilterRuleField>&& value) { SetRemoveFields(std::move(value)); return *this;}
-
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& AddRemoveFields(const TrafficMirrorFilterRuleField& value) { m_removeFieldsHasBeenSet = true; m_removeFields.push_back(value); return *this; }
-
-    /**
-     * <p>The properties that you want to remove from the Traffic Mirror filter
-     * rule.</p> <p>When you remove a property from a Traffic Mirror filter rule, the
-     * property is set to the default.</p>
-     */
-    inline ModifyTrafficMirrorFilterRuleRequest& AddRemoveFields(TrafficMirrorFilterRuleField&& value) { m_removeFieldsHasBeenSet = true; m_removeFields.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ModifyTrafficMirrorFilterRuleRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_trafficMirrorFilterRuleId;
     bool m_trafficMirrorFilterRuleIdHasBeenSet = false;
 
-    TrafficDirection m_trafficDirection;
+    TrafficDirection m_trafficDirection{TrafficDirection::NOT_SET};
     bool m_trafficDirectionHasBeenSet = false;
 
-    int m_ruleNumber;
+    int m_ruleNumber{0};
     bool m_ruleNumberHasBeenSet = false;
 
-    TrafficMirrorRuleAction m_ruleAction;
+    TrafficMirrorRuleAction m_ruleAction{TrafficMirrorRuleAction::NOT_SET};
     bool m_ruleActionHasBeenSet = false;
 
     TrafficMirrorPortRangeRequest m_destinationPortRange;
@@ -488,7 +202,7 @@ namespace Model
     TrafficMirrorPortRangeRequest m_sourcePortRange;
     bool m_sourcePortRangeHasBeenSet = false;
 
-    int m_protocol;
+    int m_protocol{0};
     bool m_protocolHasBeenSet = false;
 
     Aws::String m_destinationCidrBlock;
@@ -503,7 +217,7 @@ namespace Model
     Aws::Vector<TrafficMirrorFilterRuleField> m_removeFields;
     bool m_removeFieldsHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

@@ -24,142 +24,54 @@ namespace Model
 {
 
   /**
-   * <p>Describes a header match type. Only one can be provided.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Describes a header match type.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/vpc-lattice-2022-11-30/HeaderMatchType">AWS
    * API Reference</a></p>
    */
   class HeaderMatchType
   {
   public:
-    AWS_VPCLATTICE_API HeaderMatchType();
+    AWS_VPCLATTICE_API HeaderMatchType() = default;
     AWS_VPCLATTICE_API HeaderMatchType(Aws::Utils::Json::JsonView jsonValue);
     AWS_VPCLATTICE_API HeaderMatchType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VPCLATTICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Specifies a contains type match.</p>
+     * <p>A contains type match.</p>
      */
-    inline const Aws::String& GetContains() const{ return m_contains; }
-
-    /**
-     * <p>Specifies a contains type match.</p>
-     */
+    inline const Aws::String& GetContains() const { return m_contains; }
     inline bool ContainsHasBeenSet() const { return m_containsHasBeenSet; }
+    template<typename ContainsT = Aws::String>
+    void SetContains(ContainsT&& value) { m_containsHasBeenSet = true; m_contains = std::forward<ContainsT>(value); }
+    template<typename ContainsT = Aws::String>
+    HeaderMatchType& WithContains(ContainsT&& value) { SetContains(std::forward<ContainsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies a contains type match.</p>
+     * <p>An exact type match.</p>
      */
-    inline void SetContains(const Aws::String& value) { m_containsHasBeenSet = true; m_contains = value; }
-
-    /**
-     * <p>Specifies a contains type match.</p>
-     */
-    inline void SetContains(Aws::String&& value) { m_containsHasBeenSet = true; m_contains = std::move(value); }
-
-    /**
-     * <p>Specifies a contains type match.</p>
-     */
-    inline void SetContains(const char* value) { m_containsHasBeenSet = true; m_contains.assign(value); }
-
-    /**
-     * <p>Specifies a contains type match.</p>
-     */
-    inline HeaderMatchType& WithContains(const Aws::String& value) { SetContains(value); return *this;}
-
-    /**
-     * <p>Specifies a contains type match.</p>
-     */
-    inline HeaderMatchType& WithContains(Aws::String&& value) { SetContains(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies a contains type match.</p>
-     */
-    inline HeaderMatchType& WithContains(const char* value) { SetContains(value); return *this;}
-
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
-    inline const Aws::String& GetExact() const{ return m_exact; }
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
+    inline const Aws::String& GetExact() const { return m_exact; }
     inline bool ExactHasBeenSet() const { return m_exactHasBeenSet; }
+    template<typename ExactT = Aws::String>
+    void SetExact(ExactT&& value) { m_exactHasBeenSet = true; m_exact = std::forward<ExactT>(value); }
+    template<typename ExactT = Aws::String>
+    HeaderMatchType& WithExact(ExactT&& value) { SetExact(std::forward<ExactT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies an exact type match.</p>
+     * <p>A prefix type match. Matches the value with the prefix.</p>
      */
-    inline void SetExact(const Aws::String& value) { m_exactHasBeenSet = true; m_exact = value; }
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
-    inline void SetExact(Aws::String&& value) { m_exactHasBeenSet = true; m_exact = std::move(value); }
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
-    inline void SetExact(const char* value) { m_exactHasBeenSet = true; m_exact.assign(value); }
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
-    inline HeaderMatchType& WithExact(const Aws::String& value) { SetExact(value); return *this;}
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
-    inline HeaderMatchType& WithExact(Aws::String&& value) { SetExact(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies an exact type match.</p>
-     */
-    inline HeaderMatchType& WithExact(const char* value) { SetExact(value); return *this;}
-
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline HeaderMatchType& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline HeaderMatchType& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies a prefix type match. Matches the value with the prefix.</p>
-     */
-    inline HeaderMatchType& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    HeaderMatchType& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contains;

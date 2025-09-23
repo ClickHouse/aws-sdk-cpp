@@ -12,6 +12,7 @@
 #include <aws/quicksight/model/DataLabelOptions.h>
 #include <aws/quicksight/model/TooltipOptions.h>
 #include <aws/quicksight/model/VisualPalette.h>
+#include <aws/quicksight/model/VisualInteractionOptions.h>
 #include <utility>
 
 namespace Aws
@@ -38,259 +39,119 @@ namespace Model
   class HistogramConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API HistogramConfiguration();
+    AWS_QUICKSIGHT_API HistogramConfiguration() = default;
     AWS_QUICKSIGHT_API HistogramConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API HistogramConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a histogram.</p>
      */
-    inline const HistogramFieldWells& GetFieldWells() const{ return m_fieldWells; }
-
-    /**
-     * <p>The field well configuration of a histogram.</p>
-     */
+    inline const HistogramFieldWells& GetFieldWells() const { return m_fieldWells; }
     inline bool FieldWellsHasBeenSet() const { return m_fieldWellsHasBeenSet; }
+    template<typename FieldWellsT = HistogramFieldWells>
+    void SetFieldWells(FieldWellsT&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::forward<FieldWellsT>(value); }
+    template<typename FieldWellsT = HistogramFieldWells>
+    HistogramConfiguration& WithFieldWells(FieldWellsT&& value) { SetFieldWells(std::forward<FieldWellsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field well configuration of a histogram.</p>
-     */
-    inline void SetFieldWells(const HistogramFieldWells& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a histogram.</p>
-     */
-    inline void SetFieldWells(HistogramFieldWells&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithFieldWells(const HistogramFieldWells& value) { SetFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithFieldWells(HistogramFieldWells&& value) { SetFieldWells(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the x-axis.</p>
      */
-    inline const AxisDisplayOptions& GetXAxisDisplayOptions() const{ return m_xAxisDisplayOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
+    inline const AxisDisplayOptions& GetXAxisDisplayOptions() const { return m_xAxisDisplayOptions; }
     inline bool XAxisDisplayOptionsHasBeenSet() const { return m_xAxisDisplayOptionsHasBeenSet; }
+    template<typename XAxisDisplayOptionsT = AxisDisplayOptions>
+    void SetXAxisDisplayOptions(XAxisDisplayOptionsT&& value) { m_xAxisDisplayOptionsHasBeenSet = true; m_xAxisDisplayOptions = std::forward<XAxisDisplayOptionsT>(value); }
+    template<typename XAxisDisplayOptionsT = AxisDisplayOptions>
+    HistogramConfiguration& WithXAxisDisplayOptions(XAxisDisplayOptionsT&& value) { SetXAxisDisplayOptions(std::forward<XAxisDisplayOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline void SetXAxisDisplayOptions(const AxisDisplayOptions& value) { m_xAxisDisplayOptionsHasBeenSet = true; m_xAxisDisplayOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline void SetXAxisDisplayOptions(AxisDisplayOptions&& value) { m_xAxisDisplayOptionsHasBeenSet = true; m_xAxisDisplayOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline HistogramConfiguration& WithXAxisDisplayOptions(const AxisDisplayOptions& value) { SetXAxisDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline HistogramConfiguration& WithXAxisDisplayOptions(AxisDisplayOptions&& value) { SetXAxisDisplayOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the x-axis label.</p>
      */
-    inline const ChartAxisLabelOptions& GetXAxisLabelOptions() const{ return m_xAxisLabelOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
+    inline const ChartAxisLabelOptions& GetXAxisLabelOptions() const { return m_xAxisLabelOptions; }
     inline bool XAxisLabelOptionsHasBeenSet() const { return m_xAxisLabelOptionsHasBeenSet; }
+    template<typename XAxisLabelOptionsT = ChartAxisLabelOptions>
+    void SetXAxisLabelOptions(XAxisLabelOptionsT&& value) { m_xAxisLabelOptionsHasBeenSet = true; m_xAxisLabelOptions = std::forward<XAxisLabelOptionsT>(value); }
+    template<typename XAxisLabelOptionsT = ChartAxisLabelOptions>
+    HistogramConfiguration& WithXAxisLabelOptions(XAxisLabelOptionsT&& value) { SetXAxisLabelOptions(std::forward<XAxisLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline void SetXAxisLabelOptions(const ChartAxisLabelOptions& value) { m_xAxisLabelOptionsHasBeenSet = true; m_xAxisLabelOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline void SetXAxisLabelOptions(ChartAxisLabelOptions&& value) { m_xAxisLabelOptionsHasBeenSet = true; m_xAxisLabelOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline HistogramConfiguration& WithXAxisLabelOptions(const ChartAxisLabelOptions& value) { SetXAxisLabelOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline HistogramConfiguration& WithXAxisLabelOptions(ChartAxisLabelOptions&& value) { SetXAxisLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the y-axis.</p>
      */
-    inline const AxisDisplayOptions& GetYAxisDisplayOptions() const{ return m_yAxisDisplayOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the y-axis.</p>
-     */
+    inline const AxisDisplayOptions& GetYAxisDisplayOptions() const { return m_yAxisDisplayOptions; }
     inline bool YAxisDisplayOptionsHasBeenSet() const { return m_yAxisDisplayOptionsHasBeenSet; }
+    template<typename YAxisDisplayOptionsT = AxisDisplayOptions>
+    void SetYAxisDisplayOptions(YAxisDisplayOptionsT&& value) { m_yAxisDisplayOptionsHasBeenSet = true; m_yAxisDisplayOptions = std::forward<YAxisDisplayOptionsT>(value); }
+    template<typename YAxisDisplayOptionsT = AxisDisplayOptions>
+    HistogramConfiguration& WithYAxisDisplayOptions(YAxisDisplayOptionsT&& value) { SetYAxisDisplayOptions(std::forward<YAxisDisplayOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the y-axis.</p>
-     */
-    inline void SetYAxisDisplayOptions(const AxisDisplayOptions& value) { m_yAxisDisplayOptionsHasBeenSet = true; m_yAxisDisplayOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the y-axis.</p>
-     */
-    inline void SetYAxisDisplayOptions(AxisDisplayOptions&& value) { m_yAxisDisplayOptionsHasBeenSet = true; m_yAxisDisplayOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the y-axis.</p>
-     */
-    inline HistogramConfiguration& WithYAxisDisplayOptions(const AxisDisplayOptions& value) { SetYAxisDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the y-axis.</p>
-     */
-    inline HistogramConfiguration& WithYAxisDisplayOptions(AxisDisplayOptions&& value) { SetYAxisDisplayOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of histogram bins.</p>
      */
-    inline const HistogramBinOptions& GetBinOptions() const{ return m_binOptions; }
-
-    /**
-     * <p>The options that determine the presentation of histogram bins.</p>
-     */
+    inline const HistogramBinOptions& GetBinOptions() const { return m_binOptions; }
     inline bool BinOptionsHasBeenSet() const { return m_binOptionsHasBeenSet; }
+    template<typename BinOptionsT = HistogramBinOptions>
+    void SetBinOptions(BinOptionsT&& value) { m_binOptionsHasBeenSet = true; m_binOptions = std::forward<BinOptionsT>(value); }
+    template<typename BinOptionsT = HistogramBinOptions>
+    HistogramConfiguration& WithBinOptions(BinOptionsT&& value) { SetBinOptions(std::forward<BinOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of histogram bins.</p>
-     */
-    inline void SetBinOptions(const HistogramBinOptions& value) { m_binOptionsHasBeenSet = true; m_binOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of histogram bins.</p>
-     */
-    inline void SetBinOptions(HistogramBinOptions&& value) { m_binOptionsHasBeenSet = true; m_binOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of histogram bins.</p>
-     */
-    inline HistogramConfiguration& WithBinOptions(const HistogramBinOptions& value) { SetBinOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of histogram bins.</p>
-     */
-    inline HistogramConfiguration& WithBinOptions(HistogramBinOptions&& value) { SetBinOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data label configuration of a histogram.</p>
      */
-    inline const DataLabelOptions& GetDataLabels() const{ return m_dataLabels; }
-
-    /**
-     * <p>The data label configuration of a histogram.</p>
-     */
+    inline const DataLabelOptions& GetDataLabels() const { return m_dataLabels; }
     inline bool DataLabelsHasBeenSet() const { return m_dataLabelsHasBeenSet; }
+    template<typename DataLabelsT = DataLabelOptions>
+    void SetDataLabels(DataLabelsT&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::forward<DataLabelsT>(value); }
+    template<typename DataLabelsT = DataLabelOptions>
+    HistogramConfiguration& WithDataLabels(DataLabelsT&& value) { SetDataLabels(std::forward<DataLabelsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data label configuration of a histogram.</p>
-     */
-    inline void SetDataLabels(const DataLabelOptions& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = value; }
-
-    /**
-     * <p>The data label configuration of a histogram.</p>
-     */
-    inline void SetDataLabels(DataLabelOptions&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::move(value); }
-
-    /**
-     * <p>The data label configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithDataLabels(const DataLabelOptions& value) { SetDataLabels(value); return *this;}
-
-    /**
-     * <p>The data label configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithDataLabels(DataLabelOptions&& value) { SetDataLabels(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tooltip configuration of a histogram.</p>
      */
-    inline const TooltipOptions& GetTooltip() const{ return m_tooltip; }
-
-    /**
-     * <p>The tooltip configuration of a histogram.</p>
-     */
+    inline const TooltipOptions& GetTooltip() const { return m_tooltip; }
     inline bool TooltipHasBeenSet() const { return m_tooltipHasBeenSet; }
+    template<typename TooltipT = TooltipOptions>
+    void SetTooltip(TooltipT&& value) { m_tooltipHasBeenSet = true; m_tooltip = std::forward<TooltipT>(value); }
+    template<typename TooltipT = TooltipOptions>
+    HistogramConfiguration& WithTooltip(TooltipT&& value) { SetTooltip(std::forward<TooltipT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The tooltip configuration of a histogram.</p>
-     */
-    inline void SetTooltip(const TooltipOptions& value) { m_tooltipHasBeenSet = true; m_tooltip = value; }
-
-    /**
-     * <p>The tooltip configuration of a histogram.</p>
-     */
-    inline void SetTooltip(TooltipOptions&& value) { m_tooltipHasBeenSet = true; m_tooltip = std::move(value); }
-
-    /**
-     * <p>The tooltip configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithTooltip(const TooltipOptions& value) { SetTooltip(value); return *this;}
-
-    /**
-     * <p>The tooltip configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithTooltip(TooltipOptions&& value) { SetTooltip(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The visual palette configuration of a histogram.</p>
      */
-    inline const VisualPalette& GetVisualPalette() const{ return m_visualPalette; }
-
-    /**
-     * <p>The visual palette configuration of a histogram.</p>
-     */
+    inline const VisualPalette& GetVisualPalette() const { return m_visualPalette; }
     inline bool VisualPaletteHasBeenSet() const { return m_visualPaletteHasBeenSet; }
+    template<typename VisualPaletteT = VisualPalette>
+    void SetVisualPalette(VisualPaletteT&& value) { m_visualPaletteHasBeenSet = true; m_visualPalette = std::forward<VisualPaletteT>(value); }
+    template<typename VisualPaletteT = VisualPalette>
+    HistogramConfiguration& WithVisualPalette(VisualPaletteT&& value) { SetVisualPalette(std::forward<VisualPaletteT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The visual palette configuration of a histogram.</p>
+     * <p>The general visual interactions setup for a visual.</p>
      */
-    inline void SetVisualPalette(const VisualPalette& value) { m_visualPaletteHasBeenSet = true; m_visualPalette = value; }
-
-    /**
-     * <p>The visual palette configuration of a histogram.</p>
-     */
-    inline void SetVisualPalette(VisualPalette&& value) { m_visualPaletteHasBeenSet = true; m_visualPalette = std::move(value); }
-
-    /**
-     * <p>The visual palette configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithVisualPalette(const VisualPalette& value) { SetVisualPalette(value); return *this;}
-
-    /**
-     * <p>The visual palette configuration of a histogram.</p>
-     */
-    inline HistogramConfiguration& WithVisualPalette(VisualPalette&& value) { SetVisualPalette(std::move(value)); return *this;}
-
+    inline const VisualInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = VisualInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = VisualInteractionOptions>
+    HistogramConfiguration& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     HistogramFieldWells m_fieldWells;
@@ -316,6 +177,9 @@ namespace Model
 
     VisualPalette m_visualPalette;
     bool m_visualPaletteHasBeenSet = false;
+
+    VisualInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

@@ -23,7 +23,7 @@ namespace Model
   class UpdateSceneRequest : public IoTTwinMakerRequest
   {
   public:
-    AWS_IOTTWINMAKER_API UpdateSceneRequest();
+    AWS_IOTTWINMAKER_API UpdateSceneRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,289 +34,84 @@ namespace Model
     AWS_IOTTWINMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the workspace that contains the scene.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
     inline bool WorkspaceIdHasBeenSet() const { return m_workspaceIdHasBeenSet; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    UpdateSceneRequest& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
-
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceIdHasBeenSet = true; m_workspaceId.assign(value); }
-
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
-    inline UpdateSceneRequest& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
-    inline UpdateSceneRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the workspace that contains the scene.</p>
-     */
-    inline UpdateSceneRequest& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the scene.</p>
      */
-    inline const Aws::String& GetSceneId() const{ return m_sceneId; }
-
-    /**
-     * <p>The ID of the scene.</p>
-     */
+    inline const Aws::String& GetSceneId() const { return m_sceneId; }
     inline bool SceneIdHasBeenSet() const { return m_sceneIdHasBeenSet; }
+    template<typename SceneIdT = Aws::String>
+    void SetSceneId(SceneIdT&& value) { m_sceneIdHasBeenSet = true; m_sceneId = std::forward<SceneIdT>(value); }
+    template<typename SceneIdT = Aws::String>
+    UpdateSceneRequest& WithSceneId(SceneIdT&& value) { SetSceneId(std::forward<SceneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the scene.</p>
-     */
-    inline void SetSceneId(const Aws::String& value) { m_sceneIdHasBeenSet = true; m_sceneId = value; }
-
-    /**
-     * <p>The ID of the scene.</p>
-     */
-    inline void SetSceneId(Aws::String&& value) { m_sceneIdHasBeenSet = true; m_sceneId = std::move(value); }
-
-    /**
-     * <p>The ID of the scene.</p>
-     */
-    inline void SetSceneId(const char* value) { m_sceneIdHasBeenSet = true; m_sceneId.assign(value); }
-
-    /**
-     * <p>The ID of the scene.</p>
-     */
-    inline UpdateSceneRequest& WithSceneId(const Aws::String& value) { SetSceneId(value); return *this;}
-
-    /**
-     * <p>The ID of the scene.</p>
-     */
-    inline UpdateSceneRequest& WithSceneId(Aws::String&& value) { SetSceneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the scene.</p>
-     */
-    inline UpdateSceneRequest& WithSceneId(const char* value) { SetSceneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The relative path that specifies the location of the content definition
      * file.</p>
      */
-    inline const Aws::String& GetContentLocation() const{ return m_contentLocation; }
-
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
+    inline const Aws::String& GetContentLocation() const { return m_contentLocation; }
     inline bool ContentLocationHasBeenSet() const { return m_contentLocationHasBeenSet; }
+    template<typename ContentLocationT = Aws::String>
+    void SetContentLocation(ContentLocationT&& value) { m_contentLocationHasBeenSet = true; m_contentLocation = std::forward<ContentLocationT>(value); }
+    template<typename ContentLocationT = Aws::String>
+    UpdateSceneRequest& WithContentLocation(ContentLocationT&& value) { SetContentLocation(std::forward<ContentLocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
-    inline void SetContentLocation(const Aws::String& value) { m_contentLocationHasBeenSet = true; m_contentLocation = value; }
-
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
-    inline void SetContentLocation(Aws::String&& value) { m_contentLocationHasBeenSet = true; m_contentLocation = std::move(value); }
-
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
-    inline void SetContentLocation(const char* value) { m_contentLocationHasBeenSet = true; m_contentLocation.assign(value); }
-
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
-    inline UpdateSceneRequest& WithContentLocation(const Aws::String& value) { SetContentLocation(value); return *this;}
-
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
-    inline UpdateSceneRequest& WithContentLocation(Aws::String&& value) { SetContentLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The relative path that specifies the location of the content definition
-     * file.</p>
-     */
-    inline UpdateSceneRequest& WithContentLocation(const char* value) { SetContentLocation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of this scene.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of this scene.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateSceneRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of this scene.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of this scene.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of this scene.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of this scene.</p>
-     */
-    inline UpdateSceneRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of this scene.</p>
-     */
-    inline UpdateSceneRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of this scene.</p>
-     */
-    inline UpdateSceneRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of capabilities that the scene uses to render.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCapabilities() const{ return m_capabilities; }
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCapabilities() const { return m_capabilities; }
     inline bool CapabilitiesHasBeenSet() const { return m_capabilitiesHasBeenSet; }
+    template<typename CapabilitiesT = Aws::Vector<Aws::String>>
+    void SetCapabilities(CapabilitiesT&& value) { m_capabilitiesHasBeenSet = true; m_capabilities = std::forward<CapabilitiesT>(value); }
+    template<typename CapabilitiesT = Aws::Vector<Aws::String>>
+    UpdateSceneRequest& WithCapabilities(CapabilitiesT&& value) { SetCapabilities(std::forward<CapabilitiesT>(value)); return *this;}
+    template<typename CapabilitiesT = Aws::String>
+    UpdateSceneRequest& AddCapabilities(CapabilitiesT&& value) { m_capabilitiesHasBeenSet = true; m_capabilities.emplace_back(std::forward<CapabilitiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline void SetCapabilities(const Aws::Vector<Aws::String>& value) { m_capabilitiesHasBeenSet = true; m_capabilities = value; }
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline void SetCapabilities(Aws::Vector<Aws::String>&& value) { m_capabilitiesHasBeenSet = true; m_capabilities = std::move(value); }
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline UpdateSceneRequest& WithCapabilities(const Aws::Vector<Aws::String>& value) { SetCapabilities(value); return *this;}
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline UpdateSceneRequest& WithCapabilities(Aws::Vector<Aws::String>&& value) { SetCapabilities(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline UpdateSceneRequest& AddCapabilities(const Aws::String& value) { m_capabilitiesHasBeenSet = true; m_capabilities.push_back(value); return *this; }
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline UpdateSceneRequest& AddCapabilities(Aws::String&& value) { m_capabilitiesHasBeenSet = true; m_capabilities.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of capabilities that the scene uses to render.</p>
-     */
-    inline UpdateSceneRequest& AddCapabilities(const char* value) { m_capabilitiesHasBeenSet = true; m_capabilities.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The scene metadata.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetSceneMetadata() const{ return m_sceneMetadata; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetSceneMetadata() const { return m_sceneMetadata; }
     inline bool SceneMetadataHasBeenSet() const { return m_sceneMetadataHasBeenSet; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline void SetSceneMetadata(const Aws::Map<Aws::String, Aws::String>& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata = value; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline void SetSceneMetadata(Aws::Map<Aws::String, Aws::String>&& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata = std::move(value); }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& WithSceneMetadata(const Aws::Map<Aws::String, Aws::String>& value) { SetSceneMetadata(value); return *this;}
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& WithSceneMetadata(Aws::Map<Aws::String, Aws::String>&& value) { SetSceneMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(const Aws::String& key, const Aws::String& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(key, value); return *this; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(Aws::String&& key, const Aws::String& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(const Aws::String& key, Aws::String&& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(Aws::String&& key, Aws::String&& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(const char* key, Aws::String&& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(Aws::String&& key, const char* value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The scene metadata.</p>
-     */
-    inline UpdateSceneRequest& AddSceneMetadata(const char* key, const char* value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(key, value); return *this; }
-
+    template<typename SceneMetadataT = Aws::Map<Aws::String, Aws::String>>
+    void SetSceneMetadata(SceneMetadataT&& value) { m_sceneMetadataHasBeenSet = true; m_sceneMetadata = std::forward<SceneMetadataT>(value); }
+    template<typename SceneMetadataT = Aws::Map<Aws::String, Aws::String>>
+    UpdateSceneRequest& WithSceneMetadata(SceneMetadataT&& value) { SetSceneMetadata(std::forward<SceneMetadataT>(value)); return *this;}
+    template<typename SceneMetadataKeyT = Aws::String, typename SceneMetadataValueT = Aws::String>
+    UpdateSceneRequest& AddSceneMetadata(SceneMetadataKeyT&& key, SceneMetadataValueT&& value) {
+      m_sceneMetadataHasBeenSet = true; m_sceneMetadata.emplace(std::forward<SceneMetadataKeyT>(key), std::forward<SceneMetadataValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_workspaceId;

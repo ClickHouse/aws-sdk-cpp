@@ -10,15 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-CreateTrustStoreRequest::CreateTrustStoreRequest() : 
-    m_nameHasBeenSet(false),
-    m_caCertificatesBundleS3BucketHasBeenSet(false),
-    m_caCertificatesBundleS3KeyHasBeenSet(false),
-    m_caCertificatesBundleS3ObjectVersionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateTrustStoreRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -45,11 +36,18 @@ Aws::String CreateTrustStoreRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

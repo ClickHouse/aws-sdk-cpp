@@ -33,89 +33,39 @@ namespace Model
   class SuccessfulPackageVersionInfo
   {
   public:
-    AWS_CODEARTIFACT_API SuccessfulPackageVersionInfo();
+    AWS_CODEARTIFACT_API SuccessfulPackageVersionInfo() = default;
     AWS_CODEARTIFACT_API SuccessfulPackageVersionInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEARTIFACT_API SuccessfulPackageVersionInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEARTIFACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The revision of a package version. </p>
      */
-    inline const Aws::String& GetRevision() const{ return m_revision; }
-
-    /**
-     * <p> The revision of a package version. </p>
-     */
+    inline const Aws::String& GetRevision() const { return m_revision; }
     inline bool RevisionHasBeenSet() const { return m_revisionHasBeenSet; }
+    template<typename RevisionT = Aws::String>
+    void SetRevision(RevisionT&& value) { m_revisionHasBeenSet = true; m_revision = std::forward<RevisionT>(value); }
+    template<typename RevisionT = Aws::String>
+    SuccessfulPackageVersionInfo& WithRevision(RevisionT&& value) { SetRevision(std::forward<RevisionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The revision of a package version. </p>
-     */
-    inline void SetRevision(const Aws::String& value) { m_revisionHasBeenSet = true; m_revision = value; }
-
-    /**
-     * <p> The revision of a package version. </p>
-     */
-    inline void SetRevision(Aws::String&& value) { m_revisionHasBeenSet = true; m_revision = std::move(value); }
-
-    /**
-     * <p> The revision of a package version. </p>
-     */
-    inline void SetRevision(const char* value) { m_revisionHasBeenSet = true; m_revision.assign(value); }
-
-    /**
-     * <p> The revision of a package version. </p>
-     */
-    inline SuccessfulPackageVersionInfo& WithRevision(const Aws::String& value) { SetRevision(value); return *this;}
-
-    /**
-     * <p> The revision of a package version. </p>
-     */
-    inline SuccessfulPackageVersionInfo& WithRevision(Aws::String&& value) { SetRevision(std::move(value)); return *this;}
-
-    /**
-     * <p> The revision of a package version. </p>
-     */
-    inline SuccessfulPackageVersionInfo& WithRevision(const char* value) { SetRevision(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of a package version. </p>
      */
-    inline const PackageVersionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of a package version. </p>
-     */
+    inline PackageVersionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p> The status of a package version. </p>
-     */
-    inline void SetStatus(const PackageVersionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of a package version. </p>
-     */
-    inline void SetStatus(PackageVersionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of a package version. </p>
-     */
-    inline SuccessfulPackageVersionInfo& WithStatus(const PackageVersionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of a package version. </p>
-     */
-    inline SuccessfulPackageVersionInfo& WithStatus(PackageVersionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(PackageVersionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline SuccessfulPackageVersionInfo& WithStatus(PackageVersionStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_revision;
     bool m_revisionHasBeenSet = false;
 
-    PackageVersionStatus m_status;
+    PackageVersionStatus m_status{PackageVersionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

@@ -10,12 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ListStacksRequest::ListStacksRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_stackStatusFilterHasBeenSet(false)
-{
-}
-
 Aws::String ListStacksRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String ListStacksRequest::SerializePayload() const
 
   if(m_stackStatusFilterHasBeenSet)
   {
-    unsigned stackStatusFilterCount = 1;
-    for(auto& item : m_stackStatusFilter)
+    if (m_stackStatusFilter.empty())
     {
-      ss << "StackStatusFilter.member." << stackStatusFilterCount << "="
-          << StringUtils::URLEncode(StackStatusMapper::GetNameForStackStatus(item).c_str()) << "&";
-      stackStatusFilterCount++;
+      ss << "StackStatusFilter=&";
+    }
+    else
+    {
+      unsigned stackStatusFilterCount = 1;
+      for(auto& item : m_stackStatusFilter)
+      {
+        ss << "StackStatusFilter.member." << stackStatusFilterCount << "="
+            << StringUtils::URLEncode(StackStatusMapper::GetNameForStackStatus(item)) << "&";
+        stackStatusFilterCount++;
+      }
     }
   }
 

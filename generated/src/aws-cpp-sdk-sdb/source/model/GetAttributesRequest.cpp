@@ -10,15 +10,6 @@
 using namespace Aws::SimpleDB::Model;
 using namespace Aws::Utils;
 
-GetAttributesRequest::GetAttributesRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_itemNameHasBeenSet(false),
-    m_attributeNamesHasBeenSet(false),
-    m_consistentRead(false),
-    m_consistentReadHasBeenSet(false)
-{
-}
-
 Aws::String GetAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -35,12 +26,19 @@ Aws::String GetAttributesRequest::SerializePayload() const
 
   if(m_attributeNamesHasBeenSet)
   {
-    unsigned attributeNamesCount = 1;
-    for(auto& item : m_attributeNames)
+    if (m_attributeNames.empty())
     {
-      ss << "AttributeName." << attributeNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      attributeNamesCount++;
+      ss << "AttributeNames=&";
+    }
+    else
+    {
+      unsigned attributeNamesCount = 1;
+      for(auto& item : m_attributeNames)
+      {
+        ss << "AttributeName." << attributeNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        attributeNamesCount++;
+      }
     }
   }
 

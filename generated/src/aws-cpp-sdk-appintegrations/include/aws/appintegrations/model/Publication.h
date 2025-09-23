@@ -32,134 +32,47 @@ namespace Model
   class Publication
   {
   public:
-    AWS_APPINTEGRATIONSSERVICE_API Publication();
+    AWS_APPINTEGRATIONSSERVICE_API Publication() = default;
     AWS_APPINTEGRATIONSSERVICE_API Publication(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPINTEGRATIONSSERVICE_API Publication& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPINTEGRATIONSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the publication.</p>
      */
-    inline const Aws::String& GetEvent() const{ return m_event; }
-
-    /**
-     * <p>The name of the publication.</p>
-     */
+    inline const Aws::String& GetEvent() const { return m_event; }
     inline bool EventHasBeenSet() const { return m_eventHasBeenSet; }
+    template<typename EventT = Aws::String>
+    void SetEvent(EventT&& value) { m_eventHasBeenSet = true; m_event = std::forward<EventT>(value); }
+    template<typename EventT = Aws::String>
+    Publication& WithEvent(EventT&& value) { SetEvent(std::forward<EventT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the publication.</p>
-     */
-    inline void SetEvent(const Aws::String& value) { m_eventHasBeenSet = true; m_event = value; }
-
-    /**
-     * <p>The name of the publication.</p>
-     */
-    inline void SetEvent(Aws::String&& value) { m_eventHasBeenSet = true; m_event = std::move(value); }
-
-    /**
-     * <p>The name of the publication.</p>
-     */
-    inline void SetEvent(const char* value) { m_eventHasBeenSet = true; m_event.assign(value); }
-
-    /**
-     * <p>The name of the publication.</p>
-     */
-    inline Publication& WithEvent(const Aws::String& value) { SetEvent(value); return *this;}
-
-    /**
-     * <p>The name of the publication.</p>
-     */
-    inline Publication& WithEvent(Aws::String&& value) { SetEvent(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the publication.</p>
-     */
-    inline Publication& WithEvent(const char* value) { SetEvent(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The JSON schema of the publication event.</p>
      */
-    inline const Aws::String& GetSchema() const{ return m_schema; }
-
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
+    inline const Aws::String& GetSchema() const { return m_schema; }
     inline bool SchemaHasBeenSet() const { return m_schemaHasBeenSet; }
+    template<typename SchemaT = Aws::String>
+    void SetSchema(SchemaT&& value) { m_schemaHasBeenSet = true; m_schema = std::forward<SchemaT>(value); }
+    template<typename SchemaT = Aws::String>
+    Publication& WithSchema(SchemaT&& value) { SetSchema(std::forward<SchemaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
-    inline void SetSchema(const Aws::String& value) { m_schemaHasBeenSet = true; m_schema = value; }
-
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
-    inline void SetSchema(Aws::String&& value) { m_schemaHasBeenSet = true; m_schema = std::move(value); }
-
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
-    inline void SetSchema(const char* value) { m_schemaHasBeenSet = true; m_schema.assign(value); }
-
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
-    inline Publication& WithSchema(const Aws::String& value) { SetSchema(value); return *this;}
-
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
-    inline Publication& WithSchema(Aws::String&& value) { SetSchema(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON schema of the publication event.</p>
-     */
-    inline Publication& WithSchema(const char* value) { SetSchema(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the publication.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the publication.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the publication.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the publication.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the publication.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the publication.</p>
-     */
-    inline Publication& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the publication.</p>
-     */
-    inline Publication& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the publication.</p>
-     */
-    inline Publication& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Publication& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_event;

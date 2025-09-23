@@ -18,15 +18,7 @@ namespace DataSync
 namespace Model
 {
 
-Ec2Config::Ec2Config() : 
-    m_subnetArnHasBeenSet(false),
-    m_securityGroupArnsHasBeenSet(false)
-{
-}
-
-Ec2Config::Ec2Config(JsonView jsonValue) : 
-    m_subnetArnHasBeenSet(false),
-    m_securityGroupArnsHasBeenSet(false)
+Ec2Config::Ec2Config(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Ec2Config& Ec2Config::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SubnetArn"))
   {
     m_subnetArn = jsonValue.GetString("SubnetArn");
-
     m_subnetArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupArns"))
   {
     Aws::Utils::Array<JsonView> securityGroupArnsJsonList = jsonValue.GetArray("SecurityGroupArns");
@@ -49,7 +39,6 @@ Ec2Config& Ec2Config::operator =(JsonView jsonValue)
     }
     m_securityGroupArnsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceCount::InstanceCount() : 
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_state(ListingState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-InstanceCount::InstanceCount(const XmlNode& xmlNode) : 
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_state(ListingState::NOT_SET),
-    m_stateHasBeenSet(false)
+InstanceCount::InstanceCount(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -52,7 +40,7 @@ InstanceCount& InstanceCount::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = ListingStateMapper::GetListingStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = ListingStateMapper::GetListingStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -69,7 +57,7 @@ void InstanceCount::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << ListingStateMapper::GetNameForListingState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(ListingStateMapper::GetNameForListingState(m_state)) << "&";
   }
 
 }
@@ -82,7 +70,7 @@ void InstanceCount::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << ListingStateMapper::GetNameForListingState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(ListingStateMapper::GetNameForListingState(m_state)) << "&";
   }
 }
 

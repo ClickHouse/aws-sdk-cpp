@@ -35,232 +35,84 @@ namespace Model
   class MacAlgorithmEmv
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API MacAlgorithmEmv();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API MacAlgorithmEmv() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API MacAlgorithmEmv(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API MacAlgorithmEmv& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The method to use when deriving the master key for EMV MAC generation or
      * verification.</p>
      */
-    inline const MajorKeyDerivationMode& GetMajorKeyDerivationMode() const{ return m_majorKeyDerivationMode; }
-
-    /**
-     * <p>The method to use when deriving the master key for EMV MAC generation or
-     * verification.</p>
-     */
+    inline MajorKeyDerivationMode GetMajorKeyDerivationMode() const { return m_majorKeyDerivationMode; }
     inline bool MajorKeyDerivationModeHasBeenSet() const { return m_majorKeyDerivationModeHasBeenSet; }
+    inline void SetMajorKeyDerivationMode(MajorKeyDerivationMode value) { m_majorKeyDerivationModeHasBeenSet = true; m_majorKeyDerivationMode = value; }
+    inline MacAlgorithmEmv& WithMajorKeyDerivationMode(MajorKeyDerivationMode value) { SetMajorKeyDerivationMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The method to use when deriving the master key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline void SetMajorKeyDerivationMode(const MajorKeyDerivationMode& value) { m_majorKeyDerivationModeHasBeenSet = true; m_majorKeyDerivationMode = value; }
-
-    /**
-     * <p>The method to use when deriving the master key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline void SetMajorKeyDerivationMode(MajorKeyDerivationMode&& value) { m_majorKeyDerivationModeHasBeenSet = true; m_majorKeyDerivationMode = std::move(value); }
-
-    /**
-     * <p>The method to use when deriving the master key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline MacAlgorithmEmv& WithMajorKeyDerivationMode(const MajorKeyDerivationMode& value) { SetMajorKeyDerivationMode(value); return *this;}
-
-    /**
-     * <p>The method to use when deriving the master key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline MacAlgorithmEmv& WithMajorKeyDerivationMode(MajorKeyDerivationMode&& value) { SetMajorKeyDerivationMode(std::move(value)); return *this;}
-
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline const Aws::String& GetPanSequenceNumber() const{ return m_panSequenceNumber; }
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline bool PanSequenceNumberHasBeenSet() const { return m_panSequenceNumberHasBeenSet; }
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline void SetPanSequenceNumber(const Aws::String& value) { m_panSequenceNumberHasBeenSet = true; m_panSequenceNumber = value; }
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline void SetPanSequenceNumber(Aws::String&& value) { m_panSequenceNumberHasBeenSet = true; m_panSequenceNumber = std::move(value); }
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline void SetPanSequenceNumber(const char* value) { m_panSequenceNumberHasBeenSet = true; m_panSequenceNumber.assign(value); }
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline MacAlgorithmEmv& WithPanSequenceNumber(const Aws::String& value) { SetPanSequenceNumber(value); return *this;}
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline MacAlgorithmEmv& WithPanSequenceNumber(Aws::String&& value) { SetPanSequenceNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>A number that identifies and differentiates payment cards with the same
-     * Primary Account Number (PAN).</p>
-     */
-    inline MacAlgorithmEmv& WithPanSequenceNumber(const char* value) { SetPanSequenceNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
      * debit card and associates the card to a specific account holder.</p>
      */
-    inline const Aws::String& GetPrimaryAccountNumber() const{ return m_primaryAccountNumber; }
-
-    /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
-     */
+    inline const Aws::String& GetPrimaryAccountNumber() const { return m_primaryAccountNumber; }
     inline bool PrimaryAccountNumberHasBeenSet() const { return m_primaryAccountNumberHasBeenSet; }
+    template<typename PrimaryAccountNumberT = Aws::String>
+    void SetPrimaryAccountNumber(PrimaryAccountNumberT&& value) { m_primaryAccountNumberHasBeenSet = true; m_primaryAccountNumber = std::forward<PrimaryAccountNumberT>(value); }
+    template<typename PrimaryAccountNumberT = Aws::String>
+    MacAlgorithmEmv& WithPrimaryAccountNumber(PrimaryAccountNumberT&& value) { SetPrimaryAccountNumber(std::forward<PrimaryAccountNumberT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
+     * <p>A number that identifies and differentiates payment cards with the same
+     * Primary Account Number (PAN).</p>
      */
-    inline void SetPrimaryAccountNumber(const Aws::String& value) { m_primaryAccountNumberHasBeenSet = true; m_primaryAccountNumber = value; }
+    inline const Aws::String& GetPanSequenceNumber() const { return m_panSequenceNumber; }
+    inline bool PanSequenceNumberHasBeenSet() const { return m_panSequenceNumberHasBeenSet; }
+    template<typename PanSequenceNumberT = Aws::String>
+    void SetPanSequenceNumber(PanSequenceNumberT&& value) { m_panSequenceNumberHasBeenSet = true; m_panSequenceNumber = std::forward<PanSequenceNumberT>(value); }
+    template<typename PanSequenceNumberT = Aws::String>
+    MacAlgorithmEmv& WithPanSequenceNumber(PanSequenceNumberT&& value) { SetPanSequenceNumber(std::forward<PanSequenceNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
-     */
-    inline void SetPrimaryAccountNumber(Aws::String&& value) { m_primaryAccountNumberHasBeenSet = true; m_primaryAccountNumber = std::move(value); }
-
-    /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
-     */
-    inline void SetPrimaryAccountNumber(const char* value) { m_primaryAccountNumberHasBeenSet = true; m_primaryAccountNumber.assign(value); }
-
-    /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
-     */
-    inline MacAlgorithmEmv& WithPrimaryAccountNumber(const Aws::String& value) { SetPrimaryAccountNumber(value); return *this;}
-
-    /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
-     */
-    inline MacAlgorithmEmv& WithPrimaryAccountNumber(Aws::String&& value) { SetPrimaryAccountNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The Primary Account Number (PAN), a unique identifier for a payment credit or
-     * debit card and associates the card to a specific account holder.</p>
-     */
-    inline MacAlgorithmEmv& WithPrimaryAccountNumber(const char* value) { SetPrimaryAccountNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The method of deriving a session key for EMV MAC generation or
      * verification.</p>
      */
-    inline const SessionKeyDerivationMode& GetSessionKeyDerivationMode() const{ return m_sessionKeyDerivationMode; }
-
-    /**
-     * <p>The method of deriving a session key for EMV MAC generation or
-     * verification.</p>
-     */
+    inline SessionKeyDerivationMode GetSessionKeyDerivationMode() const { return m_sessionKeyDerivationMode; }
     inline bool SessionKeyDerivationModeHasBeenSet() const { return m_sessionKeyDerivationModeHasBeenSet; }
+    inline void SetSessionKeyDerivationMode(SessionKeyDerivationMode value) { m_sessionKeyDerivationModeHasBeenSet = true; m_sessionKeyDerivationMode = value; }
+    inline MacAlgorithmEmv& WithSessionKeyDerivationMode(SessionKeyDerivationMode value) { SetSessionKeyDerivationMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The method of deriving a session key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline void SetSessionKeyDerivationMode(const SessionKeyDerivationMode& value) { m_sessionKeyDerivationModeHasBeenSet = true; m_sessionKeyDerivationMode = value; }
-
-    /**
-     * <p>The method of deriving a session key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline void SetSessionKeyDerivationMode(SessionKeyDerivationMode&& value) { m_sessionKeyDerivationModeHasBeenSet = true; m_sessionKeyDerivationMode = std::move(value); }
-
-    /**
-     * <p>The method of deriving a session key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline MacAlgorithmEmv& WithSessionKeyDerivationMode(const SessionKeyDerivationMode& value) { SetSessionKeyDerivationMode(value); return *this;}
-
-    /**
-     * <p>The method of deriving a session key for EMV MAC generation or
-     * verification.</p>
-     */
-    inline MacAlgorithmEmv& WithSessionKeyDerivationMode(SessionKeyDerivationMode&& value) { SetSessionKeyDerivationMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Parameters that are required to generate session key for EMV generation and
      * verification.</p>
      */
-    inline const SessionKeyDerivationValue& GetSessionKeyDerivationValue() const{ return m_sessionKeyDerivationValue; }
-
-    /**
-     * <p>Parameters that are required to generate session key for EMV generation and
-     * verification.</p>
-     */
+    inline const SessionKeyDerivationValue& GetSessionKeyDerivationValue() const { return m_sessionKeyDerivationValue; }
     inline bool SessionKeyDerivationValueHasBeenSet() const { return m_sessionKeyDerivationValueHasBeenSet; }
-
-    /**
-     * <p>Parameters that are required to generate session key for EMV generation and
-     * verification.</p>
-     */
-    inline void SetSessionKeyDerivationValue(const SessionKeyDerivationValue& value) { m_sessionKeyDerivationValueHasBeenSet = true; m_sessionKeyDerivationValue = value; }
-
-    /**
-     * <p>Parameters that are required to generate session key for EMV generation and
-     * verification.</p>
-     */
-    inline void SetSessionKeyDerivationValue(SessionKeyDerivationValue&& value) { m_sessionKeyDerivationValueHasBeenSet = true; m_sessionKeyDerivationValue = std::move(value); }
-
-    /**
-     * <p>Parameters that are required to generate session key for EMV generation and
-     * verification.</p>
-     */
-    inline MacAlgorithmEmv& WithSessionKeyDerivationValue(const SessionKeyDerivationValue& value) { SetSessionKeyDerivationValue(value); return *this;}
-
-    /**
-     * <p>Parameters that are required to generate session key for EMV generation and
-     * verification.</p>
-     */
-    inline MacAlgorithmEmv& WithSessionKeyDerivationValue(SessionKeyDerivationValue&& value) { SetSessionKeyDerivationValue(std::move(value)); return *this;}
-
+    template<typename SessionKeyDerivationValueT = SessionKeyDerivationValue>
+    void SetSessionKeyDerivationValue(SessionKeyDerivationValueT&& value) { m_sessionKeyDerivationValueHasBeenSet = true; m_sessionKeyDerivationValue = std::forward<SessionKeyDerivationValueT>(value); }
+    template<typename SessionKeyDerivationValueT = SessionKeyDerivationValue>
+    MacAlgorithmEmv& WithSessionKeyDerivationValue(SessionKeyDerivationValueT&& value) { SetSessionKeyDerivationValue(std::forward<SessionKeyDerivationValueT>(value)); return *this;}
+    ///@}
   private:
 
-    MajorKeyDerivationMode m_majorKeyDerivationMode;
+    MajorKeyDerivationMode m_majorKeyDerivationMode{MajorKeyDerivationMode::NOT_SET};
     bool m_majorKeyDerivationModeHasBeenSet = false;
-
-    Aws::String m_panSequenceNumber;
-    bool m_panSequenceNumberHasBeenSet = false;
 
     Aws::String m_primaryAccountNumber;
     bool m_primaryAccountNumberHasBeenSet = false;
 
-    SessionKeyDerivationMode m_sessionKeyDerivationMode;
+    Aws::String m_panSequenceNumber;
+    bool m_panSequenceNumberHasBeenSet = false;
+
+    SessionKeyDerivationMode m_sessionKeyDerivationMode{SessionKeyDerivationMode::NOT_SET};
     bool m_sessionKeyDerivationModeHasBeenSet = false;
 
     SessionKeyDerivationValue m_sessionKeyDerivationValue;

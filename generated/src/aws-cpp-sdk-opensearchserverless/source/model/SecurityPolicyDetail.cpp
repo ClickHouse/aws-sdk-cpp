@@ -18,86 +18,48 @@ namespace OpenSearchServerless
 namespace Model
 {
 
-SecurityPolicyDetail::SecurityPolicyDetail() : 
-    m_createdDate(0),
-    m_createdDateHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_lastModifiedDate(0),
-    m_lastModifiedDateHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_policyHasBeenSet(false),
-    m_policyVersionHasBeenSet(false),
-    m_type(SecurityPolicyType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-SecurityPolicyDetail::SecurityPolicyDetail(JsonView jsonValue) : 
-    m_createdDate(0),
-    m_createdDateHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_lastModifiedDate(0),
-    m_lastModifiedDateHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_policyHasBeenSet(false),
-    m_policyVersionHasBeenSet(false),
-    m_type(SecurityPolicyType::NOT_SET),
-    m_typeHasBeenSet(false)
+SecurityPolicyDetail::SecurityPolicyDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SecurityPolicyDetail& SecurityPolicyDetail::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdDate"))
-  {
-    m_createdDate = jsonValue.GetInt64("createdDate");
-
-    m_createdDateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("description"))
-  {
-    m_description = jsonValue.GetString("description");
-
-    m_descriptionHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("lastModifiedDate"))
-  {
-    m_lastModifiedDate = jsonValue.GetInt64("lastModifiedDate");
-
-    m_lastModifiedDateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("name"))
-  {
-    m_name = jsonValue.GetString("name");
-
-    m_nameHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("policy"))
-  {
-    m_policy = jsonValue.GetObject("policy");
-
-    m_policyHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("policyVersion"))
-  {
-    m_policyVersion = jsonValue.GetString("policyVersion");
-
-    m_policyVersionHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = SecurityPolicyTypeMapper::GetSecurityPolicyTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("name"))
+  {
+    m_name = jsonValue.GetString("name");
+    m_nameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("policyVersion"))
+  {
+    m_policyVersion = jsonValue.GetString("policyVersion");
+    m_policyVersionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("description"))
+  {
+    m_description = jsonValue.GetString("description");
+    m_descriptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("policy"))
+  {
+    m_policy = jsonValue.GetObject("policy");
+    m_policyHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdDate"))
+  {
+    m_createdDate = jsonValue.GetInt64("createdDate");
+    m_createdDateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("lastModifiedDate"))
+  {
+    m_lastModifiedDate = jsonValue.GetInt64("lastModifiedDate");
+    m_lastModifiedDateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -105,27 +67,26 @@ JsonValue SecurityPolicyDetail::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_createdDateHasBeenSet)
+  if(m_typeHasBeenSet)
   {
-   payload.WithInt64("createdDate", m_createdDate);
+   payload.WithString("type", SecurityPolicyTypeMapper::GetNameForSecurityPolicyType(m_type));
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
+
+  if(m_policyVersionHasBeenSet)
+  {
+   payload.WithString("policyVersion", m_policyVersion);
 
   }
 
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
-
-  }
-
-  if(m_lastModifiedDateHasBeenSet)
-  {
-   payload.WithInt64("lastModifiedDate", m_lastModifiedDate);
-
-  }
-
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
 
   }
 
@@ -137,15 +98,16 @@ JsonValue SecurityPolicyDetail::Jsonize() const
     }
   }
 
-  if(m_policyVersionHasBeenSet)
+  if(m_createdDateHasBeenSet)
   {
-   payload.WithString("policyVersion", m_policyVersion);
+   payload.WithInt64("createdDate", m_createdDate);
 
   }
 
-  if(m_typeHasBeenSet)
+  if(m_lastModifiedDateHasBeenSet)
   {
-   payload.WithString("type", SecurityPolicyTypeMapper::GetNameForSecurityPolicyType(m_type));
+   payload.WithInt64("lastModifiedDate", m_lastModifiedDate);
+
   }
 
   return payload;

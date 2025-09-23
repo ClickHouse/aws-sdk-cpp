@@ -35,167 +35,53 @@ namespace Model
   class ReportPlan
   {
   public:
-    AWS_BACKUP_API ReportPlan();
+    AWS_BACKUP_API ReportPlan() = default;
     AWS_BACKUP_API ReportPlan(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API ReportPlan& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
      * of the ARN depends on the resource type.</p>
      */
-    inline const Aws::String& GetReportPlanArn() const{ return m_reportPlanArn; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
+    inline const Aws::String& GetReportPlanArn() const { return m_reportPlanArn; }
     inline bool ReportPlanArnHasBeenSet() const { return m_reportPlanArnHasBeenSet; }
+    template<typename ReportPlanArnT = Aws::String>
+    void SetReportPlanArn(ReportPlanArnT&& value) { m_reportPlanArnHasBeenSet = true; m_reportPlanArn = std::forward<ReportPlanArnT>(value); }
+    template<typename ReportPlanArnT = Aws::String>
+    ReportPlan& WithReportPlanArn(ReportPlanArnT&& value) { SetReportPlanArn(std::forward<ReportPlanArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
-    inline void SetReportPlanArn(const Aws::String& value) { m_reportPlanArnHasBeenSet = true; m_reportPlanArn = value; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
-    inline void SetReportPlanArn(Aws::String&& value) { m_reportPlanArnHasBeenSet = true; m_reportPlanArn = std::move(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
-    inline void SetReportPlanArn(const char* value) { m_reportPlanArnHasBeenSet = true; m_reportPlanArn.assign(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
-    inline ReportPlan& WithReportPlanArn(const Aws::String& value) { SetReportPlanArn(value); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
-    inline ReportPlan& WithReportPlanArn(Aws::String&& value) { SetReportPlanArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a resource. The format
-     * of the ARN depends on the resource type.</p>
-     */
-    inline ReportPlan& WithReportPlanArn(const char* value) { SetReportPlanArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique name of the report plan. This name is between 1 and 256 characters
      * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
      * underscores (_).</p>
      */
-    inline const Aws::String& GetReportPlanName() const{ return m_reportPlanName; }
-
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
+    inline const Aws::String& GetReportPlanName() const { return m_reportPlanName; }
     inline bool ReportPlanNameHasBeenSet() const { return m_reportPlanNameHasBeenSet; }
+    template<typename ReportPlanNameT = Aws::String>
+    void SetReportPlanName(ReportPlanNameT&& value) { m_reportPlanNameHasBeenSet = true; m_reportPlanName = std::forward<ReportPlanNameT>(value); }
+    template<typename ReportPlanNameT = Aws::String>
+    ReportPlan& WithReportPlanName(ReportPlanNameT&& value) { SetReportPlanName(std::forward<ReportPlanNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
-    inline void SetReportPlanName(const Aws::String& value) { m_reportPlanNameHasBeenSet = true; m_reportPlanName = value; }
-
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
-    inline void SetReportPlanName(Aws::String&& value) { m_reportPlanNameHasBeenSet = true; m_reportPlanName = std::move(value); }
-
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
-    inline void SetReportPlanName(const char* value) { m_reportPlanNameHasBeenSet = true; m_reportPlanName.assign(value); }
-
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
-    inline ReportPlan& WithReportPlanName(const Aws::String& value) { SetReportPlanName(value); return *this;}
-
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
-    inline ReportPlan& WithReportPlanName(Aws::String&& value) { SetReportPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the report plan. This name is between 1 and 256 characters
-     * starting with a letter, and consisting of letters (a-z, A-Z), numbers (0-9), and
-     * underscores (_).</p>
-     */
-    inline ReportPlan& WithReportPlanName(const char* value) { SetReportPlanName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional description of the report plan with a maximum 1,024
      * characters.</p>
      */
-    inline const Aws::String& GetReportPlanDescription() const{ return m_reportPlanDescription; }
-
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
+    inline const Aws::String& GetReportPlanDescription() const { return m_reportPlanDescription; }
     inline bool ReportPlanDescriptionHasBeenSet() const { return m_reportPlanDescriptionHasBeenSet; }
+    template<typename ReportPlanDescriptionT = Aws::String>
+    void SetReportPlanDescription(ReportPlanDescriptionT&& value) { m_reportPlanDescriptionHasBeenSet = true; m_reportPlanDescription = std::forward<ReportPlanDescriptionT>(value); }
+    template<typename ReportPlanDescriptionT = Aws::String>
+    ReportPlan& WithReportPlanDescription(ReportPlanDescriptionT&& value) { SetReportPlanDescription(std::forward<ReportPlanDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
-    inline void SetReportPlanDescription(const Aws::String& value) { m_reportPlanDescriptionHasBeenSet = true; m_reportPlanDescription = value; }
-
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
-    inline void SetReportPlanDescription(Aws::String&& value) { m_reportPlanDescriptionHasBeenSet = true; m_reportPlanDescription = std::move(value); }
-
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
-    inline void SetReportPlanDescription(const char* value) { m_reportPlanDescriptionHasBeenSet = true; m_reportPlanDescription.assign(value); }
-
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
-    inline ReportPlan& WithReportPlanDescription(const Aws::String& value) { SetReportPlanDescription(value); return *this;}
-
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
-    inline ReportPlan& WithReportPlanDescription(Aws::String&& value) { SetReportPlanDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional description of the report plan with a maximum 1,024
-     * characters.</p>
-     */
-    inline ReportPlan& WithReportPlanDescription(const char* value) { SetReportPlanDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies the report template for the report. Reports are built using a
      * report template. The report templates are:</p> <p>
@@ -205,213 +91,58 @@ namespace Model
      * <code>CONTROL_COMPLIANCE_REPORT</code>, this API resource also describes the
      * report coverage by Amazon Web Services Regions and frameworks.</p>
      */
-    inline const ReportSetting& GetReportSetting() const{ return m_reportSetting; }
-
-    /**
-     * <p>Identifies the report template for the report. Reports are built using a
-     * report template. The report templates are:</p> <p>
-     * <code>RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT
-     * | COPY_JOB_REPORT | RESTORE_JOB_REPORT</code> </p> <p>If the report template is
-     * <code>RESOURCE_COMPLIANCE_REPORT</code> or
-     * <code>CONTROL_COMPLIANCE_REPORT</code>, this API resource also describes the
-     * report coverage by Amazon Web Services Regions and frameworks.</p>
-     */
+    inline const ReportSetting& GetReportSetting() const { return m_reportSetting; }
     inline bool ReportSettingHasBeenSet() const { return m_reportSettingHasBeenSet; }
+    template<typename ReportSettingT = ReportSetting>
+    void SetReportSetting(ReportSettingT&& value) { m_reportSettingHasBeenSet = true; m_reportSetting = std::forward<ReportSettingT>(value); }
+    template<typename ReportSettingT = ReportSetting>
+    ReportPlan& WithReportSetting(ReportSettingT&& value) { SetReportSetting(std::forward<ReportSettingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifies the report template for the report. Reports are built using a
-     * report template. The report templates are:</p> <p>
-     * <code>RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT
-     * | COPY_JOB_REPORT | RESTORE_JOB_REPORT</code> </p> <p>If the report template is
-     * <code>RESOURCE_COMPLIANCE_REPORT</code> or
-     * <code>CONTROL_COMPLIANCE_REPORT</code>, this API resource also describes the
-     * report coverage by Amazon Web Services Regions and frameworks.</p>
-     */
-    inline void SetReportSetting(const ReportSetting& value) { m_reportSettingHasBeenSet = true; m_reportSetting = value; }
-
-    /**
-     * <p>Identifies the report template for the report. Reports are built using a
-     * report template. The report templates are:</p> <p>
-     * <code>RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT
-     * | COPY_JOB_REPORT | RESTORE_JOB_REPORT</code> </p> <p>If the report template is
-     * <code>RESOURCE_COMPLIANCE_REPORT</code> or
-     * <code>CONTROL_COMPLIANCE_REPORT</code>, this API resource also describes the
-     * report coverage by Amazon Web Services Regions and frameworks.</p>
-     */
-    inline void SetReportSetting(ReportSetting&& value) { m_reportSettingHasBeenSet = true; m_reportSetting = std::move(value); }
-
-    /**
-     * <p>Identifies the report template for the report. Reports are built using a
-     * report template. The report templates are:</p> <p>
-     * <code>RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT
-     * | COPY_JOB_REPORT | RESTORE_JOB_REPORT</code> </p> <p>If the report template is
-     * <code>RESOURCE_COMPLIANCE_REPORT</code> or
-     * <code>CONTROL_COMPLIANCE_REPORT</code>, this API resource also describes the
-     * report coverage by Amazon Web Services Regions and frameworks.</p>
-     */
-    inline ReportPlan& WithReportSetting(const ReportSetting& value) { SetReportSetting(value); return *this;}
-
-    /**
-     * <p>Identifies the report template for the report. Reports are built using a
-     * report template. The report templates are:</p> <p>
-     * <code>RESOURCE_COMPLIANCE_REPORT | CONTROL_COMPLIANCE_REPORT | BACKUP_JOB_REPORT
-     * | COPY_JOB_REPORT | RESTORE_JOB_REPORT</code> </p> <p>If the report template is
-     * <code>RESOURCE_COMPLIANCE_REPORT</code> or
-     * <code>CONTROL_COMPLIANCE_REPORT</code>, this API resource also describes the
-     * report coverage by Amazon Web Services Regions and frameworks.</p>
-     */
-    inline ReportPlan& WithReportSetting(ReportSetting&& value) { SetReportSetting(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about where and how to deliver your reports,
      * specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your
      * reports.</p>
      */
-    inline const ReportDeliveryChannel& GetReportDeliveryChannel() const{ return m_reportDeliveryChannel; }
-
-    /**
-     * <p>Contains information about where and how to deliver your reports,
-     * specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your
-     * reports.</p>
-     */
+    inline const ReportDeliveryChannel& GetReportDeliveryChannel() const { return m_reportDeliveryChannel; }
     inline bool ReportDeliveryChannelHasBeenSet() const { return m_reportDeliveryChannelHasBeenSet; }
+    template<typename ReportDeliveryChannelT = ReportDeliveryChannel>
+    void SetReportDeliveryChannel(ReportDeliveryChannelT&& value) { m_reportDeliveryChannelHasBeenSet = true; m_reportDeliveryChannel = std::forward<ReportDeliveryChannelT>(value); }
+    template<typename ReportDeliveryChannelT = ReportDeliveryChannel>
+    ReportPlan& WithReportDeliveryChannel(ReportDeliveryChannelT&& value) { SetReportDeliveryChannel(std::forward<ReportDeliveryChannelT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about where and how to deliver your reports,
-     * specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your
-     * reports.</p>
-     */
-    inline void SetReportDeliveryChannel(const ReportDeliveryChannel& value) { m_reportDeliveryChannelHasBeenSet = true; m_reportDeliveryChannel = value; }
-
-    /**
-     * <p>Contains information about where and how to deliver your reports,
-     * specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your
-     * reports.</p>
-     */
-    inline void SetReportDeliveryChannel(ReportDeliveryChannel&& value) { m_reportDeliveryChannelHasBeenSet = true; m_reportDeliveryChannel = std::move(value); }
-
-    /**
-     * <p>Contains information about where and how to deliver your reports,
-     * specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your
-     * reports.</p>
-     */
-    inline ReportPlan& WithReportDeliveryChannel(const ReportDeliveryChannel& value) { SetReportDeliveryChannel(value); return *this;}
-
-    /**
-     * <p>Contains information about where and how to deliver your reports,
-     * specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your
-     * reports.</p>
-     */
-    inline ReportPlan& WithReportDeliveryChannel(ReportDeliveryChannel&& value) { SetReportDeliveryChannel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The deployment status of a report plan. The statuses are:</p> <p>
      * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
      * COMPLETED</code> </p>
      */
-    inline const Aws::String& GetDeploymentStatus() const{ return m_deploymentStatus; }
-
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
+    inline const Aws::String& GetDeploymentStatus() const { return m_deploymentStatus; }
     inline bool DeploymentStatusHasBeenSet() const { return m_deploymentStatusHasBeenSet; }
+    template<typename DeploymentStatusT = Aws::String>
+    void SetDeploymentStatus(DeploymentStatusT&& value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = std::forward<DeploymentStatusT>(value); }
+    template<typename DeploymentStatusT = Aws::String>
+    ReportPlan& WithDeploymentStatus(DeploymentStatusT&& value) { SetDeploymentStatus(std::forward<DeploymentStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
-    inline void SetDeploymentStatus(const Aws::String& value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = value; }
-
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
-    inline void SetDeploymentStatus(Aws::String&& value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = std::move(value); }
-
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
-    inline void SetDeploymentStatus(const char* value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus.assign(value); }
-
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
-    inline ReportPlan& WithDeploymentStatus(const Aws::String& value) { SetDeploymentStatus(value); return *this;}
-
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
-    inline ReportPlan& WithDeploymentStatus(Aws::String&& value) { SetDeploymentStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The deployment status of a report plan. The statuses are:</p> <p>
-     * <code>CREATE_IN_PROGRESS | UPDATE_IN_PROGRESS | DELETE_IN_PROGRESS |
-     * COMPLETED</code> </p>
-     */
-    inline ReportPlan& WithDeploymentStatus(const char* value) { SetDeploymentStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that a report plan is created, in Unix format and
      * Coordinated Universal Time (UTC). The value of <code>CreationTime</code> is
      * accurate to milliseconds. For example, the value 1516925490.087 represents
      * Friday, January 26, 2018 12:11:30.087 AM.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The date and time that a report plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationTime</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    ReportPlan& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that a report plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationTime</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The date and time that a report plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationTime</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The date and time that a report plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationTime</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline ReportPlan& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The date and time that a report plan is created, in Unix format and
-     * Coordinated Universal Time (UTC). The value of <code>CreationTime</code> is
-     * accurate to milliseconds. For example, the value 1516925490.087 represents
-     * Friday, January 26, 2018 12:11:30.087 AM.</p>
-     */
-    inline ReportPlan& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that a report job associated with this report plan last
      * attempted to run, in Unix format and Coordinated Universal Time (UTC). The value
@@ -419,54 +150,15 @@ namespace Model
      * example, the value 1516925490.087 represents Friday, January 26, 2018
      * 12:11:30.087 AM.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastAttemptedExecutionTime() const{ return m_lastAttemptedExecutionTime; }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * attempted to run, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastAttemptedExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastAttemptedExecutionTime() const { return m_lastAttemptedExecutionTime; }
     inline bool LastAttemptedExecutionTimeHasBeenSet() const { return m_lastAttemptedExecutionTimeHasBeenSet; }
+    template<typename LastAttemptedExecutionTimeT = Aws::Utils::DateTime>
+    void SetLastAttemptedExecutionTime(LastAttemptedExecutionTimeT&& value) { m_lastAttemptedExecutionTimeHasBeenSet = true; m_lastAttemptedExecutionTime = std::forward<LastAttemptedExecutionTimeT>(value); }
+    template<typename LastAttemptedExecutionTimeT = Aws::Utils::DateTime>
+    ReportPlan& WithLastAttemptedExecutionTime(LastAttemptedExecutionTimeT&& value) { SetLastAttemptedExecutionTime(std::forward<LastAttemptedExecutionTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * attempted to run, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastAttemptedExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline void SetLastAttemptedExecutionTime(const Aws::Utils::DateTime& value) { m_lastAttemptedExecutionTimeHasBeenSet = true; m_lastAttemptedExecutionTime = value; }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * attempted to run, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastAttemptedExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline void SetLastAttemptedExecutionTime(Aws::Utils::DateTime&& value) { m_lastAttemptedExecutionTimeHasBeenSet = true; m_lastAttemptedExecutionTime = std::move(value); }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * attempted to run, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastAttemptedExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline ReportPlan& WithLastAttemptedExecutionTime(const Aws::Utils::DateTime& value) { SetLastAttemptedExecutionTime(value); return *this;}
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * attempted to run, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastAttemptedExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline ReportPlan& WithLastAttemptedExecutionTime(Aws::Utils::DateTime&& value) { SetLastAttemptedExecutionTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that a report job associated with this report plan last
      * successfully ran, in Unix format and Coordinated Universal Time (UTC). The value
@@ -474,53 +166,13 @@ namespace Model
      * example, the value 1516925490.087 represents Friday, January 26, 2018
      * 12:11:30.087 AM.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastSuccessfulExecutionTime() const{ return m_lastSuccessfulExecutionTime; }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * successfully ran, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastSuccessfulExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastSuccessfulExecutionTime() const { return m_lastSuccessfulExecutionTime; }
     inline bool LastSuccessfulExecutionTimeHasBeenSet() const { return m_lastSuccessfulExecutionTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * successfully ran, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastSuccessfulExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline void SetLastSuccessfulExecutionTime(const Aws::Utils::DateTime& value) { m_lastSuccessfulExecutionTimeHasBeenSet = true; m_lastSuccessfulExecutionTime = value; }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * successfully ran, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastSuccessfulExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline void SetLastSuccessfulExecutionTime(Aws::Utils::DateTime&& value) { m_lastSuccessfulExecutionTimeHasBeenSet = true; m_lastSuccessfulExecutionTime = std::move(value); }
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * successfully ran, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastSuccessfulExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline ReportPlan& WithLastSuccessfulExecutionTime(const Aws::Utils::DateTime& value) { SetLastSuccessfulExecutionTime(value); return *this;}
-
-    /**
-     * <p>The date and time that a report job associated with this report plan last
-     * successfully ran, in Unix format and Coordinated Universal Time (UTC). The value
-     * of <code>LastSuccessfulExecutionTime</code> is accurate to milliseconds. For
-     * example, the value 1516925490.087 represents Friday, January 26, 2018
-     * 12:11:30.087 AM.</p>
-     */
-    inline ReportPlan& WithLastSuccessfulExecutionTime(Aws::Utils::DateTime&& value) { SetLastSuccessfulExecutionTime(std::move(value)); return *this;}
-
+    template<typename LastSuccessfulExecutionTimeT = Aws::Utils::DateTime>
+    void SetLastSuccessfulExecutionTime(LastSuccessfulExecutionTimeT&& value) { m_lastSuccessfulExecutionTimeHasBeenSet = true; m_lastSuccessfulExecutionTime = std::forward<LastSuccessfulExecutionTimeT>(value); }
+    template<typename LastSuccessfulExecutionTimeT = Aws::Utils::DateTime>
+    ReportPlan& WithLastSuccessfulExecutionTime(LastSuccessfulExecutionTimeT&& value) { SetLastSuccessfulExecutionTime(std::forward<LastSuccessfulExecutionTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reportPlanArn;
@@ -541,13 +193,13 @@ namespace Model
     Aws::String m_deploymentStatus;
     bool m_deploymentStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastAttemptedExecutionTime;
+    Aws::Utils::DateTime m_lastAttemptedExecutionTime{};
     bool m_lastAttemptedExecutionTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastSuccessfulExecutionTime;
+    Aws::Utils::DateTime m_lastSuccessfulExecutionTime{};
     bool m_lastSuccessfulExecutionTimeHasBeenSet = false;
   };
 

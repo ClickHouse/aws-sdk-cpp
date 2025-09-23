@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-AccessPreviewStatusReason::AccessPreviewStatusReason() : 
-    m_code(AccessPreviewStatusReasonCode::NOT_SET),
-    m_codeHasBeenSet(false)
-{
-}
-
-AccessPreviewStatusReason::AccessPreviewStatusReason(JsonView jsonValue) : 
-    m_code(AccessPreviewStatusReasonCode::NOT_SET),
-    m_codeHasBeenSet(false)
+AccessPreviewStatusReason::AccessPreviewStatusReason(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AccessPreviewStatusReason& AccessPreviewStatusReason::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("code"))
   {
     m_code = AccessPreviewStatusReasonCodeMapper::GetAccessPreviewStatusReasonCodeForName(jsonValue.GetString("code"));
-
     m_codeHasBeenSet = true;
   }
-
   return *this;
 }
 

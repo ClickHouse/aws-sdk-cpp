@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-SourceIpConfig::SourceIpConfig() : 
-    m_cidrsHasBeenSet(false)
-{
-}
-
-SourceIpConfig::SourceIpConfig(JsonView jsonValue) : 
-    m_cidrsHasBeenSet(false)
+SourceIpConfig::SourceIpConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ SourceIpConfig& SourceIpConfig::operator =(JsonView jsonValue)
     }
     m_cidrsHasBeenSet = true;
   }
-
   return *this;
 }
 

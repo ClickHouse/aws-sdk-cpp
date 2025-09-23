@@ -32,39 +32,25 @@ namespace Model
   class StreamProcessorDataSharingPreference
   {
   public:
-    AWS_REKOGNITION_API StreamProcessorDataSharingPreference();
+    AWS_REKOGNITION_API StreamProcessorDataSharingPreference() = default;
     AWS_REKOGNITION_API StreamProcessorDataSharingPreference(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API StreamProcessorDataSharingPreference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> If this option is set to true, you choose to share data with Rekognition to
      * improve model performance. </p>
      */
-    inline bool GetOptIn() const{ return m_optIn; }
-
-    /**
-     * <p> If this option is set to true, you choose to share data with Rekognition to
-     * improve model performance. </p>
-     */
+    inline bool GetOptIn() const { return m_optIn; }
     inline bool OptInHasBeenSet() const { return m_optInHasBeenSet; }
-
-    /**
-     * <p> If this option is set to true, you choose to share data with Rekognition to
-     * improve model performance. </p>
-     */
     inline void SetOptIn(bool value) { m_optInHasBeenSet = true; m_optIn = value; }
-
-    /**
-     * <p> If this option is set to true, you choose to share data with Rekognition to
-     * improve model performance. </p>
-     */
     inline StreamProcessorDataSharingPreference& WithOptIn(bool value) { SetOptIn(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_optIn;
+    bool m_optIn{false};
     bool m_optInHasBeenSet = false;
   };
 

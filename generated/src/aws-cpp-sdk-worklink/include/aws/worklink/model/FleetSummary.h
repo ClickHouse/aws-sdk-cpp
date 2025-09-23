@@ -34,343 +34,118 @@ namespace Model
   class FleetSummary
   {
   public:
-    AWS_WORKLINK_API FleetSummary();
+    AWS_WORKLINK_API FleetSummary() = default;
     AWS_WORKLINK_API FleetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKLINK_API FleetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKLINK_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the fleet.</p>
      */
-    inline const Aws::String& GetFleetArn() const{ return m_fleetArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
+    inline const Aws::String& GetFleetArn() const { return m_fleetArn; }
     inline bool FleetArnHasBeenSet() const { return m_fleetArnHasBeenSet; }
+    template<typename FleetArnT = Aws::String>
+    void SetFleetArn(FleetArnT&& value) { m_fleetArnHasBeenSet = true; m_fleetArn = std::forward<FleetArnT>(value); }
+    template<typename FleetArnT = Aws::String>
+    FleetSummary& WithFleetArn(FleetArnT&& value) { SetFleetArn(std::forward<FleetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
-    inline void SetFleetArn(const Aws::String& value) { m_fleetArnHasBeenSet = true; m_fleetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
-    inline void SetFleetArn(Aws::String&& value) { m_fleetArnHasBeenSet = true; m_fleetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
-    inline void SetFleetArn(const char* value) { m_fleetArnHasBeenSet = true; m_fleetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetArn(const Aws::String& value) { SetFleetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetArn(Aws::String&& value) { SetFleetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetArn(const char* value) { SetFleetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the fleet was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time when the fleet was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    FleetSummary& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the fleet was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time when the fleet was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time when the fleet was created.</p>
-     */
-    inline FleetSummary& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time when the fleet was created.</p>
-     */
-    inline FleetSummary& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the fleet was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The time when the fleet was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    FleetSummary& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the fleet was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The time when the fleet was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The time when the fleet was last updated.</p>
-     */
-    inline FleetSummary& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The time when the fleet was last updated.</p>
-     */
-    inline FleetSummary& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the fleet.</p>
      */
-    inline const Aws::String& GetFleetName() const{ return m_fleetName; }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
+    inline const Aws::String& GetFleetName() const { return m_fleetName; }
     inline bool FleetNameHasBeenSet() const { return m_fleetNameHasBeenSet; }
+    template<typename FleetNameT = Aws::String>
+    void SetFleetName(FleetNameT&& value) { m_fleetNameHasBeenSet = true; m_fleetName = std::forward<FleetNameT>(value); }
+    template<typename FleetNameT = Aws::String>
+    FleetSummary& WithFleetName(FleetNameT&& value) { SetFleetName(std::forward<FleetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline void SetFleetName(const Aws::String& value) { m_fleetNameHasBeenSet = true; m_fleetName = value; }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline void SetFleetName(Aws::String&& value) { m_fleetNameHasBeenSet = true; m_fleetName = std::move(value); }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline void SetFleetName(const char* value) { m_fleetNameHasBeenSet = true; m_fleetName.assign(value); }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetName(const Aws::String& value) { SetFleetName(value); return *this;}
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetName(Aws::String&& value) { SetFleetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetName(const char* value) { SetFleetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the fleet to display.</p>
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    FleetSummary& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
-    inline FleetSummary& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
-    inline FleetSummary& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the fleet to display.</p>
-     */
-    inline FleetSummary& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
      */
-    inline const Aws::String& GetCompanyCode() const{ return m_companyCode; }
-
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
+    inline const Aws::String& GetCompanyCode() const { return m_companyCode; }
     inline bool CompanyCodeHasBeenSet() const { return m_companyCodeHasBeenSet; }
+    template<typename CompanyCodeT = Aws::String>
+    void SetCompanyCode(CompanyCodeT&& value) { m_companyCodeHasBeenSet = true; m_companyCode = std::forward<CompanyCodeT>(value); }
+    template<typename CompanyCodeT = Aws::String>
+    FleetSummary& WithCompanyCode(CompanyCodeT&& value) { SetCompanyCode(std::forward<CompanyCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
-    inline void SetCompanyCode(const Aws::String& value) { m_companyCodeHasBeenSet = true; m_companyCode = value; }
-
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
-    inline void SetCompanyCode(Aws::String&& value) { m_companyCodeHasBeenSet = true; m_companyCode = std::move(value); }
-
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
-    inline void SetCompanyCode(const char* value) { m_companyCodeHasBeenSet = true; m_companyCode.assign(value); }
-
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
-    inline FleetSummary& WithCompanyCode(const Aws::String& value) { SetCompanyCode(value); return *this;}
-
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
-    inline FleetSummary& WithCompanyCode(Aws::String&& value) { SetCompanyCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier used by users to sign into the Amazon WorkLink app.</p>
-     */
-    inline FleetSummary& WithCompanyCode(const char* value) { SetCompanyCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the fleet.</p>
      */
-    inline const FleetStatus& GetFleetStatus() const{ return m_fleetStatus; }
-
-    /**
-     * <p>The status of the fleet.</p>
-     */
+    inline FleetStatus GetFleetStatus() const { return m_fleetStatus; }
     inline bool FleetStatusHasBeenSet() const { return m_fleetStatusHasBeenSet; }
+    inline void SetFleetStatus(FleetStatus value) { m_fleetStatusHasBeenSet = true; m_fleetStatus = value; }
+    inline FleetSummary& WithFleetStatus(FleetStatus value) { SetFleetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the fleet.</p>
-     */
-    inline void SetFleetStatus(const FleetStatus& value) { m_fleetStatusHasBeenSet = true; m_fleetStatus = value; }
-
-    /**
-     * <p>The status of the fleet.</p>
-     */
-    inline void SetFleetStatus(FleetStatus&& value) { m_fleetStatusHasBeenSet = true; m_fleetStatus = std::move(value); }
-
-    /**
-     * <p>The status of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetStatus(const FleetStatus& value) { SetFleetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the fleet.</p>
-     */
-    inline FleetSummary& WithFleetStatus(FleetStatus&& value) { SetFleetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags attached to the resource. A tag is a key-value pair.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags attached to the resource. A tag is a key-value pair.</p>
-     */
-    inline FleetSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    FleetSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    FleetSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_fleetArn;
     bool m_fleetArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
 
     Aws::String m_fleetName;
@@ -382,7 +157,7 @@ namespace Model
     Aws::String m_companyCode;
     bool m_companyCodeHasBeenSet = false;
 
-    FleetStatus m_fleetStatus;
+    FleetStatus m_fleetStatus{FleetStatus::NOT_SET};
     bool m_fleetStatusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;

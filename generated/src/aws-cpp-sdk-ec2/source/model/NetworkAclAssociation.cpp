@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkAclAssociation::NetworkAclAssociation() : 
-    m_networkAclAssociationIdHasBeenSet(false),
-    m_networkAclIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
-{
-}
-
-NetworkAclAssociation::NetworkAclAssociation(const XmlNode& xmlNode) : 
-    m_networkAclAssociationIdHasBeenSet(false),
-    m_networkAclIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
+NetworkAclAssociation::NetworkAclAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

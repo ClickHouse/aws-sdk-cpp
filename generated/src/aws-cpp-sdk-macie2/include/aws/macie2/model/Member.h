@@ -35,442 +35,130 @@ namespace Model
   class Member
   {
   public:
-    AWS_MACIE2_API Member();
+    AWS_MACIE2_API Member() = default;
     AWS_MACIE2_API Member(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Member& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID for the account.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    Member& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
-    inline Member& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
-    inline Member& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the account.</p>
-     */
-    inline Member& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID for the administrator account.</p>
      */
-    inline const Aws::String& GetAdministratorAccountId() const{ return m_administratorAccountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
+    inline const Aws::String& GetAdministratorAccountId() const { return m_administratorAccountId; }
     inline bool AdministratorAccountIdHasBeenSet() const { return m_administratorAccountIdHasBeenSet; }
+    template<typename AdministratorAccountIdT = Aws::String>
+    void SetAdministratorAccountId(AdministratorAccountIdT&& value) { m_administratorAccountIdHasBeenSet = true; m_administratorAccountId = std::forward<AdministratorAccountIdT>(value); }
+    template<typename AdministratorAccountIdT = Aws::String>
+    Member& WithAdministratorAccountId(AdministratorAccountIdT&& value) { SetAdministratorAccountId(std::forward<AdministratorAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
-    inline void SetAdministratorAccountId(const Aws::String& value) { m_administratorAccountIdHasBeenSet = true; m_administratorAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
-    inline void SetAdministratorAccountId(Aws::String&& value) { m_administratorAccountIdHasBeenSet = true; m_administratorAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
-    inline void SetAdministratorAccountId(const char* value) { m_administratorAccountIdHasBeenSet = true; m_administratorAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
-    inline Member& WithAdministratorAccountId(const Aws::String& value) { SetAdministratorAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
-    inline Member& WithAdministratorAccountId(Aws::String&& value) { SetAdministratorAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the administrator account.</p>
-     */
-    inline Member& WithAdministratorAccountId(const char* value) { SetAdministratorAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the account.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Member& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
-    inline Member& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
-    inline Member& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account.</p>
-     */
-    inline Member& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email address for the account. This value is null if the account is
      * associated with the administrator account through Organizations.</p>
      */
-    inline const Aws::String& GetEmail() const{ return m_email; }
-
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
+    inline const Aws::String& GetEmail() const { return m_email; }
     inline bool EmailHasBeenSet() const { return m_emailHasBeenSet; }
+    template<typename EmailT = Aws::String>
+    void SetEmail(EmailT&& value) { m_emailHasBeenSet = true; m_email = std::forward<EmailT>(value); }
+    template<typename EmailT = Aws::String>
+    Member& WithEmail(EmailT&& value) { SetEmail(std::forward<EmailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
-    inline void SetEmail(const Aws::String& value) { m_emailHasBeenSet = true; m_email = value; }
-
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
-    inline void SetEmail(Aws::String&& value) { m_emailHasBeenSet = true; m_email = std::move(value); }
-
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
-    inline void SetEmail(const char* value) { m_emailHasBeenSet = true; m_email.assign(value); }
-
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
-    inline Member& WithEmail(const Aws::String& value) { SetEmail(value); return *this;}
-
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
-    inline Member& WithEmail(Aws::String&& value) { SetEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address for the account. This value is null if the account is
-     * associated with the administrator account through Organizations.</p>
-     */
-    inline Member& WithEmail(const char* value) { SetEmail(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie
      * membership invitation was last sent to the account. This value is null if a
      * Macie membership invitation hasn't been sent to the account.</p>
      */
-    inline const Aws::Utils::DateTime& GetInvitedAt() const{ return m_invitedAt; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie
-     * membership invitation was last sent to the account. This value is null if a
-     * Macie membership invitation hasn't been sent to the account.</p>
-     */
+    inline const Aws::Utils::DateTime& GetInvitedAt() const { return m_invitedAt; }
     inline bool InvitedAtHasBeenSet() const { return m_invitedAtHasBeenSet; }
+    template<typename InvitedAtT = Aws::Utils::DateTime>
+    void SetInvitedAt(InvitedAtT&& value) { m_invitedAtHasBeenSet = true; m_invitedAt = std::forward<InvitedAtT>(value); }
+    template<typename InvitedAtT = Aws::Utils::DateTime>
+    Member& WithInvitedAt(InvitedAtT&& value) { SetInvitedAt(std::forward<InvitedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie
-     * membership invitation was last sent to the account. This value is null if a
-     * Macie membership invitation hasn't been sent to the account.</p>
-     */
-    inline void SetInvitedAt(const Aws::Utils::DateTime& value) { m_invitedAtHasBeenSet = true; m_invitedAt = value; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie
-     * membership invitation was last sent to the account. This value is null if a
-     * Macie membership invitation hasn't been sent to the account.</p>
-     */
-    inline void SetInvitedAt(Aws::Utils::DateTime&& value) { m_invitedAtHasBeenSet = true; m_invitedAt = std::move(value); }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie
-     * membership invitation was last sent to the account. This value is null if a
-     * Macie membership invitation hasn't been sent to the account.</p>
-     */
-    inline Member& WithInvitedAt(const Aws::Utils::DateTime& value) { SetInvitedAt(value); return *this;}
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when an Amazon Macie
-     * membership invitation was last sent to the account. This value is null if a
-     * Macie membership invitation hasn't been sent to the account.</p>
-     */
-    inline Member& WithInvitedAt(Aws::Utils::DateTime&& value) { SetInvitedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>(Deprecated) The Amazon Web Services account ID for the administrator
      * account. This property has been replaced by the administratorAccountId property
      * and is retained only for backward compatibility.</p>
      */
-    inline const Aws::String& GetMasterAccountId() const{ return m_masterAccountId; }
-
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
+    inline const Aws::String& GetMasterAccountId() const { return m_masterAccountId; }
     inline bool MasterAccountIdHasBeenSet() const { return m_masterAccountIdHasBeenSet; }
+    template<typename MasterAccountIdT = Aws::String>
+    void SetMasterAccountId(MasterAccountIdT&& value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId = std::forward<MasterAccountIdT>(value); }
+    template<typename MasterAccountIdT = Aws::String>
+    Member& WithMasterAccountId(MasterAccountIdT&& value) { SetMasterAccountId(std::forward<MasterAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
-    inline void SetMasterAccountId(const Aws::String& value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId = value; }
-
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
-    inline void SetMasterAccountId(Aws::String&& value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId = std::move(value); }
-
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
-    inline void SetMasterAccountId(const char* value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId.assign(value); }
-
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
-    inline Member& WithMasterAccountId(const Aws::String& value) { SetMasterAccountId(value); return *this;}
-
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
-    inline Member& WithMasterAccountId(Aws::String&& value) { SetMasterAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>(Deprecated) The Amazon Web Services account ID for the administrator
-     * account. This property has been replaced by the administratorAccountId property
-     * and is retained only for backward compatibility.</p>
-     */
-    inline Member& WithMasterAccountId(const char* value) { SetMasterAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the relationship between the account and the
      * administrator account.</p>
      */
-    inline const RelationshipStatus& GetRelationshipStatus() const{ return m_relationshipStatus; }
-
-    /**
-     * <p>The current status of the relationship between the account and the
-     * administrator account.</p>
-     */
+    inline RelationshipStatus GetRelationshipStatus() const { return m_relationshipStatus; }
     inline bool RelationshipStatusHasBeenSet() const { return m_relationshipStatusHasBeenSet; }
+    inline void SetRelationshipStatus(RelationshipStatus value) { m_relationshipStatusHasBeenSet = true; m_relationshipStatus = value; }
+    inline Member& WithRelationshipStatus(RelationshipStatus value) { SetRelationshipStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline void SetRelationshipStatus(const RelationshipStatus& value) { m_relationshipStatusHasBeenSet = true; m_relationshipStatus = value; }
-
-    /**
-     * <p>The current status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline void SetRelationshipStatus(RelationshipStatus&& value) { m_relationshipStatusHasBeenSet = true; m_relationshipStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline Member& WithRelationshipStatus(const RelationshipStatus& value) { SetRelationshipStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline Member& WithRelationshipStatus(RelationshipStatus&& value) { SetRelationshipStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of key-value pairs that specifies which tags (keys and values) are
      * associated with the account in Amazon Macie.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    Member& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    Member& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the account in Amazon Macie.</p>
-     */
-    inline Member& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent
      * change to the status of the relationship between the account and the
      * administrator account.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent
-     * change to the status of the relationship between the account and the
-     * administrator account.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent
-     * change to the status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent
-     * change to the status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent
-     * change to the status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline Member& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent
-     * change to the status of the relationship between the account and the
-     * administrator account.</p>
-     */
-    inline Member& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    Member& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -485,19 +173,19 @@ namespace Model
     Aws::String m_email;
     bool m_emailHasBeenSet = false;
 
-    Aws::Utils::DateTime m_invitedAt;
+    Aws::Utils::DateTime m_invitedAt{};
     bool m_invitedAtHasBeenSet = false;
 
     Aws::String m_masterAccountId;
     bool m_masterAccountIdHasBeenSet = false;
 
-    RelationshipStatus m_relationshipStatus;
+    RelationshipStatus m_relationshipStatus{RelationshipStatus::NOT_SET};
     bool m_relationshipStatusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
   };
 

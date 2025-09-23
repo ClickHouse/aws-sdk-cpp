@@ -37,77 +37,33 @@ namespace Model
   class DetectedLanguageLowConfidenceException
   {
   public:
-    AWS_TRANSLATE_API DetectedLanguageLowConfidenceException();
+    AWS_TRANSLATE_API DetectedLanguageLowConfidenceException() = default;
     AWS_TRANSLATE_API DetectedLanguageLowConfidenceException(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API DetectedLanguageLowConfidenceException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DetectedLanguageLowConfidenceException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline DetectedLanguageLowConfidenceException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline DetectedLanguageLowConfidenceException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline DetectedLanguageLowConfidenceException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
      */
-    inline const Aws::String& GetDetectedLanguageCode() const{ return m_detectedLanguageCode; }
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
+    inline const Aws::String& GetDetectedLanguageCode() const { return m_detectedLanguageCode; }
     inline bool DetectedLanguageCodeHasBeenSet() const { return m_detectedLanguageCodeHasBeenSet; }
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
-    inline void SetDetectedLanguageCode(const Aws::String& value) { m_detectedLanguageCodeHasBeenSet = true; m_detectedLanguageCode = value; }
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
-    inline void SetDetectedLanguageCode(Aws::String&& value) { m_detectedLanguageCodeHasBeenSet = true; m_detectedLanguageCode = std::move(value); }
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
-    inline void SetDetectedLanguageCode(const char* value) { m_detectedLanguageCodeHasBeenSet = true; m_detectedLanguageCode.assign(value); }
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
-    inline DetectedLanguageLowConfidenceException& WithDetectedLanguageCode(const Aws::String& value) { SetDetectedLanguageCode(value); return *this;}
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
-    inline DetectedLanguageLowConfidenceException& WithDetectedLanguageCode(Aws::String&& value) { SetDetectedLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The language code of the auto-detected language from Amazon Comprehend.</p>
-     */
-    inline DetectedLanguageLowConfidenceException& WithDetectedLanguageCode(const char* value) { SetDetectedLanguageCode(value); return *this;}
-
+    template<typename DetectedLanguageCodeT = Aws::String>
+    void SetDetectedLanguageCode(DetectedLanguageCodeT&& value) { m_detectedLanguageCodeHasBeenSet = true; m_detectedLanguageCode = std::forward<DetectedLanguageCodeT>(value); }
+    template<typename DetectedLanguageCodeT = Aws::String>
+    DetectedLanguageLowConfidenceException& WithDetectedLanguageCode(DetectedLanguageCodeT&& value) { SetDetectedLanguageCode(std::forward<DetectedLanguageCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;

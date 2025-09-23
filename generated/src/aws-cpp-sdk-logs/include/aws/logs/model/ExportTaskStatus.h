@@ -32,86 +32,36 @@ namespace Model
   class ExportTaskStatus
   {
   public:
-    AWS_CLOUDWATCHLOGS_API ExportTaskStatus();
+    AWS_CLOUDWATCHLOGS_API ExportTaskStatus() = default;
     AWS_CLOUDWATCHLOGS_API ExportTaskStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API ExportTaskStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status code of the export task.</p>
      */
-    inline const ExportTaskStatusCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The status code of the export task.</p>
-     */
+    inline ExportTaskStatusCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    inline void SetCode(ExportTaskStatusCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline ExportTaskStatus& WithCode(ExportTaskStatusCode value) { SetCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status code of the export task.</p>
-     */
-    inline void SetCode(const ExportTaskStatusCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The status code of the export task.</p>
-     */
-    inline void SetCode(ExportTaskStatusCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The status code of the export task.</p>
-     */
-    inline ExportTaskStatus& WithCode(const ExportTaskStatusCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The status code of the export task.</p>
-     */
-    inline ExportTaskStatus& WithCode(ExportTaskStatusCode&& value) { SetCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status message related to the status code.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
-    inline ExportTaskStatus& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
-    inline ExportTaskStatus& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The status message related to the status code.</p>
-     */
-    inline ExportTaskStatus& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ExportTaskStatus& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    ExportTaskStatusCode m_code;
+    ExportTaskStatusCode m_code{ExportTaskStatusCode::NOT_SET};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

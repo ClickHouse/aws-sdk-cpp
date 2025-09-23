@@ -33,8 +33,8 @@ namespace MigrationHubConfig
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef MigrationHubConfigClientConfiguration ClientConfigurationType;
       typedef MigrationHubConfigEndpointProvider EndpointProviderType;
@@ -44,14 +44,14 @@ namespace MigrationHubConfig
         * is not specified, it will be initialized to default values.
         */
         MigrationHubConfigClient(const Aws::MigrationHubConfig::MigrationHubConfigClientConfiguration& clientConfiguration = Aws::MigrationHubConfig::MigrationHubConfigClientConfiguration(),
-                                 std::shared_ptr<MigrationHubConfigEndpointProviderBase> endpointProvider = Aws::MakeShared<MigrationHubConfigEndpointProvider>(ALLOCATION_TAG));
+                                 std::shared_ptr<MigrationHubConfigEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MigrationHubConfigClient(const Aws::Auth::AWSCredentials& credentials,
-                                 std::shared_ptr<MigrationHubConfigEndpointProviderBase> endpointProvider = Aws::MakeShared<MigrationHubConfigEndpointProvider>(ALLOCATION_TAG),
+                                 std::shared_ptr<MigrationHubConfigEndpointProviderBase> endpointProvider = nullptr,
                                  const Aws::MigrationHubConfig::MigrationHubConfigClientConfiguration& clientConfiguration = Aws::MigrationHubConfig::MigrationHubConfigClientConfiguration());
 
        /**
@@ -59,7 +59,7 @@ namespace MigrationHubConfig
         * the default http client factory will be used
         */
         MigrationHubConfigClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                 std::shared_ptr<MigrationHubConfigEndpointProviderBase> endpointProvider = Aws::MakeShared<MigrationHubConfigEndpointProvider>(ALLOCATION_TAG),
+                                 std::shared_ptr<MigrationHubConfigEndpointProviderBase> endpointProvider = nullptr,
                                  const Aws::MigrationHubConfig::MigrationHubConfigClientConfiguration& clientConfiguration = Aws::MigrationHubConfig::MigrationHubConfigClientConfiguration());
 
 
@@ -146,13 +146,13 @@ namespace MigrationHubConfig
          * href="http://docs.aws.amazon.com/goto/WebAPI/migrationhub-config-2019-06-30/DescribeHomeRegionControls">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeHomeRegionControlsOutcome DescribeHomeRegionControls(const Model::DescribeHomeRegionControlsRequest& request) const;
+        virtual Model::DescribeHomeRegionControlsOutcome DescribeHomeRegionControls(const Model::DescribeHomeRegionControlsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeHomeRegionControls that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeHomeRegionControlsRequestT = Model::DescribeHomeRegionControlsRequest>
-        Model::DescribeHomeRegionControlsOutcomeCallable DescribeHomeRegionControlsCallable(const DescribeHomeRegionControlsRequestT& request) const
+        Model::DescribeHomeRegionControlsOutcomeCallable DescribeHomeRegionControlsCallable(const DescribeHomeRegionControlsRequestT& request = {}) const
         {
             return SubmitCallable(&MigrationHubConfigClient::DescribeHomeRegionControls, request);
         }
@@ -161,7 +161,7 @@ namespace MigrationHubConfig
          * An Async wrapper for DescribeHomeRegionControls that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeHomeRegionControlsRequestT = Model::DescribeHomeRegionControlsRequest>
-        void DescribeHomeRegionControlsAsync(const DescribeHomeRegionControlsRequestT& request, const DescribeHomeRegionControlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeHomeRegionControlsAsync(const DescribeHomeRegionControlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeHomeRegionControlsRequestT& request = {}) const
         {
             return SubmitAsync(&MigrationHubConfigClient::DescribeHomeRegionControls, request, handler, context);
         }
@@ -176,13 +176,13 @@ namespace MigrationHubConfig
          * href="http://docs.aws.amazon.com/goto/WebAPI/migrationhub-config-2019-06-30/GetHomeRegion">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetHomeRegionOutcome GetHomeRegion(const Model::GetHomeRegionRequest& request) const;
+        virtual Model::GetHomeRegionOutcome GetHomeRegion(const Model::GetHomeRegionRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetHomeRegion that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetHomeRegionRequestT = Model::GetHomeRegionRequest>
-        Model::GetHomeRegionOutcomeCallable GetHomeRegionCallable(const GetHomeRegionRequestT& request) const
+        Model::GetHomeRegionOutcomeCallable GetHomeRegionCallable(const GetHomeRegionRequestT& request = {}) const
         {
             return SubmitCallable(&MigrationHubConfigClient::GetHomeRegion, request);
         }
@@ -191,7 +191,7 @@ namespace MigrationHubConfig
          * An Async wrapper for GetHomeRegion that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetHomeRegionRequestT = Model::GetHomeRegionRequest>
-        void GetHomeRegionAsync(const GetHomeRegionRequestT& request, const GetHomeRegionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetHomeRegionAsync(const GetHomeRegionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetHomeRegionRequestT& request = {}) const
         {
             return SubmitAsync(&MigrationHubConfigClient::GetHomeRegion, request, handler, context);
         }
@@ -204,7 +204,6 @@ namespace MigrationHubConfig
       void init(const MigrationHubConfigClientConfiguration& clientConfiguration);
 
       MigrationHubConfigClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MigrationHubConfigEndpointProviderBase> m_endpointProvider;
   };
 

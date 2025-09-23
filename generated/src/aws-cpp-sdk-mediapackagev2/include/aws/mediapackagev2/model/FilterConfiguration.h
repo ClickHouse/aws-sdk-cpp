@@ -34,200 +34,96 @@ namespace Model
   class FilterConfiguration
   {
   public:
-    AWS_MEDIAPACKAGEV2_API FilterConfiguration();
+    AWS_MEDIAPACKAGEV2_API FilterConfiguration() = default;
     AWS_MEDIAPACKAGEV2_API FilterConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEV2_API FilterConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Optionally specify one or more manifest filters for all of your manifest
      * egress requests. When you include a manifest filter, note that you cannot use an
      * identical manifest filter query parameter for this manifest's endpoint URL.</p>
      */
-    inline const Aws::String& GetManifestFilter() const{ return m_manifestFilter; }
-
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
+    inline const Aws::String& GetManifestFilter() const { return m_manifestFilter; }
     inline bool ManifestFilterHasBeenSet() const { return m_manifestFilterHasBeenSet; }
+    template<typename ManifestFilterT = Aws::String>
+    void SetManifestFilter(ManifestFilterT&& value) { m_manifestFilterHasBeenSet = true; m_manifestFilter = std::forward<ManifestFilterT>(value); }
+    template<typename ManifestFilterT = Aws::String>
+    FilterConfiguration& WithManifestFilter(ManifestFilterT&& value) { SetManifestFilter(std::forward<ManifestFilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
-    inline void SetManifestFilter(const Aws::String& value) { m_manifestFilterHasBeenSet = true; m_manifestFilter = value; }
-
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
-    inline void SetManifestFilter(Aws::String&& value) { m_manifestFilterHasBeenSet = true; m_manifestFilter = std::move(value); }
-
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
-    inline void SetManifestFilter(const char* value) { m_manifestFilterHasBeenSet = true; m_manifestFilter.assign(value); }
-
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithManifestFilter(const Aws::String& value) { SetManifestFilter(value); return *this;}
-
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithManifestFilter(Aws::String&& value) { SetManifestFilter(std::move(value)); return *this;}
-
-    /**
-     * <p>Optionally specify one or more manifest filters for all of your manifest
-     * egress requests. When you include a manifest filter, note that you cannot use an
-     * identical manifest filter query parameter for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithManifestFilter(const char* value) { SetManifestFilter(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Optionally specify the start time for all of your manifest egress requests.
      * When you include start time, note that you cannot use start time query
      * parameters for this manifest's endpoint URL.</p>
      */
-    inline const Aws::Utils::DateTime& GetStart() const{ return m_start; }
-
-    /**
-     * <p>Optionally specify the start time for all of your manifest egress requests.
-     * When you include start time, note that you cannot use start time query
-     * parameters for this manifest's endpoint URL.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
+    template<typename StartT = Aws::Utils::DateTime>
+    void SetStart(StartT&& value) { m_startHasBeenSet = true; m_start = std::forward<StartT>(value); }
+    template<typename StartT = Aws::Utils::DateTime>
+    FilterConfiguration& WithStart(StartT&& value) { SetStart(std::forward<StartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Optionally specify the start time for all of your manifest egress requests.
-     * When you include start time, note that you cannot use start time query
-     * parameters for this manifest's endpoint URL.</p>
-     */
-    inline void SetStart(const Aws::Utils::DateTime& value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * <p>Optionally specify the start time for all of your manifest egress requests.
-     * When you include start time, note that you cannot use start time query
-     * parameters for this manifest's endpoint URL.</p>
-     */
-    inline void SetStart(Aws::Utils::DateTime&& value) { m_startHasBeenSet = true; m_start = std::move(value); }
-
-    /**
-     * <p>Optionally specify the start time for all of your manifest egress requests.
-     * When you include start time, note that you cannot use start time query
-     * parameters for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithStart(const Aws::Utils::DateTime& value) { SetStart(value); return *this;}
-
-    /**
-     * <p>Optionally specify the start time for all of your manifest egress requests.
-     * When you include start time, note that you cannot use start time query
-     * parameters for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithStart(Aws::Utils::DateTime&& value) { SetStart(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Optionally specify the end time for all of your manifest egress requests.
      * When you include end time, note that you cannot use end time query parameters
      * for this manifest's endpoint URL.</p>
      */
-    inline const Aws::Utils::DateTime& GetEnd() const{ return m_end; }
-
-    /**
-     * <p>Optionally specify the end time for all of your manifest egress requests.
-     * When you include end time, note that you cannot use end time query parameters
-     * for this manifest's endpoint URL.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEnd() const { return m_end; }
     inline bool EndHasBeenSet() const { return m_endHasBeenSet; }
+    template<typename EndT = Aws::Utils::DateTime>
+    void SetEnd(EndT&& value) { m_endHasBeenSet = true; m_end = std::forward<EndT>(value); }
+    template<typename EndT = Aws::Utils::DateTime>
+    FilterConfiguration& WithEnd(EndT&& value) { SetEnd(std::forward<EndT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Optionally specify the end time for all of your manifest egress requests.
-     * When you include end time, note that you cannot use end time query parameters
-     * for this manifest's endpoint URL.</p>
-     */
-    inline void SetEnd(const Aws::Utils::DateTime& value) { m_endHasBeenSet = true; m_end = value; }
-
-    /**
-     * <p>Optionally specify the end time for all of your manifest egress requests.
-     * When you include end time, note that you cannot use end time query parameters
-     * for this manifest's endpoint URL.</p>
-     */
-    inline void SetEnd(Aws::Utils::DateTime&& value) { m_endHasBeenSet = true; m_end = std::move(value); }
-
-    /**
-     * <p>Optionally specify the end time for all of your manifest egress requests.
-     * When you include end time, note that you cannot use end time query parameters
-     * for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithEnd(const Aws::Utils::DateTime& value) { SetEnd(value); return *this;}
-
-    /**
-     * <p>Optionally specify the end time for all of your manifest egress requests.
-     * When you include end time, note that you cannot use end time query parameters
-     * for this manifest's endpoint URL.</p>
-     */
-    inline FilterConfiguration& WithEnd(Aws::Utils::DateTime&& value) { SetEnd(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Optionally specify the time delay for all of your manifest egress requests.
      * Enter a value that is smaller than your endpoint's startover window. When you
      * include time delay, note that you cannot use time delay query parameters for
      * this manifest's endpoint URL.</p>
      */
-    inline int GetTimeDelaySeconds() const{ return m_timeDelaySeconds; }
-
-    /**
-     * <p>Optionally specify the time delay for all of your manifest egress requests.
-     * Enter a value that is smaller than your endpoint's startover window. When you
-     * include time delay, note that you cannot use time delay query parameters for
-     * this manifest's endpoint URL.</p>
-     */
+    inline int GetTimeDelaySeconds() const { return m_timeDelaySeconds; }
     inline bool TimeDelaySecondsHasBeenSet() const { return m_timeDelaySecondsHasBeenSet; }
-
-    /**
-     * <p>Optionally specify the time delay for all of your manifest egress requests.
-     * Enter a value that is smaller than your endpoint's startover window. When you
-     * include time delay, note that you cannot use time delay query parameters for
-     * this manifest's endpoint URL.</p>
-     */
     inline void SetTimeDelaySeconds(int value) { m_timeDelaySecondsHasBeenSet = true; m_timeDelaySeconds = value; }
-
-    /**
-     * <p>Optionally specify the time delay for all of your manifest egress requests.
-     * Enter a value that is smaller than your endpoint's startover window. When you
-     * include time delay, note that you cannot use time delay query parameters for
-     * this manifest's endpoint URL.</p>
-     */
     inline FilterConfiguration& WithTimeDelaySeconds(int value) { SetTimeDelaySeconds(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Optionally specify the clip start time for all of your manifest egress
+     * requests. When you include clip start time, note that you cannot use clip start
+     * time query parameters for this manifest's endpoint URL.</p>
+     */
+    inline const Aws::Utils::DateTime& GetClipStartTime() const { return m_clipStartTime; }
+    inline bool ClipStartTimeHasBeenSet() const { return m_clipStartTimeHasBeenSet; }
+    template<typename ClipStartTimeT = Aws::Utils::DateTime>
+    void SetClipStartTime(ClipStartTimeT&& value) { m_clipStartTimeHasBeenSet = true; m_clipStartTime = std::forward<ClipStartTimeT>(value); }
+    template<typename ClipStartTimeT = Aws::Utils::DateTime>
+    FilterConfiguration& WithClipStartTime(ClipStartTimeT&& value) { SetClipStartTime(std::forward<ClipStartTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_manifestFilter;
     bool m_manifestFilterHasBeenSet = false;
 
-    Aws::Utils::DateTime m_start;
+    Aws::Utils::DateTime m_start{};
     bool m_startHasBeenSet = false;
 
-    Aws::Utils::DateTime m_end;
+    Aws::Utils::DateTime m_end{};
     bool m_endHasBeenSet = false;
 
-    int m_timeDelaySeconds;
+    int m_timeDelaySeconds{0};
     bool m_timeDelaySecondsHasBeenSet = false;
+
+    Aws::Utils::DateTime m_clipStartTime{};
+    bool m_clipStartTimeHasBeenSet = false;
   };
 
 } // namespace Model

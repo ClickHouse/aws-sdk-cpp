@@ -18,17 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-AttributeValueUpdate::AttributeValueUpdate() : 
-    m_valueHasBeenSet(false),
-    m_action(AttributeAction::NOT_SET),
-    m_actionHasBeenSet(false)
-{
-}
-
-AttributeValueUpdate::AttributeValueUpdate(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_action(AttributeAction::NOT_SET),
-    m_actionHasBeenSet(false)
+AttributeValueUpdate::AttributeValueUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AttributeValueUpdate& AttributeValueUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetObject("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Action"))
   {
     m_action = AttributeActionMapper::GetAttributeActionForName(jsonValue.GetString("Action"));
-
     m_actionHasBeenSet = true;
   }
-
   return *this;
 }
 

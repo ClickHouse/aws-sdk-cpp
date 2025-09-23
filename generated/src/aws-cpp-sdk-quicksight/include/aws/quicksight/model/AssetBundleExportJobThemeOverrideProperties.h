@@ -34,109 +34,38 @@ namespace Model
   class AssetBundleExportJobThemeOverrideProperties
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleExportJobThemeOverrideProperties();
+    AWS_QUICKSIGHT_API AssetBundleExportJobThemeOverrideProperties() = default;
     AWS_QUICKSIGHT_API AssetBundleExportJobThemeOverrideProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleExportJobThemeOverrideProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the specific <code>Theme</code> resource whose override properties
      * are configured in this structure.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    AssetBundleExportJobThemeOverrideProperties& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the specific <code>Theme</code> resource whose override properties
-     * are configured in this structure.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <code>Theme</code> resource properties to generate variables for in
      * the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobThemePropertyToOverride>& GetProperties() const{ return m_properties; }
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobThemePropertyToOverride>& GetProperties() const { return m_properties; }
     inline bool PropertiesHasBeenSet() const { return m_propertiesHasBeenSet; }
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
-    inline void SetProperties(const Aws::Vector<AssetBundleExportJobThemePropertyToOverride>& value) { m_propertiesHasBeenSet = true; m_properties = value; }
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
-    inline void SetProperties(Aws::Vector<AssetBundleExportJobThemePropertyToOverride>&& value) { m_propertiesHasBeenSet = true; m_properties = std::move(value); }
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& WithProperties(const Aws::Vector<AssetBundleExportJobThemePropertyToOverride>& value) { SetProperties(value); return *this;}
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& WithProperties(Aws::Vector<AssetBundleExportJobThemePropertyToOverride>&& value) { SetProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& AddProperties(const AssetBundleExportJobThemePropertyToOverride& value) { m_propertiesHasBeenSet = true; m_properties.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>Theme</code> resource properties to generate variables for in
-     * the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobThemeOverrideProperties& AddProperties(AssetBundleExportJobThemePropertyToOverride&& value) { m_propertiesHasBeenSet = true; m_properties.push_back(std::move(value)); return *this; }
-
+    template<typename PropertiesT = Aws::Vector<AssetBundleExportJobThemePropertyToOverride>>
+    void SetProperties(PropertiesT&& value) { m_propertiesHasBeenSet = true; m_properties = std::forward<PropertiesT>(value); }
+    template<typename PropertiesT = Aws::Vector<AssetBundleExportJobThemePropertyToOverride>>
+    AssetBundleExportJobThemeOverrideProperties& WithProperties(PropertiesT&& value) { SetProperties(std::forward<PropertiesT>(value)); return *this;}
+    inline AssetBundleExportJobThemeOverrideProperties& AddProperties(AssetBundleExportJobThemePropertyToOverride value) { m_propertiesHasBeenSet = true; m_properties.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_arn;

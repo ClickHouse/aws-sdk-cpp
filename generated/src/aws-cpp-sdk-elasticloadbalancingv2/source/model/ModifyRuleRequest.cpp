@@ -10,13 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-ModifyRuleRequest::ModifyRuleRequest() : 
-    m_ruleArnHasBeenSet(false),
-    m_conditionsHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyRuleRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,21 +21,35 @@ Aws::String ModifyRuleRequest::SerializePayload() const
 
   if(m_conditionsHasBeenSet)
   {
-    unsigned conditionsCount = 1;
-    for(auto& item : m_conditions)
+    if (m_conditions.empty())
     {
-      item.OutputToStream(ss, "Conditions.member.", conditionsCount, "");
-      conditionsCount++;
+      ss << "Conditions=&";
+    }
+    else
+    {
+      unsigned conditionsCount = 1;
+      for(auto& item : m_conditions)
+      {
+        item.OutputToStream(ss, "Conditions.member.", conditionsCount, "");
+        conditionsCount++;
+      }
     }
   }
 
   if(m_actionsHasBeenSet)
   {
-    unsigned actionsCount = 1;
-    for(auto& item : m_actions)
+    if (m_actions.empty())
     {
-      item.OutputToStream(ss, "Actions.member.", actionsCount, "");
-      actionsCount++;
+      ss << "Actions=&";
+    }
+    else
+    {
+      unsigned actionsCount = 1;
+      for(auto& item : m_actions)
+      {
+        item.OutputToStream(ss, "Actions.member.", actionsCount, "");
+        actionsCount++;
+      }
     }
   }
 

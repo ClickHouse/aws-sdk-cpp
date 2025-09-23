@@ -33,93 +33,35 @@ namespace Model
   class TimestreamResources
   {
   public:
-    AWS_IOTFLEETWISE_API TimestreamResources();
+    AWS_IOTFLEETWISE_API TimestreamResources() = default;
     AWS_IOTFLEETWISE_API TimestreamResources(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API TimestreamResources& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the registered Amazon Timestream database.</p>
      */
-    inline const Aws::String& GetTimestreamDatabaseName() const{ return m_timestreamDatabaseName; }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
+    inline const Aws::String& GetTimestreamDatabaseName() const { return m_timestreamDatabaseName; }
     inline bool TimestreamDatabaseNameHasBeenSet() const { return m_timestreamDatabaseNameHasBeenSet; }
+    template<typename TimestreamDatabaseNameT = Aws::String>
+    void SetTimestreamDatabaseName(TimestreamDatabaseNameT&& value) { m_timestreamDatabaseNameHasBeenSet = true; m_timestreamDatabaseName = std::forward<TimestreamDatabaseNameT>(value); }
+    template<typename TimestreamDatabaseNameT = Aws::String>
+    TimestreamResources& WithTimestreamDatabaseName(TimestreamDatabaseNameT&& value) { SetTimestreamDatabaseName(std::forward<TimestreamDatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
-    inline void SetTimestreamDatabaseName(const Aws::String& value) { m_timestreamDatabaseNameHasBeenSet = true; m_timestreamDatabaseName = value; }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
-    inline void SetTimestreamDatabaseName(Aws::String&& value) { m_timestreamDatabaseNameHasBeenSet = true; m_timestreamDatabaseName = std::move(value); }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
-    inline void SetTimestreamDatabaseName(const char* value) { m_timestreamDatabaseNameHasBeenSet = true; m_timestreamDatabaseName.assign(value); }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
-    inline TimestreamResources& WithTimestreamDatabaseName(const Aws::String& value) { SetTimestreamDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
-    inline TimestreamResources& WithTimestreamDatabaseName(Aws::String&& value) { SetTimestreamDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the registered Amazon Timestream database.</p>
-     */
-    inline TimestreamResources& WithTimestreamDatabaseName(const char* value) { SetTimestreamDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the registered Amazon Timestream database table.</p>
      */
-    inline const Aws::String& GetTimestreamTableName() const{ return m_timestreamTableName; }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
+    inline const Aws::String& GetTimestreamTableName() const { return m_timestreamTableName; }
     inline bool TimestreamTableNameHasBeenSet() const { return m_timestreamTableNameHasBeenSet; }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
-    inline void SetTimestreamTableName(const Aws::String& value) { m_timestreamTableNameHasBeenSet = true; m_timestreamTableName = value; }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
-    inline void SetTimestreamTableName(Aws::String&& value) { m_timestreamTableNameHasBeenSet = true; m_timestreamTableName = std::move(value); }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
-    inline void SetTimestreamTableName(const char* value) { m_timestreamTableNameHasBeenSet = true; m_timestreamTableName.assign(value); }
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
-    inline TimestreamResources& WithTimestreamTableName(const Aws::String& value) { SetTimestreamTableName(value); return *this;}
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
-    inline TimestreamResources& WithTimestreamTableName(Aws::String&& value) { SetTimestreamTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the registered Amazon Timestream database table.</p>
-     */
-    inline TimestreamResources& WithTimestreamTableName(const char* value) { SetTimestreamTableName(value); return *this;}
-
+    template<typename TimestreamTableNameT = Aws::String>
+    void SetTimestreamTableName(TimestreamTableNameT&& value) { m_timestreamTableNameHasBeenSet = true; m_timestreamTableName = std::forward<TimestreamTableNameT>(value); }
+    template<typename TimestreamTableNameT = Aws::String>
+    TimestreamResources& WithTimestreamTableName(TimestreamTableNameT&& value) { SetTimestreamTableName(std::forward<TimestreamTableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_timestreamDatabaseName;

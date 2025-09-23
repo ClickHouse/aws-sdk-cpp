@@ -20,17 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-LoadBalancerState::LoadBalancerState() : 
-    m_code(LoadBalancerStateEnum::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_reasonHasBeenSet(false)
-{
-}
-
-LoadBalancerState::LoadBalancerState(const XmlNode& xmlNode) : 
-    m_code(LoadBalancerStateEnum::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_reasonHasBeenSet(false)
+LoadBalancerState::LoadBalancerState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ LoadBalancerState& LoadBalancerState::operator =(const XmlNode& xmlNode)
     XmlNode codeNode = resultNode.FirstChild("Code");
     if(!codeNode.IsNull())
     {
-      m_code = LoadBalancerStateEnumMapper::GetLoadBalancerStateEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = LoadBalancerStateEnumMapper::GetLoadBalancerStateEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode reasonNode = resultNode.FirstChild("Reason");
@@ -62,7 +52,7 @@ void LoadBalancerState::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << LoadBalancerStateEnumMapper::GetNameForLoadBalancerStateEnum(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(LoadBalancerStateEnumMapper::GetNameForLoadBalancerStateEnum(m_code)) << "&";
   }
 
   if(m_reasonHasBeenSet)
@@ -76,7 +66,7 @@ void LoadBalancerState::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << LoadBalancerStateEnumMapper::GetNameForLoadBalancerStateEnum(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(LoadBalancerStateEnumMapper::GetNameForLoadBalancerStateEnum(m_code)) << "&";
   }
   if(m_reasonHasBeenSet)
   {

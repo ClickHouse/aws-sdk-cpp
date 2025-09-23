@@ -19,15 +19,7 @@ namespace Rekognition
 namespace Model
 {
 
-Image::Image() : 
-    m_bytesHasBeenSet(false),
-    m_s3ObjectHasBeenSet(false)
-{
-}
-
-Image::Image(JsonView jsonValue) : 
-    m_bytesHasBeenSet(false),
-    m_s3ObjectHasBeenSet(false)
+Image::Image(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,14 +31,11 @@ Image& Image::operator =(JsonView jsonValue)
     m_bytes = HashingUtils::Base64Decode(jsonValue.GetString("Bytes"));
     m_bytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3Object"))
   {
     m_s3Object = jsonValue.GetObject("S3Object");
-
     m_s3ObjectHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,13 +20,7 @@ namespace RDS
 namespace Model
 {
 
-IssueDetails::IssueDetails() : 
-    m_performanceIssueDetailsHasBeenSet(false)
-{
-}
-
-IssueDetails::IssueDetails(const XmlNode& xmlNode) : 
-    m_performanceIssueDetailsHasBeenSet(false)
+IssueDetails::IssueDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

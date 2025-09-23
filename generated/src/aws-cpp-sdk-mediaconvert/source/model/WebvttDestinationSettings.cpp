@@ -18,19 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-WebvttDestinationSettings::WebvttDestinationSettings() : 
-    m_accessibility(WebvttAccessibilitySubs::NOT_SET),
-    m_accessibilityHasBeenSet(false),
-    m_stylePassthrough(WebvttStylePassthrough::NOT_SET),
-    m_stylePassthroughHasBeenSet(false)
-{
-}
-
-WebvttDestinationSettings::WebvttDestinationSettings(JsonView jsonValue) : 
-    m_accessibility(WebvttAccessibilitySubs::NOT_SET),
-    m_accessibilityHasBeenSet(false),
-    m_stylePassthrough(WebvttStylePassthrough::NOT_SET),
-    m_stylePassthroughHasBeenSet(false)
+WebvttDestinationSettings::WebvttDestinationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ WebvttDestinationSettings& WebvttDestinationSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("accessibility"))
   {
     m_accessibility = WebvttAccessibilitySubsMapper::GetWebvttAccessibilitySubsForName(jsonValue.GetString("accessibility"));
-
     m_accessibilityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("stylePassthrough"))
   {
     m_stylePassthrough = WebvttStylePassthroughMapper::GetWebvttStylePassthroughForName(jsonValue.GetString("stylePassthrough"));
-
     m_stylePassthroughHasBeenSet = true;
   }
-
   return *this;
 }
 

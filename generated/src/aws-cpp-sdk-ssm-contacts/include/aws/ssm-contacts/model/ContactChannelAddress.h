@@ -32,76 +32,26 @@ namespace Model
   class ContactChannelAddress
   {
   public:
-    AWS_SSMCONTACTS_API ContactChannelAddress();
+    AWS_SSMCONTACTS_API ContactChannelAddress() = default;
     AWS_SSMCONTACTS_API ContactChannelAddress(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API ContactChannelAddress& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The format is dependent on the type of the contact channel. The following are
      * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
      * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
      * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
      */
-    inline const Aws::String& GetSimpleAddress() const{ return m_simpleAddress; }
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
+    inline const Aws::String& GetSimpleAddress() const { return m_simpleAddress; }
     inline bool SimpleAddressHasBeenSet() const { return m_simpleAddressHasBeenSet; }
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
-    inline void SetSimpleAddress(const Aws::String& value) { m_simpleAddressHasBeenSet = true; m_simpleAddress = value; }
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
-    inline void SetSimpleAddress(Aws::String&& value) { m_simpleAddressHasBeenSet = true; m_simpleAddress = std::move(value); }
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
-    inline void SetSimpleAddress(const char* value) { m_simpleAddressHasBeenSet = true; m_simpleAddress.assign(value); }
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
-    inline ContactChannelAddress& WithSimpleAddress(const Aws::String& value) { SetSimpleAddress(value); return *this;}
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
-    inline ContactChannelAddress& WithSimpleAddress(Aws::String&& value) { SetSimpleAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The format is dependent on the type of the contact channel. The following are
-     * the expected formats:</p> <ul> <li> <p>SMS - '+' followed by the country code
-     * and phone number</p> </li> <li> <p>VOICE - '+' followed by the country code and
-     * phone number</p> </li> <li> <p>EMAIL - any standard email format</p> </li> </ul>
-     */
-    inline ContactChannelAddress& WithSimpleAddress(const char* value) { SetSimpleAddress(value); return *this;}
-
+    template<typename SimpleAddressT = Aws::String>
+    void SetSimpleAddress(SimpleAddressT&& value) { m_simpleAddressHasBeenSet = true; m_simpleAddress = std::forward<SimpleAddressT>(value); }
+    template<typename SimpleAddressT = Aws::String>
+    ContactChannelAddress& WithSimpleAddress(SimpleAddressT&& value) { SetSimpleAddress(std::forward<SimpleAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_simpleAddress;

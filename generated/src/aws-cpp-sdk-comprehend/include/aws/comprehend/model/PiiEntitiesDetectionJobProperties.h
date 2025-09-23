@@ -39,53 +39,25 @@ namespace Model
   class PiiEntitiesDetectionJobProperties
   {
   public:
-    AWS_COMPREHEND_API PiiEntitiesDetectionJobProperties();
+    AWS_COMPREHEND_API PiiEntitiesDetectionJobProperties() = default;
     AWS_COMPREHEND_API PiiEntitiesDetectionJobProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API PiiEntitiesDetectionJobProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier assigned to the PII entities detection job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    PiiEntitiesDetectionJobProperties& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier assigned to the PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
      * unique, fully qualified identifier for the job. It includes the Amazon Web
@@ -96,354 +68,101 @@ namespace Model
      * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
      * </p>
      */
-    inline const Aws::String& GetJobArn() const{ return m_jobArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
+    inline const Aws::String& GetJobArn() const { return m_jobArn; }
     inline bool JobArnHasBeenSet() const { return m_jobArnHasBeenSet; }
+    template<typename JobArnT = Aws::String>
+    void SetJobArn(JobArnT&& value) { m_jobArnHasBeenSet = true; m_jobArn = std::forward<JobArnT>(value); }
+    template<typename JobArnT = Aws::String>
+    PiiEntitiesDetectionJobProperties& WithJobArn(JobArnT&& value) { SetJobArn(std::forward<JobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline void SetJobArn(const Aws::String& value) { m_jobArnHasBeenSet = true; m_jobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline void SetJobArn(Aws::String&& value) { m_jobArnHasBeenSet = true; m_jobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline void SetJobArn(const char* value) { m_jobArnHasBeenSet = true; m_jobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobArn(const Aws::String& value) { SetJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobArn(Aws::String&& value) { SetJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the PII entities detection job. It is a
-     * unique, fully qualified identifier for the job. It includes the Amazon Web
-     * Services account, Amazon Web Services Region, and the job ID. The format of the
-     * ARN is as follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:pii-entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:pii-entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobArn(const char* value) { SetJobArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that you assigned the PII entities detection job.</p>
      */
-    inline const Aws::String& GetJobName() const{ return m_jobName; }
-
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
+    inline const Aws::String& GetJobName() const { return m_jobName; }
     inline bool JobNameHasBeenSet() const { return m_jobNameHasBeenSet; }
+    template<typename JobNameT = Aws::String>
+    void SetJobName(JobNameT&& value) { m_jobNameHasBeenSet = true; m_jobName = std::forward<JobNameT>(value); }
+    template<typename JobNameT = Aws::String>
+    PiiEntitiesDetectionJobProperties& WithJobName(JobNameT&& value) { SetJobName(std::forward<JobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
-    inline void SetJobName(const Aws::String& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
-
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
-
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
-    inline void SetJobName(const char* value) { m_jobNameHasBeenSet = true; m_jobName.assign(value); }
-
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobName(const Aws::String& value) { SetJobName(value); return *this;}
-
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that you assigned the PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobName(const char* value) { SetJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the PII entities detection job. If the status is
      * <code>FAILED</code>, the <code>Message</code> field shows the reason for the
      * failure.</p>
      */
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
-
-    /**
-     * <p>The current status of the PII entities detection job. If the status is
-     * <code>FAILED</code>, the <code>Message</code> field shows the reason for the
-     * failure.</p>
-     */
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
     inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline PiiEntitiesDetectionJobProperties& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the PII entities detection job. If the status is
-     * <code>FAILED</code>, the <code>Message</code> field shows the reason for the
-     * failure.</p>
-     */
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
-
-    /**
-     * <p>The current status of the PII entities detection job. If the status is
-     * <code>FAILED</code>, the <code>Message</code> field shows the reason for the
-     * failure.</p>
-     */
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatusHasBeenSet = true; m_jobStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the PII entities detection job. If the status is
-     * <code>FAILED</code>, the <code>Message</code> field shows the reason for the
-     * failure.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the PII entities detection job. If the status is
-     * <code>FAILED</code>, the <code>Message</code> field shows the reason for the
-     * failure.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the status of a job.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A description of the status of a job.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    PiiEntitiesDetectionJobProperties& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the status of a job.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A description of the status of a job.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A description of the status of a job.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A description of the status of a job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A description of the status of a job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the status of a job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the PII entities detection job was submitted for
      * processing.</p>
      */
-    inline const Aws::Utils::DateTime& GetSubmitTime() const{ return m_submitTime; }
-
-    /**
-     * <p>The time that the PII entities detection job was submitted for
-     * processing.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSubmitTime() const { return m_submitTime; }
     inline bool SubmitTimeHasBeenSet() const { return m_submitTimeHasBeenSet; }
+    template<typename SubmitTimeT = Aws::Utils::DateTime>
+    void SetSubmitTime(SubmitTimeT&& value) { m_submitTimeHasBeenSet = true; m_submitTime = std::forward<SubmitTimeT>(value); }
+    template<typename SubmitTimeT = Aws::Utils::DateTime>
+    PiiEntitiesDetectionJobProperties& WithSubmitTime(SubmitTimeT&& value) { SetSubmitTime(std::forward<SubmitTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the PII entities detection job was submitted for
-     * processing.</p>
-     */
-    inline void SetSubmitTime(const Aws::Utils::DateTime& value) { m_submitTimeHasBeenSet = true; m_submitTime = value; }
-
-    /**
-     * <p>The time that the PII entities detection job was submitted for
-     * processing.</p>
-     */
-    inline void SetSubmitTime(Aws::Utils::DateTime&& value) { m_submitTimeHasBeenSet = true; m_submitTime = std::move(value); }
-
-    /**
-     * <p>The time that the PII entities detection job was submitted for
-     * processing.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithSubmitTime(const Aws::Utils::DateTime& value) { SetSubmitTime(value); return *this;}
-
-    /**
-     * <p>The time that the PII entities detection job was submitted for
-     * processing.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithSubmitTime(Aws::Utils::DateTime&& value) { SetSubmitTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the PII entities detection job completed.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The time that the PII entities detection job completed.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    PiiEntitiesDetectionJobProperties& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the PII entities detection job completed.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The time that the PII entities detection job completed.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The time that the PII entities detection job completed.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The time that the PII entities detection job completed.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The input properties for a PII entities detection job.</p>
      */
-    inline const InputDataConfig& GetInputDataConfig() const{ return m_inputDataConfig; }
-
-    /**
-     * <p>The input properties for a PII entities detection job.</p>
-     */
+    inline const InputDataConfig& GetInputDataConfig() const { return m_inputDataConfig; }
     inline bool InputDataConfigHasBeenSet() const { return m_inputDataConfigHasBeenSet; }
+    template<typename InputDataConfigT = InputDataConfig>
+    void SetInputDataConfig(InputDataConfigT&& value) { m_inputDataConfigHasBeenSet = true; m_inputDataConfig = std::forward<InputDataConfigT>(value); }
+    template<typename InputDataConfigT = InputDataConfig>
+    PiiEntitiesDetectionJobProperties& WithInputDataConfig(InputDataConfigT&& value) { SetInputDataConfig(std::forward<InputDataConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The input properties for a PII entities detection job.</p>
-     */
-    inline void SetInputDataConfig(const InputDataConfig& value) { m_inputDataConfigHasBeenSet = true; m_inputDataConfig = value; }
-
-    /**
-     * <p>The input properties for a PII entities detection job.</p>
-     */
-    inline void SetInputDataConfig(InputDataConfig&& value) { m_inputDataConfigHasBeenSet = true; m_inputDataConfig = std::move(value); }
-
-    /**
-     * <p>The input properties for a PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithInputDataConfig(const InputDataConfig& value) { SetInputDataConfig(value); return *this;}
-
-    /**
-     * <p>The input properties for a PII entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithInputDataConfig(InputDataConfig&& value) { SetInputDataConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The output data configuration that you supplied when you created the PII
      * entities detection job.</p>
      */
-    inline const PiiOutputDataConfig& GetOutputDataConfig() const{ return m_outputDataConfig; }
-
-    /**
-     * <p>The output data configuration that you supplied when you created the PII
-     * entities detection job.</p>
-     */
+    inline const PiiOutputDataConfig& GetOutputDataConfig() const { return m_outputDataConfig; }
     inline bool OutputDataConfigHasBeenSet() const { return m_outputDataConfigHasBeenSet; }
+    template<typename OutputDataConfigT = PiiOutputDataConfig>
+    void SetOutputDataConfig(OutputDataConfigT&& value) { m_outputDataConfigHasBeenSet = true; m_outputDataConfig = std::forward<OutputDataConfigT>(value); }
+    template<typename OutputDataConfigT = PiiOutputDataConfig>
+    PiiEntitiesDetectionJobProperties& WithOutputDataConfig(OutputDataConfigT&& value) { SetOutputDataConfig(std::forward<OutputDataConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The output data configuration that you supplied when you created the PII
-     * entities detection job.</p>
-     */
-    inline void SetOutputDataConfig(const PiiOutputDataConfig& value) { m_outputDataConfigHasBeenSet = true; m_outputDataConfig = value; }
-
-    /**
-     * <p>The output data configuration that you supplied when you created the PII
-     * entities detection job.</p>
-     */
-    inline void SetOutputDataConfig(PiiOutputDataConfig&& value) { m_outputDataConfigHasBeenSet = true; m_outputDataConfig = std::move(value); }
-
-    /**
-     * <p>The output data configuration that you supplied when you created the PII
-     * entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithOutputDataConfig(const PiiOutputDataConfig& value) { SetOutputDataConfig(value); return *this;}
-
-    /**
-     * <p>The output data configuration that you supplied when you created the PII
-     * entities detection job.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithOutputDataConfig(PiiOutputDataConfig&& value) { SetOutputDataConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides configuration parameters for PII entity redaction.</p> <p>This
      * parameter is required if you set the <code>Mode</code> parameter to
@@ -451,170 +170,47 @@ namespace Model
      * <code>RedactionConfig</code> definition that includes the
      * <code>PiiEntityTypes</code> parameter.</p>
      */
-    inline const RedactionConfig& GetRedactionConfig() const{ return m_redactionConfig; }
-
-    /**
-     * <p>Provides configuration parameters for PII entity redaction.</p> <p>This
-     * parameter is required if you set the <code>Mode</code> parameter to
-     * <code>ONLY_REDACTION</code>. In that case, you must provide a
-     * <code>RedactionConfig</code> definition that includes the
-     * <code>PiiEntityTypes</code> parameter.</p>
-     */
+    inline const RedactionConfig& GetRedactionConfig() const { return m_redactionConfig; }
     inline bool RedactionConfigHasBeenSet() const { return m_redactionConfigHasBeenSet; }
+    template<typename RedactionConfigT = RedactionConfig>
+    void SetRedactionConfig(RedactionConfigT&& value) { m_redactionConfigHasBeenSet = true; m_redactionConfig = std::forward<RedactionConfigT>(value); }
+    template<typename RedactionConfigT = RedactionConfig>
+    PiiEntitiesDetectionJobProperties& WithRedactionConfig(RedactionConfigT&& value) { SetRedactionConfig(std::forward<RedactionConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Provides configuration parameters for PII entity redaction.</p> <p>This
-     * parameter is required if you set the <code>Mode</code> parameter to
-     * <code>ONLY_REDACTION</code>. In that case, you must provide a
-     * <code>RedactionConfig</code> definition that includes the
-     * <code>PiiEntityTypes</code> parameter.</p>
+     * <p>The language code of the input documents.</p>
      */
-    inline void SetRedactionConfig(const RedactionConfig& value) { m_redactionConfigHasBeenSet = true; m_redactionConfig = value; }
-
-    /**
-     * <p>Provides configuration parameters for PII entity redaction.</p> <p>This
-     * parameter is required if you set the <code>Mode</code> parameter to
-     * <code>ONLY_REDACTION</code>. In that case, you must provide a
-     * <code>RedactionConfig</code> definition that includes the
-     * <code>PiiEntityTypes</code> parameter.</p>
-     */
-    inline void SetRedactionConfig(RedactionConfig&& value) { m_redactionConfigHasBeenSet = true; m_redactionConfig = std::move(value); }
-
-    /**
-     * <p>Provides configuration parameters for PII entity redaction.</p> <p>This
-     * parameter is required if you set the <code>Mode</code> parameter to
-     * <code>ONLY_REDACTION</code>. In that case, you must provide a
-     * <code>RedactionConfig</code> definition that includes the
-     * <code>PiiEntityTypes</code> parameter.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithRedactionConfig(const RedactionConfig& value) { SetRedactionConfig(value); return *this;}
-
-    /**
-     * <p>Provides configuration parameters for PII entity redaction.</p> <p>This
-     * parameter is required if you set the <code>Mode</code> parameter to
-     * <code>ONLY_REDACTION</code>. In that case, you must provide a
-     * <code>RedactionConfig</code> definition that includes the
-     * <code>PiiEntityTypes</code> parameter.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithRedactionConfig(RedactionConfig&& value) { SetRedactionConfig(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The language code of the input documents</p>
-     */
-    inline const LanguageCode& GetLanguageCode() const{ return m_languageCode; }
-
-    /**
-     * <p>The language code of the input documents</p>
-     */
+    inline LanguageCode GetLanguageCode() const { return m_languageCode; }
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
+    inline void SetLanguageCode(LanguageCode value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
+    inline PiiEntitiesDetectionJobProperties& WithLanguageCode(LanguageCode value) { SetLanguageCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code of the input documents</p>
-     */
-    inline void SetLanguageCode(const LanguageCode& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
-
-    /**
-     * <p>The language code of the input documents</p>
-     */
-    inline void SetLanguageCode(LanguageCode&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
-
-    /**
-     * <p>The language code of the input documents</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithLanguageCode(const LanguageCode& value) { SetLanguageCode(value); return *this;}
-
-    /**
-     * <p>The language code of the input documents</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithLanguageCode(LanguageCode&& value) { SetLanguageCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
      * read access to your input data.</p>
      */
-    inline const Aws::String& GetDataAccessRoleArn() const{ return m_dataAccessRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
+    inline const Aws::String& GetDataAccessRoleArn() const { return m_dataAccessRoleArn; }
     inline bool DataAccessRoleArnHasBeenSet() const { return m_dataAccessRoleArnHasBeenSet; }
+    template<typename DataAccessRoleArnT = Aws::String>
+    void SetDataAccessRoleArn(DataAccessRoleArnT&& value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn = std::forward<DataAccessRoleArnT>(value); }
+    template<typename DataAccessRoleArnT = Aws::String>
+    PiiEntitiesDetectionJobProperties& WithDataAccessRoleArn(DataAccessRoleArnT&& value) { SetDataAccessRoleArn(std::forward<DataAccessRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
-    inline void SetDataAccessRoleArn(const Aws::String& value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
-    inline void SetDataAccessRoleArn(Aws::String&& value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
-    inline void SetDataAccessRoleArn(const char* value) { m_dataAccessRoleArnHasBeenSet = true; m_dataAccessRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithDataAccessRoleArn(const Aws::String& value) { SetDataAccessRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithDataAccessRoleArn(Aws::String&& value) { SetDataAccessRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend
-     * read access to your input data.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithDataAccessRoleArn(const char* value) { SetDataAccessRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the output provides the locations (offsets) of PII entities
      * or a file in which PII entities are redacted.</p>
      */
-    inline const PiiEntitiesDetectionMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>Specifies whether the output provides the locations (offsets) of PII entities
-     * or a file in which PII entities are redacted.</p>
-     */
+    inline PiiEntitiesDetectionMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the output provides the locations (offsets) of PII entities
-     * or a file in which PII entities are redacted.</p>
-     */
-    inline void SetMode(const PiiEntitiesDetectionMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>Specifies whether the output provides the locations (offsets) of PII entities
-     * or a file in which PII entities are redacted.</p>
-     */
-    inline void SetMode(PiiEntitiesDetectionMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>Specifies whether the output provides the locations (offsets) of PII entities
-     * or a file in which PII entities are redacted.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithMode(const PiiEntitiesDetectionMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>Specifies whether the output provides the locations (offsets) of PII entities
-     * or a file in which PII entities are redacted.</p>
-     */
-    inline PiiEntitiesDetectionJobProperties& WithMode(PiiEntitiesDetectionMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(PiiEntitiesDetectionMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline PiiEntitiesDetectionJobProperties& WithMode(PiiEntitiesDetectionMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;
@@ -626,16 +222,16 @@ namespace Model
     Aws::String m_jobName;
     bool m_jobNameHasBeenSet = false;
 
-    JobStatus m_jobStatus;
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
     bool m_jobStatusHasBeenSet = false;
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    Aws::Utils::DateTime m_submitTime;
+    Aws::Utils::DateTime m_submitTime{};
     bool m_submitTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
     InputDataConfig m_inputDataConfig;
@@ -647,13 +243,13 @@ namespace Model
     RedactionConfig m_redactionConfig;
     bool m_redactionConfigHasBeenSet = false;
 
-    LanguageCode m_languageCode;
+    LanguageCode m_languageCode{LanguageCode::NOT_SET};
     bool m_languageCodeHasBeenSet = false;
 
     Aws::String m_dataAccessRoleArn;
     bool m_dataAccessRoleArnHasBeenSet = false;
 
-    PiiEntitiesDetectionMode m_mode;
+    PiiEntitiesDetectionMode m_mode{PiiEntitiesDetectionMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

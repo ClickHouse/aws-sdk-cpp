@@ -18,13 +18,7 @@ namespace DataSync
 namespace Model
 {
 
-OnPremConfig::OnPremConfig() : 
-    m_agentArnsHasBeenSet(false)
-{
-}
-
-OnPremConfig::OnPremConfig(JsonView jsonValue) : 
-    m_agentArnsHasBeenSet(false)
+OnPremConfig::OnPremConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ OnPremConfig& OnPremConfig::operator =(JsonView jsonValue)
     }
     m_agentArnsHasBeenSet = true;
   }
-
   return *this;
 }
 

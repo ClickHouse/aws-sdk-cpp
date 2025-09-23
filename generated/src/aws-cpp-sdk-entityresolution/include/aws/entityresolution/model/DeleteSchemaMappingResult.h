@@ -27,73 +27,37 @@ namespace Model
   class DeleteSchemaMappingResult
   {
   public:
-    AWS_ENTITYRESOLUTION_API DeleteSchemaMappingResult();
+    AWS_ENTITYRESOLUTION_API DeleteSchemaMappingResult() = default;
     AWS_ENTITYRESOLUTION_API DeleteSchemaMappingResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ENTITYRESOLUTION_API DeleteSchemaMappingResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A successful operation message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
+    inline const Aws::String& GetMessage() const { return m_message; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DeleteSchemaMappingResult& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A successful operation message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_message = value; }
-
-    /**
-     * <p>A successful operation message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_message = std::move(value); }
-
-    /**
-     * <p>A successful operation message.</p>
-     */
-    inline void SetMessage(const char* value) { m_message.assign(value); }
-
-    /**
-     * <p>A successful operation message.</p>
-     */
-    inline DeleteSchemaMappingResult& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A successful operation message.</p>
-     */
-    inline DeleteSchemaMappingResult& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A successful operation message.</p>
-     */
-    inline DeleteSchemaMappingResult& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteSchemaMappingResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteSchemaMappingResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteSchemaMappingResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteSchemaMappingResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
+    bool m_messageHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

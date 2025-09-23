@@ -32,48 +32,24 @@ namespace Model
   class AdditionalResultAttributeValue
   {
   public:
-    AWS_KENDRA_API AdditionalResultAttributeValue();
+    AWS_KENDRA_API AdditionalResultAttributeValue() = default;
     AWS_KENDRA_API AdditionalResultAttributeValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API AdditionalResultAttributeValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The text associated with the attribute and information about the highlight to
      * apply to the text.</p>
      */
-    inline const TextWithHighlights& GetTextWithHighlightsValue() const{ return m_textWithHighlightsValue; }
-
-    /**
-     * <p>The text associated with the attribute and information about the highlight to
-     * apply to the text.</p>
-     */
+    inline const TextWithHighlights& GetTextWithHighlightsValue() const { return m_textWithHighlightsValue; }
     inline bool TextWithHighlightsValueHasBeenSet() const { return m_textWithHighlightsValueHasBeenSet; }
-
-    /**
-     * <p>The text associated with the attribute and information about the highlight to
-     * apply to the text.</p>
-     */
-    inline void SetTextWithHighlightsValue(const TextWithHighlights& value) { m_textWithHighlightsValueHasBeenSet = true; m_textWithHighlightsValue = value; }
-
-    /**
-     * <p>The text associated with the attribute and information about the highlight to
-     * apply to the text.</p>
-     */
-    inline void SetTextWithHighlightsValue(TextWithHighlights&& value) { m_textWithHighlightsValueHasBeenSet = true; m_textWithHighlightsValue = std::move(value); }
-
-    /**
-     * <p>The text associated with the attribute and information about the highlight to
-     * apply to the text.</p>
-     */
-    inline AdditionalResultAttributeValue& WithTextWithHighlightsValue(const TextWithHighlights& value) { SetTextWithHighlightsValue(value); return *this;}
-
-    /**
-     * <p>The text associated with the attribute and information about the highlight to
-     * apply to the text.</p>
-     */
-    inline AdditionalResultAttributeValue& WithTextWithHighlightsValue(TextWithHighlights&& value) { SetTextWithHighlightsValue(std::move(value)); return *this;}
-
+    template<typename TextWithHighlightsValueT = TextWithHighlights>
+    void SetTextWithHighlightsValue(TextWithHighlightsValueT&& value) { m_textWithHighlightsValueHasBeenSet = true; m_textWithHighlightsValue = std::forward<TextWithHighlightsValueT>(value); }
+    template<typename TextWithHighlightsValueT = TextWithHighlights>
+    AdditionalResultAttributeValue& WithTextWithHighlightsValue(TextWithHighlightsValueT&& value) { SetTextWithHighlightsValue(std::forward<TextWithHighlightsValueT>(value)); return *this;}
+    ///@}
   private:
 
     TextWithHighlights m_textWithHighlightsValue;

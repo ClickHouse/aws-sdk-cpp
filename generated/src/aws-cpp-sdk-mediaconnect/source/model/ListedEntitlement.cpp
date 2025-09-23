@@ -18,19 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-ListedEntitlement::ListedEntitlement() : 
-    m_dataTransferSubscriberFeePercent(0),
-    m_dataTransferSubscriberFeePercentHasBeenSet(false),
-    m_entitlementArnHasBeenSet(false),
-    m_entitlementNameHasBeenSet(false)
-{
-}
-
-ListedEntitlement::ListedEntitlement(JsonView jsonValue) : 
-    m_dataTransferSubscriberFeePercent(0),
-    m_dataTransferSubscriberFeePercentHasBeenSet(false),
-    m_entitlementArnHasBeenSet(false),
-    m_entitlementNameHasBeenSet(false)
+ListedEntitlement::ListedEntitlement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ListedEntitlement& ListedEntitlement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dataTransferSubscriberFeePercent"))
   {
     m_dataTransferSubscriberFeePercent = jsonValue.GetInteger("dataTransferSubscriberFeePercent");
-
     m_dataTransferSubscriberFeePercentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entitlementArn"))
   {
     m_entitlementArn = jsonValue.GetString("entitlementArn");
-
     m_entitlementArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entitlementName"))
   {
     m_entitlementName = jsonValue.GetString("entitlementName");
-
     m_entitlementNameHasBeenSet = true;
   }
-
   return *this;
 }
 

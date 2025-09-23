@@ -18,15 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-AdvancedOptionsStatus::AdvancedOptionsStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-AdvancedOptionsStatus::AdvancedOptionsStatus(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+AdvancedOptionsStatus::AdvancedOptionsStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ AdvancedOptionsStatus& AdvancedOptionsStatus::operator =(JsonView jsonValue)
     }
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetObject("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

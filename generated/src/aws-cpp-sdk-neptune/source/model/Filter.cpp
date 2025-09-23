@@ -20,15 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-Filter::Filter() : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-Filter::Filter(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+Filter::Filter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ Filter& Filter::operator =(const XmlNode& xmlNode)
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("Value");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember.GetText());
@@ -74,7 +67,7 @@ void Filter::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
       unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        oStream << location << index << locationValue << ".Value." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".Values.Value." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -91,7 +84,7 @@ void Filter::OutputToStream(Aws::OStream& oStream, const char* location) const
       unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        oStream << location << ".Value." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".Values.Value." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

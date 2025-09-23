@@ -10,23 +10,6 @@
 using namespace Aws::Neptune::Model;
 using namespace Aws::Utils;
 
-DescribeDBEngineVersionsRequest::DescribeDBEngineVersionsRequest() : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_defaultOnly(false),
-    m_defaultOnlyHasBeenSet(false),
-    m_listSupportedCharacterSets(false),
-    m_listSupportedCharacterSetsHasBeenSet(false),
-    m_listSupportedTimezones(false),
-    m_listSupportedTimezonesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeDBEngineVersionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -48,11 +31,18 @@ Aws::String DescribeDBEngineVersionsRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

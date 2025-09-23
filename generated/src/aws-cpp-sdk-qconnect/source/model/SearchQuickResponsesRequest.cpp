@@ -15,19 +15,15 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-SearchQuickResponsesRequest::SearchQuickResponsesRequest() : 
-    m_attributesHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_searchExpressionHasBeenSet(false)
-{
-}
-
 Aws::String SearchQuickResponsesRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_searchExpressionHasBeenSet)
+  {
+   payload.WithObject("searchExpression", m_searchExpression.Jsonize());
+
+  }
 
   if(m_attributesHasBeenSet)
   {
@@ -40,29 +36,23 @@ Aws::String SearchQuickResponsesRequest::SerializePayload() const
 
   }
 
-  if(m_searchExpressionHasBeenSet)
-  {
-   payload.WithObject("searchExpression", m_searchExpression.Jsonize());
-
-  }
-
   return payload.View().WriteReadable();
 }
 
 void SearchQuickResponsesRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_maxResultsHasBeenSet)
-    {
-      ss << m_maxResults;
-      uri.AddQueryStringParameter("maxResults", ss.str());
-      ss.str("");
-    }
-
     if(m_nextTokenHasBeenSet)
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_maxResultsHasBeenSet)
+    {
+      ss << m_maxResults;
+      uri.AddQueryStringParameter("maxResults", ss.str());
       ss.str("");
     }
 

@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-TargetObjectKeyFormat::TargetObjectKeyFormat() : 
-    m_simplePrefixHasBeenSet(false),
-    m_partitionedPrefixHasBeenSet(false)
-{
-}
-
-TargetObjectKeyFormat::TargetObjectKeyFormat(const XmlNode& xmlNode) : 
-    m_simplePrefixHasBeenSet(false),
-    m_partitionedPrefixHasBeenSet(false)
+TargetObjectKeyFormat::TargetObjectKeyFormat(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

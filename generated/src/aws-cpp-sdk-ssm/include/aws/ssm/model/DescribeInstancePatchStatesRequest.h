@@ -22,7 +22,7 @@ namespace Model
   class DescribeInstancePatchStatesRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DescribeInstancePatchStatesRequest();
+    AWS_SSM_API DescribeInstancePatchStatesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,130 +35,43 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the managed node for which patch state information should be
      * retrieved.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstanceIds() const{ return m_instanceIds; }
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstanceIds() const { return m_instanceIds; }
     inline bool InstanceIdsHasBeenSet() const { return m_instanceIdsHasBeenSet; }
+    template<typename InstanceIdsT = Aws::Vector<Aws::String>>
+    void SetInstanceIds(InstanceIdsT&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::forward<InstanceIdsT>(value); }
+    template<typename InstanceIdsT = Aws::Vector<Aws::String>>
+    DescribeInstancePatchStatesRequest& WithInstanceIds(InstanceIdsT&& value) { SetInstanceIds(std::forward<InstanceIdsT>(value)); return *this;}
+    template<typename InstanceIdsT = Aws::String>
+    DescribeInstancePatchStatesRequest& AddInstanceIds(InstanceIdsT&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.emplace_back(std::forward<InstanceIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline void SetInstanceIds(const Aws::Vector<Aws::String>& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = value; }
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::move(value); }
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline DescribeInstancePatchStatesRequest& WithInstanceIds(const Aws::Vector<Aws::String>& value) { SetInstanceIds(value); return *this;}
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline DescribeInstancePatchStatesRequest& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline DescribeInstancePatchStatesRequest& AddInstanceIds(const Aws::String& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline DescribeInstancePatchStatesRequest& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ID of the managed node for which patch state information should be
-     * retrieved.</p>
-     */
-    inline DescribeInstancePatchStatesRequest& AddInstanceIds(const char* value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeInstancePatchStatesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeInstancePatchStatesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeInstancePatchStatesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeInstancePatchStatesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of managed nodes to return (per page).</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of managed nodes to return (per page).</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of managed nodes to return (per page).</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of managed nodes to return (per page).</p>
-     */
     inline DescribeInstancePatchStatesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_instanceIds;
@@ -167,7 +80,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

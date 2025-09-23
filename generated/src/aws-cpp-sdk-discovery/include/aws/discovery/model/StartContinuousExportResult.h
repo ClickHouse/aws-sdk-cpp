@@ -30,259 +30,98 @@ namespace Model
   class StartContinuousExportResult
   {
   public:
-    AWS_APPLICATIONDISCOVERYSERVICE_API StartContinuousExportResult();
+    AWS_APPLICATIONDISCOVERYSERVICE_API StartContinuousExportResult() = default;
     AWS_APPLICATIONDISCOVERYSERVICE_API StartContinuousExportResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPLICATIONDISCOVERYSERVICE_API StartContinuousExportResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique ID assigned to this export.</p>
      */
-    inline const Aws::String& GetExportId() const{ return m_exportId; }
+    inline const Aws::String& GetExportId() const { return m_exportId; }
+    template<typename ExportIdT = Aws::String>
+    void SetExportId(ExportIdT&& value) { m_exportIdHasBeenSet = true; m_exportId = std::forward<ExportIdT>(value); }
+    template<typename ExportIdT = Aws::String>
+    StartContinuousExportResult& WithExportId(ExportIdT&& value) { SetExportId(std::forward<ExportIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID assigned to this export.</p>
-     */
-    inline void SetExportId(const Aws::String& value) { m_exportId = value; }
-
-    /**
-     * <p>The unique ID assigned to this export.</p>
-     */
-    inline void SetExportId(Aws::String&& value) { m_exportId = std::move(value); }
-
-    /**
-     * <p>The unique ID assigned to this export.</p>
-     */
-    inline void SetExportId(const char* value) { m_exportId.assign(value); }
-
-    /**
-     * <p>The unique ID assigned to this export.</p>
-     */
-    inline StartContinuousExportResult& WithExportId(const Aws::String& value) { SetExportId(value); return *this;}
-
-    /**
-     * <p>The unique ID assigned to this export.</p>
-     */
-    inline StartContinuousExportResult& WithExportId(Aws::String&& value) { SetExportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID assigned to this export.</p>
-     */
-    inline StartContinuousExportResult& WithExportId(const char* value) { SetExportId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
      */
-    inline const Aws::String& GetS3Bucket() const{ return m_s3Bucket; }
+    inline const Aws::String& GetS3Bucket() const { return m_s3Bucket; }
+    template<typename S3BucketT = Aws::String>
+    void SetS3Bucket(S3BucketT&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::forward<S3BucketT>(value); }
+    template<typename S3BucketT = Aws::String>
+    StartContinuousExportResult& WithS3Bucket(S3BucketT&& value) { SetS3Bucket(std::forward<S3BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
-     */
-    inline void SetS3Bucket(const Aws::String& value) { m_s3Bucket = value; }
-
-    /**
-     * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
-     */
-    inline void SetS3Bucket(Aws::String&& value) { m_s3Bucket = std::move(value); }
-
-    /**
-     * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
-     */
-    inline void SetS3Bucket(const char* value) { m_s3Bucket.assign(value); }
-
-    /**
-     * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
-     */
-    inline StartContinuousExportResult& WithS3Bucket(const Aws::String& value) { SetS3Bucket(value); return *this;}
-
-    /**
-     * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
-     */
-    inline StartContinuousExportResult& WithS3Bucket(Aws::String&& value) { SetS3Bucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the s3 bucket where the export data parquet files are stored.</p>
-     */
-    inline StartContinuousExportResult& WithS3Bucket(const char* value) { SetS3Bucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp representing when the continuous export was started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    StartContinuousExportResult& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp representing when the continuous export was started.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTime = value; }
-
-    /**
-     * <p>The timestamp representing when the continuous export was started.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTime = std::move(value); }
-
-    /**
-     * <p>The timestamp representing when the continuous export was started.</p>
-     */
-    inline StartContinuousExportResult& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The timestamp representing when the continuous export was started.</p>
-     */
-    inline StartContinuousExportResult& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of data collector used to gather this data (currently only offered
      * for AGENT).</p>
      */
-    inline const DataSource& GetDataSource() const{ return m_dataSource; }
+    inline DataSource GetDataSource() const { return m_dataSource; }
+    inline void SetDataSource(DataSource value) { m_dataSourceHasBeenSet = true; m_dataSource = value; }
+    inline StartContinuousExportResult& WithDataSource(DataSource value) { SetDataSource(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of data collector used to gather this data (currently only offered
-     * for AGENT).</p>
-     */
-    inline void SetDataSource(const DataSource& value) { m_dataSource = value; }
-
-    /**
-     * <p>The type of data collector used to gather this data (currently only offered
-     * for AGENT).</p>
-     */
-    inline void SetDataSource(DataSource&& value) { m_dataSource = std::move(value); }
-
-    /**
-     * <p>The type of data collector used to gather this data (currently only offered
-     * for AGENT).</p>
-     */
-    inline StartContinuousExportResult& WithDataSource(const DataSource& value) { SetDataSource(value); return *this;}
-
-    /**
-     * <p>The type of data collector used to gather this data (currently only offered
-     * for AGENT).</p>
-     */
-    inline StartContinuousExportResult& WithDataSource(DataSource&& value) { SetDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
      * <code>databaseName</code> - the name of the Glue database used to store the
      * schema.</p> </li> </ul>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetSchemaStorageConfig() const{ return m_schemaStorageConfig; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetSchemaStorageConfig() const { return m_schemaStorageConfig; }
+    template<typename SchemaStorageConfigT = Aws::Map<Aws::String, Aws::String>>
+    void SetSchemaStorageConfig(SchemaStorageConfigT&& value) { m_schemaStorageConfigHasBeenSet = true; m_schemaStorageConfig = std::forward<SchemaStorageConfigT>(value); }
+    template<typename SchemaStorageConfigT = Aws::Map<Aws::String, Aws::String>>
+    StartContinuousExportResult& WithSchemaStorageConfig(SchemaStorageConfigT&& value) { SetSchemaStorageConfig(std::forward<SchemaStorageConfigT>(value)); return *this;}
+    template<typename SchemaStorageConfigKeyT = Aws::String, typename SchemaStorageConfigValueT = Aws::String>
+    StartContinuousExportResult& AddSchemaStorageConfig(SchemaStorageConfigKeyT&& key, SchemaStorageConfigValueT&& value) {
+      m_schemaStorageConfigHasBeenSet = true; m_schemaStorageConfig.emplace(std::forward<SchemaStorageConfigKeyT>(key), std::forward<SchemaStorageConfigValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline void SetSchemaStorageConfig(const Aws::Map<Aws::String, Aws::String>& value) { m_schemaStorageConfig = value; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline void SetSchemaStorageConfig(Aws::Map<Aws::String, Aws::String>&& value) { m_schemaStorageConfig = std::move(value); }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& WithSchemaStorageConfig(const Aws::Map<Aws::String, Aws::String>& value) { SetSchemaStorageConfig(value); return *this;}
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& WithSchemaStorageConfig(Aws::Map<Aws::String, Aws::String>&& value) { SetSchemaStorageConfig(std::move(value)); return *this;}
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(const Aws::String& key, const Aws::String& value) { m_schemaStorageConfig.emplace(key, value); return *this; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(Aws::String&& key, const Aws::String& value) { m_schemaStorageConfig.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(const Aws::String& key, Aws::String&& value) { m_schemaStorageConfig.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(Aws::String&& key, Aws::String&& value) { m_schemaStorageConfig.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(const char* key, Aws::String&& value) { m_schemaStorageConfig.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(Aws::String&& key, const char* value) { m_schemaStorageConfig.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A dictionary which describes how the data is stored.</p> <ul> <li> <p>
-     * <code>databaseName</code> - the name of the Glue database used to store the
-     * schema.</p> </li> </ul>
-     */
-    inline StartContinuousExportResult& AddSchemaStorageConfig(const char* key, const char* value) { m_schemaStorageConfig.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartContinuousExportResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartContinuousExportResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartContinuousExportResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartContinuousExportResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exportId;
+    bool m_exportIdHasBeenSet = false;
 
     Aws::String m_s3Bucket;
+    bool m_s3BucketHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
+    bool m_startTimeHasBeenSet = false;
 
-    DataSource m_dataSource;
+    DataSource m_dataSource{DataSource::NOT_SET};
+    bool m_dataSourceHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_schemaStorageConfig;
+    bool m_schemaStorageConfigHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

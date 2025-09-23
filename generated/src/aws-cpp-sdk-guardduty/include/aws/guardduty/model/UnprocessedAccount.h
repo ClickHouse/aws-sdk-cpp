@@ -32,93 +32,35 @@ namespace Model
   class UnprocessedAccount
   {
   public:
-    AWS_GUARDDUTY_API UnprocessedAccount();
+    AWS_GUARDDUTY_API UnprocessedAccount() = default;
     AWS_GUARDDUTY_API UnprocessedAccount(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API UnprocessedAccount& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    UnprocessedAccount& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline UnprocessedAccount& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline UnprocessedAccount& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline UnprocessedAccount& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A reason why the account hasn't been processed.</p>
      */
-    inline const Aws::String& GetResult() const{ return m_result; }
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
+    inline const Aws::String& GetResult() const { return m_result; }
     inline bool ResultHasBeenSet() const { return m_resultHasBeenSet; }
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
-    inline void SetResult(const Aws::String& value) { m_resultHasBeenSet = true; m_result = value; }
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
-    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
-    inline void SetResult(const char* value) { m_resultHasBeenSet = true; m_result.assign(value); }
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
-    inline UnprocessedAccount& WithResult(const Aws::String& value) { SetResult(value); return *this;}
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
-    inline UnprocessedAccount& WithResult(Aws::String&& value) { SetResult(std::move(value)); return *this;}
-
-    /**
-     * <p>A reason why the account hasn't been processed.</p>
-     */
-    inline UnprocessedAccount& WithResult(const char* value) { SetResult(value); return *this;}
-
+    template<typename ResultT = Aws::String>
+    void SetResult(ResultT&& value) { m_resultHasBeenSet = true; m_result = std::forward<ResultT>(value); }
+    template<typename ResultT = Aws::String>
+    UnprocessedAccount& WithResult(ResultT&& value) { SetResult(std::forward<ResultT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

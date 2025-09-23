@@ -21,7 +21,7 @@ namespace Model
   class DisableImportFindingsForProductRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API DisableImportFindingsForProductRequest();
+    AWS_SECURITYHUB_API DisableImportFindingsForProductRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SECURITYHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the integrated product to disable the integration for.</p>
      */
-    inline const Aws::String& GetProductSubscriptionArn() const{ return m_productSubscriptionArn; }
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
+    inline const Aws::String& GetProductSubscriptionArn() const { return m_productSubscriptionArn; }
     inline bool ProductSubscriptionArnHasBeenSet() const { return m_productSubscriptionArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
-    inline void SetProductSubscriptionArn(const Aws::String& value) { m_productSubscriptionArnHasBeenSet = true; m_productSubscriptionArn = value; }
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
-    inline void SetProductSubscriptionArn(Aws::String&& value) { m_productSubscriptionArnHasBeenSet = true; m_productSubscriptionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
-    inline void SetProductSubscriptionArn(const char* value) { m_productSubscriptionArnHasBeenSet = true; m_productSubscriptionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
-    inline DisableImportFindingsForProductRequest& WithProductSubscriptionArn(const Aws::String& value) { SetProductSubscriptionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
-    inline DisableImportFindingsForProductRequest& WithProductSubscriptionArn(Aws::String&& value) { SetProductSubscriptionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the integrated product to disable the integration for.</p>
-     */
-    inline DisableImportFindingsForProductRequest& WithProductSubscriptionArn(const char* value) { SetProductSubscriptionArn(value); return *this;}
-
+    template<typename ProductSubscriptionArnT = Aws::String>
+    void SetProductSubscriptionArn(ProductSubscriptionArnT&& value) { m_productSubscriptionArnHasBeenSet = true; m_productSubscriptionArn = std::forward<ProductSubscriptionArnT>(value); }
+    template<typename ProductSubscriptionArnT = Aws::String>
+    DisableImportFindingsForProductRequest& WithProductSubscriptionArn(ProductSubscriptionArnT&& value) { SetProductSubscriptionArn(std::forward<ProductSubscriptionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_productSubscriptionArn;

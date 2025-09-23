@@ -18,15 +18,7 @@ namespace SFN
 namespace Model
 {
 
-LambdaFunctionFailedEventDetails::LambdaFunctionFailedEventDetails() : 
-    m_errorHasBeenSet(false),
-    m_causeHasBeenSet(false)
-{
-}
-
-LambdaFunctionFailedEventDetails::LambdaFunctionFailedEventDetails(JsonView jsonValue) : 
-    m_errorHasBeenSet(false),
-    m_causeHasBeenSet(false)
+LambdaFunctionFailedEventDetails::LambdaFunctionFailedEventDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LambdaFunctionFailedEventDetails& LambdaFunctionFailedEventDetails::operator =(J
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetString("error");
-
     m_errorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cause"))
   {
     m_cause = jsonValue.GetString("cause");
-
     m_causeHasBeenSet = true;
   }
-
   return *this;
 }
 

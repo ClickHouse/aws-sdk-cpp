@@ -5,9 +5,9 @@
 
 #pragma once
 #include <aws/opensearchserverless/OpenSearchServerless_EXPORTS.h>
+#include <aws/opensearchserverless/model/LifecyclePolicyType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Document.h>
-#include <aws/opensearchserverless/model/LifecyclePolicyType.h>
 #include <utility>
 
 namespace Aws
@@ -34,260 +34,111 @@ namespace Model
   class LifecyclePolicyDetail
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API LifecyclePolicyDetail();
+    AWS_OPENSEARCHSERVERLESS_API LifecyclePolicyDetail() = default;
     AWS_OPENSEARCHSERVERLESS_API LifecyclePolicyDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API LifecyclePolicyDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The date the lifecycle policy was created.</p>
-     */
-    inline long long GetCreatedDate() const{ return m_createdDate; }
-
-    /**
-     * <p>The date the lifecycle policy was created.</p>
-     */
-    inline bool CreatedDateHasBeenSet() const { return m_createdDateHasBeenSet; }
-
-    /**
-     * <p>The date the lifecycle policy was created.</p>
-     */
-    inline void SetCreatedDate(long long value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
-
-    /**
-     * <p>The date the lifecycle policy was created.</p>
-     */
-    inline LifecyclePolicyDetail& WithCreatedDate(long long value) { SetCreatedDate(value); return *this;}
-
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>The timestamp of when the lifecycle policy was last modified.</p>
-     */
-    inline long long GetLastModifiedDate() const{ return m_lastModifiedDate; }
-
-    /**
-     * <p>The timestamp of when the lifecycle policy was last modified.</p>
-     */
-    inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
-
-    /**
-     * <p>The timestamp of when the lifecycle policy was last modified.</p>
-     */
-    inline void SetLastModifiedDate(long long value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
-
-    /**
-     * <p>The timestamp of when the lifecycle policy was last modified.</p>
-     */
-    inline LifecyclePolicyDetail& WithLastModifiedDate(long long value) { SetLastModifiedDate(value); return *this;}
-
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The JSON policy document without any whitespaces.</p>
-     */
-    inline Aws::Utils::DocumentView GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The JSON policy document without any whitespaces.</p>
-     */
-    inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
-
-    /**
-     * <p>The JSON policy document without any whitespaces.</p>
-     */
-    inline void SetPolicy(const Aws::Utils::Document& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The JSON policy document without any whitespaces.</p>
-     */
-    inline void SetPolicy(Aws::Utils::Document&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The JSON policy document without any whitespaces.</p>
-     */
-    inline LifecyclePolicyDetail& WithPolicy(const Aws::Utils::Document& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The JSON policy document without any whitespaces.</p>
-     */
-    inline LifecyclePolicyDetail& WithPolicy(Aws::Utils::Document&& value) { SetPolicy(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline const Aws::String& GetPolicyVersion() const{ return m_policyVersion; }
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline bool PolicyVersionHasBeenSet() const { return m_policyVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline void SetPolicyVersion(const Aws::String& value) { m_policyVersionHasBeenSet = true; m_policyVersion = value; }
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline void SetPolicyVersion(Aws::String&& value) { m_policyVersionHasBeenSet = true; m_policyVersion = std::move(value); }
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline void SetPolicyVersion(const char* value) { m_policyVersionHasBeenSet = true; m_policyVersion.assign(value); }
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithPolicyVersion(const Aws::String& value) { SetPolicyVersion(value); return *this;}
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithPolicyVersion(Aws::String&& value) { SetPolicyVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the lifecycle policy.</p>
-     */
-    inline LifecyclePolicyDetail& WithPolicyVersion(const char* value) { SetPolicyVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of lifecycle policy.</p>
      */
-    inline const LifecyclePolicyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of lifecycle policy.</p>
-     */
+    inline LifecyclePolicyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(LifecyclePolicyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline LifecyclePolicyDetail& WithType(LifecyclePolicyType value) { SetType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>The name of the lifecycle policy.</p>
      */
-    inline void SetType(const LifecyclePolicyType& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline const Aws::String& GetName() const { return m_name; }
+    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    LifecyclePolicyDetail& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>The version of the lifecycle policy.</p>
      */
-    inline void SetType(LifecyclePolicyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
+    inline const Aws::String& GetPolicyVersion() const { return m_policyVersion; }
+    inline bool PolicyVersionHasBeenSet() const { return m_policyVersionHasBeenSet; }
+    template<typename PolicyVersionT = Aws::String>
+    void SetPolicyVersion(PolicyVersionT&& value) { m_policyVersionHasBeenSet = true; m_policyVersion = std::forward<PolicyVersionT>(value); }
+    template<typename PolicyVersionT = Aws::String>
+    LifecyclePolicyDetail& WithPolicyVersion(PolicyVersionT&& value) { SetPolicyVersion(std::forward<PolicyVersionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>The description of the lifecycle policy.</p>
      */
-    inline LifecyclePolicyDetail& WithType(const LifecyclePolicyType& value) { SetType(value); return *this;}
+    inline const Aws::String& GetDescription() const { return m_description; }
+    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    LifecyclePolicyDetail& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>The JSON policy document without any whitespaces.</p>
      */
-    inline LifecyclePolicyDetail& WithType(LifecyclePolicyType&& value) { SetType(std::move(value)); return *this;}
+    inline Aws::Utils::DocumentView GetPolicy() const { return m_policy; }
+    inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
+    template<typename PolicyT = Aws::Utils::Document>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::Utils::Document>
+    LifecyclePolicyDetail& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The date the lifecycle policy was created.</p>
+     */
+    inline long long GetCreatedDate() const { return m_createdDate; }
+    inline bool CreatedDateHasBeenSet() const { return m_createdDateHasBeenSet; }
+    inline void SetCreatedDate(long long value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
+    inline LifecyclePolicyDetail& WithCreatedDate(long long value) { SetCreatedDate(value); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The timestamp of when the lifecycle policy was last modified.</p>
+     */
+    inline long long GetLastModifiedDate() const { return m_lastModifiedDate; }
+    inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
+    inline void SetLastModifiedDate(long long value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline LifecyclePolicyDetail& WithLastModifiedDate(long long value) { SetLastModifiedDate(value); return *this;}
+    ///@}
   private:
 
-    long long m_createdDate;
-    bool m_createdDateHasBeenSet = false;
-
-    Aws::String m_description;
-    bool m_descriptionHasBeenSet = false;
-
-    long long m_lastModifiedDate;
-    bool m_lastModifiedDateHasBeenSet = false;
+    LifecyclePolicyType m_type{LifecyclePolicyType::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Aws::Utils::Document m_policy;
-    bool m_policyHasBeenSet = false;
-
     Aws::String m_policyVersion;
     bool m_policyVersionHasBeenSet = false;
 
-    LifecyclePolicyType m_type;
-    bool m_typeHasBeenSet = false;
+    Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
+
+    Aws::Utils::Document m_policy;
+    bool m_policyHasBeenSet = false;
+
+    long long m_createdDate{0};
+    bool m_createdDateHasBeenSet = false;
+
+    long long m_lastModifiedDate{0};
+    bool m_lastModifiedDateHasBeenSet = false;
   };
 
 } // namespace Model

@@ -31,45 +31,24 @@ namespace Model
   class KPIVisualStandardLayout
   {
   public:
-    AWS_QUICKSIGHT_API KPIVisualStandardLayout();
+    AWS_QUICKSIGHT_API KPIVisualStandardLayout() = default;
     AWS_QUICKSIGHT_API KPIVisualStandardLayout(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API KPIVisualStandardLayout& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The standard layout type.</p>
      */
-    inline const KPIVisualStandardLayoutType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The standard layout type.</p>
-     */
+    inline KPIVisualStandardLayoutType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The standard layout type.</p>
-     */
-    inline void SetType(const KPIVisualStandardLayoutType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The standard layout type.</p>
-     */
-    inline void SetType(KPIVisualStandardLayoutType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The standard layout type.</p>
-     */
-    inline KPIVisualStandardLayout& WithType(const KPIVisualStandardLayoutType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The standard layout type.</p>
-     */
-    inline KPIVisualStandardLayout& WithType(KPIVisualStandardLayoutType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(KPIVisualStandardLayoutType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline KPIVisualStandardLayout& WithType(KPIVisualStandardLayoutType value) { SetType(value); return *this;}
+    ///@}
   private:
 
-    KPIVisualStandardLayoutType m_type;
+    KPIVisualStandardLayoutType m_type{KPIVisualStandardLayoutType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

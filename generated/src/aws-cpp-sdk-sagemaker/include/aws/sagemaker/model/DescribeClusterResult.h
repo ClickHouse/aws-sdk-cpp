@@ -10,7 +10,13 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/model/VpcConfig.h>
+#include <aws/sagemaker/model/ClusterOrchestrator.h>
+#include <aws/sagemaker/model/ClusterTieredStorageConfig.h>
+#include <aws/sagemaker/model/ClusterNodeRecovery.h>
+#include <aws/sagemaker/model/ClusterNodeProvisioningMode.h>
+#include <aws/sagemaker/model/ClusterAutoScalingConfigOutput.h>
 #include <aws/sagemaker/model/ClusterInstanceGroupDetails.h>
+#include <aws/sagemaker/model/ClusterRestrictedInstanceGroupDetails.h>
 #include <utility>
 
 namespace Aws
@@ -32,261 +38,219 @@ namespace Model
   class DescribeClusterResult
   {
   public:
-    AWS_SAGEMAKER_API DescribeClusterResult();
+    AWS_SAGEMAKER_API DescribeClusterResult() = default;
     AWS_SAGEMAKER_API DescribeClusterResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API DescribeClusterResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
      */
-    inline const Aws::String& GetClusterArn() const{ return m_clusterArn; }
+    inline const Aws::String& GetClusterArn() const { return m_clusterArn; }
+    template<typename ClusterArnT = Aws::String>
+    void SetClusterArn(ClusterArnT&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = std::forward<ClusterArnT>(value); }
+    template<typename ClusterArnT = Aws::String>
+    DescribeClusterResult& WithClusterArn(ClusterArnT&& value) { SetClusterArn(std::forward<ClusterArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterArn(const Aws::String& value) { m_clusterArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterArn(Aws::String&& value) { m_clusterArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterArn(const char* value) { m_clusterArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterArn(const Aws::String& value) { SetClusterArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterArn(Aws::String&& value) { SetClusterArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterArn(const char* value) { SetClusterArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the SageMaker HyperPod cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    DescribeClusterResult& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterName = value; }
-
-    /**
-     * <p>The name of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the SageMaker HyperPod cluster.</p>
      */
-    inline const ClusterStatus& GetClusterStatus() const{ return m_clusterStatus; }
+    inline ClusterStatus GetClusterStatus() const { return m_clusterStatus; }
+    inline void SetClusterStatus(ClusterStatus value) { m_clusterStatusHasBeenSet = true; m_clusterStatus = value; }
+    inline DescribeClusterResult& WithClusterStatus(ClusterStatus value) { SetClusterStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterStatus(const ClusterStatus& value) { m_clusterStatus = value; }
-
-    /**
-     * <p>The status of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetClusterStatus(ClusterStatus&& value) { m_clusterStatus = std::move(value); }
-
-    /**
-     * <p>The status of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterStatus(const ClusterStatus& value) { SetClusterStatus(value); return *this;}
-
-    /**
-     * <p>The status of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithClusterStatus(ClusterStatus&& value) { SetClusterStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the SageMaker Cluster is created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    DescribeClusterResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the SageMaker Cluster is created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The time when the SageMaker Cluster is created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time when the SageMaker Cluster is created.</p>
-     */
-    inline DescribeClusterResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time when the SageMaker Cluster is created.</p>
-     */
-    inline DescribeClusterResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The failure message of the SageMaker HyperPod cluster.</p>
      */
-    inline const Aws::String& GetFailureMessage() const{ return m_failureMessage; }
+    inline const Aws::String& GetFailureMessage() const { return m_failureMessage; }
+    template<typename FailureMessageT = Aws::String>
+    void SetFailureMessage(FailureMessageT&& value) { m_failureMessageHasBeenSet = true; m_failureMessage = std::forward<FailureMessageT>(value); }
+    template<typename FailureMessageT = Aws::String>
+    DescribeClusterResult& WithFailureMessage(FailureMessageT&& value) { SetFailureMessage(std::forward<FailureMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The failure message of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetFailureMessage(const Aws::String& value) { m_failureMessage = value; }
-
-    /**
-     * <p>The failure message of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetFailureMessage(Aws::String&& value) { m_failureMessage = std::move(value); }
-
-    /**
-     * <p>The failure message of the SageMaker HyperPod cluster.</p>
-     */
-    inline void SetFailureMessage(const char* value) { m_failureMessage.assign(value); }
-
-    /**
-     * <p>The failure message of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithFailureMessage(const Aws::String& value) { SetFailureMessage(value); return *this;}
-
-    /**
-     * <p>The failure message of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithFailureMessage(Aws::String&& value) { SetFailureMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The failure message of the SageMaker HyperPod cluster.</p>
-     */
-    inline DescribeClusterResult& WithFailureMessage(const char* value) { SetFailureMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance groups of the SageMaker HyperPod cluster.</p>
      */
-    inline const Aws::Vector<ClusterInstanceGroupDetails>& GetInstanceGroups() const{ return m_instanceGroups; }
+    inline const Aws::Vector<ClusterInstanceGroupDetails>& GetInstanceGroups() const { return m_instanceGroups; }
+    template<typename InstanceGroupsT = Aws::Vector<ClusterInstanceGroupDetails>>
+    void SetInstanceGroups(InstanceGroupsT&& value) { m_instanceGroupsHasBeenSet = true; m_instanceGroups = std::forward<InstanceGroupsT>(value); }
+    template<typename InstanceGroupsT = Aws::Vector<ClusterInstanceGroupDetails>>
+    DescribeClusterResult& WithInstanceGroups(InstanceGroupsT&& value) { SetInstanceGroups(std::forward<InstanceGroupsT>(value)); return *this;}
+    template<typename InstanceGroupsT = ClusterInstanceGroupDetails>
+    DescribeClusterResult& AddInstanceGroups(InstanceGroupsT&& value) { m_instanceGroupsHasBeenSet = true; m_instanceGroups.emplace_back(std::forward<InstanceGroupsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance groups of the SageMaker HyperPod cluster.</p>
+     * <p>The specialized instance groups for training models like Amazon Nova to be
+     * created in the SageMaker HyperPod cluster.</p>
      */
-    inline void SetInstanceGroups(const Aws::Vector<ClusterInstanceGroupDetails>& value) { m_instanceGroups = value; }
+    inline const Aws::Vector<ClusterRestrictedInstanceGroupDetails>& GetRestrictedInstanceGroups() const { return m_restrictedInstanceGroups; }
+    template<typename RestrictedInstanceGroupsT = Aws::Vector<ClusterRestrictedInstanceGroupDetails>>
+    void SetRestrictedInstanceGroups(RestrictedInstanceGroupsT&& value) { m_restrictedInstanceGroupsHasBeenSet = true; m_restrictedInstanceGroups = std::forward<RestrictedInstanceGroupsT>(value); }
+    template<typename RestrictedInstanceGroupsT = Aws::Vector<ClusterRestrictedInstanceGroupDetails>>
+    DescribeClusterResult& WithRestrictedInstanceGroups(RestrictedInstanceGroupsT&& value) { SetRestrictedInstanceGroups(std::forward<RestrictedInstanceGroupsT>(value)); return *this;}
+    template<typename RestrictedInstanceGroupsT = ClusterRestrictedInstanceGroupDetails>
+    DescribeClusterResult& AddRestrictedInstanceGroups(RestrictedInstanceGroupsT&& value) { m_restrictedInstanceGroupsHasBeenSet = true; m_restrictedInstanceGroups.emplace_back(std::forward<RestrictedInstanceGroupsT>(value)); return *this; }
+    ///@}
 
+    ///@{
+    
+    inline const VpcConfig& GetVpcConfig() const { return m_vpcConfig; }
+    template<typename VpcConfigT = VpcConfig>
+    void SetVpcConfig(VpcConfigT&& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = std::forward<VpcConfigT>(value); }
+    template<typename VpcConfigT = VpcConfig>
+    DescribeClusterResult& WithVpcConfig(VpcConfigT&& value) { SetVpcConfig(std::forward<VpcConfigT>(value)); return *this;}
+    ///@}
+
+    ///@{
     /**
-     * <p>The instance groups of the SageMaker HyperPod cluster.</p>
+     * <p>The type of orchestrator used for the SageMaker HyperPod cluster. </p>
      */
-    inline void SetInstanceGroups(Aws::Vector<ClusterInstanceGroupDetails>&& value) { m_instanceGroups = std::move(value); }
+    inline const ClusterOrchestrator& GetOrchestrator() const { return m_orchestrator; }
+    template<typename OrchestratorT = ClusterOrchestrator>
+    void SetOrchestrator(OrchestratorT&& value) { m_orchestratorHasBeenSet = true; m_orchestrator = std::forward<OrchestratorT>(value); }
+    template<typename OrchestratorT = ClusterOrchestrator>
+    DescribeClusterResult& WithOrchestrator(OrchestratorT&& value) { SetOrchestrator(std::forward<OrchestratorT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance groups of the SageMaker HyperPod cluster.</p>
+     * <p>The current configuration for managed tier checkpointing on the HyperPod
+     * cluster. For example, this shows whether the feature is enabled and the
+     * percentage of cluster memory allocated for checkpoint storage.</p>
      */
-    inline DescribeClusterResult& WithInstanceGroups(const Aws::Vector<ClusterInstanceGroupDetails>& value) { SetInstanceGroups(value); return *this;}
+    inline const ClusterTieredStorageConfig& GetTieredStorageConfig() const { return m_tieredStorageConfig; }
+    template<typename TieredStorageConfigT = ClusterTieredStorageConfig>
+    void SetTieredStorageConfig(TieredStorageConfigT&& value) { m_tieredStorageConfigHasBeenSet = true; m_tieredStorageConfig = std::forward<TieredStorageConfigT>(value); }
+    template<typename TieredStorageConfigT = ClusterTieredStorageConfig>
+    DescribeClusterResult& WithTieredStorageConfig(TieredStorageConfigT&& value) { SetTieredStorageConfig(std::forward<TieredStorageConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance groups of the SageMaker HyperPod cluster.</p>
+     * <p>The node recovery mode configured for the SageMaker HyperPod cluster.</p>
      */
-    inline DescribeClusterResult& WithInstanceGroups(Aws::Vector<ClusterInstanceGroupDetails>&& value) { SetInstanceGroups(std::move(value)); return *this;}
+    inline ClusterNodeRecovery GetNodeRecovery() const { return m_nodeRecovery; }
+    inline void SetNodeRecovery(ClusterNodeRecovery value) { m_nodeRecoveryHasBeenSet = true; m_nodeRecovery = value; }
+    inline DescribeClusterResult& WithNodeRecovery(ClusterNodeRecovery value) { SetNodeRecovery(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance groups of the SageMaker HyperPod cluster.</p>
+     * <p>The mode used for provisioning nodes in the cluster.</p>
      */
-    inline DescribeClusterResult& AddInstanceGroups(const ClusterInstanceGroupDetails& value) { m_instanceGroups.push_back(value); return *this; }
+    inline ClusterNodeProvisioningMode GetNodeProvisioningMode() const { return m_nodeProvisioningMode; }
+    inline void SetNodeProvisioningMode(ClusterNodeProvisioningMode value) { m_nodeProvisioningModeHasBeenSet = true; m_nodeProvisioningMode = value; }
+    inline DescribeClusterResult& WithNodeProvisioningMode(ClusterNodeProvisioningMode value) { SetNodeProvisioningMode(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance groups of the SageMaker HyperPod cluster.</p>
+     * <p>The Amazon Resource Name (ARN) of the IAM role that HyperPod uses for cluster
+     * autoscaling operations.</p>
      */
-    inline DescribeClusterResult& AddInstanceGroups(ClusterInstanceGroupDetails&& value) { m_instanceGroups.push_back(std::move(value)); return *this; }
+    inline const Aws::String& GetClusterRole() const { return m_clusterRole; }
+    template<typename ClusterRoleT = Aws::String>
+    void SetClusterRole(ClusterRoleT&& value) { m_clusterRoleHasBeenSet = true; m_clusterRole = std::forward<ClusterRoleT>(value); }
+    template<typename ClusterRoleT = Aws::String>
+    DescribeClusterResult& WithClusterRole(ClusterRoleT&& value) { SetClusterRole(std::forward<ClusterRoleT>(value)); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The current autoscaling configuration and status for the autoscaler.</p>
+     */
+    inline const ClusterAutoScalingConfigOutput& GetAutoScaling() const { return m_autoScaling; }
+    template<typename AutoScalingT = ClusterAutoScalingConfigOutput>
+    void SetAutoScaling(AutoScalingT&& value) { m_autoScalingHasBeenSet = true; m_autoScaling = std::forward<AutoScalingT>(value); }
+    template<typename AutoScalingT = ClusterAutoScalingConfigOutput>
+    DescribeClusterResult& WithAutoScaling(AutoScalingT&& value) { SetAutoScaling(std::forward<AutoScalingT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline const VpcConfig& GetVpcConfig() const{ return m_vpcConfig; }
-
-    
-    inline void SetVpcConfig(const VpcConfig& value) { m_vpcConfig = value; }
-
-    
-    inline void SetVpcConfig(VpcConfig&& value) { m_vpcConfig = std::move(value); }
-
-    
-    inline DescribeClusterResult& WithVpcConfig(const VpcConfig& value) { SetVpcConfig(value); return *this;}
-
-    
-    inline DescribeClusterResult& WithVpcConfig(VpcConfig&& value) { SetVpcConfig(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeClusterResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeClusterResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeClusterResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeClusterResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterArn;
+    bool m_clusterArnHasBeenSet = false;
 
     Aws::String m_clusterName;
+    bool m_clusterNameHasBeenSet = false;
 
-    ClusterStatus m_clusterStatus;
+    ClusterStatus m_clusterStatus{ClusterStatus::NOT_SET};
+    bool m_clusterStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_failureMessage;
+    bool m_failureMessageHasBeenSet = false;
 
     Aws::Vector<ClusterInstanceGroupDetails> m_instanceGroups;
+    bool m_instanceGroupsHasBeenSet = false;
+
+    Aws::Vector<ClusterRestrictedInstanceGroupDetails> m_restrictedInstanceGroups;
+    bool m_restrictedInstanceGroupsHasBeenSet = false;
 
     VpcConfig m_vpcConfig;
+    bool m_vpcConfigHasBeenSet = false;
+
+    ClusterOrchestrator m_orchestrator;
+    bool m_orchestratorHasBeenSet = false;
+
+    ClusterTieredStorageConfig m_tieredStorageConfig;
+    bool m_tieredStorageConfigHasBeenSet = false;
+
+    ClusterNodeRecovery m_nodeRecovery{ClusterNodeRecovery::NOT_SET};
+    bool m_nodeRecoveryHasBeenSet = false;
+
+    ClusterNodeProvisioningMode m_nodeProvisioningMode{ClusterNodeProvisioningMode::NOT_SET};
+    bool m_nodeProvisioningModeHasBeenSet = false;
+
+    Aws::String m_clusterRole;
+    bool m_clusterRoleHasBeenSet = false;
+
+    ClusterAutoScalingConfigOutput m_autoScaling;
+    bool m_autoScalingHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

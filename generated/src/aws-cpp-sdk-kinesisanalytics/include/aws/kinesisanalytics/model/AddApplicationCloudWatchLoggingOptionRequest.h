@@ -22,7 +22,7 @@ namespace Model
   class AddApplicationCloudWatchLoggingOptionRequest : public KinesisAnalyticsRequest
   {
   public:
-    AWS_KINESISANALYTICS_API AddApplicationCloudWatchLoggingOptionRequest();
+    AWS_KINESISANALYTICS_API AddApplicationCloudWatchLoggingOptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,116 +35,47 @@ namespace Model
     AWS_KINESISANALYTICS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Kinesis Analytics application name.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    AddApplicationCloudWatchLoggingOptionRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
-    inline AddApplicationCloudWatchLoggingOptionRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
-    inline AddApplicationCloudWatchLoggingOptionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Kinesis Analytics application name.</p>
-     */
-    inline AddApplicationCloudWatchLoggingOptionRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version ID of the Kinesis Analytics application.</p>
      */
-    inline long long GetCurrentApplicationVersionId() const{ return m_currentApplicationVersionId; }
-
-    /**
-     * <p>The version ID of the Kinesis Analytics application.</p>
-     */
+    inline long long GetCurrentApplicationVersionId() const { return m_currentApplicationVersionId; }
     inline bool CurrentApplicationVersionIdHasBeenSet() const { return m_currentApplicationVersionIdHasBeenSet; }
-
-    /**
-     * <p>The version ID of the Kinesis Analytics application.</p>
-     */
     inline void SetCurrentApplicationVersionId(long long value) { m_currentApplicationVersionIdHasBeenSet = true; m_currentApplicationVersionId = value; }
-
-    /**
-     * <p>The version ID of the Kinesis Analytics application.</p>
-     */
     inline AddApplicationCloudWatchLoggingOptionRequest& WithCurrentApplicationVersionId(long long value) { SetCurrentApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM
      * role ARN. Note: To write application messages to CloudWatch, the IAM role that
      * is used must have the <code>PutLogEvents</code> policy action enabled.</p>
      */
-    inline const CloudWatchLoggingOption& GetCloudWatchLoggingOption() const{ return m_cloudWatchLoggingOption; }
-
-    /**
-     * <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM
-     * role ARN. Note: To write application messages to CloudWatch, the IAM role that
-     * is used must have the <code>PutLogEvents</code> policy action enabled.</p>
-     */
+    inline const CloudWatchLoggingOption& GetCloudWatchLoggingOption() const { return m_cloudWatchLoggingOption; }
     inline bool CloudWatchLoggingOptionHasBeenSet() const { return m_cloudWatchLoggingOptionHasBeenSet; }
-
-    /**
-     * <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM
-     * role ARN. Note: To write application messages to CloudWatch, the IAM role that
-     * is used must have the <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline void SetCloudWatchLoggingOption(const CloudWatchLoggingOption& value) { m_cloudWatchLoggingOptionHasBeenSet = true; m_cloudWatchLoggingOption = value; }
-
-    /**
-     * <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM
-     * role ARN. Note: To write application messages to CloudWatch, the IAM role that
-     * is used must have the <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline void SetCloudWatchLoggingOption(CloudWatchLoggingOption&& value) { m_cloudWatchLoggingOptionHasBeenSet = true; m_cloudWatchLoggingOption = std::move(value); }
-
-    /**
-     * <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM
-     * role ARN. Note: To write application messages to CloudWatch, the IAM role that
-     * is used must have the <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline AddApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOption(const CloudWatchLoggingOption& value) { SetCloudWatchLoggingOption(value); return *this;}
-
-    /**
-     * <p>Provides the CloudWatch log stream Amazon Resource Name (ARN) and the IAM
-     * role ARN. Note: To write application messages to CloudWatch, the IAM role that
-     * is used must have the <code>PutLogEvents</code> policy action enabled.</p>
-     */
-    inline AddApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOption(CloudWatchLoggingOption&& value) { SetCloudWatchLoggingOption(std::move(value)); return *this;}
-
+    template<typename CloudWatchLoggingOptionT = CloudWatchLoggingOption>
+    void SetCloudWatchLoggingOption(CloudWatchLoggingOptionT&& value) { m_cloudWatchLoggingOptionHasBeenSet = true; m_cloudWatchLoggingOption = std::forward<CloudWatchLoggingOptionT>(value); }
+    template<typename CloudWatchLoggingOptionT = CloudWatchLoggingOption>
+    AddApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOption(CloudWatchLoggingOptionT&& value) { SetCloudWatchLoggingOption(std::forward<CloudWatchLoggingOptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;
     bool m_applicationNameHasBeenSet = false;
 
-    long long m_currentApplicationVersionId;
+    long long m_currentApplicationVersionId{0};
     bool m_currentApplicationVersionIdHasBeenSet = false;
 
     CloudWatchLoggingOption m_cloudWatchLoggingOption;

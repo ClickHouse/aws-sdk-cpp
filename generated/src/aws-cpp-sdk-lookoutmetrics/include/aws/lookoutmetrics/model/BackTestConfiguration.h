@@ -29,35 +29,24 @@ namespace Model
   class BackTestConfiguration
   {
   public:
-    AWS_LOOKOUTMETRICS_API BackTestConfiguration();
+    AWS_LOOKOUTMETRICS_API BackTestConfiguration() = default;
     AWS_LOOKOUTMETRICS_API BackTestConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API BackTestConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Run a backtest instead of monitoring new data.</p>
      */
-    inline bool GetRunBackTestMode() const{ return m_runBackTestMode; }
-
-    /**
-     * <p>Run a backtest instead of monitoring new data.</p>
-     */
+    inline bool GetRunBackTestMode() const { return m_runBackTestMode; }
     inline bool RunBackTestModeHasBeenSet() const { return m_runBackTestModeHasBeenSet; }
-
-    /**
-     * <p>Run a backtest instead of monitoring new data.</p>
-     */
     inline void SetRunBackTestMode(bool value) { m_runBackTestModeHasBeenSet = true; m_runBackTestMode = value; }
-
-    /**
-     * <p>Run a backtest instead of monitoring new data.</p>
-     */
     inline BackTestConfiguration& WithRunBackTestMode(bool value) { SetRunBackTestMode(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_runBackTestMode;
+    bool m_runBackTestMode{false};
     bool m_runBackTestModeHasBeenSet = false;
   };
 

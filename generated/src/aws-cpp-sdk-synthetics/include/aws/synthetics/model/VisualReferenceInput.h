@@ -7,6 +7,7 @@
 #include <aws/synthetics/Synthetics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/synthetics/model/BrowserType.h>
 #include <aws/synthetics/model/BaseScreenshot.h>
 #include <utility>
 
@@ -41,69 +42,29 @@ namespace Model
   class VisualReferenceInput
   {
   public:
-    AWS_SYNTHETICS_API VisualReferenceInput();
+    AWS_SYNTHETICS_API VisualReferenceInput() = default;
     AWS_SYNTHETICS_API VisualReferenceInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API VisualReferenceInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of screenshots that will be used as the baseline for visual
      * monitoring in future runs of this canary. If there is a screenshot that you
      * don't want to be used for visual monitoring, remove it from this array.</p>
      */
-    inline const Aws::Vector<BaseScreenshot>& GetBaseScreenshots() const{ return m_baseScreenshots; }
-
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
+    inline const Aws::Vector<BaseScreenshot>& GetBaseScreenshots() const { return m_baseScreenshots; }
     inline bool BaseScreenshotsHasBeenSet() const { return m_baseScreenshotsHasBeenSet; }
+    template<typename BaseScreenshotsT = Aws::Vector<BaseScreenshot>>
+    void SetBaseScreenshots(BaseScreenshotsT&& value) { m_baseScreenshotsHasBeenSet = true; m_baseScreenshots = std::forward<BaseScreenshotsT>(value); }
+    template<typename BaseScreenshotsT = Aws::Vector<BaseScreenshot>>
+    VisualReferenceInput& WithBaseScreenshots(BaseScreenshotsT&& value) { SetBaseScreenshots(std::forward<BaseScreenshotsT>(value)); return *this;}
+    template<typename BaseScreenshotsT = BaseScreenshot>
+    VisualReferenceInput& AddBaseScreenshots(BaseScreenshotsT&& value) { m_baseScreenshotsHasBeenSet = true; m_baseScreenshots.emplace_back(std::forward<BaseScreenshotsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
-    inline void SetBaseScreenshots(const Aws::Vector<BaseScreenshot>& value) { m_baseScreenshotsHasBeenSet = true; m_baseScreenshots = value; }
-
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
-    inline void SetBaseScreenshots(Aws::Vector<BaseScreenshot>&& value) { m_baseScreenshotsHasBeenSet = true; m_baseScreenshots = std::move(value); }
-
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
-    inline VisualReferenceInput& WithBaseScreenshots(const Aws::Vector<BaseScreenshot>& value) { SetBaseScreenshots(value); return *this;}
-
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
-    inline VisualReferenceInput& WithBaseScreenshots(Aws::Vector<BaseScreenshot>&& value) { SetBaseScreenshots(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
-    inline VisualReferenceInput& AddBaseScreenshots(const BaseScreenshot& value) { m_baseScreenshotsHasBeenSet = true; m_baseScreenshots.push_back(value); return *this; }
-
-    /**
-     * <p>An array of screenshots that will be used as the baseline for visual
-     * monitoring in future runs of this canary. If there is a screenshot that you
-     * don't want to be used for visual monitoring, remove it from this array.</p>
-     */
-    inline VisualReferenceInput& AddBaseScreenshots(BaseScreenshot&& value) { m_baseScreenshotsHasBeenSet = true; m_baseScreenshots.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies which canary run to use the screenshots from as the baseline for
      * future visual monitoring with this canary. Valid values are <code>nextrun</code>
@@ -111,87 +72,27 @@ namespace Model
      * <code>lastrun</code> to use the screenshots from the most recent run before this
      * update was made, or the value of <code>Id</code> in the <a
      * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
+     * CanaryRun</a> from a run of this a canary in the past 31 days. If you specify
+     * the <code>Id</code> of a canary run older than 31 days, the operation returns a
+     * 400 validation exception error..</p>
      */
-    inline const Aws::String& GetBaseCanaryRunId() const{ return m_baseCanaryRunId; }
-
-    /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
-     */
+    inline const Aws::String& GetBaseCanaryRunId() const { return m_baseCanaryRunId; }
     inline bool BaseCanaryRunIdHasBeenSet() const { return m_baseCanaryRunIdHasBeenSet; }
+    template<typename BaseCanaryRunIdT = Aws::String>
+    void SetBaseCanaryRunId(BaseCanaryRunIdT&& value) { m_baseCanaryRunIdHasBeenSet = true; m_baseCanaryRunId = std::forward<BaseCanaryRunIdT>(value); }
+    template<typename BaseCanaryRunIdT = Aws::String>
+    VisualReferenceInput& WithBaseCanaryRunId(BaseCanaryRunIdT&& value) { SetBaseCanaryRunId(std::forward<BaseCanaryRunIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
+     * <p>The browser type associated with this visual reference.</p>
      */
-    inline void SetBaseCanaryRunId(const Aws::String& value) { m_baseCanaryRunIdHasBeenSet = true; m_baseCanaryRunId = value; }
-
-    /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
-     */
-    inline void SetBaseCanaryRunId(Aws::String&& value) { m_baseCanaryRunIdHasBeenSet = true; m_baseCanaryRunId = std::move(value); }
-
-    /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
-     */
-    inline void SetBaseCanaryRunId(const char* value) { m_baseCanaryRunIdHasBeenSet = true; m_baseCanaryRunId.assign(value); }
-
-    /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
-     */
-    inline VisualReferenceInput& WithBaseCanaryRunId(const Aws::String& value) { SetBaseCanaryRunId(value); return *this;}
-
-    /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
-     */
-    inline VisualReferenceInput& WithBaseCanaryRunId(Aws::String&& value) { SetBaseCanaryRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies which canary run to use the screenshots from as the baseline for
-     * future visual monitoring with this canary. Valid values are <code>nextrun</code>
-     * to use the screenshots from the next run after this update is made,
-     * <code>lastrun</code> to use the screenshots from the most recent run before this
-     * update was made, or the value of <code>Id</code> in the <a
-     * href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CanaryRun.html">
-     * CanaryRun</a> from any past run of this canary.</p>
-     */
-    inline VisualReferenceInput& WithBaseCanaryRunId(const char* value) { SetBaseCanaryRunId(value); return *this;}
-
+    inline BrowserType GetBrowserType() const { return m_browserType; }
+    inline bool BrowserTypeHasBeenSet() const { return m_browserTypeHasBeenSet; }
+    inline void SetBrowserType(BrowserType value) { m_browserTypeHasBeenSet = true; m_browserType = value; }
+    inline VisualReferenceInput& WithBrowserType(BrowserType value) { SetBrowserType(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<BaseScreenshot> m_baseScreenshots;
@@ -199,6 +100,9 @@ namespace Model
 
     Aws::String m_baseCanaryRunId;
     bool m_baseCanaryRunIdHasBeenSet = false;
+
+    BrowserType m_browserType{BrowserType::NOT_SET};
+    bool m_browserTypeHasBeenSet = false;
   };
 
 } // namespace Model

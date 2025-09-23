@@ -33,346 +33,136 @@ namespace Model
   class DisruptionCompliance
   {
   public:
-    AWS_RESILIENCEHUB_API DisruptionCompliance();
+    AWS_RESILIENCEHUB_API DisruptionCompliance() = default;
     AWS_RESILIENCEHUB_API DisruptionCompliance(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESILIENCEHUB_API DisruptionCompliance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESILIENCEHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Recovery Point Objective (RPO) that is achievable, in seconds.</p>
      */
-    inline int GetAchievableRpoInSecs() const{ return m_achievableRpoInSecs; }
-
-    /**
-     * <p>The Recovery Point Objective (RPO) that is achievable, in seconds.</p>
-     */
+    inline int GetAchievableRpoInSecs() const { return m_achievableRpoInSecs; }
     inline bool AchievableRpoInSecsHasBeenSet() const { return m_achievableRpoInSecsHasBeenSet; }
-
-    /**
-     * <p>The Recovery Point Objective (RPO) that is achievable, in seconds.</p>
-     */
     inline void SetAchievableRpoInSecs(int value) { m_achievableRpoInSecsHasBeenSet = true; m_achievableRpoInSecs = value; }
-
-    /**
-     * <p>The Recovery Point Objective (RPO) that is achievable, in seconds.</p>
-     */
     inline DisruptionCompliance& WithAchievableRpoInSecs(int value) { SetAchievableRpoInSecs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Recovery Time Objective (RTO) that is achievable, in seconds</p>
      */
-    inline int GetAchievableRtoInSecs() const{ return m_achievableRtoInSecs; }
-
-    /**
-     * <p>The Recovery Time Objective (RTO) that is achievable, in seconds</p>
-     */
+    inline int GetAchievableRtoInSecs() const { return m_achievableRtoInSecs; }
     inline bool AchievableRtoInSecsHasBeenSet() const { return m_achievableRtoInSecsHasBeenSet; }
-
-    /**
-     * <p>The Recovery Time Objective (RTO) that is achievable, in seconds</p>
-     */
     inline void SetAchievableRtoInSecs(int value) { m_achievableRtoInSecsHasBeenSet = true; m_achievableRtoInSecs = value; }
-
-    /**
-     * <p>The Recovery Time Objective (RTO) that is achievable, in seconds</p>
-     */
     inline DisruptionCompliance& WithAchievableRtoInSecs(int value) { SetAchievableRtoInSecs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The current status of compliance for the resiliency policy.</p>
      */
-    inline const ComplianceStatus& GetComplianceStatus() const{ return m_complianceStatus; }
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
+    inline ComplianceStatus GetComplianceStatus() const { return m_complianceStatus; }
     inline bool ComplianceStatusHasBeenSet() const { return m_complianceStatusHasBeenSet; }
+    inline void SetComplianceStatus(ComplianceStatus value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = value; }
+    inline DisruptionCompliance& WithComplianceStatus(ComplianceStatus value) { SetComplianceStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline void SetComplianceStatus(const ComplianceStatus& value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = value; }
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline void SetComplianceStatus(ComplianceStatus&& value) { m_complianceStatusHasBeenSet = true; m_complianceStatus = std::move(value); }
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline DisruptionCompliance& WithComplianceStatus(const ComplianceStatus& value) { SetComplianceStatus(value); return *this;}
-
-    /**
-     * <p>The current status of compliance for the resiliency policy.</p>
-     */
-    inline DisruptionCompliance& WithComplianceStatus(ComplianceStatus&& value) { SetComplianceStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current RPO, in seconds.</p>
      */
-    inline int GetCurrentRpoInSecs() const{ return m_currentRpoInSecs; }
-
-    /**
-     * <p>The current RPO, in seconds.</p>
-     */
+    inline int GetCurrentRpoInSecs() const { return m_currentRpoInSecs; }
     inline bool CurrentRpoInSecsHasBeenSet() const { return m_currentRpoInSecsHasBeenSet; }
-
-    /**
-     * <p>The current RPO, in seconds.</p>
-     */
     inline void SetCurrentRpoInSecs(int value) { m_currentRpoInSecsHasBeenSet = true; m_currentRpoInSecs = value; }
-
-    /**
-     * <p>The current RPO, in seconds.</p>
-     */
     inline DisruptionCompliance& WithCurrentRpoInSecs(int value) { SetCurrentRpoInSecs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The current RTO, in seconds.</p>
      */
-    inline int GetCurrentRtoInSecs() const{ return m_currentRtoInSecs; }
-
-    /**
-     * <p>The current RTO, in seconds.</p>
-     */
+    inline int GetCurrentRtoInSecs() const { return m_currentRtoInSecs; }
     inline bool CurrentRtoInSecsHasBeenSet() const { return m_currentRtoInSecsHasBeenSet; }
-
-    /**
-     * <p>The current RTO, in seconds.</p>
-     */
     inline void SetCurrentRtoInSecs(int value) { m_currentRtoInSecsHasBeenSet = true; m_currentRtoInSecs = value; }
-
-    /**
-     * <p>The current RTO, in seconds.</p>
-     */
     inline DisruptionCompliance& WithCurrentRtoInSecs(int value) { SetCurrentRtoInSecs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The disruption compliance message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The disruption compliance message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DisruptionCompliance& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The disruption compliance message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The disruption compliance message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The disruption compliance message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The disruption compliance message.</p>
-     */
-    inline DisruptionCompliance& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The disruption compliance message.</p>
-     */
-    inline DisruptionCompliance& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The disruption compliance message.</p>
-     */
-    inline DisruptionCompliance& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The RPO description.</p>
      */
-    inline const Aws::String& GetRpoDescription() const{ return m_rpoDescription; }
-
-    /**
-     * <p>The RPO description.</p>
-     */
+    inline const Aws::String& GetRpoDescription() const { return m_rpoDescription; }
     inline bool RpoDescriptionHasBeenSet() const { return m_rpoDescriptionHasBeenSet; }
+    template<typename RpoDescriptionT = Aws::String>
+    void SetRpoDescription(RpoDescriptionT&& value) { m_rpoDescriptionHasBeenSet = true; m_rpoDescription = std::forward<RpoDescriptionT>(value); }
+    template<typename RpoDescriptionT = Aws::String>
+    DisruptionCompliance& WithRpoDescription(RpoDescriptionT&& value) { SetRpoDescription(std::forward<RpoDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The RPO description.</p>
-     */
-    inline void SetRpoDescription(const Aws::String& value) { m_rpoDescriptionHasBeenSet = true; m_rpoDescription = value; }
-
-    /**
-     * <p>The RPO description.</p>
-     */
-    inline void SetRpoDescription(Aws::String&& value) { m_rpoDescriptionHasBeenSet = true; m_rpoDescription = std::move(value); }
-
-    /**
-     * <p>The RPO description.</p>
-     */
-    inline void SetRpoDescription(const char* value) { m_rpoDescriptionHasBeenSet = true; m_rpoDescription.assign(value); }
-
-    /**
-     * <p>The RPO description.</p>
-     */
-    inline DisruptionCompliance& WithRpoDescription(const Aws::String& value) { SetRpoDescription(value); return *this;}
-
-    /**
-     * <p>The RPO description.</p>
-     */
-    inline DisruptionCompliance& WithRpoDescription(Aws::String&& value) { SetRpoDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The RPO description.</p>
-     */
-    inline DisruptionCompliance& WithRpoDescription(const char* value) { SetRpoDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Reference identifier of the RPO .</p>
      */
-    inline const Aws::String& GetRpoReferenceId() const{ return m_rpoReferenceId; }
-
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
+    inline const Aws::String& GetRpoReferenceId() const { return m_rpoReferenceId; }
     inline bool RpoReferenceIdHasBeenSet() const { return m_rpoReferenceIdHasBeenSet; }
+    template<typename RpoReferenceIdT = Aws::String>
+    void SetRpoReferenceId(RpoReferenceIdT&& value) { m_rpoReferenceIdHasBeenSet = true; m_rpoReferenceId = std::forward<RpoReferenceIdT>(value); }
+    template<typename RpoReferenceIdT = Aws::String>
+    DisruptionCompliance& WithRpoReferenceId(RpoReferenceIdT&& value) { SetRpoReferenceId(std::forward<RpoReferenceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
-    inline void SetRpoReferenceId(const Aws::String& value) { m_rpoReferenceIdHasBeenSet = true; m_rpoReferenceId = value; }
-
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
-    inline void SetRpoReferenceId(Aws::String&& value) { m_rpoReferenceIdHasBeenSet = true; m_rpoReferenceId = std::move(value); }
-
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
-    inline void SetRpoReferenceId(const char* value) { m_rpoReferenceIdHasBeenSet = true; m_rpoReferenceId.assign(value); }
-
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
-    inline DisruptionCompliance& WithRpoReferenceId(const Aws::String& value) { SetRpoReferenceId(value); return *this;}
-
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
-    inline DisruptionCompliance& WithRpoReferenceId(Aws::String&& value) { SetRpoReferenceId(std::move(value)); return *this;}
-
-    /**
-     * <p>Reference identifier of the RPO .</p>
-     */
-    inline DisruptionCompliance& WithRpoReferenceId(const char* value) { SetRpoReferenceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The RTO description.</p>
      */
-    inline const Aws::String& GetRtoDescription() const{ return m_rtoDescription; }
-
-    /**
-     * <p>The RTO description.</p>
-     */
+    inline const Aws::String& GetRtoDescription() const { return m_rtoDescription; }
     inline bool RtoDescriptionHasBeenSet() const { return m_rtoDescriptionHasBeenSet; }
+    template<typename RtoDescriptionT = Aws::String>
+    void SetRtoDescription(RtoDescriptionT&& value) { m_rtoDescriptionHasBeenSet = true; m_rtoDescription = std::forward<RtoDescriptionT>(value); }
+    template<typename RtoDescriptionT = Aws::String>
+    DisruptionCompliance& WithRtoDescription(RtoDescriptionT&& value) { SetRtoDescription(std::forward<RtoDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The RTO description.</p>
-     */
-    inline void SetRtoDescription(const Aws::String& value) { m_rtoDescriptionHasBeenSet = true; m_rtoDescription = value; }
-
-    /**
-     * <p>The RTO description.</p>
-     */
-    inline void SetRtoDescription(Aws::String&& value) { m_rtoDescriptionHasBeenSet = true; m_rtoDescription = std::move(value); }
-
-    /**
-     * <p>The RTO description.</p>
-     */
-    inline void SetRtoDescription(const char* value) { m_rtoDescriptionHasBeenSet = true; m_rtoDescription.assign(value); }
-
-    /**
-     * <p>The RTO description.</p>
-     */
-    inline DisruptionCompliance& WithRtoDescription(const Aws::String& value) { SetRtoDescription(value); return *this;}
-
-    /**
-     * <p>The RTO description.</p>
-     */
-    inline DisruptionCompliance& WithRtoDescription(Aws::String&& value) { SetRtoDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The RTO description.</p>
-     */
-    inline DisruptionCompliance& WithRtoDescription(const char* value) { SetRtoDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Reference identifier of the RTO.</p>
      */
-    inline const Aws::String& GetRtoReferenceId() const{ return m_rtoReferenceId; }
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
+    inline const Aws::String& GetRtoReferenceId() const { return m_rtoReferenceId; }
     inline bool RtoReferenceIdHasBeenSet() const { return m_rtoReferenceIdHasBeenSet; }
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
-    inline void SetRtoReferenceId(const Aws::String& value) { m_rtoReferenceIdHasBeenSet = true; m_rtoReferenceId = value; }
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
-    inline void SetRtoReferenceId(Aws::String&& value) { m_rtoReferenceIdHasBeenSet = true; m_rtoReferenceId = std::move(value); }
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
-    inline void SetRtoReferenceId(const char* value) { m_rtoReferenceIdHasBeenSet = true; m_rtoReferenceId.assign(value); }
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
-    inline DisruptionCompliance& WithRtoReferenceId(const Aws::String& value) { SetRtoReferenceId(value); return *this;}
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
-    inline DisruptionCompliance& WithRtoReferenceId(Aws::String&& value) { SetRtoReferenceId(std::move(value)); return *this;}
-
-    /**
-     * <p>Reference identifier of the RTO.</p>
-     */
-    inline DisruptionCompliance& WithRtoReferenceId(const char* value) { SetRtoReferenceId(value); return *this;}
-
+    template<typename RtoReferenceIdT = Aws::String>
+    void SetRtoReferenceId(RtoReferenceIdT&& value) { m_rtoReferenceIdHasBeenSet = true; m_rtoReferenceId = std::forward<RtoReferenceIdT>(value); }
+    template<typename RtoReferenceIdT = Aws::String>
+    DisruptionCompliance& WithRtoReferenceId(RtoReferenceIdT&& value) { SetRtoReferenceId(std::forward<RtoReferenceIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_achievableRpoInSecs;
+    int m_achievableRpoInSecs{0};
     bool m_achievableRpoInSecsHasBeenSet = false;
 
-    int m_achievableRtoInSecs;
+    int m_achievableRtoInSecs{0};
     bool m_achievableRtoInSecsHasBeenSet = false;
 
-    ComplianceStatus m_complianceStatus;
+    ComplianceStatus m_complianceStatus{ComplianceStatus::NOT_SET};
     bool m_complianceStatusHasBeenSet = false;
 
-    int m_currentRpoInSecs;
+    int m_currentRpoInSecs{0};
     bool m_currentRpoInSecsHasBeenSet = false;
 
-    int m_currentRtoInSecs;
+    int m_currentRtoInSecs{0};
     bool m_currentRtoInSecsHasBeenSet = false;
 
     Aws::String m_message;

@@ -25,7 +25,7 @@ namespace Model
   class DescribeTagsRequest : public ElasticLoadBalancingRequest
   {
   public:
-    AWS_ELASTICLOADBALANCING_API DescribeTagsRequest();
+    AWS_ELASTICLOADBALANCING_API DescribeTagsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,51 +40,19 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLoadBalancerNames() const{ return m_loadBalancerNames; }
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLoadBalancerNames() const { return m_loadBalancerNames; }
     inline bool LoadBalancerNamesHasBeenSet() const { return m_loadBalancerNamesHasBeenSet; }
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline void SetLoadBalancerNames(const Aws::Vector<Aws::String>& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = value; }
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline void SetLoadBalancerNames(Aws::Vector<Aws::String>&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = std::move(value); }
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline DescribeTagsRequest& WithLoadBalancerNames(const Aws::Vector<Aws::String>& value) { SetLoadBalancerNames(value); return *this;}
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline DescribeTagsRequest& WithLoadBalancerNames(Aws::Vector<Aws::String>&& value) { SetLoadBalancerNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline DescribeTagsRequest& AddLoadBalancerNames(const Aws::String& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline DescribeTagsRequest& AddLoadBalancerNames(Aws::String&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the load balancers.</p>
-     */
-    inline DescribeTagsRequest& AddLoadBalancerNames(const char* value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
-
+    template<typename LoadBalancerNamesT = Aws::Vector<Aws::String>>
+    void SetLoadBalancerNames(LoadBalancerNamesT&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = std::forward<LoadBalancerNamesT>(value); }
+    template<typename LoadBalancerNamesT = Aws::Vector<Aws::String>>
+    DescribeTagsRequest& WithLoadBalancerNames(LoadBalancerNamesT&& value) { SetLoadBalancerNames(std::forward<LoadBalancerNamesT>(value)); return *this;}
+    template<typename LoadBalancerNamesT = Aws::String>
+    DescribeTagsRequest& AddLoadBalancerNames(LoadBalancerNamesT&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.emplace_back(std::forward<LoadBalancerNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_loadBalancerNames;

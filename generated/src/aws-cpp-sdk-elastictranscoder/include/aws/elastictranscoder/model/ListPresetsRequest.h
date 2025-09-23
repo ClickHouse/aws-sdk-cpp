@@ -28,7 +28,7 @@ namespace Model
   class ListPresetsRequest : public ElasticTranscoderRequest
   {
   public:
-    AWS_ELASTICTRANSCODER_API ListPresetsRequest();
+    AWS_ELASTICTRANSCODER_API ListPresetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,119 +41,33 @@ namespace Model
     AWS_ELASTICTRANSCODER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>To list presets in chronological order by the date and time that they were
      * created, enter <code>true</code>. To list presets in reverse chronological
      * order, enter <code>false</code>.</p>
      */
-    inline const Aws::String& GetAscending() const{ return m_ascending; }
-
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
+    inline const Aws::String& GetAscending() const { return m_ascending; }
     inline bool AscendingHasBeenSet() const { return m_ascendingHasBeenSet; }
+    template<typename AscendingT = Aws::String>
+    void SetAscending(AscendingT&& value) { m_ascendingHasBeenSet = true; m_ascending = std::forward<AscendingT>(value); }
+    template<typename AscendingT = Aws::String>
+    ListPresetsRequest& WithAscending(AscendingT&& value) { SetAscending(std::forward<AscendingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
-    inline void SetAscending(const Aws::String& value) { m_ascendingHasBeenSet = true; m_ascending = value; }
-
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
-    inline void SetAscending(Aws::String&& value) { m_ascendingHasBeenSet = true; m_ascending = std::move(value); }
-
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
-    inline void SetAscending(const char* value) { m_ascendingHasBeenSet = true; m_ascending.assign(value); }
-
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
-    inline ListPresetsRequest& WithAscending(const Aws::String& value) { SetAscending(value); return *this;}
-
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
-    inline ListPresetsRequest& WithAscending(Aws::String&& value) { SetAscending(std::move(value)); return *this;}
-
-    /**
-     * <p>To list presets in chronological order by the date and time that they were
-     * created, enter <code>true</code>. To list presets in reverse chronological
-     * order, enter <code>false</code>.</p>
-     */
-    inline ListPresetsRequest& WithAscending(const char* value) { SetAscending(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When Elastic Transcoder returns more than one page of results, use
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
      * successive page of results. </p>
      */
-    inline const Aws::String& GetPageToken() const{ return m_pageToken; }
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
+    inline const Aws::String& GetPageToken() const { return m_pageToken; }
     inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline ListPresetsRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline ListPresetsRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p>When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline ListPresetsRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
-
+    template<typename PageTokenT = Aws::String>
+    void SetPageToken(PageTokenT&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::forward<PageTokenT>(value); }
+    template<typename PageTokenT = Aws::String>
+    ListPresetsRequest& WithPageToken(PageTokenT&& value) { SetPageToken(std::forward<PageTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ascending;

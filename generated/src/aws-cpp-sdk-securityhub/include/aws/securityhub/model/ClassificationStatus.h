@@ -32,101 +32,36 @@ namespace Model
   class ClassificationStatus
   {
   public:
-    AWS_SECURITYHUB_API ClassificationStatus();
+    AWS_SECURITYHUB_API ClassificationStatus() = default;
     AWS_SECURITYHUB_API ClassificationStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API ClassificationStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The code that represents the status of the sensitive data detection.</p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    ClassificationStatus& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
-    inline ClassificationStatus& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
-    inline ClassificationStatus& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code that represents the status of the sensitive data detection.</p>
-     */
-    inline ClassificationStatus& WithCode(const char* value) { SetCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A longer description of the current status of the sensitive data
      * detection.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
-    inline ClassificationStatus& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
-    inline ClassificationStatus& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>A longer description of the current status of the sensitive data
-     * detection.</p>
-     */
-    inline ClassificationStatus& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    ClassificationStatus& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

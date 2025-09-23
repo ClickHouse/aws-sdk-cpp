@@ -32,118 +32,46 @@ namespace Model
   class LaunchTemplateConfiguration
   {
   public:
-    AWS_IMAGEBUILDER_API LaunchTemplateConfiguration();
+    AWS_IMAGEBUILDER_API LaunchTemplateConfiguration() = default;
     AWS_IMAGEBUILDER_API LaunchTemplateConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API LaunchTemplateConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifies the Amazon EC2 launch template to use.</p>
      */
-    inline const Aws::String& GetLaunchTemplateId() const{ return m_launchTemplateId; }
-
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
+    inline const Aws::String& GetLaunchTemplateId() const { return m_launchTemplateId; }
     inline bool LaunchTemplateIdHasBeenSet() const { return m_launchTemplateIdHasBeenSet; }
+    template<typename LaunchTemplateIdT = Aws::String>
+    void SetLaunchTemplateId(LaunchTemplateIdT&& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = std::forward<LaunchTemplateIdT>(value); }
+    template<typename LaunchTemplateIdT = Aws::String>
+    LaunchTemplateConfiguration& WithLaunchTemplateId(LaunchTemplateIdT&& value) { SetLaunchTemplateId(std::forward<LaunchTemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
-    inline void SetLaunchTemplateId(const Aws::String& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = value; }
-
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
-    inline void SetLaunchTemplateId(Aws::String&& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = std::move(value); }
-
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
-    inline void SetLaunchTemplateId(const char* value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId.assign(value); }
-
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
-    inline LaunchTemplateConfiguration& WithLaunchTemplateId(const Aws::String& value) { SetLaunchTemplateId(value); return *this;}
-
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
-    inline LaunchTemplateConfiguration& WithLaunchTemplateId(Aws::String&& value) { SetLaunchTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifies the Amazon EC2 launch template to use.</p>
-     */
-    inline LaunchTemplateConfiguration& WithLaunchTemplateId(const char* value) { SetLaunchTemplateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The account ID that this configuration applies to.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    LaunchTemplateConfiguration& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
-    inline LaunchTemplateConfiguration& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
-    inline LaunchTemplateConfiguration& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID that this configuration applies to.</p>
-     */
-    inline LaunchTemplateConfiguration& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Set the specified Amazon EC2 launch template as the default launch template
      * for the specified account.</p>
      */
-    inline bool GetSetDefaultVersion() const{ return m_setDefaultVersion; }
-
-    /**
-     * <p>Set the specified Amazon EC2 launch template as the default launch template
-     * for the specified account.</p>
-     */
+    inline bool GetSetDefaultVersion() const { return m_setDefaultVersion; }
     inline bool SetDefaultVersionHasBeenSet() const { return m_setDefaultVersionHasBeenSet; }
-
-    /**
-     * <p>Set the specified Amazon EC2 launch template as the default launch template
-     * for the specified account.</p>
-     */
     inline void SetSetDefaultVersion(bool value) { m_setDefaultVersionHasBeenSet = true; m_setDefaultVersion = value; }
-
-    /**
-     * <p>Set the specified Amazon EC2 launch template as the default launch template
-     * for the specified account.</p>
-     */
     inline LaunchTemplateConfiguration& WithSetDefaultVersion(bool value) { SetSetDefaultVersion(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_launchTemplateId;
@@ -152,7 +80,7 @@ namespace Model
     Aws::String m_accountId;
     bool m_accountIdHasBeenSet = false;
 
-    bool m_setDefaultVersion;
+    bool m_setDefaultVersion{false};
     bool m_setDefaultVersionHasBeenSet = false;
   };
 

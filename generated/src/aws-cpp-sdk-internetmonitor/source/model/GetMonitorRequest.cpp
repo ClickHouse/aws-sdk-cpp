@@ -5,23 +5,32 @@
 
 #include <aws/internetmonitor/model/GetMonitorRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/http/URI.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
 using namespace Aws::InternetMonitor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
-
-GetMonitorRequest::GetMonitorRequest() : 
-    m_monitorNameHasBeenSet(false)
-{
-}
+using namespace Aws::Http;
 
 Aws::String GetMonitorRequest::SerializePayload() const
 {
   return {};
 }
 
+void GetMonitorRequest::AddQueryStringParameters(URI& uri) const
+{
+    Aws::StringStream ss;
+    if(m_linkedAccountIdHasBeenSet)
+    {
+      ss << m_linkedAccountId;
+      uri.AddQueryStringParameter("LinkedAccountId", ss.str());
+      ss.str("");
+    }
+
+}
 
 
 

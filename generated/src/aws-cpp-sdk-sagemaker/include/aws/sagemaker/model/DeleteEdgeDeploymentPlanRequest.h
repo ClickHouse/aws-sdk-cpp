@@ -21,7 +21,7 @@ namespace Model
   class DeleteEdgeDeploymentPlanRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteEdgeDeploymentPlanRequest();
+    AWS_SAGEMAKER_API DeleteEdgeDeploymentPlanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the edge deployment plan to delete.</p>
      */
-    inline const Aws::String& GetEdgeDeploymentPlanName() const{ return m_edgeDeploymentPlanName; }
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
+    inline const Aws::String& GetEdgeDeploymentPlanName() const { return m_edgeDeploymentPlanName; }
     inline bool EdgeDeploymentPlanNameHasBeenSet() const { return m_edgeDeploymentPlanNameHasBeenSet; }
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
-    inline void SetEdgeDeploymentPlanName(const Aws::String& value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName = value; }
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
-    inline void SetEdgeDeploymentPlanName(Aws::String&& value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName = std::move(value); }
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
-    inline void SetEdgeDeploymentPlanName(const char* value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName.assign(value); }
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
-    inline DeleteEdgeDeploymentPlanRequest& WithEdgeDeploymentPlanName(const Aws::String& value) { SetEdgeDeploymentPlanName(value); return *this;}
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
-    inline DeleteEdgeDeploymentPlanRequest& WithEdgeDeploymentPlanName(Aws::String&& value) { SetEdgeDeploymentPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the edge deployment plan to delete.</p>
-     */
-    inline DeleteEdgeDeploymentPlanRequest& WithEdgeDeploymentPlanName(const char* value) { SetEdgeDeploymentPlanName(value); return *this;}
-
+    template<typename EdgeDeploymentPlanNameT = Aws::String>
+    void SetEdgeDeploymentPlanName(EdgeDeploymentPlanNameT&& value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName = std::forward<EdgeDeploymentPlanNameT>(value); }
+    template<typename EdgeDeploymentPlanNameT = Aws::String>
+    DeleteEdgeDeploymentPlanRequest& WithEdgeDeploymentPlanName(EdgeDeploymentPlanNameT&& value) { SetEdgeDeploymentPlanName(std::forward<EdgeDeploymentPlanNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_edgeDeploymentPlanName;

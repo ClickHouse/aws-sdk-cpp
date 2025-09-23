@@ -12,20 +12,6 @@ using namespace Aws::ResilienceHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAppRequest::CreateAppRequest() : 
-    m_assessmentSchedule(AppAssessmentScheduleType::NOT_SET),
-    m_assessmentScheduleHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_eventSubscriptionsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_permissionModelHasBeenSet(false),
-    m_policyArnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateAppRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -33,6 +19,12 @@ Aws::String CreateAppRequest::SerializePayload() const
   if(m_assessmentScheduleHasBeenSet)
   {
    payload.WithString("assessmentSchedule", AppAssessmentScheduleTypeMapper::GetNameForAppAssessmentScheduleType(m_assessmentSchedule));
+  }
+
+  if(m_awsApplicationArnHasBeenSet)
+  {
+   payload.WithString("awsApplicationArn", m_awsApplicationArn);
+
   }
 
   if(m_clientTokenHasBeenSet)

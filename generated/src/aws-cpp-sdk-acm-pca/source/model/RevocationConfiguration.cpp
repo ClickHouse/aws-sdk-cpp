@@ -18,15 +18,7 @@ namespace ACMPCA
 namespace Model
 {
 
-RevocationConfiguration::RevocationConfiguration() : 
-    m_crlConfigurationHasBeenSet(false),
-    m_ocspConfigurationHasBeenSet(false)
-{
-}
-
-RevocationConfiguration::RevocationConfiguration(JsonView jsonValue) : 
-    m_crlConfigurationHasBeenSet(false),
-    m_ocspConfigurationHasBeenSet(false)
+RevocationConfiguration::RevocationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RevocationConfiguration& RevocationConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CrlConfiguration"))
   {
     m_crlConfiguration = jsonValue.GetObject("CrlConfiguration");
-
     m_crlConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OcspConfiguration"))
   {
     m_ocspConfiguration = jsonValue.GetObject("OcspConfiguration");
-
     m_ocspConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

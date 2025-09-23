@@ -6,10 +6,10 @@
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/ReportStatusType.h>
+#include <aws/core/utils/DateTime.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ReportInstanceReasonCodes.h>
 #include <utility>
 
@@ -25,7 +25,7 @@ namespace Model
   class ReportInstanceStatusRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ReportInstanceStatusRequest();
+    AWS_EC2_API ReportInstanceStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,393 +40,112 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline ReportInstanceStatusRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline ReportInstanceStatusRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Descriptive text about the health state of your instance.</p>
-     */
-    inline ReportInstanceStatusRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
+     * <p>Checks whether you have the required permissions for the operation, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ReportInstanceStatusRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
-    /**
-     * <p>The time at which the reported instance health state ended.</p>
-     */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The time at which the reported instance health state ended.</p>
-     */
-    inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
-
-    /**
-     * <p>The time at which the reported instance health state ended.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The time at which the reported instance health state ended.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The time at which the reported instance health state ended.</p>
-     */
-    inline ReportInstanceStatusRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The time at which the reported instance health state ended.</p>
-     */
-    inline ReportInstanceStatusRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The instances.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstances() const{ return m_instances; }
-
-    /**
-     * <p>The instances.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstances() const { return m_instances; }
     inline bool InstancesHasBeenSet() const { return m_instancesHasBeenSet; }
+    template<typename InstancesT = Aws::Vector<Aws::String>>
+    void SetInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances = std::forward<InstancesT>(value); }
+    template<typename InstancesT = Aws::Vector<Aws::String>>
+    ReportInstanceStatusRequest& WithInstances(InstancesT&& value) { SetInstances(std::forward<InstancesT>(value)); return *this;}
+    template<typename InstancesT = Aws::String>
+    ReportInstanceStatusRequest& AddInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances.emplace_back(std::forward<InstancesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The instances.</p>
-     */
-    inline void SetInstances(const Aws::Vector<Aws::String>& value) { m_instancesHasBeenSet = true; m_instances = value; }
-
-    /**
-     * <p>The instances.</p>
-     */
-    inline void SetInstances(Aws::Vector<Aws::String>&& value) { m_instancesHasBeenSet = true; m_instances = std::move(value); }
-
-    /**
-     * <p>The instances.</p>
-     */
-    inline ReportInstanceStatusRequest& WithInstances(const Aws::Vector<Aws::String>& value) { SetInstances(value); return *this;}
-
-    /**
-     * <p>The instances.</p>
-     */
-    inline ReportInstanceStatusRequest& WithInstances(Aws::Vector<Aws::String>&& value) { SetInstances(std::move(value)); return *this;}
-
-    /**
-     * <p>The instances.</p>
-     */
-    inline ReportInstanceStatusRequest& AddInstances(const Aws::String& value) { m_instancesHasBeenSet = true; m_instances.push_back(value); return *this; }
-
-    /**
-     * <p>The instances.</p>
-     */
-    inline ReportInstanceStatusRequest& AddInstances(Aws::String&& value) { m_instancesHasBeenSet = true; m_instances.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The instances.</p>
-     */
-    inline ReportInstanceStatusRequest& AddInstances(const char* value) { m_instancesHasBeenSet = true; m_instances.push_back(value); return *this; }
-
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline const Aws::Vector<ReportInstanceReasonCodes>& GetReasonCodes() const{ return m_reasonCodes; }
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline bool ReasonCodesHasBeenSet() const { return m_reasonCodesHasBeenSet; }
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline void SetReasonCodes(const Aws::Vector<ReportInstanceReasonCodes>& value) { m_reasonCodesHasBeenSet = true; m_reasonCodes = value; }
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline void SetReasonCodes(Aws::Vector<ReportInstanceReasonCodes>&& value) { m_reasonCodesHasBeenSet = true; m_reasonCodes = std::move(value); }
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline ReportInstanceStatusRequest& WithReasonCodes(const Aws::Vector<ReportInstanceReasonCodes>& value) { SetReasonCodes(value); return *this;}
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline ReportInstanceStatusRequest& WithReasonCodes(Aws::Vector<ReportInstanceReasonCodes>&& value) { SetReasonCodes(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline ReportInstanceStatusRequest& AddReasonCodes(const ReportInstanceReasonCodes& value) { m_reasonCodesHasBeenSet = true; m_reasonCodes.push_back(value); return *this; }
-
-    /**
-     * <p>The reason codes that describe the health state of your instance.</p> <ul>
-     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
-     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
-     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
-     * instance is not accepting my credentials.</p> </li> <li> <p>
-     * <code>password-not-available</code>: A password is not available for my
-     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
-     * experiencing performance problems that I believe are network related.</p> </li>
-     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
-     * performance problems that I believe are related to the instance stores.</p>
-     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
-     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
-     * <p> <code>performance-other</code>: My instance is experiencing performance
-     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
-     * parameter]</p> </li> </ul>
-     */
-    inline ReportInstanceStatusRequest& AddReasonCodes(ReportInstanceReasonCodes&& value) { m_reasonCodesHasBeenSet = true; m_reasonCodes.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The time at which the reported instance health state began.</p>
-     */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The time at which the reported instance health state began.</p>
-     */
-    inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
-
-    /**
-     * <p>The time at which the reported instance health state began.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The time at which the reported instance health state began.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The time at which the reported instance health state began.</p>
-     */
-    inline ReportInstanceStatusRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The time at which the reported instance health state began.</p>
-     */
-    inline ReportInstanceStatusRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of all instances listed.</p>
      */
-    inline const ReportStatusType& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of all instances listed.</p>
-     */
+    inline ReportStatusType GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ReportStatusType value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ReportInstanceStatusRequest& WithStatus(ReportStatusType value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of all instances listed.</p>
+     * <p>The time at which the reported instance health state began.</p>
      */
-    inline void SetStatus(const ReportStatusType& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
+    inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    ReportInstanceStatusRequest& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of all instances listed.</p>
+     * <p>The time at which the reported instance health state ended.</p>
      */
-    inline void SetStatus(ReportStatusType&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
+    inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    ReportInstanceStatusRequest& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of all instances listed.</p>
+     * <p>The reason codes that describe the health state of your instance.</p> <ul>
+     * <li> <p> <code>instance-stuck-in-state</code>: My instance is stuck in a
+     * state.</p> </li> <li> <p> <code>unresponsive</code>: My instance is
+     * unresponsive.</p> </li> <li> <p> <code>not-accepting-credentials</code>: My
+     * instance is not accepting my credentials.</p> </li> <li> <p>
+     * <code>password-not-available</code>: A password is not available for my
+     * instance.</p> </li> <li> <p> <code>performance-network</code>: My instance is
+     * experiencing performance problems that I believe are network related.</p> </li>
+     * <li> <p> <code>performance-instance-store</code>: My instance is experiencing
+     * performance problems that I believe are related to the instance stores.</p>
+     * </li> <li> <p> <code>performance-ebs-volume</code>: My instance is experiencing
+     * performance problems that I believe are related to an EBS volume.</p> </li> <li>
+     * <p> <code>performance-other</code>: My instance is experiencing performance
+     * problems.</p> </li> <li> <p> <code>other</code>: [explain using the description
+     * parameter]</p> </li> </ul>
      */
-    inline ReportInstanceStatusRequest& WithStatus(const ReportStatusType& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of all instances listed.</p>
-     */
-    inline ReportInstanceStatusRequest& WithStatus(ReportStatusType&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline const Aws::Vector<ReportInstanceReasonCodes>& GetReasonCodes() const { return m_reasonCodes; }
+    inline bool ReasonCodesHasBeenSet() const { return m_reasonCodesHasBeenSet; }
+    template<typename ReasonCodesT = Aws::Vector<ReportInstanceReasonCodes>>
+    void SetReasonCodes(ReasonCodesT&& value) { m_reasonCodesHasBeenSet = true; m_reasonCodes = std::forward<ReasonCodesT>(value); }
+    template<typename ReasonCodesT = Aws::Vector<ReportInstanceReasonCodes>>
+    ReportInstanceStatusRequest& WithReasonCodes(ReasonCodesT&& value) { SetReasonCodes(std::forward<ReasonCodesT>(value)); return *this;}
+    inline ReportInstanceStatusRequest& AddReasonCodes(ReportInstanceReasonCodes value) { m_reasonCodesHasBeenSet = true; m_reasonCodes.push_back(value); return *this; }
+    ///@}
   private:
 
-    Aws::String m_description;
-    bool m_descriptionHasBeenSet = false;
-
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
-
-    Aws::Utils::DateTime m_endTime;
-    bool m_endTimeHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_instances;
     bool m_instancesHasBeenSet = false;
 
-    Aws::Vector<ReportInstanceReasonCodes> m_reasonCodes;
-    bool m_reasonCodesHasBeenSet = false;
+    ReportStatusType m_status{ReportStatusType::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    ReportStatusType m_status;
-    bool m_statusHasBeenSet = false;
+    Aws::Utils::DateTime m_endTime{};
+    bool m_endTimeHasBeenSet = false;
+
+    Aws::Vector<ReportInstanceReasonCodes> m_reasonCodes;
+    bool m_reasonCodesHasBeenSet = false;
   };
 
 } // namespace Model

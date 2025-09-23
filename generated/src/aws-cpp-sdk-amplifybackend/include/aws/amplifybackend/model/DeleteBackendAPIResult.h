@@ -27,263 +27,107 @@ namespace Model
   class DeleteBackendAPIResult
   {
   public:
-    AWS_AMPLIFYBACKEND_API DeleteBackendAPIResult();
+    AWS_AMPLIFYBACKEND_API DeleteBackendAPIResult() = default;
     AWS_AMPLIFYBACKEND_API DeleteBackendAPIResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_AMPLIFYBACKEND_API DeleteBackendAPIResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The app ID.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
+    inline const Aws::String& GetAppId() const { return m_appId; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    DeleteBackendAPIResult& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appId = value; }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appId = std::move(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const char* value) { m_appId.assign(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline DeleteBackendAPIResult& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline DeleteBackendAPIResult& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline DeleteBackendAPIResult& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment.</p>
      */
-    inline const Aws::String& GetBackendEnvironmentName() const{ return m_backendEnvironmentName; }
+    inline const Aws::String& GetBackendEnvironmentName() const { return m_backendEnvironmentName; }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    void SetBackendEnvironmentName(BackendEnvironmentNameT&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::forward<BackendEnvironmentNameT>(value); }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    DeleteBackendAPIResult& WithBackendEnvironmentName(BackendEnvironmentNameT&& value) { SetBackendEnvironmentName(std::forward<BackendEnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const Aws::String& value) { m_backendEnvironmentName = value; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(Aws::String&& value) { m_backendEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const char* value) { m_backendEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline DeleteBackendAPIResult& WithBackendEnvironmentName(const Aws::String& value) { SetBackendEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline DeleteBackendAPIResult& WithBackendEnvironmentName(Aws::String&& value) { SetBackendEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline DeleteBackendAPIResult& WithBackendEnvironmentName(const char* value) { SetBackendEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the request fails, this error is returned.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
+    inline const Aws::String& GetError() const { return m_error; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    DeleteBackendAPIResult& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_error = value; }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_error = std::move(value); }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline void SetError(const char* value) { m_error.assign(value); }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline DeleteBackendAPIResult& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline DeleteBackendAPIResult& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline DeleteBackendAPIResult& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
+    inline const Aws::String& GetJobId() const { return m_jobId; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    DeleteBackendAPIResult& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobId = value; }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobId = std::move(value); }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobId.assign(value); }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline DeleteBackendAPIResult& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline DeleteBackendAPIResult& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline DeleteBackendAPIResult& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the operation.</p>
      */
-    inline const Aws::String& GetOperation() const{ return m_operation; }
+    inline const Aws::String& GetOperation() const { return m_operation; }
+    template<typename OperationT = Aws::String>
+    void SetOperation(OperationT&& value) { m_operationHasBeenSet = true; m_operation = std::forward<OperationT>(value); }
+    template<typename OperationT = Aws::String>
+    DeleteBackendAPIResult& WithOperation(OperationT&& value) { SetOperation(std::forward<OperationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline void SetOperation(const Aws::String& value) { m_operation = value; }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline void SetOperation(Aws::String&& value) { m_operation = std::move(value); }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline void SetOperation(const char* value) { m_operation.assign(value); }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline DeleteBackendAPIResult& WithOperation(const Aws::String& value) { SetOperation(value); return *this;}
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline DeleteBackendAPIResult& WithOperation(Aws::String&& value) { SetOperation(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline DeleteBackendAPIResult& WithOperation(const char* value) { SetOperation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the request.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
+    inline const Aws::String& GetStatus() const { return m_status; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    DeleteBackendAPIResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_status = value; }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(const char* value) { m_status.assign(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline DeleteBackendAPIResult& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline DeleteBackendAPIResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline DeleteBackendAPIResult& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteBackendAPIResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteBackendAPIResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteBackendAPIResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteBackendAPIResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;
+    bool m_appIdHasBeenSet = false;
 
     Aws::String m_backendEnvironmentName;
+    bool m_backendEnvironmentNameHasBeenSet = false;
 
     Aws::String m_error;
+    bool m_errorHasBeenSet = false;
 
     Aws::String m_jobId;
+    bool m_jobIdHasBeenSet = false;
 
     Aws::String m_operation;
+    bool m_operationHasBeenSet = false;
 
     Aws::String m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -10,16 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribePoliciesRequest::DescribePoliciesRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_policyNamesHasBeenSet(false),
-    m_policyTypesHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribePoliciesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -31,23 +21,37 @@ Aws::String DescribePoliciesRequest::SerializePayload() const
 
   if(m_policyNamesHasBeenSet)
   {
-    unsigned policyNamesCount = 1;
-    for(auto& item : m_policyNames)
+    if (m_policyNames.empty())
     {
-      ss << "PolicyNames.member." << policyNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyNamesCount++;
+      ss << "PolicyNames=&";
+    }
+    else
+    {
+      unsigned policyNamesCount = 1;
+      for(auto& item : m_policyNames)
+      {
+        ss << "PolicyNames.member." << policyNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyNamesCount++;
+      }
     }
   }
 
   if(m_policyTypesHasBeenSet)
   {
-    unsigned policyTypesCount = 1;
-    for(auto& item : m_policyTypes)
+    if (m_policyTypes.empty())
     {
-      ss << "PolicyTypes.member." << policyTypesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyTypesCount++;
+      ss << "PolicyTypes=&";
+    }
+    else
+    {
+      unsigned policyTypesCount = 1;
+      for(auto& item : m_policyTypes)
+      {
+        ss << "PolicyTypes.member." << policyTypesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyTypesCount++;
+      }
     }
   }
 

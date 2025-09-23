@@ -10,44 +10,28 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ListTypesRequest::ListTypesRequest() : 
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false),
-    m_provisioningType(ProvisioningType::NOT_SET),
-    m_provisioningTypeHasBeenSet(false),
-    m_deprecatedStatus(DeprecatedStatus::NOT_SET),
-    m_deprecatedStatusHasBeenSet(false),
-    m_type(RegistryType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListTypesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ListTypes&";
   if(m_visibilityHasBeenSet)
   {
-    ss << "Visibility=" << VisibilityMapper::GetNameForVisibility(m_visibility) << "&";
+    ss << "Visibility=" << StringUtils::URLEncode(VisibilityMapper::GetNameForVisibility(m_visibility)) << "&";
   }
 
   if(m_provisioningTypeHasBeenSet)
   {
-    ss << "ProvisioningType=" << ProvisioningTypeMapper::GetNameForProvisioningType(m_provisioningType) << "&";
+    ss << "ProvisioningType=" << StringUtils::URLEncode(ProvisioningTypeMapper::GetNameForProvisioningType(m_provisioningType)) << "&";
   }
 
   if(m_deprecatedStatusHasBeenSet)
   {
-    ss << "DeprecatedStatus=" << DeprecatedStatusMapper::GetNameForDeprecatedStatus(m_deprecatedStatus) << "&";
+    ss << "DeprecatedStatus=" << StringUtils::URLEncode(DeprecatedStatusMapper::GetNameForDeprecatedStatus(m_deprecatedStatus)) << "&";
   }
 
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << RegistryTypeMapper::GetNameForRegistryType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(RegistryTypeMapper::GetNameForRegistryType(m_type)) << "&";
   }
 
   if(m_filtersHasBeenSet)

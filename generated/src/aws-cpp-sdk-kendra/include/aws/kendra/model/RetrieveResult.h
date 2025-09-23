@@ -29,132 +29,56 @@ namespace Model
   class RetrieveResult
   {
   public:
-    AWS_KENDRA_API RetrieveResult();
+    AWS_KENDRA_API RetrieveResult() = default;
     AWS_KENDRA_API RetrieveResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KENDRA_API RetrieveResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The identifier of query used for the search. You also use
      * <code>QueryId</code> to identify the search when using the <a
      * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
      * API.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    RetrieveResult& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of query used for the search. You also use
-     * <code>QueryId</code> to identify the search when using the <a
-     * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
-     * API.</p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryId = value; }
-
-    /**
-     * <p>The identifier of query used for the search. You also use
-     * <code>QueryId</code> to identify the search when using the <a
-     * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
-     * API.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryId = std::move(value); }
-
-    /**
-     * <p>The identifier of query used for the search. You also use
-     * <code>QueryId</code> to identify the search when using the <a
-     * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
-     * API.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryId.assign(value); }
-
-    /**
-     * <p>The identifier of query used for the search. You also use
-     * <code>QueryId</code> to identify the search when using the <a
-     * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
-     * API.</p>
-     */
-    inline RetrieveResult& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The identifier of query used for the search. You also use
-     * <code>QueryId</code> to identify the search when using the <a
-     * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
-     * API.</p>
-     */
-    inline RetrieveResult& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of query used for the search. You also use
-     * <code>QueryId</code> to identify the search when using the <a
-     * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_SubmitFeedback.html">Submitfeedback</a>
-     * API.</p>
-     */
-    inline RetrieveResult& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The results of the retrieved relevant passages for the search.</p>
      */
-    inline const Aws::Vector<RetrieveResultItem>& GetResultItems() const{ return m_resultItems; }
+    inline const Aws::Vector<RetrieveResultItem>& GetResultItems() const { return m_resultItems; }
+    template<typename ResultItemsT = Aws::Vector<RetrieveResultItem>>
+    void SetResultItems(ResultItemsT&& value) { m_resultItemsHasBeenSet = true; m_resultItems = std::forward<ResultItemsT>(value); }
+    template<typename ResultItemsT = Aws::Vector<RetrieveResultItem>>
+    RetrieveResult& WithResultItems(ResultItemsT&& value) { SetResultItems(std::forward<ResultItemsT>(value)); return *this;}
+    template<typename ResultItemsT = RetrieveResultItem>
+    RetrieveResult& AddResultItems(ResultItemsT&& value) { m_resultItemsHasBeenSet = true; m_resultItems.emplace_back(std::forward<ResultItemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The results of the retrieved relevant passages for the search.</p>
-     */
-    inline void SetResultItems(const Aws::Vector<RetrieveResultItem>& value) { m_resultItems = value; }
-
-    /**
-     * <p>The results of the retrieved relevant passages for the search.</p>
-     */
-    inline void SetResultItems(Aws::Vector<RetrieveResultItem>&& value) { m_resultItems = std::move(value); }
-
-    /**
-     * <p>The results of the retrieved relevant passages for the search.</p>
-     */
-    inline RetrieveResult& WithResultItems(const Aws::Vector<RetrieveResultItem>& value) { SetResultItems(value); return *this;}
-
-    /**
-     * <p>The results of the retrieved relevant passages for the search.</p>
-     */
-    inline RetrieveResult& WithResultItems(Aws::Vector<RetrieveResultItem>&& value) { SetResultItems(std::move(value)); return *this;}
-
-    /**
-     * <p>The results of the retrieved relevant passages for the search.</p>
-     */
-    inline RetrieveResult& AddResultItems(const RetrieveResultItem& value) { m_resultItems.push_back(value); return *this; }
-
-    /**
-     * <p>The results of the retrieved relevant passages for the search.</p>
-     */
-    inline RetrieveResult& AddResultItems(RetrieveResultItem&& value) { m_resultItems.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline RetrieveResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline RetrieveResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline RetrieveResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    RetrieveResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;
+    bool m_queryIdHasBeenSet = false;
 
     Aws::Vector<RetrieveResultItem> m_resultItems;
+    bool m_resultItemsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

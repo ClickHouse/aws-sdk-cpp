@@ -34,138 +34,54 @@ namespace Model
   class BlacklistEntry
   {
   public:
-    AWS_SESV2_API BlacklistEntry();
+    AWS_SESV2_API BlacklistEntry() = default;
     AWS_SESV2_API BlacklistEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API BlacklistEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the blacklist that the IP address appears on.</p>
      */
-    inline const Aws::String& GetRblName() const{ return m_rblName; }
-
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
+    inline const Aws::String& GetRblName() const { return m_rblName; }
     inline bool RblNameHasBeenSet() const { return m_rblNameHasBeenSet; }
+    template<typename RblNameT = Aws::String>
+    void SetRblName(RblNameT&& value) { m_rblNameHasBeenSet = true; m_rblName = std::forward<RblNameT>(value); }
+    template<typename RblNameT = Aws::String>
+    BlacklistEntry& WithRblName(RblNameT&& value) { SetRblName(std::forward<RblNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
-    inline void SetRblName(const Aws::String& value) { m_rblNameHasBeenSet = true; m_rblName = value; }
-
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
-    inline void SetRblName(Aws::String&& value) { m_rblNameHasBeenSet = true; m_rblName = std::move(value); }
-
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
-    inline void SetRblName(const char* value) { m_rblNameHasBeenSet = true; m_rblName.assign(value); }
-
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
-    inline BlacklistEntry& WithRblName(const Aws::String& value) { SetRblName(value); return *this;}
-
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
-    inline BlacklistEntry& WithRblName(Aws::String&& value) { SetRblName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the blacklist that the IP address appears on.</p>
-     */
-    inline BlacklistEntry& WithRblName(const char* value) { SetRblName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the blacklisting event occurred.</p>
      */
-    inline const Aws::Utils::DateTime& GetListingTime() const{ return m_listingTime; }
-
-    /**
-     * <p>The time when the blacklisting event occurred.</p>
-     */
+    inline const Aws::Utils::DateTime& GetListingTime() const { return m_listingTime; }
     inline bool ListingTimeHasBeenSet() const { return m_listingTimeHasBeenSet; }
+    template<typename ListingTimeT = Aws::Utils::DateTime>
+    void SetListingTime(ListingTimeT&& value) { m_listingTimeHasBeenSet = true; m_listingTime = std::forward<ListingTimeT>(value); }
+    template<typename ListingTimeT = Aws::Utils::DateTime>
+    BlacklistEntry& WithListingTime(ListingTimeT&& value) { SetListingTime(std::forward<ListingTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the blacklisting event occurred.</p>
-     */
-    inline void SetListingTime(const Aws::Utils::DateTime& value) { m_listingTimeHasBeenSet = true; m_listingTime = value; }
-
-    /**
-     * <p>The time when the blacklisting event occurred.</p>
-     */
-    inline void SetListingTime(Aws::Utils::DateTime&& value) { m_listingTimeHasBeenSet = true; m_listingTime = std::move(value); }
-
-    /**
-     * <p>The time when the blacklisting event occurred.</p>
-     */
-    inline BlacklistEntry& WithListingTime(const Aws::Utils::DateTime& value) { SetListingTime(value); return *this;}
-
-    /**
-     * <p>The time when the blacklisting event occurred.</p>
-     */
-    inline BlacklistEntry& WithListingTime(Aws::Utils::DateTime&& value) { SetListingTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional information about the blacklisting event, as provided by the
      * blacklist maintainer.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
-    inline BlacklistEntry& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
-    inline BlacklistEntry& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional information about the blacklisting event, as provided by the
-     * blacklist maintainer.</p>
-     */
-    inline BlacklistEntry& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    BlacklistEntry& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_rblName;
     bool m_rblNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_listingTime;
+    Aws::Utils::DateTime m_listingTime{};
     bool m_listingTimeHasBeenSet = false;
 
     Aws::String m_description;

@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-NegativeValueConfiguration::NegativeValueConfiguration() : 
-    m_displayMode(NegativeValueDisplayMode::NOT_SET),
-    m_displayModeHasBeenSet(false)
-{
-}
-
-NegativeValueConfiguration::NegativeValueConfiguration(JsonView jsonValue) : 
-    m_displayMode(NegativeValueDisplayMode::NOT_SET),
-    m_displayModeHasBeenSet(false)
+NegativeValueConfiguration::NegativeValueConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NegativeValueConfiguration& NegativeValueConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("DisplayMode"))
   {
     m_displayMode = NegativeValueDisplayModeMapper::GetNegativeValueDisplayModeForName(jsonValue.GetString("DisplayMode"));
-
     m_displayModeHasBeenSet = true;
   }
-
   return *this;
 }
 

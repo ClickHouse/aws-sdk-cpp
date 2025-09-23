@@ -33,83 +33,35 @@ namespace Model
   class AttributeNameAndValue
   {
   public:
-    AWS_CLOUDDIRECTORY_API AttributeNameAndValue();
+    AWS_CLOUDDIRECTORY_API AttributeNameAndValue() = default;
     AWS_CLOUDDIRECTORY_API AttributeNameAndValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API AttributeNameAndValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attribute name of the typed link.</p>
      */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    AttributeNameAndValue& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
-    inline AttributeNameAndValue& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
-    inline AttributeNameAndValue& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The attribute name of the typed link.</p>
-     */
-    inline AttributeNameAndValue& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the typed link.</p>
      */
-    inline const TypedAttributeValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value for the typed link.</p>
-     */
+    inline const TypedAttributeValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value for the typed link.</p>
-     */
-    inline void SetValue(const TypedAttributeValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value for the typed link.</p>
-     */
-    inline void SetValue(TypedAttributeValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value for the typed link.</p>
-     */
-    inline AttributeNameAndValue& WithValue(const TypedAttributeValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value for the typed link.</p>
-     */
-    inline AttributeNameAndValue& WithValue(TypedAttributeValue&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = TypedAttributeValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = TypedAttributeValue>
+    AttributeNameAndValue& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_attributeName;

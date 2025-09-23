@@ -20,23 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-GlobalReplicationGroupMember::GlobalReplicationGroupMember() : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_replicationGroupRegionHasBeenSet(false),
-    m_roleHasBeenSet(false),
-    m_automaticFailover(AutomaticFailoverStatus::NOT_SET),
-    m_automaticFailoverHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-GlobalReplicationGroupMember::GlobalReplicationGroupMember(const XmlNode& xmlNode) : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_replicationGroupRegionHasBeenSet(false),
-    m_roleHasBeenSet(false),
-    m_automaticFailover(AutomaticFailoverStatus::NOT_SET),
-    m_automaticFailoverHasBeenSet(false),
-    m_statusHasBeenSet(false)
+GlobalReplicationGroupMember::GlobalReplicationGroupMember(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +52,7 @@ GlobalReplicationGroupMember& GlobalReplicationGroupMember::operator =(const Xml
     XmlNode automaticFailoverNode = resultNode.FirstChild("AutomaticFailover");
     if(!automaticFailoverNode.IsNull())
     {
-      m_automaticFailover = AutomaticFailoverStatusMapper::GetAutomaticFailoverStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(automaticFailoverNode.GetText()).c_str()).c_str());
+      m_automaticFailover = AutomaticFailoverStatusMapper::GetAutomaticFailoverStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(automaticFailoverNode.GetText()).c_str()));
       m_automaticFailoverHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
@@ -101,7 +85,7 @@ void GlobalReplicationGroupMember::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_automaticFailoverHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutomaticFailover=" << AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover) << "&";
+      oStream << location << index << locationValue << ".AutomaticFailover=" << StringUtils::URLEncode(AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover)) << "&";
   }
 
   if(m_statusHasBeenSet)
@@ -127,7 +111,7 @@ void GlobalReplicationGroupMember::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_automaticFailoverHasBeenSet)
   {
-      oStream << location << ".AutomaticFailover=" << AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover) << "&";
+      oStream << location << ".AutomaticFailover=" << StringUtils::URLEncode(AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover)) << "&";
   }
   if(m_statusHasBeenSet)
   {

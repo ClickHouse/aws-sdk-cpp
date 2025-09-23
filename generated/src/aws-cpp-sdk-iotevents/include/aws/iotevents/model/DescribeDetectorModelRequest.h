@@ -25,7 +25,7 @@ namespace Model
   class DescribeDetectorModelRequest : public IoTEventsRequest
   {
   public:
-    AWS_IOTEVENTS_API DescribeDetectorModelRequest();
+    AWS_IOTEVENTS_API DescribeDetectorModelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,87 +38,29 @@ namespace Model
     AWS_IOTEVENTS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the detector model.</p>
      */
-    inline const Aws::String& GetDetectorModelName() const{ return m_detectorModelName; }
-
-    /**
-     * <p>The name of the detector model.</p>
-     */
+    inline const Aws::String& GetDetectorModelName() const { return m_detectorModelName; }
     inline bool DetectorModelNameHasBeenSet() const { return m_detectorModelNameHasBeenSet; }
+    template<typename DetectorModelNameT = Aws::String>
+    void SetDetectorModelName(DetectorModelNameT&& value) { m_detectorModelNameHasBeenSet = true; m_detectorModelName = std::forward<DetectorModelNameT>(value); }
+    template<typename DetectorModelNameT = Aws::String>
+    DescribeDetectorModelRequest& WithDetectorModelName(DetectorModelNameT&& value) { SetDetectorModelName(std::forward<DetectorModelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the detector model.</p>
-     */
-    inline void SetDetectorModelName(const Aws::String& value) { m_detectorModelNameHasBeenSet = true; m_detectorModelName = value; }
-
-    /**
-     * <p>The name of the detector model.</p>
-     */
-    inline void SetDetectorModelName(Aws::String&& value) { m_detectorModelNameHasBeenSet = true; m_detectorModelName = std::move(value); }
-
-    /**
-     * <p>The name of the detector model.</p>
-     */
-    inline void SetDetectorModelName(const char* value) { m_detectorModelNameHasBeenSet = true; m_detectorModelName.assign(value); }
-
-    /**
-     * <p>The name of the detector model.</p>
-     */
-    inline DescribeDetectorModelRequest& WithDetectorModelName(const Aws::String& value) { SetDetectorModelName(value); return *this;}
-
-    /**
-     * <p>The name of the detector model.</p>
-     */
-    inline DescribeDetectorModelRequest& WithDetectorModelName(Aws::String&& value) { SetDetectorModelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the detector model.</p>
-     */
-    inline DescribeDetectorModelRequest& WithDetectorModelName(const char* value) { SetDetectorModelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the detector model.</p>
      */
-    inline const Aws::String& GetDetectorModelVersion() const{ return m_detectorModelVersion; }
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
+    inline const Aws::String& GetDetectorModelVersion() const { return m_detectorModelVersion; }
     inline bool DetectorModelVersionHasBeenSet() const { return m_detectorModelVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
-    inline void SetDetectorModelVersion(const Aws::String& value) { m_detectorModelVersionHasBeenSet = true; m_detectorModelVersion = value; }
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
-    inline void SetDetectorModelVersion(Aws::String&& value) { m_detectorModelVersionHasBeenSet = true; m_detectorModelVersion = std::move(value); }
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
-    inline void SetDetectorModelVersion(const char* value) { m_detectorModelVersionHasBeenSet = true; m_detectorModelVersion.assign(value); }
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
-    inline DescribeDetectorModelRequest& WithDetectorModelVersion(const Aws::String& value) { SetDetectorModelVersion(value); return *this;}
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
-    inline DescribeDetectorModelRequest& WithDetectorModelVersion(Aws::String&& value) { SetDetectorModelVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the detector model.</p>
-     */
-    inline DescribeDetectorModelRequest& WithDetectorModelVersion(const char* value) { SetDetectorModelVersion(value); return *this;}
-
+    template<typename DetectorModelVersionT = Aws::String>
+    void SetDetectorModelVersion(DetectorModelVersionT&& value) { m_detectorModelVersionHasBeenSet = true; m_detectorModelVersion = std::forward<DetectorModelVersionT>(value); }
+    template<typename DetectorModelVersionT = Aws::String>
+    DescribeDetectorModelRequest& WithDetectorModelVersion(DetectorModelVersionT&& value) { SetDetectorModelVersion(std::forward<DetectorModelVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorModelName;

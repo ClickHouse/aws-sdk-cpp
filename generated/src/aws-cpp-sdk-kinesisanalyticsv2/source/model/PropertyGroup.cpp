@@ -18,15 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-PropertyGroup::PropertyGroup() : 
-    m_propertyGroupIdHasBeenSet(false),
-    m_propertyMapHasBeenSet(false)
-{
-}
-
-PropertyGroup::PropertyGroup(JsonView jsonValue) : 
-    m_propertyGroupIdHasBeenSet(false),
-    m_propertyMapHasBeenSet(false)
+PropertyGroup::PropertyGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PropertyGroup& PropertyGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PropertyGroupId"))
   {
     m_propertyGroupId = jsonValue.GetString("PropertyGroupId");
-
     m_propertyGroupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PropertyMap"))
   {
     Aws::Map<Aws::String, JsonView> propertyMapJsonMap = jsonValue.GetObject("PropertyMap").GetAllObjects();
@@ -49,7 +39,6 @@ PropertyGroup& PropertyGroup::operator =(JsonView jsonValue)
     }
     m_propertyMapHasBeenSet = true;
   }
-
   return *this;
 }
 

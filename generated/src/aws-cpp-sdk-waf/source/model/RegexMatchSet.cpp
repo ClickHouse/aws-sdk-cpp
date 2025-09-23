@@ -18,17 +18,7 @@ namespace WAF
 namespace Model
 {
 
-RegexMatchSet::RegexMatchSet() : 
-    m_regexMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_regexMatchTuplesHasBeenSet(false)
-{
-}
-
-RegexMatchSet::RegexMatchSet(JsonView jsonValue) : 
-    m_regexMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_regexMatchTuplesHasBeenSet(false)
+RegexMatchSet::RegexMatchSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RegexMatchSet& RegexMatchSet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RegexMatchSetId"))
   {
     m_regexMatchSetId = jsonValue.GetString("RegexMatchSetId");
-
     m_regexMatchSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RegexMatchTuples"))
   {
     Aws::Utils::Array<JsonView> regexMatchTuplesJsonList = jsonValue.GetArray("RegexMatchTuples");
@@ -58,7 +44,6 @@ RegexMatchSet& RegexMatchSet::operator =(JsonView jsonValue)
     }
     m_regexMatchTuplesHasBeenSet = true;
   }
-
   return *this;
 }
 

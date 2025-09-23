@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PrivateDnsNameOptionsResponse::PrivateDnsNameOptionsResponse() : 
-    m_hostnameType(HostnameType::NOT_SET),
-    m_hostnameTypeHasBeenSet(false),
-    m_enableResourceNameDnsARecord(false),
-    m_enableResourceNameDnsARecordHasBeenSet(false),
-    m_enableResourceNameDnsAAAARecord(false),
-    m_enableResourceNameDnsAAAARecordHasBeenSet(false)
-{
-}
-
-PrivateDnsNameOptionsResponse::PrivateDnsNameOptionsResponse(const XmlNode& xmlNode) : 
-    m_hostnameType(HostnameType::NOT_SET),
-    m_hostnameTypeHasBeenSet(false),
-    m_enableResourceNameDnsARecord(false),
-    m_enableResourceNameDnsARecordHasBeenSet(false),
-    m_enableResourceNameDnsAAAARecord(false),
-    m_enableResourceNameDnsAAAARecordHasBeenSet(false)
+PrivateDnsNameOptionsResponse::PrivateDnsNameOptionsResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +34,7 @@ PrivateDnsNameOptionsResponse& PrivateDnsNameOptionsResponse::operator =(const X
     XmlNode hostnameTypeNode = resultNode.FirstChild("hostnameType");
     if(!hostnameTypeNode.IsNull())
     {
-      m_hostnameType = HostnameTypeMapper::GetHostnameTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hostnameTypeNode.GetText()).c_str()).c_str());
+      m_hostnameType = HostnameTypeMapper::GetHostnameTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hostnameTypeNode.GetText()).c_str()));
       m_hostnameTypeHasBeenSet = true;
     }
     XmlNode enableResourceNameDnsARecordNode = resultNode.FirstChild("enableResourceNameDnsARecord");
@@ -74,7 +58,7 @@ void PrivateDnsNameOptionsResponse::OutputToStream(Aws::OStream& oStream, const 
 {
   if(m_hostnameTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HostnameType=" << HostnameTypeMapper::GetNameForHostnameType(m_hostnameType) << "&";
+      oStream << location << index << locationValue << ".HostnameType=" << StringUtils::URLEncode(HostnameTypeMapper::GetNameForHostnameType(m_hostnameType)) << "&";
   }
 
   if(m_enableResourceNameDnsARecordHasBeenSet)
@@ -93,7 +77,7 @@ void PrivateDnsNameOptionsResponse::OutputToStream(Aws::OStream& oStream, const 
 {
   if(m_hostnameTypeHasBeenSet)
   {
-      oStream << location << ".HostnameType=" << HostnameTypeMapper::GetNameForHostnameType(m_hostnameType) << "&";
+      oStream << location << ".HostnameType=" << StringUtils::URLEncode(HostnameTypeMapper::GetNameForHostnameType(m_hostnameType)) << "&";
   }
   if(m_enableResourceNameDnsARecordHasBeenSet)
   {

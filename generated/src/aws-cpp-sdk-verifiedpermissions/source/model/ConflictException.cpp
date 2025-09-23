@@ -18,15 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-ConflictException::ConflictException() : 
-    m_messageHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
-{
-}
-
-ConflictException::ConflictException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourcesHasBeenSet(false)
+ConflictException::ConflictException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ConflictException& ConflictException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resources"))
   {
     Aws::Utils::Array<JsonView> resourcesJsonList = jsonValue.GetArray("resources");
@@ -49,7 +39,6 @@ ConflictException& ConflictException::operator =(JsonView jsonValue)
     }
     m_resourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

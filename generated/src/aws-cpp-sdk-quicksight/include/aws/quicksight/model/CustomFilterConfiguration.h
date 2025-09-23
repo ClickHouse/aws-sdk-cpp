@@ -35,184 +35,61 @@ namespace Model
   class CustomFilterConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API CustomFilterConfiguration();
+    AWS_QUICKSIGHT_API CustomFilterConfiguration() = default;
     AWS_QUICKSIGHT_API CustomFilterConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CustomFilterConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The match operator that is used to determine if a filter should be
      * applied.</p>
      */
-    inline const CategoryFilterMatchOperator& GetMatchOperator() const{ return m_matchOperator; }
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
+    inline CategoryFilterMatchOperator GetMatchOperator() const { return m_matchOperator; }
     inline bool MatchOperatorHasBeenSet() const { return m_matchOperatorHasBeenSet; }
+    inline void SetMatchOperator(CategoryFilterMatchOperator value) { m_matchOperatorHasBeenSet = true; m_matchOperator = value; }
+    inline CustomFilterConfiguration& WithMatchOperator(CategoryFilterMatchOperator value) { SetMatchOperator(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline void SetMatchOperator(const CategoryFilterMatchOperator& value) { m_matchOperatorHasBeenSet = true; m_matchOperator = value; }
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline void SetMatchOperator(CategoryFilterMatchOperator&& value) { m_matchOperatorHasBeenSet = true; m_matchOperator = std::move(value); }
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline CustomFilterConfiguration& WithMatchOperator(const CategoryFilterMatchOperator& value) { SetMatchOperator(value); return *this;}
-
-    /**
-     * <p>The match operator that is used to determine if a filter should be
-     * applied.</p>
-     */
-    inline CustomFilterConfiguration& WithMatchOperator(CategoryFilterMatchOperator&& value) { SetMatchOperator(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
      * <code>ParameterName</code>.</p>
      */
-    inline const Aws::String& GetCategoryValue() const{ return m_categoryValue; }
-
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
+    inline const Aws::String& GetCategoryValue() const { return m_categoryValue; }
     inline bool CategoryValueHasBeenSet() const { return m_categoryValueHasBeenSet; }
+    template<typename CategoryValueT = Aws::String>
+    void SetCategoryValue(CategoryValueT&& value) { m_categoryValueHasBeenSet = true; m_categoryValue = std::forward<CategoryValueT>(value); }
+    template<typename CategoryValueT = Aws::String>
+    CustomFilterConfiguration& WithCategoryValue(CategoryValueT&& value) { SetCategoryValue(std::forward<CategoryValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
-    inline void SetCategoryValue(const Aws::String& value) { m_categoryValueHasBeenSet = true; m_categoryValue = value; }
-
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
-    inline void SetCategoryValue(Aws::String&& value) { m_categoryValueHasBeenSet = true; m_categoryValue = std::move(value); }
-
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
-    inline void SetCategoryValue(const char* value) { m_categoryValueHasBeenSet = true; m_categoryValue.assign(value); }
-
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
-    inline CustomFilterConfiguration& WithCategoryValue(const Aws::String& value) { SetCategoryValue(value); return *this;}
-
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
-    inline CustomFilterConfiguration& WithCategoryValue(Aws::String&& value) { SetCategoryValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The category value for the filter.</p> <p>This field is mutually exclusive to
-     * <code>ParameterName</code>.</p>
-     */
-    inline CustomFilterConfiguration& WithCategoryValue(const char* value) { SetCategoryValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Select all of the values. Null is not the assigned value of select all.</p>
      * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
      */
-    inline const CategoryFilterSelectAllOptions& GetSelectAllOptions() const{ return m_selectAllOptions; }
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
+    inline CategoryFilterSelectAllOptions GetSelectAllOptions() const { return m_selectAllOptions; }
     inline bool SelectAllOptionsHasBeenSet() const { return m_selectAllOptionsHasBeenSet; }
+    inline void SetSelectAllOptions(CategoryFilterSelectAllOptions value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = value; }
+    inline CustomFilterConfiguration& WithSelectAllOptions(CategoryFilterSelectAllOptions value) { SetSelectAllOptions(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline void SetSelectAllOptions(const CategoryFilterSelectAllOptions& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = value; }
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline void SetSelectAllOptions(CategoryFilterSelectAllOptions&& value) { m_selectAllOptionsHasBeenSet = true; m_selectAllOptions = std::move(value); }
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline CustomFilterConfiguration& WithSelectAllOptions(const CategoryFilterSelectAllOptions& value) { SetSelectAllOptions(value); return *this;}
-
-    /**
-     * <p>Select all of the values. Null is not the assigned value of select all.</p>
-     * <ul> <li> <p> <code>FILTER_ALL_VALUES</code> </p> </li> </ul>
-     */
-    inline CustomFilterConfiguration& WithSelectAllOptions(CategoryFilterSelectAllOptions&& value) { SetSelectAllOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameter whose value should be used for the filter value.</p> <p>This
      * field is mutually exclusive to <code>CategoryValue</code>.</p>
      */
-    inline const Aws::String& GetParameterName() const{ return m_parameterName; }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
+    inline const Aws::String& GetParameterName() const { return m_parameterName; }
     inline bool ParameterNameHasBeenSet() const { return m_parameterNameHasBeenSet; }
+    template<typename ParameterNameT = Aws::String>
+    void SetParameterName(ParameterNameT&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::forward<ParameterNameT>(value); }
+    template<typename ParameterNameT = Aws::String>
+    CustomFilterConfiguration& WithParameterName(ParameterNameT&& value) { SetParameterName(std::forward<ParameterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
-    inline void SetParameterName(const Aws::String& value) { m_parameterNameHasBeenSet = true; m_parameterName = value; }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
-    inline void SetParameterName(Aws::String&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::move(value); }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
-    inline void SetParameterName(const char* value) { m_parameterNameHasBeenSet = true; m_parameterName.assign(value); }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
-    inline CustomFilterConfiguration& WithParameterName(const Aws::String& value) { SetParameterName(value); return *this;}
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
-    inline CustomFilterConfiguration& WithParameterName(Aws::String&& value) { SetParameterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p> <p>This
-     * field is mutually exclusive to <code>CategoryValue</code>.</p>
-     */
-    inline CustomFilterConfiguration& WithParameterName(const char* value) { SetParameterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This option determines how null values should be treated when filtering
      * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
@@ -220,68 +97,26 @@ namespace Model
      * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
      * values from filtered results.</p> </li> </ul>
      */
-    inline const FilterNullOption& GetNullOption() const{ return m_nullOption; }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
+    inline FilterNullOption GetNullOption() const { return m_nullOption; }
     inline bool NullOptionHasBeenSet() const { return m_nullOptionHasBeenSet; }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline void SetNullOption(const FilterNullOption& value) { m_nullOptionHasBeenSet = true; m_nullOption = value; }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline void SetNullOption(FilterNullOption&& value) { m_nullOptionHasBeenSet = true; m_nullOption = std::move(value); }
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline CustomFilterConfiguration& WithNullOption(const FilterNullOption& value) { SetNullOption(value); return *this;}
-
-    /**
-     * <p>This option determines how null values should be treated when filtering
-     * data.</p> <ul> <li> <p> <code>ALL_VALUES</code>: Include null values in filtered
-     * results.</p> </li> <li> <p> <code>NULLS_ONLY</code>: Only include null values in
-     * filtered results.</p> </li> <li> <p> <code>NON_NULLS_ONLY</code>: Exclude null
-     * values from filtered results.</p> </li> </ul>
-     */
-    inline CustomFilterConfiguration& WithNullOption(FilterNullOption&& value) { SetNullOption(std::move(value)); return *this;}
-
+    inline void SetNullOption(FilterNullOption value) { m_nullOptionHasBeenSet = true; m_nullOption = value; }
+    inline CustomFilterConfiguration& WithNullOption(FilterNullOption value) { SetNullOption(value); return *this;}
+    ///@}
   private:
 
-    CategoryFilterMatchOperator m_matchOperator;
+    CategoryFilterMatchOperator m_matchOperator{CategoryFilterMatchOperator::NOT_SET};
     bool m_matchOperatorHasBeenSet = false;
 
     Aws::String m_categoryValue;
     bool m_categoryValueHasBeenSet = false;
 
-    CategoryFilterSelectAllOptions m_selectAllOptions;
+    CategoryFilterSelectAllOptions m_selectAllOptions{CategoryFilterSelectAllOptions::NOT_SET};
     bool m_selectAllOptionsHasBeenSet = false;
 
     Aws::String m_parameterName;
     bool m_parameterNameHasBeenSet = false;
 
-    FilterNullOption m_nullOption;
+    FilterNullOption m_nullOption{FilterNullOption::NOT_SET};
     bool m_nullOptionHasBeenSet = false;
   };
 

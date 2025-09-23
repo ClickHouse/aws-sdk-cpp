@@ -18,19 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-ImportSortBy::ImportSortBy() : 
-    m_attribute(ImportSortAttribute::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_order(SortOrder::NOT_SET),
-    m_orderHasBeenSet(false)
-{
-}
-
-ImportSortBy::ImportSortBy(JsonView jsonValue) : 
-    m_attribute(ImportSortAttribute::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_order(SortOrder::NOT_SET),
-    m_orderHasBeenSet(false)
+ImportSortBy::ImportSortBy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ImportSortBy& ImportSortBy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("attribute"))
   {
     m_attribute = ImportSortAttributeMapper::GetImportSortAttributeForName(jsonValue.GetString("attribute"));
-
     m_attributeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("order"))
   {
     m_order = SortOrderMapper::GetSortOrderForName(jsonValue.GetString("order"));
-
     m_orderHasBeenSet = true;
   }
-
   return *this;
 }
 

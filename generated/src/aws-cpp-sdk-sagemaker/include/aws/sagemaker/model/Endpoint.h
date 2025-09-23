@@ -38,523 +38,168 @@ namespace Model
   class Endpoint
   {
   public:
-    AWS_SAGEMAKER_API Endpoint();
+    AWS_SAGEMAKER_API Endpoint() = default;
     AWS_SAGEMAKER_API Endpoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Endpoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the endpoint.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    Endpoint& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
      */
-    inline const Aws::String& GetEndpointArn() const{ return m_endpointArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
+    inline const Aws::String& GetEndpointArn() const { return m_endpointArn; }
     inline bool EndpointArnHasBeenSet() const { return m_endpointArnHasBeenSet; }
+    template<typename EndpointArnT = Aws::String>
+    void SetEndpointArn(EndpointArnT&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::forward<EndpointArnT>(value); }
+    template<typename EndpointArnT = Aws::String>
+    Endpoint& WithEndpointArn(EndpointArnT&& value) { SetEndpointArn(std::forward<EndpointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
-    inline void SetEndpointArn(const Aws::String& value) { m_endpointArnHasBeenSet = true; m_endpointArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
-    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
-    inline void SetEndpointArn(const char* value) { m_endpointArnHasBeenSet = true; m_endpointArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointArn(const Aws::String& value) { SetEndpointArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointArn(Aws::String&& value) { SetEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointArn(const char* value) { SetEndpointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint configuration associated with the endpoint.</p>
      */
-    inline const Aws::String& GetEndpointConfigName() const{ return m_endpointConfigName; }
-
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
+    inline const Aws::String& GetEndpointConfigName() const { return m_endpointConfigName; }
     inline bool EndpointConfigNameHasBeenSet() const { return m_endpointConfigNameHasBeenSet; }
+    template<typename EndpointConfigNameT = Aws::String>
+    void SetEndpointConfigName(EndpointConfigNameT&& value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName = std::forward<EndpointConfigNameT>(value); }
+    template<typename EndpointConfigNameT = Aws::String>
+    Endpoint& WithEndpointConfigName(EndpointConfigNameT&& value) { SetEndpointConfigName(std::forward<EndpointConfigNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
-    inline void SetEndpointConfigName(const Aws::String& value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName = value; }
-
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
-    inline void SetEndpointConfigName(Aws::String&& value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName = std::move(value); }
-
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
-    inline void SetEndpointConfigName(const char* value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName.assign(value); }
-
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointConfigName(const Aws::String& value) { SetEndpointConfigName(value); return *this;}
-
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointConfigName(Aws::String&& value) { SetEndpointConfigName(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint configuration associated with the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointConfigName(const char* value) { SetEndpointConfigName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the production variants hosted on the endpoint. Each production
      * variant is a model.</p>
      */
-    inline const Aws::Vector<ProductionVariantSummary>& GetProductionVariants() const{ return m_productionVariants; }
-
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
+    inline const Aws::Vector<ProductionVariantSummary>& GetProductionVariants() const { return m_productionVariants; }
     inline bool ProductionVariantsHasBeenSet() const { return m_productionVariantsHasBeenSet; }
+    template<typename ProductionVariantsT = Aws::Vector<ProductionVariantSummary>>
+    void SetProductionVariants(ProductionVariantsT&& value) { m_productionVariantsHasBeenSet = true; m_productionVariants = std::forward<ProductionVariantsT>(value); }
+    template<typename ProductionVariantsT = Aws::Vector<ProductionVariantSummary>>
+    Endpoint& WithProductionVariants(ProductionVariantsT&& value) { SetProductionVariants(std::forward<ProductionVariantsT>(value)); return *this;}
+    template<typename ProductionVariantsT = ProductionVariantSummary>
+    Endpoint& AddProductionVariants(ProductionVariantsT&& value) { m_productionVariantsHasBeenSet = true; m_productionVariants.emplace_back(std::forward<ProductionVariantsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
-    inline void SetProductionVariants(const Aws::Vector<ProductionVariantSummary>& value) { m_productionVariantsHasBeenSet = true; m_productionVariants = value; }
-
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
-    inline void SetProductionVariants(Aws::Vector<ProductionVariantSummary>&& value) { m_productionVariantsHasBeenSet = true; m_productionVariants = std::move(value); }
-
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
-    inline Endpoint& WithProductionVariants(const Aws::Vector<ProductionVariantSummary>& value) { SetProductionVariants(value); return *this;}
-
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
-    inline Endpoint& WithProductionVariants(Aws::Vector<ProductionVariantSummary>&& value) { SetProductionVariants(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
-    inline Endpoint& AddProductionVariants(const ProductionVariantSummary& value) { m_productionVariantsHasBeenSet = true; m_productionVariants.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the production variants hosted on the endpoint. Each production
-     * variant is a model.</p>
-     */
-    inline Endpoint& AddProductionVariants(ProductionVariantSummary&& value) { m_productionVariantsHasBeenSet = true; m_productionVariants.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const DataCaptureConfigSummary& GetDataCaptureConfig() const{ return m_dataCaptureConfig; }
-
-    
+    inline const DataCaptureConfigSummary& GetDataCaptureConfig() const { return m_dataCaptureConfig; }
     inline bool DataCaptureConfigHasBeenSet() const { return m_dataCaptureConfigHasBeenSet; }
+    template<typename DataCaptureConfigT = DataCaptureConfigSummary>
+    void SetDataCaptureConfig(DataCaptureConfigT&& value) { m_dataCaptureConfigHasBeenSet = true; m_dataCaptureConfig = std::forward<DataCaptureConfigT>(value); }
+    template<typename DataCaptureConfigT = DataCaptureConfigSummary>
+    Endpoint& WithDataCaptureConfig(DataCaptureConfigT&& value) { SetDataCaptureConfig(std::forward<DataCaptureConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDataCaptureConfig(const DataCaptureConfigSummary& value) { m_dataCaptureConfigHasBeenSet = true; m_dataCaptureConfig = value; }
-
-    
-    inline void SetDataCaptureConfig(DataCaptureConfigSummary&& value) { m_dataCaptureConfigHasBeenSet = true; m_dataCaptureConfig = std::move(value); }
-
-    
-    inline Endpoint& WithDataCaptureConfig(const DataCaptureConfigSummary& value) { SetDataCaptureConfig(value); return *this;}
-
-    
-    inline Endpoint& WithDataCaptureConfig(DataCaptureConfigSummary&& value) { SetDataCaptureConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the endpoint.</p>
      */
-    inline const EndpointStatus& GetEndpointStatus() const{ return m_endpointStatus; }
-
-    /**
-     * <p>The status of the endpoint.</p>
-     */
+    inline EndpointStatus GetEndpointStatus() const { return m_endpointStatus; }
     inline bool EndpointStatusHasBeenSet() const { return m_endpointStatusHasBeenSet; }
+    inline void SetEndpointStatus(EndpointStatus value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = value; }
+    inline Endpoint& WithEndpointStatus(EndpointStatus value) { SetEndpointStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the endpoint.</p>
-     */
-    inline void SetEndpointStatus(const EndpointStatus& value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = value; }
-
-    /**
-     * <p>The status of the endpoint.</p>
-     */
-    inline void SetEndpointStatus(EndpointStatus&& value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = std::move(value); }
-
-    /**
-     * <p>The status of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointStatus(const EndpointStatus& value) { SetEndpointStatus(value); return *this;}
-
-    /**
-     * <p>The status of the endpoint.</p>
-     */
-    inline Endpoint& WithEndpointStatus(EndpointStatus&& value) { SetEndpointStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the endpoint failed, the reason it failed.</p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    Endpoint& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
-    inline Endpoint& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
-    inline Endpoint& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>If the endpoint failed, the reason it failed.</p>
-     */
-    inline Endpoint& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the endpoint was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The time that the endpoint was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    Endpoint& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the endpoint was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The time that the endpoint was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time that the endpoint was created.</p>
-     */
-    inline Endpoint& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time that the endpoint was created.</p>
-     */
-    inline Endpoint& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the endpoint was modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>The last time the endpoint was modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    Endpoint& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time the endpoint was modified.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>The last time the endpoint was modified.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The last time the endpoint was modified.</p>
-     */
-    inline Endpoint& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The last time the endpoint was modified.</p>
-     */
-    inline Endpoint& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of monitoring schedules for the endpoint. For information about model
      * monitoring, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
      * SageMaker Model Monitor</a>.</p>
      */
-    inline const Aws::Vector<MonitoringSchedule>& GetMonitoringSchedules() const{ return m_monitoringSchedules; }
-
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
+    inline const Aws::Vector<MonitoringSchedule>& GetMonitoringSchedules() const { return m_monitoringSchedules; }
     inline bool MonitoringSchedulesHasBeenSet() const { return m_monitoringSchedulesHasBeenSet; }
+    template<typename MonitoringSchedulesT = Aws::Vector<MonitoringSchedule>>
+    void SetMonitoringSchedules(MonitoringSchedulesT&& value) { m_monitoringSchedulesHasBeenSet = true; m_monitoringSchedules = std::forward<MonitoringSchedulesT>(value); }
+    template<typename MonitoringSchedulesT = Aws::Vector<MonitoringSchedule>>
+    Endpoint& WithMonitoringSchedules(MonitoringSchedulesT&& value) { SetMonitoringSchedules(std::forward<MonitoringSchedulesT>(value)); return *this;}
+    template<typename MonitoringSchedulesT = MonitoringSchedule>
+    Endpoint& AddMonitoringSchedules(MonitoringSchedulesT&& value) { m_monitoringSchedulesHasBeenSet = true; m_monitoringSchedules.emplace_back(std::forward<MonitoringSchedulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
-    inline void SetMonitoringSchedules(const Aws::Vector<MonitoringSchedule>& value) { m_monitoringSchedulesHasBeenSet = true; m_monitoringSchedules = value; }
-
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
-    inline void SetMonitoringSchedules(Aws::Vector<MonitoringSchedule>&& value) { m_monitoringSchedulesHasBeenSet = true; m_monitoringSchedules = std::move(value); }
-
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
-    inline Endpoint& WithMonitoringSchedules(const Aws::Vector<MonitoringSchedule>& value) { SetMonitoringSchedules(value); return *this;}
-
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
-    inline Endpoint& WithMonitoringSchedules(Aws::Vector<MonitoringSchedule>&& value) { SetMonitoringSchedules(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
-    inline Endpoint& AddMonitoringSchedules(const MonitoringSchedule& value) { m_monitoringSchedulesHasBeenSet = true; m_monitoringSchedules.push_back(value); return *this; }
-
-    /**
-     * <p>A list of monitoring schedules for the endpoint. For information about model
-     * monitoring, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">Amazon
-     * SageMaker Model Monitor</a>.</p>
-     */
-    inline Endpoint& AddMonitoringSchedules(MonitoringSchedule&& value) { m_monitoringSchedulesHasBeenSet = true; m_monitoringSchedules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the tags associated with the endpoint. For more information, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
      * Amazon Web Services resources</a> in the <i>Amazon Web Services General
      * Reference Guide</i>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    Endpoint& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    Endpoint& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
-    inline Endpoint& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
-    inline Endpoint& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
-    inline Endpoint& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the tags associated with the endpoint. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p>
-     */
-    inline Endpoint& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
      * a model in shadow mode with production traffic replicated from the production
      * variant.</p>
      */
-    inline const Aws::Vector<ProductionVariantSummary>& GetShadowProductionVariants() const{ return m_shadowProductionVariants; }
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
+    inline const Aws::Vector<ProductionVariantSummary>& GetShadowProductionVariants() const { return m_shadowProductionVariants; }
     inline bool ShadowProductionVariantsHasBeenSet() const { return m_shadowProductionVariantsHasBeenSet; }
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
-    inline void SetShadowProductionVariants(const Aws::Vector<ProductionVariantSummary>& value) { m_shadowProductionVariantsHasBeenSet = true; m_shadowProductionVariants = value; }
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
-    inline void SetShadowProductionVariants(Aws::Vector<ProductionVariantSummary>&& value) { m_shadowProductionVariantsHasBeenSet = true; m_shadowProductionVariants = std::move(value); }
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
-    inline Endpoint& WithShadowProductionVariants(const Aws::Vector<ProductionVariantSummary>& value) { SetShadowProductionVariants(value); return *this;}
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
-    inline Endpoint& WithShadowProductionVariants(Aws::Vector<ProductionVariantSummary>&& value) { SetShadowProductionVariants(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
-    inline Endpoint& AddShadowProductionVariants(const ProductionVariantSummary& value) { m_shadowProductionVariantsHasBeenSet = true; m_shadowProductionVariants.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the shadow variants hosted on the endpoint. Each shadow variant is
-     * a model in shadow mode with production traffic replicated from the production
-     * variant.</p>
-     */
-    inline Endpoint& AddShadowProductionVariants(ProductionVariantSummary&& value) { m_shadowProductionVariantsHasBeenSet = true; m_shadowProductionVariants.push_back(std::move(value)); return *this; }
-
+    template<typename ShadowProductionVariantsT = Aws::Vector<ProductionVariantSummary>>
+    void SetShadowProductionVariants(ShadowProductionVariantsT&& value) { m_shadowProductionVariantsHasBeenSet = true; m_shadowProductionVariants = std::forward<ShadowProductionVariantsT>(value); }
+    template<typename ShadowProductionVariantsT = Aws::Vector<ProductionVariantSummary>>
+    Endpoint& WithShadowProductionVariants(ShadowProductionVariantsT&& value) { SetShadowProductionVariants(std::forward<ShadowProductionVariantsT>(value)); return *this;}
+    template<typename ShadowProductionVariantsT = ProductionVariantSummary>
+    Endpoint& AddShadowProductionVariants(ShadowProductionVariantsT&& value) { m_shadowProductionVariantsHasBeenSet = true; m_shadowProductionVariants.emplace_back(std::forward<ShadowProductionVariantsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_endpointName;
@@ -572,16 +217,16 @@ namespace Model
     DataCaptureConfigSummary m_dataCaptureConfig;
     bool m_dataCaptureConfigHasBeenSet = false;
 
-    EndpointStatus m_endpointStatus;
+    EndpointStatus m_endpointStatus{EndpointStatus::NOT_SET};
     bool m_endpointStatusHasBeenSet = false;
 
     Aws::String m_failureReason;
     bool m_failureReasonHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::Vector<MonitoringSchedule> m_monitoringSchedules;

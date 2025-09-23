@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-HibernationOptions::HibernationOptions() : 
-    m_configured(false),
-    m_configuredHasBeenSet(false)
-{
-}
-
-HibernationOptions::HibernationOptions(const XmlNode& xmlNode) : 
-    m_configured(false),
-    m_configuredHasBeenSet(false)
+HibernationOptions::HibernationOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

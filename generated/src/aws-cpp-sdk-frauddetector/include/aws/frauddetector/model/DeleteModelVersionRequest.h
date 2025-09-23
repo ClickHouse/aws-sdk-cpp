@@ -22,7 +22,7 @@ namespace Model
   class DeleteModelVersionRequest : public FraudDetectorRequest
   {
   public:
-    AWS_FRAUDDETECTOR_API DeleteModelVersionRequest();
+    AWS_FRAUDDETECTOR_API DeleteModelVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,124 +35,45 @@ namespace Model
     AWS_FRAUDDETECTOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The model ID of the model version to delete.</p>
      */
-    inline const Aws::String& GetModelId() const{ return m_modelId; }
-
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
+    inline const Aws::String& GetModelId() const { return m_modelId; }
     inline bool ModelIdHasBeenSet() const { return m_modelIdHasBeenSet; }
+    template<typename ModelIdT = Aws::String>
+    void SetModelId(ModelIdT&& value) { m_modelIdHasBeenSet = true; m_modelId = std::forward<ModelIdT>(value); }
+    template<typename ModelIdT = Aws::String>
+    DeleteModelVersionRequest& WithModelId(ModelIdT&& value) { SetModelId(std::forward<ModelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
-    inline void SetModelId(const Aws::String& value) { m_modelIdHasBeenSet = true; m_modelId = value; }
-
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
-    inline void SetModelId(Aws::String&& value) { m_modelIdHasBeenSet = true; m_modelId = std::move(value); }
-
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
-    inline void SetModelId(const char* value) { m_modelIdHasBeenSet = true; m_modelId.assign(value); }
-
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelId(const Aws::String& value) { SetModelId(value); return *this;}
-
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelId(Aws::String&& value) { SetModelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The model ID of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelId(const char* value) { SetModelId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The model type of the model version to delete.</p>
      */
-    inline const ModelTypeEnum& GetModelType() const{ return m_modelType; }
-
-    /**
-     * <p>The model type of the model version to delete.</p>
-     */
+    inline ModelTypeEnum GetModelType() const { return m_modelType; }
     inline bool ModelTypeHasBeenSet() const { return m_modelTypeHasBeenSet; }
+    inline void SetModelType(ModelTypeEnum value) { m_modelTypeHasBeenSet = true; m_modelType = value; }
+    inline DeleteModelVersionRequest& WithModelType(ModelTypeEnum value) { SetModelType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The model type of the model version to delete.</p>
-     */
-    inline void SetModelType(const ModelTypeEnum& value) { m_modelTypeHasBeenSet = true; m_modelType = value; }
-
-    /**
-     * <p>The model type of the model version to delete.</p>
-     */
-    inline void SetModelType(ModelTypeEnum&& value) { m_modelTypeHasBeenSet = true; m_modelType = std::move(value); }
-
-    /**
-     * <p>The model type of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelType(const ModelTypeEnum& value) { SetModelType(value); return *this;}
-
-    /**
-     * <p>The model type of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelType(ModelTypeEnum&& value) { SetModelType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The model version number of the model version to delete.</p>
      */
-    inline const Aws::String& GetModelVersionNumber() const{ return m_modelVersionNumber; }
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
+    inline const Aws::String& GetModelVersionNumber() const { return m_modelVersionNumber; }
     inline bool ModelVersionNumberHasBeenSet() const { return m_modelVersionNumberHasBeenSet; }
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
-    inline void SetModelVersionNumber(const Aws::String& value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber = value; }
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
-    inline void SetModelVersionNumber(Aws::String&& value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber = std::move(value); }
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
-    inline void SetModelVersionNumber(const char* value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber.assign(value); }
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelVersionNumber(const Aws::String& value) { SetModelVersionNumber(value); return *this;}
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelVersionNumber(Aws::String&& value) { SetModelVersionNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The model version number of the model version to delete.</p>
-     */
-    inline DeleteModelVersionRequest& WithModelVersionNumber(const char* value) { SetModelVersionNumber(value); return *this;}
-
+    template<typename ModelVersionNumberT = Aws::String>
+    void SetModelVersionNumber(ModelVersionNumberT&& value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber = std::forward<ModelVersionNumberT>(value); }
+    template<typename ModelVersionNumberT = Aws::String>
+    DeleteModelVersionRequest& WithModelVersionNumber(ModelVersionNumberT&& value) { SetModelVersionNumber(std::forward<ModelVersionNumberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelId;
     bool m_modelIdHasBeenSet = false;
 
-    ModelTypeEnum m_modelType;
+    ModelTypeEnum m_modelType{ModelTypeEnum::NOT_SET};
     bool m_modelTypeHasBeenSet = false;
 
     Aws::String m_modelVersionNumber;

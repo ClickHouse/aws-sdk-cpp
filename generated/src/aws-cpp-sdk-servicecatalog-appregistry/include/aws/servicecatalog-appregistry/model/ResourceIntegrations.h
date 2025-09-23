@@ -32,42 +32,23 @@ namespace Model
   class ResourceIntegrations
   {
   public:
-    AWS_APPREGISTRY_API ResourceIntegrations();
+    AWS_APPREGISTRY_API ResourceIntegrations() = default;
     AWS_APPREGISTRY_API ResourceIntegrations(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API ResourceIntegrations& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The information about the integration of Resource Groups.</p>
      */
-    inline const ResourceGroup& GetResourceGroup() const{ return m_resourceGroup; }
-
-    /**
-     * <p>The information about the integration of Resource Groups.</p>
-     */
+    inline const ResourceGroup& GetResourceGroup() const { return m_resourceGroup; }
     inline bool ResourceGroupHasBeenSet() const { return m_resourceGroupHasBeenSet; }
-
-    /**
-     * <p>The information about the integration of Resource Groups.</p>
-     */
-    inline void SetResourceGroup(const ResourceGroup& value) { m_resourceGroupHasBeenSet = true; m_resourceGroup = value; }
-
-    /**
-     * <p>The information about the integration of Resource Groups.</p>
-     */
-    inline void SetResourceGroup(ResourceGroup&& value) { m_resourceGroupHasBeenSet = true; m_resourceGroup = std::move(value); }
-
-    /**
-     * <p>The information about the integration of Resource Groups.</p>
-     */
-    inline ResourceIntegrations& WithResourceGroup(const ResourceGroup& value) { SetResourceGroup(value); return *this;}
-
-    /**
-     * <p>The information about the integration of Resource Groups.</p>
-     */
-    inline ResourceIntegrations& WithResourceGroup(ResourceGroup&& value) { SetResourceGroup(std::move(value)); return *this;}
-
+    template<typename ResourceGroupT = ResourceGroup>
+    void SetResourceGroup(ResourceGroupT&& value) { m_resourceGroupHasBeenSet = true; m_resourceGroup = std::forward<ResourceGroupT>(value); }
+    template<typename ResourceGroupT = ResourceGroup>
+    ResourceIntegrations& WithResourceGroup(ResourceGroupT&& value) { SetResourceGroup(std::forward<ResourceGroupT>(value)); return *this;}
+    ///@}
   private:
 
     ResourceGroup m_resourceGroup;

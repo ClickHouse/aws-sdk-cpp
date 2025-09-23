@@ -34,198 +34,55 @@ namespace Model
   class SendUsersMessageResponse
   {
   public:
-    AWS_PINPOINT_API SendUsersMessageResponse();
+    AWS_PINPOINT_API SendUsersMessageResponse() = default;
     AWS_PINPOINT_API SendUsersMessageResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API SendUsersMessageResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application that was used to send the
      * message.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    SendUsersMessageResponse& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
-    inline SendUsersMessageResponse& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
-    inline SendUsersMessageResponse& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application that was used to send the
-     * message.</p>
-     */
-    inline SendUsersMessageResponse& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier that was assigned to the message request.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    SendUsersMessageResponse& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
-    inline SendUsersMessageResponse& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
-    inline SendUsersMessageResponse& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier that was assigned to the message request.</p>
-     */
-    inline SendUsersMessageResponse& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that indicates which endpoints the message was sent to, for each
      * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
      * that the message was sent to. For each endpoint ID, it provides an
      * EndpointMessageResult object.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>& GetResult() const{ return m_result; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>& GetResult() const { return m_result; }
     inline bool ResultHasBeenSet() const { return m_resultHasBeenSet; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline void SetResult(const Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>& value) { m_resultHasBeenSet = true; m_result = value; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline void SetResult(Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& WithResult(const Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>& value) { SetResult(value); return *this;}
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& WithResult(Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>&& value) { SetResult(std::move(value)); return *this;}
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& AddResult(const Aws::String& key, const Aws::Map<Aws::String, EndpointMessageResult>& value) { m_resultHasBeenSet = true; m_result.emplace(key, value); return *this; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& AddResult(Aws::String&& key, const Aws::Map<Aws::String, EndpointMessageResult>& value) { m_resultHasBeenSet = true; m_result.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& AddResult(const Aws::String& key, Aws::Map<Aws::String, EndpointMessageResult>&& value) { m_resultHasBeenSet = true; m_result.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& AddResult(Aws::String&& key, Aws::Map<Aws::String, EndpointMessageResult>&& value) { m_resultHasBeenSet = true; m_result.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& AddResult(const char* key, Aws::Map<Aws::String, EndpointMessageResult>&& value) { m_resultHasBeenSet = true; m_result.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that indicates which endpoints the message was sent to, for each
-     * user. The object lists user IDs and, for each user ID, provides the endpoint IDs
-     * that the message was sent to. For each endpoint ID, it provides an
-     * EndpointMessageResult object.</p>
-     */
-    inline SendUsersMessageResponse& AddResult(const char* key, const Aws::Map<Aws::String, EndpointMessageResult>& value) { m_resultHasBeenSet = true; m_result.emplace(key, value); return *this; }
-
+    template<typename ResultT = Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>>
+    void SetResult(ResultT&& value) { m_resultHasBeenSet = true; m_result = std::forward<ResultT>(value); }
+    template<typename ResultT = Aws::Map<Aws::String, Aws::Map<Aws::String, EndpointMessageResult>>>
+    SendUsersMessageResponse& WithResult(ResultT&& value) { SetResult(std::forward<ResultT>(value)); return *this;}
+    template<typename ResultKeyT = Aws::String, typename ResultValueT = Aws::Map<Aws::String, EndpointMessageResult>>
+    SendUsersMessageResponse& AddResult(ResultKeyT&& key, ResultValueT&& value) {
+      m_resultHasBeenSet = true; m_result.emplace(std::forward<ResultKeyT>(key), std::forward<ResultValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_applicationId;

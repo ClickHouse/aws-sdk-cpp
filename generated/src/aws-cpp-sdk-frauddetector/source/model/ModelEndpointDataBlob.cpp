@@ -19,15 +19,7 @@ namespace FraudDetector
 namespace Model
 {
 
-ModelEndpointDataBlob::ModelEndpointDataBlob() : 
-    m_byteBufferHasBeenSet(false),
-    m_contentTypeHasBeenSet(false)
-{
-}
-
-ModelEndpointDataBlob::ModelEndpointDataBlob(JsonView jsonValue) : 
-    m_byteBufferHasBeenSet(false),
-    m_contentTypeHasBeenSet(false)
+ModelEndpointDataBlob::ModelEndpointDataBlob(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,14 +31,11 @@ ModelEndpointDataBlob& ModelEndpointDataBlob::operator =(JsonView jsonValue)
     m_byteBuffer = HashingUtils::Base64Decode(jsonValue.GetString("byteBuffer"));
     m_byteBufferHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("contentType"))
   {
     m_contentType = jsonValue.GetString("contentType");
-
     m_contentTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

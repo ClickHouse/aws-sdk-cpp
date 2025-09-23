@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-MetricResultV2::MetricResultV2() : 
-    m_dimensionsHasBeenSet(false),
-    m_metricIntervalHasBeenSet(false),
-    m_collectionsHasBeenSet(false)
-{
-}
-
-MetricResultV2::MetricResultV2(JsonView jsonValue) : 
-    m_dimensionsHasBeenSet(false),
-    m_metricIntervalHasBeenSet(false),
-    m_collectionsHasBeenSet(false)
+MetricResultV2::MetricResultV2(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ MetricResultV2& MetricResultV2::operator =(JsonView jsonValue)
     }
     m_dimensionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricInterval"))
   {
     m_metricInterval = jsonValue.GetObject("MetricInterval");
-
     m_metricIntervalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Collections"))
   {
     Aws::Utils::Array<JsonView> collectionsJsonList = jsonValue.GetArray("Collections");
@@ -61,7 +48,6 @@ MetricResultV2& MetricResultV2::operator =(JsonView jsonValue)
     }
     m_collectionsHasBeenSet = true;
   }
-
   return *this;
 }
 

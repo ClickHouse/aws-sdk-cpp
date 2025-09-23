@@ -30,39 +30,26 @@ namespace Model
   class HistoryEventExecutionDataDetails
   {
   public:
-    AWS_SFN_API HistoryEventExecutionDataDetails();
+    AWS_SFN_API HistoryEventExecutionDataDetails() = default;
     AWS_SFN_API HistoryEventExecutionDataDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API HistoryEventExecutionDataDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether input or output was truncated in the response. Always
-     * <code>false</code> for API calls.</p>
+     * <code>false</code> for API calls. In CloudWatch logs, the value will be true if
+     * the data is truncated due to size limits.</p>
      */
-    inline bool GetTruncated() const{ return m_truncated; }
-
-    /**
-     * <p>Indicates whether input or output was truncated in the response. Always
-     * <code>false</code> for API calls.</p>
-     */
+    inline bool GetTruncated() const { return m_truncated; }
     inline bool TruncatedHasBeenSet() const { return m_truncatedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether input or output was truncated in the response. Always
-     * <code>false</code> for API calls.</p>
-     */
     inline void SetTruncated(bool value) { m_truncatedHasBeenSet = true; m_truncated = value; }
-
-    /**
-     * <p>Indicates whether input or output was truncated in the response. Always
-     * <code>false</code> for API calls.</p>
-     */
     inline HistoryEventExecutionDataDetails& WithTruncated(bool value) { SetTruncated(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_truncated;
+    bool m_truncated{false};
     bool m_truncatedHasBeenSet = false;
   };
 

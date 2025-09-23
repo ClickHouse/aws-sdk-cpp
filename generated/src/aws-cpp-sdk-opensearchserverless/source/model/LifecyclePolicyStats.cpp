@@ -18,15 +18,7 @@ namespace OpenSearchServerless
 namespace Model
 {
 
-LifecyclePolicyStats::LifecyclePolicyStats() : 
-    m_retentionPolicyCount(0),
-    m_retentionPolicyCountHasBeenSet(false)
-{
-}
-
-LifecyclePolicyStats::LifecyclePolicyStats(JsonView jsonValue) : 
-    m_retentionPolicyCount(0),
-    m_retentionPolicyCountHasBeenSet(false)
+LifecyclePolicyStats::LifecyclePolicyStats(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LifecyclePolicyStats& LifecyclePolicyStats::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RetentionPolicyCount"))
   {
     m_retentionPolicyCount = jsonValue.GetInt64("RetentionPolicyCount");
-
     m_retentionPolicyCountHasBeenSet = true;
   }
-
   return *this;
 }
 

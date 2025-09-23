@@ -20,69 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceRequirementsRequest::InstanceRequirementsRequest() : 
-    m_vCpuCountHasBeenSet(false),
-    m_memoryMiBHasBeenSet(false),
-    m_cpuManufacturersHasBeenSet(false),
-    m_memoryGiBPerVCpuHasBeenSet(false),
-    m_excludedInstanceTypesHasBeenSet(false),
-    m_instanceGenerationsHasBeenSet(false),
-    m_spotMaxPricePercentageOverLowestPrice(0),
-    m_spotMaxPricePercentageOverLowestPriceHasBeenSet(false),
-    m_onDemandMaxPricePercentageOverLowestPrice(0),
-    m_onDemandMaxPricePercentageOverLowestPriceHasBeenSet(false),
-    m_bareMetal(BareMetal::NOT_SET),
-    m_bareMetalHasBeenSet(false),
-    m_burstablePerformance(BurstablePerformance::NOT_SET),
-    m_burstablePerformanceHasBeenSet(false),
-    m_requireHibernateSupport(false),
-    m_requireHibernateSupportHasBeenSet(false),
-    m_networkInterfaceCountHasBeenSet(false),
-    m_localStorage(LocalStorage::NOT_SET),
-    m_localStorageHasBeenSet(false),
-    m_localStorageTypesHasBeenSet(false),
-    m_totalLocalStorageGBHasBeenSet(false),
-    m_baselineEbsBandwidthMbpsHasBeenSet(false),
-    m_acceleratorTypesHasBeenSet(false),
-    m_acceleratorCountHasBeenSet(false),
-    m_acceleratorManufacturersHasBeenSet(false),
-    m_acceleratorNamesHasBeenSet(false),
-    m_acceleratorTotalMemoryMiBHasBeenSet(false),
-    m_networkBandwidthGbpsHasBeenSet(false),
-    m_allowedInstanceTypesHasBeenSet(false)
-{
-}
-
-InstanceRequirementsRequest::InstanceRequirementsRequest(const XmlNode& xmlNode) : 
-    m_vCpuCountHasBeenSet(false),
-    m_memoryMiBHasBeenSet(false),
-    m_cpuManufacturersHasBeenSet(false),
-    m_memoryGiBPerVCpuHasBeenSet(false),
-    m_excludedInstanceTypesHasBeenSet(false),
-    m_instanceGenerationsHasBeenSet(false),
-    m_spotMaxPricePercentageOverLowestPrice(0),
-    m_spotMaxPricePercentageOverLowestPriceHasBeenSet(false),
-    m_onDemandMaxPricePercentageOverLowestPrice(0),
-    m_onDemandMaxPricePercentageOverLowestPriceHasBeenSet(false),
-    m_bareMetal(BareMetal::NOT_SET),
-    m_bareMetalHasBeenSet(false),
-    m_burstablePerformance(BurstablePerformance::NOT_SET),
-    m_burstablePerformanceHasBeenSet(false),
-    m_requireHibernateSupport(false),
-    m_requireHibernateSupportHasBeenSet(false),
-    m_networkInterfaceCountHasBeenSet(false),
-    m_localStorage(LocalStorage::NOT_SET),
-    m_localStorageHasBeenSet(false),
-    m_localStorageTypesHasBeenSet(false),
-    m_totalLocalStorageGBHasBeenSet(false),
-    m_baselineEbsBandwidthMbpsHasBeenSet(false),
-    m_acceleratorTypesHasBeenSet(false),
-    m_acceleratorCountHasBeenSet(false),
-    m_acceleratorManufacturersHasBeenSet(false),
-    m_acceleratorNamesHasBeenSet(false),
-    m_acceleratorTotalMemoryMiBHasBeenSet(false),
-    m_networkBandwidthGbpsHasBeenSet(false),
-    m_allowedInstanceTypesHasBeenSet(false)
+InstanceRequirementsRequest::InstanceRequirementsRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -109,6 +47,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!cpuManufacturersNode.IsNull())
     {
       XmlNode cpuManufacturersMember = cpuManufacturersNode.FirstChild("item");
+      m_cpuManufacturersHasBeenSet = !cpuManufacturersMember.IsNull();
       while(!cpuManufacturersMember.IsNull())
       {
         m_cpuManufacturers.push_back(CpuManufacturerMapper::GetCpuManufacturerForName(StringUtils::Trim(cpuManufacturersMember.GetText().c_str())));
@@ -127,6 +66,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!excludedInstanceTypesNode.IsNull())
     {
       XmlNode excludedInstanceTypesMember = excludedInstanceTypesNode.FirstChild("item");
+      m_excludedInstanceTypesHasBeenSet = !excludedInstanceTypesMember.IsNull();
       while(!excludedInstanceTypesMember.IsNull())
       {
         m_excludedInstanceTypes.push_back(excludedInstanceTypesMember.GetText());
@@ -139,6 +79,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!instanceGenerationsNode.IsNull())
     {
       XmlNode instanceGenerationsMember = instanceGenerationsNode.FirstChild("item");
+      m_instanceGenerationsHasBeenSet = !instanceGenerationsMember.IsNull();
       while(!instanceGenerationsMember.IsNull())
       {
         m_instanceGenerations.push_back(InstanceGenerationMapper::GetInstanceGenerationForName(StringUtils::Trim(instanceGenerationsMember.GetText().c_str())));
@@ -162,13 +103,13 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     XmlNode bareMetalNode = resultNode.FirstChild("BareMetal");
     if(!bareMetalNode.IsNull())
     {
-      m_bareMetal = BareMetalMapper::GetBareMetalForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bareMetalNode.GetText()).c_str()).c_str());
+      m_bareMetal = BareMetalMapper::GetBareMetalForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bareMetalNode.GetText()).c_str()));
       m_bareMetalHasBeenSet = true;
     }
     XmlNode burstablePerformanceNode = resultNode.FirstChild("BurstablePerformance");
     if(!burstablePerformanceNode.IsNull())
     {
-      m_burstablePerformance = BurstablePerformanceMapper::GetBurstablePerformanceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(burstablePerformanceNode.GetText()).c_str()).c_str());
+      m_burstablePerformance = BurstablePerformanceMapper::GetBurstablePerformanceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(burstablePerformanceNode.GetText()).c_str()));
       m_burstablePerformanceHasBeenSet = true;
     }
     XmlNode requireHibernateSupportNode = resultNode.FirstChild("RequireHibernateSupport");
@@ -186,13 +127,14 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     XmlNode localStorageNode = resultNode.FirstChild("LocalStorage");
     if(!localStorageNode.IsNull())
     {
-      m_localStorage = LocalStorageMapper::GetLocalStorageForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(localStorageNode.GetText()).c_str()).c_str());
+      m_localStorage = LocalStorageMapper::GetLocalStorageForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(localStorageNode.GetText()).c_str()));
       m_localStorageHasBeenSet = true;
     }
     XmlNode localStorageTypesNode = resultNode.FirstChild("LocalStorageType");
     if(!localStorageTypesNode.IsNull())
     {
       XmlNode localStorageTypesMember = localStorageTypesNode.FirstChild("item");
+      m_localStorageTypesHasBeenSet = !localStorageTypesMember.IsNull();
       while(!localStorageTypesMember.IsNull())
       {
         m_localStorageTypes.push_back(LocalStorageTypeMapper::GetLocalStorageTypeForName(StringUtils::Trim(localStorageTypesMember.GetText().c_str())));
@@ -217,6 +159,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!acceleratorTypesNode.IsNull())
     {
       XmlNode acceleratorTypesMember = acceleratorTypesNode.FirstChild("item");
+      m_acceleratorTypesHasBeenSet = !acceleratorTypesMember.IsNull();
       while(!acceleratorTypesMember.IsNull())
       {
         m_acceleratorTypes.push_back(AcceleratorTypeMapper::GetAcceleratorTypeForName(StringUtils::Trim(acceleratorTypesMember.GetText().c_str())));
@@ -235,6 +178,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!acceleratorManufacturersNode.IsNull())
     {
       XmlNode acceleratorManufacturersMember = acceleratorManufacturersNode.FirstChild("item");
+      m_acceleratorManufacturersHasBeenSet = !acceleratorManufacturersMember.IsNull();
       while(!acceleratorManufacturersMember.IsNull())
       {
         m_acceleratorManufacturers.push_back(AcceleratorManufacturerMapper::GetAcceleratorManufacturerForName(StringUtils::Trim(acceleratorManufacturersMember.GetText().c_str())));
@@ -247,6 +191,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!acceleratorNamesNode.IsNull())
     {
       XmlNode acceleratorNamesMember = acceleratorNamesNode.FirstChild("item");
+      m_acceleratorNamesHasBeenSet = !acceleratorNamesMember.IsNull();
       while(!acceleratorNamesMember.IsNull())
       {
         m_acceleratorNames.push_back(AcceleratorNameMapper::GetAcceleratorNameForName(StringUtils::Trim(acceleratorNamesMember.GetText().c_str())));
@@ -271,6 +216,7 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
     if(!allowedInstanceTypesNode.IsNull())
     {
       XmlNode allowedInstanceTypesMember = allowedInstanceTypesNode.FirstChild("item");
+      m_allowedInstanceTypesHasBeenSet = !allowedInstanceTypesMember.IsNull();
       while(!allowedInstanceTypesMember.IsNull())
       {
         m_allowedInstanceTypes.push_back(allowedInstanceTypesMember.GetText());
@@ -278,6 +224,18 @@ InstanceRequirementsRequest& InstanceRequirementsRequest::operator =(const XmlNo
       }
 
       m_allowedInstanceTypesHasBeenSet = true;
+    }
+    XmlNode maxSpotPriceAsPercentageOfOptimalOnDemandPriceNode = resultNode.FirstChild("MaxSpotPriceAsPercentageOfOptimalOnDemandPrice");
+    if(!maxSpotPriceAsPercentageOfOptimalOnDemandPriceNode.IsNull())
+    {
+      m_maxSpotPriceAsPercentageOfOptimalOnDemandPrice = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(maxSpotPriceAsPercentageOfOptimalOnDemandPriceNode.GetText()).c_str()).c_str());
+      m_maxSpotPriceAsPercentageOfOptimalOnDemandPriceHasBeenSet = true;
+    }
+    XmlNode baselinePerformanceFactorsNode = resultNode.FirstChild("BaselinePerformanceFactors");
+    if(!baselinePerformanceFactorsNode.IsNull())
+    {
+      m_baselinePerformanceFactors = baselinePerformanceFactorsNode;
+      m_baselinePerformanceFactorsHasBeenSet = true;
     }
   }
 
@@ -305,7 +263,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned cpuManufacturersIdx = 1;
       for(auto& item : m_cpuManufacturers)
       {
-        oStream << location << index << locationValue << ".CpuManufacturer." << cpuManufacturersIdx++ << "=" << CpuManufacturerMapper::GetNameForCpuManufacturer(item) << "&";
+        oStream << location << index << locationValue << ".CpuManufacturer." << cpuManufacturersIdx++ << "=" << StringUtils::URLEncode(CpuManufacturerMapper::GetNameForCpuManufacturer(item)) << "&";
       }
   }
 
@@ -330,7 +288,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned instanceGenerationsIdx = 1;
       for(auto& item : m_instanceGenerations)
       {
-        oStream << location << index << locationValue << ".InstanceGeneration." << instanceGenerationsIdx++ << "=" << InstanceGenerationMapper::GetNameForInstanceGeneration(item) << "&";
+        oStream << location << index << locationValue << ".InstanceGeneration." << instanceGenerationsIdx++ << "=" << StringUtils::URLEncode(InstanceGenerationMapper::GetNameForInstanceGeneration(item)) << "&";
       }
   }
 
@@ -346,12 +304,12 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_bareMetalHasBeenSet)
   {
-      oStream << location << index << locationValue << ".BareMetal=" << BareMetalMapper::GetNameForBareMetal(m_bareMetal) << "&";
+      oStream << location << index << locationValue << ".BareMetal=" << StringUtils::URLEncode(BareMetalMapper::GetNameForBareMetal(m_bareMetal)) << "&";
   }
 
   if(m_burstablePerformanceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".BurstablePerformance=" << BurstablePerformanceMapper::GetNameForBurstablePerformance(m_burstablePerformance) << "&";
+      oStream << location << index << locationValue << ".BurstablePerformance=" << StringUtils::URLEncode(BurstablePerformanceMapper::GetNameForBurstablePerformance(m_burstablePerformance)) << "&";
   }
 
   if(m_requireHibernateSupportHasBeenSet)
@@ -368,7 +326,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_localStorageHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LocalStorage=" << LocalStorageMapper::GetNameForLocalStorage(m_localStorage) << "&";
+      oStream << location << index << locationValue << ".LocalStorage=" << StringUtils::URLEncode(LocalStorageMapper::GetNameForLocalStorage(m_localStorage)) << "&";
   }
 
   if(m_localStorageTypesHasBeenSet)
@@ -376,7 +334,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned localStorageTypesIdx = 1;
       for(auto& item : m_localStorageTypes)
       {
-        oStream << location << index << locationValue << ".LocalStorageType." << localStorageTypesIdx++ << "=" << LocalStorageTypeMapper::GetNameForLocalStorageType(item) << "&";
+        oStream << location << index << locationValue << ".LocalStorageType." << localStorageTypesIdx++ << "=" << StringUtils::URLEncode(LocalStorageTypeMapper::GetNameForLocalStorageType(item)) << "&";
       }
   }
 
@@ -399,7 +357,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned acceleratorTypesIdx = 1;
       for(auto& item : m_acceleratorTypes)
       {
-        oStream << location << index << locationValue << ".AcceleratorType." << acceleratorTypesIdx++ << "=" << AcceleratorTypeMapper::GetNameForAcceleratorType(item) << "&";
+        oStream << location << index << locationValue << ".AcceleratorType." << acceleratorTypesIdx++ << "=" << StringUtils::URLEncode(AcceleratorTypeMapper::GetNameForAcceleratorType(item)) << "&";
       }
   }
 
@@ -415,7 +373,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned acceleratorManufacturersIdx = 1;
       for(auto& item : m_acceleratorManufacturers)
       {
-        oStream << location << index << locationValue << ".AcceleratorManufacturer." << acceleratorManufacturersIdx++ << "=" << AcceleratorManufacturerMapper::GetNameForAcceleratorManufacturer(item) << "&";
+        oStream << location << index << locationValue << ".AcceleratorManufacturer." << acceleratorManufacturersIdx++ << "=" << StringUtils::URLEncode(AcceleratorManufacturerMapper::GetNameForAcceleratorManufacturer(item)) << "&";
       }
   }
 
@@ -424,7 +382,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned acceleratorNamesIdx = 1;
       for(auto& item : m_acceleratorNames)
       {
-        oStream << location << index << locationValue << ".AcceleratorName." << acceleratorNamesIdx++ << "=" << AcceleratorNameMapper::GetNameForAcceleratorName(item) << "&";
+        oStream << location << index << locationValue << ".AcceleratorName." << acceleratorNamesIdx++ << "=" << StringUtils::URLEncode(AcceleratorNameMapper::GetNameForAcceleratorName(item)) << "&";
       }
   }
 
@@ -451,6 +409,18 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       }
   }
 
+  if(m_maxSpotPriceAsPercentageOfOptimalOnDemandPriceHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MaxSpotPriceAsPercentageOfOptimalOnDemandPrice=" << m_maxSpotPriceAsPercentageOfOptimalOnDemandPrice << "&";
+  }
+
+  if(m_baselinePerformanceFactorsHasBeenSet)
+  {
+      Aws::StringStream baselinePerformanceFactorsLocationAndMemberSs;
+      baselinePerformanceFactorsLocationAndMemberSs << location << index << locationValue << ".BaselinePerformanceFactors";
+      m_baselinePerformanceFactors.OutputToStream(oStream, baselinePerformanceFactorsLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -472,7 +442,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned cpuManufacturersIdx = 1;
       for(auto& item : m_cpuManufacturers)
       {
-        oStream << location << ".CpuManufacturer." << cpuManufacturersIdx++ << "=" << CpuManufacturerMapper::GetNameForCpuManufacturer(item) << "&";
+        oStream << location << ".CpuManufacturer." << cpuManufacturersIdx++ << "=" << StringUtils::URLEncode(CpuManufacturerMapper::GetNameForCpuManufacturer(item)) << "&";
       }
   }
   if(m_memoryGiBPerVCpuHasBeenSet)
@@ -494,7 +464,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned instanceGenerationsIdx = 1;
       for(auto& item : m_instanceGenerations)
       {
-        oStream << location << ".InstanceGeneration." << instanceGenerationsIdx++ << "=" << InstanceGenerationMapper::GetNameForInstanceGeneration(item) << "&";
+        oStream << location << ".InstanceGeneration." << instanceGenerationsIdx++ << "=" << StringUtils::URLEncode(InstanceGenerationMapper::GetNameForInstanceGeneration(item)) << "&";
       }
   }
   if(m_spotMaxPricePercentageOverLowestPriceHasBeenSet)
@@ -507,11 +477,11 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_bareMetalHasBeenSet)
   {
-      oStream << location << ".BareMetal=" << BareMetalMapper::GetNameForBareMetal(m_bareMetal) << "&";
+      oStream << location << ".BareMetal=" << StringUtils::URLEncode(BareMetalMapper::GetNameForBareMetal(m_bareMetal)) << "&";
   }
   if(m_burstablePerformanceHasBeenSet)
   {
-      oStream << location << ".BurstablePerformance=" << BurstablePerformanceMapper::GetNameForBurstablePerformance(m_burstablePerformance) << "&";
+      oStream << location << ".BurstablePerformance=" << StringUtils::URLEncode(BurstablePerformanceMapper::GetNameForBurstablePerformance(m_burstablePerformance)) << "&";
   }
   if(m_requireHibernateSupportHasBeenSet)
   {
@@ -525,14 +495,14 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_localStorageHasBeenSet)
   {
-      oStream << location << ".LocalStorage=" << LocalStorageMapper::GetNameForLocalStorage(m_localStorage) << "&";
+      oStream << location << ".LocalStorage=" << StringUtils::URLEncode(LocalStorageMapper::GetNameForLocalStorage(m_localStorage)) << "&";
   }
   if(m_localStorageTypesHasBeenSet)
   {
       unsigned localStorageTypesIdx = 1;
       for(auto& item : m_localStorageTypes)
       {
-        oStream << location << ".LocalStorageType." << localStorageTypesIdx++ << "=" << LocalStorageTypeMapper::GetNameForLocalStorageType(item) << "&";
+        oStream << location << ".LocalStorageType." << localStorageTypesIdx++ << "=" << StringUtils::URLEncode(LocalStorageTypeMapper::GetNameForLocalStorageType(item)) << "&";
       }
   }
   if(m_totalLocalStorageGBHasBeenSet)
@@ -552,7 +522,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned acceleratorTypesIdx = 1;
       for(auto& item : m_acceleratorTypes)
       {
-        oStream << location << ".AcceleratorType." << acceleratorTypesIdx++ << "=" << AcceleratorTypeMapper::GetNameForAcceleratorType(item) << "&";
+        oStream << location << ".AcceleratorType." << acceleratorTypesIdx++ << "=" << StringUtils::URLEncode(AcceleratorTypeMapper::GetNameForAcceleratorType(item)) << "&";
       }
   }
   if(m_acceleratorCountHasBeenSet)
@@ -566,7 +536,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned acceleratorManufacturersIdx = 1;
       for(auto& item : m_acceleratorManufacturers)
       {
-        oStream << location << ".AcceleratorManufacturer." << acceleratorManufacturersIdx++ << "=" << AcceleratorManufacturerMapper::GetNameForAcceleratorManufacturer(item) << "&";
+        oStream << location << ".AcceleratorManufacturer." << acceleratorManufacturersIdx++ << "=" << StringUtils::URLEncode(AcceleratorManufacturerMapper::GetNameForAcceleratorManufacturer(item)) << "&";
       }
   }
   if(m_acceleratorNamesHasBeenSet)
@@ -574,7 +544,7 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       unsigned acceleratorNamesIdx = 1;
       for(auto& item : m_acceleratorNames)
       {
-        oStream << location << ".AcceleratorName." << acceleratorNamesIdx++ << "=" << AcceleratorNameMapper::GetNameForAcceleratorName(item) << "&";
+        oStream << location << ".AcceleratorName." << acceleratorNamesIdx++ << "=" << StringUtils::URLEncode(AcceleratorNameMapper::GetNameForAcceleratorName(item)) << "&";
       }
   }
   if(m_acceleratorTotalMemoryMiBHasBeenSet)
@@ -596,6 +566,16 @@ void InstanceRequirementsRequest::OutputToStream(Aws::OStream& oStream, const ch
       {
         oStream << location << ".AllowedInstanceType." << allowedInstanceTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_maxSpotPriceAsPercentageOfOptimalOnDemandPriceHasBeenSet)
+  {
+      oStream << location << ".MaxSpotPriceAsPercentageOfOptimalOnDemandPrice=" << m_maxSpotPriceAsPercentageOfOptimalOnDemandPrice << "&";
+  }
+  if(m_baselinePerformanceFactorsHasBeenSet)
+  {
+      Aws::String baselinePerformanceFactorsLocationAndMember(location);
+      baselinePerformanceFactorsLocationAndMember += ".BaselinePerformanceFactors";
+      m_baselinePerformanceFactors.OutputToStream(oStream, baselinePerformanceFactorsLocationAndMember.c_str());
   }
 }
 

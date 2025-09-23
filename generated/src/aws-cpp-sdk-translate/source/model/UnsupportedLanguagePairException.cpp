@@ -18,17 +18,7 @@ namespace Translate
 namespace Model
 {
 
-UnsupportedLanguagePairException::UnsupportedLanguagePairException() : 
-    m_messageHasBeenSet(false),
-    m_sourceLanguageCodeHasBeenSet(false),
-    m_targetLanguageCodeHasBeenSet(false)
-{
-}
-
-UnsupportedLanguagePairException::UnsupportedLanguagePairException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_sourceLanguageCodeHasBeenSet(false),
-    m_targetLanguageCodeHasBeenSet(false)
+UnsupportedLanguagePairException::UnsupportedLanguagePairException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ UnsupportedLanguagePairException& UnsupportedLanguagePairException::operator =(J
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceLanguageCode"))
   {
     m_sourceLanguageCode = jsonValue.GetString("SourceLanguageCode");
-
     m_sourceLanguageCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetLanguageCode"))
   {
     m_targetLanguageCode = jsonValue.GetString("TargetLanguageCode");
-
     m_targetLanguageCodeHasBeenSet = true;
   }
-
   return *this;
 }
 

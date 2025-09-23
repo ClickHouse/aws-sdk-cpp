@@ -12,42 +12,6 @@ using namespace Aws::Lambda::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateEventSourceMappingRequest::CreateEventSourceMappingRequest() : 
-    m_eventSourceArnHasBeenSet(false),
-    m_functionNameHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_batchSize(0),
-    m_batchSizeHasBeenSet(false),
-    m_filterCriteriaHasBeenSet(false),
-    m_maximumBatchingWindowInSeconds(0),
-    m_maximumBatchingWindowInSecondsHasBeenSet(false),
-    m_parallelizationFactor(0),
-    m_parallelizationFactorHasBeenSet(false),
-    m_startingPosition(EventSourcePosition::NOT_SET),
-    m_startingPositionHasBeenSet(false),
-    m_startingPositionTimestampHasBeenSet(false),
-    m_destinationConfigHasBeenSet(false),
-    m_maximumRecordAgeInSeconds(0),
-    m_maximumRecordAgeInSecondsHasBeenSet(false),
-    m_bisectBatchOnFunctionError(false),
-    m_bisectBatchOnFunctionErrorHasBeenSet(false),
-    m_maximumRetryAttempts(0),
-    m_maximumRetryAttemptsHasBeenSet(false),
-    m_tumblingWindowInSeconds(0),
-    m_tumblingWindowInSecondsHasBeenSet(false),
-    m_topicsHasBeenSet(false),
-    m_queuesHasBeenSet(false),
-    m_sourceAccessConfigurationsHasBeenSet(false),
-    m_selfManagedEventSourceHasBeenSet(false),
-    m_functionResponseTypesHasBeenSet(false),
-    m_amazonManagedKafkaEventSourceConfigHasBeenSet(false),
-    m_selfManagedKafkaEventSourceConfigHasBeenSet(false),
-    m_scalingConfigHasBeenSet(false),
-    m_documentDBEventSourceConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateEventSourceMappingRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -128,6 +92,17 @@ Aws::String CreateEventSourceMappingRequest::SerializePayload() const
 
   }
 
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
+
+  }
+
   if(m_tumblingWindowInSecondsHasBeenSet)
   {
    payload.WithInteger("TumblingWindowInSeconds", m_tumblingWindowInSeconds);
@@ -205,6 +180,24 @@ Aws::String CreateEventSourceMappingRequest::SerializePayload() const
   if(m_documentDBEventSourceConfigHasBeenSet)
   {
    payload.WithObject("DocumentDBEventSourceConfig", m_documentDBEventSourceConfig.Jsonize());
+
+  }
+
+  if(m_kMSKeyArnHasBeenSet)
+  {
+   payload.WithString("KMSKeyArn", m_kMSKeyArn);
+
+  }
+
+  if(m_metricsConfigHasBeenSet)
+  {
+   payload.WithObject("MetricsConfig", m_metricsConfig.Jsonize());
+
+  }
+
+  if(m_provisionedPollerConfigHasBeenSet)
+  {
+   payload.WithObject("ProvisionedPollerConfig", m_provisionedPollerConfig.Jsonize());
 
   }
 

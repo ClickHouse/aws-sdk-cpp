@@ -18,17 +18,7 @@ namespace Batch
 namespace Model
 {
 
-EksSecret::EksSecret() : 
-    m_secretNameHasBeenSet(false),
-    m_optional(false),
-    m_optionalHasBeenSet(false)
-{
-}
-
-EksSecret::EksSecret(JsonView jsonValue) : 
-    m_secretNameHasBeenSet(false),
-    m_optional(false),
-    m_optionalHasBeenSet(false)
+EksSecret::EksSecret(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EksSecret& EksSecret::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("secretName"))
   {
     m_secretName = jsonValue.GetString("secretName");
-
     m_secretNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("optional"))
   {
     m_optional = jsonValue.GetBool("optional");
-
     m_optionalHasBeenSet = true;
   }
-
   return *this;
 }
 

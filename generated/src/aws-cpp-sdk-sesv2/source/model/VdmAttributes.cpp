@@ -18,19 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-VdmAttributes::VdmAttributes() : 
-    m_vdmEnabled(FeatureStatus::NOT_SET),
-    m_vdmEnabledHasBeenSet(false),
-    m_dashboardAttributesHasBeenSet(false),
-    m_guardianAttributesHasBeenSet(false)
-{
-}
-
-VdmAttributes::VdmAttributes(JsonView jsonValue) : 
-    m_vdmEnabled(FeatureStatus::NOT_SET),
-    m_vdmEnabledHasBeenSet(false),
-    m_dashboardAttributesHasBeenSet(false),
-    m_guardianAttributesHasBeenSet(false)
+VdmAttributes::VdmAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ VdmAttributes& VdmAttributes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VdmEnabled"))
   {
     m_vdmEnabled = FeatureStatusMapper::GetFeatureStatusForName(jsonValue.GetString("VdmEnabled"));
-
     m_vdmEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DashboardAttributes"))
   {
     m_dashboardAttributes = jsonValue.GetObject("DashboardAttributes");
-
     m_dashboardAttributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GuardianAttributes"))
   {
     m_guardianAttributes = jsonValue.GetObject("GuardianAttributes");
-
     m_guardianAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

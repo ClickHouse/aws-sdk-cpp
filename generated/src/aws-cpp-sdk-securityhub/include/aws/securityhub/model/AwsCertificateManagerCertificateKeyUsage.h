@@ -32,52 +32,23 @@ namespace Model
   class AwsCertificateManagerCertificateKeyUsage
   {
   public:
-    AWS_SECURITYHUB_API AwsCertificateManagerCertificateKeyUsage();
+    AWS_SECURITYHUB_API AwsCertificateManagerCertificateKeyUsage() = default;
     AWS_SECURITYHUB_API AwsCertificateManagerCertificateKeyUsage(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsCertificateManagerCertificateKeyUsage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key usage extension name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
-    inline AwsCertificateManagerCertificateKeyUsage& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
-    inline AwsCertificateManagerCertificateKeyUsage& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The key usage extension name.</p>
-     */
-    inline AwsCertificateManagerCertificateKeyUsage& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AwsCertificateManagerCertificateKeyUsage& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

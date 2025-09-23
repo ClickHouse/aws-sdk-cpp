@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/UpdateFieldLevelEncryptionProfile2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,12 +15,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-UpdateFieldLevelEncryptionProfile2020_05_31Request::UpdateFieldLevelEncryptionProfile2020_05_31Request() : 
-    m_fieldLevelEncryptionProfileConfigHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_ifMatchHasBeenSet(false)
-{
-}
 
 Aws::String UpdateFieldLevelEncryptionProfile2020_05_31Request::SerializePayload() const
 {

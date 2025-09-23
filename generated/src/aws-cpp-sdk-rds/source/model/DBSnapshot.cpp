@@ -20,101 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBSnapshot::DBSnapshot() : 
-    m_dBSnapshotIdentifierHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_snapshotCreateTimeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_instanceCreateTimeHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_percentProgress(0),
-    m_percentProgressHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false),
-    m_sourceDBSnapshotIdentifierHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_tdeCredentialArnHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dBSnapshotArnHasBeenSet(false),
-    m_timezoneHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_processorFeaturesHasBeenSet(false),
-    m_dbiResourceIdHasBeenSet(false),
-    m_tagListHasBeenSet(false),
-    m_originalSnapshotCreateTimeHasBeenSet(false),
-    m_snapshotDatabaseTimeHasBeenSet(false),
-    m_snapshotTargetHasBeenSet(false),
-    m_storageThroughput(0),
-    m_storageThroughputHasBeenSet(false),
-    m_dBSystemIdHasBeenSet(false),
-    m_dedicatedLogVolume(false),
-    m_dedicatedLogVolumeHasBeenSet(false),
-    m_multiTenant(false),
-    m_multiTenantHasBeenSet(false)
-{
-}
-
-DBSnapshot::DBSnapshot(const XmlNode& xmlNode) : 
-    m_dBSnapshotIdentifierHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_snapshotCreateTimeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_instanceCreateTimeHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_percentProgress(0),
-    m_percentProgressHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false),
-    m_sourceDBSnapshotIdentifierHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_tdeCredentialArnHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dBSnapshotArnHasBeenSet(false),
-    m_timezoneHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_processorFeaturesHasBeenSet(false),
-    m_dbiResourceIdHasBeenSet(false),
-    m_tagListHasBeenSet(false),
-    m_originalSnapshotCreateTimeHasBeenSet(false),
-    m_snapshotDatabaseTimeHasBeenSet(false),
-    m_snapshotTargetHasBeenSet(false),
-    m_storageThroughput(0),
-    m_storageThroughputHasBeenSet(false),
-    m_dBSystemIdHasBeenSet(false),
-    m_dedicatedLogVolume(false),
-    m_dedicatedLogVolumeHasBeenSet(false),
-    m_multiTenant(false),
-    m_multiTenantHasBeenSet(false)
+DBSnapshot::DBSnapshot(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -285,6 +191,7 @@ DBSnapshot& DBSnapshot::operator =(const XmlNode& xmlNode)
     if(!processorFeaturesNode.IsNull())
     {
       XmlNode processorFeaturesMember = processorFeaturesNode.FirstChild("ProcessorFeature");
+      m_processorFeaturesHasBeenSet = !processorFeaturesMember.IsNull();
       while(!processorFeaturesMember.IsNull())
       {
         m_processorFeatures.push_back(processorFeaturesMember);
@@ -303,6 +210,7 @@ DBSnapshot& DBSnapshot::operator =(const XmlNode& xmlNode)
     if(!tagListNode.IsNull())
     {
       XmlNode tagListMember = tagListNode.FirstChild("Tag");
+      m_tagListHasBeenSet = !tagListMember.IsNull();
       while(!tagListMember.IsNull())
       {
         m_tagList.push_back(tagListMember);
@@ -352,6 +260,12 @@ DBSnapshot& DBSnapshot::operator =(const XmlNode& xmlNode)
     {
       m_multiTenant = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(multiTenantNode.GetText()).c_str()).c_str());
       m_multiTenantHasBeenSet = true;
+    }
+    XmlNode snapshotAvailabilityZoneNode = resultNode.FirstChild("SnapshotAvailabilityZone");
+    if(!snapshotAvailabilityZoneNode.IsNull())
+    {
+      m_snapshotAvailabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(snapshotAvailabilityZoneNode.GetText());
+      m_snapshotAvailabilityZoneHasBeenSet = true;
     }
   }
 
@@ -496,7 +410,7 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, uns
       for(auto& item : m_processorFeatures)
       {
         Aws::StringStream processorFeaturesSs;
-        processorFeaturesSs << location << index << locationValue << ".ProcessorFeature." << processorFeaturesIdx++;
+        processorFeaturesSs << location << index << locationValue << ".ProcessorFeatures.ProcessorFeature." << processorFeaturesIdx++;
         item.OutputToStream(oStream, processorFeaturesSs.str().c_str());
       }
   }
@@ -512,7 +426,7 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, uns
       for(auto& item : m_tagList)
       {
         Aws::StringStream tagListSs;
-        tagListSs << location << index << locationValue << ".Tag." << tagListIdx++;
+        tagListSs << location << index << locationValue << ".TagList.Tag." << tagListIdx++;
         item.OutputToStream(oStream, tagListSs.str().c_str());
       }
   }
@@ -550,6 +464,11 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, uns
   if(m_multiTenantHasBeenSet)
   {
       oStream << location << index << locationValue << ".MultiTenant=" << std::boolalpha << m_multiTenant << "&";
+  }
+
+  if(m_snapshotAvailabilityZoneHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SnapshotAvailabilityZone=" << StringUtils::URLEncode(m_snapshotAvailabilityZone.c_str()) << "&";
   }
 
 }
@@ -666,7 +585,7 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_processorFeatures)
       {
         Aws::StringStream processorFeaturesSs;
-        processorFeaturesSs << location <<  ".ProcessorFeature." << processorFeaturesIdx++;
+        processorFeaturesSs << location << ".ProcessorFeatures.ProcessorFeature." << processorFeaturesIdx++;
         item.OutputToStream(oStream, processorFeaturesSs.str().c_str());
       }
   }
@@ -680,7 +599,7 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tagList)
       {
         Aws::StringStream tagListSs;
-        tagListSs << location <<  ".Tag." << tagListIdx++;
+        tagListSs << location << ".TagList.Tag." << tagListIdx++;
         item.OutputToStream(oStream, tagListSs.str().c_str());
       }
   }
@@ -711,6 +630,10 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) con
   if(m_multiTenantHasBeenSet)
   {
       oStream << location << ".MultiTenant=" << std::boolalpha << m_multiTenant << "&";
+  }
+  if(m_snapshotAvailabilityZoneHasBeenSet)
+  {
+      oStream << location << ".SnapshotAvailabilityZone=" << StringUtils::URLEncode(m_snapshotAvailabilityZone.c_str()) << "&";
   }
 }
 

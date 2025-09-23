@@ -32,156 +32,51 @@ namespace Model
   class Resource
   {
   public:
-    AWS_GREENGRASS_API Resource();
+    AWS_GREENGRASS_API Resource() = default;
     AWS_GREENGRASS_API Resource(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API Resource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The resource ID, used to refer to a resource in the Lambda function
      * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
      * This must be unique within a Greengrass group.
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Resource& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
-    inline Resource& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
-    inline Resource& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * The resource ID, used to refer to a resource in the Lambda function
-     * configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-     * This must be unique within a Greengrass group.
-     */
-    inline Resource& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * The descriptive resource name, which is displayed on the AWS IoT Greengrass
      * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
      * be unique within a Greengrass group.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Resource& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
-    inline Resource& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
-    inline Resource& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The descriptive resource name, which is displayed on the AWS IoT Greengrass
-     * console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must
-     * be unique within a Greengrass group.
-     */
-    inline Resource& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * A container of data for all resource types.
      */
-    inline const ResourceDataContainer& GetResourceDataContainer() const{ return m_resourceDataContainer; }
-
-    /**
-     * A container of data for all resource types.
-     */
+    inline const ResourceDataContainer& GetResourceDataContainer() const { return m_resourceDataContainer; }
     inline bool ResourceDataContainerHasBeenSet() const { return m_resourceDataContainerHasBeenSet; }
-
-    /**
-     * A container of data for all resource types.
-     */
-    inline void SetResourceDataContainer(const ResourceDataContainer& value) { m_resourceDataContainerHasBeenSet = true; m_resourceDataContainer = value; }
-
-    /**
-     * A container of data for all resource types.
-     */
-    inline void SetResourceDataContainer(ResourceDataContainer&& value) { m_resourceDataContainerHasBeenSet = true; m_resourceDataContainer = std::move(value); }
-
-    /**
-     * A container of data for all resource types.
-     */
-    inline Resource& WithResourceDataContainer(const ResourceDataContainer& value) { SetResourceDataContainer(value); return *this;}
-
-    /**
-     * A container of data for all resource types.
-     */
-    inline Resource& WithResourceDataContainer(ResourceDataContainer&& value) { SetResourceDataContainer(std::move(value)); return *this;}
-
+    template<typename ResourceDataContainerT = ResourceDataContainer>
+    void SetResourceDataContainer(ResourceDataContainerT&& value) { m_resourceDataContainerHasBeenSet = true; m_resourceDataContainer = std::forward<ResourceDataContainerT>(value); }
+    template<typename ResourceDataContainerT = ResourceDataContainer>
+    Resource& WithResourceDataContainer(ResourceDataContainerT&& value) { SetResourceDataContainer(std::forward<ResourceDataContainerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

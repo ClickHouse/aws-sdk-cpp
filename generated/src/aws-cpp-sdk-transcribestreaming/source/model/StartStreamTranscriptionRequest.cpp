@@ -14,47 +14,6 @@ using namespace Aws::Utils::Stream;
 using namespace Aws::Utils;
 using namespace Aws;
 
-StartStreamTranscriptionRequest::StartStreamTranscriptionRequest() : 
-    m_languageCode(LanguageCode::NOT_SET),
-    m_languageCodeHasBeenSet(false),
-    m_mediaSampleRateHertz(0),
-    m_mediaSampleRateHertzHasBeenSet(false),
-    m_mediaEncoding(MediaEncoding::NOT_SET),
-    m_mediaEncodingHasBeenSet(false),
-    m_vocabularyNameHasBeenSet(false),
-    m_sessionIdHasBeenSet(false),
-    m_vocabularyFilterNameHasBeenSet(false),
-    m_vocabularyFilterMethod(VocabularyFilterMethod::NOT_SET),
-    m_vocabularyFilterMethodHasBeenSet(false),
-    m_showSpeakerLabel(false),
-    m_showSpeakerLabelHasBeenSet(false),
-    m_enableChannelIdentification(false),
-    m_enableChannelIdentificationHasBeenSet(false),
-    m_numberOfChannels(0),
-    m_numberOfChannelsHasBeenSet(false),
-    m_enablePartialResultsStabilization(false),
-    m_enablePartialResultsStabilizationHasBeenSet(false),
-    m_partialResultsStability(PartialResultsStability::NOT_SET),
-    m_partialResultsStabilityHasBeenSet(false),
-    m_contentIdentificationType(ContentIdentificationType::NOT_SET),
-    m_contentIdentificationTypeHasBeenSet(false),
-    m_contentRedactionType(ContentRedactionType::NOT_SET),
-    m_contentRedactionTypeHasBeenSet(false),
-    m_piiEntityTypesHasBeenSet(false),
-    m_languageModelNameHasBeenSet(false),
-    m_identifyLanguage(false),
-    m_identifyLanguageHasBeenSet(false),
-    m_languageOptionsHasBeenSet(false),
-    m_preferredLanguage(LanguageCode::NOT_SET),
-    m_preferredLanguageHasBeenSet(false),
-    m_identifyMultipleLanguages(false),
-    m_identifyMultipleLanguagesHasBeenSet(false),
-    m_vocabularyNamesHasBeenSet(false),
-    m_vocabularyFilterNamesHasBeenSet(false),
-    m_handler(), m_decoder(Aws::Utils::Event::EventStreamDecoder(&m_handler))
-{
-}
-
 std::shared_ptr<Aws::IOStream> StartStreamTranscriptionRequest::GetBody() const
 {
     return m_audioStream;
@@ -66,7 +25,7 @@ Aws::Http::HeaderValueCollection StartStreamTranscriptionRequest::GetRequestSpec
   Aws::Http::HeaderValueCollection headers;
   headers.emplace(Aws::Http::CONTENT_TYPE_HEADER, Aws::AMZN_EVENTSTREAM_CONTENT_TYPE);
   Aws::StringStream ss;
-  if(m_languageCodeHasBeenSet)
+  if(m_languageCodeHasBeenSet && m_languageCode != LanguageCode::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-language-code", LanguageCodeMapper::GetNameForLanguageCode(m_languageCode));
   }
@@ -78,7 +37,7 @@ Aws::Http::HeaderValueCollection StartStreamTranscriptionRequest::GetRequestSpec
     ss.str("");
   }
 
-  if(m_mediaEncodingHasBeenSet)
+  if(m_mediaEncodingHasBeenSet && m_mediaEncoding != MediaEncoding::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-media-encoding", MediaEncodingMapper::GetNameForMediaEncoding(m_mediaEncoding));
   }
@@ -104,7 +63,7 @@ Aws::Http::HeaderValueCollection StartStreamTranscriptionRequest::GetRequestSpec
     ss.str("");
   }
 
-  if(m_vocabularyFilterMethodHasBeenSet)
+  if(m_vocabularyFilterMethodHasBeenSet && m_vocabularyFilterMethod != VocabularyFilterMethod::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-vocabulary-filter-method", VocabularyFilterMethodMapper::GetNameForVocabularyFilterMethod(m_vocabularyFilterMethod));
   }
@@ -137,17 +96,17 @@ Aws::Http::HeaderValueCollection StartStreamTranscriptionRequest::GetRequestSpec
     ss.str("");
   }
 
-  if(m_partialResultsStabilityHasBeenSet)
+  if(m_partialResultsStabilityHasBeenSet && m_partialResultsStability != PartialResultsStability::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-partial-results-stability", PartialResultsStabilityMapper::GetNameForPartialResultsStability(m_partialResultsStability));
   }
 
-  if(m_contentIdentificationTypeHasBeenSet)
+  if(m_contentIdentificationTypeHasBeenSet && m_contentIdentificationType != ContentIdentificationType::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-content-identification-type", ContentIdentificationTypeMapper::GetNameForContentIdentificationType(m_contentIdentificationType));
   }
 
-  if(m_contentRedactionTypeHasBeenSet)
+  if(m_contentRedactionTypeHasBeenSet && m_contentRedactionType != ContentRedactionType::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-content-redaction-type", ContentRedactionTypeMapper::GetNameForContentRedactionType(m_contentRedactionType));
   }
@@ -180,7 +139,7 @@ Aws::Http::HeaderValueCollection StartStreamTranscriptionRequest::GetRequestSpec
     ss.str("");
   }
 
-  if(m_preferredLanguageHasBeenSet)
+  if(m_preferredLanguageHasBeenSet && m_preferredLanguage != LanguageCode::NOT_SET)
   {
     headers.emplace("x-amzn-transcribe-preferred-language", LanguageCodeMapper::GetNameForLanguageCode(m_preferredLanguage));
   }

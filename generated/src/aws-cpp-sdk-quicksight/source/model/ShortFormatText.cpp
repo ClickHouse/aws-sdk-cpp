@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ShortFormatText::ShortFormatText() : 
-    m_plainTextHasBeenSet(false),
-    m_richTextHasBeenSet(false)
-{
-}
-
-ShortFormatText::ShortFormatText(JsonView jsonValue) : 
-    m_plainTextHasBeenSet(false),
-    m_richTextHasBeenSet(false)
+ShortFormatText::ShortFormatText(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ShortFormatText& ShortFormatText::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PlainText"))
   {
     m_plainText = jsonValue.GetString("PlainText");
-
     m_plainTextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RichText"))
   {
     m_richText = jsonValue.GetString("RichText");
-
     m_richTextHasBeenSet = true;
   }
-
   return *this;
 }
 

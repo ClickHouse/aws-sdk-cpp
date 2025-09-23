@@ -33,115 +33,48 @@ namespace Model
   class SuiteRunConfiguration
   {
   public:
-    AWS_IOTDEVICEADVISOR_API SuiteRunConfiguration();
+    AWS_IOTDEVICEADVISOR_API SuiteRunConfiguration() = default;
     AWS_IOTDEVICEADVISOR_API SuiteRunConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTDEVICEADVISOR_API SuiteRunConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTDEVICEADVISOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Sets the primary device for the test suite run. This requires a thing ARN or
      * a certificate ARN.</p>
      */
-    inline const DeviceUnderTest& GetPrimaryDevice() const{ return m_primaryDevice; }
-
-    /**
-     * <p>Sets the primary device for the test suite run. This requires a thing ARN or
-     * a certificate ARN.</p>
-     */
+    inline const DeviceUnderTest& GetPrimaryDevice() const { return m_primaryDevice; }
     inline bool PrimaryDeviceHasBeenSet() const { return m_primaryDeviceHasBeenSet; }
+    template<typename PrimaryDeviceT = DeviceUnderTest>
+    void SetPrimaryDevice(PrimaryDeviceT&& value) { m_primaryDeviceHasBeenSet = true; m_primaryDevice = std::forward<PrimaryDeviceT>(value); }
+    template<typename PrimaryDeviceT = DeviceUnderTest>
+    SuiteRunConfiguration& WithPrimaryDevice(PrimaryDeviceT&& value) { SetPrimaryDevice(std::forward<PrimaryDeviceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Sets the primary device for the test suite run. This requires a thing ARN or
-     * a certificate ARN.</p>
-     */
-    inline void SetPrimaryDevice(const DeviceUnderTest& value) { m_primaryDeviceHasBeenSet = true; m_primaryDevice = value; }
-
-    /**
-     * <p>Sets the primary device for the test suite run. This requires a thing ARN or
-     * a certificate ARN.</p>
-     */
-    inline void SetPrimaryDevice(DeviceUnderTest&& value) { m_primaryDeviceHasBeenSet = true; m_primaryDevice = std::move(value); }
-
-    /**
-     * <p>Sets the primary device for the test suite run. This requires a thing ARN or
-     * a certificate ARN.</p>
-     */
-    inline SuiteRunConfiguration& WithPrimaryDevice(const DeviceUnderTest& value) { SetPrimaryDevice(value); return *this;}
-
-    /**
-     * <p>Sets the primary device for the test suite run. This requires a thing ARN or
-     * a certificate ARN.</p>
-     */
-    inline SuiteRunConfiguration& WithPrimaryDevice(DeviceUnderTest&& value) { SetPrimaryDevice(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Sets test case list.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSelectedTestList() const{ return m_selectedTestList; }
-
-    /**
-     * <p>Sets test case list.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSelectedTestList() const { return m_selectedTestList; }
     inline bool SelectedTestListHasBeenSet() const { return m_selectedTestListHasBeenSet; }
+    template<typename SelectedTestListT = Aws::Vector<Aws::String>>
+    void SetSelectedTestList(SelectedTestListT&& value) { m_selectedTestListHasBeenSet = true; m_selectedTestList = std::forward<SelectedTestListT>(value); }
+    template<typename SelectedTestListT = Aws::Vector<Aws::String>>
+    SuiteRunConfiguration& WithSelectedTestList(SelectedTestListT&& value) { SetSelectedTestList(std::forward<SelectedTestListT>(value)); return *this;}
+    template<typename SelectedTestListT = Aws::String>
+    SuiteRunConfiguration& AddSelectedTestList(SelectedTestListT&& value) { m_selectedTestListHasBeenSet = true; m_selectedTestList.emplace_back(std::forward<SelectedTestListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline void SetSelectedTestList(const Aws::Vector<Aws::String>& value) { m_selectedTestListHasBeenSet = true; m_selectedTestList = value; }
-
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline void SetSelectedTestList(Aws::Vector<Aws::String>&& value) { m_selectedTestListHasBeenSet = true; m_selectedTestList = std::move(value); }
-
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline SuiteRunConfiguration& WithSelectedTestList(const Aws::Vector<Aws::String>& value) { SetSelectedTestList(value); return *this;}
-
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline SuiteRunConfiguration& WithSelectedTestList(Aws::Vector<Aws::String>&& value) { SetSelectedTestList(std::move(value)); return *this;}
-
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline SuiteRunConfiguration& AddSelectedTestList(const Aws::String& value) { m_selectedTestListHasBeenSet = true; m_selectedTestList.push_back(value); return *this; }
-
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline SuiteRunConfiguration& AddSelectedTestList(Aws::String&& value) { m_selectedTestListHasBeenSet = true; m_selectedTestList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Sets test case list.</p>
-     */
-    inline SuiteRunConfiguration& AddSelectedTestList(const char* value) { m_selectedTestListHasBeenSet = true; m_selectedTestList.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>TRUE if multiple test suites run in parallel.</p>
      */
-    inline bool GetParallelRun() const{ return m_parallelRun; }
-
-    /**
-     * <p>TRUE if multiple test suites run in parallel.</p>
-     */
+    inline bool GetParallelRun() const { return m_parallelRun; }
     inline bool ParallelRunHasBeenSet() const { return m_parallelRunHasBeenSet; }
-
-    /**
-     * <p>TRUE if multiple test suites run in parallel.</p>
-     */
     inline void SetParallelRun(bool value) { m_parallelRunHasBeenSet = true; m_parallelRun = value; }
-
-    /**
-     * <p>TRUE if multiple test suites run in parallel.</p>
-     */
     inline SuiteRunConfiguration& WithParallelRun(bool value) { SetParallelRun(value); return *this;}
-
+    ///@}
   private:
 
     DeviceUnderTest m_primaryDevice;
@@ -150,7 +83,7 @@ namespace Model
     Aws::Vector<Aws::String> m_selectedTestList;
     bool m_selectedTestListHasBeenSet = false;
 
-    bool m_parallelRun;
+    bool m_parallelRun{false};
     bool m_parallelRunHasBeenSet = false;
   };
 

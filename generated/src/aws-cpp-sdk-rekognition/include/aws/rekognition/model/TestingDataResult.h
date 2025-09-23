@@ -34,116 +34,49 @@ namespace Model
   class TestingDataResult
   {
   public:
-    AWS_REKOGNITION_API TestingDataResult();
+    AWS_REKOGNITION_API TestingDataResult() = default;
     AWS_REKOGNITION_API TestingDataResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API TestingDataResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The testing dataset that was supplied for training.</p>
      */
-    inline const TestingData& GetInput() const{ return m_input; }
-
-    /**
-     * <p>The testing dataset that was supplied for training.</p>
-     */
+    inline const TestingData& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
+    template<typename InputT = TestingData>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = TestingData>
+    TestingDataResult& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The testing dataset that was supplied for training.</p>
-     */
-    inline void SetInput(const TestingData& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p>The testing dataset that was supplied for training.</p>
-     */
-    inline void SetInput(TestingData&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p>The testing dataset that was supplied for training.</p>
-     */
-    inline TestingDataResult& WithInput(const TestingData& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>The testing dataset that was supplied for training.</p>
-     */
-    inline TestingDataResult& WithInput(TestingData&& value) { SetInput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The subset of the dataset that was actually tested. Some images (assets)
      * might not be tested due to file formatting and other issues. </p>
      */
-    inline const TestingData& GetOutput() const{ return m_output; }
-
-    /**
-     * <p>The subset of the dataset that was actually tested. Some images (assets)
-     * might not be tested due to file formatting and other issues. </p>
-     */
+    inline const TestingData& GetOutput() const { return m_output; }
     inline bool OutputHasBeenSet() const { return m_outputHasBeenSet; }
+    template<typename OutputT = TestingData>
+    void SetOutput(OutputT&& value) { m_outputHasBeenSet = true; m_output = std::forward<OutputT>(value); }
+    template<typename OutputT = TestingData>
+    TestingDataResult& WithOutput(OutputT&& value) { SetOutput(std::forward<OutputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The subset of the dataset that was actually tested. Some images (assets)
-     * might not be tested due to file formatting and other issues. </p>
-     */
-    inline void SetOutput(const TestingData& value) { m_outputHasBeenSet = true; m_output = value; }
-
-    /**
-     * <p>The subset of the dataset that was actually tested. Some images (assets)
-     * might not be tested due to file formatting and other issues. </p>
-     */
-    inline void SetOutput(TestingData&& value) { m_outputHasBeenSet = true; m_output = std::move(value); }
-
-    /**
-     * <p>The subset of the dataset that was actually tested. Some images (assets)
-     * might not be tested due to file formatting and other issues. </p>
-     */
-    inline TestingDataResult& WithOutput(const TestingData& value) { SetOutput(value); return *this;}
-
-    /**
-     * <p>The subset of the dataset that was actually tested. Some images (assets)
-     * might not be tested due to file formatting and other issues. </p>
-     */
-    inline TestingDataResult& WithOutput(TestingData&& value) { SetOutput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the data validation manifest. The data validation manifest is
      * created for the test dataset during model training.</p>
      */
-    inline const ValidationData& GetValidation() const{ return m_validation; }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the test dataset during model training.</p>
-     */
+    inline const ValidationData& GetValidation() const { return m_validation; }
     inline bool ValidationHasBeenSet() const { return m_validationHasBeenSet; }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the test dataset during model training.</p>
-     */
-    inline void SetValidation(const ValidationData& value) { m_validationHasBeenSet = true; m_validation = value; }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the test dataset during model training.</p>
-     */
-    inline void SetValidation(ValidationData&& value) { m_validationHasBeenSet = true; m_validation = std::move(value); }
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the test dataset during model training.</p>
-     */
-    inline TestingDataResult& WithValidation(const ValidationData& value) { SetValidation(value); return *this;}
-
-    /**
-     * <p>The location of the data validation manifest. The data validation manifest is
-     * created for the test dataset during model training.</p>
-     */
-    inline TestingDataResult& WithValidation(ValidationData&& value) { SetValidation(std::move(value)); return *this;}
-
+    template<typename ValidationT = ValidationData>
+    void SetValidation(ValidationT&& value) { m_validationHasBeenSet = true; m_validation = std::forward<ValidationT>(value); }
+    template<typename ValidationT = ValidationData>
+    TestingDataResult& WithValidation(ValidationT&& value) { SetValidation(std::forward<ValidationT>(value)); return *this;}
+    ///@}
   private:
 
     TestingData m_input;

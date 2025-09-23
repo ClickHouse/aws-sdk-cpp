@@ -18,15 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-ForwardingConfig::ForwardingConfig() : 
-    m_state(ForwardingConfigState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-ForwardingConfig::ForwardingConfig(JsonView jsonValue) : 
-    m_state(ForwardingConfigState::NOT_SET),
-    m_stateHasBeenSet(false)
+ForwardingConfig::ForwardingConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ForwardingConfig& ForwardingConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("state"))
   {
     m_state = ForwardingConfigStateMapper::GetForwardingConfigStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -34,42 +34,23 @@ namespace Model
   class UpdatePolicyDefinition
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API UpdatePolicyDefinition();
+    AWS_VERIFIEDPERMISSIONS_API UpdatePolicyDefinition() = default;
     AWS_VERIFIEDPERMISSIONS_API UpdatePolicyDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API UpdatePolicyDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains details about the updates to be applied to a static policy.</p>
      */
-    inline const UpdateStaticPolicyDefinition& GetStatic() const{ return m_static; }
-
-    /**
-     * <p>Contains details about the updates to be applied to a static policy.</p>
-     */
+    inline const UpdateStaticPolicyDefinition& GetStatic() const { return m_static; }
     inline bool StaticHasBeenSet() const { return m_staticHasBeenSet; }
-
-    /**
-     * <p>Contains details about the updates to be applied to a static policy.</p>
-     */
-    inline void SetStatic(const UpdateStaticPolicyDefinition& value) { m_staticHasBeenSet = true; m_static = value; }
-
-    /**
-     * <p>Contains details about the updates to be applied to a static policy.</p>
-     */
-    inline void SetStatic(UpdateStaticPolicyDefinition&& value) { m_staticHasBeenSet = true; m_static = std::move(value); }
-
-    /**
-     * <p>Contains details about the updates to be applied to a static policy.</p>
-     */
-    inline UpdatePolicyDefinition& WithStatic(const UpdateStaticPolicyDefinition& value) { SetStatic(value); return *this;}
-
-    /**
-     * <p>Contains details about the updates to be applied to a static policy.</p>
-     */
-    inline UpdatePolicyDefinition& WithStatic(UpdateStaticPolicyDefinition&& value) { SetStatic(std::move(value)); return *this;}
-
+    template<typename StaticT = UpdateStaticPolicyDefinition>
+    void SetStatic(StaticT&& value) { m_staticHasBeenSet = true; m_static = std::forward<StaticT>(value); }
+    template<typename StaticT = UpdateStaticPolicyDefinition>
+    UpdatePolicyDefinition& WithStatic(StaticT&& value) { SetStatic(std::forward<StaticT>(value)); return *this;}
+    ///@}
   private:
 
     UpdateStaticPolicyDefinition m_static;

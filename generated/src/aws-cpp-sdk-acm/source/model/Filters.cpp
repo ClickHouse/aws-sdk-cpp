@@ -18,17 +18,7 @@ namespace ACM
 namespace Model
 {
 
-Filters::Filters() : 
-    m_extendedKeyUsageHasBeenSet(false),
-    m_keyUsageHasBeenSet(false),
-    m_keyTypesHasBeenSet(false)
-{
-}
-
-Filters::Filters(JsonView jsonValue) : 
-    m_extendedKeyUsageHasBeenSet(false),
-    m_keyUsageHasBeenSet(false),
-    m_keyTypesHasBeenSet(false)
+Filters::Filters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_extendedKeyUsageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("keyUsage"))
   {
     Aws::Utils::Array<JsonView> keyUsageJsonList = jsonValue.GetArray("keyUsage");
@@ -54,7 +43,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_keyUsageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("keyTypes"))
   {
     Aws::Utils::Array<JsonView> keyTypesJsonList = jsonValue.GetArray("keyTypes");
@@ -64,7 +52,16 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_keyTypesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("exportOption"))
+  {
+    m_exportOption = CertificateExportMapper::GetCertificateExportForName(jsonValue.GetString("exportOption"));
+    m_exportOptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("managedBy"))
+  {
+    m_managedBy = CertificateManagedByMapper::GetCertificateManagedByForName(jsonValue.GetString("managedBy"));
+    m_managedByHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -103,6 +100,16 @@ JsonValue Filters::Jsonize() const
    }
    payload.WithArray("keyTypes", std::move(keyTypesJsonList));
 
+  }
+
+  if(m_exportOptionHasBeenSet)
+  {
+   payload.WithString("exportOption", CertificateExportMapper::GetNameForCertificateExport(m_exportOption));
+  }
+
+  if(m_managedByHasBeenSet)
+  {
+   payload.WithString("managedBy", CertificateManagedByMapper::GetNameForCertificateManagedBy(m_managedBy));
   }
 
   return payload;

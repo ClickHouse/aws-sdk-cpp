@@ -33,67 +33,37 @@ namespace Model
   class ModifyReservedInstancesResponse
   {
   public:
-    AWS_EC2_API ModifyReservedInstancesResponse();
+    AWS_EC2_API ModifyReservedInstancesResponse() = default;
     AWS_EC2_API ModifyReservedInstancesResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API ModifyReservedInstancesResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID for the modification.</p>
      */
-    inline const Aws::String& GetReservedInstancesModificationId() const{ return m_reservedInstancesModificationId; }
+    inline const Aws::String& GetReservedInstancesModificationId() const { return m_reservedInstancesModificationId; }
+    template<typename ReservedInstancesModificationIdT = Aws::String>
+    void SetReservedInstancesModificationId(ReservedInstancesModificationIdT&& value) { m_reservedInstancesModificationIdHasBeenSet = true; m_reservedInstancesModificationId = std::forward<ReservedInstancesModificationIdT>(value); }
+    template<typename ReservedInstancesModificationIdT = Aws::String>
+    ModifyReservedInstancesResponse& WithReservedInstancesModificationId(ReservedInstancesModificationIdT&& value) { SetReservedInstancesModificationId(std::forward<ReservedInstancesModificationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the modification.</p>
-     */
-    inline void SetReservedInstancesModificationId(const Aws::String& value) { m_reservedInstancesModificationId = value; }
-
-    /**
-     * <p>The ID for the modification.</p>
-     */
-    inline void SetReservedInstancesModificationId(Aws::String&& value) { m_reservedInstancesModificationId = std::move(value); }
-
-    /**
-     * <p>The ID for the modification.</p>
-     */
-    inline void SetReservedInstancesModificationId(const char* value) { m_reservedInstancesModificationId.assign(value); }
-
-    /**
-     * <p>The ID for the modification.</p>
-     */
-    inline ModifyReservedInstancesResponse& WithReservedInstancesModificationId(const Aws::String& value) { SetReservedInstancesModificationId(value); return *this;}
-
-    /**
-     * <p>The ID for the modification.</p>
-     */
-    inline ModifyReservedInstancesResponse& WithReservedInstancesModificationId(Aws::String&& value) { SetReservedInstancesModificationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the modification.</p>
-     */
-    inline ModifyReservedInstancesResponse& WithReservedInstancesModificationId(const char* value) { SetReservedInstancesModificationId(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ModifyReservedInstancesResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ModifyReservedInstancesResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ModifyReservedInstancesResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reservedInstancesModificationId;
+    bool m_reservedInstancesModificationIdHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -33,76 +33,36 @@ namespace Model
   class ParticipatingResource
   {
   public:
-    AWS_DRS_API ParticipatingResource();
+    AWS_DRS_API ParticipatingResource() = default;
     AWS_DRS_API ParticipatingResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API ParticipatingResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The launch status of a participating resource.</p>
      */
-    inline const LaunchStatus& GetLaunchStatus() const{ return m_launchStatus; }
-
-    /**
-     * <p>The launch status of a participating resource.</p>
-     */
+    inline LaunchStatus GetLaunchStatus() const { return m_launchStatus; }
     inline bool LaunchStatusHasBeenSet() const { return m_launchStatusHasBeenSet; }
+    inline void SetLaunchStatus(LaunchStatus value) { m_launchStatusHasBeenSet = true; m_launchStatus = value; }
+    inline ParticipatingResource& WithLaunchStatus(LaunchStatus value) { SetLaunchStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The launch status of a participating resource.</p>
-     */
-    inline void SetLaunchStatus(const LaunchStatus& value) { m_launchStatusHasBeenSet = true; m_launchStatus = value; }
-
-    /**
-     * <p>The launch status of a participating resource.</p>
-     */
-    inline void SetLaunchStatus(LaunchStatus&& value) { m_launchStatusHasBeenSet = true; m_launchStatus = std::move(value); }
-
-    /**
-     * <p>The launch status of a participating resource.</p>
-     */
-    inline ParticipatingResource& WithLaunchStatus(const LaunchStatus& value) { SetLaunchStatus(value); return *this;}
-
-    /**
-     * <p>The launch status of a participating resource.</p>
-     */
-    inline ParticipatingResource& WithLaunchStatus(LaunchStatus&& value) { SetLaunchStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of a participating resource.</p>
      */
-    inline const ParticipatingResourceID& GetParticipatingResourceID() const{ return m_participatingResourceID; }
-
-    /**
-     * <p>The ID of a participating resource.</p>
-     */
+    inline const ParticipatingResourceID& GetParticipatingResourceID() const { return m_participatingResourceID; }
     inline bool ParticipatingResourceIDHasBeenSet() const { return m_participatingResourceIDHasBeenSet; }
-
-    /**
-     * <p>The ID of a participating resource.</p>
-     */
-    inline void SetParticipatingResourceID(const ParticipatingResourceID& value) { m_participatingResourceIDHasBeenSet = true; m_participatingResourceID = value; }
-
-    /**
-     * <p>The ID of a participating resource.</p>
-     */
-    inline void SetParticipatingResourceID(ParticipatingResourceID&& value) { m_participatingResourceIDHasBeenSet = true; m_participatingResourceID = std::move(value); }
-
-    /**
-     * <p>The ID of a participating resource.</p>
-     */
-    inline ParticipatingResource& WithParticipatingResourceID(const ParticipatingResourceID& value) { SetParticipatingResourceID(value); return *this;}
-
-    /**
-     * <p>The ID of a participating resource.</p>
-     */
-    inline ParticipatingResource& WithParticipatingResourceID(ParticipatingResourceID&& value) { SetParticipatingResourceID(std::move(value)); return *this;}
-
+    template<typename ParticipatingResourceIDT = ParticipatingResourceID>
+    void SetParticipatingResourceID(ParticipatingResourceIDT&& value) { m_participatingResourceIDHasBeenSet = true; m_participatingResourceID = std::forward<ParticipatingResourceIDT>(value); }
+    template<typename ParticipatingResourceIDT = ParticipatingResourceID>
+    ParticipatingResource& WithParticipatingResourceID(ParticipatingResourceIDT&& value) { SetParticipatingResourceID(std::forward<ParticipatingResourceIDT>(value)); return *this;}
+    ///@}
   private:
 
-    LaunchStatus m_launchStatus;
+    LaunchStatus m_launchStatus{LaunchStatus::NOT_SET};
     bool m_launchStatusHasBeenSet = false;
 
     ParticipatingResourceID m_participatingResourceID;

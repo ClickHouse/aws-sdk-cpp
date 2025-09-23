@@ -12,28 +12,13 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartCompositionRequest::StartCompositionRequest() : 
-    m_destinationsHasBeenSet(false),
-    m_idempotencyToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_idempotencyTokenHasBeenSet(true),
-    m_layoutHasBeenSet(false),
-    m_stageArnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String StartCompositionRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_destinationsHasBeenSet)
+  if(m_stageArnHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> destinationsJsonList(m_destinations.size());
-   for(unsigned destinationsIndex = 0; destinationsIndex < destinationsJsonList.GetLength(); ++destinationsIndex)
-   {
-     destinationsJsonList[destinationsIndex].AsObject(m_destinations[destinationsIndex].Jsonize());
-   }
-   payload.WithArray("destinations", std::move(destinationsJsonList));
+   payload.WithString("stageArn", m_stageArn);
 
   }
 
@@ -49,9 +34,14 @@ Aws::String StartCompositionRequest::SerializePayload() const
 
   }
 
-  if(m_stageArnHasBeenSet)
+  if(m_destinationsHasBeenSet)
   {
-   payload.WithString("stageArn", m_stageArn);
+   Aws::Utils::Array<JsonValue> destinationsJsonList(m_destinations.size());
+   for(unsigned destinationsIndex = 0; destinationsIndex < destinationsJsonList.GetLength(); ++destinationsIndex)
+   {
+     destinationsJsonList[destinationsIndex].AsObject(m_destinations[destinationsIndex].Jsonize());
+   }
+   payload.WithArray("destinations", std::move(destinationsJsonList));
 
   }
 

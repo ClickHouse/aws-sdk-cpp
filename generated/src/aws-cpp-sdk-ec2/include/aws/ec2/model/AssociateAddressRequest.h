@@ -21,7 +21,7 @@ namespace Model
   class AssociateAddressRequest : public EC2Request
   {
   public:
-    AWS_EC2_API AssociateAddressRequest();
+    AWS_EC2_API AssociateAddressRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,316 +36,95 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The allocation ID. This is required.</p>
      */
-    inline const Aws::String& GetAllocationId() const{ return m_allocationId; }
-
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
+    inline const Aws::String& GetAllocationId() const { return m_allocationId; }
     inline bool AllocationIdHasBeenSet() const { return m_allocationIdHasBeenSet; }
+    template<typename AllocationIdT = Aws::String>
+    void SetAllocationId(AllocationIdT&& value) { m_allocationIdHasBeenSet = true; m_allocationId = std::forward<AllocationIdT>(value); }
+    template<typename AllocationIdT = Aws::String>
+    AssociateAddressRequest& WithAllocationId(AllocationIdT&& value) { SetAllocationId(std::forward<AllocationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
-    inline void SetAllocationId(const Aws::String& value) { m_allocationIdHasBeenSet = true; m_allocationId = value; }
-
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
-    inline void SetAllocationId(Aws::String&& value) { m_allocationIdHasBeenSet = true; m_allocationId = std::move(value); }
-
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
-    inline void SetAllocationId(const char* value) { m_allocationIdHasBeenSet = true; m_allocationId.assign(value); }
-
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
-    inline AssociateAddressRequest& WithAllocationId(const Aws::String& value) { SetAllocationId(value); return *this;}
-
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
-    inline AssociateAddressRequest& WithAllocationId(Aws::String&& value) { SetAllocationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The allocation ID. This is required.</p>
-     */
-    inline AssociateAddressRequest& WithAllocationId(const char* value) { SetAllocationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the instance. The instance must have exactly one attached network
      * interface. You can specify either the instance ID or the network interface ID,
      * but not both.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    AssociateAddressRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
-    inline AssociateAddressRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
-    inline AssociateAddressRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance. The instance must have exactly one attached network
-     * interface. You can specify either the instance ID or the network interface ID,
-     * but not both.</p>
-     */
-    inline AssociateAddressRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Deprecated.</p>
      */
-    inline const Aws::String& GetPublicIp() const{ return m_publicIp; }
-
-    /**
-     * <p>Deprecated.</p>
-     */
+    inline const Aws::String& GetPublicIp() const { return m_publicIp; }
     inline bool PublicIpHasBeenSet() const { return m_publicIpHasBeenSet; }
+    template<typename PublicIpT = Aws::String>
+    void SetPublicIp(PublicIpT&& value) { m_publicIpHasBeenSet = true; m_publicIp = std::forward<PublicIpT>(value); }
+    template<typename PublicIpT = Aws::String>
+    AssociateAddressRequest& WithPublicIp(PublicIpT&& value) { SetPublicIp(std::forward<PublicIpT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Deprecated.</p>
-     */
-    inline void SetPublicIp(const Aws::String& value) { m_publicIpHasBeenSet = true; m_publicIp = value; }
-
-    /**
-     * <p>Deprecated.</p>
-     */
-    inline void SetPublicIp(Aws::String&& value) { m_publicIpHasBeenSet = true; m_publicIp = std::move(value); }
-
-    /**
-     * <p>Deprecated.</p>
-     */
-    inline void SetPublicIp(const char* value) { m_publicIpHasBeenSet = true; m_publicIp.assign(value); }
-
-    /**
-     * <p>Deprecated.</p>
-     */
-    inline AssociateAddressRequest& WithPublicIp(const Aws::String& value) { SetPublicIp(value); return *this;}
-
-    /**
-     * <p>Deprecated.</p>
-     */
-    inline AssociateAddressRequest& WithPublicIp(Aws::String&& value) { SetPublicIp(std::move(value)); return *this;}
-
-    /**
-     * <p>Deprecated.</p>
-     */
-    inline AssociateAddressRequest& WithPublicIp(const char* value) { SetPublicIp(value); return *this;}
-
-
-    /**
-     * <p>Reassociation is automatic, but you can specify false to ensure the operation
-     * fails if the Elastic IP address is already associated with another resource.</p>
-     */
-    inline bool GetAllowReassociation() const{ return m_allowReassociation; }
-
-    /**
-     * <p>Reassociation is automatic, but you can specify false to ensure the operation
-     * fails if the Elastic IP address is already associated with another resource.</p>
-     */
-    inline bool AllowReassociationHasBeenSet() const { return m_allowReassociationHasBeenSet; }
-
-    /**
-     * <p>Reassociation is automatic, but you can specify false to ensure the operation
-     * fails if the Elastic IP address is already associated with another resource.</p>
-     */
-    inline void SetAllowReassociation(bool value) { m_allowReassociationHasBeenSet = true; m_allowReassociation = value; }
-
-    /**
-     * <p>Reassociation is automatic, but you can specify false to ensure the operation
-     * fails if the Elastic IP address is already associated with another resource.</p>
-     */
-    inline AssociateAddressRequest& WithAllowReassociation(bool value) { SetAllowReassociation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline AssociateAddressRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the network interface. If the instance has more than one network
      * interface, you must specify a network interface ID.</p> <p>You can specify
      * either the instance ID or the network interface ID, but not both. </p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
-
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
     inline bool NetworkInterfaceIdHasBeenSet() const { return m_networkInterfaceIdHasBeenSet; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    AssociateAddressRequest& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
-
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
-    inline AssociateAddressRequest& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
-    inline AssociateAddressRequest& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the network interface. If the instance has more than one network
-     * interface, you must specify a network interface ID.</p> <p>You can specify
-     * either the instance ID or the network interface ID, but not both. </p>
-     */
-    inline AssociateAddressRequest& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The primary or secondary private IP address to associate with the Elastic IP
      * address. If no private IP address is specified, the Elastic IP address is
      * associated with the primary private IP address.</p>
      */
-    inline const Aws::String& GetPrivateIpAddress() const{ return m_privateIpAddress; }
-
-    /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
-     */
+    inline const Aws::String& GetPrivateIpAddress() const { return m_privateIpAddress; }
     inline bool PrivateIpAddressHasBeenSet() const { return m_privateIpAddressHasBeenSet; }
+    template<typename PrivateIpAddressT = Aws::String>
+    void SetPrivateIpAddress(PrivateIpAddressT&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::forward<PrivateIpAddressT>(value); }
+    template<typename PrivateIpAddressT = Aws::String>
+    AssociateAddressRequest& WithPrivateIpAddress(PrivateIpAddressT&& value) { SetPrivateIpAddress(std::forward<PrivateIpAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
+     * <p>Reassociation is automatic, but you can specify false to ensure the operation
+     * fails if the Elastic IP address is already associated with another resource.</p>
      */
-    inline void SetPrivateIpAddress(const Aws::String& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
-
-    /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
-     */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
-
-    /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
-     */
-    inline void SetPrivateIpAddress(const char* value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress.assign(value); }
-
-    /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
-     */
-    inline AssociateAddressRequest& WithPrivateIpAddress(const Aws::String& value) { SetPrivateIpAddress(value); return *this;}
-
-    /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
-     */
-    inline AssociateAddressRequest& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The primary or secondary private IP address to associate with the Elastic IP
-     * address. If no private IP address is specified, the Elastic IP address is
-     * associated with the primary private IP address.</p>
-     */
-    inline AssociateAddressRequest& WithPrivateIpAddress(const char* value) { SetPrivateIpAddress(value); return *this;}
-
+    inline bool GetAllowReassociation() const { return m_allowReassociation; }
+    inline bool AllowReassociationHasBeenSet() const { return m_allowReassociationHasBeenSet; }
+    inline void SetAllowReassociation(bool value) { m_allowReassociationHasBeenSet = true; m_allowReassociation = value; }
+    inline AssociateAddressRequest& WithAllowReassociation(bool value) { SetAllowReassociation(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_allocationId;
@@ -357,10 +136,7 @@ namespace Model
     Aws::String m_publicIp;
     bool m_publicIpHasBeenSet = false;
 
-    bool m_allowReassociation;
-    bool m_allowReassociationHasBeenSet = false;
-
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_networkInterfaceId;
@@ -368,6 +144,9 @@ namespace Model
 
     Aws::String m_privateIpAddress;
     bool m_privateIpAddressHasBeenSet = false;
+
+    bool m_allowReassociation{false};
+    bool m_allowReassociationHasBeenSet = false;
   };
 
 } // namespace Model

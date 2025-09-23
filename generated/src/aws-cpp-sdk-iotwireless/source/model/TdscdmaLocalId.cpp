@@ -18,19 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-TdscdmaLocalId::TdscdmaLocalId() : 
-    m_uarfcn(0),
-    m_uarfcnHasBeenSet(false),
-    m_cellParams(0),
-    m_cellParamsHasBeenSet(false)
-{
-}
-
-TdscdmaLocalId::TdscdmaLocalId(JsonView jsonValue) : 
-    m_uarfcn(0),
-    m_uarfcnHasBeenSet(false),
-    m_cellParams(0),
-    m_cellParamsHasBeenSet(false)
+TdscdmaLocalId::TdscdmaLocalId(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ TdscdmaLocalId& TdscdmaLocalId::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Uarfcn"))
   {
     m_uarfcn = jsonValue.GetInteger("Uarfcn");
-
     m_uarfcnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CellParams"))
   {
     m_cellParams = jsonValue.GetInteger("CellParams");
-
     m_cellParamsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-TransformProcessingConfig::TransformProcessingConfig() : 
-    m_computeLocation(ComputeLocation::NOT_SET),
-    m_computeLocationHasBeenSet(false),
-    m_forwardingConfigHasBeenSet(false)
-{
-}
-
-TransformProcessingConfig::TransformProcessingConfig(JsonView jsonValue) : 
-    m_computeLocation(ComputeLocation::NOT_SET),
-    m_computeLocationHasBeenSet(false),
-    m_forwardingConfigHasBeenSet(false)
+TransformProcessingConfig::TransformProcessingConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TransformProcessingConfig& TransformProcessingConfig::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("computeLocation"))
   {
     m_computeLocation = ComputeLocationMapper::GetComputeLocationForName(jsonValue.GetString("computeLocation"));
-
     m_computeLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("forwardingConfig"))
   {
     m_forwardingConfig = jsonValue.GetObject("forwardingConfig");
-
     m_forwardingConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

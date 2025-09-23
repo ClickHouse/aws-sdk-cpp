@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-RuleOption::RuleOption() : 
-    m_keywordHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
-RuleOption::RuleOption(JsonView jsonValue) : 
-    m_keywordHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+RuleOption::RuleOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RuleOption& RuleOption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Keyword"))
   {
     m_keyword = jsonValue.GetString("Keyword");
-
     m_keywordHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Settings"))
   {
     Aws::Utils::Array<JsonView> settingsJsonList = jsonValue.GetArray("Settings");
@@ -49,7 +39,6 @@ RuleOption& RuleOption::operator =(JsonView jsonValue)
     }
     m_settingsHasBeenSet = true;
   }
-
   return *this;
 }
 

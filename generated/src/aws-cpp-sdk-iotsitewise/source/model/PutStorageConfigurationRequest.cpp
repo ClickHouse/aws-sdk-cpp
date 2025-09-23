@@ -12,19 +12,6 @@ using namespace Aws::IoTSiteWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutStorageConfigurationRequest::PutStorageConfigurationRequest() : 
-    m_storageType(StorageType::NOT_SET),
-    m_storageTypeHasBeenSet(false),
-    m_multiLayerStorageHasBeenSet(false),
-    m_disassociatedDataStorage(DisassociatedDataStorageState::NOT_SET),
-    m_disassociatedDataStorageHasBeenSet(false),
-    m_retentionPeriodHasBeenSet(false),
-    m_warmTier(WarmTierState::NOT_SET),
-    m_warmTierHasBeenSet(false),
-    m_warmTierRetentionPeriodHasBeenSet(false)
-{
-}
-
 Aws::String PutStorageConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -59,6 +46,12 @@ Aws::String PutStorageConfigurationRequest::SerializePayload() const
   if(m_warmTierRetentionPeriodHasBeenSet)
   {
    payload.WithObject("warmTierRetentionPeriod", m_warmTierRetentionPeriod.Jsonize());
+
+  }
+
+  if(m_disallowIngestNullNaNHasBeenSet)
+  {
+   payload.WithBool("disallowIngestNullNaN", m_disallowIngestNullNaN);
 
   }
 

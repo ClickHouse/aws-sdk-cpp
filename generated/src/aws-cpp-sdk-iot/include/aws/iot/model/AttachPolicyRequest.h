@@ -21,7 +21,7 @@ namespace Model
   class AttachPolicyRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API AttachPolicyRequest();
+    AWS_IOT_API AttachPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,111 +32,32 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the policy to attach.</p>
      */
-    inline const Aws::String& GetPolicyName() const{ return m_policyName; }
-
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
+    inline const Aws::String& GetPolicyName() const { return m_policyName; }
     inline bool PolicyNameHasBeenSet() const { return m_policyNameHasBeenSet; }
+    template<typename PolicyNameT = Aws::String>
+    void SetPolicyName(PolicyNameT&& value) { m_policyNameHasBeenSet = true; m_policyName = std::forward<PolicyNameT>(value); }
+    template<typename PolicyNameT = Aws::String>
+    AttachPolicyRequest& WithPolicyName(PolicyNameT&& value) { SetPolicyName(std::forward<PolicyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
-    inline void SetPolicyName(const Aws::String& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
-
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
-
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
-    inline void SetPolicyName(const char* value) { m_policyNameHasBeenSet = true; m_policyName.assign(value); }
-
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
-    inline AttachPolicyRequest& WithPolicyName(const Aws::String& value) { SetPolicyName(value); return *this;}
-
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
-    inline AttachPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the policy to attach.</p>
-     */
-    inline AttachPolicyRequest& WithPolicyName(const char* value) { SetPolicyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
      * to which the policy is attached. For example, a thing group or a
      * certificate.</p>
      */
-    inline const Aws::String& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
+    inline const Aws::String& GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
-    inline void SetTarget(const Aws::String& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
-    inline void SetTarget(Aws::String&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
-    inline void SetTarget(const char* value) { m_targetHasBeenSet = true; m_target.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
-    inline AttachPolicyRequest& WithTarget(const Aws::String& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
-    inline AttachPolicyRequest& WithTarget(Aws::String&& value) { SetTarget(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html">identity</a>
-     * to which the policy is attached. For example, a thing group or a
-     * certificate.</p>
-     */
-    inline AttachPolicyRequest& WithTarget(const char* value) { SetTarget(value); return *this;}
-
+    template<typename TargetT = Aws::String>
+    void SetTarget(TargetT&& value) { m_targetHasBeenSet = true; m_target = std::forward<TargetT>(value); }
+    template<typename TargetT = Aws::String>
+    AttachPolicyRequest& WithTarget(TargetT&& value) { SetTarget(std::forward<TargetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyName;

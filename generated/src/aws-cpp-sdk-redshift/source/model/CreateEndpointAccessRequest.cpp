@@ -10,15 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-CreateEndpointAccessRequest::CreateEndpointAccessRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_resourceOwnerHasBeenSet(false),
-    m_endpointNameHasBeenSet(false),
-    m_subnetGroupNameHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false)
-{
-}
-
 Aws::String CreateEndpointAccessRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -45,12 +36,19 @@ Aws::String CreateEndpointAccessRequest::SerializePayload() const
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 

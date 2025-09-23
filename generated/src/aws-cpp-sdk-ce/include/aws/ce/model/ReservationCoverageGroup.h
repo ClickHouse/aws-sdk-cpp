@@ -34,108 +34,39 @@ namespace Model
   class ReservationCoverageGroup
   {
   public:
-    AWS_COSTEXPLORER_API ReservationCoverageGroup();
+    AWS_COSTEXPLORER_API ReservationCoverageGroup() = default;
     AWS_COSTEXPLORER_API ReservationCoverageGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API ReservationCoverageGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attributes for this group of reservations.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = Aws::Map<Aws::String, Aws::String>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Map<Aws::String, Aws::String>>
+    ReservationCoverageGroup& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesKeyT = Aws::String, typename AttributesValueT = Aws::String>
+    ReservationCoverageGroup& AddAttributes(AttributesKeyT&& key, AttributesValueT&& value) {
+      m_attributesHasBeenSet = true; m_attributes.emplace(std::forward<AttributesKeyT>(key), std::forward<AttributesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline void SetAttributes(const Aws::Map<Aws::String, Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& WithAttributes(const Aws::Map<Aws::String, Aws::String>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(const char* key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(Aws::String&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The attributes for this group of reservations.</p>
-     */
-    inline ReservationCoverageGroup& AddAttributes(const char* key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>How much instance usage this group of reservations covered.</p>
      */
-    inline const Coverage& GetCoverage() const{ return m_coverage; }
-
-    /**
-     * <p>How much instance usage this group of reservations covered.</p>
-     */
+    inline const Coverage& GetCoverage() const { return m_coverage; }
     inline bool CoverageHasBeenSet() const { return m_coverageHasBeenSet; }
-
-    /**
-     * <p>How much instance usage this group of reservations covered.</p>
-     */
-    inline void SetCoverage(const Coverage& value) { m_coverageHasBeenSet = true; m_coverage = value; }
-
-    /**
-     * <p>How much instance usage this group of reservations covered.</p>
-     */
-    inline void SetCoverage(Coverage&& value) { m_coverageHasBeenSet = true; m_coverage = std::move(value); }
-
-    /**
-     * <p>How much instance usage this group of reservations covered.</p>
-     */
-    inline ReservationCoverageGroup& WithCoverage(const Coverage& value) { SetCoverage(value); return *this;}
-
-    /**
-     * <p>How much instance usage this group of reservations covered.</p>
-     */
-    inline ReservationCoverageGroup& WithCoverage(Coverage&& value) { SetCoverage(std::move(value)); return *this;}
-
+    template<typename CoverageT = Coverage>
+    void SetCoverage(CoverageT&& value) { m_coverageHasBeenSet = true; m_coverage = std::forward<CoverageT>(value); }
+    template<typename CoverageT = Coverage>
+    ReservationCoverageGroup& WithCoverage(CoverageT&& value) { SetCoverage(std::forward<CoverageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Map<Aws::String, Aws::String> m_attributes;

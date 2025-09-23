@@ -28,7 +28,7 @@ namespace Model
   class CreateOutboundConnectionRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API CreateOutboundConnectionRequest();
+    AWS_OPENSEARCHSERVICE_API CreateOutboundConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,170 +39,63 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Name and Region of the source (local) domain.</p>
      */
-    inline const DomainInformationContainer& GetLocalDomainInfo() const{ return m_localDomainInfo; }
-
-    /**
-     * <p>Name and Region of the source (local) domain.</p>
-     */
+    inline const DomainInformationContainer& GetLocalDomainInfo() const { return m_localDomainInfo; }
     inline bool LocalDomainInfoHasBeenSet() const { return m_localDomainInfoHasBeenSet; }
+    template<typename LocalDomainInfoT = DomainInformationContainer>
+    void SetLocalDomainInfo(LocalDomainInfoT&& value) { m_localDomainInfoHasBeenSet = true; m_localDomainInfo = std::forward<LocalDomainInfoT>(value); }
+    template<typename LocalDomainInfoT = DomainInformationContainer>
+    CreateOutboundConnectionRequest& WithLocalDomainInfo(LocalDomainInfoT&& value) { SetLocalDomainInfo(std::forward<LocalDomainInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name and Region of the source (local) domain.</p>
-     */
-    inline void SetLocalDomainInfo(const DomainInformationContainer& value) { m_localDomainInfoHasBeenSet = true; m_localDomainInfo = value; }
-
-    /**
-     * <p>Name and Region of the source (local) domain.</p>
-     */
-    inline void SetLocalDomainInfo(DomainInformationContainer&& value) { m_localDomainInfoHasBeenSet = true; m_localDomainInfo = std::move(value); }
-
-    /**
-     * <p>Name and Region of the source (local) domain.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithLocalDomainInfo(const DomainInformationContainer& value) { SetLocalDomainInfo(value); return *this;}
-
-    /**
-     * <p>Name and Region of the source (local) domain.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithLocalDomainInfo(DomainInformationContainer&& value) { SetLocalDomainInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Name and Region of the destination (remote) domain.</p>
      */
-    inline const DomainInformationContainer& GetRemoteDomainInfo() const{ return m_remoteDomainInfo; }
-
-    /**
-     * <p>Name and Region of the destination (remote) domain.</p>
-     */
+    inline const DomainInformationContainer& GetRemoteDomainInfo() const { return m_remoteDomainInfo; }
     inline bool RemoteDomainInfoHasBeenSet() const { return m_remoteDomainInfoHasBeenSet; }
+    template<typename RemoteDomainInfoT = DomainInformationContainer>
+    void SetRemoteDomainInfo(RemoteDomainInfoT&& value) { m_remoteDomainInfoHasBeenSet = true; m_remoteDomainInfo = std::forward<RemoteDomainInfoT>(value); }
+    template<typename RemoteDomainInfoT = DomainInformationContainer>
+    CreateOutboundConnectionRequest& WithRemoteDomainInfo(RemoteDomainInfoT&& value) { SetRemoteDomainInfo(std::forward<RemoteDomainInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name and Region of the destination (remote) domain.</p>
-     */
-    inline void SetRemoteDomainInfo(const DomainInformationContainer& value) { m_remoteDomainInfoHasBeenSet = true; m_remoteDomainInfo = value; }
-
-    /**
-     * <p>Name and Region of the destination (remote) domain.</p>
-     */
-    inline void SetRemoteDomainInfo(DomainInformationContainer&& value) { m_remoteDomainInfoHasBeenSet = true; m_remoteDomainInfo = std::move(value); }
-
-    /**
-     * <p>Name and Region of the destination (remote) domain.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithRemoteDomainInfo(const DomainInformationContainer& value) { SetRemoteDomainInfo(value); return *this;}
-
-    /**
-     * <p>Name and Region of the destination (remote) domain.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithRemoteDomainInfo(DomainInformationContainer&& value) { SetRemoteDomainInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Name of the connection.</p>
      */
-    inline const Aws::String& GetConnectionAlias() const{ return m_connectionAlias; }
-
-    /**
-     * <p>Name of the connection.</p>
-     */
+    inline const Aws::String& GetConnectionAlias() const { return m_connectionAlias; }
     inline bool ConnectionAliasHasBeenSet() const { return m_connectionAliasHasBeenSet; }
+    template<typename ConnectionAliasT = Aws::String>
+    void SetConnectionAlias(ConnectionAliasT&& value) { m_connectionAliasHasBeenSet = true; m_connectionAlias = std::forward<ConnectionAliasT>(value); }
+    template<typename ConnectionAliasT = Aws::String>
+    CreateOutboundConnectionRequest& WithConnectionAlias(ConnectionAliasT&& value) { SetConnectionAlias(std::forward<ConnectionAliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the connection.</p>
-     */
-    inline void SetConnectionAlias(const Aws::String& value) { m_connectionAliasHasBeenSet = true; m_connectionAlias = value; }
-
-    /**
-     * <p>Name of the connection.</p>
-     */
-    inline void SetConnectionAlias(Aws::String&& value) { m_connectionAliasHasBeenSet = true; m_connectionAlias = std::move(value); }
-
-    /**
-     * <p>Name of the connection.</p>
-     */
-    inline void SetConnectionAlias(const char* value) { m_connectionAliasHasBeenSet = true; m_connectionAlias.assign(value); }
-
-    /**
-     * <p>Name of the connection.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionAlias(const Aws::String& value) { SetConnectionAlias(value); return *this;}
-
-    /**
-     * <p>Name of the connection.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionAlias(Aws::String&& value) { SetConnectionAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the connection.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionAlias(const char* value) { SetConnectionAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The connection mode.</p>
      */
-    inline const ConnectionMode& GetConnectionMode() const{ return m_connectionMode; }
-
-    /**
-     * <p>The connection mode.</p>
-     */
+    inline ConnectionMode GetConnectionMode() const { return m_connectionMode; }
     inline bool ConnectionModeHasBeenSet() const { return m_connectionModeHasBeenSet; }
+    inline void SetConnectionMode(ConnectionMode value) { m_connectionModeHasBeenSet = true; m_connectionMode = value; }
+    inline CreateOutboundConnectionRequest& WithConnectionMode(ConnectionMode value) { SetConnectionMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The connection mode.</p>
-     */
-    inline void SetConnectionMode(const ConnectionMode& value) { m_connectionModeHasBeenSet = true; m_connectionMode = value; }
-
-    /**
-     * <p>The connection mode.</p>
-     */
-    inline void SetConnectionMode(ConnectionMode&& value) { m_connectionModeHasBeenSet = true; m_connectionMode = std::move(value); }
-
-    /**
-     * <p>The connection mode.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionMode(const ConnectionMode& value) { SetConnectionMode(value); return *this;}
-
-    /**
-     * <p>The connection mode.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionMode(ConnectionMode&& value) { SetConnectionMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>ConnectionProperties</code> for the outbound connection.</p>
      */
-    inline const ConnectionProperties& GetConnectionProperties() const{ return m_connectionProperties; }
-
-    /**
-     * <p>The <code>ConnectionProperties</code> for the outbound connection.</p>
-     */
+    inline const ConnectionProperties& GetConnectionProperties() const { return m_connectionProperties; }
     inline bool ConnectionPropertiesHasBeenSet() const { return m_connectionPropertiesHasBeenSet; }
-
-    /**
-     * <p>The <code>ConnectionProperties</code> for the outbound connection.</p>
-     */
-    inline void SetConnectionProperties(const ConnectionProperties& value) { m_connectionPropertiesHasBeenSet = true; m_connectionProperties = value; }
-
-    /**
-     * <p>The <code>ConnectionProperties</code> for the outbound connection.</p>
-     */
-    inline void SetConnectionProperties(ConnectionProperties&& value) { m_connectionPropertiesHasBeenSet = true; m_connectionProperties = std::move(value); }
-
-    /**
-     * <p>The <code>ConnectionProperties</code> for the outbound connection.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionProperties(const ConnectionProperties& value) { SetConnectionProperties(value); return *this;}
-
-    /**
-     * <p>The <code>ConnectionProperties</code> for the outbound connection.</p>
-     */
-    inline CreateOutboundConnectionRequest& WithConnectionProperties(ConnectionProperties&& value) { SetConnectionProperties(std::move(value)); return *this;}
-
+    template<typename ConnectionPropertiesT = ConnectionProperties>
+    void SetConnectionProperties(ConnectionPropertiesT&& value) { m_connectionPropertiesHasBeenSet = true; m_connectionProperties = std::forward<ConnectionPropertiesT>(value); }
+    template<typename ConnectionPropertiesT = ConnectionProperties>
+    CreateOutboundConnectionRequest& WithConnectionProperties(ConnectionPropertiesT&& value) { SetConnectionProperties(std::forward<ConnectionPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     DomainInformationContainer m_localDomainInfo;
@@ -214,7 +107,7 @@ namespace Model
     Aws::String m_connectionAlias;
     bool m_connectionAliasHasBeenSet = false;
 
-    ConnectionMode m_connectionMode;
+    ConnectionMode m_connectionMode{ConnectionMode::NOT_SET};
     bool m_connectionModeHasBeenSet = false;
 
     ConnectionProperties m_connectionProperties;

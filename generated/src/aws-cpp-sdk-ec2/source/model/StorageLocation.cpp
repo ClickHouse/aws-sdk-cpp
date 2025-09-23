@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-StorageLocation::StorageLocation() : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false)
-{
-}
-
-StorageLocation::StorageLocation(const XmlNode& xmlNode) : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false)
+StorageLocation::StorageLocation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

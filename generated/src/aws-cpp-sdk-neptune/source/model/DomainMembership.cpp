@@ -20,19 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-DomainMembership::DomainMembership() : 
-    m_domainHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_fQDNHasBeenSet(false),
-    m_iAMRoleNameHasBeenSet(false)
-{
-}
-
-DomainMembership::DomainMembership(const XmlNode& xmlNode) : 
-    m_domainHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_fQDNHasBeenSet(false),
-    m_iAMRoleNameHasBeenSet(false)
+DomainMembership::DomainMembership(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

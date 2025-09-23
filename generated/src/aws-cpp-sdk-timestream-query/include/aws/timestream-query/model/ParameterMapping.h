@@ -32,71 +32,33 @@ namespace Model
   class ParameterMapping
   {
   public:
-    AWS_TIMESTREAMQUERY_API ParameterMapping();
+    AWS_TIMESTREAMQUERY_API ParameterMapping() = default;
     AWS_TIMESTREAMQUERY_API ParameterMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMQUERY_API ParameterMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMQUERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Parameter name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Parameter name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ParameterMapping& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Parameter name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Parameter name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Parameter name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Parameter name.</p>
-     */
-    inline ParameterMapping& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Parameter name.</p>
-     */
-    inline ParameterMapping& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Parameter name.</p>
-     */
-    inline ParameterMapping& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     
-    inline const Type& GetType() const{ return m_type; }
-
-    
+    inline const Type& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    
-    inline void SetType(const Type& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    
-    inline void SetType(Type&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    
-    inline ParameterMapping& WithType(const Type& value) { SetType(value); return *this;}
-
-    
-    inline ParameterMapping& WithType(Type&& value) { SetType(std::move(value)); return *this;}
-
+    template<typename TypeT = Type>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Type>
+    ParameterMapping& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

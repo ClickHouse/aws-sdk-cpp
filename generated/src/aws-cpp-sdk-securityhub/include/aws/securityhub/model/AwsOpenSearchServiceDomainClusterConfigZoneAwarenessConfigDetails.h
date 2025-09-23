@@ -29,39 +29,25 @@ namespace Model
   class AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails();
+    AWS_SECURITYHUB_API AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails() = default;
     AWS_SECURITYHUB_API AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of Availability Zones that the domain uses. Valid values are
      * <code>2</code> or <code>3</code>. The default is <code>2</code>.</p>
      */
-    inline int GetAvailabilityZoneCount() const{ return m_availabilityZoneCount; }
-
-    /**
-     * <p>The number of Availability Zones that the domain uses. Valid values are
-     * <code>2</code> or <code>3</code>. The default is <code>2</code>.</p>
-     */
+    inline int GetAvailabilityZoneCount() const { return m_availabilityZoneCount; }
     inline bool AvailabilityZoneCountHasBeenSet() const { return m_availabilityZoneCountHasBeenSet; }
-
-    /**
-     * <p>The number of Availability Zones that the domain uses. Valid values are
-     * <code>2</code> or <code>3</code>. The default is <code>2</code>.</p>
-     */
     inline void SetAvailabilityZoneCount(int value) { m_availabilityZoneCountHasBeenSet = true; m_availabilityZoneCount = value; }
-
-    /**
-     * <p>The number of Availability Zones that the domain uses. Valid values are
-     * <code>2</code> or <code>3</code>. The default is <code>2</code>.</p>
-     */
     inline AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails& WithAvailabilityZoneCount(int value) { SetAvailabilityZoneCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_availabilityZoneCount;
+    int m_availabilityZoneCount{0};
     bool m_availabilityZoneCountHasBeenSet = false;
   };
 

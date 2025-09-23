@@ -32,13 +32,14 @@ namespace Model
   class Tiering
   {
   public:
-    AWS_S3_API Tiering();
+    AWS_S3_API Tiering() = default;
     AWS_S3_API Tiering(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API Tiering& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The number of consecutive days of no access after which an object will be
      * eligible to be transitioned to the corresponding tier. The minimum number of
@@ -46,36 +47,13 @@ namespace Model
      * Access tier must be at least 180 days. The maximum can be up to 2 years (730
      * days).</p>
      */
-    inline int GetDays() const{ return m_days; }
-
-    /**
-     * <p>The number of consecutive days of no access after which an object will be
-     * eligible to be transitioned to the corresponding tier. The minimum number of
-     * days specified for Archive Access tier must be at least 90 days and Deep Archive
-     * Access tier must be at least 180 days. The maximum can be up to 2 years (730
-     * days).</p>
-     */
+    inline int GetDays() const { return m_days; }
     inline bool DaysHasBeenSet() const { return m_daysHasBeenSet; }
-
-    /**
-     * <p>The number of consecutive days of no access after which an object will be
-     * eligible to be transitioned to the corresponding tier. The minimum number of
-     * days specified for Archive Access tier must be at least 90 days and Deep Archive
-     * Access tier must be at least 180 days. The maximum can be up to 2 years (730
-     * days).</p>
-     */
     inline void SetDays(int value) { m_daysHasBeenSet = true; m_days = value; }
-
-    /**
-     * <p>The number of consecutive days of no access after which an object will be
-     * eligible to be transitioned to the corresponding tier. The minimum number of
-     * days specified for Archive Access tier must be at least 90 days and Deep Archive
-     * Access tier must be at least 180 days. The maximum can be up to 2 years (730
-     * days).</p>
-     */
     inline Tiering& WithDays(int value) { SetDays(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>S3 Intelligent-Tiering access tier. See <a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access">Storage
@@ -83,59 +61,17 @@ namespace Model
      * objects</a> for a list of access tiers in the S3 Intelligent-Tiering storage
      * class.</p>
      */
-    inline const IntelligentTieringAccessTier& GetAccessTier() const{ return m_accessTier; }
-
-    /**
-     * <p>S3 Intelligent-Tiering access tier. See <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access">Storage
-     * class for automatically optimizing frequently and infrequently accessed
-     * objects</a> for a list of access tiers in the S3 Intelligent-Tiering storage
-     * class.</p>
-     */
+    inline IntelligentTieringAccessTier GetAccessTier() const { return m_accessTier; }
     inline bool AccessTierHasBeenSet() const { return m_accessTierHasBeenSet; }
-
-    /**
-     * <p>S3 Intelligent-Tiering access tier. See <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access">Storage
-     * class for automatically optimizing frequently and infrequently accessed
-     * objects</a> for a list of access tiers in the S3 Intelligent-Tiering storage
-     * class.</p>
-     */
-    inline void SetAccessTier(const IntelligentTieringAccessTier& value) { m_accessTierHasBeenSet = true; m_accessTier = value; }
-
-    /**
-     * <p>S3 Intelligent-Tiering access tier. See <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access">Storage
-     * class for automatically optimizing frequently and infrequently accessed
-     * objects</a> for a list of access tiers in the S3 Intelligent-Tiering storage
-     * class.</p>
-     */
-    inline void SetAccessTier(IntelligentTieringAccessTier&& value) { m_accessTierHasBeenSet = true; m_accessTier = std::move(value); }
-
-    /**
-     * <p>S3 Intelligent-Tiering access tier. See <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access">Storage
-     * class for automatically optimizing frequently and infrequently accessed
-     * objects</a> for a list of access tiers in the S3 Intelligent-Tiering storage
-     * class.</p>
-     */
-    inline Tiering& WithAccessTier(const IntelligentTieringAccessTier& value) { SetAccessTier(value); return *this;}
-
-    /**
-     * <p>S3 Intelligent-Tiering access tier. See <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access">Storage
-     * class for automatically optimizing frequently and infrequently accessed
-     * objects</a> for a list of access tiers in the S3 Intelligent-Tiering storage
-     * class.</p>
-     */
-    inline Tiering& WithAccessTier(IntelligentTieringAccessTier&& value) { SetAccessTier(std::move(value)); return *this;}
-
+    inline void SetAccessTier(IntelligentTieringAccessTier value) { m_accessTierHasBeenSet = true; m_accessTier = value; }
+    inline Tiering& WithAccessTier(IntelligentTieringAccessTier value) { SetAccessTier(value); return *this;}
+    ///@}
   private:
 
-    int m_days;
+    int m_days{0};
     bool m_daysHasBeenSet = false;
 
-    IntelligentTieringAccessTier m_accessTier;
+    IntelligentTieringAccessTier m_accessTier{IntelligentTieringAccessTier::NOT_SET};
     bool m_accessTierHasBeenSet = false;
   };
 

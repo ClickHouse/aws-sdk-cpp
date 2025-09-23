@@ -18,19 +18,7 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-ExportTaskExecutionInfo::ExportTaskExecutionInfo() : 
-    m_creationTime(0),
-    m_creationTimeHasBeenSet(false),
-    m_completionTime(0),
-    m_completionTimeHasBeenSet(false)
-{
-}
-
-ExportTaskExecutionInfo::ExportTaskExecutionInfo(JsonView jsonValue) : 
-    m_creationTime(0),
-    m_creationTimeHasBeenSet(false),
-    m_completionTime(0),
-    m_completionTimeHasBeenSet(false)
+ExportTaskExecutionInfo::ExportTaskExecutionInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ExportTaskExecutionInfo& ExportTaskExecutionInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("creationTime"))
   {
     m_creationTime = jsonValue.GetInt64("creationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("completionTime"))
   {
     m_completionTime = jsonValue.GetInt64("completionTime");
-
     m_completionTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

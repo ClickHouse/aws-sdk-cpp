@@ -33,83 +33,35 @@ namespace Model
   class DatasetContentDeliveryRule
   {
   public:
-    AWS_IOTANALYTICS_API DatasetContentDeliveryRule();
+    AWS_IOTANALYTICS_API DatasetContentDeliveryRule() = default;
     AWS_IOTANALYTICS_API DatasetContentDeliveryRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API DatasetContentDeliveryRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the dataset content delivery rules entry.</p>
      */
-    inline const Aws::String& GetEntryName() const{ return m_entryName; }
-
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
+    inline const Aws::String& GetEntryName() const { return m_entryName; }
     inline bool EntryNameHasBeenSet() const { return m_entryNameHasBeenSet; }
+    template<typename EntryNameT = Aws::String>
+    void SetEntryName(EntryNameT&& value) { m_entryNameHasBeenSet = true; m_entryName = std::forward<EntryNameT>(value); }
+    template<typename EntryNameT = Aws::String>
+    DatasetContentDeliveryRule& WithEntryName(EntryNameT&& value) { SetEntryName(std::forward<EntryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
-    inline void SetEntryName(const Aws::String& value) { m_entryNameHasBeenSet = true; m_entryName = value; }
-
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
-    inline void SetEntryName(Aws::String&& value) { m_entryNameHasBeenSet = true; m_entryName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
-    inline void SetEntryName(const char* value) { m_entryNameHasBeenSet = true; m_entryName.assign(value); }
-
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
-    inline DatasetContentDeliveryRule& WithEntryName(const Aws::String& value) { SetEntryName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
-    inline DatasetContentDeliveryRule& WithEntryName(Aws::String&& value) { SetEntryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset content delivery rules entry.</p>
-     */
-    inline DatasetContentDeliveryRule& WithEntryName(const char* value) { SetEntryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination to which dataset contents are delivered.</p>
      */
-    inline const DatasetContentDeliveryDestination& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The destination to which dataset contents are delivered.</p>
-     */
+    inline const DatasetContentDeliveryDestination& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
-
-    /**
-     * <p>The destination to which dataset contents are delivered.</p>
-     */
-    inline void SetDestination(const DatasetContentDeliveryDestination& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The destination to which dataset contents are delivered.</p>
-     */
-    inline void SetDestination(DatasetContentDeliveryDestination&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The destination to which dataset contents are delivered.</p>
-     */
-    inline DatasetContentDeliveryRule& WithDestination(const DatasetContentDeliveryDestination& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The destination to which dataset contents are delivered.</p>
-     */
-    inline DatasetContentDeliveryRule& WithDestination(DatasetContentDeliveryDestination&& value) { SetDestination(std::move(value)); return *this;}
-
+    template<typename DestinationT = DatasetContentDeliveryDestination>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = DatasetContentDeliveryDestination>
+    DatasetContentDeliveryRule& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entryName;

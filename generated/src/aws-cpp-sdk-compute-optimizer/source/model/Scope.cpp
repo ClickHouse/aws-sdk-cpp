@@ -18,17 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-Scope::Scope() : 
-    m_name(ScopeName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-Scope::Scope(JsonView jsonValue) : 
-    m_name(ScopeName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+Scope::Scope(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Scope& Scope::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = ScopeNameMapper::GetScopeNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

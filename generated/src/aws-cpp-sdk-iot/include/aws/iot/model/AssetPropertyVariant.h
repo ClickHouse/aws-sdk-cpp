@@ -32,207 +32,63 @@ namespace Model
   class AssetPropertyVariant
   {
   public:
-    AWS_IOT_API AssetPropertyVariant();
+    AWS_IOT_API AssetPropertyVariant() = default;
     AWS_IOT_API AssetPropertyVariant(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API AssetPropertyVariant& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Optional. The string value of the value entry. Accepts substitution
      * templates.</p>
      */
-    inline const Aws::String& GetStringValue() const{ return m_stringValue; }
-
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
+    inline const Aws::String& GetStringValue() const { return m_stringValue; }
     inline bool StringValueHasBeenSet() const { return m_stringValueHasBeenSet; }
+    template<typename StringValueT = Aws::String>
+    void SetStringValue(StringValueT&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::forward<StringValueT>(value); }
+    template<typename StringValueT = Aws::String>
+    AssetPropertyVariant& WithStringValue(StringValueT&& value) { SetStringValue(std::forward<StringValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
-    inline void SetStringValue(const Aws::String& value) { m_stringValueHasBeenSet = true; m_stringValue = value; }
-
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
-    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::move(value); }
-
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
-    inline void SetStringValue(const char* value) { m_stringValueHasBeenSet = true; m_stringValue.assign(value); }
-
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
-    inline AssetPropertyVariant& WithStringValue(const Aws::String& value) { SetStringValue(value); return *this;}
-
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
-    inline AssetPropertyVariant& WithStringValue(Aws::String&& value) { SetStringValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional. The string value of the value entry. Accepts substitution
-     * templates.</p>
-     */
-    inline AssetPropertyVariant& WithStringValue(const char* value) { SetStringValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional. A string that contains the integer value of the value entry.
      * Accepts substitution templates.</p>
      */
-    inline const Aws::String& GetIntegerValue() const{ return m_integerValue; }
-
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
+    inline const Aws::String& GetIntegerValue() const { return m_integerValue; }
     inline bool IntegerValueHasBeenSet() const { return m_integerValueHasBeenSet; }
+    template<typename IntegerValueT = Aws::String>
+    void SetIntegerValue(IntegerValueT&& value) { m_integerValueHasBeenSet = true; m_integerValue = std::forward<IntegerValueT>(value); }
+    template<typename IntegerValueT = Aws::String>
+    AssetPropertyVariant& WithIntegerValue(IntegerValueT&& value) { SetIntegerValue(std::forward<IntegerValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
-    inline void SetIntegerValue(const Aws::String& value) { m_integerValueHasBeenSet = true; m_integerValue = value; }
-
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
-    inline void SetIntegerValue(Aws::String&& value) { m_integerValueHasBeenSet = true; m_integerValue = std::move(value); }
-
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
-    inline void SetIntegerValue(const char* value) { m_integerValueHasBeenSet = true; m_integerValue.assign(value); }
-
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithIntegerValue(const Aws::String& value) { SetIntegerValue(value); return *this;}
-
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithIntegerValue(Aws::String&& value) { SetIntegerValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional. A string that contains the integer value of the value entry.
-     * Accepts substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithIntegerValue(const char* value) { SetIntegerValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional. A string that contains the double value of the value entry. Accepts
      * substitution templates.</p>
      */
-    inline const Aws::String& GetDoubleValue() const{ return m_doubleValue; }
-
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
+    inline const Aws::String& GetDoubleValue() const { return m_doubleValue; }
     inline bool DoubleValueHasBeenSet() const { return m_doubleValueHasBeenSet; }
+    template<typename DoubleValueT = Aws::String>
+    void SetDoubleValue(DoubleValueT&& value) { m_doubleValueHasBeenSet = true; m_doubleValue = std::forward<DoubleValueT>(value); }
+    template<typename DoubleValueT = Aws::String>
+    AssetPropertyVariant& WithDoubleValue(DoubleValueT&& value) { SetDoubleValue(std::forward<DoubleValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
-    inline void SetDoubleValue(const Aws::String& value) { m_doubleValueHasBeenSet = true; m_doubleValue = value; }
-
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
-    inline void SetDoubleValue(Aws::String&& value) { m_doubleValueHasBeenSet = true; m_doubleValue = std::move(value); }
-
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
-    inline void SetDoubleValue(const char* value) { m_doubleValueHasBeenSet = true; m_doubleValue.assign(value); }
-
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithDoubleValue(const Aws::String& value) { SetDoubleValue(value); return *this;}
-
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithDoubleValue(Aws::String&& value) { SetDoubleValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional. A string that contains the double value of the value entry. Accepts
-     * substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithDoubleValue(const char* value) { SetDoubleValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional. A string that contains the boolean value (<code>true</code> or
      * <code>false</code>) of the value entry. Accepts substitution templates.</p>
      */
-    inline const Aws::String& GetBooleanValue() const{ return m_booleanValue; }
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
+    inline const Aws::String& GetBooleanValue() const { return m_booleanValue; }
     inline bool BooleanValueHasBeenSet() const { return m_booleanValueHasBeenSet; }
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
-    inline void SetBooleanValue(const Aws::String& value) { m_booleanValueHasBeenSet = true; m_booleanValue = value; }
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
-    inline void SetBooleanValue(Aws::String&& value) { m_booleanValueHasBeenSet = true; m_booleanValue = std::move(value); }
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
-    inline void SetBooleanValue(const char* value) { m_booleanValueHasBeenSet = true; m_booleanValue.assign(value); }
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithBooleanValue(const Aws::String& value) { SetBooleanValue(value); return *this;}
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithBooleanValue(Aws::String&& value) { SetBooleanValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional. A string that contains the boolean value (<code>true</code> or
-     * <code>false</code>) of the value entry. Accepts substitution templates.</p>
-     */
-    inline AssetPropertyVariant& WithBooleanValue(const char* value) { SetBooleanValue(value); return *this;}
-
+    template<typename BooleanValueT = Aws::String>
+    void SetBooleanValue(BooleanValueT&& value) { m_booleanValueHasBeenSet = true; m_booleanValue = std::forward<BooleanValueT>(value); }
+    template<typename BooleanValueT = Aws::String>
+    AssetPropertyVariant& WithBooleanValue(BooleanValueT&& value) { SetBooleanValue(std::forward<BooleanValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_stringValue;

@@ -31,166 +31,51 @@ namespace Model
   class MessageTemplateType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API MessageTemplateType();
+    AWS_COGNITOIDENTITYPROVIDER_API MessageTemplateType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API MessageTemplateType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API MessageTemplateType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The message template for SMS messages.</p>
      */
-    inline const Aws::String& GetSMSMessage() const{ return m_sMSMessage; }
-
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
+    inline const Aws::String& GetSMSMessage() const { return m_sMSMessage; }
     inline bool SMSMessageHasBeenSet() const { return m_sMSMessageHasBeenSet; }
+    template<typename SMSMessageT = Aws::String>
+    void SetSMSMessage(SMSMessageT&& value) { m_sMSMessageHasBeenSet = true; m_sMSMessage = std::forward<SMSMessageT>(value); }
+    template<typename SMSMessageT = Aws::String>
+    MessageTemplateType& WithSMSMessage(SMSMessageT&& value) { SetSMSMessage(std::forward<SMSMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
-    inline void SetSMSMessage(const Aws::String& value) { m_sMSMessageHasBeenSet = true; m_sMSMessage = value; }
-
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
-    inline void SetSMSMessage(Aws::String&& value) { m_sMSMessageHasBeenSet = true; m_sMSMessage = std::move(value); }
-
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
-    inline void SetSMSMessage(const char* value) { m_sMSMessageHasBeenSet = true; m_sMSMessage.assign(value); }
-
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
-    inline MessageTemplateType& WithSMSMessage(const Aws::String& value) { SetSMSMessage(value); return *this;}
-
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
-    inline MessageTemplateType& WithSMSMessage(Aws::String&& value) { SetSMSMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message template for SMS messages.</p>
-     */
-    inline MessageTemplateType& WithSMSMessage(const char* value) { SetSMSMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message template for email messages. EmailMessage is allowed only if <a
      * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
      * is DEVELOPER. </p>
      */
-    inline const Aws::String& GetEmailMessage() const{ return m_emailMessage; }
-
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
+    inline const Aws::String& GetEmailMessage() const { return m_emailMessage; }
     inline bool EmailMessageHasBeenSet() const { return m_emailMessageHasBeenSet; }
+    template<typename EmailMessageT = Aws::String>
+    void SetEmailMessage(EmailMessageT&& value) { m_emailMessageHasBeenSet = true; m_emailMessage = std::forward<EmailMessageT>(value); }
+    template<typename EmailMessageT = Aws::String>
+    MessageTemplateType& WithEmailMessage(EmailMessageT&& value) { SetEmailMessage(std::forward<EmailMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline void SetEmailMessage(const Aws::String& value) { m_emailMessageHasBeenSet = true; m_emailMessage = value; }
-
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline void SetEmailMessage(Aws::String&& value) { m_emailMessageHasBeenSet = true; m_emailMessage = std::move(value); }
-
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline void SetEmailMessage(const char* value) { m_emailMessageHasBeenSet = true; m_emailMessage.assign(value); }
-
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline MessageTemplateType& WithEmailMessage(const Aws::String& value) { SetEmailMessage(value); return *this;}
-
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline MessageTemplateType& WithEmailMessage(Aws::String&& value) { SetEmailMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message template for email messages. EmailMessage is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline MessageTemplateType& WithEmailMessage(const char* value) { SetEmailMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The subject line for email messages. EmailSubject is allowed only if <a
      * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
      * is DEVELOPER. </p>
      */
-    inline const Aws::String& GetEmailSubject() const{ return m_emailSubject; }
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
+    inline const Aws::String& GetEmailSubject() const { return m_emailSubject; }
     inline bool EmailSubjectHasBeenSet() const { return m_emailSubjectHasBeenSet; }
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline void SetEmailSubject(const Aws::String& value) { m_emailSubjectHasBeenSet = true; m_emailSubject = value; }
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline void SetEmailSubject(Aws::String&& value) { m_emailSubjectHasBeenSet = true; m_emailSubject = std::move(value); }
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline void SetEmailSubject(const char* value) { m_emailSubjectHasBeenSet = true; m_emailSubject.assign(value); }
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline MessageTemplateType& WithEmailSubject(const Aws::String& value) { SetEmailSubject(value); return *this;}
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline MessageTemplateType& WithEmailSubject(Aws::String&& value) { SetEmailSubject(std::move(value)); return *this;}
-
-    /**
-     * <p>The subject line for email messages. EmailSubject is allowed only if <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount">EmailSendingAccount</a>
-     * is DEVELOPER. </p>
-     */
-    inline MessageTemplateType& WithEmailSubject(const char* value) { SetEmailSubject(value); return *this;}
-
+    template<typename EmailSubjectT = Aws::String>
+    void SetEmailSubject(EmailSubjectT&& value) { m_emailSubjectHasBeenSet = true; m_emailSubject = std::forward<EmailSubjectT>(value); }
+    template<typename EmailSubjectT = Aws::String>
+    MessageTemplateType& WithEmailSubject(EmailSubjectT&& value) { SetEmailSubject(std::forward<EmailSubjectT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sMSMessage;

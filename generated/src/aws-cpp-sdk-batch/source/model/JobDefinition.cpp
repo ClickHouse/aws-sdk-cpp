@@ -18,51 +18,7 @@ namespace Batch
 namespace Model
 {
 
-JobDefinition::JobDefinition() : 
-    m_jobDefinitionNameHasBeenSet(false),
-    m_jobDefinitionArnHasBeenSet(false),
-    m_revision(0),
-    m_revisionHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_schedulingPriority(0),
-    m_schedulingPriorityHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_retryStrategyHasBeenSet(false),
-    m_containerPropertiesHasBeenSet(false),
-    m_timeoutHasBeenSet(false),
-    m_nodePropertiesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_propagateTags(false),
-    m_propagateTagsHasBeenSet(false),
-    m_platformCapabilitiesHasBeenSet(false),
-    m_eksPropertiesHasBeenSet(false),
-    m_containerOrchestrationType(OrchestrationType::NOT_SET),
-    m_containerOrchestrationTypeHasBeenSet(false)
-{
-}
-
-JobDefinition::JobDefinition(JsonView jsonValue) : 
-    m_jobDefinitionNameHasBeenSet(false),
-    m_jobDefinitionArnHasBeenSet(false),
-    m_revision(0),
-    m_revisionHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_schedulingPriority(0),
-    m_schedulingPriorityHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_retryStrategyHasBeenSet(false),
-    m_containerPropertiesHasBeenSet(false),
-    m_timeoutHasBeenSet(false),
-    m_nodePropertiesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_propagateTags(false),
-    m_propagateTagsHasBeenSet(false),
-    m_platformCapabilitiesHasBeenSet(false),
-    m_eksPropertiesHasBeenSet(false),
-    m_containerOrchestrationType(OrchestrationType::NOT_SET),
-    m_containerOrchestrationTypeHasBeenSet(false)
+JobDefinition::JobDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -72,45 +28,33 @@ JobDefinition& JobDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("jobDefinitionName"))
   {
     m_jobDefinitionName = jsonValue.GetString("jobDefinitionName");
-
     m_jobDefinitionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("jobDefinitionArn"))
   {
     m_jobDefinitionArn = jsonValue.GetString("jobDefinitionArn");
-
     m_jobDefinitionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("revision"))
   {
     m_revision = jsonValue.GetInteger("revision");
-
     m_revisionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetString("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("schedulingPriority"))
   {
     m_schedulingPriority = jsonValue.GetInteger("schedulingPriority");
-
     m_schedulingPriorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parameters"))
   {
     Aws::Map<Aws::String, JsonView> parametersJsonMap = jsonValue.GetObject("parameters").GetAllObjects();
@@ -120,35 +64,26 @@ JobDefinition& JobDefinition::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("retryStrategy"))
   {
     m_retryStrategy = jsonValue.GetObject("retryStrategy");
-
     m_retryStrategyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containerProperties"))
   {
     m_containerProperties = jsonValue.GetObject("containerProperties");
-
     m_containerPropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timeout"))
   {
     m_timeout = jsonValue.GetObject("timeout");
-
     m_timeoutHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nodeProperties"))
   {
     m_nodeProperties = jsonValue.GetObject("nodeProperties");
-
     m_nodePropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -158,14 +93,11 @@ JobDefinition& JobDefinition::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propagateTags"))
   {
     m_propagateTags = jsonValue.GetBool("propagateTags");
-
     m_propagateTagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("platformCapabilities"))
   {
     Aws::Utils::Array<JsonView> platformCapabilitiesJsonList = jsonValue.GetArray("platformCapabilities");
@@ -175,21 +107,26 @@ JobDefinition& JobDefinition::operator =(JsonView jsonValue)
     }
     m_platformCapabilitiesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ecsProperties"))
+  {
+    m_ecsProperties = jsonValue.GetObject("ecsProperties");
+    m_ecsPropertiesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("eksProperties"))
   {
     m_eksProperties = jsonValue.GetObject("eksProperties");
-
     m_eksPropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containerOrchestrationType"))
   {
     m_containerOrchestrationType = OrchestrationTypeMapper::GetOrchestrationTypeForName(jsonValue.GetString("containerOrchestrationType"));
-
     m_containerOrchestrationTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("consumableResourceProperties"))
+  {
+    m_consumableResourceProperties = jsonValue.GetObject("consumableResourceProperties");
+    m_consumableResourcePropertiesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -296,6 +233,12 @@ JsonValue JobDefinition::Jsonize() const
 
   }
 
+  if(m_ecsPropertiesHasBeenSet)
+  {
+   payload.WithObject("ecsProperties", m_ecsProperties.Jsonize());
+
+  }
+
   if(m_eksPropertiesHasBeenSet)
   {
    payload.WithObject("eksProperties", m_eksProperties.Jsonize());
@@ -305,6 +248,12 @@ JsonValue JobDefinition::Jsonize() const
   if(m_containerOrchestrationTypeHasBeenSet)
   {
    payload.WithString("containerOrchestrationType", OrchestrationTypeMapper::GetNameForOrchestrationType(m_containerOrchestrationType));
+  }
+
+  if(m_consumableResourcePropertiesHasBeenSet)
+  {
+   payload.WithObject("consumableResourceProperties", m_consumableResourceProperties.Jsonize());
+
   }
 
   return payload;

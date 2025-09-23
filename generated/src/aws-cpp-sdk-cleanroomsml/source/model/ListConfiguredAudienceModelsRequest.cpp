@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListConfiguredAudienceModelsRequest::ListConfiguredAudienceModelsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListConfiguredAudienceModelsRequest::SerializePayload() const
 {
   return {};
@@ -30,17 +23,17 @@ Aws::String ListConfiguredAudienceModelsRequest::SerializePayload() const
 void ListConfiguredAudienceModelsRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_maxResultsHasBeenSet)
-    {
-      ss << m_maxResults;
-      uri.AddQueryStringParameter("maxResults", ss.str());
-      ss.str("");
-    }
-
     if(m_nextTokenHasBeenSet)
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_maxResultsHasBeenSet)
+    {
+      ss << m_maxResults;
+      uri.AddQueryStringParameter("maxResults", ss.str());
       ss.str("");
     }
 

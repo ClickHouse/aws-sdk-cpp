@@ -18,17 +18,7 @@ namespace QLDBSession
 namespace Model
 {
 
-ExecuteStatementRequest::ExecuteStatementRequest() : 
-    m_transactionIdHasBeenSet(false),
-    m_statementHasBeenSet(false),
-    m_parametersHasBeenSet(false)
-{
-}
-
-ExecuteStatementRequest::ExecuteStatementRequest(JsonView jsonValue) : 
-    m_transactionIdHasBeenSet(false),
-    m_statementHasBeenSet(false),
-    m_parametersHasBeenSet(false)
+ExecuteStatementRequest::ExecuteStatementRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ExecuteStatementRequest& ExecuteStatementRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TransactionId"))
   {
     m_transactionId = jsonValue.GetString("TransactionId");
-
     m_transactionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Statement"))
   {
     m_statement = jsonValue.GetString("Statement");
-
     m_statementHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Parameters"))
   {
     Aws::Utils::Array<JsonView> parametersJsonList = jsonValue.GetArray("Parameters");
@@ -58,7 +44,6 @@ ExecuteStatementRequest& ExecuteStatementRequest::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   return *this;
 }
 

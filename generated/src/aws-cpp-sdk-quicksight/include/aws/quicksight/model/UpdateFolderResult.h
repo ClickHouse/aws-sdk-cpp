@@ -27,129 +27,63 @@ namespace Model
   class UpdateFolderResult
   {
   public:
-    AWS_QUICKSIGHT_API UpdateFolderResult();
+    AWS_QUICKSIGHT_API UpdateFolderResult() = default;
     AWS_QUICKSIGHT_API UpdateFolderResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API UpdateFolderResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline UpdateFolderResult& WithStatus(int value) { SetStatus(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the folder.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdateFolderResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the folder.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the folder.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the folder.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the folder.</p>
-     */
-    inline UpdateFolderResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the folder.</p>
-     */
-    inline UpdateFolderResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the folder.</p>
-     */
-    inline UpdateFolderResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the folder.</p>
      */
-    inline const Aws::String& GetFolderId() const{ return m_folderId; }
+    inline const Aws::String& GetFolderId() const { return m_folderId; }
+    template<typename FolderIdT = Aws::String>
+    void SetFolderId(FolderIdT&& value) { m_folderIdHasBeenSet = true; m_folderId = std::forward<FolderIdT>(value); }
+    template<typename FolderIdT = Aws::String>
+    UpdateFolderResult& WithFolderId(FolderIdT&& value) { SetFolderId(std::forward<FolderIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(const Aws::String& value) { m_folderId = value; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(Aws::String&& value) { m_folderId = std::move(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(const char* value) { m_folderId.assign(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline UpdateFolderResult& WithFolderId(const Aws::String& value) { SetFolderId(value); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline UpdateFolderResult& WithFolderId(Aws::String&& value) { SetFolderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline UpdateFolderResult& WithFolderId(const char* value) { SetFolderId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateFolderResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateFolderResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateFolderResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateFolderResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_folderId;
+    bool m_folderIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

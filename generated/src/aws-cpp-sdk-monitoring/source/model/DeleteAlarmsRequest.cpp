@@ -10,23 +10,25 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-DeleteAlarmsRequest::DeleteAlarmsRequest() : 
-    m_alarmNamesHasBeenSet(false)
-{
-}
-
 Aws::String DeleteAlarmsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DeleteAlarms&";
   if(m_alarmNamesHasBeenSet)
   {
-    unsigned alarmNamesCount = 1;
-    for(auto& item : m_alarmNames)
+    if (m_alarmNames.empty())
     {
-      ss << "AlarmNames.member." << alarmNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      alarmNamesCount++;
+      ss << "AlarmNames=&";
+    }
+    else
+    {
+      unsigned alarmNamesCount = 1;
+      for(auto& item : m_alarmNames)
+      {
+        ss << "AlarmNames.member." << alarmNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        alarmNamesCount++;
+      }
     }
   }
 

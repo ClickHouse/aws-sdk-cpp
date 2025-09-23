@@ -34,107 +34,55 @@ namespace Model
   class DeviceSelectionResult
   {
   public:
-    AWS_DEVICEFARM_API DeviceSelectionResult();
+    AWS_DEVICEFARM_API DeviceSelectionResult() = default;
     AWS_DEVICEFARM_API DeviceSelectionResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API DeviceSelectionResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The filters in a device selection result.</p>
      */
-    inline const Aws::Vector<DeviceFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
+    inline const Aws::Vector<DeviceFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<DeviceFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<DeviceFilter>>
+    DeviceSelectionResult& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = DeviceFilter>
+    DeviceSelectionResult& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
-    inline void SetFilters(const Aws::Vector<DeviceFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
-    inline void SetFilters(Aws::Vector<DeviceFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
-    inline DeviceSelectionResult& WithFilters(const Aws::Vector<DeviceFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
-    inline DeviceSelectionResult& WithFilters(Aws::Vector<DeviceFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
-    inline DeviceSelectionResult& AddFilters(const DeviceFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>The filters in a device selection result.</p>
-     */
-    inline DeviceSelectionResult& AddFilters(DeviceFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of devices that matched the device filter selection criteria.</p>
      */
-    inline int GetMatchedDevicesCount() const{ return m_matchedDevicesCount; }
-
-    /**
-     * <p>The number of devices that matched the device filter selection criteria.</p>
-     */
+    inline int GetMatchedDevicesCount() const { return m_matchedDevicesCount; }
     inline bool MatchedDevicesCountHasBeenSet() const { return m_matchedDevicesCountHasBeenSet; }
-
-    /**
-     * <p>The number of devices that matched the device filter selection criteria.</p>
-     */
     inline void SetMatchedDevicesCount(int value) { m_matchedDevicesCountHasBeenSet = true; m_matchedDevicesCount = value; }
-
-    /**
-     * <p>The number of devices that matched the device filter selection criteria.</p>
-     */
     inline DeviceSelectionResult& WithMatchedDevicesCount(int value) { SetMatchedDevicesCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum number of devices to be selected by a device filter and included
      * in a test run.</p>
      */
-    inline int GetMaxDevices() const{ return m_maxDevices; }
-
-    /**
-     * <p>The maximum number of devices to be selected by a device filter and included
-     * in a test run.</p>
-     */
+    inline int GetMaxDevices() const { return m_maxDevices; }
     inline bool MaxDevicesHasBeenSet() const { return m_maxDevicesHasBeenSet; }
-
-    /**
-     * <p>The maximum number of devices to be selected by a device filter and included
-     * in a test run.</p>
-     */
     inline void SetMaxDevices(int value) { m_maxDevicesHasBeenSet = true; m_maxDevices = value; }
-
-    /**
-     * <p>The maximum number of devices to be selected by a device filter and included
-     * in a test run.</p>
-     */
     inline DeviceSelectionResult& WithMaxDevices(int value) { SetMaxDevices(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<DeviceFilter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_matchedDevicesCount;
+    int m_matchedDevicesCount{0};
     bool m_matchedDevicesCountHasBeenSet = false;
 
-    int m_maxDevices;
+    int m_maxDevices{0};
     bool m_maxDevicesHasBeenSet = false;
   };
 

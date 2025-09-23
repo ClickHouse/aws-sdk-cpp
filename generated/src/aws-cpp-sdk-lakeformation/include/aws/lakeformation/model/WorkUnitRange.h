@@ -32,104 +32,50 @@ namespace Model
   class WorkUnitRange
   {
   public:
-    AWS_LAKEFORMATION_API WorkUnitRange();
+    AWS_LAKEFORMATION_API WorkUnitRange() = default;
     AWS_LAKEFORMATION_API WorkUnitRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API WorkUnitRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines the maximum work unit ID in the range. The maximum value is
      * inclusive.</p>
      */
-    inline long long GetWorkUnitIdMax() const{ return m_workUnitIdMax; }
-
-    /**
-     * <p>Defines the maximum work unit ID in the range. The maximum value is
-     * inclusive.</p>
-     */
+    inline long long GetWorkUnitIdMax() const { return m_workUnitIdMax; }
     inline bool WorkUnitIdMaxHasBeenSet() const { return m_workUnitIdMaxHasBeenSet; }
-
-    /**
-     * <p>Defines the maximum work unit ID in the range. The maximum value is
-     * inclusive.</p>
-     */
     inline void SetWorkUnitIdMax(long long value) { m_workUnitIdMaxHasBeenSet = true; m_workUnitIdMax = value; }
-
-    /**
-     * <p>Defines the maximum work unit ID in the range. The maximum value is
-     * inclusive.</p>
-     */
     inline WorkUnitRange& WithWorkUnitIdMax(long long value) { SetWorkUnitIdMax(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Defines the minimum work unit ID in the range.</p>
      */
-    inline long long GetWorkUnitIdMin() const{ return m_workUnitIdMin; }
-
-    /**
-     * <p>Defines the minimum work unit ID in the range.</p>
-     */
+    inline long long GetWorkUnitIdMin() const { return m_workUnitIdMin; }
     inline bool WorkUnitIdMinHasBeenSet() const { return m_workUnitIdMinHasBeenSet; }
-
-    /**
-     * <p>Defines the minimum work unit ID in the range.</p>
-     */
     inline void SetWorkUnitIdMin(long long value) { m_workUnitIdMinHasBeenSet = true; m_workUnitIdMin = value; }
-
-    /**
-     * <p>Defines the minimum work unit ID in the range.</p>
-     */
     inline WorkUnitRange& WithWorkUnitIdMin(long long value) { SetWorkUnitIdMin(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A work token used to query the execution service.</p>
      */
-    inline const Aws::String& GetWorkUnitToken() const{ return m_workUnitToken; }
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
+    inline const Aws::String& GetWorkUnitToken() const { return m_workUnitToken; }
     inline bool WorkUnitTokenHasBeenSet() const { return m_workUnitTokenHasBeenSet; }
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
-    inline void SetWorkUnitToken(const Aws::String& value) { m_workUnitTokenHasBeenSet = true; m_workUnitToken = value; }
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
-    inline void SetWorkUnitToken(Aws::String&& value) { m_workUnitTokenHasBeenSet = true; m_workUnitToken = std::move(value); }
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
-    inline void SetWorkUnitToken(const char* value) { m_workUnitTokenHasBeenSet = true; m_workUnitToken.assign(value); }
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
-    inline WorkUnitRange& WithWorkUnitToken(const Aws::String& value) { SetWorkUnitToken(value); return *this;}
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
-    inline WorkUnitRange& WithWorkUnitToken(Aws::String&& value) { SetWorkUnitToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A work token used to query the execution service.</p>
-     */
-    inline WorkUnitRange& WithWorkUnitToken(const char* value) { SetWorkUnitToken(value); return *this;}
-
+    template<typename WorkUnitTokenT = Aws::String>
+    void SetWorkUnitToken(WorkUnitTokenT&& value) { m_workUnitTokenHasBeenSet = true; m_workUnitToken = std::forward<WorkUnitTokenT>(value); }
+    template<typename WorkUnitTokenT = Aws::String>
+    WorkUnitRange& WithWorkUnitToken(WorkUnitTokenT&& value) { SetWorkUnitToken(std::forward<WorkUnitTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_workUnitIdMax;
+    long long m_workUnitIdMax{0};
     bool m_workUnitIdMaxHasBeenSet = false;
 
-    long long m_workUnitIdMin;
+    long long m_workUnitIdMin{0};
     bool m_workUnitIdMinHasBeenSet = false;
 
     Aws::String m_workUnitToken;

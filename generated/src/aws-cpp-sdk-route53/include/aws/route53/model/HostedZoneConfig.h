@@ -32,80 +32,40 @@ namespace Model
   class HostedZoneConfig
   {
   public:
-    AWS_ROUTE53_API HostedZoneConfig();
+    AWS_ROUTE53_API HostedZoneConfig() = default;
     AWS_ROUTE53_API HostedZoneConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ROUTE53_API HostedZoneConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_ROUTE53_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Any comments that you want to include about the hosted zone.</p>
      */
-    inline const Aws::String& GetComment() const{ return m_comment; }
-
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
+    inline const Aws::String& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    HostedZoneConfig& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
-    inline void SetComment(const Aws::String& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
-    inline void SetComment(const char* value) { m_commentHasBeenSet = true; m_comment.assign(value); }
-
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
-    inline HostedZoneConfig& WithComment(const Aws::String& value) { SetComment(value); return *this;}
-
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
-    inline HostedZoneConfig& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
-
-    /**
-     * <p>Any comments that you want to include about the hosted zone.</p>
-     */
-    inline HostedZoneConfig& WithComment(const char* value) { SetComment(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A value that indicates whether this is a private hosted zone.</p>
      */
-    inline bool GetPrivateZone() const{ return m_privateZone; }
-
-    /**
-     * <p>A value that indicates whether this is a private hosted zone.</p>
-     */
+    inline bool GetPrivateZone() const { return m_privateZone; }
     inline bool PrivateZoneHasBeenSet() const { return m_privateZoneHasBeenSet; }
-
-    /**
-     * <p>A value that indicates whether this is a private hosted zone.</p>
-     */
     inline void SetPrivateZone(bool value) { m_privateZoneHasBeenSet = true; m_privateZone = value; }
-
-    /**
-     * <p>A value that indicates whether this is a private hosted zone.</p>
-     */
     inline HostedZoneConfig& WithPrivateZone(bool value) { SetPrivateZone(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_comment;
     bool m_commentHasBeenSet = false;
 
-    bool m_privateZone;
+    bool m_privateZone{false};
     bool m_privateZoneHasBeenSet = false;
   };
 

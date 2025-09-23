@@ -34,12 +34,13 @@ namespace Model
   class LabelingJobAlgorithmsConfig
   {
   public:
-    AWS_SAGEMAKER_API LabelingJobAlgorithmsConfig();
+    AWS_SAGEMAKER_API LabelingJobAlgorithmsConfig() = default;
     AWS_SAGEMAKER_API LabelingJobAlgorithmsConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API LabelingJobAlgorithmsConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
      * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
@@ -53,209 +54,40 @@ namespace Model
      * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
      * </p> </li> </ul>
      */
-    inline const Aws::String& GetLabelingJobAlgorithmSpecificationArn() const{ return m_labelingJobAlgorithmSpecificationArn; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
+    inline const Aws::String& GetLabelingJobAlgorithmSpecificationArn() const { return m_labelingJobAlgorithmSpecificationArn; }
     inline bool LabelingJobAlgorithmSpecificationArnHasBeenSet() const { return m_labelingJobAlgorithmSpecificationArnHasBeenSet; }
+    template<typename LabelingJobAlgorithmSpecificationArnT = Aws::String>
+    void SetLabelingJobAlgorithmSpecificationArn(LabelingJobAlgorithmSpecificationArnT&& value) { m_labelingJobAlgorithmSpecificationArnHasBeenSet = true; m_labelingJobAlgorithmSpecificationArn = std::forward<LabelingJobAlgorithmSpecificationArnT>(value); }
+    template<typename LabelingJobAlgorithmSpecificationArnT = Aws::String>
+    LabelingJobAlgorithmsConfig& WithLabelingJobAlgorithmSpecificationArn(LabelingJobAlgorithmSpecificationArnT&& value) { SetLabelingJobAlgorithmSpecificationArn(std::forward<LabelingJobAlgorithmSpecificationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
-    inline void SetLabelingJobAlgorithmSpecificationArn(const Aws::String& value) { m_labelingJobAlgorithmSpecificationArnHasBeenSet = true; m_labelingJobAlgorithmSpecificationArn = value; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
-    inline void SetLabelingJobAlgorithmSpecificationArn(Aws::String&& value) { m_labelingJobAlgorithmSpecificationArnHasBeenSet = true; m_labelingJobAlgorithmSpecificationArn = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
-    inline void SetLabelingJobAlgorithmSpecificationArn(const char* value) { m_labelingJobAlgorithmSpecificationArnHasBeenSet = true; m_labelingJobAlgorithmSpecificationArn.assign(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
-    inline LabelingJobAlgorithmsConfig& WithLabelingJobAlgorithmSpecificationArn(const Aws::String& value) { SetLabelingJobAlgorithmSpecificationArn(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
-    inline LabelingJobAlgorithmsConfig& WithLabelingJobAlgorithmSpecificationArn(Aws::String&& value) { SetLabelingJobAlgorithmSpecificationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the algorithm used for
-     * auto-labeling. You must select one of the following ARNs:</p> <ul> <li> <p>
-     * <i>Image classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/image-classification</code>
-     * </p> </li> <li> <p> <i>Text classification</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/text-classification</code>
-     * </p> </li> <li> <p> <i>Object detection</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/object-detection</code>
-     * </p> </li> <li> <p> <i>Semantic Segmentation</i> </p> <p>
-     * <code>arn:aws:sagemaker:<i>region</i>:027400017018:labeling-job-algorithm-specification/semantic-segmentation</code>
-     * </p> </li> </ul>
-     */
-    inline LabelingJobAlgorithmsConfig& WithLabelingJobAlgorithmSpecificationArn(const char* value) { SetLabelingJobAlgorithmSpecificationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
      * (ARN) of the final model used for auto-labeling. You can use this model as the
      * starting point for subsequent similar jobs by providing the ARN of the model
      * here. </p>
      */
-    inline const Aws::String& GetInitialActiveLearningModelArn() const{ return m_initialActiveLearningModelArn; }
-
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
+    inline const Aws::String& GetInitialActiveLearningModelArn() const { return m_initialActiveLearningModelArn; }
     inline bool InitialActiveLearningModelArnHasBeenSet() const { return m_initialActiveLearningModelArnHasBeenSet; }
+    template<typename InitialActiveLearningModelArnT = Aws::String>
+    void SetInitialActiveLearningModelArn(InitialActiveLearningModelArnT&& value) { m_initialActiveLearningModelArnHasBeenSet = true; m_initialActiveLearningModelArn = std::forward<InitialActiveLearningModelArnT>(value); }
+    template<typename InitialActiveLearningModelArnT = Aws::String>
+    LabelingJobAlgorithmsConfig& WithInitialActiveLearningModelArn(InitialActiveLearningModelArnT&& value) { SetInitialActiveLearningModelArn(std::forward<InitialActiveLearningModelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
-    inline void SetInitialActiveLearningModelArn(const Aws::String& value) { m_initialActiveLearningModelArnHasBeenSet = true; m_initialActiveLearningModelArn = value; }
-
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
-    inline void SetInitialActiveLearningModelArn(Aws::String&& value) { m_initialActiveLearningModelArnHasBeenSet = true; m_initialActiveLearningModelArn = std::move(value); }
-
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
-    inline void SetInitialActiveLearningModelArn(const char* value) { m_initialActiveLearningModelArnHasBeenSet = true; m_initialActiveLearningModelArn.assign(value); }
-
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
-    inline LabelingJobAlgorithmsConfig& WithInitialActiveLearningModelArn(const Aws::String& value) { SetInitialActiveLearningModelArn(value); return *this;}
-
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
-    inline LabelingJobAlgorithmsConfig& WithInitialActiveLearningModelArn(Aws::String&& value) { SetInitialActiveLearningModelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>At the end of an auto-label job Ground Truth sends the Amazon Resource Name
-     * (ARN) of the final model used for auto-labeling. You can use this model as the
-     * starting point for subsequent similar jobs by providing the ARN of the model
-     * here. </p>
-     */
-    inline LabelingJobAlgorithmsConfig& WithInitialActiveLearningModelArn(const char* value) { SetInitialActiveLearningModelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides configuration information for a labeling job.</p>
      */
-    inline const LabelingJobResourceConfig& GetLabelingJobResourceConfig() const{ return m_labelingJobResourceConfig; }
-
-    /**
-     * <p>Provides configuration information for a labeling job.</p>
-     */
+    inline const LabelingJobResourceConfig& GetLabelingJobResourceConfig() const { return m_labelingJobResourceConfig; }
     inline bool LabelingJobResourceConfigHasBeenSet() const { return m_labelingJobResourceConfigHasBeenSet; }
-
-    /**
-     * <p>Provides configuration information for a labeling job.</p>
-     */
-    inline void SetLabelingJobResourceConfig(const LabelingJobResourceConfig& value) { m_labelingJobResourceConfigHasBeenSet = true; m_labelingJobResourceConfig = value; }
-
-    /**
-     * <p>Provides configuration information for a labeling job.</p>
-     */
-    inline void SetLabelingJobResourceConfig(LabelingJobResourceConfig&& value) { m_labelingJobResourceConfigHasBeenSet = true; m_labelingJobResourceConfig = std::move(value); }
-
-    /**
-     * <p>Provides configuration information for a labeling job.</p>
-     */
-    inline LabelingJobAlgorithmsConfig& WithLabelingJobResourceConfig(const LabelingJobResourceConfig& value) { SetLabelingJobResourceConfig(value); return *this;}
-
-    /**
-     * <p>Provides configuration information for a labeling job.</p>
-     */
-    inline LabelingJobAlgorithmsConfig& WithLabelingJobResourceConfig(LabelingJobResourceConfig&& value) { SetLabelingJobResourceConfig(std::move(value)); return *this;}
-
+    template<typename LabelingJobResourceConfigT = LabelingJobResourceConfig>
+    void SetLabelingJobResourceConfig(LabelingJobResourceConfigT&& value) { m_labelingJobResourceConfigHasBeenSet = true; m_labelingJobResourceConfig = std::forward<LabelingJobResourceConfigT>(value); }
+    template<typename LabelingJobResourceConfigT = LabelingJobResourceConfig>
+    LabelingJobAlgorithmsConfig& WithLabelingJobResourceConfig(LabelingJobResourceConfigT&& value) { SetLabelingJobResourceConfig(std::forward<LabelingJobResourceConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_labelingJobAlgorithmSpecificationArn;

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-DynamoDBCatalogSource::DynamoDBCatalogSource() : 
-    m_nameHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false)
-{
-}
-
-DynamoDBCatalogSource::DynamoDBCatalogSource(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false)
+DynamoDBCatalogSource::DynamoDBCatalogSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,28 @@ DynamoDBCatalogSource& DynamoDBCatalogSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetString("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetString("Table");
-
     m_tableHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PitrEnabled"))
+  {
+    m_pitrEnabled = jsonValue.GetBool("PitrEnabled");
+    m_pitrEnabledHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AdditionalOptions"))
+  {
+    m_additionalOptions = jsonValue.GetObject("AdditionalOptions");
+    m_additionalOptionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +72,18 @@ JsonValue DynamoDBCatalogSource::Jsonize() const
   if(m_tableHasBeenSet)
   {
    payload.WithString("Table", m_table);
+
+  }
+
+  if(m_pitrEnabledHasBeenSet)
+  {
+   payload.WithBool("PitrEnabled", m_pitrEnabled);
+
+  }
+
+  if(m_additionalOptionsHasBeenSet)
+  {
+   payload.WithObject("AdditionalOptions", m_additionalOptions.Jsonize());
 
   }
 

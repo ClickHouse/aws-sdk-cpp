@@ -33,321 +33,109 @@ namespace Model
   class BotAliasMetadata
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API BotAliasMetadata();
+    AWS_LEXMODELBUILDINGSERVICE_API BotAliasMetadata() = default;
     AWS_LEXMODELBUILDINGSERVICE_API BotAliasMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API BotAliasMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELBUILDINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the bot alias.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the bot alias.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BotAliasMetadata& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bot alias.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the bot alias.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the bot alias.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the bot alias.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the bot alias.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    BotAliasMetadata& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the bot alias.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the bot alias.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the bot alias.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the Amazon Lex bot to which the alias points.</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
-
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
     inline bool BotVersionHasBeenSet() const { return m_botVersionHasBeenSet; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    BotAliasMetadata& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersionHasBeenSet = true; m_botVersion = value; }
-
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::move(value); }
-
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersionHasBeenSet = true; m_botVersion.assign(value); }
-
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
-    inline BotAliasMetadata& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
-    inline BotAliasMetadata& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the Amazon Lex bot to which the alias points.</p>
-     */
-    inline BotAliasMetadata& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the bot to which the alias points.</p>
      */
-    inline const Aws::String& GetBotName() const{ return m_botName; }
-
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
+    inline const Aws::String& GetBotName() const { return m_botName; }
     inline bool BotNameHasBeenSet() const { return m_botNameHasBeenSet; }
+    template<typename BotNameT = Aws::String>
+    void SetBotName(BotNameT&& value) { m_botNameHasBeenSet = true; m_botName = std::forward<BotNameT>(value); }
+    template<typename BotNameT = Aws::String>
+    BotAliasMetadata& WithBotName(BotNameT&& value) { SetBotName(std::forward<BotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
-    inline void SetBotName(const Aws::String& value) { m_botNameHasBeenSet = true; m_botName = value; }
-
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
-    inline void SetBotName(Aws::String&& value) { m_botNameHasBeenSet = true; m_botName = std::move(value); }
-
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
-    inline void SetBotName(const char* value) { m_botNameHasBeenSet = true; m_botName.assign(value); }
-
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
-    inline BotAliasMetadata& WithBotName(const Aws::String& value) { SetBotName(value); return *this;}
-
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
-    inline BotAliasMetadata& WithBotName(Aws::String&& value) { SetBotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bot to which the alias points.</p>
-     */
-    inline BotAliasMetadata& WithBotName(const char* value) { SetBotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the bot alias was updated. When you create a resource, the
      * creation date and last updated date are the same.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const{ return m_lastUpdatedDate; }
-
-    /**
-     * <p>The date that the bot alias was updated. When you create a resource, the
-     * creation date and last updated date are the same.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const { return m_lastUpdatedDate; }
     inline bool LastUpdatedDateHasBeenSet() const { return m_lastUpdatedDateHasBeenSet; }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    void SetLastUpdatedDate(LastUpdatedDateT&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::forward<LastUpdatedDateT>(value); }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    BotAliasMetadata& WithLastUpdatedDate(LastUpdatedDateT&& value) { SetLastUpdatedDate(std::forward<LastUpdatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the bot alias was updated. When you create a resource, the
-     * creation date and last updated date are the same.</p>
-     */
-    inline void SetLastUpdatedDate(const Aws::Utils::DateTime& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = value; }
-
-    /**
-     * <p>The date that the bot alias was updated. When you create a resource, the
-     * creation date and last updated date are the same.</p>
-     */
-    inline void SetLastUpdatedDate(Aws::Utils::DateTime&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::move(value); }
-
-    /**
-     * <p>The date that the bot alias was updated. When you create a resource, the
-     * creation date and last updated date are the same.</p>
-     */
-    inline BotAliasMetadata& WithLastUpdatedDate(const Aws::Utils::DateTime& value) { SetLastUpdatedDate(value); return *this;}
-
-    /**
-     * <p>The date that the bot alias was updated. When you create a resource, the
-     * creation date and last updated date are the same.</p>
-     */
-    inline BotAliasMetadata& WithLastUpdatedDate(Aws::Utils::DateTime&& value) { SetLastUpdatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the bot alias was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
-
-    /**
-     * <p>The date that the bot alias was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
     inline bool CreatedDateHasBeenSet() const { return m_createdDateHasBeenSet; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    BotAliasMetadata& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the bot alias was created.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
-
-    /**
-     * <p>The date that the bot alias was created.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::move(value); }
-
-    /**
-     * <p>The date that the bot alias was created.</p>
-     */
-    inline BotAliasMetadata& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The date that the bot alias was created.</p>
-     */
-    inline BotAliasMetadata& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Checksum of the bot alias.</p>
      */
-    inline const Aws::String& GetChecksum() const{ return m_checksum; }
-
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
+    inline const Aws::String& GetChecksum() const { return m_checksum; }
     inline bool ChecksumHasBeenSet() const { return m_checksumHasBeenSet; }
+    template<typename ChecksumT = Aws::String>
+    void SetChecksum(ChecksumT&& value) { m_checksumHasBeenSet = true; m_checksum = std::forward<ChecksumT>(value); }
+    template<typename ChecksumT = Aws::String>
+    BotAliasMetadata& WithChecksum(ChecksumT&& value) { SetChecksum(std::forward<ChecksumT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
-    inline void SetChecksum(const Aws::String& value) { m_checksumHasBeenSet = true; m_checksum = value; }
-
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
-    inline void SetChecksum(Aws::String&& value) { m_checksumHasBeenSet = true; m_checksum = std::move(value); }
-
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
-    inline void SetChecksum(const char* value) { m_checksumHasBeenSet = true; m_checksum.assign(value); }
-
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithChecksum(const Aws::String& value) { SetChecksum(value); return *this;}
-
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithChecksum(Aws::String&& value) { SetChecksum(std::move(value)); return *this;}
-
-    /**
-     * <p>Checksum of the bot alias.</p>
-     */
-    inline BotAliasMetadata& WithChecksum(const char* value) { SetChecksum(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Settings that determine how Amazon Lex uses conversation logs for the
      * alias.</p>
      */
-    inline const ConversationLogsResponse& GetConversationLogs() const{ return m_conversationLogs; }
-
-    /**
-     * <p>Settings that determine how Amazon Lex uses conversation logs for the
-     * alias.</p>
-     */
+    inline const ConversationLogsResponse& GetConversationLogs() const { return m_conversationLogs; }
     inline bool ConversationLogsHasBeenSet() const { return m_conversationLogsHasBeenSet; }
-
-    /**
-     * <p>Settings that determine how Amazon Lex uses conversation logs for the
-     * alias.</p>
-     */
-    inline void SetConversationLogs(const ConversationLogsResponse& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = value; }
-
-    /**
-     * <p>Settings that determine how Amazon Lex uses conversation logs for the
-     * alias.</p>
-     */
-    inline void SetConversationLogs(ConversationLogsResponse&& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = std::move(value); }
-
-    /**
-     * <p>Settings that determine how Amazon Lex uses conversation logs for the
-     * alias.</p>
-     */
-    inline BotAliasMetadata& WithConversationLogs(const ConversationLogsResponse& value) { SetConversationLogs(value); return *this;}
-
-    /**
-     * <p>Settings that determine how Amazon Lex uses conversation logs for the
-     * alias.</p>
-     */
-    inline BotAliasMetadata& WithConversationLogs(ConversationLogsResponse&& value) { SetConversationLogs(std::move(value)); return *this;}
-
+    template<typename ConversationLogsT = ConversationLogsResponse>
+    void SetConversationLogs(ConversationLogsT&& value) { m_conversationLogsHasBeenSet = true; m_conversationLogs = std::forward<ConversationLogsT>(value); }
+    template<typename ConversationLogsT = ConversationLogsResponse>
+    BotAliasMetadata& WithConversationLogs(ConversationLogsT&& value) { SetConversationLogs(std::forward<ConversationLogsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -362,10 +150,10 @@ namespace Model
     Aws::String m_botName;
     bool m_botNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDate;
+    Aws::Utils::DateTime m_lastUpdatedDate{};
     bool m_lastUpdatedDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
     bool m_createdDateHasBeenSet = false;
 
     Aws::String m_checksum;

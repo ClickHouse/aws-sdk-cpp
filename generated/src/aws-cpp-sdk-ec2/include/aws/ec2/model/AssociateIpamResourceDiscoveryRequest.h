@@ -24,7 +24,7 @@ namespace Model
   class AssociateIpamResourceDiscoveryRequest : public EC2Request
   {
   public:
-    AWS_EC2_API AssociateIpamResourceDiscoveryRequest();
+    AWS_EC2_API AssociateIpamResourceDiscoveryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,205 +39,71 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline AssociateIpamResourceDiscoveryRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An IPAM ID.</p>
      */
-    inline const Aws::String& GetIpamId() const{ return m_ipamId; }
-
-    /**
-     * <p>An IPAM ID.</p>
-     */
+    inline const Aws::String& GetIpamId() const { return m_ipamId; }
     inline bool IpamIdHasBeenSet() const { return m_ipamIdHasBeenSet; }
+    template<typename IpamIdT = Aws::String>
+    void SetIpamId(IpamIdT&& value) { m_ipamIdHasBeenSet = true; m_ipamId = std::forward<IpamIdT>(value); }
+    template<typename IpamIdT = Aws::String>
+    AssociateIpamResourceDiscoveryRequest& WithIpamId(IpamIdT&& value) { SetIpamId(std::forward<IpamIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An IPAM ID.</p>
-     */
-    inline void SetIpamId(const Aws::String& value) { m_ipamIdHasBeenSet = true; m_ipamId = value; }
-
-    /**
-     * <p>An IPAM ID.</p>
-     */
-    inline void SetIpamId(Aws::String&& value) { m_ipamIdHasBeenSet = true; m_ipamId = std::move(value); }
-
-    /**
-     * <p>An IPAM ID.</p>
-     */
-    inline void SetIpamId(const char* value) { m_ipamIdHasBeenSet = true; m_ipamId.assign(value); }
-
-    /**
-     * <p>An IPAM ID.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithIpamId(const Aws::String& value) { SetIpamId(value); return *this;}
-
-    /**
-     * <p>An IPAM ID.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithIpamId(Aws::String&& value) { SetIpamId(std::move(value)); return *this;}
-
-    /**
-     * <p>An IPAM ID.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithIpamId(const char* value) { SetIpamId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A resource discovery ID.</p>
      */
-    inline const Aws::String& GetIpamResourceDiscoveryId() const{ return m_ipamResourceDiscoveryId; }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
+    inline const Aws::String& GetIpamResourceDiscoveryId() const { return m_ipamResourceDiscoveryId; }
     inline bool IpamResourceDiscoveryIdHasBeenSet() const { return m_ipamResourceDiscoveryIdHasBeenSet; }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    void SetIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::forward<IpamResourceDiscoveryIdT>(value); }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    AssociateIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { SetIpamResourceDiscoveryId(std::forward<IpamResourceDiscoveryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const Aws::String& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = value; }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(Aws::String&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::move(value); }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const char* value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId.assign(value); }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(const Aws::String& value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(Aws::String&& value) { SetIpamResourceDiscoveryId(std::move(value)); return *this;}
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(const char* value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Tag specifications.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>Tag specifications.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    AssociateIpamResourceDiscoveryRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    AssociateIpamResourceDiscoveryRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Tag specifications.</p>
-     */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
-
-    /**
-     * <p>Tag specifications.</p>
-     */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
-
-    /**
-     * <p>Tag specifications.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>Tag specifications.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>Tag specifications.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>Tag specifications.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A client token.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A client token.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline AssociateIpamResourceDiscoveryRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    AssociateIpamResourceDiscoveryRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_ipamId;
@@ -249,8 +115,8 @@ namespace Model
     Aws::Vector<TagSpecification> m_tagSpecifications;
     bool m_tagSpecificationsHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

@@ -19,15 +19,15 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a CreateWorkspace operation.</p><p><h3>See Also:</h3>
-   * <a
+   * <p>Represents the input of a <code>CreateWorkspace</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/CreateWorkspaceRequest">AWS
    * API Reference</a></p>
    */
   class CreateWorkspaceRequest : public PrometheusServiceRequest
   {
   public:
-    AWS_PROMETHEUSSERVICE_API CreateWorkspaceRequest();
+    AWS_PROMETHEUSSERVICE_API CreateWorkspaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,225 +38,71 @@ namespace Model
     AWS_PROMETHEUSSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
+     * <p>An alias that you assign to this workspace to help you identify it. It does
+     * not need to be unique.</p> <p>Blank spaces at the beginning or end of the alias
+     * that you specify will be trimmed from the value used.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    CreateWorkspaceRequest& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
+     * <p>A unique identifier that you can provide to ensure the idempotency of the
+     * request. Case-sensitive.</p>
      */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
-     */
-    inline CreateWorkspaceRequest& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
-     */
-    inline CreateWorkspaceRequest& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional user-assigned alias for this workspace. This alias is for user
-     * reference and does not need to be unique.</p>
-     */
-    inline CreateWorkspaceRequest& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateWorkspaceRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
+     * <p>The list of tag keys and values to associate with the workspace.</p>
      */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
-    inline CreateWorkspaceRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
-    inline CreateWorkspaceRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional, unique, case-sensitive, user-provided identifier to ensure the
-     * idempotency of the request.</p>
-     */
-    inline CreateWorkspaceRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateWorkspaceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateWorkspaceRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>Optional, user-provided tags for this workspace.</p>
+     * <p>(optional) The ARN for a customer managed KMS key to use for encrypting data
+     * within your workspace. For more information about using your own key in your
+     * workspace, see <a
+     * href="https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html">Encryption
+     * at rest</a> in the <i>Amazon Managed Service for Prometheus User Guide</i>.</p>
      */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Optional, user-provided tags for this workspace.</p>
-     */
-    inline CreateWorkspaceRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline const Aws::String& GetKmsKeyArn() const{ return m_kmsKeyArn; }
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
     inline bool KmsKeyArnHasBeenSet() const { return m_kmsKeyArnHasBeenSet; }
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline void SetKmsKeyArn(const Aws::String& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline void SetKmsKeyArn(const char* value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn.assign(value); }
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline CreateWorkspaceRequest& WithKmsKeyArn(const Aws::String& value) { SetKmsKeyArn(value); return *this;}
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline CreateWorkspaceRequest& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional, customer managed KMS key used to encrypt data for this
-     * workspace</p>
-     */
-    inline CreateWorkspaceRequest& WithKmsKeyArn(const char* value) { SetKmsKeyArn(value); return *this;}
-
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    CreateWorkspaceRequest& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alias;
     bool m_aliasHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;

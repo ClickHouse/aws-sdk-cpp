@@ -12,14 +12,6 @@ using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetQueryResultsRequest::GetQueryResultsRequest() : 
-    m_queryIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxQueryResults(0),
-    m_maxQueryResultsHasBeenSet(false)
-{
-}
-
 Aws::String GetQueryResultsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String GetQueryResultsRequest::SerializePayload() const
   if(m_maxQueryResultsHasBeenSet)
   {
    payload.WithInteger("MaxQueryResults", m_maxQueryResults);
+
+  }
+
+  if(m_eventDataStoreOwnerAccountIdHasBeenSet)
+  {
+   payload.WithString("EventDataStoreOwnerAccountId", m_eventDataStoreOwnerAccountId);
 
   }
 

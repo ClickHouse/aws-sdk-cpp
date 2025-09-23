@@ -34,63 +34,37 @@ namespace Model
   class DescribeIdentityPoolUsageResult
   {
   public:
-    AWS_COGNITOSYNC_API DescribeIdentityPoolUsageResult();
+    AWS_COGNITOSYNC_API DescribeIdentityPoolUsageResult() = default;
     AWS_COGNITOSYNC_API DescribeIdentityPoolUsageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOSYNC_API DescribeIdentityPoolUsageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * Information about the usage of the identity pool.
      */
-    inline const IdentityPoolUsage& GetIdentityPoolUsage() const{ return m_identityPoolUsage; }
+    inline const IdentityPoolUsage& GetIdentityPoolUsage() const { return m_identityPoolUsage; }
+    template<typename IdentityPoolUsageT = IdentityPoolUsage>
+    void SetIdentityPoolUsage(IdentityPoolUsageT&& value) { m_identityPoolUsageHasBeenSet = true; m_identityPoolUsage = std::forward<IdentityPoolUsageT>(value); }
+    template<typename IdentityPoolUsageT = IdentityPoolUsage>
+    DescribeIdentityPoolUsageResult& WithIdentityPoolUsage(IdentityPoolUsageT&& value) { SetIdentityPoolUsage(std::forward<IdentityPoolUsageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Information about the usage of the identity pool.
-     */
-    inline void SetIdentityPoolUsage(const IdentityPoolUsage& value) { m_identityPoolUsage = value; }
-
-    /**
-     * Information about the usage of the identity pool.
-     */
-    inline void SetIdentityPoolUsage(IdentityPoolUsage&& value) { m_identityPoolUsage = std::move(value); }
-
-    /**
-     * Information about the usage of the identity pool.
-     */
-    inline DescribeIdentityPoolUsageResult& WithIdentityPoolUsage(const IdentityPoolUsage& value) { SetIdentityPoolUsage(value); return *this;}
-
-    /**
-     * Information about the usage of the identity pool.
-     */
-    inline DescribeIdentityPoolUsageResult& WithIdentityPoolUsage(IdentityPoolUsage&& value) { SetIdentityPoolUsage(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeIdentityPoolUsageResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeIdentityPoolUsageResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeIdentityPoolUsageResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeIdentityPoolUsageResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     IdentityPoolUsage m_identityPoolUsage;
+    bool m_identityPoolUsageHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

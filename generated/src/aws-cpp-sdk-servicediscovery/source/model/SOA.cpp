@@ -18,15 +18,7 @@ namespace ServiceDiscovery
 namespace Model
 {
 
-SOA::SOA() : 
-    m_tTL(0),
-    m_tTLHasBeenSet(false)
-{
-}
-
-SOA::SOA(JsonView jsonValue) : 
-    m_tTL(0),
-    m_tTLHasBeenSet(false)
+SOA::SOA(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SOA& SOA::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TTL"))
   {
     m_tTL = jsonValue.GetInt64("TTL");
-
     m_tTLHasBeenSet = true;
   }
-
   return *this;
 }
 

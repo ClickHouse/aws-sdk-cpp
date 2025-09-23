@@ -18,49 +18,7 @@ namespace OSIS
 namespace Model
 {
 
-Pipeline::Pipeline() : 
-    m_pipelineNameHasBeenSet(false),
-    m_pipelineArnHasBeenSet(false),
-    m_minUnits(0),
-    m_minUnitsHasBeenSet(false),
-    m_maxUnits(0),
-    m_maxUnitsHasBeenSet(false),
-    m_status(PipelineStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_pipelineConfigurationBodyHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_ingestEndpointUrlsHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_vpcEndpointsHasBeenSet(false),
-    m_bufferOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_serviceVpcEndpointsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-Pipeline::Pipeline(JsonView jsonValue) : 
-    m_pipelineNameHasBeenSet(false),
-    m_pipelineArnHasBeenSet(false),
-    m_minUnits(0),
-    m_minUnitsHasBeenSet(false),
-    m_maxUnits(0),
-    m_maxUnitsHasBeenSet(false),
-    m_status(PipelineStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_pipelineConfigurationBodyHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_ingestEndpointUrlsHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_vpcEndpointsHasBeenSet(false),
-    m_bufferOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_serviceVpcEndpointsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+Pipeline::Pipeline(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -70,66 +28,48 @@ Pipeline& Pipeline::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PipelineName"))
   {
     m_pipelineName = jsonValue.GetString("PipelineName");
-
     m_pipelineNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PipelineArn"))
   {
     m_pipelineArn = jsonValue.GetString("PipelineArn");
-
     m_pipelineArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MinUnits"))
   {
     m_minUnits = jsonValue.GetInteger("MinUnits");
-
     m_minUnitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxUnits"))
   {
     m_maxUnits = jsonValue.GetInteger("MaxUnits");
-
     m_maxUnitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = PipelineStatusMapper::GetPipelineStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatusReason"))
   {
     m_statusReason = jsonValue.GetObject("StatusReason");
-
     m_statusReasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PipelineConfigurationBody"))
   {
     m_pipelineConfigurationBody = jsonValue.GetString("PipelineConfigurationBody");
-
     m_pipelineConfigurationBodyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdatedAt"))
   {
     m_lastUpdatedAt = jsonValue.GetDouble("LastUpdatedAt");
-
     m_lastUpdatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IngestEndpointUrls"))
   {
     Aws::Utils::Array<JsonView> ingestEndpointUrlsJsonList = jsonValue.GetArray("IngestEndpointUrls");
@@ -139,14 +79,11 @@ Pipeline& Pipeline::operator =(JsonView jsonValue)
     }
     m_ingestEndpointUrlsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LogPublishingOptions"))
   {
     m_logPublishingOptions = jsonValue.GetObject("LogPublishingOptions");
-
     m_logPublishingOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcEndpoints"))
   {
     Aws::Utils::Array<JsonView> vpcEndpointsJsonList = jsonValue.GetArray("VpcEndpoints");
@@ -156,21 +93,21 @@ Pipeline& Pipeline::operator =(JsonView jsonValue)
     }
     m_vpcEndpointsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BufferOptions"))
   {
     m_bufferOptions = jsonValue.GetObject("BufferOptions");
-
     m_bufferOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EncryptionAtRestOptions"))
   {
     m_encryptionAtRestOptions = jsonValue.GetObject("EncryptionAtRestOptions");
-
     m_encryptionAtRestOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("VpcEndpointService"))
+  {
+    m_vpcEndpointService = jsonValue.GetString("VpcEndpointService");
+    m_vpcEndpointServiceHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("ServiceVpcEndpoints"))
   {
     Aws::Utils::Array<JsonView> serviceVpcEndpointsJsonList = jsonValue.GetArray("ServiceVpcEndpoints");
@@ -180,7 +117,15 @@ Pipeline& Pipeline::operator =(JsonView jsonValue)
     }
     m_serviceVpcEndpointsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Destinations"))
+  {
+    Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("Destinations");
+    for(unsigned destinationsIndex = 0; destinationsIndex < destinationsJsonList.GetLength(); ++destinationsIndex)
+    {
+      m_destinations.push_back(destinationsJsonList[destinationsIndex].AsObject());
+    }
+    m_destinationsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -190,7 +135,11 @@ Pipeline& Pipeline::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PipelineRoleArn"))
+  {
+    m_pipelineRoleArn = jsonValue.GetString("PipelineRoleArn");
+    m_pipelineRoleArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -289,6 +238,12 @@ JsonValue Pipeline::Jsonize() const
 
   }
 
+  if(m_vpcEndpointServiceHasBeenSet)
+  {
+   payload.WithString("VpcEndpointService", m_vpcEndpointService);
+
+  }
+
   if(m_serviceVpcEndpointsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> serviceVpcEndpointsJsonList(m_serviceVpcEndpoints.size());
@@ -300,6 +255,17 @@ JsonValue Pipeline::Jsonize() const
 
   }
 
+  if(m_destinationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> destinationsJsonList(m_destinations.size());
+   for(unsigned destinationsIndex = 0; destinationsIndex < destinationsJsonList.GetLength(); ++destinationsIndex)
+   {
+     destinationsJsonList[destinationsIndex].AsObject(m_destinations[destinationsIndex].Jsonize());
+   }
+   payload.WithArray("Destinations", std::move(destinationsJsonList));
+
+  }
+
   if(m_tagsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
@@ -308,6 +274,12 @@ JsonValue Pipeline::Jsonize() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_pipelineRoleArnHasBeenSet)
+  {
+   payload.WithString("PipelineRoleArn", m_pipelineRoleArn);
 
   }
 

@@ -20,17 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-LoadBalancerDescription::LoadBalancerDescription() : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_listenersHasBeenSet(false)
-{
-}
-
-LoadBalancerDescription::LoadBalancerDescription(const XmlNode& xmlNode) : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_listenersHasBeenSet(false)
+LoadBalancerDescription::LoadBalancerDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!listenersNode.IsNull())
     {
       XmlNode listenersMember = listenersNode.FirstChild("member");
+      m_listenersHasBeenSet = !listenersMember.IsNull();
       while(!listenersMember.IsNull())
       {
         m_listeners.push_back(listenersMember);
@@ -111,7 +102,7 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_listeners)
       {
         Aws::StringStream listenersSs;
-        listenersSs << location <<  ".Listeners.member." << listenersIdx++;
+        listenersSs << location << ".Listeners.member." << listenersIdx++;
         item.OutputToStream(oStream, listenersSs.str().c_str());
       }
   }

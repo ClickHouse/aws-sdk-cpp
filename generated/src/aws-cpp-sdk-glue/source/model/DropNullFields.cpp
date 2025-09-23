@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-DropNullFields::DropNullFields() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_nullCheckBoxListHasBeenSet(false),
-    m_nullTextListHasBeenSet(false)
-{
-}
-
-DropNullFields::DropNullFields(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_nullCheckBoxListHasBeenSet(false),
-    m_nullTextListHasBeenSet(false)
+DropNullFields::DropNullFields(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ DropNullFields& DropNullFields::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -53,14 +39,11 @@ DropNullFields& DropNullFields::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NullCheckBoxList"))
   {
     m_nullCheckBoxList = jsonValue.GetObject("NullCheckBoxList");
-
     m_nullCheckBoxListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NullTextList"))
   {
     Aws::Utils::Array<JsonView> nullTextListJsonList = jsonValue.GetArray("NullTextList");
@@ -70,7 +53,6 @@ DropNullFields& DropNullFields::operator =(JsonView jsonValue)
     }
     m_nullTextListHasBeenSet = true;
   }
-
   return *this;
 }
 

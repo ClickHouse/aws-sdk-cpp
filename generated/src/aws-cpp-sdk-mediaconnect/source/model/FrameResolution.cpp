@@ -18,19 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-FrameResolution::FrameResolution() : 
-    m_frameHeight(0),
-    m_frameHeightHasBeenSet(false),
-    m_frameWidth(0),
-    m_frameWidthHasBeenSet(false)
-{
-}
-
-FrameResolution::FrameResolution(JsonView jsonValue) : 
-    m_frameHeight(0),
-    m_frameHeightHasBeenSet(false),
-    m_frameWidth(0),
-    m_frameWidthHasBeenSet(false)
+FrameResolution::FrameResolution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ FrameResolution& FrameResolution::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("frameHeight"))
   {
     m_frameHeight = jsonValue.GetInteger("frameHeight");
-
     m_frameHeightHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("frameWidth"))
   {
     m_frameWidth = jsonValue.GetInteger("frameWidth");
-
     m_frameWidthHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class CreateBotVersionRequest : public LexModelBuildingServiceRequest
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API CreateBotVersionRequest();
+    AWS_LEXMODELBUILDINGSERVICE_API CreateBotVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,55 +32,20 @@ namespace Model
     AWS_LEXMODELBUILDINGSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the bot that you want to create a new version of. The name is
      * case sensitive. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateBotVersionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
-    inline CreateBotVersionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
-    inline CreateBotVersionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bot that you want to create a new version of. The name is
-     * case sensitive. </p>
-     */
-    inline CreateBotVersionRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
      * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
@@ -88,71 +53,13 @@ namespace Model
      * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
      * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
      */
-    inline const Aws::String& GetChecksum() const{ return m_checksum; }
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
+    inline const Aws::String& GetChecksum() const { return m_checksum; }
     inline bool ChecksumHasBeenSet() const { return m_checksumHasBeenSet; }
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
-    inline void SetChecksum(const Aws::String& value) { m_checksumHasBeenSet = true; m_checksum = value; }
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
-    inline void SetChecksum(Aws::String&& value) { m_checksumHasBeenSet = true; m_checksum = std::move(value); }
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
-    inline void SetChecksum(const char* value) { m_checksumHasBeenSet = true; m_checksum.assign(value); }
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
-    inline CreateBotVersionRequest& WithChecksum(const Aws::String& value) { SetChecksum(value); return *this;}
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
-    inline CreateBotVersionRequest& WithChecksum(Aws::String&& value) { SetChecksum(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifies a specific revision of the <code>$LATEST</code> version of the
-     * bot. If you specify a checksum and the <code>$LATEST</code> version of the bot
-     * has a different checksum, a <code>PreconditionFailedException</code> exception
-     * is returned and Amazon Lex doesn't publish a new version. If you don't specify a
-     * checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
-     */
-    inline CreateBotVersionRequest& WithChecksum(const char* value) { SetChecksum(value); return *this;}
-
+    template<typename ChecksumT = Aws::String>
+    void SetChecksum(ChecksumT&& value) { m_checksumHasBeenSet = true; m_checksum = std::forward<ChecksumT>(value); }
+    template<typename ChecksumT = Aws::String>
+    CreateBotVersionRequest& WithChecksum(ChecksumT&& value) { SetChecksum(std::forward<ChecksumT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

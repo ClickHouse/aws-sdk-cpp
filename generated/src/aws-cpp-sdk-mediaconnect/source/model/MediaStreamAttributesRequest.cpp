@@ -18,15 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-MediaStreamAttributesRequest::MediaStreamAttributesRequest() : 
-    m_fmtpHasBeenSet(false),
-    m_langHasBeenSet(false)
-{
-}
-
-MediaStreamAttributesRequest::MediaStreamAttributesRequest(JsonView jsonValue) : 
-    m_fmtpHasBeenSet(false),
-    m_langHasBeenSet(false)
+MediaStreamAttributesRequest::MediaStreamAttributesRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MediaStreamAttributesRequest& MediaStreamAttributesRequest::operator =(JsonView 
   if(jsonValue.ValueExists("fmtp"))
   {
     m_fmtp = jsonValue.GetObject("fmtp");
-
     m_fmtpHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lang"))
   {
     m_lang = jsonValue.GetString("lang");
-
     m_langHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -29,47 +29,25 @@ namespace Model
   class ListDelegatedAdministratorsResult
   {
   public:
-    AWS_ORGANIZATIONS_API ListDelegatedAdministratorsResult();
+    AWS_ORGANIZATIONS_API ListDelegatedAdministratorsResult() = default;
     AWS_ORGANIZATIONS_API ListDelegatedAdministratorsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ORGANIZATIONS_API ListDelegatedAdministratorsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The list of delegated administrators in your organization.</p>
      */
-    inline const Aws::Vector<DelegatedAdministrator>& GetDelegatedAdministrators() const{ return m_delegatedAdministrators; }
+    inline const Aws::Vector<DelegatedAdministrator>& GetDelegatedAdministrators() const { return m_delegatedAdministrators; }
+    template<typename DelegatedAdministratorsT = Aws::Vector<DelegatedAdministrator>>
+    void SetDelegatedAdministrators(DelegatedAdministratorsT&& value) { m_delegatedAdministratorsHasBeenSet = true; m_delegatedAdministrators = std::forward<DelegatedAdministratorsT>(value); }
+    template<typename DelegatedAdministratorsT = Aws::Vector<DelegatedAdministrator>>
+    ListDelegatedAdministratorsResult& WithDelegatedAdministrators(DelegatedAdministratorsT&& value) { SetDelegatedAdministrators(std::forward<DelegatedAdministratorsT>(value)); return *this;}
+    template<typename DelegatedAdministratorsT = DelegatedAdministrator>
+    ListDelegatedAdministratorsResult& AddDelegatedAdministrators(DelegatedAdministratorsT&& value) { m_delegatedAdministratorsHasBeenSet = true; m_delegatedAdministrators.emplace_back(std::forward<DelegatedAdministratorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of delegated administrators in your organization.</p>
-     */
-    inline void SetDelegatedAdministrators(const Aws::Vector<DelegatedAdministrator>& value) { m_delegatedAdministrators = value; }
-
-    /**
-     * <p>The list of delegated administrators in your organization.</p>
-     */
-    inline void SetDelegatedAdministrators(Aws::Vector<DelegatedAdministrator>&& value) { m_delegatedAdministrators = std::move(value); }
-
-    /**
-     * <p>The list of delegated administrators in your organization.</p>
-     */
-    inline ListDelegatedAdministratorsResult& WithDelegatedAdministrators(const Aws::Vector<DelegatedAdministrator>& value) { SetDelegatedAdministrators(value); return *this;}
-
-    /**
-     * <p>The list of delegated administrators in your organization.</p>
-     */
-    inline ListDelegatedAdministratorsResult& WithDelegatedAdministrators(Aws::Vector<DelegatedAdministrator>&& value) { SetDelegatedAdministrators(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of delegated administrators in your organization.</p>
-     */
-    inline ListDelegatedAdministratorsResult& AddDelegatedAdministrators(const DelegatedAdministrator& value) { m_delegatedAdministrators.push_back(value); return *this; }
-
-    /**
-     * <p>The list of delegated administrators in your organization.</p>
-     */
-    inline ListDelegatedAdministratorsResult& AddDelegatedAdministrators(DelegatedAdministrator&& value) { m_delegatedAdministrators.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If present, indicates that more output is available than is included in the
      * current response. Use this value in the <code>NextToken</code> request parameter
@@ -77,91 +55,31 @@ namespace Model
      * should repeat this until the <code>NextToken</code> response element comes back
      * as <code>null</code>.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDelegatedAdministratorsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListDelegatedAdministratorsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListDelegatedAdministratorsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListDelegatedAdministratorsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListDelegatedAdministratorsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListDelegatedAdministratorsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListDelegatedAdministratorsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListDelegatedAdministratorsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DelegatedAdministrator> m_delegatedAdministrators;
+    bool m_delegatedAdministratorsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

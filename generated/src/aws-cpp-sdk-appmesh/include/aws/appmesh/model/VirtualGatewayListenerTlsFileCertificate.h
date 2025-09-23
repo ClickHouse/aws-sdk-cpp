@@ -35,101 +35,36 @@ namespace Model
   class VirtualGatewayListenerTlsFileCertificate
   {
   public:
-    AWS_APPMESH_API VirtualGatewayListenerTlsFileCertificate();
+    AWS_APPMESH_API VirtualGatewayListenerTlsFileCertificate() = default;
     AWS_APPMESH_API VirtualGatewayListenerTlsFileCertificate(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualGatewayListenerTlsFileCertificate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The certificate chain for the certificate.</p>
      */
-    inline const Aws::String& GetCertificateChain() const{ return m_certificateChain; }
-
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
+    inline const Aws::String& GetCertificateChain() const { return m_certificateChain; }
     inline bool CertificateChainHasBeenSet() const { return m_certificateChainHasBeenSet; }
+    template<typename CertificateChainT = Aws::String>
+    void SetCertificateChain(CertificateChainT&& value) { m_certificateChainHasBeenSet = true; m_certificateChain = std::forward<CertificateChainT>(value); }
+    template<typename CertificateChainT = Aws::String>
+    VirtualGatewayListenerTlsFileCertificate& WithCertificateChain(CertificateChainT&& value) { SetCertificateChain(std::forward<CertificateChainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
-    inline void SetCertificateChain(const Aws::String& value) { m_certificateChainHasBeenSet = true; m_certificateChain = value; }
-
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
-    inline void SetCertificateChain(Aws::String&& value) { m_certificateChainHasBeenSet = true; m_certificateChain = std::move(value); }
-
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
-    inline void SetCertificateChain(const char* value) { m_certificateChainHasBeenSet = true; m_certificateChain.assign(value); }
-
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
-    inline VirtualGatewayListenerTlsFileCertificate& WithCertificateChain(const Aws::String& value) { SetCertificateChain(value); return *this;}
-
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
-    inline VirtualGatewayListenerTlsFileCertificate& WithCertificateChain(Aws::String&& value) { SetCertificateChain(std::move(value)); return *this;}
-
-    /**
-     * <p>The certificate chain for the certificate.</p>
-     */
-    inline VirtualGatewayListenerTlsFileCertificate& WithCertificateChain(const char* value) { SetCertificateChain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The private key for a certificate stored on the file system of the mesh
      * endpoint that the proxy is running on.</p>
      */
-    inline const Aws::String& GetPrivateKey() const{ return m_privateKey; }
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
+    inline const Aws::String& GetPrivateKey() const { return m_privateKey; }
     inline bool PrivateKeyHasBeenSet() const { return m_privateKeyHasBeenSet; }
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
-    inline void SetPrivateKey(const Aws::String& value) { m_privateKeyHasBeenSet = true; m_privateKey = value; }
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
-    inline void SetPrivateKey(Aws::String&& value) { m_privateKeyHasBeenSet = true; m_privateKey = std::move(value); }
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
-    inline void SetPrivateKey(const char* value) { m_privateKeyHasBeenSet = true; m_privateKey.assign(value); }
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
-    inline VirtualGatewayListenerTlsFileCertificate& WithPrivateKey(const Aws::String& value) { SetPrivateKey(value); return *this;}
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
-    inline VirtualGatewayListenerTlsFileCertificate& WithPrivateKey(Aws::String&& value) { SetPrivateKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The private key for a certificate stored on the file system of the mesh
-     * endpoint that the proxy is running on.</p>
-     */
-    inline VirtualGatewayListenerTlsFileCertificate& WithPrivateKey(const char* value) { SetPrivateKey(value); return *this;}
-
+    template<typename PrivateKeyT = Aws::String>
+    void SetPrivateKey(PrivateKeyT&& value) { m_privateKeyHasBeenSet = true; m_privateKey = std::forward<PrivateKeyT>(value); }
+    template<typename PrivateKeyT = Aws::String>
+    VirtualGatewayListenerTlsFileCertificate& WithPrivateKey(PrivateKeyT&& value) { SetPrivateKey(std::forward<PrivateKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateChain;

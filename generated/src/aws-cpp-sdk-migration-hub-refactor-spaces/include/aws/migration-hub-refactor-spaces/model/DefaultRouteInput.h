@@ -31,51 +31,25 @@ namespace Model
   class DefaultRouteInput
   {
   public:
-    AWS_MIGRATIONHUBREFACTORSPACES_API DefaultRouteInput();
+    AWS_MIGRATIONHUBREFACTORSPACES_API DefaultRouteInput() = default;
     AWS_MIGRATIONHUBREFACTORSPACES_API DefaultRouteInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBREFACTORSPACES_API DefaultRouteInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBREFACTORSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If set to <code>ACTIVE</code>, traffic is forwarded to this route’s service
      * after the route is created. </p>
      */
-    inline const RouteActivationState& GetActivationState() const{ return m_activationState; }
-
-    /**
-     * <p>If set to <code>ACTIVE</code>, traffic is forwarded to this route’s service
-     * after the route is created. </p>
-     */
+    inline RouteActivationState GetActivationState() const { return m_activationState; }
     inline bool ActivationStateHasBeenSet() const { return m_activationStateHasBeenSet; }
-
-    /**
-     * <p>If set to <code>ACTIVE</code>, traffic is forwarded to this route’s service
-     * after the route is created. </p>
-     */
-    inline void SetActivationState(const RouteActivationState& value) { m_activationStateHasBeenSet = true; m_activationState = value; }
-
-    /**
-     * <p>If set to <code>ACTIVE</code>, traffic is forwarded to this route’s service
-     * after the route is created. </p>
-     */
-    inline void SetActivationState(RouteActivationState&& value) { m_activationStateHasBeenSet = true; m_activationState = std::move(value); }
-
-    /**
-     * <p>If set to <code>ACTIVE</code>, traffic is forwarded to this route’s service
-     * after the route is created. </p>
-     */
-    inline DefaultRouteInput& WithActivationState(const RouteActivationState& value) { SetActivationState(value); return *this;}
-
-    /**
-     * <p>If set to <code>ACTIVE</code>, traffic is forwarded to this route’s service
-     * after the route is created. </p>
-     */
-    inline DefaultRouteInput& WithActivationState(RouteActivationState&& value) { SetActivationState(std::move(value)); return *this;}
-
+    inline void SetActivationState(RouteActivationState value) { m_activationStateHasBeenSet = true; m_activationState = value; }
+    inline DefaultRouteInput& WithActivationState(RouteActivationState value) { SetActivationState(value); return *this;}
+    ///@}
   private:
 
-    RouteActivationState m_activationState;
+    RouteActivationState m_activationState{RouteActivationState::NOT_SET};
     bool m_activationStateHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace KafkaConnect
 namespace Model
 {
 
-FirehoseLogDeliveryDescription::FirehoseLogDeliveryDescription() : 
-    m_deliveryStreamHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-FirehoseLogDeliveryDescription::FirehoseLogDeliveryDescription(JsonView jsonValue) : 
-    m_deliveryStreamHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+FirehoseLogDeliveryDescription::FirehoseLogDeliveryDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FirehoseLogDeliveryDescription& FirehoseLogDeliveryDescription::operator =(JsonV
   if(jsonValue.ValueExists("deliveryStream"))
   {
     m_deliveryStream = jsonValue.GetString("deliveryStream");
-
     m_deliveryStreamHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

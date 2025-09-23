@@ -33,94 +33,37 @@ namespace Model
   class ApiAssociation
   {
   public:
-    AWS_APPSYNC_API ApiAssociation();
+    AWS_APPSYNC_API ApiAssociation() = default;
     AWS_APPSYNC_API ApiAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API ApiAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The domain name.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The domain name.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    ApiAssociation& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain name.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The domain name.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The domain name.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The domain name.</p>
-     */
-    inline ApiAssociation& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The domain name.</p>
-     */
-    inline ApiAssociation& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain name.</p>
-     */
-    inline ApiAssociation& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The API ID.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API ID.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    ApiAssociation& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline ApiAssociation& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline ApiAssociation& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline ApiAssociation& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies the status of an association.</p> <ul> <li> <p> <b>PROCESSING</b>:
      * The API association is being created. You cannot modify association requests
@@ -129,99 +72,23 @@ namespace Model
      * <b>FAILED</b>: The API association has failed. You can modify associations after
      * failure.</p> </li> </ul>
      */
-    inline const AssociationStatus& GetAssociationStatus() const{ return m_associationStatus; }
-
-    /**
-     * <p>Identifies the status of an association.</p> <ul> <li> <p> <b>PROCESSING</b>:
-     * The API association is being created. You cannot modify association requests
-     * during processing.</p> </li> <li> <p> <b>SUCCESS</b>: The API association was
-     * successful. You can modify associations after success.</p> </li> <li> <p>
-     * <b>FAILED</b>: The API association has failed. You can modify associations after
-     * failure.</p> </li> </ul>
-     */
+    inline AssociationStatus GetAssociationStatus() const { return m_associationStatus; }
     inline bool AssociationStatusHasBeenSet() const { return m_associationStatusHasBeenSet; }
+    inline void SetAssociationStatus(AssociationStatus value) { m_associationStatusHasBeenSet = true; m_associationStatus = value; }
+    inline ApiAssociation& WithAssociationStatus(AssociationStatus value) { SetAssociationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifies the status of an association.</p> <ul> <li> <p> <b>PROCESSING</b>:
-     * The API association is being created. You cannot modify association requests
-     * during processing.</p> </li> <li> <p> <b>SUCCESS</b>: The API association was
-     * successful. You can modify associations after success.</p> </li> <li> <p>
-     * <b>FAILED</b>: The API association has failed. You can modify associations after
-     * failure.</p> </li> </ul>
-     */
-    inline void SetAssociationStatus(const AssociationStatus& value) { m_associationStatusHasBeenSet = true; m_associationStatus = value; }
-
-    /**
-     * <p>Identifies the status of an association.</p> <ul> <li> <p> <b>PROCESSING</b>:
-     * The API association is being created. You cannot modify association requests
-     * during processing.</p> </li> <li> <p> <b>SUCCESS</b>: The API association was
-     * successful. You can modify associations after success.</p> </li> <li> <p>
-     * <b>FAILED</b>: The API association has failed. You can modify associations after
-     * failure.</p> </li> </ul>
-     */
-    inline void SetAssociationStatus(AssociationStatus&& value) { m_associationStatusHasBeenSet = true; m_associationStatus = std::move(value); }
-
-    /**
-     * <p>Identifies the status of an association.</p> <ul> <li> <p> <b>PROCESSING</b>:
-     * The API association is being created. You cannot modify association requests
-     * during processing.</p> </li> <li> <p> <b>SUCCESS</b>: The API association was
-     * successful. You can modify associations after success.</p> </li> <li> <p>
-     * <b>FAILED</b>: The API association has failed. You can modify associations after
-     * failure.</p> </li> </ul>
-     */
-    inline ApiAssociation& WithAssociationStatus(const AssociationStatus& value) { SetAssociationStatus(value); return *this;}
-
-    /**
-     * <p>Identifies the status of an association.</p> <ul> <li> <p> <b>PROCESSING</b>:
-     * The API association is being created. You cannot modify association requests
-     * during processing.</p> </li> <li> <p> <b>SUCCESS</b>: The API association was
-     * successful. You can modify associations after success.</p> </li> <li> <p>
-     * <b>FAILED</b>: The API association has failed. You can modify associations after
-     * failure.</p> </li> </ul>
-     */
-    inline ApiAssociation& WithAssociationStatus(AssociationStatus&& value) { SetAssociationStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the last deployment status.</p>
      */
-    inline const Aws::String& GetDeploymentDetail() const{ return m_deploymentDetail; }
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
+    inline const Aws::String& GetDeploymentDetail() const { return m_deploymentDetail; }
     inline bool DeploymentDetailHasBeenSet() const { return m_deploymentDetailHasBeenSet; }
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
-    inline void SetDeploymentDetail(const Aws::String& value) { m_deploymentDetailHasBeenSet = true; m_deploymentDetail = value; }
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
-    inline void SetDeploymentDetail(Aws::String&& value) { m_deploymentDetailHasBeenSet = true; m_deploymentDetail = std::move(value); }
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
-    inline void SetDeploymentDetail(const char* value) { m_deploymentDetailHasBeenSet = true; m_deploymentDetail.assign(value); }
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
-    inline ApiAssociation& WithDeploymentDetail(const Aws::String& value) { SetDeploymentDetail(value); return *this;}
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
-    inline ApiAssociation& WithDeploymentDetail(Aws::String&& value) { SetDeploymentDetail(std::move(value)); return *this;}
-
-    /**
-     * <p>Details about the last deployment status.</p>
-     */
-    inline ApiAssociation& WithDeploymentDetail(const char* value) { SetDeploymentDetail(value); return *this;}
-
+    template<typename DeploymentDetailT = Aws::String>
+    void SetDeploymentDetail(DeploymentDetailT&& value) { m_deploymentDetailHasBeenSet = true; m_deploymentDetail = std::forward<DeploymentDetailT>(value); }
+    template<typename DeploymentDetailT = Aws::String>
+    ApiAssociation& WithDeploymentDetail(DeploymentDetailT&& value) { SetDeploymentDetail(std::forward<DeploymentDetailT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
@@ -230,7 +97,7 @@ namespace Model
     Aws::String m_apiId;
     bool m_apiIdHasBeenSet = false;
 
-    AssociationStatus m_associationStatus;
+    AssociationStatus m_associationStatus{AssociationStatus::NOT_SET};
     bool m_associationStatusHasBeenSet = false;
 
     Aws::String m_deploymentDetail;

@@ -32,7 +32,7 @@ namespace Model
   class LoadPermissionRequest
   {
   public:
-    AWS_EC2_API LoadPermissionRequest();
+    AWS_EC2_API LoadPermissionRequest() = default;
     AWS_EC2_API LoadPermissionRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LoadPermissionRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,80 +40,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the group.</p>
      */
-    inline const PermissionGroup& GetGroup() const{ return m_group; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
+    inline PermissionGroup GetGroup() const { return m_group; }
     inline bool GroupHasBeenSet() const { return m_groupHasBeenSet; }
+    inline void SetGroup(PermissionGroup value) { m_groupHasBeenSet = true; m_group = value; }
+    inline LoadPermissionRequest& WithGroup(PermissionGroup value) { SetGroup(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetGroup(const PermissionGroup& value) { m_groupHasBeenSet = true; m_group = value; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetGroup(PermissionGroup&& value) { m_groupHasBeenSet = true; m_group = std::move(value); }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LoadPermissionRequest& WithGroup(const PermissionGroup& value) { SetGroup(value); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LoadPermissionRequest& WithGroup(PermissionGroup&& value) { SetGroup(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID.</p>
      */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
+    inline const Aws::String& GetUserId() const { return m_userId; }
     inline bool UserIdHasBeenSet() const { return m_userIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userIdHasBeenSet = true; m_userId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetUserId(const char* value) { m_userIdHasBeenSet = true; m_userId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LoadPermissionRequest& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LoadPermissionRequest& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LoadPermissionRequest& WithUserId(const char* value) { SetUserId(value); return *this;}
-
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    LoadPermissionRequest& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
   private:
 
-    PermissionGroup m_group;
+    PermissionGroup m_group{PermissionGroup::NOT_SET};
     bool m_groupHasBeenSet = false;
 
     Aws::String m_userId;

@@ -18,15 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-DatasetContentDeliveryRule::DatasetContentDeliveryRule() : 
-    m_entryNameHasBeenSet(false),
-    m_destinationHasBeenSet(false)
-{
-}
-
-DatasetContentDeliveryRule::DatasetContentDeliveryRule(JsonView jsonValue) : 
-    m_entryNameHasBeenSet(false),
-    m_destinationHasBeenSet(false)
+DatasetContentDeliveryRule::DatasetContentDeliveryRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DatasetContentDeliveryRule& DatasetContentDeliveryRule::operator =(JsonView json
   if(jsonValue.ValueExists("entryName"))
   {
     m_entryName = jsonValue.GetString("entryName");
-
     m_entryNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destination"))
   {
     m_destination = jsonValue.GetObject("destination");
-
     m_destinationHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,160 +31,53 @@ namespace Model
   class AwsIamPolicyVersion
   {
   public:
-    AWS_SECURITYHUB_API AwsIamPolicyVersion();
+    AWS_SECURITYHUB_API AwsIamPolicyVersion() = default;
     AWS_SECURITYHUB_API AwsIamPolicyVersion(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsIamPolicyVersion& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the policy version.</p>
      */
-    inline const Aws::String& GetVersionId() const{ return m_versionId; }
-
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
+    inline const Aws::String& GetVersionId() const { return m_versionId; }
     inline bool VersionIdHasBeenSet() const { return m_versionIdHasBeenSet; }
+    template<typename VersionIdT = Aws::String>
+    void SetVersionId(VersionIdT&& value) { m_versionIdHasBeenSet = true; m_versionId = std::forward<VersionIdT>(value); }
+    template<typename VersionIdT = Aws::String>
+    AwsIamPolicyVersion& WithVersionId(VersionIdT&& value) { SetVersionId(std::forward<VersionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
-    inline void SetVersionId(const Aws::String& value) { m_versionIdHasBeenSet = true; m_versionId = value; }
-
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
-    inline void SetVersionId(Aws::String&& value) { m_versionIdHasBeenSet = true; m_versionId = std::move(value); }
-
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
-    inline void SetVersionId(const char* value) { m_versionIdHasBeenSet = true; m_versionId.assign(value); }
-
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
-    inline AwsIamPolicyVersion& WithVersionId(const Aws::String& value) { SetVersionId(value); return *this;}
-
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
-    inline AwsIamPolicyVersion& WithVersionId(Aws::String&& value) { SetVersionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the policy version.</p>
-     */
-    inline AwsIamPolicyVersion& WithVersionId(const char* value) { SetVersionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the version is the default version.</p>
      */
-    inline bool GetIsDefaultVersion() const{ return m_isDefaultVersion; }
-
-    /**
-     * <p>Whether the version is the default version.</p>
-     */
+    inline bool GetIsDefaultVersion() const { return m_isDefaultVersion; }
     inline bool IsDefaultVersionHasBeenSet() const { return m_isDefaultVersionHasBeenSet; }
-
-    /**
-     * <p>Whether the version is the default version.</p>
-     */
     inline void SetIsDefaultVersion(bool value) { m_isDefaultVersionHasBeenSet = true; m_isDefaultVersion = value; }
-
-    /**
-     * <p>Whether the version is the default version.</p>
-     */
     inline AwsIamPolicyVersion& WithIsDefaultVersion(bool value) { SetIsDefaultVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * <p>Indicates when the version was created.</p> <p>For more information about the
+     * validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline const Aws::String& GetCreateDate() const{ return m_createDate; }
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetCreateDate() const { return m_createDate; }
     inline bool CreateDateHasBeenSet() const { return m_createDateHasBeenSet; }
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreateDate(const Aws::String& value) { m_createDateHasBeenSet = true; m_createDate = value; }
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreateDate(Aws::String&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreateDate(const char* value) { m_createDateHasBeenSet = true; m_createDate.assign(value); }
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsIamPolicyVersion& WithCreateDate(const Aws::String& value) { SetCreateDate(value); return *this;}
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsIamPolicyVersion& WithCreateDate(Aws::String&& value) { SetCreateDate(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the version was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsIamPolicyVersion& WithCreateDate(const char* value) { SetCreateDate(value); return *this;}
-
+    template<typename CreateDateT = Aws::String>
+    void SetCreateDate(CreateDateT&& value) { m_createDateHasBeenSet = true; m_createDate = std::forward<CreateDateT>(value); }
+    template<typename CreateDateT = Aws::String>
+    AwsIamPolicyVersion& WithCreateDate(CreateDateT&& value) { SetCreateDate(std::forward<CreateDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_versionId;
     bool m_versionIdHasBeenSet = false;
 
-    bool m_isDefaultVersion;
+    bool m_isDefaultVersion{false};
     bool m_isDefaultVersionHasBeenSet = false;
 
     Aws::String m_createDate;

@@ -40,49 +40,24 @@ namespace Model
   class FeaturizationMethod
   {
   public:
-    AWS_FORECASTSERVICE_API FeaturizationMethod();
+    AWS_FORECASTSERVICE_API FeaturizationMethod() = default;
     AWS_FORECASTSERVICE_API FeaturizationMethod(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API FeaturizationMethod& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the method. The "filling" method is the only supported
      * method.</p>
      */
-    inline const FeaturizationMethodName& GetFeaturizationMethodName() const{ return m_featurizationMethodName; }
-
-    /**
-     * <p>The name of the method. The "filling" method is the only supported
-     * method.</p>
-     */
+    inline FeaturizationMethodName GetFeaturizationMethodName() const { return m_featurizationMethodName; }
     inline bool FeaturizationMethodNameHasBeenSet() const { return m_featurizationMethodNameHasBeenSet; }
+    inline void SetFeaturizationMethodName(FeaturizationMethodName value) { m_featurizationMethodNameHasBeenSet = true; m_featurizationMethodName = value; }
+    inline FeaturizationMethod& WithFeaturizationMethodName(FeaturizationMethodName value) { SetFeaturizationMethodName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the method. The "filling" method is the only supported
-     * method.</p>
-     */
-    inline void SetFeaturizationMethodName(const FeaturizationMethodName& value) { m_featurizationMethodNameHasBeenSet = true; m_featurizationMethodName = value; }
-
-    /**
-     * <p>The name of the method. The "filling" method is the only supported
-     * method.</p>
-     */
-    inline void SetFeaturizationMethodName(FeaturizationMethodName&& value) { m_featurizationMethodNameHasBeenSet = true; m_featurizationMethodName = std::move(value); }
-
-    /**
-     * <p>The name of the method. The "filling" method is the only supported
-     * method.</p>
-     */
-    inline FeaturizationMethod& WithFeaturizationMethodName(const FeaturizationMethodName& value) { SetFeaturizationMethodName(value); return *this;}
-
-    /**
-     * <p>The name of the method. The "filling" method is the only supported
-     * method.</p>
-     */
-    inline FeaturizationMethod& WithFeaturizationMethodName(FeaturizationMethodName&& value) { SetFeaturizationMethodName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The method parameters (key-value pairs), which are a map of override
      * parameters. Specify these parameters to override the default values. Related
@@ -111,371 +86,20 @@ namespace Model
      * include the following: <code>"backfill": "value"</code> and
      * <code>"backfill_value":"2"</code>. </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetFeaturizationMethodParameters() const{ return m_featurizationMethodParameters; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetFeaturizationMethodParameters() const { return m_featurizationMethodParameters; }
     inline bool FeaturizationMethodParametersHasBeenSet() const { return m_featurizationMethodParametersHasBeenSet; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline void SetFeaturizationMethodParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters = value; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline void SetFeaturizationMethodParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters = std::move(value); }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& WithFeaturizationMethodParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetFeaturizationMethodParameters(value); return *this;}
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& WithFeaturizationMethodParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetFeaturizationMethodParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(const Aws::String& key, const Aws::String& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(Aws::String&& key, const Aws::String& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(const Aws::String& key, Aws::String&& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(Aws::String&& key, Aws::String&& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(const char* key, Aws::String&& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(Aws::String&& key, const char* value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The method parameters (key-value pairs), which are a map of override
-     * parameters. Specify these parameters to override the default values. Related
-     * Time Series attributes do not accept aggregation parameters.</p> <p>The
-     * following list shows the parameters and their valid values for the "filling"
-     * featurization method for a <b>Target Time Series</b> dataset. Bold signifies the
-     * default value.</p> <ul> <li> <p> <code>aggregation</code>: <b>sum</b>,
-     * <code>avg</code>, <code>first</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>frontfill</code>: <b>none</b> </p> </li> <li> <p>
-     * <code>middlefill</code>: <b>zero</b>, <code>nan</code> (not a number),
-     * <code>value</code>, <code>median</code>, <code>mean</code>, <code>min</code>,
-     * <code>max</code> </p> </li> <li> <p> <code>backfill</code>: <b>zero</b>,
-     * <code>nan</code>, <code>value</code>, <code>median</code>, <code>mean</code>,
-     * <code>min</code>, <code>max</code> </p> </li> </ul> <p>The following list shows
-     * the parameters and their valid values for a <b>Related Time Series</b>
-     * featurization method (there are no defaults):</p> <ul> <li> <p>
-     * <code>middlefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>backfill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> <li> <p> <code>futurefill</code>: <code>zero</code>, <code>value</code>,
-     * <code>median</code>, <code>mean</code>, <code>min</code>, <code>max</code> </p>
-     * </li> </ul> <p>To set a filling method to a specific value, set the fill
-     * parameter to <code>value</code> and define the value in a corresponding
-     * <code>_value</code> parameter. For example, to set backfilling to a value of 2,
-     * include the following: <code>"backfill": "value"</code> and
-     * <code>"backfill_value":"2"</code>. </p>
-     */
-    inline FeaturizationMethod& AddFeaturizationMethodParameters(const char* key, const char* value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(key, value); return *this; }
-
+    template<typename FeaturizationMethodParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetFeaturizationMethodParameters(FeaturizationMethodParametersT&& value) { m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters = std::forward<FeaturizationMethodParametersT>(value); }
+    template<typename FeaturizationMethodParametersT = Aws::Map<Aws::String, Aws::String>>
+    FeaturizationMethod& WithFeaturizationMethodParameters(FeaturizationMethodParametersT&& value) { SetFeaturizationMethodParameters(std::forward<FeaturizationMethodParametersT>(value)); return *this;}
+    template<typename FeaturizationMethodParametersKeyT = Aws::String, typename FeaturizationMethodParametersValueT = Aws::String>
+    FeaturizationMethod& AddFeaturizationMethodParameters(FeaturizationMethodParametersKeyT&& key, FeaturizationMethodParametersValueT&& value) {
+      m_featurizationMethodParametersHasBeenSet = true; m_featurizationMethodParameters.emplace(std::forward<FeaturizationMethodParametersKeyT>(key), std::forward<FeaturizationMethodParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
-    FeaturizationMethodName m_featurizationMethodName;
+    FeaturizationMethodName m_featurizationMethodName{FeaturizationMethodName::NOT_SET};
     bool m_featurizationMethodNameHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_featurizationMethodParameters;

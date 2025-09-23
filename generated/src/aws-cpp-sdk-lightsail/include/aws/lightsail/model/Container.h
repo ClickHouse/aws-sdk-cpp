@@ -36,12 +36,13 @@ namespace Model
   class Container
   {
   public:
-    AWS_LIGHTSAIL_API Container();
+    AWS_LIGHTSAIL_API Container() = default;
     AWS_LIGHTSAIL_API Container(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Container& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the image used for the container.</p> <p>Container images sourced
      * from your Lightsail container service, that are registered and stored on your
@@ -57,300 +58,58 @@ namespace Model
      * don't start with a colon. For example, <code>nginx:latest</code> or
      * <code>nginx</code>.</p>
      */
-    inline const Aws::String& GetImage() const{ return m_image; }
-
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
+    inline const Aws::String& GetImage() const { return m_image; }
     inline bool ImageHasBeenSet() const { return m_imageHasBeenSet; }
+    template<typename ImageT = Aws::String>
+    void SetImage(ImageT&& value) { m_imageHasBeenSet = true; m_image = std::forward<ImageT>(value); }
+    template<typename ImageT = Aws::String>
+    Container& WithImage(ImageT&& value) { SetImage(std::forward<ImageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
-    inline void SetImage(const Aws::String& value) { m_imageHasBeenSet = true; m_image = value; }
-
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
-    inline void SetImage(Aws::String&& value) { m_imageHasBeenSet = true; m_image = std::move(value); }
-
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
-    inline void SetImage(const char* value) { m_imageHasBeenSet = true; m_image.assign(value); }
-
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
-    inline Container& WithImage(const Aws::String& value) { SetImage(value); return *this;}
-
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
-    inline Container& WithImage(Aws::String&& value) { SetImage(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the image used for the container.</p> <p>Container images sourced
-     * from your Lightsail container service, that are registered and stored on your
-     * service, start with a colon (<code>:</code>). For example, if your container
-     * service name is <code>container-service-1</code>, the container image label is
-     * <code>mystaticsite</code>, and you want to use the third (<code>3</code>)
-     * version of the registered container image, then you should specify
-     * <code>:container-service-1.mystaticsite.3</code>. To use the latest version of a
-     * container image, specify <code>latest</code> instead of a version number (for
-     * example, <code>:container-service-1.mystaticsite.latest</code>). Lightsail will
-     * automatically use the highest numbered version of the registered container
-     * image.</p> <p>Container images sourced from a public registry like Docker Hub
-     * don't start with a colon. For example, <code>nginx:latest</code> or
-     * <code>nginx</code>.</p>
-     */
-    inline Container& WithImage(const char* value) { SetImage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The launch command for the container.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCommand() const{ return m_command; }
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCommand() const { return m_command; }
     inline bool CommandHasBeenSet() const { return m_commandHasBeenSet; }
+    template<typename CommandT = Aws::Vector<Aws::String>>
+    void SetCommand(CommandT&& value) { m_commandHasBeenSet = true; m_command = std::forward<CommandT>(value); }
+    template<typename CommandT = Aws::Vector<Aws::String>>
+    Container& WithCommand(CommandT&& value) { SetCommand(std::forward<CommandT>(value)); return *this;}
+    template<typename CommandT = Aws::String>
+    Container& AddCommand(CommandT&& value) { m_commandHasBeenSet = true; m_command.emplace_back(std::forward<CommandT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline void SetCommand(const Aws::Vector<Aws::String>& value) { m_commandHasBeenSet = true; m_command = value; }
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline void SetCommand(Aws::Vector<Aws::String>&& value) { m_commandHasBeenSet = true; m_command = std::move(value); }
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline Container& WithCommand(const Aws::Vector<Aws::String>& value) { SetCommand(value); return *this;}
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline Container& WithCommand(Aws::Vector<Aws::String>&& value) { SetCommand(std::move(value)); return *this;}
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline Container& AddCommand(const Aws::String& value) { m_commandHasBeenSet = true; m_command.push_back(value); return *this; }
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline Container& AddCommand(Aws::String&& value) { m_commandHasBeenSet = true; m_command.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The launch command for the container.</p>
-     */
-    inline Container& AddCommand(const char* value) { m_commandHasBeenSet = true; m_command.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The environment variables of the container.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetEnvironment() const{ return m_environment; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetEnvironment() const { return m_environment; }
     inline bool EnvironmentHasBeenSet() const { return m_environmentHasBeenSet; }
+    template<typename EnvironmentT = Aws::Map<Aws::String, Aws::String>>
+    void SetEnvironment(EnvironmentT&& value) { m_environmentHasBeenSet = true; m_environment = std::forward<EnvironmentT>(value); }
+    template<typename EnvironmentT = Aws::Map<Aws::String, Aws::String>>
+    Container& WithEnvironment(EnvironmentT&& value) { SetEnvironment(std::forward<EnvironmentT>(value)); return *this;}
+    template<typename EnvironmentKeyT = Aws::String, typename EnvironmentValueT = Aws::String>
+    Container& AddEnvironment(EnvironmentKeyT&& key, EnvironmentValueT&& value) {
+      m_environmentHasBeenSet = true; m_environment.emplace(std::forward<EnvironmentKeyT>(key), std::forward<EnvironmentValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline void SetEnvironment(const Aws::Map<Aws::String, Aws::String>& value) { m_environmentHasBeenSet = true; m_environment = value; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline void SetEnvironment(Aws::Map<Aws::String, Aws::String>&& value) { m_environmentHasBeenSet = true; m_environment = std::move(value); }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& WithEnvironment(const Aws::Map<Aws::String, Aws::String>& value) { SetEnvironment(value); return *this;}
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& WithEnvironment(Aws::Map<Aws::String, Aws::String>&& value) { SetEnvironment(std::move(value)); return *this;}
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(const Aws::String& key, const Aws::String& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, value); return *this; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(Aws::String&& key, const Aws::String& value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(const Aws::String& key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(Aws::String&& key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(const char* key, Aws::String&& value) { m_environmentHasBeenSet = true; m_environment.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(Aws::String&& key, const char* value) { m_environmentHasBeenSet = true; m_environment.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The environment variables of the container.</p>
-     */
-    inline Container& AddEnvironment(const char* key, const char* value) { m_environmentHasBeenSet = true; m_environment.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The open firewall ports of the container.</p>
      */
-    inline const Aws::Map<Aws::String, ContainerServiceProtocol>& GetPorts() const{ return m_ports; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
+    inline const Aws::Map<Aws::String, ContainerServiceProtocol>& GetPorts() const { return m_ports; }
     inline bool PortsHasBeenSet() const { return m_portsHasBeenSet; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline void SetPorts(const Aws::Map<Aws::String, ContainerServiceProtocol>& value) { m_portsHasBeenSet = true; m_ports = value; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline void SetPorts(Aws::Map<Aws::String, ContainerServiceProtocol>&& value) { m_portsHasBeenSet = true; m_ports = std::move(value); }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& WithPorts(const Aws::Map<Aws::String, ContainerServiceProtocol>& value) { SetPorts(value); return *this;}
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& WithPorts(Aws::Map<Aws::String, ContainerServiceProtocol>&& value) { SetPorts(std::move(value)); return *this;}
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& AddPorts(const Aws::String& key, const ContainerServiceProtocol& value) { m_portsHasBeenSet = true; m_ports.emplace(key, value); return *this; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& AddPorts(Aws::String&& key, const ContainerServiceProtocol& value) { m_portsHasBeenSet = true; m_ports.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& AddPorts(const Aws::String& key, ContainerServiceProtocol&& value) { m_portsHasBeenSet = true; m_ports.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& AddPorts(Aws::String&& key, ContainerServiceProtocol&& value) { m_portsHasBeenSet = true; m_ports.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& AddPorts(const char* key, ContainerServiceProtocol&& value) { m_portsHasBeenSet = true; m_ports.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The open firewall ports of the container.</p>
-     */
-    inline Container& AddPorts(const char* key, const ContainerServiceProtocol& value) { m_portsHasBeenSet = true; m_ports.emplace(key, value); return *this; }
-
+    template<typename PortsT = Aws::Map<Aws::String, ContainerServiceProtocol>>
+    void SetPorts(PortsT&& value) { m_portsHasBeenSet = true; m_ports = std::forward<PortsT>(value); }
+    template<typename PortsT = Aws::Map<Aws::String, ContainerServiceProtocol>>
+    Container& WithPorts(PortsT&& value) { SetPorts(std::forward<PortsT>(value)); return *this;}
+    inline Container& AddPorts(Aws::String key, ContainerServiceProtocol value) {
+      m_portsHasBeenSet = true; m_ports.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_image;

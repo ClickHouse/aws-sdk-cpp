@@ -18,15 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-SnapStartTimeoutException::SnapStartTimeoutException() : 
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-SnapStartTimeoutException::SnapStartTimeoutException(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+SnapStartTimeoutException::SnapStartTimeoutException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SnapStartTimeoutException& SnapStartTimeoutException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

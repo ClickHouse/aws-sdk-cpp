@@ -31,134 +31,47 @@ namespace Model
   class AccountInfo
   {
   public:
-    AWS_SSO_API AccountInfo();
+    AWS_SSO_API AccountInfo() = default;
     AWS_SSO_API AccountInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSO_API AccountInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSO_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the AWS account that is assigned to the user.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    AccountInfo& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the AWS account that is assigned to the user.</p>
      */
-    inline const Aws::String& GetAccountName() const{ return m_accountName; }
-
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
+    inline const Aws::String& GetAccountName() const { return m_accountName; }
     inline bool AccountNameHasBeenSet() const { return m_accountNameHasBeenSet; }
+    template<typename AccountNameT = Aws::String>
+    void SetAccountName(AccountNameT&& value) { m_accountNameHasBeenSet = true; m_accountName = std::forward<AccountNameT>(value); }
+    template<typename AccountNameT = Aws::String>
+    AccountInfo& WithAccountName(AccountNameT&& value) { SetAccountName(std::forward<AccountNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetAccountName(const Aws::String& value) { m_accountNameHasBeenSet = true; m_accountName = value; }
-
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetAccountName(Aws::String&& value) { m_accountNameHasBeenSet = true; m_accountName = std::move(value); }
-
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetAccountName(const char* value) { m_accountNameHasBeenSet = true; m_accountName.assign(value); }
-
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithAccountName(const Aws::String& value) { SetAccountName(value); return *this;}
-
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithAccountName(Aws::String&& value) { SetAccountName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithAccountName(const char* value) { SetAccountName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email address of the AWS account that is assigned to the user.</p>
      */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address of the AWS account that is assigned to the user.</p>
-     */
-    inline AccountInfo& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    AccountInfo& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

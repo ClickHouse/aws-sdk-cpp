@@ -28,68 +28,38 @@ namespace Model
   class GetResolverQueryLogConfigAssociationResult
   {
   public:
-    AWS_ROUTE53RESOLVER_API GetResolverQueryLogConfigAssociationResult();
+    AWS_ROUTE53RESOLVER_API GetResolverQueryLogConfigAssociationResult() = default;
     AWS_ROUTE53RESOLVER_API GetResolverQueryLogConfigAssociationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ROUTE53RESOLVER_API GetResolverQueryLogConfigAssociationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the Resolver query logging configuration association that
      * you specified in a <code>GetQueryLogConfigAssociation</code> request.</p>
      */
-    inline const ResolverQueryLogConfigAssociation& GetResolverQueryLogConfigAssociation() const{ return m_resolverQueryLogConfigAssociation; }
+    inline const ResolverQueryLogConfigAssociation& GetResolverQueryLogConfigAssociation() const { return m_resolverQueryLogConfigAssociation; }
+    template<typename ResolverQueryLogConfigAssociationT = ResolverQueryLogConfigAssociation>
+    void SetResolverQueryLogConfigAssociation(ResolverQueryLogConfigAssociationT&& value) { m_resolverQueryLogConfigAssociationHasBeenSet = true; m_resolverQueryLogConfigAssociation = std::forward<ResolverQueryLogConfigAssociationT>(value); }
+    template<typename ResolverQueryLogConfigAssociationT = ResolverQueryLogConfigAssociation>
+    GetResolverQueryLogConfigAssociationResult& WithResolverQueryLogConfigAssociation(ResolverQueryLogConfigAssociationT&& value) { SetResolverQueryLogConfigAssociation(std::forward<ResolverQueryLogConfigAssociationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the Resolver query logging configuration association that
-     * you specified in a <code>GetQueryLogConfigAssociation</code> request.</p>
-     */
-    inline void SetResolverQueryLogConfigAssociation(const ResolverQueryLogConfigAssociation& value) { m_resolverQueryLogConfigAssociation = value; }
-
-    /**
-     * <p>Information about the Resolver query logging configuration association that
-     * you specified in a <code>GetQueryLogConfigAssociation</code> request.</p>
-     */
-    inline void SetResolverQueryLogConfigAssociation(ResolverQueryLogConfigAssociation&& value) { m_resolverQueryLogConfigAssociation = std::move(value); }
-
-    /**
-     * <p>Information about the Resolver query logging configuration association that
-     * you specified in a <code>GetQueryLogConfigAssociation</code> request.</p>
-     */
-    inline GetResolverQueryLogConfigAssociationResult& WithResolverQueryLogConfigAssociation(const ResolverQueryLogConfigAssociation& value) { SetResolverQueryLogConfigAssociation(value); return *this;}
-
-    /**
-     * <p>Information about the Resolver query logging configuration association that
-     * you specified in a <code>GetQueryLogConfigAssociation</code> request.</p>
-     */
-    inline GetResolverQueryLogConfigAssociationResult& WithResolverQueryLogConfigAssociation(ResolverQueryLogConfigAssociation&& value) { SetResolverQueryLogConfigAssociation(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetResolverQueryLogConfigAssociationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetResolverQueryLogConfigAssociationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetResolverQueryLogConfigAssociationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetResolverQueryLogConfigAssociationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ResolverQueryLogConfigAssociation m_resolverQueryLogConfigAssociation;
+    bool m_resolverQueryLogConfigAssociationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -17,15 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetFailbackReplicationConfigurationResult::GetFailbackReplicationConfigurationResult() : 
-    m_bandwidthThrottling(0),
-    m_usePrivateIP(false)
-{
-}
-
-GetFailbackReplicationConfigurationResult::GetFailbackReplicationConfigurationResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_bandwidthThrottling(0),
-    m_usePrivateIP(false)
+GetFailbackReplicationConfigurationResult::GetFailbackReplicationConfigurationResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -36,33 +28,30 @@ GetFailbackReplicationConfigurationResult& GetFailbackReplicationConfigurationRe
   if(jsonValue.ValueExists("bandwidthThrottling"))
   {
     m_bandwidthThrottling = jsonValue.GetInt64("bandwidthThrottling");
-
+    m_bandwidthThrottlingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
+    m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("recoveryInstanceID"))
   {
     m_recoveryInstanceID = jsonValue.GetString("recoveryInstanceID");
-
+    m_recoveryInstanceIDHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("usePrivateIP"))
   {
     m_usePrivateIP = jsonValue.GetBool("usePrivateIP");
-
+    m_usePrivateIPHasBeenSet = true;
   }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

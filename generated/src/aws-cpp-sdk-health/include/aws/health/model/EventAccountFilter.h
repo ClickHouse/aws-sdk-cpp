@@ -35,12 +35,13 @@ namespace Model
   class EventAccountFilter
   {
   public:
-    AWS_HEALTH_API EventAccountFilter();
+    AWS_HEALTH_API EventAccountFilter() = default;
     AWS_HEALTH_API EventAccountFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API EventAccountFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the event. The event ARN has the
      * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
@@ -49,127 +50,26 @@ namespace Model
      * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
      * </p>
      */
-    inline const Aws::String& GetEventArn() const{ return m_eventArn; }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
+    inline const Aws::String& GetEventArn() const { return m_eventArn; }
     inline bool EventArnHasBeenSet() const { return m_eventArnHasBeenSet; }
+    template<typename EventArnT = Aws::String>
+    void SetEventArn(EventArnT&& value) { m_eventArnHasBeenSet = true; m_eventArn = std::forward<EventArnT>(value); }
+    template<typename EventArnT = Aws::String>
+    EventAccountFilter& WithEventArn(EventArnT&& value) { SetEventArn(std::forward<EventArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline void SetEventArn(const Aws::String& value) { m_eventArnHasBeenSet = true; m_eventArn = value; }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline void SetEventArn(Aws::String&& value) { m_eventArnHasBeenSet = true; m_eventArn = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline void SetEventArn(const char* value) { m_eventArnHasBeenSet = true; m_eventArn.assign(value); }
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline EventAccountFilter& WithEventArn(const Aws::String& value) { SetEventArn(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline EventAccountFilter& WithEventArn(Aws::String&& value) { SetEventArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the event. The event ARN has the
-     * <code>arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i>
-     * </code> format.</p> <p>For example, an event ARN might look like the
-     * following:</p> <p>
-     * <code>arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456</code>
-     * </p>
-     */
-    inline EventAccountFilter& WithEventArn(const char* value) { SetEventArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The 12-digit Amazon Web Services account numbers that contains the affected
      * entities.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline EventAccountFilter& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline EventAccountFilter& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline EventAccountFilter& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    EventAccountFilter& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_eventArn;

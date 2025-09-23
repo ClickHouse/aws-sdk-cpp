@@ -31,47 +31,24 @@ namespace Model
   class DecimalDatasetParameterDefaultValues
   {
   public:
-    AWS_QUICKSIGHT_API DecimalDatasetParameterDefaultValues();
+    AWS_QUICKSIGHT_API DecimalDatasetParameterDefaultValues() = default;
     AWS_QUICKSIGHT_API DecimalDatasetParameterDefaultValues(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DecimalDatasetParameterDefaultValues& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of static default values for a given decimal parameter.</p>
      */
-    inline const Aws::Vector<double>& GetStaticValues() const{ return m_staticValues; }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
+    inline const Aws::Vector<double>& GetStaticValues() const { return m_staticValues; }
     inline bool StaticValuesHasBeenSet() const { return m_staticValuesHasBeenSet; }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline void SetStaticValues(const Aws::Vector<double>& value) { m_staticValuesHasBeenSet = true; m_staticValues = value; }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline void SetStaticValues(Aws::Vector<double>&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::move(value); }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline DecimalDatasetParameterDefaultValues& WithStaticValues(const Aws::Vector<double>& value) { SetStaticValues(value); return *this;}
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline DecimalDatasetParameterDefaultValues& WithStaticValues(Aws::Vector<double>&& value) { SetStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
+    template<typename StaticValuesT = Aws::Vector<double>>
+    void SetStaticValues(StaticValuesT&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::forward<StaticValuesT>(value); }
+    template<typename StaticValuesT = Aws::Vector<double>>
+    DecimalDatasetParameterDefaultValues& WithStaticValues(StaticValuesT&& value) { SetStaticValues(std::forward<StaticValuesT>(value)); return *this;}
     inline DecimalDatasetParameterDefaultValues& AddStaticValues(double value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(value); return *this; }
-
+    ///@}
   private:
 
     Aws::Vector<double> m_staticValues;

@@ -33,12 +33,13 @@ namespace Model
   class AdditionalLimit
   {
   public:
-    AWS_OPENSEARCHSERVICE_API AdditionalLimit();
+    AWS_OPENSEARCHSERVICE_API AdditionalLimit() = default;
     AWS_OPENSEARCHSERVICE_API AdditionalLimit(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API AdditionalLimit& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
      * only applies to master nodes and specifies the maximum number of data nodes of a
@@ -47,124 +48,27 @@ namespace Model
      * applies to data nodes and specifies the maximum number of data nodes of a given
      * instance type can exist without a master node governing them.</p> </li> </ul>
      */
-    inline const Aws::String& GetLimitName() const{ return m_limitName; }
-
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
+    inline const Aws::String& GetLimitName() const { return m_limitName; }
     inline bool LimitNameHasBeenSet() const { return m_limitNameHasBeenSet; }
+    template<typename LimitNameT = Aws::String>
+    void SetLimitName(LimitNameT&& value) { m_limitNameHasBeenSet = true; m_limitName = std::forward<LimitNameT>(value); }
+    template<typename LimitNameT = Aws::String>
+    AdditionalLimit& WithLimitName(LimitNameT&& value) { SetLimitName(std::forward<LimitNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
-    inline void SetLimitName(const Aws::String& value) { m_limitNameHasBeenSet = true; m_limitName = value; }
-
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
-    inline void SetLimitName(Aws::String&& value) { m_limitNameHasBeenSet = true; m_limitName = std::move(value); }
-
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
-    inline void SetLimitName(const char* value) { m_limitNameHasBeenSet = true; m_limitName.assign(value); }
-
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
-    inline AdditionalLimit& WithLimitName(const Aws::String& value) { SetLimitName(value); return *this;}
-
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
-    inline AdditionalLimit& WithLimitName(Aws::String&& value) { SetLimitName(std::move(value)); return *this;}
-
-    /**
-     * <ul> <li> <p> <code>MaximumNumberOfDataNodesSupported</code> - This attribute
-     * only applies to master nodes and specifies the maximum number of data nodes of a
-     * given instance type a master node can support.</p> </li> <li> <p>
-     * <code>MaximumNumberOfDataNodesWithoutMasterNode</code> - This attribute only
-     * applies to data nodes and specifies the maximum number of data nodes of a given
-     * instance type can exist without a master node governing them.</p> </li> </ul>
-     */
-    inline AdditionalLimit& WithLimitName(const char* value) { SetLimitName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The values of the additional instance type limits.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLimitValues() const{ return m_limitValues; }
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLimitValues() const { return m_limitValues; }
     inline bool LimitValuesHasBeenSet() const { return m_limitValuesHasBeenSet; }
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline void SetLimitValues(const Aws::Vector<Aws::String>& value) { m_limitValuesHasBeenSet = true; m_limitValues = value; }
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline void SetLimitValues(Aws::Vector<Aws::String>&& value) { m_limitValuesHasBeenSet = true; m_limitValues = std::move(value); }
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline AdditionalLimit& WithLimitValues(const Aws::Vector<Aws::String>& value) { SetLimitValues(value); return *this;}
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline AdditionalLimit& WithLimitValues(Aws::Vector<Aws::String>&& value) { SetLimitValues(std::move(value)); return *this;}
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline AdditionalLimit& AddLimitValues(const Aws::String& value) { m_limitValuesHasBeenSet = true; m_limitValues.push_back(value); return *this; }
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline AdditionalLimit& AddLimitValues(Aws::String&& value) { m_limitValuesHasBeenSet = true; m_limitValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> The values of the additional instance type limits.</p>
-     */
-    inline AdditionalLimit& AddLimitValues(const char* value) { m_limitValuesHasBeenSet = true; m_limitValues.push_back(value); return *this; }
-
+    template<typename LimitValuesT = Aws::Vector<Aws::String>>
+    void SetLimitValues(LimitValuesT&& value) { m_limitValuesHasBeenSet = true; m_limitValues = std::forward<LimitValuesT>(value); }
+    template<typename LimitValuesT = Aws::Vector<Aws::String>>
+    AdditionalLimit& WithLimitValues(LimitValuesT&& value) { SetLimitValues(std::forward<LimitValuesT>(value)); return *this;}
+    template<typename LimitValuesT = Aws::String>
+    AdditionalLimit& AddLimitValues(LimitValuesT&& value) { m_limitValuesHasBeenSet = true; m_limitValues.emplace_back(std::forward<LimitValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_limitName;

@@ -21,7 +21,7 @@ namespace Model
   class VerifySoftwareTokenRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API VerifySoftwareTokenRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API VerifySoftwareTokenRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,193 +34,55 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
+     * <p>A valid access token that Amazon Cognito issued to the currently signed-in
+     * user. Must include a scope claim for
+     * <code>aws.cognito.signin.user.admin</code>.</p>
      */
-    inline const Aws::String& GetAccessToken() const{ return m_accessToken; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
-     */
+    inline const Aws::String& GetAccessToken() const { return m_accessToken; }
     inline bool AccessTokenHasBeenSet() const { return m_accessTokenHasBeenSet; }
+    template<typename AccessTokenT = Aws::String>
+    void SetAccessToken(AccessTokenT&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::forward<AccessTokenT>(value); }
+    template<typename AccessTokenT = Aws::String>
+    VerifySoftwareTokenRequest& WithAccessToken(AccessTokenT&& value) { SetAccessToken(std::forward<AccessTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
+     * <p>The session ID from an <code>AssociateSoftwareToken</code> request.</p>
      */
-    inline void SetAccessToken(const Aws::String& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
-     */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
-     */
-    inline void SetAccessToken(const char* value) { m_accessTokenHasBeenSet = true; m_accessToken.assign(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithAccessToken(const Aws::String& value) { SetAccessToken(value); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to verify.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithAccessToken(const char* value) { SetAccessToken(value); return *this;}
-
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
-    inline const Aws::String& GetSession() const{ return m_session; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
+    inline const Aws::String& GetSession() const { return m_session; }
     inline bool SessionHasBeenSet() const { return m_sessionHasBeenSet; }
+    template<typename SessionT = Aws::String>
+    void SetSession(SessionT&& value) { m_sessionHasBeenSet = true; m_session = std::forward<SessionT>(value); }
+    template<typename SessionT = Aws::String>
+    VerifySoftwareTokenRequest& WithSession(SessionT&& value) { SetSession(std::forward<SessionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
+     * <p>A TOTP that the user generated in their configured authenticator app.</p>
      */
-    inline void SetSession(const Aws::String& value) { m_sessionHasBeenSet = true; m_session = value; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
-    inline void SetSession(Aws::String&& value) { m_sessionHasBeenSet = true; m_session = std::move(value); }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
-    inline void SetSession(const char* value) { m_sessionHasBeenSet = true; m_session.assign(value); }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithSession(const Aws::String& value) { SetSession(value); return *this;}
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithSession(Aws::String&& value) { SetSession(std::move(value)); return *this;}
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithSession(const char* value) { SetSession(value); return *this;}
-
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
-    inline const Aws::String& GetUserCode() const{ return m_userCode; }
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
+    inline const Aws::String& GetUserCode() const { return m_userCode; }
     inline bool UserCodeHasBeenSet() const { return m_userCodeHasBeenSet; }
+    template<typename UserCodeT = Aws::String>
+    void SetUserCode(UserCodeT&& value) { m_userCodeHasBeenSet = true; m_userCode = std::forward<UserCodeT>(value); }
+    template<typename UserCodeT = Aws::String>
+    VerifySoftwareTokenRequest& WithUserCode(UserCodeT&& value) { SetUserCode(std::forward<UserCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
+     * <p>A friendly name for the device that's running the TOTP authenticator.</p>
      */
-    inline void SetUserCode(const Aws::String& value) { m_userCodeHasBeenSet = true; m_userCode = value; }
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
-    inline void SetUserCode(Aws::String&& value) { m_userCodeHasBeenSet = true; m_userCode = std::move(value); }
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
-    inline void SetUserCode(const char* value) { m_userCodeHasBeenSet = true; m_userCode.assign(value); }
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithUserCode(const Aws::String& value) { SetUserCode(value); return *this;}
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithUserCode(Aws::String&& value) { SetUserCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The one- time password computed using the secret code returned by <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html">AssociateSoftwareToken</a>.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithUserCode(const char* value) { SetUserCode(value); return *this;}
-
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline const Aws::String& GetFriendlyDeviceName() const{ return m_friendlyDeviceName; }
-
-    /**
-     * <p>The friendly device name.</p>
-     */
+    inline const Aws::String& GetFriendlyDeviceName() const { return m_friendlyDeviceName; }
     inline bool FriendlyDeviceNameHasBeenSet() const { return m_friendlyDeviceNameHasBeenSet; }
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline void SetFriendlyDeviceName(const Aws::String& value) { m_friendlyDeviceNameHasBeenSet = true; m_friendlyDeviceName = value; }
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline void SetFriendlyDeviceName(Aws::String&& value) { m_friendlyDeviceNameHasBeenSet = true; m_friendlyDeviceName = std::move(value); }
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline void SetFriendlyDeviceName(const char* value) { m_friendlyDeviceNameHasBeenSet = true; m_friendlyDeviceName.assign(value); }
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithFriendlyDeviceName(const Aws::String& value) { SetFriendlyDeviceName(value); return *this;}
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithFriendlyDeviceName(Aws::String&& value) { SetFriendlyDeviceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The friendly device name.</p>
-     */
-    inline VerifySoftwareTokenRequest& WithFriendlyDeviceName(const char* value) { SetFriendlyDeviceName(value); return *this;}
-
+    template<typename FriendlyDeviceNameT = Aws::String>
+    void SetFriendlyDeviceName(FriendlyDeviceNameT&& value) { m_friendlyDeviceNameHasBeenSet = true; m_friendlyDeviceName = std::forward<FriendlyDeviceNameT>(value); }
+    template<typename FriendlyDeviceNameT = Aws::String>
+    VerifySoftwareTokenRequest& WithFriendlyDeviceName(FriendlyDeviceNameT&& value) { SetFriendlyDeviceName(std::forward<FriendlyDeviceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessToken;

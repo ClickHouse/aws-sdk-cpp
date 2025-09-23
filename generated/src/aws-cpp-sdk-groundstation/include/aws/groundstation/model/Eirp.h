@@ -31,69 +31,37 @@ namespace Model
   class Eirp
   {
   public:
-    AWS_GROUNDSTATION_API Eirp();
+    AWS_GROUNDSTATION_API Eirp() = default;
     AWS_GROUNDSTATION_API Eirp(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Eirp& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Units of an EIRP.</p>
      */
-    inline const EirpUnits& GetUnits() const{ return m_units; }
-
-    /**
-     * <p>Units of an EIRP.</p>
-     */
+    inline EirpUnits GetUnits() const { return m_units; }
     inline bool UnitsHasBeenSet() const { return m_unitsHasBeenSet; }
+    inline void SetUnits(EirpUnits value) { m_unitsHasBeenSet = true; m_units = value; }
+    inline Eirp& WithUnits(EirpUnits value) { SetUnits(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Units of an EIRP.</p>
-     */
-    inline void SetUnits(const EirpUnits& value) { m_unitsHasBeenSet = true; m_units = value; }
-
-    /**
-     * <p>Units of an EIRP.</p>
-     */
-    inline void SetUnits(EirpUnits&& value) { m_unitsHasBeenSet = true; m_units = std::move(value); }
-
-    /**
-     * <p>Units of an EIRP.</p>
-     */
-    inline Eirp& WithUnits(const EirpUnits& value) { SetUnits(value); return *this;}
-
-    /**
-     * <p>Units of an EIRP.</p>
-     */
-    inline Eirp& WithUnits(EirpUnits&& value) { SetUnits(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Value of an EIRP. Valid values are between 20.0 to 50.0 dBW.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>Value of an EIRP. Valid values are between 20.0 to 50.0 dBW.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Value of an EIRP. Valid values are between 20.0 to 50.0 dBW.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Value of an EIRP. Valid values are between 20.0 to 50.0 dBW.</p>
-     */
     inline Eirp& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    EirpUnits m_units;
+    EirpUnits m_units{EirpUnits::NOT_SET};
     bool m_unitsHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

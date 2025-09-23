@@ -31,77 +31,33 @@ namespace Model
   class InvalidNextTokenException
   {
   public:
-    AWS_QUICKSIGHT_API InvalidNextTokenException();
+    AWS_QUICKSIGHT_API InvalidNextTokenException() = default;
     AWS_QUICKSIGHT_API InvalidNextTokenException(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API InvalidNextTokenException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InvalidNextTokenException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline InvalidNextTokenException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline InvalidNextTokenException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline InvalidNextTokenException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services request ID for this request.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
-    inline InvalidNextTokenException& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
-    inline InvalidNextTokenException& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services request ID for this request.</p>
-     */
-    inline InvalidNextTokenException& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    InvalidNextTokenException& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;

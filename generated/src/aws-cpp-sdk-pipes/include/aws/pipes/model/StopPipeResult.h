@@ -6,9 +6,9 @@
 #pragma once
 #include <aws/pipes/Pipes_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/core/utils/DateTime.h>
-#include <aws/pipes/model/PipeState.h>
 #include <aws/pipes/model/RequestedPipeState.h>
+#include <aws/pipes/model/PipeState.h>
+#include <aws/core/utils/DateTime.h>
 #include <utility>
 
 namespace Aws
@@ -30,233 +30,105 @@ namespace Model
   class StopPipeResult
   {
   public:
-    AWS_PIPES_API StopPipeResult();
+    AWS_PIPES_API StopPipeResult() = default;
     AWS_PIPES_API StopPipeResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PIPES_API StopPipeResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the pipe.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    StopPipeResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the pipe.</p>
+     * <p>The name of the pipe.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    StopPipeResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the pipe.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the pipe.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the pipe.</p>
-     */
-    inline StopPipeResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the pipe.</p>
-     */
-    inline StopPipeResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the pipe.</p>
-     */
-    inline StopPipeResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The time the pipe was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The time the pipe was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The time the pipe was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time the pipe was created.</p>
-     */
-    inline StopPipeResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time the pipe was created.</p>
-     */
-    inline StopPipeResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The state the pipe is in.</p>
-     */
-    inline const PipeState& GetCurrentState() const{ return m_currentState; }
-
-    /**
-     * <p>The state the pipe is in.</p>
-     */
-    inline void SetCurrentState(const PipeState& value) { m_currentState = value; }
-
-    /**
-     * <p>The state the pipe is in.</p>
-     */
-    inline void SetCurrentState(PipeState&& value) { m_currentState = std::move(value); }
-
-    /**
-     * <p>The state the pipe is in.</p>
-     */
-    inline StopPipeResult& WithCurrentState(const PipeState& value) { SetCurrentState(value); return *this;}
-
-    /**
-     * <p>The state the pipe is in.</p>
-     */
-    inline StopPipeResult& WithCurrentState(PipeState&& value) { SetCurrentState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state the pipe should be in.</p>
      */
-    inline const RequestedPipeState& GetDesiredState() const{ return m_desiredState; }
+    inline RequestedPipeState GetDesiredState() const { return m_desiredState; }
+    inline void SetDesiredState(RequestedPipeState value) { m_desiredStateHasBeenSet = true; m_desiredState = value; }
+    inline StopPipeResult& WithDesiredState(RequestedPipeState value) { SetDesiredState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state the pipe should be in.</p>
+     * <p>The state the pipe is in.</p>
      */
-    inline void SetDesiredState(const RequestedPipeState& value) { m_desiredState = value; }
+    inline PipeState GetCurrentState() const { return m_currentState; }
+    inline void SetCurrentState(PipeState value) { m_currentStateHasBeenSet = true; m_currentState = value; }
+    inline StopPipeResult& WithCurrentState(PipeState value) { SetCurrentState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state the pipe should be in.</p>
+     * <p>The time the pipe was created.</p>
      */
-    inline void SetDesiredState(RequestedPipeState&& value) { m_desiredState = std::move(value); }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    StopPipeResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The state the pipe should be in.</p>
-     */
-    inline StopPipeResult& WithDesiredState(const RequestedPipeState& value) { SetDesiredState(value); return *this;}
-
-    /**
-     * <p>The state the pipe should be in.</p>
-     */
-    inline StopPipeResult& WithDesiredState(RequestedPipeState&& value) { SetDesiredState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the pipe was last updated, in <a
      * href="https://www.w3.org/TR/NOTE-datetime">ISO-8601 format</a>
      * (YYYY-MM-DDThh:mm:ss.sTZD).</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    StopPipeResult& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the pipe was last updated, in <a
-     * href="https://www.w3.org/TR/NOTE-datetime">ISO-8601 format</a>
-     * (YYYY-MM-DDThh:mm:ss.sTZD).</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTime = value; }
-
-    /**
-     * <p>When the pipe was last updated, in <a
-     * href="https://www.w3.org/TR/NOTE-datetime">ISO-8601 format</a>
-     * (YYYY-MM-DDThh:mm:ss.sTZD).</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>When the pipe was last updated, in <a
-     * href="https://www.w3.org/TR/NOTE-datetime">ISO-8601 format</a>
-     * (YYYY-MM-DDThh:mm:ss.sTZD).</p>
-     */
-    inline StopPipeResult& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>When the pipe was last updated, in <a
-     * href="https://www.w3.org/TR/NOTE-datetime">ISO-8601 format</a>
-     * (YYYY-MM-DDThh:mm:ss.sTZD).</p>
-     */
-    inline StopPipeResult& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline StopPipeResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline StopPipeResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the pipe.</p>
-     */
-    inline StopPipeResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StopPipeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StopPipeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StopPipeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StopPipeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
-
-    Aws::Utils::DateTime m_creationTime;
-
-    PipeState m_currentState;
-
-    RequestedPipeState m_desiredState;
-
-    Aws::Utils::DateTime m_lastModifiedTime;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
+
+    RequestedPipeState m_desiredState{RequestedPipeState::NOT_SET};
+    bool m_desiredStateHasBeenSet = false;
+
+    PipeState m_currentState{PipeState::NOT_SET};
+    bool m_currentStateHasBeenSet = false;
+
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

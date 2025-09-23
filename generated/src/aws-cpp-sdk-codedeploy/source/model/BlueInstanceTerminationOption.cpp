@@ -18,19 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-BlueInstanceTerminationOption::BlueInstanceTerminationOption() : 
-    m_action(InstanceAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_terminationWaitTimeInMinutes(0),
-    m_terminationWaitTimeInMinutesHasBeenSet(false)
-{
-}
-
-BlueInstanceTerminationOption::BlueInstanceTerminationOption(JsonView jsonValue) : 
-    m_action(InstanceAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_terminationWaitTimeInMinutes(0),
-    m_terminationWaitTimeInMinutesHasBeenSet(false)
+BlueInstanceTerminationOption::BlueInstanceTerminationOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ BlueInstanceTerminationOption& BlueInstanceTerminationOption::operator =(JsonVie
   if(jsonValue.ValueExists("action"))
   {
     m_action = InstanceActionMapper::GetInstanceActionForName(jsonValue.GetString("action"));
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("terminationWaitTimeInMinutes"))
   {
     m_terminationWaitTimeInMinutes = jsonValue.GetInteger("terminationWaitTimeInMinutes");
-
     m_terminationWaitTimeInMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

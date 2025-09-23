@@ -33,60 +33,26 @@ namespace Model
   class AlarmNotification
   {
   public:
-    AWS_IOTEVENTS_API AlarmNotification();
+    AWS_IOTEVENTS_API AlarmNotification() = default;
     AWS_IOTEVENTS_API AlarmNotification(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API AlarmNotification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains the notification settings of an alarm model. The settings apply to
      * all alarms that were created based on this alarm model.</p>
      */
-    inline const Aws::Vector<NotificationAction>& GetNotificationActions() const{ return m_notificationActions; }
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
+    inline const Aws::Vector<NotificationAction>& GetNotificationActions() const { return m_notificationActions; }
     inline bool NotificationActionsHasBeenSet() const { return m_notificationActionsHasBeenSet; }
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
-    inline void SetNotificationActions(const Aws::Vector<NotificationAction>& value) { m_notificationActionsHasBeenSet = true; m_notificationActions = value; }
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
-    inline void SetNotificationActions(Aws::Vector<NotificationAction>&& value) { m_notificationActionsHasBeenSet = true; m_notificationActions = std::move(value); }
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
-    inline AlarmNotification& WithNotificationActions(const Aws::Vector<NotificationAction>& value) { SetNotificationActions(value); return *this;}
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
-    inline AlarmNotification& WithNotificationActions(Aws::Vector<NotificationAction>&& value) { SetNotificationActions(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
-    inline AlarmNotification& AddNotificationActions(const NotificationAction& value) { m_notificationActionsHasBeenSet = true; m_notificationActions.push_back(value); return *this; }
-
-    /**
-     * <p>Contains the notification settings of an alarm model. The settings apply to
-     * all alarms that were created based on this alarm model.</p>
-     */
-    inline AlarmNotification& AddNotificationActions(NotificationAction&& value) { m_notificationActionsHasBeenSet = true; m_notificationActions.push_back(std::move(value)); return *this; }
-
+    template<typename NotificationActionsT = Aws::Vector<NotificationAction>>
+    void SetNotificationActions(NotificationActionsT&& value) { m_notificationActionsHasBeenSet = true; m_notificationActions = std::forward<NotificationActionsT>(value); }
+    template<typename NotificationActionsT = Aws::Vector<NotificationAction>>
+    AlarmNotification& WithNotificationActions(NotificationActionsT&& value) { SetNotificationActions(std::forward<NotificationActionsT>(value)); return *this;}
+    template<typename NotificationActionsT = NotificationAction>
+    AlarmNotification& AddNotificationActions(NotificationActionsT&& value) { m_notificationActionsHasBeenSet = true; m_notificationActions.emplace_back(std::forward<NotificationActionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<NotificationAction> m_notificationActions;

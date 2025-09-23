@@ -32,134 +32,47 @@ namespace Model
   class DeviceUnderTest
   {
   public:
-    AWS_IOTDEVICEADVISOR_API DeviceUnderTest();
+    AWS_IOTDEVICEADVISOR_API DeviceUnderTest() = default;
     AWS_IOTDEVICEADVISOR_API DeviceUnderTest(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTDEVICEADVISOR_API DeviceUnderTest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTDEVICEADVISOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Lists device's thing ARN.</p>
      */
-    inline const Aws::String& GetThingArn() const{ return m_thingArn; }
-
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
+    inline const Aws::String& GetThingArn() const { return m_thingArn; }
     inline bool ThingArnHasBeenSet() const { return m_thingArnHasBeenSet; }
+    template<typename ThingArnT = Aws::String>
+    void SetThingArn(ThingArnT&& value) { m_thingArnHasBeenSet = true; m_thingArn = std::forward<ThingArnT>(value); }
+    template<typename ThingArnT = Aws::String>
+    DeviceUnderTest& WithThingArn(ThingArnT&& value) { SetThingArn(std::forward<ThingArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
-    inline void SetThingArn(const Aws::String& value) { m_thingArnHasBeenSet = true; m_thingArn = value; }
-
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
-    inline void SetThingArn(Aws::String&& value) { m_thingArnHasBeenSet = true; m_thingArn = std::move(value); }
-
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
-    inline void SetThingArn(const char* value) { m_thingArnHasBeenSet = true; m_thingArn.assign(value); }
-
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
-    inline DeviceUnderTest& WithThingArn(const Aws::String& value) { SetThingArn(value); return *this;}
-
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
-    inline DeviceUnderTest& WithThingArn(Aws::String&& value) { SetThingArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists device's thing ARN.</p>
-     */
-    inline DeviceUnderTest& WithThingArn(const char* value) { SetThingArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lists device's certificate ARN.</p>
      */
-    inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
-
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
+    inline const Aws::String& GetCertificateArn() const { return m_certificateArn; }
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
+    template<typename CertificateArnT = Aws::String>
+    void SetCertificateArn(CertificateArnT&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::forward<CertificateArnT>(value); }
+    template<typename CertificateArnT = Aws::String>
+    DeviceUnderTest& WithCertificateArn(CertificateArnT&& value) { SetCertificateArn(std::forward<CertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
-    inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
-
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
-
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
-    inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
-
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
-    inline DeviceUnderTest& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
-
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
-    inline DeviceUnderTest& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists device's certificate ARN.</p>
-     */
-    inline DeviceUnderTest& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lists device's role ARN.</p>
      */
-    inline const Aws::String& GetDeviceRoleArn() const{ return m_deviceRoleArn; }
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
+    inline const Aws::String& GetDeviceRoleArn() const { return m_deviceRoleArn; }
     inline bool DeviceRoleArnHasBeenSet() const { return m_deviceRoleArnHasBeenSet; }
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
-    inline void SetDeviceRoleArn(const Aws::String& value) { m_deviceRoleArnHasBeenSet = true; m_deviceRoleArn = value; }
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
-    inline void SetDeviceRoleArn(Aws::String&& value) { m_deviceRoleArnHasBeenSet = true; m_deviceRoleArn = std::move(value); }
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
-    inline void SetDeviceRoleArn(const char* value) { m_deviceRoleArnHasBeenSet = true; m_deviceRoleArn.assign(value); }
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
-    inline DeviceUnderTest& WithDeviceRoleArn(const Aws::String& value) { SetDeviceRoleArn(value); return *this;}
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
-    inline DeviceUnderTest& WithDeviceRoleArn(Aws::String&& value) { SetDeviceRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists device's role ARN.</p>
-     */
-    inline DeviceUnderTest& WithDeviceRoleArn(const char* value) { SetDeviceRoleArn(value); return *this;}
-
+    template<typename DeviceRoleArnT = Aws::String>
+    void SetDeviceRoleArn(DeviceRoleArnT&& value) { m_deviceRoleArnHasBeenSet = true; m_deviceRoleArn = std::forward<DeviceRoleArnT>(value); }
+    template<typename DeviceRoleArnT = Aws::String>
+    DeviceUnderTest& WithDeviceRoleArn(DeviceRoleArnT&& value) { SetDeviceRoleArn(std::forward<DeviceRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thingArn;

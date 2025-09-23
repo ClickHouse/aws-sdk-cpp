@@ -20,31 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ScheduledAction::ScheduledAction() : 
-    m_scheduledActionNameHasBeenSet(false),
-    m_targetActionHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_iamRoleHasBeenSet(false),
-    m_scheduledActionDescriptionHasBeenSet(false),
-    m_state(ScheduledActionState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_nextInvocationsHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
-ScheduledAction::ScheduledAction(const XmlNode& xmlNode) : 
-    m_scheduledActionNameHasBeenSet(false),
-    m_targetActionHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_iamRoleHasBeenSet(false),
-    m_scheduledActionDescriptionHasBeenSet(false),
-    m_state(ScheduledActionState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_nextInvocationsHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
+ScheduledAction::ScheduledAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -88,13 +64,14 @@ ScheduledAction& ScheduledAction::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("State");
     if(!stateNode.IsNull())
     {
-      m_state = ScheduledActionStateMapper::GetScheduledActionStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = ScheduledActionStateMapper::GetScheduledActionStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode nextInvocationsNode = resultNode.FirstChild("NextInvocations");
     if(!nextInvocationsNode.IsNull())
     {
       XmlNode nextInvocationsMember = nextInvocationsNode.FirstChild("ScheduledActionTime");
+      m_nextInvocationsHasBeenSet = !nextInvocationsMember.IsNull();
       while(!nextInvocationsMember.IsNull())
       {
         m_nextInvocations.push_back(DateTime(StringUtils::Trim(nextInvocationsMember.GetText().c_str()).c_str(), Aws::Utils::DateFormat::ISO_8601));
@@ -151,7 +128,7 @@ void ScheduledAction::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << ScheduledActionStateMapper::GetNameForScheduledActionState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(ScheduledActionStateMapper::GetNameForScheduledActionState(m_state)) << "&";
   }
 
   if(m_nextInvocationsHasBeenSet)
@@ -159,7 +136,7 @@ void ScheduledAction::OutputToStream(Aws::OStream& oStream, const char* location
       unsigned nextInvocationsIdx = 1;
       for(auto& item : m_nextInvocations)
       {
-        oStream << location << index << locationValue << ".ScheduledActionTime." << nextInvocationsIdx++ << "=" << StringUtils::URLEncode(item.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
+        oStream << location << index << locationValue << ".NextInvocations.ScheduledActionTime." << nextInvocationsIdx++ << "=" << StringUtils::URLEncode(item.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
       }
   }
 
@@ -204,14 +181,14 @@ void ScheduledAction::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << ScheduledActionStateMapper::GetNameForScheduledActionState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(ScheduledActionStateMapper::GetNameForScheduledActionState(m_state)) << "&";
   }
   if(m_nextInvocationsHasBeenSet)
   {
       unsigned nextInvocationsIdx = 1;
       for(auto& item : m_nextInvocations)
       {
-        oStream << location << ".ScheduledActionTime." << nextInvocationsIdx++ << "=" << StringUtils::URLEncode(item.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
+        oStream << location << ".NextInvocations.ScheduledActionTime." << nextInvocationsIdx++ << "=" << StringUtils::URLEncode(item.ToGmtString(Aws::Utils::DateFormat::ISO_8601).c_str()) << "&";
       }
   }
   if(m_startTimeHasBeenSet)

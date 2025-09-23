@@ -31,111 +31,64 @@ namespace Model
   class SeverityCounts
   {
   public:
-    AWS_IMAGEBUILDER_API SeverityCounts();
+    AWS_IMAGEBUILDER_API SeverityCounts() = default;
     AWS_IMAGEBUILDER_API SeverityCounts(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API SeverityCounts& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of findings across all severity levels for the specified
      * filter.</p>
      */
-    inline long long GetAll() const{ return m_all; }
-
-    /**
-     * <p>The total number of findings across all severity levels for the specified
-     * filter.</p>
-     */
+    inline long long GetAll() const { return m_all; }
     inline bool AllHasBeenSet() const { return m_allHasBeenSet; }
-
-    /**
-     * <p>The total number of findings across all severity levels for the specified
-     * filter.</p>
-     */
     inline void SetAll(long long value) { m_allHasBeenSet = true; m_all = value; }
-
-    /**
-     * <p>The total number of findings across all severity levels for the specified
-     * filter.</p>
-     */
     inline SeverityCounts& WithAll(long long value) { SetAll(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of critical severity findings for the specified filter.</p>
      */
-    inline long long GetCritical() const{ return m_critical; }
-
-    /**
-     * <p>The number of critical severity findings for the specified filter.</p>
-     */
+    inline long long GetCritical() const { return m_critical; }
     inline bool CriticalHasBeenSet() const { return m_criticalHasBeenSet; }
-
-    /**
-     * <p>The number of critical severity findings for the specified filter.</p>
-     */
     inline void SetCritical(long long value) { m_criticalHasBeenSet = true; m_critical = value; }
-
-    /**
-     * <p>The number of critical severity findings for the specified filter.</p>
-     */
     inline SeverityCounts& WithCritical(long long value) { SetCritical(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of high severity findings for the specified filter.</p>
      */
-    inline long long GetHigh() const{ return m_high; }
-
-    /**
-     * <p>The number of high severity findings for the specified filter.</p>
-     */
+    inline long long GetHigh() const { return m_high; }
     inline bool HighHasBeenSet() const { return m_highHasBeenSet; }
-
-    /**
-     * <p>The number of high severity findings for the specified filter.</p>
-     */
     inline void SetHigh(long long value) { m_highHasBeenSet = true; m_high = value; }
-
-    /**
-     * <p>The number of high severity findings for the specified filter.</p>
-     */
     inline SeverityCounts& WithHigh(long long value) { SetHigh(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of medium severity findings for the specified filter.</p>
      */
-    inline long long GetMedium() const{ return m_medium; }
-
-    /**
-     * <p>The number of medium severity findings for the specified filter.</p>
-     */
+    inline long long GetMedium() const { return m_medium; }
     inline bool MediumHasBeenSet() const { return m_mediumHasBeenSet; }
-
-    /**
-     * <p>The number of medium severity findings for the specified filter.</p>
-     */
     inline void SetMedium(long long value) { m_mediumHasBeenSet = true; m_medium = value; }
-
-    /**
-     * <p>The number of medium severity findings for the specified filter.</p>
-     */
     inline SeverityCounts& WithMedium(long long value) { SetMedium(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_all;
+    long long m_all{0};
     bool m_allHasBeenSet = false;
 
-    long long m_critical;
+    long long m_critical{0};
     bool m_criticalHasBeenSet = false;
 
-    long long m_high;
+    long long m_high{0};
     bool m_highHasBeenSet = false;
 
-    long long m_medium;
+    long long m_medium{0};
     bool m_mediumHasBeenSet = false;
   };
 

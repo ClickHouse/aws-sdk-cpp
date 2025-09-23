@@ -39,172 +39,72 @@ namespace Model
   class ResourceDataContainer
   {
   public:
-    AWS_GREENGRASS_API ResourceDataContainer();
+    AWS_GREENGRASS_API ResourceDataContainer() = default;
     AWS_GREENGRASS_API ResourceDataContainer(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API ResourceDataContainer& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Attributes that define the local device resource.
      */
-    inline const LocalDeviceResourceData& GetLocalDeviceResourceData() const{ return m_localDeviceResourceData; }
-
-    /**
-     * Attributes that define the local device resource.
-     */
+    inline const LocalDeviceResourceData& GetLocalDeviceResourceData() const { return m_localDeviceResourceData; }
     inline bool LocalDeviceResourceDataHasBeenSet() const { return m_localDeviceResourceDataHasBeenSet; }
+    template<typename LocalDeviceResourceDataT = LocalDeviceResourceData>
+    void SetLocalDeviceResourceData(LocalDeviceResourceDataT&& value) { m_localDeviceResourceDataHasBeenSet = true; m_localDeviceResourceData = std::forward<LocalDeviceResourceDataT>(value); }
+    template<typename LocalDeviceResourceDataT = LocalDeviceResourceData>
+    ResourceDataContainer& WithLocalDeviceResourceData(LocalDeviceResourceDataT&& value) { SetLocalDeviceResourceData(std::forward<LocalDeviceResourceDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Attributes that define the local device resource.
-     */
-    inline void SetLocalDeviceResourceData(const LocalDeviceResourceData& value) { m_localDeviceResourceDataHasBeenSet = true; m_localDeviceResourceData = value; }
-
-    /**
-     * Attributes that define the local device resource.
-     */
-    inline void SetLocalDeviceResourceData(LocalDeviceResourceData&& value) { m_localDeviceResourceDataHasBeenSet = true; m_localDeviceResourceData = std::move(value); }
-
-    /**
-     * Attributes that define the local device resource.
-     */
-    inline ResourceDataContainer& WithLocalDeviceResourceData(const LocalDeviceResourceData& value) { SetLocalDeviceResourceData(value); return *this;}
-
-    /**
-     * Attributes that define the local device resource.
-     */
-    inline ResourceDataContainer& WithLocalDeviceResourceData(LocalDeviceResourceData&& value) { SetLocalDeviceResourceData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Attributes that define the local volume resource.
      */
-    inline const LocalVolumeResourceData& GetLocalVolumeResourceData() const{ return m_localVolumeResourceData; }
-
-    /**
-     * Attributes that define the local volume resource.
-     */
+    inline const LocalVolumeResourceData& GetLocalVolumeResourceData() const { return m_localVolumeResourceData; }
     inline bool LocalVolumeResourceDataHasBeenSet() const { return m_localVolumeResourceDataHasBeenSet; }
+    template<typename LocalVolumeResourceDataT = LocalVolumeResourceData>
+    void SetLocalVolumeResourceData(LocalVolumeResourceDataT&& value) { m_localVolumeResourceDataHasBeenSet = true; m_localVolumeResourceData = std::forward<LocalVolumeResourceDataT>(value); }
+    template<typename LocalVolumeResourceDataT = LocalVolumeResourceData>
+    ResourceDataContainer& WithLocalVolumeResourceData(LocalVolumeResourceDataT&& value) { SetLocalVolumeResourceData(std::forward<LocalVolumeResourceDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Attributes that define the local volume resource.
-     */
-    inline void SetLocalVolumeResourceData(const LocalVolumeResourceData& value) { m_localVolumeResourceDataHasBeenSet = true; m_localVolumeResourceData = value; }
-
-    /**
-     * Attributes that define the local volume resource.
-     */
-    inline void SetLocalVolumeResourceData(LocalVolumeResourceData&& value) { m_localVolumeResourceDataHasBeenSet = true; m_localVolumeResourceData = std::move(value); }
-
-    /**
-     * Attributes that define the local volume resource.
-     */
-    inline ResourceDataContainer& WithLocalVolumeResourceData(const LocalVolumeResourceData& value) { SetLocalVolumeResourceData(value); return *this;}
-
-    /**
-     * Attributes that define the local volume resource.
-     */
-    inline ResourceDataContainer& WithLocalVolumeResourceData(LocalVolumeResourceData&& value) { SetLocalVolumeResourceData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Attributes that define an Amazon S3 machine learning resource.
      */
-    inline const S3MachineLearningModelResourceData& GetS3MachineLearningModelResourceData() const{ return m_s3MachineLearningModelResourceData; }
-
-    /**
-     * Attributes that define an Amazon S3 machine learning resource.
-     */
+    inline const S3MachineLearningModelResourceData& GetS3MachineLearningModelResourceData() const { return m_s3MachineLearningModelResourceData; }
     inline bool S3MachineLearningModelResourceDataHasBeenSet() const { return m_s3MachineLearningModelResourceDataHasBeenSet; }
+    template<typename S3MachineLearningModelResourceDataT = S3MachineLearningModelResourceData>
+    void SetS3MachineLearningModelResourceData(S3MachineLearningModelResourceDataT&& value) { m_s3MachineLearningModelResourceDataHasBeenSet = true; m_s3MachineLearningModelResourceData = std::forward<S3MachineLearningModelResourceDataT>(value); }
+    template<typename S3MachineLearningModelResourceDataT = S3MachineLearningModelResourceData>
+    ResourceDataContainer& WithS3MachineLearningModelResourceData(S3MachineLearningModelResourceDataT&& value) { SetS3MachineLearningModelResourceData(std::forward<S3MachineLearningModelResourceDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Attributes that define an Amazon S3 machine learning resource.
-     */
-    inline void SetS3MachineLearningModelResourceData(const S3MachineLearningModelResourceData& value) { m_s3MachineLearningModelResourceDataHasBeenSet = true; m_s3MachineLearningModelResourceData = value; }
-
-    /**
-     * Attributes that define an Amazon S3 machine learning resource.
-     */
-    inline void SetS3MachineLearningModelResourceData(S3MachineLearningModelResourceData&& value) { m_s3MachineLearningModelResourceDataHasBeenSet = true; m_s3MachineLearningModelResourceData = std::move(value); }
-
-    /**
-     * Attributes that define an Amazon S3 machine learning resource.
-     */
-    inline ResourceDataContainer& WithS3MachineLearningModelResourceData(const S3MachineLearningModelResourceData& value) { SetS3MachineLearningModelResourceData(value); return *this;}
-
-    /**
-     * Attributes that define an Amazon S3 machine learning resource.
-     */
-    inline ResourceDataContainer& WithS3MachineLearningModelResourceData(S3MachineLearningModelResourceData&& value) { SetS3MachineLearningModelResourceData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Attributes that define an Amazon SageMaker machine learning resource.
      */
-    inline const SageMakerMachineLearningModelResourceData& GetSageMakerMachineLearningModelResourceData() const{ return m_sageMakerMachineLearningModelResourceData; }
-
-    /**
-     * Attributes that define an Amazon SageMaker machine learning resource.
-     */
+    inline const SageMakerMachineLearningModelResourceData& GetSageMakerMachineLearningModelResourceData() const { return m_sageMakerMachineLearningModelResourceData; }
     inline bool SageMakerMachineLearningModelResourceDataHasBeenSet() const { return m_sageMakerMachineLearningModelResourceDataHasBeenSet; }
+    template<typename SageMakerMachineLearningModelResourceDataT = SageMakerMachineLearningModelResourceData>
+    void SetSageMakerMachineLearningModelResourceData(SageMakerMachineLearningModelResourceDataT&& value) { m_sageMakerMachineLearningModelResourceDataHasBeenSet = true; m_sageMakerMachineLearningModelResourceData = std::forward<SageMakerMachineLearningModelResourceDataT>(value); }
+    template<typename SageMakerMachineLearningModelResourceDataT = SageMakerMachineLearningModelResourceData>
+    ResourceDataContainer& WithSageMakerMachineLearningModelResourceData(SageMakerMachineLearningModelResourceDataT&& value) { SetSageMakerMachineLearningModelResourceData(std::forward<SageMakerMachineLearningModelResourceDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Attributes that define an Amazon SageMaker machine learning resource.
-     */
-    inline void SetSageMakerMachineLearningModelResourceData(const SageMakerMachineLearningModelResourceData& value) { m_sageMakerMachineLearningModelResourceDataHasBeenSet = true; m_sageMakerMachineLearningModelResourceData = value; }
-
-    /**
-     * Attributes that define an Amazon SageMaker machine learning resource.
-     */
-    inline void SetSageMakerMachineLearningModelResourceData(SageMakerMachineLearningModelResourceData&& value) { m_sageMakerMachineLearningModelResourceDataHasBeenSet = true; m_sageMakerMachineLearningModelResourceData = std::move(value); }
-
-    /**
-     * Attributes that define an Amazon SageMaker machine learning resource.
-     */
-    inline ResourceDataContainer& WithSageMakerMachineLearningModelResourceData(const SageMakerMachineLearningModelResourceData& value) { SetSageMakerMachineLearningModelResourceData(value); return *this;}
-
-    /**
-     * Attributes that define an Amazon SageMaker machine learning resource.
-     */
-    inline ResourceDataContainer& WithSageMakerMachineLearningModelResourceData(SageMakerMachineLearningModelResourceData&& value) { SetSageMakerMachineLearningModelResourceData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Attributes that define a secret resource, which references a secret from AWS
      * Secrets Manager.
      */
-    inline const SecretsManagerSecretResourceData& GetSecretsManagerSecretResourceData() const{ return m_secretsManagerSecretResourceData; }
-
-    /**
-     * Attributes that define a secret resource, which references a secret from AWS
-     * Secrets Manager.
-     */
+    inline const SecretsManagerSecretResourceData& GetSecretsManagerSecretResourceData() const { return m_secretsManagerSecretResourceData; }
     inline bool SecretsManagerSecretResourceDataHasBeenSet() const { return m_secretsManagerSecretResourceDataHasBeenSet; }
-
-    /**
-     * Attributes that define a secret resource, which references a secret from AWS
-     * Secrets Manager.
-     */
-    inline void SetSecretsManagerSecretResourceData(const SecretsManagerSecretResourceData& value) { m_secretsManagerSecretResourceDataHasBeenSet = true; m_secretsManagerSecretResourceData = value; }
-
-    /**
-     * Attributes that define a secret resource, which references a secret from AWS
-     * Secrets Manager.
-     */
-    inline void SetSecretsManagerSecretResourceData(SecretsManagerSecretResourceData&& value) { m_secretsManagerSecretResourceDataHasBeenSet = true; m_secretsManagerSecretResourceData = std::move(value); }
-
-    /**
-     * Attributes that define a secret resource, which references a secret from AWS
-     * Secrets Manager.
-     */
-    inline ResourceDataContainer& WithSecretsManagerSecretResourceData(const SecretsManagerSecretResourceData& value) { SetSecretsManagerSecretResourceData(value); return *this;}
-
-    /**
-     * Attributes that define a secret resource, which references a secret from AWS
-     * Secrets Manager.
-     */
-    inline ResourceDataContainer& WithSecretsManagerSecretResourceData(SecretsManagerSecretResourceData&& value) { SetSecretsManagerSecretResourceData(std::move(value)); return *this;}
-
+    template<typename SecretsManagerSecretResourceDataT = SecretsManagerSecretResourceData>
+    void SetSecretsManagerSecretResourceData(SecretsManagerSecretResourceDataT&& value) { m_secretsManagerSecretResourceDataHasBeenSet = true; m_secretsManagerSecretResourceData = std::forward<SecretsManagerSecretResourceDataT>(value); }
+    template<typename SecretsManagerSecretResourceDataT = SecretsManagerSecretResourceData>
+    ResourceDataContainer& WithSecretsManagerSecretResourceData(SecretsManagerSecretResourceDataT&& value) { SetSecretsManagerSecretResourceData(std::forward<SecretsManagerSecretResourceDataT>(value)); return *this;}
+    ///@}
   private:
 
     LocalDeviceResourceData m_localDeviceResourceData;

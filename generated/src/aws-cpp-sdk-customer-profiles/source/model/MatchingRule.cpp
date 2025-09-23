@@ -18,13 +18,7 @@ namespace CustomerProfiles
 namespace Model
 {
 
-MatchingRule::MatchingRule() : 
-    m_ruleHasBeenSet(false)
-{
-}
-
-MatchingRule::MatchingRule(JsonView jsonValue) : 
-    m_ruleHasBeenSet(false)
+MatchingRule::MatchingRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ MatchingRule& MatchingRule::operator =(JsonView jsonValue)
     }
     m_ruleHasBeenSet = true;
   }
-
   return *this;
 }
 

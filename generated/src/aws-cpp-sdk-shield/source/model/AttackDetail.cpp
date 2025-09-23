@@ -18,27 +18,7 @@ namespace Shield
 namespace Model
 {
 
-AttackDetail::AttackDetail() : 
-    m_attackIdHasBeenSet(false),
-    m_resourceArnHasBeenSet(false),
-    m_subResourcesHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_attackCountersHasBeenSet(false),
-    m_attackPropertiesHasBeenSet(false),
-    m_mitigationsHasBeenSet(false)
-{
-}
-
-AttackDetail::AttackDetail(JsonView jsonValue) : 
-    m_attackIdHasBeenSet(false),
-    m_resourceArnHasBeenSet(false),
-    m_subResourcesHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_attackCountersHasBeenSet(false),
-    m_attackPropertiesHasBeenSet(false),
-    m_mitigationsHasBeenSet(false)
+AttackDetail::AttackDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,17 +28,13 @@ AttackDetail& AttackDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AttackId"))
   {
     m_attackId = jsonValue.GetString("AttackId");
-
     m_attackIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubResources"))
   {
     Aws::Utils::Array<JsonView> subResourcesJsonList = jsonValue.GetArray("SubResources");
@@ -68,21 +44,16 @@ AttackDetail& AttackDetail::operator =(JsonView jsonValue)
     }
     m_subResourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StartTime"))
   {
     m_startTime = jsonValue.GetDouble("StartTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EndTime"))
   {
     m_endTime = jsonValue.GetDouble("EndTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttackCounters"))
   {
     Aws::Utils::Array<JsonView> attackCountersJsonList = jsonValue.GetArray("AttackCounters");
@@ -92,7 +63,6 @@ AttackDetail& AttackDetail::operator =(JsonView jsonValue)
     }
     m_attackCountersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttackProperties"))
   {
     Aws::Utils::Array<JsonView> attackPropertiesJsonList = jsonValue.GetArray("AttackProperties");
@@ -102,7 +72,6 @@ AttackDetail& AttackDetail::operator =(JsonView jsonValue)
     }
     m_attackPropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Mitigations"))
   {
     Aws::Utils::Array<JsonView> mitigationsJsonList = jsonValue.GetArray("Mitigations");
@@ -112,7 +81,6 @@ AttackDetail& AttackDetail::operator =(JsonView jsonValue)
     }
     m_mitigationsHasBeenSet = true;
   }
-
   return *this;
 }
 

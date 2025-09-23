@@ -33,239 +33,85 @@ namespace Model
   class Resource
   {
   public:
-    AWS_ECS_API Resource();
+    AWS_ECS_API Resource() = default;
     AWS_ECS_API Resource(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Resource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
      * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Resource& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
-    inline Resource& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
-    inline Resource& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource, such as <code>CPU</code>, <code>MEMORY</code>,
-     * <code>PORTS</code>, <code>PORTS_UDP</code>, or a user-defined resource.</p>
-     */
-    inline Resource& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the resource. Valid values: <code>INTEGER</code>,
      * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    Resource& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
-    inline Resource& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
-    inline Resource& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the resource. Valid values: <code>INTEGER</code>,
-     * <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
-     */
-    inline Resource& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When the <code>doubleValue</code> type is set, the value of the resource must
      * be a double precision floating-point type.</p>
      */
-    inline double GetDoubleValue() const{ return m_doubleValue; }
-
-    /**
-     * <p>When the <code>doubleValue</code> type is set, the value of the resource must
-     * be a double precision floating-point type.</p>
-     */
+    inline double GetDoubleValue() const { return m_doubleValue; }
     inline bool DoubleValueHasBeenSet() const { return m_doubleValueHasBeenSet; }
-
-    /**
-     * <p>When the <code>doubleValue</code> type is set, the value of the resource must
-     * be a double precision floating-point type.</p>
-     */
     inline void SetDoubleValue(double value) { m_doubleValueHasBeenSet = true; m_doubleValue = value; }
-
-    /**
-     * <p>When the <code>doubleValue</code> type is set, the value of the resource must
-     * be a double precision floating-point type.</p>
-     */
     inline Resource& WithDoubleValue(double value) { SetDoubleValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>When the <code>longValue</code> type is set, the value of the resource must
      * be an extended precision floating-point type.</p>
      */
-    inline long long GetLongValue() const{ return m_longValue; }
-
-    /**
-     * <p>When the <code>longValue</code> type is set, the value of the resource must
-     * be an extended precision floating-point type.</p>
-     */
+    inline long long GetLongValue() const { return m_longValue; }
     inline bool LongValueHasBeenSet() const { return m_longValueHasBeenSet; }
-
-    /**
-     * <p>When the <code>longValue</code> type is set, the value of the resource must
-     * be an extended precision floating-point type.</p>
-     */
     inline void SetLongValue(long long value) { m_longValueHasBeenSet = true; m_longValue = value; }
-
-    /**
-     * <p>When the <code>longValue</code> type is set, the value of the resource must
-     * be an extended precision floating-point type.</p>
-     */
     inline Resource& WithLongValue(long long value) { SetLongValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>When the <code>integerValue</code> type is set, the value of the resource
      * must be an integer.</p>
      */
-    inline int GetIntegerValue() const{ return m_integerValue; }
-
-    /**
-     * <p>When the <code>integerValue</code> type is set, the value of the resource
-     * must be an integer.</p>
-     */
+    inline int GetIntegerValue() const { return m_integerValue; }
     inline bool IntegerValueHasBeenSet() const { return m_integerValueHasBeenSet; }
-
-    /**
-     * <p>When the <code>integerValue</code> type is set, the value of the resource
-     * must be an integer.</p>
-     */
     inline void SetIntegerValue(int value) { m_integerValueHasBeenSet = true; m_integerValue = value; }
-
-    /**
-     * <p>When the <code>integerValue</code> type is set, the value of the resource
-     * must be an integer.</p>
-     */
     inline Resource& WithIntegerValue(int value) { SetIntegerValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>When the <code>stringSetValue</code> type is set, the value of the resource
      * must be a string type.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetStringSetValue() const{ return m_stringSetValue; }
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetStringSetValue() const { return m_stringSetValue; }
     inline bool StringSetValueHasBeenSet() const { return m_stringSetValueHasBeenSet; }
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline void SetStringSetValue(const Aws::Vector<Aws::String>& value) { m_stringSetValueHasBeenSet = true; m_stringSetValue = value; }
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline void SetStringSetValue(Aws::Vector<Aws::String>&& value) { m_stringSetValueHasBeenSet = true; m_stringSetValue = std::move(value); }
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline Resource& WithStringSetValue(const Aws::Vector<Aws::String>& value) { SetStringSetValue(value); return *this;}
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline Resource& WithStringSetValue(Aws::Vector<Aws::String>&& value) { SetStringSetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline Resource& AddStringSetValue(const Aws::String& value) { m_stringSetValueHasBeenSet = true; m_stringSetValue.push_back(value); return *this; }
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline Resource& AddStringSetValue(Aws::String&& value) { m_stringSetValueHasBeenSet = true; m_stringSetValue.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>When the <code>stringSetValue</code> type is set, the value of the resource
-     * must be a string type.</p>
-     */
-    inline Resource& AddStringSetValue(const char* value) { m_stringSetValueHasBeenSet = true; m_stringSetValue.push_back(value); return *this; }
-
+    template<typename StringSetValueT = Aws::Vector<Aws::String>>
+    void SetStringSetValue(StringSetValueT&& value) { m_stringSetValueHasBeenSet = true; m_stringSetValue = std::forward<StringSetValueT>(value); }
+    template<typename StringSetValueT = Aws::Vector<Aws::String>>
+    Resource& WithStringSetValue(StringSetValueT&& value) { SetStringSetValue(std::forward<StringSetValueT>(value)); return *this;}
+    template<typename StringSetValueT = Aws::String>
+    Resource& AddStringSetValue(StringSetValueT&& value) { m_stringSetValueHasBeenSet = true; m_stringSetValue.emplace_back(std::forward<StringSetValueT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;
@@ -274,13 +120,13 @@ namespace Model
     Aws::String m_type;
     bool m_typeHasBeenSet = false;
 
-    double m_doubleValue;
+    double m_doubleValue{0.0};
     bool m_doubleValueHasBeenSet = false;
 
-    long long m_longValue;
+    long long m_longValue{0};
     bool m_longValueHasBeenSet = false;
 
-    int m_integerValue;
+    int m_integerValue{0};
     bool m_integerValueHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_stringSetValue;

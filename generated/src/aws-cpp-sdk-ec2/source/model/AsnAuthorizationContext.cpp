@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AsnAuthorizationContext::AsnAuthorizationContext() : 
-    m_messageHasBeenSet(false),
-    m_signatureHasBeenSet(false)
-{
-}
-
-AsnAuthorizationContext::AsnAuthorizationContext(const XmlNode& xmlNode) : 
-    m_messageHasBeenSet(false),
-    m_signatureHasBeenSet(false)
+AsnAuthorizationContext::AsnAuthorizationContext(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

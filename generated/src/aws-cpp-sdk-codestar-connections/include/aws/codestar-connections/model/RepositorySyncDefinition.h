@@ -32,199 +32,62 @@ namespace Model
   class RepositorySyncDefinition
   {
   public:
-    AWS_CODESTARCONNECTIONS_API RepositorySyncDefinition();
+    AWS_CODESTARCONNECTIONS_API RepositorySyncDefinition() = default;
     AWS_CODESTARCONNECTIONS_API RepositorySyncDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODESTARCONNECTIONS_API RepositorySyncDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODESTARCONNECTIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The branch specified for a repository sync definition.</p>
      */
-    inline const Aws::String& GetBranch() const{ return m_branch; }
-
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
+    inline const Aws::String& GetBranch() const { return m_branch; }
     inline bool BranchHasBeenSet() const { return m_branchHasBeenSet; }
+    template<typename BranchT = Aws::String>
+    void SetBranch(BranchT&& value) { m_branchHasBeenSet = true; m_branch = std::forward<BranchT>(value); }
+    template<typename BranchT = Aws::String>
+    RepositorySyncDefinition& WithBranch(BranchT&& value) { SetBranch(std::forward<BranchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
-    inline void SetBranch(const Aws::String& value) { m_branchHasBeenSet = true; m_branch = value; }
-
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
-    inline void SetBranch(Aws::String&& value) { m_branchHasBeenSet = true; m_branch = std::move(value); }
-
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
-    inline void SetBranch(const char* value) { m_branchHasBeenSet = true; m_branch.assign(value); }
-
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
-    inline RepositorySyncDefinition& WithBranch(const Aws::String& value) { SetBranch(value); return *this;}
-
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
-    inline RepositorySyncDefinition& WithBranch(Aws::String&& value) { SetBranch(std::move(value)); return *this;}
-
-    /**
-     * <p>The branch specified for a repository sync definition.</p>
-     */
-    inline RepositorySyncDefinition& WithBranch(const char* value) { SetBranch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration file for a repository sync definition. This value comes
      * from creating or updating the <code>config-file</code> field of a
      * <code>sync-configuration</code>.</p>
      */
-    inline const Aws::String& GetDirectory() const{ return m_directory; }
-
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
+    inline const Aws::String& GetDirectory() const { return m_directory; }
     inline bool DirectoryHasBeenSet() const { return m_directoryHasBeenSet; }
+    template<typename DirectoryT = Aws::String>
+    void SetDirectory(DirectoryT&& value) { m_directoryHasBeenSet = true; m_directory = std::forward<DirectoryT>(value); }
+    template<typename DirectoryT = Aws::String>
+    RepositorySyncDefinition& WithDirectory(DirectoryT&& value) { SetDirectory(std::forward<DirectoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
-    inline void SetDirectory(const Aws::String& value) { m_directoryHasBeenSet = true; m_directory = value; }
-
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
-    inline void SetDirectory(Aws::String&& value) { m_directoryHasBeenSet = true; m_directory = std::move(value); }
-
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
-    inline void SetDirectory(const char* value) { m_directoryHasBeenSet = true; m_directory.assign(value); }
-
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
-    inline RepositorySyncDefinition& WithDirectory(const Aws::String& value) { SetDirectory(value); return *this;}
-
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
-    inline RepositorySyncDefinition& WithDirectory(Aws::String&& value) { SetDirectory(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration file for a repository sync definition. This value comes
-     * from creating or updating the <code>config-file</code> field of a
-     * <code>sync-configuration</code>.</p>
-     */
-    inline RepositorySyncDefinition& WithDirectory(const char* value) { SetDirectory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parent resource specified for a repository sync definition.</p>
      */
-    inline const Aws::String& GetParent() const{ return m_parent; }
-
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
+    inline const Aws::String& GetParent() const { return m_parent; }
     inline bool ParentHasBeenSet() const { return m_parentHasBeenSet; }
+    template<typename ParentT = Aws::String>
+    void SetParent(ParentT&& value) { m_parentHasBeenSet = true; m_parent = std::forward<ParentT>(value); }
+    template<typename ParentT = Aws::String>
+    RepositorySyncDefinition& WithParent(ParentT&& value) { SetParent(std::forward<ParentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
-    inline void SetParent(const Aws::String& value) { m_parentHasBeenSet = true; m_parent = value; }
-
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
-    inline void SetParent(Aws::String&& value) { m_parentHasBeenSet = true; m_parent = std::move(value); }
-
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
-    inline void SetParent(const char* value) { m_parentHasBeenSet = true; m_parent.assign(value); }
-
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
-    inline RepositorySyncDefinition& WithParent(const Aws::String& value) { SetParent(value); return *this;}
-
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
-    inline RepositorySyncDefinition& WithParent(Aws::String&& value) { SetParent(std::move(value)); return *this;}
-
-    /**
-     * <p>The parent resource specified for a repository sync definition.</p>
-     */
-    inline RepositorySyncDefinition& WithParent(const char* value) { SetParent(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The target resource specified for a repository sync definition. In some
      * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
      */
-    inline const Aws::String& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
+    inline const Aws::String& GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
-    inline void SetTarget(const Aws::String& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
-    inline void SetTarget(Aws::String&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
-    inline void SetTarget(const char* value) { m_targetHasBeenSet = true; m_target.assign(value); }
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
-    inline RepositorySyncDefinition& WithTarget(const Aws::String& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
-    inline RepositorySyncDefinition& WithTarget(Aws::String&& value) { SetTarget(std::move(value)); return *this;}
-
-    /**
-     * <p>The target resource specified for a repository sync definition. In some
-     * cases, such as CFN_STACK_SYNC, the parent and target resource are the same.</p>
-     */
-    inline RepositorySyncDefinition& WithTarget(const char* value) { SetTarget(value); return *this;}
-
+    template<typename TargetT = Aws::String>
+    void SetTarget(TargetT&& value) { m_targetHasBeenSet = true; m_target = std::forward<TargetT>(value); }
+    template<typename TargetT = Aws::String>
+    RepositorySyncDefinition& WithTarget(TargetT&& value) { SetTarget(std::forward<TargetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_branch;

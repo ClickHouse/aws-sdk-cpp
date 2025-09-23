@@ -18,23 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-DataProvider::DataProvider() : 
-    m_dataProviderNameHasBeenSet(false),
-    m_dataProviderArnHasBeenSet(false),
-    m_dataProviderCreationTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
-DataProvider::DataProvider(JsonView jsonValue) : 
-    m_dataProviderNameHasBeenSet(false),
-    m_dataProviderArnHasBeenSet(false),
-    m_dataProviderCreationTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+DataProvider::DataProvider(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,45 +28,38 @@ DataProvider& DataProvider::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DataProviderName"))
   {
     m_dataProviderName = jsonValue.GetString("DataProviderName");
-
     m_dataProviderNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataProviderArn"))
   {
     m_dataProviderArn = jsonValue.GetString("DataProviderArn");
-
     m_dataProviderArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataProviderCreationTime"))
   {
     m_dataProviderCreationTime = jsonValue.GetString("DataProviderCreationTime");
-
     m_dataProviderCreationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Engine"))
   {
     m_engine = jsonValue.GetString("Engine");
-
     m_engineHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Virtual"))
+  {
+    m_virtual = jsonValue.GetBool("Virtual");
+    m_virtualHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Settings"))
   {
     m_settings = jsonValue.GetObject("Settings");
-
     m_settingsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -116,6 +93,12 @@ JsonValue DataProvider::Jsonize() const
   if(m_engineHasBeenSet)
   {
    payload.WithString("Engine", m_engine);
+
+  }
+
+  if(m_virtualHasBeenSet)
+  {
+   payload.WithBool("Virtual", m_virtual);
 
   }
 

@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListControlsRequest::ListControlsRequest() : 
-    m_controlType(ControlType::NOT_SET),
-    m_controlTypeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListControlsRequest::SerializePayload() const
 {
   return {};
@@ -50,6 +41,13 @@ void ListControlsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_maxResults;
       uri.AddQueryStringParameter("maxResults", ss.str());
+      ss.str("");
+    }
+
+    if(m_controlCatalogIdHasBeenSet)
+    {
+      ss << m_controlCatalogId;
+      uri.AddQueryStringParameter("controlCatalogId", ss.str());
       ss.str("");
     }
 

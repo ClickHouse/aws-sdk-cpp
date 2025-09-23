@@ -34,142 +34,62 @@ namespace Model
   class SessionStatus
   {
   public:
-    AWS_ATHENA_API SessionStatus();
+    AWS_ATHENA_API SessionStatus() = default;
     AWS_ATHENA_API SessionStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API SessionStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date and time that the session started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartDateTime() const{ return m_startDateTime; }
-
-    /**
-     * <p>The date and time that the session started.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartDateTime() const { return m_startDateTime; }
     inline bool StartDateTimeHasBeenSet() const { return m_startDateTimeHasBeenSet; }
+    template<typename StartDateTimeT = Aws::Utils::DateTime>
+    void SetStartDateTime(StartDateTimeT&& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = std::forward<StartDateTimeT>(value); }
+    template<typename StartDateTimeT = Aws::Utils::DateTime>
+    SessionStatus& WithStartDateTime(StartDateTimeT&& value) { SetStartDateTime(std::forward<StartDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the session started.</p>
-     */
-    inline void SetStartDateTime(const Aws::Utils::DateTime& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = value; }
-
-    /**
-     * <p>The date and time that the session started.</p>
-     */
-    inline void SetStartDateTime(Aws::Utils::DateTime&& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the session started.</p>
-     */
-    inline SessionStatus& WithStartDateTime(const Aws::Utils::DateTime& value) { SetStartDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the session started.</p>
-     */
-    inline SessionStatus& WithStartDateTime(Aws::Utils::DateTime&& value) { SetStartDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The most recent date and time that the session was modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedDateTime() const{ return m_lastModifiedDateTime; }
-
-    /**
-     * <p>The most recent date and time that the session was modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedDateTime() const { return m_lastModifiedDateTime; }
     inline bool LastModifiedDateTimeHasBeenSet() const { return m_lastModifiedDateTimeHasBeenSet; }
+    template<typename LastModifiedDateTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedDateTime(LastModifiedDateTimeT&& value) { m_lastModifiedDateTimeHasBeenSet = true; m_lastModifiedDateTime = std::forward<LastModifiedDateTimeT>(value); }
+    template<typename LastModifiedDateTimeT = Aws::Utils::DateTime>
+    SessionStatus& WithLastModifiedDateTime(LastModifiedDateTimeT&& value) { SetLastModifiedDateTime(std::forward<LastModifiedDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The most recent date and time that the session was modified.</p>
-     */
-    inline void SetLastModifiedDateTime(const Aws::Utils::DateTime& value) { m_lastModifiedDateTimeHasBeenSet = true; m_lastModifiedDateTime = value; }
-
-    /**
-     * <p>The most recent date and time that the session was modified.</p>
-     */
-    inline void SetLastModifiedDateTime(Aws::Utils::DateTime&& value) { m_lastModifiedDateTimeHasBeenSet = true; m_lastModifiedDateTime = std::move(value); }
-
-    /**
-     * <p>The most recent date and time that the session was modified.</p>
-     */
-    inline SessionStatus& WithLastModifiedDateTime(const Aws::Utils::DateTime& value) { SetLastModifiedDateTime(value); return *this;}
-
-    /**
-     * <p>The most recent date and time that the session was modified.</p>
-     */
-    inline SessionStatus& WithLastModifiedDateTime(Aws::Utils::DateTime&& value) { SetLastModifiedDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the session ended.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndDateTime() const{ return m_endDateTime; }
-
-    /**
-     * <p>The date and time that the session ended.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndDateTime() const { return m_endDateTime; }
     inline bool EndDateTimeHasBeenSet() const { return m_endDateTimeHasBeenSet; }
+    template<typename EndDateTimeT = Aws::Utils::DateTime>
+    void SetEndDateTime(EndDateTimeT&& value) { m_endDateTimeHasBeenSet = true; m_endDateTime = std::forward<EndDateTimeT>(value); }
+    template<typename EndDateTimeT = Aws::Utils::DateTime>
+    SessionStatus& WithEndDateTime(EndDateTimeT&& value) { SetEndDateTime(std::forward<EndDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the session ended.</p>
-     */
-    inline void SetEndDateTime(const Aws::Utils::DateTime& value) { m_endDateTimeHasBeenSet = true; m_endDateTime = value; }
-
-    /**
-     * <p>The date and time that the session ended.</p>
-     */
-    inline void SetEndDateTime(Aws::Utils::DateTime&& value) { m_endDateTimeHasBeenSet = true; m_endDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the session ended.</p>
-     */
-    inline SessionStatus& WithEndDateTime(const Aws::Utils::DateTime& value) { SetEndDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the session ended.</p>
-     */
-    inline SessionStatus& WithEndDateTime(Aws::Utils::DateTime&& value) { SetEndDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time starting at which the session became idle. Can be empty if
      * the session is not currently idle.</p>
      */
-    inline const Aws::Utils::DateTime& GetIdleSinceDateTime() const{ return m_idleSinceDateTime; }
-
-    /**
-     * <p>The date and time starting at which the session became idle. Can be empty if
-     * the session is not currently idle.</p>
-     */
+    inline const Aws::Utils::DateTime& GetIdleSinceDateTime() const { return m_idleSinceDateTime; }
     inline bool IdleSinceDateTimeHasBeenSet() const { return m_idleSinceDateTimeHasBeenSet; }
+    template<typename IdleSinceDateTimeT = Aws::Utils::DateTime>
+    void SetIdleSinceDateTime(IdleSinceDateTimeT&& value) { m_idleSinceDateTimeHasBeenSet = true; m_idleSinceDateTime = std::forward<IdleSinceDateTimeT>(value); }
+    template<typename IdleSinceDateTimeT = Aws::Utils::DateTime>
+    SessionStatus& WithIdleSinceDateTime(IdleSinceDateTimeT&& value) { SetIdleSinceDateTime(std::forward<IdleSinceDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time starting at which the session became idle. Can be empty if
-     * the session is not currently idle.</p>
-     */
-    inline void SetIdleSinceDateTime(const Aws::Utils::DateTime& value) { m_idleSinceDateTimeHasBeenSet = true; m_idleSinceDateTime = value; }
-
-    /**
-     * <p>The date and time starting at which the session became idle. Can be empty if
-     * the session is not currently idle.</p>
-     */
-    inline void SetIdleSinceDateTime(Aws::Utils::DateTime&& value) { m_idleSinceDateTimeHasBeenSet = true; m_idleSinceDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time starting at which the session became idle. Can be empty if
-     * the session is not currently idle.</p>
-     */
-    inline SessionStatus& WithIdleSinceDateTime(const Aws::Utils::DateTime& value) { SetIdleSinceDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time starting at which the session became idle. Can be empty if
-     * the session is not currently idle.</p>
-     */
-    inline SessionStatus& WithIdleSinceDateTime(Aws::Utils::DateTime&& value) { SetIdleSinceDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the session. A description of each state follows.</p> <p>
      * <code>CREATING</code> - The session is being started, including acquiring
@@ -182,142 +102,39 @@ namespace Model
      * no healthy coordinators.</p> <p> <code>FAILED</code> - Due to a failure, the
      * session and its resources are no longer running.</p>
      */
-    inline const SessionState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the session. A description of each state follows.</p> <p>
-     * <code>CREATING</code> - The session is being started, including acquiring
-     * resources.</p> <p> <code>CREATED</code> - The session has been started.</p> <p>
-     * <code>IDLE</code> - The session is able to accept a calculation.</p> <p>
-     * <code>BUSY</code> - The session is processing another task and is unable to
-     * accept a calculation.</p> <p> <code>TERMINATING</code> - The session is in the
-     * process of shutting down.</p> <p> <code>TERMINATED</code> - The session and its
-     * resources are no longer running.</p> <p> <code>DEGRADED</code> - The session has
-     * no healthy coordinators.</p> <p> <code>FAILED</code> - Due to a failure, the
-     * session and its resources are no longer running.</p>
-     */
+    inline SessionState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(SessionState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline SessionStatus& WithState(SessionState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the session. A description of each state follows.</p> <p>
-     * <code>CREATING</code> - The session is being started, including acquiring
-     * resources.</p> <p> <code>CREATED</code> - The session has been started.</p> <p>
-     * <code>IDLE</code> - The session is able to accept a calculation.</p> <p>
-     * <code>BUSY</code> - The session is processing another task and is unable to
-     * accept a calculation.</p> <p> <code>TERMINATING</code> - The session is in the
-     * process of shutting down.</p> <p> <code>TERMINATED</code> - The session and its
-     * resources are no longer running.</p> <p> <code>DEGRADED</code> - The session has
-     * no healthy coordinators.</p> <p> <code>FAILED</code> - Due to a failure, the
-     * session and its resources are no longer running.</p>
-     */
-    inline void SetState(const SessionState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the session. A description of each state follows.</p> <p>
-     * <code>CREATING</code> - The session is being started, including acquiring
-     * resources.</p> <p> <code>CREATED</code> - The session has been started.</p> <p>
-     * <code>IDLE</code> - The session is able to accept a calculation.</p> <p>
-     * <code>BUSY</code> - The session is processing another task and is unable to
-     * accept a calculation.</p> <p> <code>TERMINATING</code> - The session is in the
-     * process of shutting down.</p> <p> <code>TERMINATED</code> - The session and its
-     * resources are no longer running.</p> <p> <code>DEGRADED</code> - The session has
-     * no healthy coordinators.</p> <p> <code>FAILED</code> - Due to a failure, the
-     * session and its resources are no longer running.</p>
-     */
-    inline void SetState(SessionState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the session. A description of each state follows.</p> <p>
-     * <code>CREATING</code> - The session is being started, including acquiring
-     * resources.</p> <p> <code>CREATED</code> - The session has been started.</p> <p>
-     * <code>IDLE</code> - The session is able to accept a calculation.</p> <p>
-     * <code>BUSY</code> - The session is processing another task and is unable to
-     * accept a calculation.</p> <p> <code>TERMINATING</code> - The session is in the
-     * process of shutting down.</p> <p> <code>TERMINATED</code> - The session and its
-     * resources are no longer running.</p> <p> <code>DEGRADED</code> - The session has
-     * no healthy coordinators.</p> <p> <code>FAILED</code> - Due to a failure, the
-     * session and its resources are no longer running.</p>
-     */
-    inline SessionStatus& WithState(const SessionState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the session. A description of each state follows.</p> <p>
-     * <code>CREATING</code> - The session is being started, including acquiring
-     * resources.</p> <p> <code>CREATED</code> - The session has been started.</p> <p>
-     * <code>IDLE</code> - The session is able to accept a calculation.</p> <p>
-     * <code>BUSY</code> - The session is processing another task and is unable to
-     * accept a calculation.</p> <p> <code>TERMINATING</code> - The session is in the
-     * process of shutting down.</p> <p> <code>TERMINATED</code> - The session and its
-     * resources are no longer running.</p> <p> <code>DEGRADED</code> - The session has
-     * no healthy coordinators.</p> <p> <code>FAILED</code> - Due to a failure, the
-     * session and its resources are no longer running.</p>
-     */
-    inline SessionStatus& WithState(SessionState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the session state change (for example, canceled because the
      * session was terminated).</p>
      */
-    inline const Aws::String& GetStateChangeReason() const{ return m_stateChangeReason; }
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
+    inline const Aws::String& GetStateChangeReason() const { return m_stateChangeReason; }
     inline bool StateChangeReasonHasBeenSet() const { return m_stateChangeReasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
-    inline void SetStateChangeReason(const Aws::String& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = value; }
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
-    inline void SetStateChangeReason(Aws::String&& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = std::move(value); }
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
-    inline void SetStateChangeReason(const char* value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason.assign(value); }
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
-    inline SessionStatus& WithStateChangeReason(const Aws::String& value) { SetStateChangeReason(value); return *this;}
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
-    inline SessionStatus& WithStateChangeReason(Aws::String&& value) { SetStateChangeReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the session state change (for example, canceled because the
-     * session was terminated).</p>
-     */
-    inline SessionStatus& WithStateChangeReason(const char* value) { SetStateChangeReason(value); return *this;}
-
+    template<typename StateChangeReasonT = Aws::String>
+    void SetStateChangeReason(StateChangeReasonT&& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = std::forward<StateChangeReasonT>(value); }
+    template<typename StateChangeReasonT = Aws::String>
+    SessionStatus& WithStateChangeReason(StateChangeReasonT&& value) { SetStateChangeReason(std::forward<StateChangeReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_startDateTime;
+    Aws::Utils::DateTime m_startDateTime{};
     bool m_startDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedDateTime;
+    Aws::Utils::DateTime m_lastModifiedDateTime{};
     bool m_lastModifiedDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endDateTime;
+    Aws::Utils::DateTime m_endDateTime{};
     bool m_endDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_idleSinceDateTime;
+    Aws::Utils::DateTime m_idleSinceDateTime{};
     bool m_idleSinceDateTimeHasBeenSet = false;
 
-    SessionState m_state;
+    SessionState m_state{SessionState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_stateChangeReason;

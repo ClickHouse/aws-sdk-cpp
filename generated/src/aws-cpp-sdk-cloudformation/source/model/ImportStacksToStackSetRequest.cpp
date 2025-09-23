@@ -10,19 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ImportStacksToStackSetRequest::ImportStacksToStackSetRequest() : 
-    m_stackSetNameHasBeenSet(false),
-    m_stackIdsHasBeenSet(false),
-    m_stackIdsUrlHasBeenSet(false),
-    m_organizationalUnitIdsHasBeenSet(false),
-    m_operationPreferencesHasBeenSet(false),
-    m_operationId(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_operationIdHasBeenSet(true),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false)
-{
-}
-
 Aws::String ImportStacksToStackSetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,12 +21,19 @@ Aws::String ImportStacksToStackSetRequest::SerializePayload() const
 
   if(m_stackIdsHasBeenSet)
   {
-    unsigned stackIdsCount = 1;
-    for(auto& item : m_stackIds)
+    if (m_stackIds.empty())
     {
-      ss << "StackIds.member." << stackIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      stackIdsCount++;
+      ss << "StackIds=&";
+    }
+    else
+    {
+      unsigned stackIdsCount = 1;
+      for(auto& item : m_stackIds)
+      {
+        ss << "StackIds.member." << stackIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        stackIdsCount++;
+      }
     }
   }
 
@@ -50,12 +44,19 @@ Aws::String ImportStacksToStackSetRequest::SerializePayload() const
 
   if(m_organizationalUnitIdsHasBeenSet)
   {
-    unsigned organizationalUnitIdsCount = 1;
-    for(auto& item : m_organizationalUnitIds)
+    if (m_organizationalUnitIds.empty())
     {
-      ss << "OrganizationalUnitIds.member." << organizationalUnitIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      organizationalUnitIdsCount++;
+      ss << "OrganizationalUnitIds=&";
+    }
+    else
+    {
+      unsigned organizationalUnitIdsCount = 1;
+      for(auto& item : m_organizationalUnitIds)
+      {
+        ss << "OrganizationalUnitIds.member." << organizationalUnitIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        organizationalUnitIdsCount++;
+      }
     }
   }
 
@@ -71,7 +72,7 @@ Aws::String ImportStacksToStackSetRequest::SerializePayload() const
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   ss << "Version=2010-05-15";

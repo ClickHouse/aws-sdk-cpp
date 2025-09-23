@@ -20,17 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-EngineDefaults::EngineDefaults() : 
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_parametersHasBeenSet(false)
-{
-}
-
-EngineDefaults::EngineDefaults(const XmlNode& xmlNode) : 
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_parametersHasBeenSet(false)
+EngineDefaults::EngineDefaults(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ EngineDefaults& EngineDefaults::operator =(const XmlNode& xmlNode)
     if(!parametersNode.IsNull())
     {
       XmlNode parametersMember = parametersNode.FirstChild("Parameter");
+      m_parametersHasBeenSet = !parametersMember.IsNull();
       while(!parametersMember.IsNull())
       {
         m_parameters.push_back(parametersMember);
@@ -88,7 +79,7 @@ void EngineDefaults::OutputToStream(Aws::OStream& oStream, const char* location,
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location << index << locationValue << ".Parameter." << parametersIdx++;
+        parametersSs << location << index << locationValue << ".Parameters.Parameter." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void EngineDefaults::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location <<  ".Parameter." << parametersIdx++;
+        parametersSs << location << ".Parameters.Parameter." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }

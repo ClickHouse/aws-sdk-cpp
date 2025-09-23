@@ -18,33 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-AccountSettings::AccountSettings() : 
-    m_awsAccountNumberHasBeenSet(false),
-    m_unmeteredDevicesHasBeenSet(false),
-    m_unmeteredRemoteAccessDevicesHasBeenSet(false),
-    m_maxJobTimeoutMinutes(0),
-    m_maxJobTimeoutMinutesHasBeenSet(false),
-    m_trialMinutesHasBeenSet(false),
-    m_maxSlotsHasBeenSet(false),
-    m_defaultJobTimeoutMinutes(0),
-    m_defaultJobTimeoutMinutesHasBeenSet(false),
-    m_skipAppResign(false),
-    m_skipAppResignHasBeenSet(false)
-{
-}
-
-AccountSettings::AccountSettings(JsonView jsonValue) : 
-    m_awsAccountNumberHasBeenSet(false),
-    m_unmeteredDevicesHasBeenSet(false),
-    m_unmeteredRemoteAccessDevicesHasBeenSet(false),
-    m_maxJobTimeoutMinutes(0),
-    m_maxJobTimeoutMinutesHasBeenSet(false),
-    m_trialMinutesHasBeenSet(false),
-    m_maxSlotsHasBeenSet(false),
-    m_defaultJobTimeoutMinutes(0),
-    m_defaultJobTimeoutMinutesHasBeenSet(false),
-    m_skipAppResign(false),
-    m_skipAppResignHasBeenSet(false)
+AccountSettings::AccountSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,10 +28,8 @@ AccountSettings& AccountSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("awsAccountNumber"))
   {
     m_awsAccountNumber = jsonValue.GetString("awsAccountNumber");
-
     m_awsAccountNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unmeteredDevices"))
   {
     Aws::Map<Aws::String, JsonView> unmeteredDevicesJsonMap = jsonValue.GetObject("unmeteredDevices").GetAllObjects();
@@ -67,7 +39,6 @@ AccountSettings& AccountSettings::operator =(JsonView jsonValue)
     }
     m_unmeteredDevicesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unmeteredRemoteAccessDevices"))
   {
     Aws::Map<Aws::String, JsonView> unmeteredRemoteAccessDevicesJsonMap = jsonValue.GetObject("unmeteredRemoteAccessDevices").GetAllObjects();
@@ -77,21 +48,16 @@ AccountSettings& AccountSettings::operator =(JsonView jsonValue)
     }
     m_unmeteredRemoteAccessDevicesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxJobTimeoutMinutes"))
   {
     m_maxJobTimeoutMinutes = jsonValue.GetInteger("maxJobTimeoutMinutes");
-
     m_maxJobTimeoutMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("trialMinutes"))
   {
     m_trialMinutes = jsonValue.GetObject("trialMinutes");
-
     m_trialMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxSlots"))
   {
     Aws::Map<Aws::String, JsonView> maxSlotsJsonMap = jsonValue.GetObject("maxSlots").GetAllObjects();
@@ -101,21 +67,16 @@ AccountSettings& AccountSettings::operator =(JsonView jsonValue)
     }
     m_maxSlotsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("defaultJobTimeoutMinutes"))
   {
     m_defaultJobTimeoutMinutes = jsonValue.GetInteger("defaultJobTimeoutMinutes");
-
     m_defaultJobTimeoutMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("skipAppResign"))
   {
     m_skipAppResign = jsonValue.GetBool("skipAppResign");
-
     m_skipAppResignHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,13 +21,7 @@ namespace EC2
 namespace Model
 {
 
-BlobAttributeValue::BlobAttributeValue() : 
-    m_valueHasBeenSet(false)
-{
-}
-
-BlobAttributeValue::BlobAttributeValue(const XmlNode& xmlNode) : 
-    m_valueHasBeenSet(false)
+BlobAttributeValue::BlobAttributeValue(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

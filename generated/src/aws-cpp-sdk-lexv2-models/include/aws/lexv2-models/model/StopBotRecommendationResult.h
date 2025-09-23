@@ -28,255 +28,97 @@ namespace Model
   class StopBotRecommendationResult
   {
   public:
-    AWS_LEXMODELSV2_API StopBotRecommendationResult();
+    AWS_LEXMODELSV2_API StopBotRecommendationResult() = default;
     AWS_LEXMODELSV2_API StopBotRecommendationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELSV2_API StopBotRecommendationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier of the bot containing the bot recommendation that is
      * being stopped.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
+    inline const Aws::String& GetBotId() const { return m_botId; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    StopBotRecommendationResult& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the bot containing the bot recommendation that is
-     * being stopped.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botId = value; }
-
-    /**
-     * <p>The unique identifier of the bot containing the bot recommendation that is
-     * being stopped.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the bot containing the bot recommendation that is
-     * being stopped.</p>
-     */
-    inline void SetBotId(const char* value) { m_botId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the bot containing the bot recommendation that is
-     * being stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the bot containing the bot recommendation that is
-     * being stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the bot containing the bot recommendation that is
-     * being stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the bot containing the recommendation that is being
      * stopped.</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    StopBotRecommendationResult& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the bot containing the recommendation that is being
-     * stopped.</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersion = value; }
-
-    /**
-     * <p>The version of the bot containing the recommendation that is being
-     * stopped.</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersion = std::move(value); }
-
-    /**
-     * <p>The version of the bot containing the recommendation that is being
-     * stopped.</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersion.assign(value); }
-
-    /**
-     * <p>The version of the bot containing the recommendation that is being
-     * stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of the bot containing the recommendation that is being
-     * stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the bot containing the recommendation that is being
-     * stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the language and locale of the bot response to stop. The
      * string must match one of the supported locales. For more information, see <a
      * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
      * languages</a> </p>
      */
-    inline const Aws::String& GetLocaleId() const{ return m_localeId; }
+    inline const Aws::String& GetLocaleId() const { return m_localeId; }
+    template<typename LocaleIdT = Aws::String>
+    void SetLocaleId(LocaleIdT&& value) { m_localeIdHasBeenSet = true; m_localeId = std::forward<LocaleIdT>(value); }
+    template<typename LocaleIdT = Aws::String>
+    StopBotRecommendationResult& WithLocaleId(LocaleIdT&& value) { SetLocaleId(std::forward<LocaleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the language and locale of the bot response to stop. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a> </p>
-     */
-    inline void SetLocaleId(const Aws::String& value) { m_localeId = value; }
-
-    /**
-     * <p>The identifier of the language and locale of the bot response to stop. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a> </p>
-     */
-    inline void SetLocaleId(Aws::String&& value) { m_localeId = std::move(value); }
-
-    /**
-     * <p>The identifier of the language and locale of the bot response to stop. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a> </p>
-     */
-    inline void SetLocaleId(const char* value) { m_localeId.assign(value); }
-
-    /**
-     * <p>The identifier of the language and locale of the bot response to stop. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a> </p>
-     */
-    inline StopBotRecommendationResult& WithLocaleId(const Aws::String& value) { SetLocaleId(value); return *this;}
-
-    /**
-     * <p>The identifier of the language and locale of the bot response to stop. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a> </p>
-     */
-    inline StopBotRecommendationResult& WithLocaleId(Aws::String&& value) { SetLocaleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the language and locale of the bot response to stop. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a> </p>
-     */
-    inline StopBotRecommendationResult& WithLocaleId(const char* value) { SetLocaleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the bot recommendation. If the status is Failed, then the
      * reasons for the failure are listed in the failureReasons field.</p>
      */
-    inline const BotRecommendationStatus& GetBotRecommendationStatus() const{ return m_botRecommendationStatus; }
+    inline BotRecommendationStatus GetBotRecommendationStatus() const { return m_botRecommendationStatus; }
+    inline void SetBotRecommendationStatus(BotRecommendationStatus value) { m_botRecommendationStatusHasBeenSet = true; m_botRecommendationStatus = value; }
+    inline StopBotRecommendationResult& WithBotRecommendationStatus(BotRecommendationStatus value) { SetBotRecommendationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the bot recommendation. If the status is Failed, then the
-     * reasons for the failure are listed in the failureReasons field.</p>
-     */
-    inline void SetBotRecommendationStatus(const BotRecommendationStatus& value) { m_botRecommendationStatus = value; }
-
-    /**
-     * <p>The status of the bot recommendation. If the status is Failed, then the
-     * reasons for the failure are listed in the failureReasons field.</p>
-     */
-    inline void SetBotRecommendationStatus(BotRecommendationStatus&& value) { m_botRecommendationStatus = std::move(value); }
-
-    /**
-     * <p>The status of the bot recommendation. If the status is Failed, then the
-     * reasons for the failure are listed in the failureReasons field.</p>
-     */
-    inline StopBotRecommendationResult& WithBotRecommendationStatus(const BotRecommendationStatus& value) { SetBotRecommendationStatus(value); return *this;}
-
-    /**
-     * <p>The status of the bot recommendation. If the status is Failed, then the
-     * reasons for the failure are listed in the failureReasons field.</p>
-     */
-    inline StopBotRecommendationResult& WithBotRecommendationStatus(BotRecommendationStatus&& value) { SetBotRecommendationStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the bot recommendation that is being stopped.</p>
      */
-    inline const Aws::String& GetBotRecommendationId() const{ return m_botRecommendationId; }
+    inline const Aws::String& GetBotRecommendationId() const { return m_botRecommendationId; }
+    template<typename BotRecommendationIdT = Aws::String>
+    void SetBotRecommendationId(BotRecommendationIdT&& value) { m_botRecommendationIdHasBeenSet = true; m_botRecommendationId = std::forward<BotRecommendationIdT>(value); }
+    template<typename BotRecommendationIdT = Aws::String>
+    StopBotRecommendationResult& WithBotRecommendationId(BotRecommendationIdT&& value) { SetBotRecommendationId(std::forward<BotRecommendationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the bot recommendation that is being stopped.</p>
-     */
-    inline void SetBotRecommendationId(const Aws::String& value) { m_botRecommendationId = value; }
-
-    /**
-     * <p>The unique identifier of the bot recommendation that is being stopped.</p>
-     */
-    inline void SetBotRecommendationId(Aws::String&& value) { m_botRecommendationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the bot recommendation that is being stopped.</p>
-     */
-    inline void SetBotRecommendationId(const char* value) { m_botRecommendationId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the bot recommendation that is being stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotRecommendationId(const Aws::String& value) { SetBotRecommendationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the bot recommendation that is being stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotRecommendationId(Aws::String&& value) { SetBotRecommendationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the bot recommendation that is being stopped.</p>
-     */
-    inline StopBotRecommendationResult& WithBotRecommendationId(const char* value) { SetBotRecommendationId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StopBotRecommendationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StopBotRecommendationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StopBotRecommendationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StopBotRecommendationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_botId;
+    bool m_botIdHasBeenSet = false;
 
     Aws::String m_botVersion;
+    bool m_botVersionHasBeenSet = false;
 
     Aws::String m_localeId;
+    bool m_localeIdHasBeenSet = false;
 
-    BotRecommendationStatus m_botRecommendationStatus;
+    BotRecommendationStatus m_botRecommendationStatus{BotRecommendationStatus::NOT_SET};
+    bool m_botRecommendationStatusHasBeenSet = false;
 
     Aws::String m_botRecommendationId;
+    bool m_botRecommendationIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

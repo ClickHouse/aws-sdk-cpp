@@ -20,21 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-EnvironmentInfoDescription::EnvironmentInfoDescription() : 
-    m_infoType(EnvironmentInfoType::NOT_SET),
-    m_infoTypeHasBeenSet(false),
-    m_ec2InstanceIdHasBeenSet(false),
-    m_sampleTimestampHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-EnvironmentInfoDescription::EnvironmentInfoDescription(const XmlNode& xmlNode) : 
-    m_infoType(EnvironmentInfoType::NOT_SET),
-    m_infoTypeHasBeenSet(false),
-    m_ec2InstanceIdHasBeenSet(false),
-    m_sampleTimestampHasBeenSet(false),
-    m_messageHasBeenSet(false)
+EnvironmentInfoDescription::EnvironmentInfoDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,7 +34,7 @@ EnvironmentInfoDescription& EnvironmentInfoDescription::operator =(const XmlNode
     XmlNode infoTypeNode = resultNode.FirstChild("InfoType");
     if(!infoTypeNode.IsNull())
     {
-      m_infoType = EnvironmentInfoTypeMapper::GetEnvironmentInfoTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(infoTypeNode.GetText()).c_str()).c_str());
+      m_infoType = EnvironmentInfoTypeMapper::GetEnvironmentInfoTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(infoTypeNode.GetText()).c_str()));
       m_infoTypeHasBeenSet = true;
     }
     XmlNode ec2InstanceIdNode = resultNode.FirstChild("Ec2InstanceId");
@@ -78,7 +64,7 @@ void EnvironmentInfoDescription::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_infoTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InfoType=" << EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType) << "&";
+      oStream << location << index << locationValue << ".InfoType=" << StringUtils::URLEncode(EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType)) << "&";
   }
 
   if(m_ec2InstanceIdHasBeenSet)
@@ -102,7 +88,7 @@ void EnvironmentInfoDescription::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_infoTypeHasBeenSet)
   {
-      oStream << location << ".InfoType=" << EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType) << "&";
+      oStream << location << ".InfoType=" << StringUtils::URLEncode(EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType)) << "&";
   }
   if(m_ec2InstanceIdHasBeenSet)
   {

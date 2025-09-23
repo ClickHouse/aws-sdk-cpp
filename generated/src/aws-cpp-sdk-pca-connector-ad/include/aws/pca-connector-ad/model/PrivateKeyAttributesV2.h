@@ -33,124 +33,55 @@ namespace Model
   class PrivateKeyAttributesV2
   {
   public:
-    AWS_PCACONNECTORAD_API PrivateKeyAttributesV2();
+    AWS_PCACONNECTORAD_API PrivateKeyAttributesV2() = default;
     AWS_PCACONNECTORAD_API PrivateKeyAttributesV2(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API PrivateKeyAttributesV2& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines the cryptographic providers used to generate the private key.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCryptoProviders() const{ return m_cryptoProviders; }
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCryptoProviders() const { return m_cryptoProviders; }
     inline bool CryptoProvidersHasBeenSet() const { return m_cryptoProvidersHasBeenSet; }
+    template<typename CryptoProvidersT = Aws::Vector<Aws::String>>
+    void SetCryptoProviders(CryptoProvidersT&& value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders = std::forward<CryptoProvidersT>(value); }
+    template<typename CryptoProvidersT = Aws::Vector<Aws::String>>
+    PrivateKeyAttributesV2& WithCryptoProviders(CryptoProvidersT&& value) { SetCryptoProviders(std::forward<CryptoProvidersT>(value)); return *this;}
+    template<typename CryptoProvidersT = Aws::String>
+    PrivateKeyAttributesV2& AddCryptoProviders(CryptoProvidersT&& value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders.emplace_back(std::forward<CryptoProvidersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline void SetCryptoProviders(const Aws::Vector<Aws::String>& value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders = value; }
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline void SetCryptoProviders(Aws::Vector<Aws::String>&& value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders = std::move(value); }
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline PrivateKeyAttributesV2& WithCryptoProviders(const Aws::Vector<Aws::String>& value) { SetCryptoProviders(value); return *this;}
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline PrivateKeyAttributesV2& WithCryptoProviders(Aws::Vector<Aws::String>&& value) { SetCryptoProviders(std::move(value)); return *this;}
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline PrivateKeyAttributesV2& AddCryptoProviders(const Aws::String& value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders.push_back(value); return *this; }
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline PrivateKeyAttributesV2& AddCryptoProviders(Aws::String&& value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Defines the cryptographic providers used to generate the private key.</p>
-     */
-    inline PrivateKeyAttributesV2& AddCryptoProviders(const char* value) { m_cryptoProvidersHasBeenSet = true; m_cryptoProviders.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Defines the purpose of the private key. Set it to "KEY_EXCHANGE" or
      * "SIGNATURE" value.</p>
      */
-    inline const KeySpec& GetKeySpec() const{ return m_keySpec; }
-
-    /**
-     * <p>Defines the purpose of the private key. Set it to "KEY_EXCHANGE" or
-     * "SIGNATURE" value.</p>
-     */
+    inline KeySpec GetKeySpec() const { return m_keySpec; }
     inline bool KeySpecHasBeenSet() const { return m_keySpecHasBeenSet; }
+    inline void SetKeySpec(KeySpec value) { m_keySpecHasBeenSet = true; m_keySpec = value; }
+    inline PrivateKeyAttributesV2& WithKeySpec(KeySpec value) { SetKeySpec(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Defines the purpose of the private key. Set it to "KEY_EXCHANGE" or
-     * "SIGNATURE" value.</p>
-     */
-    inline void SetKeySpec(const KeySpec& value) { m_keySpecHasBeenSet = true; m_keySpec = value; }
-
-    /**
-     * <p>Defines the purpose of the private key. Set it to "KEY_EXCHANGE" or
-     * "SIGNATURE" value.</p>
-     */
-    inline void SetKeySpec(KeySpec&& value) { m_keySpecHasBeenSet = true; m_keySpec = std::move(value); }
-
-    /**
-     * <p>Defines the purpose of the private key. Set it to "KEY_EXCHANGE" or
-     * "SIGNATURE" value.</p>
-     */
-    inline PrivateKeyAttributesV2& WithKeySpec(const KeySpec& value) { SetKeySpec(value); return *this;}
-
-    /**
-     * <p>Defines the purpose of the private key. Set it to "KEY_EXCHANGE" or
-     * "SIGNATURE" value.</p>
-     */
-    inline PrivateKeyAttributesV2& WithKeySpec(KeySpec&& value) { SetKeySpec(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Set the minimum key length of the private key.</p>
      */
-    inline int GetMinimalKeyLength() const{ return m_minimalKeyLength; }
-
-    /**
-     * <p>Set the minimum key length of the private key.</p>
-     */
+    inline int GetMinimalKeyLength() const { return m_minimalKeyLength; }
     inline bool MinimalKeyLengthHasBeenSet() const { return m_minimalKeyLengthHasBeenSet; }
-
-    /**
-     * <p>Set the minimum key length of the private key.</p>
-     */
     inline void SetMinimalKeyLength(int value) { m_minimalKeyLengthHasBeenSet = true; m_minimalKeyLength = value; }
-
-    /**
-     * <p>Set the minimum key length of the private key.</p>
-     */
     inline PrivateKeyAttributesV2& WithMinimalKeyLength(int value) { SetMinimalKeyLength(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_cryptoProviders;
     bool m_cryptoProvidersHasBeenSet = false;
 
-    KeySpec m_keySpec;
+    KeySpec m_keySpec{KeySpec::NOT_SET};
     bool m_keySpecHasBeenSet = false;
 
-    int m_minimalKeyLength;
+    int m_minimalKeyLength{0};
     bool m_minimalKeyLengthHasBeenSet = false;
   };
 

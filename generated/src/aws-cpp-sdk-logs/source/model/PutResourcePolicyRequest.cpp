@@ -12,12 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutResourcePolicyRequest::PutResourcePolicyRequest() : 
-    m_policyNameHasBeenSet(false),
-    m_policyDocumentHasBeenSet(false)
-{
-}
-
 Aws::String PutResourcePolicyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,18 @@ Aws::String PutResourcePolicyRequest::SerializePayload() const
   if(m_policyDocumentHasBeenSet)
   {
    payload.WithString("policyDocument", m_policyDocument);
+
+  }
+
+  if(m_resourceArnHasBeenSet)
+  {
+   payload.WithString("resourceArn", m_resourceArn);
+
+  }
+
+  if(m_expectedRevisionIdHasBeenSet)
+  {
+   payload.WithString("expectedRevisionId", m_expectedRevisionId);
 
   }
 

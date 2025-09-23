@@ -18,19 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-SourceConnectionDetail::SourceConnectionDetail() : 
-    m_type(SourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_connectionParametersHasBeenSet(false),
-    m_lastSyncHasBeenSet(false)
-{
-}
-
-SourceConnectionDetail::SourceConnectionDetail(JsonView jsonValue) : 
-    m_type(SourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_connectionParametersHasBeenSet(false),
-    m_lastSyncHasBeenSet(false)
+SourceConnectionDetail::SourceConnectionDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ SourceConnectionDetail& SourceConnectionDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = SourceTypeMapper::GetSourceTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionParameters"))
   {
     m_connectionParameters = jsonValue.GetObject("ConnectionParameters");
-
     m_connectionParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastSync"))
   {
     m_lastSync = jsonValue.GetObject("LastSync");
-
     m_lastSyncHasBeenSet = true;
   }
-
   return *this;
 }
 

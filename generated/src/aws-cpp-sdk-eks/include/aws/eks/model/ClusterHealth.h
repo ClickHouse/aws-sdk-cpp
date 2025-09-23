@@ -25,69 +25,33 @@ namespace Model
 {
 
   /**
-   * <p>An object representing the health of your local Amazon EKS cluster on an
-   * Amazon Web Services Outpost. You can't use this API with an Amazon EKS cluster
-   * on the Amazon Web Services cloud. </p><p><h3>See Also:</h3>   <a
+   * <p>An object representing the health of your Amazon EKS cluster.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ClusterHealth">AWS
    * API Reference</a></p>
    */
   class ClusterHealth
   {
   public:
-    AWS_EKS_API ClusterHealth();
+    AWS_EKS_API ClusterHealth() = default;
     AWS_EKS_API ClusterHealth(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API ClusterHealth& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
+     * <p>An object representing the health issues of your Amazon EKS cluster.</p>
      */
-    inline const Aws::Vector<ClusterIssue>& GetIssues() const{ return m_issues; }
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
+    inline const Aws::Vector<ClusterIssue>& GetIssues() const { return m_issues; }
     inline bool IssuesHasBeenSet() const { return m_issuesHasBeenSet; }
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
-    inline void SetIssues(const Aws::Vector<ClusterIssue>& value) { m_issuesHasBeenSet = true; m_issues = value; }
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
-    inline void SetIssues(Aws::Vector<ClusterIssue>&& value) { m_issuesHasBeenSet = true; m_issues = std::move(value); }
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
-    inline ClusterHealth& WithIssues(const Aws::Vector<ClusterIssue>& value) { SetIssues(value); return *this;}
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
-    inline ClusterHealth& WithIssues(Aws::Vector<ClusterIssue>&& value) { SetIssues(std::move(value)); return *this;}
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
-    inline ClusterHealth& AddIssues(const ClusterIssue& value) { m_issuesHasBeenSet = true; m_issues.push_back(value); return *this; }
-
-    /**
-     * <p>An object representing the health issues of your local Amazon EKS cluster on
-     * an Amazon Web Services Outpost.</p>
-     */
-    inline ClusterHealth& AddIssues(ClusterIssue&& value) { m_issuesHasBeenSet = true; m_issues.push_back(std::move(value)); return *this; }
-
+    template<typename IssuesT = Aws::Vector<ClusterIssue>>
+    void SetIssues(IssuesT&& value) { m_issuesHasBeenSet = true; m_issues = std::forward<IssuesT>(value); }
+    template<typename IssuesT = Aws::Vector<ClusterIssue>>
+    ClusterHealth& WithIssues(IssuesT&& value) { SetIssues(std::forward<IssuesT>(value)); return *this;}
+    template<typename IssuesT = ClusterIssue>
+    ClusterHealth& AddIssues(IssuesT&& value) { m_issuesHasBeenSet = true; m_issues.emplace_back(std::forward<IssuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<ClusterIssue> m_issues;

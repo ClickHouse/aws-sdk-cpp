@@ -22,7 +22,7 @@ namespace Model
   class ListDataIngestionJobsRequest : public LookoutEquipmentRequest
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API ListDataIngestionJobsRequest();
+    AWS_LOOKOUTEQUIPMENT_API ListDataIngestionJobsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,147 +35,50 @@ namespace Model
     AWS_LOOKOUTEQUIPMENT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the dataset being used for the data ingestion job. </p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
-
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
     inline bool DatasetNameHasBeenSet() const { return m_datasetNameHasBeenSet; }
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    ListDataIngestionJobsRequest& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetNameHasBeenSet = true; m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetNameHasBeenSet = true; m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset being used for the data ingestion job. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An opaque pagination token indicating where to continue the listing of data
      * ingestion jobs. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDataIngestionJobsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An opaque pagination token indicating where to continue the listing of data
-     * ingestion jobs. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the maximum number of data ingestion jobs to list. </p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p> Specifies the maximum number of data ingestion jobs to list. </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p> Specifies the maximum number of data ingestion jobs to list. </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p> Specifies the maximum number of data ingestion jobs to list. </p>
-     */
     inline ListDataIngestionJobsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates the status of the data ingestion job. </p>
      */
-    inline const IngestionJobStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
+    inline IngestionJobStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline void SetStatus(const IngestionJobStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline void SetStatus(IngestionJobStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithStatus(const IngestionJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates the status of the data ingestion job. </p>
-     */
-    inline ListDataIngestionJobsRequest& WithStatus(IngestionJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(IngestionJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListDataIngestionJobsRequest& WithStatus(IngestionJobStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetName;
@@ -184,10 +87,10 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
-    IngestionJobStatus m_status;
+    IngestionJobStatus m_status{IngestionJobStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

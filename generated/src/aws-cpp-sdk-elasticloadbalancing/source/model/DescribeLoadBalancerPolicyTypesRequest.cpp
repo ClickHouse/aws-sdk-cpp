@@ -10,23 +10,25 @@
 using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils;
 
-DescribeLoadBalancerPolicyTypesRequest::DescribeLoadBalancerPolicyTypesRequest() : 
-    m_policyTypeNamesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeLoadBalancerPolicyTypesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeLoadBalancerPolicyTypes&";
   if(m_policyTypeNamesHasBeenSet)
   {
-    unsigned policyTypeNamesCount = 1;
-    for(auto& item : m_policyTypeNames)
+    if (m_policyTypeNames.empty())
     {
-      ss << "PolicyTypeNames.member." << policyTypeNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyTypeNamesCount++;
+      ss << "PolicyTypeNames=&";
+    }
+    else
+    {
+      unsigned policyTypeNamesCount = 1;
+      for(auto& item : m_policyTypeNames)
+      {
+        ss << "PolicyTypeNames.member." << policyTypeNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyTypeNamesCount++;
+      }
     }
   }
 

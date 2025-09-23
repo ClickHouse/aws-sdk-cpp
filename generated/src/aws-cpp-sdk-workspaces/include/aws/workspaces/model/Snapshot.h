@@ -31,45 +31,26 @@ namespace Model
   class Snapshot
   {
   public:
-    AWS_WORKSPACES_API Snapshot();
+    AWS_WORKSPACES_API Snapshot() = default;
     AWS_WORKSPACES_API Snapshot(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Snapshot& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time when the snapshot was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetSnapshotTime() const{ return m_snapshotTime; }
-
-    /**
-     * <p>The time when the snapshot was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSnapshotTime() const { return m_snapshotTime; }
     inline bool SnapshotTimeHasBeenSet() const { return m_snapshotTimeHasBeenSet; }
-
-    /**
-     * <p>The time when the snapshot was created.</p>
-     */
-    inline void SetSnapshotTime(const Aws::Utils::DateTime& value) { m_snapshotTimeHasBeenSet = true; m_snapshotTime = value; }
-
-    /**
-     * <p>The time when the snapshot was created.</p>
-     */
-    inline void SetSnapshotTime(Aws::Utils::DateTime&& value) { m_snapshotTimeHasBeenSet = true; m_snapshotTime = std::move(value); }
-
-    /**
-     * <p>The time when the snapshot was created.</p>
-     */
-    inline Snapshot& WithSnapshotTime(const Aws::Utils::DateTime& value) { SetSnapshotTime(value); return *this;}
-
-    /**
-     * <p>The time when the snapshot was created.</p>
-     */
-    inline Snapshot& WithSnapshotTime(Aws::Utils::DateTime&& value) { SetSnapshotTime(std::move(value)); return *this;}
-
+    template<typename SnapshotTimeT = Aws::Utils::DateTime>
+    void SetSnapshotTime(SnapshotTimeT&& value) { m_snapshotTimeHasBeenSet = true; m_snapshotTime = std::forward<SnapshotTimeT>(value); }
+    template<typename SnapshotTimeT = Aws::Utils::DateTime>
+    Snapshot& WithSnapshotTime(SnapshotTimeT&& value) { SetSnapshotTime(std::forward<SnapshotTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_snapshotTime;
+    Aws::Utils::DateTime m_snapshotTime{};
     bool m_snapshotTimeHasBeenSet = false;
   };
 

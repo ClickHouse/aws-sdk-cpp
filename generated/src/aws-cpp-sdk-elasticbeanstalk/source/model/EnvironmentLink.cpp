@@ -20,15 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-EnvironmentLink::EnvironmentLink() : 
-    m_linkNameHasBeenSet(false),
-    m_environmentNameHasBeenSet(false)
-{
-}
-
-EnvironmentLink::EnvironmentLink(const XmlNode& xmlNode) : 
-    m_linkNameHasBeenSet(false),
-    m_environmentNameHasBeenSet(false)
+EnvironmentLink::EnvironmentLink(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

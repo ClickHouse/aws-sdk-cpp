@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ReservedInstancesConfiguration::ReservedInstancesConfiguration() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_platformHasBeenSet(false),
-    m_scope(Scope::NOT_SET),
-    m_scopeHasBeenSet(false)
-{
-}
-
-ReservedInstancesConfiguration::ReservedInstancesConfiguration(const XmlNode& xmlNode) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_platformHasBeenSet(false),
-    m_scope(Scope::NOT_SET),
-    m_scopeHasBeenSet(false)
+ReservedInstancesConfiguration::ReservedInstancesConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +46,7 @@ ReservedInstancesConfiguration& ReservedInstancesConfiguration::operator =(const
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode platformNode = resultNode.FirstChild("platform");
@@ -78,8 +58,14 @@ ReservedInstancesConfiguration& ReservedInstancesConfiguration::operator =(const
     XmlNode scopeNode = resultNode.FirstChild("scope");
     if(!scopeNode.IsNull())
     {
-      m_scope = ScopeMapper::GetScopeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scopeNode.GetText()).c_str()).c_str());
+      m_scope = ScopeMapper::GetScopeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scopeNode.GetText()).c_str()));
       m_scopeHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("availabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
     }
   }
 
@@ -100,7 +86,7 @@ void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const
 
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_platformHasBeenSet)
@@ -110,7 +96,12 @@ void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const
 
   if(m_scopeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
+      oStream << location << index << locationValue << ".Scope=" << StringUtils::URLEncode(ScopeMapper::GetNameForScope(m_scope)) << "&";
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 
 }
@@ -127,7 +118,7 @@ void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const
   }
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_platformHasBeenSet)
   {
@@ -135,7 +126,11 @@ void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const
   }
   if(m_scopeHasBeenSet)
   {
-      oStream << location << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
+      oStream << location << ".Scope=" << StringUtils::URLEncode(ScopeMapper::GetNameForScope(m_scope)) << "&";
+  }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 }
 

@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SectionLayoutConfiguration::SectionLayoutConfiguration() : 
-    m_freeFormLayoutHasBeenSet(false)
-{
-}
-
-SectionLayoutConfiguration::SectionLayoutConfiguration(JsonView jsonValue) : 
-    m_freeFormLayoutHasBeenSet(false)
+SectionLayoutConfiguration::SectionLayoutConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ SectionLayoutConfiguration& SectionLayoutConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("FreeFormLayout"))
   {
     m_freeFormLayout = jsonValue.GetObject("FreeFormLayout");
-
     m_freeFormLayoutHasBeenSet = true;
   }
-
   return *this;
 }
 

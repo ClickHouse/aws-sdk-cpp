@@ -32,42 +32,23 @@ namespace Model
   class OutputConfig
   {
   public:
-    AWS_LOOKOUTFORVISION_API OutputConfig();
+    AWS_LOOKOUTFORVISION_API OutputConfig() = default;
     AWS_LOOKOUTFORVISION_API OutputConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API OutputConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 location for the output.</p>
      */
-    inline const S3Location& GetS3Location() const{ return m_s3Location; }
-
-    /**
-     * <p>The S3 location for the output.</p>
-     */
+    inline const S3Location& GetS3Location() const { return m_s3Location; }
     inline bool S3LocationHasBeenSet() const { return m_s3LocationHasBeenSet; }
-
-    /**
-     * <p>The S3 location for the output.</p>
-     */
-    inline void SetS3Location(const S3Location& value) { m_s3LocationHasBeenSet = true; m_s3Location = value; }
-
-    /**
-     * <p>The S3 location for the output.</p>
-     */
-    inline void SetS3Location(S3Location&& value) { m_s3LocationHasBeenSet = true; m_s3Location = std::move(value); }
-
-    /**
-     * <p>The S3 location for the output.</p>
-     */
-    inline OutputConfig& WithS3Location(const S3Location& value) { SetS3Location(value); return *this;}
-
-    /**
-     * <p>The S3 location for the output.</p>
-     */
-    inline OutputConfig& WithS3Location(S3Location&& value) { SetS3Location(std::move(value)); return *this;}
-
+    template<typename S3LocationT = S3Location>
+    void SetS3Location(S3LocationT&& value) { m_s3LocationHasBeenSet = true; m_s3Location = std::forward<S3LocationT>(value); }
+    template<typename S3LocationT = S3Location>
+    OutputConfig& WithS3Location(S3LocationT&& value) { SetS3Location(std::forward<S3LocationT>(value)); return *this;}
+    ///@}
   private:
 
     S3Location m_s3Location;

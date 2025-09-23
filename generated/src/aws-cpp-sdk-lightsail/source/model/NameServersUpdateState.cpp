@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-NameServersUpdateState::NameServersUpdateState() : 
-    m_code(NameServersUpdateStateCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-NameServersUpdateState::NameServersUpdateState(JsonView jsonValue) : 
-    m_code(NameServersUpdateStateCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+NameServersUpdateState::NameServersUpdateState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ NameServersUpdateState& NameServersUpdateState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("code"))
   {
     m_code = NameServersUpdateStateCodeMapper::GetNameServersUpdateStateCodeForName(jsonValue.GetString("code"));
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

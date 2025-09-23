@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AssociationStatus::AssociationStatus() : 
-    m_code(AssociationStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-AssociationStatus::AssociationStatus(const XmlNode& xmlNode) : 
-    m_code(AssociationStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+AssociationStatus::AssociationStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ AssociationStatus& AssociationStatus::operator =(const XmlNode& xmlNode)
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = AssociationStatusCodeMapper::GetAssociationStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = AssociationStatusCodeMapper::GetAssociationStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void AssociationStatus::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << AssociationStatusCodeMapper::GetNameForAssociationStatusCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(AssociationStatusCodeMapper::GetNameForAssociationStatusCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void AssociationStatus::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << AssociationStatusCodeMapper::GetNameForAssociationStatusCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(AssociationStatusCodeMapper::GetNameForAssociationStatusCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

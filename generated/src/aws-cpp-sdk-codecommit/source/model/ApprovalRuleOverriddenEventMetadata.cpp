@@ -18,17 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-ApprovalRuleOverriddenEventMetadata::ApprovalRuleOverriddenEventMetadata() : 
-    m_revisionIdHasBeenSet(false),
-    m_overrideStatus(OverrideStatus::NOT_SET),
-    m_overrideStatusHasBeenSet(false)
-{
-}
-
-ApprovalRuleOverriddenEventMetadata::ApprovalRuleOverriddenEventMetadata(JsonView jsonValue) : 
-    m_revisionIdHasBeenSet(false),
-    m_overrideStatus(OverrideStatus::NOT_SET),
-    m_overrideStatusHasBeenSet(false)
+ApprovalRuleOverriddenEventMetadata::ApprovalRuleOverriddenEventMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ApprovalRuleOverriddenEventMetadata& ApprovalRuleOverriddenEventMetadata::operat
   if(jsonValue.ValueExists("revisionId"))
   {
     m_revisionId = jsonValue.GetString("revisionId");
-
     m_revisionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("overrideStatus"))
   {
     m_overrideStatus = OverrideStatusMapper::GetOverrideStatusForName(jsonValue.GetString("overrideStatus"));
-
     m_overrideStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

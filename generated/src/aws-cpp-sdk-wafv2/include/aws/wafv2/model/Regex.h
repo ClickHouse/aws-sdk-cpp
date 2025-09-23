@@ -24,60 +24,32 @@ namespace Model
 {
 
   /**
-   * <p>A single regular expression. This is used in a
-   * <a>RegexPatternSet</a>.</p><p><h3>See Also:</h3>   <a
+   * <p>A single regular expression. This is used in a <a>RegexPatternSet</a> and
+   * also in the configuration for the Amazon Web Services Managed Rules rule group
+   * <code>AWSManagedRulesAntiDDoSRuleSet</code>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/wafv2-2019-07-29/Regex">AWS API
    * Reference</a></p>
    */
   class Regex
   {
   public:
-    AWS_WAFV2_API Regex();
+    AWS_WAFV2_API Regex() = default;
     AWS_WAFV2_API Regex(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Regex& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The string representing the regular expression.</p>
      */
-    inline const Aws::String& GetRegexString() const{ return m_regexString; }
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
+    inline const Aws::String& GetRegexString() const { return m_regexString; }
     inline bool RegexStringHasBeenSet() const { return m_regexStringHasBeenSet; }
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
-    inline void SetRegexString(const Aws::String& value) { m_regexStringHasBeenSet = true; m_regexString = value; }
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
-    inline void SetRegexString(Aws::String&& value) { m_regexStringHasBeenSet = true; m_regexString = std::move(value); }
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
-    inline void SetRegexString(const char* value) { m_regexStringHasBeenSet = true; m_regexString.assign(value); }
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
-    inline Regex& WithRegexString(const Aws::String& value) { SetRegexString(value); return *this;}
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
-    inline Regex& WithRegexString(Aws::String&& value) { SetRegexString(std::move(value)); return *this;}
-
-    /**
-     * <p>The string representing the regular expression.</p>
-     */
-    inline Regex& WithRegexString(const char* value) { SetRegexString(value); return *this;}
-
+    template<typename RegexStringT = Aws::String>
+    void SetRegexString(RegexStringT&& value) { m_regexStringHasBeenSet = true; m_regexString = std::forward<RegexStringT>(value); }
+    template<typename RegexStringT = Aws::String>
+    Regex& WithRegexString(RegexStringT&& value) { SetRegexString(std::forward<RegexStringT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regexString;

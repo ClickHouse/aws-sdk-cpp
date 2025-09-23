@@ -28,101 +28,49 @@ namespace Model
   class DeleteDatastoreResult
   {
   public:
-    AWS_MEDICALIMAGING_API DeleteDatastoreResult();
+    AWS_MEDICALIMAGING_API DeleteDatastoreResult() = default;
     AWS_MEDICALIMAGING_API DeleteDatastoreResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDICALIMAGING_API DeleteDatastoreResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The data store identifier.</p>
      */
-    inline const Aws::String& GetDatastoreId() const{ return m_datastoreId; }
+    inline const Aws::String& GetDatastoreId() const { return m_datastoreId; }
+    template<typename DatastoreIdT = Aws::String>
+    void SetDatastoreId(DatastoreIdT&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::forward<DatastoreIdT>(value); }
+    template<typename DatastoreIdT = Aws::String>
+    DeleteDatastoreResult& WithDatastoreId(DatastoreIdT&& value) { SetDatastoreId(std::forward<DatastoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline void SetDatastoreId(const Aws::String& value) { m_datastoreId = value; }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline void SetDatastoreId(Aws::String&& value) { m_datastoreId = std::move(value); }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline void SetDatastoreId(const char* value) { m_datastoreId.assign(value); }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline DeleteDatastoreResult& WithDatastoreId(const Aws::String& value) { SetDatastoreId(value); return *this;}
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline DeleteDatastoreResult& WithDatastoreId(Aws::String&& value) { SetDatastoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline DeleteDatastoreResult& WithDatastoreId(const char* value) { SetDatastoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data store status.</p>
      */
-    inline const DatastoreStatus& GetDatastoreStatus() const{ return m_datastoreStatus; }
+    inline DatastoreStatus GetDatastoreStatus() const { return m_datastoreStatus; }
+    inline void SetDatastoreStatus(DatastoreStatus value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = value; }
+    inline DeleteDatastoreResult& WithDatastoreStatus(DatastoreStatus value) { SetDatastoreStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data store status.</p>
-     */
-    inline void SetDatastoreStatus(const DatastoreStatus& value) { m_datastoreStatus = value; }
-
-    /**
-     * <p>The data store status.</p>
-     */
-    inline void SetDatastoreStatus(DatastoreStatus&& value) { m_datastoreStatus = std::move(value); }
-
-    /**
-     * <p>The data store status.</p>
-     */
-    inline DeleteDatastoreResult& WithDatastoreStatus(const DatastoreStatus& value) { SetDatastoreStatus(value); return *this;}
-
-    /**
-     * <p>The data store status.</p>
-     */
-    inline DeleteDatastoreResult& WithDatastoreStatus(DatastoreStatus&& value) { SetDatastoreStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteDatastoreResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteDatastoreResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteDatastoreResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteDatastoreResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datastoreId;
+    bool m_datastoreIdHasBeenSet = false;
 
-    DatastoreStatus m_datastoreStatus;
+    DatastoreStatus m_datastoreStatus{DatastoreStatus::NOT_SET};
+    bool m_datastoreStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

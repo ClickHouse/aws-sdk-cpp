@@ -20,33 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-NodeGroupMemberUpdateStatus::NodeGroupMemberUpdateStatus() : 
-    m_cacheClusterIdHasBeenSet(false),
-    m_cacheNodeIdHasBeenSet(false),
-    m_nodeUpdateStatus(NodeUpdateStatus::NOT_SET),
-    m_nodeUpdateStatusHasBeenSet(false),
-    m_nodeDeletionDateHasBeenSet(false),
-    m_nodeUpdateStartDateHasBeenSet(false),
-    m_nodeUpdateEndDateHasBeenSet(false),
-    m_nodeUpdateInitiatedBy(NodeUpdateInitiatedBy::NOT_SET),
-    m_nodeUpdateInitiatedByHasBeenSet(false),
-    m_nodeUpdateInitiatedDateHasBeenSet(false),
-    m_nodeUpdateStatusModifiedDateHasBeenSet(false)
-{
-}
-
-NodeGroupMemberUpdateStatus::NodeGroupMemberUpdateStatus(const XmlNode& xmlNode) : 
-    m_cacheClusterIdHasBeenSet(false),
-    m_cacheNodeIdHasBeenSet(false),
-    m_nodeUpdateStatus(NodeUpdateStatus::NOT_SET),
-    m_nodeUpdateStatusHasBeenSet(false),
-    m_nodeDeletionDateHasBeenSet(false),
-    m_nodeUpdateStartDateHasBeenSet(false),
-    m_nodeUpdateEndDateHasBeenSet(false),
-    m_nodeUpdateInitiatedBy(NodeUpdateInitiatedBy::NOT_SET),
-    m_nodeUpdateInitiatedByHasBeenSet(false),
-    m_nodeUpdateInitiatedDateHasBeenSet(false),
-    m_nodeUpdateStatusModifiedDateHasBeenSet(false)
+NodeGroupMemberUpdateStatus::NodeGroupMemberUpdateStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +46,7 @@ NodeGroupMemberUpdateStatus& NodeGroupMemberUpdateStatus::operator =(const XmlNo
     XmlNode nodeUpdateStatusNode = resultNode.FirstChild("NodeUpdateStatus");
     if(!nodeUpdateStatusNode.IsNull())
     {
-      m_nodeUpdateStatus = NodeUpdateStatusMapper::GetNodeUpdateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nodeUpdateStatusNode.GetText()).c_str()).c_str());
+      m_nodeUpdateStatus = NodeUpdateStatusMapper::GetNodeUpdateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nodeUpdateStatusNode.GetText()).c_str()));
       m_nodeUpdateStatusHasBeenSet = true;
     }
     XmlNode nodeDeletionDateNode = resultNode.FirstChild("NodeDeletionDate");
@@ -96,7 +70,7 @@ NodeGroupMemberUpdateStatus& NodeGroupMemberUpdateStatus::operator =(const XmlNo
     XmlNode nodeUpdateInitiatedByNode = resultNode.FirstChild("NodeUpdateInitiatedBy");
     if(!nodeUpdateInitiatedByNode.IsNull())
     {
-      m_nodeUpdateInitiatedBy = NodeUpdateInitiatedByMapper::GetNodeUpdateInitiatedByForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nodeUpdateInitiatedByNode.GetText()).c_str()).c_str());
+      m_nodeUpdateInitiatedBy = NodeUpdateInitiatedByMapper::GetNodeUpdateInitiatedByForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nodeUpdateInitiatedByNode.GetText()).c_str()));
       m_nodeUpdateInitiatedByHasBeenSet = true;
     }
     XmlNode nodeUpdateInitiatedDateNode = resultNode.FirstChild("NodeUpdateInitiatedDate");
@@ -130,7 +104,7 @@ void NodeGroupMemberUpdateStatus::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_nodeUpdateStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NodeUpdateStatus=" << NodeUpdateStatusMapper::GetNameForNodeUpdateStatus(m_nodeUpdateStatus) << "&";
+      oStream << location << index << locationValue << ".NodeUpdateStatus=" << StringUtils::URLEncode(NodeUpdateStatusMapper::GetNameForNodeUpdateStatus(m_nodeUpdateStatus)) << "&";
   }
 
   if(m_nodeDeletionDateHasBeenSet)
@@ -150,7 +124,7 @@ void NodeGroupMemberUpdateStatus::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_nodeUpdateInitiatedByHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NodeUpdateInitiatedBy=" << NodeUpdateInitiatedByMapper::GetNameForNodeUpdateInitiatedBy(m_nodeUpdateInitiatedBy) << "&";
+      oStream << location << index << locationValue << ".NodeUpdateInitiatedBy=" << StringUtils::URLEncode(NodeUpdateInitiatedByMapper::GetNameForNodeUpdateInitiatedBy(m_nodeUpdateInitiatedBy)) << "&";
   }
 
   if(m_nodeUpdateInitiatedDateHasBeenSet)
@@ -177,7 +151,7 @@ void NodeGroupMemberUpdateStatus::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_nodeUpdateStatusHasBeenSet)
   {
-      oStream << location << ".NodeUpdateStatus=" << NodeUpdateStatusMapper::GetNameForNodeUpdateStatus(m_nodeUpdateStatus) << "&";
+      oStream << location << ".NodeUpdateStatus=" << StringUtils::URLEncode(NodeUpdateStatusMapper::GetNameForNodeUpdateStatus(m_nodeUpdateStatus)) << "&";
   }
   if(m_nodeDeletionDateHasBeenSet)
   {
@@ -193,7 +167,7 @@ void NodeGroupMemberUpdateStatus::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_nodeUpdateInitiatedByHasBeenSet)
   {
-      oStream << location << ".NodeUpdateInitiatedBy=" << NodeUpdateInitiatedByMapper::GetNameForNodeUpdateInitiatedBy(m_nodeUpdateInitiatedBy) << "&";
+      oStream << location << ".NodeUpdateInitiatedBy=" << StringUtils::URLEncode(NodeUpdateInitiatedByMapper::GetNameForNodeUpdateInitiatedBy(m_nodeUpdateInitiatedBy)) << "&";
   }
   if(m_nodeUpdateInitiatedDateHasBeenSet)
   {

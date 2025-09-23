@@ -6,13 +6,21 @@
 #pragma once
 
 #include <aws/core/Core_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
-#include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/core/utils/DateTime.h>
+#include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/UUID.h>
 #include <aws/core/utils/logging/LogMacros.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/event-stream/event_stream.h>
 #include <cassert>
+
+#ifdef __MINGW32__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#pragma GCC diagnostic ignored "-Wuninitialized"
+#endif
 
 namespace Aws
 {
@@ -299,6 +307,36 @@ namespace Aws
                     return m_eventHeaderVariableLengthValue;
                 }
 
+                inline Aws::String ToString() const
+                {
+                    switch (m_eventHeaderType)
+                    {
+                        case EventHeaderType::BOOL_TRUE:
+                        case EventHeaderType::BOOL_FALSE:
+                            return Utils::StringUtils::to_string(GetEventHeaderValueAsBoolean());
+                        case EventHeaderType::BYTE:
+                            return Utils::StringUtils::to_string(GetEventHeaderValueAsByte());
+                        case EventHeaderType::INT16:
+                            return Utils::StringUtils::to_string(GetEventHeaderValueAsInt16());
+                        case EventHeaderType::INT32:
+                            return Utils::StringUtils::to_string(GetEventHeaderValueAsInt32());
+                        case EventHeaderType::INT64:
+                            return Utils::StringUtils::to_string(GetEventHeaderValueAsInt64());
+                        case EventHeaderType::BYTE_BUF:
+                            return Aws::String(reinterpret_cast<char*>(GetEventHeaderValueAsBytebuf().GetUnderlyingData()), GetEventHeaderValueAsBytebuf().GetLength());
+                        case EventHeaderType::STRING:
+                            return GetEventHeaderValueAsString();
+                        case EventHeaderType::TIMESTAMP:
+                            return Aws::Utils::DateTime(GetEventHeaderValueAsTimestamp()).ToGmtString(Aws::Utils::DateFormat::RFC822);
+                        case EventHeaderType::UUID:
+                            return GetEventHeaderValueAsUuid();
+                        case EventHeaderType::UNKNOWN:
+                        default:
+                            AWS_LOGSTREAM_ERROR(CLASS_TAG, "Cannot transform EventHeader value to string: type is unknown");
+                            return {};
+                    }
+                }
+
             private:
                 EventHeaderType m_eventHeaderType;
                 ByteBuffer m_eventHeaderVariableLengthValue;
@@ -318,3 +356,7 @@ namespace Aws
         }
     }
 }
+
+#ifdef __MINGW32__
+#pragma GCC diagnostic pop
+#endif

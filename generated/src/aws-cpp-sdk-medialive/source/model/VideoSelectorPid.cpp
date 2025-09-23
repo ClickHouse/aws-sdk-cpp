@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-VideoSelectorPid::VideoSelectorPid() : 
-    m_pid(0),
-    m_pidHasBeenSet(false)
-{
-}
-
-VideoSelectorPid::VideoSelectorPid(JsonView jsonValue) : 
-    m_pid(0),
-    m_pidHasBeenSet(false)
+VideoSelectorPid::VideoSelectorPid(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VideoSelectorPid& VideoSelectorPid::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("pid"))
   {
     m_pid = jsonValue.GetInteger("pid");
-
     m_pidHasBeenSet = true;
   }
-
   return *this;
 }
 

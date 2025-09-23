@@ -32,52 +32,23 @@ namespace Model
   class PutItemInput
   {
   public:
-    AWS_IOT_API PutItemInput();
+    AWS_IOT_API PutItemInput() = default;
     AWS_IOT_API PutItemInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API PutItemInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The table where the message data will be written.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
-    inline PutItemInput& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
-    inline PutItemInput& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The table where the message data will be written.</p>
-     */
-    inline PutItemInput& WithTableName(const char* value) { SetTableName(value); return *this;}
-
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    PutItemInput& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tableName;

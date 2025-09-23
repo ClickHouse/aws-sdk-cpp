@@ -29,106 +29,66 @@ namespace Model
   class GetBucketVersioningResult
   {
   public:
-    AWS_S3CONTROL_API GetBucketVersioningResult();
+    AWS_S3CONTROL_API GetBucketVersioningResult() = default;
     AWS_S3CONTROL_API GetBucketVersioningResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API GetBucketVersioningResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The versioning state of the S3 on Outposts bucket.</p>
      */
-    inline const BucketVersioningStatus& GetStatus() const{ return m_status; }
+    inline BucketVersioningStatus GetStatus() const { return m_status; }
+    inline void SetStatus(BucketVersioningStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetBucketVersioningResult& WithStatus(BucketVersioningStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The versioning state of the S3 on Outposts bucket.</p>
-     */
-    inline void SetStatus(const BucketVersioningStatus& value) { m_status = value; }
-
-    /**
-     * <p>The versioning state of the S3 on Outposts bucket.</p>
-     */
-    inline void SetStatus(BucketVersioningStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The versioning state of the S3 on Outposts bucket.</p>
-     */
-    inline GetBucketVersioningResult& WithStatus(const BucketVersioningStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The versioning state of the S3 on Outposts bucket.</p>
-     */
-    inline GetBucketVersioningResult& WithStatus(BucketVersioningStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether MFA delete is enabled in the bucket versioning
      * configuration. This element is returned only if the bucket has been configured
      * with MFA delete. If MFA delete has never been configured for the bucket, this
      * element is not returned.</p>
      */
-    inline const MFADeleteStatus& GetMFADelete() const{ return m_mFADelete; }
+    inline MFADeleteStatus GetMFADelete() const { return m_mFADelete; }
+    inline void SetMFADelete(MFADeleteStatus value) { m_mFADeleteHasBeenSet = true; m_mFADelete = value; }
+    inline GetBucketVersioningResult& WithMFADelete(MFADeleteStatus value) { SetMFADelete(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies whether MFA delete is enabled in the bucket versioning
-     * configuration. This element is returned only if the bucket has been configured
-     * with MFA delete. If MFA delete has never been configured for the bucket, this
-     * element is not returned.</p>
+     * AWS Request Id value
      */
-    inline void SetMFADelete(const MFADeleteStatus& value) { m_mFADelete = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetBucketVersioningResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies whether MFA delete is enabled in the bucket versioning
-     * configuration. This element is returned only if the bucket has been configured
-     * with MFA delete. If MFA delete has never been configured for the bucket, this
-     * element is not returned.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetMFADelete(MFADeleteStatus&& value) { m_mFADelete = std::move(value); }
-
-    /**
-     * <p>Specifies whether MFA delete is enabled in the bucket versioning
-     * configuration. This element is returned only if the bucket has been configured
-     * with MFA delete. If MFA delete has never been configured for the bucket, this
-     * element is not returned.</p>
-     */
-    inline GetBucketVersioningResult& WithMFADelete(const MFADeleteStatus& value) { SetMFADelete(value); return *this;}
-
-    /**
-     * <p>Specifies whether MFA delete is enabled in the bucket versioning
-     * configuration. This element is returned only if the bucket has been configured
-     * with MFA delete. If MFA delete has never been configured for the bucket, this
-     * element is not returned.</p>
-     */
-    inline GetBucketVersioningResult& WithMFADelete(MFADeleteStatus&& value) { SetMFADelete(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetBucketVersioningResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetBucketVersioningResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetBucketVersioningResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    GetBucketVersioningResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
-    BucketVersioningStatus m_status;
+    BucketVersioningStatus m_status{BucketVersioningStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    MFADeleteStatus m_mFADelete;
+    MFADeleteStatus m_mFADelete{MFADeleteStatus::NOT_SET};
+    bool m_mFADeleteHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

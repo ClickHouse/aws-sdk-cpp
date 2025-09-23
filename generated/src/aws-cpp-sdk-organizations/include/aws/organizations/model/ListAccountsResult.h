@@ -29,47 +29,32 @@ namespace Model
   class ListAccountsResult
   {
   public:
-    AWS_ORGANIZATIONS_API ListAccountsResult();
+    AWS_ORGANIZATIONS_API ListAccountsResult() = default;
     AWS_ORGANIZATIONS_API ListAccountsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ORGANIZATIONS_API ListAccountsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>A list of objects in the organization.</p>
+     * <p>A list of objects in the organization.</p>  <p>The
+     * <code>Status</code> parameter in the API response will be retired on September
+     * 9, 2026. Although both the account <code>State</code> and account
+     * <code>Status</code> parameters are currently available in the Organizations APIs
+     * (<code>DescribeAccount</code>, <code>ListAccounts</code>,
+     * <code>ListAccountsForParent</code>), we recommend that you update your scripts
+     * or other code to use the <code>State</code> parameter instead of
+     * <code>Status</code> before September 9, 2026.</p> 
      */
-    inline const Aws::Vector<Account>& GetAccounts() const{ return m_accounts; }
+    inline const Aws::Vector<Account>& GetAccounts() const { return m_accounts; }
+    template<typename AccountsT = Aws::Vector<Account>>
+    void SetAccounts(AccountsT&& value) { m_accountsHasBeenSet = true; m_accounts = std::forward<AccountsT>(value); }
+    template<typename AccountsT = Aws::Vector<Account>>
+    ListAccountsResult& WithAccounts(AccountsT&& value) { SetAccounts(std::forward<AccountsT>(value)); return *this;}
+    template<typename AccountsT = Account>
+    ListAccountsResult& AddAccounts(AccountsT&& value) { m_accountsHasBeenSet = true; m_accounts.emplace_back(std::forward<AccountsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of objects in the organization.</p>
-     */
-    inline void SetAccounts(const Aws::Vector<Account>& value) { m_accounts = value; }
-
-    /**
-     * <p>A list of objects in the organization.</p>
-     */
-    inline void SetAccounts(Aws::Vector<Account>&& value) { m_accounts = std::move(value); }
-
-    /**
-     * <p>A list of objects in the organization.</p>
-     */
-    inline ListAccountsResult& WithAccounts(const Aws::Vector<Account>& value) { SetAccounts(value); return *this;}
-
-    /**
-     * <p>A list of objects in the organization.</p>
-     */
-    inline ListAccountsResult& WithAccounts(Aws::Vector<Account>&& value) { SetAccounts(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of objects in the organization.</p>
-     */
-    inline ListAccountsResult& AddAccounts(const Account& value) { m_accounts.push_back(value); return *this; }
-
-    /**
-     * <p>A list of objects in the organization.</p>
-     */
-    inline ListAccountsResult& AddAccounts(Account&& value) { m_accounts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If present, indicates that more output is available than is included in the
      * current response. Use this value in the <code>NextToken</code> request parameter
@@ -77,91 +62,31 @@ namespace Model
      * should repeat this until the <code>NextToken</code> response element comes back
      * as <code>null</code>.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAccountsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListAccountsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListAccountsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListAccountsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAccountsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAccountsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAccountsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAccountsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Account> m_accounts;
+    bool m_accountsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

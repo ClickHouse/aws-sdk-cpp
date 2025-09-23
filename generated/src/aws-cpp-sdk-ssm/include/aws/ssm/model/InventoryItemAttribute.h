@@ -33,89 +33,39 @@ namespace Model
   class InventoryItemAttribute
   {
   public:
-    AWS_SSM_API InventoryItemAttribute();
+    AWS_SSM_API InventoryItemAttribute() = default;
     AWS_SSM_API InventoryItemAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API InventoryItemAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the inventory item attribute.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    InventoryItemAttribute& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
-    inline InventoryItemAttribute& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
-    inline InventoryItemAttribute& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the inventory item attribute.</p>
-     */
-    inline InventoryItemAttribute& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the inventory item attribute. </p>
      */
-    inline const InventoryAttributeDataType& GetDataType() const{ return m_dataType; }
-
-    /**
-     * <p>The data type of the inventory item attribute. </p>
-     */
+    inline InventoryAttributeDataType GetDataType() const { return m_dataType; }
     inline bool DataTypeHasBeenSet() const { return m_dataTypeHasBeenSet; }
-
-    /**
-     * <p>The data type of the inventory item attribute. </p>
-     */
-    inline void SetDataType(const InventoryAttributeDataType& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
-
-    /**
-     * <p>The data type of the inventory item attribute. </p>
-     */
-    inline void SetDataType(InventoryAttributeDataType&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
-
-    /**
-     * <p>The data type of the inventory item attribute. </p>
-     */
-    inline InventoryItemAttribute& WithDataType(const InventoryAttributeDataType& value) { SetDataType(value); return *this;}
-
-    /**
-     * <p>The data type of the inventory item attribute. </p>
-     */
-    inline InventoryItemAttribute& WithDataType(InventoryAttributeDataType&& value) { SetDataType(std::move(value)); return *this;}
-
+    inline void SetDataType(InventoryAttributeDataType value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
+    inline InventoryItemAttribute& WithDataType(InventoryAttributeDataType value) { SetDataType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    InventoryAttributeDataType m_dataType;
+    InventoryAttributeDataType m_dataType{InventoryAttributeDataType::NOT_SET};
     bool m_dataTypeHasBeenSet = false;
   };
 

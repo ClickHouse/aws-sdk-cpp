@@ -20,33 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-JobManifestGeneratorFilter::JobManifestGeneratorFilter() : 
-    m_eligibleForReplication(false),
-    m_eligibleForReplicationHasBeenSet(false),
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_objectReplicationStatusesHasBeenSet(false),
-    m_keyNameConstraintHasBeenSet(false),
-    m_objectSizeGreaterThanBytes(0),
-    m_objectSizeGreaterThanBytesHasBeenSet(false),
-    m_objectSizeLessThanBytes(0),
-    m_objectSizeLessThanBytesHasBeenSet(false),
-    m_matchAnyStorageClassHasBeenSet(false)
-{
-}
-
-JobManifestGeneratorFilter::JobManifestGeneratorFilter(const XmlNode& xmlNode) : 
-    m_eligibleForReplication(false),
-    m_eligibleForReplicationHasBeenSet(false),
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_objectReplicationStatusesHasBeenSet(false),
-    m_keyNameConstraintHasBeenSet(false),
-    m_objectSizeGreaterThanBytes(0),
-    m_objectSizeGreaterThanBytesHasBeenSet(false),
-    m_objectSizeLessThanBytes(0),
-    m_objectSizeLessThanBytesHasBeenSet(false),
-    m_matchAnyStorageClassHasBeenSet(false)
+JobManifestGeneratorFilter::JobManifestGeneratorFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -79,6 +53,7 @@ JobManifestGeneratorFilter& JobManifestGeneratorFilter::operator =(const XmlNode
     if(!objectReplicationStatusesNode.IsNull())
     {
       XmlNode objectReplicationStatusesMember = objectReplicationStatusesNode.FirstChild("member");
+      m_objectReplicationStatusesHasBeenSet = !objectReplicationStatusesMember.IsNull();
       while(!objectReplicationStatusesMember.IsNull())
       {
         m_objectReplicationStatuses.push_back(ReplicationStatusMapper::GetReplicationStatusForName(StringUtils::Trim(objectReplicationStatusesMember.GetText().c_str())));
@@ -109,6 +84,7 @@ JobManifestGeneratorFilter& JobManifestGeneratorFilter::operator =(const XmlNode
     if(!matchAnyStorageClassNode.IsNull())
     {
       XmlNode matchAnyStorageClassMember = matchAnyStorageClassNode.FirstChild("member");
+      m_matchAnyStorageClassHasBeenSet = !matchAnyStorageClassMember.IsNull();
       while(!matchAnyStorageClassMember.IsNull())
       {
         m_matchAnyStorageClass.push_back(S3StorageClassMapper::GetS3StorageClassForName(StringUtils::Trim(matchAnyStorageClassMember.GetText().c_str())));
@@ -116,6 +92,19 @@ JobManifestGeneratorFilter& JobManifestGeneratorFilter::operator =(const XmlNode
       }
 
       m_matchAnyStorageClassHasBeenSet = true;
+    }
+    XmlNode matchAnyObjectEncryptionNode = resultNode.FirstChild("MatchAnyObjectEncryption");
+    if(!matchAnyObjectEncryptionNode.IsNull())
+    {
+      XmlNode matchAnyObjectEncryptionMember = matchAnyObjectEncryptionNode.FirstChild("ObjectEncryption");
+      m_matchAnyObjectEncryptionHasBeenSet = !matchAnyObjectEncryptionMember.IsNull();
+      while(!matchAnyObjectEncryptionMember.IsNull())
+      {
+        m_matchAnyObjectEncryption.push_back(matchAnyObjectEncryptionMember);
+        matchAnyObjectEncryptionMember = matchAnyObjectEncryptionMember.NextNode("ObjectEncryption");
+      }
+
+      m_matchAnyObjectEncryptionHasBeenSet = true;
     }
   }
 
@@ -150,7 +139,7 @@ void JobManifestGeneratorFilter::AddToNode(XmlNode& parentNode) const
    XmlNode objectReplicationStatusesParentNode = parentNode.CreateChildElement("ObjectReplicationStatuses");
    for(const auto& item : m_objectReplicationStatuses)
    {
-     XmlNode objectReplicationStatusesNode = objectReplicationStatusesParentNode.CreateChildElement("ReplicationStatus");
+     XmlNode objectReplicationStatusesNode = objectReplicationStatusesParentNode.CreateChildElement("member");
      objectReplicationStatusesNode.SetText(ReplicationStatusMapper::GetNameForReplicationStatus(item));
    }
   }
@@ -182,8 +171,18 @@ void JobManifestGeneratorFilter::AddToNode(XmlNode& parentNode) const
    XmlNode matchAnyStorageClassParentNode = parentNode.CreateChildElement("MatchAnyStorageClass");
    for(const auto& item : m_matchAnyStorageClass)
    {
-     XmlNode matchAnyStorageClassNode = matchAnyStorageClassParentNode.CreateChildElement("S3StorageClass");
+     XmlNode matchAnyStorageClassNode = matchAnyStorageClassParentNode.CreateChildElement("member");
      matchAnyStorageClassNode.SetText(S3StorageClassMapper::GetNameForS3StorageClass(item));
+   }
+  }
+
+  if(m_matchAnyObjectEncryptionHasBeenSet)
+  {
+   XmlNode matchAnyObjectEncryptionParentNode = parentNode.CreateChildElement("MatchAnyObjectEncryption");
+   for(const auto& item : m_matchAnyObjectEncryption)
+   {
+     XmlNode matchAnyObjectEncryptionNode = matchAnyObjectEncryptionParentNode.CreateChildElement("ObjectEncryption");
+     item.AddToNode(matchAnyObjectEncryptionNode);
    }
   }
 

@@ -23,7 +23,7 @@ namespace Model
   class UpdateEventConfigurationsRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API UpdateEventConfigurationsRequest();
+    AWS_IOT_API UpdateEventConfigurationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,56 +34,20 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The new event configuration values.</p>
      */
-    inline const Aws::Map<EventType, Configuration>& GetEventConfigurations() const{ return m_eventConfigurations; }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
+    inline const Aws::Map<EventType, Configuration>& GetEventConfigurations() const { return m_eventConfigurations; }
     inline bool EventConfigurationsHasBeenSet() const { return m_eventConfigurationsHasBeenSet; }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline void SetEventConfigurations(const Aws::Map<EventType, Configuration>& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations = value; }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline void SetEventConfigurations(Aws::Map<EventType, Configuration>&& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations = std::move(value); }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline UpdateEventConfigurationsRequest& WithEventConfigurations(const Aws::Map<EventType, Configuration>& value) { SetEventConfigurations(value); return *this;}
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline UpdateEventConfigurationsRequest& WithEventConfigurations(Aws::Map<EventType, Configuration>&& value) { SetEventConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline UpdateEventConfigurationsRequest& AddEventConfigurations(const EventType& key, const Configuration& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations.emplace(key, value); return *this; }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline UpdateEventConfigurationsRequest& AddEventConfigurations(EventType&& key, const Configuration& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline UpdateEventConfigurationsRequest& AddEventConfigurations(const EventType& key, Configuration&& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The new event configuration values.</p>
-     */
-    inline UpdateEventConfigurationsRequest& AddEventConfigurations(EventType&& key, Configuration&& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations.emplace(std::move(key), std::move(value)); return *this; }
-
+    template<typename EventConfigurationsT = Aws::Map<EventType, Configuration>>
+    void SetEventConfigurations(EventConfigurationsT&& value) { m_eventConfigurationsHasBeenSet = true; m_eventConfigurations = std::forward<EventConfigurationsT>(value); }
+    template<typename EventConfigurationsT = Aws::Map<EventType, Configuration>>
+    UpdateEventConfigurationsRequest& WithEventConfigurations(EventConfigurationsT&& value) { SetEventConfigurations(std::forward<EventConfigurationsT>(value)); return *this;}
+    inline UpdateEventConfigurationsRequest& AddEventConfigurations(EventType key, Configuration value) {
+      m_eventConfigurationsHasBeenSet = true; m_eventConfigurations.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
     Aws::Map<EventType, Configuration> m_eventConfigurations;

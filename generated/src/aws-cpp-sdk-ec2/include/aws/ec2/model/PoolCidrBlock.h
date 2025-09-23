@@ -31,7 +31,7 @@ namespace Model
   class PoolCidrBlock
   {
   public:
-    AWS_EC2_API PoolCidrBlock();
+    AWS_EC2_API PoolCidrBlock() = default;
     AWS_EC2_API PoolCidrBlock(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PoolCidrBlock& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The CIDR block.</p>
      */
-    inline const Aws::String& GetCidr() const{ return m_cidr; }
-
-    /**
-     * <p>The CIDR block.</p>
-     */
+    inline const Aws::String& GetCidr() const { return m_cidr; }
     inline bool CidrHasBeenSet() const { return m_cidrHasBeenSet; }
-
-    /**
-     * <p>The CIDR block.</p>
-     */
-    inline void SetCidr(const Aws::String& value) { m_cidrHasBeenSet = true; m_cidr = value; }
-
-    /**
-     * <p>The CIDR block.</p>
-     */
-    inline void SetCidr(Aws::String&& value) { m_cidrHasBeenSet = true; m_cidr = std::move(value); }
-
-    /**
-     * <p>The CIDR block.</p>
-     */
-    inline void SetCidr(const char* value) { m_cidrHasBeenSet = true; m_cidr.assign(value); }
-
-    /**
-     * <p>The CIDR block.</p>
-     */
-    inline PoolCidrBlock& WithCidr(const Aws::String& value) { SetCidr(value); return *this;}
-
-    /**
-     * <p>The CIDR block.</p>
-     */
-    inline PoolCidrBlock& WithCidr(Aws::String&& value) { SetCidr(std::move(value)); return *this;}
-
-    /**
-     * <p>The CIDR block.</p>
-     */
-    inline PoolCidrBlock& WithCidr(const char* value) { SetCidr(value); return *this;}
-
+    template<typename CidrT = Aws::String>
+    void SetCidr(CidrT&& value) { m_cidrHasBeenSet = true; m_cidr = std::forward<CidrT>(value); }
+    template<typename CidrT = Aws::String>
+    PoolCidrBlock& WithCidr(CidrT&& value) { SetCidr(std::forward<CidrT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cidr;

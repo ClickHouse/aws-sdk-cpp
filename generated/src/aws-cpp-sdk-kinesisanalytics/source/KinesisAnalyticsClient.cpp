@@ -55,20 +55,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* KinesisAnalyticsClient::SERVICE_NAME = "kinesisanalytics";
-const char* KinesisAnalyticsClient::ALLOCATION_TAG = "KinesisAnalyticsClient";
+namespace Aws
+{
+  namespace KinesisAnalytics
+  {
+    const char SERVICE_NAME[] = "kinesisanalytics";
+    const char ALLOCATION_TAG[] = "KinesisAnalyticsClient";
+  }
+}
+const char* KinesisAnalyticsClient::GetServiceName() {return SERVICE_NAME;}
+const char* KinesisAnalyticsClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 KinesisAnalyticsClient::KinesisAnalyticsClient(const KinesisAnalytics::KinesisAnalyticsClientConfiguration& clientConfiguration,
                                                std::shared_ptr<KinesisAnalyticsEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<KinesisAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -83,8 +90,7 @@ KinesisAnalyticsClient::KinesisAnalyticsClient(const AWSCredentials& credentials
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<KinesisAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -99,8 +105,7 @@ KinesisAnalyticsClient::KinesisAnalyticsClient(const std::shared_ptr<AWSCredenti
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<KinesisAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -109,12 +114,11 @@ KinesisAnalyticsClient::KinesisAnalyticsClient(const std::shared_ptr<AWSCredenti
   KinesisAnalyticsClient::KinesisAnalyticsClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<KinesisAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -129,7 +133,6 @@ KinesisAnalyticsClient::KinesisAnalyticsClient(const AWSCredentials& credentials
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<KinesisAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -144,7 +147,6 @@ KinesisAnalyticsClient::KinesisAnalyticsClient(const std::shared_ptr<AWSCredenti
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<KinesisAnalyticsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<KinesisAnalyticsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -164,6 +166,14 @@ std::shared_ptr<KinesisAnalyticsEndpointProviderBase>& KinesisAnalyticsClient::a
 void KinesisAnalyticsClient::init(const KinesisAnalytics::KinesisAnalyticsClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Kinesis Analytics");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

@@ -28,63 +28,37 @@ namespace Model
   class CreateDirectoryConfigResult
   {
   public:
-    AWS_APPSTREAM_API CreateDirectoryConfigResult();
+    AWS_APPSTREAM_API CreateDirectoryConfigResult() = default;
     AWS_APPSTREAM_API CreateDirectoryConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPSTREAM_API CreateDirectoryConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the directory configuration.</p>
      */
-    inline const DirectoryConfig& GetDirectoryConfig() const{ return m_directoryConfig; }
+    inline const DirectoryConfig& GetDirectoryConfig() const { return m_directoryConfig; }
+    template<typename DirectoryConfigT = DirectoryConfig>
+    void SetDirectoryConfig(DirectoryConfigT&& value) { m_directoryConfigHasBeenSet = true; m_directoryConfig = std::forward<DirectoryConfigT>(value); }
+    template<typename DirectoryConfigT = DirectoryConfig>
+    CreateDirectoryConfigResult& WithDirectoryConfig(DirectoryConfigT&& value) { SetDirectoryConfig(std::forward<DirectoryConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the directory configuration.</p>
-     */
-    inline void SetDirectoryConfig(const DirectoryConfig& value) { m_directoryConfig = value; }
-
-    /**
-     * <p>Information about the directory configuration.</p>
-     */
-    inline void SetDirectoryConfig(DirectoryConfig&& value) { m_directoryConfig = std::move(value); }
-
-    /**
-     * <p>Information about the directory configuration.</p>
-     */
-    inline CreateDirectoryConfigResult& WithDirectoryConfig(const DirectoryConfig& value) { SetDirectoryConfig(value); return *this;}
-
-    /**
-     * <p>Information about the directory configuration.</p>
-     */
-    inline CreateDirectoryConfigResult& WithDirectoryConfig(DirectoryConfig&& value) { SetDirectoryConfig(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateDirectoryConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateDirectoryConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateDirectoryConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateDirectoryConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DirectoryConfig m_directoryConfig;
+    bool m_directoryConfigHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

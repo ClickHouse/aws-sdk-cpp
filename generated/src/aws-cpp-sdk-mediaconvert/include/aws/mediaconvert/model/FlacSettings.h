@@ -30,95 +30,53 @@ namespace Model
   class FlacSettings
   {
   public:
-    AWS_MEDIACONVERT_API FlacSettings();
+    AWS_MEDIACONVERT_API FlacSettings() = default;
     AWS_MEDIACONVERT_API FlacSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API FlacSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality
      * for this audio track.
      */
-    inline int GetBitDepth() const{ return m_bitDepth; }
-
-    /**
-     * Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality
-     * for this audio track.
-     */
+    inline int GetBitDepth() const { return m_bitDepth; }
     inline bool BitDepthHasBeenSet() const { return m_bitDepthHasBeenSet; }
-
-    /**
-     * Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality
-     * for this audio track.
-     */
     inline void SetBitDepth(int value) { m_bitDepthHasBeenSet = true; m_bitDepth = value; }
-
-    /**
-     * Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality
-     * for this audio track.
-     */
     inline FlacSettings& WithBitDepth(int value) { SetBitDepth(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Specify the number of channels in this output audio track. Choosing Mono on the
      * console gives you 1 output channel; choosing Stereo gives you 2. In the API,
      * valid values are between 1 and 8.
      */
-    inline int GetChannels() const{ return m_channels; }
-
-    /**
-     * Specify the number of channels in this output audio track. Choosing Mono on the
-     * console gives you 1 output channel; choosing Stereo gives you 2. In the API,
-     * valid values are between 1 and 8.
-     */
+    inline int GetChannels() const { return m_channels; }
     inline bool ChannelsHasBeenSet() const { return m_channelsHasBeenSet; }
-
-    /**
-     * Specify the number of channels in this output audio track. Choosing Mono on the
-     * console gives you 1 output channel; choosing Stereo gives you 2. In the API,
-     * valid values are between 1 and 8.
-     */
     inline void SetChannels(int value) { m_channelsHasBeenSet = true; m_channels = value; }
-
-    /**
-     * Specify the number of channels in this output audio track. Choosing Mono on the
-     * console gives you 1 output channel; choosing Stereo gives you 2. In the API,
-     * valid values are between 1 and 8.
-     */
     inline FlacSettings& WithChannels(int value) { SetChannels(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Sample rate in Hz.
      */
-    inline int GetSampleRate() const{ return m_sampleRate; }
-
-    /**
-     * Sample rate in Hz.
-     */
+    inline int GetSampleRate() const { return m_sampleRate; }
     inline bool SampleRateHasBeenSet() const { return m_sampleRateHasBeenSet; }
-
-    /**
-     * Sample rate in Hz.
-     */
     inline void SetSampleRate(int value) { m_sampleRateHasBeenSet = true; m_sampleRate = value; }
-
-    /**
-     * Sample rate in Hz.
-     */
     inline FlacSettings& WithSampleRate(int value) { SetSampleRate(value); return *this;}
-
+    ///@}
   private:
 
-    int m_bitDepth;
+    int m_bitDepth{0};
     bool m_bitDepthHasBeenSet = false;
 
-    int m_channels;
+    int m_channels{0};
     bool m_channelsHasBeenSet = false;
 
-    int m_sampleRate;
+    int m_sampleRate{0};
     bool m_sampleRateHasBeenSet = false;
   };
 

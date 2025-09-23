@@ -10,28 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ImportVolumeRequest::ImportVolumeRequest() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_imageHasBeenSet(false),
-    m_volumeHasBeenSet(false)
-{
-}
-
 Aws::String ImportVolumeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ImportVolume&";
-  if(m_availabilityZoneHasBeenSet)
+  if(m_availabilityZoneIdHasBeenSet)
   {
-    ss << "AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
-  }
-
-  if(m_descriptionHasBeenSet)
-  {
-    ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
+    ss << "AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 
   if(m_dryRunHasBeenSet)
@@ -39,9 +24,19 @@ Aws::String ImportVolumeRequest::SerializePayload() const
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
+  if(m_availabilityZoneHasBeenSet)
+  {
+    ss << "AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+
   if(m_imageHasBeenSet)
   {
     m_image.OutputToStream(ss, "Image");
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+    ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 
   if(m_volumeHasBeenSet)

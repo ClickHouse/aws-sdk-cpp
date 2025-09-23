@@ -33,73 +33,35 @@ namespace Model
   class TargetResource
   {
   public:
-    AWS_ROUTE53RECOVERYREADINESS_API TargetResource();
+    AWS_ROUTE53RECOVERYREADINESS_API TargetResource() = default;
     AWS_ROUTE53RECOVERYREADINESS_API TargetResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RECOVERYREADINESS_API TargetResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RECOVERYREADINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Network Load Balancer Resource.</p>
      */
-    inline const NLBResource& GetNLBResource() const{ return m_nLBResource; }
-
-    /**
-     * <p>The Network Load Balancer Resource.</p>
-     */
+    inline const NLBResource& GetNLBResource() const { return m_nLBResource; }
     inline bool NLBResourceHasBeenSet() const { return m_nLBResourceHasBeenSet; }
+    template<typename NLBResourceT = NLBResource>
+    void SetNLBResource(NLBResourceT&& value) { m_nLBResourceHasBeenSet = true; m_nLBResource = std::forward<NLBResourceT>(value); }
+    template<typename NLBResourceT = NLBResource>
+    TargetResource& WithNLBResource(NLBResourceT&& value) { SetNLBResource(std::forward<NLBResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Network Load Balancer Resource.</p>
-     */
-    inline void SetNLBResource(const NLBResource& value) { m_nLBResourceHasBeenSet = true; m_nLBResource = value; }
-
-    /**
-     * <p>The Network Load Balancer Resource.</p>
-     */
-    inline void SetNLBResource(NLBResource&& value) { m_nLBResourceHasBeenSet = true; m_nLBResource = std::move(value); }
-
-    /**
-     * <p>The Network Load Balancer Resource.</p>
-     */
-    inline TargetResource& WithNLBResource(const NLBResource& value) { SetNLBResource(value); return *this;}
-
-    /**
-     * <p>The Network Load Balancer Resource.</p>
-     */
-    inline TargetResource& WithNLBResource(NLBResource&& value) { SetNLBResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Route 53 resource.</p>
      */
-    inline const R53ResourceRecord& GetR53Resource() const{ return m_r53Resource; }
-
-    /**
-     * <p>The Route 53 resource.</p>
-     */
+    inline const R53ResourceRecord& GetR53Resource() const { return m_r53Resource; }
     inline bool R53ResourceHasBeenSet() const { return m_r53ResourceHasBeenSet; }
-
-    /**
-     * <p>The Route 53 resource.</p>
-     */
-    inline void SetR53Resource(const R53ResourceRecord& value) { m_r53ResourceHasBeenSet = true; m_r53Resource = value; }
-
-    /**
-     * <p>The Route 53 resource.</p>
-     */
-    inline void SetR53Resource(R53ResourceRecord&& value) { m_r53ResourceHasBeenSet = true; m_r53Resource = std::move(value); }
-
-    /**
-     * <p>The Route 53 resource.</p>
-     */
-    inline TargetResource& WithR53Resource(const R53ResourceRecord& value) { SetR53Resource(value); return *this;}
-
-    /**
-     * <p>The Route 53 resource.</p>
-     */
-    inline TargetResource& WithR53Resource(R53ResourceRecord&& value) { SetR53Resource(std::move(value)); return *this;}
-
+    template<typename R53ResourceT = R53ResourceRecord>
+    void SetR53Resource(R53ResourceT&& value) { m_r53ResourceHasBeenSet = true; m_r53Resource = std::forward<R53ResourceT>(value); }
+    template<typename R53ResourceT = R53ResourceRecord>
+    TargetResource& WithR53Resource(R53ResourceT&& value) { SetR53Resource(std::forward<R53ResourceT>(value)); return *this;}
+    ///@}
   private:
 
     NLBResource m_nLBResource;

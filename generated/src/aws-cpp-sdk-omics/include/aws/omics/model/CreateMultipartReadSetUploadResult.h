@@ -30,465 +30,179 @@ namespace Model
   class CreateMultipartReadSetUploadResult
   {
   public:
-    AWS_OMICS_API CreateMultipartReadSetUploadResult();
+    AWS_OMICS_API CreateMultipartReadSetUploadResult() = default;
     AWS_OMICS_API CreateMultipartReadSetUploadResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API CreateMultipartReadSetUploadResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The sequence store ID for the store that the read set will be created in.</p>
      */
-    inline const Aws::String& GetSequenceStoreId() const{ return m_sequenceStoreId; }
+    inline const Aws::String& GetSequenceStoreId() const { return m_sequenceStoreId; }
+    template<typename SequenceStoreIdT = Aws::String>
+    void SetSequenceStoreId(SequenceStoreIdT&& value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId = std::forward<SequenceStoreIdT>(value); }
+    template<typename SequenceStoreIdT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithSequenceStoreId(SequenceStoreIdT&& value) { SetSequenceStoreId(std::forward<SequenceStoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The ID for the initiated multipart upload.</p>
      */
-    inline void SetSequenceStoreId(const Aws::String& value) { m_sequenceStoreId = value; }
+    inline const Aws::String& GetUploadId() const { return m_uploadId; }
+    template<typename UploadIdT = Aws::String>
+    void SetUploadId(UploadIdT&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::forward<UploadIdT>(value); }
+    template<typename UploadIdT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithUploadId(UploadIdT&& value) { SetUploadId(std::forward<UploadIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The file type of the read set source.</p>
      */
-    inline void SetSequenceStoreId(Aws::String&& value) { m_sequenceStoreId = std::move(value); }
+    inline FileType GetSourceFileType() const { return m_sourceFileType; }
+    inline void SetSourceFileType(FileType value) { m_sourceFileTypeHasBeenSet = true; m_sourceFileType = value; }
+    inline CreateMultipartReadSetUploadResult& WithSourceFileType(FileType value) { SetSourceFileType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The source's subject ID.</p>
      */
-    inline void SetSequenceStoreId(const char* value) { m_sequenceStoreId.assign(value); }
+    inline const Aws::String& GetSubjectId() const { return m_subjectId; }
+    template<typename SubjectIdT = Aws::String>
+    void SetSubjectId(SubjectIdT&& value) { m_subjectIdHasBeenSet = true; m_subjectId = std::forward<SubjectIdT>(value); }
+    template<typename SubjectIdT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithSubjectId(SubjectIdT&& value) { SetSubjectId(std::forward<SubjectIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The source's sample ID.</p>
      */
-    inline CreateMultipartReadSetUploadResult& WithSequenceStoreId(const Aws::String& value) { SetSequenceStoreId(value); return *this;}
+    inline const Aws::String& GetSampleId() const { return m_sampleId; }
+    template<typename SampleIdT = Aws::String>
+    void SetSampleId(SampleIdT&& value) { m_sampleIdHasBeenSet = true; m_sampleId = std::forward<SampleIdT>(value); }
+    template<typename SampleIdT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithSampleId(SampleIdT&& value) { SetSampleId(std::forward<SampleIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The source of the read set.</p>
      */
-    inline CreateMultipartReadSetUploadResult& WithSequenceStoreId(Aws::String&& value) { SetSequenceStoreId(std::move(value)); return *this;}
+    inline const Aws::String& GetGeneratedFrom() const { return m_generatedFrom; }
+    template<typename GeneratedFromT = Aws::String>
+    void SetGeneratedFrom(GeneratedFromT&& value) { m_generatedFromHasBeenSet = true; m_generatedFrom = std::forward<GeneratedFromT>(value); }
+    template<typename GeneratedFromT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithGeneratedFrom(GeneratedFromT&& value) { SetGeneratedFrom(std::forward<GeneratedFromT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store that the read set will be created in.
-     * </p>
+     * <p>The read set source's reference ARN.</p>
      */
-    inline CreateMultipartReadSetUploadResult& WithSequenceStoreId(const char* value) { SetSequenceStoreId(value); return *this;}
+    inline const Aws::String& GetReferenceArn() const { return m_referenceArn; }
+    template<typename ReferenceArnT = Aws::String>
+    void SetReferenceArn(ReferenceArnT&& value) { m_referenceArnHasBeenSet = true; m_referenceArn = std::forward<ReferenceArnT>(value); }
+    template<typename ReferenceArnT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithReferenceArn(ReferenceArnT&& value) { SetReferenceArn(std::forward<ReferenceArnT>(value)); return *this;}
+    ///@}
 
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline const Aws::String& GetUploadId() const{ return m_uploadId; }
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline void SetUploadId(const Aws::String& value) { m_uploadId = value; }
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline void SetUploadId(Aws::String&& value) { m_uploadId = std::move(value); }
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline void SetUploadId(const char* value) { m_uploadId.assign(value); }
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithUploadId(const Aws::String& value) { SetUploadId(value); return *this;}
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithUploadId(Aws::String&& value) { SetUploadId(std::move(value)); return *this;}
-
-    /**
-     * <p> he ID for the initiated multipart upload. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithUploadId(const char* value) { SetUploadId(value); return *this;}
-
-
-    /**
-     * <p> The file type of the read set source. </p>
-     */
-    inline const FileType& GetSourceFileType() const{ return m_sourceFileType; }
-
-    /**
-     * <p> The file type of the read set source. </p>
-     */
-    inline void SetSourceFileType(const FileType& value) { m_sourceFileType = value; }
-
-    /**
-     * <p> The file type of the read set source. </p>
-     */
-    inline void SetSourceFileType(FileType&& value) { m_sourceFileType = std::move(value); }
-
-    /**
-     * <p> The file type of the read set source. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSourceFileType(const FileType& value) { SetSourceFileType(value); return *this;}
-
-    /**
-     * <p> The file type of the read set source. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSourceFileType(FileType&& value) { SetSourceFileType(std::move(value)); return *this;}
-
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline const Aws::String& GetSubjectId() const{ return m_subjectId; }
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline void SetSubjectId(const Aws::String& value) { m_subjectId = value; }
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline void SetSubjectId(Aws::String&& value) { m_subjectId = std::move(value); }
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline void SetSubjectId(const char* value) { m_subjectId.assign(value); }
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSubjectId(const Aws::String& value) { SetSubjectId(value); return *this;}
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSubjectId(Aws::String&& value) { SetSubjectId(std::move(value)); return *this;}
-
-    /**
-     * <p> The source's subject ID. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSubjectId(const char* value) { SetSubjectId(value); return *this;}
-
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline const Aws::String& GetSampleId() const{ return m_sampleId; }
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline void SetSampleId(const Aws::String& value) { m_sampleId = value; }
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline void SetSampleId(Aws::String&& value) { m_sampleId = std::move(value); }
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline void SetSampleId(const char* value) { m_sampleId.assign(value); }
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSampleId(const Aws::String& value) { SetSampleId(value); return *this;}
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSampleId(Aws::String&& value) { SetSampleId(std::move(value)); return *this;}
-
-    /**
-     * <p> The source's sample ID. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithSampleId(const char* value) { SetSampleId(value); return *this;}
-
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline const Aws::String& GetGeneratedFrom() const{ return m_generatedFrom; }
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline void SetGeneratedFrom(const Aws::String& value) { m_generatedFrom = value; }
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline void SetGeneratedFrom(Aws::String&& value) { m_generatedFrom = std::move(value); }
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline void SetGeneratedFrom(const char* value) { m_generatedFrom.assign(value); }
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithGeneratedFrom(const Aws::String& value) { SetGeneratedFrom(value); return *this;}
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithGeneratedFrom(Aws::String&& value) { SetGeneratedFrom(std::move(value)); return *this;}
-
-    /**
-     * <p> The source of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithGeneratedFrom(const char* value) { SetGeneratedFrom(value); return *this;}
-
-
-    /**
-     * <p> The read set source's reference ARN. </p>
-     */
-    inline const Aws::String& GetReferenceArn() const{ return m_referenceArn; }
-
+    ///@{
     /**
-     * <p> The read set source's reference ARN. </p>
+     * <p>The name of the read set.</p>
      */
-    inline void SetReferenceArn(const Aws::String& value) { m_referenceArn = value; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The read set source's reference ARN. </p>
+     * <p>The description of the read set.</p>
      */
-    inline void SetReferenceArn(Aws::String&& value) { m_referenceArn = std::move(value); }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The read set source's reference ARN. </p>
+     * <p>The tags to add to the read set.</p>
      */
-    inline void SetReferenceArn(const char* value) { m_referenceArn.assign(value); }
-
-    /**
-     * <p> The read set source's reference ARN. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithReferenceArn(const Aws::String& value) { SetReferenceArn(value); return *this;}
-
-    /**
-     * <p> The read set source's reference ARN. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithReferenceArn(Aws::String&& value) { SetReferenceArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The read set source's reference ARN. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithReferenceArn(const char* value) { SetReferenceArn(value); return *this;}
-
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p> The description of the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p> The tags to add to the read set. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
-    /**
-     * <p> The creation time of the multipart upload. </p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p> The creation time of the multipart upload. </p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p> The creation time of the multipart upload. </p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p> The creation time of the multipart upload. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p> The creation time of the multipart upload. </p>
-     */
-    inline CreateMultipartReadSetUploadResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateMultipartReadSetUploadResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateMultipartReadSetUploadResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
+
+    ///@{
+    /**
+     * <p>The creation time of the multipart upload.</p>
+     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    CreateMultipartReadSetUploadResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
+
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateMultipartReadSetUploadResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateMultipartReadSetUploadResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateMultipartReadSetUploadResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateMultipartReadSetUploadResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sequenceStoreId;
+    bool m_sequenceStoreIdHasBeenSet = false;
 
     Aws::String m_uploadId;
+    bool m_uploadIdHasBeenSet = false;
 
-    FileType m_sourceFileType;
+    FileType m_sourceFileType{FileType::NOT_SET};
+    bool m_sourceFileTypeHasBeenSet = false;
 
     Aws::String m_subjectId;
+    bool m_subjectIdHasBeenSet = false;
 
     Aws::String m_sampleId;
+    bool m_sampleIdHasBeenSet = false;
 
     Aws::String m_generatedFrom;
+    bool m_generatedFromHasBeenSet = false;
 
     Aws::String m_referenceArn;
+    bool m_referenceArnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -29,111 +29,53 @@ namespace Model
   class ListFHIRDatastoresResult
   {
   public:
-    AWS_HEALTHLAKE_API ListFHIRDatastoresResult();
+    AWS_HEALTHLAKE_API ListFHIRDatastoresResult() = default;
     AWS_HEALTHLAKE_API ListFHIRDatastoresResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_HEALTHLAKE_API ListFHIRDatastoresResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>All properties associated with the listed data stores.</p>
+     * <p>The properties associated with all listed data stores.</p>
      */
-    inline const Aws::Vector<DatastoreProperties>& GetDatastorePropertiesList() const{ return m_datastorePropertiesList; }
+    inline const Aws::Vector<DatastoreProperties>& GetDatastorePropertiesList() const { return m_datastorePropertiesList; }
+    template<typename DatastorePropertiesListT = Aws::Vector<DatastoreProperties>>
+    void SetDatastorePropertiesList(DatastorePropertiesListT&& value) { m_datastorePropertiesListHasBeenSet = true; m_datastorePropertiesList = std::forward<DatastorePropertiesListT>(value); }
+    template<typename DatastorePropertiesListT = Aws::Vector<DatastoreProperties>>
+    ListFHIRDatastoresResult& WithDatastorePropertiesList(DatastorePropertiesListT&& value) { SetDatastorePropertiesList(std::forward<DatastorePropertiesListT>(value)); return *this;}
+    template<typename DatastorePropertiesListT = DatastoreProperties>
+    ListFHIRDatastoresResult& AddDatastorePropertiesList(DatastorePropertiesListT&& value) { m_datastorePropertiesListHasBeenSet = true; m_datastorePropertiesList.emplace_back(std::forward<DatastorePropertiesListT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>All properties associated with the listed data stores.</p>
+     * <p>The pagination token used to retrieve the next page of results.</p>
      */
-    inline void SetDatastorePropertiesList(const Aws::Vector<DatastoreProperties>& value) { m_datastorePropertiesList = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFHIRDatastoresResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>All properties associated with the listed data stores.</p>
-     */
-    inline void SetDatastorePropertiesList(Aws::Vector<DatastoreProperties>&& value) { m_datastorePropertiesList = std::move(value); }
-
-    /**
-     * <p>All properties associated with the listed data stores.</p>
-     */
-    inline ListFHIRDatastoresResult& WithDatastorePropertiesList(const Aws::Vector<DatastoreProperties>& value) { SetDatastorePropertiesList(value); return *this;}
-
-    /**
-     * <p>All properties associated with the listed data stores.</p>
-     */
-    inline ListFHIRDatastoresResult& WithDatastorePropertiesList(Aws::Vector<DatastoreProperties>&& value) { SetDatastorePropertiesList(std::move(value)); return *this;}
-
-    /**
-     * <p>All properties associated with the listed data stores.</p>
-     */
-    inline ListFHIRDatastoresResult& AddDatastorePropertiesList(const DatastoreProperties& value) { m_datastorePropertiesList.push_back(value); return *this; }
-
-    /**
-     * <p>All properties associated with the listed data stores.</p>
-     */
-    inline ListFHIRDatastoresResult& AddDatastorePropertiesList(DatastoreProperties&& value) { m_datastorePropertiesList.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline ListFHIRDatastoresResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline ListFHIRDatastoresResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Pagination token that can be used to retrieve the next page of results.</p>
-     */
-    inline ListFHIRDatastoresResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListFHIRDatastoresResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListFHIRDatastoresResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListFHIRDatastoresResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListFHIRDatastoresResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DatastoreProperties> m_datastorePropertiesList;
+    bool m_datastorePropertiesListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

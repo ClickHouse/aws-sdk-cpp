@@ -18,17 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-Origination::Origination() : 
-    m_routesHasBeenSet(false),
-    m_disabled(false),
-    m_disabledHasBeenSet(false)
-{
-}
-
-Origination::Origination(JsonView jsonValue) : 
-    m_routesHasBeenSet(false),
-    m_disabled(false),
-    m_disabledHasBeenSet(false)
+Origination::Origination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ Origination& Origination::operator =(JsonView jsonValue)
     }
     m_routesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Disabled"))
   {
     m_disabled = jsonValue.GetBool("Disabled");
-
     m_disabledHasBeenSet = true;
   }
-
   return *this;
 }
 

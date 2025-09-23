@@ -20,15 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-AnomalyDetectorConfiguration::AnomalyDetectorConfiguration() : 
-    m_excludedTimeRangesHasBeenSet(false),
-    m_metricTimezoneHasBeenSet(false)
-{
-}
-
-AnomalyDetectorConfiguration::AnomalyDetectorConfiguration(const XmlNode& xmlNode) : 
-    m_excludedTimeRangesHasBeenSet(false),
-    m_metricTimezoneHasBeenSet(false)
+AnomalyDetectorConfiguration::AnomalyDetectorConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +35,7 @@ AnomalyDetectorConfiguration& AnomalyDetectorConfiguration::operator =(const Xml
     if(!excludedTimeRangesNode.IsNull())
     {
       XmlNode excludedTimeRangesMember = excludedTimeRangesNode.FirstChild("member");
+      m_excludedTimeRangesHasBeenSet = !excludedTimeRangesMember.IsNull();
       while(!excludedTimeRangesMember.IsNull())
       {
         m_excludedTimeRanges.push_back(excludedTimeRangesMember);
@@ -90,7 +83,7 @@ void AnomalyDetectorConfiguration::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_excludedTimeRanges)
       {
         Aws::StringStream excludedTimeRangesSs;
-        excludedTimeRangesSs << location <<  ".ExcludedTimeRanges.member." << excludedTimeRangesIdx++;
+        excludedTimeRangesSs << location << ".ExcludedTimeRanges.member." << excludedTimeRangesIdx++;
         item.OutputToStream(oStream, excludedTimeRangesSs.str().c_str());
       }
   }

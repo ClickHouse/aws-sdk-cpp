@@ -30,119 +30,55 @@ namespace Model
   class DescribeDBClusterAutomatedBackupsResult
   {
   public:
-    AWS_RDS_API DescribeDBClusterAutomatedBackupsResult();
+    AWS_RDS_API DescribeDBClusterAutomatedBackupsResult() = default;
     AWS_RDS_API DescribeDBClusterAutomatedBackupsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_RDS_API DescribeDBClusterAutomatedBackupsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The pagination token provided in the previous request. If this parameter is
      * specified the response includes only records beyond the marker, up to
      * <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeDBClusterAutomatedBackupsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token provided in the previous request. If this parameter is
-     * specified the response includes only records beyond the marker, up to
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>The pagination token provided in the previous request. If this parameter is
-     * specified the response includes only records beyond the marker, up to
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>The pagination token provided in the previous request. If this parameter is
-     * specified the response includes only records beyond the marker, up to
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>The pagination token provided in the previous request. If this parameter is
-     * specified the response includes only records beyond the marker, up to
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The pagination token provided in the previous request. If this parameter is
-     * specified the response includes only records beyond the marker, up to
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token provided in the previous request. If this parameter is
-     * specified the response includes only records beyond the marker, up to
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
      */
-    inline const Aws::Vector<DBClusterAutomatedBackup>& GetDBClusterAutomatedBackups() const{ return m_dBClusterAutomatedBackups; }
+    inline const Aws::Vector<DBClusterAutomatedBackup>& GetDBClusterAutomatedBackups() const { return m_dBClusterAutomatedBackups; }
+    template<typename DBClusterAutomatedBackupsT = Aws::Vector<DBClusterAutomatedBackup>>
+    void SetDBClusterAutomatedBackups(DBClusterAutomatedBackupsT&& value) { m_dBClusterAutomatedBackupsHasBeenSet = true; m_dBClusterAutomatedBackups = std::forward<DBClusterAutomatedBackupsT>(value); }
+    template<typename DBClusterAutomatedBackupsT = Aws::Vector<DBClusterAutomatedBackup>>
+    DescribeDBClusterAutomatedBackupsResult& WithDBClusterAutomatedBackups(DBClusterAutomatedBackupsT&& value) { SetDBClusterAutomatedBackups(std::forward<DBClusterAutomatedBackupsT>(value)); return *this;}
+    template<typename DBClusterAutomatedBackupsT = DBClusterAutomatedBackup>
+    DescribeDBClusterAutomatedBackupsResult& AddDBClusterAutomatedBackups(DBClusterAutomatedBackupsT&& value) { m_dBClusterAutomatedBackupsHasBeenSet = true; m_dBClusterAutomatedBackups.emplace_back(std::forward<DBClusterAutomatedBackupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
-     */
-    inline void SetDBClusterAutomatedBackups(const Aws::Vector<DBClusterAutomatedBackup>& value) { m_dBClusterAutomatedBackups = value; }
-
-    /**
-     * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
-     */
-    inline void SetDBClusterAutomatedBackups(Aws::Vector<DBClusterAutomatedBackup>&& value) { m_dBClusterAutomatedBackups = std::move(value); }
-
-    /**
-     * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& WithDBClusterAutomatedBackups(const Aws::Vector<DBClusterAutomatedBackup>& value) { SetDBClusterAutomatedBackups(value); return *this;}
-
-    /**
-     * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& WithDBClusterAutomatedBackups(Aws::Vector<DBClusterAutomatedBackup>&& value) { SetDBClusterAutomatedBackups(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& AddDBClusterAutomatedBackups(const DBClusterAutomatedBackup& value) { m_dBClusterAutomatedBackups.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>DBClusterAutomatedBackup</code> backups.</p>
-     */
-    inline DescribeDBClusterAutomatedBackupsResult& AddDBClusterAutomatedBackups(DBClusterAutomatedBackup&& value) { m_dBClusterAutomatedBackups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeDBClusterAutomatedBackupsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeDBClusterAutomatedBackupsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeDBClusterAutomatedBackupsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<DBClusterAutomatedBackup> m_dBClusterAutomatedBackups;
+    bool m_dBClusterAutomatedBackupsHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -21,7 +21,7 @@ namespace Model
   class DeleteTestSetRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API DeleteTestSetRequest();
+    AWS_LEXMODELSV2_API DeleteTestSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The test set Id of the test set to be deleted.</p>
      */
-    inline const Aws::String& GetTestSetId() const{ return m_testSetId; }
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
+    inline const Aws::String& GetTestSetId() const { return m_testSetId; }
     inline bool TestSetIdHasBeenSet() const { return m_testSetIdHasBeenSet; }
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
-    inline void SetTestSetId(const Aws::String& value) { m_testSetIdHasBeenSet = true; m_testSetId = value; }
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
-    inline void SetTestSetId(Aws::String&& value) { m_testSetIdHasBeenSet = true; m_testSetId = std::move(value); }
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
-    inline void SetTestSetId(const char* value) { m_testSetIdHasBeenSet = true; m_testSetId.assign(value); }
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
-    inline DeleteTestSetRequest& WithTestSetId(const Aws::String& value) { SetTestSetId(value); return *this;}
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
-    inline DeleteTestSetRequest& WithTestSetId(Aws::String&& value) { SetTestSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The test set Id of the test set to be deleted.</p>
-     */
-    inline DeleteTestSetRequest& WithTestSetId(const char* value) { SetTestSetId(value); return *this;}
-
+    template<typename TestSetIdT = Aws::String>
+    void SetTestSetId(TestSetIdT&& value) { m_testSetIdHasBeenSet = true; m_testSetId = std::forward<TestSetIdT>(value); }
+    template<typename TestSetIdT = Aws::String>
+    DeleteTestSetRequest& WithTestSetId(TestSetIdT&& value) { SetTestSetId(std::forward<TestSetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_testSetId;

@@ -23,7 +23,7 @@ namespace Model
   class CreateFleetLocationsRequest : public GameLiftRequest
   {
   public:
-    AWS_GAMELIFT_API CreateFleetLocationsRequest();
+    AWS_GAMELIFT_API CreateFleetLocationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,119 +36,35 @@ namespace Model
     AWS_GAMELIFT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the fleet to add locations to. You can use either the
      * fleet ID or ARN value.</p>
      */
-    inline const Aws::String& GetFleetId() const{ return m_fleetId; }
-
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
+    inline const Aws::String& GetFleetId() const { return m_fleetId; }
     inline bool FleetIdHasBeenSet() const { return m_fleetIdHasBeenSet; }
+    template<typename FleetIdT = Aws::String>
+    void SetFleetId(FleetIdT&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::forward<FleetIdT>(value); }
+    template<typename FleetIdT = Aws::String>
+    CreateFleetLocationsRequest& WithFleetId(FleetIdT&& value) { SetFleetId(std::forward<FleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
-    inline void SetFleetId(const Aws::String& value) { m_fleetIdHasBeenSet = true; m_fleetId = value; }
-
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
-    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
-    inline void SetFleetId(const char* value) { m_fleetIdHasBeenSet = true; m_fleetId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
-    inline CreateFleetLocationsRequest& WithFleetId(const Aws::String& value) { SetFleetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
-    inline CreateFleetLocationsRequest& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the fleet to add locations to. You can use either the
-     * fleet ID or ARN value.</p>
-     */
-    inline CreateFleetLocationsRequest& WithFleetId(const char* value) { SetFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
+     * the fleet. You can add any Amazon GameLift Servers-supported Amazon Web Services
+     * Region as a remote location, in the form of an Amazon Web Services Region code
+     * such as <code>us-west-2</code>. </p>
      */
-    inline const Aws::Vector<LocationConfiguration>& GetLocations() const{ return m_locations; }
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
+    inline const Aws::Vector<LocationConfiguration>& GetLocations() const { return m_locations; }
     inline bool LocationsHasBeenSet() const { return m_locationsHasBeenSet; }
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline void SetLocations(const Aws::Vector<LocationConfiguration>& value) { m_locationsHasBeenSet = true; m_locations = value; }
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline void SetLocations(Aws::Vector<LocationConfiguration>&& value) { m_locationsHasBeenSet = true; m_locations = std::move(value); }
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateFleetLocationsRequest& WithLocations(const Aws::Vector<LocationConfiguration>& value) { SetLocations(value); return *this;}
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateFleetLocationsRequest& WithLocations(Aws::Vector<LocationConfiguration>&& value) { SetLocations(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateFleetLocationsRequest& AddLocations(const LocationConfiguration& value) { m_locationsHasBeenSet = true; m_locations.push_back(value); return *this; }
-
-    /**
-     * <p>A list of locations to deploy additional instances to and manage as part of
-     * the fleet. You can add any Amazon GameLift-supported Amazon Web Services Region
-     * as a remote location, in the form of an Amazon Web Services Region code such as
-     * <code>us-west-2</code>. </p>
-     */
-    inline CreateFleetLocationsRequest& AddLocations(LocationConfiguration&& value) { m_locationsHasBeenSet = true; m_locations.push_back(std::move(value)); return *this; }
-
+    template<typename LocationsT = Aws::Vector<LocationConfiguration>>
+    void SetLocations(LocationsT&& value) { m_locationsHasBeenSet = true; m_locations = std::forward<LocationsT>(value); }
+    template<typename LocationsT = Aws::Vector<LocationConfiguration>>
+    CreateFleetLocationsRequest& WithLocations(LocationsT&& value) { SetLocations(std::forward<LocationsT>(value)); return *this;}
+    template<typename LocationsT = LocationConfiguration>
+    CreateFleetLocationsRequest& AddLocations(LocationsT&& value) { m_locationsHasBeenSet = true; m_locations.emplace_back(std::forward<LocationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_fleetId;

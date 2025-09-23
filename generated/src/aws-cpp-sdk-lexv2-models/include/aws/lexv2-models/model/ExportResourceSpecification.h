@@ -37,135 +37,59 @@ namespace Model
   class ExportResourceSpecification
   {
   public:
-    AWS_LEXMODELSV2_API ExportResourceSpecification();
+    AWS_LEXMODELSV2_API ExportResourceSpecification() = default;
     AWS_LEXMODELSV2_API ExportResourceSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ExportResourceSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Parameters for exporting a bot.</p>
      */
-    inline const BotExportSpecification& GetBotExportSpecification() const{ return m_botExportSpecification; }
-
-    /**
-     * <p>Parameters for exporting a bot.</p>
-     */
+    inline const BotExportSpecification& GetBotExportSpecification() const { return m_botExportSpecification; }
     inline bool BotExportSpecificationHasBeenSet() const { return m_botExportSpecificationHasBeenSet; }
+    template<typename BotExportSpecificationT = BotExportSpecification>
+    void SetBotExportSpecification(BotExportSpecificationT&& value) { m_botExportSpecificationHasBeenSet = true; m_botExportSpecification = std::forward<BotExportSpecificationT>(value); }
+    template<typename BotExportSpecificationT = BotExportSpecification>
+    ExportResourceSpecification& WithBotExportSpecification(BotExportSpecificationT&& value) { SetBotExportSpecification(std::forward<BotExportSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Parameters for exporting a bot.</p>
-     */
-    inline void SetBotExportSpecification(const BotExportSpecification& value) { m_botExportSpecificationHasBeenSet = true; m_botExportSpecification = value; }
-
-    /**
-     * <p>Parameters for exporting a bot.</p>
-     */
-    inline void SetBotExportSpecification(BotExportSpecification&& value) { m_botExportSpecificationHasBeenSet = true; m_botExportSpecification = std::move(value); }
-
-    /**
-     * <p>Parameters for exporting a bot.</p>
-     */
-    inline ExportResourceSpecification& WithBotExportSpecification(const BotExportSpecification& value) { SetBotExportSpecification(value); return *this;}
-
-    /**
-     * <p>Parameters for exporting a bot.</p>
-     */
-    inline ExportResourceSpecification& WithBotExportSpecification(BotExportSpecification&& value) { SetBotExportSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Parameters for exporting a bot locale.</p>
      */
-    inline const BotLocaleExportSpecification& GetBotLocaleExportSpecification() const{ return m_botLocaleExportSpecification; }
-
-    /**
-     * <p>Parameters for exporting a bot locale.</p>
-     */
+    inline const BotLocaleExportSpecification& GetBotLocaleExportSpecification() const { return m_botLocaleExportSpecification; }
     inline bool BotLocaleExportSpecificationHasBeenSet() const { return m_botLocaleExportSpecificationHasBeenSet; }
+    template<typename BotLocaleExportSpecificationT = BotLocaleExportSpecification>
+    void SetBotLocaleExportSpecification(BotLocaleExportSpecificationT&& value) { m_botLocaleExportSpecificationHasBeenSet = true; m_botLocaleExportSpecification = std::forward<BotLocaleExportSpecificationT>(value); }
+    template<typename BotLocaleExportSpecificationT = BotLocaleExportSpecification>
+    ExportResourceSpecification& WithBotLocaleExportSpecification(BotLocaleExportSpecificationT&& value) { SetBotLocaleExportSpecification(std::forward<BotLocaleExportSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Parameters for exporting a bot locale.</p>
-     */
-    inline void SetBotLocaleExportSpecification(const BotLocaleExportSpecification& value) { m_botLocaleExportSpecificationHasBeenSet = true; m_botLocaleExportSpecification = value; }
-
-    /**
-     * <p>Parameters for exporting a bot locale.</p>
-     */
-    inline void SetBotLocaleExportSpecification(BotLocaleExportSpecification&& value) { m_botLocaleExportSpecificationHasBeenSet = true; m_botLocaleExportSpecification = std::move(value); }
-
-    /**
-     * <p>Parameters for exporting a bot locale.</p>
-     */
-    inline ExportResourceSpecification& WithBotLocaleExportSpecification(const BotLocaleExportSpecification& value) { SetBotLocaleExportSpecification(value); return *this;}
-
-    /**
-     * <p>Parameters for exporting a bot locale.</p>
-     */
-    inline ExportResourceSpecification& WithBotLocaleExportSpecification(BotLocaleExportSpecification&& value) { SetBotLocaleExportSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters required to export a custom vocabulary.</p>
      */
-    inline const CustomVocabularyExportSpecification& GetCustomVocabularyExportSpecification() const{ return m_customVocabularyExportSpecification; }
-
-    /**
-     * <p>The parameters required to export a custom vocabulary.</p>
-     */
+    inline const CustomVocabularyExportSpecification& GetCustomVocabularyExportSpecification() const { return m_customVocabularyExportSpecification; }
     inline bool CustomVocabularyExportSpecificationHasBeenSet() const { return m_customVocabularyExportSpecificationHasBeenSet; }
+    template<typename CustomVocabularyExportSpecificationT = CustomVocabularyExportSpecification>
+    void SetCustomVocabularyExportSpecification(CustomVocabularyExportSpecificationT&& value) { m_customVocabularyExportSpecificationHasBeenSet = true; m_customVocabularyExportSpecification = std::forward<CustomVocabularyExportSpecificationT>(value); }
+    template<typename CustomVocabularyExportSpecificationT = CustomVocabularyExportSpecification>
+    ExportResourceSpecification& WithCustomVocabularyExportSpecification(CustomVocabularyExportSpecificationT&& value) { SetCustomVocabularyExportSpecification(std::forward<CustomVocabularyExportSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parameters required to export a custom vocabulary.</p>
-     */
-    inline void SetCustomVocabularyExportSpecification(const CustomVocabularyExportSpecification& value) { m_customVocabularyExportSpecificationHasBeenSet = true; m_customVocabularyExportSpecification = value; }
-
-    /**
-     * <p>The parameters required to export a custom vocabulary.</p>
-     */
-    inline void SetCustomVocabularyExportSpecification(CustomVocabularyExportSpecification&& value) { m_customVocabularyExportSpecificationHasBeenSet = true; m_customVocabularyExportSpecification = std::move(value); }
-
-    /**
-     * <p>The parameters required to export a custom vocabulary.</p>
-     */
-    inline ExportResourceSpecification& WithCustomVocabularyExportSpecification(const CustomVocabularyExportSpecification& value) { SetCustomVocabularyExportSpecification(value); return *this;}
-
-    /**
-     * <p>The parameters required to export a custom vocabulary.</p>
-     */
-    inline ExportResourceSpecification& WithCustomVocabularyExportSpecification(CustomVocabularyExportSpecification&& value) { SetCustomVocabularyExportSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifications for the test set that is exported as a resource.</p>
      */
-    inline const TestSetExportSpecification& GetTestSetExportSpecification() const{ return m_testSetExportSpecification; }
-
-    /**
-     * <p>Specifications for the test set that is exported as a resource.</p>
-     */
+    inline const TestSetExportSpecification& GetTestSetExportSpecification() const { return m_testSetExportSpecification; }
     inline bool TestSetExportSpecificationHasBeenSet() const { return m_testSetExportSpecificationHasBeenSet; }
-
-    /**
-     * <p>Specifications for the test set that is exported as a resource.</p>
-     */
-    inline void SetTestSetExportSpecification(const TestSetExportSpecification& value) { m_testSetExportSpecificationHasBeenSet = true; m_testSetExportSpecification = value; }
-
-    /**
-     * <p>Specifications for the test set that is exported as a resource.</p>
-     */
-    inline void SetTestSetExportSpecification(TestSetExportSpecification&& value) { m_testSetExportSpecificationHasBeenSet = true; m_testSetExportSpecification = std::move(value); }
-
-    /**
-     * <p>Specifications for the test set that is exported as a resource.</p>
-     */
-    inline ExportResourceSpecification& WithTestSetExportSpecification(const TestSetExportSpecification& value) { SetTestSetExportSpecification(value); return *this;}
-
-    /**
-     * <p>Specifications for the test set that is exported as a resource.</p>
-     */
-    inline ExportResourceSpecification& WithTestSetExportSpecification(TestSetExportSpecification&& value) { SetTestSetExportSpecification(std::move(value)); return *this;}
-
+    template<typename TestSetExportSpecificationT = TestSetExportSpecification>
+    void SetTestSetExportSpecification(TestSetExportSpecificationT&& value) { m_testSetExportSpecificationHasBeenSet = true; m_testSetExportSpecification = std::forward<TestSetExportSpecificationT>(value); }
+    template<typename TestSetExportSpecificationT = TestSetExportSpecification>
+    ExportResourceSpecification& WithTestSetExportSpecification(TestSetExportSpecificationT&& value) { SetTestSetExportSpecification(std::forward<TestSetExportSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
     BotExportSpecification m_botExportSpecification;

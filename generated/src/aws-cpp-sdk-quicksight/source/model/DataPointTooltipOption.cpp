@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DataPointTooltipOption::DataPointTooltipOption() : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
-{
-}
-
-DataPointTooltipOption::DataPointTooltipOption(JsonView jsonValue) : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
+DataPointTooltipOption::DataPointTooltipOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DataPointTooltipOption& DataPointTooltipOption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AvailabilityStatus"))
   {
     m_availabilityStatus = DashboardBehaviorMapper::GetDashboardBehaviorForName(jsonValue.GetString("AvailabilityStatus"));
-
     m_availabilityStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -35,132 +35,53 @@ namespace Model
   class BatchGetAssetPropertyAggregatesSkippedEntry
   {
   public:
-    AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesSkippedEntry();
+    AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesSkippedEntry() = default;
     AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesSkippedEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesSkippedEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the entry.</p>
      */
-    inline const Aws::String& GetEntryId() const{ return m_entryId; }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
+    inline const Aws::String& GetEntryId() const { return m_entryId; }
     inline bool EntryIdHasBeenSet() const { return m_entryIdHasBeenSet; }
+    template<typename EntryIdT = Aws::String>
+    void SetEntryId(EntryIdT&& value) { m_entryIdHasBeenSet = true; m_entryId = std::forward<EntryIdT>(value); }
+    template<typename EntryIdT = Aws::String>
+    BatchGetAssetPropertyAggregatesSkippedEntry& WithEntryId(EntryIdT&& value) { SetEntryId(std::forward<EntryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline void SetEntryId(const Aws::String& value) { m_entryIdHasBeenSet = true; m_entryId = value; }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline void SetEntryId(Aws::String&& value) { m_entryIdHasBeenSet = true; m_entryId = std::move(value); }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline void SetEntryId(const char* value) { m_entryIdHasBeenSet = true; m_entryId.assign(value); }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithEntryId(const Aws::String& value) { SetEntryId(value); return *this;}
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithEntryId(Aws::String&& value) { SetEntryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithEntryId(const char* value) { SetEntryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The completion status of each entry that is associated with the <a
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_BatchGetAssetPropertyAggregates.html">BatchGetAssetPropertyAggregates</a>
      * API.</p>
      */
-    inline const BatchEntryCompletionStatus& GetCompletionStatus() const{ return m_completionStatus; }
-
-    /**
-     * <p>The completion status of each entry that is associated with the <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_BatchGetAssetPropertyAggregates.html">BatchGetAssetPropertyAggregates</a>
-     * API.</p>
-     */
+    inline BatchEntryCompletionStatus GetCompletionStatus() const { return m_completionStatus; }
     inline bool CompletionStatusHasBeenSet() const { return m_completionStatusHasBeenSet; }
+    inline void SetCompletionStatus(BatchEntryCompletionStatus value) { m_completionStatusHasBeenSet = true; m_completionStatus = value; }
+    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithCompletionStatus(BatchEntryCompletionStatus value) { SetCompletionStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The completion status of each entry that is associated with the <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_BatchGetAssetPropertyAggregates.html">BatchGetAssetPropertyAggregates</a>
-     * API.</p>
-     */
-    inline void SetCompletionStatus(const BatchEntryCompletionStatus& value) { m_completionStatusHasBeenSet = true; m_completionStatus = value; }
-
-    /**
-     * <p>The completion status of each entry that is associated with the <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_BatchGetAssetPropertyAggregates.html">BatchGetAssetPropertyAggregates</a>
-     * API.</p>
-     */
-    inline void SetCompletionStatus(BatchEntryCompletionStatus&& value) { m_completionStatusHasBeenSet = true; m_completionStatus = std::move(value); }
-
-    /**
-     * <p>The completion status of each entry that is associated with the <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_BatchGetAssetPropertyAggregates.html">BatchGetAssetPropertyAggregates</a>
-     * API.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithCompletionStatus(const BatchEntryCompletionStatus& value) { SetCompletionStatus(value); return *this;}
-
-    /**
-     * <p>The completion status of each entry that is associated with the <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_BatchGetAssetPropertyAggregates.html">BatchGetAssetPropertyAggregates</a>
-     * API.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithCompletionStatus(BatchEntryCompletionStatus&& value) { SetCompletionStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error information, such as the error code and the timestamp.</p>
      */
-    inline const BatchGetAssetPropertyAggregatesErrorInfo& GetErrorInfo() const{ return m_errorInfo; }
-
-    /**
-     * <p>The error information, such as the error code and the timestamp.</p>
-     */
+    inline const BatchGetAssetPropertyAggregatesErrorInfo& GetErrorInfo() const { return m_errorInfo; }
     inline bool ErrorInfoHasBeenSet() const { return m_errorInfoHasBeenSet; }
-
-    /**
-     * <p>The error information, such as the error code and the timestamp.</p>
-     */
-    inline void SetErrorInfo(const BatchGetAssetPropertyAggregatesErrorInfo& value) { m_errorInfoHasBeenSet = true; m_errorInfo = value; }
-
-    /**
-     * <p>The error information, such as the error code and the timestamp.</p>
-     */
-    inline void SetErrorInfo(BatchGetAssetPropertyAggregatesErrorInfo&& value) { m_errorInfoHasBeenSet = true; m_errorInfo = std::move(value); }
-
-    /**
-     * <p>The error information, such as the error code and the timestamp.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithErrorInfo(const BatchGetAssetPropertyAggregatesErrorInfo& value) { SetErrorInfo(value); return *this;}
-
-    /**
-     * <p>The error information, such as the error code and the timestamp.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesSkippedEntry& WithErrorInfo(BatchGetAssetPropertyAggregatesErrorInfo&& value) { SetErrorInfo(std::move(value)); return *this;}
-
+    template<typename ErrorInfoT = BatchGetAssetPropertyAggregatesErrorInfo>
+    void SetErrorInfo(ErrorInfoT&& value) { m_errorInfoHasBeenSet = true; m_errorInfo = std::forward<ErrorInfoT>(value); }
+    template<typename ErrorInfoT = BatchGetAssetPropertyAggregatesErrorInfo>
+    BatchGetAssetPropertyAggregatesSkippedEntry& WithErrorInfo(ErrorInfoT&& value) { SetErrorInfo(std::forward<ErrorInfoT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entryId;
     bool m_entryIdHasBeenSet = false;
 
-    BatchEntryCompletionStatus m_completionStatus;
+    BatchEntryCompletionStatus m_completionStatus{BatchEntryCompletionStatus::NOT_SET};
     bool m_completionStatusHasBeenSet = false;
 
     BatchGetAssetPropertyAggregatesErrorInfo m_errorInfo;

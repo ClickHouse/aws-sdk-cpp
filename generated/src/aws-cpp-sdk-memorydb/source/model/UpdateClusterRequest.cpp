@@ -12,25 +12,6 @@ using namespace Aws::MemoryDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateClusterRequest::UpdateClusterRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_maintenanceWindowHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_snsTopicStatusHasBeenSet(false),
-    m_parameterGroupNameHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_replicaConfigurationHasBeenSet(false),
-    m_shardConfigurationHasBeenSet(false),
-    m_aCLNameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -100,6 +81,12 @@ Aws::String UpdateClusterRequest::SerializePayload() const
 
   }
 
+  if(m_engineHasBeenSet)
+  {
+   payload.WithString("Engine", m_engine);
+
+  }
+
   if(m_engineVersionHasBeenSet)
   {
    payload.WithString("EngineVersion", m_engineVersion);
@@ -122,6 +109,11 @@ Aws::String UpdateClusterRequest::SerializePayload() const
   {
    payload.WithString("ACLName", m_aCLName);
 
+  }
+
+  if(m_ipDiscoveryHasBeenSet)
+  {
+   payload.WithString("IpDiscovery", IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery));
   }
 
   return payload.View().WriteReadable();

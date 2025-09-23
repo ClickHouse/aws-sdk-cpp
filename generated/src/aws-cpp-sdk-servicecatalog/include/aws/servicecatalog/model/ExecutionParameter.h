@@ -33,139 +33,49 @@ namespace Model
   class ExecutionParameter
   {
   public:
-    AWS_SERVICECATALOG_API ExecutionParameter();
+    AWS_SERVICECATALOG_API ExecutionParameter() = default;
     AWS_SERVICECATALOG_API ExecutionParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API ExecutionParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the execution parameter.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ExecutionParameter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
-    inline ExecutionParameter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
-    inline ExecutionParameter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the execution parameter.</p>
-     */
-    inline ExecutionParameter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The execution parameter type.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The execution parameter type.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ExecutionParameter& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The execution parameter type.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The execution parameter type.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The execution parameter type.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The execution parameter type.</p>
-     */
-    inline ExecutionParameter& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The execution parameter type.</p>
-     */
-    inline ExecutionParameter& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The execution parameter type.</p>
-     */
-    inline ExecutionParameter& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default values for the execution parameter.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDefaultValues() const{ return m_defaultValues; }
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDefaultValues() const { return m_defaultValues; }
     inline bool DefaultValuesHasBeenSet() const { return m_defaultValuesHasBeenSet; }
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline void SetDefaultValues(const Aws::Vector<Aws::String>& value) { m_defaultValuesHasBeenSet = true; m_defaultValues = value; }
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline void SetDefaultValues(Aws::Vector<Aws::String>&& value) { m_defaultValuesHasBeenSet = true; m_defaultValues = std::move(value); }
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline ExecutionParameter& WithDefaultValues(const Aws::Vector<Aws::String>& value) { SetDefaultValues(value); return *this;}
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline ExecutionParameter& WithDefaultValues(Aws::Vector<Aws::String>&& value) { SetDefaultValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline ExecutionParameter& AddDefaultValues(const Aws::String& value) { m_defaultValuesHasBeenSet = true; m_defaultValues.push_back(value); return *this; }
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline ExecutionParameter& AddDefaultValues(Aws::String&& value) { m_defaultValuesHasBeenSet = true; m_defaultValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The default values for the execution parameter.</p>
-     */
-    inline ExecutionParameter& AddDefaultValues(const char* value) { m_defaultValuesHasBeenSet = true; m_defaultValues.push_back(value); return *this; }
-
+    template<typename DefaultValuesT = Aws::Vector<Aws::String>>
+    void SetDefaultValues(DefaultValuesT&& value) { m_defaultValuesHasBeenSet = true; m_defaultValues = std::forward<DefaultValuesT>(value); }
+    template<typename DefaultValuesT = Aws::Vector<Aws::String>>
+    ExecutionParameter& WithDefaultValues(DefaultValuesT&& value) { SetDefaultValues(std::forward<DefaultValuesT>(value)); return *this;}
+    template<typename DefaultValuesT = Aws::String>
+    ExecutionParameter& AddDefaultValues(DefaultValuesT&& value) { m_defaultValuesHasBeenSet = true; m_defaultValues.emplace_back(std::forward<DefaultValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

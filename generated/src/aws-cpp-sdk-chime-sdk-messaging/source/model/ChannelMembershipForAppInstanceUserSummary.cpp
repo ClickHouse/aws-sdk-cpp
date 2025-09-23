@@ -18,15 +18,7 @@ namespace ChimeSDKMessaging
 namespace Model
 {
 
-ChannelMembershipForAppInstanceUserSummary::ChannelMembershipForAppInstanceUserSummary() : 
-    m_channelSummaryHasBeenSet(false),
-    m_appInstanceUserMembershipSummaryHasBeenSet(false)
-{
-}
-
-ChannelMembershipForAppInstanceUserSummary::ChannelMembershipForAppInstanceUserSummary(JsonView jsonValue) : 
-    m_channelSummaryHasBeenSet(false),
-    m_appInstanceUserMembershipSummaryHasBeenSet(false)
+ChannelMembershipForAppInstanceUserSummary::ChannelMembershipForAppInstanceUserSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ChannelMembershipForAppInstanceUserSummary& ChannelMembershipForAppInstanceUserS
   if(jsonValue.ValueExists("ChannelSummary"))
   {
     m_channelSummary = jsonValue.GetObject("ChannelSummary");
-
     m_channelSummaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AppInstanceUserMembershipSummary"))
   {
     m_appInstanceUserMembershipSummary = jsonValue.GetObject("AppInstanceUserMembershipSummary");
-
     m_appInstanceUserMembershipSummaryHasBeenSet = true;
   }
-
   return *this;
 }
 

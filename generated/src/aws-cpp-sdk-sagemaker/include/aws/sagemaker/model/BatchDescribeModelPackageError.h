@@ -32,93 +32,35 @@ namespace Model
   class BatchDescribeModelPackageError
   {
   public:
-    AWS_SAGEMAKER_API BatchDescribeModelPackageError();
+    AWS_SAGEMAKER_API BatchDescribeModelPackageError() = default;
     AWS_SAGEMAKER_API BatchDescribeModelPackageError(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API BatchDescribeModelPackageError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    BatchDescribeModelPackageError& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline BatchDescribeModelPackageError& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline BatchDescribeModelPackageError& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline BatchDescribeModelPackageError& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetErrorResponse() const{ return m_errorResponse; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetErrorResponse() const { return m_errorResponse; }
     inline bool ErrorResponseHasBeenSet() const { return m_errorResponseHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetErrorResponse(const Aws::String& value) { m_errorResponseHasBeenSet = true; m_errorResponse = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetErrorResponse(Aws::String&& value) { m_errorResponseHasBeenSet = true; m_errorResponse = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetErrorResponse(const char* value) { m_errorResponseHasBeenSet = true; m_errorResponse.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline BatchDescribeModelPackageError& WithErrorResponse(const Aws::String& value) { SetErrorResponse(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline BatchDescribeModelPackageError& WithErrorResponse(Aws::String&& value) { SetErrorResponse(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline BatchDescribeModelPackageError& WithErrorResponse(const char* value) { SetErrorResponse(value); return *this;}
-
+    template<typename ErrorResponseT = Aws::String>
+    void SetErrorResponse(ErrorResponseT&& value) { m_errorResponseHasBeenSet = true; m_errorResponse = std::forward<ErrorResponseT>(value); }
+    template<typename ErrorResponseT = Aws::String>
+    BatchDescribeModelPackageError& WithErrorResponse(ErrorResponseT&& value) { SetErrorResponse(std::forward<ErrorResponseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorCode;

@@ -36,305 +36,106 @@ namespace Model
   class Preset
   {
   public:
-    AWS_MEDIACONVERT_API Preset();
+    AWS_MEDIACONVERT_API Preset() = default;
     AWS_MEDIACONVERT_API Preset(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Preset& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * An identifier for this resource that is unique within all of AWS.
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Preset& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
-    inline Preset& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
-    inline Preset& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * An identifier for this resource that is unique within all of AWS.
-     */
-    inline Preset& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * An optional category you create to organize your presets.
      */
-    inline const Aws::String& GetCategory() const{ return m_category; }
-
-    /**
-     * An optional category you create to organize your presets.
-     */
+    inline const Aws::String& GetCategory() const { return m_category; }
     inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+    template<typename CategoryT = Aws::String>
+    void SetCategory(CategoryT&& value) { m_categoryHasBeenSet = true; m_category = std::forward<CategoryT>(value); }
+    template<typename CategoryT = Aws::String>
+    Preset& WithCategory(CategoryT&& value) { SetCategory(std::forward<CategoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * An optional category you create to organize your presets.
-     */
-    inline void SetCategory(const Aws::String& value) { m_categoryHasBeenSet = true; m_category = value; }
-
-    /**
-     * An optional category you create to organize your presets.
-     */
-    inline void SetCategory(Aws::String&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
-
-    /**
-     * An optional category you create to organize your presets.
-     */
-    inline void SetCategory(const char* value) { m_categoryHasBeenSet = true; m_category.assign(value); }
-
-    /**
-     * An optional category you create to organize your presets.
-     */
-    inline Preset& WithCategory(const Aws::String& value) { SetCategory(value); return *this;}
-
-    /**
-     * An optional category you create to organize your presets.
-     */
-    inline Preset& WithCategory(Aws::String&& value) { SetCategory(std::move(value)); return *this;}
-
-    /**
-     * An optional category you create to organize your presets.
-     */
-    inline Preset& WithCategory(const char* value) { SetCategory(value); return *this;}
-
-
+    ///@{
     /**
      * The timestamp in epoch seconds for preset creation.
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * The timestamp in epoch seconds for preset creation.
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Preset& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The timestamp in epoch seconds for preset creation.
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * The timestamp in epoch seconds for preset creation.
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * The timestamp in epoch seconds for preset creation.
-     */
-    inline Preset& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * The timestamp in epoch seconds for preset creation.
-     */
-    inline Preset& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * An optional description you create for each preset.
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * An optional description you create for each preset.
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Preset& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * An optional description you create for each preset.
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * An optional description you create for each preset.
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * An optional description you create for each preset.
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * An optional description you create for each preset.
-     */
-    inline Preset& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * An optional description you create for each preset.
-     */
-    inline Preset& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * An optional description you create for each preset.
-     */
-    inline Preset& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * The timestamp in epoch seconds when the preset was last updated.
      */
-    inline const Aws::Utils::DateTime& GetLastUpdated() const{ return m_lastUpdated; }
-
-    /**
-     * The timestamp in epoch seconds when the preset was last updated.
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdated() const { return m_lastUpdated; }
     inline bool LastUpdatedHasBeenSet() const { return m_lastUpdatedHasBeenSet; }
+    template<typename LastUpdatedT = Aws::Utils::DateTime>
+    void SetLastUpdated(LastUpdatedT&& value) { m_lastUpdatedHasBeenSet = true; m_lastUpdated = std::forward<LastUpdatedT>(value); }
+    template<typename LastUpdatedT = Aws::Utils::DateTime>
+    Preset& WithLastUpdated(LastUpdatedT&& value) { SetLastUpdated(std::forward<LastUpdatedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The timestamp in epoch seconds when the preset was last updated.
-     */
-    inline void SetLastUpdated(const Aws::Utils::DateTime& value) { m_lastUpdatedHasBeenSet = true; m_lastUpdated = value; }
-
-    /**
-     * The timestamp in epoch seconds when the preset was last updated.
-     */
-    inline void SetLastUpdated(Aws::Utils::DateTime&& value) { m_lastUpdatedHasBeenSet = true; m_lastUpdated = std::move(value); }
-
-    /**
-     * The timestamp in epoch seconds when the preset was last updated.
-     */
-    inline Preset& WithLastUpdated(const Aws::Utils::DateTime& value) { SetLastUpdated(value); return *this;}
-
-    /**
-     * The timestamp in epoch seconds when the preset was last updated.
-     */
-    inline Preset& WithLastUpdated(Aws::Utils::DateTime&& value) { SetLastUpdated(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * A name you create for each preset. Each name must be unique within your account.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Preset& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
-    inline Preset& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
-    inline Preset& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * A name you create for each preset. Each name must be unique within your account.
-     */
-    inline Preset& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * Settings for preset
      */
-    inline const PresetSettings& GetSettings() const{ return m_settings; }
-
-    /**
-     * Settings for preset
-     */
+    inline const PresetSettings& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
+    template<typename SettingsT = PresetSettings>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = PresetSettings>
+    Preset& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings for preset
-     */
-    inline void SetSettings(const PresetSettings& value) { m_settingsHasBeenSet = true; m_settings = value; }
-
-    /**
-     * Settings for preset
-     */
-    inline void SetSettings(PresetSettings&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * Settings for preset
-     */
-    inline Preset& WithSettings(const PresetSettings& value) { SetSettings(value); return *this;}
-
-    /**
-     * Settings for preset
-     */
-    inline Preset& WithSettings(PresetSettings&& value) { SetSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * A preset can be of two types: system or custom. System or built-in preset can't
      * be modified or deleted by the user.
      */
-    inline const Type& GetType() const{ return m_type; }
-
-    /**
-     * A preset can be of two types: system or custom. System or built-in preset can't
-     * be modified or deleted by the user.
-     */
+    inline Type GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * A preset can be of two types: system or custom. System or built-in preset can't
-     * be modified or deleted by the user.
-     */
-    inline void SetType(const Type& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * A preset can be of two types: system or custom. System or built-in preset can't
-     * be modified or deleted by the user.
-     */
-    inline void SetType(Type&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * A preset can be of two types: system or custom. System or built-in preset can't
-     * be modified or deleted by the user.
-     */
-    inline Preset& WithType(const Type& value) { SetType(value); return *this;}
-
-    /**
-     * A preset can be of two types: system or custom. System or built-in preset can't
-     * be modified or deleted by the user.
-     */
-    inline Preset& WithType(Type&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(Type value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Preset& WithType(Type value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -343,13 +144,13 @@ namespace Model
     Aws::String m_category;
     bool m_categoryHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdated;
+    Aws::Utils::DateTime m_lastUpdated{};
     bool m_lastUpdatedHasBeenSet = false;
 
     Aws::String m_name;
@@ -358,7 +159,7 @@ namespace Model
     PresetSettings m_settings;
     bool m_settingsHasBeenSet = false;
 
-    Type m_type;
+    Type m_type{Type::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

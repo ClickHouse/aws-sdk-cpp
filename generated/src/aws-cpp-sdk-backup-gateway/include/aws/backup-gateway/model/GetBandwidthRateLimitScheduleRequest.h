@@ -21,7 +21,7 @@ namespace Model
   class GetBandwidthRateLimitScheduleRequest : public BackupGatewayRequest
   {
   public:
-    AWS_BACKUPGATEWAY_API GetBandwidthRateLimitScheduleRequest();
+    AWS_BACKUPGATEWAY_API GetBandwidthRateLimitScheduleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,70 +34,20 @@ namespace Model
     AWS_BACKUPGATEWAY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
      * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
      * <code>ListGateways</code> </a> operation to return a list of gateways for your
      * account and Amazon Web Services Region.</p>
      */
-    inline const Aws::String& GetGatewayArn() const{ return m_gatewayArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
+    inline const Aws::String& GetGatewayArn() const { return m_gatewayArn; }
     inline bool GatewayArnHasBeenSet() const { return m_gatewayArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
-    inline void SetGatewayArn(const Aws::String& value) { m_gatewayArnHasBeenSet = true; m_gatewayArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
-    inline void SetGatewayArn(Aws::String&& value) { m_gatewayArnHasBeenSet = true; m_gatewayArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
-    inline void SetGatewayArn(const char* value) { m_gatewayArnHasBeenSet = true; m_gatewayArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
-    inline GetBandwidthRateLimitScheduleRequest& WithGatewayArn(const Aws::String& value) { SetGatewayArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
-    inline GetBandwidthRateLimitScheduleRequest& WithGatewayArn(Aws::String&& value) { SetGatewayArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the gateway. Use the <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BGW_ListGateways.html">
-     * <code>ListGateways</code> </a> operation to return a list of gateways for your
-     * account and Amazon Web Services Region.</p>
-     */
-    inline GetBandwidthRateLimitScheduleRequest& WithGatewayArn(const char* value) { SetGatewayArn(value); return *this;}
-
+    template<typename GatewayArnT = Aws::String>
+    void SetGatewayArn(GatewayArnT&& value) { m_gatewayArnHasBeenSet = true; m_gatewayArn = std::forward<GatewayArnT>(value); }
+    template<typename GatewayArnT = Aws::String>
+    GetBandwidthRateLimitScheduleRequest& WithGatewayArn(GatewayArnT&& value) { SetGatewayArn(std::forward<GatewayArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_gatewayArn;

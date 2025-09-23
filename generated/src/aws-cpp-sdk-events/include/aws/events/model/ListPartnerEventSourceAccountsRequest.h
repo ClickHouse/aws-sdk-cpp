@@ -21,7 +21,7 @@ namespace Model
   class ListPartnerEventSourceAccountsRequest : public CloudWatchEventsRequest
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API ListPartnerEventSourceAccountsRequest();
+    AWS_CLOUDWATCHEVENTS_API ListPartnerEventSourceAccountsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,132 +34,43 @@ namespace Model
     AWS_CLOUDWATCHEVENTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the partner event source to display account information
      * about.</p>
      */
-    inline const Aws::String& GetEventSourceName() const{ return m_eventSourceName; }
-
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
+    inline const Aws::String& GetEventSourceName() const { return m_eventSourceName; }
     inline bool EventSourceNameHasBeenSet() const { return m_eventSourceNameHasBeenSet; }
+    template<typename EventSourceNameT = Aws::String>
+    void SetEventSourceName(EventSourceNameT&& value) { m_eventSourceNameHasBeenSet = true; m_eventSourceName = std::forward<EventSourceNameT>(value); }
+    template<typename EventSourceNameT = Aws::String>
+    ListPartnerEventSourceAccountsRequest& WithEventSourceName(EventSourceNameT&& value) { SetEventSourceName(std::forward<EventSourceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
-    inline void SetEventSourceName(const Aws::String& value) { m_eventSourceNameHasBeenSet = true; m_eventSourceName = value; }
-
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
-    inline void SetEventSourceName(Aws::String&& value) { m_eventSourceNameHasBeenSet = true; m_eventSourceName = std::move(value); }
-
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
-    inline void SetEventSourceName(const char* value) { m_eventSourceNameHasBeenSet = true; m_eventSourceName.assign(value); }
-
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
-    inline ListPartnerEventSourceAccountsRequest& WithEventSourceName(const Aws::String& value) { SetEventSourceName(value); return *this;}
-
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
-    inline ListPartnerEventSourceAccountsRequest& WithEventSourceName(Aws::String&& value) { SetEventSourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the partner event source to display account information
-     * about.</p>
-     */
-    inline ListPartnerEventSourceAccountsRequest& WithEventSourceName(const char* value) { SetEventSourceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The token returned by a previous call to this operation. Specifying this
      * retrieves the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPartnerEventSourceAccountsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
-    inline ListPartnerEventSourceAccountsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
-    inline ListPartnerEventSourceAccountsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token returned by a previous call to this operation. Specifying this
-     * retrieves the next set of results.</p>
-     */
-    inline ListPartnerEventSourceAccountsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifying this limits the number of results returned by this operation. The
      * operation also returns a NextToken which you can use in a subsequent operation
      * to retrieve the next set of results.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a NextToken which you can use in a subsequent operation
-     * to retrieve the next set of results.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a NextToken which you can use in a subsequent operation
-     * to retrieve the next set of results.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>Specifying this limits the number of results returned by this operation. The
-     * operation also returns a NextToken which you can use in a subsequent operation
-     * to retrieve the next set of results.</p>
-     */
     inline ListPartnerEventSourceAccountsRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_eventSourceName;
@@ -168,7 +79,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

@@ -31,137 +31,51 @@ namespace Model
   class FieldOption
   {
   public:
-    AWS_CONNECTCASES_API FieldOption();
+    AWS_CONNECTCASES_API FieldOption() = default;
     AWS_CONNECTCASES_API FieldOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API FieldOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes whether the <code>FieldOption</code> is active (displayed) or
      * inactive.</p>
      */
-    inline bool GetActive() const{ return m_active; }
-
-    /**
-     * <p>Describes whether the <code>FieldOption</code> is active (displayed) or
-     * inactive.</p>
-     */
+    inline bool GetActive() const { return m_active; }
     inline bool ActiveHasBeenSet() const { return m_activeHasBeenSet; }
-
-    /**
-     * <p>Describes whether the <code>FieldOption</code> is active (displayed) or
-     * inactive.</p>
-     */
     inline void SetActive(bool value) { m_activeHasBeenSet = true; m_active = value; }
-
-    /**
-     * <p>Describes whether the <code>FieldOption</code> is active (displayed) or
-     * inactive.</p>
-     */
     inline FieldOption& WithActive(bool value) { SetActive(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
      * spaces.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    FieldOption& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
-    inline FieldOption& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
-    inline FieldOption& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> <code>FieldOptionName</code> has max length 100 and disallows trailing
-     * spaces.</p>
-     */
-    inline FieldOption& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
      * with hyphens and underscores.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
-    inline FieldOption& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
-    inline FieldOption& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p> <code>FieldOptionValue</code> has max length 100 and must be alphanumeric
-     * with hyphens and underscores.</p>
-     */
-    inline FieldOption& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    FieldOption& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_active;
+    bool m_active{false};
     bool m_activeHasBeenSet = false;
 
     Aws::String m_name;

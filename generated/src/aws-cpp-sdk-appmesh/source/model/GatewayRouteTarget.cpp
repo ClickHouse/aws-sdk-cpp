@@ -18,17 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-GatewayRouteTarget::GatewayRouteTarget() : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_virtualServiceHasBeenSet(false)
-{
-}
-
-GatewayRouteTarget::GatewayRouteTarget(JsonView jsonValue) : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_virtualServiceHasBeenSet(false)
+GatewayRouteTarget::GatewayRouteTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ GatewayRouteTarget& GatewayRouteTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("port"))
   {
     m_port = jsonValue.GetInteger("port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("virtualService"))
   {
     m_virtualService = jsonValue.GetObject("virtualService");
-
     m_virtualServiceHasBeenSet = true;
   }
-
   return *this;
 }
 

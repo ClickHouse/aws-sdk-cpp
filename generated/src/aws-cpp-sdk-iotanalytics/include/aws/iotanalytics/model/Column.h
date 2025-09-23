@@ -32,109 +32,37 @@ namespace Model
   class Column
   {
   public:
-    AWS_IOTANALYTICS_API Column();
+    AWS_IOTANALYTICS_API Column() = default;
     AWS_IOTANALYTICS_API Column(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Column& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the column.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the column.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Column& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline Column& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline Column& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the column.</p>
-     */
-    inline Column& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of data. For more information about the supported data types, see <a
      * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
      * data types</a> in the <i>Glue Developer Guide</i>.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
-    inline Column& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
-    inline Column& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of data. For more information about the supported data types, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html">Common
-     * data types</a> in the <i>Glue Developer Guide</i>.</p>
-     */
-    inline Column& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    Column& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

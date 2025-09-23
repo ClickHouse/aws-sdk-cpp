@@ -34,7 +34,7 @@ namespace Model
   class IdentityMailFromDomainAttributes
   {
   public:
-    AWS_SES_API IdentityMailFromDomainAttributes();
+    AWS_SES_API IdentityMailFromDomainAttributes() = default;
     AWS_SES_API IdentityMailFromDomainAttributes(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API IdentityMailFromDomainAttributes& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,47 +42,19 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
      */
-    inline const Aws::String& GetMailFromDomain() const{ return m_mailFromDomain; }
-
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
+    inline const Aws::String& GetMailFromDomain() const { return m_mailFromDomain; }
     inline bool MailFromDomainHasBeenSet() const { return m_mailFromDomainHasBeenSet; }
+    template<typename MailFromDomainT = Aws::String>
+    void SetMailFromDomain(MailFromDomainT&& value) { m_mailFromDomainHasBeenSet = true; m_mailFromDomain = std::forward<MailFromDomainT>(value); }
+    template<typename MailFromDomainT = Aws::String>
+    IdentityMailFromDomainAttributes& WithMailFromDomain(MailFromDomainT&& value) { SetMailFromDomain(std::forward<MailFromDomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
-    inline void SetMailFromDomain(const Aws::String& value) { m_mailFromDomainHasBeenSet = true; m_mailFromDomain = value; }
-
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
-    inline void SetMailFromDomain(Aws::String&& value) { m_mailFromDomainHasBeenSet = true; m_mailFromDomain = std::move(value); }
-
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
-    inline void SetMailFromDomain(const char* value) { m_mailFromDomainHasBeenSet = true; m_mailFromDomain.assign(value); }
-
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithMailFromDomain(const Aws::String& value) { SetMailFromDomain(value); return *this;}
-
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithMailFromDomain(Aws::String&& value) { SetMailFromDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom MAIL FROM domain that the identity is configured to use.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithMailFromDomain(const char* value) { SetMailFromDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state that indicates whether Amazon SES has successfully read the MX
      * record required for custom MAIL FROM domain setup. If the state is
@@ -90,54 +62,13 @@ namespace Model
      * the verified identity sends an email. All other states indicate that Amazon SES
      * takes the action described by <code>BehaviorOnMXFailure</code>.</p>
      */
-    inline const CustomMailFromStatus& GetMailFromDomainStatus() const{ return m_mailFromDomainStatus; }
-
-    /**
-     * <p>The state that indicates whether Amazon SES has successfully read the MX
-     * record required for custom MAIL FROM domain setup. If the state is
-     * <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when
-     * the verified identity sends an email. All other states indicate that Amazon SES
-     * takes the action described by <code>BehaviorOnMXFailure</code>.</p>
-     */
+    inline CustomMailFromStatus GetMailFromDomainStatus() const { return m_mailFromDomainStatus; }
     inline bool MailFromDomainStatusHasBeenSet() const { return m_mailFromDomainStatusHasBeenSet; }
+    inline void SetMailFromDomainStatus(CustomMailFromStatus value) { m_mailFromDomainStatusHasBeenSet = true; m_mailFromDomainStatus = value; }
+    inline IdentityMailFromDomainAttributes& WithMailFromDomainStatus(CustomMailFromStatus value) { SetMailFromDomainStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state that indicates whether Amazon SES has successfully read the MX
-     * record required for custom MAIL FROM domain setup. If the state is
-     * <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when
-     * the verified identity sends an email. All other states indicate that Amazon SES
-     * takes the action described by <code>BehaviorOnMXFailure</code>.</p>
-     */
-    inline void SetMailFromDomainStatus(const CustomMailFromStatus& value) { m_mailFromDomainStatusHasBeenSet = true; m_mailFromDomainStatus = value; }
-
-    /**
-     * <p>The state that indicates whether Amazon SES has successfully read the MX
-     * record required for custom MAIL FROM domain setup. If the state is
-     * <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when
-     * the verified identity sends an email. All other states indicate that Amazon SES
-     * takes the action described by <code>BehaviorOnMXFailure</code>.</p>
-     */
-    inline void SetMailFromDomainStatus(CustomMailFromStatus&& value) { m_mailFromDomainStatusHasBeenSet = true; m_mailFromDomainStatus = std::move(value); }
-
-    /**
-     * <p>The state that indicates whether Amazon SES has successfully read the MX
-     * record required for custom MAIL FROM domain setup. If the state is
-     * <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when
-     * the verified identity sends an email. All other states indicate that Amazon SES
-     * takes the action described by <code>BehaviorOnMXFailure</code>.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithMailFromDomainStatus(const CustomMailFromStatus& value) { SetMailFromDomainStatus(value); return *this;}
-
-    /**
-     * <p>The state that indicates whether Amazon SES has successfully read the MX
-     * record required for custom MAIL FROM domain setup. If the state is
-     * <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when
-     * the verified identity sends an email. All other states indicate that Amazon SES
-     * takes the action described by <code>BehaviorOnMXFailure</code>.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithMailFromDomainStatus(CustomMailFromStatus&& value) { SetMailFromDomainStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The action that Amazon SES takes if it cannot successfully read the required
      * MX record when you send an email. A value of <code>UseDefaultValue</code>
@@ -149,82 +80,20 @@ namespace Model
      * this behavior are <code>Pending</code>, <code>Failed</code>, and
      * <code>TemporaryFailure</code>.</p>
      */
-    inline const BehaviorOnMXFailure& GetBehaviorOnMXFailure() const{ return m_behaviorOnMXFailure; }
-
-    /**
-     * <p>The action that Amazon SES takes if it cannot successfully read the required
-     * MX record when you send an email. A value of <code>UseDefaultValue</code>
-     * indicates that if Amazon SES cannot read the required MX record, it uses
-     * amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of
-     * <code>RejectMessage</code> indicates that if Amazon SES cannot read the required
-     * MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and
-     * does not send the email.</p> <p>The custom MAIL FROM setup states that result in
-     * this behavior are <code>Pending</code>, <code>Failed</code>, and
-     * <code>TemporaryFailure</code>.</p>
-     */
+    inline BehaviorOnMXFailure GetBehaviorOnMXFailure() const { return m_behaviorOnMXFailure; }
     inline bool BehaviorOnMXFailureHasBeenSet() const { return m_behaviorOnMXFailureHasBeenSet; }
-
-    /**
-     * <p>The action that Amazon SES takes if it cannot successfully read the required
-     * MX record when you send an email. A value of <code>UseDefaultValue</code>
-     * indicates that if Amazon SES cannot read the required MX record, it uses
-     * amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of
-     * <code>RejectMessage</code> indicates that if Amazon SES cannot read the required
-     * MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and
-     * does not send the email.</p> <p>The custom MAIL FROM setup states that result in
-     * this behavior are <code>Pending</code>, <code>Failed</code>, and
-     * <code>TemporaryFailure</code>.</p>
-     */
-    inline void SetBehaviorOnMXFailure(const BehaviorOnMXFailure& value) { m_behaviorOnMXFailureHasBeenSet = true; m_behaviorOnMXFailure = value; }
-
-    /**
-     * <p>The action that Amazon SES takes if it cannot successfully read the required
-     * MX record when you send an email. A value of <code>UseDefaultValue</code>
-     * indicates that if Amazon SES cannot read the required MX record, it uses
-     * amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of
-     * <code>RejectMessage</code> indicates that if Amazon SES cannot read the required
-     * MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and
-     * does not send the email.</p> <p>The custom MAIL FROM setup states that result in
-     * this behavior are <code>Pending</code>, <code>Failed</code>, and
-     * <code>TemporaryFailure</code>.</p>
-     */
-    inline void SetBehaviorOnMXFailure(BehaviorOnMXFailure&& value) { m_behaviorOnMXFailureHasBeenSet = true; m_behaviorOnMXFailure = std::move(value); }
-
-    /**
-     * <p>The action that Amazon SES takes if it cannot successfully read the required
-     * MX record when you send an email. A value of <code>UseDefaultValue</code>
-     * indicates that if Amazon SES cannot read the required MX record, it uses
-     * amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of
-     * <code>RejectMessage</code> indicates that if Amazon SES cannot read the required
-     * MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and
-     * does not send the email.</p> <p>The custom MAIL FROM setup states that result in
-     * this behavior are <code>Pending</code>, <code>Failed</code>, and
-     * <code>TemporaryFailure</code>.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithBehaviorOnMXFailure(const BehaviorOnMXFailure& value) { SetBehaviorOnMXFailure(value); return *this;}
-
-    /**
-     * <p>The action that Amazon SES takes if it cannot successfully read the required
-     * MX record when you send an email. A value of <code>UseDefaultValue</code>
-     * indicates that if Amazon SES cannot read the required MX record, it uses
-     * amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of
-     * <code>RejectMessage</code> indicates that if Amazon SES cannot read the required
-     * MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and
-     * does not send the email.</p> <p>The custom MAIL FROM setup states that result in
-     * this behavior are <code>Pending</code>, <code>Failed</code>, and
-     * <code>TemporaryFailure</code>.</p>
-     */
-    inline IdentityMailFromDomainAttributes& WithBehaviorOnMXFailure(BehaviorOnMXFailure&& value) { SetBehaviorOnMXFailure(std::move(value)); return *this;}
-
+    inline void SetBehaviorOnMXFailure(BehaviorOnMXFailure value) { m_behaviorOnMXFailureHasBeenSet = true; m_behaviorOnMXFailure = value; }
+    inline IdentityMailFromDomainAttributes& WithBehaviorOnMXFailure(BehaviorOnMXFailure value) { SetBehaviorOnMXFailure(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_mailFromDomain;
     bool m_mailFromDomainHasBeenSet = false;
 
-    CustomMailFromStatus m_mailFromDomainStatus;
+    CustomMailFromStatus m_mailFromDomainStatus{CustomMailFromStatus::NOT_SET};
     bool m_mailFromDomainStatusHasBeenSet = false;
 
-    BehaviorOnMXFailure m_behaviorOnMXFailure;
+    BehaviorOnMXFailure m_behaviorOnMXFailure{BehaviorOnMXFailure::NOT_SET};
     bool m_behaviorOnMXFailureHasBeenSet = false;
   };
 

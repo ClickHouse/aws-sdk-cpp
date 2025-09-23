@@ -18,53 +18,38 @@ namespace Inspector2
 namespace Model
 {
 
-ResourceScanMetadata::ResourceScanMetadata() : 
-    m_ec2HasBeenSet(false),
-    m_ecrImageHasBeenSet(false),
-    m_ecrRepositoryHasBeenSet(false),
-    m_lambdaFunctionHasBeenSet(false)
-{
-}
-
-ResourceScanMetadata::ResourceScanMetadata(JsonView jsonValue) : 
-    m_ec2HasBeenSet(false),
-    m_ecrImageHasBeenSet(false),
-    m_ecrRepositoryHasBeenSet(false),
-    m_lambdaFunctionHasBeenSet(false)
+ResourceScanMetadata::ResourceScanMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ResourceScanMetadata& ResourceScanMetadata::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("ec2"))
-  {
-    m_ec2 = jsonValue.GetObject("ec2");
-
-    m_ec2HasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("ecrImage"))
-  {
-    m_ecrImage = jsonValue.GetObject("ecrImage");
-
-    m_ecrImageHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("ecrRepository"))
   {
     m_ecrRepository = jsonValue.GetObject("ecrRepository");
-
     m_ecrRepositoryHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ecrImage"))
+  {
+    m_ecrImage = jsonValue.GetObject("ecrImage");
+    m_ecrImageHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ec2"))
+  {
+    m_ec2 = jsonValue.GetObject("ec2");
+    m_ec2HasBeenSet = true;
+  }
   if(jsonValue.ValueExists("lambdaFunction"))
   {
     m_lambdaFunction = jsonValue.GetObject("lambdaFunction");
-
     m_lambdaFunctionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("codeRepository"))
+  {
+    m_codeRepository = jsonValue.GetObject("codeRepository");
+    m_codeRepositoryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,9 +57,9 @@ JsonValue ResourceScanMetadata::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_ec2HasBeenSet)
+  if(m_ecrRepositoryHasBeenSet)
   {
-   payload.WithObject("ec2", m_ec2.Jsonize());
+   payload.WithObject("ecrRepository", m_ecrRepository.Jsonize());
 
   }
 
@@ -84,15 +69,21 @@ JsonValue ResourceScanMetadata::Jsonize() const
 
   }
 
-  if(m_ecrRepositoryHasBeenSet)
+  if(m_ec2HasBeenSet)
   {
-   payload.WithObject("ecrRepository", m_ecrRepository.Jsonize());
+   payload.WithObject("ec2", m_ec2.Jsonize());
 
   }
 
   if(m_lambdaFunctionHasBeenSet)
   {
    payload.WithObject("lambdaFunction", m_lambdaFunction.Jsonize());
+
+  }
+
+  if(m_codeRepositoryHasBeenSet)
+  {
+   payload.WithObject("codeRepository", m_codeRepository.Jsonize());
 
   }
 

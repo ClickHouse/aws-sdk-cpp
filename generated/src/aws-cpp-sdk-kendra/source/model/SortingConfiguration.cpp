@@ -18,17 +18,7 @@ namespace kendra
 namespace Model
 {
 
-SortingConfiguration::SortingConfiguration() : 
-    m_documentAttributeKeyHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
-SortingConfiguration::SortingConfiguration(JsonView jsonValue) : 
-    m_documentAttributeKeyHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
+SortingConfiguration::SortingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SortingConfiguration& SortingConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DocumentAttributeKey"))
   {
     m_documentAttributeKey = jsonValue.GetString("DocumentAttributeKey");
-
     m_documentAttributeKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SortOrder"))
   {
     m_sortOrder = SortOrderMapper::GetSortOrderForName(jsonValue.GetString("SortOrder"));
-
     m_sortOrderHasBeenSet = true;
   }
-
   return *this;
 }
 

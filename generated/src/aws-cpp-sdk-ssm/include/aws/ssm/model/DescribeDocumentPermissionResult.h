@@ -29,176 +29,72 @@ namespace Model
   class DescribeDocumentPermissionResult
   {
   public:
-    AWS_SSM_API DescribeDocumentPermissionResult();
+    AWS_SSM_API DescribeDocumentPermissionResult() = default;
     AWS_SSM_API DescribeDocumentPermissionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSM_API DescribeDocumentPermissionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
+     * either an Amazon Web Services account number or <code>all</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAccountIds() const{ return m_accountIds; }
+    inline const Aws::Vector<Aws::String>& GetAccountIds() const { return m_accountIds; }
+    template<typename AccountIdsT = Aws::Vector<Aws::String>>
+    void SetAccountIds(AccountIdsT&& value) { m_accountIdsHasBeenSet = true; m_accountIds = std::forward<AccountIdsT>(value); }
+    template<typename AccountIdsT = Aws::Vector<Aws::String>>
+    DescribeDocumentPermissionResult& WithAccountIds(AccountIdsT&& value) { SetAccountIds(std::forward<AccountIdsT>(value)); return *this;}
+    template<typename AccountIdsT = Aws::String>
+    DescribeDocumentPermissionResult& AddAccountIds(AccountIdsT&& value) { m_accountIdsHasBeenSet = true; m_accountIds.emplace_back(std::forward<AccountIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline void SetAccountIds(const Aws::Vector<Aws::String>& value) { m_accountIds = value; }
-
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline void SetAccountIds(Aws::Vector<Aws::String>&& value) { m_accountIds = std::move(value); }
-
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithAccountIds(const Aws::Vector<Aws::String>& value) { SetAccountIds(value); return *this;}
-
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithAccountIds(Aws::Vector<Aws::String>&& value) { SetAccountIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline DescribeDocumentPermissionResult& AddAccountIds(const Aws::String& value) { m_accountIds.push_back(value); return *this; }
-
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline DescribeDocumentPermissionResult& AddAccountIds(Aws::String&& value) { m_accountIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The account IDs that have permission to use this document. The ID can be
-     * either an Amazon Web Services account or <i>All</i>.</p>
-     */
-    inline DescribeDocumentPermissionResult& AddAccountIds(const char* value) { m_accountIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of Amazon Web Services accounts where the current document is shared
      * and the version shared with each account.</p>
      */
-    inline const Aws::Vector<AccountSharingInfo>& GetAccountSharingInfoList() const{ return m_accountSharingInfoList; }
+    inline const Aws::Vector<AccountSharingInfo>& GetAccountSharingInfoList() const { return m_accountSharingInfoList; }
+    template<typename AccountSharingInfoListT = Aws::Vector<AccountSharingInfo>>
+    void SetAccountSharingInfoList(AccountSharingInfoListT&& value) { m_accountSharingInfoListHasBeenSet = true; m_accountSharingInfoList = std::forward<AccountSharingInfoListT>(value); }
+    template<typename AccountSharingInfoListT = Aws::Vector<AccountSharingInfo>>
+    DescribeDocumentPermissionResult& WithAccountSharingInfoList(AccountSharingInfoListT&& value) { SetAccountSharingInfoList(std::forward<AccountSharingInfoListT>(value)); return *this;}
+    template<typename AccountSharingInfoListT = AccountSharingInfo>
+    DescribeDocumentPermissionResult& AddAccountSharingInfoList(AccountSharingInfoListT&& value) { m_accountSharingInfoListHasBeenSet = true; m_accountSharingInfoList.emplace_back(std::forward<AccountSharingInfoListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of Amazon Web Services accounts where the current document is shared
-     * and the version shared with each account.</p>
-     */
-    inline void SetAccountSharingInfoList(const Aws::Vector<AccountSharingInfo>& value) { m_accountSharingInfoList = value; }
-
-    /**
-     * <p>A list of Amazon Web Services accounts where the current document is shared
-     * and the version shared with each account.</p>
-     */
-    inline void SetAccountSharingInfoList(Aws::Vector<AccountSharingInfo>&& value) { m_accountSharingInfoList = std::move(value); }
-
-    /**
-     * <p>A list of Amazon Web Services accounts where the current document is shared
-     * and the version shared with each account.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithAccountSharingInfoList(const Aws::Vector<AccountSharingInfo>& value) { SetAccountSharingInfoList(value); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services accounts where the current document is shared
-     * and the version shared with each account.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithAccountSharingInfoList(Aws::Vector<AccountSharingInfo>&& value) { SetAccountSharingInfoList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services accounts where the current document is shared
-     * and the version shared with each account.</p>
-     */
-    inline DescribeDocumentPermissionResult& AddAccountSharingInfoList(const AccountSharingInfo& value) { m_accountSharingInfoList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services accounts where the current document is shared
-     * and the version shared with each account.</p>
-     */
-    inline DescribeDocumentPermissionResult& AddAccountSharingInfoList(AccountSharingInfo&& value) { m_accountSharingInfoList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. Use this token to get the next
      * set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeDocumentPermissionResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of items to return. Use this token to get the next
-     * set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. Use this token to get the next
-     * set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. Use this token to get the next
-     * set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. Use this token to get the next
-     * set of results.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. Use this token to get the next
-     * set of results.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. Use this token to get the next
-     * set of results.</p>
-     */
-    inline DescribeDocumentPermissionResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDocumentPermissionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDocumentPermissionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDocumentPermissionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDocumentPermissionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_accountIds;
+    bool m_accountIdsHasBeenSet = false;
 
     Aws::Vector<AccountSharingInfo> m_accountSharingInfoList;
+    bool m_accountSharingInfoListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

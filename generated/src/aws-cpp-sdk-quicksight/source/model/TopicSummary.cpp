@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TopicSummary::TopicSummary() : 
-    m_arnHasBeenSet(false),
-    m_topicIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-TopicSummary::TopicSummary(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_topicIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
+TopicSummary::TopicSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ TopicSummary& TopicSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TopicId"))
   {
     m_topicId = jsonValue.GetString("TopicId");
-
     m_topicIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UserExperienceVersion"))
+  {
+    m_userExperienceVersion = TopicUserExperienceVersionMapper::GetTopicUserExperienceVersionForName(jsonValue.GetString("UserExperienceVersion"));
+    m_userExperienceVersionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +68,11 @@ JsonValue TopicSummary::Jsonize() const
   {
    payload.WithString("Name", m_name);
 
+  }
+
+  if(m_userExperienceVersionHasBeenSet)
+  {
+   payload.WithString("UserExperienceVersion", TopicUserExperienceVersionMapper::GetNameForTopicUserExperienceVersion(m_userExperienceVersion));
   }
 
   return payload;

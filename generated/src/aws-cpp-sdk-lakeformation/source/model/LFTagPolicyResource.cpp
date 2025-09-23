@@ -18,19 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-LFTagPolicyResource::LFTagPolicyResource() : 
-    m_catalogIdHasBeenSet(false),
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_expressionHasBeenSet(false)
-{
-}
-
-LFTagPolicyResource::LFTagPolicyResource(JsonView jsonValue) : 
-    m_catalogIdHasBeenSet(false),
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_expressionHasBeenSet(false)
+LFTagPolicyResource::LFTagPolicyResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ LFTagPolicyResource& LFTagPolicyResource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CatalogId"))
   {
     m_catalogId = jsonValue.GetString("CatalogId");
-
     m_catalogIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = ResourceTypeMapper::GetResourceTypeForName(jsonValue.GetString("ResourceType"));
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Expression"))
   {
     Aws::Utils::Array<JsonView> expressionJsonList = jsonValue.GetArray("Expression");
@@ -60,7 +44,11 @@ LFTagPolicyResource& LFTagPolicyResource::operator =(JsonView jsonValue)
     }
     m_expressionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ExpressionName"))
+  {
+    m_expressionName = jsonValue.GetString("ExpressionName");
+    m_expressionNameHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -87,6 +75,12 @@ JsonValue LFTagPolicyResource::Jsonize() const
      expressionJsonList[expressionIndex].AsObject(m_expression[expressionIndex].Jsonize());
    }
    payload.WithArray("Expression", std::move(expressionJsonList));
+
+  }
+
+  if(m_expressionNameHasBeenSet)
+  {
+   payload.WithString("ExpressionName", m_expressionName);
 
   }
 

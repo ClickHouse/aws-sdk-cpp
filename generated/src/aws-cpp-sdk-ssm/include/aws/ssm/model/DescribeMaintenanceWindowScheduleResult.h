@@ -29,125 +29,55 @@ namespace Model
   class DescribeMaintenanceWindowScheduleResult
   {
   public:
-    AWS_SSM_API DescribeMaintenanceWindowScheduleResult();
+    AWS_SSM_API DescribeMaintenanceWindowScheduleResult() = default;
     AWS_SSM_API DescribeMaintenanceWindowScheduleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSM_API DescribeMaintenanceWindowScheduleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about maintenance window executions scheduled for the specified
      * time range.</p>
      */
-    inline const Aws::Vector<ScheduledWindowExecution>& GetScheduledWindowExecutions() const{ return m_scheduledWindowExecutions; }
+    inline const Aws::Vector<ScheduledWindowExecution>& GetScheduledWindowExecutions() const { return m_scheduledWindowExecutions; }
+    template<typename ScheduledWindowExecutionsT = Aws::Vector<ScheduledWindowExecution>>
+    void SetScheduledWindowExecutions(ScheduledWindowExecutionsT&& value) { m_scheduledWindowExecutionsHasBeenSet = true; m_scheduledWindowExecutions = std::forward<ScheduledWindowExecutionsT>(value); }
+    template<typename ScheduledWindowExecutionsT = Aws::Vector<ScheduledWindowExecution>>
+    DescribeMaintenanceWindowScheduleResult& WithScheduledWindowExecutions(ScheduledWindowExecutionsT&& value) { SetScheduledWindowExecutions(std::forward<ScheduledWindowExecutionsT>(value)); return *this;}
+    template<typename ScheduledWindowExecutionsT = ScheduledWindowExecution>
+    DescribeMaintenanceWindowScheduleResult& AddScheduledWindowExecutions(ScheduledWindowExecutionsT&& value) { m_scheduledWindowExecutionsHasBeenSet = true; m_scheduledWindowExecutions.emplace_back(std::forward<ScheduledWindowExecutionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about maintenance window executions scheduled for the specified
-     * time range.</p>
-     */
-    inline void SetScheduledWindowExecutions(const Aws::Vector<ScheduledWindowExecution>& value) { m_scheduledWindowExecutions = value; }
-
-    /**
-     * <p>Information about maintenance window executions scheduled for the specified
-     * time range.</p>
-     */
-    inline void SetScheduledWindowExecutions(Aws::Vector<ScheduledWindowExecution>&& value) { m_scheduledWindowExecutions = std::move(value); }
-
-    /**
-     * <p>Information about maintenance window executions scheduled for the specified
-     * time range.</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& WithScheduledWindowExecutions(const Aws::Vector<ScheduledWindowExecution>& value) { SetScheduledWindowExecutions(value); return *this;}
-
-    /**
-     * <p>Information about maintenance window executions scheduled for the specified
-     * time range.</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& WithScheduledWindowExecutions(Aws::Vector<ScheduledWindowExecution>&& value) { SetScheduledWindowExecutions(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about maintenance window executions scheduled for the specified
-     * time range.</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& AddScheduledWindowExecutions(const ScheduledWindowExecution& value) { m_scheduledWindowExecutions.push_back(value); return *this; }
-
-    /**
-     * <p>Information about maintenance window executions scheduled for the specified
-     * time range.</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& AddScheduledWindowExecutions(ScheduledWindowExecution&& value) { m_scheduledWindowExecutions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You use this token in the
      * next call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeMaintenanceWindowScheduleResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of items to return. (You use this token in the
-     * next call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You use this token in the
-     * next call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You use this token in the
-     * next call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You use this token in the
-     * next call.)</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You use this token in the
-     * next call.)</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You use this token in the
-     * next call.)</p>
-     */
-    inline DescribeMaintenanceWindowScheduleResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeMaintenanceWindowScheduleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeMaintenanceWindowScheduleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeMaintenanceWindowScheduleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeMaintenanceWindowScheduleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ScheduledWindowExecution> m_scheduledWindowExecutions;
+    bool m_scheduledWindowExecutionsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

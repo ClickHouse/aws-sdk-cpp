@@ -32,48 +32,24 @@ namespace Model
   class QueryFilter
   {
   public:
-    AWS_IOTANALYTICS_API QueryFilter();
+    AWS_IOTANALYTICS_API QueryFilter() = default;
     AWS_IOTANALYTICS_API QueryFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API QueryFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Used to limit data to that which has arrived since the last execution of the
      * action.</p>
      */
-    inline const DeltaTime& GetDeltaTime() const{ return m_deltaTime; }
-
-    /**
-     * <p>Used to limit data to that which has arrived since the last execution of the
-     * action.</p>
-     */
+    inline const DeltaTime& GetDeltaTime() const { return m_deltaTime; }
     inline bool DeltaTimeHasBeenSet() const { return m_deltaTimeHasBeenSet; }
-
-    /**
-     * <p>Used to limit data to that which has arrived since the last execution of the
-     * action.</p>
-     */
-    inline void SetDeltaTime(const DeltaTime& value) { m_deltaTimeHasBeenSet = true; m_deltaTime = value; }
-
-    /**
-     * <p>Used to limit data to that which has arrived since the last execution of the
-     * action.</p>
-     */
-    inline void SetDeltaTime(DeltaTime&& value) { m_deltaTimeHasBeenSet = true; m_deltaTime = std::move(value); }
-
-    /**
-     * <p>Used to limit data to that which has arrived since the last execution of the
-     * action.</p>
-     */
-    inline QueryFilter& WithDeltaTime(const DeltaTime& value) { SetDeltaTime(value); return *this;}
-
-    /**
-     * <p>Used to limit data to that which has arrived since the last execution of the
-     * action.</p>
-     */
-    inline QueryFilter& WithDeltaTime(DeltaTime&& value) { SetDeltaTime(std::move(value)); return *this;}
-
+    template<typename DeltaTimeT = DeltaTime>
+    void SetDeltaTime(DeltaTimeT&& value) { m_deltaTimeHasBeenSet = true; m_deltaTime = std::forward<DeltaTimeT>(value); }
+    template<typename DeltaTimeT = DeltaTime>
+    QueryFilter& WithDeltaTime(DeltaTimeT&& value) { SetDeltaTime(std::forward<DeltaTimeT>(value)); return *this;}
+    ///@}
   private:
 
     DeltaTime m_deltaTime;

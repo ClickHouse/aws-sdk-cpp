@@ -34,7 +34,7 @@ namespace Model
   class SslPolicy
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API SslPolicy();
+    AWS_ELASTICLOADBALANCINGV2_API SslPolicy() = default;
     AWS_ELASTICLOADBALANCINGV2_API SslPolicy(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICLOADBALANCINGV2_API SslPolicy& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,179 +42,59 @@ namespace Model
     AWS_ELASTICLOADBALANCINGV2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The protocols.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSslProtocols() const{ return m_sslProtocols; }
-
-    /**
-     * <p>The protocols.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSslProtocols() const { return m_sslProtocols; }
     inline bool SslProtocolsHasBeenSet() const { return m_sslProtocolsHasBeenSet; }
+    template<typename SslProtocolsT = Aws::Vector<Aws::String>>
+    void SetSslProtocols(SslProtocolsT&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols = std::forward<SslProtocolsT>(value); }
+    template<typename SslProtocolsT = Aws::Vector<Aws::String>>
+    SslPolicy& WithSslProtocols(SslProtocolsT&& value) { SetSslProtocols(std::forward<SslProtocolsT>(value)); return *this;}
+    template<typename SslProtocolsT = Aws::String>
+    SslPolicy& AddSslProtocols(SslProtocolsT&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols.emplace_back(std::forward<SslProtocolsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The protocols.</p>
-     */
-    inline void SetSslProtocols(const Aws::Vector<Aws::String>& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols = value; }
-
-    /**
-     * <p>The protocols.</p>
-     */
-    inline void SetSslProtocols(Aws::Vector<Aws::String>&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols = std::move(value); }
-
-    /**
-     * <p>The protocols.</p>
-     */
-    inline SslPolicy& WithSslProtocols(const Aws::Vector<Aws::String>& value) { SetSslProtocols(value); return *this;}
-
-    /**
-     * <p>The protocols.</p>
-     */
-    inline SslPolicy& WithSslProtocols(Aws::Vector<Aws::String>&& value) { SetSslProtocols(std::move(value)); return *this;}
-
-    /**
-     * <p>The protocols.</p>
-     */
-    inline SslPolicy& AddSslProtocols(const Aws::String& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols.push_back(value); return *this; }
-
-    /**
-     * <p>The protocols.</p>
-     */
-    inline SslPolicy& AddSslProtocols(Aws::String&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The protocols.</p>
-     */
-    inline SslPolicy& AddSslProtocols(const char* value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ciphers.</p>
      */
-    inline const Aws::Vector<Cipher>& GetCiphers() const{ return m_ciphers; }
-
-    /**
-     * <p>The ciphers.</p>
-     */
+    inline const Aws::Vector<Cipher>& GetCiphers() const { return m_ciphers; }
     inline bool CiphersHasBeenSet() const { return m_ciphersHasBeenSet; }
+    template<typename CiphersT = Aws::Vector<Cipher>>
+    void SetCiphers(CiphersT&& value) { m_ciphersHasBeenSet = true; m_ciphers = std::forward<CiphersT>(value); }
+    template<typename CiphersT = Aws::Vector<Cipher>>
+    SslPolicy& WithCiphers(CiphersT&& value) { SetCiphers(std::forward<CiphersT>(value)); return *this;}
+    template<typename CiphersT = Cipher>
+    SslPolicy& AddCiphers(CiphersT&& value) { m_ciphersHasBeenSet = true; m_ciphers.emplace_back(std::forward<CiphersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ciphers.</p>
-     */
-    inline void SetCiphers(const Aws::Vector<Cipher>& value) { m_ciphersHasBeenSet = true; m_ciphers = value; }
-
-    /**
-     * <p>The ciphers.</p>
-     */
-    inline void SetCiphers(Aws::Vector<Cipher>&& value) { m_ciphersHasBeenSet = true; m_ciphers = std::move(value); }
-
-    /**
-     * <p>The ciphers.</p>
-     */
-    inline SslPolicy& WithCiphers(const Aws::Vector<Cipher>& value) { SetCiphers(value); return *this;}
-
-    /**
-     * <p>The ciphers.</p>
-     */
-    inline SslPolicy& WithCiphers(Aws::Vector<Cipher>&& value) { SetCiphers(std::move(value)); return *this;}
-
-    /**
-     * <p>The ciphers.</p>
-     */
-    inline SslPolicy& AddCiphers(const Cipher& value) { m_ciphersHasBeenSet = true; m_ciphers.push_back(value); return *this; }
-
-    /**
-     * <p>The ciphers.</p>
-     */
-    inline SslPolicy& AddCiphers(Cipher&& value) { m_ciphersHasBeenSet = true; m_ciphers.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the policy.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the policy.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SslPolicy& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the policy.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the policy.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the policy.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the policy.</p>
-     */
-    inline SslPolicy& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the policy.</p>
-     */
-    inline SslPolicy& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the policy.</p>
-     */
-    inline SslPolicy& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The supported load balancers. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetSupportedLoadBalancerTypes() const{ return m_supportedLoadBalancerTypes; }
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSupportedLoadBalancerTypes() const { return m_supportedLoadBalancerTypes; }
     inline bool SupportedLoadBalancerTypesHasBeenSet() const { return m_supportedLoadBalancerTypesHasBeenSet; }
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline void SetSupportedLoadBalancerTypes(const Aws::Vector<Aws::String>& value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes = value; }
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline void SetSupportedLoadBalancerTypes(Aws::Vector<Aws::String>&& value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes = std::move(value); }
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline SslPolicy& WithSupportedLoadBalancerTypes(const Aws::Vector<Aws::String>& value) { SetSupportedLoadBalancerTypes(value); return *this;}
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline SslPolicy& WithSupportedLoadBalancerTypes(Aws::Vector<Aws::String>&& value) { SetSupportedLoadBalancerTypes(std::move(value)); return *this;}
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline SslPolicy& AddSupportedLoadBalancerTypes(const Aws::String& value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes.push_back(value); return *this; }
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline SslPolicy& AddSupportedLoadBalancerTypes(Aws::String&& value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> The supported load balancers. </p>
-     */
-    inline SslPolicy& AddSupportedLoadBalancerTypes(const char* value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes.push_back(value); return *this; }
-
+    template<typename SupportedLoadBalancerTypesT = Aws::Vector<Aws::String>>
+    void SetSupportedLoadBalancerTypes(SupportedLoadBalancerTypesT&& value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes = std::forward<SupportedLoadBalancerTypesT>(value); }
+    template<typename SupportedLoadBalancerTypesT = Aws::Vector<Aws::String>>
+    SslPolicy& WithSupportedLoadBalancerTypes(SupportedLoadBalancerTypesT&& value) { SetSupportedLoadBalancerTypes(std::forward<SupportedLoadBalancerTypesT>(value)); return *this;}
+    template<typename SupportedLoadBalancerTypesT = Aws::String>
+    SslPolicy& AddSupportedLoadBalancerTypes(SupportedLoadBalancerTypesT&& value) { m_supportedLoadBalancerTypesHasBeenSet = true; m_supportedLoadBalancerTypes.emplace_back(std::forward<SupportedLoadBalancerTypesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_sslProtocols;

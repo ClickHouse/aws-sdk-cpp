@@ -21,7 +21,7 @@ namespace Model
   class AcceptShareRequest : public OmicsRequest
   {
   public:
-    AWS_OMICS_API AcceptShareRequest();
+    AWS_OMICS_API AcceptShareRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_OMICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p> The ID for a share offer for analytics store data. </p>
+     * <p>The ID of the resource share.</p>
      */
-    inline const Aws::String& GetShareId() const{ return m_shareId; }
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
+    inline const Aws::String& GetShareId() const { return m_shareId; }
     inline bool ShareIdHasBeenSet() const { return m_shareIdHasBeenSet; }
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
-    inline void SetShareId(const Aws::String& value) { m_shareIdHasBeenSet = true; m_shareId = value; }
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
-    inline void SetShareId(Aws::String&& value) { m_shareIdHasBeenSet = true; m_shareId = std::move(value); }
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
-    inline void SetShareId(const char* value) { m_shareIdHasBeenSet = true; m_shareId.assign(value); }
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
-    inline AcceptShareRequest& WithShareId(const Aws::String& value) { SetShareId(value); return *this;}
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
-    inline AcceptShareRequest& WithShareId(Aws::String&& value) { SetShareId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID for a share offer for analytics store data. </p>
-     */
-    inline AcceptShareRequest& WithShareId(const char* value) { SetShareId(value); return *this;}
-
+    template<typename ShareIdT = Aws::String>
+    void SetShareId(ShareIdT&& value) { m_shareIdHasBeenSet = true; m_shareId = std::forward<ShareIdT>(value); }
+    template<typename ShareIdT = Aws::String>
+    AcceptShareRequest& WithShareId(ShareIdT&& value) { SetShareId(std::forward<ShareIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_shareId;

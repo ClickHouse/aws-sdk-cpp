@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/Image.h>
 #include <utility>
@@ -30,112 +30,54 @@ namespace Model
   class DescribeImagesResponse
   {
   public:
-    AWS_EC2_API DescribeImagesResponse();
+    AWS_EC2_API DescribeImagesResponse() = default;
     AWS_EC2_API DescribeImagesResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DescribeImagesResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline const Aws::Vector<Image>& GetImages() const{ return m_images; }
-
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline void SetImages(const Aws::Vector<Image>& value) { m_images = value; }
-
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline void SetImages(Aws::Vector<Image>&& value) { m_images = std::move(value); }
-
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline DescribeImagesResponse& WithImages(const Aws::Vector<Image>& value) { SetImages(value); return *this;}
-
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline DescribeImagesResponse& WithImages(Aws::Vector<Image>&& value) { SetImages(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline DescribeImagesResponse& AddImages(const Image& value) { m_images.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the images.</p>
-     */
-    inline DescribeImagesResponse& AddImages(Image&& value) { m_images.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token to include in another request to get the next page of items. This
      * value is <code>null</code> when there are no more items to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeImagesResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The token to include in another request to get the next page of items. This
-     * value is <code>null</code> when there are no more items to return.</p>
+     * <p>Information about the images.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
+    inline const Aws::Vector<Image>& GetImages() const { return m_images; }
+    template<typename ImagesT = Aws::Vector<Image>>
+    void SetImages(ImagesT&& value) { m_imagesHasBeenSet = true; m_images = std::forward<ImagesT>(value); }
+    template<typename ImagesT = Aws::Vector<Image>>
+    DescribeImagesResponse& WithImages(ImagesT&& value) { SetImages(std::forward<ImagesT>(value)); return *this;}
+    template<typename ImagesT = Image>
+    DescribeImagesResponse& AddImages(ImagesT&& value) { m_imagesHasBeenSet = true; m_images.emplace_back(std::forward<ImagesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The token to include in another request to get the next page of items. This
-     * value is <code>null</code> when there are no more items to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to include in another request to get the next page of items. This
-     * value is <code>null</code> when there are no more items to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to include in another request to get the next page of items. This
-     * value is <code>null</code> when there are no more items to return.</p>
-     */
-    inline DescribeImagesResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to include in another request to get the next page of items. This
-     * value is <code>null</code> when there are no more items to return.</p>
-     */
-    inline DescribeImagesResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to include in another request to get the next page of items. This
-     * value is <code>null</code> when there are no more items to return.</p>
-     */
-    inline DescribeImagesResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeImagesResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeImagesResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeImagesResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Vector<Image> m_images;
-
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
+
+    Aws::Vector<Image> m_images;
+    bool m_imagesHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,17 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-PortalStatus::PortalStatus() : 
-    m_state(PortalState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-PortalStatus::PortalStatus(JsonView jsonValue) : 
-    m_state(PortalState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false)
+PortalStatus::PortalStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PortalStatus& PortalStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("state"))
   {
     m_state = PortalStateMapper::GetPortalStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetObject("error");
-
     m_errorHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,83 +32,35 @@ namespace Model
   class BootstrapActionConfig
   {
   public:
-    AWS_EMR_API BootstrapActionConfig();
+    AWS_EMR_API BootstrapActionConfig() = default;
     AWS_EMR_API BootstrapActionConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API BootstrapActionConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the bootstrap action.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BootstrapActionConfig& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
-    inline BootstrapActionConfig& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
-    inline BootstrapActionConfig& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bootstrap action.</p>
-     */
-    inline BootstrapActionConfig& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The script run by the bootstrap action.</p>
      */
-    inline const ScriptBootstrapActionConfig& GetScriptBootstrapAction() const{ return m_scriptBootstrapAction; }
-
-    /**
-     * <p>The script run by the bootstrap action.</p>
-     */
+    inline const ScriptBootstrapActionConfig& GetScriptBootstrapAction() const { return m_scriptBootstrapAction; }
     inline bool ScriptBootstrapActionHasBeenSet() const { return m_scriptBootstrapActionHasBeenSet; }
-
-    /**
-     * <p>The script run by the bootstrap action.</p>
-     */
-    inline void SetScriptBootstrapAction(const ScriptBootstrapActionConfig& value) { m_scriptBootstrapActionHasBeenSet = true; m_scriptBootstrapAction = value; }
-
-    /**
-     * <p>The script run by the bootstrap action.</p>
-     */
-    inline void SetScriptBootstrapAction(ScriptBootstrapActionConfig&& value) { m_scriptBootstrapActionHasBeenSet = true; m_scriptBootstrapAction = std::move(value); }
-
-    /**
-     * <p>The script run by the bootstrap action.</p>
-     */
-    inline BootstrapActionConfig& WithScriptBootstrapAction(const ScriptBootstrapActionConfig& value) { SetScriptBootstrapAction(value); return *this;}
-
-    /**
-     * <p>The script run by the bootstrap action.</p>
-     */
-    inline BootstrapActionConfig& WithScriptBootstrapAction(ScriptBootstrapActionConfig&& value) { SetScriptBootstrapAction(std::move(value)); return *this;}
-
+    template<typename ScriptBootstrapActionT = ScriptBootstrapActionConfig>
+    void SetScriptBootstrapAction(ScriptBootstrapActionT&& value) { m_scriptBootstrapActionHasBeenSet = true; m_scriptBootstrapAction = std::forward<ScriptBootstrapActionT>(value); }
+    template<typename ScriptBootstrapActionT = ScriptBootstrapActionConfig>
+    BootstrapActionConfig& WithScriptBootstrapAction(ScriptBootstrapActionT&& value) { SetScriptBootstrapAction(std::forward<ScriptBootstrapActionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -21,7 +21,7 @@ namespace Model
   class DeleteLFTagRequest : public LakeFormationRequest
   {
   public:
-    AWS_LAKEFORMATION_API DeleteLFTagRequest();
+    AWS_LAKEFORMATION_API DeleteLFTagRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,111 +32,32 @@ namespace Model
     AWS_LAKEFORMATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier for the Data Catalog. By default, the account ID. The Data
      * Catalog is the persistent metadata store. It contains database definitions,
      * table definitions, and other control information to manage your Lake Formation
      * environment. </p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    DeleteLFTagRequest& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline DeleteLFTagRequest& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline DeleteLFTagRequest& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline DeleteLFTagRequest& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key-name for the LF-tag to delete.</p>
      */
-    inline const Aws::String& GetTagKey() const{ return m_tagKey; }
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
+    inline const Aws::String& GetTagKey() const { return m_tagKey; }
     inline bool TagKeyHasBeenSet() const { return m_tagKeyHasBeenSet; }
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
-    inline void SetTagKey(const Aws::String& value) { m_tagKeyHasBeenSet = true; m_tagKey = value; }
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
-    inline void SetTagKey(Aws::String&& value) { m_tagKeyHasBeenSet = true; m_tagKey = std::move(value); }
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
-    inline void SetTagKey(const char* value) { m_tagKeyHasBeenSet = true; m_tagKey.assign(value); }
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
-    inline DeleteLFTagRequest& WithTagKey(const Aws::String& value) { SetTagKey(value); return *this;}
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
-    inline DeleteLFTagRequest& WithTagKey(Aws::String&& value) { SetTagKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key-name for the LF-tag to delete.</p>
-     */
-    inline DeleteLFTagRequest& WithTagKey(const char* value) { SetTagKey(value); return *this;}
-
+    template<typename TagKeyT = Aws::String>
+    void SetTagKey(TagKeyT&& value) { m_tagKeyHasBeenSet = true; m_tagKey = std::forward<TagKeyT>(value); }
+    template<typename TagKeyT = Aws::String>
+    DeleteLFTagRequest& WithTagKey(TagKeyT&& value) { SetTagKey(std::forward<TagKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogId;

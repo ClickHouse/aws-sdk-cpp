@@ -12,35 +12,6 @@ using namespace Aws::Amplify::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateBranchRequest::CreateBranchRequest() : 
-    m_appIdHasBeenSet(false),
-    m_branchNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_stage(Stage::NOT_SET),
-    m_stageHasBeenSet(false),
-    m_frameworkHasBeenSet(false),
-    m_enableNotification(false),
-    m_enableNotificationHasBeenSet(false),
-    m_enableAutoBuild(false),
-    m_enableAutoBuildHasBeenSet(false),
-    m_environmentVariablesHasBeenSet(false),
-    m_basicAuthCredentialsHasBeenSet(false),
-    m_enableBasicAuth(false),
-    m_enableBasicAuthHasBeenSet(false),
-    m_enablePerformanceMode(false),
-    m_enablePerformanceModeHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_buildSpecHasBeenSet(false),
-    m_ttlHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_enablePullRequestPreview(false),
-    m_enablePullRequestPreviewHasBeenSet(false),
-    m_pullRequestEnvironmentNameHasBeenSet(false),
-    m_backendEnvironmentArnHasBeenSet(false),
-    m_backendHasBeenSet(false)
-{
-}
-
 Aws::String CreateBranchRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -77,6 +48,12 @@ Aws::String CreateBranchRequest::SerializePayload() const
   if(m_enableAutoBuildHasBeenSet)
   {
    payload.WithBool("enableAutoBuild", m_enableAutoBuild);
+
+  }
+
+  if(m_enableSkewProtectionHasBeenSet)
+  {
+   payload.WithBool("enableSkewProtection", m_enableSkewProtection);
 
   }
 
@@ -159,6 +136,12 @@ Aws::String CreateBranchRequest::SerializePayload() const
   if(m_backendHasBeenSet)
   {
    payload.WithObject("backend", m_backend.Jsonize());
+
+  }
+
+  if(m_computeRoleArnHasBeenSet)
+  {
+   payload.WithString("computeRoleArn", m_computeRoleArn);
 
   }
 

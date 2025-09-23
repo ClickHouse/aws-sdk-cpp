@@ -103,6 +103,7 @@ namespace Aws
              */
             EC2MetadataClient(const char* endpoint = "http://169.254.169.254");
             EC2MetadataClient(const Client::ClientConfiguration& clientConfiguration, const char* endpoint = "http://169.254.169.254");
+            EC2MetadataClient(const Client::ClientConfiguration::CredentialProviderConfiguration& credentialConfig, const char* endpoint = "http://169.254.169.254");
 
             EC2MetadataClient& operator =(const EC2MetadataClient& rhs) = delete;
             EC2MetadataClient(const EC2MetadataClient& rhs) = delete;
@@ -159,6 +160,7 @@ namespace Aws
         };
 
         void AWS_CORE_API InitEC2MetadataClient();
+        void AWS_CORE_API InitEC2MetadataClient(const Aws::Client::ClientConfiguration::CredentialProviderConfiguration& credentialConfig);
         void AWS_CORE_API CleanupEC2MetadataClient();
         std::shared_ptr<EC2MetadataClient> AWS_CORE_API GetEC2MetadataClient();
 
@@ -250,6 +252,7 @@ namespace Aws
          {
          public:
              SSOCredentialsClient(const Client::ClientConfiguration& clientConfiguration);
+             SSOCredentialsClient(const Client::ClientConfiguration& clientConfiguration, Aws::Http::Scheme scheme, const Aws::String& region);
 
              SSOCredentialsClient& operator =(SSOCredentialsClient& rhs) = delete;
              SSOCredentialsClient(const SSOCredentialsClient& rhs) = delete;
@@ -290,7 +293,8 @@ namespace Aws
 
              SSOCreateTokenResult CreateToken(const SSOCreateTokenRequest& request);
          private:
-             Aws::String buildEndpoint(const Aws::Client::ClientConfiguration& clientConfiguration,
+             Aws::String buildEndpoint(Aws::Http::Scheme scheme,
+                 const Aws::String& region,
                  const Aws::String& domain,
                  const Aws::String& endpoint);
              Aws::String m_endpoint;

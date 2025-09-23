@@ -18,17 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-SceneError::SceneError() : 
-    m_code(SceneErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-SceneError::SceneError(JsonView jsonValue) : 
-    m_code(SceneErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+SceneError::SceneError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SceneError& SceneError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("code"))
   {
     m_code = SceneErrorCodeMapper::GetSceneErrorCodeForName(jsonValue.GetString("code"));
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

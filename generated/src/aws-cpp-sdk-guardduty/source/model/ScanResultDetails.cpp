@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-ScanResultDetails::ScanResultDetails() : 
-    m_scanResult(ScanResult::NOT_SET),
-    m_scanResultHasBeenSet(false)
-{
-}
-
-ScanResultDetails::ScanResultDetails(JsonView jsonValue) : 
-    m_scanResult(ScanResult::NOT_SET),
-    m_scanResultHasBeenSet(false)
+ScanResultDetails::ScanResultDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ScanResultDetails& ScanResultDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("scanResult"))
   {
     m_scanResult = ScanResultMapper::GetScanResultForName(jsonValue.GetString("scanResult"));
-
     m_scanResultHasBeenSet = true;
   }
-
   return *this;
 }
 

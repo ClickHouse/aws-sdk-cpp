@@ -20,19 +20,7 @@ namespace SimpleDB
 namespace Model
 {
 
-ReplaceableAttribute::ReplaceableAttribute() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_replace(false),
-    m_replaceHasBeenSet(false)
-{
-}
-
-ReplaceableAttribute::ReplaceableAttribute(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_replace(false),
-    m_replaceHasBeenSet(false)
+ReplaceableAttribute::ReplaceableAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

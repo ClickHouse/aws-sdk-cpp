@@ -26,7 +26,7 @@ namespace Model
   class ListApplicationsRequest : public MainframeModernizationRequest
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API ListApplicationsRequest();
+    AWS_MAINFRAMEMODERNIZATION_API ListApplicationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,176 +39,61 @@ namespace Model
     AWS_MAINFRAMEMODERNIZATION_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the runtime environment where the applications are
      * deployed.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    ListApplicationsRequest& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
-    inline ListApplicationsRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
-    inline ListApplicationsRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the runtime environment where the applications are
-     * deployed.</p>
-     */
-    inline ListApplicationsRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of applications to return.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of applications to return.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of applications to return.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of applications to return.</p>
-     */
     inline ListApplicationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The names of the applications.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNames() const{ return m_names; }
-
-    /**
-     * <p>The names of the applications.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNames() const { return m_names; }
     inline bool NamesHasBeenSet() const { return m_namesHasBeenSet; }
+    template<typename NamesT = Aws::Vector<Aws::String>>
+    void SetNames(NamesT&& value) { m_namesHasBeenSet = true; m_names = std::forward<NamesT>(value); }
+    template<typename NamesT = Aws::Vector<Aws::String>>
+    ListApplicationsRequest& WithNames(NamesT&& value) { SetNames(std::forward<NamesT>(value)); return *this;}
+    template<typename NamesT = Aws::String>
+    ListApplicationsRequest& AddNames(NamesT&& value) { m_namesHasBeenSet = true; m_names.emplace_back(std::forward<NamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline void SetNames(const Aws::Vector<Aws::String>& value) { m_namesHasBeenSet = true; m_names = value; }
-
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline void SetNames(Aws::Vector<Aws::String>&& value) { m_namesHasBeenSet = true; m_names = std::move(value); }
-
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline ListApplicationsRequest& WithNames(const Aws::Vector<Aws::String>& value) { SetNames(value); return *this;}
-
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline ListApplicationsRequest& WithNames(Aws::Vector<Aws::String>&& value) { SetNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline ListApplicationsRequest& AddNames(const Aws::String& value) { m_namesHasBeenSet = true; m_names.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline ListApplicationsRequest& AddNames(Aws::String&& value) { m_namesHasBeenSet = true; m_names.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the applications.</p>
-     */
-    inline ListApplicationsRequest& AddNames(const char* value) { m_namesHasBeenSet = true; m_names.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A pagination token to control the number of applications displayed in the
      * list.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
-    inline ListApplicationsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
-    inline ListApplicationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token to control the number of applications displayed in the
-     * list.</p>
-     */
-    inline ListApplicationsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListApplicationsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentId;
     bool m_environmentIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_names;

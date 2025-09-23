@@ -21,8 +21,10 @@
 #include <aws/mediapackagev2/Mediapackagev2Client.h>
 #include <aws/mediapackagev2/Mediapackagev2ErrorMarshaller.h>
 #include <aws/mediapackagev2/Mediapackagev2EndpointProvider.h>
+#include <aws/mediapackagev2/model/CancelHarvestJobRequest.h>
 #include <aws/mediapackagev2/model/CreateChannelRequest.h>
 #include <aws/mediapackagev2/model/CreateChannelGroupRequest.h>
+#include <aws/mediapackagev2/model/CreateHarvestJobRequest.h>
 #include <aws/mediapackagev2/model/CreateOriginEndpointRequest.h>
 #include <aws/mediapackagev2/model/DeleteChannelRequest.h>
 #include <aws/mediapackagev2/model/DeleteChannelGroupRequest.h>
@@ -32,14 +34,18 @@
 #include <aws/mediapackagev2/model/GetChannelRequest.h>
 #include <aws/mediapackagev2/model/GetChannelGroupRequest.h>
 #include <aws/mediapackagev2/model/GetChannelPolicyRequest.h>
+#include <aws/mediapackagev2/model/GetHarvestJobRequest.h>
 #include <aws/mediapackagev2/model/GetOriginEndpointRequest.h>
 #include <aws/mediapackagev2/model/GetOriginEndpointPolicyRequest.h>
 #include <aws/mediapackagev2/model/ListChannelGroupsRequest.h>
 #include <aws/mediapackagev2/model/ListChannelsRequest.h>
+#include <aws/mediapackagev2/model/ListHarvestJobsRequest.h>
 #include <aws/mediapackagev2/model/ListOriginEndpointsRequest.h>
 #include <aws/mediapackagev2/model/ListTagsForResourceRequest.h>
 #include <aws/mediapackagev2/model/PutChannelPolicyRequest.h>
 #include <aws/mediapackagev2/model/PutOriginEndpointPolicyRequest.h>
+#include <aws/mediapackagev2/model/ResetChannelStateRequest.h>
+#include <aws/mediapackagev2/model/ResetOriginEndpointStateRequest.h>
 #include <aws/mediapackagev2/model/TagResourceRequest.h>
 #include <aws/mediapackagev2/model/UntagResourceRequest.h>
 #include <aws/mediapackagev2/model/UpdateChannelRequest.h>
@@ -59,20 +65,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* Mediapackagev2Client::SERVICE_NAME = "mediapackagev2";
-const char* Mediapackagev2Client::ALLOCATION_TAG = "Mediapackagev2Client";
+namespace Aws
+{
+  namespace mediapackagev2
+  {
+    const char SERVICE_NAME[] = "mediapackagev2";
+    const char ALLOCATION_TAG[] = "Mediapackagev2Client";
+  }
+}
+const char* Mediapackagev2Client::GetServiceName() {return SERVICE_NAME;}
+const char* Mediapackagev2Client::GetAllocationTag() {return ALLOCATION_TAG;}
 
 Mediapackagev2Client::Mediapackagev2Client(const mediapackagev2::Mediapackagev2ClientConfiguration& clientConfiguration,
                                            std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Mediapackagev2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -87,8 +100,7 @@ Mediapackagev2Client::Mediapackagev2Client(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Mediapackagev2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -103,8 +115,7 @@ Mediapackagev2Client::Mediapackagev2Client(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Mediapackagev2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -113,12 +124,11 @@ Mediapackagev2Client::Mediapackagev2Client(const std::shared_ptr<AWSCredentialsP
   Mediapackagev2Client::Mediapackagev2Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Mediapackagev2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -133,7 +143,6 @@ Mediapackagev2Client::Mediapackagev2Client(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Mediapackagev2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -148,7 +157,6 @@ Mediapackagev2Client::Mediapackagev2Client(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Mediapackagev2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -168,6 +176,14 @@ std::shared_ptr<Mediapackagev2EndpointProviderBase>& Mediapackagev2Client::acces
 void Mediapackagev2Client::init(const mediapackagev2::Mediapackagev2ClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("MediaPackageV2");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -176,6 +192,60 @@ void Mediapackagev2Client::OverrideEndpoint(const Aws::String& endpoint)
 {
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->OverrideEndpoint(endpoint);
+}
+
+CancelHarvestJobOutcome Mediapackagev2Client::CancelHarvestJob(const CancelHarvestJobRequest& request) const
+{
+  AWS_OPERATION_GUARD(CancelHarvestJob);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CancelHarvestJob, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ChannelGroupNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CancelHarvestJob", "Required field: ChannelGroupName, is not set");
+    return CancelHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelGroupName]", false));
+  }
+  if (!request.ChannelNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CancelHarvestJob", "Required field: ChannelName, is not set");
+    return CancelHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelName]", false));
+  }
+  if (!request.OriginEndpointNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CancelHarvestJob", "Required field: OriginEndpointName, is not set");
+    return CancelHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [OriginEndpointName]", false));
+  }
+  if (!request.HarvestJobNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CancelHarvestJob", "Required field: HarvestJobName, is not set");
+    return CancelHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [HarvestJobName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CancelHarvestJob, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CancelHarvestJob, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".CancelHarvestJob",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CancelHarvestJobOutcome>(
+    [&]()-> CancelHarvestJobOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CancelHarvestJob, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channel/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/originEndpoint/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetOriginEndpointName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/harvestJob/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetHarvestJobName());
+      return CancelHarvestJobOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 CreateChannelOutcome Mediapackagev2Client::CreateChannel(const CreateChannelRequest& request) const
@@ -233,6 +303,54 @@ CreateChannelGroupOutcome Mediapackagev2Client::CreateChannelGroup(const CreateC
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateChannelGroup, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup");
       return CreateChannelGroupOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+CreateHarvestJobOutcome Mediapackagev2Client::CreateHarvestJob(const CreateHarvestJobRequest& request) const
+{
+  AWS_OPERATION_GUARD(CreateHarvestJob);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CreateHarvestJob, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ChannelGroupNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateHarvestJob", "Required field: ChannelGroupName, is not set");
+    return CreateHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelGroupName]", false));
+  }
+  if (!request.ChannelNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateHarvestJob", "Required field: ChannelName, is not set");
+    return CreateHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelName]", false));
+  }
+  if (!request.OriginEndpointNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateHarvestJob", "Required field: OriginEndpointName, is not set");
+    return CreateHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [OriginEndpointName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CreateHarvestJob, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CreateHarvestJob, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".CreateHarvestJob",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CreateHarvestJobOutcome>(
+    [&]()-> CreateHarvestJobOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateHarvestJob, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channel/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/originEndpoint/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetOriginEndpointName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/harvestJob");
+      return CreateHarvestJobOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -603,6 +721,60 @@ GetChannelPolicyOutcome Mediapackagev2Client::GetChannelPolicy(const GetChannelP
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
+GetHarvestJobOutcome Mediapackagev2Client::GetHarvestJob(const GetHarvestJobRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetHarvestJob);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetHarvestJob, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ChannelGroupNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetHarvestJob", "Required field: ChannelGroupName, is not set");
+    return GetHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelGroupName]", false));
+  }
+  if (!request.ChannelNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetHarvestJob", "Required field: ChannelName, is not set");
+    return GetHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelName]", false));
+  }
+  if (!request.OriginEndpointNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetHarvestJob", "Required field: OriginEndpointName, is not set");
+    return GetHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [OriginEndpointName]", false));
+  }
+  if (!request.HarvestJobNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetHarvestJob", "Required field: HarvestJobName, is not set");
+    return GetHarvestJobOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [HarvestJobName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetHarvestJob, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetHarvestJob, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetHarvestJob",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetHarvestJobOutcome>(
+    [&]()-> GetHarvestJobOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetHarvestJob, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channel/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/originEndpoint/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetOriginEndpointName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/harvestJob/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetHarvestJobName());
+      return GetHarvestJobOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
 GetOriginEndpointOutcome Mediapackagev2Client::GetOriginEndpoint(const GetOriginEndpointRequest& request) const
 {
   AWS_OPERATION_GUARD(GetOriginEndpoint);
@@ -753,6 +925,40 @@ ListChannelsOutcome Mediapackagev2Client::ListChannels(const ListChannelsRequest
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
       endpointResolutionOutcome.GetResult().AddPathSegments("/channel");
       return ListChannelsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ListHarvestJobsOutcome Mediapackagev2Client::ListHarvestJobs(const ListHarvestJobsRequest& request) const
+{
+  AWS_OPERATION_GUARD(ListHarvestJobs);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListHarvestJobs, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ChannelGroupNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListHarvestJobs", "Required field: ChannelGroupName, is not set");
+    return ListHarvestJobsOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelGroupName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListHarvestJobs, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ListHarvestJobs, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ListHarvestJobs",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ListHarvestJobsOutcome>(
+    [&]()-> ListHarvestJobsOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListHarvestJobs, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/harvestJob");
+      return ListHarvestJobsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -916,6 +1122,95 @@ PutOriginEndpointPolicyOutcome Mediapackagev2Client::PutOriginEndpointPolicy(con
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetOriginEndpointName());
       endpointResolutionOutcome.GetResult().AddPathSegments("/policy");
       return PutOriginEndpointPolicyOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ResetChannelStateOutcome Mediapackagev2Client::ResetChannelState(const ResetChannelStateRequest& request) const
+{
+  AWS_OPERATION_GUARD(ResetChannelState);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ResetChannelState, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ChannelGroupNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ResetChannelState", "Required field: ChannelGroupName, is not set");
+    return ResetChannelStateOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelGroupName]", false));
+  }
+  if (!request.ChannelNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ResetChannelState", "Required field: ChannelName, is not set");
+    return ResetChannelStateOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ResetChannelState, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ResetChannelState, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ResetChannelState",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ResetChannelStateOutcome>(
+    [&]()-> ResetChannelStateOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ResetChannelState, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channel/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/reset");
+      return ResetChannelStateOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ResetOriginEndpointStateOutcome Mediapackagev2Client::ResetOriginEndpointState(const ResetOriginEndpointStateRequest& request) const
+{
+  AWS_OPERATION_GUARD(ResetOriginEndpointState);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ResetOriginEndpointState, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ChannelGroupNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ResetOriginEndpointState", "Required field: ChannelGroupName, is not set");
+    return ResetOriginEndpointStateOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelGroupName]", false));
+  }
+  if (!request.ChannelNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ResetOriginEndpointState", "Required field: ChannelName, is not set");
+    return ResetOriginEndpointStateOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ChannelName]", false));
+  }
+  if (!request.OriginEndpointNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ResetOriginEndpointState", "Required field: OriginEndpointName, is not set");
+    return ResetOriginEndpointStateOutcome(Aws::Client::AWSError<Mediapackagev2Errors>(Mediapackagev2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [OriginEndpointName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ResetOriginEndpointState, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ResetOriginEndpointState, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ResetOriginEndpointState",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ResetOriginEndpointStateOutcome>(
+    [&]()-> ResetOriginEndpointStateOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ResetOriginEndpointState, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channelGroup/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelGroupName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/channel/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetChannelName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/originEndpoint/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetOriginEndpointName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/reset");
+      return ResetOriginEndpointStateOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

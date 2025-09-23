@@ -31,93 +31,35 @@ namespace Model
   class ChoiceContent
   {
   public:
-    AWS_WELLARCHITECTED_API ChoiceContent();
+    AWS_WELLARCHITECTED_API ChoiceContent() = default;
     AWS_WELLARCHITECTED_API ChoiceContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_WELLARCHITECTED_API ChoiceContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WELLARCHITECTED_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The display text for the choice content.</p>
      */
-    inline const Aws::String& GetDisplayText() const{ return m_displayText; }
-
-    /**
-     * <p>The display text for the choice content.</p>
-     */
+    inline const Aws::String& GetDisplayText() const { return m_displayText; }
     inline bool DisplayTextHasBeenSet() const { return m_displayTextHasBeenSet; }
+    template<typename DisplayTextT = Aws::String>
+    void SetDisplayText(DisplayTextT&& value) { m_displayTextHasBeenSet = true; m_displayText = std::forward<DisplayTextT>(value); }
+    template<typename DisplayTextT = Aws::String>
+    ChoiceContent& WithDisplayText(DisplayTextT&& value) { SetDisplayText(std::forward<DisplayTextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display text for the choice content.</p>
-     */
-    inline void SetDisplayText(const Aws::String& value) { m_displayTextHasBeenSet = true; m_displayText = value; }
-
-    /**
-     * <p>The display text for the choice content.</p>
-     */
-    inline void SetDisplayText(Aws::String&& value) { m_displayTextHasBeenSet = true; m_displayText = std::move(value); }
-
-    /**
-     * <p>The display text for the choice content.</p>
-     */
-    inline void SetDisplayText(const char* value) { m_displayTextHasBeenSet = true; m_displayText.assign(value); }
-
-    /**
-     * <p>The display text for the choice content.</p>
-     */
-    inline ChoiceContent& WithDisplayText(const Aws::String& value) { SetDisplayText(value); return *this;}
-
-    /**
-     * <p>The display text for the choice content.</p>
-     */
-    inline ChoiceContent& WithDisplayText(Aws::String&& value) { SetDisplayText(std::move(value)); return *this;}
-
-    /**
-     * <p>The display text for the choice content.</p>
-     */
-    inline ChoiceContent& WithDisplayText(const char* value) { SetDisplayText(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL for the choice content.</p>
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
-    inline ChoiceContent& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
-    inline ChoiceContent& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL for the choice content.</p>
-     */
-    inline ChoiceContent& WithUrl(const char* value) { SetUrl(value); return *this;}
-
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    ChoiceContent& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_displayText;

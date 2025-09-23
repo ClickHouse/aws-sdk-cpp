@@ -12,24 +12,9 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListCompositionsRequest::ListCompositionsRequest() : 
-    m_filterByEncoderConfigurationArnHasBeenSet(false),
-    m_filterByStageArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListCompositionsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filterByEncoderConfigurationArnHasBeenSet)
-  {
-   payload.WithString("filterByEncoderConfigurationArn", m_filterByEncoderConfigurationArn);
-
-  }
 
   if(m_filterByStageArnHasBeenSet)
   {
@@ -37,15 +22,21 @@ Aws::String ListCompositionsRequest::SerializePayload() const
 
   }
 
-  if(m_maxResultsHasBeenSet)
+  if(m_filterByEncoderConfigurationArnHasBeenSet)
   {
-   payload.WithInteger("maxResults", m_maxResults);
+   payload.WithString("filterByEncoderConfigurationArn", m_filterByEncoderConfigurationArn);
 
   }
 
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("nextToken", m_nextToken);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
 
   }
 

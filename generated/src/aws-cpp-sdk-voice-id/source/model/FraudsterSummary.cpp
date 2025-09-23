@@ -18,19 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-FraudsterSummary::FraudsterSummary() : 
-    m_createdAtHasBeenSet(false),
-    m_domainIdHasBeenSet(false),
-    m_generatedFraudsterIdHasBeenSet(false),
-    m_watchlistIdsHasBeenSet(false)
-{
-}
-
-FraudsterSummary::FraudsterSummary(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_domainIdHasBeenSet(false),
-    m_generatedFraudsterIdHasBeenSet(false),
-    m_watchlistIdsHasBeenSet(false)
+FraudsterSummary::FraudsterSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ FraudsterSummary& FraudsterSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DomainId"))
   {
     m_domainId = jsonValue.GetString("DomainId");
-
     m_domainIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GeneratedFraudsterId"))
   {
     m_generatedFraudsterId = jsonValue.GetString("GeneratedFraudsterId");
-
     m_generatedFraudsterIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WatchlistIds"))
   {
     Aws::Utils::Array<JsonView> watchlistIdsJsonList = jsonValue.GetArray("WatchlistIds");
@@ -67,7 +49,6 @@ FraudsterSummary& FraudsterSummary::operator =(JsonView jsonValue)
     }
     m_watchlistIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

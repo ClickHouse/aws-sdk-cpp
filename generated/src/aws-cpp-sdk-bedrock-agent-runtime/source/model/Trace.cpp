@@ -18,53 +18,48 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-Trace::Trace() : 
-    m_preProcessingTraceHasBeenSet(false),
-    m_orchestrationTraceHasBeenSet(false),
-    m_postProcessingTraceHasBeenSet(false),
-    m_failureTraceHasBeenSet(false)
-{
-}
-
-Trace::Trace(JsonView jsonValue) : 
-    m_preProcessingTraceHasBeenSet(false),
-    m_orchestrationTraceHasBeenSet(false),
-    m_postProcessingTraceHasBeenSet(false),
-    m_failureTraceHasBeenSet(false)
+Trace::Trace(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Trace& Trace::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("preProcessingTrace"))
+  if(jsonValue.ValueExists("customOrchestrationTrace"))
   {
-    m_preProcessingTrace = jsonValue.GetObject("preProcessingTrace");
-
-    m_preProcessingTraceHasBeenSet = true;
+    m_customOrchestrationTrace = jsonValue.GetObject("customOrchestrationTrace");
+    m_customOrchestrationTraceHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("orchestrationTrace"))
-  {
-    m_orchestrationTrace = jsonValue.GetObject("orchestrationTrace");
-
-    m_orchestrationTraceHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("postProcessingTrace"))
-  {
-    m_postProcessingTrace = jsonValue.GetObject("postProcessingTrace");
-
-    m_postProcessingTraceHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("failureTrace"))
   {
     m_failureTrace = jsonValue.GetObject("failureTrace");
-
     m_failureTraceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("guardrailTrace"))
+  {
+    m_guardrailTrace = jsonValue.GetObject("guardrailTrace");
+    m_guardrailTraceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("orchestrationTrace"))
+  {
+    m_orchestrationTrace = jsonValue.GetObject("orchestrationTrace");
+    m_orchestrationTraceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("postProcessingTrace"))
+  {
+    m_postProcessingTrace = jsonValue.GetObject("postProcessingTrace");
+    m_postProcessingTraceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("preProcessingTrace"))
+  {
+    m_preProcessingTrace = jsonValue.GetObject("preProcessingTrace");
+    m_preProcessingTraceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("routingClassifierTrace"))
+  {
+    m_routingClassifierTrace = jsonValue.GetObject("routingClassifierTrace");
+    m_routingClassifierTraceHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,9 +67,21 @@ JsonValue Trace::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_preProcessingTraceHasBeenSet)
+  if(m_customOrchestrationTraceHasBeenSet)
   {
-   payload.WithObject("preProcessingTrace", m_preProcessingTrace.Jsonize());
+   payload.WithObject("customOrchestrationTrace", m_customOrchestrationTrace.Jsonize());
+
+  }
+
+  if(m_failureTraceHasBeenSet)
+  {
+   payload.WithObject("failureTrace", m_failureTrace.Jsonize());
+
+  }
+
+  if(m_guardrailTraceHasBeenSet)
+  {
+   payload.WithObject("guardrailTrace", m_guardrailTrace.Jsonize());
 
   }
 
@@ -90,9 +97,15 @@ JsonValue Trace::Jsonize() const
 
   }
 
-  if(m_failureTraceHasBeenSet)
+  if(m_preProcessingTraceHasBeenSet)
   {
-   payload.WithObject("failureTrace", m_failureTrace.Jsonize());
+   payload.WithObject("preProcessingTrace", m_preProcessingTrace.Jsonize());
+
+  }
+
+  if(m_routingClassifierTraceHasBeenSet)
+  {
+   payload.WithObject("routingClassifierTrace", m_routingClassifierTrace.Jsonize());
 
   }
 

@@ -18,17 +18,7 @@ namespace CleanRoomsML
 namespace Model
 {
 
-RelevanceMetric::RelevanceMetric() : 
-    m_audienceSizeHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
-{
-}
-
-RelevanceMetric::RelevanceMetric(JsonView jsonValue) : 
-    m_audienceSizeHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
+RelevanceMetric::RelevanceMetric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RelevanceMetric& RelevanceMetric::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("audienceSize"))
   {
     m_audienceSize = jsonValue.GetObject("audienceSize");
-
     m_audienceSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("score"))
   {
     m_score = jsonValue.GetDouble("score");
-
     m_scoreHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -24,60 +24,31 @@ namespace Model
 {
 
   /**
-   * The VPC interface that you want to designate where the media stream is coming
-   * from or going to.<p><h3>See Also:</h3>   <a
+   * <p> The VPC interface that you want to designate where the media stream is
+   * coming from or going to.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/InterfaceRequest">AWS
    * API Reference</a></p>
    */
   class InterfaceRequest
   {
   public:
-    AWS_MEDIACONNECT_API InterfaceRequest();
+    AWS_MEDIACONNECT_API InterfaceRequest() = default;
     AWS_MEDIACONNECT_API InterfaceRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API InterfaceRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The name of the VPC interface.
+     * <p> The name of the VPC interface.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the VPC interface.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline InterfaceRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline InterfaceRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the VPC interface.
-     */
-    inline InterfaceRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    InterfaceRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/entityresolution/EntityResolution_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/entityresolution/model/ProviderServiceSummary.h>
 #include <utility>
 
@@ -29,111 +29,53 @@ namespace Model
   class ListProviderServicesResult
   {
   public:
-    AWS_ENTITYRESOLUTION_API ListProviderServicesResult();
+    AWS_ENTITYRESOLUTION_API ListProviderServicesResult() = default;
     AWS_ENTITYRESOLUTION_API ListProviderServicesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ENTITYRESOLUTION_API ListProviderServicesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline ListProviderServicesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline ListProviderServicesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token from the previous API call.</p>
-     */
-    inline ListProviderServicesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <code>ProviderServices</code> objects.</p>
      */
-    inline const Aws::Vector<ProviderServiceSummary>& GetProviderServiceSummaries() const{ return m_providerServiceSummaries; }
+    inline const Aws::Vector<ProviderServiceSummary>& GetProviderServiceSummaries() const { return m_providerServiceSummaries; }
+    template<typename ProviderServiceSummariesT = Aws::Vector<ProviderServiceSummary>>
+    void SetProviderServiceSummaries(ProviderServiceSummariesT&& value) { m_providerServiceSummariesHasBeenSet = true; m_providerServiceSummaries = std::forward<ProviderServiceSummariesT>(value); }
+    template<typename ProviderServiceSummariesT = Aws::Vector<ProviderServiceSummary>>
+    ListProviderServicesResult& WithProviderServiceSummaries(ProviderServiceSummariesT&& value) { SetProviderServiceSummaries(std::forward<ProviderServiceSummariesT>(value)); return *this;}
+    template<typename ProviderServiceSummariesT = ProviderServiceSummary>
+    ListProviderServicesResult& AddProviderServiceSummaries(ProviderServiceSummariesT&& value) { m_providerServiceSummariesHasBeenSet = true; m_providerServiceSummaries.emplace_back(std::forward<ProviderServiceSummariesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of <code>ProviderServices</code> objects.</p>
+     * <p>The pagination token from the previous API call.</p>
      */
-    inline void SetProviderServiceSummaries(const Aws::Vector<ProviderServiceSummary>& value) { m_providerServiceSummaries = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListProviderServicesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A list of <code>ProviderServices</code> objects.</p>
-     */
-    inline void SetProviderServiceSummaries(Aws::Vector<ProviderServiceSummary>&& value) { m_providerServiceSummaries = std::move(value); }
-
-    /**
-     * <p>A list of <code>ProviderServices</code> objects.</p>
-     */
-    inline ListProviderServicesResult& WithProviderServiceSummaries(const Aws::Vector<ProviderServiceSummary>& value) { SetProviderServiceSummaries(value); return *this;}
-
-    /**
-     * <p>A list of <code>ProviderServices</code> objects.</p>
-     */
-    inline ListProviderServicesResult& WithProviderServiceSummaries(Aws::Vector<ProviderServiceSummary>&& value) { SetProviderServiceSummaries(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>ProviderServices</code> objects.</p>
-     */
-    inline ListProviderServicesResult& AddProviderServiceSummaries(const ProviderServiceSummary& value) { m_providerServiceSummaries.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>ProviderServices</code> objects.</p>
-     */
-    inline ListProviderServicesResult& AddProviderServiceSummaries(ProviderServiceSummary&& value) { m_providerServiceSummaries.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListProviderServicesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListProviderServicesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListProviderServicesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListProviderServicesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_nextToken;
-
     Aws::Vector<ProviderServiceSummary> m_providerServiceSummaries;
+    bool m_providerServiceSummariesHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

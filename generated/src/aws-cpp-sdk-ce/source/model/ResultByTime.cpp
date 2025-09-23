@@ -18,21 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-ResultByTime::ResultByTime() : 
-    m_timePeriodHasBeenSet(false),
-    m_totalHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_estimated(false),
-    m_estimatedHasBeenSet(false)
-{
-}
-
-ResultByTime::ResultByTime(JsonView jsonValue) : 
-    m_timePeriodHasBeenSet(false),
-    m_totalHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_estimated(false),
-    m_estimatedHasBeenSet(false)
+ResultByTime::ResultByTime(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ ResultByTime& ResultByTime::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TimePeriod"))
   {
     m_timePeriod = jsonValue.GetObject("TimePeriod");
-
     m_timePeriodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Total"))
   {
     Aws::Map<Aws::String, JsonView> totalJsonMap = jsonValue.GetObject("Total").GetAllObjects();
@@ -55,7 +39,6 @@ ResultByTime& ResultByTime::operator =(JsonView jsonValue)
     }
     m_totalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Groups"))
   {
     Aws::Utils::Array<JsonView> groupsJsonList = jsonValue.GetArray("Groups");
@@ -65,14 +48,11 @@ ResultByTime& ResultByTime::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Estimated"))
   {
     m_estimated = jsonValue.GetBool("Estimated");
-
     m_estimatedHasBeenSet = true;
   }
-
   return *this;
 }
 

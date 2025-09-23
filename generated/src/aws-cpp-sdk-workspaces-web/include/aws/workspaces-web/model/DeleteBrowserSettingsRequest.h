@@ -21,7 +21,7 @@ namespace Model
   class DeleteBrowserSettingsRequest : public WorkSpacesWebRequest
   {
   public:
-    AWS_WORKSPACESWEB_API DeleteBrowserSettingsRequest();
+    AWS_WORKSPACESWEB_API DeleteBrowserSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_WORKSPACESWEB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the browser settings.</p>
      */
-    inline const Aws::String& GetBrowserSettingsArn() const{ return m_browserSettingsArn; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
+    inline const Aws::String& GetBrowserSettingsArn() const { return m_browserSettingsArn; }
     inline bool BrowserSettingsArnHasBeenSet() const { return m_browserSettingsArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(const Aws::String& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = value; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(Aws::String&& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(const char* value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline DeleteBrowserSettingsRequest& WithBrowserSettingsArn(const Aws::String& value) { SetBrowserSettingsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline DeleteBrowserSettingsRequest& WithBrowserSettingsArn(Aws::String&& value) { SetBrowserSettingsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline DeleteBrowserSettingsRequest& WithBrowserSettingsArn(const char* value) { SetBrowserSettingsArn(value); return *this;}
-
+    template<typename BrowserSettingsArnT = Aws::String>
+    void SetBrowserSettingsArn(BrowserSettingsArnT&& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = std::forward<BrowserSettingsArnT>(value); }
+    template<typename BrowserSettingsArnT = Aws::String>
+    DeleteBrowserSettingsRequest& WithBrowserSettingsArn(BrowserSettingsArnT&& value) { SetBrowserSettingsArn(std::forward<BrowserSettingsArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_browserSettingsArn;

@@ -25,7 +25,7 @@ namespace Model
   class DeleteComponentRequest : public ImagebuilderRequest
   {
   public:
-    AWS_IMAGEBUILDER_API DeleteComponentRequest();
+    AWS_IMAGEBUILDER_API DeleteComponentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,46 +38,17 @@ namespace Model
     AWS_IMAGEBUILDER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
      */
-    inline const Aws::String& GetComponentBuildVersionArn() const{ return m_componentBuildVersionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
+    inline const Aws::String& GetComponentBuildVersionArn() const { return m_componentBuildVersionArn; }
     inline bool ComponentBuildVersionArnHasBeenSet() const { return m_componentBuildVersionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
-    inline void SetComponentBuildVersionArn(const Aws::String& value) { m_componentBuildVersionArnHasBeenSet = true; m_componentBuildVersionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
-    inline void SetComponentBuildVersionArn(Aws::String&& value) { m_componentBuildVersionArnHasBeenSet = true; m_componentBuildVersionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
-    inline void SetComponentBuildVersionArn(const char* value) { m_componentBuildVersionArnHasBeenSet = true; m_componentBuildVersionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
-    inline DeleteComponentRequest& WithComponentBuildVersionArn(const Aws::String& value) { SetComponentBuildVersionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
-    inline DeleteComponentRequest& WithComponentBuildVersionArn(Aws::String&& value) { SetComponentBuildVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the component build version to delete.</p>
-     */
-    inline DeleteComponentRequest& WithComponentBuildVersionArn(const char* value) { SetComponentBuildVersionArn(value); return *this;}
-
+    template<typename ComponentBuildVersionArnT = Aws::String>
+    void SetComponentBuildVersionArn(ComponentBuildVersionArnT&& value) { m_componentBuildVersionArnHasBeenSet = true; m_componentBuildVersionArn = std::forward<ComponentBuildVersionArnT>(value); }
+    template<typename ComponentBuildVersionArnT = Aws::String>
+    DeleteComponentRequest& WithComponentBuildVersionArn(ComponentBuildVersionArnT&& value) { SetComponentBuildVersionArn(std::forward<ComponentBuildVersionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_componentBuildVersionArn;

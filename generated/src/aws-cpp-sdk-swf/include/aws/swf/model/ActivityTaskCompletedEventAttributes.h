@@ -32,119 +32,56 @@ namespace Model
   class ActivityTaskCompletedEventAttributes
   {
   public:
-    AWS_SWF_API ActivityTaskCompletedEventAttributes();
+    AWS_SWF_API ActivityTaskCompletedEventAttributes() = default;
     AWS_SWF_API ActivityTaskCompletedEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API ActivityTaskCompletedEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The results of the activity task.</p>
      */
-    inline const Aws::String& GetResult() const{ return m_result; }
-
-    /**
-     * <p>The results of the activity task.</p>
-     */
+    inline const Aws::String& GetResult() const { return m_result; }
     inline bool ResultHasBeenSet() const { return m_resultHasBeenSet; }
+    template<typename ResultT = Aws::String>
+    void SetResult(ResultT&& value) { m_resultHasBeenSet = true; m_result = std::forward<ResultT>(value); }
+    template<typename ResultT = Aws::String>
+    ActivityTaskCompletedEventAttributes& WithResult(ResultT&& value) { SetResult(std::forward<ResultT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The results of the activity task.</p>
-     */
-    inline void SetResult(const Aws::String& value) { m_resultHasBeenSet = true; m_result = value; }
-
-    /**
-     * <p>The results of the activity task.</p>
-     */
-    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
-
-    /**
-     * <p>The results of the activity task.</p>
-     */
-    inline void SetResult(const char* value) { m_resultHasBeenSet = true; m_result.assign(value); }
-
-    /**
-     * <p>The results of the activity task.</p>
-     */
-    inline ActivityTaskCompletedEventAttributes& WithResult(const Aws::String& value) { SetResult(value); return *this;}
-
-    /**
-     * <p>The results of the activity task.</p>
-     */
-    inline ActivityTaskCompletedEventAttributes& WithResult(Aws::String&& value) { SetResult(std::move(value)); return *this;}
-
-    /**
-     * <p>The results of the activity task.</p>
-     */
-    inline ActivityTaskCompletedEventAttributes& WithResult(const char* value) { SetResult(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
      * this activity task was scheduled. This information can be useful for diagnosing
      * problems by tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetScheduledEventId() const{ return m_scheduledEventId; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
-     * this activity task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetScheduledEventId() const { return m_scheduledEventId; }
     inline bool ScheduledEventIdHasBeenSet() const { return m_scheduledEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
-     * this activity task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetScheduledEventId(long long value) { m_scheduledEventIdHasBeenSet = true; m_scheduledEventId = value; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
-     * this activity task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline ActivityTaskCompletedEventAttributes& WithScheduledEventId(long long value) { SetScheduledEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
      * activity task was started. This information can be useful for diagnosing
      * problems by tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetStartedEventId() const{ return m_startedEventId; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
-     * activity task was started. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetStartedEventId() const { return m_startedEventId; }
     inline bool StartedEventIdHasBeenSet() const { return m_startedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
-     * activity task was started. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetStartedEventId(long long value) { m_startedEventIdHasBeenSet = true; m_startedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
-     * activity task was started. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline ActivityTaskCompletedEventAttributes& WithStartedEventId(long long value) { SetStartedEventId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_result;
     bool m_resultHasBeenSet = false;
 
-    long long m_scheduledEventId;
+    long long m_scheduledEventId{0};
     bool m_scheduledEventIdHasBeenSet = false;
 
-    long long m_startedEventId;
+    long long m_startedEventId{0};
     bool m_startedEventIdHasBeenSet = false;
   };
 

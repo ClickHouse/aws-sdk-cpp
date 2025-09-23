@@ -18,15 +18,7 @@ namespace ACMPCA
 namespace Model
 {
 
-EdiPartyName::EdiPartyName() : 
-    m_partyNameHasBeenSet(false),
-    m_nameAssignerHasBeenSet(false)
-{
-}
-
-EdiPartyName::EdiPartyName(JsonView jsonValue) : 
-    m_partyNameHasBeenSet(false),
-    m_nameAssignerHasBeenSet(false)
+EdiPartyName::EdiPartyName(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EdiPartyName& EdiPartyName::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PartyName"))
   {
     m_partyName = jsonValue.GetString("PartyName");
-
     m_partyNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NameAssigner"))
   {
     m_nameAssigner = jsonValue.GetString("NameAssigner");
-
     m_nameAssignerHasBeenSet = true;
   }
-
   return *this;
 }
 

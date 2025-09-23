@@ -18,17 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-TopicPreference::TopicPreference() : 
-    m_topicNameHasBeenSet(false),
-    m_subscriptionStatus(SubscriptionStatus::NOT_SET),
-    m_subscriptionStatusHasBeenSet(false)
-{
-}
-
-TopicPreference::TopicPreference(JsonView jsonValue) : 
-    m_topicNameHasBeenSet(false),
-    m_subscriptionStatus(SubscriptionStatus::NOT_SET),
-    m_subscriptionStatusHasBeenSet(false)
+TopicPreference::TopicPreference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TopicPreference& TopicPreference::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TopicName"))
   {
     m_topicName = jsonValue.GetString("TopicName");
-
     m_topicNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubscriptionStatus"))
   {
     m_subscriptionStatus = SubscriptionStatusMapper::GetSubscriptionStatusForName(jsonValue.GetString("SubscriptionStatus"));
-
     m_subscriptionStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

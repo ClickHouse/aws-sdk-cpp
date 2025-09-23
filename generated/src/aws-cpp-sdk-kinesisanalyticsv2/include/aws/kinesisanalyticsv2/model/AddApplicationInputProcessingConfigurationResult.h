@@ -28,176 +28,80 @@ namespace Model
   class AddApplicationInputProcessingConfigurationResult
   {
   public:
-    AWS_KINESISANALYTICSV2_API AddApplicationInputProcessingConfigurationResult();
+    AWS_KINESISANALYTICSV2_API AddApplicationInputProcessingConfigurationResult() = default;
     AWS_KINESISANALYTICSV2_API AddApplicationInputProcessingConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KINESISANALYTICSV2_API AddApplicationInputProcessingConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the application.</p>
      */
-    inline const Aws::String& GetApplicationARN() const{ return m_applicationARN; }
+    inline const Aws::String& GetApplicationARN() const { return m_applicationARN; }
+    template<typename ApplicationARNT = Aws::String>
+    void SetApplicationARN(ApplicationARNT&& value) { m_applicationARNHasBeenSet = true; m_applicationARN = std::forward<ApplicationARNT>(value); }
+    template<typename ApplicationARNT = Aws::String>
+    AddApplicationInputProcessingConfigurationResult& WithApplicationARN(ApplicationARNT&& value) { SetApplicationARN(std::forward<ApplicationARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationARN(const Aws::String& value) { m_applicationARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationARN(Aws::String&& value) { m_applicationARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationARN(const char* value) { m_applicationARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithApplicationARN(const Aws::String& value) { SetApplicationARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithApplicationARN(Aws::String&& value) { SetApplicationARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithApplicationARN(const char* value) { SetApplicationARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the current application version. </p>
      */
-    inline long long GetApplicationVersionId() const{ return m_applicationVersionId; }
-
-    /**
-     * <p>Provides the current application version. </p>
-     */
-    inline void SetApplicationVersionId(long long value) { m_applicationVersionId = value; }
-
-    /**
-     * <p>Provides the current application version. </p>
-     */
+    inline long long GetApplicationVersionId() const { return m_applicationVersionId; }
+    inline void SetApplicationVersionId(long long value) { m_applicationVersionIdHasBeenSet = true; m_applicationVersionId = value; }
     inline AddApplicationInputProcessingConfigurationResult& WithApplicationVersionId(long long value) { SetApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The input ID that is associated with the application input. This is the ID
      * that Kinesis Data Analytics assigns to each input configuration that you add to
      * your application.</p>
      */
-    inline const Aws::String& GetInputId() const{ return m_inputId; }
+    inline const Aws::String& GetInputId() const { return m_inputId; }
+    template<typename InputIdT = Aws::String>
+    void SetInputId(InputIdT&& value) { m_inputIdHasBeenSet = true; m_inputId = std::forward<InputIdT>(value); }
+    template<typename InputIdT = Aws::String>
+    AddApplicationInputProcessingConfigurationResult& WithInputId(InputIdT&& value) { SetInputId(std::forward<InputIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The input ID that is associated with the application input. This is the ID
-     * that Kinesis Data Analytics assigns to each input configuration that you add to
-     * your application.</p>
-     */
-    inline void SetInputId(const Aws::String& value) { m_inputId = value; }
-
-    /**
-     * <p>The input ID that is associated with the application input. This is the ID
-     * that Kinesis Data Analytics assigns to each input configuration that you add to
-     * your application.</p>
-     */
-    inline void SetInputId(Aws::String&& value) { m_inputId = std::move(value); }
-
-    /**
-     * <p>The input ID that is associated with the application input. This is the ID
-     * that Kinesis Data Analytics assigns to each input configuration that you add to
-     * your application.</p>
-     */
-    inline void SetInputId(const char* value) { m_inputId.assign(value); }
-
-    /**
-     * <p>The input ID that is associated with the application input. This is the ID
-     * that Kinesis Data Analytics assigns to each input configuration that you add to
-     * your application.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithInputId(const Aws::String& value) { SetInputId(value); return *this;}
-
-    /**
-     * <p>The input ID that is associated with the application input. This is the ID
-     * that Kinesis Data Analytics assigns to each input configuration that you add to
-     * your application.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithInputId(Aws::String&& value) { SetInputId(std::move(value)); return *this;}
-
-    /**
-     * <p>The input ID that is associated with the application input. This is the ID
-     * that Kinesis Data Analytics assigns to each input configuration that you add to
-     * your application.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithInputId(const char* value) { SetInputId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the preprocessor that executes on records in this input
      * before the application's code is run.</p>
      */
-    inline const InputProcessingConfigurationDescription& GetInputProcessingConfigurationDescription() const{ return m_inputProcessingConfigurationDescription; }
+    inline const InputProcessingConfigurationDescription& GetInputProcessingConfigurationDescription() const { return m_inputProcessingConfigurationDescription; }
+    template<typename InputProcessingConfigurationDescriptionT = InputProcessingConfigurationDescription>
+    void SetInputProcessingConfigurationDescription(InputProcessingConfigurationDescriptionT&& value) { m_inputProcessingConfigurationDescriptionHasBeenSet = true; m_inputProcessingConfigurationDescription = std::forward<InputProcessingConfigurationDescriptionT>(value); }
+    template<typename InputProcessingConfigurationDescriptionT = InputProcessingConfigurationDescription>
+    AddApplicationInputProcessingConfigurationResult& WithInputProcessingConfigurationDescription(InputProcessingConfigurationDescriptionT&& value) { SetInputProcessingConfigurationDescription(std::forward<InputProcessingConfigurationDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the preprocessor that executes on records in this input
-     * before the application's code is run.</p>
-     */
-    inline void SetInputProcessingConfigurationDescription(const InputProcessingConfigurationDescription& value) { m_inputProcessingConfigurationDescription = value; }
-
-    /**
-     * <p>The description of the preprocessor that executes on records in this input
-     * before the application's code is run.</p>
-     */
-    inline void SetInputProcessingConfigurationDescription(InputProcessingConfigurationDescription&& value) { m_inputProcessingConfigurationDescription = std::move(value); }
-
-    /**
-     * <p>The description of the preprocessor that executes on records in this input
-     * before the application's code is run.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithInputProcessingConfigurationDescription(const InputProcessingConfigurationDescription& value) { SetInputProcessingConfigurationDescription(value); return *this;}
-
-    /**
-     * <p>The description of the preprocessor that executes on records in this input
-     * before the application's code is run.</p>
-     */
-    inline AddApplicationInputProcessingConfigurationResult& WithInputProcessingConfigurationDescription(InputProcessingConfigurationDescription&& value) { SetInputProcessingConfigurationDescription(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AddApplicationInputProcessingConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AddApplicationInputProcessingConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AddApplicationInputProcessingConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AddApplicationInputProcessingConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationARN;
+    bool m_applicationARNHasBeenSet = false;
 
-    long long m_applicationVersionId;
+    long long m_applicationVersionId{0};
+    bool m_applicationVersionIdHasBeenSet = false;
 
     Aws::String m_inputId;
+    bool m_inputIdHasBeenSet = false;
 
     InputProcessingConfigurationDescription m_inputProcessingConfigurationDescription;
+    bool m_inputProcessingConfigurationDescriptionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -27,111 +27,51 @@ namespace Model
   class AssociateUserAccessLoggingSettingsResult
   {
   public:
-    AWS_WORKSPACESWEB_API AssociateUserAccessLoggingSettingsResult();
+    AWS_WORKSPACESWEB_API AssociateUserAccessLoggingSettingsResult() = default;
     AWS_WORKSPACESWEB_API AssociateUserAccessLoggingSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKSPACESWEB_API AssociateUserAccessLoggingSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the web portal.</p>
      */
-    inline const Aws::String& GetPortalArn() const{ return m_portalArn; }
+    inline const Aws::String& GetPortalArn() const { return m_portalArn; }
+    template<typename PortalArnT = Aws::String>
+    void SetPortalArn(PortalArnT&& value) { m_portalArnHasBeenSet = true; m_portalArn = std::forward<PortalArnT>(value); }
+    template<typename PortalArnT = Aws::String>
+    AssociateUserAccessLoggingSettingsResult& WithPortalArn(PortalArnT&& value) { SetPortalArn(std::forward<PortalArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(const Aws::String& value) { m_portalArn = value; }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(Aws::String&& value) { m_portalArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(const char* value) { m_portalArn.assign(value); }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateUserAccessLoggingSettingsResult& WithPortalArn(const Aws::String& value) { SetPortalArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateUserAccessLoggingSettingsResult& WithPortalArn(Aws::String&& value) { SetPortalArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateUserAccessLoggingSettingsResult& WithPortalArn(const char* value) { SetPortalArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the user access logging settings.</p>
      */
-    inline const Aws::String& GetUserAccessLoggingSettingsArn() const{ return m_userAccessLoggingSettingsArn; }
+    inline const Aws::String& GetUserAccessLoggingSettingsArn() const { return m_userAccessLoggingSettingsArn; }
+    template<typename UserAccessLoggingSettingsArnT = Aws::String>
+    void SetUserAccessLoggingSettingsArn(UserAccessLoggingSettingsArnT&& value) { m_userAccessLoggingSettingsArnHasBeenSet = true; m_userAccessLoggingSettingsArn = std::forward<UserAccessLoggingSettingsArnT>(value); }
+    template<typename UserAccessLoggingSettingsArnT = Aws::String>
+    AssociateUserAccessLoggingSettingsResult& WithUserAccessLoggingSettingsArn(UserAccessLoggingSettingsArnT&& value) { SetUserAccessLoggingSettingsArn(std::forward<UserAccessLoggingSettingsArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the user access logging settings.</p>
-     */
-    inline void SetUserAccessLoggingSettingsArn(const Aws::String& value) { m_userAccessLoggingSettingsArn = value; }
-
-    /**
-     * <p>The ARN of the user access logging settings.</p>
-     */
-    inline void SetUserAccessLoggingSettingsArn(Aws::String&& value) { m_userAccessLoggingSettingsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the user access logging settings.</p>
-     */
-    inline void SetUserAccessLoggingSettingsArn(const char* value) { m_userAccessLoggingSettingsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the user access logging settings.</p>
-     */
-    inline AssociateUserAccessLoggingSettingsResult& WithUserAccessLoggingSettingsArn(const Aws::String& value) { SetUserAccessLoggingSettingsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the user access logging settings.</p>
-     */
-    inline AssociateUserAccessLoggingSettingsResult& WithUserAccessLoggingSettingsArn(Aws::String&& value) { SetUserAccessLoggingSettingsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the user access logging settings.</p>
-     */
-    inline AssociateUserAccessLoggingSettingsResult& WithUserAccessLoggingSettingsArn(const char* value) { SetUserAccessLoggingSettingsArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociateUserAccessLoggingSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociateUserAccessLoggingSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociateUserAccessLoggingSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociateUserAccessLoggingSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_portalArn;
+    bool m_portalArnHasBeenSet = false;
 
     Aws::String m_userAccessLoggingSettingsArn;
+    bool m_userAccessLoggingSettingsArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,42 +32,23 @@ namespace Model
   class Logging
   {
   public:
-    AWS_APPMESH_API Logging();
+    AWS_APPMESH_API Logging() = default;
     AWS_APPMESH_API Logging(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Logging& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The access log configuration for a virtual node.</p>
      */
-    inline const AccessLog& GetAccessLog() const{ return m_accessLog; }
-
-    /**
-     * <p>The access log configuration for a virtual node.</p>
-     */
+    inline const AccessLog& GetAccessLog() const { return m_accessLog; }
     inline bool AccessLogHasBeenSet() const { return m_accessLogHasBeenSet; }
-
-    /**
-     * <p>The access log configuration for a virtual node.</p>
-     */
-    inline void SetAccessLog(const AccessLog& value) { m_accessLogHasBeenSet = true; m_accessLog = value; }
-
-    /**
-     * <p>The access log configuration for a virtual node.</p>
-     */
-    inline void SetAccessLog(AccessLog&& value) { m_accessLogHasBeenSet = true; m_accessLog = std::move(value); }
-
-    /**
-     * <p>The access log configuration for a virtual node.</p>
-     */
-    inline Logging& WithAccessLog(const AccessLog& value) { SetAccessLog(value); return *this;}
-
-    /**
-     * <p>The access log configuration for a virtual node.</p>
-     */
-    inline Logging& WithAccessLog(AccessLog&& value) { SetAccessLog(std::move(value)); return *this;}
-
+    template<typename AccessLogT = AccessLog>
+    void SetAccessLog(AccessLogT&& value) { m_accessLogHasBeenSet = true; m_accessLog = std::forward<AccessLogT>(value); }
+    template<typename AccessLogT = AccessLog>
+    Logging& WithAccessLog(AccessLogT&& value) { SetAccessLog(std::forward<AccessLogT>(value)); return *this;}
+    ///@}
   private:
 
     AccessLog m_accessLog;

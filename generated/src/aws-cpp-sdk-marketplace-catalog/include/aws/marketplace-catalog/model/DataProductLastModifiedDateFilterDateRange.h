@@ -33,93 +33,35 @@ namespace Model
   class DataProductLastModifiedDateFilterDateRange
   {
   public:
-    AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilterDateRange();
+    AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilterDateRange() = default;
     AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilterDateRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilterDateRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Date after which the data product was last modified.</p>
      */
-    inline const Aws::String& GetAfterValue() const{ return m_afterValue; }
-
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
+    inline const Aws::String& GetAfterValue() const { return m_afterValue; }
     inline bool AfterValueHasBeenSet() const { return m_afterValueHasBeenSet; }
+    template<typename AfterValueT = Aws::String>
+    void SetAfterValue(AfterValueT&& value) { m_afterValueHasBeenSet = true; m_afterValue = std::forward<AfterValueT>(value); }
+    template<typename AfterValueT = Aws::String>
+    DataProductLastModifiedDateFilterDateRange& WithAfterValue(AfterValueT&& value) { SetAfterValue(std::forward<AfterValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
-    inline void SetAfterValue(const Aws::String& value) { m_afterValueHasBeenSet = true; m_afterValue = value; }
-
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
-    inline void SetAfterValue(Aws::String&& value) { m_afterValueHasBeenSet = true; m_afterValue = std::move(value); }
-
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
-    inline void SetAfterValue(const char* value) { m_afterValueHasBeenSet = true; m_afterValue.assign(value); }
-
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilterDateRange& WithAfterValue(const Aws::String& value) { SetAfterValue(value); return *this;}
-
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilterDateRange& WithAfterValue(Aws::String&& value) { SetAfterValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Date after which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilterDateRange& WithAfterValue(const char* value) { SetAfterValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Date before which the data product was last modified.</p>
      */
-    inline const Aws::String& GetBeforeValue() const{ return m_beforeValue; }
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
+    inline const Aws::String& GetBeforeValue() const { return m_beforeValue; }
     inline bool BeforeValueHasBeenSet() const { return m_beforeValueHasBeenSet; }
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
-    inline void SetBeforeValue(const Aws::String& value) { m_beforeValueHasBeenSet = true; m_beforeValue = value; }
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
-    inline void SetBeforeValue(Aws::String&& value) { m_beforeValueHasBeenSet = true; m_beforeValue = std::move(value); }
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
-    inline void SetBeforeValue(const char* value) { m_beforeValueHasBeenSet = true; m_beforeValue.assign(value); }
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilterDateRange& WithBeforeValue(const Aws::String& value) { SetBeforeValue(value); return *this;}
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilterDateRange& WithBeforeValue(Aws::String&& value) { SetBeforeValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Date before which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilterDateRange& WithBeforeValue(const char* value) { SetBeforeValue(value); return *this;}
-
+    template<typename BeforeValueT = Aws::String>
+    void SetBeforeValue(BeforeValueT&& value) { m_beforeValueHasBeenSet = true; m_beforeValue = std::forward<BeforeValueT>(value); }
+    template<typename BeforeValueT = Aws::String>
+    DataProductLastModifiedDateFilterDateRange& WithBeforeValue(BeforeValueT&& value) { SetBeforeValue(std::forward<BeforeValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_afterValue;

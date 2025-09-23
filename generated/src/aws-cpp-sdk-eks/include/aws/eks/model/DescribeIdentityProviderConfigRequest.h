@@ -22,7 +22,7 @@ namespace Model
   class DescribeIdentityProviderConfigRequest : public EKSRequest
   {
   public:
-    AWS_EKS_API DescribeIdentityProviderConfigRequest();
+    AWS_EKS_API DescribeIdentityProviderConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,77 +33,29 @@ namespace Model
     AWS_EKS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of your cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    DescribeIdentityProviderConfigRequest& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline DescribeIdentityProviderConfigRequest& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline DescribeIdentityProviderConfigRequest& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline DescribeIdentityProviderConfigRequest& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object representing an identity provider configuration.</p>
      */
-    inline const IdentityProviderConfig& GetIdentityProviderConfig() const{ return m_identityProviderConfig; }
-
-    /**
-     * <p>An object representing an identity provider configuration.</p>
-     */
+    inline const IdentityProviderConfig& GetIdentityProviderConfig() const { return m_identityProviderConfig; }
     inline bool IdentityProviderConfigHasBeenSet() const { return m_identityProviderConfigHasBeenSet; }
-
-    /**
-     * <p>An object representing an identity provider configuration.</p>
-     */
-    inline void SetIdentityProviderConfig(const IdentityProviderConfig& value) { m_identityProviderConfigHasBeenSet = true; m_identityProviderConfig = value; }
-
-    /**
-     * <p>An object representing an identity provider configuration.</p>
-     */
-    inline void SetIdentityProviderConfig(IdentityProviderConfig&& value) { m_identityProviderConfigHasBeenSet = true; m_identityProviderConfig = std::move(value); }
-
-    /**
-     * <p>An object representing an identity provider configuration.</p>
-     */
-    inline DescribeIdentityProviderConfigRequest& WithIdentityProviderConfig(const IdentityProviderConfig& value) { SetIdentityProviderConfig(value); return *this;}
-
-    /**
-     * <p>An object representing an identity provider configuration.</p>
-     */
-    inline DescribeIdentityProviderConfigRequest& WithIdentityProviderConfig(IdentityProviderConfig&& value) { SetIdentityProviderConfig(std::move(value)); return *this;}
-
+    template<typename IdentityProviderConfigT = IdentityProviderConfig>
+    void SetIdentityProviderConfig(IdentityProviderConfigT&& value) { m_identityProviderConfigHasBeenSet = true; m_identityProviderConfig = std::forward<IdentityProviderConfigT>(value); }
+    template<typename IdentityProviderConfigT = IdentityProviderConfig>
+    DescribeIdentityProviderConfigRequest& WithIdentityProviderConfig(IdentityProviderConfigT&& value) { SetIdentityProviderConfig(std::forward<IdentityProviderConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;

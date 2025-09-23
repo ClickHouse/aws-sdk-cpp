@@ -35,69 +35,39 @@ namespace Model
   class ComparedSourceImageFace
   {
   public:
-    AWS_REKOGNITION_API ComparedSourceImageFace();
+    AWS_REKOGNITION_API ComparedSourceImageFace() = default;
     AWS_REKOGNITION_API ComparedSourceImageFace(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API ComparedSourceImageFace& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Bounding box of the face.</p>
      */
-    inline const BoundingBox& GetBoundingBox() const{ return m_boundingBox; }
-
-    /**
-     * <p>Bounding box of the face.</p>
-     */
+    inline const BoundingBox& GetBoundingBox() const { return m_boundingBox; }
     inline bool BoundingBoxHasBeenSet() const { return m_boundingBoxHasBeenSet; }
+    template<typename BoundingBoxT = BoundingBox>
+    void SetBoundingBox(BoundingBoxT&& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = std::forward<BoundingBoxT>(value); }
+    template<typename BoundingBoxT = BoundingBox>
+    ComparedSourceImageFace& WithBoundingBox(BoundingBoxT&& value) { SetBoundingBox(std::forward<BoundingBoxT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Bounding box of the face.</p>
-     */
-    inline void SetBoundingBox(const BoundingBox& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = value; }
-
-    /**
-     * <p>Bounding box of the face.</p>
-     */
-    inline void SetBoundingBox(BoundingBox&& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = std::move(value); }
-
-    /**
-     * <p>Bounding box of the face.</p>
-     */
-    inline ComparedSourceImageFace& WithBoundingBox(const BoundingBox& value) { SetBoundingBox(value); return *this;}
-
-    /**
-     * <p>Bounding box of the face.</p>
-     */
-    inline ComparedSourceImageFace& WithBoundingBox(BoundingBox&& value) { SetBoundingBox(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Confidence level that the selected bounding box contains a face.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>Confidence level that the selected bounding box contains a face.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>Confidence level that the selected bounding box contains a face.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>Confidence level that the selected bounding box contains a face.</p>
-     */
     inline ComparedSourceImageFace& WithConfidence(double value) { SetConfidence(value); return *this;}
-
+    ///@}
   private:
 
     BoundingBox m_boundingBox;
     bool m_boundingBoxHasBeenSet = false;
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
   };
 

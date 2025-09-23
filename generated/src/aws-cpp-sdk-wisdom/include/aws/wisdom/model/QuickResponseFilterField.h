@@ -40,159 +40,66 @@ namespace Model
   class QuickResponseFilterField
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API QuickResponseFilterField();
+    AWS_CONNECTWISDOMSERVICE_API QuickResponseFilterField() = default;
     AWS_CONNECTWISDOMSERVICE_API QuickResponseFilterField(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API QuickResponseFilterField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether to treat null value as a match for the attribute field.</p>
      */
-    inline bool GetIncludeNoExistence() const{ return m_includeNoExistence; }
-
-    /**
-     * <p>Whether to treat null value as a match for the attribute field.</p>
-     */
+    inline bool GetIncludeNoExistence() const { return m_includeNoExistence; }
     inline bool IncludeNoExistenceHasBeenSet() const { return m_includeNoExistenceHasBeenSet; }
-
-    /**
-     * <p>Whether to treat null value as a match for the attribute field.</p>
-     */
     inline void SetIncludeNoExistence(bool value) { m_includeNoExistenceHasBeenSet = true; m_includeNoExistence = value; }
-
-    /**
-     * <p>Whether to treat null value as a match for the attribute field.</p>
-     */
     inline QuickResponseFilterField& WithIncludeNoExistence(bool value) { SetIncludeNoExistence(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the attribute field to filter the quick responses by.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    QuickResponseFilterField& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
-    inline QuickResponseFilterField& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
-    inline QuickResponseFilterField& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the attribute field to filter the quick responses by.</p>
-     */
-    inline QuickResponseFilterField& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The operator to use for filtering.</p>
      */
-    inline const QuickResponseFilterOperator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>The operator to use for filtering.</p>
-     */
+    inline QuickResponseFilterOperator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
+    inline void SetOperator(QuickResponseFilterOperator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline QuickResponseFilterField& WithOperator(QuickResponseFilterOperator value) { SetOperator(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The operator to use for filtering.</p>
-     */
-    inline void SetOperator(const QuickResponseFilterOperator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>The operator to use for filtering.</p>
-     */
-    inline void SetOperator(QuickResponseFilterOperator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>The operator to use for filtering.</p>
-     */
-    inline QuickResponseFilterField& WithOperator(const QuickResponseFilterOperator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>The operator to use for filtering.</p>
-     */
-    inline QuickResponseFilterField& WithOperator(QuickResponseFilterOperator&& value) { SetOperator(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The values of attribute field to filter the quick response by.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline QuickResponseFilterField& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline QuickResponseFilterField& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline QuickResponseFilterField& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline QuickResponseFilterField& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The values of attribute field to filter the quick response by.</p>
-     */
-    inline QuickResponseFilterField& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    QuickResponseFilterField& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    QuickResponseFilterField& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_includeNoExistence;
+    bool m_includeNoExistence{false};
     bool m_includeNoExistenceHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    QuickResponseFilterOperator m_operator;
+    QuickResponseFilterOperator m_operator{QuickResponseFilterOperator::NOT_SET};
     bool m_operatorHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

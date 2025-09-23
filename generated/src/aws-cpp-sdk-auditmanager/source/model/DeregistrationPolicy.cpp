@@ -18,15 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-DeregistrationPolicy::DeregistrationPolicy() : 
-    m_deleteResources(DeleteResources::NOT_SET),
-    m_deleteResourcesHasBeenSet(false)
-{
-}
-
-DeregistrationPolicy::DeregistrationPolicy(JsonView jsonValue) : 
-    m_deleteResources(DeleteResources::NOT_SET),
-    m_deleteResourcesHasBeenSet(false)
+DeregistrationPolicy::DeregistrationPolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DeregistrationPolicy& DeregistrationPolicy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("deleteResources"))
   {
     m_deleteResources = DeleteResourcesMapper::GetDeleteResourcesForName(jsonValue.GetString("deleteResources"));
-
     m_deleteResourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

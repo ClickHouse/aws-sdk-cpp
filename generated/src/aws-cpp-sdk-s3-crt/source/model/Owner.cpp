@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-Owner::Owner() : 
-    m_displayNameHasBeenSet(false),
-    m_iDHasBeenSet(false)
-{
-}
-
-Owner::Owner(const XmlNode& xmlNode) : 
-    m_displayNameHasBeenSet(false),
-    m_iDHasBeenSet(false)
+Owner::Owner(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

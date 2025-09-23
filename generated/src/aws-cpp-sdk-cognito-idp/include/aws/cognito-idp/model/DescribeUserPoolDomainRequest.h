@@ -21,7 +21,7 @@ namespace Model
   class DescribeUserPoolDomainRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API DescribeUserPoolDomainRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API DescribeUserPoolDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,19 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
+     * <p>The domain that you want to describe. For custom domains, this is the
+     * fully-qualified domain name, such as <code>auth.example.com</code>. For Amazon
+     * Cognito prefix domains, this is the prefix alone, such as <code>auth</code>.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline DescribeUserPoolDomainRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline DescribeUserPoolDomainRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline DescribeUserPoolDomainRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    DescribeUserPoolDomainRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

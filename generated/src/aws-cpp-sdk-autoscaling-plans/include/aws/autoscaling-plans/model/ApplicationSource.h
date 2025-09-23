@@ -33,93 +33,37 @@ namespace Model
   class ApplicationSource
   {
   public:
-    AWS_AUTOSCALINGPLANS_API ApplicationSource();
+    AWS_AUTOSCALINGPLANS_API ApplicationSource() = default;
     AWS_AUTOSCALINGPLANS_API ApplicationSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUTOSCALINGPLANS_API ApplicationSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUTOSCALINGPLANS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
      */
-    inline const Aws::String& GetCloudFormationStackARN() const{ return m_cloudFormationStackARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
+    inline const Aws::String& GetCloudFormationStackARN() const { return m_cloudFormationStackARN; }
     inline bool CloudFormationStackARNHasBeenSet() const { return m_cloudFormationStackARNHasBeenSet; }
+    template<typename CloudFormationStackARNT = Aws::String>
+    void SetCloudFormationStackARN(CloudFormationStackARNT&& value) { m_cloudFormationStackARNHasBeenSet = true; m_cloudFormationStackARN = std::forward<CloudFormationStackARNT>(value); }
+    template<typename CloudFormationStackARNT = Aws::String>
+    ApplicationSource& WithCloudFormationStackARN(CloudFormationStackARNT&& value) { SetCloudFormationStackARN(std::forward<CloudFormationStackARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
-    inline void SetCloudFormationStackARN(const Aws::String& value) { m_cloudFormationStackARNHasBeenSet = true; m_cloudFormationStackARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
-    inline void SetCloudFormationStackARN(Aws::String&& value) { m_cloudFormationStackARNHasBeenSet = true; m_cloudFormationStackARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
-    inline void SetCloudFormationStackARN(const char* value) { m_cloudFormationStackARNHasBeenSet = true; m_cloudFormationStackARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
-    inline ApplicationSource& WithCloudFormationStackARN(const Aws::String& value) { SetCloudFormationStackARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
-    inline ApplicationSource& WithCloudFormationStackARN(Aws::String&& value) { SetCloudFormationStackARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a AWS CloudFormation stack.</p>
-     */
-    inline ApplicationSource& WithCloudFormationStackARN(const char* value) { SetCloudFormationStackARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A set of tags (up to 50).</p>
      */
-    inline const Aws::Vector<TagFilter>& GetTagFilters() const{ return m_tagFilters; }
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
+    inline const Aws::Vector<TagFilter>& GetTagFilters() const { return m_tagFilters; }
     inline bool TagFiltersHasBeenSet() const { return m_tagFiltersHasBeenSet; }
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
-    inline void SetTagFilters(const Aws::Vector<TagFilter>& value) { m_tagFiltersHasBeenSet = true; m_tagFilters = value; }
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
-    inline void SetTagFilters(Aws::Vector<TagFilter>&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters = std::move(value); }
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
-    inline ApplicationSource& WithTagFilters(const Aws::Vector<TagFilter>& value) { SetTagFilters(value); return *this;}
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
-    inline ApplicationSource& WithTagFilters(Aws::Vector<TagFilter>&& value) { SetTagFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
-    inline ApplicationSource& AddTagFilters(const TagFilter& value) { m_tagFiltersHasBeenSet = true; m_tagFilters.push_back(value); return *this; }
-
-    /**
-     * <p>A set of tags (up to 50).</p>
-     */
-    inline ApplicationSource& AddTagFilters(TagFilter&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters.push_back(std::move(value)); return *this; }
-
+    template<typename TagFiltersT = Aws::Vector<TagFilter>>
+    void SetTagFilters(TagFiltersT&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters = std::forward<TagFiltersT>(value); }
+    template<typename TagFiltersT = Aws::Vector<TagFilter>>
+    ApplicationSource& WithTagFilters(TagFiltersT&& value) { SetTagFilters(std::forward<TagFiltersT>(value)); return *this;}
+    template<typename TagFiltersT = TagFilter>
+    ApplicationSource& AddTagFilters(TagFiltersT&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters.emplace_back(std::forward<TagFiltersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_cloudFormationStackARN;

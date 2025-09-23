@@ -32,51 +32,25 @@ namespace Model
   class AccelerationSettings
   {
   public:
-    AWS_MEDIACONVERT_API AccelerationSettings();
+    AWS_MEDIACONVERT_API AccelerationSettings() = default;
     AWS_MEDIACONVERT_API AccelerationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API AccelerationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Specify the conditions when the service will run your job with accelerated
      * transcoding.
      */
-    inline const AccelerationMode& GetMode() const{ return m_mode; }
-
-    /**
-     * Specify the conditions when the service will run your job with accelerated
-     * transcoding.
-     */
+    inline AccelerationMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * Specify the conditions when the service will run your job with accelerated
-     * transcoding.
-     */
-    inline void SetMode(const AccelerationMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * Specify the conditions when the service will run your job with accelerated
-     * transcoding.
-     */
-    inline void SetMode(AccelerationMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * Specify the conditions when the service will run your job with accelerated
-     * transcoding.
-     */
-    inline AccelerationSettings& WithMode(const AccelerationMode& value) { SetMode(value); return *this;}
-
-    /**
-     * Specify the conditions when the service will run your job with accelerated
-     * transcoding.
-     */
-    inline AccelerationSettings& WithMode(AccelerationMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(AccelerationMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline AccelerationSettings& WithMode(AccelerationMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    AccelerationMode m_mode;
+    AccelerationMode m_mode{AccelerationMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace EKS
 namespace Model
 {
 
-KubernetesNetworkConfigRequest::KubernetesNetworkConfigRequest() : 
-    m_serviceIpv4CidrHasBeenSet(false),
-    m_ipFamily(IpFamily::NOT_SET),
-    m_ipFamilyHasBeenSet(false)
-{
-}
-
-KubernetesNetworkConfigRequest::KubernetesNetworkConfigRequest(JsonView jsonValue) : 
-    m_serviceIpv4CidrHasBeenSet(false),
-    m_ipFamily(IpFamily::NOT_SET),
-    m_ipFamilyHasBeenSet(false)
+KubernetesNetworkConfigRequest::KubernetesNetworkConfigRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ KubernetesNetworkConfigRequest& KubernetesNetworkConfigRequest::operator =(JsonV
   if(jsonValue.ValueExists("serviceIpv4Cidr"))
   {
     m_serviceIpv4Cidr = jsonValue.GetString("serviceIpv4Cidr");
-
     m_serviceIpv4CidrHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ipFamily"))
   {
     m_ipFamily = IpFamilyMapper::GetIpFamilyForName(jsonValue.GetString("ipFamily"));
-
     m_ipFamilyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("elasticLoadBalancing"))
+  {
+    m_elasticLoadBalancing = jsonValue.GetObject("elasticLoadBalancing");
+    m_elasticLoadBalancingHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,12 @@ JsonValue KubernetesNetworkConfigRequest::Jsonize() const
   if(m_ipFamilyHasBeenSet)
   {
    payload.WithString("ipFamily", IpFamilyMapper::GetNameForIpFamily(m_ipFamily));
+  }
+
+  if(m_elasticLoadBalancingHasBeenSet)
+  {
+   payload.WithObject("elasticLoadBalancing", m_elasticLoadBalancing.Jsonize());
+
   }
 
   return payload;

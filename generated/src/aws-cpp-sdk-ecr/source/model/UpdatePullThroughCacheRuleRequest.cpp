@@ -12,13 +12,6 @@ using namespace Aws::ECR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePullThroughCacheRuleRequest::UpdatePullThroughCacheRuleRequest() : 
-    m_registryIdHasBeenSet(false),
-    m_ecrRepositoryPrefixHasBeenSet(false),
-    m_credentialArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePullThroughCacheRuleRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String UpdatePullThroughCacheRuleRequest::SerializePayload() const
   if(m_credentialArnHasBeenSet)
   {
    payload.WithString("credentialArn", m_credentialArn);
+
+  }
+
+  if(m_customRoleArnHasBeenSet)
+  {
+   payload.WithString("customRoleArn", m_customRoleArn);
 
   }
 

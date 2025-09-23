@@ -32,134 +32,47 @@ namespace Model
   class BotAliasTestExecutionTarget
   {
   public:
-    AWS_LEXMODELSV2_API BotAliasTestExecutionTarget();
+    AWS_LEXMODELSV2_API BotAliasTestExecutionTarget() = default;
     AWS_LEXMODELSV2_API BotAliasTestExecutionTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BotAliasTestExecutionTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The bot Id of the bot alias used in the test set execution.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
-
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
+    inline const Aws::String& GetBotId() const { return m_botId; }
     inline bool BotIdHasBeenSet() const { return m_botIdHasBeenSet; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    BotAliasTestExecutionTarget& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botIdHasBeenSet = true; m_botId = value; }
-
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botIdHasBeenSet = true; m_botId = std::move(value); }
-
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetBotId(const char* value) { m_botIdHasBeenSet = true; m_botId.assign(value); }
-
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The bot Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The bot alias Id of the bot alias used in the test set execution.</p>
      */
-    inline const Aws::String& GetBotAliasId() const{ return m_botAliasId; }
-
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
+    inline const Aws::String& GetBotAliasId() const { return m_botAliasId; }
     inline bool BotAliasIdHasBeenSet() const { return m_botAliasIdHasBeenSet; }
+    template<typename BotAliasIdT = Aws::String>
+    void SetBotAliasId(BotAliasIdT&& value) { m_botAliasIdHasBeenSet = true; m_botAliasId = std::forward<BotAliasIdT>(value); }
+    template<typename BotAliasIdT = Aws::String>
+    BotAliasTestExecutionTarget& WithBotAliasId(BotAliasIdT&& value) { SetBotAliasId(std::forward<BotAliasIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetBotAliasId(const Aws::String& value) { m_botAliasIdHasBeenSet = true; m_botAliasId = value; }
-
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetBotAliasId(Aws::String&& value) { m_botAliasIdHasBeenSet = true; m_botAliasId = std::move(value); }
-
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetBotAliasId(const char* value) { m_botAliasIdHasBeenSet = true; m_botAliasId.assign(value); }
-
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithBotAliasId(const Aws::String& value) { SetBotAliasId(value); return *this;}
-
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithBotAliasId(Aws::String&& value) { SetBotAliasId(std::move(value)); return *this;}
-
-    /**
-     * <p>The bot alias Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithBotAliasId(const char* value) { SetBotAliasId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The locale Id of the bot alias used in the test set execution.</p>
      */
-    inline const Aws::String& GetLocaleId() const{ return m_localeId; }
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
+    inline const Aws::String& GetLocaleId() const { return m_localeId; }
     inline bool LocaleIdHasBeenSet() const { return m_localeIdHasBeenSet; }
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetLocaleId(const Aws::String& value) { m_localeIdHasBeenSet = true; m_localeId = value; }
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetLocaleId(Aws::String&& value) { m_localeIdHasBeenSet = true; m_localeId = std::move(value); }
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
-    inline void SetLocaleId(const char* value) { m_localeIdHasBeenSet = true; m_localeId.assign(value); }
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithLocaleId(const Aws::String& value) { SetLocaleId(value); return *this;}
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithLocaleId(Aws::String&& value) { SetLocaleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The locale Id of the bot alias used in the test set execution.</p>
-     */
-    inline BotAliasTestExecutionTarget& WithLocaleId(const char* value) { SetLocaleId(value); return *this;}
-
+    template<typename LocaleIdT = Aws::String>
+    void SetLocaleId(LocaleIdT&& value) { m_localeIdHasBeenSet = true; m_localeId = std::forward<LocaleIdT>(value); }
+    template<typename LocaleIdT = Aws::String>
+    BotAliasTestExecutionTarget& WithLocaleId(LocaleIdT&& value) { SetLocaleId(std::forward<LocaleIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_botId;

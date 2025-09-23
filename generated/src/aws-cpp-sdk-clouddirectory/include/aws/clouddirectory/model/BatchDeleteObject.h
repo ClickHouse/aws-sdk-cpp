@@ -32,42 +32,23 @@ namespace Model
   class BatchDeleteObject
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchDeleteObject();
+    AWS_CLOUDDIRECTORY_API BatchDeleteObject() = default;
     AWS_CLOUDDIRECTORY_API BatchDeleteObject(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchDeleteObject& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The reference that identifies the object.</p>
      */
-    inline const ObjectReference& GetObjectReference() const{ return m_objectReference; }
-
-    /**
-     * <p>The reference that identifies the object.</p>
-     */
+    inline const ObjectReference& GetObjectReference() const { return m_objectReference; }
     inline bool ObjectReferenceHasBeenSet() const { return m_objectReferenceHasBeenSet; }
-
-    /**
-     * <p>The reference that identifies the object.</p>
-     */
-    inline void SetObjectReference(const ObjectReference& value) { m_objectReferenceHasBeenSet = true; m_objectReference = value; }
-
-    /**
-     * <p>The reference that identifies the object.</p>
-     */
-    inline void SetObjectReference(ObjectReference&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::move(value); }
-
-    /**
-     * <p>The reference that identifies the object.</p>
-     */
-    inline BatchDeleteObject& WithObjectReference(const ObjectReference& value) { SetObjectReference(value); return *this;}
-
-    /**
-     * <p>The reference that identifies the object.</p>
-     */
-    inline BatchDeleteObject& WithObjectReference(ObjectReference&& value) { SetObjectReference(std::move(value)); return *this;}
-
+    template<typename ObjectReferenceT = ObjectReference>
+    void SetObjectReference(ObjectReferenceT&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::forward<ObjectReferenceT>(value); }
+    template<typename ObjectReferenceT = ObjectReference>
+    BatchDeleteObject& WithObjectReference(ObjectReferenceT&& value) { SetObjectReference(std::forward<ObjectReferenceT>(value)); return *this;}
+    ///@}
   private:
 
     ObjectReference m_objectReference;

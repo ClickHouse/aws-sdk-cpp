@@ -10,23 +10,25 @@
 using namespace Aws::SNS::Model;
 using namespace Aws::Utils;
 
-GetSMSAttributesRequest::GetSMSAttributesRequest() : 
-    m_attributesHasBeenSet(false)
-{
-}
-
 Aws::String GetSMSAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=GetSMSAttributes&";
   if(m_attributesHasBeenSet)
   {
-    unsigned attributesCount = 1;
-    for(auto& item : m_attributes)
+    if (m_attributes.empty())
     {
-      ss << "attributes.member." << attributesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      attributesCount++;
+      ss << "attributes=&";
+    }
+    else
+    {
+      unsigned attributesCount = 1;
+      for(auto& item : m_attributes)
+      {
+        ss << "attributes.member." << attributesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        attributesCount++;
+      }
     }
   }
 

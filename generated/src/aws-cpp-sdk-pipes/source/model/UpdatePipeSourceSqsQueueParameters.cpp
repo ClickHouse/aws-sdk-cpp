@@ -18,19 +18,7 @@ namespace Pipes
 namespace Model
 {
 
-UpdatePipeSourceSqsQueueParameters::UpdatePipeSourceSqsQueueParameters() : 
-    m_batchSize(0),
-    m_batchSizeHasBeenSet(false),
-    m_maximumBatchingWindowInSeconds(0),
-    m_maximumBatchingWindowInSecondsHasBeenSet(false)
-{
-}
-
-UpdatePipeSourceSqsQueueParameters::UpdatePipeSourceSqsQueueParameters(JsonView jsonValue) : 
-    m_batchSize(0),
-    m_batchSizeHasBeenSet(false),
-    m_maximumBatchingWindowInSeconds(0),
-    m_maximumBatchingWindowInSecondsHasBeenSet(false)
+UpdatePipeSourceSqsQueueParameters::UpdatePipeSourceSqsQueueParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ UpdatePipeSourceSqsQueueParameters& UpdatePipeSourceSqsQueueParameters::operator
   if(jsonValue.ValueExists("BatchSize"))
   {
     m_batchSize = jsonValue.GetInteger("BatchSize");
-
     m_batchSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaximumBatchingWindowInSeconds"))
   {
     m_maximumBatchingWindowInSeconds = jsonValue.GetInteger("MaximumBatchingWindowInSeconds");
-
     m_maximumBatchingWindowInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

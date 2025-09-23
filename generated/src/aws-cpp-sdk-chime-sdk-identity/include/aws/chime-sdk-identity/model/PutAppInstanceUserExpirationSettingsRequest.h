@@ -22,7 +22,7 @@ namespace Model
   class PutAppInstanceUserExpirationSettingsRequest : public ChimeSDKIdentityRequest
   {
   public:
-    AWS_CHIMESDKIDENTITY_API PutAppInstanceUserExpirationSettingsRequest();
+    AWS_CHIMESDKIDENTITY_API PutAppInstanceUserExpirationSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,83 +33,30 @@ namespace Model
     AWS_CHIMESDKIDENTITY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceUser</code>.</p>
      */
-    inline const Aws::String& GetAppInstanceUserArn() const{ return m_appInstanceUserArn; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
+    inline const Aws::String& GetAppInstanceUserArn() const { return m_appInstanceUserArn; }
     inline bool AppInstanceUserArnHasBeenSet() const { return m_appInstanceUserArnHasBeenSet; }
+    template<typename AppInstanceUserArnT = Aws::String>
+    void SetAppInstanceUserArn(AppInstanceUserArnT&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::forward<AppInstanceUserArnT>(value); }
+    template<typename AppInstanceUserArnT = Aws::String>
+    PutAppInstanceUserExpirationSettingsRequest& WithAppInstanceUserArn(AppInstanceUserArnT&& value) { SetAppInstanceUserArn(std::forward<AppInstanceUserArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(const Aws::String& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(Aws::String&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline void SetAppInstanceUserArn(const char* value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline PutAppInstanceUserExpirationSettingsRequest& WithAppInstanceUserArn(const Aws::String& value) { SetAppInstanceUserArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline PutAppInstanceUserExpirationSettingsRequest& WithAppInstanceUserArn(Aws::String&& value) { SetAppInstanceUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code>.</p>
-     */
-    inline PutAppInstanceUserExpirationSettingsRequest& WithAppInstanceUserArn(const char* value) { SetAppInstanceUserArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Settings that control the interval after which an
      * <code>AppInstanceUser</code> is automatically deleted.</p>
      */
-    inline const ExpirationSettings& GetExpirationSettings() const{ return m_expirationSettings; }
-
-    /**
-     * <p>Settings that control the interval after which an
-     * <code>AppInstanceUser</code> is automatically deleted.</p>
-     */
+    inline const ExpirationSettings& GetExpirationSettings() const { return m_expirationSettings; }
     inline bool ExpirationSettingsHasBeenSet() const { return m_expirationSettingsHasBeenSet; }
-
-    /**
-     * <p>Settings that control the interval after which an
-     * <code>AppInstanceUser</code> is automatically deleted.</p>
-     */
-    inline void SetExpirationSettings(const ExpirationSettings& value) { m_expirationSettingsHasBeenSet = true; m_expirationSettings = value; }
-
-    /**
-     * <p>Settings that control the interval after which an
-     * <code>AppInstanceUser</code> is automatically deleted.</p>
-     */
-    inline void SetExpirationSettings(ExpirationSettings&& value) { m_expirationSettingsHasBeenSet = true; m_expirationSettings = std::move(value); }
-
-    /**
-     * <p>Settings that control the interval after which an
-     * <code>AppInstanceUser</code> is automatically deleted.</p>
-     */
-    inline PutAppInstanceUserExpirationSettingsRequest& WithExpirationSettings(const ExpirationSettings& value) { SetExpirationSettings(value); return *this;}
-
-    /**
-     * <p>Settings that control the interval after which an
-     * <code>AppInstanceUser</code> is automatically deleted.</p>
-     */
-    inline PutAppInstanceUserExpirationSettingsRequest& WithExpirationSettings(ExpirationSettings&& value) { SetExpirationSettings(std::move(value)); return *this;}
-
+    template<typename ExpirationSettingsT = ExpirationSettings>
+    void SetExpirationSettings(ExpirationSettingsT&& value) { m_expirationSettingsHasBeenSet = true; m_expirationSettings = std::forward<ExpirationSettingsT>(value); }
+    template<typename ExpirationSettingsT = ExpirationSettings>
+    PutAppInstanceUserExpirationSettingsRequest& WithExpirationSettings(ExpirationSettingsT&& value) { SetExpirationSettings(std::forward<ExpirationSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appInstanceUserArn;

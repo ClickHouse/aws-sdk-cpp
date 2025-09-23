@@ -18,17 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-DocumentMetadata::DocumentMetadata() : 
-    m_pages(0),
-    m_pagesHasBeenSet(false),
-    m_extractedCharactersHasBeenSet(false)
-{
-}
-
-DocumentMetadata::DocumentMetadata(JsonView jsonValue) : 
-    m_pages(0),
-    m_pagesHasBeenSet(false),
-    m_extractedCharactersHasBeenSet(false)
+DocumentMetadata::DocumentMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ DocumentMetadata& DocumentMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Pages"))
   {
     m_pages = jsonValue.GetInteger("Pages");
-
     m_pagesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExtractedCharacters"))
   {
     Aws::Utils::Array<JsonView> extractedCharactersJsonList = jsonValue.GetArray("ExtractedCharacters");
@@ -51,7 +39,6 @@ DocumentMetadata& DocumentMetadata::operator =(JsonView jsonValue)
     }
     m_extractedCharactersHasBeenSet = true;
   }
-
   return *this;
 }
 

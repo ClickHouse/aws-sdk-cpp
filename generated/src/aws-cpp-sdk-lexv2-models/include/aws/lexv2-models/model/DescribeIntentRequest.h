@@ -21,7 +21,7 @@ namespace Model
   class DescribeIntentRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API DescribeIntentRequest();
+    AWS_LEXMODELSV2_API DescribeIntentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,193 +32,56 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the intent to describe.</p>
      */
-    inline const Aws::String& GetIntentId() const{ return m_intentId; }
-
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
+    inline const Aws::String& GetIntentId() const { return m_intentId; }
     inline bool IntentIdHasBeenSet() const { return m_intentIdHasBeenSet; }
+    template<typename IntentIdT = Aws::String>
+    void SetIntentId(IntentIdT&& value) { m_intentIdHasBeenSet = true; m_intentId = std::forward<IntentIdT>(value); }
+    template<typename IntentIdT = Aws::String>
+    DescribeIntentRequest& WithIntentId(IntentIdT&& value) { SetIntentId(std::forward<IntentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
-    inline void SetIntentId(const Aws::String& value) { m_intentIdHasBeenSet = true; m_intentId = value; }
-
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
-    inline void SetIntentId(Aws::String&& value) { m_intentIdHasBeenSet = true; m_intentId = std::move(value); }
-
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
-    inline void SetIntentId(const char* value) { m_intentIdHasBeenSet = true; m_intentId.assign(value); }
-
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
-    inline DescribeIntentRequest& WithIntentId(const Aws::String& value) { SetIntentId(value); return *this;}
-
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
-    inline DescribeIntentRequest& WithIntentId(Aws::String&& value) { SetIntentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the intent to describe.</p>
-     */
-    inline DescribeIntentRequest& WithIntentId(const char* value) { SetIntentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the bot associated with the intent.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
-
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
+    inline const Aws::String& GetBotId() const { return m_botId; }
     inline bool BotIdHasBeenSet() const { return m_botIdHasBeenSet; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    DescribeIntentRequest& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botIdHasBeenSet = true; m_botId = value; }
-
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botIdHasBeenSet = true; m_botId = std::move(value); }
-
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
-    inline void SetBotId(const char* value) { m_botIdHasBeenSet = true; m_botId.assign(value); }
-
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
-    inline DescribeIntentRequest& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
-    inline DescribeIntentRequest& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the bot associated with the intent.</p>
-     */
-    inline DescribeIntentRequest& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the bot associated with the intent.</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
-
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
     inline bool BotVersionHasBeenSet() const { return m_botVersionHasBeenSet; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    DescribeIntentRequest& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersionHasBeenSet = true; m_botVersion = value; }
-
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::move(value); }
-
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersionHasBeenSet = true; m_botVersion.assign(value); }
-
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
-    inline DescribeIntentRequest& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
-    inline DescribeIntentRequest& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the bot associated with the intent.</p>
-     */
-    inline DescribeIntentRequest& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the language and locale of the intent to describe. The
      * string must match one of the supported locales. For more information, see <a
      * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
      * languages</a>.</p>
      */
-    inline const Aws::String& GetLocaleId() const{ return m_localeId; }
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
+    inline const Aws::String& GetLocaleId() const { return m_localeId; }
     inline bool LocaleIdHasBeenSet() const { return m_localeIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline void SetLocaleId(const Aws::String& value) { m_localeIdHasBeenSet = true; m_localeId = value; }
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline void SetLocaleId(Aws::String&& value) { m_localeIdHasBeenSet = true; m_localeId = std::move(value); }
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline void SetLocaleId(const char* value) { m_localeIdHasBeenSet = true; m_localeId.assign(value); }
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline DescribeIntentRequest& WithLocaleId(const Aws::String& value) { SetLocaleId(value); return *this;}
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline DescribeIntentRequest& WithLocaleId(Aws::String&& value) { SetLocaleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the language and locale of the intent to describe. The
-     * string must match one of the supported locales. For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline DescribeIntentRequest& WithLocaleId(const char* value) { SetLocaleId(value); return *this;}
-
+    template<typename LocaleIdT = Aws::String>
+    void SetLocaleId(LocaleIdT&& value) { m_localeIdHasBeenSet = true; m_localeId = std::forward<LocaleIdT>(value); }
+    template<typename LocaleIdT = Aws::String>
+    DescribeIntentRequest& WithLocaleId(LocaleIdT&& value) { SetLocaleId(std::forward<LocaleIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_intentId;

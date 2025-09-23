@@ -18,15 +18,7 @@ namespace ElasticsearchService
 namespace Model
 {
 
-ZoneAwarenessConfig::ZoneAwarenessConfig() : 
-    m_availabilityZoneCount(0),
-    m_availabilityZoneCountHasBeenSet(false)
-{
-}
-
-ZoneAwarenessConfig::ZoneAwarenessConfig(JsonView jsonValue) : 
-    m_availabilityZoneCount(0),
-    m_availabilityZoneCountHasBeenSet(false)
+ZoneAwarenessConfig::ZoneAwarenessConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ZoneAwarenessConfig& ZoneAwarenessConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AvailabilityZoneCount"))
   {
     m_availabilityZoneCount = jsonValue.GetInteger("AvailabilityZoneCount");
-
     m_availabilityZoneCountHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,7 +31,7 @@ namespace Model
   class AdjustmentType
   {
   public:
-    AWS_AUTOSCALING_API AdjustmentType();
+    AWS_AUTOSCALING_API AdjustmentType() = default;
     AWS_AUTOSCALING_API AdjustmentType(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API AdjustmentType& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,62 +39,19 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The policy adjustment type. The valid values are
      * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
      * <code>PercentChangeInCapacity</code>.</p>
      */
-    inline const Aws::String& GetAdjustmentType() const{ return m_adjustmentType; }
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
+    inline const Aws::String& GetAdjustmentType() const { return m_adjustmentType; }
     inline bool AdjustmentTypeHasBeenSet() const { return m_adjustmentTypeHasBeenSet; }
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
-    inline void SetAdjustmentType(const Aws::String& value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType = value; }
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
-    inline void SetAdjustmentType(Aws::String&& value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType = std::move(value); }
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
-    inline void SetAdjustmentType(const char* value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType.assign(value); }
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
-    inline AdjustmentType& WithAdjustmentType(const Aws::String& value) { SetAdjustmentType(value); return *this;}
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
-    inline AdjustmentType& WithAdjustmentType(Aws::String&& value) { SetAdjustmentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The policy adjustment type. The valid values are
-     * <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and
-     * <code>PercentChangeInCapacity</code>.</p>
-     */
-    inline AdjustmentType& WithAdjustmentType(const char* value) { SetAdjustmentType(value); return *this;}
-
+    template<typename AdjustmentTypeT = Aws::String>
+    void SetAdjustmentType(AdjustmentTypeT&& value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType = std::forward<AdjustmentTypeT>(value); }
+    template<typename AdjustmentTypeT = Aws::String>
+    AdjustmentType& WithAdjustmentType(AdjustmentTypeT&& value) { SetAdjustmentType(std::forward<AdjustmentTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_adjustmentType;

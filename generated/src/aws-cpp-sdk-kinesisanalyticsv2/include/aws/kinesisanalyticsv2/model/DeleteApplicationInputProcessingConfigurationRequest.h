@@ -21,7 +21,7 @@ namespace Model
   class DeleteApplicationInputProcessingConfigurationRequest : public KinesisAnalyticsV2Request
   {
   public:
-    AWS_KINESISANALYTICSV2_API DeleteApplicationInputProcessingConfigurationRequest();
+    AWS_KINESISANALYTICSV2_API DeleteApplicationInputProcessingConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,142 +34,50 @@ namespace Model
     AWS_KINESISANALYTICSV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the application.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of the application.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    DeleteApplicationInputProcessingConfigurationRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline DeleteApplicationInputProcessingConfigurationRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline DeleteApplicationInputProcessingConfigurationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline DeleteApplicationInputProcessingConfigurationRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The application version. You can use the <a>DescribeApplication</a> operation
      * to get the current application version. If the version specified is not the
      * current version, the <code>ConcurrentModificationException</code> is returned.
      * </p>
      */
-    inline long long GetCurrentApplicationVersionId() const{ return m_currentApplicationVersionId; }
-
-    /**
-     * <p>The application version. You can use the <a>DescribeApplication</a> operation
-     * to get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is returned.
-     * </p>
-     */
+    inline long long GetCurrentApplicationVersionId() const { return m_currentApplicationVersionId; }
     inline bool CurrentApplicationVersionIdHasBeenSet() const { return m_currentApplicationVersionIdHasBeenSet; }
-
-    /**
-     * <p>The application version. You can use the <a>DescribeApplication</a> operation
-     * to get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is returned.
-     * </p>
-     */
     inline void SetCurrentApplicationVersionId(long long value) { m_currentApplicationVersionIdHasBeenSet = true; m_currentApplicationVersionId = value; }
-
-    /**
-     * <p>The application version. You can use the <a>DescribeApplication</a> operation
-     * to get the current application version. If the version specified is not the
-     * current version, the <code>ConcurrentModificationException</code> is returned.
-     * </p>
-     */
     inline DeleteApplicationInputProcessingConfigurationRequest& WithCurrentApplicationVersionId(long long value) { SetCurrentApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the input configuration from which to delete the input processing
      * configuration. You can get a list of the input IDs for an application by using
      * the <a>DescribeApplication</a> operation.</p>
      */
-    inline const Aws::String& GetInputId() const{ return m_inputId; }
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
+    inline const Aws::String& GetInputId() const { return m_inputId; }
     inline bool InputIdHasBeenSet() const { return m_inputIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
-    inline void SetInputId(const Aws::String& value) { m_inputIdHasBeenSet = true; m_inputId = value; }
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
-    inline void SetInputId(Aws::String&& value) { m_inputIdHasBeenSet = true; m_inputId = std::move(value); }
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
-    inline void SetInputId(const char* value) { m_inputIdHasBeenSet = true; m_inputId.assign(value); }
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
-    inline DeleteApplicationInputProcessingConfigurationRequest& WithInputId(const Aws::String& value) { SetInputId(value); return *this;}
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
-    inline DeleteApplicationInputProcessingConfigurationRequest& WithInputId(Aws::String&& value) { SetInputId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the input configuration from which to delete the input processing
-     * configuration. You can get a list of the input IDs for an application by using
-     * the <a>DescribeApplication</a> operation.</p>
-     */
-    inline DeleteApplicationInputProcessingConfigurationRequest& WithInputId(const char* value) { SetInputId(value); return *this;}
-
+    template<typename InputIdT = Aws::String>
+    void SetInputId(InputIdT&& value) { m_inputIdHasBeenSet = true; m_inputId = std::forward<InputIdT>(value); }
+    template<typename InputIdT = Aws::String>
+    DeleteApplicationInputProcessingConfigurationRequest& WithInputId(InputIdT&& value) { SetInputId(std::forward<InputIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;
     bool m_applicationNameHasBeenSet = false;
 
-    long long m_currentApplicationVersionId;
+    long long m_currentApplicationVersionId{0};
     bool m_currentApplicationVersionIdHasBeenSet = false;
 
     Aws::String m_inputId;

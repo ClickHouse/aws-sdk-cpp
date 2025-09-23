@@ -31,93 +31,35 @@ namespace Model
   class Adjustment
   {
   public:
-    AWS_SECURITYHUB_API Adjustment();
+    AWS_SECURITYHUB_API Adjustment() = default;
     AWS_SECURITYHUB_API Adjustment(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Adjustment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The metric to adjust.</p>
      */
-    inline const Aws::String& GetMetric() const{ return m_metric; }
-
-    /**
-     * <p>The metric to adjust.</p>
-     */
+    inline const Aws::String& GetMetric() const { return m_metric; }
     inline bool MetricHasBeenSet() const { return m_metricHasBeenSet; }
+    template<typename MetricT = Aws::String>
+    void SetMetric(MetricT&& value) { m_metricHasBeenSet = true; m_metric = std::forward<MetricT>(value); }
+    template<typename MetricT = Aws::String>
+    Adjustment& WithMetric(MetricT&& value) { SetMetric(std::forward<MetricT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metric to adjust.</p>
-     */
-    inline void SetMetric(const Aws::String& value) { m_metricHasBeenSet = true; m_metric = value; }
-
-    /**
-     * <p>The metric to adjust.</p>
-     */
-    inline void SetMetric(Aws::String&& value) { m_metricHasBeenSet = true; m_metric = std::move(value); }
-
-    /**
-     * <p>The metric to adjust.</p>
-     */
-    inline void SetMetric(const char* value) { m_metricHasBeenSet = true; m_metric.assign(value); }
-
-    /**
-     * <p>The metric to adjust.</p>
-     */
-    inline Adjustment& WithMetric(const Aws::String& value) { SetMetric(value); return *this;}
-
-    /**
-     * <p>The metric to adjust.</p>
-     */
-    inline Adjustment& WithMetric(Aws::String&& value) { SetMetric(std::move(value)); return *this;}
-
-    /**
-     * <p>The metric to adjust.</p>
-     */
-    inline Adjustment& WithMetric(const char* value) { SetMetric(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the adjustment.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
-    inline Adjustment& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
-    inline Adjustment& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the adjustment.</p>
-     */
-    inline Adjustment& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    Adjustment& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_metric;

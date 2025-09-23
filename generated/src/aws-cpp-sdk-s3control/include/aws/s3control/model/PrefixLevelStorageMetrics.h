@@ -31,55 +31,35 @@ namespace Model
   class PrefixLevelStorageMetrics
   {
   public:
-    AWS_S3CONTROL_API PrefixLevelStorageMetrics();
+    AWS_S3CONTROL_API PrefixLevelStorageMetrics() = default;
     AWS_S3CONTROL_API PrefixLevelStorageMetrics(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API PrefixLevelStorageMetrics& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A container for whether prefix-level storage metrics are enabled.</p>
      */
-    inline bool GetIsEnabled() const{ return m_isEnabled; }
-
-    /**
-     * <p>A container for whether prefix-level storage metrics are enabled.</p>
-     */
+    inline bool GetIsEnabled() const { return m_isEnabled; }
     inline bool IsEnabledHasBeenSet() const { return m_isEnabledHasBeenSet; }
-
-    /**
-     * <p>A container for whether prefix-level storage metrics are enabled.</p>
-     */
     inline void SetIsEnabled(bool value) { m_isEnabledHasBeenSet = true; m_isEnabled = value; }
-
-    /**
-     * <p>A container for whether prefix-level storage metrics are enabled.</p>
-     */
     inline PrefixLevelStorageMetrics& WithIsEnabled(bool value) { SetIsEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const SelectionCriteria& GetSelectionCriteria() const{ return m_selectionCriteria; }
-
-    
+    inline const SelectionCriteria& GetSelectionCriteria() const { return m_selectionCriteria; }
     inline bool SelectionCriteriaHasBeenSet() const { return m_selectionCriteriaHasBeenSet; }
-
-    
-    inline void SetSelectionCriteria(const SelectionCriteria& value) { m_selectionCriteriaHasBeenSet = true; m_selectionCriteria = value; }
-
-    
-    inline void SetSelectionCriteria(SelectionCriteria&& value) { m_selectionCriteriaHasBeenSet = true; m_selectionCriteria = std::move(value); }
-
-    
-    inline PrefixLevelStorageMetrics& WithSelectionCriteria(const SelectionCriteria& value) { SetSelectionCriteria(value); return *this;}
-
-    
-    inline PrefixLevelStorageMetrics& WithSelectionCriteria(SelectionCriteria&& value) { SetSelectionCriteria(std::move(value)); return *this;}
-
+    template<typename SelectionCriteriaT = SelectionCriteria>
+    void SetSelectionCriteria(SelectionCriteriaT&& value) { m_selectionCriteriaHasBeenSet = true; m_selectionCriteria = std::forward<SelectionCriteriaT>(value); }
+    template<typename SelectionCriteriaT = SelectionCriteria>
+    PrefixLevelStorageMetrics& WithSelectionCriteria(SelectionCriteriaT&& value) { SetSelectionCriteria(std::forward<SelectionCriteriaT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_isEnabled;
+    bool m_isEnabled{false};
     bool m_isEnabledHasBeenSet = false;
 
     SelectionCriteria m_selectionCriteria;

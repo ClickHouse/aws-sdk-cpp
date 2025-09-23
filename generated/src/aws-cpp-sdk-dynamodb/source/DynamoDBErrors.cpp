@@ -8,6 +8,9 @@
 #include <aws/dynamodb/DynamoDBErrors.h>
 #include <aws/dynamodb/model/ConditionalCheckFailedException.h>
 #include <aws/dynamodb/model/TransactionCanceledException.h>
+#include <aws/dynamodb/model/ProvisionedThroughputExceededException.h>
+#include <aws/dynamodb/model/ThrottlingException.h>
+#include <aws/dynamodb/model/RequestLimitExceeded.h>
 
 using namespace Aws::Client;
 using namespace Aws::Utils;
@@ -30,6 +33,24 @@ template<> AWS_DYNAMODB_API TransactionCanceledException DynamoDBError::GetModel
   return TransactionCanceledException(this->GetJsonPayload().View());
 }
 
+template<> AWS_DYNAMODB_API ProvisionedThroughputExceededException DynamoDBError::GetModeledError()
+{
+  assert(this->GetErrorType() == DynamoDBErrors::PROVISIONED_THROUGHPUT_EXCEEDED);
+  return ProvisionedThroughputExceededException(this->GetJsonPayload().View());
+}
+
+template<> AWS_DYNAMODB_API ThrottlingException DynamoDBError::GetModeledError()
+{
+  assert(this->GetErrorType() == DynamoDBErrors::THROTTLING);
+  return ThrottlingException(this->GetJsonPayload().View());
+}
+
+template<> AWS_DYNAMODB_API RequestLimitExceeded DynamoDBError::GetModeledError()
+{
+  assert(this->GetErrorType() == DynamoDBErrors::REQUEST_LIMIT_EXCEEDED);
+  return RequestLimitExceeded(this->GetJsonPayload().View());
+}
+
 namespace DynamoDBErrorMapper
 {
 
@@ -43,6 +64,7 @@ static const int IMPORT_CONFLICT_HASH = HashingUtils::HashString("ImportConflict
 static const int TABLE_NOT_FOUND_HASH = HashingUtils::HashString("TableNotFoundException");
 static const int EXPORT_NOT_FOUND_HASH = HashingUtils::HashString("ExportNotFoundException");
 static const int TRANSACTION_IN_PROGRESS_HASH = HashingUtils::HashString("TransactionInProgressException");
+static const int REPLICATED_WRITE_CONFLICT_HASH = HashingUtils::HashString("ReplicatedWriteConflictException");
 static const int BACKUP_IN_USE_HASH = HashingUtils::HashString("BackupInUseException");
 static const int CONTINUOUS_BACKUPS_UNAVAILABLE_HASH = HashingUtils::HashString("ContinuousBackupsUnavailableException");
 static const int TABLE_IN_USE_HASH = HashingUtils::HashString("TableInUseException");
@@ -53,6 +75,7 @@ static const int ITEM_COLLECTION_SIZE_LIMIT_EXCEEDED_HASH = HashingUtils::HashSt
 static const int BACKUP_NOT_FOUND_HASH = HashingUtils::HashString("BackupNotFoundException");
 static const int IDEMPOTENT_PARAMETER_MISMATCH_HASH = HashingUtils::HashString("IdempotentParameterMismatchException");
 static const int POINT_IN_TIME_RECOVERY_UNAVAILABLE_HASH = HashingUtils::HashString("PointInTimeRecoveryUnavailableException");
+static const int POLICY_NOT_FOUND_HASH = HashingUtils::HashString("PolicyNotFoundException");
 static const int TABLE_ALREADY_EXISTS_HASH = HashingUtils::HashString("TableAlreadyExistsException");
 static const int EXPORT_CONFLICT_HASH = HashingUtils::HashString("ExportConflictException");
 static const int GLOBAL_TABLE_ALREADY_EXISTS_HASH = HashingUtils::HashString("GlobalTableAlreadyExistsException");
@@ -108,6 +131,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(DynamoDBErrors::TRANSACTION_IN_PROGRESS), RetryableType::RETRYABLE);
   }
+  else if (hashCode == REPLICATED_WRITE_CONFLICT_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(DynamoDBErrors::REPLICATED_WRITE_CONFLICT), RetryableType::RETRYABLE);
+  }
   else if (hashCode == BACKUP_IN_USE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(DynamoDBErrors::BACKUP_IN_USE), RetryableType::NOT_RETRYABLE);
@@ -147,6 +174,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == POINT_IN_TIME_RECOVERY_UNAVAILABLE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(DynamoDBErrors::POINT_IN_TIME_RECOVERY_UNAVAILABLE), RetryableType::NOT_RETRYABLE);
+  }
+  else if (hashCode == POLICY_NOT_FOUND_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(DynamoDBErrors::POLICY_NOT_FOUND), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == TABLE_ALREADY_EXISTS_HASH)
   {

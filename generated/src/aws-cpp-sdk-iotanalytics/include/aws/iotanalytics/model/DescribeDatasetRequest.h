@@ -21,7 +21,7 @@ namespace Model
   class DescribeDatasetRequest : public IoTAnalyticsRequest
   {
   public:
-    AWS_IOTANALYTICS_API DescribeDatasetRequest();
+    AWS_IOTANALYTICS_API DescribeDatasetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOTANALYTICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the dataset whose information is retrieved.</p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
     inline bool DatasetNameHasBeenSet() const { return m_datasetNameHasBeenSet; }
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetNameHasBeenSet = true; m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetNameHasBeenSet = true; m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
-    inline DescribeDatasetRequest& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
-    inline DescribeDatasetRequest& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset whose information is retrieved.</p>
-     */
-    inline DescribeDatasetRequest& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    DescribeDatasetRequest& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetName;

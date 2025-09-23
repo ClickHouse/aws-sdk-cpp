@@ -25,7 +25,7 @@ namespace Model
   class CreateStreamingDistribution2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API CreateStreamingDistribution2020_05_31Request();
+    AWS_CLOUDFRONT_API CreateStreamingDistribution2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,36 +36,17 @@ namespace Model
     AWS_CLOUDFRONT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The streaming distribution's configuration information.</p>
      */
-    inline const StreamingDistributionConfig& GetStreamingDistributionConfig() const{ return m_streamingDistributionConfig; }
-
-    /**
-     * <p>The streaming distribution's configuration information.</p>
-     */
+    inline const StreamingDistributionConfig& GetStreamingDistributionConfig() const { return m_streamingDistributionConfig; }
     inline bool StreamingDistributionConfigHasBeenSet() const { return m_streamingDistributionConfigHasBeenSet; }
-
-    /**
-     * <p>The streaming distribution's configuration information.</p>
-     */
-    inline void SetStreamingDistributionConfig(const StreamingDistributionConfig& value) { m_streamingDistributionConfigHasBeenSet = true; m_streamingDistributionConfig = value; }
-
-    /**
-     * <p>The streaming distribution's configuration information.</p>
-     */
-    inline void SetStreamingDistributionConfig(StreamingDistributionConfig&& value) { m_streamingDistributionConfigHasBeenSet = true; m_streamingDistributionConfig = std::move(value); }
-
-    /**
-     * <p>The streaming distribution's configuration information.</p>
-     */
-    inline CreateStreamingDistribution2020_05_31Request& WithStreamingDistributionConfig(const StreamingDistributionConfig& value) { SetStreamingDistributionConfig(value); return *this;}
-
-    /**
-     * <p>The streaming distribution's configuration information.</p>
-     */
-    inline CreateStreamingDistribution2020_05_31Request& WithStreamingDistributionConfig(StreamingDistributionConfig&& value) { SetStreamingDistributionConfig(std::move(value)); return *this;}
-
+    template<typename StreamingDistributionConfigT = StreamingDistributionConfig>
+    void SetStreamingDistributionConfig(StreamingDistributionConfigT&& value) { m_streamingDistributionConfigHasBeenSet = true; m_streamingDistributionConfig = std::forward<StreamingDistributionConfigT>(value); }
+    template<typename StreamingDistributionConfigT = StreamingDistributionConfig>
+    CreateStreamingDistribution2020_05_31Request& WithStreamingDistributionConfig(StreamingDistributionConfigT&& value) { SetStreamingDistributionConfig(std::forward<StreamingDistributionConfigT>(value)); return *this;}
+    ///@}
   private:
 
     StreamingDistributionConfig m_streamingDistributionConfig;

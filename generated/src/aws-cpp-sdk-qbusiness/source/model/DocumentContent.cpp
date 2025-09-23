@@ -19,15 +19,7 @@ namespace QBusiness
 namespace Model
 {
 
-DocumentContent::DocumentContent() : 
-    m_blobHasBeenSet(false),
-    m_s3HasBeenSet(false)
-{
-}
-
-DocumentContent::DocumentContent(JsonView jsonValue) : 
-    m_blobHasBeenSet(false),
-    m_s3HasBeenSet(false)
+DocumentContent::DocumentContent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,14 +31,11 @@ DocumentContent& DocumentContent::operator =(JsonView jsonValue)
     m_blob = HashingUtils::Base64Decode(jsonValue.GetString("blob"));
     m_blobHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("s3"))
   {
     m_s3 = jsonValue.GetObject("s3");
-
     m_s3HasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -29,73 +29,39 @@ namespace Model
   class BatchDeletePartitionResult
   {
   public:
-    AWS_GLUE_API BatchDeletePartitionResult();
+    AWS_GLUE_API BatchDeletePartitionResult() = default;
     AWS_GLUE_API BatchDeletePartitionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API BatchDeletePartitionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The errors encountered when trying to delete the requested partitions.</p>
      */
-    inline const Aws::Vector<PartitionError>& GetErrors() const{ return m_errors; }
+    inline const Aws::Vector<PartitionError>& GetErrors() const { return m_errors; }
+    template<typename ErrorsT = Aws::Vector<PartitionError>>
+    void SetErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors = std::forward<ErrorsT>(value); }
+    template<typename ErrorsT = Aws::Vector<PartitionError>>
+    BatchDeletePartitionResult& WithErrors(ErrorsT&& value) { SetErrors(std::forward<ErrorsT>(value)); return *this;}
+    template<typename ErrorsT = PartitionError>
+    BatchDeletePartitionResult& AddErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors.emplace_back(std::forward<ErrorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The errors encountered when trying to delete the requested partitions.</p>
-     */
-    inline void SetErrors(const Aws::Vector<PartitionError>& value) { m_errors = value; }
-
-    /**
-     * <p>The errors encountered when trying to delete the requested partitions.</p>
-     */
-    inline void SetErrors(Aws::Vector<PartitionError>&& value) { m_errors = std::move(value); }
-
-    /**
-     * <p>The errors encountered when trying to delete the requested partitions.</p>
-     */
-    inline BatchDeletePartitionResult& WithErrors(const Aws::Vector<PartitionError>& value) { SetErrors(value); return *this;}
-
-    /**
-     * <p>The errors encountered when trying to delete the requested partitions.</p>
-     */
-    inline BatchDeletePartitionResult& WithErrors(Aws::Vector<PartitionError>&& value) { SetErrors(std::move(value)); return *this;}
-
-    /**
-     * <p>The errors encountered when trying to delete the requested partitions.</p>
-     */
-    inline BatchDeletePartitionResult& AddErrors(const PartitionError& value) { m_errors.push_back(value); return *this; }
-
-    /**
-     * <p>The errors encountered when trying to delete the requested partitions.</p>
-     */
-    inline BatchDeletePartitionResult& AddErrors(PartitionError&& value) { m_errors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline BatchDeletePartitionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline BatchDeletePartitionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline BatchDeletePartitionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    BatchDeletePartitionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PartitionError> m_errors;
+    bool m_errorsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

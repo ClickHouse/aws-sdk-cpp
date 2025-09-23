@@ -18,73 +18,28 @@ namespace OpenSearchServerless
 namespace Model
 {
 
-VpcEndpointDetail::VpcEndpointDetail() : 
-    m_createdDate(0),
-    m_createdDateHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_status(VpcEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-VpcEndpointDetail::VpcEndpointDetail(JsonView jsonValue) : 
-    m_createdDate(0),
-    m_createdDateHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_status(VpcEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+VpcEndpointDetail::VpcEndpointDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 VpcEndpointDetail& VpcEndpointDetail::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("createdDate"))
-  {
-    m_createdDate = jsonValue.GetInt64("createdDate");
-
-    m_createdDateHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("securityGroupIds"))
+  if(jsonValue.ValueExists("vpcId"))
   {
-    Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
-    for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
-    {
-      m_securityGroupIds.push_back(securityGroupIdsJsonList[securityGroupIdsIndex].AsString());
-    }
-    m_securityGroupIdsHasBeenSet = true;
+    m_vpcId = jsonValue.GetString("vpcId");
+    m_vpcIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("status"))
-  {
-    m_status = VpcEndpointStatusMapper::GetVpcEndpointStatusForName(jsonValue.GetString("status"));
-
-    m_statusHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -94,26 +49,41 @@ VpcEndpointDetail& VpcEndpointDetail::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("vpcId"))
+  if(jsonValue.ValueExists("securityGroupIds"))
   {
-    m_vpcId = jsonValue.GetString("vpcId");
-
-    m_vpcIdHasBeenSet = true;
+    Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
+    for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
+    {
+      m_securityGroupIds.push_back(securityGroupIdsJsonList[securityGroupIdsIndex].AsString());
+    }
+    m_securityGroupIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("status"))
+  {
+    m_status = VpcEndpointStatusMapper::GetVpcEndpointStatusForName(jsonValue.GetString("status"));
+    m_statusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdDate"))
+  {
+    m_createdDate = jsonValue.GetInt64("createdDate");
+    m_createdDateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("failureCode"))
+  {
+    m_failureCode = jsonValue.GetString("failureCode");
+    m_failureCodeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("failureMessage"))
+  {
+    m_failureMessage = jsonValue.GetString("failureMessage");
+    m_failureMessageHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue VpcEndpointDetail::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_createdDateHasBeenSet)
-  {
-   payload.WithInt64("createdDate", m_createdDate);
-
-  }
 
   if(m_idHasBeenSet)
   {
@@ -124,6 +94,23 @@ JsonValue VpcEndpointDetail::Jsonize() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_vpcIdHasBeenSet)
+  {
+   payload.WithString("vpcId", m_vpcId);
+
+  }
+
+  if(m_subnetIdsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> subnetIdsJsonList(m_subnetIds.size());
+   for(unsigned subnetIdsIndex = 0; subnetIdsIndex < subnetIdsJsonList.GetLength(); ++subnetIdsIndex)
+   {
+     subnetIdsJsonList[subnetIdsIndex].AsString(m_subnetIds[subnetIdsIndex]);
+   }
+   payload.WithArray("subnetIds", std::move(subnetIdsJsonList));
 
   }
 
@@ -143,20 +130,21 @@ JsonValue VpcEndpointDetail::Jsonize() const
    payload.WithString("status", VpcEndpointStatusMapper::GetNameForVpcEndpointStatus(m_status));
   }
 
-  if(m_subnetIdsHasBeenSet)
+  if(m_createdDateHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> subnetIdsJsonList(m_subnetIds.size());
-   for(unsigned subnetIdsIndex = 0; subnetIdsIndex < subnetIdsJsonList.GetLength(); ++subnetIdsIndex)
-   {
-     subnetIdsJsonList[subnetIdsIndex].AsString(m_subnetIds[subnetIdsIndex]);
-   }
-   payload.WithArray("subnetIds", std::move(subnetIdsJsonList));
+   payload.WithInt64("createdDate", m_createdDate);
 
   }
 
-  if(m_vpcIdHasBeenSet)
+  if(m_failureCodeHasBeenSet)
   {
-   payload.WithString("vpcId", m_vpcId);
+   payload.WithString("failureCode", m_failureCode);
+
+  }
+
+  if(m_failureMessageHasBeenSet)
+  {
+   payload.WithString("failureMessage", m_failureMessage);
 
   }
 

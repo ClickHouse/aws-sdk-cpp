@@ -25,7 +25,7 @@ namespace Model
   class GetEmailIdentityRequest : public PinpointEmailRequest
   {
   public:
-    AWS_PINPOINTEMAIL_API GetEmailIdentityRequest();
+    AWS_PINPOINTEMAIL_API GetEmailIdentityRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
     AWS_PINPOINTEMAIL_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The email identity that you want to retrieve details for.</p>
      */
-    inline const Aws::String& GetEmailIdentity() const{ return m_emailIdentity; }
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
+    inline const Aws::String& GetEmailIdentity() const { return m_emailIdentity; }
     inline bool EmailIdentityHasBeenSet() const { return m_emailIdentityHasBeenSet; }
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
-    inline void SetEmailIdentity(const Aws::String& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = value; }
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
-    inline void SetEmailIdentity(Aws::String&& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = std::move(value); }
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
-    inline void SetEmailIdentity(const char* value) { m_emailIdentityHasBeenSet = true; m_emailIdentity.assign(value); }
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
-    inline GetEmailIdentityRequest& WithEmailIdentity(const Aws::String& value) { SetEmailIdentity(value); return *this;}
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
-    inline GetEmailIdentityRequest& WithEmailIdentity(Aws::String&& value) { SetEmailIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The email identity that you want to retrieve details for.</p>
-     */
-    inline GetEmailIdentityRequest& WithEmailIdentity(const char* value) { SetEmailIdentity(value); return *this;}
-
+    template<typename EmailIdentityT = Aws::String>
+    void SetEmailIdentity(EmailIdentityT&& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = std::forward<EmailIdentityT>(value); }
+    template<typename EmailIdentityT = Aws::String>
+    GetEmailIdentityRequest& WithEmailIdentity(EmailIdentityT&& value) { SetEmailIdentity(std::forward<EmailIdentityT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_emailIdentity;

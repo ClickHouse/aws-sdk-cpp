@@ -27,7 +27,7 @@ namespace Model
   class UpdateTrialComponentRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API UpdateTrialComponentRequest();
+    AWS_SAGEMAKER_API UpdateTrialComponentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,601 +40,164 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the component to update.</p>
      */
-    inline const Aws::String& GetTrialComponentName() const{ return m_trialComponentName; }
-
-    /**
-     * <p>The name of the component to update.</p>
-     */
+    inline const Aws::String& GetTrialComponentName() const { return m_trialComponentName; }
     inline bool TrialComponentNameHasBeenSet() const { return m_trialComponentNameHasBeenSet; }
+    template<typename TrialComponentNameT = Aws::String>
+    void SetTrialComponentName(TrialComponentNameT&& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = std::forward<TrialComponentNameT>(value); }
+    template<typename TrialComponentNameT = Aws::String>
+    UpdateTrialComponentRequest& WithTrialComponentName(TrialComponentNameT&& value) { SetTrialComponentName(std::forward<TrialComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component to update.</p>
-     */
-    inline void SetTrialComponentName(const Aws::String& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = value; }
-
-    /**
-     * <p>The name of the component to update.</p>
-     */
-    inline void SetTrialComponentName(Aws::String&& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = std::move(value); }
-
-    /**
-     * <p>The name of the component to update.</p>
-     */
-    inline void SetTrialComponentName(const char* value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName.assign(value); }
-
-    /**
-     * <p>The name of the component to update.</p>
-     */
-    inline UpdateTrialComponentRequest& WithTrialComponentName(const Aws::String& value) { SetTrialComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the component to update.</p>
-     */
-    inline UpdateTrialComponentRequest& WithTrialComponentName(Aws::String&& value) { SetTrialComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component to update.</p>
-     */
-    inline UpdateTrialComponentRequest& WithTrialComponentName(const char* value) { SetTrialComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the component as displayed. The name doesn't need to be unique.
      * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
      * displayed.</p>
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    UpdateTrialComponentRequest& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
-    inline UpdateTrialComponentRequest& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
-    inline UpdateTrialComponentRequest& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component as displayed. The name doesn't need to be unique.
-     * If <code>DisplayName</code> isn't specified, <code>TrialComponentName</code> is
-     * displayed.</p>
-     */
-    inline UpdateTrialComponentRequest& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new status of the component.</p>
      */
-    inline const TrialComponentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The new status of the component.</p>
-     */
+    inline const TrialComponentStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = TrialComponentStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = TrialComponentStatus>
+    UpdateTrialComponentRequest& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new status of the component.</p>
-     */
-    inline void SetStatus(const TrialComponentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The new status of the component.</p>
-     */
-    inline void SetStatus(TrialComponentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The new status of the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithStatus(const TrialComponentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The new status of the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithStatus(TrialComponentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the component started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>When the component started.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    UpdateTrialComponentRequest& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the component started.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>When the component started.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>When the component started.</p>
-     */
-    inline UpdateTrialComponentRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>When the component started.</p>
-     */
-    inline UpdateTrialComponentRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the component ended.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>When the component ended.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    UpdateTrialComponentRequest& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the component ended.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>When the component ended.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>When the component ended.</p>
-     */
-    inline UpdateTrialComponentRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>When the component ended.</p>
-     */
-    inline UpdateTrialComponentRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Replaces all of the component's hyperparameters with the specified
      * hyperparameters or add new hyperparameters. Existing hyperparameters are
      * replaced if the trial component is updated with an identical hyperparameter
      * key.</p>
      */
-    inline const Aws::Map<Aws::String, TrialComponentParameterValue>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
+    inline const Aws::Map<Aws::String, TrialComponentParameterValue>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Map<Aws::String, TrialComponentParameterValue>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, TrialComponentParameterValue>>
+    UpdateTrialComponentRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = TrialComponentParameterValue>
+    UpdateTrialComponentRequest& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, TrialComponentParameterValue>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, TrialComponentParameterValue>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& WithParameters(const Aws::Map<Aws::String, TrialComponentParameterValue>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& WithParameters(Aws::Map<Aws::String, TrialComponentParameterValue>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParameters(const Aws::String& key, const TrialComponentParameterValue& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParameters(Aws::String&& key, const TrialComponentParameterValue& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParameters(const Aws::String& key, TrialComponentParameterValue&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParameters(Aws::String&& key, TrialComponentParameterValue&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParameters(const char* key, TrialComponentParameterValue&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's hyperparameters with the specified
-     * hyperparameters or add new hyperparameters. Existing hyperparameters are
-     * replaced if the trial component is updated with an identical hyperparameter
-     * key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParameters(const char* key, const TrialComponentParameterValue& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The hyperparameters to remove from the component.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetParametersToRemove() const{ return m_parametersToRemove; }
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetParametersToRemove() const { return m_parametersToRemove; }
     inline bool ParametersToRemoveHasBeenSet() const { return m_parametersToRemoveHasBeenSet; }
+    template<typename ParametersToRemoveT = Aws::Vector<Aws::String>>
+    void SetParametersToRemove(ParametersToRemoveT&& value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove = std::forward<ParametersToRemoveT>(value); }
+    template<typename ParametersToRemoveT = Aws::Vector<Aws::String>>
+    UpdateTrialComponentRequest& WithParametersToRemove(ParametersToRemoveT&& value) { SetParametersToRemove(std::forward<ParametersToRemoveT>(value)); return *this;}
+    template<typename ParametersToRemoveT = Aws::String>
+    UpdateTrialComponentRequest& AddParametersToRemove(ParametersToRemoveT&& value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove.emplace_back(std::forward<ParametersToRemoveT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline void SetParametersToRemove(const Aws::Vector<Aws::String>& value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove = value; }
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline void SetParametersToRemove(Aws::Vector<Aws::String>&& value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove = std::move(value); }
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithParametersToRemove(const Aws::Vector<Aws::String>& value) { SetParametersToRemove(value); return *this;}
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithParametersToRemove(Aws::Vector<Aws::String>&& value) { SetParametersToRemove(std::move(value)); return *this;}
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParametersToRemove(const Aws::String& value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove.push_back(value); return *this; }
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParametersToRemove(Aws::String&& value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The hyperparameters to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddParametersToRemove(const char* value) { m_parametersToRemoveHasBeenSet = true; m_parametersToRemove.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Replaces all of the component's input artifacts with the specified artifacts
      * or adds new input artifacts. Existing input artifacts are replaced if the trial
      * component is updated with an identical input artifact key.</p>
      */
-    inline const Aws::Map<Aws::String, TrialComponentArtifact>& GetInputArtifacts() const{ return m_inputArtifacts; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
+    inline const Aws::Map<Aws::String, TrialComponentArtifact>& GetInputArtifacts() const { return m_inputArtifacts; }
     inline bool InputArtifactsHasBeenSet() const { return m_inputArtifactsHasBeenSet; }
+    template<typename InputArtifactsT = Aws::Map<Aws::String, TrialComponentArtifact>>
+    void SetInputArtifacts(InputArtifactsT&& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts = std::forward<InputArtifactsT>(value); }
+    template<typename InputArtifactsT = Aws::Map<Aws::String, TrialComponentArtifact>>
+    UpdateTrialComponentRequest& WithInputArtifacts(InputArtifactsT&& value) { SetInputArtifacts(std::forward<InputArtifactsT>(value)); return *this;}
+    template<typename InputArtifactsKeyT = Aws::String, typename InputArtifactsValueT = TrialComponentArtifact>
+    UpdateTrialComponentRequest& AddInputArtifacts(InputArtifactsKeyT&& key, InputArtifactsValueT&& value) {
+      m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(std::forward<InputArtifactsKeyT>(key), std::forward<InputArtifactsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline void SetInputArtifacts(const Aws::Map<Aws::String, TrialComponentArtifact>& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts = value; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline void SetInputArtifacts(Aws::Map<Aws::String, TrialComponentArtifact>&& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts = std::move(value); }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& WithInputArtifacts(const Aws::Map<Aws::String, TrialComponentArtifact>& value) { SetInputArtifacts(value); return *this;}
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& WithInputArtifacts(Aws::Map<Aws::String, TrialComponentArtifact>&& value) { SetInputArtifacts(std::move(value)); return *this;}
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifacts(const Aws::String& key, const TrialComponentArtifact& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(key, value); return *this; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifacts(Aws::String&& key, const TrialComponentArtifact& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifacts(const Aws::String& key, TrialComponentArtifact&& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifacts(Aws::String&& key, TrialComponentArtifact&& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifacts(const char* key, TrialComponentArtifact&& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's input artifacts with the specified artifacts
-     * or adds new input artifacts. Existing input artifacts are replaced if the trial
-     * component is updated with an identical input artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifacts(const char* key, const TrialComponentArtifact& value) { m_inputArtifactsHasBeenSet = true; m_inputArtifacts.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The input artifacts to remove from the component.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInputArtifactsToRemove() const{ return m_inputArtifactsToRemove; }
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInputArtifactsToRemove() const { return m_inputArtifactsToRemove; }
     inline bool InputArtifactsToRemoveHasBeenSet() const { return m_inputArtifactsToRemoveHasBeenSet; }
+    template<typename InputArtifactsToRemoveT = Aws::Vector<Aws::String>>
+    void SetInputArtifactsToRemove(InputArtifactsToRemoveT&& value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove = std::forward<InputArtifactsToRemoveT>(value); }
+    template<typename InputArtifactsToRemoveT = Aws::Vector<Aws::String>>
+    UpdateTrialComponentRequest& WithInputArtifactsToRemove(InputArtifactsToRemoveT&& value) { SetInputArtifactsToRemove(std::forward<InputArtifactsToRemoveT>(value)); return *this;}
+    template<typename InputArtifactsToRemoveT = Aws::String>
+    UpdateTrialComponentRequest& AddInputArtifactsToRemove(InputArtifactsToRemoveT&& value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove.emplace_back(std::forward<InputArtifactsToRemoveT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline void SetInputArtifactsToRemove(const Aws::Vector<Aws::String>& value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove = value; }
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline void SetInputArtifactsToRemove(Aws::Vector<Aws::String>&& value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove = std::move(value); }
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithInputArtifactsToRemove(const Aws::Vector<Aws::String>& value) { SetInputArtifactsToRemove(value); return *this;}
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithInputArtifactsToRemove(Aws::Vector<Aws::String>&& value) { SetInputArtifactsToRemove(std::move(value)); return *this;}
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifactsToRemove(const Aws::String& value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove.push_back(value); return *this; }
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifactsToRemove(Aws::String&& value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The input artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddInputArtifactsToRemove(const char* value) { m_inputArtifactsToRemoveHasBeenSet = true; m_inputArtifactsToRemove.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Replaces all of the component's output artifacts with the specified artifacts
      * or adds new output artifacts. Existing output artifacts are replaced if the
      * trial component is updated with an identical output artifact key.</p>
      */
-    inline const Aws::Map<Aws::String, TrialComponentArtifact>& GetOutputArtifacts() const{ return m_outputArtifacts; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
+    inline const Aws::Map<Aws::String, TrialComponentArtifact>& GetOutputArtifacts() const { return m_outputArtifacts; }
     inline bool OutputArtifactsHasBeenSet() const { return m_outputArtifactsHasBeenSet; }
+    template<typename OutputArtifactsT = Aws::Map<Aws::String, TrialComponentArtifact>>
+    void SetOutputArtifacts(OutputArtifactsT&& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts = std::forward<OutputArtifactsT>(value); }
+    template<typename OutputArtifactsT = Aws::Map<Aws::String, TrialComponentArtifact>>
+    UpdateTrialComponentRequest& WithOutputArtifacts(OutputArtifactsT&& value) { SetOutputArtifacts(std::forward<OutputArtifactsT>(value)); return *this;}
+    template<typename OutputArtifactsKeyT = Aws::String, typename OutputArtifactsValueT = TrialComponentArtifact>
+    UpdateTrialComponentRequest& AddOutputArtifacts(OutputArtifactsKeyT&& key, OutputArtifactsValueT&& value) {
+      m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(std::forward<OutputArtifactsKeyT>(key), std::forward<OutputArtifactsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline void SetOutputArtifacts(const Aws::Map<Aws::String, TrialComponentArtifact>& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts = value; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline void SetOutputArtifacts(Aws::Map<Aws::String, TrialComponentArtifact>&& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts = std::move(value); }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& WithOutputArtifacts(const Aws::Map<Aws::String, TrialComponentArtifact>& value) { SetOutputArtifacts(value); return *this;}
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& WithOutputArtifacts(Aws::Map<Aws::String, TrialComponentArtifact>&& value) { SetOutputArtifacts(std::move(value)); return *this;}
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifacts(const Aws::String& key, const TrialComponentArtifact& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(key, value); return *this; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifacts(Aws::String&& key, const TrialComponentArtifact& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifacts(const Aws::String& key, TrialComponentArtifact&& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifacts(Aws::String&& key, TrialComponentArtifact&& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifacts(const char* key, TrialComponentArtifact&& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Replaces all of the component's output artifacts with the specified artifacts
-     * or adds new output artifacts. Existing output artifacts are replaced if the
-     * trial component is updated with an identical output artifact key.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifacts(const char* key, const TrialComponentArtifact& value) { m_outputArtifactsHasBeenSet = true; m_outputArtifacts.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The output artifacts to remove from the component.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOutputArtifactsToRemove() const{ return m_outputArtifactsToRemove; }
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOutputArtifactsToRemove() const { return m_outputArtifactsToRemove; }
     inline bool OutputArtifactsToRemoveHasBeenSet() const { return m_outputArtifactsToRemoveHasBeenSet; }
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline void SetOutputArtifactsToRemove(const Aws::Vector<Aws::String>& value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove = value; }
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline void SetOutputArtifactsToRemove(Aws::Vector<Aws::String>&& value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove = std::move(value); }
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithOutputArtifactsToRemove(const Aws::Vector<Aws::String>& value) { SetOutputArtifactsToRemove(value); return *this;}
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& WithOutputArtifactsToRemove(Aws::Vector<Aws::String>&& value) { SetOutputArtifactsToRemove(std::move(value)); return *this;}
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifactsToRemove(const Aws::String& value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove.push_back(value); return *this; }
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifactsToRemove(Aws::String&& value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The output artifacts to remove from the component.</p>
-     */
-    inline UpdateTrialComponentRequest& AddOutputArtifactsToRemove(const char* value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove.push_back(value); return *this; }
-
+    template<typename OutputArtifactsToRemoveT = Aws::Vector<Aws::String>>
+    void SetOutputArtifactsToRemove(OutputArtifactsToRemoveT&& value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove = std::forward<OutputArtifactsToRemoveT>(value); }
+    template<typename OutputArtifactsToRemoveT = Aws::Vector<Aws::String>>
+    UpdateTrialComponentRequest& WithOutputArtifactsToRemove(OutputArtifactsToRemoveT&& value) { SetOutputArtifactsToRemove(std::forward<OutputArtifactsToRemoveT>(value)); return *this;}
+    template<typename OutputArtifactsToRemoveT = Aws::String>
+    UpdateTrialComponentRequest& AddOutputArtifactsToRemove(OutputArtifactsToRemoveT&& value) { m_outputArtifactsToRemoveHasBeenSet = true; m_outputArtifactsToRemove.emplace_back(std::forward<OutputArtifactsToRemoveT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_trialComponentName;
@@ -646,10 +209,10 @@ namespace Model
     TrialComponentStatus m_status;
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
     Aws::Map<Aws::String, TrialComponentParameterValue> m_parameters;

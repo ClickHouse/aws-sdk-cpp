@@ -21,7 +21,7 @@ namespace Model
   class DeleteEndpointAccessRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DeleteEndpointAccessRequest();
+    AWS_REDSHIFT_API DeleteEndpointAccessRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Redshift-managed VPC endpoint to delete.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
-    inline DeleteEndpointAccessRequest& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
-    inline DeleteEndpointAccessRequest& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Redshift-managed VPC endpoint to delete.</p>
-     */
-    inline DeleteEndpointAccessRequest& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    DeleteEndpointAccessRequest& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointName;

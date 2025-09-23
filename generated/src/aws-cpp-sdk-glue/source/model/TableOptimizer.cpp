@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-TableOptimizer::TableOptimizer() : 
-    m_type(TableOptimizerType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_configurationHasBeenSet(false),
-    m_lastRunHasBeenSet(false)
-{
-}
-
-TableOptimizer::TableOptimizer(JsonView jsonValue) : 
-    m_type(TableOptimizerType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_configurationHasBeenSet(false),
-    m_lastRunHasBeenSet(false)
+TableOptimizer::TableOptimizer(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ TableOptimizer& TableOptimizer::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("type"))
   {
     m_type = TableOptimizerTypeMapper::GetTableOptimizerTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("configuration"))
   {
     m_configuration = jsonValue.GetObject("configuration");
-
     m_configurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastRun"))
   {
     m_lastRun = jsonValue.GetObject("lastRun");
-
     m_lastRunHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("configurationSource"))
+  {
+    m_configurationSource = ConfigurationSourceMapper::GetConfigurationSourceForName(jsonValue.GetString("configurationSource"));
+    m_configurationSourceHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,11 @@ JsonValue TableOptimizer::Jsonize() const
   {
    payload.WithObject("lastRun", m_lastRun.Jsonize());
 
+  }
+
+  if(m_configurationSourceHasBeenSet)
+  {
+   payload.WithString("configurationSource", ConfigurationSourceMapper::GetNameForConfigurationSource(m_configurationSource));
   }
 
   return payload;

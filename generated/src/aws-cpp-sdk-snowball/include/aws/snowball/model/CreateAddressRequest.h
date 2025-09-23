@@ -21,7 +21,7 @@ namespace Model
   class CreateAddressRequest : public SnowballRequest
   {
   public:
-    AWS_SNOWBALL_API CreateAddressRequest();
+    AWS_SNOWBALL_API CreateAddressRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,36 +34,17 @@ namespace Model
     AWS_SNOWBALL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The address that you want the Snow device shipped to.</p>
      */
-    inline const Address& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>The address that you want the Snow device shipped to.</p>
-     */
+    inline const Address& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
-
-    /**
-     * <p>The address that you want the Snow device shipped to.</p>
-     */
-    inline void SetAddress(const Address& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>The address that you want the Snow device shipped to.</p>
-     */
-    inline void SetAddress(Address&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>The address that you want the Snow device shipped to.</p>
-     */
-    inline CreateAddressRequest& WithAddress(const Address& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>The address that you want the Snow device shipped to.</p>
-     */
-    inline CreateAddressRequest& WithAddress(Address&& value) { SetAddress(std::move(value)); return *this;}
-
+    template<typename AddressT = Address>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Address>
+    CreateAddressRequest& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
   private:
 
     Address m_address;

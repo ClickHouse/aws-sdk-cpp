@@ -18,13 +18,7 @@ namespace MemoryDB
 namespace Model
 {
 
-ServiceUpdateRequest::ServiceUpdateRequest() : 
-    m_serviceUpdateNameToApplyHasBeenSet(false)
-{
-}
-
-ServiceUpdateRequest::ServiceUpdateRequest(JsonView jsonValue) : 
-    m_serviceUpdateNameToApplyHasBeenSet(false)
+ServiceUpdateRequest::ServiceUpdateRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ServiceUpdateRequest& ServiceUpdateRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ServiceUpdateNameToApply"))
   {
     m_serviceUpdateNameToApply = jsonValue.GetString("ServiceUpdateNameToApply");
-
     m_serviceUpdateNameToApplyHasBeenSet = true;
   }
-
   return *this;
 }
 

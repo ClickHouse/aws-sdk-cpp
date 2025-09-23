@@ -12,26 +12,6 @@ using namespace Aws::MediaLive::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateChannelRequest::CreateChannelRequest() : 
-    m_cdiInputSpecificationHasBeenSet(false),
-    m_channelClass(ChannelClass::NOT_SET),
-    m_channelClassHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_encoderSettingsHasBeenSet(false),
-    m_inputAttachmentsHasBeenSet(false),
-    m_inputSpecificationHasBeenSet(false),
-    m_logLevel(LogLevel::NOT_SET),
-    m_logLevelHasBeenSet(false),
-    m_maintenanceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_requestId(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_requestIdHasBeenSet(true),
-    m_roleArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcHasBeenSet(false)
-{
-}
-
 Aws::String CreateChannelRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -124,6 +104,24 @@ Aws::String CreateChannelRequest::SerializePayload() const
   if(m_vpcHasBeenSet)
   {
    payload.WithObject("vpc", m_vpc.Jsonize());
+
+  }
+
+  if(m_anywhereSettingsHasBeenSet)
+  {
+   payload.WithObject("anywhereSettings", m_anywhereSettings.Jsonize());
+
+  }
+
+  if(m_channelEngineVersionHasBeenSet)
+  {
+   payload.WithObject("channelEngineVersion", m_channelEngineVersion.Jsonize());
+
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+   payload.WithBool("dryRun", m_dryRun);
 
   }
 

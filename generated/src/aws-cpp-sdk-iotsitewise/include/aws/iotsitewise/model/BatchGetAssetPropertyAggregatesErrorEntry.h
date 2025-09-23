@@ -35,127 +35,48 @@ namespace Model
   class BatchGetAssetPropertyAggregatesErrorEntry
   {
   public:
-    AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorEntry();
+    AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorEntry() = default;
     AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code.</p>
      */
-    inline const BatchGetAssetPropertyAggregatesErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code.</p>
-     */
+    inline BatchGetAssetPropertyAggregatesErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(BatchGetAssetPropertyAggregatesErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline BatchGetAssetPropertyAggregatesErrorEntry& WithErrorCode(BatchGetAssetPropertyAggregatesErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(const BatchGetAssetPropertyAggregatesErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(BatchGetAssetPropertyAggregatesErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithErrorCode(const BatchGetAssetPropertyAggregatesErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithErrorCode(BatchGetAssetPropertyAggregatesErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The associated error message.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The associated error message.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    BatchGetAssetPropertyAggregatesErrorEntry& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The associated error message.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The associated error message.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The associated error message.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The associated error message.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The associated error message.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The associated error message.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the entry.</p>
      */
-    inline const Aws::String& GetEntryId() const{ return m_entryId; }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
+    inline const Aws::String& GetEntryId() const { return m_entryId; }
     inline bool EntryIdHasBeenSet() const { return m_entryIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline void SetEntryId(const Aws::String& value) { m_entryIdHasBeenSet = true; m_entryId = value; }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline void SetEntryId(Aws::String&& value) { m_entryIdHasBeenSet = true; m_entryId = std::move(value); }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline void SetEntryId(const char* value) { m_entryIdHasBeenSet = true; m_entryId.assign(value); }
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithEntryId(const Aws::String& value) { SetEntryId(value); return *this;}
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithEntryId(Aws::String&& value) { SetEntryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the entry.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorEntry& WithEntryId(const char* value) { SetEntryId(value); return *this;}
-
+    template<typename EntryIdT = Aws::String>
+    void SetEntryId(EntryIdT&& value) { m_entryIdHasBeenSet = true; m_entryId = std::forward<EntryIdT>(value); }
+    template<typename EntryIdT = Aws::String>
+    BatchGetAssetPropertyAggregatesErrorEntry& WithEntryId(EntryIdT&& value) { SetEntryId(std::forward<EntryIdT>(value)); return *this;}
+    ///@}
   private:
 
-    BatchGetAssetPropertyAggregatesErrorCode m_errorCode;
+    BatchGetAssetPropertyAggregatesErrorCode m_errorCode{BatchGetAssetPropertyAggregatesErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;

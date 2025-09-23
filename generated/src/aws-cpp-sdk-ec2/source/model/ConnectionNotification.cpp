@@ -20,29 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ConnectionNotification::ConnectionNotification() : 
-    m_connectionNotificationIdHasBeenSet(false),
-    m_serviceIdHasBeenSet(false),
-    m_vpcEndpointIdHasBeenSet(false),
-    m_connectionNotificationType(ConnectionNotificationType::NOT_SET),
-    m_connectionNotificationTypeHasBeenSet(false),
-    m_connectionNotificationArnHasBeenSet(false),
-    m_connectionEventsHasBeenSet(false),
-    m_connectionNotificationState(ConnectionNotificationState::NOT_SET),
-    m_connectionNotificationStateHasBeenSet(false)
-{
-}
-
-ConnectionNotification::ConnectionNotification(const XmlNode& xmlNode) : 
-    m_connectionNotificationIdHasBeenSet(false),
-    m_serviceIdHasBeenSet(false),
-    m_vpcEndpointIdHasBeenSet(false),
-    m_connectionNotificationType(ConnectionNotificationType::NOT_SET),
-    m_connectionNotificationTypeHasBeenSet(false),
-    m_connectionNotificationArnHasBeenSet(false),
-    m_connectionEventsHasBeenSet(false),
-    m_connectionNotificationState(ConnectionNotificationState::NOT_SET),
-    m_connectionNotificationStateHasBeenSet(false)
+ConnectionNotification::ConnectionNotification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -74,7 +52,7 @@ ConnectionNotification& ConnectionNotification::operator =(const XmlNode& xmlNod
     XmlNode connectionNotificationTypeNode = resultNode.FirstChild("connectionNotificationType");
     if(!connectionNotificationTypeNode.IsNull())
     {
-      m_connectionNotificationType = ConnectionNotificationTypeMapper::GetConnectionNotificationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectionNotificationTypeNode.GetText()).c_str()).c_str());
+      m_connectionNotificationType = ConnectionNotificationTypeMapper::GetConnectionNotificationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectionNotificationTypeNode.GetText()).c_str()));
       m_connectionNotificationTypeHasBeenSet = true;
     }
     XmlNode connectionNotificationArnNode = resultNode.FirstChild("connectionNotificationArn");
@@ -87,6 +65,7 @@ ConnectionNotification& ConnectionNotification::operator =(const XmlNode& xmlNod
     if(!connectionEventsNode.IsNull())
     {
       XmlNode connectionEventsMember = connectionEventsNode.FirstChild("item");
+      m_connectionEventsHasBeenSet = !connectionEventsMember.IsNull();
       while(!connectionEventsMember.IsNull())
       {
         m_connectionEvents.push_back(connectionEventsMember.GetText());
@@ -98,8 +77,14 @@ ConnectionNotification& ConnectionNotification::operator =(const XmlNode& xmlNod
     XmlNode connectionNotificationStateNode = resultNode.FirstChild("connectionNotificationState");
     if(!connectionNotificationStateNode.IsNull())
     {
-      m_connectionNotificationState = ConnectionNotificationStateMapper::GetConnectionNotificationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectionNotificationStateNode.GetText()).c_str()).c_str());
+      m_connectionNotificationState = ConnectionNotificationStateMapper::GetConnectionNotificationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectionNotificationStateNode.GetText()).c_str()));
       m_connectionNotificationStateHasBeenSet = true;
+    }
+    XmlNode serviceRegionNode = resultNode.FirstChild("serviceRegion");
+    if(!serviceRegionNode.IsNull())
+    {
+      m_serviceRegion = Aws::Utils::Xml::DecodeEscapedXmlText(serviceRegionNode.GetText());
+      m_serviceRegionHasBeenSet = true;
     }
   }
 
@@ -125,7 +110,7 @@ void ConnectionNotification::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_connectionNotificationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ConnectionNotificationType=" << ConnectionNotificationTypeMapper::GetNameForConnectionNotificationType(m_connectionNotificationType) << "&";
+      oStream << location << index << locationValue << ".ConnectionNotificationType=" << StringUtils::URLEncode(ConnectionNotificationTypeMapper::GetNameForConnectionNotificationType(m_connectionNotificationType)) << "&";
   }
 
   if(m_connectionNotificationArnHasBeenSet)
@@ -144,7 +129,12 @@ void ConnectionNotification::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_connectionNotificationStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ConnectionNotificationState=" << ConnectionNotificationStateMapper::GetNameForConnectionNotificationState(m_connectionNotificationState) << "&";
+      oStream << location << index << locationValue << ".ConnectionNotificationState=" << StringUtils::URLEncode(ConnectionNotificationStateMapper::GetNameForConnectionNotificationState(m_connectionNotificationState)) << "&";
+  }
+
+  if(m_serviceRegionHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ServiceRegion=" << StringUtils::URLEncode(m_serviceRegion.c_str()) << "&";
   }
 
 }
@@ -165,7 +155,7 @@ void ConnectionNotification::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_connectionNotificationTypeHasBeenSet)
   {
-      oStream << location << ".ConnectionNotificationType=" << ConnectionNotificationTypeMapper::GetNameForConnectionNotificationType(m_connectionNotificationType) << "&";
+      oStream << location << ".ConnectionNotificationType=" << StringUtils::URLEncode(ConnectionNotificationTypeMapper::GetNameForConnectionNotificationType(m_connectionNotificationType)) << "&";
   }
   if(m_connectionNotificationArnHasBeenSet)
   {
@@ -181,7 +171,11 @@ void ConnectionNotification::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_connectionNotificationStateHasBeenSet)
   {
-      oStream << location << ".ConnectionNotificationState=" << ConnectionNotificationStateMapper::GetNameForConnectionNotificationState(m_connectionNotificationState) << "&";
+      oStream << location << ".ConnectionNotificationState=" << StringUtils::URLEncode(ConnectionNotificationStateMapper::GetNameForConnectionNotificationState(m_connectionNotificationState)) << "&";
+  }
+  if(m_serviceRegionHasBeenSet)
+  {
+      oStream << location << ".ServiceRegion=" << StringUtils::URLEncode(m_serviceRegion.c_str()) << "&";
   }
 }
 

@@ -34,159 +34,63 @@ namespace Model
   class BatchIsAuthorizedInputItem
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedInputItem();
+    AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedInputItem() = default;
     AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedInputItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedInputItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the principal for which the authorization decision is to be
      * made.</p>
      */
-    inline const EntityIdentifier& GetPrincipal() const{ return m_principal; }
-
-    /**
-     * <p>Specifies the principal for which the authorization decision is to be
-     * made.</p>
-     */
+    inline const EntityIdentifier& GetPrincipal() const { return m_principal; }
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
+    template<typename PrincipalT = EntityIdentifier>
+    void SetPrincipal(PrincipalT&& value) { m_principalHasBeenSet = true; m_principal = std::forward<PrincipalT>(value); }
+    template<typename PrincipalT = EntityIdentifier>
+    BatchIsAuthorizedInputItem& WithPrincipal(PrincipalT&& value) { SetPrincipal(std::forward<PrincipalT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the principal for which the authorization decision is to be
-     * made.</p>
+     * <p>Specifies the requested action to be authorized. For example,
+     * <code>PhotoFlash::ReadPhoto</code>.</p>
      */
-    inline void SetPrincipal(const EntityIdentifier& value) { m_principalHasBeenSet = true; m_principal = value; }
-
-    /**
-     * <p>Specifies the principal for which the authorization decision is to be
-     * made.</p>
-     */
-    inline void SetPrincipal(EntityIdentifier&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
-
-    /**
-     * <p>Specifies the principal for which the authorization decision is to be
-     * made.</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithPrincipal(const EntityIdentifier& value) { SetPrincipal(value); return *this;}
-
-    /**
-     * <p>Specifies the principal for which the authorization decision is to be
-     * made.</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithPrincipal(EntityIdentifier&& value) { SetPrincipal(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies the requested action to be authorized. For example, is the
-     * principal authorized to perform this action on the resource?</p>
-     */
-    inline const ActionIdentifier& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Specifies the requested action to be authorized. For example, is the
-     * principal authorized to perform this action on the resource?</p>
-     */
+    inline const ActionIdentifier& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = ActionIdentifier>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = ActionIdentifier>
+    BatchIsAuthorizedInputItem& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the requested action to be authorized. For example, is the
-     * principal authorized to perform this action on the resource?</p>
+     * <p>Specifies the resource that you want an authorization decision for. For
+     * example, <code>PhotoFlash::Photo</code>.</p>
      */
-    inline void SetAction(const ActionIdentifier& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Specifies the requested action to be authorized. For example, is the
-     * principal authorized to perform this action on the resource?</p>
-     */
-    inline void SetAction(ActionIdentifier&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Specifies the requested action to be authorized. For example, is the
-     * principal authorized to perform this action on the resource?</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithAction(const ActionIdentifier& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Specifies the requested action to be authorized. For example, is the
-     * principal authorized to perform this action on the resource?</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithAction(ActionIdentifier&& value) { SetAction(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies the resource for which the authorization decision is to be
-     * made.</p>
-     */
-    inline const EntityIdentifier& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>Specifies the resource for which the authorization decision is to be
-     * made.</p>
-     */
+    inline const EntityIdentifier& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = EntityIdentifier>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = EntityIdentifier>
+    BatchIsAuthorizedInputItem& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the resource for which the authorization decision is to be
-     * made.</p>
-     */
-    inline void SetResource(const EntityIdentifier& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>Specifies the resource for which the authorization decision is to be
-     * made.</p>
-     */
-    inline void SetResource(EntityIdentifier&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>Specifies the resource for which the authorization decision is to be
-     * made.</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithResource(const EntityIdentifier& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>Specifies the resource for which the authorization decision is to be
-     * made.</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithResource(EntityIdentifier&& value) { SetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies additional context that can be used to make more granular
      * authorization decisions.</p>
      */
-    inline const ContextDefinition& GetContext() const{ return m_context; }
-
-    /**
-     * <p>Specifies additional context that can be used to make more granular
-     * authorization decisions.</p>
-     */
+    inline const ContextDefinition& GetContext() const { return m_context; }
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
-
-    /**
-     * <p>Specifies additional context that can be used to make more granular
-     * authorization decisions.</p>
-     */
-    inline void SetContext(const ContextDefinition& value) { m_contextHasBeenSet = true; m_context = value; }
-
-    /**
-     * <p>Specifies additional context that can be used to make more granular
-     * authorization decisions.</p>
-     */
-    inline void SetContext(ContextDefinition&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
-
-    /**
-     * <p>Specifies additional context that can be used to make more granular
-     * authorization decisions.</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithContext(const ContextDefinition& value) { SetContext(value); return *this;}
-
-    /**
-     * <p>Specifies additional context that can be used to make more granular
-     * authorization decisions.</p>
-     */
-    inline BatchIsAuthorizedInputItem& WithContext(ContextDefinition&& value) { SetContext(std::move(value)); return *this;}
-
+    template<typename ContextT = ContextDefinition>
+    void SetContext(ContextT&& value) { m_contextHasBeenSet = true; m_context = std::forward<ContextT>(value); }
+    template<typename ContextT = ContextDefinition>
+    BatchIsAuthorizedInputItem& WithContext(ContextT&& value) { SetContext(std::forward<ContextT>(value)); return *this;}
+    ///@}
   private:
 
     EntityIdentifier m_principal;

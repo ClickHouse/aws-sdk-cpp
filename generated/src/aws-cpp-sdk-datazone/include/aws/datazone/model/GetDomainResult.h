@@ -7,6 +7,7 @@
 #include <aws/datazone/DataZone_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/datazone/model/DomainVersion.h>
 #include <aws/datazone/model/SingleSignOn.h>
 #include <aws/datazone/model/DomainStatus.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
@@ -31,497 +32,236 @@ namespace Model
   class GetDomainResult
   {
   public:
-    AWS_DATAZONE_API GetDomainResult();
+    AWS_DATAZONE_API GetDomainResult() = default;
     AWS_DATAZONE_API GetDomainResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAZONE_API GetDomainResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the specified Amazon DataZone domain.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetDomainResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The ARN of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the Amazon DataZone domain was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    GetDomainResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was created.</p>
-     */
-    inline GetDomainResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was created.</p>
-     */
-    inline GetDomainResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the Amazon DataZone domain.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetDomainResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the Amazon DataZone domain.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the Amazon DataZone domain.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the Amazon DataZone domain.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The domain execution role with which the Amazon DataZone domain is
      * created.</p>
      */
-    inline const Aws::String& GetDomainExecutionRole() const{ return m_domainExecutionRole; }
+    inline const Aws::String& GetDomainExecutionRole() const { return m_domainExecutionRole; }
+    template<typename DomainExecutionRoleT = Aws::String>
+    void SetDomainExecutionRole(DomainExecutionRoleT&& value) { m_domainExecutionRoleHasBeenSet = true; m_domainExecutionRole = std::forward<DomainExecutionRoleT>(value); }
+    template<typename DomainExecutionRoleT = Aws::String>
+    GetDomainResult& WithDomainExecutionRole(DomainExecutionRoleT&& value) { SetDomainExecutionRole(std::forward<DomainExecutionRoleT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The domain execution role with which the Amazon DataZone domain is
-     * created.</p>
+     * <p>The version of the domain.</p>
      */
-    inline void SetDomainExecutionRole(const Aws::String& value) { m_domainExecutionRole = value; }
+    inline DomainVersion GetDomainVersion() const { return m_domainVersion; }
+    inline void SetDomainVersion(DomainVersion value) { m_domainVersionHasBeenSet = true; m_domainVersion = value; }
+    inline GetDomainResult& WithDomainVersion(DomainVersion value) { SetDomainVersion(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain execution role with which the Amazon DataZone domain is
-     * created.</p>
-     */
-    inline void SetDomainExecutionRole(Aws::String&& value) { m_domainExecutionRole = std::move(value); }
-
-    /**
-     * <p>The domain execution role with which the Amazon DataZone domain is
-     * created.</p>
-     */
-    inline void SetDomainExecutionRole(const char* value) { m_domainExecutionRole.assign(value); }
-
-    /**
-     * <p>The domain execution role with which the Amazon DataZone domain is
-     * created.</p>
-     */
-    inline GetDomainResult& WithDomainExecutionRole(const Aws::String& value) { SetDomainExecutionRole(value); return *this;}
-
-    /**
-     * <p>The domain execution role with which the Amazon DataZone domain is
-     * created.</p>
-     */
-    inline GetDomainResult& WithDomainExecutionRole(Aws::String&& value) { SetDomainExecutionRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain execution role with which the Amazon DataZone domain is
-     * created.</p>
-     */
-    inline GetDomainResult& WithDomainExecutionRole(const char* value) { SetDomainExecutionRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the specified Amazon DataZone domain.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetDomainResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The identifier of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
      * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
      * data. </p>
      */
-    inline const Aws::String& GetKmsKeyIdentifier() const{ return m_kmsKeyIdentifier; }
+    inline const Aws::String& GetKmsKeyIdentifier() const { return m_kmsKeyIdentifier; }
+    template<typename KmsKeyIdentifierT = Aws::String>
+    void SetKmsKeyIdentifier(KmsKeyIdentifierT&& value) { m_kmsKeyIdentifierHasBeenSet = true; m_kmsKeyIdentifier = std::forward<KmsKeyIdentifierT>(value); }
+    template<typename KmsKeyIdentifierT = Aws::String>
+    GetDomainResult& WithKmsKeyIdentifier(KmsKeyIdentifierT&& value) { SetKmsKeyIdentifier(std::forward<KmsKeyIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
-     * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
-     * data. </p>
-     */
-    inline void SetKmsKeyIdentifier(const Aws::String& value) { m_kmsKeyIdentifier = value; }
-
-    /**
-     * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
-     * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
-     * data. </p>
-     */
-    inline void SetKmsKeyIdentifier(Aws::String&& value) { m_kmsKeyIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
-     * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
-     * data. </p>
-     */
-    inline void SetKmsKeyIdentifier(const char* value) { m_kmsKeyIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
-     * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
-     * data. </p>
-     */
-    inline GetDomainResult& WithKmsKeyIdentifier(const Aws::String& value) { SetKmsKeyIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
-     * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
-     * data. </p>
-     */
-    inline GetDomainResult& WithKmsKeyIdentifier(Aws::String&& value) { SetKmsKeyIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Web Services Key Management Service (KMS) key
-     * that is used to encrypt the Amazon DataZone domain, metadata, and reporting
-     * data. </p>
-     */
-    inline GetDomainResult& WithKmsKeyIdentifier(const char* value) { SetKmsKeyIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the Amazon DataZone domain was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    GetDomainResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was last updated.</p>
-     */
-    inline GetDomainResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the Amazon DataZone domain was last updated.</p>
-     */
-    inline GetDomainResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Amazon DataZone domain.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetDomainResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon DataZone domain.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the Amazon DataZone domain.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon DataZone domain.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of the data portal for this Amazon DataZone domain.</p>
      */
-    inline const Aws::String& GetPortalUrl() const{ return m_portalUrl; }
+    inline const Aws::String& GetPortalUrl() const { return m_portalUrl; }
+    template<typename PortalUrlT = Aws::String>
+    void SetPortalUrl(PortalUrlT&& value) { m_portalUrlHasBeenSet = true; m_portalUrl = std::forward<PortalUrlT>(value); }
+    template<typename PortalUrlT = Aws::String>
+    GetDomainResult& WithPortalUrl(PortalUrlT&& value) { SetPortalUrl(std::forward<PortalUrlT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The URL of the data portal for this Amazon DataZone domain.</p>
+     * <p>The ID of the root domain in Amazon Datazone.</p>
      */
-    inline void SetPortalUrl(const Aws::String& value) { m_portalUrl = value; }
+    inline const Aws::String& GetRootDomainUnitId() const { return m_rootDomainUnitId; }
+    template<typename RootDomainUnitIdT = Aws::String>
+    void SetRootDomainUnitId(RootDomainUnitIdT&& value) { m_rootDomainUnitIdHasBeenSet = true; m_rootDomainUnitId = std::forward<RootDomainUnitIdT>(value); }
+    template<typename RootDomainUnitIdT = Aws::String>
+    GetDomainResult& WithRootDomainUnitId(RootDomainUnitIdT&& value) { SetRootDomainUnitId(std::forward<RootDomainUnitIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The URL of the data portal for this Amazon DataZone domain.</p>
+     * <p>The service role of the domain.</p>
      */
-    inline void SetPortalUrl(Aws::String&& value) { m_portalUrl = std::move(value); }
+    inline const Aws::String& GetServiceRole() const { return m_serviceRole; }
+    template<typename ServiceRoleT = Aws::String>
+    void SetServiceRole(ServiceRoleT&& value) { m_serviceRoleHasBeenSet = true; m_serviceRole = std::forward<ServiceRoleT>(value); }
+    template<typename ServiceRoleT = Aws::String>
+    GetDomainResult& WithServiceRole(ServiceRoleT&& value) { SetServiceRole(std::forward<ServiceRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the data portal for this Amazon DataZone domain.</p>
-     */
-    inline void SetPortalUrl(const char* value) { m_portalUrl.assign(value); }
-
-    /**
-     * <p>The URL of the data portal for this Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithPortalUrl(const Aws::String& value) { SetPortalUrl(value); return *this;}
-
-    /**
-     * <p>The URL of the data portal for this Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithPortalUrl(Aws::String&& value) { SetPortalUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the data portal for this Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithPortalUrl(const char* value) { SetPortalUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The single sing-on option of the specified Amazon DataZone domain.</p>
      */
-    inline const SingleSignOn& GetSingleSignOn() const{ return m_singleSignOn; }
+    inline const SingleSignOn& GetSingleSignOn() const { return m_singleSignOn; }
+    template<typename SingleSignOnT = SingleSignOn>
+    void SetSingleSignOn(SingleSignOnT&& value) { m_singleSignOnHasBeenSet = true; m_singleSignOn = std::forward<SingleSignOnT>(value); }
+    template<typename SingleSignOnT = SingleSignOn>
+    GetDomainResult& WithSingleSignOn(SingleSignOnT&& value) { SetSingleSignOn(std::forward<SingleSignOnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The single sing-on option of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetSingleSignOn(const SingleSignOn& value) { m_singleSignOn = value; }
-
-    /**
-     * <p>The single sing-on option of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetSingleSignOn(SingleSignOn&& value) { m_singleSignOn = std::move(value); }
-
-    /**
-     * <p>The single sing-on option of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithSingleSignOn(const SingleSignOn& value) { SetSingleSignOn(value); return *this;}
-
-    /**
-     * <p>The single sing-on option of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithSingleSignOn(SingleSignOn&& value) { SetSingleSignOn(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the specified Amazon DataZone domain.</p>
      */
-    inline const DomainStatus& GetStatus() const{ return m_status; }
+    inline DomainStatus GetStatus() const { return m_status; }
+    inline void SetStatus(DomainStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetDomainResult& WithStatus(DomainStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetStatus(const DomainStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the specified Amazon DataZone domain.</p>
-     */
-    inline void SetStatus(DomainStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithStatus(const DomainStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the specified Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithStatus(DomainStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags specified for the Amazon DataZone domain.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetDomainResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetDomainResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags specified for the Amazon DataZone domain.</p>
-     */
-    inline GetDomainResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDomainResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDomainResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDomainResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDomainResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_domainExecutionRole;
+    bool m_domainExecutionRoleHasBeenSet = false;
+
+    DomainVersion m_domainVersion{DomainVersion::NOT_SET};
+    bool m_domainVersionHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_kmsKeyIdentifier;
+    bool m_kmsKeyIdentifierHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_portalUrl;
+    bool m_portalUrlHasBeenSet = false;
+
+    Aws::String m_rootDomainUnitId;
+    bool m_rootDomainUnitIdHasBeenSet = false;
+
+    Aws::String m_serviceRole;
+    bool m_serviceRoleHasBeenSet = false;
 
     SingleSignOn m_singleSignOn;
+    bool m_singleSignOnHasBeenSet = false;
 
-    DomainStatus m_status;
+    DomainStatus m_status{DomainStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

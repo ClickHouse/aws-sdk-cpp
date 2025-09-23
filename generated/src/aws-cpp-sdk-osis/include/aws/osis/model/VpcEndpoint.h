@@ -33,138 +33,49 @@ namespace Model
   class VpcEndpoint
   {
   public:
-    AWS_OSIS_API VpcEndpoint();
+    AWS_OSIS_API VpcEndpoint() = default;
     AWS_OSIS_API VpcEndpoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API VpcEndpoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the endpoint.</p>
      */
-    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
-
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
+    inline const Aws::String& GetVpcEndpointId() const { return m_vpcEndpointId; }
     inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
+    template<typename VpcEndpointIdT = Aws::String>
+    void SetVpcEndpointId(VpcEndpointIdT&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::forward<VpcEndpointIdT>(value); }
+    template<typename VpcEndpointIdT = Aws::String>
+    VpcEndpoint& WithVpcEndpointId(VpcEndpointIdT&& value) { SetVpcEndpointId(std::forward<VpcEndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
-    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
-
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
-    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
-    inline VpcEndpoint& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
-    inline VpcEndpoint& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the endpoint.</p>
-     */
-    inline VpcEndpoint& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
      * when you create a VPC.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    VpcEndpoint& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
-    inline VpcEndpoint& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
-    inline VpcEndpoint& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for your VPC. Amazon Web Services PrivateLink generates this value
-     * when you create a VPC.</p>
-     */
-    inline VpcEndpoint& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the VPC, including associated subnets and security
      * groups.</p>
      */
-    inline const VpcOptions& GetVpcOptions() const{ return m_vpcOptions; }
-
-    /**
-     * <p>Information about the VPC, including associated subnets and security
-     * groups.</p>
-     */
+    inline const VpcOptions& GetVpcOptions() const { return m_vpcOptions; }
     inline bool VpcOptionsHasBeenSet() const { return m_vpcOptionsHasBeenSet; }
-
-    /**
-     * <p>Information about the VPC, including associated subnets and security
-     * groups.</p>
-     */
-    inline void SetVpcOptions(const VpcOptions& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = value; }
-
-    /**
-     * <p>Information about the VPC, including associated subnets and security
-     * groups.</p>
-     */
-    inline void SetVpcOptions(VpcOptions&& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = std::move(value); }
-
-    /**
-     * <p>Information about the VPC, including associated subnets and security
-     * groups.</p>
-     */
-    inline VpcEndpoint& WithVpcOptions(const VpcOptions& value) { SetVpcOptions(value); return *this;}
-
-    /**
-     * <p>Information about the VPC, including associated subnets and security
-     * groups.</p>
-     */
-    inline VpcEndpoint& WithVpcOptions(VpcOptions&& value) { SetVpcOptions(std::move(value)); return *this;}
-
+    template<typename VpcOptionsT = VpcOptions>
+    void SetVpcOptions(VpcOptionsT&& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = std::forward<VpcOptionsT>(value); }
+    template<typename VpcOptionsT = VpcOptions>
+    VpcEndpoint& WithVpcOptions(VpcOptionsT&& value) { SetVpcOptions(std::forward<VpcOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcEndpointId;

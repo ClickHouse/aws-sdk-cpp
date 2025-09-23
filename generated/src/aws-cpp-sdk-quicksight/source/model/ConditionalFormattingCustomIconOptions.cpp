@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ConditionalFormattingCustomIconOptions::ConditionalFormattingCustomIconOptions() : 
-    m_icon(Icon::NOT_SET),
-    m_iconHasBeenSet(false),
-    m_unicodeIconHasBeenSet(false)
-{
-}
-
-ConditionalFormattingCustomIconOptions::ConditionalFormattingCustomIconOptions(JsonView jsonValue) : 
-    m_icon(Icon::NOT_SET),
-    m_iconHasBeenSet(false),
-    m_unicodeIconHasBeenSet(false)
+ConditionalFormattingCustomIconOptions::ConditionalFormattingCustomIconOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConditionalFormattingCustomIconOptions& ConditionalFormattingCustomIconOptions::
   if(jsonValue.ValueExists("Icon"))
   {
     m_icon = IconMapper::GetIconForName(jsonValue.GetString("Icon"));
-
     m_iconHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UnicodeIcon"))
   {
     m_unicodeIcon = jsonValue.GetString("UnicodeIcon");
-
     m_unicodeIconHasBeenSet = true;
   }
-
   return *this;
 }
 

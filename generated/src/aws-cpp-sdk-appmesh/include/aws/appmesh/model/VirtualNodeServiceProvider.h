@@ -32,52 +32,23 @@ namespace Model
   class VirtualNodeServiceProvider
   {
   public:
-    AWS_APPMESH_API VirtualNodeServiceProvider();
+    AWS_APPMESH_API VirtualNodeServiceProvider() = default;
     AWS_APPMESH_API VirtualNodeServiceProvider(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualNodeServiceProvider& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the virtual node that is acting as a service provider.</p>
      */
-    inline const Aws::String& GetVirtualNodeName() const{ return m_virtualNodeName; }
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
+    inline const Aws::String& GetVirtualNodeName() const { return m_virtualNodeName; }
     inline bool VirtualNodeNameHasBeenSet() const { return m_virtualNodeNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
-    inline void SetVirtualNodeName(const Aws::String& value) { m_virtualNodeNameHasBeenSet = true; m_virtualNodeName = value; }
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
-    inline void SetVirtualNodeName(Aws::String&& value) { m_virtualNodeNameHasBeenSet = true; m_virtualNodeName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
-    inline void SetVirtualNodeName(const char* value) { m_virtualNodeNameHasBeenSet = true; m_virtualNodeName.assign(value); }
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
-    inline VirtualNodeServiceProvider& WithVirtualNodeName(const Aws::String& value) { SetVirtualNodeName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
-    inline VirtualNodeServiceProvider& WithVirtualNodeName(Aws::String&& value) { SetVirtualNodeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual node that is acting as a service provider.</p>
-     */
-    inline VirtualNodeServiceProvider& WithVirtualNodeName(const char* value) { SetVirtualNodeName(value); return *this;}
-
+    template<typename VirtualNodeNameT = Aws::String>
+    void SetVirtualNodeName(VirtualNodeNameT&& value) { m_virtualNodeNameHasBeenSet = true; m_virtualNodeName = std::forward<VirtualNodeNameT>(value); }
+    template<typename VirtualNodeNameT = Aws::String>
+    VirtualNodeServiceProvider& WithVirtualNodeName(VirtualNodeNameT&& value) { SetVirtualNodeName(std::forward<VirtualNodeNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_virtualNodeName;

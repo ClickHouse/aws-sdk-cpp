@@ -33,112 +33,40 @@ namespace Model
   class StackConfigInput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API StackConfigInput();
+    AWS_SAGEMAKERGEOSPATIAL_API StackConfigInput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API StackConfigInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API StackConfigInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The structure representing output resolution (in target georeferenced units)
      * of the result of stacking operation.</p>
      */
-    inline const OutputResolutionStackInput& GetOutputResolution() const{ return m_outputResolution; }
-
-    /**
-     * <p>The structure representing output resolution (in target georeferenced units)
-     * of the result of stacking operation.</p>
-     */
+    inline const OutputResolutionStackInput& GetOutputResolution() const { return m_outputResolution; }
     inline bool OutputResolutionHasBeenSet() const { return m_outputResolutionHasBeenSet; }
+    template<typename OutputResolutionT = OutputResolutionStackInput>
+    void SetOutputResolution(OutputResolutionT&& value) { m_outputResolutionHasBeenSet = true; m_outputResolution = std::forward<OutputResolutionT>(value); }
+    template<typename OutputResolutionT = OutputResolutionStackInput>
+    StackConfigInput& WithOutputResolution(OutputResolutionT&& value) { SetOutputResolution(std::forward<OutputResolutionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The structure representing output resolution (in target georeferenced units)
-     * of the result of stacking operation.</p>
-     */
-    inline void SetOutputResolution(const OutputResolutionStackInput& value) { m_outputResolutionHasBeenSet = true; m_outputResolution = value; }
-
-    /**
-     * <p>The structure representing output resolution (in target georeferenced units)
-     * of the result of stacking operation.</p>
-     */
-    inline void SetOutputResolution(OutputResolutionStackInput&& value) { m_outputResolutionHasBeenSet = true; m_outputResolution = std::move(value); }
-
-    /**
-     * <p>The structure representing output resolution (in target georeferenced units)
-     * of the result of stacking operation.</p>
-     */
-    inline StackConfigInput& WithOutputResolution(const OutputResolutionStackInput& value) { SetOutputResolution(value); return *this;}
-
-    /**
-     * <p>The structure representing output resolution (in target georeferenced units)
-     * of the result of stacking operation.</p>
-     */
-    inline StackConfigInput& WithOutputResolution(OutputResolutionStackInput&& value) { SetOutputResolution(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of bands to be stacked in the specified order. When the parameter is
      * not provided, all the available bands in the data collection are stacked in the
      * alphabetical order of their asset names.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTargetBands() const{ return m_targetBands; }
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTargetBands() const { return m_targetBands; }
     inline bool TargetBandsHasBeenSet() const { return m_targetBandsHasBeenSet; }
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline void SetTargetBands(const Aws::Vector<Aws::String>& value) { m_targetBandsHasBeenSet = true; m_targetBands = value; }
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline void SetTargetBands(Aws::Vector<Aws::String>&& value) { m_targetBandsHasBeenSet = true; m_targetBands = std::move(value); }
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline StackConfigInput& WithTargetBands(const Aws::Vector<Aws::String>& value) { SetTargetBands(value); return *this;}
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline StackConfigInput& WithTargetBands(Aws::Vector<Aws::String>&& value) { SetTargetBands(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline StackConfigInput& AddTargetBands(const Aws::String& value) { m_targetBandsHasBeenSet = true; m_targetBands.push_back(value); return *this; }
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline StackConfigInput& AddTargetBands(Aws::String&& value) { m_targetBandsHasBeenSet = true; m_targetBands.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of bands to be stacked in the specified order. When the parameter is
-     * not provided, all the available bands in the data collection are stacked in the
-     * alphabetical order of their asset names.</p>
-     */
-    inline StackConfigInput& AddTargetBands(const char* value) { m_targetBandsHasBeenSet = true; m_targetBands.push_back(value); return *this; }
-
+    template<typename TargetBandsT = Aws::Vector<Aws::String>>
+    void SetTargetBands(TargetBandsT&& value) { m_targetBandsHasBeenSet = true; m_targetBands = std::forward<TargetBandsT>(value); }
+    template<typename TargetBandsT = Aws::Vector<Aws::String>>
+    StackConfigInput& WithTargetBands(TargetBandsT&& value) { SetTargetBands(std::forward<TargetBandsT>(value)); return *this;}
+    template<typename TargetBandsT = Aws::String>
+    StackConfigInput& AddTargetBands(TargetBandsT&& value) { m_targetBandsHasBeenSet = true; m_targetBands.emplace_back(std::forward<TargetBandsT>(value)); return *this; }
+    ///@}
   private:
 
     OutputResolutionStackInput m_outputResolution;

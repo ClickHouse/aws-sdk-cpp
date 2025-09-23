@@ -18,15 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-CanaryLastRun::CanaryLastRun() : 
-    m_canaryNameHasBeenSet(false),
-    m_lastRunHasBeenSet(false)
-{
-}
-
-CanaryLastRun::CanaryLastRun(JsonView jsonValue) : 
-    m_canaryNameHasBeenSet(false),
-    m_lastRunHasBeenSet(false)
+CanaryLastRun::CanaryLastRun(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CanaryLastRun& CanaryLastRun::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CanaryName"))
   {
     m_canaryName = jsonValue.GetString("CanaryName");
-
     m_canaryNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastRun"))
   {
     m_lastRun = jsonValue.GetObject("LastRun");
-
     m_lastRunHasBeenSet = true;
   }
-
   return *this;
 }
 

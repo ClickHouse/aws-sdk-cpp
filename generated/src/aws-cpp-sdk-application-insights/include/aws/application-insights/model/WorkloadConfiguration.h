@@ -32,130 +32,51 @@ namespace Model
   class WorkloadConfiguration
   {
   public:
-    AWS_APPLICATIONINSIGHTS_API WorkloadConfiguration();
+    AWS_APPLICATIONINSIGHTS_API WorkloadConfiguration() = default;
     AWS_APPLICATIONINSIGHTS_API WorkloadConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPLICATIONINSIGHTS_API WorkloadConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPLICATIONINSIGHTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the workload.</p>
      */
-    inline const Aws::String& GetWorkloadName() const{ return m_workloadName; }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
+    inline const Aws::String& GetWorkloadName() const { return m_workloadName; }
     inline bool WorkloadNameHasBeenSet() const { return m_workloadNameHasBeenSet; }
+    template<typename WorkloadNameT = Aws::String>
+    void SetWorkloadName(WorkloadNameT&& value) { m_workloadNameHasBeenSet = true; m_workloadName = std::forward<WorkloadNameT>(value); }
+    template<typename WorkloadNameT = Aws::String>
+    WorkloadConfiguration& WithWorkloadName(WorkloadNameT&& value) { SetWorkloadName(std::forward<WorkloadNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline void SetWorkloadName(const Aws::String& value) { m_workloadNameHasBeenSet = true; m_workloadName = value; }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline void SetWorkloadName(Aws::String&& value) { m_workloadNameHasBeenSet = true; m_workloadName = std::move(value); }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline void SetWorkloadName(const char* value) { m_workloadNameHasBeenSet = true; m_workloadName.assign(value); }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline WorkloadConfiguration& WithWorkloadName(const Aws::String& value) { SetWorkloadName(value); return *this;}
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline WorkloadConfiguration& WithWorkloadName(Aws::String&& value) { SetWorkloadName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline WorkloadConfiguration& WithWorkloadName(const char* value) { SetWorkloadName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration of the workload tier.</p>
      */
-    inline const Tier& GetTier() const{ return m_tier; }
-
-    /**
-     * <p>The configuration of the workload tier.</p>
-     */
+    inline Tier GetTier() const { return m_tier; }
     inline bool TierHasBeenSet() const { return m_tierHasBeenSet; }
+    inline void SetTier(Tier value) { m_tierHasBeenSet = true; m_tier = value; }
+    inline WorkloadConfiguration& WithTier(Tier value) { SetTier(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration of the workload tier.</p>
-     */
-    inline void SetTier(const Tier& value) { m_tierHasBeenSet = true; m_tier = value; }
-
-    /**
-     * <p>The configuration of the workload tier.</p>
-     */
-    inline void SetTier(Tier&& value) { m_tierHasBeenSet = true; m_tier = std::move(value); }
-
-    /**
-     * <p>The configuration of the workload tier.</p>
-     */
-    inline WorkloadConfiguration& WithTier(const Tier& value) { SetTier(value); return *this;}
-
-    /**
-     * <p>The configuration of the workload tier.</p>
-     */
-    inline WorkloadConfiguration& WithTier(Tier&& value) { SetTier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration settings of the workload.</p>
      */
-    inline const Aws::String& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
+    inline const Aws::String& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
-    inline void SetConfiguration(const Aws::String& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
-    inline void SetConfiguration(Aws::String&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
-    inline void SetConfiguration(const char* value) { m_configurationHasBeenSet = true; m_configuration.assign(value); }
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
-    inline WorkloadConfiguration& WithConfiguration(const Aws::String& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
-    inline WorkloadConfiguration& WithConfiguration(Aws::String&& value) { SetConfiguration(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration settings of the workload.</p>
-     */
-    inline WorkloadConfiguration& WithConfiguration(const char* value) { SetConfiguration(value); return *this;}
-
+    template<typename ConfigurationT = Aws::String>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = Aws::String>
+    WorkloadConfiguration& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workloadName;
     bool m_workloadNameHasBeenSet = false;
 
-    Tier m_tier;
+    Tier m_tier{Tier::NOT_SET};
     bool m_tierHasBeenSet = false;
 
     Aws::String m_configuration;

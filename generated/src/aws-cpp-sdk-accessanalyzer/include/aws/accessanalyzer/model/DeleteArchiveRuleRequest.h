@@ -29,7 +29,7 @@ namespace Model
   class DeleteArchiveRuleRequest : public AccessAnalyzerRequest
   {
   public:
-    AWS_ACCESSANALYZER_API DeleteArchiveRuleRequest();
+    AWS_ACCESSANALYZER_API DeleteArchiveRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,128 +42,41 @@ namespace Model
     AWS_ACCESSANALYZER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the analyzer that associated with the archive rule to delete.</p>
      */
-    inline const Aws::String& GetAnalyzerName() const{ return m_analyzerName; }
-
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
+    inline const Aws::String& GetAnalyzerName() const { return m_analyzerName; }
     inline bool AnalyzerNameHasBeenSet() const { return m_analyzerNameHasBeenSet; }
+    template<typename AnalyzerNameT = Aws::String>
+    void SetAnalyzerName(AnalyzerNameT&& value) { m_analyzerNameHasBeenSet = true; m_analyzerName = std::forward<AnalyzerNameT>(value); }
+    template<typename AnalyzerNameT = Aws::String>
+    DeleteArchiveRuleRequest& WithAnalyzerName(AnalyzerNameT&& value) { SetAnalyzerName(std::forward<AnalyzerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
-    inline void SetAnalyzerName(const Aws::String& value) { m_analyzerNameHasBeenSet = true; m_analyzerName = value; }
-
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
-    inline void SetAnalyzerName(Aws::String&& value) { m_analyzerNameHasBeenSet = true; m_analyzerName = std::move(value); }
-
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
-    inline void SetAnalyzerName(const char* value) { m_analyzerNameHasBeenSet = true; m_analyzerName.assign(value); }
-
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithAnalyzerName(const Aws::String& value) { SetAnalyzerName(value); return *this;}
-
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithAnalyzerName(Aws::String&& value) { SetAnalyzerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the analyzer that associated with the archive rule to delete.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithAnalyzerName(const char* value) { SetAnalyzerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the rule to delete.</p>
      */
-    inline const Aws::String& GetRuleName() const{ return m_ruleName; }
-
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
+    inline const Aws::String& GetRuleName() const { return m_ruleName; }
     inline bool RuleNameHasBeenSet() const { return m_ruleNameHasBeenSet; }
+    template<typename RuleNameT = Aws::String>
+    void SetRuleName(RuleNameT&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::forward<RuleNameT>(value); }
+    template<typename RuleNameT = Aws::String>
+    DeleteArchiveRuleRequest& WithRuleName(RuleNameT&& value) { SetRuleName(std::forward<RuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
-    inline void SetRuleName(const Aws::String& value) { m_ruleNameHasBeenSet = true; m_ruleName = value; }
-
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
-    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::move(value); }
-
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
-    inline void SetRuleName(const char* value) { m_ruleNameHasBeenSet = true; m_ruleName.assign(value); }
-
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithRuleName(const Aws::String& value) { SetRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithRuleName(Aws::String&& value) { SetRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule to delete.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithRuleName(const char* value) { SetRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A client token.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A client token.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline DeleteArchiveRuleRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    DeleteArchiveRuleRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_analyzerName;
@@ -172,8 +85,8 @@ namespace Model
     Aws::String m_ruleName;
     bool m_ruleNameHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

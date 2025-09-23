@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-RecommendedActionParameter::RecommendedActionParameter() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-RecommendedActionParameter::RecommendedActionParameter(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+RecommendedActionParameter::RecommendedActionParameter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

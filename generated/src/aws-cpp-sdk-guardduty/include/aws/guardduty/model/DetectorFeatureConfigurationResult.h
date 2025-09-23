@@ -28,161 +28,79 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about a GuardDuty feature.</p><p><h3>See Also:</h3>   <a
+   * <p>Contains information about a GuardDuty feature.</p> <p>Specifying both EKS
+   * Runtime Monitoring (<code>EKS_RUNTIME_MONITORING</code>) and Runtime Monitoring
+   * (<code>RUNTIME_MONITORING</code>) will cause an error. You can add only one of
+   * these two features because Runtime Monitoring already includes the threat
+   * detection for Amazon EKS resources. For more information, see <a
+   * href="https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html">Runtime
+   * Monitoring</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DetectorFeatureConfigurationResult">AWS
    * API Reference</a></p>
    */
   class DetectorFeatureConfigurationResult
   {
   public:
-    AWS_GUARDDUTY_API DetectorFeatureConfigurationResult();
+    AWS_GUARDDUTY_API DetectorFeatureConfigurationResult() = default;
     AWS_GUARDDUTY_API DetectorFeatureConfigurationResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API DetectorFeatureConfigurationResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates the name of the feature that can be enabled for the detector.</p>
      */
-    inline const DetectorFeatureResult& GetName() const{ return m_name; }
-
-    /**
-     * <p>Indicates the name of the feature that can be enabled for the detector.</p>
-     */
+    inline DetectorFeatureResult GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(DetectorFeatureResult value) { m_nameHasBeenSet = true; m_name = value; }
+    inline DetectorFeatureConfigurationResult& WithName(DetectorFeatureResult value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the name of the feature that can be enabled for the detector.</p>
-     */
-    inline void SetName(const DetectorFeatureResult& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Indicates the name of the feature that can be enabled for the detector.</p>
-     */
-    inline void SetName(DetectorFeatureResult&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Indicates the name of the feature that can be enabled for the detector.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithName(const DetectorFeatureResult& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Indicates the name of the feature that can be enabled for the detector.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithName(DetectorFeatureResult&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the status of the feature that is enabled for the detector.</p>
      */
-    inline const FeatureStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates the status of the feature that is enabled for the detector.</p>
-     */
+    inline FeatureStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(FeatureStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DetectorFeatureConfigurationResult& WithStatus(FeatureStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the status of the feature that is enabled for the detector.</p>
-     */
-    inline void SetStatus(const FeatureStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates the status of the feature that is enabled for the detector.</p>
-     */
-    inline void SetStatus(FeatureStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates the status of the feature that is enabled for the detector.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithStatus(const FeatureStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates the status of the feature that is enabled for the detector.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithStatus(FeatureStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp at which the feature object was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The timestamp at which the feature object was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    DetectorFeatureConfigurationResult& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp at which the feature object was updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The timestamp at which the feature object was updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp at which the feature object was updated.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp at which the feature object was updated.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional configuration for a resource.</p>
      */
-    inline const Aws::Vector<DetectorAdditionalConfigurationResult>& GetAdditionalConfiguration() const{ return m_additionalConfiguration; }
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
+    inline const Aws::Vector<DetectorAdditionalConfigurationResult>& GetAdditionalConfiguration() const { return m_additionalConfiguration; }
     inline bool AdditionalConfigurationHasBeenSet() const { return m_additionalConfigurationHasBeenSet; }
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
-    inline void SetAdditionalConfiguration(const Aws::Vector<DetectorAdditionalConfigurationResult>& value) { m_additionalConfigurationHasBeenSet = true; m_additionalConfiguration = value; }
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
-    inline void SetAdditionalConfiguration(Aws::Vector<DetectorAdditionalConfigurationResult>&& value) { m_additionalConfigurationHasBeenSet = true; m_additionalConfiguration = std::move(value); }
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithAdditionalConfiguration(const Aws::Vector<DetectorAdditionalConfigurationResult>& value) { SetAdditionalConfiguration(value); return *this;}
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
-    inline DetectorFeatureConfigurationResult& WithAdditionalConfiguration(Aws::Vector<DetectorAdditionalConfigurationResult>&& value) { SetAdditionalConfiguration(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
-    inline DetectorFeatureConfigurationResult& AddAdditionalConfiguration(const DetectorAdditionalConfigurationResult& value) { m_additionalConfigurationHasBeenSet = true; m_additionalConfiguration.push_back(value); return *this; }
-
-    /**
-     * <p>Additional configuration for a resource.</p>
-     */
-    inline DetectorFeatureConfigurationResult& AddAdditionalConfiguration(DetectorAdditionalConfigurationResult&& value) { m_additionalConfigurationHasBeenSet = true; m_additionalConfiguration.push_back(std::move(value)); return *this; }
-
+    template<typename AdditionalConfigurationT = Aws::Vector<DetectorAdditionalConfigurationResult>>
+    void SetAdditionalConfiguration(AdditionalConfigurationT&& value) { m_additionalConfigurationHasBeenSet = true; m_additionalConfiguration = std::forward<AdditionalConfigurationT>(value); }
+    template<typename AdditionalConfigurationT = Aws::Vector<DetectorAdditionalConfigurationResult>>
+    DetectorFeatureConfigurationResult& WithAdditionalConfiguration(AdditionalConfigurationT&& value) { SetAdditionalConfiguration(std::forward<AdditionalConfigurationT>(value)); return *this;}
+    template<typename AdditionalConfigurationT = DetectorAdditionalConfigurationResult>
+    DetectorFeatureConfigurationResult& AddAdditionalConfiguration(AdditionalConfigurationT&& value) { m_additionalConfigurationHasBeenSet = true; m_additionalConfiguration.emplace_back(std::forward<AdditionalConfigurationT>(value)); return *this; }
+    ///@}
   private:
 
-    DetectorFeatureResult m_name;
+    DetectorFeatureResult m_name{DetectorFeatureResult::NOT_SET};
     bool m_nameHasBeenSet = false;
 
-    FeatureStatus m_status;
+    FeatureStatus m_status{FeatureStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
 
     Aws::Vector<DetectorAdditionalConfigurationResult> m_additionalConfiguration;

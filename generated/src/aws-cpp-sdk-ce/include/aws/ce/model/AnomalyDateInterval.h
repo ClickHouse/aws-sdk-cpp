@@ -31,93 +31,35 @@ namespace Model
   class AnomalyDateInterval
   {
   public:
-    AWS_COSTEXPLORER_API AnomalyDateInterval();
+    AWS_COSTEXPLORER_API AnomalyDateInterval() = default;
     AWS_COSTEXPLORER_API AnomalyDateInterval(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API AnomalyDateInterval& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The first date an anomaly was observed. </p>
      */
-    inline const Aws::String& GetStartDate() const{ return m_startDate; }
-
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
+    inline const Aws::String& GetStartDate() const { return m_startDate; }
     inline bool StartDateHasBeenSet() const { return m_startDateHasBeenSet; }
+    template<typename StartDateT = Aws::String>
+    void SetStartDate(StartDateT&& value) { m_startDateHasBeenSet = true; m_startDate = std::forward<StartDateT>(value); }
+    template<typename StartDateT = Aws::String>
+    AnomalyDateInterval& WithStartDate(StartDateT&& value) { SetStartDate(std::forward<StartDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
-    inline void SetStartDate(const Aws::String& value) { m_startDateHasBeenSet = true; m_startDate = value; }
-
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
-    inline void SetStartDate(Aws::String&& value) { m_startDateHasBeenSet = true; m_startDate = std::move(value); }
-
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
-    inline void SetStartDate(const char* value) { m_startDateHasBeenSet = true; m_startDate.assign(value); }
-
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
-    inline AnomalyDateInterval& WithStartDate(const Aws::String& value) { SetStartDate(value); return *this;}
-
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
-    inline AnomalyDateInterval& WithStartDate(Aws::String&& value) { SetStartDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The first date an anomaly was observed. </p>
-     */
-    inline AnomalyDateInterval& WithStartDate(const char* value) { SetStartDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last date an anomaly was observed. </p>
      */
-    inline const Aws::String& GetEndDate() const{ return m_endDate; }
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
+    inline const Aws::String& GetEndDate() const { return m_endDate; }
     inline bool EndDateHasBeenSet() const { return m_endDateHasBeenSet; }
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
-    inline void SetEndDate(const Aws::String& value) { m_endDateHasBeenSet = true; m_endDate = value; }
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
-    inline void SetEndDate(Aws::String&& value) { m_endDateHasBeenSet = true; m_endDate = std::move(value); }
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
-    inline void SetEndDate(const char* value) { m_endDateHasBeenSet = true; m_endDate.assign(value); }
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
-    inline AnomalyDateInterval& WithEndDate(const Aws::String& value) { SetEndDate(value); return *this;}
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
-    inline AnomalyDateInterval& WithEndDate(Aws::String&& value) { SetEndDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The last date an anomaly was observed. </p>
-     */
-    inline AnomalyDateInterval& WithEndDate(const char* value) { SetEndDate(value); return *this;}
-
+    template<typename EndDateT = Aws::String>
+    void SetEndDate(EndDateT&& value) { m_endDateHasBeenSet = true; m_endDate = std::forward<EndDateT>(value); }
+    template<typename EndDateT = Aws::String>
+    AnomalyDateInterval& WithEndDate(EndDateT&& value) { SetEndDate(std::forward<EndDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startDate;

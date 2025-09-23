@@ -18,15 +18,7 @@ namespace CodeGuruSecurity
 namespace Model
 {
 
-Remediation::Remediation() : 
-    m_recommendationHasBeenSet(false),
-    m_suggestedFixesHasBeenSet(false)
-{
-}
-
-Remediation::Remediation(JsonView jsonValue) : 
-    m_recommendationHasBeenSet(false),
-    m_suggestedFixesHasBeenSet(false)
+Remediation::Remediation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Remediation& Remediation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("recommendation"))
   {
     m_recommendation = jsonValue.GetObject("recommendation");
-
     m_recommendationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("suggestedFixes"))
   {
     Aws::Utils::Array<JsonView> suggestedFixesJsonList = jsonValue.GetArray("suggestedFixes");
@@ -49,7 +39,6 @@ Remediation& Remediation::operator =(JsonView jsonValue)
     }
     m_suggestedFixesHasBeenSet = true;
   }
-
   return *this;
 }
 

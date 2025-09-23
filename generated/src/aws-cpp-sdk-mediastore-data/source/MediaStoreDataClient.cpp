@@ -40,20 +40,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* MediaStoreDataClient::SERVICE_NAME = "mediastore";
-const char* MediaStoreDataClient::ALLOCATION_TAG = "MediaStoreDataClient";
+namespace Aws
+{
+  namespace MediaStoreData
+  {
+    const char SERVICE_NAME[] = "mediastore";
+    const char ALLOCATION_TAG[] = "MediaStoreDataClient";
+  }
+}
+const char* MediaStoreDataClient::GetServiceName() {return SERVICE_NAME;}
+const char* MediaStoreDataClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 MediaStoreDataClient::MediaStoreDataClient(const MediaStoreData::MediaStoreDataClientConfiguration& clientConfiguration,
                                            std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaStoreDataErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -68,8 +75,7 @@ MediaStoreDataClient::MediaStoreDataClient(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaStoreDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -84,8 +90,7 @@ MediaStoreDataClient::MediaStoreDataClient(const std::shared_ptr<AWSCredentialsP
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaStoreDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -94,12 +99,11 @@ MediaStoreDataClient::MediaStoreDataClient(const std::shared_ptr<AWSCredentialsP
   MediaStoreDataClient::MediaStoreDataClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaStoreDataErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -114,7 +118,6 @@ MediaStoreDataClient::MediaStoreDataClient(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaStoreDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -129,7 +132,6 @@ MediaStoreDataClient::MediaStoreDataClient(const std::shared_ptr<AWSCredentialsP
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaStoreDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -149,6 +151,14 @@ std::shared_ptr<MediaStoreDataEndpointProviderBase>& MediaStoreDataClient::acces
 void MediaStoreDataClient::init(const MediaStoreData::MediaStoreDataClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("MediaStore Data");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

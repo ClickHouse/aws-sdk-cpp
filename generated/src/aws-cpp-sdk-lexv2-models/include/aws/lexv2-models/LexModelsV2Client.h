@@ -22,8 +22,8 @@ namespace LexModelsV2
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef LexModelsV2ClientConfiguration ClientConfigurationType;
       typedef LexModelsV2EndpointProvider EndpointProviderType;
@@ -33,14 +33,14 @@ namespace LexModelsV2
         * is not specified, it will be initialized to default values.
         */
         LexModelsV2Client(const Aws::LexModelsV2::LexModelsV2ClientConfiguration& clientConfiguration = Aws::LexModelsV2::LexModelsV2ClientConfiguration(),
-                          std::shared_ptr<LexModelsV2EndpointProviderBase> endpointProvider = Aws::MakeShared<LexModelsV2EndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<LexModelsV2EndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         LexModelsV2Client(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<LexModelsV2EndpointProviderBase> endpointProvider = Aws::MakeShared<LexModelsV2EndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<LexModelsV2EndpointProviderBase> endpointProvider = nullptr,
                           const Aws::LexModelsV2::LexModelsV2ClientConfiguration& clientConfiguration = Aws::LexModelsV2::LexModelsV2ClientConfiguration());
 
        /**
@@ -48,7 +48,7 @@ namespace LexModelsV2
         * the default http client factory will be used
         */
         LexModelsV2Client(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<LexModelsV2EndpointProviderBase> endpointProvider = Aws::MakeShared<LexModelsV2EndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<LexModelsV2EndpointProviderBase> endpointProvider = nullptr,
                           const Aws::LexModelsV2::LexModelsV2ClientConfiguration& clientConfiguration = Aws::LexModelsV2::LexModelsV2ClientConfiguration());
 
 
@@ -263,6 +263,32 @@ namespace LexModelsV2
         }
 
         /**
+         * <p>Action to create a replication of the source bot in the secondary
+         * region.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/CreateBotReplica">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateBotReplicaOutcome CreateBotReplica(const Model::CreateBotReplicaRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateBotReplica that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateBotReplicaRequestT = Model::CreateBotReplicaRequest>
+        Model::CreateBotReplicaOutcomeCallable CreateBotReplicaCallable(const CreateBotReplicaRequestT& request) const
+        {
+            return SubmitCallable(&LexModelsV2Client::CreateBotReplica, request);
+        }
+
+        /**
+         * An Async wrapper for CreateBotReplica that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateBotReplicaRequestT = Model::CreateBotReplicaRequest>
+        void CreateBotReplicaAsync(const CreateBotReplicaRequestT& request, const CreateBotReplicaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LexModelsV2Client::CreateBotReplica, request, handler, context);
+        }
+
+        /**
          * <p>Creates an immutable version of the bot. When you create the first version of
          * a bot, Amazon Lex sets the version number to 1. Subsequent bot versions increase
          * in an increment of 1. The version number will always represent the total number
@@ -396,8 +422,9 @@ namespace LexModelsV2
          * <p>Adds a new resource policy statement to a bot or bot alias. If a resource
          * policy exists, the statement is added to the current resource policy. If a
          * policy doesn't exist, a new policy is created.</p> <p>You can't create a
-         * resource policy statement that allows cross-account access.</p><p><h3>See
-         * Also:</h3>   <a
+         * resource policy statement that allows cross-account access.</p> <p>You need to
+         * add the <code>CreateResourcePolicy</code> or <code>UpdateResourcePolicy</code>
+         * action to the bot role in order to call the API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/CreateResourcePolicyStatement">AWS
          * API Reference</a></p>
          */
@@ -509,13 +536,13 @@ namespace LexModelsV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/CreateUploadUrl">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateUploadUrlOutcome CreateUploadUrl(const Model::CreateUploadUrlRequest& request) const;
+        virtual Model::CreateUploadUrlOutcome CreateUploadUrl(const Model::CreateUploadUrlRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateUploadUrl that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateUploadUrlRequestT = Model::CreateUploadUrlRequest>
-        Model::CreateUploadUrlOutcomeCallable CreateUploadUrlCallable(const CreateUploadUrlRequestT& request) const
+        Model::CreateUploadUrlOutcomeCallable CreateUploadUrlCallable(const CreateUploadUrlRequestT& request = {}) const
         {
             return SubmitCallable(&LexModelsV2Client::CreateUploadUrl, request);
         }
@@ -524,7 +551,7 @@ namespace LexModelsV2
          * An Async wrapper for CreateUploadUrl that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateUploadUrlRequestT = Model::CreateUploadUrlRequest>
-        void CreateUploadUrlAsync(const CreateUploadUrlRequestT& request, const CreateUploadUrlResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateUploadUrlAsync(const CreateUploadUrlResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateUploadUrlRequestT& request = {}) const
         {
             return SubmitAsync(&LexModelsV2Client::CreateUploadUrl, request, handler, context);
         }
@@ -611,6 +638,32 @@ namespace LexModelsV2
         void DeleteBotLocaleAsync(const DeleteBotLocaleRequestT& request, const DeleteBotLocaleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&LexModelsV2Client::DeleteBotLocale, request, handler, context);
+        }
+
+        /**
+         * <p>The action to delete the replicated bot in the secondary
+         * region.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/DeleteBotReplica">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteBotReplicaOutcome DeleteBotReplica(const Model::DeleteBotReplicaRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteBotReplica that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteBotReplicaRequestT = Model::DeleteBotReplicaRequest>
+        Model::DeleteBotReplicaOutcomeCallable DeleteBotReplicaCallable(const DeleteBotReplicaRequestT& request) const
+        {
+            return SubmitCallable(&LexModelsV2Client::DeleteBotReplica, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteBotReplica that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteBotReplicaRequestT = Model::DeleteBotReplicaRequest>
+        void DeleteBotReplicaAsync(const DeleteBotReplicaRequestT& request, const DeleteBotReplicaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LexModelsV2Client::DeleteBotReplica, request, handler, context);
         }
 
         /**
@@ -776,7 +829,9 @@ namespace LexModelsV2
          * <p>Deletes a policy statement from a resource policy. If you delete the last
          * statement from a policy, the policy is deleted. If you specify a statement ID
          * that doesn't exist in the policy, or if the bot or bot alias doesn't have a
-         * policy attached, Amazon Lex returns an exception.</p><p><h3>See Also:</h3>   <a
+         * policy attached, Amazon Lex returns an exception.</p> <p>You need to add the
+         * <code>DeleteResourcePolicy</code> or <code>UpdateResourcePolicy</code> action to
+         * the bot role in order to call the API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/DeleteResourcePolicyStatement">AWS
          * API Reference</a></p>
          */
@@ -1014,6 +1069,32 @@ namespace LexModelsV2
         void DescribeBotRecommendationAsync(const DescribeBotRecommendationRequestT& request, const DescribeBotRecommendationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&LexModelsV2Client::DescribeBotRecommendation, request, handler, context);
+        }
+
+        /**
+         * <p>Monitors the bot replication status through the UI console.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/DescribeBotReplica">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeBotReplicaOutcome DescribeBotReplica(const Model::DescribeBotReplicaRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeBotReplica that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeBotReplicaRequestT = Model::DescribeBotReplicaRequest>
+        Model::DescribeBotReplicaOutcomeCallable DescribeBotReplicaCallable(const DescribeBotReplicaRequestT& request) const
+        {
+            return SubmitCallable(&LexModelsV2Client::DescribeBotReplica, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeBotReplica that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeBotReplicaRequestT = Model::DescribeBotReplicaRequest>
+        void DescribeBotReplicaAsync(const DescribeBotReplicaRequestT& request, const DescribeBotReplicaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LexModelsV2Client::DescribeBotReplica, request, handler, context);
         }
 
         /**
@@ -1439,6 +1520,32 @@ namespace LexModelsV2
         }
 
         /**
+         * <p>The action to list the replicated bots created from the source bot
+         * alias.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListBotAliasReplicas">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListBotAliasReplicasOutcome ListBotAliasReplicas(const Model::ListBotAliasReplicasRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListBotAliasReplicas that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListBotAliasReplicasRequestT = Model::ListBotAliasReplicasRequest>
+        Model::ListBotAliasReplicasOutcomeCallable ListBotAliasReplicasCallable(const ListBotAliasReplicasRequestT& request) const
+        {
+            return SubmitCallable(&LexModelsV2Client::ListBotAliasReplicas, request);
+        }
+
+        /**
+         * An Async wrapper for ListBotAliasReplicas that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListBotAliasReplicasRequestT = Model::ListBotAliasReplicasRequest>
+        void ListBotAliasReplicasAsync(const ListBotAliasReplicasRequestT& request, const ListBotAliasReplicasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LexModelsV2Client::ListBotAliasReplicas, request, handler, context);
+        }
+
+        /**
          * <p>Gets a list of aliases for the specified bot.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListBotAliases">AWS
          * API Reference</a></p>
@@ -1515,6 +1622,31 @@ namespace LexModelsV2
         }
 
         /**
+         * <p>The action to list the replicated bots.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListBotReplicas">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListBotReplicasOutcome ListBotReplicas(const Model::ListBotReplicasRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListBotReplicas that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListBotReplicasRequestT = Model::ListBotReplicasRequest>
+        Model::ListBotReplicasOutcomeCallable ListBotReplicasCallable(const ListBotReplicasRequestT& request) const
+        {
+            return SubmitCallable(&LexModelsV2Client::ListBotReplicas, request);
+        }
+
+        /**
+         * An Async wrapper for ListBotReplicas that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListBotReplicasRequestT = Model::ListBotReplicasRequest>
+        void ListBotReplicasAsync(const ListBotReplicasRequestT& request, const ListBotReplicasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LexModelsV2Client::ListBotReplicas, request, handler, context);
+        }
+
+        /**
          * <p>Lists the generation requests made for a bot locale.</p><p><h3>See Also:</h3>
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListBotResourceGenerations">AWS
@@ -1538,6 +1670,32 @@ namespace LexModelsV2
         void ListBotResourceGenerationsAsync(const ListBotResourceGenerationsRequestT& request, const ListBotResourceGenerationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&LexModelsV2Client::ListBotResourceGenerations, request, handler, context);
+        }
+
+        /**
+         * <p>Contains information about all the versions replication statuses applicable
+         * for Global Resiliency.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListBotVersionReplicas">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListBotVersionReplicasOutcome ListBotVersionReplicas(const Model::ListBotVersionReplicasRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListBotVersionReplicas that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListBotVersionReplicasRequestT = Model::ListBotVersionReplicasRequest>
+        Model::ListBotVersionReplicasOutcomeCallable ListBotVersionReplicasCallable(const ListBotVersionReplicasRequestT& request) const
+        {
+            return SubmitCallable(&LexModelsV2Client::ListBotVersionReplicas, request);
+        }
+
+        /**
+         * An Async wrapper for ListBotVersionReplicas that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListBotVersionReplicasRequestT = Model::ListBotVersionReplicasRequest>
+        void ListBotVersionReplicasAsync(const ListBotVersionReplicasRequestT& request, const ListBotVersionReplicasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&LexModelsV2Client::ListBotVersionReplicas, request, handler, context);
         }
 
         /**
@@ -1576,13 +1734,13 @@ namespace LexModelsV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListBots">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListBotsOutcome ListBots(const Model::ListBotsRequest& request) const;
+        virtual Model::ListBotsOutcome ListBots(const Model::ListBotsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBots that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBotsRequestT = Model::ListBotsRequest>
-        Model::ListBotsOutcomeCallable ListBotsCallable(const ListBotsRequestT& request) const
+        Model::ListBotsOutcomeCallable ListBotsCallable(const ListBotsRequestT& request = {}) const
         {
             return SubmitCallable(&LexModelsV2Client::ListBots, request);
         }
@@ -1591,7 +1749,7 @@ namespace LexModelsV2
          * An Async wrapper for ListBots that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBotsRequestT = Model::ListBotsRequest>
-        void ListBotsAsync(const ListBotsRequestT& request, const ListBotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBotsAsync(const ListBotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBotsRequestT& request = {}) const
         {
             return SubmitAsync(&LexModelsV2Client::ListBots, request, handler, context);
         }
@@ -1685,13 +1843,13 @@ namespace LexModelsV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListExports">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListExportsOutcome ListExports(const Model::ListExportsRequest& request) const;
+        virtual Model::ListExportsOutcome ListExports(const Model::ListExportsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListExports that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListExportsRequestT = Model::ListExportsRequest>
-        Model::ListExportsOutcomeCallable ListExportsCallable(const ListExportsRequestT& request) const
+        Model::ListExportsOutcomeCallable ListExportsCallable(const ListExportsRequestT& request = {}) const
         {
             return SubmitCallable(&LexModelsV2Client::ListExports, request);
         }
@@ -1700,7 +1858,7 @@ namespace LexModelsV2
          * An Async wrapper for ListExports that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListExportsRequestT = Model::ListExportsRequest>
-        void ListExportsAsync(const ListExportsRequestT& request, const ListExportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListExportsAsync(const ListExportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListExportsRequestT& request = {}) const
         {
             return SubmitAsync(&LexModelsV2Client::ListExports, request, handler, context);
         }
@@ -1711,13 +1869,13 @@ namespace LexModelsV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListImports">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListImportsOutcome ListImports(const Model::ListImportsRequest& request) const;
+        virtual Model::ListImportsOutcome ListImports(const Model::ListImportsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListImports that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListImportsRequestT = Model::ListImportsRequest>
-        Model::ListImportsOutcomeCallable ListImportsCallable(const ListImportsRequestT& request) const
+        Model::ListImportsOutcomeCallable ListImportsCallable(const ListImportsRequestT& request = {}) const
         {
             return SubmitCallable(&LexModelsV2Client::ListImports, request);
         }
@@ -1726,7 +1884,7 @@ namespace LexModelsV2
          * An Async wrapper for ListImports that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListImportsRequestT = Model::ListImportsRequest>
-        void ListImportsAsync(const ListImportsRequestT& request, const ListImportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListImportsAsync(const ListImportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListImportsRequestT& request = {}) const
         {
             return SubmitAsync(&LexModelsV2Client::ListImports, request, handler, context);
         }
@@ -2094,13 +2252,13 @@ namespace LexModelsV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListTestExecutions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTestExecutionsOutcome ListTestExecutions(const Model::ListTestExecutionsRequest& request) const;
+        virtual Model::ListTestExecutionsOutcome ListTestExecutions(const Model::ListTestExecutionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTestExecutions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTestExecutionsRequestT = Model::ListTestExecutionsRequest>
-        Model::ListTestExecutionsOutcomeCallable ListTestExecutionsCallable(const ListTestExecutionsRequestT& request) const
+        Model::ListTestExecutionsOutcomeCallable ListTestExecutionsCallable(const ListTestExecutionsRequestT& request = {}) const
         {
             return SubmitCallable(&LexModelsV2Client::ListTestExecutions, request);
         }
@@ -2109,7 +2267,7 @@ namespace LexModelsV2
          * An Async wrapper for ListTestExecutions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTestExecutionsRequestT = Model::ListTestExecutionsRequest>
-        void ListTestExecutionsAsync(const ListTestExecutionsRequestT& request, const ListTestExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTestExecutionsAsync(const ListTestExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTestExecutionsRequestT& request = {}) const
         {
             return SubmitAsync(&LexModelsV2Client::ListTestExecutions, request, handler, context);
         }
@@ -2144,13 +2302,13 @@ namespace LexModelsV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/models.lex.v2-2020-08-07/ListTestSets">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTestSetsOutcome ListTestSets(const Model::ListTestSetsRequest& request) const;
+        virtual Model::ListTestSetsOutcome ListTestSets(const Model::ListTestSetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTestSets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTestSetsRequestT = Model::ListTestSetsRequest>
-        Model::ListTestSetsOutcomeCallable ListTestSetsCallable(const ListTestSetsRequestT& request) const
+        Model::ListTestSetsOutcomeCallable ListTestSetsCallable(const ListTestSetsRequestT& request = {}) const
         {
             return SubmitCallable(&LexModelsV2Client::ListTestSets, request);
         }
@@ -2159,7 +2317,7 @@ namespace LexModelsV2
          * An Async wrapper for ListTestSets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTestSetsRequestT = Model::ListTestSetsRequest>
-        void ListTestSetsAsync(const ListTestSetsRequestT& request, const ListTestSetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTestSetsAsync(const ListTestSetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTestSetsRequestT& request = {}) const
         {
             return SubmitAsync(&LexModelsV2Client::ListTestSets, request, handler, context);
         }
@@ -2762,7 +2920,6 @@ namespace LexModelsV2
       void init(const LexModelsV2ClientConfiguration& clientConfiguration);
 
       LexModelsV2ClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<LexModelsV2EndpointProviderBase> m_endpointProvider;
   };
 

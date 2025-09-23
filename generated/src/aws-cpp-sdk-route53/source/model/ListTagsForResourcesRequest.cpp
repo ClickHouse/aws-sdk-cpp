@@ -6,6 +6,7 @@
 #include <aws/route53/model/ListTagsForResourcesRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,12 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-ListTagsForResourcesRequest::ListTagsForResourcesRequest() : 
-    m_resourceType(TagResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdsHasBeenSet(false)
-{
-}
 
 Aws::String ListTagsForResourcesRequest::SerializePayload() const
 {

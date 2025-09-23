@@ -18,15 +18,7 @@ namespace WorkMail
 namespace Model
 {
 
-ImpersonationMatchedRule::ImpersonationMatchedRule() : 
-    m_impersonationRuleIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-ImpersonationMatchedRule::ImpersonationMatchedRule(JsonView jsonValue) : 
-    m_impersonationRuleIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
+ImpersonationMatchedRule::ImpersonationMatchedRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ImpersonationMatchedRule& ImpersonationMatchedRule::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("ImpersonationRuleId"))
   {
     m_impersonationRuleId = jsonValue.GetString("ImpersonationRuleId");
-
     m_impersonationRuleIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

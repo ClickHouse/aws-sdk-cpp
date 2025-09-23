@@ -28,57 +28,37 @@ namespace Model
   class DeleteLocalGatewayRouteTableVpcAssociationResponse
   {
   public:
-    AWS_EC2_API DeleteLocalGatewayRouteTableVpcAssociationResponse();
+    AWS_EC2_API DeleteLocalGatewayRouteTableVpcAssociationResponse() = default;
     AWS_EC2_API DeleteLocalGatewayRouteTableVpcAssociationResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DeleteLocalGatewayRouteTableVpcAssociationResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Information about the association.</p>
      */
-    inline const LocalGatewayRouteTableVpcAssociation& GetLocalGatewayRouteTableVpcAssociation() const{ return m_localGatewayRouteTableVpcAssociation; }
+    inline const LocalGatewayRouteTableVpcAssociation& GetLocalGatewayRouteTableVpcAssociation() const { return m_localGatewayRouteTableVpcAssociation; }
+    template<typename LocalGatewayRouteTableVpcAssociationT = LocalGatewayRouteTableVpcAssociation>
+    void SetLocalGatewayRouteTableVpcAssociation(LocalGatewayRouteTableVpcAssociationT&& value) { m_localGatewayRouteTableVpcAssociationHasBeenSet = true; m_localGatewayRouteTableVpcAssociation = std::forward<LocalGatewayRouteTableVpcAssociationT>(value); }
+    template<typename LocalGatewayRouteTableVpcAssociationT = LocalGatewayRouteTableVpcAssociation>
+    DeleteLocalGatewayRouteTableVpcAssociationResponse& WithLocalGatewayRouteTableVpcAssociation(LocalGatewayRouteTableVpcAssociationT&& value) { SetLocalGatewayRouteTableVpcAssociation(std::forward<LocalGatewayRouteTableVpcAssociationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the association.</p>
-     */
-    inline void SetLocalGatewayRouteTableVpcAssociation(const LocalGatewayRouteTableVpcAssociation& value) { m_localGatewayRouteTableVpcAssociation = value; }
-
-    /**
-     * <p>Information about the association.</p>
-     */
-    inline void SetLocalGatewayRouteTableVpcAssociation(LocalGatewayRouteTableVpcAssociation&& value) { m_localGatewayRouteTableVpcAssociation = std::move(value); }
-
-    /**
-     * <p>Information about the association.</p>
-     */
-    inline DeleteLocalGatewayRouteTableVpcAssociationResponse& WithLocalGatewayRouteTableVpcAssociation(const LocalGatewayRouteTableVpcAssociation& value) { SetLocalGatewayRouteTableVpcAssociation(value); return *this;}
-
-    /**
-     * <p>Information about the association.</p>
-     */
-    inline DeleteLocalGatewayRouteTableVpcAssociationResponse& WithLocalGatewayRouteTableVpcAssociation(LocalGatewayRouteTableVpcAssociation&& value) { SetLocalGatewayRouteTableVpcAssociation(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DeleteLocalGatewayRouteTableVpcAssociationResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DeleteLocalGatewayRouteTableVpcAssociationResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DeleteLocalGatewayRouteTableVpcAssociationResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     LocalGatewayRouteTableVpcAssociation m_localGatewayRouteTableVpcAssociation;
+    bool m_localGatewayRouteTableVpcAssociationHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

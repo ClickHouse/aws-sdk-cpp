@@ -34,224 +34,83 @@ namespace Model
   class LicenseConfigurationAssociation
   {
   public:
-    AWS_LICENSEMANAGER_API LicenseConfigurationAssociation();
+    AWS_LICENSEMANAGER_API LicenseConfigurationAssociation() = default;
     AWS_LICENSEMANAGER_API LicenseConfigurationAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API LicenseConfigurationAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the resource.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    LicenseConfigurationAssociation& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Type of server resource.</p>
      */
-    inline const ResourceType& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>Type of server resource.</p>
-     */
+    inline ResourceType GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    inline void SetResourceType(ResourceType value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline LicenseConfigurationAssociation& WithResourceType(ResourceType value) { SetResourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Type of server resource.</p>
-     */
-    inline void SetResourceType(const ResourceType& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>Type of server resource.</p>
-     */
-    inline void SetResourceType(ResourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>Type of server resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceType(const ResourceType& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>Type of server resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceType(ResourceType&& value) { SetResourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>ID of the Amazon Web Services account that owns the resource consuming
      * licenses.</p>
      */
-    inline const Aws::String& GetResourceOwnerId() const{ return m_resourceOwnerId; }
-
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
+    inline const Aws::String& GetResourceOwnerId() const { return m_resourceOwnerId; }
     inline bool ResourceOwnerIdHasBeenSet() const { return m_resourceOwnerIdHasBeenSet; }
+    template<typename ResourceOwnerIdT = Aws::String>
+    void SetResourceOwnerId(ResourceOwnerIdT&& value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId = std::forward<ResourceOwnerIdT>(value); }
+    template<typename ResourceOwnerIdT = Aws::String>
+    LicenseConfigurationAssociation& WithResourceOwnerId(ResourceOwnerIdT&& value) { SetResourceOwnerId(std::forward<ResourceOwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
-    inline void SetResourceOwnerId(const Aws::String& value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId = value; }
-
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
-    inline void SetResourceOwnerId(Aws::String&& value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId = std::move(value); }
-
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
-    inline void SetResourceOwnerId(const char* value) { m_resourceOwnerIdHasBeenSet = true; m_resourceOwnerId.assign(value); }
-
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceOwnerId(const Aws::String& value) { SetResourceOwnerId(value); return *this;}
-
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceOwnerId(Aws::String&& value) { SetResourceOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the Amazon Web Services account that owns the resource consuming
-     * licenses.</p>
-     */
-    inline LicenseConfigurationAssociation& WithResourceOwnerId(const char* value) { SetResourceOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Time when the license configuration was associated with the resource.</p>
      */
-    inline const Aws::Utils::DateTime& GetAssociationTime() const{ return m_associationTime; }
-
-    /**
-     * <p>Time when the license configuration was associated with the resource.</p>
-     */
+    inline const Aws::Utils::DateTime& GetAssociationTime() const { return m_associationTime; }
     inline bool AssociationTimeHasBeenSet() const { return m_associationTimeHasBeenSet; }
+    template<typename AssociationTimeT = Aws::Utils::DateTime>
+    void SetAssociationTime(AssociationTimeT&& value) { m_associationTimeHasBeenSet = true; m_associationTime = std::forward<AssociationTimeT>(value); }
+    template<typename AssociationTimeT = Aws::Utils::DateTime>
+    LicenseConfigurationAssociation& WithAssociationTime(AssociationTimeT&& value) { SetAssociationTime(std::forward<AssociationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Time when the license configuration was associated with the resource.</p>
-     */
-    inline void SetAssociationTime(const Aws::Utils::DateTime& value) { m_associationTimeHasBeenSet = true; m_associationTime = value; }
-
-    /**
-     * <p>Time when the license configuration was associated with the resource.</p>
-     */
-    inline void SetAssociationTime(Aws::Utils::DateTime&& value) { m_associationTimeHasBeenSet = true; m_associationTime = std::move(value); }
-
-    /**
-     * <p>Time when the license configuration was associated with the resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithAssociationTime(const Aws::Utils::DateTime& value) { SetAssociationTime(value); return *this;}
-
-    /**
-     * <p>Time when the license configuration was associated with the resource.</p>
-     */
-    inline LicenseConfigurationAssociation& WithAssociationTime(Aws::Utils::DateTime&& value) { SetAssociationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Scope of AMI associations. The possible value is
      * <code>cross-account</code>.</p>
      */
-    inline const Aws::String& GetAmiAssociationScope() const{ return m_amiAssociationScope; }
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
+    inline const Aws::String& GetAmiAssociationScope() const { return m_amiAssociationScope; }
     inline bool AmiAssociationScopeHasBeenSet() const { return m_amiAssociationScopeHasBeenSet; }
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
-    inline void SetAmiAssociationScope(const Aws::String& value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope = value; }
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
-    inline void SetAmiAssociationScope(Aws::String&& value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope = std::move(value); }
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
-    inline void SetAmiAssociationScope(const char* value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope.assign(value); }
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
-    inline LicenseConfigurationAssociation& WithAmiAssociationScope(const Aws::String& value) { SetAmiAssociationScope(value); return *this;}
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
-    inline LicenseConfigurationAssociation& WithAmiAssociationScope(Aws::String&& value) { SetAmiAssociationScope(std::move(value)); return *this;}
-
-    /**
-     * <p>Scope of AMI associations. The possible value is
-     * <code>cross-account</code>.</p>
-     */
-    inline LicenseConfigurationAssociation& WithAmiAssociationScope(const char* value) { SetAmiAssociationScope(value); return *this;}
-
+    template<typename AmiAssociationScopeT = Aws::String>
+    void SetAmiAssociationScope(AmiAssociationScopeT&& value) { m_amiAssociationScopeHasBeenSet = true; m_amiAssociationScope = std::forward<AmiAssociationScopeT>(value); }
+    template<typename AmiAssociationScopeT = Aws::String>
+    LicenseConfigurationAssociation& WithAmiAssociationScope(AmiAssociationScopeT&& value) { SetAmiAssociationScope(std::forward<AmiAssociationScopeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;
     bool m_resourceArnHasBeenSet = false;
 
-    ResourceType m_resourceType;
+    ResourceType m_resourceType{ResourceType::NOT_SET};
     bool m_resourceTypeHasBeenSet = false;
 
     Aws::String m_resourceOwnerId;
     bool m_resourceOwnerIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_associationTime;
+    Aws::Utils::DateTime m_associationTime{};
     bool m_associationTimeHasBeenSet = false;
 
     Aws::String m_amiAssociationScope;

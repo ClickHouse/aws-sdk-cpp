@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayAttachment::TransitGatewayAttachment() : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_transitGatewayOwnerIdHasBeenSet(false),
-    m_resourceOwnerIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_state(TransitGatewayAttachmentState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_associationHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TransitGatewayAttachment::TransitGatewayAttachment(const XmlNode& xmlNode) : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_transitGatewayOwnerIdHasBeenSet(false),
-    m_resourceOwnerIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_state(TransitGatewayAttachmentState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_associationHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TransitGatewayAttachment::TransitGatewayAttachment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -86,7 +58,7 @@ TransitGatewayAttachment& TransitGatewayAttachment::operator =(const XmlNode& xm
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode resourceIdNode = resultNode.FirstChild("resourceId");
@@ -98,7 +70,7 @@ TransitGatewayAttachment& TransitGatewayAttachment::operator =(const XmlNode& xm
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayAttachmentStateMapper::GetTransitGatewayAttachmentStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayAttachmentStateMapper::GetTransitGatewayAttachmentStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode associationNode = resultNode.FirstChild("association");
@@ -117,6 +89,7 @@ TransitGatewayAttachment& TransitGatewayAttachment::operator =(const XmlNode& xm
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -154,7 +127,7 @@ void TransitGatewayAttachment::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
 
   if(m_resourceIdHasBeenSet)
@@ -164,7 +137,7 @@ void TransitGatewayAttachment::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state)) << "&";
   }
 
   if(m_associationHasBeenSet)
@@ -212,7 +185,7 @@ void TransitGatewayAttachment::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
   if(m_resourceIdHasBeenSet)
   {
@@ -220,7 +193,7 @@ void TransitGatewayAttachment::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayAttachmentStateMapper::GetNameForTransitGatewayAttachmentState(m_state)) << "&";
   }
   if(m_associationHasBeenSet)
   {
@@ -238,7 +211,7 @@ void TransitGatewayAttachment::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

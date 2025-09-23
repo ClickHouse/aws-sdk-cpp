@@ -35,150 +35,53 @@ namespace Model
   class RecommendationRelatedAnomaly
   {
   public:
-    AWS_DEVOPSGURU_API RecommendationRelatedAnomaly();
+    AWS_DEVOPSGURU_API RecommendationRelatedAnomaly() = default;
     AWS_DEVOPSGURU_API RecommendationRelatedAnomaly(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API RecommendationRelatedAnomaly& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> An array of objects that represent resources in which DevOps Guru detected
      * anomalous behavior. Each object contains the name and type of the resource. </p>
      */
-    inline const Aws::Vector<RecommendationRelatedAnomalyResource>& GetResources() const{ return m_resources; }
-
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
+    inline const Aws::Vector<RecommendationRelatedAnomalyResource>& GetResources() const { return m_resources; }
     inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
+    template<typename ResourcesT = Aws::Vector<RecommendationRelatedAnomalyResource>>
+    void SetResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources = std::forward<ResourcesT>(value); }
+    template<typename ResourcesT = Aws::Vector<RecommendationRelatedAnomalyResource>>
+    RecommendationRelatedAnomaly& WithResources(ResourcesT&& value) { SetResources(std::forward<ResourcesT>(value)); return *this;}
+    template<typename ResourcesT = RecommendationRelatedAnomalyResource>
+    RecommendationRelatedAnomaly& AddResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources.emplace_back(std::forward<ResourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
-    inline void SetResources(const Aws::Vector<RecommendationRelatedAnomalyResource>& value) { m_resourcesHasBeenSet = true; m_resources = value; }
-
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
-    inline void SetResources(Aws::Vector<RecommendationRelatedAnomalyResource>&& value) { m_resourcesHasBeenSet = true; m_resources = std::move(value); }
-
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
-    inline RecommendationRelatedAnomaly& WithResources(const Aws::Vector<RecommendationRelatedAnomalyResource>& value) { SetResources(value); return *this;}
-
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
-    inline RecommendationRelatedAnomaly& WithResources(Aws::Vector<RecommendationRelatedAnomalyResource>&& value) { SetResources(std::move(value)); return *this;}
-
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
-    inline RecommendationRelatedAnomaly& AddResources(const RecommendationRelatedAnomalyResource& value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
-    /**
-     * <p> An array of objects that represent resources in which DevOps Guru detected
-     * anomalous behavior. Each object contains the name and type of the resource. </p>
-     */
-    inline RecommendationRelatedAnomaly& AddResources(RecommendationRelatedAnomalyResource&& value) { m_resourcesHasBeenSet = true; m_resources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> Information about where the anomalous behavior related the recommendation
      * was found. For example, details in Amazon CloudWatch metrics. </p>
      */
-    inline const Aws::Vector<RecommendationRelatedAnomalySourceDetail>& GetSourceDetails() const{ return m_sourceDetails; }
-
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
+    inline const Aws::Vector<RecommendationRelatedAnomalySourceDetail>& GetSourceDetails() const { return m_sourceDetails; }
     inline bool SourceDetailsHasBeenSet() const { return m_sourceDetailsHasBeenSet; }
+    template<typename SourceDetailsT = Aws::Vector<RecommendationRelatedAnomalySourceDetail>>
+    void SetSourceDetails(SourceDetailsT&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails = std::forward<SourceDetailsT>(value); }
+    template<typename SourceDetailsT = Aws::Vector<RecommendationRelatedAnomalySourceDetail>>
+    RecommendationRelatedAnomaly& WithSourceDetails(SourceDetailsT&& value) { SetSourceDetails(std::forward<SourceDetailsT>(value)); return *this;}
+    template<typename SourceDetailsT = RecommendationRelatedAnomalySourceDetail>
+    RecommendationRelatedAnomaly& AddSourceDetails(SourceDetailsT&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails.emplace_back(std::forward<SourceDetailsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
-    inline void SetSourceDetails(const Aws::Vector<RecommendationRelatedAnomalySourceDetail>& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails = value; }
-
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
-    inline void SetSourceDetails(Aws::Vector<RecommendationRelatedAnomalySourceDetail>&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails = std::move(value); }
-
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
-    inline RecommendationRelatedAnomaly& WithSourceDetails(const Aws::Vector<RecommendationRelatedAnomalySourceDetail>& value) { SetSourceDetails(value); return *this;}
-
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
-    inline RecommendationRelatedAnomaly& WithSourceDetails(Aws::Vector<RecommendationRelatedAnomalySourceDetail>&& value) { SetSourceDetails(std::move(value)); return *this;}
-
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
-    inline RecommendationRelatedAnomaly& AddSourceDetails(const RecommendationRelatedAnomalySourceDetail& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails.push_back(value); return *this; }
-
-    /**
-     * <p> Information about where the anomalous behavior related the recommendation
-     * was found. For example, details in Amazon CloudWatch metrics. </p>
-     */
-    inline RecommendationRelatedAnomaly& AddSourceDetails(RecommendationRelatedAnomalySourceDetail&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
      */
-    inline const Aws::String& GetAnomalyId() const{ return m_anomalyId; }
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
+    inline const Aws::String& GetAnomalyId() const { return m_anomalyId; }
     inline bool AnomalyIdHasBeenSet() const { return m_anomalyIdHasBeenSet; }
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
-    inline void SetAnomalyId(const Aws::String& value) { m_anomalyIdHasBeenSet = true; m_anomalyId = value; }
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
-    inline void SetAnomalyId(Aws::String&& value) { m_anomalyIdHasBeenSet = true; m_anomalyId = std::move(value); }
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
-    inline void SetAnomalyId(const char* value) { m_anomalyIdHasBeenSet = true; m_anomalyId.assign(value); }
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
-    inline RecommendationRelatedAnomaly& WithAnomalyId(const Aws::String& value) { SetAnomalyId(value); return *this;}
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
-    inline RecommendationRelatedAnomaly& WithAnomalyId(Aws::String&& value) { SetAnomalyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of an anomaly that generated the insight with this recommendation.</p>
-     */
-    inline RecommendationRelatedAnomaly& WithAnomalyId(const char* value) { SetAnomalyId(value); return *this;}
-
+    template<typename AnomalyIdT = Aws::String>
+    void SetAnomalyId(AnomalyIdT&& value) { m_anomalyIdHasBeenSet = true; m_anomalyId = std::forward<AnomalyIdT>(value); }
+    template<typename AnomalyIdT = Aws::String>
+    RecommendationRelatedAnomaly& WithAnomalyId(AnomalyIdT&& value) { SetAnomalyId(std::forward<AnomalyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<RecommendationRelatedAnomalyResource> m_resources;

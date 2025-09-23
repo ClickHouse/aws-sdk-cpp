@@ -26,7 +26,7 @@ namespace Model
   class PutDedicatedIpWarmupAttributesRequest : public SESV2Request
   {
   public:
-    AWS_SESV2_API PutDedicatedIpWarmupAttributesRequest();
+    AWS_SESV2_API PutDedicatedIpWarmupAttributesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,85 +37,35 @@ namespace Model
     AWS_SESV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The dedicated IP address that you want to update the warm-up attributes
      * for.</p>
      */
-    inline const Aws::String& GetIp() const{ return m_ip; }
-
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
+    inline const Aws::String& GetIp() const { return m_ip; }
     inline bool IpHasBeenSet() const { return m_ipHasBeenSet; }
+    template<typename IpT = Aws::String>
+    void SetIp(IpT&& value) { m_ipHasBeenSet = true; m_ip = std::forward<IpT>(value); }
+    template<typename IpT = Aws::String>
+    PutDedicatedIpWarmupAttributesRequest& WithIp(IpT&& value) { SetIp(std::forward<IpT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
-    inline void SetIp(const Aws::String& value) { m_ipHasBeenSet = true; m_ip = value; }
-
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
-    inline void SetIp(Aws::String&& value) { m_ipHasBeenSet = true; m_ip = std::move(value); }
-
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
-    inline void SetIp(const char* value) { m_ipHasBeenSet = true; m_ip.assign(value); }
-
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
-    inline PutDedicatedIpWarmupAttributesRequest& WithIp(const Aws::String& value) { SetIp(value); return *this;}
-
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
-    inline PutDedicatedIpWarmupAttributesRequest& WithIp(Aws::String&& value) { SetIp(std::move(value)); return *this;}
-
-    /**
-     * <p>The dedicated IP address that you want to update the warm-up attributes
-     * for.</p>
-     */
-    inline PutDedicatedIpWarmupAttributesRequest& WithIp(const char* value) { SetIp(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The warm-up percentage that you want to associate with the dedicated IP
      * address.</p>
      */
-    inline int GetWarmupPercentage() const{ return m_warmupPercentage; }
-
-    /**
-     * <p>The warm-up percentage that you want to associate with the dedicated IP
-     * address.</p>
-     */
+    inline int GetWarmupPercentage() const { return m_warmupPercentage; }
     inline bool WarmupPercentageHasBeenSet() const { return m_warmupPercentageHasBeenSet; }
-
-    /**
-     * <p>The warm-up percentage that you want to associate with the dedicated IP
-     * address.</p>
-     */
     inline void SetWarmupPercentage(int value) { m_warmupPercentageHasBeenSet = true; m_warmupPercentage = value; }
-
-    /**
-     * <p>The warm-up percentage that you want to associate with the dedicated IP
-     * address.</p>
-     */
     inline PutDedicatedIpWarmupAttributesRequest& WithWarmupPercentage(int value) { SetWarmupPercentage(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_ip;
     bool m_ipHasBeenSet = false;
 
-    int m_warmupPercentage;
+    int m_warmupPercentage{0};
     bool m_warmupPercentageHasBeenSet = false;
   };
 

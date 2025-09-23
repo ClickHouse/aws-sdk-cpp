@@ -7,6 +7,7 @@
 #include <aws/connect/Connect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/connect/model/StringCondition.h>
+#include <aws/connect/model/ListCondition.h>
 #include <aws/connect/model/HierarchyGroupCondition.h>
 #include <utility>
 
@@ -37,195 +38,83 @@ namespace Model
   class UserSearchCriteria
   {
   public:
-    AWS_CONNECT_API UserSearchCriteria();
+    AWS_CONNECT_API UserSearchCriteria() = default;
     AWS_CONNECT_API UserSearchCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API UserSearchCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of conditions which would be applied together with an <code>OR</code>
      * condition.</p>
      */
-    inline const Aws::Vector<UserSearchCriteria>& GetOrConditions() const{ return m_orConditions; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
+    inline const Aws::Vector<UserSearchCriteria>& GetOrConditions() const { return m_orConditions; }
     inline bool OrConditionsHasBeenSet() const { return m_orConditionsHasBeenSet; }
+    template<typename OrConditionsT = Aws::Vector<UserSearchCriteria>>
+    void SetOrConditions(OrConditionsT&& value) { m_orConditionsHasBeenSet = true; m_orConditions = std::forward<OrConditionsT>(value); }
+    template<typename OrConditionsT = Aws::Vector<UserSearchCriteria>>
+    UserSearchCriteria& WithOrConditions(OrConditionsT&& value) { SetOrConditions(std::forward<OrConditionsT>(value)); return *this;}
+    template<typename OrConditionsT = UserSearchCriteria>
+    UserSearchCriteria& AddOrConditions(OrConditionsT&& value) { m_orConditionsHasBeenSet = true; m_orConditions.emplace_back(std::forward<OrConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
-    inline void SetOrConditions(const Aws::Vector<UserSearchCriteria>& value) { m_orConditionsHasBeenSet = true; m_orConditions = value; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
-    inline void SetOrConditions(Aws::Vector<UserSearchCriteria>&& value) { m_orConditionsHasBeenSet = true; m_orConditions = std::move(value); }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
-    inline UserSearchCriteria& WithOrConditions(const Aws::Vector<UserSearchCriteria>& value) { SetOrConditions(value); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
-    inline UserSearchCriteria& WithOrConditions(Aws::Vector<UserSearchCriteria>&& value) { SetOrConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
-    inline UserSearchCriteria& AddOrConditions(const UserSearchCriteria& value) { m_orConditionsHasBeenSet = true; m_orConditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>OR</code>
-     * condition.</p>
-     */
-    inline UserSearchCriteria& AddOrConditions(UserSearchCriteria&& value) { m_orConditionsHasBeenSet = true; m_orConditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of conditions which would be applied together with an <code>AND</code>
      * condition. </p>
      */
-    inline const Aws::Vector<UserSearchCriteria>& GetAndConditions() const{ return m_andConditions; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
+    inline const Aws::Vector<UserSearchCriteria>& GetAndConditions() const { return m_andConditions; }
     inline bool AndConditionsHasBeenSet() const { return m_andConditionsHasBeenSet; }
+    template<typename AndConditionsT = Aws::Vector<UserSearchCriteria>>
+    void SetAndConditions(AndConditionsT&& value) { m_andConditionsHasBeenSet = true; m_andConditions = std::forward<AndConditionsT>(value); }
+    template<typename AndConditionsT = Aws::Vector<UserSearchCriteria>>
+    UserSearchCriteria& WithAndConditions(AndConditionsT&& value) { SetAndConditions(std::forward<AndConditionsT>(value)); return *this;}
+    template<typename AndConditionsT = UserSearchCriteria>
+    UserSearchCriteria& AddAndConditions(AndConditionsT&& value) { m_andConditionsHasBeenSet = true; m_andConditions.emplace_back(std::forward<AndConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
-    inline void SetAndConditions(const Aws::Vector<UserSearchCriteria>& value) { m_andConditionsHasBeenSet = true; m_andConditions = value; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
-    inline void SetAndConditions(Aws::Vector<UserSearchCriteria>&& value) { m_andConditionsHasBeenSet = true; m_andConditions = std::move(value); }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
-    inline UserSearchCriteria& WithAndConditions(const Aws::Vector<UserSearchCriteria>& value) { SetAndConditions(value); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
-    inline UserSearchCriteria& WithAndConditions(Aws::Vector<UserSearchCriteria>&& value) { SetAndConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
-    inline UserSearchCriteria& AddAndConditions(const UserSearchCriteria& value) { m_andConditionsHasBeenSet = true; m_andConditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an <code>AND</code>
-     * condition. </p>
-     */
-    inline UserSearchCriteria& AddAndConditions(UserSearchCriteria&& value) { m_andConditionsHasBeenSet = true; m_andConditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
+     * <p>The currently supported values for <code>FieldName</code> are
+     * <code>Username</code>, <code>FirstName</code>, <code>LastName</code>,
+     * <code>RoutingProfileId</code>, <code>SecurityProfileId</code>,
+     * <code>ResourceId</code>.</p>
      */
-    inline const StringCondition& GetStringCondition() const{ return m_stringCondition; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
+    inline const StringCondition& GetStringCondition() const { return m_stringCondition; }
     inline bool StringConditionHasBeenSet() const { return m_stringConditionHasBeenSet; }
+    template<typename StringConditionT = StringCondition>
+    void SetStringCondition(StringConditionT&& value) { m_stringConditionHasBeenSet = true; m_stringCondition = std::forward<StringConditionT>(value); }
+    template<typename StringConditionT = StringCondition>
+    UserSearchCriteria& WithStringCondition(StringConditionT&& value) { SetStringCondition(std::forward<StringConditionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
+     * <p>A leaf node condition which can be used to specify a List condition to search
+     * users with attributes included in Lists like Proficiencies.</p>
      */
-    inline void SetStringCondition(const StringCondition& value) { m_stringConditionHasBeenSet = true; m_stringCondition = value; }
+    inline const ListCondition& GetListCondition() const { return m_listCondition; }
+    inline bool ListConditionHasBeenSet() const { return m_listConditionHasBeenSet; }
+    template<typename ListConditionT = ListCondition>
+    void SetListCondition(ListConditionT&& value) { m_listConditionHasBeenSet = true; m_listCondition = std::forward<ListConditionT>(value); }
+    template<typename ListConditionT = ListCondition>
+    UserSearchCriteria& WithListCondition(ListConditionT&& value) { SetListCondition(std::forward<ListConditionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline void SetStringCondition(StringCondition&& value) { m_stringConditionHasBeenSet = true; m_stringCondition = std::move(value); }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline UserSearchCriteria& WithStringCondition(const StringCondition& value) { SetStringCondition(value); return *this;}
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline UserSearchCriteria& WithStringCondition(StringCondition&& value) { SetStringCondition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A leaf node condition which can be used to specify a hierarchy group
      * condition.</p>
      */
-    inline const HierarchyGroupCondition& GetHierarchyGroupCondition() const{ return m_hierarchyGroupCondition; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a hierarchy group
-     * condition.</p>
-     */
+    inline const HierarchyGroupCondition& GetHierarchyGroupCondition() const { return m_hierarchyGroupCondition; }
     inline bool HierarchyGroupConditionHasBeenSet() const { return m_hierarchyGroupConditionHasBeenSet; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a hierarchy group
-     * condition.</p>
-     */
-    inline void SetHierarchyGroupCondition(const HierarchyGroupCondition& value) { m_hierarchyGroupConditionHasBeenSet = true; m_hierarchyGroupCondition = value; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a hierarchy group
-     * condition.</p>
-     */
-    inline void SetHierarchyGroupCondition(HierarchyGroupCondition&& value) { m_hierarchyGroupConditionHasBeenSet = true; m_hierarchyGroupCondition = std::move(value); }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a hierarchy group
-     * condition.</p>
-     */
-    inline UserSearchCriteria& WithHierarchyGroupCondition(const HierarchyGroupCondition& value) { SetHierarchyGroupCondition(value); return *this;}
-
-    /**
-     * <p>A leaf node condition which can be used to specify a hierarchy group
-     * condition.</p>
-     */
-    inline UserSearchCriteria& WithHierarchyGroupCondition(HierarchyGroupCondition&& value) { SetHierarchyGroupCondition(std::move(value)); return *this;}
-
+    template<typename HierarchyGroupConditionT = HierarchyGroupCondition>
+    void SetHierarchyGroupCondition(HierarchyGroupConditionT&& value) { m_hierarchyGroupConditionHasBeenSet = true; m_hierarchyGroupCondition = std::forward<HierarchyGroupConditionT>(value); }
+    template<typename HierarchyGroupConditionT = HierarchyGroupCondition>
+    UserSearchCriteria& WithHierarchyGroupCondition(HierarchyGroupConditionT&& value) { SetHierarchyGroupCondition(std::forward<HierarchyGroupConditionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<UserSearchCriteria> m_orConditions;
@@ -236,6 +125,9 @@ namespace Model
 
     StringCondition m_stringCondition;
     bool m_stringConditionHasBeenSet = false;
+
+    ListCondition m_listCondition;
+    bool m_listConditionHasBeenSet = false;
 
     HierarchyGroupCondition m_hierarchyGroupCondition;
     bool m_hierarchyGroupConditionHasBeenSet = false;

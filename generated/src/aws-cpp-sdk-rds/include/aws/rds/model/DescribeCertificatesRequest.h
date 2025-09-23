@@ -26,7 +26,7 @@ namespace Model
   class DescribeCertificatesRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API DescribeCertificatesRequest();
+    AWS_RDS_API DescribeCertificatesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,209 +41,62 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The user-supplied certificate identifier. If this parameter is specified,
      * information for only the identified certificate is returned. This parameter
      * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
      * existing CertificateIdentifier.</p> </li> </ul>
      */
-    inline const Aws::String& GetCertificateIdentifier() const{ return m_certificateIdentifier; }
-
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
+    inline const Aws::String& GetCertificateIdentifier() const { return m_certificateIdentifier; }
     inline bool CertificateIdentifierHasBeenSet() const { return m_certificateIdentifierHasBeenSet; }
+    template<typename CertificateIdentifierT = Aws::String>
+    void SetCertificateIdentifier(CertificateIdentifierT&& value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier = std::forward<CertificateIdentifierT>(value); }
+    template<typename CertificateIdentifierT = Aws::String>
+    DescribeCertificatesRequest& WithCertificateIdentifier(CertificateIdentifierT&& value) { SetCertificateIdentifier(std::forward<CertificateIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
-    inline void SetCertificateIdentifier(const Aws::String& value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier = value; }
-
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
-    inline void SetCertificateIdentifier(Aws::String&& value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier = std::move(value); }
-
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
-    inline void SetCertificateIdentifier(const char* value) { m_certificateIdentifierHasBeenSet = true; m_certificateIdentifier.assign(value); }
-
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
-    inline DescribeCertificatesRequest& WithCertificateIdentifier(const Aws::String& value) { SetCertificateIdentifier(value); return *this;}
-
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
-    inline DescribeCertificatesRequest& WithCertificateIdentifier(Aws::String&& value) { SetCertificateIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-supplied certificate identifier. If this parameter is specified,
-     * information for only the identified certificate is returned. This parameter
-     * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must match an
-     * existing CertificateIdentifier.</p> </li> </ul>
-     */
-    inline DescribeCertificatesRequest& WithCertificateIdentifier(const char* value) { SetCertificateIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This parameter isn't currently supported.</p>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    DescribeCertificatesRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    DescribeCertificatesRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeCertificatesRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeCertificatesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeCertificatesRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeCertificatesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of records to include in the response. If more records
      * exist than the specified <code>MaxRecords</code> value, a pagination token
      * called a marker is included in the response so you can retrieve the remaining
      * results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so you can retrieve the remaining
-     * results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so you can retrieve the remaining
-     * results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a marker is included in the response so you can retrieve the remaining
-     * results.</p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-     */
     inline DescribeCertificatesRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional pagination token provided by a previous
      * <code>DescribeCertificates</code> request. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeCertificatesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeCertificatesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeCertificates</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p>
-     */
-    inline DescribeCertificatesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeCertificatesRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateIdentifier;
@@ -252,7 +105,7 @@ namespace Model
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_marker;

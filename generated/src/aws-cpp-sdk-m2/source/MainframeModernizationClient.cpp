@@ -23,6 +23,7 @@
 #include <aws/m2/MainframeModernizationEndpointProvider.h>
 #include <aws/m2/model/CancelBatchJobExecutionRequest.h>
 #include <aws/m2/model/CreateApplicationRequest.h>
+#include <aws/m2/model/CreateDataSetExportTaskRequest.h>
 #include <aws/m2/model/CreateDataSetImportTaskRequest.h>
 #include <aws/m2/model/CreateDeploymentRequest.h>
 #include <aws/m2/model/CreateEnvironmentRequest.h>
@@ -33,6 +34,7 @@
 #include <aws/m2/model/GetApplicationVersionRequest.h>
 #include <aws/m2/model/GetBatchJobExecutionRequest.h>
 #include <aws/m2/model/GetDataSetDetailsRequest.h>
+#include <aws/m2/model/GetDataSetExportTaskRequest.h>
 #include <aws/m2/model/GetDataSetImportTaskRequest.h>
 #include <aws/m2/model/GetDeploymentRequest.h>
 #include <aws/m2/model/GetEnvironmentRequest.h>
@@ -41,6 +43,8 @@
 #include <aws/m2/model/ListApplicationsRequest.h>
 #include <aws/m2/model/ListBatchJobDefinitionsRequest.h>
 #include <aws/m2/model/ListBatchJobExecutionsRequest.h>
+#include <aws/m2/model/ListBatchJobRestartPointsRequest.h>
+#include <aws/m2/model/ListDataSetExportHistoryRequest.h>
 #include <aws/m2/model/ListDataSetImportHistoryRequest.h>
 #include <aws/m2/model/ListDataSetsRequest.h>
 #include <aws/m2/model/ListDeploymentsRequest.h>
@@ -68,20 +72,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* MainframeModernizationClient::SERVICE_NAME = "m2";
-const char* MainframeModernizationClient::ALLOCATION_TAG = "MainframeModernizationClient";
+namespace Aws
+{
+  namespace MainframeModernization
+  {
+    const char SERVICE_NAME[] = "m2";
+    const char ALLOCATION_TAG[] = "MainframeModernizationClient";
+  }
+}
+const char* MainframeModernizationClient::GetServiceName() {return SERVICE_NAME;}
+const char* MainframeModernizationClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 MainframeModernizationClient::MainframeModernizationClient(const MainframeModernization::MainframeModernizationClientConfiguration& clientConfiguration,
                                                            std::shared_ptr<MainframeModernizationEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MainframeModernizationErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -96,8 +107,7 @@ MainframeModernizationClient::MainframeModernizationClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MainframeModernizationErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -112,8 +122,7 @@ MainframeModernizationClient::MainframeModernizationClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MainframeModernizationErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -122,12 +131,11 @@ MainframeModernizationClient::MainframeModernizationClient(const std::shared_ptr
   MainframeModernizationClient::MainframeModernizationClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MainframeModernizationErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -142,7 +150,6 @@ MainframeModernizationClient::MainframeModernizationClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MainframeModernizationErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -157,7 +164,6 @@ MainframeModernizationClient::MainframeModernizationClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MainframeModernizationErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MainframeModernizationEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -177,6 +183,14 @@ std::shared_ptr<MainframeModernizationEndpointProviderBase>& MainframeModernizat
 void MainframeModernizationClient::init(const MainframeModernization::MainframeModernizationClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("m2");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -249,6 +263,40 @@ CreateApplicationOutcome MainframeModernizationClient::CreateApplication(const C
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateApplication, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/applications");
       return CreateApplicationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+CreateDataSetExportTaskOutcome MainframeModernizationClient::CreateDataSetExportTask(const CreateDataSetExportTaskRequest& request) const
+{
+  AWS_OPERATION_GUARD(CreateDataSetExportTask);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CreateDataSetExportTask, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ApplicationIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateDataSetExportTask", "Required field: ApplicationId, is not set");
+    return CreateDataSetExportTaskOutcome(Aws::Client::AWSError<MainframeModernizationErrors>(MainframeModernizationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ApplicationId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CreateDataSetExportTask, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CreateDataSetExportTask, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".CreateDataSetExportTask",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CreateDataSetExportTaskOutcome>(
+    [&]()-> CreateDataSetExportTaskOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateDataSetExportTask, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/applications/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetApplicationId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/dataset-export-task");
+      return CreateDataSetExportTaskOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -609,6 +657,46 @@ GetDataSetDetailsOutcome MainframeModernizationClient::GetDataSetDetails(const G
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
+GetDataSetExportTaskOutcome MainframeModernizationClient::GetDataSetExportTask(const GetDataSetExportTaskRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetDataSetExportTask);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetDataSetExportTask, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ApplicationIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetDataSetExportTask", "Required field: ApplicationId, is not set");
+    return GetDataSetExportTaskOutcome(Aws::Client::AWSError<MainframeModernizationErrors>(MainframeModernizationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ApplicationId]", false));
+  }
+  if (!request.TaskIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetDataSetExportTask", "Required field: TaskId, is not set");
+    return GetDataSetExportTaskOutcome(Aws::Client::AWSError<MainframeModernizationErrors>(MainframeModernizationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [TaskId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetDataSetExportTask, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetDataSetExportTask, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetDataSetExportTask",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetDataSetExportTaskOutcome>(
+    [&]()-> GetDataSetExportTaskOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetDataSetExportTask, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/applications/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetApplicationId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/dataset-export-tasks/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetTaskId());
+      return GetDataSetExportTaskOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
 GetDataSetImportTaskOutcome MainframeModernizationClient::GetDataSetImportTask(const GetDataSetImportTaskRequest& request) const
 {
   AWS_OPERATION_GUARD(GetDataSetImportTask);
@@ -872,6 +960,81 @@ ListBatchJobExecutionsOutcome MainframeModernizationClient::ListBatchJobExecutio
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetApplicationId());
       endpointResolutionOutcome.GetResult().AddPathSegments("/batch-job-executions");
       return ListBatchJobExecutionsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ListBatchJobRestartPointsOutcome MainframeModernizationClient::ListBatchJobRestartPoints(const ListBatchJobRestartPointsRequest& request) const
+{
+  AWS_OPERATION_GUARD(ListBatchJobRestartPoints);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListBatchJobRestartPoints, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ApplicationIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListBatchJobRestartPoints", "Required field: ApplicationId, is not set");
+    return ListBatchJobRestartPointsOutcome(Aws::Client::AWSError<MainframeModernizationErrors>(MainframeModernizationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ApplicationId]", false));
+  }
+  if (!request.ExecutionIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListBatchJobRestartPoints", "Required field: ExecutionId, is not set");
+    return ListBatchJobRestartPointsOutcome(Aws::Client::AWSError<MainframeModernizationErrors>(MainframeModernizationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ExecutionId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListBatchJobRestartPoints, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ListBatchJobRestartPoints, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ListBatchJobRestartPoints",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ListBatchJobRestartPointsOutcome>(
+    [&]()-> ListBatchJobRestartPointsOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListBatchJobRestartPoints, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/applications/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetApplicationId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/batch-job-executions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetExecutionId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/steps");
+      return ListBatchJobRestartPointsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ListDataSetExportHistoryOutcome MainframeModernizationClient::ListDataSetExportHistory(const ListDataSetExportHistoryRequest& request) const
+{
+  AWS_OPERATION_GUARD(ListDataSetExportHistory);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListDataSetExportHistory, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ApplicationIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListDataSetExportHistory", "Required field: ApplicationId, is not set");
+    return ListDataSetExportHistoryOutcome(Aws::Client::AWSError<MainframeModernizationErrors>(MainframeModernizationErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ApplicationId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListDataSetExportHistory, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ListDataSetExportHistory, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ListDataSetExportHistory",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ListDataSetExportHistoryOutcome>(
+    [&]()-> ListDataSetExportHistoryOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListDataSetExportHistory, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/applications/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetApplicationId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/dataset-export-tasks");
+      return ListDataSetExportHistoryOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

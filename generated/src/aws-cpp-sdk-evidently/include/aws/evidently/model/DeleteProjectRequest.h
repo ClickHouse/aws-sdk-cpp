@@ -21,7 +21,7 @@ namespace Model
   class DeleteProjectRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API DeleteProjectRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API DeleteProjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name or ARN of the project to delete.</p>
      */
-    inline const Aws::String& GetProject() const{ return m_project; }
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
+    inline const Aws::String& GetProject() const { return m_project; }
     inline bool ProjectHasBeenSet() const { return m_projectHasBeenSet; }
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
-    inline void SetProject(const Aws::String& value) { m_projectHasBeenSet = true; m_project = value; }
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
-    inline void SetProject(Aws::String&& value) { m_projectHasBeenSet = true; m_project = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
-    inline void SetProject(const char* value) { m_projectHasBeenSet = true; m_project.assign(value); }
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
-    inline DeleteProjectRequest& WithProject(const Aws::String& value) { SetProject(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
-    inline DeleteProjectRequest& WithProject(Aws::String&& value) { SetProject(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the project to delete.</p>
-     */
-    inline DeleteProjectRequest& WithProject(const char* value) { SetProject(value); return *this;}
-
+    template<typename ProjectT = Aws::String>
+    void SetProject(ProjectT&& value) { m_projectHasBeenSet = true; m_project = std::forward<ProjectT>(value); }
+    template<typename ProjectT = Aws::String>
+    DeleteProjectRequest& WithProject(ProjectT&& value) { SetProject(std::forward<ProjectT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_project;

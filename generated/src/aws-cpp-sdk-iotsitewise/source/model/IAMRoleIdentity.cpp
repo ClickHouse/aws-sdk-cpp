@@ -18,13 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-IAMRoleIdentity::IAMRoleIdentity() : 
-    m_arnHasBeenSet(false)
-{
-}
-
-IAMRoleIdentity::IAMRoleIdentity(JsonView jsonValue) : 
-    m_arnHasBeenSet(false)
+IAMRoleIdentity::IAMRoleIdentity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ IAMRoleIdentity& IAMRoleIdentity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   return *this;
 }
 

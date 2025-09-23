@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AxisLabelReferenceOptions::AxisLabelReferenceOptions() : 
-    m_fieldIdHasBeenSet(false),
-    m_columnHasBeenSet(false)
-{
-}
-
-AxisLabelReferenceOptions::AxisLabelReferenceOptions(JsonView jsonValue) : 
-    m_fieldIdHasBeenSet(false),
-    m_columnHasBeenSet(false)
+AxisLabelReferenceOptions::AxisLabelReferenceOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AxisLabelReferenceOptions& AxisLabelReferenceOptions::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("FieldId"))
   {
     m_fieldId = jsonValue.GetString("FieldId");
-
     m_fieldIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Column"))
   {
     m_column = jsonValue.GetObject("Column");
-
     m_columnHasBeenSet = true;
   }
-
   return *this;
 }
 

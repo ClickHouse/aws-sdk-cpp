@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DisassociateInstanceStorageConfigRequest::DisassociateInstanceStorageConfigRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_associationIdHasBeenSet(false),
-    m_resourceType(InstanceStorageResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
 Aws::String DisassociateInstanceStorageConfigRequest::SerializePayload() const
 {
   return {};
@@ -35,6 +27,13 @@ void DisassociateInstanceStorageConfigRequest::AddQueryStringParameters(URI& uri
     {
       ss << InstanceStorageResourceTypeMapper::GetNameForInstanceStorageResourceType(m_resourceType);
       uri.AddQueryStringParameter("resourceType", ss.str());
+      ss.str("");
+    }
+
+    if(m_clientTokenHasBeenSet)
+    {
+      ss << m_clientToken;
+      uri.AddQueryStringParameter("clientToken", ss.str());
       ss.str("");
     }
 

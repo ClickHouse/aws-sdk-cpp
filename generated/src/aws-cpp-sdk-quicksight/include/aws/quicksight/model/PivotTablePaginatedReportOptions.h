@@ -32,79 +32,37 @@ namespace Model
   class PivotTablePaginatedReportOptions
   {
   public:
-    AWS_QUICKSIGHT_API PivotTablePaginatedReportOptions();
+    AWS_QUICKSIGHT_API PivotTablePaginatedReportOptions() = default;
     AWS_QUICKSIGHT_API PivotTablePaginatedReportOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTablePaginatedReportOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The visibility of the printing table overflow across pages.</p>
      */
-    inline const Visibility& GetVerticalOverflowVisibility() const{ return m_verticalOverflowVisibility; }
-
-    /**
-     * <p>The visibility of the printing table overflow across pages.</p>
-     */
+    inline Visibility GetVerticalOverflowVisibility() const { return m_verticalOverflowVisibility; }
     inline bool VerticalOverflowVisibilityHasBeenSet() const { return m_verticalOverflowVisibilityHasBeenSet; }
+    inline void SetVerticalOverflowVisibility(Visibility value) { m_verticalOverflowVisibilityHasBeenSet = true; m_verticalOverflowVisibility = value; }
+    inline PivotTablePaginatedReportOptions& WithVerticalOverflowVisibility(Visibility value) { SetVerticalOverflowVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The visibility of the printing table overflow across pages.</p>
-     */
-    inline void SetVerticalOverflowVisibility(const Visibility& value) { m_verticalOverflowVisibilityHasBeenSet = true; m_verticalOverflowVisibility = value; }
-
-    /**
-     * <p>The visibility of the printing table overflow across pages.</p>
-     */
-    inline void SetVerticalOverflowVisibility(Visibility&& value) { m_verticalOverflowVisibilityHasBeenSet = true; m_verticalOverflowVisibility = std::move(value); }
-
-    /**
-     * <p>The visibility of the printing table overflow across pages.</p>
-     */
-    inline PivotTablePaginatedReportOptions& WithVerticalOverflowVisibility(const Visibility& value) { SetVerticalOverflowVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility of the printing table overflow across pages.</p>
-     */
-    inline PivotTablePaginatedReportOptions& WithVerticalOverflowVisibility(Visibility&& value) { SetVerticalOverflowVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The visibility of the repeating header rows on each page.</p>
      */
-    inline const Visibility& GetOverflowColumnHeaderVisibility() const{ return m_overflowColumnHeaderVisibility; }
-
-    /**
-     * <p>The visibility of the repeating header rows on each page.</p>
-     */
+    inline Visibility GetOverflowColumnHeaderVisibility() const { return m_overflowColumnHeaderVisibility; }
     inline bool OverflowColumnHeaderVisibilityHasBeenSet() const { return m_overflowColumnHeaderVisibilityHasBeenSet; }
-
-    /**
-     * <p>The visibility of the repeating header rows on each page.</p>
-     */
-    inline void SetOverflowColumnHeaderVisibility(const Visibility& value) { m_overflowColumnHeaderVisibilityHasBeenSet = true; m_overflowColumnHeaderVisibility = value; }
-
-    /**
-     * <p>The visibility of the repeating header rows on each page.</p>
-     */
-    inline void SetOverflowColumnHeaderVisibility(Visibility&& value) { m_overflowColumnHeaderVisibilityHasBeenSet = true; m_overflowColumnHeaderVisibility = std::move(value); }
-
-    /**
-     * <p>The visibility of the repeating header rows on each page.</p>
-     */
-    inline PivotTablePaginatedReportOptions& WithOverflowColumnHeaderVisibility(const Visibility& value) { SetOverflowColumnHeaderVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility of the repeating header rows on each page.</p>
-     */
-    inline PivotTablePaginatedReportOptions& WithOverflowColumnHeaderVisibility(Visibility&& value) { SetOverflowColumnHeaderVisibility(std::move(value)); return *this;}
-
+    inline void SetOverflowColumnHeaderVisibility(Visibility value) { m_overflowColumnHeaderVisibilityHasBeenSet = true; m_overflowColumnHeaderVisibility = value; }
+    inline PivotTablePaginatedReportOptions& WithOverflowColumnHeaderVisibility(Visibility value) { SetOverflowColumnHeaderVisibility(value); return *this;}
+    ///@}
   private:
 
-    Visibility m_verticalOverflowVisibility;
+    Visibility m_verticalOverflowVisibility{Visibility::NOT_SET};
     bool m_verticalOverflowVisibilityHasBeenSet = false;
 
-    Visibility m_overflowColumnHeaderVisibility;
+    Visibility m_overflowColumnHeaderVisibility{Visibility::NOT_SET};
     bool m_overflowColumnHeaderVisibilityHasBeenSet = false;
   };
 

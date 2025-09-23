@@ -12,14 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateClusterRequest::CreateClusterRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_instanceGroupsHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -41,6 +33,17 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   }
 
+  if(m_restrictedInstanceGroupsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> restrictedInstanceGroupsJsonList(m_restrictedInstanceGroups.size());
+   for(unsigned restrictedInstanceGroupsIndex = 0; restrictedInstanceGroupsIndex < restrictedInstanceGroupsJsonList.GetLength(); ++restrictedInstanceGroupsIndex)
+   {
+     restrictedInstanceGroupsJsonList[restrictedInstanceGroupsIndex].AsObject(m_restrictedInstanceGroups[restrictedInstanceGroupsIndex].Jsonize());
+   }
+   payload.WithArray("RestrictedInstanceGroups", std::move(restrictedInstanceGroupsJsonList));
+
+  }
+
   if(m_vpcConfigHasBeenSet)
   {
    payload.WithObject("VpcConfig", m_vpcConfig.Jsonize());
@@ -55,6 +58,40 @@ Aws::String CreateClusterRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_orchestratorHasBeenSet)
+  {
+   payload.WithObject("Orchestrator", m_orchestrator.Jsonize());
+
+  }
+
+  if(m_nodeRecoveryHasBeenSet)
+  {
+   payload.WithString("NodeRecovery", ClusterNodeRecoveryMapper::GetNameForClusterNodeRecovery(m_nodeRecovery));
+  }
+
+  if(m_tieredStorageConfigHasBeenSet)
+  {
+   payload.WithObject("TieredStorageConfig", m_tieredStorageConfig.Jsonize());
+
+  }
+
+  if(m_nodeProvisioningModeHasBeenSet)
+  {
+   payload.WithString("NodeProvisioningMode", ClusterNodeProvisioningModeMapper::GetNameForClusterNodeProvisioningMode(m_nodeProvisioningMode));
+  }
+
+  if(m_clusterRoleHasBeenSet)
+  {
+   payload.WithString("ClusterRole", m_clusterRole);
+
+  }
+
+  if(m_autoScalingHasBeenSet)
+  {
+   payload.WithObject("AutoScaling", m_autoScaling.Jsonize());
 
   }
 

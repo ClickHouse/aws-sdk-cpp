@@ -51,20 +51,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* WorkSpacesThinClientClient::SERVICE_NAME = "thinclient";
-const char* WorkSpacesThinClientClient::ALLOCATION_TAG = "WorkSpacesThinClientClient";
+namespace Aws
+{
+  namespace WorkSpacesThinClient
+  {
+    const char SERVICE_NAME[] = "thinclient";
+    const char ALLOCATION_TAG[] = "WorkSpacesThinClientClient";
+  }
+}
+const char* WorkSpacesThinClientClient::GetServiceName() {return SERVICE_NAME;}
+const char* WorkSpacesThinClientClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 WorkSpacesThinClientClient::WorkSpacesThinClientClient(const WorkSpacesThinClient::WorkSpacesThinClientClientConfiguration& clientConfiguration,
                                                        std::shared_ptr<WorkSpacesThinClientEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkSpacesThinClientErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<WorkSpacesThinClientEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -79,8 +86,7 @@ WorkSpacesThinClientClient::WorkSpacesThinClientClient(const AWSCredentials& cre
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkSpacesThinClientErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<WorkSpacesThinClientEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -95,8 +101,7 @@ WorkSpacesThinClientClient::WorkSpacesThinClientClient(const std::shared_ptr<AWS
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkSpacesThinClientErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<WorkSpacesThinClientEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -105,12 +110,11 @@ WorkSpacesThinClientClient::WorkSpacesThinClientClient(const std::shared_ptr<AWS
   WorkSpacesThinClientClient::WorkSpacesThinClientClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkSpacesThinClientErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<WorkSpacesThinClientEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -125,7 +129,6 @@ WorkSpacesThinClientClient::WorkSpacesThinClientClient(const AWSCredentials& cre
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkSpacesThinClientErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<WorkSpacesThinClientEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -140,7 +143,6 @@ WorkSpacesThinClientClient::WorkSpacesThinClientClient(const std::shared_ptr<AWS
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<WorkSpacesThinClientErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<WorkSpacesThinClientEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -160,6 +162,14 @@ std::shared_ptr<WorkSpacesThinClientEndpointProviderBase>& WorkSpacesThinClientC
 void WorkSpacesThinClientClient::init(const WorkSpacesThinClient::WorkSpacesThinClientClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("WorkSpaces Thin Client");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

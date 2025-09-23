@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TreeMapAggregatedFieldWells::TreeMapAggregatedFieldWells() : 
-    m_groupsHasBeenSet(false),
-    m_sizesHasBeenSet(false),
-    m_colorsHasBeenSet(false)
-{
-}
-
-TreeMapAggregatedFieldWells::TreeMapAggregatedFieldWells(JsonView jsonValue) : 
-    m_groupsHasBeenSet(false),
-    m_sizesHasBeenSet(false),
-    m_colorsHasBeenSet(false)
+TreeMapAggregatedFieldWells::TreeMapAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ TreeMapAggregatedFieldWells& TreeMapAggregatedFieldWells::operator =(JsonView js
     }
     m_groupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Sizes"))
   {
     Aws::Utils::Array<JsonView> sizesJsonList = jsonValue.GetArray("Sizes");
@@ -54,7 +43,6 @@ TreeMapAggregatedFieldWells& TreeMapAggregatedFieldWells::operator =(JsonView js
     }
     m_sizesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Colors"))
   {
     Aws::Utils::Array<JsonView> colorsJsonList = jsonValue.GetArray("Colors");
@@ -64,7 +52,6 @@ TreeMapAggregatedFieldWells& TreeMapAggregatedFieldWells::operator =(JsonView js
     }
     m_colorsHasBeenSet = true;
   }
-
   return *this;
 }
 

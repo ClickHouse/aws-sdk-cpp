@@ -20,19 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ClusterDbRevision::ClusterDbRevision() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_currentDatabaseRevisionHasBeenSet(false),
-    m_databaseRevisionReleaseDateHasBeenSet(false),
-    m_revisionTargetsHasBeenSet(false)
-{
-}
-
-ClusterDbRevision::ClusterDbRevision(const XmlNode& xmlNode) : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_currentDatabaseRevisionHasBeenSet(false),
-    m_databaseRevisionReleaseDateHasBeenSet(false),
-    m_revisionTargetsHasBeenSet(false)
+ClusterDbRevision::ClusterDbRevision(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +53,7 @@ ClusterDbRevision& ClusterDbRevision::operator =(const XmlNode& xmlNode)
     if(!revisionTargetsNode.IsNull())
     {
       XmlNode revisionTargetsMember = revisionTargetsNode.FirstChild("RevisionTarget");
+      m_revisionTargetsHasBeenSet = !revisionTargetsMember.IsNull();
       while(!revisionTargetsMember.IsNull())
       {
         m_revisionTargets.push_back(revisionTargetsMember);
@@ -101,7 +90,7 @@ void ClusterDbRevision::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_revisionTargets)
       {
         Aws::StringStream revisionTargetsSs;
-        revisionTargetsSs << location << index << locationValue << ".RevisionTarget." << revisionTargetsIdx++;
+        revisionTargetsSs << location << index << locationValue << ".RevisionTargets.RevisionTarget." << revisionTargetsIdx++;
         item.OutputToStream(oStream, revisionTargetsSs.str().c_str());
       }
   }
@@ -128,7 +117,7 @@ void ClusterDbRevision::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_revisionTargets)
       {
         Aws::StringStream revisionTargetsSs;
-        revisionTargetsSs << location <<  ".RevisionTarget." << revisionTargetsIdx++;
+        revisionTargetsSs << location << ".RevisionTargets.RevisionTarget." << revisionTargetsIdx++;
         item.OutputToStream(oStream, revisionTargetsSs.str().c_str());
       }
   }

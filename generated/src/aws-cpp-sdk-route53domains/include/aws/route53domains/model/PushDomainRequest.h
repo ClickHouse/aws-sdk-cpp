@@ -21,7 +21,7 @@ namespace Model
   class PushDomainRequest : public Route53DomainsRequest
   {
   public:
-    AWS_ROUTE53DOMAINS_API PushDomainRequest();
+    AWS_ROUTE53DOMAINS_API PushDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_ROUTE53DOMAINS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> Name of the domain. </p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p> Name of the domain. </p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    PushDomainRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Name of the domain. </p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p> Name of the domain. </p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p> Name of the domain. </p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p> Name of the domain. </p>
-     */
-    inline PushDomainRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p> Name of the domain. </p>
-     */
-    inline PushDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p> Name of the domain. </p>
-     */
-    inline PushDomainRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> New IPS tag for the domain. </p>
      */
-    inline const Aws::String& GetTarget() const{ return m_target; }
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
+    inline const Aws::String& GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
-    inline void SetTarget(const Aws::String& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
-    inline void SetTarget(Aws::String&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
-    inline void SetTarget(const char* value) { m_targetHasBeenSet = true; m_target.assign(value); }
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
-    inline PushDomainRequest& WithTarget(const Aws::String& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
-    inline PushDomainRequest& WithTarget(Aws::String&& value) { SetTarget(std::move(value)); return *this;}
-
-    /**
-     * <p> New IPS tag for the domain. </p>
-     */
-    inline PushDomainRequest& WithTarget(const char* value) { SetTarget(value); return *this;}
-
+    template<typename TargetT = Aws::String>
+    void SetTarget(TargetT&& value) { m_targetHasBeenSet = true; m_target = std::forward<TargetT>(value); }
+    template<typename TargetT = Aws::String>
+    PushDomainRequest& WithTarget(TargetT&& value) { SetTarget(std::forward<TargetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;

@@ -34,79 +34,36 @@ namespace Model
   class InvokeWithResponseStreamResponseEvent
   {
   public:
-    AWS_LAMBDA_API InvokeWithResponseStreamResponseEvent();
+    AWS_LAMBDA_API InvokeWithResponseStreamResponseEvent() = default;
     AWS_LAMBDA_API InvokeWithResponseStreamResponseEvent(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API InvokeWithResponseStreamResponseEvent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A chunk of the streamed response payload.</p>
      */
-    inline const InvokeResponseStreamUpdate& GetPayloadChunk() const{ return m_payloadChunk; }
-
-    /**
-     * <p>A chunk of the streamed response payload.</p>
-     */
+    inline const InvokeResponseStreamUpdate& GetPayloadChunk() const { return m_payloadChunk; }
     inline bool PayloadChunkHasBeenSet() const { return m_payloadChunkHasBeenSet; }
+    template<typename PayloadChunkT = InvokeResponseStreamUpdate>
+    void SetPayloadChunk(PayloadChunkT&& value) { m_payloadChunkHasBeenSet = true; m_payloadChunk = std::forward<PayloadChunkT>(value); }
+    template<typename PayloadChunkT = InvokeResponseStreamUpdate>
+    InvokeWithResponseStreamResponseEvent& WithPayloadChunk(PayloadChunkT&& value) { SetPayloadChunk(std::forward<PayloadChunkT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A chunk of the streamed response payload.</p>
-     */
-    inline void SetPayloadChunk(const InvokeResponseStreamUpdate& value) { m_payloadChunkHasBeenSet = true; m_payloadChunk = value; }
-
-    /**
-     * <p>A chunk of the streamed response payload.</p>
-     */
-    inline void SetPayloadChunk(InvokeResponseStreamUpdate&& value) { m_payloadChunkHasBeenSet = true; m_payloadChunk = std::move(value); }
-
-    /**
-     * <p>A chunk of the streamed response payload.</p>
-     */
-    inline InvokeWithResponseStreamResponseEvent& WithPayloadChunk(const InvokeResponseStreamUpdate& value) { SetPayloadChunk(value); return *this;}
-
-    /**
-     * <p>A chunk of the streamed response payload.</p>
-     */
-    inline InvokeWithResponseStreamResponseEvent& WithPayloadChunk(InvokeResponseStreamUpdate&& value) { SetPayloadChunk(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that's returned when the stream has ended and all the payload
      * chunks have been returned.</p>
      */
-    inline const InvokeWithResponseStreamCompleteEvent& GetInvokeComplete() const{ return m_invokeComplete; }
-
-    /**
-     * <p>An object that's returned when the stream has ended and all the payload
-     * chunks have been returned.</p>
-     */
+    inline const InvokeWithResponseStreamCompleteEvent& GetInvokeComplete() const { return m_invokeComplete; }
     inline bool InvokeCompleteHasBeenSet() const { return m_invokeCompleteHasBeenSet; }
-
-    /**
-     * <p>An object that's returned when the stream has ended and all the payload
-     * chunks have been returned.</p>
-     */
-    inline void SetInvokeComplete(const InvokeWithResponseStreamCompleteEvent& value) { m_invokeCompleteHasBeenSet = true; m_invokeComplete = value; }
-
-    /**
-     * <p>An object that's returned when the stream has ended and all the payload
-     * chunks have been returned.</p>
-     */
-    inline void SetInvokeComplete(InvokeWithResponseStreamCompleteEvent&& value) { m_invokeCompleteHasBeenSet = true; m_invokeComplete = std::move(value); }
-
-    /**
-     * <p>An object that's returned when the stream has ended and all the payload
-     * chunks have been returned.</p>
-     */
-    inline InvokeWithResponseStreamResponseEvent& WithInvokeComplete(const InvokeWithResponseStreamCompleteEvent& value) { SetInvokeComplete(value); return *this;}
-
-    /**
-     * <p>An object that's returned when the stream has ended and all the payload
-     * chunks have been returned.</p>
-     */
-    inline InvokeWithResponseStreamResponseEvent& WithInvokeComplete(InvokeWithResponseStreamCompleteEvent&& value) { SetInvokeComplete(std::move(value)); return *this;}
-
+    template<typename InvokeCompleteT = InvokeWithResponseStreamCompleteEvent>
+    void SetInvokeComplete(InvokeCompleteT&& value) { m_invokeCompleteHasBeenSet = true; m_invokeComplete = std::forward<InvokeCompleteT>(value); }
+    template<typename InvokeCompleteT = InvokeWithResponseStreamCompleteEvent>
+    InvokeWithResponseStreamResponseEvent& WithInvokeComplete(InvokeCompleteT&& value) { SetInvokeComplete(std::forward<InvokeCompleteT>(value)); return *this;}
+    ///@}
   private:
 
     InvokeResponseStreamUpdate m_payloadChunk;

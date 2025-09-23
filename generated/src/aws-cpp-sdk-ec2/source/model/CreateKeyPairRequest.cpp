@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateKeyPairRequest::CreateKeyPairRequest() : 
-    m_keyNameHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_keyType(KeyType::NOT_SET),
-    m_keyTypeHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_keyFormat(KeyFormat::NOT_SET),
-    m_keyFormatHasBeenSet(false)
-{
-}
-
 Aws::String CreateKeyPairRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -31,14 +19,9 @@ Aws::String CreateKeyPairRequest::SerializePayload() const
     ss << "KeyName=" << StringUtils::URLEncode(m_keyName.c_str()) << "&";
   }
 
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
   if(m_keyTypeHasBeenSet)
   {
-    ss << "KeyType=" << KeyTypeMapper::GetNameForKeyType(m_keyType) << "&";
+    ss << "KeyType=" << StringUtils::URLEncode(KeyTypeMapper::GetNameForKeyType(m_keyType)) << "&";
   }
 
   if(m_tagSpecificationsHasBeenSet)
@@ -53,7 +36,12 @@ Aws::String CreateKeyPairRequest::SerializePayload() const
 
   if(m_keyFormatHasBeenSet)
   {
-    ss << "KeyFormat=" << KeyFormatMapper::GetNameForKeyFormat(m_keyFormat) << "&";
+    ss << "KeyFormat=" << StringUtils::URLEncode(KeyFormatMapper::GetNameForKeyFormat(m_keyFormat)) << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

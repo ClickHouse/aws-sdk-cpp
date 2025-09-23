@@ -32,130 +32,51 @@ namespace Model
   class ActivateReadSetSourceItem
   {
   public:
-    AWS_OMICS_API ActivateReadSetSourceItem();
+    AWS_OMICS_API ActivateReadSetSourceItem() = default;
     AWS_OMICS_API ActivateReadSetSourceItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API ActivateReadSetSourceItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source's read set ID.</p>
      */
-    inline const Aws::String& GetReadSetId() const{ return m_readSetId; }
-
-    /**
-     * <p>The source's read set ID.</p>
-     */
+    inline const Aws::String& GetReadSetId() const { return m_readSetId; }
     inline bool ReadSetIdHasBeenSet() const { return m_readSetIdHasBeenSet; }
+    template<typename ReadSetIdT = Aws::String>
+    void SetReadSetId(ReadSetIdT&& value) { m_readSetIdHasBeenSet = true; m_readSetId = std::forward<ReadSetIdT>(value); }
+    template<typename ReadSetIdT = Aws::String>
+    ActivateReadSetSourceItem& WithReadSetId(ReadSetIdT&& value) { SetReadSetId(std::forward<ReadSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source's read set ID.</p>
-     */
-    inline void SetReadSetId(const Aws::String& value) { m_readSetIdHasBeenSet = true; m_readSetId = value; }
-
-    /**
-     * <p>The source's read set ID.</p>
-     */
-    inline void SetReadSetId(Aws::String&& value) { m_readSetIdHasBeenSet = true; m_readSetId = std::move(value); }
-
-    /**
-     * <p>The source's read set ID.</p>
-     */
-    inline void SetReadSetId(const char* value) { m_readSetIdHasBeenSet = true; m_readSetId.assign(value); }
-
-    /**
-     * <p>The source's read set ID.</p>
-     */
-    inline ActivateReadSetSourceItem& WithReadSetId(const Aws::String& value) { SetReadSetId(value); return *this;}
-
-    /**
-     * <p>The source's read set ID.</p>
-     */
-    inline ActivateReadSetSourceItem& WithReadSetId(Aws::String&& value) { SetReadSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The source's read set ID.</p>
-     */
-    inline ActivateReadSetSourceItem& WithReadSetId(const char* value) { SetReadSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source's status.</p>
      */
-    inline const ReadSetActivationJobItemStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The source's status.</p>
-     */
+    inline ReadSetActivationJobItemStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ReadSetActivationJobItemStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ActivateReadSetSourceItem& WithStatus(ReadSetActivationJobItemStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The source's status.</p>
-     */
-    inline void SetStatus(const ReadSetActivationJobItemStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The source's status.</p>
-     */
-    inline void SetStatus(ReadSetActivationJobItemStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The source's status.</p>
-     */
-    inline ActivateReadSetSourceItem& WithStatus(const ReadSetActivationJobItemStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The source's status.</p>
-     */
-    inline ActivateReadSetSourceItem& WithStatus(ReadSetActivationJobItemStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source's status message.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p>The source's status message.</p>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
-
-    /**
-     * <p>The source's status message.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p>The source's status message.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p>The source's status message.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p>The source's status message.</p>
-     */
-    inline ActivateReadSetSourceItem& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>The source's status message.</p>
-     */
-    inline ActivateReadSetSourceItem& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The source's status message.</p>
-     */
-    inline ActivateReadSetSourceItem& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    ActivateReadSetSourceItem& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_readSetId;
     bool m_readSetIdHasBeenSet = false;
 
-    ReadSetActivationJobItemStatus m_status;
+    ReadSetActivationJobItemStatus m_status{ReadSetActivationJobItemStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusMessage;

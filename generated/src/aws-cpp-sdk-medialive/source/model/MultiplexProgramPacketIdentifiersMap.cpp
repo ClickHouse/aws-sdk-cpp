@@ -18,55 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-MultiplexProgramPacketIdentifiersMap::MultiplexProgramPacketIdentifiersMap() : 
-    m_audioPidsHasBeenSet(false),
-    m_dvbSubPidsHasBeenSet(false),
-    m_dvbTeletextPid(0),
-    m_dvbTeletextPidHasBeenSet(false),
-    m_etvPlatformPid(0),
-    m_etvPlatformPidHasBeenSet(false),
-    m_etvSignalPid(0),
-    m_etvSignalPidHasBeenSet(false),
-    m_klvDataPidsHasBeenSet(false),
-    m_pcrPid(0),
-    m_pcrPidHasBeenSet(false),
-    m_pmtPid(0),
-    m_pmtPidHasBeenSet(false),
-    m_privateMetadataPid(0),
-    m_privateMetadataPidHasBeenSet(false),
-    m_scte27PidsHasBeenSet(false),
-    m_scte35Pid(0),
-    m_scte35PidHasBeenSet(false),
-    m_timedMetadataPid(0),
-    m_timedMetadataPidHasBeenSet(false),
-    m_videoPid(0),
-    m_videoPidHasBeenSet(false)
-{
-}
-
-MultiplexProgramPacketIdentifiersMap::MultiplexProgramPacketIdentifiersMap(JsonView jsonValue) : 
-    m_audioPidsHasBeenSet(false),
-    m_dvbSubPidsHasBeenSet(false),
-    m_dvbTeletextPid(0),
-    m_dvbTeletextPidHasBeenSet(false),
-    m_etvPlatformPid(0),
-    m_etvPlatformPidHasBeenSet(false),
-    m_etvSignalPid(0),
-    m_etvSignalPidHasBeenSet(false),
-    m_klvDataPidsHasBeenSet(false),
-    m_pcrPid(0),
-    m_pcrPidHasBeenSet(false),
-    m_pmtPid(0),
-    m_pmtPidHasBeenSet(false),
-    m_privateMetadataPid(0),
-    m_privateMetadataPidHasBeenSet(false),
-    m_scte27PidsHasBeenSet(false),
-    m_scte35Pid(0),
-    m_scte35PidHasBeenSet(false),
-    m_timedMetadataPid(0),
-    m_timedMetadataPidHasBeenSet(false),
-    m_videoPid(0),
-    m_videoPidHasBeenSet(false)
+MultiplexProgramPacketIdentifiersMap::MultiplexProgramPacketIdentifiersMap(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -82,7 +34,6 @@ MultiplexProgramPacketIdentifiersMap& MultiplexProgramPacketIdentifiersMap::oper
     }
     m_audioPidsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dvbSubPids"))
   {
     Aws::Utils::Array<JsonView> dvbSubPidsJsonList = jsonValue.GetArray("dvbSubPids");
@@ -92,28 +43,21 @@ MultiplexProgramPacketIdentifiersMap& MultiplexProgramPacketIdentifiersMap::oper
     }
     m_dvbSubPidsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dvbTeletextPid"))
   {
     m_dvbTeletextPid = jsonValue.GetInteger("dvbTeletextPid");
-
     m_dvbTeletextPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("etvPlatformPid"))
   {
     m_etvPlatformPid = jsonValue.GetInteger("etvPlatformPid");
-
     m_etvPlatformPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("etvSignalPid"))
   {
     m_etvSignalPid = jsonValue.GetInteger("etvSignalPid");
-
     m_etvSignalPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("klvDataPids"))
   {
     Aws::Utils::Array<JsonView> klvDataPidsJsonList = jsonValue.GetArray("klvDataPids");
@@ -123,28 +67,21 @@ MultiplexProgramPacketIdentifiersMap& MultiplexProgramPacketIdentifiersMap::oper
     }
     m_klvDataPidsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pcrPid"))
   {
     m_pcrPid = jsonValue.GetInteger("pcrPid");
-
     m_pcrPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pmtPid"))
   {
     m_pmtPid = jsonValue.GetInteger("pmtPid");
-
     m_pmtPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("privateMetadataPid"))
   {
     m_privateMetadataPid = jsonValue.GetInteger("privateMetadataPid");
-
     m_privateMetadataPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("scte27Pids"))
   {
     Aws::Utils::Array<JsonView> scte27PidsJsonList = jsonValue.GetArray("scte27Pids");
@@ -154,28 +91,45 @@ MultiplexProgramPacketIdentifiersMap& MultiplexProgramPacketIdentifiersMap::oper
     }
     m_scte27PidsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("scte35Pid"))
   {
     m_scte35Pid = jsonValue.GetInteger("scte35Pid");
-
     m_scte35PidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timedMetadataPid"))
   {
     m_timedMetadataPid = jsonValue.GetInteger("timedMetadataPid");
-
     m_timedMetadataPidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("videoPid"))
   {
     m_videoPid = jsonValue.GetInteger("videoPid");
-
     m_videoPidHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("aribCaptionsPid"))
+  {
+    m_aribCaptionsPid = jsonValue.GetInteger("aribCaptionsPid");
+    m_aribCaptionsPidHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("dvbTeletextPids"))
+  {
+    Aws::Utils::Array<JsonView> dvbTeletextPidsJsonList = jsonValue.GetArray("dvbTeletextPids");
+    for(unsigned dvbTeletextPidsIndex = 0; dvbTeletextPidsIndex < dvbTeletextPidsJsonList.GetLength(); ++dvbTeletextPidsIndex)
+    {
+      m_dvbTeletextPids.push_back(dvbTeletextPidsJsonList[dvbTeletextPidsIndex].AsInteger());
+    }
+    m_dvbTeletextPidsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ecmPid"))
+  {
+    m_ecmPid = jsonValue.GetInteger("ecmPid");
+    m_ecmPidHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("smpte2038Pid"))
+  {
+    m_smpte2038Pid = jsonValue.GetInteger("smpte2038Pid");
+    m_smpte2038PidHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -278,6 +232,35 @@ JsonValue MultiplexProgramPacketIdentifiersMap::Jsonize() const
   if(m_videoPidHasBeenSet)
   {
    payload.WithInteger("videoPid", m_videoPid);
+
+  }
+
+  if(m_aribCaptionsPidHasBeenSet)
+  {
+   payload.WithInteger("aribCaptionsPid", m_aribCaptionsPid);
+
+  }
+
+  if(m_dvbTeletextPidsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> dvbTeletextPidsJsonList(m_dvbTeletextPids.size());
+   for(unsigned dvbTeletextPidsIndex = 0; dvbTeletextPidsIndex < dvbTeletextPidsJsonList.GetLength(); ++dvbTeletextPidsIndex)
+   {
+     dvbTeletextPidsJsonList[dvbTeletextPidsIndex].AsInteger(m_dvbTeletextPids[dvbTeletextPidsIndex]);
+   }
+   payload.WithArray("dvbTeletextPids", std::move(dvbTeletextPidsJsonList));
+
+  }
+
+  if(m_ecmPidHasBeenSet)
+  {
+   payload.WithInteger("ecmPid", m_ecmPid);
+
+  }
+
+  if(m_smpte2038PidHasBeenSet)
+  {
+   payload.WithInteger("smpte2038Pid", m_smpte2038Pid);
 
   }
 

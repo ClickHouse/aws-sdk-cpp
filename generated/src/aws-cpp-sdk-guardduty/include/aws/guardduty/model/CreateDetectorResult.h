@@ -28,106 +28,52 @@ namespace Model
   class CreateDetectorResult
   {
   public:
-    AWS_GUARDDUTY_API CreateDetectorResult();
+    AWS_GUARDDUTY_API CreateDetectorResult() = default;
     AWS_GUARDDUTY_API CreateDetectorResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GUARDDUTY_API CreateDetectorResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique ID of the created detector.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    CreateDetectorResult& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the created detector.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorId = value; }
-
-    /**
-     * <p>The unique ID of the created detector.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the created detector.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorId.assign(value); }
-
-    /**
-     * <p>The unique ID of the created detector.</p>
-     */
-    inline CreateDetectorResult& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the created detector.</p>
-     */
-    inline CreateDetectorResult& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the created detector.</p>
-     */
-    inline CreateDetectorResult& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the data sources that couldn't be enabled when GuardDuty was
      * enabled for the first time.</p>
      */
-    inline const UnprocessedDataSourcesResult& GetUnprocessedDataSources() const{ return m_unprocessedDataSources; }
+    inline const UnprocessedDataSourcesResult& GetUnprocessedDataSources() const { return m_unprocessedDataSources; }
+    template<typename UnprocessedDataSourcesT = UnprocessedDataSourcesResult>
+    void SetUnprocessedDataSources(UnprocessedDataSourcesT&& value) { m_unprocessedDataSourcesHasBeenSet = true; m_unprocessedDataSources = std::forward<UnprocessedDataSourcesT>(value); }
+    template<typename UnprocessedDataSourcesT = UnprocessedDataSourcesResult>
+    CreateDetectorResult& WithUnprocessedDataSources(UnprocessedDataSourcesT&& value) { SetUnprocessedDataSources(std::forward<UnprocessedDataSourcesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the data sources that couldn't be enabled when GuardDuty was
-     * enabled for the first time.</p>
-     */
-    inline void SetUnprocessedDataSources(const UnprocessedDataSourcesResult& value) { m_unprocessedDataSources = value; }
-
-    /**
-     * <p>Specifies the data sources that couldn't be enabled when GuardDuty was
-     * enabled for the first time.</p>
-     */
-    inline void SetUnprocessedDataSources(UnprocessedDataSourcesResult&& value) { m_unprocessedDataSources = std::move(value); }
-
-    /**
-     * <p>Specifies the data sources that couldn't be enabled when GuardDuty was
-     * enabled for the first time.</p>
-     */
-    inline CreateDetectorResult& WithUnprocessedDataSources(const UnprocessedDataSourcesResult& value) { SetUnprocessedDataSources(value); return *this;}
-
-    /**
-     * <p>Specifies the data sources that couldn't be enabled when GuardDuty was
-     * enabled for the first time.</p>
-     */
-    inline CreateDetectorResult& WithUnprocessedDataSources(UnprocessedDataSourcesResult&& value) { SetUnprocessedDataSources(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateDetectorResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateDetectorResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateDetectorResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateDetectorResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorId;
+    bool m_detectorIdHasBeenSet = false;
 
     UnprocessedDataSourcesResult m_unprocessedDataSources;
+    bool m_unprocessedDataSourcesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

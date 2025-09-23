@@ -18,15 +18,7 @@ namespace LexModelBuildingService
 namespace Model
 {
 
-CodeHook::CodeHook() : 
-    m_uriHasBeenSet(false),
-    m_messageVersionHasBeenSet(false)
-{
-}
-
-CodeHook::CodeHook(JsonView jsonValue) : 
-    m_uriHasBeenSet(false),
-    m_messageVersionHasBeenSet(false)
+CodeHook::CodeHook(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CodeHook& CodeHook::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("uri"))
   {
     m_uri = jsonValue.GetString("uri");
-
     m_uriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("messageVersion"))
   {
     m_messageVersion = jsonValue.GetString("messageVersion");
-
     m_messageVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

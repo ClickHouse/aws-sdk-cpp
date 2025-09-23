@@ -23,7 +23,7 @@ namespace Model
   class SubmitMultiRegionAccessPointRoutesRequest : public S3ControlRequest
   {
   public:
-    AWS_S3CONTROL_API SubmitMultiRegionAccessPointRoutesRequest();
+    AWS_S3CONTROL_API SubmitMultiRegionAccessPointRoutesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,152 +42,46 @@ namespace Model
      */
     AWS_S3CONTROL_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
      * Point.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    SubmitMultiRegionAccessPointRoutesRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the owner of the Multi-Region Access
-     * Point.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Multi-Region Access Point ARN.</p>
      */
-    inline const Aws::String& GetMrap() const{ return m_mrap; }
-
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
+    inline const Aws::String& GetMrap() const { return m_mrap; }
     inline bool MrapHasBeenSet() const { return m_mrapHasBeenSet; }
+    template<typename MrapT = Aws::String>
+    void SetMrap(MrapT&& value) { m_mrapHasBeenSet = true; m_mrap = std::forward<MrapT>(value); }
+    template<typename MrapT = Aws::String>
+    SubmitMultiRegionAccessPointRoutesRequest& WithMrap(MrapT&& value) { SetMrap(std::forward<MrapT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
-    inline void SetMrap(const Aws::String& value) { m_mrapHasBeenSet = true; m_mrap = value; }
-
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
-    inline void SetMrap(Aws::String&& value) { m_mrapHasBeenSet = true; m_mrap = std::move(value); }
-
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
-    inline void SetMrap(const char* value) { m_mrapHasBeenSet = true; m_mrap.assign(value); }
-
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithMrap(const Aws::String& value) { SetMrap(value); return *this;}
-
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithMrap(Aws::String&& value) { SetMrap(std::move(value)); return *this;}
-
-    /**
-     * <p>The Multi-Region Access Point ARN.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithMrap(const char* value) { SetMrap(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The different routes that make up the new route configuration. Active routes
      * return a value of <code>100</code>, and passive routes return a value of
      * <code>0</code>.</p>
      */
-    inline const Aws::Vector<MultiRegionAccessPointRoute>& GetRouteUpdates() const{ return m_routeUpdates; }
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
+    inline const Aws::Vector<MultiRegionAccessPointRoute>& GetRouteUpdates() const { return m_routeUpdates; }
     inline bool RouteUpdatesHasBeenSet() const { return m_routeUpdatesHasBeenSet; }
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
-    inline void SetRouteUpdates(const Aws::Vector<MultiRegionAccessPointRoute>& value) { m_routeUpdatesHasBeenSet = true; m_routeUpdates = value; }
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
-    inline void SetRouteUpdates(Aws::Vector<MultiRegionAccessPointRoute>&& value) { m_routeUpdatesHasBeenSet = true; m_routeUpdates = std::move(value); }
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithRouteUpdates(const Aws::Vector<MultiRegionAccessPointRoute>& value) { SetRouteUpdates(value); return *this;}
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& WithRouteUpdates(Aws::Vector<MultiRegionAccessPointRoute>&& value) { SetRouteUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& AddRouteUpdates(const MultiRegionAccessPointRoute& value) { m_routeUpdatesHasBeenSet = true; m_routeUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>The different routes that make up the new route configuration. Active routes
-     * return a value of <code>100</code>, and passive routes return a value of
-     * <code>0</code>.</p>
-     */
-    inline SubmitMultiRegionAccessPointRoutesRequest& AddRouteUpdates(MultiRegionAccessPointRoute&& value) { m_routeUpdatesHasBeenSet = true; m_routeUpdates.push_back(std::move(value)); return *this; }
-
+    template<typename RouteUpdatesT = Aws::Vector<MultiRegionAccessPointRoute>>
+    void SetRouteUpdates(RouteUpdatesT&& value) { m_routeUpdatesHasBeenSet = true; m_routeUpdates = std::forward<RouteUpdatesT>(value); }
+    template<typename RouteUpdatesT = Aws::Vector<MultiRegionAccessPointRoute>>
+    SubmitMultiRegionAccessPointRoutesRequest& WithRouteUpdates(RouteUpdatesT&& value) { SetRouteUpdates(std::forward<RouteUpdatesT>(value)); return *this;}
+    template<typename RouteUpdatesT = MultiRegionAccessPointRoute>
+    SubmitMultiRegionAccessPointRoutesRequest& AddRouteUpdates(RouteUpdatesT&& value) { m_routeUpdatesHasBeenSet = true; m_routeUpdates.emplace_back(std::forward<RouteUpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_accountId;

@@ -18,19 +18,7 @@ namespace FMS
 namespace Model
 {
 
-AwsVPCSecurityGroupViolation::AwsVPCSecurityGroupViolation() : 
-    m_violationTargetHasBeenSet(false),
-    m_violationTargetDescriptionHasBeenSet(false),
-    m_partialMatchesHasBeenSet(false),
-    m_possibleSecurityGroupRemediationActionsHasBeenSet(false)
-{
-}
-
-AwsVPCSecurityGroupViolation::AwsVPCSecurityGroupViolation(JsonView jsonValue) : 
-    m_violationTargetHasBeenSet(false),
-    m_violationTargetDescriptionHasBeenSet(false),
-    m_partialMatchesHasBeenSet(false),
-    m_possibleSecurityGroupRemediationActionsHasBeenSet(false)
+AwsVPCSecurityGroupViolation::AwsVPCSecurityGroupViolation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AwsVPCSecurityGroupViolation& AwsVPCSecurityGroupViolation::operator =(JsonView 
   if(jsonValue.ValueExists("ViolationTarget"))
   {
     m_violationTarget = jsonValue.GetString("ViolationTarget");
-
     m_violationTargetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ViolationTargetDescription"))
   {
     m_violationTargetDescription = jsonValue.GetString("ViolationTargetDescription");
-
     m_violationTargetDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PartialMatches"))
   {
     Aws::Utils::Array<JsonView> partialMatchesJsonList = jsonValue.GetArray("PartialMatches");
@@ -60,7 +44,6 @@ AwsVPCSecurityGroupViolation& AwsVPCSecurityGroupViolation::operator =(JsonView 
     }
     m_partialMatchesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PossibleSecurityGroupRemediationActions"))
   {
     Aws::Utils::Array<JsonView> possibleSecurityGroupRemediationActionsJsonList = jsonValue.GetArray("PossibleSecurityGroupRemediationActions");
@@ -70,7 +53,6 @@ AwsVPCSecurityGroupViolation& AwsVPCSecurityGroupViolation::operator =(JsonView 
     }
     m_possibleSecurityGroupRemediationActionsHasBeenSet = true;
   }
-
   return *this;
 }
 

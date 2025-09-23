@@ -26,7 +26,7 @@ namespace Model
   class CreateCustomMetadataRequest : public WorkDocsRequest
   {
   public:
-    AWS_WORKDOCS_API CreateCustomMetadataRequest();
+    AWS_WORKDOCS_API CreateCustomMetadataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,210 +41,59 @@ namespace Model
     AWS_WORKDOCS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
      * Services administrator credentials to access the API.</p>
      */
-    inline const Aws::String& GetAuthenticationToken() const{ return m_authenticationToken; }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
+    inline const Aws::String& GetAuthenticationToken() const { return m_authenticationToken; }
     inline bool AuthenticationTokenHasBeenSet() const { return m_authenticationTokenHasBeenSet; }
+    template<typename AuthenticationTokenT = Aws::String>
+    void SetAuthenticationToken(AuthenticationTokenT&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::forward<AuthenticationTokenT>(value); }
+    template<typename AuthenticationTokenT = Aws::String>
+    CreateCustomMetadataRequest& WithAuthenticationToken(AuthenticationTokenT&& value) { SetAuthenticationToken(std::forward<AuthenticationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(const Aws::String& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = value; }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(Aws::String&& value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken = std::move(value); }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline void SetAuthenticationToken(const char* value) { m_authenticationTokenHasBeenSet = true; m_authenticationToken.assign(value); }
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline CreateCustomMetadataRequest& WithAuthenticationToken(const Aws::String& value) { SetAuthenticationToken(value); return *this;}
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline CreateCustomMetadataRequest& WithAuthenticationToken(Aws::String&& value) { SetAuthenticationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon WorkDocs authentication token. Not required when using Amazon Web
-     * Services administrator credentials to access the API.</p>
-     */
-    inline CreateCustomMetadataRequest& WithAuthenticationToken(const char* value) { SetAuthenticationToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the resource.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    CreateCustomMetadataRequest& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline CreateCustomMetadataRequest& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline CreateCustomMetadataRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline CreateCustomMetadataRequest& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the version, if the custom metadata is being added to a document
      * version.</p>
      */
-    inline const Aws::String& GetVersionId() const{ return m_versionId; }
-
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
+    inline const Aws::String& GetVersionId() const { return m_versionId; }
     inline bool VersionIdHasBeenSet() const { return m_versionIdHasBeenSet; }
+    template<typename VersionIdT = Aws::String>
+    void SetVersionId(VersionIdT&& value) { m_versionIdHasBeenSet = true; m_versionId = std::forward<VersionIdT>(value); }
+    template<typename VersionIdT = Aws::String>
+    CreateCustomMetadataRequest& WithVersionId(VersionIdT&& value) { SetVersionId(std::forward<VersionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
-    inline void SetVersionId(const Aws::String& value) { m_versionIdHasBeenSet = true; m_versionId = value; }
-
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
-    inline void SetVersionId(Aws::String&& value) { m_versionIdHasBeenSet = true; m_versionId = std::move(value); }
-
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
-    inline void SetVersionId(const char* value) { m_versionIdHasBeenSet = true; m_versionId.assign(value); }
-
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
-    inline CreateCustomMetadataRequest& WithVersionId(const Aws::String& value) { SetVersionId(value); return *this;}
-
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
-    inline CreateCustomMetadataRequest& WithVersionId(Aws::String&& value) { SetVersionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the version, if the custom metadata is being added to a document
-     * version.</p>
-     */
-    inline CreateCustomMetadataRequest& WithVersionId(const char* value) { SetVersionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Custom metadata in the form of name-value pairs.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetCustomMetadata() const{ return m_customMetadata; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetCustomMetadata() const { return m_customMetadata; }
     inline bool CustomMetadataHasBeenSet() const { return m_customMetadataHasBeenSet; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline void SetCustomMetadata(const Aws::Map<Aws::String, Aws::String>& value) { m_customMetadataHasBeenSet = true; m_customMetadata = value; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline void SetCustomMetadata(Aws::Map<Aws::String, Aws::String>&& value) { m_customMetadataHasBeenSet = true; m_customMetadata = std::move(value); }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& WithCustomMetadata(const Aws::Map<Aws::String, Aws::String>& value) { SetCustomMetadata(value); return *this;}
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& WithCustomMetadata(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(const Aws::String& key, const Aws::String& value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(key, value); return *this; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(Aws::String&& key, const Aws::String& value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(const Aws::String& key, Aws::String&& value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(Aws::String&& key, Aws::String&& value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(const char* key, Aws::String&& value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(Aws::String&& key, const char* value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Custom metadata in the form of name-value pairs.</p>
-     */
-    inline CreateCustomMetadataRequest& AddCustomMetadata(const char* key, const char* value) { m_customMetadataHasBeenSet = true; m_customMetadata.emplace(key, value); return *this; }
-
+    template<typename CustomMetadataT = Aws::Map<Aws::String, Aws::String>>
+    void SetCustomMetadata(CustomMetadataT&& value) { m_customMetadataHasBeenSet = true; m_customMetadata = std::forward<CustomMetadataT>(value); }
+    template<typename CustomMetadataT = Aws::Map<Aws::String, Aws::String>>
+    CreateCustomMetadataRequest& WithCustomMetadata(CustomMetadataT&& value) { SetCustomMetadata(std::forward<CustomMetadataT>(value)); return *this;}
+    template<typename CustomMetadataKeyT = Aws::String, typename CustomMetadataValueT = Aws::String>
+    CreateCustomMetadataRequest& AddCustomMetadata(CustomMetadataKeyT&& key, CustomMetadataValueT&& value) {
+      m_customMetadataHasBeenSet = true; m_customMetadata.emplace(std::forward<CustomMetadataKeyT>(key), std::forward<CustomMetadataValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_authenticationToken;

@@ -18,23 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2RouteTableDetails::AwsEc2RouteTableDetails() : 
-    m_associationSetHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_propagatingVgwSetHasBeenSet(false),
-    m_routeTableIdHasBeenSet(false),
-    m_routeSetHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-AwsEc2RouteTableDetails::AwsEc2RouteTableDetails(JsonView jsonValue) : 
-    m_associationSetHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_propagatingVgwSetHasBeenSet(false),
-    m_routeTableIdHasBeenSet(false),
-    m_routeSetHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+AwsEc2RouteTableDetails::AwsEc2RouteTableDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,14 +34,11 @@ AwsEc2RouteTableDetails& AwsEc2RouteTableDetails::operator =(JsonView jsonValue)
     }
     m_associationSetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OwnerId"))
   {
     m_ownerId = jsonValue.GetString("OwnerId");
-
     m_ownerIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PropagatingVgwSet"))
   {
     Aws::Utils::Array<JsonView> propagatingVgwSetJsonList = jsonValue.GetArray("PropagatingVgwSet");
@@ -67,14 +48,11 @@ AwsEc2RouteTableDetails& AwsEc2RouteTableDetails::operator =(JsonView jsonValue)
     }
     m_propagatingVgwSetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RouteTableId"))
   {
     m_routeTableId = jsonValue.GetString("RouteTableId");
-
     m_routeTableIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RouteSet"))
   {
     Aws::Utils::Array<JsonView> routeSetJsonList = jsonValue.GetArray("RouteSet");
@@ -84,14 +62,11 @@ AwsEc2RouteTableDetails& AwsEc2RouteTableDetails::operator =(JsonView jsonValue)
     }
     m_routeSetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcId"))
   {
     m_vpcId = jsonValue.GetString("VpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   return *this;
 }
 

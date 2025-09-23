@@ -18,17 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InventoryAggregator::InventoryAggregator() : 
-    m_expressionHasBeenSet(false),
-    m_aggregatorsHasBeenSet(false),
-    m_groupsHasBeenSet(false)
-{
-}
-
-InventoryAggregator::InventoryAggregator(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false),
-    m_aggregatorsHasBeenSet(false),
-    m_groupsHasBeenSet(false)
+InventoryAggregator::InventoryAggregator(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ InventoryAggregator& InventoryAggregator::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Expression"))
   {
     m_expression = jsonValue.GetString("Expression");
-
     m_expressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Aggregators"))
   {
     Aws::Utils::Array<JsonView> aggregatorsJsonList = jsonValue.GetArray("Aggregators");
@@ -51,7 +39,6 @@ InventoryAggregator& InventoryAggregator::operator =(JsonView jsonValue)
     }
     m_aggregatorsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Groups"))
   {
     Aws::Utils::Array<JsonView> groupsJsonList = jsonValue.GetArray("Groups");
@@ -61,7 +48,6 @@ InventoryAggregator& InventoryAggregator::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   return *this;
 }
 

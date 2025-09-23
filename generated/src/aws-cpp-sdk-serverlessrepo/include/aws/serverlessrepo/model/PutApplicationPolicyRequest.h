@@ -23,7 +23,7 @@ namespace Model
   class PutApplicationPolicyRequest : public ServerlessApplicationRepositoryRequest
   {
   public:
-    AWS_SERVERLESSAPPLICATIONREPOSITORY_API PutApplicationPolicyRequest();
+    AWS_SERVERLESSAPPLICATIONREPOSITORY_API PutApplicationPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,31 @@ namespace Model
     AWS_SERVERLESSAPPLICATIONREPOSITORY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    PutApplicationPolicyRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline PutApplicationPolicyRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline PutApplicationPolicyRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline PutApplicationPolicyRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of policy statements applied to the application.</p>
      */
-    inline const Aws::Vector<ApplicationPolicyStatement>& GetStatements() const{ return m_statements; }
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
+    inline const Aws::Vector<ApplicationPolicyStatement>& GetStatements() const { return m_statements; }
     inline bool StatementsHasBeenSet() const { return m_statementsHasBeenSet; }
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
-    inline void SetStatements(const Aws::Vector<ApplicationPolicyStatement>& value) { m_statementsHasBeenSet = true; m_statements = value; }
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
-    inline void SetStatements(Aws::Vector<ApplicationPolicyStatement>&& value) { m_statementsHasBeenSet = true; m_statements = std::move(value); }
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
-    inline PutApplicationPolicyRequest& WithStatements(const Aws::Vector<ApplicationPolicyStatement>& value) { SetStatements(value); return *this;}
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
-    inline PutApplicationPolicyRequest& WithStatements(Aws::Vector<ApplicationPolicyStatement>&& value) { SetStatements(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
-    inline PutApplicationPolicyRequest& AddStatements(const ApplicationPolicyStatement& value) { m_statementsHasBeenSet = true; m_statements.push_back(value); return *this; }
-
-    /**
-     * <p>An array of policy statements applied to the application.</p>
-     */
-    inline PutApplicationPolicyRequest& AddStatements(ApplicationPolicyStatement&& value) { m_statementsHasBeenSet = true; m_statements.push_back(std::move(value)); return *this; }
-
+    template<typename StatementsT = Aws::Vector<ApplicationPolicyStatement>>
+    void SetStatements(StatementsT&& value) { m_statementsHasBeenSet = true; m_statements = std::forward<StatementsT>(value); }
+    template<typename StatementsT = Aws::Vector<ApplicationPolicyStatement>>
+    PutApplicationPolicyRequest& WithStatements(StatementsT&& value) { SetStatements(std::forward<StatementsT>(value)); return *this;}
+    template<typename StatementsT = ApplicationPolicyStatement>
+    PutApplicationPolicyRequest& AddStatements(StatementsT&& value) { m_statementsHasBeenSet = true; m_statements.emplace_back(std::forward<StatementsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_applicationId;

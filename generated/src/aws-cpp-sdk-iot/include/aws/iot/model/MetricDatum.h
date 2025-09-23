@@ -32,76 +32,38 @@ namespace Model
   class MetricDatum
   {
   public:
-    AWS_IOT_API MetricDatum();
+    AWS_IOT_API MetricDatum() = default;
     AWS_IOT_API MetricDatum(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API MetricDatum& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time the metric value was reported.</p>
      */
-    inline const Aws::Utils::DateTime& GetTimestamp() const{ return m_timestamp; }
-
-    /**
-     * <p>The time the metric value was reported.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTimestamp() const { return m_timestamp; }
     inline bool TimestampHasBeenSet() const { return m_timestampHasBeenSet; }
+    template<typename TimestampT = Aws::Utils::DateTime>
+    void SetTimestamp(TimestampT&& value) { m_timestampHasBeenSet = true; m_timestamp = std::forward<TimestampT>(value); }
+    template<typename TimestampT = Aws::Utils::DateTime>
+    MetricDatum& WithTimestamp(TimestampT&& value) { SetTimestamp(std::forward<TimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the metric value was reported.</p>
-     */
-    inline void SetTimestamp(const Aws::Utils::DateTime& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
-
-    /**
-     * <p>The time the metric value was reported.</p>
-     */
-    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
-
-    /**
-     * <p>The time the metric value was reported.</p>
-     */
-    inline MetricDatum& WithTimestamp(const Aws::Utils::DateTime& value) { SetTimestamp(value); return *this;}
-
-    /**
-     * <p>The time the metric value was reported.</p>
-     */
-    inline MetricDatum& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value reported for the metric.</p>
      */
-    inline const MetricValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value reported for the metric.</p>
-     */
+    inline const MetricValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value reported for the metric.</p>
-     */
-    inline void SetValue(const MetricValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value reported for the metric.</p>
-     */
-    inline void SetValue(MetricValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value reported for the metric.</p>
-     */
-    inline MetricDatum& WithValue(const MetricValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value reported for the metric.</p>
-     */
-    inline MetricDatum& WithValue(MetricValue&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = MetricValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = MetricValue>
+    MetricDatum& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_timestamp;
+    Aws::Utils::DateTime m_timestamp{};
     bool m_timestampHasBeenSet = false;
 
     MetricValue m_value;

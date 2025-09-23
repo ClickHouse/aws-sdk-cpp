@@ -34,91 +34,38 @@ namespace Model
   class MetricKeyDataPoints
   {
   public:
-    AWS_PI_API MetricKeyDataPoints();
+    AWS_PI_API MetricKeyDataPoints() = default;
     AWS_PI_API MetricKeyDataPoints(Aws::Utils::Json::JsonView jsonValue);
     AWS_PI_API MetricKeyDataPoints& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PI_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dimensions to which the data points apply.</p>
      */
-    inline const ResponseResourceMetricKey& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The dimensions to which the data points apply.</p>
-     */
+    inline const ResponseResourceMetricKey& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = ResponseResourceMetricKey>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = ResponseResourceMetricKey>
+    MetricKeyDataPoints& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dimensions to which the data points apply.</p>
-     */
-    inline void SetKey(const ResponseResourceMetricKey& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The dimensions to which the data points apply.</p>
-     */
-    inline void SetKey(ResponseResourceMetricKey&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The dimensions to which the data points apply.</p>
-     */
-    inline MetricKeyDataPoints& WithKey(const ResponseResourceMetricKey& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The dimensions to which the data points apply.</p>
-     */
-    inline MetricKeyDataPoints& WithKey(ResponseResourceMetricKey&& value) { SetKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of timestamp-value pairs, representing measurements over a period of
      * time.</p>
      */
-    inline const Aws::Vector<DataPoint>& GetDataPoints() const{ return m_dataPoints; }
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
+    inline const Aws::Vector<DataPoint>& GetDataPoints() const { return m_dataPoints; }
     inline bool DataPointsHasBeenSet() const { return m_dataPointsHasBeenSet; }
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
-    inline void SetDataPoints(const Aws::Vector<DataPoint>& value) { m_dataPointsHasBeenSet = true; m_dataPoints = value; }
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
-    inline void SetDataPoints(Aws::Vector<DataPoint>&& value) { m_dataPointsHasBeenSet = true; m_dataPoints = std::move(value); }
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
-    inline MetricKeyDataPoints& WithDataPoints(const Aws::Vector<DataPoint>& value) { SetDataPoints(value); return *this;}
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
-    inline MetricKeyDataPoints& WithDataPoints(Aws::Vector<DataPoint>&& value) { SetDataPoints(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
-    inline MetricKeyDataPoints& AddDataPoints(const DataPoint& value) { m_dataPointsHasBeenSet = true; m_dataPoints.push_back(value); return *this; }
-
-    /**
-     * <p>An array of timestamp-value pairs, representing measurements over a period of
-     * time.</p>
-     */
-    inline MetricKeyDataPoints& AddDataPoints(DataPoint&& value) { m_dataPointsHasBeenSet = true; m_dataPoints.push_back(std::move(value)); return *this; }
-
+    template<typename DataPointsT = Aws::Vector<DataPoint>>
+    void SetDataPoints(DataPointsT&& value) { m_dataPointsHasBeenSet = true; m_dataPoints = std::forward<DataPointsT>(value); }
+    template<typename DataPointsT = Aws::Vector<DataPoint>>
+    MetricKeyDataPoints& WithDataPoints(DataPointsT&& value) { SetDataPoints(std::forward<DataPointsT>(value)); return *this;}
+    template<typename DataPointsT = DataPoint>
+    MetricKeyDataPoints& AddDataPoints(DataPointsT&& value) { m_dataPointsHasBeenSet = true; m_dataPoints.emplace_back(std::forward<DataPointsT>(value)); return *this; }
+    ///@}
   private:
 
     ResponseResourceMetricKey m_key;

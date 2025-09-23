@@ -33,33 +33,23 @@ namespace Model
   class AlarmConfiguration
   {
   public:
-    AWS_CODEDEPLOY_API AlarmConfiguration();
+    AWS_CODEDEPLOY_API AlarmConfiguration() = default;
     AWS_CODEDEPLOY_API AlarmConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API AlarmConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether the alarm configuration is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Indicates whether the alarm configuration is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the alarm configuration is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Indicates whether the alarm configuration is enabled.</p>
-     */
     inline AlarmConfiguration& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether a deployment should continue if information about the
      * current state of alarms cannot be retrieved from Amazon CloudWatch. The default
@@ -68,93 +58,32 @@ namespace Model
      * </li> <li> <p> <code>false</code>: The deployment stops if alarm status
      * information can't be retrieved from Amazon CloudWatch.</p> </li> </ul>
      */
-    inline bool GetIgnorePollAlarmFailure() const{ return m_ignorePollAlarmFailure; }
-
-    /**
-     * <p>Indicates whether a deployment should continue if information about the
-     * current state of alarms cannot be retrieved from Amazon CloudWatch. The default
-     * value is false.</p> <ul> <li> <p> <code>true</code>: The deployment proceeds
-     * even if alarm status information can't be retrieved from Amazon CloudWatch.</p>
-     * </li> <li> <p> <code>false</code>: The deployment stops if alarm status
-     * information can't be retrieved from Amazon CloudWatch.</p> </li> </ul>
-     */
+    inline bool GetIgnorePollAlarmFailure() const { return m_ignorePollAlarmFailure; }
     inline bool IgnorePollAlarmFailureHasBeenSet() const { return m_ignorePollAlarmFailureHasBeenSet; }
-
-    /**
-     * <p>Indicates whether a deployment should continue if information about the
-     * current state of alarms cannot be retrieved from Amazon CloudWatch. The default
-     * value is false.</p> <ul> <li> <p> <code>true</code>: The deployment proceeds
-     * even if alarm status information can't be retrieved from Amazon CloudWatch.</p>
-     * </li> <li> <p> <code>false</code>: The deployment stops if alarm status
-     * information can't be retrieved from Amazon CloudWatch.</p> </li> </ul>
-     */
     inline void SetIgnorePollAlarmFailure(bool value) { m_ignorePollAlarmFailureHasBeenSet = true; m_ignorePollAlarmFailure = value; }
-
-    /**
-     * <p>Indicates whether a deployment should continue if information about the
-     * current state of alarms cannot be retrieved from Amazon CloudWatch. The default
-     * value is false.</p> <ul> <li> <p> <code>true</code>: The deployment proceeds
-     * even if alarm status information can't be retrieved from Amazon CloudWatch.</p>
-     * </li> <li> <p> <code>false</code>: The deployment stops if alarm status
-     * information can't be retrieved from Amazon CloudWatch.</p> </li> </ul>
-     */
     inline AlarmConfiguration& WithIgnorePollAlarmFailure(bool value) { SetIgnorePollAlarmFailure(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of alarms configured for the deployment or deployment group. A maximum
      * of 10 alarms can be added.</p>
      */
-    inline const Aws::Vector<Alarm>& GetAlarms() const{ return m_alarms; }
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
+    inline const Aws::Vector<Alarm>& GetAlarms() const { return m_alarms; }
     inline bool AlarmsHasBeenSet() const { return m_alarmsHasBeenSet; }
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
-    inline void SetAlarms(const Aws::Vector<Alarm>& value) { m_alarmsHasBeenSet = true; m_alarms = value; }
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
-    inline void SetAlarms(Aws::Vector<Alarm>&& value) { m_alarmsHasBeenSet = true; m_alarms = std::move(value); }
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
-    inline AlarmConfiguration& WithAlarms(const Aws::Vector<Alarm>& value) { SetAlarms(value); return *this;}
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
-    inline AlarmConfiguration& WithAlarms(Aws::Vector<Alarm>&& value) { SetAlarms(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
-    inline AlarmConfiguration& AddAlarms(const Alarm& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(value); return *this; }
-
-    /**
-     * <p>A list of alarms configured for the deployment or deployment group. A maximum
-     * of 10 alarms can be added.</p>
-     */
-    inline AlarmConfiguration& AddAlarms(Alarm&& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(std::move(value)); return *this; }
-
+    template<typename AlarmsT = Aws::Vector<Alarm>>
+    void SetAlarms(AlarmsT&& value) { m_alarmsHasBeenSet = true; m_alarms = std::forward<AlarmsT>(value); }
+    template<typename AlarmsT = Aws::Vector<Alarm>>
+    AlarmConfiguration& WithAlarms(AlarmsT&& value) { SetAlarms(std::forward<AlarmsT>(value)); return *this;}
+    template<typename AlarmsT = Alarm>
+    AlarmConfiguration& AddAlarms(AlarmsT&& value) { m_alarmsHasBeenSet = true; m_alarms.emplace_back(std::forward<AlarmsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
-    bool m_ignorePollAlarmFailure;
+    bool m_ignorePollAlarmFailure{false};
     bool m_ignorePollAlarmFailureHasBeenSet = false;
 
     Aws::Vector<Alarm> m_alarms;

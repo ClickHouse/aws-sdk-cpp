@@ -23,7 +23,7 @@ namespace Model
   class CreateTemplateSyncConfigRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API CreateTemplateSyncConfigRequest();
+    AWS_PROTON_API CreateTemplateSyncConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,247 +36,75 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The repository branch for your template.</p>
      */
-    inline const Aws::String& GetBranch() const{ return m_branch; }
-
-    /**
-     * <p>The repository branch for your template.</p>
-     */
+    inline const Aws::String& GetBranch() const { return m_branch; }
     inline bool BranchHasBeenSet() const { return m_branchHasBeenSet; }
+    template<typename BranchT = Aws::String>
+    void SetBranch(BranchT&& value) { m_branchHasBeenSet = true; m_branch = std::forward<BranchT>(value); }
+    template<typename BranchT = Aws::String>
+    CreateTemplateSyncConfigRequest& WithBranch(BranchT&& value) { SetBranch(std::forward<BranchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The repository branch for your template.</p>
-     */
-    inline void SetBranch(const Aws::String& value) { m_branchHasBeenSet = true; m_branch = value; }
-
-    /**
-     * <p>The repository branch for your template.</p>
-     */
-    inline void SetBranch(Aws::String&& value) { m_branchHasBeenSet = true; m_branch = std::move(value); }
-
-    /**
-     * <p>The repository branch for your template.</p>
-     */
-    inline void SetBranch(const char* value) { m_branchHasBeenSet = true; m_branch.assign(value); }
-
-    /**
-     * <p>The repository branch for your template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithBranch(const Aws::String& value) { SetBranch(value); return *this;}
-
-    /**
-     * <p>The repository branch for your template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithBranch(Aws::String&& value) { SetBranch(std::move(value)); return *this;}
-
-    /**
-     * <p>The repository branch for your template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithBranch(const char* value) { SetBranch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    CreateTemplateSyncConfigRequest& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The repository name (for example, <code>myrepos/myrepo</code>).</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The provider type for your repository.</p>
      */
-    inline const RepositoryProvider& GetRepositoryProvider() const{ return m_repositoryProvider; }
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
+    inline RepositoryProvider GetRepositoryProvider() const { return m_repositoryProvider; }
     inline bool RepositoryProviderHasBeenSet() const { return m_repositoryProviderHasBeenSet; }
+    inline void SetRepositoryProvider(RepositoryProvider value) { m_repositoryProviderHasBeenSet = true; m_repositoryProvider = value; }
+    inline CreateTemplateSyncConfigRequest& WithRepositoryProvider(RepositoryProvider value) { SetRepositoryProvider(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline void SetRepositoryProvider(const RepositoryProvider& value) { m_repositoryProviderHasBeenSet = true; m_repositoryProvider = value; }
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline void SetRepositoryProvider(RepositoryProvider&& value) { m_repositoryProviderHasBeenSet = true; m_repositoryProvider = std::move(value); }
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithRepositoryProvider(const RepositoryProvider& value) { SetRepositoryProvider(value); return *this;}
-
-    /**
-     * <p>The provider type for your repository.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithRepositoryProvider(RepositoryProvider&& value) { SetRepositoryProvider(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A repository subdirectory path to your template bundle directory. When
      * included, Proton limits the template bundle search to this repository
      * directory.</p>
      */
-    inline const Aws::String& GetSubdirectory() const{ return m_subdirectory; }
-
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
+    inline const Aws::String& GetSubdirectory() const { return m_subdirectory; }
     inline bool SubdirectoryHasBeenSet() const { return m_subdirectoryHasBeenSet; }
+    template<typename SubdirectoryT = Aws::String>
+    void SetSubdirectory(SubdirectoryT&& value) { m_subdirectoryHasBeenSet = true; m_subdirectory = std::forward<SubdirectoryT>(value); }
+    template<typename SubdirectoryT = Aws::String>
+    CreateTemplateSyncConfigRequest& WithSubdirectory(SubdirectoryT&& value) { SetSubdirectory(std::forward<SubdirectoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
-    inline void SetSubdirectory(const Aws::String& value) { m_subdirectoryHasBeenSet = true; m_subdirectory = value; }
-
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
-    inline void SetSubdirectory(Aws::String&& value) { m_subdirectoryHasBeenSet = true; m_subdirectory = std::move(value); }
-
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
-    inline void SetSubdirectory(const char* value) { m_subdirectoryHasBeenSet = true; m_subdirectory.assign(value); }
-
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithSubdirectory(const Aws::String& value) { SetSubdirectory(value); return *this;}
-
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithSubdirectory(Aws::String&& value) { SetSubdirectory(std::move(value)); return *this;}
-
-    /**
-     * <p>A repository subdirectory path to your template bundle directory. When
-     * included, Proton limits the template bundle search to this repository
-     * directory.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithSubdirectory(const char* value) { SetSubdirectory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of your registered template.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of your registered template.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    CreateTemplateSyncConfigRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your registered template.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of your registered template.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of your registered template.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The name of your registered template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of your registered template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your registered template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the registered template.</p>
      */
-    inline const TemplateType& GetTemplateType() const{ return m_templateType; }
-
-    /**
-     * <p>The type of the registered template.</p>
-     */
+    inline TemplateType GetTemplateType() const { return m_templateType; }
     inline bool TemplateTypeHasBeenSet() const { return m_templateTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the registered template.</p>
-     */
-    inline void SetTemplateType(const TemplateType& value) { m_templateTypeHasBeenSet = true; m_templateType = value; }
-
-    /**
-     * <p>The type of the registered template.</p>
-     */
-    inline void SetTemplateType(TemplateType&& value) { m_templateTypeHasBeenSet = true; m_templateType = std::move(value); }
-
-    /**
-     * <p>The type of the registered template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithTemplateType(const TemplateType& value) { SetTemplateType(value); return *this;}
-
-    /**
-     * <p>The type of the registered template.</p>
-     */
-    inline CreateTemplateSyncConfigRequest& WithTemplateType(TemplateType&& value) { SetTemplateType(std::move(value)); return *this;}
-
+    inline void SetTemplateType(TemplateType value) { m_templateTypeHasBeenSet = true; m_templateType = value; }
+    inline CreateTemplateSyncConfigRequest& WithTemplateType(TemplateType value) { SetTemplateType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_branch;
@@ -285,7 +113,7 @@ namespace Model
     Aws::String m_repositoryName;
     bool m_repositoryNameHasBeenSet = false;
 
-    RepositoryProvider m_repositoryProvider;
+    RepositoryProvider m_repositoryProvider{RepositoryProvider::NOT_SET};
     bool m_repositoryProviderHasBeenSet = false;
 
     Aws::String m_subdirectory;
@@ -294,7 +122,7 @@ namespace Model
     Aws::String m_templateName;
     bool m_templateNameHasBeenSet = false;
 
-    TemplateType m_templateType;
+    TemplateType m_templateType{TemplateType::NOT_SET};
     bool m_templateTypeHasBeenSet = false;
   };
 

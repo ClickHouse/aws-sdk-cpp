@@ -35,104 +35,45 @@ namespace Model
   class BatchListPolicyAttachments
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchListPolicyAttachments();
+    AWS_CLOUDDIRECTORY_API BatchListPolicyAttachments() = default;
     AWS_CLOUDDIRECTORY_API BatchListPolicyAttachments(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchListPolicyAttachments& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The reference that identifies the policy object.</p>
      */
-    inline const ObjectReference& GetPolicyReference() const{ return m_policyReference; }
-
-    /**
-     * <p>The reference that identifies the policy object.</p>
-     */
+    inline const ObjectReference& GetPolicyReference() const { return m_policyReference; }
     inline bool PolicyReferenceHasBeenSet() const { return m_policyReferenceHasBeenSet; }
+    template<typename PolicyReferenceT = ObjectReference>
+    void SetPolicyReference(PolicyReferenceT&& value) { m_policyReferenceHasBeenSet = true; m_policyReference = std::forward<PolicyReferenceT>(value); }
+    template<typename PolicyReferenceT = ObjectReference>
+    BatchListPolicyAttachments& WithPolicyReference(PolicyReferenceT&& value) { SetPolicyReference(std::forward<PolicyReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference that identifies the policy object.</p>
-     */
-    inline void SetPolicyReference(const ObjectReference& value) { m_policyReferenceHasBeenSet = true; m_policyReference = value; }
-
-    /**
-     * <p>The reference that identifies the policy object.</p>
-     */
-    inline void SetPolicyReference(ObjectReference&& value) { m_policyReferenceHasBeenSet = true; m_policyReference = std::move(value); }
-
-    /**
-     * <p>The reference that identifies the policy object.</p>
-     */
-    inline BatchListPolicyAttachments& WithPolicyReference(const ObjectReference& value) { SetPolicyReference(value); return *this;}
-
-    /**
-     * <p>The reference that identifies the policy object.</p>
-     */
-    inline BatchListPolicyAttachments& WithPolicyReference(ObjectReference&& value) { SetPolicyReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    BatchListPolicyAttachments& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListPolicyAttachments& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListPolicyAttachments& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListPolicyAttachments& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to retrieve.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline BatchListPolicyAttachments& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     ObjectReference m_policyReference;
@@ -141,7 +82,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

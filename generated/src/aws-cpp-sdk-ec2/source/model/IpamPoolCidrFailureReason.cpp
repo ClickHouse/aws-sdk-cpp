@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamPoolCidrFailureReason::IpamPoolCidrFailureReason() : 
-    m_code(IpamPoolCidrFailureCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-IpamPoolCidrFailureReason::IpamPoolCidrFailureReason(const XmlNode& xmlNode) : 
-    m_code(IpamPoolCidrFailureCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+IpamPoolCidrFailureReason::IpamPoolCidrFailureReason(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ IpamPoolCidrFailureReason& IpamPoolCidrFailureReason::operator =(const XmlNode& 
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = IpamPoolCidrFailureCodeMapper::GetIpamPoolCidrFailureCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = IpamPoolCidrFailureCodeMapper::GetIpamPoolCidrFailureCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void IpamPoolCidrFailureReason::OutputToStream(Aws::OStream& oStream, const char
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << IpamPoolCidrFailureCodeMapper::GetNameForIpamPoolCidrFailureCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(IpamPoolCidrFailureCodeMapper::GetNameForIpamPoolCidrFailureCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void IpamPoolCidrFailureReason::OutputToStream(Aws::OStream& oStream, const char
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << IpamPoolCidrFailureCodeMapper::GetNameForIpamPoolCidrFailureCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(IpamPoolCidrFailureCodeMapper::GetNameForIpamPoolCidrFailureCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

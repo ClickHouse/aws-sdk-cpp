@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-ParticipantDetailsToAdd::ParticipantDetailsToAdd() : 
-    m_participantRole(ParticipantRole::NOT_SET),
-    m_participantRoleHasBeenSet(false),
-    m_displayNameHasBeenSet(false)
-{
-}
-
-ParticipantDetailsToAdd::ParticipantDetailsToAdd(JsonView jsonValue) : 
-    m_participantRole(ParticipantRole::NOT_SET),
-    m_participantRoleHasBeenSet(false),
-    m_displayNameHasBeenSet(false)
+ParticipantDetailsToAdd::ParticipantDetailsToAdd(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ ParticipantDetailsToAdd& ParticipantDetailsToAdd::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ParticipantRole"))
   {
     m_participantRole = ParticipantRoleMapper::GetParticipantRoleForName(jsonValue.GetString("ParticipantRole"));
-
     m_participantRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ParticipantCapabilities"))
+  {
+    m_participantCapabilities = jsonValue.GetObject("ParticipantCapabilities");
+    m_participantCapabilitiesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -64,6 +55,12 @@ JsonValue ParticipantDetailsToAdd::Jsonize() const
   if(m_displayNameHasBeenSet)
   {
    payload.WithString("DisplayName", m_displayName);
+
+  }
+
+  if(m_participantCapabilitiesHasBeenSet)
+  {
+   payload.WithObject("ParticipantCapabilities", m_participantCapabilities.Jsonize());
 
   }
 

@@ -35,230 +35,76 @@ namespace Model
   class KxDatabaseConfiguration
   {
   public:
-    AWS_FINSPACE_API KxDatabaseConfiguration();
+    AWS_FINSPACE_API KxDatabaseConfiguration() = default;
     AWS_FINSPACE_API KxDatabaseConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API KxDatabaseConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the kdb database. When this parameter is specified in the
      * structure, S3 with the whole database is included by default.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    KxDatabaseConfiguration& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
-    inline KxDatabaseConfiguration& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
-    inline KxDatabaseConfiguration& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the kdb database. When this parameter is specified in the
-     * structure, S3 with the whole database is included by default.</p>
-     */
-    inline KxDatabaseConfiguration& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration details for the disk cache used to increase performance reading
      * from a kdb database mounted to the cluster.</p>
      */
-    inline const Aws::Vector<KxDatabaseCacheConfiguration>& GetCacheConfigurations() const{ return m_cacheConfigurations; }
-
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
+    inline const Aws::Vector<KxDatabaseCacheConfiguration>& GetCacheConfigurations() const { return m_cacheConfigurations; }
     inline bool CacheConfigurationsHasBeenSet() const { return m_cacheConfigurationsHasBeenSet; }
+    template<typename CacheConfigurationsT = Aws::Vector<KxDatabaseCacheConfiguration>>
+    void SetCacheConfigurations(CacheConfigurationsT&& value) { m_cacheConfigurationsHasBeenSet = true; m_cacheConfigurations = std::forward<CacheConfigurationsT>(value); }
+    template<typename CacheConfigurationsT = Aws::Vector<KxDatabaseCacheConfiguration>>
+    KxDatabaseConfiguration& WithCacheConfigurations(CacheConfigurationsT&& value) { SetCacheConfigurations(std::forward<CacheConfigurationsT>(value)); return *this;}
+    template<typename CacheConfigurationsT = KxDatabaseCacheConfiguration>
+    KxDatabaseConfiguration& AddCacheConfigurations(CacheConfigurationsT&& value) { m_cacheConfigurationsHasBeenSet = true; m_cacheConfigurations.emplace_back(std::forward<CacheConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
-    inline void SetCacheConfigurations(const Aws::Vector<KxDatabaseCacheConfiguration>& value) { m_cacheConfigurationsHasBeenSet = true; m_cacheConfigurations = value; }
-
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
-    inline void SetCacheConfigurations(Aws::Vector<KxDatabaseCacheConfiguration>&& value) { m_cacheConfigurationsHasBeenSet = true; m_cacheConfigurations = std::move(value); }
-
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& WithCacheConfigurations(const Aws::Vector<KxDatabaseCacheConfiguration>& value) { SetCacheConfigurations(value); return *this;}
-
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& WithCacheConfigurations(Aws::Vector<KxDatabaseCacheConfiguration>&& value) { SetCacheConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& AddCacheConfigurations(const KxDatabaseCacheConfiguration& value) { m_cacheConfigurationsHasBeenSet = true; m_cacheConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>Configuration details for the disk cache used to increase performance reading
-     * from a kdb database mounted to the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& AddCacheConfigurations(KxDatabaseCacheConfiguration&& value) { m_cacheConfigurationsHasBeenSet = true; m_cacheConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A unique identifier of the changeset that is associated with the cluster.</p>
      */
-    inline const Aws::String& GetChangesetId() const{ return m_changesetId; }
-
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
+    inline const Aws::String& GetChangesetId() const { return m_changesetId; }
     inline bool ChangesetIdHasBeenSet() const { return m_changesetIdHasBeenSet; }
+    template<typename ChangesetIdT = Aws::String>
+    void SetChangesetId(ChangesetIdT&& value) { m_changesetIdHasBeenSet = true; m_changesetId = std::forward<ChangesetIdT>(value); }
+    template<typename ChangesetIdT = Aws::String>
+    KxDatabaseConfiguration& WithChangesetId(ChangesetIdT&& value) { SetChangesetId(std::forward<ChangesetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
-    inline void SetChangesetId(const Aws::String& value) { m_changesetIdHasBeenSet = true; m_changesetId = value; }
-
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
-    inline void SetChangesetId(Aws::String&& value) { m_changesetIdHasBeenSet = true; m_changesetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
-    inline void SetChangesetId(const char* value) { m_changesetIdHasBeenSet = true; m_changesetId.assign(value); }
-
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& WithChangesetId(const Aws::String& value) { SetChangesetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& WithChangesetId(Aws::String&& value) { SetChangesetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier of the changeset that is associated with the cluster.</p>
-     */
-    inline KxDatabaseConfiguration& WithChangesetId(const char* value) { SetChangesetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the dataview to be used for caching historical data on disk.
      * </p>
      */
-    inline const Aws::String& GetDataviewName() const{ return m_dataviewName; }
-
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
+    inline const Aws::String& GetDataviewName() const { return m_dataviewName; }
     inline bool DataviewNameHasBeenSet() const { return m_dataviewNameHasBeenSet; }
+    template<typename DataviewNameT = Aws::String>
+    void SetDataviewName(DataviewNameT&& value) { m_dataviewNameHasBeenSet = true; m_dataviewName = std::forward<DataviewNameT>(value); }
+    template<typename DataviewNameT = Aws::String>
+    KxDatabaseConfiguration& WithDataviewName(DataviewNameT&& value) { SetDataviewName(std::forward<DataviewNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
-    inline void SetDataviewName(const Aws::String& value) { m_dataviewNameHasBeenSet = true; m_dataviewName = value; }
-
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
-    inline void SetDataviewName(Aws::String&& value) { m_dataviewNameHasBeenSet = true; m_dataviewName = std::move(value); }
-
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
-    inline void SetDataviewName(const char* value) { m_dataviewNameHasBeenSet = true; m_dataviewName.assign(value); }
-
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
-    inline KxDatabaseConfiguration& WithDataviewName(const Aws::String& value) { SetDataviewName(value); return *this;}
-
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
-    inline KxDatabaseConfiguration& WithDataviewName(Aws::String&& value) { SetDataviewName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the dataview to be used for caching historical data on disk.
-     * </p>
-     */
-    inline KxDatabaseConfiguration& WithDataviewName(const char* value) { SetDataviewName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The configuration of the dataview to be used with specified cluster. </p>
      */
-    inline const KxDataviewConfiguration& GetDataviewConfiguration() const{ return m_dataviewConfiguration; }
-
-    /**
-     * <p> The configuration of the dataview to be used with specified cluster. </p>
-     */
+    inline const KxDataviewConfiguration& GetDataviewConfiguration() const { return m_dataviewConfiguration; }
     inline bool DataviewConfigurationHasBeenSet() const { return m_dataviewConfigurationHasBeenSet; }
-
-    /**
-     * <p> The configuration of the dataview to be used with specified cluster. </p>
-     */
-    inline void SetDataviewConfiguration(const KxDataviewConfiguration& value) { m_dataviewConfigurationHasBeenSet = true; m_dataviewConfiguration = value; }
-
-    /**
-     * <p> The configuration of the dataview to be used with specified cluster. </p>
-     */
-    inline void SetDataviewConfiguration(KxDataviewConfiguration&& value) { m_dataviewConfigurationHasBeenSet = true; m_dataviewConfiguration = std::move(value); }
-
-    /**
-     * <p> The configuration of the dataview to be used with specified cluster. </p>
-     */
-    inline KxDatabaseConfiguration& WithDataviewConfiguration(const KxDataviewConfiguration& value) { SetDataviewConfiguration(value); return *this;}
-
-    /**
-     * <p> The configuration of the dataview to be used with specified cluster. </p>
-     */
-    inline KxDatabaseConfiguration& WithDataviewConfiguration(KxDataviewConfiguration&& value) { SetDataviewConfiguration(std::move(value)); return *this;}
-
+    template<typename DataviewConfigurationT = KxDataviewConfiguration>
+    void SetDataviewConfiguration(DataviewConfigurationT&& value) { m_dataviewConfigurationHasBeenSet = true; m_dataviewConfiguration = std::forward<DataviewConfigurationT>(value); }
+    template<typename DataviewConfigurationT = KxDataviewConfiguration>
+    KxDatabaseConfiguration& WithDataviewConfiguration(DataviewConfigurationT&& value) { SetDataviewConfiguration(std::forward<DataviewConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_databaseName;

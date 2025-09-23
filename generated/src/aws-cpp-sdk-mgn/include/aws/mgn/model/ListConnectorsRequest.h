@@ -22,7 +22,7 @@ namespace Model
   class ListConnectorsRequest : public MgnRequest
   {
   public:
-    AWS_MGN_API ListConnectorsRequest();
+    AWS_MGN_API ListConnectorsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,104 +33,45 @@ namespace Model
     AWS_MGN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>List Connectors Request filters.</p>
      */
-    inline const ListConnectorsRequestFilters& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>List Connectors Request filters.</p>
-     */
+    inline const ListConnectorsRequestFilters& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = ListConnectorsRequestFilters>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = ListConnectorsRequestFilters>
+    ListConnectorsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>List Connectors Request filters.</p>
-     */
-    inline void SetFilters(const ListConnectorsRequestFilters& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>List Connectors Request filters.</p>
-     */
-    inline void SetFilters(ListConnectorsRequestFilters&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>List Connectors Request filters.</p>
-     */
-    inline ListConnectorsRequest& WithFilters(const ListConnectorsRequestFilters& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>List Connectors Request filters.</p>
-     */
-    inline ListConnectorsRequest& WithFilters(ListConnectorsRequestFilters&& value) { SetFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>List Connectors Request max results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>List Connectors Request max results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>List Connectors Request max results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>List Connectors Request max results.</p>
-     */
     inline ListConnectorsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>List Connectors Request next token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
-    inline ListConnectorsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
-    inline ListConnectorsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>List Connectors Request next token.</p>
-     */
-    inline ListConnectorsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListConnectorsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     ListConnectorsRequestFilters m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

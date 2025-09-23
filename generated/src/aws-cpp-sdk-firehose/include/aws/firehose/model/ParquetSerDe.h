@@ -27,82 +27,46 @@ namespace Model
   /**
    * <p>A serializer to use for converting data to the Parquet format before storing
    * it in Amazon S3. For more information, see <a
-   * href="https://parquet.apache.org/documentation/latest/">Apache
-   * Parquet</a>.</p><p><h3>See Also:</h3>   <a
+   * href="https://parquet.apache.org/docs/">Apache Parquet</a>.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/ParquetSerDe">AWS
    * API Reference</a></p>
    */
   class ParquetSerDe
   {
   public:
-    AWS_FIREHOSE_API ParquetSerDe();
+    AWS_FIREHOSE_API ParquetSerDe() = default;
     AWS_FIREHOSE_API ParquetSerDe(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API ParquetSerDe& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Hadoop Distributed File System (HDFS) block size. This is useful if you
      * intend to copy the data from Amazon S3 to HDFS before querying. The default is
-     * 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for
-     * padding calculations.</p>
+     * 256 MiB and the minimum is 64 MiB. Firehose uses this value for padding
+     * calculations.</p>
      */
-    inline int GetBlockSizeBytes() const{ return m_blockSizeBytes; }
-
-    /**
-     * <p>The Hadoop Distributed File System (HDFS) block size. This is useful if you
-     * intend to copy the data from Amazon S3 to HDFS before querying. The default is
-     * 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for
-     * padding calculations.</p>
-     */
+    inline int GetBlockSizeBytes() const { return m_blockSizeBytes; }
     inline bool BlockSizeBytesHasBeenSet() const { return m_blockSizeBytesHasBeenSet; }
-
-    /**
-     * <p>The Hadoop Distributed File System (HDFS) block size. This is useful if you
-     * intend to copy the data from Amazon S3 to HDFS before querying. The default is
-     * 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for
-     * padding calculations.</p>
-     */
     inline void SetBlockSizeBytes(int value) { m_blockSizeBytesHasBeenSet = true; m_blockSizeBytes = value; }
-
-    /**
-     * <p>The Hadoop Distributed File System (HDFS) block size. This is useful if you
-     * intend to copy the data from Amazon S3 to HDFS before querying. The default is
-     * 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for
-     * padding calculations.</p>
-     */
     inline ParquetSerDe& WithBlockSizeBytes(int value) { SetBlockSizeBytes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Parquet page size. Column chunks are divided into pages. A page is
      * conceptually an indivisible unit (in terms of compression and encoding). The
      * minimum value is 64 KiB and the default is 1 MiB.</p>
      */
-    inline int GetPageSizeBytes() const{ return m_pageSizeBytes; }
-
-    /**
-     * <p>The Parquet page size. Column chunks are divided into pages. A page is
-     * conceptually an indivisible unit (in terms of compression and encoding). The
-     * minimum value is 64 KiB and the default is 1 MiB.</p>
-     */
+    inline int GetPageSizeBytes() const { return m_pageSizeBytes; }
     inline bool PageSizeBytesHasBeenSet() const { return m_pageSizeBytesHasBeenSet; }
-
-    /**
-     * <p>The Parquet page size. Column chunks are divided into pages. A page is
-     * conceptually an indivisible unit (in terms of compression and encoding). The
-     * minimum value is 64 KiB and the default is 1 MiB.</p>
-     */
     inline void SetPageSizeBytes(int value) { m_pageSizeBytesHasBeenSet = true; m_pageSizeBytes = value; }
-
-    /**
-     * <p>The Parquet page size. Column chunks are divided into pages. A page is
-     * conceptually an indivisible unit (in terms of compression and encoding). The
-     * minimum value is 64 KiB and the default is 1 MiB.</p>
-     */
     inline ParquetSerDe& WithPageSizeBytes(int value) { SetPageSizeBytes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The compression code to use over data blocks. The possible values are
      * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
@@ -110,154 +74,61 @@ namespace Model
      * decompression speed. Use <code>GZIP</code> if the compression ratio is more
      * important than speed.</p>
      */
-    inline const ParquetCompression& GetCompression() const{ return m_compression; }
-
-    /**
-     * <p>The compression code to use over data blocks. The possible values are
-     * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
-     * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
-     * important than speed.</p>
-     */
+    inline ParquetCompression GetCompression() const { return m_compression; }
     inline bool CompressionHasBeenSet() const { return m_compressionHasBeenSet; }
+    inline void SetCompression(ParquetCompression value) { m_compressionHasBeenSet = true; m_compression = value; }
+    inline ParquetSerDe& WithCompression(ParquetCompression value) { SetCompression(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The compression code to use over data blocks. The possible values are
-     * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
-     * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
-     * important than speed.</p>
-     */
-    inline void SetCompression(const ParquetCompression& value) { m_compressionHasBeenSet = true; m_compression = value; }
-
-    /**
-     * <p>The compression code to use over data blocks. The possible values are
-     * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
-     * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
-     * important than speed.</p>
-     */
-    inline void SetCompression(ParquetCompression&& value) { m_compressionHasBeenSet = true; m_compression = std::move(value); }
-
-    /**
-     * <p>The compression code to use over data blocks. The possible values are
-     * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
-     * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
-     * important than speed.</p>
-     */
-    inline ParquetSerDe& WithCompression(const ParquetCompression& value) { SetCompression(value); return *this;}
-
-    /**
-     * <p>The compression code to use over data blocks. The possible values are
-     * <code>UNCOMPRESSED</code>, <code>SNAPPY</code>, and <code>GZIP</code>, with the
-     * default being <code>SNAPPY</code>. Use <code>SNAPPY</code> for higher
-     * decompression speed. Use <code>GZIP</code> if the compression ratio is more
-     * important than speed.</p>
-     */
-    inline ParquetSerDe& WithCompression(ParquetCompression&& value) { SetCompression(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether to enable dictionary compression.</p>
      */
-    inline bool GetEnableDictionaryCompression() const{ return m_enableDictionaryCompression; }
-
-    /**
-     * <p>Indicates whether to enable dictionary compression.</p>
-     */
+    inline bool GetEnableDictionaryCompression() const { return m_enableDictionaryCompression; }
     inline bool EnableDictionaryCompressionHasBeenSet() const { return m_enableDictionaryCompressionHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to enable dictionary compression.</p>
-     */
     inline void SetEnableDictionaryCompression(bool value) { m_enableDictionaryCompressionHasBeenSet = true; m_enableDictionaryCompression = value; }
-
-    /**
-     * <p>Indicates whether to enable dictionary compression.</p>
-     */
     inline ParquetSerDe& WithEnableDictionaryCompression(bool value) { SetEnableDictionaryCompression(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum amount of padding to apply. This is useful if you intend to copy
      * the data from Amazon S3 to HDFS before querying. The default is 0.</p>
      */
-    inline int GetMaxPaddingBytes() const{ return m_maxPaddingBytes; }
-
-    /**
-     * <p>The maximum amount of padding to apply. This is useful if you intend to copy
-     * the data from Amazon S3 to HDFS before querying. The default is 0.</p>
-     */
+    inline int GetMaxPaddingBytes() const { return m_maxPaddingBytes; }
     inline bool MaxPaddingBytesHasBeenSet() const { return m_maxPaddingBytesHasBeenSet; }
-
-    /**
-     * <p>The maximum amount of padding to apply. This is useful if you intend to copy
-     * the data from Amazon S3 to HDFS before querying. The default is 0.</p>
-     */
     inline void SetMaxPaddingBytes(int value) { m_maxPaddingBytesHasBeenSet = true; m_maxPaddingBytes = value; }
-
-    /**
-     * <p>The maximum amount of padding to apply. This is useful if you intend to copy
-     * the data from Amazon S3 to HDFS before querying. The default is 0.</p>
-     */
     inline ParquetSerDe& WithMaxPaddingBytes(int value) { SetMaxPaddingBytes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates the version of row format to output. The possible values are
      * <code>V1</code> and <code>V2</code>. The default is <code>V1</code>.</p>
      */
-    inline const ParquetWriterVersion& GetWriterVersion() const{ return m_writerVersion; }
-
-    /**
-     * <p>Indicates the version of row format to output. The possible values are
-     * <code>V1</code> and <code>V2</code>. The default is <code>V1</code>.</p>
-     */
+    inline ParquetWriterVersion GetWriterVersion() const { return m_writerVersion; }
     inline bool WriterVersionHasBeenSet() const { return m_writerVersionHasBeenSet; }
-
-    /**
-     * <p>Indicates the version of row format to output. The possible values are
-     * <code>V1</code> and <code>V2</code>. The default is <code>V1</code>.</p>
-     */
-    inline void SetWriterVersion(const ParquetWriterVersion& value) { m_writerVersionHasBeenSet = true; m_writerVersion = value; }
-
-    /**
-     * <p>Indicates the version of row format to output. The possible values are
-     * <code>V1</code> and <code>V2</code>. The default is <code>V1</code>.</p>
-     */
-    inline void SetWriterVersion(ParquetWriterVersion&& value) { m_writerVersionHasBeenSet = true; m_writerVersion = std::move(value); }
-
-    /**
-     * <p>Indicates the version of row format to output. The possible values are
-     * <code>V1</code> and <code>V2</code>. The default is <code>V1</code>.</p>
-     */
-    inline ParquetSerDe& WithWriterVersion(const ParquetWriterVersion& value) { SetWriterVersion(value); return *this;}
-
-    /**
-     * <p>Indicates the version of row format to output. The possible values are
-     * <code>V1</code> and <code>V2</code>. The default is <code>V1</code>.</p>
-     */
-    inline ParquetSerDe& WithWriterVersion(ParquetWriterVersion&& value) { SetWriterVersion(std::move(value)); return *this;}
-
+    inline void SetWriterVersion(ParquetWriterVersion value) { m_writerVersionHasBeenSet = true; m_writerVersion = value; }
+    inline ParquetSerDe& WithWriterVersion(ParquetWriterVersion value) { SetWriterVersion(value); return *this;}
+    ///@}
   private:
 
-    int m_blockSizeBytes;
+    int m_blockSizeBytes{0};
     bool m_blockSizeBytesHasBeenSet = false;
 
-    int m_pageSizeBytes;
+    int m_pageSizeBytes{0};
     bool m_pageSizeBytesHasBeenSet = false;
 
-    ParquetCompression m_compression;
+    ParquetCompression m_compression{ParquetCompression::NOT_SET};
     bool m_compressionHasBeenSet = false;
 
-    bool m_enableDictionaryCompression;
+    bool m_enableDictionaryCompression{false};
     bool m_enableDictionaryCompressionHasBeenSet = false;
 
-    int m_maxPaddingBytes;
+    int m_maxPaddingBytes{0};
     bool m_maxPaddingBytesHasBeenSet = false;
 
-    ParquetWriterVersion m_writerVersion;
+    ParquetWriterVersion m_writerVersion{ParquetWriterVersion::NOT_SET};
     bool m_writerVersionHasBeenSet = false;
   };
 

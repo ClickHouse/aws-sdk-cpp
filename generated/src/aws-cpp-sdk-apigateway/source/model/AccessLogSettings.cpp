@@ -18,15 +18,7 @@ namespace APIGateway
 namespace Model
 {
 
-AccessLogSettings::AccessLogSettings() : 
-    m_formatHasBeenSet(false),
-    m_destinationArnHasBeenSet(false)
-{
-}
-
-AccessLogSettings::AccessLogSettings(JsonView jsonValue) : 
-    m_formatHasBeenSet(false),
-    m_destinationArnHasBeenSet(false)
+AccessLogSettings::AccessLogSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AccessLogSettings& AccessLogSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("format"))
   {
     m_format = jsonValue.GetString("format");
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destinationArn"))
   {
     m_destinationArn = jsonValue.GetString("destinationArn");
-
     m_destinationArnHasBeenSet = true;
   }
-
   return *this;
 }
 

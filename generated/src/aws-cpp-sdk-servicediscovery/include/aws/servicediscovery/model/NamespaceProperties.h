@@ -33,79 +33,36 @@ namespace Model
   class NamespaceProperties
   {
   public:
-    AWS_SERVICEDISCOVERY_API NamespaceProperties();
+    AWS_SERVICEDISCOVERY_API NamespaceProperties() = default;
     AWS_SERVICEDISCOVERY_API NamespaceProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API NamespaceProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A complex type that contains the ID for the Route 53 hosted zone that Cloud
      * Map creates when you create a namespace.</p>
      */
-    inline const DnsProperties& GetDnsProperties() const{ return m_dnsProperties; }
-
-    /**
-     * <p>A complex type that contains the ID for the Route 53 hosted zone that Cloud
-     * Map creates when you create a namespace.</p>
-     */
+    inline const DnsProperties& GetDnsProperties() const { return m_dnsProperties; }
     inline bool DnsPropertiesHasBeenSet() const { return m_dnsPropertiesHasBeenSet; }
+    template<typename DnsPropertiesT = DnsProperties>
+    void SetDnsProperties(DnsPropertiesT&& value) { m_dnsPropertiesHasBeenSet = true; m_dnsProperties = std::forward<DnsPropertiesT>(value); }
+    template<typename DnsPropertiesT = DnsProperties>
+    NamespaceProperties& WithDnsProperties(DnsPropertiesT&& value) { SetDnsProperties(std::forward<DnsPropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A complex type that contains the ID for the Route 53 hosted zone that Cloud
-     * Map creates when you create a namespace.</p>
-     */
-    inline void SetDnsProperties(const DnsProperties& value) { m_dnsPropertiesHasBeenSet = true; m_dnsProperties = value; }
-
-    /**
-     * <p>A complex type that contains the ID for the Route 53 hosted zone that Cloud
-     * Map creates when you create a namespace.</p>
-     */
-    inline void SetDnsProperties(DnsProperties&& value) { m_dnsPropertiesHasBeenSet = true; m_dnsProperties = std::move(value); }
-
-    /**
-     * <p>A complex type that contains the ID for the Route 53 hosted zone that Cloud
-     * Map creates when you create a namespace.</p>
-     */
-    inline NamespaceProperties& WithDnsProperties(const DnsProperties& value) { SetDnsProperties(value); return *this;}
-
-    /**
-     * <p>A complex type that contains the ID for the Route 53 hosted zone that Cloud
-     * Map creates when you create a namespace.</p>
-     */
-    inline NamespaceProperties& WithDnsProperties(DnsProperties&& value) { SetDnsProperties(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A complex type that contains the name of an HTTP namespace.</p>
      */
-    inline const HttpProperties& GetHttpProperties() const{ return m_httpProperties; }
-
-    /**
-     * <p>A complex type that contains the name of an HTTP namespace.</p>
-     */
+    inline const HttpProperties& GetHttpProperties() const { return m_httpProperties; }
     inline bool HttpPropertiesHasBeenSet() const { return m_httpPropertiesHasBeenSet; }
-
-    /**
-     * <p>A complex type that contains the name of an HTTP namespace.</p>
-     */
-    inline void SetHttpProperties(const HttpProperties& value) { m_httpPropertiesHasBeenSet = true; m_httpProperties = value; }
-
-    /**
-     * <p>A complex type that contains the name of an HTTP namespace.</p>
-     */
-    inline void SetHttpProperties(HttpProperties&& value) { m_httpPropertiesHasBeenSet = true; m_httpProperties = std::move(value); }
-
-    /**
-     * <p>A complex type that contains the name of an HTTP namespace.</p>
-     */
-    inline NamespaceProperties& WithHttpProperties(const HttpProperties& value) { SetHttpProperties(value); return *this;}
-
-    /**
-     * <p>A complex type that contains the name of an HTTP namespace.</p>
-     */
-    inline NamespaceProperties& WithHttpProperties(HttpProperties&& value) { SetHttpProperties(std::move(value)); return *this;}
-
+    template<typename HttpPropertiesT = HttpProperties>
+    void SetHttpProperties(HttpPropertiesT&& value) { m_httpPropertiesHasBeenSet = true; m_httpProperties = std::forward<HttpPropertiesT>(value); }
+    template<typename HttpPropertiesT = HttpProperties>
+    NamespaceProperties& WithHttpProperties(HttpPropertiesT&& value) { SetHttpProperties(std::forward<HttpPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     DnsProperties m_dnsProperties;

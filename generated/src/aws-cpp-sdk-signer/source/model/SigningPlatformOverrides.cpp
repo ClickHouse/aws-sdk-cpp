@@ -18,17 +18,7 @@ namespace signer
 namespace Model
 {
 
-SigningPlatformOverrides::SigningPlatformOverrides() : 
-    m_signingConfigurationHasBeenSet(false),
-    m_signingImageFormat(ImageFormat::NOT_SET),
-    m_signingImageFormatHasBeenSet(false)
-{
-}
-
-SigningPlatformOverrides::SigningPlatformOverrides(JsonView jsonValue) : 
-    m_signingConfigurationHasBeenSet(false),
-    m_signingImageFormat(ImageFormat::NOT_SET),
-    m_signingImageFormatHasBeenSet(false)
+SigningPlatformOverrides::SigningPlatformOverrides(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SigningPlatformOverrides& SigningPlatformOverrides::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("signingConfiguration"))
   {
     m_signingConfiguration = jsonValue.GetObject("signingConfiguration");
-
     m_signingConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("signingImageFormat"))
   {
     m_signingImageFormat = ImageFormatMapper::GetImageFormatForName(jsonValue.GetString("signingImageFormat"));
-
     m_signingImageFormatHasBeenSet = true;
   }
-
   return *this;
 }
 

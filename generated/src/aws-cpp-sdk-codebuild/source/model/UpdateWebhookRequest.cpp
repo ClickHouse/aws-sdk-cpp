@@ -12,17 +12,6 @@ using namespace Aws::CodeBuild::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateWebhookRequest::UpdateWebhookRequest() : 
-    m_projectNameHasBeenSet(false),
-    m_branchFilterHasBeenSet(false),
-    m_rotateSecret(false),
-    m_rotateSecretHasBeenSet(false),
-    m_filterGroupsHasBeenSet(false),
-    m_buildType(WebhookBuildType::NOT_SET),
-    m_buildTypeHasBeenSet(false)
-{
-}
-
 Aws::String UpdateWebhookRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -64,6 +53,12 @@ Aws::String UpdateWebhookRequest::SerializePayload() const
   if(m_buildTypeHasBeenSet)
   {
    payload.WithString("buildType", WebhookBuildTypeMapper::GetNameForWebhookBuildType(m_buildType));
+  }
+
+  if(m_pullRequestBuildPolicyHasBeenSet)
+  {
+   payload.WithObject("pullRequestBuildPolicy", m_pullRequestBuildPolicy.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

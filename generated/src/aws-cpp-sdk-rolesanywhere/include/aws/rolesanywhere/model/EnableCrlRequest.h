@@ -21,7 +21,7 @@ namespace Model
   class EnableCrlRequest : public RolesAnywhereRequest
   {
   public:
-    AWS_ROLESANYWHERE_API EnableCrlRequest();
+    AWS_ROLESANYWHERE_API EnableCrlRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROLESANYWHERE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the certificate revocation list (CRL).</p>
      */
-    inline const Aws::String& GetCrlId() const{ return m_crlId; }
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
+    inline const Aws::String& GetCrlId() const { return m_crlId; }
     inline bool CrlIdHasBeenSet() const { return m_crlIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
-    inline void SetCrlId(const Aws::String& value) { m_crlIdHasBeenSet = true; m_crlId = value; }
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
-    inline void SetCrlId(Aws::String&& value) { m_crlIdHasBeenSet = true; m_crlId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
-    inline void SetCrlId(const char* value) { m_crlIdHasBeenSet = true; m_crlId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
-    inline EnableCrlRequest& WithCrlId(const Aws::String& value) { SetCrlId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
-    inline EnableCrlRequest& WithCrlId(Aws::String&& value) { SetCrlId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the certificate revocation list (CRL).</p>
-     */
-    inline EnableCrlRequest& WithCrlId(const char* value) { SetCrlId(value); return *this;}
-
+    template<typename CrlIdT = Aws::String>
+    void SetCrlId(CrlIdT&& value) { m_crlIdHasBeenSet = true; m_crlId = std::forward<CrlIdT>(value); }
+    template<typename CrlIdT = Aws::String>
+    EnableCrlRequest& WithCrlId(CrlIdT&& value) { SetCrlId(std::forward<CrlIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_crlId;

@@ -20,27 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-EnvironmentResourceDescription::EnvironmentResourceDescription() : 
-    m_environmentNameHasBeenSet(false),
-    m_autoScalingGroupsHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_launchConfigurationsHasBeenSet(false),
-    m_launchTemplatesHasBeenSet(false),
-    m_loadBalancersHasBeenSet(false),
-    m_triggersHasBeenSet(false),
-    m_queuesHasBeenSet(false)
-{
-}
-
-EnvironmentResourceDescription::EnvironmentResourceDescription(const XmlNode& xmlNode) : 
-    m_environmentNameHasBeenSet(false),
-    m_autoScalingGroupsHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_launchConfigurationsHasBeenSet(false),
-    m_launchTemplatesHasBeenSet(false),
-    m_loadBalancersHasBeenSet(false),
-    m_triggersHasBeenSet(false),
-    m_queuesHasBeenSet(false)
+EnvironmentResourceDescription::EnvironmentResourceDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -61,6 +41,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!autoScalingGroupsNode.IsNull())
     {
       XmlNode autoScalingGroupsMember = autoScalingGroupsNode.FirstChild("member");
+      m_autoScalingGroupsHasBeenSet = !autoScalingGroupsMember.IsNull();
       while(!autoScalingGroupsMember.IsNull())
       {
         m_autoScalingGroups.push_back(autoScalingGroupsMember);
@@ -73,6 +54,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!instancesNode.IsNull())
     {
       XmlNode instancesMember = instancesNode.FirstChild("member");
+      m_instancesHasBeenSet = !instancesMember.IsNull();
       while(!instancesMember.IsNull())
       {
         m_instances.push_back(instancesMember);
@@ -85,6 +67,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!launchConfigurationsNode.IsNull())
     {
       XmlNode launchConfigurationsMember = launchConfigurationsNode.FirstChild("member");
+      m_launchConfigurationsHasBeenSet = !launchConfigurationsMember.IsNull();
       while(!launchConfigurationsMember.IsNull())
       {
         m_launchConfigurations.push_back(launchConfigurationsMember);
@@ -97,6 +80,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!launchTemplatesNode.IsNull())
     {
       XmlNode launchTemplatesMember = launchTemplatesNode.FirstChild("member");
+      m_launchTemplatesHasBeenSet = !launchTemplatesMember.IsNull();
       while(!launchTemplatesMember.IsNull())
       {
         m_launchTemplates.push_back(launchTemplatesMember);
@@ -109,6 +93,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!loadBalancersNode.IsNull())
     {
       XmlNode loadBalancersMember = loadBalancersNode.FirstChild("member");
+      m_loadBalancersHasBeenSet = !loadBalancersMember.IsNull();
       while(!loadBalancersMember.IsNull())
       {
         m_loadBalancers.push_back(loadBalancersMember);
@@ -121,6 +106,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!triggersNode.IsNull())
     {
       XmlNode triggersMember = triggersNode.FirstChild("member");
+      m_triggersHasBeenSet = !triggersMember.IsNull();
       while(!triggersMember.IsNull())
       {
         m_triggers.push_back(triggersMember);
@@ -133,6 +119,7 @@ EnvironmentResourceDescription& EnvironmentResourceDescription::operator =(const
     if(!queuesNode.IsNull())
     {
       XmlNode queuesMember = queuesNode.FirstChild("member");
+      m_queuesHasBeenSet = !queuesMember.IsNull();
       while(!queuesMember.IsNull())
       {
         m_queues.push_back(queuesMember);
@@ -244,7 +231,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_autoScalingGroups)
       {
         Aws::StringStream autoScalingGroupsSs;
-        autoScalingGroupsSs << location <<  ".AutoScalingGroups.member." << autoScalingGroupsIdx++;
+        autoScalingGroupsSs << location << ".AutoScalingGroups.member." << autoScalingGroupsIdx++;
         item.OutputToStream(oStream, autoScalingGroupsSs.str().c_str());
       }
   }
@@ -254,7 +241,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location <<  ".Instances.member." << instancesIdx++;
+        instancesSs << location << ".Instances.member." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }
@@ -264,7 +251,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_launchConfigurations)
       {
         Aws::StringStream launchConfigurationsSs;
-        launchConfigurationsSs << location <<  ".LaunchConfigurations.member." << launchConfigurationsIdx++;
+        launchConfigurationsSs << location << ".LaunchConfigurations.member." << launchConfigurationsIdx++;
         item.OutputToStream(oStream, launchConfigurationsSs.str().c_str());
       }
   }
@@ -274,7 +261,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_launchTemplates)
       {
         Aws::StringStream launchTemplatesSs;
-        launchTemplatesSs << location <<  ".LaunchTemplates.member." << launchTemplatesIdx++;
+        launchTemplatesSs << location << ".LaunchTemplates.member." << launchTemplatesIdx++;
         item.OutputToStream(oStream, launchTemplatesSs.str().c_str());
       }
   }
@@ -284,7 +271,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_loadBalancers)
       {
         Aws::StringStream loadBalancersSs;
-        loadBalancersSs << location <<  ".LoadBalancers.member." << loadBalancersIdx++;
+        loadBalancersSs << location << ".LoadBalancers.member." << loadBalancersIdx++;
         item.OutputToStream(oStream, loadBalancersSs.str().c_str());
       }
   }
@@ -294,7 +281,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_triggers)
       {
         Aws::StringStream triggersSs;
-        triggersSs << location <<  ".Triggers.member." << triggersIdx++;
+        triggersSs << location << ".Triggers.member." << triggersIdx++;
         item.OutputToStream(oStream, triggersSs.str().c_str());
       }
   }
@@ -304,7 +291,7 @@ void EnvironmentResourceDescription::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_queues)
       {
         Aws::StringStream queuesSs;
-        queuesSs << location <<  ".Queues.member." << queuesIdx++;
+        queuesSs << location << ".Queues.member." << queuesIdx++;
         item.OutputToStream(oStream, queuesSs.str().c_str());
       }
   }

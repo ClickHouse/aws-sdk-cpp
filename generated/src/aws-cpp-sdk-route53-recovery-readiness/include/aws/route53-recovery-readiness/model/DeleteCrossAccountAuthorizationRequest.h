@@ -21,7 +21,7 @@ namespace Model
   class DeleteCrossAccountAuthorizationRequest : public Route53RecoveryReadinessRequest
   {
   public:
-    AWS_ROUTE53RECOVERYREADINESS_API DeleteCrossAccountAuthorizationRequest();
+    AWS_ROUTE53RECOVERYREADINESS_API DeleteCrossAccountAuthorizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROUTE53RECOVERYREADINESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The cross-account authorization.</p>
      */
-    inline const Aws::String& GetCrossAccountAuthorization() const{ return m_crossAccountAuthorization; }
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
+    inline const Aws::String& GetCrossAccountAuthorization() const { return m_crossAccountAuthorization; }
     inline bool CrossAccountAuthorizationHasBeenSet() const { return m_crossAccountAuthorizationHasBeenSet; }
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
-    inline void SetCrossAccountAuthorization(const Aws::String& value) { m_crossAccountAuthorizationHasBeenSet = true; m_crossAccountAuthorization = value; }
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
-    inline void SetCrossAccountAuthorization(Aws::String&& value) { m_crossAccountAuthorizationHasBeenSet = true; m_crossAccountAuthorization = std::move(value); }
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
-    inline void SetCrossAccountAuthorization(const char* value) { m_crossAccountAuthorizationHasBeenSet = true; m_crossAccountAuthorization.assign(value); }
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
-    inline DeleteCrossAccountAuthorizationRequest& WithCrossAccountAuthorization(const Aws::String& value) { SetCrossAccountAuthorization(value); return *this;}
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
-    inline DeleteCrossAccountAuthorizationRequest& WithCrossAccountAuthorization(Aws::String&& value) { SetCrossAccountAuthorization(std::move(value)); return *this;}
-
-    /**
-     * <p>The cross-account authorization.</p>
-     */
-    inline DeleteCrossAccountAuthorizationRequest& WithCrossAccountAuthorization(const char* value) { SetCrossAccountAuthorization(value); return *this;}
-
+    template<typename CrossAccountAuthorizationT = Aws::String>
+    void SetCrossAccountAuthorization(CrossAccountAuthorizationT&& value) { m_crossAccountAuthorizationHasBeenSet = true; m_crossAccountAuthorization = std::forward<CrossAccountAuthorizationT>(value); }
+    template<typename CrossAccountAuthorizationT = Aws::String>
+    DeleteCrossAccountAuthorizationRequest& WithCrossAccountAuthorization(CrossAccountAuthorizationT&& value) { SetCrossAccountAuthorization(std::forward<CrossAccountAuthorizationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_crossAccountAuthorization;

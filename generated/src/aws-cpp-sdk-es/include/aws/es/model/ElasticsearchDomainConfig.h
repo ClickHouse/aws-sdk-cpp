@@ -20,6 +20,8 @@
 #include <aws/es/model/AdvancedSecurityOptionsStatus.h>
 #include <aws/es/model/AutoTuneOptionsStatus.h>
 #include <aws/es/model/ChangeProgressDetails.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/es/model/ModifyingProperties.h>
 #include <utility>
 
 namespace Aws
@@ -45,548 +47,218 @@ namespace Model
   class ElasticsearchDomainConfig
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API ElasticsearchDomainConfig();
+    AWS_ELASTICSEARCHSERVICE_API ElasticsearchDomainConfig() = default;
     AWS_ELASTICSEARCHSERVICE_API ElasticsearchDomainConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API ElasticsearchDomainConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
      */
-    inline const ElasticsearchVersionStatus& GetElasticsearchVersion() const{ return m_elasticsearchVersion; }
-
-    /**
-     * <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
-     */
+    inline const ElasticsearchVersionStatus& GetElasticsearchVersion() const { return m_elasticsearchVersion; }
     inline bool ElasticsearchVersionHasBeenSet() const { return m_elasticsearchVersionHasBeenSet; }
+    template<typename ElasticsearchVersionT = ElasticsearchVersionStatus>
+    void SetElasticsearchVersion(ElasticsearchVersionT&& value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion = std::forward<ElasticsearchVersionT>(value); }
+    template<typename ElasticsearchVersionT = ElasticsearchVersionStatus>
+    ElasticsearchDomainConfig& WithElasticsearchVersion(ElasticsearchVersionT&& value) { SetElasticsearchVersion(std::forward<ElasticsearchVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
-     */
-    inline void SetElasticsearchVersion(const ElasticsearchVersionStatus& value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion = value; }
-
-    /**
-     * <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
-     */
-    inline void SetElasticsearchVersion(ElasticsearchVersionStatus&& value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion = std::move(value); }
-
-    /**
-     * <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithElasticsearchVersion(const ElasticsearchVersionStatus& value) { SetElasticsearchVersion(value); return *this;}
-
-    /**
-     * <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithElasticsearchVersion(ElasticsearchVersionStatus&& value) { SetElasticsearchVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch
      * domain.</p>
      */
-    inline const ElasticsearchClusterConfigStatus& GetElasticsearchClusterConfig() const{ return m_elasticsearchClusterConfig; }
-
-    /**
-     * <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch
-     * domain.</p>
-     */
+    inline const ElasticsearchClusterConfigStatus& GetElasticsearchClusterConfig() const { return m_elasticsearchClusterConfig; }
     inline bool ElasticsearchClusterConfigHasBeenSet() const { return m_elasticsearchClusterConfigHasBeenSet; }
+    template<typename ElasticsearchClusterConfigT = ElasticsearchClusterConfigStatus>
+    void SetElasticsearchClusterConfig(ElasticsearchClusterConfigT&& value) { m_elasticsearchClusterConfigHasBeenSet = true; m_elasticsearchClusterConfig = std::forward<ElasticsearchClusterConfigT>(value); }
+    template<typename ElasticsearchClusterConfigT = ElasticsearchClusterConfigStatus>
+    ElasticsearchDomainConfig& WithElasticsearchClusterConfig(ElasticsearchClusterConfigT&& value) { SetElasticsearchClusterConfig(std::forward<ElasticsearchClusterConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetElasticsearchClusterConfig(const ElasticsearchClusterConfigStatus& value) { m_elasticsearchClusterConfigHasBeenSet = true; m_elasticsearchClusterConfig = value; }
-
-    /**
-     * <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetElasticsearchClusterConfig(ElasticsearchClusterConfigStatus&& value) { m_elasticsearchClusterConfigHasBeenSet = true; m_elasticsearchClusterConfig = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithElasticsearchClusterConfig(const ElasticsearchClusterConfigStatus& value) { SetElasticsearchClusterConfig(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithElasticsearchClusterConfig(ElasticsearchClusterConfigStatus&& value) { SetElasticsearchClusterConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
      */
-    inline const EBSOptionsStatus& GetEBSOptions() const{ return m_eBSOptions; }
-
-    /**
-     * <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
-     */
+    inline const EBSOptionsStatus& GetEBSOptions() const { return m_eBSOptions; }
     inline bool EBSOptionsHasBeenSet() const { return m_eBSOptionsHasBeenSet; }
+    template<typename EBSOptionsT = EBSOptionsStatus>
+    void SetEBSOptions(EBSOptionsT&& value) { m_eBSOptionsHasBeenSet = true; m_eBSOptions = std::forward<EBSOptionsT>(value); }
+    template<typename EBSOptionsT = EBSOptionsStatus>
+    ElasticsearchDomainConfig& WithEBSOptions(EBSOptionsT&& value) { SetEBSOptions(std::forward<EBSOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline void SetEBSOptions(const EBSOptionsStatus& value) { m_eBSOptionsHasBeenSet = true; m_eBSOptions = value; }
-
-    /**
-     * <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline void SetEBSOptions(EBSOptionsStatus&& value) { m_eBSOptionsHasBeenSet = true; m_eBSOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithEBSOptions(const EBSOptionsStatus& value) { SetEBSOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithEBSOptions(EBSOptionsStatus&& value) { SetEBSOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>IAM access policy as a JSON-formatted string.</p>
      */
-    inline const AccessPoliciesStatus& GetAccessPolicies() const{ return m_accessPolicies; }
-
-    /**
-     * <p>IAM access policy as a JSON-formatted string.</p>
-     */
+    inline const AccessPoliciesStatus& GetAccessPolicies() const { return m_accessPolicies; }
     inline bool AccessPoliciesHasBeenSet() const { return m_accessPoliciesHasBeenSet; }
+    template<typename AccessPoliciesT = AccessPoliciesStatus>
+    void SetAccessPolicies(AccessPoliciesT&& value) { m_accessPoliciesHasBeenSet = true; m_accessPolicies = std::forward<AccessPoliciesT>(value); }
+    template<typename AccessPoliciesT = AccessPoliciesStatus>
+    ElasticsearchDomainConfig& WithAccessPolicies(AccessPoliciesT&& value) { SetAccessPolicies(std::forward<AccessPoliciesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>IAM access policy as a JSON-formatted string.</p>
-     */
-    inline void SetAccessPolicies(const AccessPoliciesStatus& value) { m_accessPoliciesHasBeenSet = true; m_accessPolicies = value; }
-
-    /**
-     * <p>IAM access policy as a JSON-formatted string.</p>
-     */
-    inline void SetAccessPolicies(AccessPoliciesStatus&& value) { m_accessPoliciesHasBeenSet = true; m_accessPolicies = std::move(value); }
-
-    /**
-     * <p>IAM access policy as a JSON-formatted string.</p>
-     */
-    inline ElasticsearchDomainConfig& WithAccessPolicies(const AccessPoliciesStatus& value) { SetAccessPolicies(value); return *this;}
-
-    /**
-     * <p>IAM access policy as a JSON-formatted string.</p>
-     */
-    inline ElasticsearchDomainConfig& WithAccessPolicies(AccessPoliciesStatus&& value) { SetAccessPolicies(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
      */
-    inline const SnapshotOptionsStatus& GetSnapshotOptions() const{ return m_snapshotOptions; }
-
-    /**
-     * <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
-     */
+    inline const SnapshotOptionsStatus& GetSnapshotOptions() const { return m_snapshotOptions; }
     inline bool SnapshotOptionsHasBeenSet() const { return m_snapshotOptionsHasBeenSet; }
+    template<typename SnapshotOptionsT = SnapshotOptionsStatus>
+    void SetSnapshotOptions(SnapshotOptionsT&& value) { m_snapshotOptionsHasBeenSet = true; m_snapshotOptions = std::forward<SnapshotOptionsT>(value); }
+    template<typename SnapshotOptionsT = SnapshotOptionsStatus>
+    ElasticsearchDomainConfig& WithSnapshotOptions(SnapshotOptionsT&& value) { SetSnapshotOptions(std::forward<SnapshotOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline void SetSnapshotOptions(const SnapshotOptionsStatus& value) { m_snapshotOptionsHasBeenSet = true; m_snapshotOptions = value; }
-
-    /**
-     * <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline void SetSnapshotOptions(SnapshotOptionsStatus&& value) { m_snapshotOptionsHasBeenSet = true; m_snapshotOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithSnapshotOptions(const SnapshotOptionsStatus& value) { SetSnapshotOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithSnapshotOptions(SnapshotOptionsStatus&& value) { SetSnapshotOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>VPCOptions</code> for the specified domain. For more information,
      * see <a
      * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html"
      * target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.</p>
      */
-    inline const VPCDerivedInfoStatus& GetVPCOptions() const{ return m_vPCOptions; }
-
-    /**
-     * <p>The <code>VPCOptions</code> for the specified domain. For more information,
-     * see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html"
-     * target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.</p>
-     */
+    inline const VPCDerivedInfoStatus& GetVPCOptions() const { return m_vPCOptions; }
     inline bool VPCOptionsHasBeenSet() const { return m_vPCOptionsHasBeenSet; }
+    template<typename VPCOptionsT = VPCDerivedInfoStatus>
+    void SetVPCOptions(VPCOptionsT&& value) { m_vPCOptionsHasBeenSet = true; m_vPCOptions = std::forward<VPCOptionsT>(value); }
+    template<typename VPCOptionsT = VPCDerivedInfoStatus>
+    ElasticsearchDomainConfig& WithVPCOptions(VPCOptionsT&& value) { SetVPCOptions(std::forward<VPCOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>VPCOptions</code> for the specified domain. For more information,
-     * see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html"
-     * target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.</p>
-     */
-    inline void SetVPCOptions(const VPCDerivedInfoStatus& value) { m_vPCOptionsHasBeenSet = true; m_vPCOptions = value; }
-
-    /**
-     * <p>The <code>VPCOptions</code> for the specified domain. For more information,
-     * see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html"
-     * target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.</p>
-     */
-    inline void SetVPCOptions(VPCDerivedInfoStatus&& value) { m_vPCOptionsHasBeenSet = true; m_vPCOptions = std::move(value); }
-
-    /**
-     * <p>The <code>VPCOptions</code> for the specified domain. For more information,
-     * see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html"
-     * target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.</p>
-     */
-    inline ElasticsearchDomainConfig& WithVPCOptions(const VPCDerivedInfoStatus& value) { SetVPCOptions(value); return *this;}
-
-    /**
-     * <p>The <code>VPCOptions</code> for the specified domain. For more information,
-     * see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html"
-     * target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.</p>
-     */
-    inline ElasticsearchDomainConfig& WithVPCOptions(VPCDerivedInfoStatus&& value) { SetVPCOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>CognitoOptions</code> for the specified domain. For more
      * information, see <a
      * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html"
      * target="_blank">Amazon Cognito Authentication for Kibana</a>.</p>
      */
-    inline const CognitoOptionsStatus& GetCognitoOptions() const{ return m_cognitoOptions; }
-
-    /**
-     * <p>The <code>CognitoOptions</code> for the specified domain. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html"
-     * target="_blank">Amazon Cognito Authentication for Kibana</a>.</p>
-     */
+    inline const CognitoOptionsStatus& GetCognitoOptions() const { return m_cognitoOptions; }
     inline bool CognitoOptionsHasBeenSet() const { return m_cognitoOptionsHasBeenSet; }
+    template<typename CognitoOptionsT = CognitoOptionsStatus>
+    void SetCognitoOptions(CognitoOptionsT&& value) { m_cognitoOptionsHasBeenSet = true; m_cognitoOptions = std::forward<CognitoOptionsT>(value); }
+    template<typename CognitoOptionsT = CognitoOptionsStatus>
+    ElasticsearchDomainConfig& WithCognitoOptions(CognitoOptionsT&& value) { SetCognitoOptions(std::forward<CognitoOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>CognitoOptions</code> for the specified domain. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html"
-     * target="_blank">Amazon Cognito Authentication for Kibana</a>.</p>
-     */
-    inline void SetCognitoOptions(const CognitoOptionsStatus& value) { m_cognitoOptionsHasBeenSet = true; m_cognitoOptions = value; }
-
-    /**
-     * <p>The <code>CognitoOptions</code> for the specified domain. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html"
-     * target="_blank">Amazon Cognito Authentication for Kibana</a>.</p>
-     */
-    inline void SetCognitoOptions(CognitoOptionsStatus&& value) { m_cognitoOptionsHasBeenSet = true; m_cognitoOptions = std::move(value); }
-
-    /**
-     * <p>The <code>CognitoOptions</code> for the specified domain. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html"
-     * target="_blank">Amazon Cognito Authentication for Kibana</a>.</p>
-     */
-    inline ElasticsearchDomainConfig& WithCognitoOptions(const CognitoOptionsStatus& value) { SetCognitoOptions(value); return *this;}
-
-    /**
-     * <p>The <code>CognitoOptions</code> for the specified domain. For more
-     * information, see <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html"
-     * target="_blank">Amazon Cognito Authentication for Kibana</a>.</p>
-     */
-    inline ElasticsearchDomainConfig& WithCognitoOptions(CognitoOptionsStatus&& value) { SetCognitoOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch
      * domain.</p>
      */
-    inline const EncryptionAtRestOptionsStatus& GetEncryptionAtRestOptions() const{ return m_encryptionAtRestOptions; }
-
-    /**
-     * <p>Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
+    inline const EncryptionAtRestOptionsStatus& GetEncryptionAtRestOptions() const { return m_encryptionAtRestOptions; }
     inline bool EncryptionAtRestOptionsHasBeenSet() const { return m_encryptionAtRestOptionsHasBeenSet; }
+    template<typename EncryptionAtRestOptionsT = EncryptionAtRestOptionsStatus>
+    void SetEncryptionAtRestOptions(EncryptionAtRestOptionsT&& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = std::forward<EncryptionAtRestOptionsT>(value); }
+    template<typename EncryptionAtRestOptionsT = EncryptionAtRestOptionsStatus>
+    ElasticsearchDomainConfig& WithEncryptionAtRestOptions(EncryptionAtRestOptionsT&& value) { SetEncryptionAtRestOptions(std::forward<EncryptionAtRestOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetEncryptionAtRestOptions(const EncryptionAtRestOptionsStatus& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = value; }
-
-    /**
-     * <p>Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetEncryptionAtRestOptions(EncryptionAtRestOptionsStatus&& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithEncryptionAtRestOptions(const EncryptionAtRestOptionsStatus& value) { SetEncryptionAtRestOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithEncryptionAtRestOptions(EncryptionAtRestOptionsStatus&& value) { SetEncryptionAtRestOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch
      * domain.</p>
      */
-    inline const NodeToNodeEncryptionOptionsStatus& GetNodeToNodeEncryptionOptions() const{ return m_nodeToNodeEncryptionOptions; }
-
-    /**
-     * <p>Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
+    inline const NodeToNodeEncryptionOptionsStatus& GetNodeToNodeEncryptionOptions() const { return m_nodeToNodeEncryptionOptions; }
     inline bool NodeToNodeEncryptionOptionsHasBeenSet() const { return m_nodeToNodeEncryptionOptionsHasBeenSet; }
+    template<typename NodeToNodeEncryptionOptionsT = NodeToNodeEncryptionOptionsStatus>
+    void SetNodeToNodeEncryptionOptions(NodeToNodeEncryptionOptionsT&& value) { m_nodeToNodeEncryptionOptionsHasBeenSet = true; m_nodeToNodeEncryptionOptions = std::forward<NodeToNodeEncryptionOptionsT>(value); }
+    template<typename NodeToNodeEncryptionOptionsT = NodeToNodeEncryptionOptionsStatus>
+    ElasticsearchDomainConfig& WithNodeToNodeEncryptionOptions(NodeToNodeEncryptionOptionsT&& value) { SetNodeToNodeEncryptionOptions(std::forward<NodeToNodeEncryptionOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetNodeToNodeEncryptionOptions(const NodeToNodeEncryptionOptionsStatus& value) { m_nodeToNodeEncryptionOptionsHasBeenSet = true; m_nodeToNodeEncryptionOptions = value; }
-
-    /**
-     * <p>Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetNodeToNodeEncryptionOptions(NodeToNodeEncryptionOptionsStatus&& value) { m_nodeToNodeEncryptionOptionsHasBeenSet = true; m_nodeToNodeEncryptionOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithNodeToNodeEncryptionOptions(const NodeToNodeEncryptionOptionsStatus& value) { SetNodeToNodeEncryptionOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithNodeToNodeEncryptionOptions(NodeToNodeEncryptionOptionsStatus&& value) { SetNodeToNodeEncryptionOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a
      * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
      * target="_blank">Configuring Advanced Options</a> for more information.</p>
      */
-    inline const AdvancedOptionsStatus& GetAdvancedOptions() const{ return m_advancedOptions; }
-
-    /**
-     * <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     * target="_blank">Configuring Advanced Options</a> for more information.</p>
-     */
+    inline const AdvancedOptionsStatus& GetAdvancedOptions() const { return m_advancedOptions; }
     inline bool AdvancedOptionsHasBeenSet() const { return m_advancedOptionsHasBeenSet; }
+    template<typename AdvancedOptionsT = AdvancedOptionsStatus>
+    void SetAdvancedOptions(AdvancedOptionsT&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions = std::forward<AdvancedOptionsT>(value); }
+    template<typename AdvancedOptionsT = AdvancedOptionsStatus>
+    ElasticsearchDomainConfig& WithAdvancedOptions(AdvancedOptionsT&& value) { SetAdvancedOptions(std::forward<AdvancedOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     * target="_blank">Configuring Advanced Options</a> for more information.</p>
-     */
-    inline void SetAdvancedOptions(const AdvancedOptionsStatus& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions = value; }
-
-    /**
-     * <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     * target="_blank">Configuring Advanced Options</a> for more information.</p>
-     */
-    inline void SetAdvancedOptions(AdvancedOptionsStatus&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     * target="_blank">Configuring Advanced Options</a> for more information.</p>
-     */
-    inline ElasticsearchDomainConfig& WithAdvancedOptions(const AdvancedOptionsStatus& value) { SetAdvancedOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a
-     * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options"
-     * target="_blank">Configuring Advanced Options</a> for more information.</p>
-     */
-    inline ElasticsearchDomainConfig& WithAdvancedOptions(AdvancedOptionsStatus&& value) { SetAdvancedOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Log publishing options for the given domain.</p>
      */
-    inline const LogPublishingOptionsStatus& GetLogPublishingOptions() const{ return m_logPublishingOptions; }
-
-    /**
-     * <p>Log publishing options for the given domain.</p>
-     */
+    inline const LogPublishingOptionsStatus& GetLogPublishingOptions() const { return m_logPublishingOptions; }
     inline bool LogPublishingOptionsHasBeenSet() const { return m_logPublishingOptionsHasBeenSet; }
+    template<typename LogPublishingOptionsT = LogPublishingOptionsStatus>
+    void SetLogPublishingOptions(LogPublishingOptionsT&& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = std::forward<LogPublishingOptionsT>(value); }
+    template<typename LogPublishingOptionsT = LogPublishingOptionsStatus>
+    ElasticsearchDomainConfig& WithLogPublishingOptions(LogPublishingOptionsT&& value) { SetLogPublishingOptions(std::forward<LogPublishingOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Log publishing options for the given domain.</p>
-     */
-    inline void SetLogPublishingOptions(const LogPublishingOptionsStatus& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = value; }
-
-    /**
-     * <p>Log publishing options for the given domain.</p>
-     */
-    inline void SetLogPublishingOptions(LogPublishingOptionsStatus&& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = std::move(value); }
-
-    /**
-     * <p>Log publishing options for the given domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithLogPublishingOptions(const LogPublishingOptionsStatus& value) { SetLogPublishingOptions(value); return *this;}
-
-    /**
-     * <p>Log publishing options for the given domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithLogPublishingOptions(LogPublishingOptionsStatus&& value) { SetLogPublishingOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch
      * domain.</p>
      */
-    inline const DomainEndpointOptionsStatus& GetDomainEndpointOptions() const{ return m_domainEndpointOptions; }
-
-    /**
-     * <p>Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
+    inline const DomainEndpointOptionsStatus& GetDomainEndpointOptions() const { return m_domainEndpointOptions; }
     inline bool DomainEndpointOptionsHasBeenSet() const { return m_domainEndpointOptionsHasBeenSet; }
+    template<typename DomainEndpointOptionsT = DomainEndpointOptionsStatus>
+    void SetDomainEndpointOptions(DomainEndpointOptionsT&& value) { m_domainEndpointOptionsHasBeenSet = true; m_domainEndpointOptions = std::forward<DomainEndpointOptionsT>(value); }
+    template<typename DomainEndpointOptionsT = DomainEndpointOptionsStatus>
+    ElasticsearchDomainConfig& WithDomainEndpointOptions(DomainEndpointOptionsT&& value) { SetDomainEndpointOptions(std::forward<DomainEndpointOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetDomainEndpointOptions(const DomainEndpointOptionsStatus& value) { m_domainEndpointOptionsHasBeenSet = true; m_domainEndpointOptions = value; }
-
-    /**
-     * <p>Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline void SetDomainEndpointOptions(DomainEndpointOptionsStatus&& value) { m_domainEndpointOptionsHasBeenSet = true; m_domainEndpointOptions = std::move(value); }
-
-    /**
-     * <p>Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithDomainEndpointOptions(const DomainEndpointOptionsStatus& value) { SetDomainEndpointOptions(value); return *this;}
-
-    /**
-     * <p>Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchDomainConfig& WithDomainEndpointOptions(DomainEndpointOptionsStatus&& value) { SetDomainEndpointOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies <code>AdvancedSecurityOptions</code> for the domain. </p>
      */
-    inline const AdvancedSecurityOptionsStatus& GetAdvancedSecurityOptions() const{ return m_advancedSecurityOptions; }
-
-    /**
-     * <p>Specifies <code>AdvancedSecurityOptions</code> for the domain. </p>
-     */
+    inline const AdvancedSecurityOptionsStatus& GetAdvancedSecurityOptions() const { return m_advancedSecurityOptions; }
     inline bool AdvancedSecurityOptionsHasBeenSet() const { return m_advancedSecurityOptionsHasBeenSet; }
+    template<typename AdvancedSecurityOptionsT = AdvancedSecurityOptionsStatus>
+    void SetAdvancedSecurityOptions(AdvancedSecurityOptionsT&& value) { m_advancedSecurityOptionsHasBeenSet = true; m_advancedSecurityOptions = std::forward<AdvancedSecurityOptionsT>(value); }
+    template<typename AdvancedSecurityOptionsT = AdvancedSecurityOptionsStatus>
+    ElasticsearchDomainConfig& WithAdvancedSecurityOptions(AdvancedSecurityOptionsT&& value) { SetAdvancedSecurityOptions(std::forward<AdvancedSecurityOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies <code>AdvancedSecurityOptions</code> for the domain. </p>
-     */
-    inline void SetAdvancedSecurityOptions(const AdvancedSecurityOptionsStatus& value) { m_advancedSecurityOptionsHasBeenSet = true; m_advancedSecurityOptions = value; }
-
-    /**
-     * <p>Specifies <code>AdvancedSecurityOptions</code> for the domain. </p>
-     */
-    inline void SetAdvancedSecurityOptions(AdvancedSecurityOptionsStatus&& value) { m_advancedSecurityOptionsHasBeenSet = true; m_advancedSecurityOptions = std::move(value); }
-
-    /**
-     * <p>Specifies <code>AdvancedSecurityOptions</code> for the domain. </p>
-     */
-    inline ElasticsearchDomainConfig& WithAdvancedSecurityOptions(const AdvancedSecurityOptionsStatus& value) { SetAdvancedSecurityOptions(value); return *this;}
-
-    /**
-     * <p>Specifies <code>AdvancedSecurityOptions</code> for the domain. </p>
-     */
-    inline ElasticsearchDomainConfig& WithAdvancedSecurityOptions(AdvancedSecurityOptionsStatus&& value) { SetAdvancedSecurityOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies <code>AutoTuneOptions</code> for the domain. </p>
      */
-    inline const AutoTuneOptionsStatus& GetAutoTuneOptions() const{ return m_autoTuneOptions; }
-
-    /**
-     * <p>Specifies <code>AutoTuneOptions</code> for the domain. </p>
-     */
+    inline const AutoTuneOptionsStatus& GetAutoTuneOptions() const { return m_autoTuneOptions; }
     inline bool AutoTuneOptionsHasBeenSet() const { return m_autoTuneOptionsHasBeenSet; }
+    template<typename AutoTuneOptionsT = AutoTuneOptionsStatus>
+    void SetAutoTuneOptions(AutoTuneOptionsT&& value) { m_autoTuneOptionsHasBeenSet = true; m_autoTuneOptions = std::forward<AutoTuneOptionsT>(value); }
+    template<typename AutoTuneOptionsT = AutoTuneOptionsStatus>
+    ElasticsearchDomainConfig& WithAutoTuneOptions(AutoTuneOptionsT&& value) { SetAutoTuneOptions(std::forward<AutoTuneOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies <code>AutoTuneOptions</code> for the domain. </p>
-     */
-    inline void SetAutoTuneOptions(const AutoTuneOptionsStatus& value) { m_autoTuneOptionsHasBeenSet = true; m_autoTuneOptions = value; }
-
-    /**
-     * <p>Specifies <code>AutoTuneOptions</code> for the domain. </p>
-     */
-    inline void SetAutoTuneOptions(AutoTuneOptionsStatus&& value) { m_autoTuneOptionsHasBeenSet = true; m_autoTuneOptions = std::move(value); }
-
-    /**
-     * <p>Specifies <code>AutoTuneOptions</code> for the domain. </p>
-     */
-    inline ElasticsearchDomainConfig& WithAutoTuneOptions(const AutoTuneOptionsStatus& value) { SetAutoTuneOptions(value); return *this;}
-
-    /**
-     * <p>Specifies <code>AutoTuneOptions</code> for the domain. </p>
-     */
-    inline ElasticsearchDomainConfig& WithAutoTuneOptions(AutoTuneOptionsStatus&& value) { SetAutoTuneOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies change details of the domain configuration change.</p>
      */
-    inline const ChangeProgressDetails& GetChangeProgressDetails() const{ return m_changeProgressDetails; }
-
-    /**
-     * <p>Specifies change details of the domain configuration change.</p>
-     */
+    inline const ChangeProgressDetails& GetChangeProgressDetails() const { return m_changeProgressDetails; }
     inline bool ChangeProgressDetailsHasBeenSet() const { return m_changeProgressDetailsHasBeenSet; }
+    template<typename ChangeProgressDetailsT = ChangeProgressDetails>
+    void SetChangeProgressDetails(ChangeProgressDetailsT&& value) { m_changeProgressDetailsHasBeenSet = true; m_changeProgressDetails = std::forward<ChangeProgressDetailsT>(value); }
+    template<typename ChangeProgressDetailsT = ChangeProgressDetails>
+    ElasticsearchDomainConfig& WithChangeProgressDetails(ChangeProgressDetailsT&& value) { SetChangeProgressDetails(std::forward<ChangeProgressDetailsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies change details of the domain configuration change.</p>
+     * <p>Information about the domain properties that are currently being
+     * modified.</p>
      */
-    inline void SetChangeProgressDetails(const ChangeProgressDetails& value) { m_changeProgressDetailsHasBeenSet = true; m_changeProgressDetails = value; }
-
-    /**
-     * <p>Specifies change details of the domain configuration change.</p>
-     */
-    inline void SetChangeProgressDetails(ChangeProgressDetails&& value) { m_changeProgressDetailsHasBeenSet = true; m_changeProgressDetails = std::move(value); }
-
-    /**
-     * <p>Specifies change details of the domain configuration change.</p>
-     */
-    inline ElasticsearchDomainConfig& WithChangeProgressDetails(const ChangeProgressDetails& value) { SetChangeProgressDetails(value); return *this;}
-
-    /**
-     * <p>Specifies change details of the domain configuration change.</p>
-     */
-    inline ElasticsearchDomainConfig& WithChangeProgressDetails(ChangeProgressDetails&& value) { SetChangeProgressDetails(std::move(value)); return *this;}
-
+    inline const Aws::Vector<ModifyingProperties>& GetModifyingProperties() const { return m_modifyingProperties; }
+    inline bool ModifyingPropertiesHasBeenSet() const { return m_modifyingPropertiesHasBeenSet; }
+    template<typename ModifyingPropertiesT = Aws::Vector<ModifyingProperties>>
+    void SetModifyingProperties(ModifyingPropertiesT&& value) { m_modifyingPropertiesHasBeenSet = true; m_modifyingProperties = std::forward<ModifyingPropertiesT>(value); }
+    template<typename ModifyingPropertiesT = Aws::Vector<ModifyingProperties>>
+    ElasticsearchDomainConfig& WithModifyingProperties(ModifyingPropertiesT&& value) { SetModifyingProperties(std::forward<ModifyingPropertiesT>(value)); return *this;}
+    template<typename ModifyingPropertiesT = ModifyingProperties>
+    ElasticsearchDomainConfig& AddModifyingProperties(ModifyingPropertiesT&& value) { m_modifyingPropertiesHasBeenSet = true; m_modifyingProperties.emplace_back(std::forward<ModifyingPropertiesT>(value)); return *this; }
+    ///@}
   private:
 
     ElasticsearchVersionStatus m_elasticsearchVersion;
@@ -633,6 +305,9 @@ namespace Model
 
     ChangeProgressDetails m_changeProgressDetails;
     bool m_changeProgressDetailsHasBeenSet = false;
+
+    Aws::Vector<ModifyingProperties> m_modifyingProperties;
+    bool m_modifyingPropertiesHasBeenSet = false;
   };
 
 } // namespace Model

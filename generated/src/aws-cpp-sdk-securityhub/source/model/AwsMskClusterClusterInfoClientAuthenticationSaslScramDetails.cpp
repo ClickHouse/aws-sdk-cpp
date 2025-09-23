@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails::AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails::AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails::AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails& AwsMskClusterClust
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

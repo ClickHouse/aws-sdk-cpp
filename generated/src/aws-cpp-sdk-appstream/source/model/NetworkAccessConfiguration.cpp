@@ -18,15 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-NetworkAccessConfiguration::NetworkAccessConfiguration() : 
-    m_eniPrivateIpAddressHasBeenSet(false),
-    m_eniIdHasBeenSet(false)
-{
-}
-
-NetworkAccessConfiguration::NetworkAccessConfiguration(JsonView jsonValue) : 
-    m_eniPrivateIpAddressHasBeenSet(false),
-    m_eniIdHasBeenSet(false)
+NetworkAccessConfiguration::NetworkAccessConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NetworkAccessConfiguration& NetworkAccessConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("EniPrivateIpAddress"))
   {
     m_eniPrivateIpAddress = jsonValue.GetString("EniPrivateIpAddress");
-
     m_eniPrivateIpAddressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EniId"))
   {
     m_eniId = jsonValue.GetString("EniId");
-
     m_eniIdHasBeenSet = true;
   }
-
   return *this;
 }
 

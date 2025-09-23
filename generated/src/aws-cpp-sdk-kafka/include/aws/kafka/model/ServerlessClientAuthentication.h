@@ -34,54 +34,25 @@ namespace Model
   class ServerlessClientAuthentication
   {
   public:
-    AWS_KAFKA_API ServerlessClientAuthentication();
+    AWS_KAFKA_API ServerlessClientAuthentication() = default;
     AWS_KAFKA_API ServerlessClientAuthentication(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ServerlessClientAuthentication& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Details for ClientAuthentication using SASL.</p>
          
      */
-    inline const ServerlessSasl& GetSasl() const{ return m_sasl; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
+    inline const ServerlessSasl& GetSasl() const { return m_sasl; }
     inline bool SaslHasBeenSet() const { return m_saslHasBeenSet; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline void SetSasl(const ServerlessSasl& value) { m_saslHasBeenSet = true; m_sasl = value; }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline void SetSasl(ServerlessSasl&& value) { m_saslHasBeenSet = true; m_sasl = std::move(value); }
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline ServerlessClientAuthentication& WithSasl(const ServerlessSasl& value) { SetSasl(value); return *this;}
-
-    /**
-     * 
-            <p>Details for ClientAuthentication using SASL.</p>
-         
-     */
-    inline ServerlessClientAuthentication& WithSasl(ServerlessSasl&& value) { SetSasl(std::move(value)); return *this;}
-
+    template<typename SaslT = ServerlessSasl>
+    void SetSasl(SaslT&& value) { m_saslHasBeenSet = true; m_sasl = std::forward<SaslT>(value); }
+    template<typename SaslT = ServerlessSasl>
+    ServerlessClientAuthentication& WithSasl(SaslT&& value) { SetSasl(std::forward<SaslT>(value)); return *this;}
+    ///@}
   private:
 
     ServerlessSasl m_sasl;

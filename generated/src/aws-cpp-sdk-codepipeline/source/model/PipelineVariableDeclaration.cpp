@@ -18,17 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-PipelineVariableDeclaration::PipelineVariableDeclaration() : 
-    m_nameHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-PipelineVariableDeclaration::PipelineVariableDeclaration(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_defaultValueHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+PipelineVariableDeclaration::PipelineVariableDeclaration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ PipelineVariableDeclaration& PipelineVariableDeclaration::operator =(JsonView js
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("defaultValue"))
   {
     m_defaultValue = jsonValue.GetString("defaultValue");
-
     m_defaultValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

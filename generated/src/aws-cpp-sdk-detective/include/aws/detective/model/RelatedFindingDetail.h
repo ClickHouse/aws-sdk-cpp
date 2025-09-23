@@ -33,134 +33,47 @@ namespace Model
   class RelatedFindingDetail
   {
   public:
-    AWS_DETECTIVE_API RelatedFindingDetail();
+    AWS_DETECTIVE_API RelatedFindingDetail() = default;
     AWS_DETECTIVE_API RelatedFindingDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_DETECTIVE_API RelatedFindingDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DETECTIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The ARN of the related finding.</p>
+     * <p>The Amazon Resource Name (ARN) of the related finding.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    RelatedFindingDetail& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
-    inline RelatedFindingDetail& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
-    inline RelatedFindingDetail& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the related finding.</p>
-     */
-    inline RelatedFindingDetail& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of finding.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of finding.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    RelatedFindingDetail& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of finding.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of finding.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of finding.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of finding.</p>
-     */
-    inline RelatedFindingDetail& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of finding.</p>
-     */
-    inline RelatedFindingDetail& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of finding.</p>
-     */
-    inline RelatedFindingDetail& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address of the finding.</p>
      */
-    inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
+    inline const Aws::String& GetIpAddress() const { return m_ipAddress; }
     inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
-    inline void SetIpAddress(const Aws::String& value) { m_ipAddressHasBeenSet = true; m_ipAddress = value; }
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
-    inline void SetIpAddress(Aws::String&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::move(value); }
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
-    inline void SetIpAddress(const char* value) { m_ipAddressHasBeenSet = true; m_ipAddress.assign(value); }
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
-    inline RelatedFindingDetail& WithIpAddress(const Aws::String& value) { SetIpAddress(value); return *this;}
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
-    inline RelatedFindingDetail& WithIpAddress(Aws::String&& value) { SetIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address of the finding.</p>
-     */
-    inline RelatedFindingDetail& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
-
+    template<typename IpAddressT = Aws::String>
+    void SetIpAddress(IpAddressT&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::forward<IpAddressT>(value); }
+    template<typename IpAddressT = Aws::String>
+    RelatedFindingDetail& WithIpAddress(IpAddressT&& value) { SetIpAddress(std::forward<IpAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

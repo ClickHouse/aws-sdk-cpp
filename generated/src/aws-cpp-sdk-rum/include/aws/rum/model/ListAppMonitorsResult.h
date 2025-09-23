@@ -29,125 +29,55 @@ namespace Model
   class ListAppMonitorsResult
   {
   public:
-    AWS_CLOUDWATCHRUM_API ListAppMonitorsResult();
+    AWS_CLOUDWATCHRUM_API ListAppMonitorsResult() = default;
     AWS_CLOUDWATCHRUM_API ListAppMonitorsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUDWATCHRUM_API ListAppMonitorsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of structures that contain information about the returned app
      * monitors.</p>
      */
-    inline const Aws::Vector<AppMonitorSummary>& GetAppMonitorSummaries() const{ return m_appMonitorSummaries; }
+    inline const Aws::Vector<AppMonitorSummary>& GetAppMonitorSummaries() const { return m_appMonitorSummaries; }
+    template<typename AppMonitorSummariesT = Aws::Vector<AppMonitorSummary>>
+    void SetAppMonitorSummaries(AppMonitorSummariesT&& value) { m_appMonitorSummariesHasBeenSet = true; m_appMonitorSummaries = std::forward<AppMonitorSummariesT>(value); }
+    template<typename AppMonitorSummariesT = Aws::Vector<AppMonitorSummary>>
+    ListAppMonitorsResult& WithAppMonitorSummaries(AppMonitorSummariesT&& value) { SetAppMonitorSummaries(std::forward<AppMonitorSummariesT>(value)); return *this;}
+    template<typename AppMonitorSummariesT = AppMonitorSummary>
+    ListAppMonitorsResult& AddAppMonitorSummaries(AppMonitorSummariesT&& value) { m_appMonitorSummariesHasBeenSet = true; m_appMonitorSummaries.emplace_back(std::forward<AppMonitorSummariesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of structures that contain information about the returned app
-     * monitors.</p>
-     */
-    inline void SetAppMonitorSummaries(const Aws::Vector<AppMonitorSummary>& value) { m_appMonitorSummaries = value; }
-
-    /**
-     * <p>An array of structures that contain information about the returned app
-     * monitors.</p>
-     */
-    inline void SetAppMonitorSummaries(Aws::Vector<AppMonitorSummary>&& value) { m_appMonitorSummaries = std::move(value); }
-
-    /**
-     * <p>An array of structures that contain information about the returned app
-     * monitors.</p>
-     */
-    inline ListAppMonitorsResult& WithAppMonitorSummaries(const Aws::Vector<AppMonitorSummary>& value) { SetAppMonitorSummaries(value); return *this;}
-
-    /**
-     * <p>An array of structures that contain information about the returned app
-     * monitors.</p>
-     */
-    inline ListAppMonitorsResult& WithAppMonitorSummaries(Aws::Vector<AppMonitorSummary>&& value) { SetAppMonitorSummaries(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of structures that contain information about the returned app
-     * monitors.</p>
-     */
-    inline ListAppMonitorsResult& AddAppMonitorSummaries(const AppMonitorSummary& value) { m_appMonitorSummaries.push_back(value); return *this; }
-
-    /**
-     * <p>An array of structures that contain information about the returned app
-     * monitors.</p>
-     */
-    inline ListAppMonitorsResult& AddAppMonitorSummaries(AppMonitorSummary&& value) { m_appMonitorSummaries.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A token that you can use in a subsequent operation to retrieve the next set
      * of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAppMonitorsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token that you can use in a subsequent operation to retrieve the next set
-     * of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A token that you can use in a subsequent operation to retrieve the next set
-     * of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token that you can use in a subsequent operation to retrieve the next set
-     * of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A token that you can use in a subsequent operation to retrieve the next set
-     * of results.</p>
-     */
-    inline ListAppMonitorsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token that you can use in a subsequent operation to retrieve the next set
-     * of results.</p>
-     */
-    inline ListAppMonitorsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that you can use in a subsequent operation to retrieve the next set
-     * of results.</p>
-     */
-    inline ListAppMonitorsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAppMonitorsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAppMonitorsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAppMonitorsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAppMonitorsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<AppMonitorSummary> m_appMonitorSummaries;
+    bool m_appMonitorSummariesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,101 +34,38 @@ namespace Model
   class DateTimeHierarchy
   {
   public:
-    AWS_QUICKSIGHT_API DateTimeHierarchy();
+    AWS_QUICKSIGHT_API DateTimeHierarchy() = default;
     AWS_QUICKSIGHT_API DateTimeHierarchy(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DateTimeHierarchy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
      */
-    inline const Aws::String& GetHierarchyId() const{ return m_hierarchyId; }
-
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
+    inline const Aws::String& GetHierarchyId() const { return m_hierarchyId; }
     inline bool HierarchyIdHasBeenSet() const { return m_hierarchyIdHasBeenSet; }
+    template<typename HierarchyIdT = Aws::String>
+    void SetHierarchyId(HierarchyIdT&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::forward<HierarchyIdT>(value); }
+    template<typename HierarchyIdT = Aws::String>
+    DateTimeHierarchy& WithHierarchyId(HierarchyIdT&& value) { SetHierarchyId(std::forward<HierarchyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
-    inline void SetHierarchyId(const Aws::String& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = value; }
-
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
-    inline void SetHierarchyId(Aws::String&& value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId = std::move(value); }
-
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
-    inline void SetHierarchyId(const char* value) { m_hierarchyIdHasBeenSet = true; m_hierarchyId.assign(value); }
-
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& WithHierarchyId(const Aws::String& value) { SetHierarchyId(value); return *this;}
-
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& WithHierarchyId(Aws::String&& value) { SetHierarchyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The hierarchy ID of the <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& WithHierarchyId(const char* value) { SetHierarchyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The option that determines the drill down filters for the
      * <code>DateTime</code> hierarchy.</p>
      */
-    inline const Aws::Vector<DrillDownFilter>& GetDrillDownFilters() const{ return m_drillDownFilters; }
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
+    inline const Aws::Vector<DrillDownFilter>& GetDrillDownFilters() const { return m_drillDownFilters; }
     inline bool DrillDownFiltersHasBeenSet() const { return m_drillDownFiltersHasBeenSet; }
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
-    inline void SetDrillDownFilters(const Aws::Vector<DrillDownFilter>& value) { m_drillDownFiltersHasBeenSet = true; m_drillDownFilters = value; }
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
-    inline void SetDrillDownFilters(Aws::Vector<DrillDownFilter>&& value) { m_drillDownFiltersHasBeenSet = true; m_drillDownFilters = std::move(value); }
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& WithDrillDownFilters(const Aws::Vector<DrillDownFilter>& value) { SetDrillDownFilters(value); return *this;}
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& WithDrillDownFilters(Aws::Vector<DrillDownFilter>&& value) { SetDrillDownFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& AddDrillDownFilters(const DrillDownFilter& value) { m_drillDownFiltersHasBeenSet = true; m_drillDownFilters.push_back(value); return *this; }
-
-    /**
-     * <p>The option that determines the drill down filters for the
-     * <code>DateTime</code> hierarchy.</p>
-     */
-    inline DateTimeHierarchy& AddDrillDownFilters(DrillDownFilter&& value) { m_drillDownFiltersHasBeenSet = true; m_drillDownFilters.push_back(std::move(value)); return *this; }
-
+    template<typename DrillDownFiltersT = Aws::Vector<DrillDownFilter>>
+    void SetDrillDownFilters(DrillDownFiltersT&& value) { m_drillDownFiltersHasBeenSet = true; m_drillDownFilters = std::forward<DrillDownFiltersT>(value); }
+    template<typename DrillDownFiltersT = Aws::Vector<DrillDownFilter>>
+    DateTimeHierarchy& WithDrillDownFilters(DrillDownFiltersT&& value) { SetDrillDownFilters(std::forward<DrillDownFiltersT>(value)); return *this;}
+    template<typename DrillDownFiltersT = DrillDownFilter>
+    DateTimeHierarchy& AddDrillDownFilters(DrillDownFiltersT&& value) { m_drillDownFiltersHasBeenSet = true; m_drillDownFilters.emplace_back(std::forward<DrillDownFiltersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_hierarchyId;

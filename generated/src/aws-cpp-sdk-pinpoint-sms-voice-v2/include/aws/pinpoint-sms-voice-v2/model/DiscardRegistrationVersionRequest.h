@@ -21,7 +21,7 @@ namespace Model
   class DiscardRegistrationVersionRequest : public PinpointSMSVoiceV2Request
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API DiscardRegistrationVersionRequest();
+    AWS_PINPOINTSMSVOICEV2_API DiscardRegistrationVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_PINPOINTSMSVOICEV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the registration.</p>
      */
-    inline const Aws::String& GetRegistrationId() const{ return m_registrationId; }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
+    inline const Aws::String& GetRegistrationId() const { return m_registrationId; }
     inline bool RegistrationIdHasBeenSet() const { return m_registrationIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline void SetRegistrationId(const Aws::String& value) { m_registrationIdHasBeenSet = true; m_registrationId = value; }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline void SetRegistrationId(Aws::String&& value) { m_registrationIdHasBeenSet = true; m_registrationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline void SetRegistrationId(const char* value) { m_registrationIdHasBeenSet = true; m_registrationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline DiscardRegistrationVersionRequest& WithRegistrationId(const Aws::String& value) { SetRegistrationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline DiscardRegistrationVersionRequest& WithRegistrationId(Aws::String&& value) { SetRegistrationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the registration.</p>
-     */
-    inline DiscardRegistrationVersionRequest& WithRegistrationId(const char* value) { SetRegistrationId(value); return *this;}
-
+    template<typename RegistrationIdT = Aws::String>
+    void SetRegistrationId(RegistrationIdT&& value) { m_registrationIdHasBeenSet = true; m_registrationId = std::forward<RegistrationIdT>(value); }
+    template<typename RegistrationIdT = Aws::String>
+    DiscardRegistrationVersionRequest& WithRegistrationId(RegistrationIdT&& value) { SetRegistrationId(std::forward<RegistrationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_registrationId;

@@ -10,14 +10,6 @@
 using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils;
 
-DescribeIndexFieldsRequest::DescribeIndexFieldsRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_fieldNamesHasBeenSet(false),
-    m_deployed(false),
-    m_deployedHasBeenSet(false)
-{
-}
-
 Aws::String DescribeIndexFieldsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,12 +21,19 @@ Aws::String DescribeIndexFieldsRequest::SerializePayload() const
 
   if(m_fieldNamesHasBeenSet)
   {
-    unsigned fieldNamesCount = 1;
-    for(auto& item : m_fieldNames)
+    if (m_fieldNames.empty())
     {
-      ss << "FieldNames.member." << fieldNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      fieldNamesCount++;
+      ss << "FieldNames=&";
+    }
+    else
+    {
+      unsigned fieldNamesCount = 1;
+      for(auto& item : m_fieldNames)
+      {
+        ss << "FieldNames.member." << fieldNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        fieldNamesCount++;
+      }
     }
   }
 

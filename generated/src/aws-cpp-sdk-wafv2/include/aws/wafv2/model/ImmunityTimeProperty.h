@@ -32,43 +32,26 @@ namespace Model
   class ImmunityTimeProperty
   {
   public:
-    AWS_WAFV2_API ImmunityTimeProperty();
+    AWS_WAFV2_API ImmunityTimeProperty() = default;
     AWS_WAFV2_API ImmunityTimeProperty(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API ImmunityTimeProperty& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The amount of time, in seconds, that a <code>CAPTCHA</code> or challenge
      * timestamp is considered valid by WAF. The default setting is 300. </p> <p>For
      * the Challenge action, the minimum setting is 300. </p>
      */
-    inline long long GetImmunityTime() const{ return m_immunityTime; }
-
-    /**
-     * <p>The amount of time, in seconds, that a <code>CAPTCHA</code> or challenge
-     * timestamp is considered valid by WAF. The default setting is 300. </p> <p>For
-     * the Challenge action, the minimum setting is 300. </p>
-     */
+    inline long long GetImmunityTime() const { return m_immunityTime; }
     inline bool ImmunityTimeHasBeenSet() const { return m_immunityTimeHasBeenSet; }
-
-    /**
-     * <p>The amount of time, in seconds, that a <code>CAPTCHA</code> or challenge
-     * timestamp is considered valid by WAF. The default setting is 300. </p> <p>For
-     * the Challenge action, the minimum setting is 300. </p>
-     */
     inline void SetImmunityTime(long long value) { m_immunityTimeHasBeenSet = true; m_immunityTime = value; }
-
-    /**
-     * <p>The amount of time, in seconds, that a <code>CAPTCHA</code> or challenge
-     * timestamp is considered valid by WAF. The default setting is 300. </p> <p>For
-     * the Challenge action, the minimum setting is 300. </p>
-     */
     inline ImmunityTimeProperty& WithImmunityTime(long long value) { SetImmunityTime(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_immunityTime;
+    long long m_immunityTime{0};
     bool m_immunityTimeHasBeenSet = false;
   };
 

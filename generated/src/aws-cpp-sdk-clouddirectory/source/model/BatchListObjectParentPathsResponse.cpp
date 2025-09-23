@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchListObjectParentPathsResponse::BatchListObjectParentPathsResponse() : 
-    m_pathToObjectIdentifiersListHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
-BatchListObjectParentPathsResponse::BatchListObjectParentPathsResponse(JsonView jsonValue) : 
-    m_pathToObjectIdentifiersListHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
+BatchListObjectParentPathsResponse::BatchListObjectParentPathsResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ BatchListObjectParentPathsResponse& BatchListObjectParentPathsResponse::operator
     }
     m_pathToObjectIdentifiersListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

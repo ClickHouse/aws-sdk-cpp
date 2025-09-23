@@ -20,21 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-ProcessedUpdateAction::ProcessedUpdateAction() : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_cacheClusterIdHasBeenSet(false),
-    m_serviceUpdateNameHasBeenSet(false),
-    m_updateActionStatus(UpdateActionStatus::NOT_SET),
-    m_updateActionStatusHasBeenSet(false)
-{
-}
-
-ProcessedUpdateAction::ProcessedUpdateAction(const XmlNode& xmlNode) : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_cacheClusterIdHasBeenSet(false),
-    m_serviceUpdateNameHasBeenSet(false),
-    m_updateActionStatus(UpdateActionStatus::NOT_SET),
-    m_updateActionStatusHasBeenSet(false)
+ProcessedUpdateAction::ProcessedUpdateAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +52,7 @@ ProcessedUpdateAction& ProcessedUpdateAction::operator =(const XmlNode& xmlNode)
     XmlNode updateActionStatusNode = resultNode.FirstChild("UpdateActionStatus");
     if(!updateActionStatusNode.IsNull())
     {
-      m_updateActionStatus = UpdateActionStatusMapper::GetUpdateActionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(updateActionStatusNode.GetText()).c_str()).c_str());
+      m_updateActionStatus = UpdateActionStatusMapper::GetUpdateActionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(updateActionStatusNode.GetText()).c_str()));
       m_updateActionStatusHasBeenSet = true;
     }
   }
@@ -93,7 +79,7 @@ void ProcessedUpdateAction::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_updateActionStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".UpdateActionStatus=" << UpdateActionStatusMapper::GetNameForUpdateActionStatus(m_updateActionStatus) << "&";
+      oStream << location << index << locationValue << ".UpdateActionStatus=" << StringUtils::URLEncode(UpdateActionStatusMapper::GetNameForUpdateActionStatus(m_updateActionStatus)) << "&";
   }
 
 }
@@ -114,7 +100,7 @@ void ProcessedUpdateAction::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_updateActionStatusHasBeenSet)
   {
-      oStream << location << ".UpdateActionStatus=" << UpdateActionStatusMapper::GetNameForUpdateActionStatus(m_updateActionStatus) << "&";
+      oStream << location << ".UpdateActionStatus=" << StringUtils::URLEncode(UpdateActionStatusMapper::GetNameForUpdateActionStatus(m_updateActionStatus)) << "&";
   }
 }
 

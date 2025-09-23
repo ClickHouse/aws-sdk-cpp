@@ -12,22 +12,6 @@ using namespace Aws::Keyspaces::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTableRequest::CreateTableRequest() : 
-    m_keyspaceNameHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_schemaDefinitionHasBeenSet(false),
-    m_commentHasBeenSet(false),
-    m_capacitySpecificationHasBeenSet(false),
-    m_encryptionSpecificationHasBeenSet(false),
-    m_pointInTimeRecoveryHasBeenSet(false),
-    m_ttlHasBeenSet(false),
-    m_defaultTimeToLive(0),
-    m_defaultTimeToLiveHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_clientSideTimestampsHasBeenSet(false)
-{
-}
-
 Aws::String CreateTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -100,6 +84,29 @@ Aws::String CreateTableRequest::SerializePayload() const
   if(m_clientSideTimestampsHasBeenSet)
   {
    payload.WithObject("clientSideTimestamps", m_clientSideTimestamps.Jsonize());
+
+  }
+
+  if(m_autoScalingSpecificationHasBeenSet)
+  {
+   payload.WithObject("autoScalingSpecification", m_autoScalingSpecification.Jsonize());
+
+  }
+
+  if(m_replicaSpecificationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> replicaSpecificationsJsonList(m_replicaSpecifications.size());
+   for(unsigned replicaSpecificationsIndex = 0; replicaSpecificationsIndex < replicaSpecificationsJsonList.GetLength(); ++replicaSpecificationsIndex)
+   {
+     replicaSpecificationsJsonList[replicaSpecificationsIndex].AsObject(m_replicaSpecifications[replicaSpecificationsIndex].Jsonize());
+   }
+   payload.WithArray("replicaSpecifications", std::move(replicaSpecificationsJsonList));
+
+  }
+
+  if(m_cdcSpecificationHasBeenSet)
+  {
+   payload.WithObject("cdcSpecification", m_cdcSpecification.Jsonize());
 
   }
 

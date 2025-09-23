@@ -18,21 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-ReplicationDetails::ReplicationDetails() : 
-    m_replicated(false),
-    m_replicatedHasBeenSet(false),
-    m_replicatedExternally(false),
-    m_replicatedExternallyHasBeenSet(false),
-    m_replicationAccountsHasBeenSet(false)
-{
-}
-
-ReplicationDetails::ReplicationDetails(JsonView jsonValue) : 
-    m_replicated(false),
-    m_replicatedHasBeenSet(false),
-    m_replicatedExternally(false),
-    m_replicatedExternallyHasBeenSet(false),
-    m_replicationAccountsHasBeenSet(false)
+ReplicationDetails::ReplicationDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ ReplicationDetails& ReplicationDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("replicated"))
   {
     m_replicated = jsonValue.GetBool("replicated");
-
     m_replicatedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("replicatedExternally"))
   {
     m_replicatedExternally = jsonValue.GetBool("replicatedExternally");
-
     m_replicatedExternallyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("replicationAccounts"))
   {
     Aws::Utils::Array<JsonView> replicationAccountsJsonList = jsonValue.GetArray("replicationAccounts");
@@ -62,7 +44,6 @@ ReplicationDetails& ReplicationDetails::operator =(JsonView jsonValue)
     }
     m_replicationAccountsHasBeenSet = true;
   }
-
   return *this;
 }
 

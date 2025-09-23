@@ -36,7 +36,7 @@ namespace Model
   class ConversionTask
   {
   public:
-    AWS_EC2_API ConversionTask();
+    AWS_EC2_API ConversionTask() = default;
     AWS_EC2_API ConversionTask(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ConversionTask& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -44,282 +44,92 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the conversion task.</p>
      */
-    inline const Aws::String& GetConversionTaskId() const{ return m_conversionTaskId; }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
+    inline const Aws::String& GetConversionTaskId() const { return m_conversionTaskId; }
     inline bool ConversionTaskIdHasBeenSet() const { return m_conversionTaskIdHasBeenSet; }
+    template<typename ConversionTaskIdT = Aws::String>
+    void SetConversionTaskId(ConversionTaskIdT&& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = std::forward<ConversionTaskIdT>(value); }
+    template<typename ConversionTaskIdT = Aws::String>
+    ConversionTask& WithConversionTaskId(ConversionTaskIdT&& value) { SetConversionTaskId(std::forward<ConversionTaskIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline void SetConversionTaskId(const Aws::String& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = value; }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline void SetConversionTaskId(Aws::String&& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = std::move(value); }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline void SetConversionTaskId(const char* value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId.assign(value); }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline ConversionTask& WithConversionTaskId(const Aws::String& value) { SetConversionTaskId(value); return *this;}
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline ConversionTask& WithConversionTaskId(Aws::String&& value) { SetConversionTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline ConversionTask& WithConversionTaskId(const char* value) { SetConversionTaskId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the task expires. If the upload isn't complete before the
      * expiration time, we automatically cancel the task.</p>
      */
-    inline const Aws::String& GetExpirationTime() const{ return m_expirationTime; }
-
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
+    inline const Aws::String& GetExpirationTime() const { return m_expirationTime; }
     inline bool ExpirationTimeHasBeenSet() const { return m_expirationTimeHasBeenSet; }
+    template<typename ExpirationTimeT = Aws::String>
+    void SetExpirationTime(ExpirationTimeT&& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = std::forward<ExpirationTimeT>(value); }
+    template<typename ExpirationTimeT = Aws::String>
+    ConversionTask& WithExpirationTime(ExpirationTimeT&& value) { SetExpirationTime(std::forward<ExpirationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
-    inline void SetExpirationTime(const Aws::String& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = value; }
-
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
-    inline void SetExpirationTime(Aws::String&& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = std::move(value); }
-
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
-    inline void SetExpirationTime(const char* value) { m_expirationTimeHasBeenSet = true; m_expirationTime.assign(value); }
-
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
-    inline ConversionTask& WithExpirationTime(const Aws::String& value) { SetExpirationTime(value); return *this;}
-
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
-    inline ConversionTask& WithExpirationTime(Aws::String&& value) { SetExpirationTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when the task expires. If the upload isn't complete before the
-     * expiration time, we automatically cancel the task.</p>
-     */
-    inline ConversionTask& WithExpirationTime(const char* value) { SetExpirationTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the task is for importing an instance, this contains information about the
      * import instance task.</p>
      */
-    inline const ImportInstanceTaskDetails& GetImportInstance() const{ return m_importInstance; }
-
-    /**
-     * <p>If the task is for importing an instance, this contains information about the
-     * import instance task.</p>
-     */
+    inline const ImportInstanceTaskDetails& GetImportInstance() const { return m_importInstance; }
     inline bool ImportInstanceHasBeenSet() const { return m_importInstanceHasBeenSet; }
+    template<typename ImportInstanceT = ImportInstanceTaskDetails>
+    void SetImportInstance(ImportInstanceT&& value) { m_importInstanceHasBeenSet = true; m_importInstance = std::forward<ImportInstanceT>(value); }
+    template<typename ImportInstanceT = ImportInstanceTaskDetails>
+    ConversionTask& WithImportInstance(ImportInstanceT&& value) { SetImportInstance(std::forward<ImportInstanceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the task is for importing an instance, this contains information about the
-     * import instance task.</p>
-     */
-    inline void SetImportInstance(const ImportInstanceTaskDetails& value) { m_importInstanceHasBeenSet = true; m_importInstance = value; }
-
-    /**
-     * <p>If the task is for importing an instance, this contains information about the
-     * import instance task.</p>
-     */
-    inline void SetImportInstance(ImportInstanceTaskDetails&& value) { m_importInstanceHasBeenSet = true; m_importInstance = std::move(value); }
-
-    /**
-     * <p>If the task is for importing an instance, this contains information about the
-     * import instance task.</p>
-     */
-    inline ConversionTask& WithImportInstance(const ImportInstanceTaskDetails& value) { SetImportInstance(value); return *this;}
-
-    /**
-     * <p>If the task is for importing an instance, this contains information about the
-     * import instance task.</p>
-     */
-    inline ConversionTask& WithImportInstance(ImportInstanceTaskDetails&& value) { SetImportInstance(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the task is for importing a volume, this contains information about the
      * import volume task.</p>
      */
-    inline const ImportVolumeTaskDetails& GetImportVolume() const{ return m_importVolume; }
-
-    /**
-     * <p>If the task is for importing a volume, this contains information about the
-     * import volume task.</p>
-     */
+    inline const ImportVolumeTaskDetails& GetImportVolume() const { return m_importVolume; }
     inline bool ImportVolumeHasBeenSet() const { return m_importVolumeHasBeenSet; }
+    template<typename ImportVolumeT = ImportVolumeTaskDetails>
+    void SetImportVolume(ImportVolumeT&& value) { m_importVolumeHasBeenSet = true; m_importVolume = std::forward<ImportVolumeT>(value); }
+    template<typename ImportVolumeT = ImportVolumeTaskDetails>
+    ConversionTask& WithImportVolume(ImportVolumeT&& value) { SetImportVolume(std::forward<ImportVolumeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the task is for importing a volume, this contains information about the
-     * import volume task.</p>
-     */
-    inline void SetImportVolume(const ImportVolumeTaskDetails& value) { m_importVolumeHasBeenSet = true; m_importVolume = value; }
-
-    /**
-     * <p>If the task is for importing a volume, this contains information about the
-     * import volume task.</p>
-     */
-    inline void SetImportVolume(ImportVolumeTaskDetails&& value) { m_importVolumeHasBeenSet = true; m_importVolume = std::move(value); }
-
-    /**
-     * <p>If the task is for importing a volume, this contains information about the
-     * import volume task.</p>
-     */
-    inline ConversionTask& WithImportVolume(const ImportVolumeTaskDetails& value) { SetImportVolume(value); return *this;}
-
-    /**
-     * <p>If the task is for importing a volume, this contains information about the
-     * import volume task.</p>
-     */
-    inline ConversionTask& WithImportVolume(ImportVolumeTaskDetails&& value) { SetImportVolume(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the conversion task.</p>
      */
-    inline const ConversionTaskState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the conversion task.</p>
-     */
+    inline ConversionTaskState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ConversionTaskState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ConversionTask& WithState(ConversionTaskState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the conversion task.</p>
-     */
-    inline void SetState(const ConversionTaskState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the conversion task.</p>
-     */
-    inline void SetState(ConversionTaskState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the conversion task.</p>
-     */
-    inline ConversionTask& WithState(const ConversionTaskState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the conversion task.</p>
-     */
-    inline ConversionTask& WithState(ConversionTaskState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status message related to the conversion task.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    ConversionTask& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
-    inline ConversionTask& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
-    inline ConversionTask& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The status message related to the conversion task.</p>
-     */
-    inline ConversionTask& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any tags assigned to the task.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
-    inline ConversionTask& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
-    inline ConversionTask& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
-    inline ConversionTask& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Any tags assigned to the task.</p>
-     */
-    inline ConversionTask& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ConversionTask& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ConversionTask& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_conversionTaskId;
@@ -334,7 +144,7 @@ namespace Model
     ImportVolumeTaskDetails m_importVolume;
     bool m_importVolumeHasBeenSet = false;
 
-    ConversionTaskState m_state;
+    ConversionTaskState m_state{ConversionTaskState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_statusMessage;

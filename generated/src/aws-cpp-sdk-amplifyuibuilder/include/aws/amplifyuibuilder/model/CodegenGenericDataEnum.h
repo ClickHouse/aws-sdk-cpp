@@ -32,57 +32,25 @@ namespace Model
   class CodegenGenericDataEnum
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API CodegenGenericDataEnum();
+    AWS_AMPLIFYUIBUILDER_API CodegenGenericDataEnum() = default;
     AWS_AMPLIFYUIBUILDER_API CodegenGenericDataEnum(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API CodegenGenericDataEnum& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The list of enum values in the generic data schema.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline CodegenGenericDataEnum& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline CodegenGenericDataEnum& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline CodegenGenericDataEnum& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline CodegenGenericDataEnum& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of enum values in the generic data schema.</p>
-     */
-    inline CodegenGenericDataEnum& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    CodegenGenericDataEnum& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    CodegenGenericDataEnum& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_values;

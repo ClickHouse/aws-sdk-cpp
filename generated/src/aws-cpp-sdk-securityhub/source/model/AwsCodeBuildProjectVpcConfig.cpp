@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCodeBuildProjectVpcConfig::AwsCodeBuildProjectVpcConfig() : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
-{
-}
-
-AwsCodeBuildProjectVpcConfig::AwsCodeBuildProjectVpcConfig(JsonView jsonValue) : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
+AwsCodeBuildProjectVpcConfig::AwsCodeBuildProjectVpcConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ AwsCodeBuildProjectVpcConfig& AwsCodeBuildProjectVpcConfig::operator =(JsonView 
   if(jsonValue.ValueExists("VpcId"))
   {
     m_vpcId = jsonValue.GetString("VpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subnets"))
   {
     Aws::Utils::Array<JsonView> subnetsJsonList = jsonValue.GetArray("Subnets");
@@ -51,7 +39,6 @@ AwsCodeBuildProjectVpcConfig& AwsCodeBuildProjectVpcConfig::operator =(JsonView 
     }
     m_subnetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("SecurityGroupIds");
@@ -61,7 +48,6 @@ AwsCodeBuildProjectVpcConfig& AwsCodeBuildProjectVpcConfig::operator =(JsonView 
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

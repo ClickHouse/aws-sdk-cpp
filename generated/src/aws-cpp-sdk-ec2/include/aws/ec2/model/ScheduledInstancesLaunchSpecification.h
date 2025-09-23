@@ -40,7 +40,7 @@ namespace Model
   class ScheduledInstancesLaunchSpecification
   {
   public:
-    AWS_EC2_API ScheduledInstancesLaunchSpecification();
+    AWS_EC2_API ScheduledInstancesLaunchSpecification() = default;
     AWS_EC2_API ScheduledInstancesLaunchSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ScheduledInstancesLaunchSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -48,47 +48,21 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The block device mapping entries.</p>
      */
-    inline const Aws::Vector<ScheduledInstancesBlockDeviceMapping>& GetBlockDeviceMappings() const{ return m_blockDeviceMappings; }
-
-    /**
-     * <p>The block device mapping entries.</p>
-     */
+    inline const Aws::Vector<ScheduledInstancesBlockDeviceMapping>& GetBlockDeviceMappings() const { return m_blockDeviceMappings; }
     inline bool BlockDeviceMappingsHasBeenSet() const { return m_blockDeviceMappingsHasBeenSet; }
+    template<typename BlockDeviceMappingsT = Aws::Vector<ScheduledInstancesBlockDeviceMapping>>
+    void SetBlockDeviceMappings(BlockDeviceMappingsT&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::forward<BlockDeviceMappingsT>(value); }
+    template<typename BlockDeviceMappingsT = Aws::Vector<ScheduledInstancesBlockDeviceMapping>>
+    ScheduledInstancesLaunchSpecification& WithBlockDeviceMappings(BlockDeviceMappingsT&& value) { SetBlockDeviceMappings(std::forward<BlockDeviceMappingsT>(value)); return *this;}
+    template<typename BlockDeviceMappingsT = ScheduledInstancesBlockDeviceMapping>
+    ScheduledInstancesLaunchSpecification& AddBlockDeviceMappings(BlockDeviceMappingsT&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.emplace_back(std::forward<BlockDeviceMappingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The block device mapping entries.</p>
-     */
-    inline void SetBlockDeviceMappings(const Aws::Vector<ScheduledInstancesBlockDeviceMapping>& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
-
-    /**
-     * <p>The block device mapping entries.</p>
-     */
-    inline void SetBlockDeviceMappings(Aws::Vector<ScheduledInstancesBlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
-
-    /**
-     * <p>The block device mapping entries.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithBlockDeviceMappings(const Aws::Vector<ScheduledInstancesBlockDeviceMapping>& value) { SetBlockDeviceMappings(value); return *this;}
-
-    /**
-     * <p>The block device mapping entries.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithBlockDeviceMappings(Aws::Vector<ScheduledInstancesBlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>The block device mapping entries.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddBlockDeviceMappings(const ScheduledInstancesBlockDeviceMapping& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
-
-    /**
-     * <p>The block device mapping entries.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddBlockDeviceMappings(ScheduledInstancesBlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether the instances are optimized for EBS I/O. This optimization
      * provides dedicated throughput to Amazon EBS and an optimized configuration stack
@@ -96,508 +70,165 @@ namespace Model
      * all instance types. Additional usage charges apply when using an EBS-optimized
      * instance.</p> <p>Default: <code>false</code> </p>
      */
-    inline bool GetEbsOptimized() const{ return m_ebsOptimized; }
-
-    /**
-     * <p>Indicates whether the instances are optimized for EBS I/O. This optimization
-     * provides dedicated throughput to Amazon EBS and an optimized configuration stack
-     * to provide optimal EBS I/O performance. This optimization isn't available with
-     * all instance types. Additional usage charges apply when using an EBS-optimized
-     * instance.</p> <p>Default: <code>false</code> </p>
-     */
+    inline bool GetEbsOptimized() const { return m_ebsOptimized; }
     inline bool EbsOptimizedHasBeenSet() const { return m_ebsOptimizedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the instances are optimized for EBS I/O. This optimization
-     * provides dedicated throughput to Amazon EBS and an optimized configuration stack
-     * to provide optimal EBS I/O performance. This optimization isn't available with
-     * all instance types. Additional usage charges apply when using an EBS-optimized
-     * instance.</p> <p>Default: <code>false</code> </p>
-     */
     inline void SetEbsOptimized(bool value) { m_ebsOptimizedHasBeenSet = true; m_ebsOptimized = value; }
-
-    /**
-     * <p>Indicates whether the instances are optimized for EBS I/O. This optimization
-     * provides dedicated throughput to Amazon EBS and an optimized configuration stack
-     * to provide optimal EBS I/O performance. This optimization isn't available with
-     * all instance types. Additional usage charges apply when using an EBS-optimized
-     * instance.</p> <p>Default: <code>false</code> </p>
-     */
     inline ScheduledInstancesLaunchSpecification& WithEbsOptimized(bool value) { SetEbsOptimized(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The IAM instance profile.</p>
      */
-    inline const ScheduledInstancesIamInstanceProfile& GetIamInstanceProfile() const{ return m_iamInstanceProfile; }
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
+    inline const ScheduledInstancesIamInstanceProfile& GetIamInstanceProfile() const { return m_iamInstanceProfile; }
     inline bool IamInstanceProfileHasBeenSet() const { return m_iamInstanceProfileHasBeenSet; }
+    template<typename IamInstanceProfileT = ScheduledInstancesIamInstanceProfile>
+    void SetIamInstanceProfile(IamInstanceProfileT&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::forward<IamInstanceProfileT>(value); }
+    template<typename IamInstanceProfileT = ScheduledInstancesIamInstanceProfile>
+    ScheduledInstancesLaunchSpecification& WithIamInstanceProfile(IamInstanceProfileT&& value) { SetIamInstanceProfile(std::forward<IamInstanceProfileT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline void SetIamInstanceProfile(const ScheduledInstancesIamInstanceProfile& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = value; }
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline void SetIamInstanceProfile(ScheduledInstancesIamInstanceProfile&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::move(value); }
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithIamInstanceProfile(const ScheduledInstancesIamInstanceProfile& value) { SetIamInstanceProfile(value); return *this;}
-
-    /**
-     * <p>The IAM instance profile.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithIamInstanceProfile(ScheduledInstancesIamInstanceProfile&& value) { SetIamInstanceProfile(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Machine Image (AMI).</p>
      */
-    inline const Aws::String& GetImageId() const{ return m_imageId; }
-
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
+    inline const Aws::String& GetImageId() const { return m_imageId; }
     inline bool ImageIdHasBeenSet() const { return m_imageIdHasBeenSet; }
+    template<typename ImageIdT = Aws::String>
+    void SetImageId(ImageIdT&& value) { m_imageIdHasBeenSet = true; m_imageId = std::forward<ImageIdT>(value); }
+    template<typename ImageIdT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithImageId(ImageIdT&& value) { SetImageId(std::forward<ImageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
-    inline void SetImageId(const Aws::String& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
-
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
-    inline void SetImageId(const char* value) { m_imageIdHasBeenSet = true; m_imageId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithImageId(const Aws::String& value) { SetImageId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Machine Image (AMI).</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithImageId(const char* value) { SetImageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance type.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The instance type.</p>
-     */
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the kernel.</p>
      */
-    inline const Aws::String& GetKernelId() const{ return m_kernelId; }
-
-    /**
-     * <p>The ID of the kernel.</p>
-     */
+    inline const Aws::String& GetKernelId() const { return m_kernelId; }
     inline bool KernelIdHasBeenSet() const { return m_kernelIdHasBeenSet; }
+    template<typename KernelIdT = Aws::String>
+    void SetKernelId(KernelIdT&& value) { m_kernelIdHasBeenSet = true; m_kernelId = std::forward<KernelIdT>(value); }
+    template<typename KernelIdT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithKernelId(KernelIdT&& value) { SetKernelId(std::forward<KernelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the kernel.</p>
-     */
-    inline void SetKernelId(const Aws::String& value) { m_kernelIdHasBeenSet = true; m_kernelId = value; }
-
-    /**
-     * <p>The ID of the kernel.</p>
-     */
-    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = std::move(value); }
-
-    /**
-     * <p>The ID of the kernel.</p>
-     */
-    inline void SetKernelId(const char* value) { m_kernelIdHasBeenSet = true; m_kernelId.assign(value); }
-
-    /**
-     * <p>The ID of the kernel.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithKernelId(const Aws::String& value) { SetKernelId(value); return *this;}
-
-    /**
-     * <p>The ID of the kernel.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithKernelId(Aws::String&& value) { SetKernelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the kernel.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithKernelId(const char* value) { SetKernelId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the key pair.</p>
      */
-    inline const Aws::String& GetKeyName() const{ return m_keyName; }
-
-    /**
-     * <p>The name of the key pair.</p>
-     */
+    inline const Aws::String& GetKeyName() const { return m_keyName; }
     inline bool KeyNameHasBeenSet() const { return m_keyNameHasBeenSet; }
+    template<typename KeyNameT = Aws::String>
+    void SetKeyName(KeyNameT&& value) { m_keyNameHasBeenSet = true; m_keyName = std::forward<KeyNameT>(value); }
+    template<typename KeyNameT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithKeyName(KeyNameT&& value) { SetKeyName(std::forward<KeyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the key pair.</p>
-     */
-    inline void SetKeyName(const Aws::String& value) { m_keyNameHasBeenSet = true; m_keyName = value; }
-
-    /**
-     * <p>The name of the key pair.</p>
-     */
-    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = std::move(value); }
-
-    /**
-     * <p>The name of the key pair.</p>
-     */
-    inline void SetKeyName(const char* value) { m_keyNameHasBeenSet = true; m_keyName.assign(value); }
-
-    /**
-     * <p>The name of the key pair.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithKeyName(const Aws::String& value) { SetKeyName(value); return *this;}
-
-    /**
-     * <p>The name of the key pair.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithKeyName(Aws::String&& value) { SetKeyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the key pair.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithKeyName(const char* value) { SetKeyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Enable or disable monitoring for the instances.</p>
      */
-    inline const ScheduledInstancesMonitoring& GetMonitoring() const{ return m_monitoring; }
-
-    /**
-     * <p>Enable or disable monitoring for the instances.</p>
-     */
+    inline const ScheduledInstancesMonitoring& GetMonitoring() const { return m_monitoring; }
     inline bool MonitoringHasBeenSet() const { return m_monitoringHasBeenSet; }
+    template<typename MonitoringT = ScheduledInstancesMonitoring>
+    void SetMonitoring(MonitoringT&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::forward<MonitoringT>(value); }
+    template<typename MonitoringT = ScheduledInstancesMonitoring>
+    ScheduledInstancesLaunchSpecification& WithMonitoring(MonitoringT&& value) { SetMonitoring(std::forward<MonitoringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Enable or disable monitoring for the instances.</p>
-     */
-    inline void SetMonitoring(const ScheduledInstancesMonitoring& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
-
-    /**
-     * <p>Enable or disable monitoring for the instances.</p>
-     */
-    inline void SetMonitoring(ScheduledInstancesMonitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::move(value); }
-
-    /**
-     * <p>Enable or disable monitoring for the instances.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithMonitoring(const ScheduledInstancesMonitoring& value) { SetMonitoring(value); return *this;}
-
-    /**
-     * <p>Enable or disable monitoring for the instances.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithMonitoring(ScheduledInstancesMonitoring&& value) { SetMonitoring(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The network interfaces.</p>
      */
-    inline const Aws::Vector<ScheduledInstancesNetworkInterface>& GetNetworkInterfaces() const{ return m_networkInterfaces; }
-
-    /**
-     * <p>The network interfaces.</p>
-     */
+    inline const Aws::Vector<ScheduledInstancesNetworkInterface>& GetNetworkInterfaces() const { return m_networkInterfaces; }
     inline bool NetworkInterfacesHasBeenSet() const { return m_networkInterfacesHasBeenSet; }
+    template<typename NetworkInterfacesT = Aws::Vector<ScheduledInstancesNetworkInterface>>
+    void SetNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::forward<NetworkInterfacesT>(value); }
+    template<typename NetworkInterfacesT = Aws::Vector<ScheduledInstancesNetworkInterface>>
+    ScheduledInstancesLaunchSpecification& WithNetworkInterfaces(NetworkInterfacesT&& value) { SetNetworkInterfaces(std::forward<NetworkInterfacesT>(value)); return *this;}
+    template<typename NetworkInterfacesT = ScheduledInstancesNetworkInterface>
+    ScheduledInstancesLaunchSpecification& AddNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.emplace_back(std::forward<NetworkInterfacesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The network interfaces.</p>
-     */
-    inline void SetNetworkInterfaces(const Aws::Vector<ScheduledInstancesNetworkInterface>& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
-
-    /**
-     * <p>The network interfaces.</p>
-     */
-    inline void SetNetworkInterfaces(Aws::Vector<ScheduledInstancesNetworkInterface>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::move(value); }
-
-    /**
-     * <p>The network interfaces.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithNetworkInterfaces(const Aws::Vector<ScheduledInstancesNetworkInterface>& value) { SetNetworkInterfaces(value); return *this;}
-
-    /**
-     * <p>The network interfaces.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithNetworkInterfaces(Aws::Vector<ScheduledInstancesNetworkInterface>&& value) { SetNetworkInterfaces(std::move(value)); return *this;}
-
-    /**
-     * <p>The network interfaces.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddNetworkInterfaces(const ScheduledInstancesNetworkInterface& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
-
-    /**
-     * <p>The network interfaces.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddNetworkInterfaces(ScheduledInstancesNetworkInterface&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The placement information.</p>
      */
-    inline const ScheduledInstancesPlacement& GetPlacement() const{ return m_placement; }
-
-    /**
-     * <p>The placement information.</p>
-     */
+    inline const ScheduledInstancesPlacement& GetPlacement() const { return m_placement; }
     inline bool PlacementHasBeenSet() const { return m_placementHasBeenSet; }
+    template<typename PlacementT = ScheduledInstancesPlacement>
+    void SetPlacement(PlacementT&& value) { m_placementHasBeenSet = true; m_placement = std::forward<PlacementT>(value); }
+    template<typename PlacementT = ScheduledInstancesPlacement>
+    ScheduledInstancesLaunchSpecification& WithPlacement(PlacementT&& value) { SetPlacement(std::forward<PlacementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The placement information.</p>
-     */
-    inline void SetPlacement(const ScheduledInstancesPlacement& value) { m_placementHasBeenSet = true; m_placement = value; }
-
-    /**
-     * <p>The placement information.</p>
-     */
-    inline void SetPlacement(ScheduledInstancesPlacement&& value) { m_placementHasBeenSet = true; m_placement = std::move(value); }
-
-    /**
-     * <p>The placement information.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithPlacement(const ScheduledInstancesPlacement& value) { SetPlacement(value); return *this;}
-
-    /**
-     * <p>The placement information.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithPlacement(ScheduledInstancesPlacement&& value) { SetPlacement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the RAM disk.</p>
      */
-    inline const Aws::String& GetRamdiskId() const{ return m_ramdiskId; }
-
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
+    inline const Aws::String& GetRamdiskId() const { return m_ramdiskId; }
     inline bool RamdiskIdHasBeenSet() const { return m_ramdiskIdHasBeenSet; }
+    template<typename RamdiskIdT = Aws::String>
+    void SetRamdiskId(RamdiskIdT&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = std::forward<RamdiskIdT>(value); }
+    template<typename RamdiskIdT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithRamdiskId(RamdiskIdT&& value) { SetRamdiskId(std::forward<RamdiskIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
-    inline void SetRamdiskId(const Aws::String& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = value; }
-
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
-    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = std::move(value); }
-
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
-    inline void SetRamdiskId(const char* value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId.assign(value); }
-
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithRamdiskId(const Aws::String& value) { SetRamdiskId(value); return *this;}
-
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithRamdiskId(Aws::String&& value) { SetRamdiskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the RAM disk.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithRamdiskId(const char* value) { SetRamdiskId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the security groups.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const{ return m_securityGroupIds; }
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const { return m_securityGroupIds; }
     inline bool SecurityGroupIdsHasBeenSet() const { return m_securityGroupIdsHasBeenSet; }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::forward<SecurityGroupIdsT>(value); }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    ScheduledInstancesLaunchSpecification& WithSecurityGroupIds(SecurityGroupIdsT&& value) { SetSecurityGroupIds(std::forward<SecurityGroupIdsT>(value)); return *this;}
+    template<typename SecurityGroupIdsT = Aws::String>
+    ScheduledInstancesLaunchSpecification& AddSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.emplace_back(std::forward<SecurityGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline void SetSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetSecurityGroupIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddSecurityGroupIds(const Aws::String& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the security groups.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& AddSecurityGroupIds(const char* value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the subnet in which to launch the instances.</p>
      */
-    inline const Aws::String& GetSubnetId() const{ return m_subnetId; }
-
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
+    inline const Aws::String& GetSubnetId() const { return m_subnetId; }
     inline bool SubnetIdHasBeenSet() const { return m_subnetIdHasBeenSet; }
+    template<typename SubnetIdT = Aws::String>
+    void SetSubnetId(SubnetIdT&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::forward<SubnetIdT>(value); }
+    template<typename SubnetIdT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithSubnetId(SubnetIdT&& value) { SetSubnetId(std::forward<SubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
-    inline void SetSubnetId(const Aws::String& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
-
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
-    inline void SetSubnetId(const char* value) { m_subnetIdHasBeenSet = true; m_subnetId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithSubnetId(const Aws::String& value) { SetSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet in which to launch the instances.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The base64-encoded MIME user data.</p>
      */
-    inline const Aws::String& GetUserData() const{ return m_userData; }
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
+    inline const Aws::String& GetUserData() const { return m_userData; }
     inline bool UserDataHasBeenSet() const { return m_userDataHasBeenSet; }
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
-    inline void SetUserData(const Aws::String& value) { m_userDataHasBeenSet = true; m_userData = value; }
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
-    inline void SetUserData(Aws::String&& value) { m_userDataHasBeenSet = true; m_userData = std::move(value); }
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
-    inline void SetUserData(const char* value) { m_userDataHasBeenSet = true; m_userData.assign(value); }
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithUserData(const Aws::String& value) { SetUserData(value); return *this;}
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithUserData(Aws::String&& value) { SetUserData(std::move(value)); return *this;}
-
-    /**
-     * <p>The base64-encoded MIME user data.</p>
-     */
-    inline ScheduledInstancesLaunchSpecification& WithUserData(const char* value) { SetUserData(value); return *this;}
-
+    template<typename UserDataT = Aws::String>
+    void SetUserData(UserDataT&& value) { m_userDataHasBeenSet = true; m_userData = std::forward<UserDataT>(value); }
+    template<typename UserDataT = Aws::String>
+    ScheduledInstancesLaunchSpecification& WithUserData(UserDataT&& value) { SetUserData(std::forward<UserDataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ScheduledInstancesBlockDeviceMapping> m_blockDeviceMappings;
     bool m_blockDeviceMappingsHasBeenSet = false;
 
-    bool m_ebsOptimized;
+    bool m_ebsOptimized{false};
     bool m_ebsOptimizedHasBeenSet = false;
 
     ScheduledInstancesIamInstanceProfile m_iamInstanceProfile;

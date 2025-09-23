@@ -22,7 +22,7 @@ namespace Model
   class GetRuleGroupRequest : public WAFV2Request
   {
   public:
-    AWS_WAFV2_API GetRuleGroupRequest();
+    AWS_WAFV2_API GetRuleGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,237 +35,66 @@ namespace Model
     AWS_WAFV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the rule group. You cannot change the name of a rule group after
      * you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetRuleGroupRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
-    inline GetRuleGroupRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
-    inline GetRuleGroupRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule group. You cannot change the name of a rule group after
-     * you create it.</p>
-     */
-    inline GetRuleGroupRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
+     * <p>Specifies whether this is for a global resource type, such as a Amazon
+     * CloudFront distribution. For an Amplify application, use
+     * <code>CLOUDFRONT</code>.</p> <p>To work with CloudFront, you must also specify
+     * the Region US East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the
+     * Region when you use the CloudFront scope: <code>--scope=CLOUDFRONT
      * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
      * the Region endpoint us-east-1. </p> </li> </ul>
      */
-    inline const Scope& GetScope() const{ return m_scope; }
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
+    inline Scope GetScope() const { return m_scope; }
     inline bool ScopeHasBeenSet() const { return m_scopeHasBeenSet; }
+    inline void SetScope(Scope value) { m_scopeHasBeenSet = true; m_scope = value; }
+    inline GetRuleGroupRequest& WithScope(Scope value) { SetScope(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline void SetScope(const Scope& value) { m_scopeHasBeenSet = true; m_scope = value; }
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline void SetScope(Scope&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline GetRuleGroupRequest& WithScope(const Scope& value) { SetScope(value); return *this;}
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline GetRuleGroupRequest& WithScope(Scope&& value) { SetScope(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the rule group. This ID is returned in the responses
      * to create and list commands. You provide it to operations like update and
      * delete.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetRuleGroupRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline GetRuleGroupRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline GetRuleGroupRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the rule group. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline GetRuleGroupRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the entity.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline GetRuleGroupRequest& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline GetRuleGroupRequest& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline GetRuleGroupRequest& WithARN(const char* value) { SetARN(value); return *this;}
-
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    GetRuleGroupRequest& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Scope m_scope;
+    Scope m_scope{Scope::NOT_SET};
     bool m_scopeHasBeenSet = false;
 
     Aws::String m_id;

@@ -32,73 +32,37 @@ namespace Model
   class StartTaskExecutionResult
   {
   public:
-    AWS_DATASYNC_API StartTaskExecutionResult();
+    AWS_DATASYNC_API StartTaskExecutionResult() = default;
     AWS_DATASYNC_API StartTaskExecutionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATASYNC_API StartTaskExecutionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the running task execution.</p>
      */
-    inline const Aws::String& GetTaskExecutionArn() const{ return m_taskExecutionArn; }
+    inline const Aws::String& GetTaskExecutionArn() const { return m_taskExecutionArn; }
+    template<typename TaskExecutionArnT = Aws::String>
+    void SetTaskExecutionArn(TaskExecutionArnT&& value) { m_taskExecutionArnHasBeenSet = true; m_taskExecutionArn = std::forward<TaskExecutionArnT>(value); }
+    template<typename TaskExecutionArnT = Aws::String>
+    StartTaskExecutionResult& WithTaskExecutionArn(TaskExecutionArnT&& value) { SetTaskExecutionArn(std::forward<TaskExecutionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the running task execution.</p>
-     */
-    inline void SetTaskExecutionArn(const Aws::String& value) { m_taskExecutionArn = value; }
-
-    /**
-     * <p>The ARN of the running task execution.</p>
-     */
-    inline void SetTaskExecutionArn(Aws::String&& value) { m_taskExecutionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the running task execution.</p>
-     */
-    inline void SetTaskExecutionArn(const char* value) { m_taskExecutionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the running task execution.</p>
-     */
-    inline StartTaskExecutionResult& WithTaskExecutionArn(const Aws::String& value) { SetTaskExecutionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the running task execution.</p>
-     */
-    inline StartTaskExecutionResult& WithTaskExecutionArn(Aws::String&& value) { SetTaskExecutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the running task execution.</p>
-     */
-    inline StartTaskExecutionResult& WithTaskExecutionArn(const char* value) { SetTaskExecutionArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartTaskExecutionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartTaskExecutionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartTaskExecutionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartTaskExecutionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskExecutionArn;
+    bool m_taskExecutionArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

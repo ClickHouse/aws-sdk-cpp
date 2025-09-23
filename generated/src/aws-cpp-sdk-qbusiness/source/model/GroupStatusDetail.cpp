@@ -18,46 +18,28 @@ namespace QBusiness
 namespace Model
 {
 
-GroupStatusDetail::GroupStatusDetail() : 
-    m_errorDetailHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_status(GroupStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-GroupStatusDetail::GroupStatusDetail(JsonView jsonValue) : 
-    m_errorDetailHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_status(GroupStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+GroupStatusDetail::GroupStatusDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 GroupStatusDetail& GroupStatusDetail::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("errorDetail"))
-  {
-    m_errorDetail = jsonValue.GetObject("errorDetail");
-
-    m_errorDetailHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("lastUpdatedAt"))
-  {
-    m_lastUpdatedAt = jsonValue.GetDouble("lastUpdatedAt");
-
-    m_lastUpdatedAtHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = GroupStatusMapper::GetGroupStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lastUpdatedAt"))
+  {
+    m_lastUpdatedAt = jsonValue.GetDouble("lastUpdatedAt");
+    m_lastUpdatedAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("errorDetail"))
+  {
+    m_errorDetail = jsonValue.GetObject("errorDetail");
+    m_errorDetailHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,10 +47,9 @@ JsonValue GroupStatusDetail::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_errorDetailHasBeenSet)
+  if(m_statusHasBeenSet)
   {
-   payload.WithObject("errorDetail", m_errorDetail.Jsonize());
-
+   payload.WithString("status", GroupStatusMapper::GetNameForGroupStatus(m_status));
   }
 
   if(m_lastUpdatedAtHasBeenSet)
@@ -76,9 +57,10 @@ JsonValue GroupStatusDetail::Jsonize() const
    payload.WithDouble("lastUpdatedAt", m_lastUpdatedAt.SecondsWithMSPrecision());
   }
 
-  if(m_statusHasBeenSet)
+  if(m_errorDetailHasBeenSet)
   {
-   payload.WithString("status", GroupStatusMapper::GetNameForGroupStatus(m_status));
+   payload.WithObject("errorDetail", m_errorDetail.Jsonize());
+
   }
 
   return payload;

@@ -35,144 +35,54 @@ namespace Model
   class FrameworkControl
   {
   public:
-    AWS_BACKUP_API FrameworkControl();
+    AWS_BACKUP_API FrameworkControl() = default;
     AWS_BACKUP_API FrameworkControl(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API FrameworkControl& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of a control. This name is between 1 and 256 characters.</p>
      */
-    inline const Aws::String& GetControlName() const{ return m_controlName; }
-
-    /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
-     */
+    inline const Aws::String& GetControlName() const { return m_controlName; }
     inline bool ControlNameHasBeenSet() const { return m_controlNameHasBeenSet; }
+    template<typename ControlNameT = Aws::String>
+    void SetControlName(ControlNameT&& value) { m_controlNameHasBeenSet = true; m_controlName = std::forward<ControlNameT>(value); }
+    template<typename ControlNameT = Aws::String>
+    FrameworkControl& WithControlName(ControlNameT&& value) { SetControlName(std::forward<ControlNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
+     * <p>The name/value pairs.</p>
      */
-    inline void SetControlName(const Aws::String& value) { m_controlNameHasBeenSet = true; m_controlName = value; }
-
-    /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
-     */
-    inline void SetControlName(Aws::String&& value) { m_controlNameHasBeenSet = true; m_controlName = std::move(value); }
-
-    /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
-     */
-    inline void SetControlName(const char* value) { m_controlNameHasBeenSet = true; m_controlName.assign(value); }
-
-    /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
-     */
-    inline FrameworkControl& WithControlName(const Aws::String& value) { SetControlName(value); return *this;}
-
-    /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
-     */
-    inline FrameworkControl& WithControlName(Aws::String&& value) { SetControlName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a control. This name is between 1 and 256 characters.</p>
-     */
-    inline FrameworkControl& WithControlName(const char* value) { SetControlName(value); return *this;}
-
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline const Aws::Vector<ControlInputParameter>& GetControlInputParameters() const{ return m_controlInputParameters; }
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
+    inline const Aws::Vector<ControlInputParameter>& GetControlInputParameters() const { return m_controlInputParameters; }
     inline bool ControlInputParametersHasBeenSet() const { return m_controlInputParametersHasBeenSet; }
+    template<typename ControlInputParametersT = Aws::Vector<ControlInputParameter>>
+    void SetControlInputParameters(ControlInputParametersT&& value) { m_controlInputParametersHasBeenSet = true; m_controlInputParameters = std::forward<ControlInputParametersT>(value); }
+    template<typename ControlInputParametersT = Aws::Vector<ControlInputParameter>>
+    FrameworkControl& WithControlInputParameters(ControlInputParametersT&& value) { SetControlInputParameters(std::forward<ControlInputParametersT>(value)); return *this;}
+    template<typename ControlInputParametersT = ControlInputParameter>
+    FrameworkControl& AddControlInputParameters(ControlInputParametersT&& value) { m_controlInputParametersHasBeenSet = true; m_controlInputParameters.emplace_back(std::forward<ControlInputParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline void SetControlInputParameters(const Aws::Vector<ControlInputParameter>& value) { m_controlInputParametersHasBeenSet = true; m_controlInputParameters = value; }
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline void SetControlInputParameters(Aws::Vector<ControlInputParameter>&& value) { m_controlInputParametersHasBeenSet = true; m_controlInputParameters = std::move(value); }
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline FrameworkControl& WithControlInputParameters(const Aws::Vector<ControlInputParameter>& value) { SetControlInputParameters(value); return *this;}
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline FrameworkControl& WithControlInputParameters(Aws::Vector<ControlInputParameter>&& value) { SetControlInputParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline FrameworkControl& AddControlInputParameters(const ControlInputParameter& value) { m_controlInputParametersHasBeenSet = true; m_controlInputParameters.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>ParameterName</code> and <code>ParameterValue</code>
-     * pairs.</p>
-     */
-    inline FrameworkControl& AddControlInputParameters(ControlInputParameter&& value) { m_controlInputParametersHasBeenSet = true; m_controlInputParameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The scope of a control. The control scope defines what the control will
      * evaluate. Three examples of control scopes are: a specific backup plan, all
-     * backup plans with a specific tag, or all backup plans.</p>
+     * backup plans with a specific tag, or all backup plans.</p> <p>For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/API_ControlScope.html">
+     * <code>ControlScope</code>.</a> </p>
      */
-    inline const ControlScope& GetControlScope() const{ return m_controlScope; }
-
-    /**
-     * <p>The scope of a control. The control scope defines what the control will
-     * evaluate. Three examples of control scopes are: a specific backup plan, all
-     * backup plans with a specific tag, or all backup plans.</p>
-     */
+    inline const ControlScope& GetControlScope() const { return m_controlScope; }
     inline bool ControlScopeHasBeenSet() const { return m_controlScopeHasBeenSet; }
-
-    /**
-     * <p>The scope of a control. The control scope defines what the control will
-     * evaluate. Three examples of control scopes are: a specific backup plan, all
-     * backup plans with a specific tag, or all backup plans.</p>
-     */
-    inline void SetControlScope(const ControlScope& value) { m_controlScopeHasBeenSet = true; m_controlScope = value; }
-
-    /**
-     * <p>The scope of a control. The control scope defines what the control will
-     * evaluate. Three examples of control scopes are: a specific backup plan, all
-     * backup plans with a specific tag, or all backup plans.</p>
-     */
-    inline void SetControlScope(ControlScope&& value) { m_controlScopeHasBeenSet = true; m_controlScope = std::move(value); }
-
-    /**
-     * <p>The scope of a control. The control scope defines what the control will
-     * evaluate. Three examples of control scopes are: a specific backup plan, all
-     * backup plans with a specific tag, or all backup plans.</p>
-     */
-    inline FrameworkControl& WithControlScope(const ControlScope& value) { SetControlScope(value); return *this;}
-
-    /**
-     * <p>The scope of a control. The control scope defines what the control will
-     * evaluate. Three examples of control scopes are: a specific backup plan, all
-     * backup plans with a specific tag, or all backup plans.</p>
-     */
-    inline FrameworkControl& WithControlScope(ControlScope&& value) { SetControlScope(std::move(value)); return *this;}
-
+    template<typename ControlScopeT = ControlScope>
+    void SetControlScope(ControlScopeT&& value) { m_controlScopeHasBeenSet = true; m_controlScope = std::forward<ControlScopeT>(value); }
+    template<typename ControlScopeT = ControlScope>
+    FrameworkControl& WithControlScope(ControlScopeT&& value) { SetControlScope(std::forward<ControlScopeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_controlName;

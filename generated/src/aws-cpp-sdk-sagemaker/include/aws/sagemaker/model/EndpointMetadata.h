@@ -32,199 +32,62 @@ namespace Model
   class EndpointMetadata
   {
   public:
-    AWS_SAGEMAKER_API EndpointMetadata();
+    AWS_SAGEMAKER_API EndpointMetadata() = default;
     AWS_SAGEMAKER_API EndpointMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API EndpointMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the endpoint.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    EndpointMetadata& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline EndpointMetadata& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline EndpointMetadata& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the endpoint.</p>
-     */
-    inline EndpointMetadata& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the endpoint configuration.</p>
      */
-    inline const Aws::String& GetEndpointConfigName() const{ return m_endpointConfigName; }
-
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
+    inline const Aws::String& GetEndpointConfigName() const { return m_endpointConfigName; }
     inline bool EndpointConfigNameHasBeenSet() const { return m_endpointConfigNameHasBeenSet; }
+    template<typename EndpointConfigNameT = Aws::String>
+    void SetEndpointConfigName(EndpointConfigNameT&& value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName = std::forward<EndpointConfigNameT>(value); }
+    template<typename EndpointConfigNameT = Aws::String>
+    EndpointMetadata& WithEndpointConfigName(EndpointConfigNameT&& value) { SetEndpointConfigName(std::forward<EndpointConfigNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
-    inline void SetEndpointConfigName(const Aws::String& value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName = value; }
-
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
-    inline void SetEndpointConfigName(Aws::String&& value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName = std::move(value); }
-
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
-    inline void SetEndpointConfigName(const char* value) { m_endpointConfigNameHasBeenSet = true; m_endpointConfigName.assign(value); }
-
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
-    inline EndpointMetadata& WithEndpointConfigName(const Aws::String& value) { SetEndpointConfigName(value); return *this;}
-
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
-    inline EndpointMetadata& WithEndpointConfigName(Aws::String&& value) { SetEndpointConfigName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the endpoint configuration.</p>
-     */
-    inline EndpointMetadata& WithEndpointConfigName(const char* value) { SetEndpointConfigName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of the endpoint. For possible values of the status of an
      * endpoint, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_EndpointSummary.html">EndpointSummary</a>.
      * </p>
      */
-    inline const EndpointStatus& GetEndpointStatus() const{ return m_endpointStatus; }
-
-    /**
-     * <p> The status of the endpoint. For possible values of the status of an
-     * endpoint, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_EndpointSummary.html">EndpointSummary</a>.
-     * </p>
-     */
+    inline EndpointStatus GetEndpointStatus() const { return m_endpointStatus; }
     inline bool EndpointStatusHasBeenSet() const { return m_endpointStatusHasBeenSet; }
+    inline void SetEndpointStatus(EndpointStatus value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = value; }
+    inline EndpointMetadata& WithEndpointStatus(EndpointStatus value) { SetEndpointStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of the endpoint. For possible values of the status of an
-     * endpoint, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_EndpointSummary.html">EndpointSummary</a>.
-     * </p>
-     */
-    inline void SetEndpointStatus(const EndpointStatus& value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = value; }
-
-    /**
-     * <p> The status of the endpoint. For possible values of the status of an
-     * endpoint, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_EndpointSummary.html">EndpointSummary</a>.
-     * </p>
-     */
-    inline void SetEndpointStatus(EndpointStatus&& value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = std::move(value); }
-
-    /**
-     * <p> The status of the endpoint. For possible values of the status of an
-     * endpoint, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_EndpointSummary.html">EndpointSummary</a>.
-     * </p>
-     */
-    inline EndpointMetadata& WithEndpointStatus(const EndpointStatus& value) { SetEndpointStatus(value); return *this;}
-
-    /**
-     * <p> The status of the endpoint. For possible values of the status of an
-     * endpoint, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_EndpointSummary.html">EndpointSummary</a>.
-     * </p>
-     */
-    inline EndpointMetadata& WithEndpointStatus(EndpointStatus&& value) { SetEndpointStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> If the status of the endpoint is <code>Failed</code>, or the status is
      * <code>InService</code> but update operation fails, this provides the reason why
      * it failed. </p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
-    inline EndpointMetadata& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
-    inline EndpointMetadata& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p> If the status of the endpoint is <code>Failed</code>, or the status is
-     * <code>InService</code> but update operation fails, this provides the reason why
-     * it failed. </p>
-     */
-    inline EndpointMetadata& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    EndpointMetadata& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointName;
@@ -233,7 +96,7 @@ namespace Model
     Aws::String m_endpointConfigName;
     bool m_endpointConfigNameHasBeenSet = false;
 
-    EndpointStatus m_endpointStatus;
+    EndpointStatus m_endpointStatus{EndpointStatus::NOT_SET};
     bool m_endpointStatusHasBeenSet = false;
 
     Aws::String m_failureReason;

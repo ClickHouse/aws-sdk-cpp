@@ -18,45 +18,33 @@ namespace QConnect
 namespace Model
 {
 
-RecommendationTrigger::RecommendationTrigger() : 
-    m_dataHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_recommendationIdsHasBeenSet(false),
-    m_source(RecommendationSourceType::NOT_SET),
-    m_sourceHasBeenSet(false),
-    m_type(RecommendationTriggerType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-RecommendationTrigger::RecommendationTrigger(JsonView jsonValue) : 
-    m_dataHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_recommendationIdsHasBeenSet(false),
-    m_source(RecommendationSourceType::NOT_SET),
-    m_sourceHasBeenSet(false),
-    m_type(RecommendationTriggerType::NOT_SET),
-    m_typeHasBeenSet(false)
+RecommendationTrigger::RecommendationTrigger(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 RecommendationTrigger& RecommendationTrigger::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("data"))
-  {
-    m_data = jsonValue.GetObject("data");
-
-    m_dataHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = RecommendationTriggerTypeMapper::GetRecommendationTriggerTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("source"))
+  {
+    m_source = RecommendationSourceTypeMapper::GetRecommendationSourceTypeForName(jsonValue.GetString("source"));
+    m_sourceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("data"))
+  {
+    m_data = jsonValue.GetObject("data");
+    m_dataHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("recommendationIds"))
   {
     Aws::Utils::Array<JsonView> recommendationIdsJsonList = jsonValue.GetArray("recommendationIds");
@@ -66,21 +54,6 @@ RecommendationTrigger& RecommendationTrigger::operator =(JsonView jsonValue)
     }
     m_recommendationIdsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("source"))
-  {
-    m_source = RecommendationSourceTypeMapper::GetRecommendationSourceTypeForName(jsonValue.GetString("source"));
-
-    m_sourceHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("type"))
-  {
-    m_type = RecommendationTriggerTypeMapper::GetRecommendationTriggerTypeForName(jsonValue.GetString("type"));
-
-    m_typeHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -88,15 +61,25 @@ JsonValue RecommendationTrigger::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_dataHasBeenSet)
-  {
-   payload.WithObject("data", m_data.Jsonize());
-
-  }
-
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
+
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", RecommendationTriggerTypeMapper::GetNameForRecommendationTriggerType(m_type));
+  }
+
+  if(m_sourceHasBeenSet)
+  {
+   payload.WithString("source", RecommendationSourceTypeMapper::GetNameForRecommendationSourceType(m_source));
+  }
+
+  if(m_dataHasBeenSet)
+  {
+   payload.WithObject("data", m_data.Jsonize());
 
   }
 
@@ -109,16 +92,6 @@ JsonValue RecommendationTrigger::Jsonize() const
    }
    payload.WithArray("recommendationIds", std::move(recommendationIdsJsonList));
 
-  }
-
-  if(m_sourceHasBeenSet)
-  {
-   payload.WithString("source", RecommendationSourceTypeMapper::GetNameForRecommendationSourceType(m_source));
-  }
-
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", RecommendationTriggerTypeMapper::GetNameForRecommendationTriggerType(m_type));
   }
 
   return payload;

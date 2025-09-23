@@ -34,279 +34,92 @@ namespace Model
   class PipeTargetRedshiftDataParameters
   {
   public:
-    AWS_PIPES_API PipeTargetRedshiftDataParameters();
+    AWS_PIPES_API PipeTargetRedshiftDataParameters() = default;
     AWS_PIPES_API PipeTargetRedshiftDataParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API PipeTargetRedshiftDataParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline const Aws::String& GetDatabase() const{ return m_database; }
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline bool DatabaseHasBeenSet() const { return m_databaseHasBeenSet; }
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline void SetDatabase(const Aws::String& value) { m_databaseHasBeenSet = true; m_database = value; }
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline void SetDatabase(Aws::String&& value) { m_databaseHasBeenSet = true; m_database = std::move(value); }
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline void SetDatabase(const char* value) { m_databaseHasBeenSet = true; m_database.assign(value); }
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithDatabase(const Aws::String& value) { SetDatabase(value); return *this;}
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithDatabase(Aws::String&& value) { SetDatabase(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the database. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithDatabase(const char* value) { SetDatabase(value); return *this;}
-
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline const Aws::String& GetDbUser() const{ return m_dbUser; }
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline bool DbUserHasBeenSet() const { return m_dbUserHasBeenSet; }
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline void SetDbUser(const Aws::String& value) { m_dbUserHasBeenSet = true; m_dbUser = value; }
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline void SetDbUser(Aws::String&& value) { m_dbUserHasBeenSet = true; m_dbUser = std::move(value); }
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline void SetDbUser(const char* value) { m_dbUserHasBeenSet = true; m_dbUser.assign(value); }
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithDbUser(const Aws::String& value) { SetDbUser(value); return *this;}
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithDbUser(Aws::String&& value) { SetDbUser(std::move(value)); return *this;}
-
-    /**
-     * <p>The database user name. Required when authenticating using temporary
-     * credentials.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithDbUser(const char* value) { SetDbUser(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or ARN of the secret that enables access to the database. Required
      * when authenticating using Secrets Manager.</p>
      */
-    inline const Aws::String& GetSecretManagerArn() const{ return m_secretManagerArn; }
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
-     */
+    inline const Aws::String& GetSecretManagerArn() const { return m_secretManagerArn; }
     inline bool SecretManagerArnHasBeenSet() const { return m_secretManagerArnHasBeenSet; }
+    template<typename SecretManagerArnT = Aws::String>
+    void SetSecretManagerArn(SecretManagerArnT&& value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn = std::forward<SecretManagerArnT>(value); }
+    template<typename SecretManagerArnT = Aws::String>
+    PipeTargetRedshiftDataParameters& WithSecretManagerArn(SecretManagerArnT&& value) { SetSecretManagerArn(std::forward<SecretManagerArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
+     * <p>The name of the database. Required when authenticating using temporary
+     * credentials.</p>
      */
-    inline void SetSecretManagerArn(const Aws::String& value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn = value; }
+    inline const Aws::String& GetDatabase() const { return m_database; }
+    inline bool DatabaseHasBeenSet() const { return m_databaseHasBeenSet; }
+    template<typename DatabaseT = Aws::String>
+    void SetDatabase(DatabaseT&& value) { m_databaseHasBeenSet = true; m_database = std::forward<DatabaseT>(value); }
+    template<typename DatabaseT = Aws::String>
+    PipeTargetRedshiftDataParameters& WithDatabase(DatabaseT&& value) { SetDatabase(std::forward<DatabaseT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
+     * <p>The database user name. Required when authenticating using temporary
+     * credentials.</p>
      */
-    inline void SetSecretManagerArn(Aws::String&& value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn = std::move(value); }
+    inline const Aws::String& GetDbUser() const { return m_dbUser; }
+    inline bool DbUserHasBeenSet() const { return m_dbUserHasBeenSet; }
+    template<typename DbUserT = Aws::String>
+    void SetDbUser(DbUserT&& value) { m_dbUserHasBeenSet = true; m_dbUser = std::forward<DbUserT>(value); }
+    template<typename DbUserT = Aws::String>
+    PipeTargetRedshiftDataParameters& WithDbUser(DbUserT&& value) { SetDbUser(std::forward<DbUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
-     */
-    inline void SetSecretManagerArn(const char* value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn.assign(value); }
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithSecretManagerArn(const Aws::String& value) { SetSecretManagerArn(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithSecretManagerArn(Aws::String&& value) { SetSecretManagerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the database. Required
-     * when authenticating using Secrets Manager.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithSecretManagerArn(const char* value) { SetSecretManagerArn(value); return *this;}
-
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetSqls() const{ return m_sqls; }
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline bool SqlsHasBeenSet() const { return m_sqlsHasBeenSet; }
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline void SetSqls(const Aws::Vector<Aws::String>& value) { m_sqlsHasBeenSet = true; m_sqls = value; }
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline void SetSqls(Aws::Vector<Aws::String>&& value) { m_sqlsHasBeenSet = true; m_sqls = std::move(value); }
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithSqls(const Aws::Vector<Aws::String>& value) { SetSqls(value); return *this;}
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithSqls(Aws::Vector<Aws::String>&& value) { SetSqls(std::move(value)); return *this;}
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& AddSqls(const Aws::String& value) { m_sqlsHasBeenSet = true; m_sqls.push_back(value); return *this; }
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& AddSqls(Aws::String&& value) { m_sqlsHasBeenSet = true; m_sqls.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The SQL statement text to run.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& AddSqls(const char* value) { m_sqlsHasBeenSet = true; m_sqls.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the SQL statement. You can name the SQL statement when you create
      * it to identify the query.</p>
      */
-    inline const Aws::String& GetStatementName() const{ return m_statementName; }
-
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
+    inline const Aws::String& GetStatementName() const { return m_statementName; }
     inline bool StatementNameHasBeenSet() const { return m_statementNameHasBeenSet; }
+    template<typename StatementNameT = Aws::String>
+    void SetStatementName(StatementNameT&& value) { m_statementNameHasBeenSet = true; m_statementName = std::forward<StatementNameT>(value); }
+    template<typename StatementNameT = Aws::String>
+    PipeTargetRedshiftDataParameters& WithStatementName(StatementNameT&& value) { SetStatementName(std::forward<StatementNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
-    inline void SetStatementName(const Aws::String& value) { m_statementNameHasBeenSet = true; m_statementName = value; }
-
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
-    inline void SetStatementName(Aws::String&& value) { m_statementNameHasBeenSet = true; m_statementName = std::move(value); }
-
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
-    inline void SetStatementName(const char* value) { m_statementNameHasBeenSet = true; m_statementName.assign(value); }
-
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithStatementName(const Aws::String& value) { SetStatementName(value); return *this;}
-
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithStatementName(Aws::String&& value) { SetStatementName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the SQL statement. You can name the SQL statement when you create
-     * it to identify the query.</p>
-     */
-    inline PipeTargetRedshiftDataParameters& WithStatementName(const char* value) { SetStatementName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether to send an event back to EventBridge after the SQL
      * statement runs.</p>
      */
-    inline bool GetWithEvent() const{ return m_withEvent; }
-
-    /**
-     * <p>Indicates whether to send an event back to EventBridge after the SQL
-     * statement runs.</p>
-     */
+    inline bool GetWithEvent() const { return m_withEvent; }
     inline bool WithEventHasBeenSet() const { return m_withEventHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to send an event back to EventBridge after the SQL
-     * statement runs.</p>
-     */
     inline void SetWithEvent(bool value) { m_withEventHasBeenSet = true; m_withEvent = value; }
-
-    /**
-     * <p>Indicates whether to send an event back to EventBridge after the SQL
-     * statement runs.</p>
-     */
     inline PipeTargetRedshiftDataParameters& WithWithEvent(bool value) { SetWithEvent(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The SQL statement text to run.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetSqls() const { return m_sqls; }
+    inline bool SqlsHasBeenSet() const { return m_sqlsHasBeenSet; }
+    template<typename SqlsT = Aws::Vector<Aws::String>>
+    void SetSqls(SqlsT&& value) { m_sqlsHasBeenSet = true; m_sqls = std::forward<SqlsT>(value); }
+    template<typename SqlsT = Aws::Vector<Aws::String>>
+    PipeTargetRedshiftDataParameters& WithSqls(SqlsT&& value) { SetSqls(std::forward<SqlsT>(value)); return *this;}
+    template<typename SqlsT = Aws::String>
+    PipeTargetRedshiftDataParameters& AddSqls(SqlsT&& value) { m_sqlsHasBeenSet = true; m_sqls.emplace_back(std::forward<SqlsT>(value)); return *this; }
+    ///@}
   private:
+
+    Aws::String m_secretManagerArn;
+    bool m_secretManagerArnHasBeenSet = false;
 
     Aws::String m_database;
     bool m_databaseHasBeenSet = false;
@@ -314,17 +127,14 @@ namespace Model
     Aws::String m_dbUser;
     bool m_dbUserHasBeenSet = false;
 
-    Aws::String m_secretManagerArn;
-    bool m_secretManagerArnHasBeenSet = false;
-
-    Aws::Vector<Aws::String> m_sqls;
-    bool m_sqlsHasBeenSet = false;
-
     Aws::String m_statementName;
     bool m_statementNameHasBeenSet = false;
 
-    bool m_withEvent;
+    bool m_withEvent{false};
     bool m_withEventHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_sqls;
+    bool m_sqlsHasBeenSet = false;
   };
 
 } // namespace Model

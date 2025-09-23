@@ -18,19 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-InAppMessageBodyConfig::InAppMessageBodyConfig() : 
-    m_alignment(Alignment::NOT_SET),
-    m_alignmentHasBeenSet(false),
-    m_bodyHasBeenSet(false),
-    m_textColorHasBeenSet(false)
-{
-}
-
-InAppMessageBodyConfig::InAppMessageBodyConfig(JsonView jsonValue) : 
-    m_alignment(Alignment::NOT_SET),
-    m_alignmentHasBeenSet(false),
-    m_bodyHasBeenSet(false),
-    m_textColorHasBeenSet(false)
+InAppMessageBodyConfig::InAppMessageBodyConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ InAppMessageBodyConfig& InAppMessageBodyConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Alignment"))
   {
     m_alignment = AlignmentMapper::GetAlignmentForName(jsonValue.GetString("Alignment"));
-
     m_alignmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Body"))
   {
     m_body = jsonValue.GetString("Body");
-
     m_bodyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TextColor"))
   {
     m_textColor = jsonValue.GetString("TextColor");
-
     m_textColorHasBeenSet = true;
   }
-
   return *this;
 }
 

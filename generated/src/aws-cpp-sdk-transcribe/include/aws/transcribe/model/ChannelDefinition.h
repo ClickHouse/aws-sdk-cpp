@@ -35,75 +35,38 @@ namespace Model
   class ChannelDefinition
   {
   public:
-    AWS_TRANSCRIBESERVICE_API ChannelDefinition();
+    AWS_TRANSCRIBESERVICE_API ChannelDefinition() = default;
     AWS_TRANSCRIBESERVICE_API ChannelDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API ChannelDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specify the audio channel you want to define.</p>
      */
-    inline int GetChannelId() const{ return m_channelId; }
-
-    /**
-     * <p>Specify the audio channel you want to define.</p>
-     */
+    inline int GetChannelId() const { return m_channelId; }
     inline bool ChannelIdHasBeenSet() const { return m_channelIdHasBeenSet; }
-
-    /**
-     * <p>Specify the audio channel you want to define.</p>
-     */
     inline void SetChannelId(int value) { m_channelIdHasBeenSet = true; m_channelId = value; }
-
-    /**
-     * <p>Specify the audio channel you want to define.</p>
-     */
     inline ChannelDefinition& WithChannelId(int value) { SetChannelId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specify the speaker you want to define. Omitting this parameter is equivalent
      * to specifying both participants.</p>
      */
-    inline const ParticipantRole& GetParticipantRole() const{ return m_participantRole; }
-
-    /**
-     * <p>Specify the speaker you want to define. Omitting this parameter is equivalent
-     * to specifying both participants.</p>
-     */
+    inline ParticipantRole GetParticipantRole() const { return m_participantRole; }
     inline bool ParticipantRoleHasBeenSet() const { return m_participantRoleHasBeenSet; }
-
-    /**
-     * <p>Specify the speaker you want to define. Omitting this parameter is equivalent
-     * to specifying both participants.</p>
-     */
-    inline void SetParticipantRole(const ParticipantRole& value) { m_participantRoleHasBeenSet = true; m_participantRole = value; }
-
-    /**
-     * <p>Specify the speaker you want to define. Omitting this parameter is equivalent
-     * to specifying both participants.</p>
-     */
-    inline void SetParticipantRole(ParticipantRole&& value) { m_participantRoleHasBeenSet = true; m_participantRole = std::move(value); }
-
-    /**
-     * <p>Specify the speaker you want to define. Omitting this parameter is equivalent
-     * to specifying both participants.</p>
-     */
-    inline ChannelDefinition& WithParticipantRole(const ParticipantRole& value) { SetParticipantRole(value); return *this;}
-
-    /**
-     * <p>Specify the speaker you want to define. Omitting this parameter is equivalent
-     * to specifying both participants.</p>
-     */
-    inline ChannelDefinition& WithParticipantRole(ParticipantRole&& value) { SetParticipantRole(std::move(value)); return *this;}
-
+    inline void SetParticipantRole(ParticipantRole value) { m_participantRoleHasBeenSet = true; m_participantRole = value; }
+    inline ChannelDefinition& WithParticipantRole(ParticipantRole value) { SetParticipantRole(value); return *this;}
+    ///@}
   private:
 
-    int m_channelId;
+    int m_channelId{0};
     bool m_channelIdHasBeenSet = false;
 
-    ParticipantRole m_participantRole;
+    ParticipantRole m_participantRole{ParticipantRole::NOT_SET};
     bool m_participantRoleHasBeenSet = false;
   };
 

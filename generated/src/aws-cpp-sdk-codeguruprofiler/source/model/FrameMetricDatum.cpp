@@ -18,15 +18,7 @@ namespace CodeGuruProfiler
 namespace Model
 {
 
-FrameMetricDatum::FrameMetricDatum() : 
-    m_frameMetricHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-FrameMetricDatum::FrameMetricDatum(JsonView jsonValue) : 
-    m_frameMetricHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+FrameMetricDatum::FrameMetricDatum(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FrameMetricDatum& FrameMetricDatum::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("frameMetric"))
   {
     m_frameMetric = jsonValue.GetObject("frameMetric");
-
     m_frameMetricHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -49,7 +39,6 @@ FrameMetricDatum& FrameMetricDatum::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

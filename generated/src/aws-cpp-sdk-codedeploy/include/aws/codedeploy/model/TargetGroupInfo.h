@@ -33,12 +33,13 @@ namespace Model
   class TargetGroupInfo
   {
   public:
-    AWS_CODEDEPLOY_API TargetGroupInfo();
+    AWS_CODEDEPLOY_API TargetGroupInfo() = default;
     AWS_CODEDEPLOY_API TargetGroupInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API TargetGroupInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>For blue/green deployments, the name of the target group that instances in
      * the original environment are deregistered from, and instances in the replacement
@@ -47,78 +48,13 @@ namespace Model
      * traffic during a deployment, and then re-registered with after the deployment is
      * complete. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
-    inline TargetGroupInfo& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
-    inline TargetGroupInfo& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>For blue/green deployments, the name of the target group that instances in
-     * the original environment are deregistered from, and instances in the replacement
-     * environment are registered with. For in-place deployments, the name of the
-     * target group that instances are deregistered from, so they are not serving
-     * traffic during a deployment, and then re-registered with after the deployment is
-     * complete. </p>
-     */
-    inline TargetGroupInfo& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TargetGroupInfo& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -34,83 +34,35 @@ namespace Model
   class Policy
   {
   public:
-    AWS_ORGANIZATIONS_API Policy();
+    AWS_ORGANIZATIONS_API Policy() = default;
     AWS_ORGANIZATIONS_API Policy(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Policy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A structure that contains additional details about the policy.</p>
      */
-    inline const PolicySummary& GetPolicySummary() const{ return m_policySummary; }
-
-    /**
-     * <p>A structure that contains additional details about the policy.</p>
-     */
+    inline const PolicySummary& GetPolicySummary() const { return m_policySummary; }
     inline bool PolicySummaryHasBeenSet() const { return m_policySummaryHasBeenSet; }
+    template<typename PolicySummaryT = PolicySummary>
+    void SetPolicySummary(PolicySummaryT&& value) { m_policySummaryHasBeenSet = true; m_policySummary = std::forward<PolicySummaryT>(value); }
+    template<typename PolicySummaryT = PolicySummary>
+    Policy& WithPolicySummary(PolicySummaryT&& value) { SetPolicySummary(std::forward<PolicySummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that contains additional details about the policy.</p>
-     */
-    inline void SetPolicySummary(const PolicySummary& value) { m_policySummaryHasBeenSet = true; m_policySummary = value; }
-
-    /**
-     * <p>A structure that contains additional details about the policy.</p>
-     */
-    inline void SetPolicySummary(PolicySummary&& value) { m_policySummaryHasBeenSet = true; m_policySummary = std::move(value); }
-
-    /**
-     * <p>A structure that contains additional details about the policy.</p>
-     */
-    inline Policy& WithPolicySummary(const PolicySummary& value) { SetPolicySummary(value); return *this;}
-
-    /**
-     * <p>A structure that contains additional details about the policy.</p>
-     */
-    inline Policy& WithPolicySummary(PolicySummary&& value) { SetPolicySummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The text content of the policy.</p>
      */
-    inline const Aws::String& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
+    inline const Aws::String& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
-    inline void SetContent(const Aws::String& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
-    inline void SetContent(Aws::String&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
-    inline void SetContent(const char* value) { m_contentHasBeenSet = true; m_content.assign(value); }
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
-    inline Policy& WithContent(const Aws::String& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
-    inline Policy& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
-
-    /**
-     * <p>The text content of the policy.</p>
-     */
-    inline Policy& WithContent(const char* value) { SetContent(value); return *this;}
-
+    template<typename ContentT = Aws::String>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::String>
+    Policy& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
   private:
 
     PolicySummary m_policySummary;

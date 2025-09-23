@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-FindMatchesTaskRunProperties::FindMatchesTaskRunProperties() : 
-    m_jobIdHasBeenSet(false),
-    m_jobNameHasBeenSet(false),
-    m_jobRunIdHasBeenSet(false)
-{
-}
-
-FindMatchesTaskRunProperties::FindMatchesTaskRunProperties(JsonView jsonValue) : 
-    m_jobIdHasBeenSet(false),
-    m_jobNameHasBeenSet(false),
-    m_jobRunIdHasBeenSet(false)
+FindMatchesTaskRunProperties::FindMatchesTaskRunProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ FindMatchesTaskRunProperties& FindMatchesTaskRunProperties::operator =(JsonView 
   if(jsonValue.ValueExists("JobId"))
   {
     m_jobId = jsonValue.GetString("JobId");
-
     m_jobIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JobName"))
   {
     m_jobName = jsonValue.GetString("JobName");
-
     m_jobNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JobRunId"))
   {
     m_jobRunId = jsonValue.GetString("JobRunId");
-
     m_jobRunIdHasBeenSet = true;
   }
-
   return *this;
 }
 

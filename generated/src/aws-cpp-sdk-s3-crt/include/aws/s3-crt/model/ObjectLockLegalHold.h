@@ -30,46 +30,25 @@ namespace Model
   class ObjectLockLegalHold
   {
   public:
-    AWS_S3CRT_API ObjectLockLegalHold();
+    AWS_S3CRT_API ObjectLockLegalHold() = default;
     AWS_S3CRT_API ObjectLockLegalHold(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API ObjectLockLegalHold& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Indicates whether the specified object has a legal hold in place.</p>
      */
-    inline const ObjectLockLegalHoldStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates whether the specified object has a legal hold in place.</p>
-     */
+    inline ObjectLockLegalHoldStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the specified object has a legal hold in place.</p>
-     */
-    inline void SetStatus(const ObjectLockLegalHoldStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates whether the specified object has a legal hold in place.</p>
-     */
-    inline void SetStatus(ObjectLockLegalHoldStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates whether the specified object has a legal hold in place.</p>
-     */
-    inline ObjectLockLegalHold& WithStatus(const ObjectLockLegalHoldStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates whether the specified object has a legal hold in place.</p>
-     */
-    inline ObjectLockLegalHold& WithStatus(ObjectLockLegalHoldStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(ObjectLockLegalHoldStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ObjectLockLegalHold& WithStatus(ObjectLockLegalHoldStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    ObjectLockLegalHoldStatus m_status;
+    ObjectLockLegalHoldStatus m_status{ObjectLockLegalHoldStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

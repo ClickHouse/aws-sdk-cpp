@@ -29,205 +29,91 @@ namespace Model
   class StartReferenceImportJobResult
   {
   public:
-    AWS_OMICS_API StartReferenceImportJobResult();
+    AWS_OMICS_API StartReferenceImportJobResult() = default;
     AWS_OMICS_API StartReferenceImportJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API StartReferenceImportJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The job's ID.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    StartReferenceImportJobResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline StartReferenceImportJobResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline StartReferenceImportJobResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's ID.</p>
-     */
-    inline StartReferenceImportJobResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job's reference store ID.</p>
      */
-    inline const Aws::String& GetReferenceStoreId() const{ return m_referenceStoreId; }
+    inline const Aws::String& GetReferenceStoreId() const { return m_referenceStoreId; }
+    template<typename ReferenceStoreIdT = Aws::String>
+    void SetReferenceStoreId(ReferenceStoreIdT&& value) { m_referenceStoreIdHasBeenSet = true; m_referenceStoreId = std::forward<ReferenceStoreIdT>(value); }
+    template<typename ReferenceStoreIdT = Aws::String>
+    StartReferenceImportJobResult& WithReferenceStoreId(ReferenceStoreIdT&& value) { SetReferenceStoreId(std::forward<ReferenceStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(const Aws::String& value) { m_referenceStoreId = value; }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(Aws::String&& value) { m_referenceStoreId = std::move(value); }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(const char* value) { m_referenceStoreId.assign(value); }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline StartReferenceImportJobResult& WithReferenceStoreId(const Aws::String& value) { SetReferenceStoreId(value); return *this;}
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline StartReferenceImportJobResult& WithReferenceStoreId(Aws::String&& value) { SetReferenceStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline StartReferenceImportJobResult& WithReferenceStoreId(const char* value) { SetReferenceStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job's service role ARN.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    StartReferenceImportJobResult& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's service role ARN.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArn = value; }
-
-    /**
-     * <p>The job's service role ARN.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArn = std::move(value); }
-
-    /**
-     * <p>The job's service role ARN.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArn.assign(value); }
-
-    /**
-     * <p>The job's service role ARN.</p>
-     */
-    inline StartReferenceImportJobResult& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The job's service role ARN.</p>
-     */
-    inline StartReferenceImportJobResult& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's service role ARN.</p>
-     */
-    inline StartReferenceImportJobResult& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job's status.</p>
      */
-    inline const ReferenceImportJobStatus& GetStatus() const{ return m_status; }
+    inline ReferenceImportJobStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ReferenceImportJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline StartReferenceImportJobResult& WithStatus(ReferenceImportJobStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's status.</p>
-     */
-    inline void SetStatus(const ReferenceImportJobStatus& value) { m_status = value; }
-
-    /**
-     * <p>The job's status.</p>
-     */
-    inline void SetStatus(ReferenceImportJobStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The job's status.</p>
-     */
-    inline StartReferenceImportJobResult& WithStatus(const ReferenceImportJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The job's status.</p>
-     */
-    inline StartReferenceImportJobResult& WithStatus(ReferenceImportJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the job was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    StartReferenceImportJobResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline StartReferenceImportJobResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the job was created.</p>
-     */
-    inline StartReferenceImportJobResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartReferenceImportJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartReferenceImportJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartReferenceImportJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartReferenceImportJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_referenceStoreId;
+    bool m_referenceStoreIdHasBeenSet = false;
 
     Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet = false;
 
-    ReferenceImportJobStatus m_status;
+    ReferenceImportJobStatus m_status{ReferenceImportJobStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

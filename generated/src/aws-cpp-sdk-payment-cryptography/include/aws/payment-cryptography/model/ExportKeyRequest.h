@@ -6,9 +6,9 @@
 #pragma once
 #include <aws/payment-cryptography/PaymentCryptography_EXPORTS.h>
 #include <aws/payment-cryptography/PaymentCryptographyRequest.h>
-#include <aws/payment-cryptography/model/ExportAttributes.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/payment-cryptography/model/ExportKeyMaterial.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/payment-cryptography/model/ExportAttributes.h>
 #include <utility>
 
 namespace Aws
@@ -23,7 +23,7 @@ namespace Model
   class ExportKeyRequest : public PaymentCryptographyRequest
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHY_API ExportKeyRequest();
+    AWS_PAYMENTCRYPTOGRAPHY_API ExportKeyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,132 +36,53 @@ namespace Model
     AWS_PAYMENTCRYPTOGRAPHY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
-    /**
-     * <p>The attributes for IPEK generation during export.</p>
-     */
-    inline const ExportAttributes& GetExportAttributes() const{ return m_exportAttributes; }
-
-    /**
-     * <p>The attributes for IPEK generation during export.</p>
-     */
-    inline bool ExportAttributesHasBeenSet() const { return m_exportAttributesHasBeenSet; }
-
-    /**
-     * <p>The attributes for IPEK generation during export.</p>
-     */
-    inline void SetExportAttributes(const ExportAttributes& value) { m_exportAttributesHasBeenSet = true; m_exportAttributes = value; }
-
-    /**
-     * <p>The attributes for IPEK generation during export.</p>
-     */
-    inline void SetExportAttributes(ExportAttributes&& value) { m_exportAttributesHasBeenSet = true; m_exportAttributes = std::move(value); }
-
-    /**
-     * <p>The attributes for IPEK generation during export.</p>
-     */
-    inline ExportKeyRequest& WithExportAttributes(const ExportAttributes& value) { SetExportAttributes(value); return *this;}
-
-    /**
-     * <p>The attributes for IPEK generation during export.</p>
-     */
-    inline ExportKeyRequest& WithExportAttributes(ExportAttributes&& value) { SetExportAttributes(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline const Aws::String& GetExportKeyIdentifier() const{ return m_exportKeyIdentifier; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline bool ExportKeyIdentifierHasBeenSet() const { return m_exportKeyIdentifierHasBeenSet; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline void SetExportKeyIdentifier(const Aws::String& value) { m_exportKeyIdentifierHasBeenSet = true; m_exportKeyIdentifier = value; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline void SetExportKeyIdentifier(Aws::String&& value) { m_exportKeyIdentifierHasBeenSet = true; m_exportKeyIdentifier = std::move(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline void SetExportKeyIdentifier(const char* value) { m_exportKeyIdentifierHasBeenSet = true; m_exportKeyIdentifier.assign(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline ExportKeyRequest& WithExportKeyIdentifier(const Aws::String& value) { SetExportKeyIdentifier(value); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline ExportKeyRequest& WithExportKeyIdentifier(Aws::String&& value) { SetExportKeyIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
-     * Payment Cryptography.</p>
-     */
-    inline ExportKeyRequest& WithExportKeyIdentifier(const char* value) { SetExportKeyIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key block format type, for example, TR-34 or TR-31, to use during key
      * material export.</p>
      */
-    inline const ExportKeyMaterial& GetKeyMaterial() const{ return m_keyMaterial; }
-
-    /**
-     * <p>The key block format type, for example, TR-34 or TR-31, to use during key
-     * material export.</p>
-     */
+    inline const ExportKeyMaterial& GetKeyMaterial() const { return m_keyMaterial; }
     inline bool KeyMaterialHasBeenSet() const { return m_keyMaterialHasBeenSet; }
+    template<typename KeyMaterialT = ExportKeyMaterial>
+    void SetKeyMaterial(KeyMaterialT&& value) { m_keyMaterialHasBeenSet = true; m_keyMaterial = std::forward<KeyMaterialT>(value); }
+    template<typename KeyMaterialT = ExportKeyMaterial>
+    ExportKeyRequest& WithKeyMaterial(KeyMaterialT&& value) { SetKeyMaterial(std::forward<KeyMaterialT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The key block format type, for example, TR-34 or TR-31, to use during key
-     * material export.</p>
+     * <p>The <code>KeyARN</code> of the key under export from Amazon Web Services
+     * Payment Cryptography.</p>
      */
-    inline void SetKeyMaterial(const ExportKeyMaterial& value) { m_keyMaterialHasBeenSet = true; m_keyMaterial = value; }
+    inline const Aws::String& GetExportKeyIdentifier() const { return m_exportKeyIdentifier; }
+    inline bool ExportKeyIdentifierHasBeenSet() const { return m_exportKeyIdentifierHasBeenSet; }
+    template<typename ExportKeyIdentifierT = Aws::String>
+    void SetExportKeyIdentifier(ExportKeyIdentifierT&& value) { m_exportKeyIdentifierHasBeenSet = true; m_exportKeyIdentifier = std::forward<ExportKeyIdentifierT>(value); }
+    template<typename ExportKeyIdentifierT = Aws::String>
+    ExportKeyRequest& WithExportKeyIdentifier(ExportKeyIdentifierT&& value) { SetExportKeyIdentifier(std::forward<ExportKeyIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The key block format type, for example, TR-34 or TR-31, to use during key
-     * material export.</p>
+     * <p>The attributes for IPEK generation during export.</p>
      */
-    inline void SetKeyMaterial(ExportKeyMaterial&& value) { m_keyMaterialHasBeenSet = true; m_keyMaterial = std::move(value); }
-
-    /**
-     * <p>The key block format type, for example, TR-34 or TR-31, to use during key
-     * material export.</p>
-     */
-    inline ExportKeyRequest& WithKeyMaterial(const ExportKeyMaterial& value) { SetKeyMaterial(value); return *this;}
-
-    /**
-     * <p>The key block format type, for example, TR-34 or TR-31, to use during key
-     * material export.</p>
-     */
-    inline ExportKeyRequest& WithKeyMaterial(ExportKeyMaterial&& value) { SetKeyMaterial(std::move(value)); return *this;}
-
+    inline const ExportAttributes& GetExportAttributes() const { return m_exportAttributes; }
+    inline bool ExportAttributesHasBeenSet() const { return m_exportAttributesHasBeenSet; }
+    template<typename ExportAttributesT = ExportAttributes>
+    void SetExportAttributes(ExportAttributesT&& value) { m_exportAttributesHasBeenSet = true; m_exportAttributes = std::forward<ExportAttributesT>(value); }
+    template<typename ExportAttributesT = ExportAttributes>
+    ExportKeyRequest& WithExportAttributes(ExportAttributesT&& value) { SetExportAttributes(std::forward<ExportAttributesT>(value)); return *this;}
+    ///@}
   private:
 
-    ExportAttributes m_exportAttributes;
-    bool m_exportAttributesHasBeenSet = false;
+    ExportKeyMaterial m_keyMaterial;
+    bool m_keyMaterialHasBeenSet = false;
 
     Aws::String m_exportKeyIdentifier;
     bool m_exportKeyIdentifierHasBeenSet = false;
 
-    ExportKeyMaterial m_keyMaterial;
-    bool m_keyMaterialHasBeenSet = false;
+    ExportAttributes m_exportAttributes;
+    bool m_exportAttributesHasBeenSet = false;
   };
 
 } // namespace Model

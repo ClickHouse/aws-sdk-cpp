@@ -34,87 +34,42 @@ namespace Model
   class DifferentialPrivacyPrivacyBudget
   {
   public:
-    AWS_CLEANROOMS_API DifferentialPrivacyPrivacyBudget();
+    AWS_CLEANROOMS_API DifferentialPrivacyPrivacyBudget() = default;
     AWS_CLEANROOMS_API DifferentialPrivacyPrivacyBudget(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API DifferentialPrivacyPrivacyBudget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>This information includes the configured epsilon value and the utility in
      * terms of total aggregations, as well as the remaining aggregations.</p>
      */
-    inline const Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>& GetAggregations() const{ return m_aggregations; }
-
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
+    inline const Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>& GetAggregations() const { return m_aggregations; }
     inline bool AggregationsHasBeenSet() const { return m_aggregationsHasBeenSet; }
+    template<typename AggregationsT = Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>>
+    void SetAggregations(AggregationsT&& value) { m_aggregationsHasBeenSet = true; m_aggregations = std::forward<AggregationsT>(value); }
+    template<typename AggregationsT = Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>>
+    DifferentialPrivacyPrivacyBudget& WithAggregations(AggregationsT&& value) { SetAggregations(std::forward<AggregationsT>(value)); return *this;}
+    template<typename AggregationsT = DifferentialPrivacyPrivacyBudgetAggregation>
+    DifferentialPrivacyPrivacyBudget& AddAggregations(AggregationsT&& value) { m_aggregationsHasBeenSet = true; m_aggregations.emplace_back(std::forward<AggregationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
-    inline void SetAggregations(const Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>& value) { m_aggregationsHasBeenSet = true; m_aggregations = value; }
-
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
-    inline void SetAggregations(Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>&& value) { m_aggregationsHasBeenSet = true; m_aggregations = std::move(value); }
-
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
-    inline DifferentialPrivacyPrivacyBudget& WithAggregations(const Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>& value) { SetAggregations(value); return *this;}
-
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
-    inline DifferentialPrivacyPrivacyBudget& WithAggregations(Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation>&& value) { SetAggregations(std::move(value)); return *this;}
-
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
-    inline DifferentialPrivacyPrivacyBudget& AddAggregations(const DifferentialPrivacyPrivacyBudgetAggregation& value) { m_aggregationsHasBeenSet = true; m_aggregations.push_back(value); return *this; }
-
-    /**
-     * <p>This information includes the configured epsilon value and the utility in
-     * terms of total aggregations, as well as the remaining aggregations.</p>
-     */
-    inline DifferentialPrivacyPrivacyBudget& AddAggregations(DifferentialPrivacyPrivacyBudgetAggregation&& value) { m_aggregationsHasBeenSet = true; m_aggregations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The epsilon value that you configured.</p>
      */
-    inline int GetEpsilon() const{ return m_epsilon; }
-
-    /**
-     * <p>The epsilon value that you configured.</p>
-     */
+    inline int GetEpsilon() const { return m_epsilon; }
     inline bool EpsilonHasBeenSet() const { return m_epsilonHasBeenSet; }
-
-    /**
-     * <p>The epsilon value that you configured.</p>
-     */
     inline void SetEpsilon(int value) { m_epsilonHasBeenSet = true; m_epsilon = value; }
-
-    /**
-     * <p>The epsilon value that you configured.</p>
-     */
     inline DifferentialPrivacyPrivacyBudget& WithEpsilon(int value) { SetEpsilon(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<DifferentialPrivacyPrivacyBudgetAggregation> m_aggregations;
     bool m_aggregationsHasBeenSet = false;
 
-    int m_epsilon;
+    int m_epsilon{0};
     bool m_epsilonHasBeenSet = false;
   };
 

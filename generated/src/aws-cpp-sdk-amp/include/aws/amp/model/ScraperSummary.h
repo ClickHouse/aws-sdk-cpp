@@ -11,6 +11,7 @@
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/amp/model/Source.h>
 #include <aws/amp/model/Destination.h>
+#include <aws/amp/model/RoleConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -29,453 +30,170 @@ namespace Model
 {
 
   /**
-   * <p>Represents a summary of the properties of a scraper.</p><p><h3>See Also:</h3>
-   * <a
+   * <p>The <code>ScraperSummary</code> structure contains a summary of the details
+   * about one scraper in your account.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/ScraperSummary">AWS
    * API Reference</a></p>
    */
   class ScraperSummary
   {
   public:
-    AWS_PROMETHEUSSERVICE_API ScraperSummary();
+    AWS_PROMETHEUSSERVICE_API ScraperSummary() = default;
     AWS_PROMETHEUSSERVICE_API ScraperSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API ScraperSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Alias of this scraper.</p>
+     * <p>(Optional) A name associated with the scraper.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>Alias of this scraper.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    ScraperSummary& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Alias of this scraper.</p>
+     * <p>The ID of the scraper.</p>
      */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>Alias of this scraper.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>Alias of this scraper.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>Alias of this scraper.</p>
-     */
-    inline ScraperSummary& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>Alias of this scraper.</p>
-     */
-    inline ScraperSummary& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>Alias of this scraper.</p>
-     */
-    inline ScraperSummary& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
-    inline const Aws::String& GetScraperId() const{ return m_scraperId; }
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
+    inline const Aws::String& GetScraperId() const { return m_scraperId; }
     inline bool ScraperIdHasBeenSet() const { return m_scraperIdHasBeenSet; }
+    template<typename ScraperIdT = Aws::String>
+    void SetScraperId(ScraperIdT&& value) { m_scraperIdHasBeenSet = true; m_scraperId = std::forward<ScraperIdT>(value); }
+    template<typename ScraperIdT = Aws::String>
+    ScraperSummary& WithScraperId(ScraperIdT&& value) { SetScraperId(std::forward<ScraperIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Unique string identifying this scraper.</p>
+     * <p>The Amazon Resource Name (ARN) of the scraper.</p>
      */
-    inline void SetScraperId(const Aws::String& value) { m_scraperIdHasBeenSet = true; m_scraperId = value; }
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
-    inline void SetScraperId(Aws::String&& value) { m_scraperIdHasBeenSet = true; m_scraperId = std::move(value); }
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
-    inline void SetScraperId(const char* value) { m_scraperIdHasBeenSet = true; m_scraperId.assign(value); }
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
-    inline ScraperSummary& WithScraperId(const Aws::String& value) { SetScraperId(value); return *this;}
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
-    inline ScraperSummary& WithScraperId(Aws::String&& value) { SetScraperId(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique string identifying this scraper.</p>
-     */
-    inline ScraperSummary& WithScraperId(const char* value) { SetScraperId(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ScraperSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline ScraperSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline ScraperSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this scraper.</p>
-     */
-    inline ScraperSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
+     * the scraper to discover and collect metrics on your behalf.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    ScraperSummary& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
+     * <p>A structure that contains the current status of the scraper.</p>
      */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
-     */
-    inline ScraperSummary& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
-     */
-    inline ScraperSummary& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that provides permissions for
-     * the scraper to dsicover, collect, and produce metrics on your behalf.</p>
-     */
-    inline ScraperSummary& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
-    /**
-     * <p>The status of this scraper.</p>
-     */
-    inline const ScraperStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of this scraper.</p>
-     */
+    inline const ScraperStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = ScraperStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = ScraperStatus>
+    ScraperSummary& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of this scraper.</p>
+     * <p>The date and time that the scraper was created.</p>
      */
-    inline void SetStatus(const ScraperStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of this scraper.</p>
-     */
-    inline void SetStatus(ScraperStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of this scraper.</p>
-     */
-    inline ScraperSummary& WithStatus(const ScraperStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of this scraper.</p>
-     */
-    inline ScraperSummary& WithStatus(ScraperStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time when the scraper was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time when the scraper was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    ScraperSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time when the scraper was created.</p>
+     * <p>The date and time that the scraper was last modified.</p>
      */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time when the scraper was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time when the scraper was created.</p>
-     */
-    inline ScraperSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time when the scraper was created.</p>
-     */
-    inline ScraperSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time when the scraper was last modified.</p>
-     */
-    inline const Aws::Utils::DateTime& GetLastModifiedAt() const{ return m_lastModifiedAt; }
-
-    /**
-     * <p>The time when the scraper was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedAt() const { return m_lastModifiedAt; }
     inline bool LastModifiedAtHasBeenSet() const { return m_lastModifiedAtHasBeenSet; }
+    template<typename LastModifiedAtT = Aws::Utils::DateTime>
+    void SetLastModifiedAt(LastModifiedAtT&& value) { m_lastModifiedAtHasBeenSet = true; m_lastModifiedAt = std::forward<LastModifiedAtT>(value); }
+    template<typename LastModifiedAtT = Aws::Utils::DateTime>
+    ScraperSummary& WithLastModifiedAt(LastModifiedAtT&& value) { SetLastModifiedAt(std::forward<LastModifiedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time when the scraper was last modified.</p>
+     * <p>(Optional) The list of tag keys and values associated with the scraper.</p>
      */
-    inline void SetLastModifiedAt(const Aws::Utils::DateTime& value) { m_lastModifiedAtHasBeenSet = true; m_lastModifiedAt = value; }
-
-    /**
-     * <p>The time when the scraper was last modified.</p>
-     */
-    inline void SetLastModifiedAt(Aws::Utils::DateTime&& value) { m_lastModifiedAtHasBeenSet = true; m_lastModifiedAt = std::move(value); }
-
-    /**
-     * <p>The time when the scraper was last modified.</p>
-     */
-    inline ScraperSummary& WithLastModifiedAt(const Aws::Utils::DateTime& value) { SetLastModifiedAt(value); return *this;}
-
-    /**
-     * <p>The time when the scraper was last modified.</p>
-     */
-    inline ScraperSummary& WithLastModifiedAt(Aws::Utils::DateTime&& value) { SetLastModifiedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    ScraperSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    ScraperSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags of this scraper.</p>
+     * <p>If there is a failure, the reason for the failure.</p>
      */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this scraper.</p>
-     */
-    inline ScraperSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline const Aws::String& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
+    inline const Aws::String& GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
+    template<typename StatusReasonT = Aws::String>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = Aws::String>
+    ScraperSummary& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The reason for failure if any.</p>
+     * <p>The Amazon EKS cluster from which the scraper collects metrics.</p>
      */
-    inline void SetStatusReason(const Aws::String& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline void SetStatusReason(const char* value) { m_statusReasonHasBeenSet = true; m_statusReason.assign(value); }
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline ScraperSummary& WithStatusReason(const Aws::String& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline ScraperSummary& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for failure if any.</p>
-     */
-    inline ScraperSummary& WithStatusReason(const char* value) { SetStatusReason(value); return *this;}
-
-
-    /**
-     * <p>The source that the scraper is discovering and collecting metrics from.</p>
-     */
-    inline const Source& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The source that the scraper is discovering and collecting metrics from.</p>
-     */
+    inline const Source& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Source>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Source>
+    ScraperSummary& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The source that the scraper is discovering and collecting metrics from.</p>
+     * <p>The Amazon Managed Service for Prometheus workspace the scraper sends metrics
+     * to.</p>
      */
-    inline void SetSource(const Source& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The source that the scraper is discovering and collecting metrics from.</p>
-     */
-    inline void SetSource(Source&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The source that the scraper is discovering and collecting metrics from.</p>
-     */
-    inline ScraperSummary& WithSource(const Source& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The source that the scraper is discovering and collecting metrics from.</p>
-     */
-    inline ScraperSummary& WithSource(Source&& value) { SetSource(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The destination that the scraper is producing metrics to.</p>
-     */
-    inline const Destination& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The destination that the scraper is producing metrics to.</p>
-     */
+    inline const Destination& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
+    template<typename DestinationT = Destination>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Destination>
+    ScraperSummary& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The destination that the scraper is producing metrics to.</p>
+     * <p>This structure displays information about the IAM roles used for
+     * cross-account scraping configuration.</p>
      */
-    inline void SetDestination(const Destination& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The destination that the scraper is producing metrics to.</p>
-     */
-    inline void SetDestination(Destination&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The destination that the scraper is producing metrics to.</p>
-     */
-    inline ScraperSummary& WithDestination(const Destination& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The destination that the scraper is producing metrics to.</p>
-     */
-    inline ScraperSummary& WithDestination(Destination&& value) { SetDestination(std::move(value)); return *this;}
-
+    inline const RoleConfiguration& GetRoleConfiguration() const { return m_roleConfiguration; }
+    inline bool RoleConfigurationHasBeenSet() const { return m_roleConfigurationHasBeenSet; }
+    template<typename RoleConfigurationT = RoleConfiguration>
+    void SetRoleConfiguration(RoleConfigurationT&& value) { m_roleConfigurationHasBeenSet = true; m_roleConfiguration = std::forward<RoleConfigurationT>(value); }
+    template<typename RoleConfigurationT = RoleConfiguration>
+    ScraperSummary& WithRoleConfiguration(RoleConfigurationT&& value) { SetRoleConfiguration(std::forward<RoleConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alias;
@@ -493,10 +211,10 @@ namespace Model
     ScraperStatus m_status;
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedAt;
+    Aws::Utils::DateTime m_lastModifiedAt{};
     bool m_lastModifiedAtHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
@@ -510,6 +228,9 @@ namespace Model
 
     Destination m_destination;
     bool m_destinationHasBeenSet = false;
+
+    RoleConfiguration m_roleConfiguration;
+    bool m_roleConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

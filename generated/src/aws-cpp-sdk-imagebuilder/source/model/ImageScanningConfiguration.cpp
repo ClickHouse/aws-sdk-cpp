@@ -18,17 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-ImageScanningConfiguration::ImageScanningConfiguration() : 
-    m_imageScanningEnabled(false),
-    m_imageScanningEnabledHasBeenSet(false),
-    m_ecrConfigurationHasBeenSet(false)
-{
-}
-
-ImageScanningConfiguration::ImageScanningConfiguration(JsonView jsonValue) : 
-    m_imageScanningEnabled(false),
-    m_imageScanningEnabledHasBeenSet(false),
-    m_ecrConfigurationHasBeenSet(false)
+ImageScanningConfiguration::ImageScanningConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ImageScanningConfiguration& ImageScanningConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("imageScanningEnabled"))
   {
     m_imageScanningEnabled = jsonValue.GetBool("imageScanningEnabled");
-
     m_imageScanningEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ecrConfiguration"))
   {
     m_ecrConfiguration = jsonValue.GetObject("ecrConfiguration");
-
     m_ecrConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

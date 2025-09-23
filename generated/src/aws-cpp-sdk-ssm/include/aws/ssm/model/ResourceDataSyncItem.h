@@ -36,53 +36,25 @@ namespace Model
   class ResourceDataSyncItem
   {
   public:
-    AWS_SSM_API ResourceDataSyncItem();
+    AWS_SSM_API ResourceDataSyncItem() = default;
     AWS_SSM_API ResourceDataSyncItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API ResourceDataSyncItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the resource data sync.</p>
      */
-    inline const Aws::String& GetSyncName() const{ return m_syncName; }
-
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
+    inline const Aws::String& GetSyncName() const { return m_syncName; }
     inline bool SyncNameHasBeenSet() const { return m_syncNameHasBeenSet; }
+    template<typename SyncNameT = Aws::String>
+    void SetSyncName(SyncNameT&& value) { m_syncNameHasBeenSet = true; m_syncName = std::forward<SyncNameT>(value); }
+    template<typename SyncNameT = Aws::String>
+    ResourceDataSyncItem& WithSyncName(SyncNameT&& value) { SetSyncName(std::forward<SyncNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
-    inline void SetSyncName(const Aws::String& value) { m_syncNameHasBeenSet = true; m_syncName = value; }
-
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
-    inline void SetSyncName(Aws::String&& value) { m_syncNameHasBeenSet = true; m_syncName = std::move(value); }
-
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
-    inline void SetSyncName(const char* value) { m_syncNameHasBeenSet = true; m_syncName.assign(value); }
-
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
-    inline ResourceDataSyncItem& WithSyncName(const Aws::String& value) { SetSyncName(value); return *this;}
-
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
-    inline ResourceDataSyncItem& WithSyncName(Aws::String&& value) { SetSyncName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource data sync.</p>
-     */
-    inline ResourceDataSyncItem& WithSyncName(const char* value) { SetSyncName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of resource data sync. If <code>SyncType</code> is
      * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
@@ -90,335 +62,108 @@ namespace Model
      * the resource data sync synchronizes data from Organizations or from multiple
      * Amazon Web Services Regions.</p>
      */
-    inline const Aws::String& GetSyncType() const{ return m_syncType; }
-
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
+    inline const Aws::String& GetSyncType() const { return m_syncType; }
     inline bool SyncTypeHasBeenSet() const { return m_syncTypeHasBeenSet; }
+    template<typename SyncTypeT = Aws::String>
+    void SetSyncType(SyncTypeT&& value) { m_syncTypeHasBeenSet = true; m_syncType = std::forward<SyncTypeT>(value); }
+    template<typename SyncTypeT = Aws::String>
+    ResourceDataSyncItem& WithSyncType(SyncTypeT&& value) { SetSyncType(std::forward<SyncTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
-    inline void SetSyncType(const Aws::String& value) { m_syncTypeHasBeenSet = true; m_syncType = value; }
-
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
-    inline void SetSyncType(Aws::String&& value) { m_syncTypeHasBeenSet = true; m_syncType = std::move(value); }
-
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
-    inline void SetSyncType(const char* value) { m_syncTypeHasBeenSet = true; m_syncType.assign(value); }
-
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
-    inline ResourceDataSyncItem& WithSyncType(const Aws::String& value) { SetSyncType(value); return *this;}
-
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
-    inline ResourceDataSyncItem& WithSyncType(Aws::String&& value) { SetSyncType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of resource data sync. If <code>SyncType</code> is
-     * <code>SyncToDestination</code>, then the resource data sync synchronizes data to
-     * an S3 bucket. If the <code>SyncType</code> is <code>SyncFromSource</code> then
-     * the resource data sync synchronizes data from Organizations or from multiple
-     * Amazon Web Services Regions.</p>
-     */
-    inline ResourceDataSyncItem& WithSyncType(const char* value) { SetSyncType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the source where the data was synchronized. </p>
      */
-    inline const ResourceDataSyncSourceWithState& GetSyncSource() const{ return m_syncSource; }
-
-    /**
-     * <p>Information about the source where the data was synchronized. </p>
-     */
+    inline const ResourceDataSyncSourceWithState& GetSyncSource() const { return m_syncSource; }
     inline bool SyncSourceHasBeenSet() const { return m_syncSourceHasBeenSet; }
+    template<typename SyncSourceT = ResourceDataSyncSourceWithState>
+    void SetSyncSource(SyncSourceT&& value) { m_syncSourceHasBeenSet = true; m_syncSource = std::forward<SyncSourceT>(value); }
+    template<typename SyncSourceT = ResourceDataSyncSourceWithState>
+    ResourceDataSyncItem& WithSyncSource(SyncSourceT&& value) { SetSyncSource(std::forward<SyncSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the source where the data was synchronized. </p>
-     */
-    inline void SetSyncSource(const ResourceDataSyncSourceWithState& value) { m_syncSourceHasBeenSet = true; m_syncSource = value; }
-
-    /**
-     * <p>Information about the source where the data was synchronized. </p>
-     */
-    inline void SetSyncSource(ResourceDataSyncSourceWithState&& value) { m_syncSourceHasBeenSet = true; m_syncSource = std::move(value); }
-
-    /**
-     * <p>Information about the source where the data was synchronized. </p>
-     */
-    inline ResourceDataSyncItem& WithSyncSource(const ResourceDataSyncSourceWithState& value) { SetSyncSource(value); return *this;}
-
-    /**
-     * <p>Information about the source where the data was synchronized. </p>
-     */
-    inline ResourceDataSyncItem& WithSyncSource(ResourceDataSyncSourceWithState&& value) { SetSyncSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information for the target S3 bucket.</p>
      */
-    inline const ResourceDataSyncS3Destination& GetS3Destination() const{ return m_s3Destination; }
-
-    /**
-     * <p>Configuration information for the target S3 bucket.</p>
-     */
+    inline const ResourceDataSyncS3Destination& GetS3Destination() const { return m_s3Destination; }
     inline bool S3DestinationHasBeenSet() const { return m_s3DestinationHasBeenSet; }
+    template<typename S3DestinationT = ResourceDataSyncS3Destination>
+    void SetS3Destination(S3DestinationT&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::forward<S3DestinationT>(value); }
+    template<typename S3DestinationT = ResourceDataSyncS3Destination>
+    ResourceDataSyncItem& WithS3Destination(S3DestinationT&& value) { SetS3Destination(std::forward<S3DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration information for the target S3 bucket.</p>
-     */
-    inline void SetS3Destination(const ResourceDataSyncS3Destination& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = value; }
-
-    /**
-     * <p>Configuration information for the target S3 bucket.</p>
-     */
-    inline void SetS3Destination(ResourceDataSyncS3Destination&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::move(value); }
-
-    /**
-     * <p>Configuration information for the target S3 bucket.</p>
-     */
-    inline ResourceDataSyncItem& WithS3Destination(const ResourceDataSyncS3Destination& value) { SetS3Destination(value); return *this;}
-
-    /**
-     * <p>Configuration information for the target S3 bucket.</p>
-     */
-    inline ResourceDataSyncItem& WithS3Destination(ResourceDataSyncS3Destination&& value) { SetS3Destination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the configuration attempted to sync (UTC).</p>
      */
-    inline const Aws::Utils::DateTime& GetLastSyncTime() const{ return m_lastSyncTime; }
-
-    /**
-     * <p>The last time the configuration attempted to sync (UTC).</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastSyncTime() const { return m_lastSyncTime; }
     inline bool LastSyncTimeHasBeenSet() const { return m_lastSyncTimeHasBeenSet; }
+    template<typename LastSyncTimeT = Aws::Utils::DateTime>
+    void SetLastSyncTime(LastSyncTimeT&& value) { m_lastSyncTimeHasBeenSet = true; m_lastSyncTime = std::forward<LastSyncTimeT>(value); }
+    template<typename LastSyncTimeT = Aws::Utils::DateTime>
+    ResourceDataSyncItem& WithLastSyncTime(LastSyncTimeT&& value) { SetLastSyncTime(std::forward<LastSyncTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time the configuration attempted to sync (UTC).</p>
-     */
-    inline void SetLastSyncTime(const Aws::Utils::DateTime& value) { m_lastSyncTimeHasBeenSet = true; m_lastSyncTime = value; }
-
-    /**
-     * <p>The last time the configuration attempted to sync (UTC).</p>
-     */
-    inline void SetLastSyncTime(Aws::Utils::DateTime&& value) { m_lastSyncTimeHasBeenSet = true; m_lastSyncTime = std::move(value); }
-
-    /**
-     * <p>The last time the configuration attempted to sync (UTC).</p>
-     */
-    inline ResourceDataSyncItem& WithLastSyncTime(const Aws::Utils::DateTime& value) { SetLastSyncTime(value); return *this;}
-
-    /**
-     * <p>The last time the configuration attempted to sync (UTC).</p>
-     */
-    inline ResourceDataSyncItem& WithLastSyncTime(Aws::Utils::DateTime&& value) { SetLastSyncTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the sync operations returned a status of
      * <code>SUCCESSFUL</code> (UTC).</p>
      */
-    inline const Aws::Utils::DateTime& GetLastSuccessfulSyncTime() const{ return m_lastSuccessfulSyncTime; }
-
-    /**
-     * <p>The last time the sync operations returned a status of
-     * <code>SUCCESSFUL</code> (UTC).</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastSuccessfulSyncTime() const { return m_lastSuccessfulSyncTime; }
     inline bool LastSuccessfulSyncTimeHasBeenSet() const { return m_lastSuccessfulSyncTimeHasBeenSet; }
+    template<typename LastSuccessfulSyncTimeT = Aws::Utils::DateTime>
+    void SetLastSuccessfulSyncTime(LastSuccessfulSyncTimeT&& value) { m_lastSuccessfulSyncTimeHasBeenSet = true; m_lastSuccessfulSyncTime = std::forward<LastSuccessfulSyncTimeT>(value); }
+    template<typename LastSuccessfulSyncTimeT = Aws::Utils::DateTime>
+    ResourceDataSyncItem& WithLastSuccessfulSyncTime(LastSuccessfulSyncTimeT&& value) { SetLastSuccessfulSyncTime(std::forward<LastSuccessfulSyncTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time the sync operations returned a status of
-     * <code>SUCCESSFUL</code> (UTC).</p>
-     */
-    inline void SetLastSuccessfulSyncTime(const Aws::Utils::DateTime& value) { m_lastSuccessfulSyncTimeHasBeenSet = true; m_lastSuccessfulSyncTime = value; }
-
-    /**
-     * <p>The last time the sync operations returned a status of
-     * <code>SUCCESSFUL</code> (UTC).</p>
-     */
-    inline void SetLastSuccessfulSyncTime(Aws::Utils::DateTime&& value) { m_lastSuccessfulSyncTimeHasBeenSet = true; m_lastSuccessfulSyncTime = std::move(value); }
-
-    /**
-     * <p>The last time the sync operations returned a status of
-     * <code>SUCCESSFUL</code> (UTC).</p>
-     */
-    inline ResourceDataSyncItem& WithLastSuccessfulSyncTime(const Aws::Utils::DateTime& value) { SetLastSuccessfulSyncTime(value); return *this;}
-
-    /**
-     * <p>The last time the sync operations returned a status of
-     * <code>SUCCESSFUL</code> (UTC).</p>
-     */
-    inline ResourceDataSyncItem& WithLastSuccessfulSyncTime(Aws::Utils::DateTime&& value) { SetLastSuccessfulSyncTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the resource data sync was changed. </p>
      */
-    inline const Aws::Utils::DateTime& GetSyncLastModifiedTime() const{ return m_syncLastModifiedTime; }
-
-    /**
-     * <p>The date and time the resource data sync was changed. </p>
-     */
+    inline const Aws::Utils::DateTime& GetSyncLastModifiedTime() const { return m_syncLastModifiedTime; }
     inline bool SyncLastModifiedTimeHasBeenSet() const { return m_syncLastModifiedTimeHasBeenSet; }
+    template<typename SyncLastModifiedTimeT = Aws::Utils::DateTime>
+    void SetSyncLastModifiedTime(SyncLastModifiedTimeT&& value) { m_syncLastModifiedTimeHasBeenSet = true; m_syncLastModifiedTime = std::forward<SyncLastModifiedTimeT>(value); }
+    template<typename SyncLastModifiedTimeT = Aws::Utils::DateTime>
+    ResourceDataSyncItem& WithSyncLastModifiedTime(SyncLastModifiedTimeT&& value) { SetSyncLastModifiedTime(std::forward<SyncLastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the resource data sync was changed. </p>
-     */
-    inline void SetSyncLastModifiedTime(const Aws::Utils::DateTime& value) { m_syncLastModifiedTimeHasBeenSet = true; m_syncLastModifiedTime = value; }
-
-    /**
-     * <p>The date and time the resource data sync was changed. </p>
-     */
-    inline void SetSyncLastModifiedTime(Aws::Utils::DateTime&& value) { m_syncLastModifiedTimeHasBeenSet = true; m_syncLastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The date and time the resource data sync was changed. </p>
-     */
-    inline ResourceDataSyncItem& WithSyncLastModifiedTime(const Aws::Utils::DateTime& value) { SetSyncLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The date and time the resource data sync was changed. </p>
-     */
-    inline ResourceDataSyncItem& WithSyncLastModifiedTime(Aws::Utils::DateTime&& value) { SetSyncLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status reported by the last sync.</p>
      */
-    inline const LastResourceDataSyncStatus& GetLastStatus() const{ return m_lastStatus; }
-
-    /**
-     * <p>The status reported by the last sync.</p>
-     */
+    inline LastResourceDataSyncStatus GetLastStatus() const { return m_lastStatus; }
     inline bool LastStatusHasBeenSet() const { return m_lastStatusHasBeenSet; }
+    inline void SetLastStatus(LastResourceDataSyncStatus value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
+    inline ResourceDataSyncItem& WithLastStatus(LastResourceDataSyncStatus value) { SetLastStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status reported by the last sync.</p>
-     */
-    inline void SetLastStatus(const LastResourceDataSyncStatus& value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
-
-    /**
-     * <p>The status reported by the last sync.</p>
-     */
-    inline void SetLastStatus(LastResourceDataSyncStatus&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::move(value); }
-
-    /**
-     * <p>The status reported by the last sync.</p>
-     */
-    inline ResourceDataSyncItem& WithLastStatus(const LastResourceDataSyncStatus& value) { SetLastStatus(value); return *this;}
-
-    /**
-     * <p>The status reported by the last sync.</p>
-     */
-    inline ResourceDataSyncItem& WithLastStatus(LastResourceDataSyncStatus&& value) { SetLastStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the configuration was created (UTC).</p>
      */
-    inline const Aws::Utils::DateTime& GetSyncCreatedTime() const{ return m_syncCreatedTime; }
-
-    /**
-     * <p>The date and time the configuration was created (UTC).</p>
-     */
+    inline const Aws::Utils::DateTime& GetSyncCreatedTime() const { return m_syncCreatedTime; }
     inline bool SyncCreatedTimeHasBeenSet() const { return m_syncCreatedTimeHasBeenSet; }
+    template<typename SyncCreatedTimeT = Aws::Utils::DateTime>
+    void SetSyncCreatedTime(SyncCreatedTimeT&& value) { m_syncCreatedTimeHasBeenSet = true; m_syncCreatedTime = std::forward<SyncCreatedTimeT>(value); }
+    template<typename SyncCreatedTimeT = Aws::Utils::DateTime>
+    ResourceDataSyncItem& WithSyncCreatedTime(SyncCreatedTimeT&& value) { SetSyncCreatedTime(std::forward<SyncCreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the configuration was created (UTC).</p>
-     */
-    inline void SetSyncCreatedTime(const Aws::Utils::DateTime& value) { m_syncCreatedTimeHasBeenSet = true; m_syncCreatedTime = value; }
-
-    /**
-     * <p>The date and time the configuration was created (UTC).</p>
-     */
-    inline void SetSyncCreatedTime(Aws::Utils::DateTime&& value) { m_syncCreatedTimeHasBeenSet = true; m_syncCreatedTime = std::move(value); }
-
-    /**
-     * <p>The date and time the configuration was created (UTC).</p>
-     */
-    inline ResourceDataSyncItem& WithSyncCreatedTime(const Aws::Utils::DateTime& value) { SetSyncCreatedTime(value); return *this;}
-
-    /**
-     * <p>The date and time the configuration was created (UTC).</p>
-     */
-    inline ResourceDataSyncItem& WithSyncCreatedTime(Aws::Utils::DateTime&& value) { SetSyncCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status message details reported by the last sync.</p>
      */
-    inline const Aws::String& GetLastSyncStatusMessage() const{ return m_lastSyncStatusMessage; }
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
+    inline const Aws::String& GetLastSyncStatusMessage() const { return m_lastSyncStatusMessage; }
     inline bool LastSyncStatusMessageHasBeenSet() const { return m_lastSyncStatusMessageHasBeenSet; }
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
-    inline void SetLastSyncStatusMessage(const Aws::String& value) { m_lastSyncStatusMessageHasBeenSet = true; m_lastSyncStatusMessage = value; }
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
-    inline void SetLastSyncStatusMessage(Aws::String&& value) { m_lastSyncStatusMessageHasBeenSet = true; m_lastSyncStatusMessage = std::move(value); }
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
-    inline void SetLastSyncStatusMessage(const char* value) { m_lastSyncStatusMessageHasBeenSet = true; m_lastSyncStatusMessage.assign(value); }
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
-    inline ResourceDataSyncItem& WithLastSyncStatusMessage(const Aws::String& value) { SetLastSyncStatusMessage(value); return *this;}
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
-    inline ResourceDataSyncItem& WithLastSyncStatusMessage(Aws::String&& value) { SetLastSyncStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The status message details reported by the last sync.</p>
-     */
-    inline ResourceDataSyncItem& WithLastSyncStatusMessage(const char* value) { SetLastSyncStatusMessage(value); return *this;}
-
+    template<typename LastSyncStatusMessageT = Aws::String>
+    void SetLastSyncStatusMessage(LastSyncStatusMessageT&& value) { m_lastSyncStatusMessageHasBeenSet = true; m_lastSyncStatusMessage = std::forward<LastSyncStatusMessageT>(value); }
+    template<typename LastSyncStatusMessageT = Aws::String>
+    ResourceDataSyncItem& WithLastSyncStatusMessage(LastSyncStatusMessageT&& value) { SetLastSyncStatusMessage(std::forward<LastSyncStatusMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_syncName;
@@ -433,19 +178,19 @@ namespace Model
     ResourceDataSyncS3Destination m_s3Destination;
     bool m_s3DestinationHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastSyncTime;
+    Aws::Utils::DateTime m_lastSyncTime{};
     bool m_lastSyncTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastSuccessfulSyncTime;
+    Aws::Utils::DateTime m_lastSuccessfulSyncTime{};
     bool m_lastSuccessfulSyncTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_syncLastModifiedTime;
+    Aws::Utils::DateTime m_syncLastModifiedTime{};
     bool m_syncLastModifiedTimeHasBeenSet = false;
 
-    LastResourceDataSyncStatus m_lastStatus;
+    LastResourceDataSyncStatus m_lastStatus{LastResourceDataSyncStatus::NOT_SET};
     bool m_lastStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_syncCreatedTime;
+    Aws::Utils::DateTime m_syncCreatedTime{};
     bool m_syncCreatedTimeHasBeenSet = false;
 
     Aws::String m_lastSyncStatusMessage;

@@ -23,7 +23,7 @@ namespace Model
   class TagInstanceProfileRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API TagInstanceProfileRequest();
+    AWS_IAM_API TagInstanceProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the IAM instance profile to which you want to add tags.</p>
      * <p>This parameter allows (through its <a
@@ -45,120 +46,28 @@ namespace Model
      * consisting of upper and lowercase alphanumeric characters with no spaces. You
      * can also include any of the following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetInstanceProfileName() const{ return m_instanceProfileName; }
-
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetInstanceProfileName() const { return m_instanceProfileName; }
     inline bool InstanceProfileNameHasBeenSet() const { return m_instanceProfileNameHasBeenSet; }
+    template<typename InstanceProfileNameT = Aws::String>
+    void SetInstanceProfileName(InstanceProfileNameT&& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = std::forward<InstanceProfileNameT>(value); }
+    template<typename InstanceProfileNameT = Aws::String>
+    TagInstanceProfileRequest& WithInstanceProfileName(InstanceProfileNameT&& value) { SetInstanceProfileName(std::forward<InstanceProfileNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetInstanceProfileName(const Aws::String& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = value; }
-
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetInstanceProfileName(Aws::String&& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = std::move(value); }
-
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetInstanceProfileName(const char* value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName.assign(value); }
-
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline TagInstanceProfileRequest& WithInstanceProfileName(const Aws::String& value) { SetInstanceProfileName(value); return *this;}
-
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline TagInstanceProfileRequest& WithInstanceProfileName(Aws::String&& value) { SetInstanceProfileName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IAM instance profile to which you want to add tags.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline TagInstanceProfileRequest& WithInstanceProfileName(const char* value) { SetInstanceProfileName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of tags that you want to attach to the IAM instance profile. Each
      * tag consists of a key name and an associated value.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagInstanceProfileRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagInstanceProfileRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagInstanceProfileRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM instance profile. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagInstanceProfileRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TagInstanceProfileRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TagInstanceProfileRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_instanceProfileName;

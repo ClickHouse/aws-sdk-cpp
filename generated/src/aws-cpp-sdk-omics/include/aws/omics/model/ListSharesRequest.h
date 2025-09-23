@@ -27,7 +27,7 @@ namespace Model
   class ListSharesRequest : public OmicsRequest
   {
   public:
-    AWS_OMICS_API ListSharesRequest();
+    AWS_OMICS_API ListSharesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,140 +40,54 @@ namespace Model
     AWS_OMICS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
-     * <p> The account that owns the analytics store shared. </p>
+     * <p>The account that owns the resource shares.</p>
      */
-    inline const ResourceOwner& GetResourceOwner() const{ return m_resourceOwner; }
-
-    /**
-     * <p> The account that owns the analytics store shared. </p>
-     */
+    inline ResourceOwner GetResourceOwner() const { return m_resourceOwner; }
     inline bool ResourceOwnerHasBeenSet() const { return m_resourceOwnerHasBeenSet; }
+    inline void SetResourceOwner(ResourceOwner value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = value; }
+    inline ListSharesRequest& WithResourceOwner(ResourceOwner value) { SetResourceOwner(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The account that owns the analytics store shared. </p>
+     * <p>Attributes that you use to filter for a specific subset of resource
+     * shares.</p>
      */
-    inline void SetResourceOwner(const ResourceOwner& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = value; }
-
-    /**
-     * <p> The account that owns the analytics store shared. </p>
-     */
-    inline void SetResourceOwner(ResourceOwner&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = std::move(value); }
-
-    /**
-     * <p> The account that owns the analytics store shared. </p>
-     */
-    inline ListSharesRequest& WithResourceOwner(const ResourceOwner& value) { SetResourceOwner(value); return *this;}
-
-    /**
-     * <p> The account that owns the analytics store shared. </p>
-     */
-    inline ListSharesRequest& WithResourceOwner(ResourceOwner&& value) { SetResourceOwner(std::move(value)); return *this;}
-
-
-    /**
-     * <p> Attributes used to filter for a specific subset of shares. </p>
-     */
-    inline const Filter& GetFilter() const{ return m_filter; }
-
-    /**
-     * <p> Attributes used to filter for a specific subset of shares. </p>
-     */
+    inline const Filter& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
+    template<typename FilterT = Filter>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = Filter>
+    ListSharesRequest& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Attributes used to filter for a specific subset of shares. </p>
+     * <p>Next token returned in the response of a previous
+     * ListReadSetUploadPartsRequest call. Used to get the next page of results.</p>
      */
-    inline void SetFilter(const Filter& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    /**
-     * <p> Attributes used to filter for a specific subset of shares. </p>
-     */
-    inline void SetFilter(Filter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    /**
-     * <p> Attributes used to filter for a specific subset of shares. </p>
-     */
-    inline ListSharesRequest& WithFilter(const Filter& value) { SetFilter(value); return *this;}
-
-    /**
-     * <p> Attributes used to filter for a specific subset of shares. </p>
-     */
-    inline ListSharesRequest& WithFilter(Filter&& value) { SetFilter(std::move(value)); return *this;}
-
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSharesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
+     * <p>The maximum number of shares to return in one page of results.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
-    inline ListSharesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
-    inline ListSharesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> Next token returned in the response of a previous
-     * ListReadSetUploadPartsRequest call. Used to get the next page of results. </p>
-     */
-    inline ListSharesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p> The maximum number of shares to return in one page of results. </p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p> The maximum number of shares to return in one page of results. </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p> The maximum number of shares to return in one page of results. </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p> The maximum number of shares to return in one page of results. </p>
-     */
     inline ListSharesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
-    ResourceOwner m_resourceOwner;
+    ResourceOwner m_resourceOwner{ResourceOwner::NOT_SET};
     bool m_resourceOwnerHasBeenSet = false;
 
     Filter m_filter;
@@ -182,7 +96,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

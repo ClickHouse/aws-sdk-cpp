@@ -34,103 +34,39 @@ namespace Model
   class AssetBundleImportJobDataSourceOverridePermissions
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverridePermissions();
+    AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverridePermissions() = default;
     AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverridePermissions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverridePermissions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of data source IDs that you want to apply overrides to. You can use
      * <code>*</code> to override all data sources in this asset bundle.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDataSourceIds() const{ return m_dataSourceIds; }
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDataSourceIds() const { return m_dataSourceIds; }
     inline bool DataSourceIdsHasBeenSet() const { return m_dataSourceIdsHasBeenSet; }
+    template<typename DataSourceIdsT = Aws::Vector<Aws::String>>
+    void SetDataSourceIds(DataSourceIdsT&& value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds = std::forward<DataSourceIdsT>(value); }
+    template<typename DataSourceIdsT = Aws::Vector<Aws::String>>
+    AssetBundleImportJobDataSourceOverridePermissions& WithDataSourceIds(DataSourceIdsT&& value) { SetDataSourceIds(std::forward<DataSourceIdsT>(value)); return *this;}
+    template<typename DataSourceIdsT = Aws::String>
+    AssetBundleImportJobDataSourceOverridePermissions& AddDataSourceIds(DataSourceIdsT&& value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds.emplace_back(std::forward<DataSourceIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline void SetDataSourceIds(const Aws::Vector<Aws::String>& value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds = value; }
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline void SetDataSourceIds(Aws::Vector<Aws::String>&& value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds = std::move(value); }
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& WithDataSourceIds(const Aws::Vector<Aws::String>& value) { SetDataSourceIds(value); return *this;}
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& WithDataSourceIds(Aws::Vector<Aws::String>&& value) { SetDataSourceIds(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& AddDataSourceIds(const Aws::String& value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds.push_back(value); return *this; }
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& AddDataSourceIds(Aws::String&& value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of data source IDs that you want to apply overrides to. You can use
-     * <code>*</code> to override all data sources in this asset bundle.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& AddDataSourceIds(const char* value) { m_dataSourceIdsHasBeenSet = true; m_dataSourceIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of permissions for the data source that you want to apply overrides
      * to.</p>
      */
-    inline const AssetBundleResourcePermissions& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>A list of permissions for the data source that you want to apply overrides
-     * to.</p>
-     */
+    inline const AssetBundleResourcePermissions& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
-
-    /**
-     * <p>A list of permissions for the data source that you want to apply overrides
-     * to.</p>
-     */
-    inline void SetPermissions(const AssetBundleResourcePermissions& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>A list of permissions for the data source that you want to apply overrides
-     * to.</p>
-     */
-    inline void SetPermissions(AssetBundleResourcePermissions&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>A list of permissions for the data source that you want to apply overrides
-     * to.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& WithPermissions(const AssetBundleResourcePermissions& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>A list of permissions for the data source that you want to apply overrides
-     * to.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverridePermissions& WithPermissions(AssetBundleResourcePermissions&& value) { SetPermissions(std::move(value)); return *this;}
-
+    template<typename PermissionsT = AssetBundleResourcePermissions>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = AssetBundleResourcePermissions>
+    AssetBundleImportJobDataSourceOverridePermissions& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_dataSourceIds;

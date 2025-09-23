@@ -31,7 +31,7 @@ namespace Model
   class LaunchTemplateInstanceMaintenanceOptionsRequest
   {
   public:
-    AWS_EC2_API LaunchTemplateInstanceMaintenanceOptionsRequest();
+    AWS_EC2_API LaunchTemplateInstanceMaintenanceOptionsRequest() = default;
     AWS_EC2_API LaunchTemplateInstanceMaintenanceOptionsRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateInstanceMaintenanceOptionsRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,57 +39,21 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Disables the automatic recovery behavior of your instance or sets it to
      * default. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
      * automatic recovery</a>.</p>
      */
-    inline const LaunchTemplateAutoRecoveryState& GetAutoRecovery() const{ return m_autoRecovery; }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
-     * automatic recovery</a>.</p>
-     */
+    inline LaunchTemplateAutoRecoveryState GetAutoRecovery() const { return m_autoRecovery; }
     inline bool AutoRecoveryHasBeenSet() const { return m_autoRecoveryHasBeenSet; }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
-     * automatic recovery</a>.</p>
-     */
-    inline void SetAutoRecovery(const LaunchTemplateAutoRecoveryState& value) { m_autoRecoveryHasBeenSet = true; m_autoRecovery = value; }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
-     * automatic recovery</a>.</p>
-     */
-    inline void SetAutoRecovery(LaunchTemplateAutoRecoveryState&& value) { m_autoRecoveryHasBeenSet = true; m_autoRecovery = std::move(value); }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
-     * automatic recovery</a>.</p>
-     */
-    inline LaunchTemplateInstanceMaintenanceOptionsRequest& WithAutoRecovery(const LaunchTemplateAutoRecoveryState& value) { SetAutoRecovery(value); return *this;}
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery">Simplified
-     * automatic recovery</a>.</p>
-     */
-    inline LaunchTemplateInstanceMaintenanceOptionsRequest& WithAutoRecovery(LaunchTemplateAutoRecoveryState&& value) { SetAutoRecovery(std::move(value)); return *this;}
-
+    inline void SetAutoRecovery(LaunchTemplateAutoRecoveryState value) { m_autoRecoveryHasBeenSet = true; m_autoRecovery = value; }
+    inline LaunchTemplateInstanceMaintenanceOptionsRequest& WithAutoRecovery(LaunchTemplateAutoRecoveryState value) { SetAutoRecovery(value); return *this;}
+    ///@}
   private:
 
-    LaunchTemplateAutoRecoveryState m_autoRecovery;
+    LaunchTemplateAutoRecoveryState m_autoRecovery{LaunchTemplateAutoRecoveryState::NOT_SET};
     bool m_autoRecoveryHasBeenSet = false;
   };
 

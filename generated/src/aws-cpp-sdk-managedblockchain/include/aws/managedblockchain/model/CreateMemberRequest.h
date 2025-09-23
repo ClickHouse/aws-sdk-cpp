@@ -23,7 +23,7 @@ namespace Model
   class CreateMemberRequest : public ManagedBlockchainRequest
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API CreateMemberRequest();
+    AWS_MANAGEDBLOCKCHAIN_API CreateMemberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,6 +34,7 @@ namespace Model
     AWS_MANAGEDBLOCKCHAIN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A unique, case-sensitive identifier that you provide to ensure the
      * idempotency of the operation. An idempotent operation completes no more than one
@@ -41,196 +42,54 @@ namespace Model
      * using an HTTP client. It is generated automatically if you use an Amazon Web
      * Services SDK or the CLI.</p>
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    CreateMemberRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
-    inline CreateMemberRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
-    inline CreateMemberRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the operation. An idempotent operation completes no more than one
-     * time. This identifier is required only if you make a service request directly
-     * using an HTTP client. It is generated automatically if you use an Amazon Web
-     * Services SDK or the CLI.</p>
-     */
-    inline CreateMemberRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the invitation that is sent to the member to join
      * the network.</p>
      */
-    inline const Aws::String& GetInvitationId() const{ return m_invitationId; }
-
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
+    inline const Aws::String& GetInvitationId() const { return m_invitationId; }
     inline bool InvitationIdHasBeenSet() const { return m_invitationIdHasBeenSet; }
+    template<typename InvitationIdT = Aws::String>
+    void SetInvitationId(InvitationIdT&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::forward<InvitationIdT>(value); }
+    template<typename InvitationIdT = Aws::String>
+    CreateMemberRequest& WithInvitationId(InvitationIdT&& value) { SetInvitationId(std::forward<InvitationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
-    inline void SetInvitationId(const Aws::String& value) { m_invitationIdHasBeenSet = true; m_invitationId = value; }
-
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
-    inline void SetInvitationId(Aws::String&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
-    inline void SetInvitationId(const char* value) { m_invitationIdHasBeenSet = true; m_invitationId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
-    inline CreateMemberRequest& WithInvitationId(const Aws::String& value) { SetInvitationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
-    inline CreateMemberRequest& WithInvitationId(Aws::String&& value) { SetInvitationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the invitation that is sent to the member to join
-     * the network.</p>
-     */
-    inline CreateMemberRequest& WithInvitationId(const char* value) { SetInvitationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the network in which the member is created.</p>
      */
-    inline const Aws::String& GetNetworkId() const{ return m_networkId; }
-
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
+    inline const Aws::String& GetNetworkId() const { return m_networkId; }
     inline bool NetworkIdHasBeenSet() const { return m_networkIdHasBeenSet; }
+    template<typename NetworkIdT = Aws::String>
+    void SetNetworkId(NetworkIdT&& value) { m_networkIdHasBeenSet = true; m_networkId = std::forward<NetworkIdT>(value); }
+    template<typename NetworkIdT = Aws::String>
+    CreateMemberRequest& WithNetworkId(NetworkIdT&& value) { SetNetworkId(std::forward<NetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
-    inline void SetNetworkId(const Aws::String& value) { m_networkIdHasBeenSet = true; m_networkId = value; }
-
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
-    inline void SetNetworkId(Aws::String&& value) { m_networkIdHasBeenSet = true; m_networkId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
-    inline void SetNetworkId(const char* value) { m_networkIdHasBeenSet = true; m_networkId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
-    inline CreateMemberRequest& WithNetworkId(const Aws::String& value) { SetNetworkId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
-    inline CreateMemberRequest& WithNetworkId(Aws::String&& value) { SetNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the network in which the member is created.</p>
-     */
-    inline CreateMemberRequest& WithNetworkId(const char* value) { SetNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Member configuration parameters.</p>
      */
-    inline const MemberConfiguration& GetMemberConfiguration() const{ return m_memberConfiguration; }
-
-    /**
-     * <p>Member configuration parameters.</p>
-     */
+    inline const MemberConfiguration& GetMemberConfiguration() const { return m_memberConfiguration; }
     inline bool MemberConfigurationHasBeenSet() const { return m_memberConfigurationHasBeenSet; }
-
-    /**
-     * <p>Member configuration parameters.</p>
-     */
-    inline void SetMemberConfiguration(const MemberConfiguration& value) { m_memberConfigurationHasBeenSet = true; m_memberConfiguration = value; }
-
-    /**
-     * <p>Member configuration parameters.</p>
-     */
-    inline void SetMemberConfiguration(MemberConfiguration&& value) { m_memberConfigurationHasBeenSet = true; m_memberConfiguration = std::move(value); }
-
-    /**
-     * <p>Member configuration parameters.</p>
-     */
-    inline CreateMemberRequest& WithMemberConfiguration(const MemberConfiguration& value) { SetMemberConfiguration(value); return *this;}
-
-    /**
-     * <p>Member configuration parameters.</p>
-     */
-    inline CreateMemberRequest& WithMemberConfiguration(MemberConfiguration&& value) { SetMemberConfiguration(std::move(value)); return *this;}
-
+    template<typename MemberConfigurationT = MemberConfiguration>
+    void SetMemberConfiguration(MemberConfigurationT&& value) { m_memberConfigurationHasBeenSet = true; m_memberConfiguration = std::forward<MemberConfigurationT>(value); }
+    template<typename MemberConfigurationT = MemberConfiguration>
+    CreateMemberRequest& WithMemberConfiguration(MemberConfigurationT&& value) { SetMemberConfiguration(std::forward<MemberConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
     Aws::String m_invitationId;
     bool m_invitationIdHasBeenSet = false;

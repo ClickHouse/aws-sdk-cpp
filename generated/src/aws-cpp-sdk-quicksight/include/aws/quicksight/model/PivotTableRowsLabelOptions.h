@@ -34,86 +34,36 @@ namespace Model
   class PivotTableRowsLabelOptions
   {
   public:
-    AWS_QUICKSIGHT_API PivotTableRowsLabelOptions();
+    AWS_QUICKSIGHT_API PivotTableRowsLabelOptions() = default;
     AWS_QUICKSIGHT_API PivotTableRowsLabelOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTableRowsLabelOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The visibility of the rows label.</p>
      */
-    inline const Visibility& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>The visibility of the rows label.</p>
-     */
+    inline Visibility GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
+    inline void SetVisibility(Visibility value) { m_visibilityHasBeenSet = true; m_visibility = value; }
+    inline PivotTableRowsLabelOptions& WithVisibility(Visibility value) { SetVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The visibility of the rows label.</p>
-     */
-    inline void SetVisibility(const Visibility& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>The visibility of the rows label.</p>
-     */
-    inline void SetVisibility(Visibility&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>The visibility of the rows label.</p>
-     */
-    inline PivotTableRowsLabelOptions& WithVisibility(const Visibility& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility of the rows label.</p>
-     */
-    inline PivotTableRowsLabelOptions& WithVisibility(Visibility&& value) { SetVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom label string for the rows label.</p>
      */
-    inline const Aws::String& GetCustomLabel() const{ return m_customLabel; }
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
+    inline const Aws::String& GetCustomLabel() const { return m_customLabel; }
     inline bool CustomLabelHasBeenSet() const { return m_customLabelHasBeenSet; }
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
-    inline void SetCustomLabel(const Aws::String& value) { m_customLabelHasBeenSet = true; m_customLabel = value; }
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
-    inline void SetCustomLabel(Aws::String&& value) { m_customLabelHasBeenSet = true; m_customLabel = std::move(value); }
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
-    inline void SetCustomLabel(const char* value) { m_customLabelHasBeenSet = true; m_customLabel.assign(value); }
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
-    inline PivotTableRowsLabelOptions& WithCustomLabel(const Aws::String& value) { SetCustomLabel(value); return *this;}
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
-    inline PivotTableRowsLabelOptions& WithCustomLabel(Aws::String&& value) { SetCustomLabel(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom label string for the rows label.</p>
-     */
-    inline PivotTableRowsLabelOptions& WithCustomLabel(const char* value) { SetCustomLabel(value); return *this;}
-
+    template<typename CustomLabelT = Aws::String>
+    void SetCustomLabel(CustomLabelT&& value) { m_customLabelHasBeenSet = true; m_customLabel = std::forward<CustomLabelT>(value); }
+    template<typename CustomLabelT = Aws::String>
+    PivotTableRowsLabelOptions& WithCustomLabel(CustomLabelT&& value) { SetCustomLabel(std::forward<CustomLabelT>(value)); return *this;}
+    ///@}
   private:
 
-    Visibility m_visibility;
+    Visibility m_visibility{Visibility::NOT_SET};
     bool m_visibilityHasBeenSet = false;
 
     Aws::String m_customLabel;

@@ -10,17 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-UpdatePartnerStatusRequest::UpdatePartnerStatusRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_partnerNameHasBeenSet(false),
-    m_status(PartnerIntegrationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePartnerStatusRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -47,7 +36,7 @@ Aws::String UpdatePartnerStatusRequest::SerializePayload() const
 
   if(m_statusHasBeenSet)
   {
-    ss << "Status=" << PartnerIntegrationStatusMapper::GetNameForPartnerIntegrationStatus(m_status) << "&";
+    ss << "Status=" << StringUtils::URLEncode(PartnerIntegrationStatusMapper::GetNameForPartnerIntegrationStatus(m_status)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)

@@ -18,81 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-LoRaWANGetServiceProfileInfo::LoRaWANGetServiceProfileInfo() : 
-    m_ulRate(0),
-    m_ulRateHasBeenSet(false),
-    m_ulBucketSize(0),
-    m_ulBucketSizeHasBeenSet(false),
-    m_ulRatePolicyHasBeenSet(false),
-    m_dlRate(0),
-    m_dlRateHasBeenSet(false),
-    m_dlBucketSize(0),
-    m_dlBucketSizeHasBeenSet(false),
-    m_dlRatePolicyHasBeenSet(false),
-    m_addGwMetadata(false),
-    m_addGwMetadataHasBeenSet(false),
-    m_devStatusReqFreq(0),
-    m_devStatusReqFreqHasBeenSet(false),
-    m_reportDevStatusBattery(false),
-    m_reportDevStatusBatteryHasBeenSet(false),
-    m_reportDevStatusMargin(false),
-    m_reportDevStatusMarginHasBeenSet(false),
-    m_drMin(0),
-    m_drMinHasBeenSet(false),
-    m_drMax(0),
-    m_drMaxHasBeenSet(false),
-    m_channelMaskHasBeenSet(false),
-    m_prAllowed(false),
-    m_prAllowedHasBeenSet(false),
-    m_hrAllowed(false),
-    m_hrAllowedHasBeenSet(false),
-    m_raAllowed(false),
-    m_raAllowedHasBeenSet(false),
-    m_nwkGeoLoc(false),
-    m_nwkGeoLocHasBeenSet(false),
-    m_targetPer(0),
-    m_targetPerHasBeenSet(false),
-    m_minGwDiversity(0),
-    m_minGwDiversityHasBeenSet(false)
-{
-}
-
-LoRaWANGetServiceProfileInfo::LoRaWANGetServiceProfileInfo(JsonView jsonValue) : 
-    m_ulRate(0),
-    m_ulRateHasBeenSet(false),
-    m_ulBucketSize(0),
-    m_ulBucketSizeHasBeenSet(false),
-    m_ulRatePolicyHasBeenSet(false),
-    m_dlRate(0),
-    m_dlRateHasBeenSet(false),
-    m_dlBucketSize(0),
-    m_dlBucketSizeHasBeenSet(false),
-    m_dlRatePolicyHasBeenSet(false),
-    m_addGwMetadata(false),
-    m_addGwMetadataHasBeenSet(false),
-    m_devStatusReqFreq(0),
-    m_devStatusReqFreqHasBeenSet(false),
-    m_reportDevStatusBattery(false),
-    m_reportDevStatusBatteryHasBeenSet(false),
-    m_reportDevStatusMargin(false),
-    m_reportDevStatusMarginHasBeenSet(false),
-    m_drMin(0),
-    m_drMinHasBeenSet(false),
-    m_drMax(0),
-    m_drMaxHasBeenSet(false),
-    m_channelMaskHasBeenSet(false),
-    m_prAllowed(false),
-    m_prAllowedHasBeenSet(false),
-    m_hrAllowed(false),
-    m_hrAllowedHasBeenSet(false),
-    m_raAllowed(false),
-    m_raAllowedHasBeenSet(false),
-    m_nwkGeoLoc(false),
-    m_nwkGeoLocHasBeenSet(false),
-    m_targetPer(0),
-    m_targetPerHasBeenSet(false),
-    m_minGwDiversity(0),
-    m_minGwDiversityHasBeenSet(false)
+LoRaWANGetServiceProfileInfo::LoRaWANGetServiceProfileInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -102,136 +28,118 @@ LoRaWANGetServiceProfileInfo& LoRaWANGetServiceProfileInfo::operator =(JsonView 
   if(jsonValue.ValueExists("UlRate"))
   {
     m_ulRate = jsonValue.GetInteger("UlRate");
-
     m_ulRateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UlBucketSize"))
   {
     m_ulBucketSize = jsonValue.GetInteger("UlBucketSize");
-
     m_ulBucketSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UlRatePolicy"))
   {
     m_ulRatePolicy = jsonValue.GetString("UlRatePolicy");
-
     m_ulRatePolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DlRate"))
   {
     m_dlRate = jsonValue.GetInteger("DlRate");
-
     m_dlRateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DlBucketSize"))
   {
     m_dlBucketSize = jsonValue.GetInteger("DlBucketSize");
-
     m_dlBucketSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DlRatePolicy"))
   {
     m_dlRatePolicy = jsonValue.GetString("DlRatePolicy");
-
     m_dlRatePolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AddGwMetadata"))
   {
     m_addGwMetadata = jsonValue.GetBool("AddGwMetadata");
-
     m_addGwMetadataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DevStatusReqFreq"))
   {
     m_devStatusReqFreq = jsonValue.GetInteger("DevStatusReqFreq");
-
     m_devStatusReqFreqHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ReportDevStatusBattery"))
   {
     m_reportDevStatusBattery = jsonValue.GetBool("ReportDevStatusBattery");
-
     m_reportDevStatusBatteryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ReportDevStatusMargin"))
   {
     m_reportDevStatusMargin = jsonValue.GetBool("ReportDevStatusMargin");
-
     m_reportDevStatusMarginHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DrMin"))
   {
     m_drMin = jsonValue.GetInteger("DrMin");
-
     m_drMinHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DrMax"))
   {
     m_drMax = jsonValue.GetInteger("DrMax");
-
     m_drMaxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChannelMask"))
   {
     m_channelMask = jsonValue.GetString("ChannelMask");
-
     m_channelMaskHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrAllowed"))
   {
     m_prAllowed = jsonValue.GetBool("PrAllowed");
-
     m_prAllowedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HrAllowed"))
   {
     m_hrAllowed = jsonValue.GetBool("HrAllowed");
-
     m_hrAllowedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RaAllowed"))
   {
     m_raAllowed = jsonValue.GetBool("RaAllowed");
-
     m_raAllowedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NwkGeoLoc"))
   {
     m_nwkGeoLoc = jsonValue.GetBool("NwkGeoLoc");
-
     m_nwkGeoLocHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetPer"))
   {
     m_targetPer = jsonValue.GetInteger("TargetPer");
-
     m_targetPerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MinGwDiversity"))
   {
     m_minGwDiversity = jsonValue.GetInteger("MinGwDiversity");
-
     m_minGwDiversityHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TxPowerIndexMin"))
+  {
+    m_txPowerIndexMin = jsonValue.GetInteger("TxPowerIndexMin");
+    m_txPowerIndexMinHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("TxPowerIndexMax"))
+  {
+    m_txPowerIndexMax = jsonValue.GetInteger("TxPowerIndexMax");
+    m_txPowerIndexMaxHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("NbTransMin"))
+  {
+    m_nbTransMin = jsonValue.GetInteger("NbTransMin");
+    m_nbTransMinHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("NbTransMax"))
+  {
+    m_nbTransMax = jsonValue.GetInteger("NbTransMax");
+    m_nbTransMaxHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -350,6 +258,30 @@ JsonValue LoRaWANGetServiceProfileInfo::Jsonize() const
   if(m_minGwDiversityHasBeenSet)
   {
    payload.WithInteger("MinGwDiversity", m_minGwDiversity);
+
+  }
+
+  if(m_txPowerIndexMinHasBeenSet)
+  {
+   payload.WithInteger("TxPowerIndexMin", m_txPowerIndexMin);
+
+  }
+
+  if(m_txPowerIndexMaxHasBeenSet)
+  {
+   payload.WithInteger("TxPowerIndexMax", m_txPowerIndexMax);
+
+  }
+
+  if(m_nbTransMinHasBeenSet)
+  {
+   payload.WithInteger("NbTransMin", m_nbTransMin);
+
+  }
+
+  if(m_nbTransMaxHasBeenSet)
+  {
+   payload.WithInteger("NbTransMax", m_nbTransMax);
 
   }
 

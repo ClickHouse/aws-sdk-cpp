@@ -38,134 +38,53 @@ namespace Model
   class ParameterRanges
   {
   public:
-    AWS_FORECASTSERVICE_API ParameterRanges();
+    AWS_FORECASTSERVICE_API ParameterRanges() = default;
     AWS_FORECASTSERVICE_API ParameterRanges(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API ParameterRanges& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the tunable range for each categorical hyperparameter.</p>
      */
-    inline const Aws::Vector<CategoricalParameterRange>& GetCategoricalParameterRanges() const{ return m_categoricalParameterRanges; }
-
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
+    inline const Aws::Vector<CategoricalParameterRange>& GetCategoricalParameterRanges() const { return m_categoricalParameterRanges; }
     inline bool CategoricalParameterRangesHasBeenSet() const { return m_categoricalParameterRangesHasBeenSet; }
+    template<typename CategoricalParameterRangesT = Aws::Vector<CategoricalParameterRange>>
+    void SetCategoricalParameterRanges(CategoricalParameterRangesT&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges = std::forward<CategoricalParameterRangesT>(value); }
+    template<typename CategoricalParameterRangesT = Aws::Vector<CategoricalParameterRange>>
+    ParameterRanges& WithCategoricalParameterRanges(CategoricalParameterRangesT&& value) { SetCategoricalParameterRanges(std::forward<CategoricalParameterRangesT>(value)); return *this;}
+    template<typename CategoricalParameterRangesT = CategoricalParameterRange>
+    ParameterRanges& AddCategoricalParameterRanges(CategoricalParameterRangesT&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges.emplace_back(std::forward<CategoricalParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
-    inline void SetCategoricalParameterRanges(const Aws::Vector<CategoricalParameterRange>& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges = value; }
-
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
-    inline void SetCategoricalParameterRanges(Aws::Vector<CategoricalParameterRange>&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges = std::move(value); }
-
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
-    inline ParameterRanges& WithCategoricalParameterRanges(const Aws::Vector<CategoricalParameterRange>& value) { SetCategoricalParameterRanges(value); return *this;}
-
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
-    inline ParameterRanges& WithCategoricalParameterRanges(Aws::Vector<CategoricalParameterRange>&& value) { SetCategoricalParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
-    inline ParameterRanges& AddCategoricalParameterRanges(const CategoricalParameterRange& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the tunable range for each categorical hyperparameter.</p>
-     */
-    inline ParameterRanges& AddCategoricalParameterRanges(CategoricalParameterRange&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the tunable range for each continuous hyperparameter.</p>
      */
-    inline const Aws::Vector<ContinuousParameterRange>& GetContinuousParameterRanges() const{ return m_continuousParameterRanges; }
-
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
+    inline const Aws::Vector<ContinuousParameterRange>& GetContinuousParameterRanges() const { return m_continuousParameterRanges; }
     inline bool ContinuousParameterRangesHasBeenSet() const { return m_continuousParameterRangesHasBeenSet; }
+    template<typename ContinuousParameterRangesT = Aws::Vector<ContinuousParameterRange>>
+    void SetContinuousParameterRanges(ContinuousParameterRangesT&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges = std::forward<ContinuousParameterRangesT>(value); }
+    template<typename ContinuousParameterRangesT = Aws::Vector<ContinuousParameterRange>>
+    ParameterRanges& WithContinuousParameterRanges(ContinuousParameterRangesT&& value) { SetContinuousParameterRanges(std::forward<ContinuousParameterRangesT>(value)); return *this;}
+    template<typename ContinuousParameterRangesT = ContinuousParameterRange>
+    ParameterRanges& AddContinuousParameterRanges(ContinuousParameterRangesT&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges.emplace_back(std::forward<ContinuousParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
-    inline void SetContinuousParameterRanges(const Aws::Vector<ContinuousParameterRange>& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges = value; }
-
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
-    inline void SetContinuousParameterRanges(Aws::Vector<ContinuousParameterRange>&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges = std::move(value); }
-
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
-    inline ParameterRanges& WithContinuousParameterRanges(const Aws::Vector<ContinuousParameterRange>& value) { SetContinuousParameterRanges(value); return *this;}
-
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
-    inline ParameterRanges& WithContinuousParameterRanges(Aws::Vector<ContinuousParameterRange>&& value) { SetContinuousParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
-    inline ParameterRanges& AddContinuousParameterRanges(const ContinuousParameterRange& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the tunable range for each continuous hyperparameter.</p>
-     */
-    inline ParameterRanges& AddContinuousParameterRanges(ContinuousParameterRange&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the tunable range for each integer hyperparameter.</p>
      */
-    inline const Aws::Vector<IntegerParameterRange>& GetIntegerParameterRanges() const{ return m_integerParameterRanges; }
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
+    inline const Aws::Vector<IntegerParameterRange>& GetIntegerParameterRanges() const { return m_integerParameterRanges; }
     inline bool IntegerParameterRangesHasBeenSet() const { return m_integerParameterRangesHasBeenSet; }
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
-    inline void SetIntegerParameterRanges(const Aws::Vector<IntegerParameterRange>& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges = value; }
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
-    inline void SetIntegerParameterRanges(Aws::Vector<IntegerParameterRange>&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges = std::move(value); }
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
-    inline ParameterRanges& WithIntegerParameterRanges(const Aws::Vector<IntegerParameterRange>& value) { SetIntegerParameterRanges(value); return *this;}
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
-    inline ParameterRanges& WithIntegerParameterRanges(Aws::Vector<IntegerParameterRange>&& value) { SetIntegerParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
-    inline ParameterRanges& AddIntegerParameterRanges(const IntegerParameterRange& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the tunable range for each integer hyperparameter.</p>
-     */
-    inline ParameterRanges& AddIntegerParameterRanges(IntegerParameterRange&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges.push_back(std::move(value)); return *this; }
-
+    template<typename IntegerParameterRangesT = Aws::Vector<IntegerParameterRange>>
+    void SetIntegerParameterRanges(IntegerParameterRangesT&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges = std::forward<IntegerParameterRangesT>(value); }
+    template<typename IntegerParameterRangesT = Aws::Vector<IntegerParameterRange>>
+    ParameterRanges& WithIntegerParameterRanges(IntegerParameterRangesT&& value) { SetIntegerParameterRanges(std::forward<IntegerParameterRangesT>(value)); return *this;}
+    template<typename IntegerParameterRangesT = IntegerParameterRange>
+    ParameterRanges& AddIntegerParameterRanges(IntegerParameterRangesT&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges.emplace_back(std::forward<IntegerParameterRangesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CategoricalParameterRange> m_categoricalParameterRanges;

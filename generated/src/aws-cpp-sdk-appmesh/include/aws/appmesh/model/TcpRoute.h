@@ -33,104 +33,47 @@ namespace Model
   class TcpRoute
   {
   public:
-    AWS_APPMESH_API TcpRoute();
+    AWS_APPMESH_API TcpRoute() = default;
     AWS_APPMESH_API TcpRoute(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API TcpRoute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The action to take if a match is determined.</p>
      */
-    inline const TcpRouteAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>The action to take if a match is determined.</p>
-     */
+    inline const TcpRouteAction& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = TcpRouteAction>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = TcpRouteAction>
+    TcpRoute& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The action to take if a match is determined.</p>
-     */
-    inline void SetAction(const TcpRouteAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>The action to take if a match is determined.</p>
-     */
-    inline void SetAction(TcpRouteAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>The action to take if a match is determined.</p>
-     */
-    inline TcpRoute& WithAction(const TcpRouteAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>The action to take if a match is determined.</p>
-     */
-    inline TcpRoute& WithAction(TcpRouteAction&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that represents the criteria for determining a request match.</p>
      */
-    inline const TcpRouteMatch& GetMatch() const{ return m_match; }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
+    inline const TcpRouteMatch& GetMatch() const { return m_match; }
     inline bool MatchHasBeenSet() const { return m_matchHasBeenSet; }
+    template<typename MatchT = TcpRouteMatch>
+    void SetMatch(MatchT&& value) { m_matchHasBeenSet = true; m_match = std::forward<MatchT>(value); }
+    template<typename MatchT = TcpRouteMatch>
+    TcpRoute& WithMatch(MatchT&& value) { SetMatch(std::forward<MatchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline void SetMatch(const TcpRouteMatch& value) { m_matchHasBeenSet = true; m_match = value; }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline void SetMatch(TcpRouteMatch&& value) { m_matchHasBeenSet = true; m_match = std::move(value); }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline TcpRoute& WithMatch(const TcpRouteMatch& value) { SetMatch(value); return *this;}
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline TcpRoute& WithMatch(TcpRouteMatch&& value) { SetMatch(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that represents types of timeouts. </p>
      */
-    inline const TcpTimeout& GetTimeout() const{ return m_timeout; }
-
-    /**
-     * <p>An object that represents types of timeouts. </p>
-     */
+    inline const TcpTimeout& GetTimeout() const { return m_timeout; }
     inline bool TimeoutHasBeenSet() const { return m_timeoutHasBeenSet; }
-
-    /**
-     * <p>An object that represents types of timeouts. </p>
-     */
-    inline void SetTimeout(const TcpTimeout& value) { m_timeoutHasBeenSet = true; m_timeout = value; }
-
-    /**
-     * <p>An object that represents types of timeouts. </p>
-     */
-    inline void SetTimeout(TcpTimeout&& value) { m_timeoutHasBeenSet = true; m_timeout = std::move(value); }
-
-    /**
-     * <p>An object that represents types of timeouts. </p>
-     */
-    inline TcpRoute& WithTimeout(const TcpTimeout& value) { SetTimeout(value); return *this;}
-
-    /**
-     * <p>An object that represents types of timeouts. </p>
-     */
-    inline TcpRoute& WithTimeout(TcpTimeout&& value) { SetTimeout(std::move(value)); return *this;}
-
+    template<typename TimeoutT = TcpTimeout>
+    void SetTimeout(TimeoutT&& value) { m_timeoutHasBeenSet = true; m_timeout = std::forward<TimeoutT>(value); }
+    template<typename TimeoutT = TcpTimeout>
+    TcpRoute& WithTimeout(TimeoutT&& value) { SetTimeout(std::forward<TimeoutT>(value)); return *this;}
+    ///@}
   private:
 
     TcpRouteAction m_action;

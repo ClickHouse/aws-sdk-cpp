@@ -28,68 +28,38 @@ namespace Model
   class PurchaseReservedNodesOfferingResult
   {
   public:
-    AWS_MEMORYDB_API PurchaseReservedNodesOfferingResult();
+    AWS_MEMORYDB_API PurchaseReservedNodesOfferingResult() = default;
     AWS_MEMORYDB_API PurchaseReservedNodesOfferingResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEMORYDB_API PurchaseReservedNodesOfferingResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Represents the output of a <code>PurchaseReservedNodesOffering</code>
      * operation.</p>
      */
-    inline const ReservedNode& GetReservedNode() const{ return m_reservedNode; }
+    inline const ReservedNode& GetReservedNode() const { return m_reservedNode; }
+    template<typename ReservedNodeT = ReservedNode>
+    void SetReservedNode(ReservedNodeT&& value) { m_reservedNodeHasBeenSet = true; m_reservedNode = std::forward<ReservedNodeT>(value); }
+    template<typename ReservedNodeT = ReservedNode>
+    PurchaseReservedNodesOfferingResult& WithReservedNode(ReservedNodeT&& value) { SetReservedNode(std::forward<ReservedNodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the output of a <code>PurchaseReservedNodesOffering</code>
-     * operation.</p>
-     */
-    inline void SetReservedNode(const ReservedNode& value) { m_reservedNode = value; }
-
-    /**
-     * <p>Represents the output of a <code>PurchaseReservedNodesOffering</code>
-     * operation.</p>
-     */
-    inline void SetReservedNode(ReservedNode&& value) { m_reservedNode = std::move(value); }
-
-    /**
-     * <p>Represents the output of a <code>PurchaseReservedNodesOffering</code>
-     * operation.</p>
-     */
-    inline PurchaseReservedNodesOfferingResult& WithReservedNode(const ReservedNode& value) { SetReservedNode(value); return *this;}
-
-    /**
-     * <p>Represents the output of a <code>PurchaseReservedNodesOffering</code>
-     * operation.</p>
-     */
-    inline PurchaseReservedNodesOfferingResult& WithReservedNode(ReservedNode&& value) { SetReservedNode(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PurchaseReservedNodesOfferingResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PurchaseReservedNodesOfferingResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PurchaseReservedNodesOfferingResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PurchaseReservedNodesOfferingResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ReservedNode m_reservedNode;
+    bool m_reservedNodeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

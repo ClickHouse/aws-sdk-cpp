@@ -32,7 +32,7 @@ namespace Model
   class ActiveInstance
   {
   public:
-    AWS_EC2_API ActiveInstance();
+    AWS_EC2_API ActiveInstance() = default;
     AWS_EC2_API ActiveInstance(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ActiveInstance& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,177 +40,54 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    ActiveInstance& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ActiveInstance& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ActiveInstance& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ActiveInstance& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance type.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The instance type.</p>
-     */
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    ActiveInstance& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline ActiveInstance& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline ActiveInstance& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline ActiveInstance& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Spot Instance request.</p>
      */
-    inline const Aws::String& GetSpotInstanceRequestId() const{ return m_spotInstanceRequestId; }
-
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
+    inline const Aws::String& GetSpotInstanceRequestId() const { return m_spotInstanceRequestId; }
     inline bool SpotInstanceRequestIdHasBeenSet() const { return m_spotInstanceRequestIdHasBeenSet; }
+    template<typename SpotInstanceRequestIdT = Aws::String>
+    void SetSpotInstanceRequestId(SpotInstanceRequestIdT&& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = std::forward<SpotInstanceRequestIdT>(value); }
+    template<typename SpotInstanceRequestIdT = Aws::String>
+    ActiveInstance& WithSpotInstanceRequestId(SpotInstanceRequestIdT&& value) { SetSpotInstanceRequestId(std::forward<SpotInstanceRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
-    inline void SetSpotInstanceRequestId(const Aws::String& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = value; }
-
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
-    inline void SetSpotInstanceRequestId(Aws::String&& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = std::move(value); }
-
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
-    inline void SetSpotInstanceRequestId(const char* value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId.assign(value); }
-
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
-    inline ActiveInstance& WithSpotInstanceRequestId(const Aws::String& value) { SetSpotInstanceRequestId(value); return *this;}
-
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
-    inline ActiveInstance& WithSpotInstanceRequestId(Aws::String&& value) { SetSpotInstanceRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Spot Instance request.</p>
-     */
-    inline ActiveInstance& WithSpotInstanceRequestId(const char* value) { SetSpotInstanceRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The health status of the instance. If the status of either the instance
      * status check or the system status check is <code>impaired</code>, the health
      * status of the instance is <code>unhealthy</code>. Otherwise, the health status
      * is <code>healthy</code>.</p>
      */
-    inline const InstanceHealthStatus& GetInstanceHealth() const{ return m_instanceHealth; }
-
-    /**
-     * <p>The health status of the instance. If the status of either the instance
-     * status check or the system status check is <code>impaired</code>, the health
-     * status of the instance is <code>unhealthy</code>. Otherwise, the health status
-     * is <code>healthy</code>.</p>
-     */
+    inline InstanceHealthStatus GetInstanceHealth() const { return m_instanceHealth; }
     inline bool InstanceHealthHasBeenSet() const { return m_instanceHealthHasBeenSet; }
-
-    /**
-     * <p>The health status of the instance. If the status of either the instance
-     * status check or the system status check is <code>impaired</code>, the health
-     * status of the instance is <code>unhealthy</code>. Otherwise, the health status
-     * is <code>healthy</code>.</p>
-     */
-    inline void SetInstanceHealth(const InstanceHealthStatus& value) { m_instanceHealthHasBeenSet = true; m_instanceHealth = value; }
-
-    /**
-     * <p>The health status of the instance. If the status of either the instance
-     * status check or the system status check is <code>impaired</code>, the health
-     * status of the instance is <code>unhealthy</code>. Otherwise, the health status
-     * is <code>healthy</code>.</p>
-     */
-    inline void SetInstanceHealth(InstanceHealthStatus&& value) { m_instanceHealthHasBeenSet = true; m_instanceHealth = std::move(value); }
-
-    /**
-     * <p>The health status of the instance. If the status of either the instance
-     * status check or the system status check is <code>impaired</code>, the health
-     * status of the instance is <code>unhealthy</code>. Otherwise, the health status
-     * is <code>healthy</code>.</p>
-     */
-    inline ActiveInstance& WithInstanceHealth(const InstanceHealthStatus& value) { SetInstanceHealth(value); return *this;}
-
-    /**
-     * <p>The health status of the instance. If the status of either the instance
-     * status check or the system status check is <code>impaired</code>, the health
-     * status of the instance is <code>unhealthy</code>. Otherwise, the health status
-     * is <code>healthy</code>.</p>
-     */
-    inline ActiveInstance& WithInstanceHealth(InstanceHealthStatus&& value) { SetInstanceHealth(std::move(value)); return *this;}
-
+    inline void SetInstanceHealth(InstanceHealthStatus value) { m_instanceHealthHasBeenSet = true; m_instanceHealth = value; }
+    inline ActiveInstance& WithInstanceHealth(InstanceHealthStatus value) { SetInstanceHealth(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;
@@ -222,7 +99,7 @@ namespace Model
     Aws::String m_spotInstanceRequestId;
     bool m_spotInstanceRequestIdHasBeenSet = false;
 
-    InstanceHealthStatus m_instanceHealth;
+    InstanceHealthStatus m_instanceHealth{InstanceHealthStatus::NOT_SET};
     bool m_instanceHealthHasBeenSet = false;
   };
 

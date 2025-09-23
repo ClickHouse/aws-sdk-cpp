@@ -20,35 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-EndpointAuthorization::EndpointAuthorization() : 
-    m_grantorHasBeenSet(false),
-    m_granteeHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_authorizeTimeHasBeenSet(false),
-    m_clusterStatusHasBeenSet(false),
-    m_status(AuthorizationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_allowedAllVPCs(false),
-    m_allowedAllVPCsHasBeenSet(false),
-    m_allowedVPCsHasBeenSet(false),
-    m_endpointCount(0),
-    m_endpointCountHasBeenSet(false)
-{
-}
-
-EndpointAuthorization::EndpointAuthorization(const XmlNode& xmlNode) : 
-    m_grantorHasBeenSet(false),
-    m_granteeHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_authorizeTimeHasBeenSet(false),
-    m_clusterStatusHasBeenSet(false),
-    m_status(AuthorizationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_allowedAllVPCs(false),
-    m_allowedAllVPCsHasBeenSet(false),
-    m_allowedVPCsHasBeenSet(false),
-    m_endpointCount(0),
-    m_endpointCountHasBeenSet(false)
+EndpointAuthorization::EndpointAuthorization(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -92,7 +64,7 @@ EndpointAuthorization& EndpointAuthorization::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = AuthorizationStatusMapper::GetAuthorizationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = AuthorizationStatusMapper::GetAuthorizationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode allowedAllVPCsNode = resultNode.FirstChild("AllowedAllVPCs");
@@ -105,6 +77,7 @@ EndpointAuthorization& EndpointAuthorization::operator =(const XmlNode& xmlNode)
     if(!allowedVPCsNode.IsNull())
     {
       XmlNode allowedVPCsMember = allowedVPCsNode.FirstChild("VpcIdentifier");
+      m_allowedVPCsHasBeenSet = !allowedVPCsMember.IsNull();
       while(!allowedVPCsMember.IsNull())
       {
         m_allowedVPCs.push_back(allowedVPCsMember.GetText());
@@ -153,7 +126,7 @@ void EndpointAuthorization::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << AuthorizationStatusMapper::GetNameForAuthorizationStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(AuthorizationStatusMapper::GetNameForAuthorizationStatus(m_status)) << "&";
   }
 
   if(m_allowedAllVPCsHasBeenSet)
@@ -166,7 +139,7 @@ void EndpointAuthorization::OutputToStream(Aws::OStream& oStream, const char* lo
       unsigned allowedVPCsIdx = 1;
       for(auto& item : m_allowedVPCs)
       {
-        oStream << location << index << locationValue << ".VpcIdentifier." << allowedVPCsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AllowedVPCs.VpcIdentifier." << allowedVPCsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -204,7 +177,7 @@ void EndpointAuthorization::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << AuthorizationStatusMapper::GetNameForAuthorizationStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(AuthorizationStatusMapper::GetNameForAuthorizationStatus(m_status)) << "&";
   }
   if(m_allowedAllVPCsHasBeenSet)
   {
@@ -215,7 +188,7 @@ void EndpointAuthorization::OutputToStream(Aws::OStream& oStream, const char* lo
       unsigned allowedVPCsIdx = 1;
       for(auto& item : m_allowedVPCs)
       {
-        oStream << location << ".VpcIdentifier." << allowedVPCsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AllowedVPCs.VpcIdentifier." << allowedVPCsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_endpointCountHasBeenSet)

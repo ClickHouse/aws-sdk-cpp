@@ -12,17 +12,15 @@ using namespace Aws::EntityResolution::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSchemaMappingRequest::CreateSchemaMappingRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_mappedInputFieldsHasBeenSet(false),
-    m_schemaNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateSchemaMappingRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_schemaNameHasBeenSet)
+  {
+   payload.WithString("schemaName", m_schemaName);
+
+  }
 
   if(m_descriptionHasBeenSet)
   {
@@ -38,12 +36,6 @@ Aws::String CreateSchemaMappingRequest::SerializePayload() const
      mappedInputFieldsJsonList[mappedInputFieldsIndex].AsObject(m_mappedInputFields[mappedInputFieldsIndex].Jsonize());
    }
    payload.WithArray("mappedInputFields", std::move(mappedInputFieldsJsonList));
-
-  }
-
-  if(m_schemaNameHasBeenSet)
-  {
-   payload.WithString("schemaName", m_schemaName);
 
   }
 

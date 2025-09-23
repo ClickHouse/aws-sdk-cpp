@@ -18,17 +18,7 @@ namespace WorkMail
 namespace Model
 {
 
-MailDomainSummary::MailDomainSummary() : 
-    m_domainNameHasBeenSet(false),
-    m_defaultDomain(false),
-    m_defaultDomainHasBeenSet(false)
-{
-}
-
-MailDomainSummary::MailDomainSummary(JsonView jsonValue) : 
-    m_domainNameHasBeenSet(false),
-    m_defaultDomain(false),
-    m_defaultDomainHasBeenSet(false)
+MailDomainSummary::MailDomainSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ MailDomainSummary& MailDomainSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DomainName"))
   {
     m_domainName = jsonValue.GetString("DomainName");
-
     m_domainNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DefaultDomain"))
   {
     m_defaultDomain = jsonValue.GetBool("DefaultDomain");
-
     m_defaultDomainHasBeenSet = true;
   }
-
   return *this;
 }
 

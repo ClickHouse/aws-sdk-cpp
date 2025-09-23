@@ -18,27 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-ApplicationConfigurationDescription::ApplicationConfigurationDescription() : 
-    m_sqlApplicationConfigurationDescriptionHasBeenSet(false),
-    m_applicationCodeConfigurationDescriptionHasBeenSet(false),
-    m_runConfigurationDescriptionHasBeenSet(false),
-    m_flinkApplicationConfigurationDescriptionHasBeenSet(false),
-    m_environmentPropertyDescriptionsHasBeenSet(false),
-    m_applicationSnapshotConfigurationDescriptionHasBeenSet(false),
-    m_vpcConfigurationDescriptionsHasBeenSet(false),
-    m_zeppelinApplicationConfigurationDescriptionHasBeenSet(false)
-{
-}
-
-ApplicationConfigurationDescription::ApplicationConfigurationDescription(JsonView jsonValue) : 
-    m_sqlApplicationConfigurationDescriptionHasBeenSet(false),
-    m_applicationCodeConfigurationDescriptionHasBeenSet(false),
-    m_runConfigurationDescriptionHasBeenSet(false),
-    m_flinkApplicationConfigurationDescriptionHasBeenSet(false),
-    m_environmentPropertyDescriptionsHasBeenSet(false),
-    m_applicationSnapshotConfigurationDescriptionHasBeenSet(false),
-    m_vpcConfigurationDescriptionsHasBeenSet(false),
-    m_zeppelinApplicationConfigurationDescriptionHasBeenSet(false)
+ApplicationConfigurationDescription::ApplicationConfigurationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,45 +28,38 @@ ApplicationConfigurationDescription& ApplicationConfigurationDescription::operat
   if(jsonValue.ValueExists("SqlApplicationConfigurationDescription"))
   {
     m_sqlApplicationConfigurationDescription = jsonValue.GetObject("SqlApplicationConfigurationDescription");
-
     m_sqlApplicationConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationCodeConfigurationDescription"))
   {
     m_applicationCodeConfigurationDescription = jsonValue.GetObject("ApplicationCodeConfigurationDescription");
-
     m_applicationCodeConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RunConfigurationDescription"))
   {
     m_runConfigurationDescription = jsonValue.GetObject("RunConfigurationDescription");
-
     m_runConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FlinkApplicationConfigurationDescription"))
   {
     m_flinkApplicationConfigurationDescription = jsonValue.GetObject("FlinkApplicationConfigurationDescription");
-
     m_flinkApplicationConfigurationDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EnvironmentPropertyDescriptions"))
   {
     m_environmentPropertyDescriptions = jsonValue.GetObject("EnvironmentPropertyDescriptions");
-
     m_environmentPropertyDescriptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationSnapshotConfigurationDescription"))
   {
     m_applicationSnapshotConfigurationDescription = jsonValue.GetObject("ApplicationSnapshotConfigurationDescription");
-
     m_applicationSnapshotConfigurationDescriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ApplicationSystemRollbackConfigurationDescription"))
+  {
+    m_applicationSystemRollbackConfigurationDescription = jsonValue.GetObject("ApplicationSystemRollbackConfigurationDescription");
+    m_applicationSystemRollbackConfigurationDescriptionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("VpcConfigurationDescriptions"))
   {
     Aws::Utils::Array<JsonView> vpcConfigurationDescriptionsJsonList = jsonValue.GetArray("VpcConfigurationDescriptions");
@@ -96,14 +69,16 @@ ApplicationConfigurationDescription& ApplicationConfigurationDescription::operat
     }
     m_vpcConfigurationDescriptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ZeppelinApplicationConfigurationDescription"))
   {
     m_zeppelinApplicationConfigurationDescription = jsonValue.GetObject("ZeppelinApplicationConfigurationDescription");
-
     m_zeppelinApplicationConfigurationDescriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ApplicationEncryptionConfigurationDescription"))
+  {
+    m_applicationEncryptionConfigurationDescription = jsonValue.GetObject("ApplicationEncryptionConfigurationDescription");
+    m_applicationEncryptionConfigurationDescriptionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -147,6 +122,12 @@ JsonValue ApplicationConfigurationDescription::Jsonize() const
 
   }
 
+  if(m_applicationSystemRollbackConfigurationDescriptionHasBeenSet)
+  {
+   payload.WithObject("ApplicationSystemRollbackConfigurationDescription", m_applicationSystemRollbackConfigurationDescription.Jsonize());
+
+  }
+
   if(m_vpcConfigurationDescriptionsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> vpcConfigurationDescriptionsJsonList(m_vpcConfigurationDescriptions.size());
@@ -161,6 +142,12 @@ JsonValue ApplicationConfigurationDescription::Jsonize() const
   if(m_zeppelinApplicationConfigurationDescriptionHasBeenSet)
   {
    payload.WithObject("ZeppelinApplicationConfigurationDescription", m_zeppelinApplicationConfigurationDescription.Jsonize());
+
+  }
+
+  if(m_applicationEncryptionConfigurationDescriptionHasBeenSet)
+  {
+   payload.WithObject("ApplicationEncryptionConfigurationDescription", m_applicationEncryptionConfigurationDescription.Jsonize());
 
   }
 

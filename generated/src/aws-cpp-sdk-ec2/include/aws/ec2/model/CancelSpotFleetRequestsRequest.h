@@ -26,7 +26,7 @@ namespace Model
   class CancelSpotFleetRequestsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CancelSpotFleetRequestsRequest();
+    AWS_EC2_API CancelSpotFleetRequestsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,126 +41,55 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CancelSpotFleetRequestsRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The IDs of the Spot Fleet requests.</p>
+     * <p>The IDs of the Spot Fleet requests.</p> <p>Constraint: You can specify up to
+     * 100 IDs in a single request.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSpotFleetRequestIds() const{ return m_spotFleetRequestIds; }
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSpotFleetRequestIds() const { return m_spotFleetRequestIds; }
     inline bool SpotFleetRequestIdsHasBeenSet() const { return m_spotFleetRequestIdsHasBeenSet; }
+    template<typename SpotFleetRequestIdsT = Aws::Vector<Aws::String>>
+    void SetSpotFleetRequestIds(SpotFleetRequestIdsT&& value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds = std::forward<SpotFleetRequestIdsT>(value); }
+    template<typename SpotFleetRequestIdsT = Aws::Vector<Aws::String>>
+    CancelSpotFleetRequestsRequest& WithSpotFleetRequestIds(SpotFleetRequestIdsT&& value) { SetSpotFleetRequestIds(std::forward<SpotFleetRequestIdsT>(value)); return *this;}
+    template<typename SpotFleetRequestIdsT = Aws::String>
+    CancelSpotFleetRequestsRequest& AddSpotFleetRequestIds(SpotFleetRequestIdsT&& value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds.emplace_back(std::forward<SpotFleetRequestIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline void SetSpotFleetRequestIds(const Aws::Vector<Aws::String>& value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds = value; }
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline void SetSpotFleetRequestIds(Aws::Vector<Aws::String>&& value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline CancelSpotFleetRequestsRequest& WithSpotFleetRequestIds(const Aws::Vector<Aws::String>& value) { SetSpotFleetRequestIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline CancelSpotFleetRequestsRequest& WithSpotFleetRequestIds(Aws::Vector<Aws::String>&& value) { SetSpotFleetRequestIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline CancelSpotFleetRequestsRequest& AddSpotFleetRequestIds(const Aws::String& value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline CancelSpotFleetRequestsRequest& AddSpotFleetRequestIds(Aws::String&& value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the Spot Fleet requests.</p>
-     */
-    inline CancelSpotFleetRequestsRequest& AddSpotFleetRequestIds(const char* value) { m_spotFleetRequestIdsHasBeenSet = true; m_spotFleetRequestIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether to terminate the associated instances when the Spot Fleet
      * request is canceled. The default is to terminate the instances.</p> <p>To let
      * the instances continue to run after the Spot Fleet request is canceled, specify
      * <code>no-terminate-instances</code>.</p>
      */
-    inline bool GetTerminateInstances() const{ return m_terminateInstances; }
-
-    /**
-     * <p>Indicates whether to terminate the associated instances when the Spot Fleet
-     * request is canceled. The default is to terminate the instances.</p> <p>To let
-     * the instances continue to run after the Spot Fleet request is canceled, specify
-     * <code>no-terminate-instances</code>.</p>
-     */
+    inline bool GetTerminateInstances() const { return m_terminateInstances; }
     inline bool TerminateInstancesHasBeenSet() const { return m_terminateInstancesHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to terminate the associated instances when the Spot Fleet
-     * request is canceled. The default is to terminate the instances.</p> <p>To let
-     * the instances continue to run after the Spot Fleet request is canceled, specify
-     * <code>no-terminate-instances</code>.</p>
-     */
     inline void SetTerminateInstances(bool value) { m_terminateInstancesHasBeenSet = true; m_terminateInstances = value; }
-
-    /**
-     * <p>Indicates whether to terminate the associated instances when the Spot Fleet
-     * request is canceled. The default is to terminate the instances.</p> <p>To let
-     * the instances continue to run after the Spot Fleet request is canceled, specify
-     * <code>no-terminate-instances</code>.</p>
-     */
     inline CancelSpotFleetRequestsRequest& WithTerminateInstances(bool value) { SetTerminateInstances(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_spotFleetRequestIds;
     bool m_spotFleetRequestIdsHasBeenSet = false;
 
-    bool m_terminateInstances;
+    bool m_terminateInstances{false};
     bool m_terminateInstancesHasBeenSet = false;
   };
 

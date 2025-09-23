@@ -18,17 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-RemoteAccountDetails::RemoteAccountDetails() : 
-    m_accountIdHasBeenSet(false),
-    m_affiliated(false),
-    m_affiliatedHasBeenSet(false)
-{
-}
-
-RemoteAccountDetails::RemoteAccountDetails(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_affiliated(false),
-    m_affiliatedHasBeenSet(false)
+RemoteAccountDetails::RemoteAccountDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RemoteAccountDetails& RemoteAccountDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("affiliated"))
   {
     m_affiliated = jsonValue.GetBool("affiliated");
-
     m_affiliatedHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamPublicAddressTag::IpamPublicAddressTag() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-IpamPublicAddressTag::IpamPublicAddressTag(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+IpamPublicAddressTag::IpamPublicAddressTag(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

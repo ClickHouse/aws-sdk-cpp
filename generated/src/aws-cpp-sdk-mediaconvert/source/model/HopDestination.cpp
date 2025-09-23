@@ -18,21 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-HopDestination::HopDestination() : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_queueHasBeenSet(false),
-    m_waitMinutes(0),
-    m_waitMinutesHasBeenSet(false)
-{
-}
-
-HopDestination::HopDestination(JsonView jsonValue) : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_queueHasBeenSet(false),
-    m_waitMinutes(0),
-    m_waitMinutesHasBeenSet(false)
+HopDestination::HopDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ HopDestination& HopDestination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("priority"))
   {
     m_priority = jsonValue.GetInteger("priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("queue"))
   {
     m_queue = jsonValue.GetString("queue");
-
     m_queueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("waitMinutes"))
   {
     m_waitMinutes = jsonValue.GetInteger("waitMinutes");
-
     m_waitMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

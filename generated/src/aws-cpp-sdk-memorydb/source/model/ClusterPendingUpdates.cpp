@@ -18,17 +18,7 @@ namespace MemoryDB
 namespace Model
 {
 
-ClusterPendingUpdates::ClusterPendingUpdates() : 
-    m_reshardingHasBeenSet(false),
-    m_aCLsHasBeenSet(false),
-    m_serviceUpdatesHasBeenSet(false)
-{
-}
-
-ClusterPendingUpdates::ClusterPendingUpdates(JsonView jsonValue) : 
-    m_reshardingHasBeenSet(false),
-    m_aCLsHasBeenSet(false),
-    m_serviceUpdatesHasBeenSet(false)
+ClusterPendingUpdates::ClusterPendingUpdates(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ClusterPendingUpdates& ClusterPendingUpdates::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Resharding"))
   {
     m_resharding = jsonValue.GetObject("Resharding");
-
     m_reshardingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ACLs"))
   {
     m_aCLs = jsonValue.GetObject("ACLs");
-
     m_aCLsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceUpdates"))
   {
     Aws::Utils::Array<JsonView> serviceUpdatesJsonList = jsonValue.GetArray("ServiceUpdates");
@@ -58,7 +44,6 @@ ClusterPendingUpdates& ClusterPendingUpdates::operator =(JsonView jsonValue)
     }
     m_serviceUpdatesHasBeenSet = true;
   }
-
   return *this;
 }
 

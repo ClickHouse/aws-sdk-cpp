@@ -18,19 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InstancePatchStateFilter::InstancePatchStateFilter() : 
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_type(InstancePatchStateOperatorType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-InstancePatchStateFilter::InstancePatchStateFilter(JsonView jsonValue) : 
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_type(InstancePatchStateOperatorType::NOT_SET),
-    m_typeHasBeenSet(false)
+InstancePatchStateFilter::InstancePatchStateFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ InstancePatchStateFilter& InstancePatchStateFilter::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Key"))
   {
     m_key = jsonValue.GetString("Key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -53,14 +39,11 @@ InstancePatchStateFilter& InstancePatchStateFilter::operator =(JsonView jsonValu
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = InstancePatchStateOperatorTypeMapper::GetInstancePatchStateOperatorTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

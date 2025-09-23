@@ -31,45 +31,24 @@ namespace Model
   class TracingConfigResponse
   {
   public:
-    AWS_LAMBDA_API TracingConfigResponse();
+    AWS_LAMBDA_API TracingConfigResponse() = default;
     AWS_LAMBDA_API TracingConfigResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API TracingConfigResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The tracing mode.</p>
      */
-    inline const TracingMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
+    inline TracingMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline void SetMode(const TracingMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline void SetMode(TracingMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline TracingConfigResponse& WithMode(const TracingMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline TracingConfigResponse& WithMode(TracingMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(TracingMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline TracingConfigResponse& WithMode(TracingMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    TracingMode m_mode;
+    TracingMode m_mode{TracingMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

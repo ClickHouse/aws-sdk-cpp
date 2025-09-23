@@ -29,11 +29,12 @@ namespace Model
   class DeleteIndexResult
   {
   public:
-    AWS_RESOURCEEXPLORER2_API DeleteIndexResult();
+    AWS_RESOURCEEXPLORER2_API DeleteIndexResult() = default;
     AWS_RESOURCEEXPLORER2_API DeleteIndexResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RESOURCEEXPLORER2_API DeleteIndexResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
@@ -41,145 +42,54 @@ namespace Model
      * process.</p>  <p>This operation is asynchronous. To check its status, call
      * the <a>GetIndex</a> operation.</p> 
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    DeleteIndexResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the index that you successfully started the deletion
-     * process.</p>  <p>This operation is asynchronous. To check its status, call
-     * the <a>GetIndex</a> operation.</p> 
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the index that you successfully started the deletion
-     * process.</p>  <p>This operation is asynchronous. To check its status, call
-     * the <a>GetIndex</a> operation.</p> 
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the index that you successfully started the deletion
-     * process.</p>  <p>This operation is asynchronous. To check its status, call
-     * the <a>GetIndex</a> operation.</p> 
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the index that you successfully started the deletion
-     * process.</p>  <p>This operation is asynchronous. To check its status, call
-     * the <a>GetIndex</a> operation.</p> 
-     */
-    inline DeleteIndexResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the index that you successfully started the deletion
-     * process.</p>  <p>This operation is asynchronous. To check its status, call
-     * the <a>GetIndex</a> operation.</p> 
-     */
-    inline DeleteIndexResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * resource name (ARN)</a> of the index that you successfully started the deletion
-     * process.</p>  <p>This operation is asynchronous. To check its status, call
-     * the <a>GetIndex</a> operation.</p> 
-     */
-    inline DeleteIndexResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when you last updated this index.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    DeleteIndexResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when you last updated this index.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The date and time when you last updated this index.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The date and time when you last updated this index.</p>
-     */
-    inline DeleteIndexResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time when you last updated this index.</p>
-     */
-    inline DeleteIndexResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the current state of the index. </p>
      */
-    inline const IndexState& GetState() const{ return m_state; }
+    inline IndexState GetState() const { return m_state; }
+    inline void SetState(IndexState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline DeleteIndexResult& WithState(IndexState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the current state of the index. </p>
-     */
-    inline void SetState(const IndexState& value) { m_state = value; }
-
-    /**
-     * <p>Indicates the current state of the index. </p>
-     */
-    inline void SetState(IndexState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>Indicates the current state of the index. </p>
-     */
-    inline DeleteIndexResult& WithState(const IndexState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>Indicates the current state of the index. </p>
-     */
-    inline DeleteIndexResult& WithState(IndexState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteIndexResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteIndexResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteIndexResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteIndexResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
-    IndexState m_state;
+    IndexState m_state{IndexState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

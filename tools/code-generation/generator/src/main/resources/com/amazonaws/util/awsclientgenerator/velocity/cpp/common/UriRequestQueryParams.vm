@@ -25,7 +25,7 @@ ${indent}  }
 #end
 #if(!$operation.request.shape.hasEventStreamMembers() && !($serviceNamespace == "S3Crt" && $operation.s3CrtEnabled))
 ${indent}  AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ${operation.name}, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-#if($operation.hasEndpointTrait)## Note: EndpointDiscovery Trait is not Endpoint Trait
+#if($operation.hasEndpointTrait && !($serviceNamespace == "S3Control" && $serviceModel.rawEndpointRules) )## Note: EndpointDiscovery Trait is not Endpoint Trait
 ${indent}  auto addPrefixErr = endpointResolutionOutcome.GetResult().AddPrefixIfMissing(${operation.endpoint.constructHostPrefixString("request")});
 ${indent}  AWS_CHECK(SERVICE_NAME, !addPrefixErr, addPrefixErr->GetMessage(), ${operation.name}Outcome(addPrefixErr.value()));
 #end
@@ -35,6 +35,9 @@ ${indent}      handler(this, request, ${operation.name}Outcome(Aws::Client::AWSE
 ${indent}          CoreErrors::ENDPOINT_RESOLUTION_FAILURE, "ENDPOINT_RESOLUTION_FAILURE", endpointResolutionOutcome.GetError().GetMessage(), false)), handlerContext);
 ${indent}      return;
 ${indent}  }
+#end
+#if($metadata.findFirstSupportedProtocol() == "smithy-rpc-v2-cbor")
+${indent}  endpointResolutionOutcome.GetResult().AddPathSegment("/service/${serviceModel.metadata.targetPrefix}/operation/${operation.name}");
 #end
 #if($operation.http.requestUri.contains("?"))
 ${indent}  Aws::StringStream ss;
@@ -72,6 +75,12 @@ ${indent}  endpointResolutionOutcome.GetResult().AddPathSegments("$uriPartString
 #set($partShapeMember = $operation.request.shape.getMemberByLocationName($uriVar))
 #if($partShapeMember.shape.enum)
 #set($parameter = "${partShapeMember.shape.name}Mapper::GetNameFor${partShapeMember.shape.name}(request.Get${CppViewHelper.convertToUpperCamel($operation.request.shape.getMemberNameByLocationName($uriVar))}())")
+#elseif($partShapeMember.shape.timeStamp)
+#if($partShapeMember.shape.timestampFormat != "unixTimestamp")
+#set($parameter = "request.Get${CppViewHelper.convertToUpperCamel($operation.request.shape.getMemberNameByLocationName($uriVar))}().ToGmtString(Aws::Utils::DateFormat::$CppViewHelper.computeTimestampFormatInQueryString($partShapeMember.shape))")
+#else
+#set($parameter = "request.Get${CppViewHelper.convertToUpperCamel($operation.request.shape.getMemberNameByLocationName($uriVar))}().Seconds()")
+#end
 #else
 #set($parameter = "request.Get${CppViewHelper.convertToUpperCamel($operation.request.shape.getMemberNameByLocationName($uriVar))}()")
 #end

@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TagDescription::TagDescription() : 
-    m_keyHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-TagDescription::TagDescription(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(ResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+TagDescription::TagDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +46,7 @@ TagDescription& TagDescription::operator =(const XmlNode& xmlNode)
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = ResourceTypeMapper::GetResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = ResourceTypeMapper::GetResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode valueNode = resultNode.FirstChild("value");
@@ -88,7 +74,7 @@ void TagDescription::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << ResourceTypeMapper::GetNameForResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(ResourceTypeMapper::GetNameForResourceType(m_resourceType)) << "&";
   }
 
   if(m_valueHasBeenSet)
@@ -110,7 +96,7 @@ void TagDescription::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << ResourceTypeMapper::GetNameForResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(ResourceTypeMapper::GetNameForResourceType(m_resourceType)) << "&";
   }
   if(m_valueHasBeenSet)
   {

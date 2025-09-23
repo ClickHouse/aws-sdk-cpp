@@ -28,7 +28,7 @@ namespace Model
   class UpdateFindingsRequest : public AccessAnalyzerRequest
   {
   public:
-    AWS_ACCESSANALYZER_API UpdateFindingsRequest();
+    AWS_ACCESSANALYZER_API UpdateFindingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,239 +39,75 @@ namespace Model
     AWS_ACCESSANALYZER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
      * of the analyzer</a> that generated the findings to update.</p>
      */
-    inline const Aws::String& GetAnalyzerArn() const{ return m_analyzerArn; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
+    inline const Aws::String& GetAnalyzerArn() const { return m_analyzerArn; }
     inline bool AnalyzerArnHasBeenSet() const { return m_analyzerArnHasBeenSet; }
+    template<typename AnalyzerArnT = Aws::String>
+    void SetAnalyzerArn(AnalyzerArnT&& value) { m_analyzerArnHasBeenSet = true; m_analyzerArn = std::forward<AnalyzerArnT>(value); }
+    template<typename AnalyzerArnT = Aws::String>
+    UpdateFindingsRequest& WithAnalyzerArn(AnalyzerArnT&& value) { SetAnalyzerArn(std::forward<AnalyzerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
-    inline void SetAnalyzerArn(const Aws::String& value) { m_analyzerArnHasBeenSet = true; m_analyzerArn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
-    inline void SetAnalyzerArn(Aws::String&& value) { m_analyzerArnHasBeenSet = true; m_analyzerArn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
-    inline void SetAnalyzerArn(const char* value) { m_analyzerArnHasBeenSet = true; m_analyzerArn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& WithAnalyzerArn(const Aws::String& value) { SetAnalyzerArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& WithAnalyzerArn(Aws::String&& value) { SetAnalyzerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources">ARN
-     * of the analyzer</a> that generated the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& WithAnalyzerArn(const char* value) { SetAnalyzerArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state represents the action to take to update the finding Status. Use
      * <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use
      * <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>
      */
-    inline const FindingStatusUpdate& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The state represents the action to take to update the finding Status. Use
-     * <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use
-     * <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>
-     */
+    inline FindingStatusUpdate GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(FindingStatusUpdate value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UpdateFindingsRequest& WithStatus(FindingStatusUpdate value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state represents the action to take to update the finding Status. Use
-     * <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use
-     * <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>
-     */
-    inline void SetStatus(const FindingStatusUpdate& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The state represents the action to take to update the finding Status. Use
-     * <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use
-     * <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>
-     */
-    inline void SetStatus(FindingStatusUpdate&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The state represents the action to take to update the finding Status. Use
-     * <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use
-     * <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>
-     */
-    inline UpdateFindingsRequest& WithStatus(const FindingStatusUpdate& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The state represents the action to take to update the finding Status. Use
-     * <code>ARCHIVE</code> to change an Active finding to an Archived finding. Use
-     * <code>ACTIVE</code> to change an Archived finding to an Active finding.</p>
-     */
-    inline UpdateFindingsRequest& WithStatus(FindingStatusUpdate&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the findings to update.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetIds() const{ return m_ids; }
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetIds() const { return m_ids; }
     inline bool IdsHasBeenSet() const { return m_idsHasBeenSet; }
+    template<typename IdsT = Aws::Vector<Aws::String>>
+    void SetIds(IdsT&& value) { m_idsHasBeenSet = true; m_ids = std::forward<IdsT>(value); }
+    template<typename IdsT = Aws::Vector<Aws::String>>
+    UpdateFindingsRequest& WithIds(IdsT&& value) { SetIds(std::forward<IdsT>(value)); return *this;}
+    template<typename IdsT = Aws::String>
+    UpdateFindingsRequest& AddIds(IdsT&& value) { m_idsHasBeenSet = true; m_ids.emplace_back(std::forward<IdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline void SetIds(const Aws::Vector<Aws::String>& value) { m_idsHasBeenSet = true; m_ids = value; }
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline void SetIds(Aws::Vector<Aws::String>&& value) { m_idsHasBeenSet = true; m_ids = std::move(value); }
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& WithIds(const Aws::Vector<Aws::String>& value) { SetIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& WithIds(Aws::Vector<Aws::String>&& value) { SetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& AddIds(const Aws::String& value) { m_idsHasBeenSet = true; m_ids.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& AddIds(Aws::String&& value) { m_idsHasBeenSet = true; m_ids.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the findings to update.</p>
-     */
-    inline UpdateFindingsRequest& AddIds(const char* value) { m_idsHasBeenSet = true; m_ids.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN of the resource identified in the finding.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    UpdateFindingsRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
-    inline UpdateFindingsRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
-    inline UpdateFindingsRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the resource identified in the finding.</p>
-     */
-    inline UpdateFindingsRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A client token.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A client token.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline UpdateFindingsRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline UpdateFindingsRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A client token.</p>
-     */
-    inline UpdateFindingsRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    UpdateFindingsRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_analyzerArn;
     bool m_analyzerArnHasBeenSet = false;
 
-    FindingStatusUpdate m_status;
+    FindingStatusUpdate m_status{FindingStatusUpdate::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_ids;
@@ -280,8 +116,8 @@ namespace Model
     Aws::String m_resourceArn;
     bool m_resourceArnHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

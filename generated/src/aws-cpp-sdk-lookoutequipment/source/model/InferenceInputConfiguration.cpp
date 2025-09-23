@@ -18,17 +18,7 @@ namespace LookoutEquipment
 namespace Model
 {
 
-InferenceInputConfiguration::InferenceInputConfiguration() : 
-    m_s3InputConfigurationHasBeenSet(false),
-    m_inputTimeZoneOffsetHasBeenSet(false),
-    m_inferenceInputNameConfigurationHasBeenSet(false)
-{
-}
-
-InferenceInputConfiguration::InferenceInputConfiguration(JsonView jsonValue) : 
-    m_s3InputConfigurationHasBeenSet(false),
-    m_inputTimeZoneOffsetHasBeenSet(false),
-    m_inferenceInputNameConfigurationHasBeenSet(false)
+InferenceInputConfiguration::InferenceInputConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ InferenceInputConfiguration& InferenceInputConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("S3InputConfiguration"))
   {
     m_s3InputConfiguration = jsonValue.GetObject("S3InputConfiguration");
-
     m_s3InputConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InputTimeZoneOffset"))
   {
     m_inputTimeZoneOffset = jsonValue.GetString("InputTimeZoneOffset");
-
     m_inputTimeZoneOffsetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InferenceInputNameConfiguration"))
   {
     m_inferenceInputNameConfiguration = jsonValue.GetObject("InferenceInputNameConfiguration");
-
     m_inferenceInputNameConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,16 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-DescribeConfigurationOptionsRequest::DescribeConfigurationOptionsRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_solutionStackNameHasBeenSet(false),
-    m_platformArnHasBeenSet(false),
-    m_optionsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeConfigurationOptionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -51,11 +41,18 @@ Aws::String DescribeConfigurationOptionsRequest::SerializePayload() const
 
   if(m_optionsHasBeenSet)
   {
-    unsigned optionsCount = 1;
-    for(auto& item : m_options)
+    if (m_options.empty())
     {
-      item.OutputToStream(ss, "Options.member.", optionsCount, "");
-      optionsCount++;
+      ss << "Options=&";
+    }
+    else
+    {
+      unsigned optionsCount = 1;
+      for(auto& item : m_options)
+      {
+        item.OutputToStream(ss, "Options.member.", optionsCount, "");
+        optionsCount++;
+      }
     }
   }
 

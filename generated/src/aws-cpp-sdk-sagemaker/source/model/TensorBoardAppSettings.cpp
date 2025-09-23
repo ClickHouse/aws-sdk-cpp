@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TensorBoardAppSettings::TensorBoardAppSettings() : 
-    m_defaultResourceSpecHasBeenSet(false)
-{
-}
-
-TensorBoardAppSettings::TensorBoardAppSettings(JsonView jsonValue) : 
-    m_defaultResourceSpecHasBeenSet(false)
+TensorBoardAppSettings::TensorBoardAppSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TensorBoardAppSettings& TensorBoardAppSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DefaultResourceSpec"))
   {
     m_defaultResourceSpec = jsonValue.GetObject("DefaultResourceSpec");
-
     m_defaultResourceSpecHasBeenSet = true;
   }
-
   return *this;
 }
 

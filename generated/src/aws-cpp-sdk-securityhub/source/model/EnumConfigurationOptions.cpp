@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-EnumConfigurationOptions::EnumConfigurationOptions() : 
-    m_defaultValueHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false)
-{
-}
-
-EnumConfigurationOptions::EnumConfigurationOptions(JsonView jsonValue) : 
-    m_defaultValueHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false)
+EnumConfigurationOptions::EnumConfigurationOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ EnumConfigurationOptions& EnumConfigurationOptions::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("DefaultValue"))
   {
     m_defaultValue = jsonValue.GetString("DefaultValue");
-
     m_defaultValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllowedValues"))
   {
     Aws::Utils::Array<JsonView> allowedValuesJsonList = jsonValue.GetArray("AllowedValues");
@@ -49,7 +39,6 @@ EnumConfigurationOptions& EnumConfigurationOptions::operator =(JsonView jsonValu
     }
     m_allowedValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

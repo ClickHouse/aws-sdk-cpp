@@ -19,21 +19,7 @@ namespace APIGateway
 namespace Model
 {
 
-UsagePlanKey::UsagePlanKey() : 
-    m_idHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-UsagePlanKey::UsagePlanKey(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+UsagePlanKey::UsagePlanKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -43,31 +29,23 @@ UsagePlanKey& UsagePlanKey::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

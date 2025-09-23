@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-CoverageFilterCondition::CoverageFilterCondition() : 
-    m_equalsHasBeenSet(false),
-    m_notEqualsHasBeenSet(false)
-{
-}
-
-CoverageFilterCondition::CoverageFilterCondition(JsonView jsonValue) : 
-    m_equalsHasBeenSet(false),
-    m_notEqualsHasBeenSet(false)
+CoverageFilterCondition::CoverageFilterCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ CoverageFilterCondition& CoverageFilterCondition::operator =(JsonView jsonValue)
     }
     m_equalsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("notEquals"))
   {
     Aws::Utils::Array<JsonView> notEqualsJsonList = jsonValue.GetArray("notEquals");
@@ -52,7 +43,6 @@ CoverageFilterCondition& CoverageFilterCondition::operator =(JsonView jsonValue)
     }
     m_notEqualsHasBeenSet = true;
   }
-
   return *this;
 }
 

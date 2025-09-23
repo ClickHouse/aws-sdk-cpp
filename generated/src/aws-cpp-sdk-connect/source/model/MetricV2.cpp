@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-MetricV2::MetricV2() : 
-    m_nameHasBeenSet(false),
-    m_thresholdHasBeenSet(false),
-    m_metricFiltersHasBeenSet(false)
-{
-}
-
-MetricV2::MetricV2(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_thresholdHasBeenSet(false),
-    m_metricFiltersHasBeenSet(false)
+MetricV2::MetricV2(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ MetricV2& MetricV2::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Threshold"))
   {
     Aws::Utils::Array<JsonView> thresholdJsonList = jsonValue.GetArray("Threshold");
@@ -51,7 +39,6 @@ MetricV2& MetricV2::operator =(JsonView jsonValue)
     }
     m_thresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricFilters"))
   {
     Aws::Utils::Array<JsonView> metricFiltersJsonList = jsonValue.GetArray("MetricFilters");
@@ -61,7 +48,6 @@ MetricV2& MetricV2::operator =(JsonView jsonValue)
     }
     m_metricFiltersHasBeenSet = true;
   }
-
   return *this;
 }
 

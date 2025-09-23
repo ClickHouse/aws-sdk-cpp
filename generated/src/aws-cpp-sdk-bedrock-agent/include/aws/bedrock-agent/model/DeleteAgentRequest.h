@@ -21,14 +21,11 @@ namespace Model
 {
 
   /**
-   * <p>Delete Agent Request</p><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-2023-06-05/DeleteAgentRequest">AWS
-   * API Reference</a></p>
    */
   class DeleteAgentRequest : public BedrockAgentRequest
   {
   public:
-    AWS_BEDROCKAGENT_API DeleteAgentRequest();
+    AWS_BEDROCKAGENT_API DeleteAgentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,73 +38,35 @@ namespace Model
     AWS_BEDROCKAGENT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The unique identifier of the agent to delete.</p>
      */
-    inline const Aws::String& GetAgentId() const{ return m_agentId; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
+    inline const Aws::String& GetAgentId() const { return m_agentId; }
     inline bool AgentIdHasBeenSet() const { return m_agentIdHasBeenSet; }
+    template<typename AgentIdT = Aws::String>
+    void SetAgentId(AgentIdT&& value) { m_agentIdHasBeenSet = true; m_agentId = std::forward<AgentIdT>(value); }
+    template<typename AgentIdT = Aws::String>
+    DeleteAgentRequest& WithAgentId(AgentIdT&& value) { SetAgentId(std::forward<AgentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>By default, this value is <code>false</code> and deletion is stopped if the
+     * resource is in use. If you set it to <code>true</code>, the resource will be
+     * deleted even if the resource is in use.</p>
      */
-    inline void SetAgentId(const Aws::String& value) { m_agentIdHasBeenSet = true; m_agentId = value; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(Aws::String&& value) { m_agentIdHasBeenSet = true; m_agentId = std::move(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(const char* value) { m_agentIdHasBeenSet = true; m_agentId.assign(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DeleteAgentRequest& WithAgentId(const Aws::String& value) { SetAgentId(value); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DeleteAgentRequest& WithAgentId(Aws::String&& value) { SetAgentId(std::move(value)); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DeleteAgentRequest& WithAgentId(const char* value) { SetAgentId(value); return *this;}
-
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
-    inline bool GetSkipResourceInUseCheck() const{ return m_skipResourceInUseCheck; }
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
+    inline bool GetSkipResourceInUseCheck() const { return m_skipResourceInUseCheck; }
     inline bool SkipResourceInUseCheckHasBeenSet() const { return m_skipResourceInUseCheckHasBeenSet; }
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
     inline void SetSkipResourceInUseCheck(bool value) { m_skipResourceInUseCheckHasBeenSet = true; m_skipResourceInUseCheck = value; }
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
     inline DeleteAgentRequest& WithSkipResourceInUseCheck(bool value) { SetSkipResourceInUseCheck(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_agentId;
     bool m_agentIdHasBeenSet = false;
 
-    bool m_skipResourceInUseCheck;
+    bool m_skipResourceInUseCheck{false};
     bool m_skipResourceInUseCheckHasBeenSet = false;
   };
 

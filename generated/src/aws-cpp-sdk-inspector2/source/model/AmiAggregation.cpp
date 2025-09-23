@@ -18,21 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-AmiAggregation::AmiAggregation() : 
-    m_amisHasBeenSet(false),
-    m_sortBy(AmiSortBy::NOT_SET),
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
-AmiAggregation::AmiAggregation(JsonView jsonValue) : 
-    m_amisHasBeenSet(false),
-    m_sortBy(AmiSortBy::NOT_SET),
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
+AmiAggregation::AmiAggregation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,21 +34,16 @@ AmiAggregation& AmiAggregation::operator =(JsonView jsonValue)
     }
     m_amisHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("sortBy"))
-  {
-    m_sortBy = AmiSortByMapper::GetAmiSortByForName(jsonValue.GetString("sortBy"));
-
-    m_sortByHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("sortOrder"))
   {
     m_sortOrder = SortOrderMapper::GetSortOrderForName(jsonValue.GetString("sortOrder"));
-
     m_sortOrderHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sortBy"))
+  {
+    m_sortBy = AmiSortByMapper::GetAmiSortByForName(jsonValue.GetString("sortBy"));
+    m_sortByHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -81,14 +62,14 @@ JsonValue AmiAggregation::Jsonize() const
 
   }
 
-  if(m_sortByHasBeenSet)
-  {
-   payload.WithString("sortBy", AmiSortByMapper::GetNameForAmiSortBy(m_sortBy));
-  }
-
   if(m_sortOrderHasBeenSet)
   {
    payload.WithString("sortOrder", SortOrderMapper::GetNameForSortOrder(m_sortOrder));
+  }
+
+  if(m_sortByHasBeenSet)
+  {
+   payload.WithString("sortBy", AmiSortByMapper::GetNameForAmiSortBy(m_sortBy));
   }
 
   return payload;

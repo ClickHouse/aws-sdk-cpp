@@ -32,83 +32,35 @@ namespace Model
   class AmazonRedshiftSource
   {
   public:
-    AWS_GLUE_API AmazonRedshiftSource();
+    AWS_GLUE_API AmazonRedshiftSource() = default;
     AWS_GLUE_API AmazonRedshiftSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API AmazonRedshiftSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Redshift source.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AmazonRedshiftSource& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
-    inline AmazonRedshiftSource& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
-    inline AmazonRedshiftSource& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Redshift source.</p>
-     */
-    inline AmazonRedshiftSource& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the data of the Amazon Reshift source node.</p>
      */
-    inline const AmazonRedshiftNodeData& GetData() const{ return m_data; }
-
-    /**
-     * <p>Specifies the data of the Amazon Reshift source node.</p>
-     */
+    inline const AmazonRedshiftNodeData& GetData() const { return m_data; }
     inline bool DataHasBeenSet() const { return m_dataHasBeenSet; }
-
-    /**
-     * <p>Specifies the data of the Amazon Reshift source node.</p>
-     */
-    inline void SetData(const AmazonRedshiftNodeData& value) { m_dataHasBeenSet = true; m_data = value; }
-
-    /**
-     * <p>Specifies the data of the Amazon Reshift source node.</p>
-     */
-    inline void SetData(AmazonRedshiftNodeData&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
-
-    /**
-     * <p>Specifies the data of the Amazon Reshift source node.</p>
-     */
-    inline AmazonRedshiftSource& WithData(const AmazonRedshiftNodeData& value) { SetData(value); return *this;}
-
-    /**
-     * <p>Specifies the data of the Amazon Reshift source node.</p>
-     */
-    inline AmazonRedshiftSource& WithData(AmazonRedshiftNodeData&& value) { SetData(std::move(value)); return *this;}
-
+    template<typename DataT = AmazonRedshiftNodeData>
+    void SetData(DataT&& value) { m_dataHasBeenSet = true; m_data = std::forward<DataT>(value); }
+    template<typename DataT = AmazonRedshiftNodeData>
+    AmazonRedshiftSource& WithData(DataT&& value) { SetData(std::forward<DataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

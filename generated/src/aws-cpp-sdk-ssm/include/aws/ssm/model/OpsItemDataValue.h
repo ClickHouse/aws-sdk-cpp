@@ -33,95 +33,40 @@ namespace Model
   class OpsItemDataValue
   {
   public:
-    AWS_SSM_API OpsItemDataValue();
+    AWS_SSM_API OpsItemDataValue() = default;
     AWS_SSM_API OpsItemDataValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API OpsItemDataValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the OperationalData key.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    OpsItemDataValue& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
-    inline OpsItemDataValue& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
-    inline OpsItemDataValue& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the OperationalData key.</p>
-     */
-    inline OpsItemDataValue& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of key-value pair. Valid types include <code>SearchableString</code>
      * and <code>String</code>.</p>
      */
-    inline const OpsItemDataType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of key-value pair. Valid types include <code>SearchableString</code>
-     * and <code>String</code>.</p>
-     */
+    inline OpsItemDataType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of key-value pair. Valid types include <code>SearchableString</code>
-     * and <code>String</code>.</p>
-     */
-    inline void SetType(const OpsItemDataType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of key-value pair. Valid types include <code>SearchableString</code>
-     * and <code>String</code>.</p>
-     */
-    inline void SetType(OpsItemDataType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of key-value pair. Valid types include <code>SearchableString</code>
-     * and <code>String</code>.</p>
-     */
-    inline OpsItemDataValue& WithType(const OpsItemDataType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of key-value pair. Valid types include <code>SearchableString</code>
-     * and <code>String</code>.</p>
-     */
-    inline OpsItemDataValue& WithType(OpsItemDataType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(OpsItemDataType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline OpsItemDataValue& WithType(OpsItemDataType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    OpsItemDataType m_type;
+    OpsItemDataType m_type{OpsItemDataType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

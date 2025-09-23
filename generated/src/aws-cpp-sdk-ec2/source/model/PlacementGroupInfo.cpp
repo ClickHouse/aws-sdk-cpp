@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PlacementGroupInfo::PlacementGroupInfo() : 
-    m_supportedStrategiesHasBeenSet(false)
-{
-}
-
-PlacementGroupInfo::PlacementGroupInfo(const XmlNode& xmlNode) : 
-    m_supportedStrategiesHasBeenSet(false)
+PlacementGroupInfo::PlacementGroupInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ PlacementGroupInfo& PlacementGroupInfo::operator =(const XmlNode& xmlNode)
     if(!supportedStrategiesNode.IsNull())
     {
       XmlNode supportedStrategiesMember = supportedStrategiesNode.FirstChild("item");
+      m_supportedStrategiesHasBeenSet = !supportedStrategiesMember.IsNull();
       while(!supportedStrategiesMember.IsNull())
       {
         m_supportedStrategies.push_back(PlacementGroupStrategyMapper::GetPlacementGroupStrategyForName(StringUtils::Trim(supportedStrategiesMember.GetText().c_str())));
@@ -61,7 +56,7 @@ void PlacementGroupInfo::OutputToStream(Aws::OStream& oStream, const char* locat
       unsigned supportedStrategiesIdx = 1;
       for(auto& item : m_supportedStrategies)
       {
-        oStream << location << index << locationValue << ".SupportedStrategies." << supportedStrategiesIdx++ << "=" << PlacementGroupStrategyMapper::GetNameForPlacementGroupStrategy(item) << "&";
+        oStream << location << index << locationValue << ".SupportedStrategies." << supportedStrategiesIdx++ << "=" << StringUtils::URLEncode(PlacementGroupStrategyMapper::GetNameForPlacementGroupStrategy(item)) << "&";
       }
   }
 
@@ -74,7 +69,7 @@ void PlacementGroupInfo::OutputToStream(Aws::OStream& oStream, const char* locat
       unsigned supportedStrategiesIdx = 1;
       for(auto& item : m_supportedStrategies)
       {
-        oStream << location << ".SupportedStrategies." << supportedStrategiesIdx++ << "=" << PlacementGroupStrategyMapper::GetNameForPlacementGroupStrategy(item) << "&";
+        oStream << location << ".SupportedStrategies." << supportedStrategiesIdx++ << "=" << StringUtils::URLEncode(PlacementGroupStrategyMapper::GetNameForPlacementGroupStrategy(item)) << "&";
       }
   }
 }

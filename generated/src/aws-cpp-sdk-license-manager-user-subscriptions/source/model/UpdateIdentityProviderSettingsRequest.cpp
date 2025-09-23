@@ -12,13 +12,6 @@ using namespace Aws::LicenseManagerUserSubscriptions::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateIdentityProviderSettingsRequest::UpdateIdentityProviderSettingsRequest() : 
-    m_identityProviderHasBeenSet(false),
-    m_productHasBeenSet(false),
-    m_updateSettingsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateIdentityProviderSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,12 @@ Aws::String UpdateIdentityProviderSettingsRequest::SerializePayload() const
   if(m_productHasBeenSet)
   {
    payload.WithString("Product", m_product);
+
+  }
+
+  if(m_identityProviderArnHasBeenSet)
+  {
+   payload.WithString("IdentityProviderArn", m_identityProviderArn);
 
   }
 

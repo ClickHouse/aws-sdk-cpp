@@ -27,87 +27,39 @@ namespace Model
   class DescribeHealthServiceStatusForOrganizationResult
   {
   public:
-    AWS_HEALTH_API DescribeHealthServiceStatusForOrganizationResult();
+    AWS_HEALTH_API DescribeHealthServiceStatusForOrganizationResult() = default;
     AWS_HEALTH_API DescribeHealthServiceStatusForOrganizationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_HEALTH_API DescribeHealthServiceStatusForOrganizationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the status of enabling or disabling the Health
      * organizational view feature in your organization.</p> <p>Valid values are
      * <code>ENABLED | DISABLED | PENDING</code>. </p>
      */
-    inline const Aws::String& GetHealthServiceAccessStatusForOrganization() const{ return m_healthServiceAccessStatusForOrganization; }
+    inline const Aws::String& GetHealthServiceAccessStatusForOrganization() const { return m_healthServiceAccessStatusForOrganization; }
+    template<typename HealthServiceAccessStatusForOrganizationT = Aws::String>
+    void SetHealthServiceAccessStatusForOrganization(HealthServiceAccessStatusForOrganizationT&& value) { m_healthServiceAccessStatusForOrganizationHasBeenSet = true; m_healthServiceAccessStatusForOrganization = std::forward<HealthServiceAccessStatusForOrganizationT>(value); }
+    template<typename HealthServiceAccessStatusForOrganizationT = Aws::String>
+    DescribeHealthServiceStatusForOrganizationResult& WithHealthServiceAccessStatusForOrganization(HealthServiceAccessStatusForOrganizationT&& value) { SetHealthServiceAccessStatusForOrganization(std::forward<HealthServiceAccessStatusForOrganizationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the status of enabling or disabling the Health
-     * organizational view feature in your organization.</p> <p>Valid values are
-     * <code>ENABLED | DISABLED | PENDING</code>. </p>
-     */
-    inline void SetHealthServiceAccessStatusForOrganization(const Aws::String& value) { m_healthServiceAccessStatusForOrganization = value; }
-
-    /**
-     * <p>Information about the status of enabling or disabling the Health
-     * organizational view feature in your organization.</p> <p>Valid values are
-     * <code>ENABLED | DISABLED | PENDING</code>. </p>
-     */
-    inline void SetHealthServiceAccessStatusForOrganization(Aws::String&& value) { m_healthServiceAccessStatusForOrganization = std::move(value); }
-
-    /**
-     * <p>Information about the status of enabling or disabling the Health
-     * organizational view feature in your organization.</p> <p>Valid values are
-     * <code>ENABLED | DISABLED | PENDING</code>. </p>
-     */
-    inline void SetHealthServiceAccessStatusForOrganization(const char* value) { m_healthServiceAccessStatusForOrganization.assign(value); }
-
-    /**
-     * <p>Information about the status of enabling or disabling the Health
-     * organizational view feature in your organization.</p> <p>Valid values are
-     * <code>ENABLED | DISABLED | PENDING</code>. </p>
-     */
-    inline DescribeHealthServiceStatusForOrganizationResult& WithHealthServiceAccessStatusForOrganization(const Aws::String& value) { SetHealthServiceAccessStatusForOrganization(value); return *this;}
-
-    /**
-     * <p>Information about the status of enabling or disabling the Health
-     * organizational view feature in your organization.</p> <p>Valid values are
-     * <code>ENABLED | DISABLED | PENDING</code>. </p>
-     */
-    inline DescribeHealthServiceStatusForOrganizationResult& WithHealthServiceAccessStatusForOrganization(Aws::String&& value) { SetHealthServiceAccessStatusForOrganization(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the status of enabling or disabling the Health
-     * organizational view feature in your organization.</p> <p>Valid values are
-     * <code>ENABLED | DISABLED | PENDING</code>. </p>
-     */
-    inline DescribeHealthServiceStatusForOrganizationResult& WithHealthServiceAccessStatusForOrganization(const char* value) { SetHealthServiceAccessStatusForOrganization(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeHealthServiceStatusForOrganizationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeHealthServiceStatusForOrganizationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeHealthServiceStatusForOrganizationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeHealthServiceStatusForOrganizationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_healthServiceAccessStatusForOrganization;
+    bool m_healthServiceAccessStatusForOrganizationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

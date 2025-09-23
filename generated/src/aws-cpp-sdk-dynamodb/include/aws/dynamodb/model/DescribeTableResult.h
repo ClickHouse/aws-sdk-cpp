@@ -34,63 +34,37 @@ namespace Model
   class DescribeTableResult
   {
   public:
-    AWS_DYNAMODB_API DescribeTableResult();
+    AWS_DYNAMODB_API DescribeTableResult() = default;
     AWS_DYNAMODB_API DescribeTableResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DYNAMODB_API DescribeTableResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The properties of the table.</p>
      */
-    inline const TableDescription& GetTable() const{ return m_table; }
+    inline const TableDescription& GetTable() const { return m_table; }
+    template<typename TableT = TableDescription>
+    void SetTable(TableT&& value) { m_tableHasBeenSet = true; m_table = std::forward<TableT>(value); }
+    template<typename TableT = TableDescription>
+    DescribeTableResult& WithTable(TableT&& value) { SetTable(std::forward<TableT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The properties of the table.</p>
-     */
-    inline void SetTable(const TableDescription& value) { m_table = value; }
-
-    /**
-     * <p>The properties of the table.</p>
-     */
-    inline void SetTable(TableDescription&& value) { m_table = std::move(value); }
-
-    /**
-     * <p>The properties of the table.</p>
-     */
-    inline DescribeTableResult& WithTable(const TableDescription& value) { SetTable(value); return *this;}
-
-    /**
-     * <p>The properties of the table.</p>
-     */
-    inline DescribeTableResult& WithTable(TableDescription&& value) { SetTable(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeTableResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeTableResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeTableResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeTableResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     TableDescription m_table;
+    bool m_tableHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

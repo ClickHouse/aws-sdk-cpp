@@ -18,17 +18,7 @@ namespace ACM
 namespace Model
 {
 
-ExtendedKeyUsage::ExtendedKeyUsage() : 
-    m_name(ExtendedKeyUsageName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_oIDHasBeenSet(false)
-{
-}
-
-ExtendedKeyUsage::ExtendedKeyUsage(JsonView jsonValue) : 
-    m_name(ExtendedKeyUsageName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_oIDHasBeenSet(false)
+ExtendedKeyUsage::ExtendedKeyUsage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ExtendedKeyUsage& ExtendedKeyUsage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = ExtendedKeyUsageNameMapper::GetExtendedKeyUsageNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OID"))
   {
     m_oID = jsonValue.GetString("OID");
-
     m_oIDHasBeenSet = true;
   }
-
   return *this;
 }
 

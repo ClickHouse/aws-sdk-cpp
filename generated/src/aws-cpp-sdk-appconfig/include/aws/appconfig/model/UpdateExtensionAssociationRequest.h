@@ -22,7 +22,7 @@ namespace Model
   class UpdateExtensionAssociationRequest : public AppConfigRequest
   {
   public:
-    AWS_APPCONFIG_API UpdateExtensionAssociationRequest();
+    AWS_APPCONFIG_API UpdateExtensionAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,112 +33,33 @@ namespace Model
     AWS_APPCONFIG_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The system-generated ID for the association.</p>
      */
-    inline const Aws::String& GetExtensionAssociationId() const{ return m_extensionAssociationId; }
-
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
+    inline const Aws::String& GetExtensionAssociationId() const { return m_extensionAssociationId; }
     inline bool ExtensionAssociationIdHasBeenSet() const { return m_extensionAssociationIdHasBeenSet; }
+    template<typename ExtensionAssociationIdT = Aws::String>
+    void SetExtensionAssociationId(ExtensionAssociationIdT&& value) { m_extensionAssociationIdHasBeenSet = true; m_extensionAssociationId = std::forward<ExtensionAssociationIdT>(value); }
+    template<typename ExtensionAssociationIdT = Aws::String>
+    UpdateExtensionAssociationRequest& WithExtensionAssociationId(ExtensionAssociationIdT&& value) { SetExtensionAssociationId(std::forward<ExtensionAssociationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
-    inline void SetExtensionAssociationId(const Aws::String& value) { m_extensionAssociationIdHasBeenSet = true; m_extensionAssociationId = value; }
-
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
-    inline void SetExtensionAssociationId(Aws::String&& value) { m_extensionAssociationIdHasBeenSet = true; m_extensionAssociationId = std::move(value); }
-
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
-    inline void SetExtensionAssociationId(const char* value) { m_extensionAssociationIdHasBeenSet = true; m_extensionAssociationId.assign(value); }
-
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
-    inline UpdateExtensionAssociationRequest& WithExtensionAssociationId(const Aws::String& value) { SetExtensionAssociationId(value); return *this;}
-
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
-    inline UpdateExtensionAssociationRequest& WithExtensionAssociationId(Aws::String&& value) { SetExtensionAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated ID for the association.</p>
-     */
-    inline UpdateExtensionAssociationRequest& WithExtensionAssociationId(const char* value) { SetExtensionAssociationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameter names and values defined in the extension.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& WithParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameter names and values defined in the extension.</p>
-     */
-    inline UpdateExtensionAssociationRequest& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    UpdateExtensionAssociationRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::String>
+    UpdateExtensionAssociationRequest& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_extensionAssociationId;

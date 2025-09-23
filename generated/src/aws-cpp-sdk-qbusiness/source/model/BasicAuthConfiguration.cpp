@@ -18,35 +18,23 @@ namespace QBusiness
 namespace Model
 {
 
-BasicAuthConfiguration::BasicAuthConfiguration() : 
-    m_roleArnHasBeenSet(false),
-    m_secretArnHasBeenSet(false)
-{
-}
-
-BasicAuthConfiguration::BasicAuthConfiguration(JsonView jsonValue) : 
-    m_roleArnHasBeenSet(false),
-    m_secretArnHasBeenSet(false)
+BasicAuthConfiguration::BasicAuthConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 BasicAuthConfiguration& BasicAuthConfiguration::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("roleArn"))
-  {
-    m_roleArn = jsonValue.GetString("roleArn");
-
-    m_roleArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("secretArn"))
   {
     m_secretArn = jsonValue.GetString("secretArn");
-
     m_secretArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("roleArn"))
+  {
+    m_roleArn = jsonValue.GetString("roleArn");
+    m_roleArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue BasicAuthConfiguration::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_roleArnHasBeenSet)
-  {
-   payload.WithString("roleArn", m_roleArn);
-
-  }
-
   if(m_secretArnHasBeenSet)
   {
    payload.WithString("secretArn", m_secretArn);
+
+  }
+
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("roleArn", m_roleArn);
 
   }
 

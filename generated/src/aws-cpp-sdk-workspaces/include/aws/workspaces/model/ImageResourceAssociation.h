@@ -36,266 +36,109 @@ namespace Model
   class ImageResourceAssociation
   {
   public:
-    AWS_WORKSPACES_API ImageResourceAssociation();
+    AWS_WORKSPACES_API ImageResourceAssociation() = default;
     AWS_WORKSPACES_API ImageResourceAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API ImageResourceAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the associated resource.</p>
      */
-    inline const Aws::String& GetAssociatedResourceId() const{ return m_associatedResourceId; }
-
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
+    inline const Aws::String& GetAssociatedResourceId() const { return m_associatedResourceId; }
     inline bool AssociatedResourceIdHasBeenSet() const { return m_associatedResourceIdHasBeenSet; }
+    template<typename AssociatedResourceIdT = Aws::String>
+    void SetAssociatedResourceId(AssociatedResourceIdT&& value) { m_associatedResourceIdHasBeenSet = true; m_associatedResourceId = std::forward<AssociatedResourceIdT>(value); }
+    template<typename AssociatedResourceIdT = Aws::String>
+    ImageResourceAssociation& WithAssociatedResourceId(AssociatedResourceIdT&& value) { SetAssociatedResourceId(std::forward<AssociatedResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
-    inline void SetAssociatedResourceId(const Aws::String& value) { m_associatedResourceIdHasBeenSet = true; m_associatedResourceId = value; }
-
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
-    inline void SetAssociatedResourceId(Aws::String&& value) { m_associatedResourceIdHasBeenSet = true; m_associatedResourceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
-    inline void SetAssociatedResourceId(const char* value) { m_associatedResourceIdHasBeenSet = true; m_associatedResourceId.assign(value); }
-
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
-    inline ImageResourceAssociation& WithAssociatedResourceId(const Aws::String& value) { SetAssociatedResourceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
-    inline ImageResourceAssociation& WithAssociatedResourceId(Aws::String&& value) { SetAssociatedResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the associated resource.</p>
-     */
-    inline ImageResourceAssociation& WithAssociatedResourceId(const char* value) { SetAssociatedResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type of the associated resources.</p>
      */
-    inline const ImageAssociatedResourceType& GetAssociatedResourceType() const{ return m_associatedResourceType; }
-
-    /**
-     * <p>The resource type of the associated resources.</p>
-     */
+    inline ImageAssociatedResourceType GetAssociatedResourceType() const { return m_associatedResourceType; }
     inline bool AssociatedResourceTypeHasBeenSet() const { return m_associatedResourceTypeHasBeenSet; }
+    inline void SetAssociatedResourceType(ImageAssociatedResourceType value) { m_associatedResourceTypeHasBeenSet = true; m_associatedResourceType = value; }
+    inline ImageResourceAssociation& WithAssociatedResourceType(ImageAssociatedResourceType value) { SetAssociatedResourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type of the associated resources.</p>
-     */
-    inline void SetAssociatedResourceType(const ImageAssociatedResourceType& value) { m_associatedResourceTypeHasBeenSet = true; m_associatedResourceType = value; }
-
-    /**
-     * <p>The resource type of the associated resources.</p>
-     */
-    inline void SetAssociatedResourceType(ImageAssociatedResourceType&& value) { m_associatedResourceTypeHasBeenSet = true; m_associatedResourceType = std::move(value); }
-
-    /**
-     * <p>The resource type of the associated resources.</p>
-     */
-    inline ImageResourceAssociation& WithAssociatedResourceType(const ImageAssociatedResourceType& value) { SetAssociatedResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type of the associated resources.</p>
-     */
-    inline ImageResourceAssociation& WithAssociatedResourceType(ImageAssociatedResourceType&& value) { SetAssociatedResourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the association is created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreated() const{ return m_created; }
-
-    /**
-     * <p>The time the association is created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreated() const { return m_created; }
     inline bool CreatedHasBeenSet() const { return m_createdHasBeenSet; }
+    template<typename CreatedT = Aws::Utils::DateTime>
+    void SetCreated(CreatedT&& value) { m_createdHasBeenSet = true; m_created = std::forward<CreatedT>(value); }
+    template<typename CreatedT = Aws::Utils::DateTime>
+    ImageResourceAssociation& WithCreated(CreatedT&& value) { SetCreated(std::forward<CreatedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the association is created.</p>
-     */
-    inline void SetCreated(const Aws::Utils::DateTime& value) { m_createdHasBeenSet = true; m_created = value; }
-
-    /**
-     * <p>The time the association is created.</p>
-     */
-    inline void SetCreated(Aws::Utils::DateTime&& value) { m_createdHasBeenSet = true; m_created = std::move(value); }
-
-    /**
-     * <p>The time the association is created.</p>
-     */
-    inline ImageResourceAssociation& WithCreated(const Aws::Utils::DateTime& value) { SetCreated(value); return *this;}
-
-    /**
-     * <p>The time the association is created.</p>
-     */
-    inline ImageResourceAssociation& WithCreated(Aws::Utils::DateTime&& value) { SetCreated(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the association status was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The time the association status was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    ImageResourceAssociation& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the association status was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The time the association status was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The time the association status was last updated.</p>
-     */
-    inline ImageResourceAssociation& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The time the association status was last updated.</p>
-     */
-    inline ImageResourceAssociation& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the image.</p>
      */
-    inline const Aws::String& GetImageId() const{ return m_imageId; }
-
-    /**
-     * <p>The identifier of the image.</p>
-     */
+    inline const Aws::String& GetImageId() const { return m_imageId; }
     inline bool ImageIdHasBeenSet() const { return m_imageIdHasBeenSet; }
+    template<typename ImageIdT = Aws::String>
+    void SetImageId(ImageIdT&& value) { m_imageIdHasBeenSet = true; m_imageId = std::forward<ImageIdT>(value); }
+    template<typename ImageIdT = Aws::String>
+    ImageResourceAssociation& WithImageId(ImageIdT&& value) { SetImageId(std::forward<ImageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the image.</p>
-     */
-    inline void SetImageId(const Aws::String& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
-
-    /**
-     * <p>The identifier of the image.</p>
-     */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
-
-    /**
-     * <p>The identifier of the image.</p>
-     */
-    inline void SetImageId(const char* value) { m_imageIdHasBeenSet = true; m_imageId.assign(value); }
-
-    /**
-     * <p>The identifier of the image.</p>
-     */
-    inline ImageResourceAssociation& WithImageId(const Aws::String& value) { SetImageId(value); return *this;}
-
-    /**
-     * <p>The identifier of the image.</p>
-     */
-    inline ImageResourceAssociation& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the image.</p>
-     */
-    inline ImageResourceAssociation& WithImageId(const char* value) { SetImageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the image resource association.</p>
      */
-    inline const AssociationState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The status of the image resource association.</p>
-     */
+    inline AssociationState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(AssociationState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ImageResourceAssociation& WithState(AssociationState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the image resource association.</p>
-     */
-    inline void SetState(const AssociationState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The status of the image resource association.</p>
-     */
-    inline void SetState(AssociationState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The status of the image resource association.</p>
-     */
-    inline ImageResourceAssociation& WithState(const AssociationState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The status of the image resource association.</p>
-     */
-    inline ImageResourceAssociation& WithState(AssociationState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason the association deployment failed.</p>
      */
-    inline const AssociationStateReason& GetStateReason() const{ return m_stateReason; }
-
-    /**
-     * <p>The reason the association deployment failed.</p>
-     */
+    inline const AssociationStateReason& GetStateReason() const { return m_stateReason; }
     inline bool StateReasonHasBeenSet() const { return m_stateReasonHasBeenSet; }
-
-    /**
-     * <p>The reason the association deployment failed.</p>
-     */
-    inline void SetStateReason(const AssociationStateReason& value) { m_stateReasonHasBeenSet = true; m_stateReason = value; }
-
-    /**
-     * <p>The reason the association deployment failed.</p>
-     */
-    inline void SetStateReason(AssociationStateReason&& value) { m_stateReasonHasBeenSet = true; m_stateReason = std::move(value); }
-
-    /**
-     * <p>The reason the association deployment failed.</p>
-     */
-    inline ImageResourceAssociation& WithStateReason(const AssociationStateReason& value) { SetStateReason(value); return *this;}
-
-    /**
-     * <p>The reason the association deployment failed.</p>
-     */
-    inline ImageResourceAssociation& WithStateReason(AssociationStateReason&& value) { SetStateReason(std::move(value)); return *this;}
-
+    template<typename StateReasonT = AssociationStateReason>
+    void SetStateReason(StateReasonT&& value) { m_stateReasonHasBeenSet = true; m_stateReason = std::forward<StateReasonT>(value); }
+    template<typename StateReasonT = AssociationStateReason>
+    ImageResourceAssociation& WithStateReason(StateReasonT&& value) { SetStateReason(std::forward<StateReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_associatedResourceId;
     bool m_associatedResourceIdHasBeenSet = false;
 
-    ImageAssociatedResourceType m_associatedResourceType;
+    ImageAssociatedResourceType m_associatedResourceType{ImageAssociatedResourceType::NOT_SET};
     bool m_associatedResourceTypeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_created;
+    Aws::Utils::DateTime m_created{};
     bool m_createdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
 
     Aws::String m_imageId;
     bool m_imageIdHasBeenSet = false;
 
-    AssociationState m_state;
+    AssociationState m_state{AssociationState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     AssociationStateReason m_stateReason;

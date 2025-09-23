@@ -20,15 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-ExpressionStatus::ExpressionStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-ExpressionStatus::ExpressionStatus(const XmlNode& xmlNode) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+ExpressionStatus::ExpressionStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

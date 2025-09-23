@@ -18,17 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-PortalOptions::PortalOptions() : 
-    m_signInOptionsHasBeenSet(false),
-    m_visibility(ApplicationVisibility::NOT_SET),
-    m_visibilityHasBeenSet(false)
-{
-}
-
-PortalOptions::PortalOptions(JsonView jsonValue) : 
-    m_signInOptionsHasBeenSet(false),
-    m_visibility(ApplicationVisibility::NOT_SET),
-    m_visibilityHasBeenSet(false)
+PortalOptions::PortalOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PortalOptions& PortalOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SignInOptions"))
   {
     m_signInOptions = jsonValue.GetObject("SignInOptions");
-
     m_signInOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Visibility"))
   {
     m_visibility = ApplicationVisibilityMapper::GetApplicationVisibilityForName(jsonValue.GetString("Visibility"));
-
     m_visibilityHasBeenSet = true;
   }
-
   return *this;
 }
 

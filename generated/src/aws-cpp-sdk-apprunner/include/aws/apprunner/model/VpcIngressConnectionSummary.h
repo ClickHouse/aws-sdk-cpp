@@ -33,101 +33,36 @@ namespace Model
   class VpcIngressConnectionSummary
   {
   public:
-    AWS_APPRUNNER_API VpcIngressConnectionSummary();
+    AWS_APPRUNNER_API VpcIngressConnectionSummary() = default;
     AWS_APPRUNNER_API VpcIngressConnectionSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API VpcIngressConnectionSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
      */
-    inline const Aws::String& GetVpcIngressConnectionArn() const{ return m_vpcIngressConnectionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
+    inline const Aws::String& GetVpcIngressConnectionArn() const { return m_vpcIngressConnectionArn; }
     inline bool VpcIngressConnectionArnHasBeenSet() const { return m_vpcIngressConnectionArnHasBeenSet; }
+    template<typename VpcIngressConnectionArnT = Aws::String>
+    void SetVpcIngressConnectionArn(VpcIngressConnectionArnT&& value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn = std::forward<VpcIngressConnectionArnT>(value); }
+    template<typename VpcIngressConnectionArnT = Aws::String>
+    VpcIngressConnectionSummary& WithVpcIngressConnectionArn(VpcIngressConnectionArnT&& value) { SetVpcIngressConnectionArn(std::forward<VpcIngressConnectionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
-    inline void SetVpcIngressConnectionArn(const Aws::String& value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
-    inline void SetVpcIngressConnectionArn(Aws::String&& value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
-    inline void SetVpcIngressConnectionArn(const char* value) { m_vpcIngressConnectionArnHasBeenSet = true; m_vpcIngressConnectionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
-    inline VpcIngressConnectionSummary& WithVpcIngressConnectionArn(const Aws::String& value) { SetVpcIngressConnectionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
-    inline VpcIngressConnectionSummary& WithVpcIngressConnectionArn(Aws::String&& value) { SetVpcIngressConnectionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC Ingress Connection. </p>
-     */
-    inline VpcIngressConnectionSummary& WithVpcIngressConnectionArn(const char* value) { SetVpcIngressConnectionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
      * Connection. </p>
      */
-    inline const Aws::String& GetServiceArn() const{ return m_serviceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
+    inline const Aws::String& GetServiceArn() const { return m_serviceArn; }
     inline bool ServiceArnHasBeenSet() const { return m_serviceArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
-    inline void SetServiceArn(const Aws::String& value) { m_serviceArnHasBeenSet = true; m_serviceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
-    inline void SetServiceArn(Aws::String&& value) { m_serviceArnHasBeenSet = true; m_serviceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
-    inline void SetServiceArn(const char* value) { m_serviceArnHasBeenSet = true; m_serviceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
-    inline VpcIngressConnectionSummary& WithServiceArn(const Aws::String& value) { SetServiceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
-    inline VpcIngressConnectionSummary& WithServiceArn(Aws::String&& value) { SetServiceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service associated with the VPC Ingress
-     * Connection. </p>
-     */
-    inline VpcIngressConnectionSummary& WithServiceArn(const char* value) { SetServiceArn(value); return *this;}
-
+    template<typename ServiceArnT = Aws::String>
+    void SetServiceArn(ServiceArnT&& value) { m_serviceArnHasBeenSet = true; m_serviceArn = std::forward<ServiceArnT>(value); }
+    template<typename ServiceArnT = Aws::String>
+    VpcIngressConnectionSummary& WithServiceArn(ServiceArnT&& value) { SetServiceArn(std::forward<ServiceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcIngressConnectionArn;

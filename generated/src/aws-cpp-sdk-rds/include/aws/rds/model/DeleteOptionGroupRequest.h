@@ -24,7 +24,7 @@ namespace Model
   class DeleteOptionGroupRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API DeleteOptionGroupRequest();
+    AWS_RDS_API DeleteOptionGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,54 +39,18 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the option group to be deleted.</p>  <p>You can't delete
      * default option groups.</p> 
      */
-    inline const Aws::String& GetOptionGroupName() const{ return m_optionGroupName; }
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
+    inline const Aws::String& GetOptionGroupName() const { return m_optionGroupName; }
     inline bool OptionGroupNameHasBeenSet() const { return m_optionGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
-    inline void SetOptionGroupName(const Aws::String& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
-    inline void SetOptionGroupName(const char* value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName.assign(value); }
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
-    inline DeleteOptionGroupRequest& WithOptionGroupName(const Aws::String& value) { SetOptionGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
-    inline DeleteOptionGroupRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the option group to be deleted.</p>  <p>You can't delete
-     * default option groups.</p> 
-     */
-    inline DeleteOptionGroupRequest& WithOptionGroupName(const char* value) { SetOptionGroupName(value); return *this;}
-
+    template<typename OptionGroupNameT = Aws::String>
+    void SetOptionGroupName(OptionGroupNameT&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::forward<OptionGroupNameT>(value); }
+    template<typename OptionGroupNameT = Aws::String>
+    DeleteOptionGroupRequest& WithOptionGroupName(OptionGroupNameT&& value) { SetOptionGroupName(std::forward<OptionGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_optionGroupName;

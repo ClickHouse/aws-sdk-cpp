@@ -20,17 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheParameterGroupStatus::CacheParameterGroupStatus() : 
-    m_cacheParameterGroupNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false),
-    m_cacheNodeIdsToRebootHasBeenSet(false)
-{
-}
-
-CacheParameterGroupStatus::CacheParameterGroupStatus(const XmlNode& xmlNode) : 
-    m_cacheParameterGroupNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false),
-    m_cacheNodeIdsToRebootHasBeenSet(false)
+CacheParameterGroupStatus::CacheParameterGroupStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ CacheParameterGroupStatus& CacheParameterGroupStatus::operator =(const XmlNode& 
     if(!cacheNodeIdsToRebootNode.IsNull())
     {
       XmlNode cacheNodeIdsToRebootMember = cacheNodeIdsToRebootNode.FirstChild("CacheNodeId");
+      m_cacheNodeIdsToRebootHasBeenSet = !cacheNodeIdsToRebootMember.IsNull();
       while(!cacheNodeIdsToRebootMember.IsNull())
       {
         m_cacheNodeIdsToReboot.push_back(cacheNodeIdsToRebootMember.GetText());
@@ -87,7 +78,7 @@ void CacheParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const char
       unsigned cacheNodeIdsToRebootIdx = 1;
       for(auto& item : m_cacheNodeIdsToReboot)
       {
-        oStream << location << index << locationValue << ".CacheNodeId." << cacheNodeIdsToRebootIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".CacheNodeIdsToReboot.CacheNodeId." << cacheNodeIdsToRebootIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -108,7 +99,7 @@ void CacheParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const char
       unsigned cacheNodeIdsToRebootIdx = 1;
       for(auto& item : m_cacheNodeIdsToReboot)
       {
-        oStream << location << ".CacheNodeId." << cacheNodeIdsToRebootIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".CacheNodeIdsToReboot.CacheNodeId." << cacheNodeIdsToRebootIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

@@ -29,73 +29,54 @@ namespace Model
   class DescribeLagsResult
   {
   public:
-    AWS_DIRECTCONNECT_API DescribeLagsResult();
+    AWS_DIRECTCONNECT_API DescribeLagsResult() = default;
     AWS_DIRECTCONNECT_API DescribeLagsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DIRECTCONNECT_API DescribeLagsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The LAGs.</p>
      */
-    inline const Aws::Vector<Lag>& GetLags() const{ return m_lags; }
+    inline const Aws::Vector<Lag>& GetLags() const { return m_lags; }
+    template<typename LagsT = Aws::Vector<Lag>>
+    void SetLags(LagsT&& value) { m_lagsHasBeenSet = true; m_lags = std::forward<LagsT>(value); }
+    template<typename LagsT = Aws::Vector<Lag>>
+    DescribeLagsResult& WithLags(LagsT&& value) { SetLags(std::forward<LagsT>(value)); return *this;}
+    template<typename LagsT = Lag>
+    DescribeLagsResult& AddLags(LagsT&& value) { m_lagsHasBeenSet = true; m_lags.emplace_back(std::forward<LagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The LAGs.</p>
+     * <p>The token to use to retrieve the next page of results. This value is
+     * <code>null</code> when there are no more results to return.</p>
      */
-    inline void SetLags(const Aws::Vector<Lag>& value) { m_lags = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeLagsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The LAGs.</p>
-     */
-    inline void SetLags(Aws::Vector<Lag>&& value) { m_lags = std::move(value); }
-
-    /**
-     * <p>The LAGs.</p>
-     */
-    inline DescribeLagsResult& WithLags(const Aws::Vector<Lag>& value) { SetLags(value); return *this;}
-
-    /**
-     * <p>The LAGs.</p>
-     */
-    inline DescribeLagsResult& WithLags(Aws::Vector<Lag>&& value) { SetLags(std::move(value)); return *this;}
-
-    /**
-     * <p>The LAGs.</p>
-     */
-    inline DescribeLagsResult& AddLags(const Lag& value) { m_lags.push_back(value); return *this; }
-
-    /**
-     * <p>The LAGs.</p>
-     */
-    inline DescribeLagsResult& AddLags(Lag&& value) { m_lags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeLagsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeLagsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeLagsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeLagsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Lag> m_lags;
+    bool m_lagsHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

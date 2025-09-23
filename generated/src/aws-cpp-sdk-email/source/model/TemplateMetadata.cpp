@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-TemplateMetadata::TemplateMetadata() : 
-    m_nameHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false)
-{
-}
-
-TemplateMetadata::TemplateMetadata(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false)
+TemplateMetadata::TemplateMetadata(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

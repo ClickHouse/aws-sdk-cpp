@@ -32,166 +32,51 @@ namespace Model
   class EvaluationRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API EvaluationRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API EvaluationRequest() = default;
     AWS_CLOUDWATCHEVIDENTLY_API EvaluationRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API EvaluationRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An internal ID that represents a unique user session of the application. This
      * <code>entityID</code> is checked against any override rules assigned for this
      * feature.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    EvaluationRequest& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
-    inline EvaluationRequest& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
-    inline EvaluationRequest& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>An internal ID that represents a unique user session of the application. This
-     * <code>entityID</code> is checked against any override rules assigned for this
-     * feature.</p>
-     */
-    inline EvaluationRequest& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A JSON block of attributes that you can optionally pass in. This JSON block
      * is included in the evaluation events sent to Evidently from the user session.
      * </p>
      */
-    inline const Aws::String& GetEvaluationContext() const{ return m_evaluationContext; }
-
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
+    inline const Aws::String& GetEvaluationContext() const { return m_evaluationContext; }
     inline bool EvaluationContextHasBeenSet() const { return m_evaluationContextHasBeenSet; }
+    template<typename EvaluationContextT = Aws::String>
+    void SetEvaluationContext(EvaluationContextT&& value) { m_evaluationContextHasBeenSet = true; m_evaluationContext = std::forward<EvaluationContextT>(value); }
+    template<typename EvaluationContextT = Aws::String>
+    EvaluationRequest& WithEvaluationContext(EvaluationContextT&& value) { SetEvaluationContext(std::forward<EvaluationContextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
-    inline void SetEvaluationContext(const Aws::String& value) { m_evaluationContextHasBeenSet = true; m_evaluationContext = value; }
-
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
-    inline void SetEvaluationContext(Aws::String&& value) { m_evaluationContextHasBeenSet = true; m_evaluationContext = std::move(value); }
-
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
-    inline void SetEvaluationContext(const char* value) { m_evaluationContextHasBeenSet = true; m_evaluationContext.assign(value); }
-
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
-    inline EvaluationRequest& WithEvaluationContext(const Aws::String& value) { SetEvaluationContext(value); return *this;}
-
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
-    inline EvaluationRequest& WithEvaluationContext(Aws::String&& value) { SetEvaluationContext(std::move(value)); return *this;}
-
-    /**
-     * <p>A JSON block of attributes that you can optionally pass in. This JSON block
-     * is included in the evaluation events sent to Evidently from the user session.
-     * </p>
-     */
-    inline EvaluationRequest& WithEvaluationContext(const char* value) { SetEvaluationContext(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the feature being evaluated.</p>
      */
-    inline const Aws::String& GetFeature() const{ return m_feature; }
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
+    inline const Aws::String& GetFeature() const { return m_feature; }
     inline bool FeatureHasBeenSet() const { return m_featureHasBeenSet; }
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
-    inline void SetFeature(const Aws::String& value) { m_featureHasBeenSet = true; m_feature = value; }
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
-    inline void SetFeature(Aws::String&& value) { m_featureHasBeenSet = true; m_feature = std::move(value); }
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
-    inline void SetFeature(const char* value) { m_featureHasBeenSet = true; m_feature.assign(value); }
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
-    inline EvaluationRequest& WithFeature(const Aws::String& value) { SetFeature(value); return *this;}
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
-    inline EvaluationRequest& WithFeature(Aws::String&& value) { SetFeature(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the feature being evaluated.</p>
-     */
-    inline EvaluationRequest& WithFeature(const char* value) { SetFeature(value); return *this;}
-
+    template<typename FeatureT = Aws::String>
+    void SetFeature(FeatureT&& value) { m_featureHasBeenSet = true; m_feature = std::forward<FeatureT>(value); }
+    template<typename FeatureT = Aws::String>
+    EvaluationRequest& WithFeature(FeatureT&& value) { SetFeature(std::forward<FeatureT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entityId;

@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-MsSmoothAdditionalManifest::MsSmoothAdditionalManifest() : 
-    m_manifestNameModifierHasBeenSet(false),
-    m_selectedOutputsHasBeenSet(false)
-{
-}
-
-MsSmoothAdditionalManifest::MsSmoothAdditionalManifest(JsonView jsonValue) : 
-    m_manifestNameModifierHasBeenSet(false),
-    m_selectedOutputsHasBeenSet(false)
+MsSmoothAdditionalManifest::MsSmoothAdditionalManifest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MsSmoothAdditionalManifest& MsSmoothAdditionalManifest::operator =(JsonView json
   if(jsonValue.ValueExists("manifestNameModifier"))
   {
     m_manifestNameModifier = jsonValue.GetString("manifestNameModifier");
-
     m_manifestNameModifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("selectedOutputs"))
   {
     Aws::Utils::Array<JsonView> selectedOutputsJsonList = jsonValue.GetArray("selectedOutputs");
@@ -49,7 +39,6 @@ MsSmoothAdditionalManifest& MsSmoothAdditionalManifest::operator =(JsonView json
     }
     m_selectedOutputsHasBeenSet = true;
   }
-
   return *this;
 }
 

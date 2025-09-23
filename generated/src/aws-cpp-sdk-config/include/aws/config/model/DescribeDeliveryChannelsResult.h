@@ -35,73 +35,39 @@ namespace Model
   class DescribeDeliveryChannelsResult
   {
   public:
-    AWS_CONFIGSERVICE_API DescribeDeliveryChannelsResult();
+    AWS_CONFIGSERVICE_API DescribeDeliveryChannelsResult() = default;
     AWS_CONFIGSERVICE_API DescribeDeliveryChannelsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONFIGSERVICE_API DescribeDeliveryChannelsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list that contains the descriptions of the specified delivery channel.</p>
      */
-    inline const Aws::Vector<DeliveryChannel>& GetDeliveryChannels() const{ return m_deliveryChannels; }
+    inline const Aws::Vector<DeliveryChannel>& GetDeliveryChannels() const { return m_deliveryChannels; }
+    template<typename DeliveryChannelsT = Aws::Vector<DeliveryChannel>>
+    void SetDeliveryChannels(DeliveryChannelsT&& value) { m_deliveryChannelsHasBeenSet = true; m_deliveryChannels = std::forward<DeliveryChannelsT>(value); }
+    template<typename DeliveryChannelsT = Aws::Vector<DeliveryChannel>>
+    DescribeDeliveryChannelsResult& WithDeliveryChannels(DeliveryChannelsT&& value) { SetDeliveryChannels(std::forward<DeliveryChannelsT>(value)); return *this;}
+    template<typename DeliveryChannelsT = DeliveryChannel>
+    DescribeDeliveryChannelsResult& AddDeliveryChannels(DeliveryChannelsT&& value) { m_deliveryChannelsHasBeenSet = true; m_deliveryChannels.emplace_back(std::forward<DeliveryChannelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list that contains the descriptions of the specified delivery channel.</p>
-     */
-    inline void SetDeliveryChannels(const Aws::Vector<DeliveryChannel>& value) { m_deliveryChannels = value; }
-
-    /**
-     * <p>A list that contains the descriptions of the specified delivery channel.</p>
-     */
-    inline void SetDeliveryChannels(Aws::Vector<DeliveryChannel>&& value) { m_deliveryChannels = std::move(value); }
-
-    /**
-     * <p>A list that contains the descriptions of the specified delivery channel.</p>
-     */
-    inline DescribeDeliveryChannelsResult& WithDeliveryChannels(const Aws::Vector<DeliveryChannel>& value) { SetDeliveryChannels(value); return *this;}
-
-    /**
-     * <p>A list that contains the descriptions of the specified delivery channel.</p>
-     */
-    inline DescribeDeliveryChannelsResult& WithDeliveryChannels(Aws::Vector<DeliveryChannel>&& value) { SetDeliveryChannels(std::move(value)); return *this;}
-
-    /**
-     * <p>A list that contains the descriptions of the specified delivery channel.</p>
-     */
-    inline DescribeDeliveryChannelsResult& AddDeliveryChannels(const DeliveryChannel& value) { m_deliveryChannels.push_back(value); return *this; }
-
-    /**
-     * <p>A list that contains the descriptions of the specified delivery channel.</p>
-     */
-    inline DescribeDeliveryChannelsResult& AddDeliveryChannels(DeliveryChannel&& value) { m_deliveryChannels.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDeliveryChannelsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDeliveryChannelsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDeliveryChannelsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDeliveryChannelsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DeliveryChannel> m_deliveryChannels;
+    bool m_deliveryChannelsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

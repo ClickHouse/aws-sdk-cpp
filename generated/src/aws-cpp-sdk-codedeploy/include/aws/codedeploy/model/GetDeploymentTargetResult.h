@@ -28,11 +28,12 @@ namespace Model
   class GetDeploymentTargetResult
   {
   public:
-    AWS_CODEDEPLOY_API GetDeploymentTargetResult();
+    AWS_CODEDEPLOY_API GetDeploymentTargetResult() = default;
     AWS_CODEDEPLOY_API GetDeploymentTargetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEDEPLOY_API GetDeploymentTargetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> A deployment target that contains information about a deployment such as its
      * status, lifecycle events, and when it was last updated. It also contains
@@ -40,71 +41,28 @@ namespace Model
      * the deployment target's type (<code>instanceTarget</code>,
      * <code>lambdaTarget</code>, or <code>ecsTarget</code>). </p>
      */
-    inline const DeploymentTarget& GetDeploymentTarget() const{ return m_deploymentTarget; }
+    inline const DeploymentTarget& GetDeploymentTarget() const { return m_deploymentTarget; }
+    template<typename DeploymentTargetT = DeploymentTarget>
+    void SetDeploymentTarget(DeploymentTargetT&& value) { m_deploymentTargetHasBeenSet = true; m_deploymentTarget = std::forward<DeploymentTargetT>(value); }
+    template<typename DeploymentTargetT = DeploymentTarget>
+    GetDeploymentTargetResult& WithDeploymentTarget(DeploymentTargetT&& value) { SetDeploymentTarget(std::forward<DeploymentTargetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A deployment target that contains information about a deployment such as its
-     * status, lifecycle events, and when it was last updated. It also contains
-     * metadata about the deployment target. The deployment target metadata depends on
-     * the deployment target's type (<code>instanceTarget</code>,
-     * <code>lambdaTarget</code>, or <code>ecsTarget</code>). </p>
-     */
-    inline void SetDeploymentTarget(const DeploymentTarget& value) { m_deploymentTarget = value; }
-
-    /**
-     * <p> A deployment target that contains information about a deployment such as its
-     * status, lifecycle events, and when it was last updated. It also contains
-     * metadata about the deployment target. The deployment target metadata depends on
-     * the deployment target's type (<code>instanceTarget</code>,
-     * <code>lambdaTarget</code>, or <code>ecsTarget</code>). </p>
-     */
-    inline void SetDeploymentTarget(DeploymentTarget&& value) { m_deploymentTarget = std::move(value); }
-
-    /**
-     * <p> A deployment target that contains information about a deployment such as its
-     * status, lifecycle events, and when it was last updated. It also contains
-     * metadata about the deployment target. The deployment target metadata depends on
-     * the deployment target's type (<code>instanceTarget</code>,
-     * <code>lambdaTarget</code>, or <code>ecsTarget</code>). </p>
-     */
-    inline GetDeploymentTargetResult& WithDeploymentTarget(const DeploymentTarget& value) { SetDeploymentTarget(value); return *this;}
-
-    /**
-     * <p> A deployment target that contains information about a deployment such as its
-     * status, lifecycle events, and when it was last updated. It also contains
-     * metadata about the deployment target. The deployment target metadata depends on
-     * the deployment target's type (<code>instanceTarget</code>,
-     * <code>lambdaTarget</code>, or <code>ecsTarget</code>). </p>
-     */
-    inline GetDeploymentTargetResult& WithDeploymentTarget(DeploymentTarget&& value) { SetDeploymentTarget(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDeploymentTargetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDeploymentTargetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDeploymentTargetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDeploymentTargetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DeploymentTarget m_deploymentTarget;
+    bool m_deploymentTargetHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

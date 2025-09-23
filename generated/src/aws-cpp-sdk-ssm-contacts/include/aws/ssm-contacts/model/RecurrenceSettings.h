@@ -38,249 +38,92 @@ namespace Model
   class RecurrenceSettings
   {
   public:
-    AWS_SSMCONTACTS_API RecurrenceSettings();
+    AWS_SSMCONTACTS_API RecurrenceSettings() = default;
     AWS_SSMCONTACTS_API RecurrenceSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API RecurrenceSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about on-call rotations that recur monthly.</p>
      */
-    inline const Aws::Vector<MonthlySetting>& GetMonthlySettings() const{ return m_monthlySettings; }
-
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
+    inline const Aws::Vector<MonthlySetting>& GetMonthlySettings() const { return m_monthlySettings; }
     inline bool MonthlySettingsHasBeenSet() const { return m_monthlySettingsHasBeenSet; }
+    template<typename MonthlySettingsT = Aws::Vector<MonthlySetting>>
+    void SetMonthlySettings(MonthlySettingsT&& value) { m_monthlySettingsHasBeenSet = true; m_monthlySettings = std::forward<MonthlySettingsT>(value); }
+    template<typename MonthlySettingsT = Aws::Vector<MonthlySetting>>
+    RecurrenceSettings& WithMonthlySettings(MonthlySettingsT&& value) { SetMonthlySettings(std::forward<MonthlySettingsT>(value)); return *this;}
+    template<typename MonthlySettingsT = MonthlySetting>
+    RecurrenceSettings& AddMonthlySettings(MonthlySettingsT&& value) { m_monthlySettingsHasBeenSet = true; m_monthlySettings.emplace_back(std::forward<MonthlySettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
-    inline void SetMonthlySettings(const Aws::Vector<MonthlySetting>& value) { m_monthlySettingsHasBeenSet = true; m_monthlySettings = value; }
-
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
-    inline void SetMonthlySettings(Aws::Vector<MonthlySetting>&& value) { m_monthlySettingsHasBeenSet = true; m_monthlySettings = std::move(value); }
-
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
-    inline RecurrenceSettings& WithMonthlySettings(const Aws::Vector<MonthlySetting>& value) { SetMonthlySettings(value); return *this;}
-
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
-    inline RecurrenceSettings& WithMonthlySettings(Aws::Vector<MonthlySetting>&& value) { SetMonthlySettings(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
-    inline RecurrenceSettings& AddMonthlySettings(const MonthlySetting& value) { m_monthlySettingsHasBeenSet = true; m_monthlySettings.push_back(value); return *this; }
-
-    /**
-     * <p>Information about on-call rotations that recur monthly.</p>
-     */
-    inline RecurrenceSettings& AddMonthlySettings(MonthlySetting&& value) { m_monthlySettingsHasBeenSet = true; m_monthlySettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about on-call rotations that recur weekly.</p>
      */
-    inline const Aws::Vector<WeeklySetting>& GetWeeklySettings() const{ return m_weeklySettings; }
-
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
+    inline const Aws::Vector<WeeklySetting>& GetWeeklySettings() const { return m_weeklySettings; }
     inline bool WeeklySettingsHasBeenSet() const { return m_weeklySettingsHasBeenSet; }
+    template<typename WeeklySettingsT = Aws::Vector<WeeklySetting>>
+    void SetWeeklySettings(WeeklySettingsT&& value) { m_weeklySettingsHasBeenSet = true; m_weeklySettings = std::forward<WeeklySettingsT>(value); }
+    template<typename WeeklySettingsT = Aws::Vector<WeeklySetting>>
+    RecurrenceSettings& WithWeeklySettings(WeeklySettingsT&& value) { SetWeeklySettings(std::forward<WeeklySettingsT>(value)); return *this;}
+    template<typename WeeklySettingsT = WeeklySetting>
+    RecurrenceSettings& AddWeeklySettings(WeeklySettingsT&& value) { m_weeklySettingsHasBeenSet = true; m_weeklySettings.emplace_back(std::forward<WeeklySettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
-    inline void SetWeeklySettings(const Aws::Vector<WeeklySetting>& value) { m_weeklySettingsHasBeenSet = true; m_weeklySettings = value; }
-
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
-    inline void SetWeeklySettings(Aws::Vector<WeeklySetting>&& value) { m_weeklySettingsHasBeenSet = true; m_weeklySettings = std::move(value); }
-
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
-    inline RecurrenceSettings& WithWeeklySettings(const Aws::Vector<WeeklySetting>& value) { SetWeeklySettings(value); return *this;}
-
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
-    inline RecurrenceSettings& WithWeeklySettings(Aws::Vector<WeeklySetting>&& value) { SetWeeklySettings(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
-    inline RecurrenceSettings& AddWeeklySettings(const WeeklySetting& value) { m_weeklySettingsHasBeenSet = true; m_weeklySettings.push_back(value); return *this; }
-
-    /**
-     * <p>Information about on-call rotations that recur weekly.</p>
-     */
-    inline RecurrenceSettings& AddWeeklySettings(WeeklySetting&& value) { m_weeklySettingsHasBeenSet = true; m_weeklySettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about on-call rotations that recur daily.</p>
      */
-    inline const Aws::Vector<HandOffTime>& GetDailySettings() const{ return m_dailySettings; }
-
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
+    inline const Aws::Vector<HandOffTime>& GetDailySettings() const { return m_dailySettings; }
     inline bool DailySettingsHasBeenSet() const { return m_dailySettingsHasBeenSet; }
+    template<typename DailySettingsT = Aws::Vector<HandOffTime>>
+    void SetDailySettings(DailySettingsT&& value) { m_dailySettingsHasBeenSet = true; m_dailySettings = std::forward<DailySettingsT>(value); }
+    template<typename DailySettingsT = Aws::Vector<HandOffTime>>
+    RecurrenceSettings& WithDailySettings(DailySettingsT&& value) { SetDailySettings(std::forward<DailySettingsT>(value)); return *this;}
+    template<typename DailySettingsT = HandOffTime>
+    RecurrenceSettings& AddDailySettings(DailySettingsT&& value) { m_dailySettingsHasBeenSet = true; m_dailySettings.emplace_back(std::forward<DailySettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
-    inline void SetDailySettings(const Aws::Vector<HandOffTime>& value) { m_dailySettingsHasBeenSet = true; m_dailySettings = value; }
-
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
-    inline void SetDailySettings(Aws::Vector<HandOffTime>&& value) { m_dailySettingsHasBeenSet = true; m_dailySettings = std::move(value); }
-
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
-    inline RecurrenceSettings& WithDailySettings(const Aws::Vector<HandOffTime>& value) { SetDailySettings(value); return *this;}
-
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
-    inline RecurrenceSettings& WithDailySettings(Aws::Vector<HandOffTime>&& value) { SetDailySettings(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
-    inline RecurrenceSettings& AddDailySettings(const HandOffTime& value) { m_dailySettingsHasBeenSet = true; m_dailySettings.push_back(value); return *this; }
-
-    /**
-     * <p>Information about on-call rotations that recur daily.</p>
-     */
-    inline RecurrenceSettings& AddDailySettings(HandOffTime&& value) { m_dailySettingsHasBeenSet = true; m_dailySettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of contacts, or shift team members designated to be on call
-     * concurrently during a shift. For example, in an on-call schedule containing ten
-     * contacts, a value of <code>2</code> designates that two of them are on call at
-     * any given time.</p>
+     * concurrently during a shift. For example, in an on-call schedule that contains
+     * ten contacts, a value of <code>2</code> designates that two of them are on call
+     * at any given time.</p>
      */
-    inline int GetNumberOfOnCalls() const{ return m_numberOfOnCalls; }
-
-    /**
-     * <p>The number of contacts, or shift team members designated to be on call
-     * concurrently during a shift. For example, in an on-call schedule containing ten
-     * contacts, a value of <code>2</code> designates that two of them are on call at
-     * any given time.</p>
-     */
+    inline int GetNumberOfOnCalls() const { return m_numberOfOnCalls; }
     inline bool NumberOfOnCallsHasBeenSet() const { return m_numberOfOnCallsHasBeenSet; }
-
-    /**
-     * <p>The number of contacts, or shift team members designated to be on call
-     * concurrently during a shift. For example, in an on-call schedule containing ten
-     * contacts, a value of <code>2</code> designates that two of them are on call at
-     * any given time.</p>
-     */
     inline void SetNumberOfOnCalls(int value) { m_numberOfOnCallsHasBeenSet = true; m_numberOfOnCalls = value; }
-
-    /**
-     * <p>The number of contacts, or shift team members designated to be on call
-     * concurrently during a shift. For example, in an on-call schedule containing ten
-     * contacts, a value of <code>2</code> designates that two of them are on call at
-     * any given time.</p>
-     */
     inline RecurrenceSettings& WithNumberOfOnCalls(int value) { SetNumberOfOnCalls(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
+     * <p>Information about the days of the week that the on-call rotation coverage
+     * includes.</p>
      */
-    inline const Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>& GetShiftCoverages() const{ return m_shiftCoverages; }
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
+    inline const Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>& GetShiftCoverages() const { return m_shiftCoverages; }
     inline bool ShiftCoveragesHasBeenSet() const { return m_shiftCoveragesHasBeenSet; }
+    template<typename ShiftCoveragesT = Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>>
+    void SetShiftCoverages(ShiftCoveragesT&& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages = std::forward<ShiftCoveragesT>(value); }
+    template<typename ShiftCoveragesT = Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>>
+    RecurrenceSettings& WithShiftCoverages(ShiftCoveragesT&& value) { SetShiftCoverages(std::forward<ShiftCoveragesT>(value)); return *this;}
+    inline RecurrenceSettings& AddShiftCoverages(DayOfWeek key, Aws::Vector<CoverageTime> value) {
+      m_shiftCoveragesHasBeenSet = true; m_shiftCoverages.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline void SetShiftCoverages(const Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages = value; }
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline void SetShiftCoverages(Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>&& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages = std::move(value); }
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline RecurrenceSettings& WithShiftCoverages(const Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>& value) { SetShiftCoverages(value); return *this;}
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline RecurrenceSettings& WithShiftCoverages(Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>>&& value) { SetShiftCoverages(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline RecurrenceSettings& AddShiftCoverages(const DayOfWeek& key, const Aws::Vector<CoverageTime>& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages.emplace(key, value); return *this; }
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline RecurrenceSettings& AddShiftCoverages(DayOfWeek&& key, const Aws::Vector<CoverageTime>& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline RecurrenceSettings& AddShiftCoverages(const DayOfWeek& key, Aws::Vector<CoverageTime>&& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Information about the days of the week included in on-call rotation
-     * coverage.</p>
-     */
-    inline RecurrenceSettings& AddShiftCoverages(DayOfWeek&& key, Aws::Vector<CoverageTime>&& value) { m_shiftCoveragesHasBeenSet = true; m_shiftCoverages.emplace(std::move(key), std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of days, weeks, or months a single rotation lasts.</p>
      */
-    inline int GetRecurrenceMultiplier() const{ return m_recurrenceMultiplier; }
-
-    /**
-     * <p>The number of days, weeks, or months a single rotation lasts.</p>
-     */
+    inline int GetRecurrenceMultiplier() const { return m_recurrenceMultiplier; }
     inline bool RecurrenceMultiplierHasBeenSet() const { return m_recurrenceMultiplierHasBeenSet; }
-
-    /**
-     * <p>The number of days, weeks, or months a single rotation lasts.</p>
-     */
     inline void SetRecurrenceMultiplier(int value) { m_recurrenceMultiplierHasBeenSet = true; m_recurrenceMultiplier = value; }
-
-    /**
-     * <p>The number of days, weeks, or months a single rotation lasts.</p>
-     */
     inline RecurrenceSettings& WithRecurrenceMultiplier(int value) { SetRecurrenceMultiplier(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<MonthlySetting> m_monthlySettings;
@@ -292,13 +135,13 @@ namespace Model
     Aws::Vector<HandOffTime> m_dailySettings;
     bool m_dailySettingsHasBeenSet = false;
 
-    int m_numberOfOnCalls;
+    int m_numberOfOnCalls{0};
     bool m_numberOfOnCallsHasBeenSet = false;
 
     Aws::Map<DayOfWeek, Aws::Vector<CoverageTime>> m_shiftCoverages;
     bool m_shiftCoveragesHasBeenSet = false;
 
-    int m_recurrenceMultiplier;
+    int m_recurrenceMultiplier{0};
     bool m_recurrenceMultiplierHasBeenSet = false;
   };
 

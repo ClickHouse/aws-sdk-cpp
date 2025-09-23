@@ -28,262 +28,83 @@ namespace Model
   class GetMaintenanceWindowResult
   {
   public:
-    AWS_SSM_API GetMaintenanceWindowResult();
+    AWS_SSM_API GetMaintenanceWindowResult() = default;
     AWS_SSM_API GetMaintenanceWindowResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSM_API GetMaintenanceWindowResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the created maintenance window.</p>
      */
-    inline const Aws::String& GetWindowId() const{ return m_windowId; }
+    inline const Aws::String& GetWindowId() const { return m_windowId; }
+    template<typename WindowIdT = Aws::String>
+    void SetWindowId(WindowIdT&& value) { m_windowIdHasBeenSet = true; m_windowId = std::forward<WindowIdT>(value); }
+    template<typename WindowIdT = Aws::String>
+    GetMaintenanceWindowResult& WithWindowId(WindowIdT&& value) { SetWindowId(std::forward<WindowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the created maintenance window.</p>
-     */
-    inline void SetWindowId(const Aws::String& value) { m_windowId = value; }
-
-    /**
-     * <p>The ID of the created maintenance window.</p>
-     */
-    inline void SetWindowId(Aws::String&& value) { m_windowId = std::move(value); }
-
-    /**
-     * <p>The ID of the created maintenance window.</p>
-     */
-    inline void SetWindowId(const char* value) { m_windowId.assign(value); }
-
-    /**
-     * <p>The ID of the created maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithWindowId(const Aws::String& value) { SetWindowId(value); return *this;}
-
-    /**
-     * <p>The ID of the created maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithWindowId(Aws::String&& value) { SetWindowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the created maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithWindowId(const char* value) { SetWindowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the maintenance window.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetMaintenanceWindowResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the maintenance window.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the maintenance window.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the maintenance window.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the maintenance window.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetMaintenanceWindowResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the maintenance window.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the maintenance window.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the maintenance window.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the maintenance window.</p>
-     */
-    inline GetMaintenanceWindowResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
      * window is scheduled to become active. The maintenance window won't run before
      * this specified time.</p>
      */
-    inline const Aws::String& GetStartDate() const{ return m_startDate; }
+    inline const Aws::String& GetStartDate() const { return m_startDate; }
+    template<typename StartDateT = Aws::String>
+    void SetStartDate(StartDateT&& value) { m_startDateHasBeenSet = true; m_startDate = std::forward<StartDateT>(value); }
+    template<typename StartDateT = Aws::String>
+    GetMaintenanceWindowResult& WithStartDate(StartDateT&& value) { SetStartDate(std::forward<StartDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become active. The maintenance window won't run before
-     * this specified time.</p>
-     */
-    inline void SetStartDate(const Aws::String& value) { m_startDate = value; }
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become active. The maintenance window won't run before
-     * this specified time.</p>
-     */
-    inline void SetStartDate(Aws::String&& value) { m_startDate = std::move(value); }
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become active. The maintenance window won't run before
-     * this specified time.</p>
-     */
-    inline void SetStartDate(const char* value) { m_startDate.assign(value); }
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become active. The maintenance window won't run before
-     * this specified time.</p>
-     */
-    inline GetMaintenanceWindowResult& WithStartDate(const Aws::String& value) { SetStartDate(value); return *this;}
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become active. The maintenance window won't run before
-     * this specified time.</p>
-     */
-    inline GetMaintenanceWindowResult& WithStartDate(Aws::String&& value) { SetStartDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become active. The maintenance window won't run before
-     * this specified time.</p>
-     */
-    inline GetMaintenanceWindowResult& WithStartDate(const char* value) { SetStartDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
      * window is scheduled to become inactive. The maintenance window won't run after
      * this specified time.</p>
      */
-    inline const Aws::String& GetEndDate() const{ return m_endDate; }
+    inline const Aws::String& GetEndDate() const { return m_endDate; }
+    template<typename EndDateT = Aws::String>
+    void SetEndDate(EndDateT&& value) { m_endDateHasBeenSet = true; m_endDate = std::forward<EndDateT>(value); }
+    template<typename EndDateT = Aws::String>
+    GetMaintenanceWindowResult& WithEndDate(EndDateT&& value) { SetEndDate(std::forward<EndDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become inactive. The maintenance window won't run after
-     * this specified time.</p>
-     */
-    inline void SetEndDate(const Aws::String& value) { m_endDate = value; }
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become inactive. The maintenance window won't run after
-     * this specified time.</p>
-     */
-    inline void SetEndDate(Aws::String&& value) { m_endDate = std::move(value); }
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become inactive. The maintenance window won't run after
-     * this specified time.</p>
-     */
-    inline void SetEndDate(const char* value) { m_endDate.assign(value); }
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become inactive. The maintenance window won't run after
-     * this specified time.</p>
-     */
-    inline GetMaintenanceWindowResult& WithEndDate(const Aws::String& value) { SetEndDate(value); return *this;}
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become inactive. The maintenance window won't run after
-     * this specified time.</p>
-     */
-    inline GetMaintenanceWindowResult& WithEndDate(Aws::String&& value) { SetEndDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time, in ISO-8601 Extended format, for when the maintenance
-     * window is scheduled to become inactive. The maintenance window won't run after
-     * this specified time.</p>
-     */
-    inline GetMaintenanceWindowResult& WithEndDate(const char* value) { SetEndDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The schedule of the maintenance window in the form of a cron or rate
      * expression.</p>
      */
-    inline const Aws::String& GetSchedule() const{ return m_schedule; }
+    inline const Aws::String& GetSchedule() const { return m_schedule; }
+    template<typename ScheduleT = Aws::String>
+    void SetSchedule(ScheduleT&& value) { m_scheduleHasBeenSet = true; m_schedule = std::forward<ScheduleT>(value); }
+    template<typename ScheduleT = Aws::String>
+    GetMaintenanceWindowResult& WithSchedule(ScheduleT&& value) { SetSchedule(std::forward<ScheduleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The schedule of the maintenance window in the form of a cron or rate
-     * expression.</p>
-     */
-    inline void SetSchedule(const Aws::String& value) { m_schedule = value; }
-
-    /**
-     * <p>The schedule of the maintenance window in the form of a cron or rate
-     * expression.</p>
-     */
-    inline void SetSchedule(Aws::String&& value) { m_schedule = std::move(value); }
-
-    /**
-     * <p>The schedule of the maintenance window in the form of a cron or rate
-     * expression.</p>
-     */
-    inline void SetSchedule(const char* value) { m_schedule.assign(value); }
-
-    /**
-     * <p>The schedule of the maintenance window in the form of a cron or rate
-     * expression.</p>
-     */
-    inline GetMaintenanceWindowResult& WithSchedule(const Aws::String& value) { SetSchedule(value); return *this;}
-
-    /**
-     * <p>The schedule of the maintenance window in the form of a cron or rate
-     * expression.</p>
-     */
-    inline GetMaintenanceWindowResult& WithSchedule(Aws::String&& value) { SetSchedule(std::move(value)); return *this;}
-
-    /**
-     * <p>The schedule of the maintenance window in the form of a cron or rate
-     * expression.</p>
-     */
-    inline GetMaintenanceWindowResult& WithSchedule(const char* value) { SetSchedule(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time zone that the scheduled maintenance window executions are based on,
      * in Internet Assigned Numbers Authority (IANA) format. For example:
@@ -291,301 +112,152 @@ namespace Model
      * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
      * website.</p>
      */
-    inline const Aws::String& GetScheduleTimezone() const{ return m_scheduleTimezone; }
+    inline const Aws::String& GetScheduleTimezone() const { return m_scheduleTimezone; }
+    template<typename ScheduleTimezoneT = Aws::String>
+    void SetScheduleTimezone(ScheduleTimezoneT&& value) { m_scheduleTimezoneHasBeenSet = true; m_scheduleTimezone = std::forward<ScheduleTimezoneT>(value); }
+    template<typename ScheduleTimezoneT = Aws::String>
+    GetMaintenanceWindowResult& WithScheduleTimezone(ScheduleTimezoneT&& value) { SetScheduleTimezone(std::forward<ScheduleTimezoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time zone that the scheduled maintenance window executions are based on,
-     * in Internet Assigned Numbers Authority (IANA) format. For example:
-     * "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>
-     */
-    inline void SetScheduleTimezone(const Aws::String& value) { m_scheduleTimezone = value; }
-
-    /**
-     * <p>The time zone that the scheduled maintenance window executions are based on,
-     * in Internet Assigned Numbers Authority (IANA) format. For example:
-     * "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>
-     */
-    inline void SetScheduleTimezone(Aws::String&& value) { m_scheduleTimezone = std::move(value); }
-
-    /**
-     * <p>The time zone that the scheduled maintenance window executions are based on,
-     * in Internet Assigned Numbers Authority (IANA) format. For example:
-     * "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>
-     */
-    inline void SetScheduleTimezone(const char* value) { m_scheduleTimezone.assign(value); }
-
-    /**
-     * <p>The time zone that the scheduled maintenance window executions are based on,
-     * in Internet Assigned Numbers Authority (IANA) format. For example:
-     * "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>
-     */
-    inline GetMaintenanceWindowResult& WithScheduleTimezone(const Aws::String& value) { SetScheduleTimezone(value); return *this;}
-
-    /**
-     * <p>The time zone that the scheduled maintenance window executions are based on,
-     * in Internet Assigned Numbers Authority (IANA) format. For example:
-     * "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>
-     */
-    inline GetMaintenanceWindowResult& WithScheduleTimezone(Aws::String&& value) { SetScheduleTimezone(std::move(value)); return *this;}
-
-    /**
-     * <p>The time zone that the scheduled maintenance window executions are based on,
-     * in Internet Assigned Numbers Authority (IANA) format. For example:
-     * "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>
-     */
-    inline GetMaintenanceWindowResult& WithScheduleTimezone(const char* value) { SetScheduleTimezone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of days to wait to run a maintenance window after the scheduled
      * cron expression date and time.</p>
      */
-    inline int GetScheduleOffset() const{ return m_scheduleOffset; }
-
-    /**
-     * <p>The number of days to wait to run a maintenance window after the scheduled
-     * cron expression date and time.</p>
-     */
-    inline void SetScheduleOffset(int value) { m_scheduleOffset = value; }
-
-    /**
-     * <p>The number of days to wait to run a maintenance window after the scheduled
-     * cron expression date and time.</p>
-     */
+    inline int GetScheduleOffset() const { return m_scheduleOffset; }
+    inline void SetScheduleOffset(int value) { m_scheduleOffsetHasBeenSet = true; m_scheduleOffset = value; }
     inline GetMaintenanceWindowResult& WithScheduleOffset(int value) { SetScheduleOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The next time the maintenance window will actually run, taking into account
      * any specified times for the maintenance window to become active or inactive.</p>
      */
-    inline const Aws::String& GetNextExecutionTime() const{ return m_nextExecutionTime; }
+    inline const Aws::String& GetNextExecutionTime() const { return m_nextExecutionTime; }
+    template<typename NextExecutionTimeT = Aws::String>
+    void SetNextExecutionTime(NextExecutionTimeT&& value) { m_nextExecutionTimeHasBeenSet = true; m_nextExecutionTime = std::forward<NextExecutionTimeT>(value); }
+    template<typename NextExecutionTimeT = Aws::String>
+    GetMaintenanceWindowResult& WithNextExecutionTime(NextExecutionTimeT&& value) { SetNextExecutionTime(std::forward<NextExecutionTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The next time the maintenance window will actually run, taking into account
-     * any specified times for the maintenance window to become active or inactive.</p>
-     */
-    inline void SetNextExecutionTime(const Aws::String& value) { m_nextExecutionTime = value; }
-
-    /**
-     * <p>The next time the maintenance window will actually run, taking into account
-     * any specified times for the maintenance window to become active or inactive.</p>
-     */
-    inline void SetNextExecutionTime(Aws::String&& value) { m_nextExecutionTime = std::move(value); }
-
-    /**
-     * <p>The next time the maintenance window will actually run, taking into account
-     * any specified times for the maintenance window to become active or inactive.</p>
-     */
-    inline void SetNextExecutionTime(const char* value) { m_nextExecutionTime.assign(value); }
-
-    /**
-     * <p>The next time the maintenance window will actually run, taking into account
-     * any specified times for the maintenance window to become active or inactive.</p>
-     */
-    inline GetMaintenanceWindowResult& WithNextExecutionTime(const Aws::String& value) { SetNextExecutionTime(value); return *this;}
-
-    /**
-     * <p>The next time the maintenance window will actually run, taking into account
-     * any specified times for the maintenance window to become active or inactive.</p>
-     */
-    inline GetMaintenanceWindowResult& WithNextExecutionTime(Aws::String&& value) { SetNextExecutionTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The next time the maintenance window will actually run, taking into account
-     * any specified times for the maintenance window to become active or inactive.</p>
-     */
-    inline GetMaintenanceWindowResult& WithNextExecutionTime(const char* value) { SetNextExecutionTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The duration of the maintenance window in hours.</p>
      */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * <p>The duration of the maintenance window in hours.</p>
-     */
-    inline void SetDuration(int value) { m_duration = value; }
-
-    /**
-     * <p>The duration of the maintenance window in hours.</p>
-     */
+    inline int GetDuration() const { return m_duration; }
+    inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
     inline GetMaintenanceWindowResult& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of hours before the end of the maintenance window that Amazon Web
      * Services Systems Manager stops scheduling new tasks for execution.</p>
      */
-    inline int GetCutoff() const{ return m_cutoff; }
-
-    /**
-     * <p>The number of hours before the end of the maintenance window that Amazon Web
-     * Services Systems Manager stops scheduling new tasks for execution.</p>
-     */
-    inline void SetCutoff(int value) { m_cutoff = value; }
-
-    /**
-     * <p>The number of hours before the end of the maintenance window that Amazon Web
-     * Services Systems Manager stops scheduling new tasks for execution.</p>
-     */
+    inline int GetCutoff() const { return m_cutoff; }
+    inline void SetCutoff(int value) { m_cutoffHasBeenSet = true; m_cutoff = value; }
     inline GetMaintenanceWindowResult& WithCutoff(int value) { SetCutoff(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Whether targets must be registered with the maintenance window before tasks
      * can be defined for those targets.</p>
      */
-    inline bool GetAllowUnassociatedTargets() const{ return m_allowUnassociatedTargets; }
-
-    /**
-     * <p>Whether targets must be registered with the maintenance window before tasks
-     * can be defined for those targets.</p>
-     */
-    inline void SetAllowUnassociatedTargets(bool value) { m_allowUnassociatedTargets = value; }
-
-    /**
-     * <p>Whether targets must be registered with the maintenance window before tasks
-     * can be defined for those targets.</p>
-     */
+    inline bool GetAllowUnassociatedTargets() const { return m_allowUnassociatedTargets; }
+    inline void SetAllowUnassociatedTargets(bool value) { m_allowUnassociatedTargetsHasBeenSet = true; m_allowUnassociatedTargets = value; }
     inline GetMaintenanceWindowResult& WithAllowUnassociatedTargets(bool value) { SetAllowUnassociatedTargets(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether the maintenance window is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Indicates whether the maintenance window is enabled.</p>
-     */
-    inline void SetEnabled(bool value) { m_enabled = value; }
-
-    /**
-     * <p>Indicates whether the maintenance window is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
+    inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
     inline GetMaintenanceWindowResult& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The date the maintenance window was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    GetMaintenanceWindowResult& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date the maintenance window was created.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDate = value; }
-
-    /**
-     * <p>The date the maintenance window was created.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDate = std::move(value); }
-
-    /**
-     * <p>The date the maintenance window was created.</p>
-     */
-    inline GetMaintenanceWindowResult& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The date the maintenance window was created.</p>
-     */
-    inline GetMaintenanceWindowResult& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date the maintenance window was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetModifiedDate() const{ return m_modifiedDate; }
+    inline const Aws::Utils::DateTime& GetModifiedDate() const { return m_modifiedDate; }
+    template<typename ModifiedDateT = Aws::Utils::DateTime>
+    void SetModifiedDate(ModifiedDateT&& value) { m_modifiedDateHasBeenSet = true; m_modifiedDate = std::forward<ModifiedDateT>(value); }
+    template<typename ModifiedDateT = Aws::Utils::DateTime>
+    GetMaintenanceWindowResult& WithModifiedDate(ModifiedDateT&& value) { SetModifiedDate(std::forward<ModifiedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date the maintenance window was last modified.</p>
-     */
-    inline void SetModifiedDate(const Aws::Utils::DateTime& value) { m_modifiedDate = value; }
-
-    /**
-     * <p>The date the maintenance window was last modified.</p>
-     */
-    inline void SetModifiedDate(Aws::Utils::DateTime&& value) { m_modifiedDate = std::move(value); }
-
-    /**
-     * <p>The date the maintenance window was last modified.</p>
-     */
-    inline GetMaintenanceWindowResult& WithModifiedDate(const Aws::Utils::DateTime& value) { SetModifiedDate(value); return *this;}
-
-    /**
-     * <p>The date the maintenance window was last modified.</p>
-     */
-    inline GetMaintenanceWindowResult& WithModifiedDate(Aws::Utils::DateTime&& value) { SetModifiedDate(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetMaintenanceWindowResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetMaintenanceWindowResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetMaintenanceWindowResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetMaintenanceWindowResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_windowId;
+    bool m_windowIdHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_startDate;
+    bool m_startDateHasBeenSet = false;
 
     Aws::String m_endDate;
+    bool m_endDateHasBeenSet = false;
 
     Aws::String m_schedule;
+    bool m_scheduleHasBeenSet = false;
 
     Aws::String m_scheduleTimezone;
+    bool m_scheduleTimezoneHasBeenSet = false;
 
-    int m_scheduleOffset;
+    int m_scheduleOffset{0};
+    bool m_scheduleOffsetHasBeenSet = false;
 
     Aws::String m_nextExecutionTime;
+    bool m_nextExecutionTimeHasBeenSet = false;
 
-    int m_duration;
+    int m_duration{0};
+    bool m_durationHasBeenSet = false;
 
-    int m_cutoff;
+    int m_cutoff{0};
+    bool m_cutoffHasBeenSet = false;
 
-    bool m_allowUnassociatedTargets;
+    bool m_allowUnassociatedTargets{false};
+    bool m_allowUnassociatedTargetsHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
+    bool m_enabledHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
+    bool m_createdDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_modifiedDate;
+    Aws::Utils::DateTime m_modifiedDate{};
+    bool m_modifiedDateHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

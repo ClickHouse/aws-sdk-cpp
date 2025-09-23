@@ -21,7 +21,7 @@ namespace Model
   class GetDeleteEventsByEventTypeStatusRequest : public FraudDetectorRequest
   {
   public:
-    AWS_FRAUDDETECTOR_API GetDeleteEventsByEventTypeStatusRequest();
+    AWS_FRAUDDETECTOR_API GetDeleteEventsByEventTypeStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_FRAUDDETECTOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Name of event type for which to get the deletion status.</p>
      */
-    inline const Aws::String& GetEventTypeName() const{ return m_eventTypeName; }
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
+    inline const Aws::String& GetEventTypeName() const { return m_eventTypeName; }
     inline bool EventTypeNameHasBeenSet() const { return m_eventTypeNameHasBeenSet; }
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
-    inline void SetEventTypeName(const Aws::String& value) { m_eventTypeNameHasBeenSet = true; m_eventTypeName = value; }
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
-    inline void SetEventTypeName(Aws::String&& value) { m_eventTypeNameHasBeenSet = true; m_eventTypeName = std::move(value); }
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
-    inline void SetEventTypeName(const char* value) { m_eventTypeNameHasBeenSet = true; m_eventTypeName.assign(value); }
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
-    inline GetDeleteEventsByEventTypeStatusRequest& WithEventTypeName(const Aws::String& value) { SetEventTypeName(value); return *this;}
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
-    inline GetDeleteEventsByEventTypeStatusRequest& WithEventTypeName(Aws::String&& value) { SetEventTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of event type for which to get the deletion status.</p>
-     */
-    inline GetDeleteEventsByEventTypeStatusRequest& WithEventTypeName(const char* value) { SetEventTypeName(value); return *this;}
-
+    template<typename EventTypeNameT = Aws::String>
+    void SetEventTypeName(EventTypeNameT&& value) { m_eventTypeNameHasBeenSet = true; m_eventTypeName = std::forward<EventTypeNameT>(value); }
+    template<typename EventTypeNameT = Aws::String>
+    GetDeleteEventsByEventTypeStatusRequest& WithEventTypeName(EventTypeNameT&& value) { SetEventTypeName(std::forward<EventTypeNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_eventTypeName;

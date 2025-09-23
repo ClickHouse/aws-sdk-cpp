@@ -23,7 +23,7 @@ namespace Model
   class UpdateSecurityControlRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API UpdateSecurityControlRequest();
+    AWS_SECURITYHUB_API UpdateSecurityControlRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,164 +34,47 @@ namespace Model
     AWS_SECURITYHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
      */
-    inline const Aws::String& GetSecurityControlId() const{ return m_securityControlId; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
+    inline const Aws::String& GetSecurityControlId() const { return m_securityControlId; }
     inline bool SecurityControlIdHasBeenSet() const { return m_securityControlIdHasBeenSet; }
+    template<typename SecurityControlIdT = Aws::String>
+    void SetSecurityControlId(SecurityControlIdT&& value) { m_securityControlIdHasBeenSet = true; m_securityControlId = std::forward<SecurityControlIdT>(value); }
+    template<typename SecurityControlIdT = Aws::String>
+    UpdateSecurityControlRequest& WithSecurityControlId(SecurityControlIdT&& value) { SetSecurityControlId(std::forward<SecurityControlIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
-    inline void SetSecurityControlId(const Aws::String& value) { m_securityControlIdHasBeenSet = true; m_securityControlId = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
-    inline void SetSecurityControlId(Aws::String&& value) { m_securityControlIdHasBeenSet = true; m_securityControlId = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
-    inline void SetSecurityControlId(const char* value) { m_securityControlIdHasBeenSet = true; m_securityControlId.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
-    inline UpdateSecurityControlRequest& WithSecurityControlId(const Aws::String& value) { SetSecurityControlId(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
-    inline UpdateSecurityControlRequest& WithSecurityControlId(Aws::String&& value) { SetSecurityControlId(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) or ID of the control to update. </p>
-     */
-    inline UpdateSecurityControlRequest& WithSecurityControlId(const char* value) { SetSecurityControlId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> An object that specifies which security control parameters to update. </p>
      */
-    inline const Aws::Map<Aws::String, ParameterConfiguration>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
+    inline const Aws::Map<Aws::String, ParameterConfiguration>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Map<Aws::String, ParameterConfiguration>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, ParameterConfiguration>>
+    UpdateSecurityControlRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = ParameterConfiguration>
+    UpdateSecurityControlRequest& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, ParameterConfiguration>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, ParameterConfiguration>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& WithParameters(const Aws::Map<Aws::String, ParameterConfiguration>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& WithParameters(Aws::Map<Aws::String, ParameterConfiguration>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& AddParameters(const Aws::String& key, const ParameterConfiguration& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& AddParameters(Aws::String&& key, const ParameterConfiguration& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& AddParameters(const Aws::String& key, ParameterConfiguration&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& AddParameters(Aws::String&& key, ParameterConfiguration&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& AddParameters(const char* key, ParameterConfiguration&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p> An object that specifies which security control parameters to update. </p>
-     */
-    inline UpdateSecurityControlRequest& AddParameters(const char* key, const ParameterConfiguration& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p> The most recent reason for updating the properties of the security control.
      * This field accepts alphanumeric characters in addition to white spaces, dashes,
      * and underscores. </p>
      */
-    inline const Aws::String& GetLastUpdateReason() const{ return m_lastUpdateReason; }
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
+    inline const Aws::String& GetLastUpdateReason() const { return m_lastUpdateReason; }
     inline bool LastUpdateReasonHasBeenSet() const { return m_lastUpdateReasonHasBeenSet; }
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
-    inline void SetLastUpdateReason(const Aws::String& value) { m_lastUpdateReasonHasBeenSet = true; m_lastUpdateReason = value; }
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
-    inline void SetLastUpdateReason(Aws::String&& value) { m_lastUpdateReasonHasBeenSet = true; m_lastUpdateReason = std::move(value); }
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
-    inline void SetLastUpdateReason(const char* value) { m_lastUpdateReasonHasBeenSet = true; m_lastUpdateReason.assign(value); }
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
-    inline UpdateSecurityControlRequest& WithLastUpdateReason(const Aws::String& value) { SetLastUpdateReason(value); return *this;}
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
-    inline UpdateSecurityControlRequest& WithLastUpdateReason(Aws::String&& value) { SetLastUpdateReason(std::move(value)); return *this;}
-
-    /**
-     * <p> The most recent reason for updating the properties of the security control.
-     * This field accepts alphanumeric characters in addition to white spaces, dashes,
-     * and underscores. </p>
-     */
-    inline UpdateSecurityControlRequest& WithLastUpdateReason(const char* value) { SetLastUpdateReason(value); return *this;}
-
+    template<typename LastUpdateReasonT = Aws::String>
+    void SetLastUpdateReason(LastUpdateReasonT&& value) { m_lastUpdateReasonHasBeenSet = true; m_lastUpdateReason = std::forward<LastUpdateReasonT>(value); }
+    template<typename LastUpdateReasonT = Aws::String>
+    UpdateSecurityControlRequest& WithLastUpdateReason(LastUpdateReasonT&& value) { SetLastUpdateReason(std::forward<LastUpdateReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_securityControlId;

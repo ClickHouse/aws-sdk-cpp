@@ -20,29 +20,7 @@ namespace RDS
 namespace Model
 {
 
-UserAuthConfigInfo::UserAuthConfigInfo() : 
-    m_descriptionHasBeenSet(false),
-    m_userNameHasBeenSet(false),
-    m_authScheme(AuthScheme::NOT_SET),
-    m_authSchemeHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_iAMAuth(IAMAuthMode::NOT_SET),
-    m_iAMAuthHasBeenSet(false),
-    m_clientPasswordAuthType(ClientPasswordAuthType::NOT_SET),
-    m_clientPasswordAuthTypeHasBeenSet(false)
-{
-}
-
-UserAuthConfigInfo::UserAuthConfigInfo(const XmlNode& xmlNode) : 
-    m_descriptionHasBeenSet(false),
-    m_userNameHasBeenSet(false),
-    m_authScheme(AuthScheme::NOT_SET),
-    m_authSchemeHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_iAMAuth(IAMAuthMode::NOT_SET),
-    m_iAMAuthHasBeenSet(false),
-    m_clientPasswordAuthType(ClientPasswordAuthType::NOT_SET),
-    m_clientPasswordAuthTypeHasBeenSet(false)
+UserAuthConfigInfo::UserAuthConfigInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +46,7 @@ UserAuthConfigInfo& UserAuthConfigInfo::operator =(const XmlNode& xmlNode)
     XmlNode authSchemeNode = resultNode.FirstChild("AuthScheme");
     if(!authSchemeNode.IsNull())
     {
-      m_authScheme = AuthSchemeMapper::GetAuthSchemeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(authSchemeNode.GetText()).c_str()).c_str());
+      m_authScheme = AuthSchemeMapper::GetAuthSchemeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(authSchemeNode.GetText()).c_str()));
       m_authSchemeHasBeenSet = true;
     }
     XmlNode secretArnNode = resultNode.FirstChild("SecretArn");
@@ -80,13 +58,13 @@ UserAuthConfigInfo& UserAuthConfigInfo::operator =(const XmlNode& xmlNode)
     XmlNode iAMAuthNode = resultNode.FirstChild("IAMAuth");
     if(!iAMAuthNode.IsNull())
     {
-      m_iAMAuth = IAMAuthModeMapper::GetIAMAuthModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(iAMAuthNode.GetText()).c_str()).c_str());
+      m_iAMAuth = IAMAuthModeMapper::GetIAMAuthModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(iAMAuthNode.GetText()).c_str()));
       m_iAMAuthHasBeenSet = true;
     }
     XmlNode clientPasswordAuthTypeNode = resultNode.FirstChild("ClientPasswordAuthType");
     if(!clientPasswordAuthTypeNode.IsNull())
     {
-      m_clientPasswordAuthType = ClientPasswordAuthTypeMapper::GetClientPasswordAuthTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(clientPasswordAuthTypeNode.GetText()).c_str()).c_str());
+      m_clientPasswordAuthType = ClientPasswordAuthTypeMapper::GetClientPasswordAuthTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(clientPasswordAuthTypeNode.GetText()).c_str()));
       m_clientPasswordAuthTypeHasBeenSet = true;
     }
   }
@@ -108,7 +86,7 @@ void UserAuthConfigInfo::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_authSchemeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AuthScheme=" << AuthSchemeMapper::GetNameForAuthScheme(m_authScheme) << "&";
+      oStream << location << index << locationValue << ".AuthScheme=" << StringUtils::URLEncode(AuthSchemeMapper::GetNameForAuthScheme(m_authScheme)) << "&";
   }
 
   if(m_secretArnHasBeenSet)
@@ -118,12 +96,12 @@ void UserAuthConfigInfo::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_iAMAuthHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IAMAuth=" << IAMAuthModeMapper::GetNameForIAMAuthMode(m_iAMAuth) << "&";
+      oStream << location << index << locationValue << ".IAMAuth=" << StringUtils::URLEncode(IAMAuthModeMapper::GetNameForIAMAuthMode(m_iAMAuth)) << "&";
   }
 
   if(m_clientPasswordAuthTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ClientPasswordAuthType=" << ClientPasswordAuthTypeMapper::GetNameForClientPasswordAuthType(m_clientPasswordAuthType) << "&";
+      oStream << location << index << locationValue << ".ClientPasswordAuthType=" << StringUtils::URLEncode(ClientPasswordAuthTypeMapper::GetNameForClientPasswordAuthType(m_clientPasswordAuthType)) << "&";
   }
 
 }
@@ -140,7 +118,7 @@ void UserAuthConfigInfo::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_authSchemeHasBeenSet)
   {
-      oStream << location << ".AuthScheme=" << AuthSchemeMapper::GetNameForAuthScheme(m_authScheme) << "&";
+      oStream << location << ".AuthScheme=" << StringUtils::URLEncode(AuthSchemeMapper::GetNameForAuthScheme(m_authScheme)) << "&";
   }
   if(m_secretArnHasBeenSet)
   {
@@ -148,11 +126,11 @@ void UserAuthConfigInfo::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_iAMAuthHasBeenSet)
   {
-      oStream << location << ".IAMAuth=" << IAMAuthModeMapper::GetNameForIAMAuthMode(m_iAMAuth) << "&";
+      oStream << location << ".IAMAuth=" << StringUtils::URLEncode(IAMAuthModeMapper::GetNameForIAMAuthMode(m_iAMAuth)) << "&";
   }
   if(m_clientPasswordAuthTypeHasBeenSet)
   {
-      oStream << location << ".ClientPasswordAuthType=" << ClientPasswordAuthTypeMapper::GetNameForClientPasswordAuthType(m_clientPasswordAuthType) << "&";
+      oStream << location << ".ClientPasswordAuthType=" << StringUtils::URLEncode(ClientPasswordAuthTypeMapper::GetNameForClientPasswordAuthType(m_clientPasswordAuthType)) << "&";
   }
 }
 

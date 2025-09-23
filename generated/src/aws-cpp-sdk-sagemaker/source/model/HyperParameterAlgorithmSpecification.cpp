@@ -18,21 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-HyperParameterAlgorithmSpecification::HyperParameterAlgorithmSpecification() : 
-    m_trainingImageHasBeenSet(false),
-    m_trainingInputMode(TrainingInputMode::NOT_SET),
-    m_trainingInputModeHasBeenSet(false),
-    m_algorithmNameHasBeenSet(false),
-    m_metricDefinitionsHasBeenSet(false)
-{
-}
-
-HyperParameterAlgorithmSpecification::HyperParameterAlgorithmSpecification(JsonView jsonValue) : 
-    m_trainingImageHasBeenSet(false),
-    m_trainingInputMode(TrainingInputMode::NOT_SET),
-    m_trainingInputModeHasBeenSet(false),
-    m_algorithmNameHasBeenSet(false),
-    m_metricDefinitionsHasBeenSet(false)
+HyperParameterAlgorithmSpecification::HyperParameterAlgorithmSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ HyperParameterAlgorithmSpecification& HyperParameterAlgorithmSpecification::oper
   if(jsonValue.ValueExists("TrainingImage"))
   {
     m_trainingImage = jsonValue.GetString("TrainingImage");
-
     m_trainingImageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrainingInputMode"))
   {
     m_trainingInputMode = TrainingInputModeMapper::GetTrainingInputModeForName(jsonValue.GetString("TrainingInputMode"));
-
     m_trainingInputModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AlgorithmName"))
   {
     m_algorithmName = jsonValue.GetString("AlgorithmName");
-
     m_algorithmNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricDefinitions"))
   {
     Aws::Utils::Array<JsonView> metricDefinitionsJsonList = jsonValue.GetArray("MetricDefinitions");
@@ -69,7 +49,6 @@ HyperParameterAlgorithmSpecification& HyperParameterAlgorithmSpecification::oper
     }
     m_metricDefinitionsHasBeenSet = true;
   }
-
   return *this;
 }
 

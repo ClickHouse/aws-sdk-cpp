@@ -29,101 +29,53 @@ namespace Model
   class DescribeAnomalyResult
   {
   public:
-    AWS_DEVOPSGURU_API DescribeAnomalyResult();
+    AWS_DEVOPSGURU_API DescribeAnomalyResult() = default;
     AWS_DEVOPSGURU_API DescribeAnomalyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DEVOPSGURU_API DescribeAnomalyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> A <code>ProactiveAnomaly</code> object that represents the requested
      * anomaly. </p>
      */
-    inline const ProactiveAnomaly& GetProactiveAnomaly() const{ return m_proactiveAnomaly; }
+    inline const ProactiveAnomaly& GetProactiveAnomaly() const { return m_proactiveAnomaly; }
+    template<typename ProactiveAnomalyT = ProactiveAnomaly>
+    void SetProactiveAnomaly(ProactiveAnomalyT&& value) { m_proactiveAnomalyHasBeenSet = true; m_proactiveAnomaly = std::forward<ProactiveAnomalyT>(value); }
+    template<typename ProactiveAnomalyT = ProactiveAnomaly>
+    DescribeAnomalyResult& WithProactiveAnomaly(ProactiveAnomalyT&& value) { SetProactiveAnomaly(std::forward<ProactiveAnomalyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A <code>ProactiveAnomaly</code> object that represents the requested
-     * anomaly. </p>
-     */
-    inline void SetProactiveAnomaly(const ProactiveAnomaly& value) { m_proactiveAnomaly = value; }
-
-    /**
-     * <p> A <code>ProactiveAnomaly</code> object that represents the requested
-     * anomaly. </p>
-     */
-    inline void SetProactiveAnomaly(ProactiveAnomaly&& value) { m_proactiveAnomaly = std::move(value); }
-
-    /**
-     * <p> A <code>ProactiveAnomaly</code> object that represents the requested
-     * anomaly. </p>
-     */
-    inline DescribeAnomalyResult& WithProactiveAnomaly(const ProactiveAnomaly& value) { SetProactiveAnomaly(value); return *this;}
-
-    /**
-     * <p> A <code>ProactiveAnomaly</code> object that represents the requested
-     * anomaly. </p>
-     */
-    inline DescribeAnomalyResult& WithProactiveAnomaly(ProactiveAnomaly&& value) { SetProactiveAnomaly(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> A <code>ReactiveAnomaly</code> object that represents the requested anomaly.
      * </p>
      */
-    inline const ReactiveAnomaly& GetReactiveAnomaly() const{ return m_reactiveAnomaly; }
+    inline const ReactiveAnomaly& GetReactiveAnomaly() const { return m_reactiveAnomaly; }
+    template<typename ReactiveAnomalyT = ReactiveAnomaly>
+    void SetReactiveAnomaly(ReactiveAnomalyT&& value) { m_reactiveAnomalyHasBeenSet = true; m_reactiveAnomaly = std::forward<ReactiveAnomalyT>(value); }
+    template<typename ReactiveAnomalyT = ReactiveAnomaly>
+    DescribeAnomalyResult& WithReactiveAnomaly(ReactiveAnomalyT&& value) { SetReactiveAnomaly(std::forward<ReactiveAnomalyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A <code>ReactiveAnomaly</code> object that represents the requested anomaly.
-     * </p>
-     */
-    inline void SetReactiveAnomaly(const ReactiveAnomaly& value) { m_reactiveAnomaly = value; }
-
-    /**
-     * <p> A <code>ReactiveAnomaly</code> object that represents the requested anomaly.
-     * </p>
-     */
-    inline void SetReactiveAnomaly(ReactiveAnomaly&& value) { m_reactiveAnomaly = std::move(value); }
-
-    /**
-     * <p> A <code>ReactiveAnomaly</code> object that represents the requested anomaly.
-     * </p>
-     */
-    inline DescribeAnomalyResult& WithReactiveAnomaly(const ReactiveAnomaly& value) { SetReactiveAnomaly(value); return *this;}
-
-    /**
-     * <p> A <code>ReactiveAnomaly</code> object that represents the requested anomaly.
-     * </p>
-     */
-    inline DescribeAnomalyResult& WithReactiveAnomaly(ReactiveAnomaly&& value) { SetReactiveAnomaly(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeAnomalyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeAnomalyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeAnomalyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeAnomalyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ProactiveAnomaly m_proactiveAnomaly;
+    bool m_proactiveAnomalyHasBeenSet = false;
 
     ReactiveAnomaly m_reactiveAnomaly;
+    bool m_reactiveAnomalyHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,442 +34,141 @@ namespace Model
   class DeviceDeploymentSummary
   {
   public:
-    AWS_SAGEMAKER_API DeviceDeploymentSummary();
+    AWS_SAGEMAKER_API DeviceDeploymentSummary() = default;
     AWS_SAGEMAKER_API DeviceDeploymentSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API DeviceDeploymentSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the edge deployment plan.</p>
      */
-    inline const Aws::String& GetEdgeDeploymentPlanArn() const{ return m_edgeDeploymentPlanArn; }
-
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
+    inline const Aws::String& GetEdgeDeploymentPlanArn() const { return m_edgeDeploymentPlanArn; }
     inline bool EdgeDeploymentPlanArnHasBeenSet() const { return m_edgeDeploymentPlanArnHasBeenSet; }
+    template<typename EdgeDeploymentPlanArnT = Aws::String>
+    void SetEdgeDeploymentPlanArn(EdgeDeploymentPlanArnT&& value) { m_edgeDeploymentPlanArnHasBeenSet = true; m_edgeDeploymentPlanArn = std::forward<EdgeDeploymentPlanArnT>(value); }
+    template<typename EdgeDeploymentPlanArnT = Aws::String>
+    DeviceDeploymentSummary& WithEdgeDeploymentPlanArn(EdgeDeploymentPlanArnT&& value) { SetEdgeDeploymentPlanArn(std::forward<EdgeDeploymentPlanArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
-    inline void SetEdgeDeploymentPlanArn(const Aws::String& value) { m_edgeDeploymentPlanArnHasBeenSet = true; m_edgeDeploymentPlanArn = value; }
-
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
-    inline void SetEdgeDeploymentPlanArn(Aws::String&& value) { m_edgeDeploymentPlanArnHasBeenSet = true; m_edgeDeploymentPlanArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
-    inline void SetEdgeDeploymentPlanArn(const char* value) { m_edgeDeploymentPlanArnHasBeenSet = true; m_edgeDeploymentPlanArn.assign(value); }
-
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithEdgeDeploymentPlanArn(const Aws::String& value) { SetEdgeDeploymentPlanArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithEdgeDeploymentPlanArn(Aws::String&& value) { SetEdgeDeploymentPlanArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithEdgeDeploymentPlanArn(const char* value) { SetEdgeDeploymentPlanArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the edge deployment plan.</p>
      */
-    inline const Aws::String& GetEdgeDeploymentPlanName() const{ return m_edgeDeploymentPlanName; }
-
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
+    inline const Aws::String& GetEdgeDeploymentPlanName() const { return m_edgeDeploymentPlanName; }
     inline bool EdgeDeploymentPlanNameHasBeenSet() const { return m_edgeDeploymentPlanNameHasBeenSet; }
+    template<typename EdgeDeploymentPlanNameT = Aws::String>
+    void SetEdgeDeploymentPlanName(EdgeDeploymentPlanNameT&& value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName = std::forward<EdgeDeploymentPlanNameT>(value); }
+    template<typename EdgeDeploymentPlanNameT = Aws::String>
+    DeviceDeploymentSummary& WithEdgeDeploymentPlanName(EdgeDeploymentPlanNameT&& value) { SetEdgeDeploymentPlanName(std::forward<EdgeDeploymentPlanNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
-    inline void SetEdgeDeploymentPlanName(const Aws::String& value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName = value; }
-
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
-    inline void SetEdgeDeploymentPlanName(Aws::String&& value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName = std::move(value); }
-
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
-    inline void SetEdgeDeploymentPlanName(const char* value) { m_edgeDeploymentPlanNameHasBeenSet = true; m_edgeDeploymentPlanName.assign(value); }
-
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithEdgeDeploymentPlanName(const Aws::String& value) { SetEdgeDeploymentPlanName(value); return *this;}
-
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithEdgeDeploymentPlanName(Aws::String&& value) { SetEdgeDeploymentPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithEdgeDeploymentPlanName(const char* value) { SetEdgeDeploymentPlanName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the stage in the edge deployment plan.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
-
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
+    inline const Aws::String& GetStageName() const { return m_stageName; }
     inline bool StageNameHasBeenSet() const { return m_stageNameHasBeenSet; }
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    DeviceDeploymentSummary& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
-
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
-
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageNameHasBeenSet = true; m_stageName.assign(value); }
-
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stage in the edge deployment plan.</p>
-     */
-    inline DeviceDeploymentSummary& WithStageName(const char* value) { SetStageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the deployed stage.</p>
      */
-    inline const Aws::String& GetDeployedStageName() const{ return m_deployedStageName; }
-
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
+    inline const Aws::String& GetDeployedStageName() const { return m_deployedStageName; }
     inline bool DeployedStageNameHasBeenSet() const { return m_deployedStageNameHasBeenSet; }
+    template<typename DeployedStageNameT = Aws::String>
+    void SetDeployedStageName(DeployedStageNameT&& value) { m_deployedStageNameHasBeenSet = true; m_deployedStageName = std::forward<DeployedStageNameT>(value); }
+    template<typename DeployedStageNameT = Aws::String>
+    DeviceDeploymentSummary& WithDeployedStageName(DeployedStageNameT&& value) { SetDeployedStageName(std::forward<DeployedStageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
-    inline void SetDeployedStageName(const Aws::String& value) { m_deployedStageNameHasBeenSet = true; m_deployedStageName = value; }
-
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
-    inline void SetDeployedStageName(Aws::String&& value) { m_deployedStageNameHasBeenSet = true; m_deployedStageName = std::move(value); }
-
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
-    inline void SetDeployedStageName(const char* value) { m_deployedStageNameHasBeenSet = true; m_deployedStageName.assign(value); }
-
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeployedStageName(const Aws::String& value) { SetDeployedStageName(value); return *this;}
-
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeployedStageName(Aws::String&& value) { SetDeployedStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the deployed stage.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeployedStageName(const char* value) { SetDeployedStageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the fleet to which the device belongs to.</p>
      */
-    inline const Aws::String& GetDeviceFleetName() const{ return m_deviceFleetName; }
-
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
+    inline const Aws::String& GetDeviceFleetName() const { return m_deviceFleetName; }
     inline bool DeviceFleetNameHasBeenSet() const { return m_deviceFleetNameHasBeenSet; }
+    template<typename DeviceFleetNameT = Aws::String>
+    void SetDeviceFleetName(DeviceFleetNameT&& value) { m_deviceFleetNameHasBeenSet = true; m_deviceFleetName = std::forward<DeviceFleetNameT>(value); }
+    template<typename DeviceFleetNameT = Aws::String>
+    DeviceDeploymentSummary& WithDeviceFleetName(DeviceFleetNameT&& value) { SetDeviceFleetName(std::forward<DeviceFleetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
-    inline void SetDeviceFleetName(const Aws::String& value) { m_deviceFleetNameHasBeenSet = true; m_deviceFleetName = value; }
-
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
-    inline void SetDeviceFleetName(Aws::String&& value) { m_deviceFleetNameHasBeenSet = true; m_deviceFleetName = std::move(value); }
-
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
-    inline void SetDeviceFleetName(const char* value) { m_deviceFleetNameHasBeenSet = true; m_deviceFleetName.assign(value); }
-
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceFleetName(const Aws::String& value) { SetDeviceFleetName(value); return *this;}
-
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceFleetName(Aws::String&& value) { SetDeviceFleetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the fleet to which the device belongs to.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceFleetName(const char* value) { SetDeviceFleetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the device.</p>
      */
-    inline const Aws::String& GetDeviceName() const{ return m_deviceName; }
-
-    /**
-     * <p>The name of the device.</p>
-     */
+    inline const Aws::String& GetDeviceName() const { return m_deviceName; }
     inline bool DeviceNameHasBeenSet() const { return m_deviceNameHasBeenSet; }
+    template<typename DeviceNameT = Aws::String>
+    void SetDeviceName(DeviceNameT&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::forward<DeviceNameT>(value); }
+    template<typename DeviceNameT = Aws::String>
+    DeviceDeploymentSummary& WithDeviceName(DeviceNameT&& value) { SetDeviceName(std::forward<DeviceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the device.</p>
-     */
-    inline void SetDeviceName(const Aws::String& value) { m_deviceNameHasBeenSet = true; m_deviceName = value; }
-
-    /**
-     * <p>The name of the device.</p>
-     */
-    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::move(value); }
-
-    /**
-     * <p>The name of the device.</p>
-     */
-    inline void SetDeviceName(const char* value) { m_deviceNameHasBeenSet = true; m_deviceName.assign(value); }
-
-    /**
-     * <p>The name of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceName(const Aws::String& value) { SetDeviceName(value); return *this;}
-
-    /**
-     * <p>The name of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceName(Aws::String&& value) { SetDeviceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceName(const char* value) { SetDeviceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the device.</p>
      */
-    inline const Aws::String& GetDeviceArn() const{ return m_deviceArn; }
-
-    /**
-     * <p>The ARN of the device.</p>
-     */
+    inline const Aws::String& GetDeviceArn() const { return m_deviceArn; }
     inline bool DeviceArnHasBeenSet() const { return m_deviceArnHasBeenSet; }
+    template<typename DeviceArnT = Aws::String>
+    void SetDeviceArn(DeviceArnT&& value) { m_deviceArnHasBeenSet = true; m_deviceArn = std::forward<DeviceArnT>(value); }
+    template<typename DeviceArnT = Aws::String>
+    DeviceDeploymentSummary& WithDeviceArn(DeviceArnT&& value) { SetDeviceArn(std::forward<DeviceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the device.</p>
-     */
-    inline void SetDeviceArn(const Aws::String& value) { m_deviceArnHasBeenSet = true; m_deviceArn = value; }
-
-    /**
-     * <p>The ARN of the device.</p>
-     */
-    inline void SetDeviceArn(Aws::String&& value) { m_deviceArnHasBeenSet = true; m_deviceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the device.</p>
-     */
-    inline void SetDeviceArn(const char* value) { m_deviceArnHasBeenSet = true; m_deviceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceArn(const Aws::String& value) { SetDeviceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceArn(Aws::String&& value) { SetDeviceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceArn(const char* value) { SetDeviceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The deployment status of the device.</p>
      */
-    inline const DeviceDeploymentStatus& GetDeviceDeploymentStatus() const{ return m_deviceDeploymentStatus; }
-
-    /**
-     * <p>The deployment status of the device.</p>
-     */
+    inline DeviceDeploymentStatus GetDeviceDeploymentStatus() const { return m_deviceDeploymentStatus; }
     inline bool DeviceDeploymentStatusHasBeenSet() const { return m_deviceDeploymentStatusHasBeenSet; }
+    inline void SetDeviceDeploymentStatus(DeviceDeploymentStatus value) { m_deviceDeploymentStatusHasBeenSet = true; m_deviceDeploymentStatus = value; }
+    inline DeviceDeploymentSummary& WithDeviceDeploymentStatus(DeviceDeploymentStatus value) { SetDeviceDeploymentStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The deployment status of the device.</p>
-     */
-    inline void SetDeviceDeploymentStatus(const DeviceDeploymentStatus& value) { m_deviceDeploymentStatusHasBeenSet = true; m_deviceDeploymentStatus = value; }
-
-    /**
-     * <p>The deployment status of the device.</p>
-     */
-    inline void SetDeviceDeploymentStatus(DeviceDeploymentStatus&& value) { m_deviceDeploymentStatusHasBeenSet = true; m_deviceDeploymentStatus = std::move(value); }
-
-    /**
-     * <p>The deployment status of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceDeploymentStatus(const DeviceDeploymentStatus& value) { SetDeviceDeploymentStatus(value); return *this;}
-
-    /**
-     * <p>The deployment status of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceDeploymentStatus(DeviceDeploymentStatus&& value) { SetDeviceDeploymentStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The detailed error message for the deployoment status result.</p>
      */
-    inline const Aws::String& GetDeviceDeploymentStatusMessage() const{ return m_deviceDeploymentStatusMessage; }
-
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
+    inline const Aws::String& GetDeviceDeploymentStatusMessage() const { return m_deviceDeploymentStatusMessage; }
     inline bool DeviceDeploymentStatusMessageHasBeenSet() const { return m_deviceDeploymentStatusMessageHasBeenSet; }
+    template<typename DeviceDeploymentStatusMessageT = Aws::String>
+    void SetDeviceDeploymentStatusMessage(DeviceDeploymentStatusMessageT&& value) { m_deviceDeploymentStatusMessageHasBeenSet = true; m_deviceDeploymentStatusMessage = std::forward<DeviceDeploymentStatusMessageT>(value); }
+    template<typename DeviceDeploymentStatusMessageT = Aws::String>
+    DeviceDeploymentSummary& WithDeviceDeploymentStatusMessage(DeviceDeploymentStatusMessageT&& value) { SetDeviceDeploymentStatusMessage(std::forward<DeviceDeploymentStatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
-    inline void SetDeviceDeploymentStatusMessage(const Aws::String& value) { m_deviceDeploymentStatusMessageHasBeenSet = true; m_deviceDeploymentStatusMessage = value; }
-
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
-    inline void SetDeviceDeploymentStatusMessage(Aws::String&& value) { m_deviceDeploymentStatusMessageHasBeenSet = true; m_deviceDeploymentStatusMessage = std::move(value); }
-
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
-    inline void SetDeviceDeploymentStatusMessage(const char* value) { m_deviceDeploymentStatusMessageHasBeenSet = true; m_deviceDeploymentStatusMessage.assign(value); }
-
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceDeploymentStatusMessage(const Aws::String& value) { SetDeviceDeploymentStatusMessage(value); return *this;}
-
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceDeploymentStatusMessage(Aws::String&& value) { SetDeviceDeploymentStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The detailed error message for the deployoment status result.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeviceDeploymentStatusMessage(const char* value) { SetDeviceDeploymentStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the device.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the device.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DeviceDeploymentSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the device.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the device.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the device.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the device.</p>
-     */
-    inline DeviceDeploymentSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the deployment on the device started.</p>
      */
-    inline const Aws::Utils::DateTime& GetDeploymentStartTime() const{ return m_deploymentStartTime; }
-
-    /**
-     * <p>The time when the deployment on the device started.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDeploymentStartTime() const { return m_deploymentStartTime; }
     inline bool DeploymentStartTimeHasBeenSet() const { return m_deploymentStartTimeHasBeenSet; }
-
-    /**
-     * <p>The time when the deployment on the device started.</p>
-     */
-    inline void SetDeploymentStartTime(const Aws::Utils::DateTime& value) { m_deploymentStartTimeHasBeenSet = true; m_deploymentStartTime = value; }
-
-    /**
-     * <p>The time when the deployment on the device started.</p>
-     */
-    inline void SetDeploymentStartTime(Aws::Utils::DateTime&& value) { m_deploymentStartTimeHasBeenSet = true; m_deploymentStartTime = std::move(value); }
-
-    /**
-     * <p>The time when the deployment on the device started.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeploymentStartTime(const Aws::Utils::DateTime& value) { SetDeploymentStartTime(value); return *this;}
-
-    /**
-     * <p>The time when the deployment on the device started.</p>
-     */
-    inline DeviceDeploymentSummary& WithDeploymentStartTime(Aws::Utils::DateTime&& value) { SetDeploymentStartTime(std::move(value)); return *this;}
-
+    template<typename DeploymentStartTimeT = Aws::Utils::DateTime>
+    void SetDeploymentStartTime(DeploymentStartTimeT&& value) { m_deploymentStartTimeHasBeenSet = true; m_deploymentStartTime = std::forward<DeploymentStartTimeT>(value); }
+    template<typename DeploymentStartTimeT = Aws::Utils::DateTime>
+    DeviceDeploymentSummary& WithDeploymentStartTime(DeploymentStartTimeT&& value) { SetDeploymentStartTime(std::forward<DeploymentStartTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_edgeDeploymentPlanArn;
@@ -493,7 +192,7 @@ namespace Model
     Aws::String m_deviceArn;
     bool m_deviceArnHasBeenSet = false;
 
-    DeviceDeploymentStatus m_deviceDeploymentStatus;
+    DeviceDeploymentStatus m_deviceDeploymentStatus{DeviceDeploymentStatus::NOT_SET};
     bool m_deviceDeploymentStatusHasBeenSet = false;
 
     Aws::String m_deviceDeploymentStatusMessage;
@@ -502,7 +201,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_deploymentStartTime;
+    Aws::Utils::DateTime m_deploymentStartTime{};
     bool m_deploymentStartTimeHasBeenSet = false;
   };
 

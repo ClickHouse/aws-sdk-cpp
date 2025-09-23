@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetRepositoryEndpointRequest::GetRepositoryEndpointRequest() : 
-    m_domainHasBeenSet(false),
-    m_domainOwnerHasBeenSet(false),
-    m_repositoryHasBeenSet(false),
-    m_format(PackageFormat::NOT_SET),
-    m_formatHasBeenSet(false)
-{
-}
-
 Aws::String GetRepositoryEndpointRequest::SerializePayload() const
 {
   return {};
@@ -57,6 +48,13 @@ void GetRepositoryEndpointRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << PackageFormatMapper::GetNameForPackageFormat(m_format);
       uri.AddQueryStringParameter("format", ss.str());
+      ss.str("");
+    }
+
+    if(m_endpointTypeHasBeenSet)
+    {
+      ss << EndpointTypeMapper::GetNameForEndpointType(m_endpointType);
+      uri.AddQueryStringParameter("endpointType", ss.str());
       ss.str("");
     }
 

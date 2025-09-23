@@ -10,12 +10,6 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-GetIdentityPoliciesRequest::GetIdentityPoliciesRequest() : 
-    m_identityHasBeenSet(false),
-    m_policyNamesHasBeenSet(false)
-{
-}
-
 Aws::String GetIdentityPoliciesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String GetIdentityPoliciesRequest::SerializePayload() const
 
   if(m_policyNamesHasBeenSet)
   {
-    unsigned policyNamesCount = 1;
-    for(auto& item : m_policyNames)
+    if (m_policyNames.empty())
     {
-      ss << "PolicyNames.member." << policyNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyNamesCount++;
+      ss << "PolicyNames=&";
+    }
+    else
+    {
+      unsigned policyNamesCount = 1;
+      for(auto& item : m_policyNames)
+      {
+        ss << "PolicyNames.member." << policyNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyNamesCount++;
+      }
     }
   }
 

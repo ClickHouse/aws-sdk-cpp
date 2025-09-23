@@ -18,17 +18,7 @@ namespace LaunchWizard
 namespace Model
 {
 
-DeploymentFilter::DeploymentFilter() : 
-    m_name(DeploymentFilterKey::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-DeploymentFilter::DeploymentFilter(JsonView jsonValue) : 
-    m_name(DeploymentFilterKey::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+DeploymentFilter::DeploymentFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ DeploymentFilter& DeploymentFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = DeploymentFilterKeyMapper::GetDeploymentFilterKeyForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -51,7 +39,6 @@ DeploymentFilter& DeploymentFilter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

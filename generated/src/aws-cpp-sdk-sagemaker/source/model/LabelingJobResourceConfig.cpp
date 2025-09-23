@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-LabelingJobResourceConfig::LabelingJobResourceConfig() : 
-    m_volumeKmsKeyIdHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false)
-{
-}
-
-LabelingJobResourceConfig::LabelingJobResourceConfig(JsonView jsonValue) : 
-    m_volumeKmsKeyIdHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false)
+LabelingJobResourceConfig::LabelingJobResourceConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LabelingJobResourceConfig& LabelingJobResourceConfig::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("VolumeKmsKeyId"))
   {
     m_volumeKmsKeyId = jsonValue.GetString("VolumeKmsKeyId");
-
     m_volumeKmsKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcConfig"))
   {
     m_vpcConfig = jsonValue.GetObject("VpcConfig");
-
     m_vpcConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

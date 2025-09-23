@@ -27,118 +27,52 @@ namespace Model
   class GetLineageGroupPolicyResult
   {
   public:
-    AWS_SAGEMAKER_API GetLineageGroupPolicyResult();
+    AWS_SAGEMAKER_API GetLineageGroupPolicyResult() = default;
     AWS_SAGEMAKER_API GetLineageGroupPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API GetLineageGroupPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
      */
-    inline const Aws::String& GetLineageGroupArn() const{ return m_lineageGroupArn; }
+    inline const Aws::String& GetLineageGroupArn() const { return m_lineageGroupArn; }
+    template<typename LineageGroupArnT = Aws::String>
+    void SetLineageGroupArn(LineageGroupArnT&& value) { m_lineageGroupArnHasBeenSet = true; m_lineageGroupArn = std::forward<LineageGroupArnT>(value); }
+    template<typename LineageGroupArnT = Aws::String>
+    GetLineageGroupPolicyResult& WithLineageGroupArn(LineageGroupArnT&& value) { SetLineageGroupArn(std::forward<LineageGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
-     */
-    inline void SetLineageGroupArn(const Aws::String& value) { m_lineageGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
-     */
-    inline void SetLineageGroupArn(Aws::String&& value) { m_lineageGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
-     */
-    inline void SetLineageGroupArn(const char* value) { m_lineageGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
-     */
-    inline GetLineageGroupPolicyResult& WithLineageGroupArn(const Aws::String& value) { SetLineageGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
-     */
-    inline GetLineageGroupPolicyResult& WithLineageGroupArn(Aws::String&& value) { SetLineageGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the lineage group.</p>
-     */
-    inline GetLineageGroupPolicyResult& WithLineageGroupArn(const char* value) { SetLineageGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource policy that gives access to the lineage group in another
      * account.</p>
      */
-    inline const Aws::String& GetResourcePolicy() const{ return m_resourcePolicy; }
+    inline const Aws::String& GetResourcePolicy() const { return m_resourcePolicy; }
+    template<typename ResourcePolicyT = Aws::String>
+    void SetResourcePolicy(ResourcePolicyT&& value) { m_resourcePolicyHasBeenSet = true; m_resourcePolicy = std::forward<ResourcePolicyT>(value); }
+    template<typename ResourcePolicyT = Aws::String>
+    GetLineageGroupPolicyResult& WithResourcePolicy(ResourcePolicyT&& value) { SetResourcePolicy(std::forward<ResourcePolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource policy that gives access to the lineage group in another
-     * account.</p>
-     */
-    inline void SetResourcePolicy(const Aws::String& value) { m_resourcePolicy = value; }
-
-    /**
-     * <p>The resource policy that gives access to the lineage group in another
-     * account.</p>
-     */
-    inline void SetResourcePolicy(Aws::String&& value) { m_resourcePolicy = std::move(value); }
-
-    /**
-     * <p>The resource policy that gives access to the lineage group in another
-     * account.</p>
-     */
-    inline void SetResourcePolicy(const char* value) { m_resourcePolicy.assign(value); }
-
-    /**
-     * <p>The resource policy that gives access to the lineage group in another
-     * account.</p>
-     */
-    inline GetLineageGroupPolicyResult& WithResourcePolicy(const Aws::String& value) { SetResourcePolicy(value); return *this;}
-
-    /**
-     * <p>The resource policy that gives access to the lineage group in another
-     * account.</p>
-     */
-    inline GetLineageGroupPolicyResult& WithResourcePolicy(Aws::String&& value) { SetResourcePolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource policy that gives access to the lineage group in another
-     * account.</p>
-     */
-    inline GetLineageGroupPolicyResult& WithResourcePolicy(const char* value) { SetResourcePolicy(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetLineageGroupPolicyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetLineageGroupPolicyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetLineageGroupPolicyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetLineageGroupPolicyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_lineageGroupArn;
+    bool m_lineageGroupArnHasBeenSet = false;
 
     Aws::String m_resourcePolicy;
+    bool m_resourcePolicyHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

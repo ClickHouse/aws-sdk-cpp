@@ -33,88 +33,38 @@ namespace Model
   class AutoTune
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API AutoTune();
+    AWS_ELASTICSEARCHSERVICE_API AutoTune() = default;
     AWS_ELASTICSEARCHSERVICE_API AutoTune(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API AutoTune& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. </p>
      */
-    inline const AutoTuneType& GetAutoTuneType() const{ return m_autoTuneType; }
-
-    /**
-     * <p>Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. </p>
-     */
+    inline AutoTuneType GetAutoTuneType() const { return m_autoTuneType; }
     inline bool AutoTuneTypeHasBeenSet() const { return m_autoTuneTypeHasBeenSet; }
+    inline void SetAutoTuneType(AutoTuneType value) { m_autoTuneTypeHasBeenSet = true; m_autoTuneType = value; }
+    inline AutoTune& WithAutoTuneType(AutoTuneType value) { SetAutoTuneType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. </p>
-     */
-    inline void SetAutoTuneType(const AutoTuneType& value) { m_autoTuneTypeHasBeenSet = true; m_autoTuneType = value; }
-
-    /**
-     * <p>Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. </p>
-     */
-    inline void SetAutoTuneType(AutoTuneType&& value) { m_autoTuneTypeHasBeenSet = true; m_autoTuneType = std::move(value); }
-
-    /**
-     * <p>Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. </p>
-     */
-    inline AutoTune& WithAutoTuneType(const AutoTuneType& value) { SetAutoTuneType(value); return *this;}
-
-    /**
-     * <p>Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. </p>
-     */
-    inline AutoTune& WithAutoTuneType(AutoTuneType&& value) { SetAutoTuneType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies details of the Auto-Tune action. See the <a
      * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html"
      * target="_blank">Developer Guide</a> for more information. </p>
      */
-    inline const AutoTuneDetails& GetAutoTuneDetails() const{ return m_autoTuneDetails; }
-
-    /**
-     * <p>Specifies details of the Auto-Tune action. See the <a
-     * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html"
-     * target="_blank">Developer Guide</a> for more information. </p>
-     */
+    inline const AutoTuneDetails& GetAutoTuneDetails() const { return m_autoTuneDetails; }
     inline bool AutoTuneDetailsHasBeenSet() const { return m_autoTuneDetailsHasBeenSet; }
-
-    /**
-     * <p>Specifies details of the Auto-Tune action. See the <a
-     * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html"
-     * target="_blank">Developer Guide</a> for more information. </p>
-     */
-    inline void SetAutoTuneDetails(const AutoTuneDetails& value) { m_autoTuneDetailsHasBeenSet = true; m_autoTuneDetails = value; }
-
-    /**
-     * <p>Specifies details of the Auto-Tune action. See the <a
-     * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html"
-     * target="_blank">Developer Guide</a> for more information. </p>
-     */
-    inline void SetAutoTuneDetails(AutoTuneDetails&& value) { m_autoTuneDetailsHasBeenSet = true; m_autoTuneDetails = std::move(value); }
-
-    /**
-     * <p>Specifies details of the Auto-Tune action. See the <a
-     * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html"
-     * target="_blank">Developer Guide</a> for more information. </p>
-     */
-    inline AutoTune& WithAutoTuneDetails(const AutoTuneDetails& value) { SetAutoTuneDetails(value); return *this;}
-
-    /**
-     * <p>Specifies details of the Auto-Tune action. See the <a
-     * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html"
-     * target="_blank">Developer Guide</a> for more information. </p>
-     */
-    inline AutoTune& WithAutoTuneDetails(AutoTuneDetails&& value) { SetAutoTuneDetails(std::move(value)); return *this;}
-
+    template<typename AutoTuneDetailsT = AutoTuneDetails>
+    void SetAutoTuneDetails(AutoTuneDetailsT&& value) { m_autoTuneDetailsHasBeenSet = true; m_autoTuneDetails = std::forward<AutoTuneDetailsT>(value); }
+    template<typename AutoTuneDetailsT = AutoTuneDetails>
+    AutoTune& WithAutoTuneDetails(AutoTuneDetailsT&& value) { SetAutoTuneDetails(std::forward<AutoTuneDetailsT>(value)); return *this;}
+    ///@}
   private:
 
-    AutoTuneType m_autoTuneType;
+    AutoTuneType m_autoTuneType{AutoTuneType::NOT_SET};
     bool m_autoTuneTypeHasBeenSet = false;
 
     AutoTuneDetails m_autoTuneDetails;

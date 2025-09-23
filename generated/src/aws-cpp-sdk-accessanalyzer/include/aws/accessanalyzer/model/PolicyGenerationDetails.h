@@ -32,60 +32,24 @@ namespace Model
   class PolicyGenerationDetails
   {
   public:
-    AWS_ACCESSANALYZER_API PolicyGenerationDetails();
+    AWS_ACCESSANALYZER_API PolicyGenerationDetails() = default;
     AWS_ACCESSANALYZER_API PolicyGenerationDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API PolicyGenerationDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the IAM entity (user or role) for which you are generating a
      * policy.</p>
      */
-    inline const Aws::String& GetPrincipalArn() const{ return m_principalArn; }
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
+    inline const Aws::String& GetPrincipalArn() const { return m_principalArn; }
     inline bool PrincipalArnHasBeenSet() const { return m_principalArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
-    inline void SetPrincipalArn(const Aws::String& value) { m_principalArnHasBeenSet = true; m_principalArn = value; }
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
-    inline void SetPrincipalArn(Aws::String&& value) { m_principalArnHasBeenSet = true; m_principalArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
-    inline void SetPrincipalArn(const char* value) { m_principalArnHasBeenSet = true; m_principalArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
-    inline PolicyGenerationDetails& WithPrincipalArn(const Aws::String& value) { SetPrincipalArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
-    inline PolicyGenerationDetails& WithPrincipalArn(Aws::String&& value) { SetPrincipalArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM entity (user or role) for which you are generating a
-     * policy.</p>
-     */
-    inline PolicyGenerationDetails& WithPrincipalArn(const char* value) { SetPrincipalArn(value); return *this;}
-
+    template<typename PrincipalArnT = Aws::String>
+    void SetPrincipalArn(PrincipalArnT&& value) { m_principalArnHasBeenSet = true; m_principalArn = std::forward<PrincipalArnT>(value); }
+    template<typename PrincipalArnT = Aws::String>
+    PolicyGenerationDetails& WithPrincipalArn(PrincipalArnT&& value) { SetPrincipalArn(std::forward<PrincipalArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_principalArn;

@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-EvaluationFormSingleSelectQuestionAutomation::EvaluationFormSingleSelectQuestionAutomation() : 
-    m_optionsHasBeenSet(false),
-    m_defaultOptionRefIdHasBeenSet(false)
-{
-}
-
-EvaluationFormSingleSelectQuestionAutomation::EvaluationFormSingleSelectQuestionAutomation(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_defaultOptionRefIdHasBeenSet(false)
+EvaluationFormSingleSelectQuestionAutomation::EvaluationFormSingleSelectQuestionAutomation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ EvaluationFormSingleSelectQuestionAutomation& EvaluationFormSingleSelectQuestion
     }
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DefaultOptionRefId"))
   {
     m_defaultOptionRefId = jsonValue.GetString("DefaultOptionRefId");
-
     m_defaultOptionRefIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,19 +18,18 @@ namespace PcaConnectorAd
 namespace Model
 {
 
-VpcInformation::VpcInformation() : 
-    m_securityGroupIdsHasBeenSet(false)
-{
-}
-
-VpcInformation::VpcInformation(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false)
+VpcInformation::VpcInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 VpcInformation& VpcInformation::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("IpAddressType"))
+  {
+    m_ipAddressType = IpAddressTypeMapper::GetIpAddressTypeForName(jsonValue.GetString("IpAddressType"));
+    m_ipAddressTypeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("SecurityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("SecurityGroupIds");
@@ -40,13 +39,17 @@ VpcInformation& VpcInformation::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue VpcInformation::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   payload.WithString("IpAddressType", IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType));
+  }
 
   if(m_securityGroupIdsHasBeenSet)
   {

@@ -28,7 +28,7 @@ namespace Model
   class GetTileRequest : public SageMakerGeospatialRequest
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API GetTileRequest();
+    AWS_SAGEMAKERGEOSPATIAL_API GetTileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,416 +41,141 @@ namespace Model
     AWS_SAGEMAKERGEOSPATIAL_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetTileRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
-    inline GetTileRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
-    inline GetTileRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the tile operation.</p>
-     */
-    inline GetTileRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
      */
-    inline const Aws::String& GetExecutionRoleArn() const{ return m_executionRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
+    inline const Aws::String& GetExecutionRoleArn() const { return m_executionRoleArn; }
     inline bool ExecutionRoleArnHasBeenSet() const { return m_executionRoleArnHasBeenSet; }
+    template<typename ExecutionRoleArnT = Aws::String>
+    void SetExecutionRoleArn(ExecutionRoleArnT&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::forward<ExecutionRoleArnT>(value); }
+    template<typename ExecutionRoleArnT = Aws::String>
+    GetTileRequest& WithExecutionRoleArn(ExecutionRoleArnT&& value) { SetExecutionRoleArn(std::forward<ExecutionRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
-    inline void SetExecutionRoleArn(const Aws::String& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
-    inline void SetExecutionRoleArn(Aws::String&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
-    inline void SetExecutionRoleArn(const char* value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
-    inline GetTileRequest& WithExecutionRoleArn(const Aws::String& value) { SetExecutionRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
-    inline GetTileRequest& WithExecutionRoleArn(Aws::String&& value) { SetExecutionRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>
-     */
-    inline GetTileRequest& WithExecutionRoleArn(const char* value) { SetExecutionRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The particular assets or bands to tile.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetImageAssets() const{ return m_imageAssets; }
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetImageAssets() const { return m_imageAssets; }
     inline bool ImageAssetsHasBeenSet() const { return m_imageAssetsHasBeenSet; }
+    template<typename ImageAssetsT = Aws::Vector<Aws::String>>
+    void SetImageAssets(ImageAssetsT&& value) { m_imageAssetsHasBeenSet = true; m_imageAssets = std::forward<ImageAssetsT>(value); }
+    template<typename ImageAssetsT = Aws::Vector<Aws::String>>
+    GetTileRequest& WithImageAssets(ImageAssetsT&& value) { SetImageAssets(std::forward<ImageAssetsT>(value)); return *this;}
+    template<typename ImageAssetsT = Aws::String>
+    GetTileRequest& AddImageAssets(ImageAssetsT&& value) { m_imageAssetsHasBeenSet = true; m_imageAssets.emplace_back(std::forward<ImageAssetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline void SetImageAssets(const Aws::Vector<Aws::String>& value) { m_imageAssetsHasBeenSet = true; m_imageAssets = value; }
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline void SetImageAssets(Aws::Vector<Aws::String>&& value) { m_imageAssetsHasBeenSet = true; m_imageAssets = std::move(value); }
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline GetTileRequest& WithImageAssets(const Aws::Vector<Aws::String>& value) { SetImageAssets(value); return *this;}
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline GetTileRequest& WithImageAssets(Aws::Vector<Aws::String>&& value) { SetImageAssets(std::move(value)); return *this;}
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline GetTileRequest& AddImageAssets(const Aws::String& value) { m_imageAssetsHasBeenSet = true; m_imageAssets.push_back(value); return *this; }
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline GetTileRequest& AddImageAssets(Aws::String&& value) { m_imageAssetsHasBeenSet = true; m_imageAssets.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The particular assets or bands to tile.</p>
-     */
-    inline GetTileRequest& AddImageAssets(const char* value) { m_imageAssetsHasBeenSet = true; m_imageAssets.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Determines whether or not to return a valid data mask.</p>
      */
-    inline bool GetImageMask() const{ return m_imageMask; }
-
-    /**
-     * <p>Determines whether or not to return a valid data mask.</p>
-     */
+    inline bool GetImageMask() const { return m_imageMask; }
     inline bool ImageMaskHasBeenSet() const { return m_imageMaskHasBeenSet; }
-
-    /**
-     * <p>Determines whether or not to return a valid data mask.</p>
-     */
     inline void SetImageMask(bool value) { m_imageMaskHasBeenSet = true; m_imageMask = value; }
-
-    /**
-     * <p>Determines whether or not to return a valid data mask.</p>
-     */
     inline GetTileRequest& WithImageMask(bool value) { SetImageMask(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The output data type of the tile operation.</p>
      */
-    inline const OutputType& GetOutputDataType() const{ return m_outputDataType; }
-
-    /**
-     * <p>The output data type of the tile operation.</p>
-     */
+    inline OutputType GetOutputDataType() const { return m_outputDataType; }
     inline bool OutputDataTypeHasBeenSet() const { return m_outputDataTypeHasBeenSet; }
+    inline void SetOutputDataType(OutputType value) { m_outputDataTypeHasBeenSet = true; m_outputDataType = value; }
+    inline GetTileRequest& WithOutputDataType(OutputType value) { SetOutputDataType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The output data type of the tile operation.</p>
-     */
-    inline void SetOutputDataType(const OutputType& value) { m_outputDataTypeHasBeenSet = true; m_outputDataType = value; }
-
-    /**
-     * <p>The output data type of the tile operation.</p>
-     */
-    inline void SetOutputDataType(OutputType&& value) { m_outputDataTypeHasBeenSet = true; m_outputDataType = std::move(value); }
-
-    /**
-     * <p>The output data type of the tile operation.</p>
-     */
-    inline GetTileRequest& WithOutputDataType(const OutputType& value) { SetOutputDataType(value); return *this;}
-
-    /**
-     * <p>The output data type of the tile operation.</p>
-     */
-    inline GetTileRequest& WithOutputDataType(OutputType&& value) { SetOutputDataType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data format of the output tile. The formats include .npy, .png and
      * .jpg.</p>
      */
-    inline const Aws::String& GetOutputFormat() const{ return m_outputFormat; }
-
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
+    inline const Aws::String& GetOutputFormat() const { return m_outputFormat; }
     inline bool OutputFormatHasBeenSet() const { return m_outputFormatHasBeenSet; }
+    template<typename OutputFormatT = Aws::String>
+    void SetOutputFormat(OutputFormatT&& value) { m_outputFormatHasBeenSet = true; m_outputFormat = std::forward<OutputFormatT>(value); }
+    template<typename OutputFormatT = Aws::String>
+    GetTileRequest& WithOutputFormat(OutputFormatT&& value) { SetOutputFormat(std::forward<OutputFormatT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
-    inline void SetOutputFormat(const Aws::String& value) { m_outputFormatHasBeenSet = true; m_outputFormat = value; }
-
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
-    inline void SetOutputFormat(Aws::String&& value) { m_outputFormatHasBeenSet = true; m_outputFormat = std::move(value); }
-
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
-    inline void SetOutputFormat(const char* value) { m_outputFormatHasBeenSet = true; m_outputFormat.assign(value); }
-
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
-    inline GetTileRequest& WithOutputFormat(const Aws::String& value) { SetOutputFormat(value); return *this;}
-
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
-    inline GetTileRequest& WithOutputFormat(Aws::String&& value) { SetOutputFormat(std::move(value)); return *this;}
-
-    /**
-     * <p>The data format of the output tile. The formats include .npy, .png and
-     * .jpg.</p>
-     */
-    inline GetTileRequest& WithOutputFormat(const char* value) { SetOutputFormat(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Property filters for the imagery to tile.</p>
      */
-    inline const Aws::String& GetPropertyFilters() const{ return m_propertyFilters; }
-
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
+    inline const Aws::String& GetPropertyFilters() const { return m_propertyFilters; }
     inline bool PropertyFiltersHasBeenSet() const { return m_propertyFiltersHasBeenSet; }
+    template<typename PropertyFiltersT = Aws::String>
+    void SetPropertyFilters(PropertyFiltersT&& value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters = std::forward<PropertyFiltersT>(value); }
+    template<typename PropertyFiltersT = Aws::String>
+    GetTileRequest& WithPropertyFilters(PropertyFiltersT&& value) { SetPropertyFilters(std::forward<PropertyFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
-    inline void SetPropertyFilters(const Aws::String& value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters = value; }
-
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
-    inline void SetPropertyFilters(Aws::String&& value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters = std::move(value); }
-
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
-    inline void SetPropertyFilters(const char* value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters.assign(value); }
-
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
-    inline GetTileRequest& WithPropertyFilters(const Aws::String& value) { SetPropertyFilters(value); return *this;}
-
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
-    inline GetTileRequest& WithPropertyFilters(Aws::String&& value) { SetPropertyFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>Property filters for the imagery to tile.</p>
-     */
-    inline GetTileRequest& WithPropertyFilters(const char* value) { SetPropertyFilters(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines what part of the Earth Observation job to tile. 'INPUT' or
      * 'OUTPUT' are the valid options.</p>
      */
-    inline const TargetOptions& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>Determines what part of the Earth Observation job to tile. 'INPUT' or
-     * 'OUTPUT' are the valid options.</p>
-     */
+    inline TargetOptions GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
+    inline void SetTarget(TargetOptions value) { m_targetHasBeenSet = true; m_target = value; }
+    inline GetTileRequest& WithTarget(TargetOptions value) { SetTarget(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines what part of the Earth Observation job to tile. 'INPUT' or
-     * 'OUTPUT' are the valid options.</p>
-     */
-    inline void SetTarget(const TargetOptions& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>Determines what part of the Earth Observation job to tile. 'INPUT' or
-     * 'OUTPUT' are the valid options.</p>
-     */
-    inline void SetTarget(TargetOptions&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>Determines what part of the Earth Observation job to tile. 'INPUT' or
-     * 'OUTPUT' are the valid options.</p>
-     */
-    inline GetTileRequest& WithTarget(const TargetOptions& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>Determines what part of the Earth Observation job to tile. 'INPUT' or
-     * 'OUTPUT' are the valid options.</p>
-     */
-    inline GetTileRequest& WithTarget(TargetOptions&& value) { SetTarget(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Time range filter applied to imagery to find the images to tile.</p>
      */
-    inline const Aws::String& GetTimeRangeFilter() const{ return m_timeRangeFilter; }
-
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
+    inline const Aws::String& GetTimeRangeFilter() const { return m_timeRangeFilter; }
     inline bool TimeRangeFilterHasBeenSet() const { return m_timeRangeFilterHasBeenSet; }
+    template<typename TimeRangeFilterT = Aws::String>
+    void SetTimeRangeFilter(TimeRangeFilterT&& value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter = std::forward<TimeRangeFilterT>(value); }
+    template<typename TimeRangeFilterT = Aws::String>
+    GetTileRequest& WithTimeRangeFilter(TimeRangeFilterT&& value) { SetTimeRangeFilter(std::forward<TimeRangeFilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
-    inline void SetTimeRangeFilter(const Aws::String& value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter = value; }
-
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
-    inline void SetTimeRangeFilter(Aws::String&& value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter = std::move(value); }
-
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
-    inline void SetTimeRangeFilter(const char* value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter.assign(value); }
-
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
-    inline GetTileRequest& WithTimeRangeFilter(const Aws::String& value) { SetTimeRangeFilter(value); return *this;}
-
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
-    inline GetTileRequest& WithTimeRangeFilter(Aws::String&& value) { SetTimeRangeFilter(std::move(value)); return *this;}
-
-    /**
-     * <p>Time range filter applied to imagery to find the images to tile.</p>
-     */
-    inline GetTileRequest& WithTimeRangeFilter(const char* value) { SetTimeRangeFilter(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The x coordinate of the tile input.</p>
      */
-    inline int GetX() const{ return m_x; }
-
-    /**
-     * <p>The x coordinate of the tile input.</p>
-     */
+    inline int GetX() const { return m_x; }
     inline bool XHasBeenSet() const { return m_xHasBeenSet; }
-
-    /**
-     * <p>The x coordinate of the tile input.</p>
-     */
     inline void SetX(int value) { m_xHasBeenSet = true; m_x = value; }
-
-    /**
-     * <p>The x coordinate of the tile input.</p>
-     */
     inline GetTileRequest& WithX(int value) { SetX(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The y coordinate of the tile input.</p>
      */
-    inline int GetY() const{ return m_y; }
-
-    /**
-     * <p>The y coordinate of the tile input.</p>
-     */
+    inline int GetY() const { return m_y; }
     inline bool YHasBeenSet() const { return m_yHasBeenSet; }
-
-    /**
-     * <p>The y coordinate of the tile input.</p>
-     */
     inline void SetY(int value) { m_yHasBeenSet = true; m_y = value; }
-
-    /**
-     * <p>The y coordinate of the tile input.</p>
-     */
     inline GetTileRequest& WithY(int value) { SetY(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The z coordinate of the tile input.</p>
      */
-    inline int GetZ() const{ return m_z; }
-
-    /**
-     * <p>The z coordinate of the tile input.</p>
-     */
+    inline int GetZ() const { return m_z; }
     inline bool ZHasBeenSet() const { return m_zHasBeenSet; }
-
-    /**
-     * <p>The z coordinate of the tile input.</p>
-     */
     inline void SetZ(int value) { m_zHasBeenSet = true; m_z = value; }
-
-    /**
-     * <p>The z coordinate of the tile input.</p>
-     */
     inline GetTileRequest& WithZ(int value) { SetZ(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -462,10 +187,10 @@ namespace Model
     Aws::Vector<Aws::String> m_imageAssets;
     bool m_imageAssetsHasBeenSet = false;
 
-    bool m_imageMask;
+    bool m_imageMask{false};
     bool m_imageMaskHasBeenSet = false;
 
-    OutputType m_outputDataType;
+    OutputType m_outputDataType{OutputType::NOT_SET};
     bool m_outputDataTypeHasBeenSet = false;
 
     Aws::String m_outputFormat;
@@ -474,19 +199,19 @@ namespace Model
     Aws::String m_propertyFilters;
     bool m_propertyFiltersHasBeenSet = false;
 
-    TargetOptions m_target;
+    TargetOptions m_target{TargetOptions::NOT_SET};
     bool m_targetHasBeenSet = false;
 
     Aws::String m_timeRangeFilter;
     bool m_timeRangeFilterHasBeenSet = false;
 
-    int m_x;
+    int m_x{0};
     bool m_xHasBeenSet = false;
 
-    int m_y;
+    int m_y{0};
     bool m_yHasBeenSet = false;
 
-    int m_z;
+    int m_z{0};
     bool m_zHasBeenSet = false;
   };
 

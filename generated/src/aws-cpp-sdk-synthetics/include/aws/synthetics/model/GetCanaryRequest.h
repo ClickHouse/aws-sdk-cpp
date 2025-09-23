@@ -11,6 +11,10 @@
 
 namespace Aws
 {
+namespace Http
+{
+    class URI;
+} //namespace Http
 namespace Synthetics
 {
 namespace Model
@@ -21,7 +25,7 @@ namespace Model
   class GetCanaryRequest : public SyntheticsRequest
   {
   public:
-    AWS_SYNTHETICS_API GetCanaryRequest();
+    AWS_SYNTHETICS_API GetCanaryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -31,51 +35,40 @@ namespace Model
 
     AWS_SYNTHETICS_API Aws::String SerializePayload() const override;
 
+    AWS_SYNTHETICS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
+
+    ///@{
     /**
      * <p>The name of the canary that you want details for.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the canary that you want details for.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetCanaryRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the canary that you want details for.</p>
+     * <p>The DryRunId associated with an existing canary’s dry run. You can use this
+     * DryRunId to retrieve information about the dry run.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the canary that you want details for.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the canary that you want details for.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the canary that you want details for.</p>
-     */
-    inline GetCanaryRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the canary that you want details for.</p>
-     */
-    inline GetCanaryRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the canary that you want details for.</p>
-     */
-    inline GetCanaryRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    inline const Aws::String& GetDryRunId() const { return m_dryRunId; }
+    inline bool DryRunIdHasBeenSet() const { return m_dryRunIdHasBeenSet; }
+    template<typename DryRunIdT = Aws::String>
+    void SetDryRunId(DryRunIdT&& value) { m_dryRunIdHasBeenSet = true; m_dryRunId = std::forward<DryRunIdT>(value); }
+    template<typename DryRunIdT = Aws::String>
+    GetCanaryRequest& WithDryRunId(DryRunIdT&& value) { SetDryRunId(std::forward<DryRunIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    Aws::String m_dryRunId;
+    bool m_dryRunIdHasBeenSet = false;
   };
 
 } // namespace Model

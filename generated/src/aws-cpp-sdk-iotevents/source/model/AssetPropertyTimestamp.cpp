@@ -18,15 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-AssetPropertyTimestamp::AssetPropertyTimestamp() : 
-    m_timeInSecondsHasBeenSet(false),
-    m_offsetInNanosHasBeenSet(false)
-{
-}
-
-AssetPropertyTimestamp::AssetPropertyTimestamp(JsonView jsonValue) : 
-    m_timeInSecondsHasBeenSet(false),
-    m_offsetInNanosHasBeenSet(false)
+AssetPropertyTimestamp::AssetPropertyTimestamp(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AssetPropertyTimestamp& AssetPropertyTimestamp::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("timeInSeconds"))
   {
     m_timeInSeconds = jsonValue.GetString("timeInSeconds");
-
     m_timeInSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("offsetInNanos"))
   {
     m_offsetInNanos = jsonValue.GetString("offsetInNanos");
-
     m_offsetInNanosHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,25 +18,7 @@ namespace Glue
 namespace Model
 {
 
-EvaluateDataQualityMultiFrame::EvaluateDataQualityMultiFrame() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_additionalDataSourcesHasBeenSet(false),
-    m_rulesetHasBeenSet(false),
-    m_publishingOptionsHasBeenSet(false),
-    m_additionalOptionsHasBeenSet(false),
-    m_stopJobOnFailureOptionsHasBeenSet(false)
-{
-}
-
-EvaluateDataQualityMultiFrame::EvaluateDataQualityMultiFrame(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_additionalDataSourcesHasBeenSet(false),
-    m_rulesetHasBeenSet(false),
-    m_publishingOptionsHasBeenSet(false),
-    m_additionalOptionsHasBeenSet(false),
-    m_stopJobOnFailureOptionsHasBeenSet(false)
+EvaluateDataQualityMultiFrame::EvaluateDataQualityMultiFrame(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,10 +28,8 @@ EvaluateDataQualityMultiFrame& EvaluateDataQualityMultiFrame::operator =(JsonVie
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -59,7 +39,6 @@ EvaluateDataQualityMultiFrame& EvaluateDataQualityMultiFrame::operator =(JsonVie
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalDataSources"))
   {
     Aws::Map<Aws::String, JsonView> additionalDataSourcesJsonMap = jsonValue.GetObject("AdditionalDataSources").GetAllObjects();
@@ -69,21 +48,16 @@ EvaluateDataQualityMultiFrame& EvaluateDataQualityMultiFrame::operator =(JsonVie
     }
     m_additionalDataSourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ruleset"))
   {
     m_ruleset = jsonValue.GetString("Ruleset");
-
     m_rulesetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PublishingOptions"))
   {
     m_publishingOptions = jsonValue.GetObject("PublishingOptions");
-
     m_publishingOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalOptions"))
   {
     Aws::Map<Aws::String, JsonView> additionalOptionsJsonMap = jsonValue.GetObject("AdditionalOptions").GetAllObjects();
@@ -93,14 +67,11 @@ EvaluateDataQualityMultiFrame& EvaluateDataQualityMultiFrame::operator =(JsonVie
     }
     m_additionalOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StopJobOnFailureOptions"))
   {
     m_stopJobOnFailureOptions = jsonValue.GetObject("StopJobOnFailureOptions");
-
     m_stopJobOnFailureOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,26 +12,19 @@ using namespace Aws::OpenSearchServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetSecurityPolicyRequest::GetSecurityPolicyRequest() : 
-    m_nameHasBeenSet(false),
-    m_type(SecurityPolicyType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String GetSecurityPolicyRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", SecurityPolicyTypeMapper::GetNameForSecurityPolicyType(m_type));
+  }
 
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
 
-  }
-
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", SecurityPolicyTypeMapper::GetNameForSecurityPolicyType(m_type));
   }
 
   return payload.View().WriteReadable();

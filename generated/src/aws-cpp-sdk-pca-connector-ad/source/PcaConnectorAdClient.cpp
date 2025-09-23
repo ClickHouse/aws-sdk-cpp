@@ -60,20 +60,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* PcaConnectorAdClient::SERVICE_NAME = "pca-connector-ad";
-const char* PcaConnectorAdClient::ALLOCATION_TAG = "PcaConnectorAdClient";
+namespace Aws
+{
+  namespace PcaConnectorAd
+  {
+    const char SERVICE_NAME[] = "pca-connector-ad";
+    const char ALLOCATION_TAG[] = "PcaConnectorAdClient";
+  }
+}
+const char* PcaConnectorAdClient::GetServiceName() {return SERVICE_NAME;}
+const char* PcaConnectorAdClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 PcaConnectorAdClient::PcaConnectorAdClient(const PcaConnectorAd::PcaConnectorAdClientConfiguration& clientConfiguration,
                                            std::shared_ptr<PcaConnectorAdEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PcaConnectorAdErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PcaConnectorAdEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -88,8 +95,7 @@ PcaConnectorAdClient::PcaConnectorAdClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PcaConnectorAdErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PcaConnectorAdEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -104,8 +110,7 @@ PcaConnectorAdClient::PcaConnectorAdClient(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PcaConnectorAdErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PcaConnectorAdEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -114,12 +119,11 @@ PcaConnectorAdClient::PcaConnectorAdClient(const std::shared_ptr<AWSCredentialsP
   PcaConnectorAdClient::PcaConnectorAdClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PcaConnectorAdErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<PcaConnectorAdEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -134,7 +138,6 @@ PcaConnectorAdClient::PcaConnectorAdClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PcaConnectorAdErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PcaConnectorAdEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -149,7 +152,6 @@ PcaConnectorAdClient::PcaConnectorAdClient(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PcaConnectorAdErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PcaConnectorAdEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -169,6 +171,14 @@ std::shared_ptr<PcaConnectorAdEndpointProviderBase>& PcaConnectorAdClient::acces
 void PcaConnectorAdClient::init(const PcaConnectorAd::PcaConnectorAdClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Pca Connector Ad");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

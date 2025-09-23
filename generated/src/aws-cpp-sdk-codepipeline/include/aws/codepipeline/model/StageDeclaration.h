@@ -7,6 +7,9 @@
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/codepipeline/model/FailureConditions.h>
+#include <aws/codepipeline/model/SuccessConditions.h>
+#include <aws/codepipeline/model/BeforeEntryConditions.h>
 #include <aws/codepipeline/model/BlockerDeclaration.h>
 #include <aws/codepipeline/model/ActionDeclaration.h>
 #include <utility>
@@ -35,134 +38,93 @@ namespace Model
   class StageDeclaration
   {
   public:
-    AWS_CODEPIPELINE_API StageDeclaration();
+    AWS_CODEPIPELINE_API StageDeclaration() = default;
     AWS_CODEPIPELINE_API StageDeclaration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API StageDeclaration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the stage.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the stage.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    StageDeclaration& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stage.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the stage.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the stage.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the stage.</p>
-     */
-    inline StageDeclaration& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the stage.</p>
-     */
-    inline StageDeclaration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stage.</p>
-     */
-    inline StageDeclaration& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline const Aws::Vector<BlockerDeclaration>& GetBlockers() const{ return m_blockers; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
+    inline const Aws::Vector<BlockerDeclaration>& GetBlockers() const { return m_blockers; }
     inline bool BlockersHasBeenSet() const { return m_blockersHasBeenSet; }
+    template<typename BlockersT = Aws::Vector<BlockerDeclaration>>
+    void SetBlockers(BlockersT&& value) { m_blockersHasBeenSet = true; m_blockers = std::forward<BlockersT>(value); }
+    template<typename BlockersT = Aws::Vector<BlockerDeclaration>>
+    StageDeclaration& WithBlockers(BlockersT&& value) { SetBlockers(std::forward<BlockersT>(value)); return *this;}
+    template<typename BlockersT = BlockerDeclaration>
+    StageDeclaration& AddBlockers(BlockersT&& value) { m_blockersHasBeenSet = true; m_blockers.emplace_back(std::forward<BlockersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetBlockers(const Aws::Vector<BlockerDeclaration>& value) { m_blockersHasBeenSet = true; m_blockers = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetBlockers(Aws::Vector<BlockerDeclaration>&& value) { m_blockersHasBeenSet = true; m_blockers = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline StageDeclaration& WithBlockers(const Aws::Vector<BlockerDeclaration>& value) { SetBlockers(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline StageDeclaration& WithBlockers(Aws::Vector<BlockerDeclaration>&& value) { SetBlockers(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline StageDeclaration& AddBlockers(const BlockerDeclaration& value) { m_blockersHasBeenSet = true; m_blockers.push_back(value); return *this; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline StageDeclaration& AddBlockers(BlockerDeclaration&& value) { m_blockersHasBeenSet = true; m_blockers.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The actions included in a stage.</p>
      */
-    inline const Aws::Vector<ActionDeclaration>& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>The actions included in a stage.</p>
-     */
+    inline const Aws::Vector<ActionDeclaration>& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
+    template<typename ActionsT = Aws::Vector<ActionDeclaration>>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = Aws::Vector<ActionDeclaration>>
+    StageDeclaration& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    template<typename ActionsT = ActionDeclaration>
+    StageDeclaration& AddActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions.emplace_back(std::forward<ActionsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The actions included in a stage.</p>
+     * <p>The method to use when a stage has not completed successfully. For example,
+     * configuring this field for rollback will roll back a failed stage automatically
+     * to the last successful pipeline execution in the stage.</p>
      */
-    inline void SetActions(const Aws::Vector<ActionDeclaration>& value) { m_actionsHasBeenSet = true; m_actions = value; }
+    inline const FailureConditions& GetOnFailure() const { return m_onFailure; }
+    inline bool OnFailureHasBeenSet() const { return m_onFailureHasBeenSet; }
+    template<typename OnFailureT = FailureConditions>
+    void SetOnFailure(OnFailureT&& value) { m_onFailureHasBeenSet = true; m_onFailure = std::forward<OnFailureT>(value); }
+    template<typename OnFailureT = FailureConditions>
+    StageDeclaration& WithOnFailure(OnFailureT&& value) { SetOnFailure(std::forward<OnFailureT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The actions included in a stage.</p>
+     * <p>The method to use when a stage has succeeded. For example, configuring this
+     * field for conditions will allow the stage to succeed when the conditions are
+     * met.</p>
      */
-    inline void SetActions(Aws::Vector<ActionDeclaration>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
+    inline const SuccessConditions& GetOnSuccess() const { return m_onSuccess; }
+    inline bool OnSuccessHasBeenSet() const { return m_onSuccessHasBeenSet; }
+    template<typename OnSuccessT = SuccessConditions>
+    void SetOnSuccess(OnSuccessT&& value) { m_onSuccessHasBeenSet = true; m_onSuccess = std::forward<OnSuccessT>(value); }
+    template<typename OnSuccessT = SuccessConditions>
+    StageDeclaration& WithOnSuccess(OnSuccessT&& value) { SetOnSuccess(std::forward<OnSuccessT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The actions included in a stage.</p>
+     * <p>The method to use when a stage allows entry. For example, configuring this
+     * field for conditions will allow entry to the stage when the conditions are
+     * met.</p>
      */
-    inline StageDeclaration& WithActions(const Aws::Vector<ActionDeclaration>& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>The actions included in a stage.</p>
-     */
-    inline StageDeclaration& WithActions(Aws::Vector<ActionDeclaration>&& value) { SetActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The actions included in a stage.</p>
-     */
-    inline StageDeclaration& AddActions(const ActionDeclaration& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
-
-    /**
-     * <p>The actions included in a stage.</p>
-     */
-    inline StageDeclaration& AddActions(ActionDeclaration&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
-
+    inline const BeforeEntryConditions& GetBeforeEntry() const { return m_beforeEntry; }
+    inline bool BeforeEntryHasBeenSet() const { return m_beforeEntryHasBeenSet; }
+    template<typename BeforeEntryT = BeforeEntryConditions>
+    void SetBeforeEntry(BeforeEntryT&& value) { m_beforeEntryHasBeenSet = true; m_beforeEntry = std::forward<BeforeEntryT>(value); }
+    template<typename BeforeEntryT = BeforeEntryConditions>
+    StageDeclaration& WithBeforeEntry(BeforeEntryT&& value) { SetBeforeEntry(std::forward<BeforeEntryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -173,6 +135,15 @@ namespace Model
 
     Aws::Vector<ActionDeclaration> m_actions;
     bool m_actionsHasBeenSet = false;
+
+    FailureConditions m_onFailure;
+    bool m_onFailureHasBeenSet = false;
+
+    SuccessConditions m_onSuccess;
+    bool m_onSuccessHasBeenSet = false;
+
+    BeforeEntryConditions m_beforeEntry;
+    bool m_beforeEntryHasBeenSet = false;
   };
 
 } // namespace Model

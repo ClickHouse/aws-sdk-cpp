@@ -10,14 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyTenantDatabaseRequest::ModifyTenantDatabaseRequest() : 
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_tenantDBNameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_newTenantDBNameHasBeenSet(false)
-{
-}
-
 Aws::String ModifyTenantDatabaseRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -40,6 +32,21 @@ Aws::String ModifyTenantDatabaseRequest::SerializePayload() const
   if(m_newTenantDBNameHasBeenSet)
   {
     ss << "NewTenantDBName=" << StringUtils::URLEncode(m_newTenantDBName.c_str()) << "&";
+  }
+
+  if(m_manageMasterUserPasswordHasBeenSet)
+  {
+    ss << "ManageMasterUserPassword=" << std::boolalpha << m_manageMasterUserPassword << "&";
+  }
+
+  if(m_rotateMasterUserPasswordHasBeenSet)
+  {
+    ss << "RotateMasterUserPassword=" << std::boolalpha << m_rotateMasterUserPassword << "&";
+  }
+
+  if(m_masterUserSecretKmsKeyIdHasBeenSet)
+  {
+    ss << "MasterUserSecretKmsKeyId=" << StringUtils::URLEncode(m_masterUserSecretKmsKeyId.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

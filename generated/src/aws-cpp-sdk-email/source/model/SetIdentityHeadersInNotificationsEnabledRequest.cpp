@@ -10,15 +10,6 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-SetIdentityHeadersInNotificationsEnabledRequest::SetIdentityHeadersInNotificationsEnabledRequest() : 
-    m_identityHasBeenSet(false),
-    m_notificationType(NotificationType::NOT_SET),
-    m_notificationTypeHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
 Aws::String SetIdentityHeadersInNotificationsEnabledRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,7 +21,7 @@ Aws::String SetIdentityHeadersInNotificationsEnabledRequest::SerializePayload() 
 
   if(m_notificationTypeHasBeenSet)
   {
-    ss << "NotificationType=" << NotificationTypeMapper::GetNameForNotificationType(m_notificationType) << "&";
+    ss << "NotificationType=" << StringUtils::URLEncode(NotificationTypeMapper::GetNameForNotificationType(m_notificationType)) << "&";
   }
 
   if(m_enabledHasBeenSet)

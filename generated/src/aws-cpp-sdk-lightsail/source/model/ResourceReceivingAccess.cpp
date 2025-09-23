@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-ResourceReceivingAccess::ResourceReceivingAccess() : 
-    m_nameHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ResourceReceivingAccess::ResourceReceivingAccess(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ResourceReceivingAccess::ResourceReceivingAccess(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceReceivingAccess& ResourceReceivingAccess::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

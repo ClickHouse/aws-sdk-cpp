@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ChatSyncResult::ChatSyncResult()
-{
-}
-
 ChatSyncResult::ChatSyncResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,27 +25,36 @@ ChatSyncResult::ChatSyncResult(const Aws::AmazonWebServiceResult<JsonValue>& res
 ChatSyncResult& ChatSyncResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("actionReview"))
-  {
-    m_actionReview = jsonValue.GetObject("actionReview");
-
-  }
-
   if(jsonValue.ValueExists("conversationId"))
   {
     m_conversationId = jsonValue.GetString("conversationId");
-
+    m_conversationIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("failedAttachments"))
+  if(jsonValue.ValueExists("systemMessage"))
   {
-    Aws::Utils::Array<JsonView> failedAttachmentsJsonList = jsonValue.GetArray("failedAttachments");
-    for(unsigned failedAttachmentsIndex = 0; failedAttachmentsIndex < failedAttachmentsJsonList.GetLength(); ++failedAttachmentsIndex)
-    {
-      m_failedAttachments.push_back(failedAttachmentsJsonList[failedAttachmentsIndex].AsObject());
-    }
+    m_systemMessage = jsonValue.GetString("systemMessage");
+    m_systemMessageHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("systemMessageId"))
+  {
+    m_systemMessageId = jsonValue.GetString("systemMessageId");
+    m_systemMessageIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("userMessageId"))
+  {
+    m_userMessageId = jsonValue.GetString("userMessageId");
+    m_userMessageIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("actionReview"))
+  {
+    m_actionReview = jsonValue.GetObject("actionReview");
+    m_actionReviewHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("authChallengeRequest"))
+  {
+    m_authChallengeRequest = jsonValue.GetObject("authChallengeRequest");
+    m_authChallengeRequestHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("sourceAttributions"))
   {
     Aws::Utils::Array<JsonView> sourceAttributionsJsonList = jsonValue.GetArray("sourceAttributions");
@@ -57,32 +62,24 @@ ChatSyncResult& ChatSyncResult::operator =(const Aws::AmazonWebServiceResult<Jso
     {
       m_sourceAttributions.push_back(sourceAttributionsJsonList[sourceAttributionsIndex].AsObject());
     }
+    m_sourceAttributionsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("systemMessage"))
+  if(jsonValue.ValueExists("failedAttachments"))
   {
-    m_systemMessage = jsonValue.GetString("systemMessage");
-
+    Aws::Utils::Array<JsonView> failedAttachmentsJsonList = jsonValue.GetArray("failedAttachments");
+    for(unsigned failedAttachmentsIndex = 0; failedAttachmentsIndex < failedAttachmentsJsonList.GetLength(); ++failedAttachmentsIndex)
+    {
+      m_failedAttachments.push_back(failedAttachmentsJsonList[failedAttachmentsIndex].AsObject());
+    }
+    m_failedAttachmentsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("systemMessageId"))
-  {
-    m_systemMessageId = jsonValue.GetString("systemMessageId");
-
-  }
-
-  if(jsonValue.ValueExists("userMessageId"))
-  {
-    m_userMessageId = jsonValue.GetString("userMessageId");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

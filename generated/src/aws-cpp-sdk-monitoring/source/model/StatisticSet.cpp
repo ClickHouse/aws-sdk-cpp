@@ -20,27 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-StatisticSet::StatisticSet() : 
-    m_sampleCount(0.0),
-    m_sampleCountHasBeenSet(false),
-    m_sum(0.0),
-    m_sumHasBeenSet(false),
-    m_minimum(0.0),
-    m_minimumHasBeenSet(false),
-    m_maximum(0.0),
-    m_maximumHasBeenSet(false)
-{
-}
-
-StatisticSet::StatisticSet(const XmlNode& xmlNode) : 
-    m_sampleCount(0.0),
-    m_sampleCountHasBeenSet(false),
-    m_sum(0.0),
-    m_sumHasBeenSet(false),
-    m_minimum(0.0),
-    m_minimumHasBeenSet(false),
-    m_maximum(0.0),
-    m_maximumHasBeenSet(false)
+StatisticSet::StatisticSet(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -108,19 +88,19 @@ void StatisticSet::OutputToStream(Aws::OStream& oStream, const char* location) c
 {
   if(m_sampleCountHasBeenSet)
   {
-        oStream << location << ".SampleCount=" << StringUtils::URLEncode(m_sampleCount) << "&";
+      oStream << location << ".SampleCount=" << StringUtils::URLEncode(m_sampleCount) << "&";
   }
   if(m_sumHasBeenSet)
   {
-        oStream << location << ".Sum=" << StringUtils::URLEncode(m_sum) << "&";
+      oStream << location << ".Sum=" << StringUtils::URLEncode(m_sum) << "&";
   }
   if(m_minimumHasBeenSet)
   {
-        oStream << location << ".Minimum=" << StringUtils::URLEncode(m_minimum) << "&";
+      oStream << location << ".Minimum=" << StringUtils::URLEncode(m_minimum) << "&";
   }
   if(m_maximumHasBeenSet)
   {
-        oStream << location << ".Maximum=" << StringUtils::URLEncode(m_maximum) << "&";
+      oStream << location << ".Maximum=" << StringUtils::URLEncode(m_maximum) << "&";
   }
 }
 

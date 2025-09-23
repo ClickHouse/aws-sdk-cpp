@@ -21,7 +21,7 @@ namespace Model
   class DeleteLoadBalancerRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API DeleteLoadBalancerRequest();
+    AWS_ELASTICLOADBALANCINGV2_API DeleteLoadBalancerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
-    inline const Aws::String& GetLoadBalancerArn() const{ return m_loadBalancerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
+    inline const Aws::String& GetLoadBalancerArn() const { return m_loadBalancerArn; }
     inline bool LoadBalancerArnHasBeenSet() const { return m_loadBalancerArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline void SetLoadBalancerArn(const Aws::String& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline void SetLoadBalancerArn(Aws::String&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline void SetLoadBalancerArn(const char* value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline DeleteLoadBalancerRequest& WithLoadBalancerArn(const Aws::String& value) { SetLoadBalancerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline DeleteLoadBalancerRequest& WithLoadBalancerArn(Aws::String&& value) { SetLoadBalancerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline DeleteLoadBalancerRequest& WithLoadBalancerArn(const char* value) { SetLoadBalancerArn(value); return *this;}
-
+    template<typename LoadBalancerArnT = Aws::String>
+    void SetLoadBalancerArn(LoadBalancerArnT&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = std::forward<LoadBalancerArnT>(value); }
+    template<typename LoadBalancerArnT = Aws::String>
+    DeleteLoadBalancerRequest& WithLoadBalancerArn(LoadBalancerArnT&& value) { SetLoadBalancerArn(std::forward<LoadBalancerArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_loadBalancerArn;

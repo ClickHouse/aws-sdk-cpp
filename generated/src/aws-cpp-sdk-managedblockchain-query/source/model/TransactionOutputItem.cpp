@@ -18,19 +18,7 @@ namespace ManagedBlockchainQuery
 namespace Model
 {
 
-TransactionOutputItem::TransactionOutputItem() : 
-    m_transactionHashHasBeenSet(false),
-    m_network(QueryNetwork::NOT_SET),
-    m_networkHasBeenSet(false),
-    m_transactionTimestampHasBeenSet(false)
-{
-}
-
-TransactionOutputItem::TransactionOutputItem(JsonView jsonValue) : 
-    m_transactionHashHasBeenSet(false),
-    m_network(QueryNetwork::NOT_SET),
-    m_networkHasBeenSet(false),
-    m_transactionTimestampHasBeenSet(false)
+TransactionOutputItem::TransactionOutputItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,28 @@ TransactionOutputItem& TransactionOutputItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("transactionHash"))
   {
     m_transactionHash = jsonValue.GetString("transactionHash");
-
     m_transactionHashHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("transactionId"))
+  {
+    m_transactionId = jsonValue.GetString("transactionId");
+    m_transactionIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("network"))
   {
     m_network = QueryNetworkMapper::GetQueryNetworkForName(jsonValue.GetString("network"));
-
     m_networkHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("transactionTimestamp"))
   {
     m_transactionTimestamp = jsonValue.GetDouble("transactionTimestamp");
-
     m_transactionTimestampHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("confirmationStatus"))
+  {
+    m_confirmationStatus = ConfirmationStatusMapper::GetConfirmationStatusForName(jsonValue.GetString("confirmationStatus"));
+    m_confirmationStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,6 +63,12 @@ JsonValue TransactionOutputItem::Jsonize() const
 
   }
 
+  if(m_transactionIdHasBeenSet)
+  {
+   payload.WithString("transactionId", m_transactionId);
+
+  }
+
   if(m_networkHasBeenSet)
   {
    payload.WithString("network", QueryNetworkMapper::GetNameForQueryNetwork(m_network));
@@ -79,6 +77,11 @@ JsonValue TransactionOutputItem::Jsonize() const
   if(m_transactionTimestampHasBeenSet)
   {
    payload.WithDouble("transactionTimestamp", m_transactionTimestamp.SecondsWithMSPrecision());
+  }
+
+  if(m_confirmationStatusHasBeenSet)
+  {
+   payload.WithString("confirmationStatus", ConfirmationStatusMapper::GetNameForConfirmationStatus(m_confirmationStatus));
   }
 
   return payload;

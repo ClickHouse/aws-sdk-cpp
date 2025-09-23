@@ -18,77 +18,43 @@ namespace QConnect
 namespace Model
 {
 
-RecommendationData::RecommendationData() : 
-    m_dataHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_recommendationIdHasBeenSet(false),
-    m_relevanceLevel(RelevanceLevel::NOT_SET),
-    m_relevanceLevelHasBeenSet(false),
-    m_relevanceScore(0.0),
-    m_relevanceScoreHasBeenSet(false),
-    m_type(RecommendationType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-RecommendationData::RecommendationData(JsonView jsonValue) : 
-    m_dataHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_recommendationIdHasBeenSet(false),
-    m_relevanceLevel(RelevanceLevel::NOT_SET),
-    m_relevanceLevelHasBeenSet(false),
-    m_relevanceScore(0.0),
-    m_relevanceScoreHasBeenSet(false),
-    m_type(RecommendationType::NOT_SET),
-    m_typeHasBeenSet(false)
+RecommendationData::RecommendationData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 RecommendationData& RecommendationData::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("data"))
-  {
-    m_data = jsonValue.GetObject("data");
-
-    m_dataHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("document"))
-  {
-    m_document = jsonValue.GetObject("document");
-
-    m_documentHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("recommendationId"))
   {
     m_recommendationId = jsonValue.GetString("recommendationId");
-
     m_recommendationIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("relevanceLevel"))
+  if(jsonValue.ValueExists("document"))
   {
-    m_relevanceLevel = RelevanceLevelMapper::GetRelevanceLevelForName(jsonValue.GetString("relevanceLevel"));
-
-    m_relevanceLevelHasBeenSet = true;
+    m_document = jsonValue.GetObject("document");
+    m_documentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("relevanceScore"))
   {
     m_relevanceScore = jsonValue.GetDouble("relevanceScore");
-
     m_relevanceScoreHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("relevanceLevel"))
+  {
+    m_relevanceLevel = RelevanceLevelMapper::GetRelevanceLevelForName(jsonValue.GetString("relevanceLevel"));
+    m_relevanceLevelHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("type"))
   {
     m_type = RecommendationTypeMapper::GetRecommendationTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("data"))
+  {
+    m_data = jsonValue.GetObject("data");
+    m_dataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -96,9 +62,9 @@ JsonValue RecommendationData::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_dataHasBeenSet)
+  if(m_recommendationIdHasBeenSet)
   {
-   payload.WithObject("data", m_data.Jsonize());
+   payload.WithString("recommendationId", m_recommendationId);
 
   }
 
@@ -108,9 +74,9 @@ JsonValue RecommendationData::Jsonize() const
 
   }
 
-  if(m_recommendationIdHasBeenSet)
+  if(m_relevanceScoreHasBeenSet)
   {
-   payload.WithString("recommendationId", m_recommendationId);
+   payload.WithDouble("relevanceScore", m_relevanceScore);
 
   }
 
@@ -119,15 +85,15 @@ JsonValue RecommendationData::Jsonize() const
    payload.WithString("relevanceLevel", RelevanceLevelMapper::GetNameForRelevanceLevel(m_relevanceLevel));
   }
 
-  if(m_relevanceScoreHasBeenSet)
-  {
-   payload.WithDouble("relevanceScore", m_relevanceScore);
-
-  }
-
   if(m_typeHasBeenSet)
   {
    payload.WithString("type", RecommendationTypeMapper::GetNameForRecommendationType(m_type));
+  }
+
+  if(m_dataHasBeenSet)
+  {
+   payload.WithObject("data", m_data.Jsonize());
+
   }
 
   return payload;

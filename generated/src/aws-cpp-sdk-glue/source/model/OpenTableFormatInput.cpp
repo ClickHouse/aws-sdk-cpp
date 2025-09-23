@@ -18,13 +18,7 @@ namespace Glue
 namespace Model
 {
 
-OpenTableFormatInput::OpenTableFormatInput() : 
-    m_icebergInputHasBeenSet(false)
-{
-}
-
-OpenTableFormatInput::OpenTableFormatInput(JsonView jsonValue) : 
-    m_icebergInputHasBeenSet(false)
+OpenTableFormatInput::OpenTableFormatInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ OpenTableFormatInput& OpenTableFormatInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("IcebergInput"))
   {
     m_icebergInput = jsonValue.GetObject("IcebergInput");
-
     m_icebergInputHasBeenSet = true;
   }
-
   return *this;
 }
 

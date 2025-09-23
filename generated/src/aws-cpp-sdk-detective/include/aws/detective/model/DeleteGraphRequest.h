@@ -21,7 +21,7 @@ namespace Model
   class DeleteGraphRequest : public DetectiveRequest
   {
   public:
-    AWS_DETECTIVE_API DeleteGraphRequest();
+    AWS_DETECTIVE_API DeleteGraphRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_DETECTIVE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the behavior graph to disable.</p>
      */
-    inline const Aws::String& GetGraphArn() const{ return m_graphArn; }
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
+    inline const Aws::String& GetGraphArn() const { return m_graphArn; }
     inline bool GraphArnHasBeenSet() const { return m_graphArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
-    inline void SetGraphArn(const Aws::String& value) { m_graphArnHasBeenSet = true; m_graphArn = value; }
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
-    inline void SetGraphArn(Aws::String&& value) { m_graphArnHasBeenSet = true; m_graphArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
-    inline void SetGraphArn(const char* value) { m_graphArnHasBeenSet = true; m_graphArn.assign(value); }
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
-    inline DeleteGraphRequest& WithGraphArn(const Aws::String& value) { SetGraphArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
-    inline DeleteGraphRequest& WithGraphArn(Aws::String&& value) { SetGraphArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the behavior graph to disable.</p>
-     */
-    inline DeleteGraphRequest& WithGraphArn(const char* value) { SetGraphArn(value); return *this;}
-
+    template<typename GraphArnT = Aws::String>
+    void SetGraphArn(GraphArnT&& value) { m_graphArnHasBeenSet = true; m_graphArn = std::forward<GraphArnT>(value); }
+    template<typename GraphArnT = Aws::String>
+    DeleteGraphRequest& WithGraphArn(GraphArnT&& value) { SetGraphArn(std::forward<GraphArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_graphArn;

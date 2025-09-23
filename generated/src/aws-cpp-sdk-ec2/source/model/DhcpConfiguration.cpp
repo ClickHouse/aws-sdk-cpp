@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DhcpConfiguration::DhcpConfiguration() : 
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-DhcpConfiguration::DhcpConfiguration(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+DhcpConfiguration::DhcpConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DhcpConfiguration& DhcpConfiguration::operator =(const XmlNode& xmlNode)
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("item");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember);
@@ -94,7 +87,7 @@ void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_values)
       {
         Aws::StringStream valuesSs;
-        valuesSs << location <<  ".ValueSet." << valuesIdx++;
+        valuesSs << location << ".ValueSet." << valuesIdx++;
         item.OutputToStream(oStream, valuesSs.str().c_str());
       }
   }

@@ -34,134 +34,53 @@ namespace Model
   class WaterfallChartAggregatedFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API WaterfallChartAggregatedFieldWells();
+    AWS_QUICKSIGHT_API WaterfallChartAggregatedFieldWells() = default;
     AWS_QUICKSIGHT_API WaterfallChartAggregatedFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API WaterfallChartAggregatedFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The category field wells of a waterfall visual.</p>
      */
-    inline const Aws::Vector<DimensionField>& GetCategories() const{ return m_categories; }
-
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
+    inline const Aws::Vector<DimensionField>& GetCategories() const { return m_categories; }
     inline bool CategoriesHasBeenSet() const { return m_categoriesHasBeenSet; }
+    template<typename CategoriesT = Aws::Vector<DimensionField>>
+    void SetCategories(CategoriesT&& value) { m_categoriesHasBeenSet = true; m_categories = std::forward<CategoriesT>(value); }
+    template<typename CategoriesT = Aws::Vector<DimensionField>>
+    WaterfallChartAggregatedFieldWells& WithCategories(CategoriesT&& value) { SetCategories(std::forward<CategoriesT>(value)); return *this;}
+    template<typename CategoriesT = DimensionField>
+    WaterfallChartAggregatedFieldWells& AddCategories(CategoriesT&& value) { m_categoriesHasBeenSet = true; m_categories.emplace_back(std::forward<CategoriesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
-    inline void SetCategories(const Aws::Vector<DimensionField>& value) { m_categoriesHasBeenSet = true; m_categories = value; }
-
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
-    inline void SetCategories(Aws::Vector<DimensionField>&& value) { m_categoriesHasBeenSet = true; m_categories = std::move(value); }
-
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& WithCategories(const Aws::Vector<DimensionField>& value) { SetCategories(value); return *this;}
-
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& WithCategories(Aws::Vector<DimensionField>&& value) { SetCategories(std::move(value)); return *this;}
-
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& AddCategories(const DimensionField& value) { m_categoriesHasBeenSet = true; m_categories.push_back(value); return *this; }
-
-    /**
-     * <p>The category field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& AddCategories(DimensionField&& value) { m_categoriesHasBeenSet = true; m_categories.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The value field wells of a waterfall visual.</p>
      */
-    inline const Aws::Vector<MeasureField>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
+    inline const Aws::Vector<MeasureField>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    WaterfallChartAggregatedFieldWells& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = MeasureField>
+    WaterfallChartAggregatedFieldWells& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
-    inline void SetValues(const Aws::Vector<MeasureField>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
-    inline void SetValues(Aws::Vector<MeasureField>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& WithValues(const Aws::Vector<MeasureField>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& WithValues(Aws::Vector<MeasureField>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& AddValues(const MeasureField& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The value field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& AddValues(MeasureField&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The breakdown field wells of a waterfall visual.</p>
      */
-    inline const Aws::Vector<DimensionField>& GetBreakdowns() const{ return m_breakdowns; }
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
+    inline const Aws::Vector<DimensionField>& GetBreakdowns() const { return m_breakdowns; }
     inline bool BreakdownsHasBeenSet() const { return m_breakdownsHasBeenSet; }
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
-    inline void SetBreakdowns(const Aws::Vector<DimensionField>& value) { m_breakdownsHasBeenSet = true; m_breakdowns = value; }
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
-    inline void SetBreakdowns(Aws::Vector<DimensionField>&& value) { m_breakdownsHasBeenSet = true; m_breakdowns = std::move(value); }
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& WithBreakdowns(const Aws::Vector<DimensionField>& value) { SetBreakdowns(value); return *this;}
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& WithBreakdowns(Aws::Vector<DimensionField>&& value) { SetBreakdowns(std::move(value)); return *this;}
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& AddBreakdowns(const DimensionField& value) { m_breakdownsHasBeenSet = true; m_breakdowns.push_back(value); return *this; }
-
-    /**
-     * <p>The breakdown field wells of a waterfall visual.</p>
-     */
-    inline WaterfallChartAggregatedFieldWells& AddBreakdowns(DimensionField&& value) { m_breakdownsHasBeenSet = true; m_breakdowns.push_back(std::move(value)); return *this; }
-
+    template<typename BreakdownsT = Aws::Vector<DimensionField>>
+    void SetBreakdowns(BreakdownsT&& value) { m_breakdownsHasBeenSet = true; m_breakdowns = std::forward<BreakdownsT>(value); }
+    template<typename BreakdownsT = Aws::Vector<DimensionField>>
+    WaterfallChartAggregatedFieldWells& WithBreakdowns(BreakdownsT&& value) { SetBreakdowns(std::forward<BreakdownsT>(value)); return *this;}
+    template<typename BreakdownsT = DimensionField>
+    WaterfallChartAggregatedFieldWells& AddBreakdowns(BreakdownsT&& value) { m_breakdownsHasBeenSet = true; m_breakdowns.emplace_back(std::forward<BreakdownsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DimensionField> m_categories;

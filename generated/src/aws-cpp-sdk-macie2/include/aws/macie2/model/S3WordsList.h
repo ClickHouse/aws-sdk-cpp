@@ -32,93 +32,35 @@ namespace Model
   class S3WordsList
   {
   public:
-    AWS_MACIE2_API S3WordsList();
+    AWS_MACIE2_API S3WordsList() = default;
     AWS_MACIE2_API S3WordsList(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API S3WordsList& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The full name of the S3 bucket that contains the object.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3WordsList& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
-    inline S3WordsList& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
-    inline S3WordsList& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The full name of the S3 bucket that contains the object.</p>
-     */
-    inline S3WordsList& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The full name (key) of the object.</p>
      */
-    inline const Aws::String& GetObjectKey() const{ return m_objectKey; }
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
+    inline const Aws::String& GetObjectKey() const { return m_objectKey; }
     inline bool ObjectKeyHasBeenSet() const { return m_objectKeyHasBeenSet; }
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
-    inline void SetObjectKey(const Aws::String& value) { m_objectKeyHasBeenSet = true; m_objectKey = value; }
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
-    inline void SetObjectKey(Aws::String&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::move(value); }
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
-    inline void SetObjectKey(const char* value) { m_objectKeyHasBeenSet = true; m_objectKey.assign(value); }
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
-    inline S3WordsList& WithObjectKey(const Aws::String& value) { SetObjectKey(value); return *this;}
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
-    inline S3WordsList& WithObjectKey(Aws::String&& value) { SetObjectKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The full name (key) of the object.</p>
-     */
-    inline S3WordsList& WithObjectKey(const char* value) { SetObjectKey(value); return *this;}
-
+    template<typename ObjectKeyT = Aws::String>
+    void SetObjectKey(ObjectKeyT&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::forward<ObjectKeyT>(value); }
+    template<typename ObjectKeyT = Aws::String>
+    S3WordsList& WithObjectKey(ObjectKeyT&& value) { SetObjectKey(std::forward<ObjectKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

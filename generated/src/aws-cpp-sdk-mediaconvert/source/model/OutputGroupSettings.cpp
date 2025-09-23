@@ -18,25 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-OutputGroupSettings::OutputGroupSettings() : 
-    m_cmafGroupSettingsHasBeenSet(false),
-    m_dashIsoGroupSettingsHasBeenSet(false),
-    m_fileGroupSettingsHasBeenSet(false),
-    m_hlsGroupSettingsHasBeenSet(false),
-    m_msSmoothGroupSettingsHasBeenSet(false),
-    m_type(OutputGroupType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-OutputGroupSettings::OutputGroupSettings(JsonView jsonValue) : 
-    m_cmafGroupSettingsHasBeenSet(false),
-    m_dashIsoGroupSettingsHasBeenSet(false),
-    m_fileGroupSettingsHasBeenSet(false),
-    m_hlsGroupSettingsHasBeenSet(false),
-    m_msSmoothGroupSettingsHasBeenSet(false),
-    m_type(OutputGroupType::NOT_SET),
-    m_typeHasBeenSet(false)
+OutputGroupSettings::OutputGroupSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,42 @@ OutputGroupSettings& OutputGroupSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("cmafGroupSettings"))
   {
     m_cmafGroupSettings = jsonValue.GetObject("cmafGroupSettings");
-
     m_cmafGroupSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dashIsoGroupSettings"))
   {
     m_dashIsoGroupSettings = jsonValue.GetObject("dashIsoGroupSettings");
-
     m_dashIsoGroupSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fileGroupSettings"))
   {
     m_fileGroupSettings = jsonValue.GetObject("fileGroupSettings");
-
     m_fileGroupSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("hlsGroupSettings"))
   {
     m_hlsGroupSettings = jsonValue.GetObject("hlsGroupSettings");
-
     m_hlsGroupSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("msSmoothGroupSettings"))
   {
     m_msSmoothGroupSettings = jsonValue.GetObject("msSmoothGroupSettings");
-
     m_msSmoothGroupSettingsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("perFrameMetrics"))
+  {
+    Aws::Utils::Array<JsonView> perFrameMetricsJsonList = jsonValue.GetArray("perFrameMetrics");
+    for(unsigned perFrameMetricsIndex = 0; perFrameMetricsIndex < perFrameMetricsJsonList.GetLength(); ++perFrameMetricsIndex)
+    {
+      m_perFrameMetrics.push_back(FrameMetricTypeMapper::GetFrameMetricTypeForName(perFrameMetricsJsonList[perFrameMetricsIndex].AsString()));
+    }
+    m_perFrameMetricsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("type"))
   {
     m_type = OutputGroupTypeMapper::GetOutputGroupTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -119,6 +98,17 @@ JsonValue OutputGroupSettings::Jsonize() const
   if(m_msSmoothGroupSettingsHasBeenSet)
   {
    payload.WithObject("msSmoothGroupSettings", m_msSmoothGroupSettings.Jsonize());
+
+  }
+
+  if(m_perFrameMetricsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> perFrameMetricsJsonList(m_perFrameMetrics.size());
+   for(unsigned perFrameMetricsIndex = 0; perFrameMetricsIndex < perFrameMetricsJsonList.GetLength(); ++perFrameMetricsIndex)
+   {
+     perFrameMetricsJsonList[perFrameMetricsIndex].AsString(FrameMetricTypeMapper::GetNameForFrameMetricType(m_perFrameMetrics[perFrameMetricsIndex]));
+   }
+   payload.WithArray("perFrameMetrics", std::move(perFrameMetricsJsonList));
 
   }
 

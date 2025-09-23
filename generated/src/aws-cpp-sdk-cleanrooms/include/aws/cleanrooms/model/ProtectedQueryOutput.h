@@ -7,6 +7,7 @@
 #include <aws/cleanrooms/CleanRooms_EXPORTS.h>
 #include <aws/cleanrooms/model/ProtectedQueryS3Output.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/cleanrooms/model/ProtectedQueryDistributeOutput.h>
 #include <aws/cleanrooms/model/ProtectedQuerySingleMemberOutput.h>
 #include <utility>
 
@@ -34,91 +35,55 @@ namespace Model
   class ProtectedQueryOutput
   {
   public:
-    AWS_CLEANROOMS_API ProtectedQueryOutput();
+    AWS_CLEANROOMS_API ProtectedQueryOutput() = default;
     AWS_CLEANROOMS_API ProtectedQueryOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API ProtectedQueryOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>If present, the output for a protected query with an `S3` output type.</p>
+     * <p>If present, the output for a protected query with an <code>S3</code> output
+     * type.</p>
      */
-    inline const ProtectedQueryS3Output& GetS3() const{ return m_s3; }
-
-    /**
-     * <p>If present, the output for a protected query with an `S3` output type.</p>
-     */
+    inline const ProtectedQueryS3Output& GetS3() const { return m_s3; }
     inline bool S3HasBeenSet() const { return m_s3HasBeenSet; }
+    template<typename S3T = ProtectedQueryS3Output>
+    void SetS3(S3T&& value) { m_s3HasBeenSet = true; m_s3 = std::forward<S3T>(value); }
+    template<typename S3T = ProtectedQueryS3Output>
+    ProtectedQueryOutput& WithS3(S3T&& value) { SetS3(std::forward<S3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If present, the output for a protected query with an `S3` output type.</p>
-     */
-    inline void SetS3(const ProtectedQueryS3Output& value) { m_s3HasBeenSet = true; m_s3 = value; }
-
-    /**
-     * <p>If present, the output for a protected query with an `S3` output type.</p>
-     */
-    inline void SetS3(ProtectedQueryS3Output&& value) { m_s3HasBeenSet = true; m_s3 = std::move(value); }
-
-    /**
-     * <p>If present, the output for a protected query with an `S3` output type.</p>
-     */
-    inline ProtectedQueryOutput& WithS3(const ProtectedQueryS3Output& value) { SetS3(value); return *this;}
-
-    /**
-     * <p>If present, the output for a protected query with an `S3` output type.</p>
-     */
-    inline ProtectedQueryOutput& WithS3(ProtectedQueryS3Output&& value) { SetS3(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of member Amazon Web Services account(s) that received the results
      * of the query. </p>
      */
-    inline const Aws::Vector<ProtectedQuerySingleMemberOutput>& GetMemberList() const{ return m_memberList; }
-
-    /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
-     */
+    inline const Aws::Vector<ProtectedQuerySingleMemberOutput>& GetMemberList() const { return m_memberList; }
     inline bool MemberListHasBeenSet() const { return m_memberListHasBeenSet; }
+    template<typename MemberListT = Aws::Vector<ProtectedQuerySingleMemberOutput>>
+    void SetMemberList(MemberListT&& value) { m_memberListHasBeenSet = true; m_memberList = std::forward<MemberListT>(value); }
+    template<typename MemberListT = Aws::Vector<ProtectedQuerySingleMemberOutput>>
+    ProtectedQueryOutput& WithMemberList(MemberListT&& value) { SetMemberList(std::forward<MemberListT>(value)); return *this;}
+    template<typename MemberListT = ProtectedQuerySingleMemberOutput>
+    ProtectedQueryOutput& AddMemberList(MemberListT&& value) { m_memberListHasBeenSet = true; m_memberList.emplace_back(std::forward<MemberListT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
+     * <p>Contains output information for protected queries that use a
+     * <code>distribute</code> output type. This output type lets you send query
+     * results to multiple locations - either to S3 or to collaboration members. </p>
+     *  <p> You can only use the <code>distribute</code> output type with the
+     * Spark analytics engine. </p> 
      */
-    inline void SetMemberList(const Aws::Vector<ProtectedQuerySingleMemberOutput>& value) { m_memberListHasBeenSet = true; m_memberList = value; }
-
-    /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
-     */
-    inline void SetMemberList(Aws::Vector<ProtectedQuerySingleMemberOutput>&& value) { m_memberListHasBeenSet = true; m_memberList = std::move(value); }
-
-    /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
-     */
-    inline ProtectedQueryOutput& WithMemberList(const Aws::Vector<ProtectedQuerySingleMemberOutput>& value) { SetMemberList(value); return *this;}
-
-    /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
-     */
-    inline ProtectedQueryOutput& WithMemberList(Aws::Vector<ProtectedQuerySingleMemberOutput>&& value) { SetMemberList(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
-     */
-    inline ProtectedQueryOutput& AddMemberList(const ProtectedQuerySingleMemberOutput& value) { m_memberListHasBeenSet = true; m_memberList.push_back(value); return *this; }
-
-    /**
-     * <p>The list of member Amazon Web Services account(s) that received the results
-     * of the query. </p>
-     */
-    inline ProtectedQueryOutput& AddMemberList(ProtectedQuerySingleMemberOutput&& value) { m_memberListHasBeenSet = true; m_memberList.push_back(std::move(value)); return *this; }
-
+    inline const ProtectedQueryDistributeOutput& GetDistribute() const { return m_distribute; }
+    inline bool DistributeHasBeenSet() const { return m_distributeHasBeenSet; }
+    template<typename DistributeT = ProtectedQueryDistributeOutput>
+    void SetDistribute(DistributeT&& value) { m_distributeHasBeenSet = true; m_distribute = std::forward<DistributeT>(value); }
+    template<typename DistributeT = ProtectedQueryDistributeOutput>
+    ProtectedQueryOutput& WithDistribute(DistributeT&& value) { SetDistribute(std::forward<DistributeT>(value)); return *this;}
+    ///@}
   private:
 
     ProtectedQueryS3Output m_s3;
@@ -126,6 +91,9 @@ namespace Model
 
     Aws::Vector<ProtectedQuerySingleMemberOutput> m_memberList;
     bool m_memberListHasBeenSet = false;
+
+    ProtectedQueryDistributeOutput m_distribute;
+    bool m_distributeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,25 +18,7 @@ namespace Glue
 namespace Model
 {
 
-SparkConnectorTarget::SparkConnectorTarget() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_connectionNameHasBeenSet(false),
-    m_connectorNameHasBeenSet(false),
-    m_connectionTypeHasBeenSet(false),
-    m_additionalOptionsHasBeenSet(false),
-    m_outputSchemasHasBeenSet(false)
-{
-}
-
-SparkConnectorTarget::SparkConnectorTarget(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_connectionNameHasBeenSet(false),
-    m_connectorNameHasBeenSet(false),
-    m_connectionTypeHasBeenSet(false),
-    m_additionalOptionsHasBeenSet(false),
-    m_outputSchemasHasBeenSet(false)
+SparkConnectorTarget::SparkConnectorTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,10 +28,8 @@ SparkConnectorTarget& SparkConnectorTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -59,28 +39,21 @@ SparkConnectorTarget& SparkConnectorTarget::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionName"))
   {
     m_connectionName = jsonValue.GetString("ConnectionName");
-
     m_connectionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectorName"))
   {
     m_connectorName = jsonValue.GetString("ConnectorName");
-
     m_connectorNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionType"))
   {
     m_connectionType = jsonValue.GetString("ConnectionType");
-
     m_connectionTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalOptions"))
   {
     Aws::Map<Aws::String, JsonView> additionalOptionsJsonMap = jsonValue.GetObject("AdditionalOptions").GetAllObjects();
@@ -90,7 +63,6 @@ SparkConnectorTarget& SparkConnectorTarget::operator =(JsonView jsonValue)
     }
     m_additionalOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputSchemas"))
   {
     Aws::Utils::Array<JsonView> outputSchemasJsonList = jsonValue.GetArray("OutputSchemas");
@@ -100,7 +72,6 @@ SparkConnectorTarget& SparkConnectorTarget::operator =(JsonView jsonValue)
     }
     m_outputSchemasHasBeenSet = true;
   }
-
   return *this;
 }
 

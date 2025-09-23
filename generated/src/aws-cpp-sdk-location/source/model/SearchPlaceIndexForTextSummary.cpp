@@ -18,37 +18,18 @@ namespace LocationService
 namespace Model
 {
 
-SearchPlaceIndexForTextSummary::SearchPlaceIndexForTextSummary() : 
-    m_biasPositionHasBeenSet(false),
-    m_dataSourceHasBeenSet(false),
-    m_filterBBoxHasBeenSet(false),
-    m_filterCategoriesHasBeenSet(false),
-    m_filterCountriesHasBeenSet(false),
-    m_languageHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_resultBBoxHasBeenSet(false),
-    m_textHasBeenSet(false)
-{
-}
-
-SearchPlaceIndexForTextSummary::SearchPlaceIndexForTextSummary(JsonView jsonValue) : 
-    m_biasPositionHasBeenSet(false),
-    m_dataSourceHasBeenSet(false),
-    m_filterBBoxHasBeenSet(false),
-    m_filterCategoriesHasBeenSet(false),
-    m_filterCountriesHasBeenSet(false),
-    m_languageHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_resultBBoxHasBeenSet(false),
-    m_textHasBeenSet(false)
+SearchPlaceIndexForTextSummary::SearchPlaceIndexForTextSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SearchPlaceIndexForTextSummary& SearchPlaceIndexForTextSummary::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("Text"))
+  {
+    m_text = jsonValue.GetString("Text");
+    m_textHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("BiasPosition"))
   {
     Aws::Utils::Array<JsonView> biasPositionJsonList = jsonValue.GetArray("BiasPosition");
@@ -58,14 +39,6 @@ SearchPlaceIndexForTextSummary& SearchPlaceIndexForTextSummary::operator =(JsonV
     }
     m_biasPositionHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("DataSource"))
-  {
-    m_dataSource = jsonValue.GetString("DataSource");
-
-    m_dataSourceHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("FilterBBox"))
   {
     Aws::Utils::Array<JsonView> filterBBoxJsonList = jsonValue.GetArray("FilterBBox");
@@ -75,17 +48,6 @@ SearchPlaceIndexForTextSummary& SearchPlaceIndexForTextSummary::operator =(JsonV
     }
     m_filterBBoxHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("FilterCategories"))
-  {
-    Aws::Utils::Array<JsonView> filterCategoriesJsonList = jsonValue.GetArray("FilterCategories");
-    for(unsigned filterCategoriesIndex = 0; filterCategoriesIndex < filterCategoriesJsonList.GetLength(); ++filterCategoriesIndex)
-    {
-      m_filterCategories.push_back(filterCategoriesJsonList[filterCategoriesIndex].AsString());
-    }
-    m_filterCategoriesHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("FilterCountries"))
   {
     Aws::Utils::Array<JsonView> filterCountriesJsonList = jsonValue.GetArray("FilterCountries");
@@ -95,21 +57,11 @@ SearchPlaceIndexForTextSummary& SearchPlaceIndexForTextSummary::operator =(JsonV
     }
     m_filterCountriesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Language"))
-  {
-    m_language = jsonValue.GetString("Language");
-
-    m_languageHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("MaxResults"))
   {
     m_maxResults = jsonValue.GetInteger("MaxResults");
-
     m_maxResultsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResultBBox"))
   {
     Aws::Utils::Array<JsonView> resultBBoxJsonList = jsonValue.GetArray("ResultBBox");
@@ -119,20 +71,37 @@ SearchPlaceIndexForTextSummary& SearchPlaceIndexForTextSummary::operator =(JsonV
     }
     m_resultBBoxHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Text"))
+  if(jsonValue.ValueExists("DataSource"))
   {
-    m_text = jsonValue.GetString("Text");
-
-    m_textHasBeenSet = true;
+    m_dataSource = jsonValue.GetString("DataSource");
+    m_dataSourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Language"))
+  {
+    m_language = jsonValue.GetString("Language");
+    m_languageHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("FilterCategories"))
+  {
+    Aws::Utils::Array<JsonView> filterCategoriesJsonList = jsonValue.GetArray("FilterCategories");
+    for(unsigned filterCategoriesIndex = 0; filterCategoriesIndex < filterCategoriesJsonList.GetLength(); ++filterCategoriesIndex)
+    {
+      m_filterCategories.push_back(filterCategoriesJsonList[filterCategoriesIndex].AsString());
+    }
+    m_filterCategoriesHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue SearchPlaceIndexForTextSummary::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_textHasBeenSet)
+  {
+   payload.WithString("Text", m_text);
+
+  }
 
   if(m_biasPositionHasBeenSet)
   {
@@ -142,12 +111,6 @@ JsonValue SearchPlaceIndexForTextSummary::Jsonize() const
      biasPositionJsonList[biasPositionIndex].AsDouble(m_biasPosition[biasPositionIndex]);
    }
    payload.WithArray("BiasPosition", std::move(biasPositionJsonList));
-
-  }
-
-  if(m_dataSourceHasBeenSet)
-  {
-   payload.WithString("DataSource", m_dataSource);
 
   }
 
@@ -162,17 +125,6 @@ JsonValue SearchPlaceIndexForTextSummary::Jsonize() const
 
   }
 
-  if(m_filterCategoriesHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> filterCategoriesJsonList(m_filterCategories.size());
-   for(unsigned filterCategoriesIndex = 0; filterCategoriesIndex < filterCategoriesJsonList.GetLength(); ++filterCategoriesIndex)
-   {
-     filterCategoriesJsonList[filterCategoriesIndex].AsString(m_filterCategories[filterCategoriesIndex]);
-   }
-   payload.WithArray("FilterCategories", std::move(filterCategoriesJsonList));
-
-  }
-
   if(m_filterCountriesHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> filterCountriesJsonList(m_filterCountries.size());
@@ -181,12 +133,6 @@ JsonValue SearchPlaceIndexForTextSummary::Jsonize() const
      filterCountriesJsonList[filterCountriesIndex].AsString(m_filterCountries[filterCountriesIndex]);
    }
    payload.WithArray("FilterCountries", std::move(filterCountriesJsonList));
-
-  }
-
-  if(m_languageHasBeenSet)
-  {
-   payload.WithString("Language", m_language);
 
   }
 
@@ -207,9 +153,26 @@ JsonValue SearchPlaceIndexForTextSummary::Jsonize() const
 
   }
 
-  if(m_textHasBeenSet)
+  if(m_dataSourceHasBeenSet)
   {
-   payload.WithString("Text", m_text);
+   payload.WithString("DataSource", m_dataSource);
+
+  }
+
+  if(m_languageHasBeenSet)
+  {
+   payload.WithString("Language", m_language);
+
+  }
+
+  if(m_filterCategoriesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> filterCategoriesJsonList(m_filterCategories.size());
+   for(unsigned filterCategoriesIndex = 0; filterCategoriesIndex < filterCategoriesJsonList.GetLength(); ++filterCategoriesIndex)
+   {
+     filterCategoriesJsonList[filterCategoriesIndex].AsString(m_filterCategories[filterCategoriesIndex]);
+   }
+   payload.WithArray("FilterCategories", std::move(filterCategoriesJsonList));
 
   }
 

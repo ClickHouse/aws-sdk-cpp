@@ -10,15 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-DescribeApplicationVersionsRequest::DescribeApplicationVersionsRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelsHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeApplicationVersionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,12 +21,19 @@ Aws::String DescribeApplicationVersionsRequest::SerializePayload() const
 
   if(m_versionLabelsHasBeenSet)
   {
-    unsigned versionLabelsCount = 1;
-    for(auto& item : m_versionLabels)
+    if (m_versionLabels.empty())
     {
-      ss << "VersionLabels.member." << versionLabelsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      versionLabelsCount++;
+      ss << "VersionLabels=&";
+    }
+    else
+    {
+      unsigned versionLabelsCount = 1;
+      for(auto& item : m_versionLabels)
+      {
+        ss << "VersionLabels.member." << versionLabelsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        versionLabelsCount++;
+      }
     }
   }
 

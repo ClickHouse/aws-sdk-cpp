@@ -18,17 +18,7 @@ namespace LookoutMetrics
 namespace Model
 {
 
-JsonFormatDescriptor::JsonFormatDescriptor() : 
-    m_fileCompression(JsonFileCompression::NOT_SET),
-    m_fileCompressionHasBeenSet(false),
-    m_charsetHasBeenSet(false)
-{
-}
-
-JsonFormatDescriptor::JsonFormatDescriptor(JsonView jsonValue) : 
-    m_fileCompression(JsonFileCompression::NOT_SET),
-    m_fileCompressionHasBeenSet(false),
-    m_charsetHasBeenSet(false)
+JsonFormatDescriptor::JsonFormatDescriptor(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ JsonFormatDescriptor& JsonFormatDescriptor::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FileCompression"))
   {
     m_fileCompression = JsonFileCompressionMapper::GetJsonFileCompressionForName(jsonValue.GetString("FileCompression"));
-
     m_fileCompressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Charset"))
   {
     m_charset = jsonValue.GetString("Charset");
-
     m_charsetHasBeenSet = true;
   }
-
   return *this;
 }
 

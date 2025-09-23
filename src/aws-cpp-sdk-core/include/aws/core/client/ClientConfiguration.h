@@ -14,7 +14,6 @@
 #include <aws/core/utils/Array.h>
 #include <aws/crt/Optional.h>
 #include <smithy/tracing/TelemetryProvider.h>
-#include <smithy/tracing/NoopTelemetryProvider.h>
 #include <memory>
 
 namespace Aws
@@ -57,12 +56,32 @@ namespace Aws
           ENABLE,
         };
 
+        /**
+         * Setting on whether to calculate a checksum for a payload only when it is required.
+         * i.e. when setting WHEN_REQUIRED the SDK will NOT calculate a checksum for an endpoint
+         * where it is supported but is NOT required.
+         */
+        enum class RequestChecksumCalculation {
+          WHEN_SUPPORTED,
+          WHEN_REQUIRED,
+        };
+
+        /**
+         * Setting on whether to client side response validate a content body that had a checksum
+         * associated with it. Response validation right now cannot be modeled as required but rely
+         * on an associated model configuration.
+         */
+        enum class ResponseChecksumValidation {
+          WHEN_SUPPORTED,
+          WHEN_REQUIRED,
+        };
+
         struct RequestCompressionConfig {
           UseRequestCompression useRequestCompression=UseRequestCompression::ENABLE;
           size_t requestMinCompressionSizeBytes = 10240;
         };
          /**
-         * This structure is used to provide initial configuration values to the default ClientConfiguration constructor for the following parameter(s):
+          * This structure is used to provide initial configuration values to the default ClientConfiguration constructor for the following parameter(s):
           * - disableIMDS
          */
         struct ClientConfigurationInitValues {
@@ -75,6 +94,34 @@ namespace Aws
          */
         struct AWS_CORE_API ClientConfiguration
         {
+            struct ProviderFactories
+            {
+                /**
+                 * Retry Strategy factory method. Default is DefaultRetryStrategy (i.e. exponential backoff).
+                 */
+                std::function<std::shared_ptr<RetryStrategy>()> retryStrategyCreateFn;
+                /**
+                 * Threading Executor factory method. Default creates a factory that creates DefaultExecutor
+                 *  (i.e. spawn a separate thread for each task) for backward compatibility reasons.
+                 *  Please switch to a better executor such as PooledThreadExecutor.
+                 */
+                std::function<std::shared_ptr<Utils::Threading::Executor>()> executorCreateFn;
+                /**
+                 * Rate Limiter factory for outgoing bandwidth. Default is wide-open.
+                 */
+                std::function<std::shared_ptr<Utils::RateLimits::RateLimiterInterface>()> writeRateLimiterCreateFn;
+                /**
+                 * Rate Limiter factory for incoming bandwidth. Default is wide-open.
+                 */
+                std::function<std::shared_ptr<Utils::RateLimits::RateLimiterInterface>()> readRateLimiterCreateFn;
+                /**
+                 * TelemetryProvider factory. Defaults to Noop provider.
+                 */
+                std::function<std::shared_ptr<smithy::components::tracing::TelemetryProvider>()> telemetryProviderCreateFn;
+
+                static ProviderFactories defaultFactories;
+            };
+
             ClientConfiguration();
 
             /**
@@ -98,6 +145,16 @@ namespace Aws
              * @param shouldDisableIMDS whether or not to disable IMDS calls.
              */
             explicit ClientConfiguration(bool useSmartDefaults, const char* defaultMode = "legacy", bool shouldDisableIMDS = false);
+
+            /**
+             * Add virtual method to allow use of dynamic_cast under inheritance.
+             */
+            virtual ~ClientConfiguration() = default;
+
+            /**
+             * Client configuration factory methods to init client utility classes such as Executor, Retry Strategy
+             */
+            ProviderFactories configFactories = ProviderFactories::defaultFactories;
 
             /**
              * User Agent string user for http calls. This is filled in for you in the constructor. Don't override this unless you have a really good reason.
@@ -160,9 +217,10 @@ namespace Aws
              */
             unsigned long lowSpeedLimit = 1;
             /**
-             * Strategy to use in case of failed requests. Default is DefaultRetryStrategy (i.e. exponential backoff)
+             * Strategy to use in case of failed requests. Default is DefaultRetryStrategy (i.e. exponential backoff).
+             * Provide retry strategy here or via a factory method.
              */
-            std::shared_ptr<RetryStrategy> retryStrategy;
+            std::shared_ptr<RetryStrategy> retryStrategy = nullptr;
             /**
              * Override the http endpoint used to talk to a service.
              */
@@ -222,9 +280,10 @@ namespace Aws
             */
             Aws::Utils::Array<Aws::String> nonProxyHosts;
             /**
-            * Threading Executor implementation. Default uses std::thread::detach()
-            */
-            std::shared_ptr<Aws::Utils::Threading::Executor> executor;
+             * Threading Executor implementation. Default uses std::thread::detach()
+             * Provide executor here or via a factory method.
+             */
+            std::shared_ptr<Aws::Utils::Threading::Executor> executor = nullptr;
             /**
              * If you need to test and want to get around TLS validation errors, do that here.
              * You probably shouldn't use this flag in a production scenario.
@@ -237,23 +296,44 @@ namespace Aws
              */
             Aws::String caPath;
             /**
+             * Same as caPath, but used when verifying an HTTPS proxy. 
+             * Used to set CURLOPT_PROXY_CAPATH in libcurl and proxy tls
+             * settings in crt HTTP client.
+             * Does nothing on windows.
+             */
+            Aws::String proxyCaPath;
+            /**
              * If you certificate file is different from the default, you can tell clients that
              * aren't using the default trust store where to find your ca file.
              * If you are on windows or apple, you likely don't want this.
              */
              Aws::String caFile;
             /**
-             * Rate Limiter implementation for outgoing bandwidth. Default is wide-open.
+             * Same as caFile, but used when verifying an HTTPS proxy. 
+             * Used to set CURLOPT_PROXY_CAINFO in libcurl and proxy tls
+             * settings in crt HTTP client.
+             * Does nothing on windows.
              */
-            std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> writeRateLimiter;
+            Aws::String proxyCaFile;
+            /**
+             * Rate Limiter implementation for outgoing bandwidth. Default is wide-open.
+             * Provide limiter here or via a factory method.
+             */
+            std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> writeRateLimiter = nullptr;
             /**
             * Rate Limiter implementation for incoming bandwidth. Default is wide-open.
+            * Provide limiter here or via a factory method.
             */
-            std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> readRateLimiter;
+            std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> readRateLimiter = nullptr;
             /**
              * Override the http implementation the default factory returns.
              */
             Aws::Http::TransferLibType httpLibOverride;
+            /**
+             * Configure low latency or low cpu consumption http client operation mode.
+             * Currently applies only to streaming APIs and libCurl. Defaults to LOW_LATENCY
+             */
+            Aws::Http::TransferLibPerformanceMode httpLibPerfMode = Http::TransferLibPerformanceMode::LOW_LATENCY;
             /**
              * Sets the behavior how http stack handles 30x redirect codes.
              */
@@ -298,6 +378,12 @@ namespace Aws
             Aws::Crt::Optional<bool> enableEndpointDiscovery;
 
             /**
+             * Enable http client (WinHTTP or CURL) traces.
+             * Defaults to false, it's an optional feature.
+             */
+            bool enableHttpClientTrace = false;
+
+            /**
              * profileName in config file that will be used by this object to resolve more configurations.
              */
             Aws::String profileName;
@@ -330,26 +416,144 @@ namespace Aws
             bool disableImdsV1 = false;
 
             /**
+             * AppId is an optional application specific identifier that can be set.
+             * When set it will be appended to the User-Agent header of every request
+             * in the form of App/{AppId}. This variable is sourced from environment
+             * variable AWS_SDK_UA_APP_ID or the shared config profile attribute sdk_ua_app_id.
+             * See https://docs.aws.amazon.com/sdkref/latest/guide/settings-reference.html for
+             * more information on environment variables and shared config settings.
+             */
+            Aws::String appId;
+
+            struct {
+              /**
+               * Setting on whether to calculate a checksum for a payload only when it is required.
+               * i.e. when setting WHEN_REQUIRED the SDK will NOT calculate a checksum for an endpoint
+               * where it is supported but is NOT required.
+               */
+              RequestChecksumCalculation requestChecksumCalculation = RequestChecksumCalculation::WHEN_SUPPORTED;
+
+              /**
+               * Setting on whether to client side response validate a content body that had a checksum
+               * associated with it. Response validation right now cannot be modeled as required but rely
+               * on an associated model configuration.
+               */
+              ResponseChecksumValidation responseChecksumValidation = ResponseChecksumValidation::WHEN_SUPPORTED;
+            } checksumConfig;
+
+            /**
              * A helper function to read config value from env variable or aws profile config
              */
-            static Aws::String LoadConfigFromEnvOrProfile(const Aws::String& envKey,
-                                                          const Aws::String& profile,
-                                                          const Aws::String& profileProperty,
-                                                          const Aws::Vector<Aws::String>& allowedValues,
+            static Aws::String LoadConfigFromEnvOrProfile(const Aws::String& envKey, const Aws::String& profile,
+                                                          const Aws::String& profileProperty, const Aws::Vector<Aws::String>& allowedValues,
                                                           const Aws::String& defaultValue);
 
             /**
-             * A wrapper for interfacing with telemetry functionality.
+             * A wrapper for interfacing with telemetry functionality. Defaults to Noop provider.
+             * Provide TelemetryProvider here or via a factory method.
              */
-            std::shared_ptr<smithy::components::tracing::TelemetryProvider> telemetryProvider =
-                smithy::components::tracing::NoopTelemetryProvider::CreateProvider();
+            std::shared_ptr<smithy::components::tracing::TelemetryProvider> telemetryProvider;
+
+            /**
+             * Configuration that is specifically used for the windows http client
+             */
+            struct WinHTTPOptions {
+              /**
+               * Sets the windows http client to use WINHTTP_NO_CLIENT_CERT_CONTEXT when connecting
+               * to a service, specifically only useful when disabling ssl verification and using
+               * a different type of authentication.
+               */
+              bool useAnonymousAuth = false;
+            } winHTTPOptions;
+
+          /**
+            * The AWS account ID. Used for account-based endpoint routing. An AWS account ID has a format like 111122223333.
+            * Account-based endpoint routing provides better request performance for some services.
+            *
+            * https://docs.aws.amazon.com/sdkref/latest/guide/feature-account-endpoints.html
+            */
+          Aws::String accountId;
+
+          /**
+           * This setting is used to turn off account-based endpoint routing if necessary, and bypass account-based rules.
+           * Can be the case sensitive string values "required", "disabled", or "preferred". Defaults to "preferred".
+           *
+           * https://docs.aws.amazon.com/sdkref/latest/guide/feature-account-endpoints.html
+           */
+          Aws::String accountIdEndpointMode = "preferred";
+          /**
+          * Configuration structure for credential providers in the AWS SDK.
+          * This structure allows passing configuration options to credential providers
+          * such as profile name and client configuration for HTTP requests made by
+          * credential providers that need to make network calls (e.g., InstanceProfileCredentialsProvider).
+          */
+          struct CredentialProviderConfiguration {
+            /**
+            * AWS profile name to use for credentials.
+            */
+            Aws::String profile;
+
+            /**
+             * Region to use for calls
+             */
+            Aws::String region;
+
+            /**
+             * IMDS configuration settings
+             */
+            struct {
+              /**
+               * Number of total attempts to make when retrieving data from IMDS. Default 1.
+               */
+              long metadataServiceNumAttempts = 1;
+              
+              /**
+               * Timeout in seconds when retrieving data from IMDS. Default 1.
+               */
+              long metadataServiceTimeout = 1;
+
+              /**
+               * Retry Strategy for IMDS
+               */
+              std::shared_ptr<RetryStrategy> imdsRetryStrategy;
+              bool disableImdsV1;
+              bool disableImds;
+            } imdsConfig;
+
+            /**
+             * Configuration for the STSCredentials provider
+             */
+            struct STSCredentialsCredentialProviderConfiguration {
+              STSCredentialsCredentialProviderConfiguration() = default;
+              STSCredentialsCredentialProviderConfiguration(const Aws::String& role, const Aws::String& session, const String& tokenFile)
+                  : roleArn(role), sessionName(session), tokenFilePath(tokenFile) {};
+              /**
+               * Arn of the role to assume by fetching credentials for
+               */
+              Aws::String roleArn;
+              /**
+               * Assumed role session identifier to be associated with the sourced credentials
+               */
+              Aws::String sessionName;
+              /**
+               * The OAuth 2.0 access token or OpenID Connect ID token
+               */
+              Aws::String tokenFilePath;
+
+              /**
+               * Time out for the credentials future call.
+               */
+              std::chrono::milliseconds retrieveCredentialsFutureTimeout = std::chrono::seconds(10);
+            } stsCredentialsProviderConfig;
+          } credentialProviderConfig;
         };
 
         /**
          * A helper function to initialize a retry strategy.
          * Default is DefaultRetryStrategy (i.e. exponential backoff)
          */
-        std::shared_ptr<RetryStrategy> InitRetryStrategy(Aws::String retryMode = "");
+        AWS_CORE_API std::shared_ptr<RetryStrategy> InitRetryStrategy(Aws::String retryMode = "");
+        AWS_CORE_API std::shared_ptr<RetryStrategy> InitRetryStrategy(int maxRetries, Aws::String retryMode = "");
 
         /**
          * A helper function to compute a user agent
@@ -358,6 +562,5 @@ namespace Aws
         AWS_CORE_API Aws::String ComputeUserAgentString(ClientConfiguration const * const pConfig = nullptr);
 
         AWS_CORE_API Aws::String FilterUserAgentToken(char const * const token);
-
     } // namespace Client
 } // namespace Aws

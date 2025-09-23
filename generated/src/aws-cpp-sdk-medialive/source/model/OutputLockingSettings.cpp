@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-OutputLockingSettings::OutputLockingSettings() : 
-    m_epochLockingSettingsHasBeenSet(false),
-    m_pipelineLockingSettingsHasBeenSet(false)
-{
-}
-
-OutputLockingSettings::OutputLockingSettings(JsonView jsonValue) : 
-    m_epochLockingSettingsHasBeenSet(false),
-    m_pipelineLockingSettingsHasBeenSet(false)
+OutputLockingSettings::OutputLockingSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ OutputLockingSettings& OutputLockingSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("epochLockingSettings"))
   {
     m_epochLockingSettings = jsonValue.GetObject("epochLockingSettings");
-
     m_epochLockingSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pipelineLockingSettings"))
   {
     m_pipelineLockingSettings = jsonValue.GetObject("pipelineLockingSettings");
-
     m_pipelineLockingSettingsHasBeenSet = true;
   }
-
   return *this;
 }
 

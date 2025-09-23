@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-PurchaseCapacityBlockRequest::PurchaseCapacityBlockRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_capacityBlockOfferingIdHasBeenSet(false),
-    m_instancePlatform(CapacityReservationInstancePlatform::NOT_SET),
-    m_instancePlatformHasBeenSet(false)
-{
-}
-
 Aws::String PurchaseCapacityBlockRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -46,7 +36,7 @@ Aws::String PurchaseCapacityBlockRequest::SerializePayload() const
 
   if(m_instancePlatformHasBeenSet)
   {
-    ss << "InstancePlatform=" << CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform) << "&";
+    ss << "InstancePlatform=" << StringUtils::URLEncode(CapacityReservationInstancePlatformMapper::GetNameForCapacityReservationInstancePlatform(m_instancePlatform)) << "&";
   }
 
   ss << "Version=2016-11-15";

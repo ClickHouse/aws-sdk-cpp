@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/GetResponseHeadersPolicyConfig2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,10 +14,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-GetResponseHeadersPolicyConfig2020_05_31Request::GetResponseHeadersPolicyConfig2020_05_31Request() : 
-    m_idHasBeenSet(false)
-{
-}
 
 Aws::String GetResponseHeadersPolicyConfig2020_05_31Request::SerializePayload() const
 {

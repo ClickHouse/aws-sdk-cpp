@@ -18,17 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchGetObjectAttributes::BatchGetObjectAttributes() : 
-    m_objectReferenceHasBeenSet(false),
-    m_schemaFacetHasBeenSet(false),
-    m_attributeNamesHasBeenSet(false)
-{
-}
-
-BatchGetObjectAttributes::BatchGetObjectAttributes(JsonView jsonValue) : 
-    m_objectReferenceHasBeenSet(false),
-    m_schemaFacetHasBeenSet(false),
-    m_attributeNamesHasBeenSet(false)
+BatchGetObjectAttributes::BatchGetObjectAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ BatchGetObjectAttributes& BatchGetObjectAttributes::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("ObjectReference"))
   {
     m_objectReference = jsonValue.GetObject("ObjectReference");
-
     m_objectReferenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaFacet"))
   {
     m_schemaFacet = jsonValue.GetObject("SchemaFacet");
-
     m_schemaFacetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttributeNames"))
   {
     Aws::Utils::Array<JsonView> attributeNamesJsonList = jsonValue.GetArray("AttributeNames");
@@ -58,7 +44,6 @@ BatchGetObjectAttributes& BatchGetObjectAttributes::operator =(JsonView jsonValu
     }
     m_attributeNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

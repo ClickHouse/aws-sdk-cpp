@@ -28,63 +28,37 @@ namespace Model
   class DeleteRepositoryResult
   {
   public:
-    AWS_CODEARTIFACT_API DeleteRepositoryResult();
+    AWS_CODEARTIFACT_API DeleteRepositoryResult() = default;
     AWS_CODEARTIFACT_API DeleteRepositoryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEARTIFACT_API DeleteRepositoryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> Information about the deleted repository after processing the request. </p>
      */
-    inline const RepositoryDescription& GetRepository() const{ return m_repository; }
+    inline const RepositoryDescription& GetRepository() const { return m_repository; }
+    template<typename RepositoryT = RepositoryDescription>
+    void SetRepository(RepositoryT&& value) { m_repositoryHasBeenSet = true; m_repository = std::forward<RepositoryT>(value); }
+    template<typename RepositoryT = RepositoryDescription>
+    DeleteRepositoryResult& WithRepository(RepositoryT&& value) { SetRepository(std::forward<RepositoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Information about the deleted repository after processing the request. </p>
-     */
-    inline void SetRepository(const RepositoryDescription& value) { m_repository = value; }
-
-    /**
-     * <p> Information about the deleted repository after processing the request. </p>
-     */
-    inline void SetRepository(RepositoryDescription&& value) { m_repository = std::move(value); }
-
-    /**
-     * <p> Information about the deleted repository after processing the request. </p>
-     */
-    inline DeleteRepositoryResult& WithRepository(const RepositoryDescription& value) { SetRepository(value); return *this;}
-
-    /**
-     * <p> Information about the deleted repository after processing the request. </p>
-     */
-    inline DeleteRepositoryResult& WithRepository(RepositoryDescription&& value) { SetRepository(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteRepositoryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteRepositoryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteRepositoryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteRepositoryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     RepositoryDescription m_repository;
+    bool m_repositoryHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

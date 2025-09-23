@@ -5,6 +5,7 @@
 
 #include <aws/ivs-realtime/model/AccessDeniedException.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
@@ -18,13 +19,7 @@ namespace ivsrealtime
 namespace Model
 {
 
-AccessDeniedException::AccessDeniedException() : 
-    m_exceptionMessageHasBeenSet(false)
-{
-}
-
-AccessDeniedException::AccessDeniedException(JsonView jsonValue) : 
-    m_exceptionMessageHasBeenSet(false)
+AccessDeniedException::AccessDeniedException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +29,8 @@ AccessDeniedException& AccessDeniedException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("exceptionMessage"))
   {
     m_exceptionMessage = jsonValue.GetString("exceptionMessage");
-
     m_exceptionMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

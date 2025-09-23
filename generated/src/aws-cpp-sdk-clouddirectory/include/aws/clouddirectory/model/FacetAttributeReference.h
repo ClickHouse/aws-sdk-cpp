@@ -33,125 +33,39 @@ namespace Model
   class FacetAttributeReference
   {
   public:
-    AWS_CLOUDDIRECTORY_API FacetAttributeReference();
+    AWS_CLOUDDIRECTORY_API FacetAttributeReference() = default;
     AWS_CLOUDDIRECTORY_API FacetAttributeReference(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API FacetAttributeReference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The target facet name that is associated with the facet reference. See <a
      * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
      * References</a> for more information.</p>
      */
-    inline const Aws::String& GetTargetFacetName() const{ return m_targetFacetName; }
-
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
+    inline const Aws::String& GetTargetFacetName() const { return m_targetFacetName; }
     inline bool TargetFacetNameHasBeenSet() const { return m_targetFacetNameHasBeenSet; }
+    template<typename TargetFacetNameT = Aws::String>
+    void SetTargetFacetName(TargetFacetNameT&& value) { m_targetFacetNameHasBeenSet = true; m_targetFacetName = std::forward<TargetFacetNameT>(value); }
+    template<typename TargetFacetNameT = Aws::String>
+    FacetAttributeReference& WithTargetFacetName(TargetFacetNameT&& value) { SetTargetFacetName(std::forward<TargetFacetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline void SetTargetFacetName(const Aws::String& value) { m_targetFacetNameHasBeenSet = true; m_targetFacetName = value; }
-
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline void SetTargetFacetName(Aws::String&& value) { m_targetFacetNameHasBeenSet = true; m_targetFacetName = std::move(value); }
-
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline void SetTargetFacetName(const char* value) { m_targetFacetNameHasBeenSet = true; m_targetFacetName.assign(value); }
-
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline FacetAttributeReference& WithTargetFacetName(const Aws::String& value) { SetTargetFacetName(value); return *this;}
-
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline FacetAttributeReference& WithTargetFacetName(Aws::String&& value) { SetTargetFacetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The target facet name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline FacetAttributeReference& WithTargetFacetName(const char* value) { SetTargetFacetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The target attribute name that is associated with the facet reference. See <a
      * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
      * References</a> for more information.</p>
      */
-    inline const Aws::String& GetTargetAttributeName() const{ return m_targetAttributeName; }
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
+    inline const Aws::String& GetTargetAttributeName() const { return m_targetAttributeName; }
     inline bool TargetAttributeNameHasBeenSet() const { return m_targetAttributeNameHasBeenSet; }
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline void SetTargetAttributeName(const Aws::String& value) { m_targetAttributeNameHasBeenSet = true; m_targetAttributeName = value; }
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline void SetTargetAttributeName(Aws::String&& value) { m_targetAttributeNameHasBeenSet = true; m_targetAttributeName = std::move(value); }
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline void SetTargetAttributeName(const char* value) { m_targetAttributeNameHasBeenSet = true; m_targetAttributeName.assign(value); }
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline FacetAttributeReference& WithTargetAttributeName(const Aws::String& value) { SetTargetAttributeName(value); return *this;}
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline FacetAttributeReference& WithTargetAttributeName(Aws::String&& value) { SetTargetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The target attribute name that is associated with the facet reference. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html">Attribute
-     * References</a> for more information.</p>
-     */
-    inline FacetAttributeReference& WithTargetAttributeName(const char* value) { SetTargetAttributeName(value); return *this;}
-
+    template<typename TargetAttributeNameT = Aws::String>
+    void SetTargetAttributeName(TargetAttributeNameT&& value) { m_targetAttributeNameHasBeenSet = true; m_targetAttributeName = std::forward<TargetAttributeNameT>(value); }
+    template<typename TargetAttributeNameT = Aws::String>
+    FacetAttributeReference& WithTargetAttributeName(TargetAttributeNameT&& value) { SetTargetAttributeName(std::forward<TargetAttributeNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_targetFacetName;

@@ -6,6 +6,7 @@
 #include <aws/s3control/model/CreateBucketRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,21 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateBucketRequest::CreateBucketRequest() : 
-    m_aCL(BucketCannedACL::NOT_SET),
-    m_aCLHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_createBucketConfigurationHasBeenSet(false),
-    m_grantFullControlHasBeenSet(false),
-    m_grantReadHasBeenSet(false),
-    m_grantReadACPHasBeenSet(false),
-    m_grantWriteHasBeenSet(false),
-    m_grantWriteACPHasBeenSet(false),
-    m_objectLockEnabledForBucket(false),
-    m_objectLockEnabledForBucketHasBeenSet(false),
-    m_outpostIdHasBeenSet(false)
-{
-}
 
 Aws::String CreateBucketRequest::SerializePayload() const
 {
@@ -51,7 +37,7 @@ Aws::Http::HeaderValueCollection CreateBucketRequest::GetRequestSpecificHeaders(
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_aCLHasBeenSet)
+  if(m_aCLHasBeenSet && m_aCL != BucketCannedACL::NOT_SET)
   {
     headers.emplace("x-amz-acl", BucketCannedACLMapper::GetNameForBucketCannedACL(m_aCL));
   }

@@ -28,68 +28,38 @@ namespace Model
   class StartMedicalScribeJobResult
   {
   public:
-    AWS_TRANSCRIBESERVICE_API StartMedicalScribeJobResult();
+    AWS_TRANSCRIBESERVICE_API StartMedicalScribeJobResult() = default;
     AWS_TRANSCRIBESERVICE_API StartMedicalScribeJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TRANSCRIBESERVICE_API StartMedicalScribeJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Provides detailed information about the current Medical Scribe job, including
      * job status and, if applicable, failure reason.</p>
      */
-    inline const MedicalScribeJob& GetMedicalScribeJob() const{ return m_medicalScribeJob; }
+    inline const MedicalScribeJob& GetMedicalScribeJob() const { return m_medicalScribeJob; }
+    template<typename MedicalScribeJobT = MedicalScribeJob>
+    void SetMedicalScribeJob(MedicalScribeJobT&& value) { m_medicalScribeJobHasBeenSet = true; m_medicalScribeJob = std::forward<MedicalScribeJobT>(value); }
+    template<typename MedicalScribeJobT = MedicalScribeJob>
+    StartMedicalScribeJobResult& WithMedicalScribeJob(MedicalScribeJobT&& value) { SetMedicalScribeJob(std::forward<MedicalScribeJobT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides detailed information about the current Medical Scribe job, including
-     * job status and, if applicable, failure reason.</p>
-     */
-    inline void SetMedicalScribeJob(const MedicalScribeJob& value) { m_medicalScribeJob = value; }
-
-    /**
-     * <p>Provides detailed information about the current Medical Scribe job, including
-     * job status and, if applicable, failure reason.</p>
-     */
-    inline void SetMedicalScribeJob(MedicalScribeJob&& value) { m_medicalScribeJob = std::move(value); }
-
-    /**
-     * <p>Provides detailed information about the current Medical Scribe job, including
-     * job status and, if applicable, failure reason.</p>
-     */
-    inline StartMedicalScribeJobResult& WithMedicalScribeJob(const MedicalScribeJob& value) { SetMedicalScribeJob(value); return *this;}
-
-    /**
-     * <p>Provides detailed information about the current Medical Scribe job, including
-     * job status and, if applicable, failure reason.</p>
-     */
-    inline StartMedicalScribeJobResult& WithMedicalScribeJob(MedicalScribeJob&& value) { SetMedicalScribeJob(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartMedicalScribeJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartMedicalScribeJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartMedicalScribeJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartMedicalScribeJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     MedicalScribeJob m_medicalScribeJob;
+    bool m_medicalScribeJobHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

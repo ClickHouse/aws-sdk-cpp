@@ -32,7 +32,7 @@ namespace Model
   class ServiceTypeDetail
   {
   public:
-    AWS_EC2_API ServiceTypeDetail();
+    AWS_EC2_API ServiceTypeDetail() = default;
     AWS_EC2_API ServiceTypeDetail(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ServiceTypeDetail& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,39 +40,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The type of service.</p>
      */
-    inline const ServiceType& GetServiceType() const{ return m_serviceType; }
-
-    /**
-     * <p>The type of service.</p>
-     */
+    inline ServiceType GetServiceType() const { return m_serviceType; }
     inline bool ServiceTypeHasBeenSet() const { return m_serviceTypeHasBeenSet; }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline void SetServiceType(const ServiceType& value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline void SetServiceType(ServiceType&& value) { m_serviceTypeHasBeenSet = true; m_serviceType = std::move(value); }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline ServiceTypeDetail& WithServiceType(const ServiceType& value) { SetServiceType(value); return *this;}
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline ServiceTypeDetail& WithServiceType(ServiceType&& value) { SetServiceType(std::move(value)); return *this;}
-
+    inline void SetServiceType(ServiceType value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
+    inline ServiceTypeDetail& WithServiceType(ServiceType value) { SetServiceType(value); return *this;}
+    ///@}
   private:
 
-    ServiceType m_serviceType;
+    ServiceType m_serviceType{ServiceType::NOT_SET};
     bool m_serviceTypeHasBeenSet = false;
   };
 

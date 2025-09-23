@@ -33,82 +33,37 @@ namespace Model
   class DatabasePreferences
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API DatabasePreferences();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API DatabasePreferences() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API DatabasePreferences(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API DatabasePreferences& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies whether you're interested in self-managed databases or databases
      * managed by AWS. </p>
      */
-    inline const DatabaseManagementPreference& GetDatabaseManagementPreference() const{ return m_databaseManagementPreference; }
-
-    /**
-     * <p> Specifies whether you're interested in self-managed databases or databases
-     * managed by AWS. </p>
-     */
+    inline DatabaseManagementPreference GetDatabaseManagementPreference() const { return m_databaseManagementPreference; }
     inline bool DatabaseManagementPreferenceHasBeenSet() const { return m_databaseManagementPreferenceHasBeenSet; }
+    inline void SetDatabaseManagementPreference(DatabaseManagementPreference value) { m_databaseManagementPreferenceHasBeenSet = true; m_databaseManagementPreference = value; }
+    inline DatabasePreferences& WithDatabaseManagementPreference(DatabaseManagementPreference value) { SetDatabaseManagementPreference(value); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies whether you're interested in self-managed databases or databases
-     * managed by AWS. </p>
-     */
-    inline void SetDatabaseManagementPreference(const DatabaseManagementPreference& value) { m_databaseManagementPreferenceHasBeenSet = true; m_databaseManagementPreference = value; }
-
-    /**
-     * <p> Specifies whether you're interested in self-managed databases or databases
-     * managed by AWS. </p>
-     */
-    inline void SetDatabaseManagementPreference(DatabaseManagementPreference&& value) { m_databaseManagementPreferenceHasBeenSet = true; m_databaseManagementPreference = std::move(value); }
-
-    /**
-     * <p> Specifies whether you're interested in self-managed databases or databases
-     * managed by AWS. </p>
-     */
-    inline DatabasePreferences& WithDatabaseManagementPreference(const DatabaseManagementPreference& value) { SetDatabaseManagementPreference(value); return *this;}
-
-    /**
-     * <p> Specifies whether you're interested in self-managed databases or databases
-     * managed by AWS. </p>
-     */
-    inline DatabasePreferences& WithDatabaseManagementPreference(DatabaseManagementPreference&& value) { SetDatabaseManagementPreference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies your preferred migration path. </p>
      */
-    inline const DatabaseMigrationPreference& GetDatabaseMigrationPreference() const{ return m_databaseMigrationPreference; }
-
-    /**
-     * <p> Specifies your preferred migration path. </p>
-     */
+    inline const DatabaseMigrationPreference& GetDatabaseMigrationPreference() const { return m_databaseMigrationPreference; }
     inline bool DatabaseMigrationPreferenceHasBeenSet() const { return m_databaseMigrationPreferenceHasBeenSet; }
-
-    /**
-     * <p> Specifies your preferred migration path. </p>
-     */
-    inline void SetDatabaseMigrationPreference(const DatabaseMigrationPreference& value) { m_databaseMigrationPreferenceHasBeenSet = true; m_databaseMigrationPreference = value; }
-
-    /**
-     * <p> Specifies your preferred migration path. </p>
-     */
-    inline void SetDatabaseMigrationPreference(DatabaseMigrationPreference&& value) { m_databaseMigrationPreferenceHasBeenSet = true; m_databaseMigrationPreference = std::move(value); }
-
-    /**
-     * <p> Specifies your preferred migration path. </p>
-     */
-    inline DatabasePreferences& WithDatabaseMigrationPreference(const DatabaseMigrationPreference& value) { SetDatabaseMigrationPreference(value); return *this;}
-
-    /**
-     * <p> Specifies your preferred migration path. </p>
-     */
-    inline DatabasePreferences& WithDatabaseMigrationPreference(DatabaseMigrationPreference&& value) { SetDatabaseMigrationPreference(std::move(value)); return *this;}
-
+    template<typename DatabaseMigrationPreferenceT = DatabaseMigrationPreference>
+    void SetDatabaseMigrationPreference(DatabaseMigrationPreferenceT&& value) { m_databaseMigrationPreferenceHasBeenSet = true; m_databaseMigrationPreference = std::forward<DatabaseMigrationPreferenceT>(value); }
+    template<typename DatabaseMigrationPreferenceT = DatabaseMigrationPreference>
+    DatabasePreferences& WithDatabaseMigrationPreference(DatabaseMigrationPreferenceT&& value) { SetDatabaseMigrationPreference(std::forward<DatabaseMigrationPreferenceT>(value)); return *this;}
+    ///@}
   private:
 
-    DatabaseManagementPreference m_databaseManagementPreference;
+    DatabaseManagementPreference m_databaseManagementPreference{DatabaseManagementPreference::NOT_SET};
     bool m_databaseManagementPreferenceHasBeenSet = false;
 
     DatabaseMigrationPreference m_databaseMigrationPreference;

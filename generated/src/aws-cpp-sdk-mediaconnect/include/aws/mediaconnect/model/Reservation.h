@@ -28,580 +28,195 @@ namespace Model
 {
 
   /**
-   * A pricing agreement for a discounted rate for a specific outbound bandwidth that
-   * your MediaConnect account will use each month over a specific time period. The
-   * discounted rate in the reservation applies to outbound bandwidth for all flows
-   * from your account until your account reaches the amount of bandwidth in your
-   * reservation. If you use more outbound bandwidth than the agreed upon amount in a
-   * single month, the overage is charged at the on-demand rate.<p><h3>See Also:</h3>
-   * <a
+   * <p> A pricing agreement for a discounted rate for a specific outbound bandwidth
+   * that your MediaConnect account will use each month over a specific time period.
+   * The discounted rate in the reservation applies to outbound bandwidth for all
+   * flows from your account until your account reaches the amount of bandwidth in
+   * your reservation. If you use more outbound bandwidth than the agreed upon amount
+   * in a single month, the overage is charged at the on-demand rate.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/Reservation">AWS
    * API Reference</a></p>
    */
   class Reservation
   {
   public:
-    AWS_MEDIACONNECT_API Reservation();
+    AWS_MEDIACONNECT_API Reservation() = default;
     AWS_MEDIACONNECT_API Reservation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Reservation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
+     * <p> The type of currency that is used for billing. The currencyCode used for
+     * your reservation is US dollars.</p>
      */
-    inline const Aws::String& GetCurrencyCode() const{ return m_currencyCode; }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
-     */
+    inline const Aws::String& GetCurrencyCode() const { return m_currencyCode; }
     inline bool CurrencyCodeHasBeenSet() const { return m_currencyCodeHasBeenSet; }
+    template<typename CurrencyCodeT = Aws::String>
+    void SetCurrencyCode(CurrencyCodeT&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::forward<CurrencyCodeT>(value); }
+    template<typename CurrencyCodeT = Aws::String>
+    Reservation& WithCurrencyCode(CurrencyCodeT&& value) { SetCurrencyCode(std::forward<CurrencyCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
+     * <p> The length of time that this reservation is active. MediaConnect defines
+     * this value in the offering.</p>
      */
-    inline void SetCurrencyCode(const Aws::String& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
-     */
-    inline void SetCurrencyCode(Aws::String&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::move(value); }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
-     */
-    inline void SetCurrencyCode(const char* value) { m_currencyCodeHasBeenSet = true; m_currencyCode.assign(value); }
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
-     */
-    inline Reservation& WithCurrencyCode(const Aws::String& value) { SetCurrencyCode(value); return *this;}
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
-     */
-    inline Reservation& WithCurrencyCode(Aws::String&& value) { SetCurrencyCode(std::move(value)); return *this;}
-
-    /**
-     * The type of currency that is used for billing. The currencyCode used for your
-     * reservation is US dollars.
-     */
-    inline Reservation& WithCurrencyCode(const char* value) { SetCurrencyCode(value); return *this;}
-
-
-    /**
-     * The length of time that this reservation is active. MediaConnect defines this
-     * value in the offering.
-     */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * The length of time that this reservation is active. MediaConnect defines this
-     * value in the offering.
-     */
+    inline int GetDuration() const { return m_duration; }
     inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
-
-    /**
-     * The length of time that this reservation is active. MediaConnect defines this
-     * value in the offering.
-     */
     inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
-
-    /**
-     * The length of time that this reservation is active. MediaConnect defines this
-     * value in the offering.
-     */
     inline Reservation& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * The unit of measurement for the duration of the reservation. MediaConnect
-     * defines this value in the offering.
+     * <p> The unit of measurement for the duration of the reservation. MediaConnect
+     * defines this value in the offering.</p>
      */
-    inline const DurationUnits& GetDurationUnits() const{ return m_durationUnits; }
-
-    /**
-     * The unit of measurement for the duration of the reservation. MediaConnect
-     * defines this value in the offering.
-     */
+    inline DurationUnits GetDurationUnits() const { return m_durationUnits; }
     inline bool DurationUnitsHasBeenSet() const { return m_durationUnitsHasBeenSet; }
+    inline void SetDurationUnits(DurationUnits value) { m_durationUnitsHasBeenSet = true; m_durationUnits = value; }
+    inline Reservation& WithDurationUnits(DurationUnits value) { SetDurationUnits(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The unit of measurement for the duration of the reservation. MediaConnect
-     * defines this value in the offering.
+     * <p> The day and time that this reservation expires. This value is calculated
+     * based on the start date and time that you set and the offering's duration.</p>
      */
-    inline void SetDurationUnits(const DurationUnits& value) { m_durationUnitsHasBeenSet = true; m_durationUnits = value; }
-
-    /**
-     * The unit of measurement for the duration of the reservation. MediaConnect
-     * defines this value in the offering.
-     */
-    inline void SetDurationUnits(DurationUnits&& value) { m_durationUnitsHasBeenSet = true; m_durationUnits = std::move(value); }
-
-    /**
-     * The unit of measurement for the duration of the reservation. MediaConnect
-     * defines this value in the offering.
-     */
-    inline Reservation& WithDurationUnits(const DurationUnits& value) { SetDurationUnits(value); return *this;}
-
-    /**
-     * The unit of measurement for the duration of the reservation. MediaConnect
-     * defines this value in the offering.
-     */
-    inline Reservation& WithDurationUnits(DurationUnits&& value) { SetDurationUnits(std::move(value)); return *this;}
-
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
-    inline const Aws::String& GetEnd() const{ return m_end; }
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
+    inline const Aws::String& GetEnd() const { return m_end; }
     inline bool EndHasBeenSet() const { return m_endHasBeenSet; }
+    template<typename EndT = Aws::String>
+    void SetEnd(EndT&& value) { m_endHasBeenSet = true; m_end = std::forward<EndT>(value); }
+    template<typename EndT = Aws::String>
+    Reservation& WithEnd(EndT&& value) { SetEnd(std::forward<EndT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
+     * <p> The Amazon Resource Name (ARN) that MediaConnect assigns to the
+     * offering.</p>
      */
-    inline void SetEnd(const Aws::String& value) { m_endHasBeenSet = true; m_end = value; }
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
-    inline void SetEnd(Aws::String&& value) { m_endHasBeenSet = true; m_end = std::move(value); }
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
-    inline void SetEnd(const char* value) { m_endHasBeenSet = true; m_end.assign(value); }
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
-    inline Reservation& WithEnd(const Aws::String& value) { SetEnd(value); return *this;}
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
-    inline Reservation& WithEnd(Aws::String&& value) { SetEnd(std::move(value)); return *this;}
-
-    /**
-     * The day and time that this reservation expires. This value is calculated based
-     * on the start date and time that you set and the offering's duration.
-     */
-    inline Reservation& WithEnd(const char* value) { SetEnd(value); return *this;}
-
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline const Aws::String& GetOfferingArn() const{ return m_offeringArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
+    inline const Aws::String& GetOfferingArn() const { return m_offeringArn; }
     inline bool OfferingArnHasBeenSet() const { return m_offeringArnHasBeenSet; }
+    template<typename OfferingArnT = Aws::String>
+    void SetOfferingArn(OfferingArnT&& value) { m_offeringArnHasBeenSet = true; m_offeringArn = std::forward<OfferingArnT>(value); }
+    template<typename OfferingArnT = Aws::String>
+    Reservation& WithOfferingArn(OfferingArnT&& value) { SetOfferingArn(std::forward<OfferingArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
+     * <p> A description of the offering. MediaConnect defines this value in the
+     * offering.</p>
      */
-    inline void SetOfferingArn(const Aws::String& value) { m_offeringArnHasBeenSet = true; m_offeringArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline void SetOfferingArn(Aws::String&& value) { m_offeringArnHasBeenSet = true; m_offeringArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline void SetOfferingArn(const char* value) { m_offeringArnHasBeenSet = true; m_offeringArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline Reservation& WithOfferingArn(const Aws::String& value) { SetOfferingArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline Reservation& WithOfferingArn(Aws::String&& value) { SetOfferingArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the offering.
-     */
-    inline Reservation& WithOfferingArn(const char* value) { SetOfferingArn(value); return *this;}
-
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
-    inline const Aws::String& GetOfferingDescription() const{ return m_offeringDescription; }
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
+    inline const Aws::String& GetOfferingDescription() const { return m_offeringDescription; }
     inline bool OfferingDescriptionHasBeenSet() const { return m_offeringDescriptionHasBeenSet; }
+    template<typename OfferingDescriptionT = Aws::String>
+    void SetOfferingDescription(OfferingDescriptionT&& value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription = std::forward<OfferingDescriptionT>(value); }
+    template<typename OfferingDescriptionT = Aws::String>
+    Reservation& WithOfferingDescription(OfferingDescriptionT&& value) { SetOfferingDescription(std::forward<OfferingDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A description of the offering. MediaConnect defines this value in the offering.
+     * <p> The cost of a single unit. This value, in combination with priceUnits, makes
+     * up the rate. MediaConnect defines this value in the offering.</p>
      */
-    inline void SetOfferingDescription(const Aws::String& value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription = value; }
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
-    inline void SetOfferingDescription(Aws::String&& value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription = std::move(value); }
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
-    inline void SetOfferingDescription(const char* value) { m_offeringDescriptionHasBeenSet = true; m_offeringDescription.assign(value); }
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
-    inline Reservation& WithOfferingDescription(const Aws::String& value) { SetOfferingDescription(value); return *this;}
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
-    inline Reservation& WithOfferingDescription(Aws::String&& value) { SetOfferingDescription(std::move(value)); return *this;}
-
-    /**
-     * A description of the offering. MediaConnect defines this value in the offering.
-     */
-    inline Reservation& WithOfferingDescription(const char* value) { SetOfferingDescription(value); return *this;}
-
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline const Aws::String& GetPricePerUnit() const{ return m_pricePerUnit; }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
+    inline const Aws::String& GetPricePerUnit() const { return m_pricePerUnit; }
     inline bool PricePerUnitHasBeenSet() const { return m_pricePerUnitHasBeenSet; }
+    template<typename PricePerUnitT = Aws::String>
+    void SetPricePerUnit(PricePerUnitT&& value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit = std::forward<PricePerUnitT>(value); }
+    template<typename PricePerUnitT = Aws::String>
+    Reservation& WithPricePerUnit(PricePerUnitT&& value) { SetPricePerUnit(std::forward<PricePerUnitT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline void SetPricePerUnit(const Aws::String& value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit = value; }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline void SetPricePerUnit(Aws::String&& value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit = std::move(value); }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline void SetPricePerUnit(const char* value) { m_pricePerUnitHasBeenSet = true; m_pricePerUnit.assign(value); }
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline Reservation& WithPricePerUnit(const Aws::String& value) { SetPricePerUnit(value); return *this;}
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline Reservation& WithPricePerUnit(Aws::String&& value) { SetPricePerUnit(std::move(value)); return *this;}
-
-    /**
-     * The cost of a single unit. This value, in combination with priceUnits, makes up
-     * the rate. MediaConnect defines this value in the offering.
-     */
-    inline Reservation& WithPricePerUnit(const char* value) { SetPricePerUnit(value); return *this;}
-
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
+     * <p> The unit of measurement that is used for billing. This value, in combination
      * with pricePerUnit, makes up the rate. MediaConnect defines this value in the
-     * offering.
+     * offering.</p>
      */
-    inline const PriceUnits& GetPriceUnits() const{ return m_priceUnits; }
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate. MediaConnect defines this value in the
-     * offering.
-     */
+    inline PriceUnits GetPriceUnits() const { return m_priceUnits; }
     inline bool PriceUnitsHasBeenSet() const { return m_priceUnitsHasBeenSet; }
+    inline void SetPriceUnits(PriceUnits value) { m_priceUnitsHasBeenSet = true; m_priceUnits = value; }
+    inline Reservation& WithPriceUnits(PriceUnits value) { SetPriceUnits(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate. MediaConnect defines this value in the
-     * offering.
+     * <p> The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation
+     * when you purchase an offering.</p>
      */
-    inline void SetPriceUnits(const PriceUnits& value) { m_priceUnitsHasBeenSet = true; m_priceUnits = value; }
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate. MediaConnect defines this value in the
-     * offering.
-     */
-    inline void SetPriceUnits(PriceUnits&& value) { m_priceUnitsHasBeenSet = true; m_priceUnits = std::move(value); }
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate. MediaConnect defines this value in the
-     * offering.
-     */
-    inline Reservation& WithPriceUnits(const PriceUnits& value) { SetPriceUnits(value); return *this;}
-
-    /**
-     * The unit of measurement that is used for billing. This value, in combination
-     * with pricePerUnit, makes up the rate. MediaConnect defines this value in the
-     * offering.
-     */
-    inline Reservation& WithPriceUnits(PriceUnits&& value) { SetPriceUnits(std::move(value)); return *this;}
-
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
-    inline const Aws::String& GetReservationArn() const{ return m_reservationArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
+    inline const Aws::String& GetReservationArn() const { return m_reservationArn; }
     inline bool ReservationArnHasBeenSet() const { return m_reservationArnHasBeenSet; }
+    template<typename ReservationArnT = Aws::String>
+    void SetReservationArn(ReservationArnT&& value) { m_reservationArnHasBeenSet = true; m_reservationArn = std::forward<ReservationArnT>(value); }
+    template<typename ReservationArnT = Aws::String>
+    Reservation& WithReservationArn(ReservationArnT&& value) { SetReservationArn(std::forward<ReservationArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
+     * <p> The name that you assigned to the reservation when you purchased the
+     * offering.</p>
      */
-    inline void SetReservationArn(const Aws::String& value) { m_reservationArnHasBeenSet = true; m_reservationArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
-    inline void SetReservationArn(Aws::String&& value) { m_reservationArnHasBeenSet = true; m_reservationArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
-    inline void SetReservationArn(const char* value) { m_reservationArnHasBeenSet = true; m_reservationArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
-    inline Reservation& WithReservationArn(const Aws::String& value) { SetReservationArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
-    inline Reservation& WithReservationArn(Aws::String&& value) { SetReservationArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that MediaConnect assigns to the reservation when
-     * you purchase an offering.
-     */
-    inline Reservation& WithReservationArn(const char* value) { SetReservationArn(value); return *this;}
-
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
-    inline const Aws::String& GetReservationName() const{ return m_reservationName; }
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
+    inline const Aws::String& GetReservationName() const { return m_reservationName; }
     inline bool ReservationNameHasBeenSet() const { return m_reservationNameHasBeenSet; }
+    template<typename ReservationNameT = Aws::String>
+    void SetReservationName(ReservationNameT&& value) { m_reservationNameHasBeenSet = true; m_reservationName = std::forward<ReservationNameT>(value); }
+    template<typename ReservationNameT = Aws::String>
+    Reservation& WithReservationName(ReservationNameT&& value) { SetReservationName(std::forward<ReservationNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The name that you assigned to the reservation when you purchased the offering.
+     * <p> The status of your reservation.</p>
      */
-    inline void SetReservationName(const Aws::String& value) { m_reservationNameHasBeenSet = true; m_reservationName = value; }
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
-    inline void SetReservationName(Aws::String&& value) { m_reservationNameHasBeenSet = true; m_reservationName = std::move(value); }
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
-    inline void SetReservationName(const char* value) { m_reservationNameHasBeenSet = true; m_reservationName.assign(value); }
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
-    inline Reservation& WithReservationName(const Aws::String& value) { SetReservationName(value); return *this;}
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
-    inline Reservation& WithReservationName(Aws::String&& value) { SetReservationName(std::move(value)); return *this;}
-
-    /**
-     * The name that you assigned to the reservation when you purchased the offering.
-     */
-    inline Reservation& WithReservationName(const char* value) { SetReservationName(value); return *this;}
-
-
-    /**
-     * The status of your reservation.
-     */
-    inline const ReservationState& GetReservationState() const{ return m_reservationState; }
-
-    /**
-     * The status of your reservation.
-     */
+    inline ReservationState GetReservationState() const { return m_reservationState; }
     inline bool ReservationStateHasBeenSet() const { return m_reservationStateHasBeenSet; }
+    inline void SetReservationState(ReservationState value) { m_reservationStateHasBeenSet = true; m_reservationState = value; }
+    inline Reservation& WithReservationState(ReservationState value) { SetReservationState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The status of your reservation.
+     * <p> A definition of the amount of outbound bandwidth that you would be reserving
+     * if you purchase the offering. MediaConnect defines the values that make up the
+     * resourceSpecification in the offering.</p>
      */
-    inline void SetReservationState(const ReservationState& value) { m_reservationStateHasBeenSet = true; m_reservationState = value; }
-
-    /**
-     * The status of your reservation.
-     */
-    inline void SetReservationState(ReservationState&& value) { m_reservationStateHasBeenSet = true; m_reservationState = std::move(value); }
-
-    /**
-     * The status of your reservation.
-     */
-    inline Reservation& WithReservationState(const ReservationState& value) { SetReservationState(value); return *this;}
-
-    /**
-     * The status of your reservation.
-     */
-    inline Reservation& WithReservationState(ReservationState&& value) { SetReservationState(std::move(value)); return *this;}
-
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering. MediaConnect defines the values that make up the
-     * resourceSpecification in the offering.
-     */
-    inline const ResourceSpecification& GetResourceSpecification() const{ return m_resourceSpecification; }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering. MediaConnect defines the values that make up the
-     * resourceSpecification in the offering.
-     */
+    inline const ResourceSpecification& GetResourceSpecification() const { return m_resourceSpecification; }
     inline bool ResourceSpecificationHasBeenSet() const { return m_resourceSpecificationHasBeenSet; }
+    template<typename ResourceSpecificationT = ResourceSpecification>
+    void SetResourceSpecification(ResourceSpecificationT&& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = std::forward<ResourceSpecificationT>(value); }
+    template<typename ResourceSpecificationT = ResourceSpecification>
+    Reservation& WithResourceSpecification(ResourceSpecificationT&& value) { SetResourceSpecification(std::forward<ResourceSpecificationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering. MediaConnect defines the values that make up the
-     * resourceSpecification in the offering.
+     * <p> The day and time that the reservation becomes active. You set this value
+     * when you purchase the offering.</p>
      */
-    inline void SetResourceSpecification(const ResourceSpecification& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = value; }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering. MediaConnect defines the values that make up the
-     * resourceSpecification in the offering.
-     */
-    inline void SetResourceSpecification(ResourceSpecification&& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = std::move(value); }
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering. MediaConnect defines the values that make up the
-     * resourceSpecification in the offering.
-     */
-    inline Reservation& WithResourceSpecification(const ResourceSpecification& value) { SetResourceSpecification(value); return *this;}
-
-    /**
-     * A definition of the amount of outbound bandwidth that you would be reserving if
-     * you purchase the offering. MediaConnect defines the values that make up the
-     * resourceSpecification in the offering.
-     */
-    inline Reservation& WithResourceSpecification(ResourceSpecification&& value) { SetResourceSpecification(std::move(value)); return *this;}
-
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline const Aws::String& GetStart() const{ return m_start; }
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
+    inline const Aws::String& GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline void SetStart(const Aws::String& value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline void SetStart(Aws::String&& value) { m_startHasBeenSet = true; m_start = std::move(value); }
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline void SetStart(const char* value) { m_startHasBeenSet = true; m_start.assign(value); }
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline Reservation& WithStart(const Aws::String& value) { SetStart(value); return *this;}
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline Reservation& WithStart(Aws::String&& value) { SetStart(std::move(value)); return *this;}
-
-    /**
-     * The day and time that the reservation becomes active. You set this value when
-     * you purchase the offering.
-     */
-    inline Reservation& WithStart(const char* value) { SetStart(value); return *this;}
-
+    template<typename StartT = Aws::String>
+    void SetStart(StartT&& value) { m_startHasBeenSet = true; m_start = std::forward<StartT>(value); }
+    template<typename StartT = Aws::String>
+    Reservation& WithStart(StartT&& value) { SetStart(std::forward<StartT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_currencyCode;
     bool m_currencyCodeHasBeenSet = false;
 
-    int m_duration;
+    int m_duration{0};
     bool m_durationHasBeenSet = false;
 
-    DurationUnits m_durationUnits;
+    DurationUnits m_durationUnits{DurationUnits::NOT_SET};
     bool m_durationUnitsHasBeenSet = false;
 
     Aws::String m_end;
@@ -616,7 +231,7 @@ namespace Model
     Aws::String m_pricePerUnit;
     bool m_pricePerUnitHasBeenSet = false;
 
-    PriceUnits m_priceUnits;
+    PriceUnits m_priceUnits{PriceUnits::NOT_SET};
     bool m_priceUnitsHasBeenSet = false;
 
     Aws::String m_reservationArn;
@@ -625,7 +240,7 @@ namespace Model
     Aws::String m_reservationName;
     bool m_reservationNameHasBeenSet = false;
 
-    ReservationState m_reservationState;
+    ReservationState m_reservationState{ReservationState::NOT_SET};
     bool m_reservationStateHasBeenSet = false;
 
     ResourceSpecification m_resourceSpecification;

@@ -32,117 +32,56 @@ namespace Model
   class Landmark
   {
   public:
-    AWS_REKOGNITION_API Landmark();
+    AWS_REKOGNITION_API Landmark() = default;
     AWS_REKOGNITION_API Landmark(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Landmark& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Type of landmark.</p>
      */
-    inline const LandmarkType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Type of landmark.</p>
-     */
+    inline LandmarkType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(LandmarkType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Landmark& WithType(LandmarkType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Type of landmark.</p>
-     */
-    inline void SetType(const LandmarkType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Type of landmark.</p>
-     */
-    inline void SetType(LandmarkType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Type of landmark.</p>
-     */
-    inline Landmark& WithType(const LandmarkType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Type of landmark.</p>
-     */
-    inline Landmark& WithType(LandmarkType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The x-coordinate of the landmark expressed as a ratio of the width of the
      * image. The x-coordinate is measured from the left-side of the image. For
      * example, if the image is 700 pixels wide and the x-coordinate of the landmark is
      * at 350 pixels, this value is 0.5. </p>
      */
-    inline double GetX() const{ return m_x; }
-
-    /**
-     * <p>The x-coordinate of the landmark expressed as a ratio of the width of the
-     * image. The x-coordinate is measured from the left-side of the image. For
-     * example, if the image is 700 pixels wide and the x-coordinate of the landmark is
-     * at 350 pixels, this value is 0.5. </p>
-     */
+    inline double GetX() const { return m_x; }
     inline bool XHasBeenSet() const { return m_xHasBeenSet; }
-
-    /**
-     * <p>The x-coordinate of the landmark expressed as a ratio of the width of the
-     * image. The x-coordinate is measured from the left-side of the image. For
-     * example, if the image is 700 pixels wide and the x-coordinate of the landmark is
-     * at 350 pixels, this value is 0.5. </p>
-     */
     inline void SetX(double value) { m_xHasBeenSet = true; m_x = value; }
-
-    /**
-     * <p>The x-coordinate of the landmark expressed as a ratio of the width of the
-     * image. The x-coordinate is measured from the left-side of the image. For
-     * example, if the image is 700 pixels wide and the x-coordinate of the landmark is
-     * at 350 pixels, this value is 0.5. </p>
-     */
     inline Landmark& WithX(double value) { SetX(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The y-coordinate of the landmark expressed as a ratio of the height of the
      * image. The y-coordinate is measured from the top of the image. For example, if
      * the image height is 200 pixels and the y-coordinate of the landmark is at 50
      * pixels, this value is 0.25.</p>
      */
-    inline double GetY() const{ return m_y; }
-
-    /**
-     * <p>The y-coordinate of the landmark expressed as a ratio of the height of the
-     * image. The y-coordinate is measured from the top of the image. For example, if
-     * the image height is 200 pixels and the y-coordinate of the landmark is at 50
-     * pixels, this value is 0.25.</p>
-     */
+    inline double GetY() const { return m_y; }
     inline bool YHasBeenSet() const { return m_yHasBeenSet; }
-
-    /**
-     * <p>The y-coordinate of the landmark expressed as a ratio of the height of the
-     * image. The y-coordinate is measured from the top of the image. For example, if
-     * the image height is 200 pixels and the y-coordinate of the landmark is at 50
-     * pixels, this value is 0.25.</p>
-     */
     inline void SetY(double value) { m_yHasBeenSet = true; m_y = value; }
-
-    /**
-     * <p>The y-coordinate of the landmark expressed as a ratio of the height of the
-     * image. The y-coordinate is measured from the top of the image. For example, if
-     * the image height is 200 pixels and the y-coordinate of the landmark is at 50
-     * pixels, this value is 0.25.</p>
-     */
     inline Landmark& WithY(double value) { SetY(value); return *this;}
-
+    ///@}
   private:
 
-    LandmarkType m_type;
+    LandmarkType m_type{LandmarkType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    double m_x;
+    double m_x{0.0};
     bool m_xHasBeenSet = false;
 
-    double m_y;
+    double m_y{0.0};
     bool m_yHasBeenSet = false;
   };
 

@@ -32,124 +32,45 @@ namespace Model
   class Subscription
   {
   public:
-    AWS_WORKDOCS_API Subscription();
+    AWS_WORKDOCS_API Subscription() = default;
     AWS_WORKDOCS_API Subscription(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKDOCS_API Subscription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKDOCS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the subscription.</p>
      */
-    inline const Aws::String& GetSubscriptionId() const{ return m_subscriptionId; }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
+    inline const Aws::String& GetSubscriptionId() const { return m_subscriptionId; }
     inline bool SubscriptionIdHasBeenSet() const { return m_subscriptionIdHasBeenSet; }
+    template<typename SubscriptionIdT = Aws::String>
+    void SetSubscriptionId(SubscriptionIdT&& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = std::forward<SubscriptionIdT>(value); }
+    template<typename SubscriptionIdT = Aws::String>
+    Subscription& WithSubscriptionId(SubscriptionIdT&& value) { SetSubscriptionId(std::forward<SubscriptionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline void SetSubscriptionId(const Aws::String& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = value; }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline void SetSubscriptionId(Aws::String&& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = std::move(value); }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline void SetSubscriptionId(const char* value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId.assign(value); }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline Subscription& WithSubscriptionId(const Aws::String& value) { SetSubscriptionId(value); return *this;}
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline Subscription& WithSubscriptionId(Aws::String&& value) { SetSubscriptionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline Subscription& WithSubscriptionId(const char* value) { SetSubscriptionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint of the subscription.</p>
      */
-    inline const Aws::String& GetEndPoint() const{ return m_endPoint; }
-
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
+    inline const Aws::String& GetEndPoint() const { return m_endPoint; }
     inline bool EndPointHasBeenSet() const { return m_endPointHasBeenSet; }
+    template<typename EndPointT = Aws::String>
+    void SetEndPoint(EndPointT&& value) { m_endPointHasBeenSet = true; m_endPoint = std::forward<EndPointT>(value); }
+    template<typename EndPointT = Aws::String>
+    Subscription& WithEndPoint(EndPointT&& value) { SetEndPoint(std::forward<EndPointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
-    inline void SetEndPoint(const Aws::String& value) { m_endPointHasBeenSet = true; m_endPoint = value; }
-
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
-    inline void SetEndPoint(Aws::String&& value) { m_endPointHasBeenSet = true; m_endPoint = std::move(value); }
-
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
-    inline void SetEndPoint(const char* value) { m_endPointHasBeenSet = true; m_endPoint.assign(value); }
-
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
-    inline Subscription& WithEndPoint(const Aws::String& value) { SetEndPoint(value); return *this;}
-
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
-    inline Subscription& WithEndPoint(Aws::String&& value) { SetEndPoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint of the subscription.</p>
-     */
-    inline Subscription& WithEndPoint(const char* value) { SetEndPoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The protocol of the subscription.</p>
      */
-    inline const SubscriptionProtocolType& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol of the subscription.</p>
-     */
+    inline SubscriptionProtocolType GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The protocol of the subscription.</p>
-     */
-    inline void SetProtocol(const SubscriptionProtocolType& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol of the subscription.</p>
-     */
-    inline void SetProtocol(SubscriptionProtocolType&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol of the subscription.</p>
-     */
-    inline Subscription& WithProtocol(const SubscriptionProtocolType& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol of the subscription.</p>
-     */
-    inline Subscription& WithProtocol(SubscriptionProtocolType&& value) { SetProtocol(std::move(value)); return *this;}
-
+    inline void SetProtocol(SubscriptionProtocolType value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline Subscription& WithProtocol(SubscriptionProtocolType value) { SetProtocol(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_subscriptionId;
@@ -158,7 +79,7 @@ namespace Model
     Aws::String m_endPoint;
     bool m_endPointHasBeenSet = false;
 
-    SubscriptionProtocolType m_protocol;
+    SubscriptionProtocolType m_protocol{SubscriptionProtocolType::NOT_SET};
     bool m_protocolHasBeenSet = false;
   };
 

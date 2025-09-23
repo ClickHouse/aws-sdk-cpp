@@ -10,14 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-GetDefaultCreditSpecificationRequest::GetDefaultCreditSpecificationRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_instanceFamily(UnlimitedSupportedInstanceFamily::NOT_SET),
-    m_instanceFamilyHasBeenSet(false)
-{
-}
-
 Aws::String GetDefaultCreditSpecificationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,7 +21,7 @@ Aws::String GetDefaultCreditSpecificationRequest::SerializePayload() const
 
   if(m_instanceFamilyHasBeenSet)
   {
-    ss << "InstanceFamily=" << UnlimitedSupportedInstanceFamilyMapper::GetNameForUnlimitedSupportedInstanceFamily(m_instanceFamily) << "&";
+    ss << "InstanceFamily=" << StringUtils::URLEncode(UnlimitedSupportedInstanceFamilyMapper::GetNameForUnlimitedSupportedInstanceFamily(m_instanceFamily)) << "&";
   }
 
   ss << "Version=2016-11-15";

@@ -21,7 +21,7 @@ namespace Model
   class PreviewAgentsRequest : public InspectorRequest
   {
   public:
-    AWS_INSPECTOR_API PreviewAgentsRequest();
+    AWS_INSPECTOR_API PreviewAgentsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,19 @@ namespace Model
     AWS_INSPECTOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the assessment target whose agents you want to preview.</p>
      */
-    inline const Aws::String& GetPreviewAgentsArn() const{ return m_previewAgentsArn; }
-
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
+    inline const Aws::String& GetPreviewAgentsArn() const { return m_previewAgentsArn; }
     inline bool PreviewAgentsArnHasBeenSet() const { return m_previewAgentsArnHasBeenSet; }
+    template<typename PreviewAgentsArnT = Aws::String>
+    void SetPreviewAgentsArn(PreviewAgentsArnT&& value) { m_previewAgentsArnHasBeenSet = true; m_previewAgentsArn = std::forward<PreviewAgentsArnT>(value); }
+    template<typename PreviewAgentsArnT = Aws::String>
+    PreviewAgentsRequest& WithPreviewAgentsArn(PreviewAgentsArnT&& value) { SetPreviewAgentsArn(std::forward<PreviewAgentsArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
-    inline void SetPreviewAgentsArn(const Aws::String& value) { m_previewAgentsArnHasBeenSet = true; m_previewAgentsArn = value; }
-
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
-    inline void SetPreviewAgentsArn(Aws::String&& value) { m_previewAgentsArnHasBeenSet = true; m_previewAgentsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
-    inline void SetPreviewAgentsArn(const char* value) { m_previewAgentsArnHasBeenSet = true; m_previewAgentsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
-    inline PreviewAgentsRequest& WithPreviewAgentsArn(const Aws::String& value) { SetPreviewAgentsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
-    inline PreviewAgentsRequest& WithPreviewAgentsArn(Aws::String&& value) { SetPreviewAgentsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the assessment target whose agents you want to preview.</p>
-     */
-    inline PreviewAgentsRequest& WithPreviewAgentsArn(const char* value) { SetPreviewAgentsArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>You can use this parameter when paginating results. Set the value of this
      * parameter to null on your first call to the <b>PreviewAgents</b> action.
@@ -82,96 +54,24 @@ namespace Model
      * value of <b>NextToken</b> from the previous response to continue listing
      * data.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    PreviewAgentsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline PreviewAgentsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline PreviewAgentsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>You can use this parameter when paginating results. Set the value of this
-     * parameter to null on your first call to the <b>PreviewAgents</b> action.
-     * Subsequent calls to the action fill <b>nextToken</b> in the request with the
-     * value of <b>NextToken</b> from the previous response to continue listing
-     * data.</p>
-     */
-    inline PreviewAgentsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>You can use this parameter to indicate the maximum number of items you want
      * in the response. The default value is 10. The maximum value is 500.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>You can use this parameter to indicate the maximum number of items you want
-     * in the response. The default value is 10. The maximum value is 500.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>You can use this parameter to indicate the maximum number of items you want
-     * in the response. The default value is 10. The maximum value is 500.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>You can use this parameter to indicate the maximum number of items you want
-     * in the response. The default value is 10. The maximum value is 500.</p>
-     */
     inline PreviewAgentsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_previewAgentsArn;
@@ -180,7 +80,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

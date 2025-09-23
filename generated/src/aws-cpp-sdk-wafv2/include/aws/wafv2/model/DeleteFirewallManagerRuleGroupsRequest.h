@@ -21,7 +21,7 @@ namespace Model
   class DeleteFirewallManagerRuleGroupsRequest : public WAFV2Request
   {
   public:
-    AWS_WAFV2_API DeleteFirewallManagerRuleGroupsRequest();
+    AWS_WAFV2_API DeleteFirewallManagerRuleGroupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,19 @@ namespace Model
     AWS_WAFV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
      */
-    inline const Aws::String& GetWebACLArn() const{ return m_webACLArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
+    inline const Aws::String& GetWebACLArn() const { return m_webACLArn; }
     inline bool WebACLArnHasBeenSet() const { return m_webACLArnHasBeenSet; }
+    template<typename WebACLArnT = Aws::String>
+    void SetWebACLArn(WebACLArnT&& value) { m_webACLArnHasBeenSet = true; m_webACLArn = std::forward<WebACLArnT>(value); }
+    template<typename WebACLArnT = Aws::String>
+    DeleteFirewallManagerRuleGroupsRequest& WithWebACLArn(WebACLArnT&& value) { SetWebACLArn(std::forward<WebACLArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
-    inline void SetWebACLArn(const Aws::String& value) { m_webACLArnHasBeenSet = true; m_webACLArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
-    inline void SetWebACLArn(Aws::String&& value) { m_webACLArnHasBeenSet = true; m_webACLArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
-    inline void SetWebACLArn(const char* value) { m_webACLArnHasBeenSet = true; m_webACLArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
-    inline DeleteFirewallManagerRuleGroupsRequest& WithWebACLArn(const Aws::String& value) { SetWebACLArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
-    inline DeleteFirewallManagerRuleGroupsRequest& WithWebACLArn(Aws::String&& value) { SetWebACLArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the web ACL.</p>
-     */
-    inline DeleteFirewallManagerRuleGroupsRequest& WithWebACLArn(const char* value) { SetWebACLArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token used for optimistic locking. WAF returns a token to your
      * <code>get</code> and <code>list</code> requests, to mark the state of the entity
@@ -85,92 +57,13 @@ namespace Model
      * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
      * another <code>get</code>, and use the new token returned by that operation. </p>
      */
-    inline const Aws::String& GetWebACLLockToken() const{ return m_webACLLockToken; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
+    inline const Aws::String& GetWebACLLockToken() const { return m_webACLLockToken; }
     inline bool WebACLLockTokenHasBeenSet() const { return m_webACLLockTokenHasBeenSet; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetWebACLLockToken(const Aws::String& value) { m_webACLLockTokenHasBeenSet = true; m_webACLLockToken = value; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetWebACLLockToken(Aws::String&& value) { m_webACLLockTokenHasBeenSet = true; m_webACLLockToken = std::move(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetWebACLLockToken(const char* value) { m_webACLLockTokenHasBeenSet = true; m_webACLLockToken.assign(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline DeleteFirewallManagerRuleGroupsRequest& WithWebACLLockToken(const Aws::String& value) { SetWebACLLockToken(value); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline DeleteFirewallManagerRuleGroupsRequest& WithWebACLLockToken(Aws::String&& value) { SetWebACLLockToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline DeleteFirewallManagerRuleGroupsRequest& WithWebACLLockToken(const char* value) { SetWebACLLockToken(value); return *this;}
-
+    template<typename WebACLLockTokenT = Aws::String>
+    void SetWebACLLockToken(WebACLLockTokenT&& value) { m_webACLLockTokenHasBeenSet = true; m_webACLLockToken = std::forward<WebACLLockTokenT>(value); }
+    template<typename WebACLLockTokenT = Aws::String>
+    DeleteFirewallManagerRuleGroupsRequest& WithWebACLLockToken(WebACLLockTokenT&& value) { SetWebACLLockToken(std::forward<WebACLLockTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_webACLArn;

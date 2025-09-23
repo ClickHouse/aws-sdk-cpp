@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TileLayoutStyle::TileLayoutStyle() : 
-    m_gutterHasBeenSet(false),
-    m_marginHasBeenSet(false)
-{
-}
-
-TileLayoutStyle::TileLayoutStyle(JsonView jsonValue) : 
-    m_gutterHasBeenSet(false),
-    m_marginHasBeenSet(false)
+TileLayoutStyle::TileLayoutStyle(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TileLayoutStyle& TileLayoutStyle::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Gutter"))
   {
     m_gutter = jsonValue.GetObject("Gutter");
-
     m_gutterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Margin"))
   {
     m_margin = jsonValue.GetObject("Margin");
-
     m_marginHasBeenSet = true;
   }
-
   return *this;
 }
 

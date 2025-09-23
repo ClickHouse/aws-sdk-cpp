@@ -46,89 +46,36 @@ namespace Model
   class NotificationChannel
   {
   public:
-    AWS_DEVOPSGURU_API NotificationChannel();
+    AWS_DEVOPSGURU_API NotificationChannel() = default;
     AWS_DEVOPSGURU_API NotificationChannel(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API NotificationChannel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The ID of a notification channel. </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    NotificationChannel& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
-    inline NotificationChannel& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
-    inline NotificationChannel& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of a notification channel. </p>
-     */
-    inline NotificationChannel& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> A <code>NotificationChannelConfig</code> object that contains information
      * about configured notification channels. </p>
      */
-    inline const NotificationChannelConfig& GetConfig() const{ return m_config; }
-
-    /**
-     * <p> A <code>NotificationChannelConfig</code> object that contains information
-     * about configured notification channels. </p>
-     */
+    inline const NotificationChannelConfig& GetConfig() const { return m_config; }
     inline bool ConfigHasBeenSet() const { return m_configHasBeenSet; }
-
-    /**
-     * <p> A <code>NotificationChannelConfig</code> object that contains information
-     * about configured notification channels. </p>
-     */
-    inline void SetConfig(const NotificationChannelConfig& value) { m_configHasBeenSet = true; m_config = value; }
-
-    /**
-     * <p> A <code>NotificationChannelConfig</code> object that contains information
-     * about configured notification channels. </p>
-     */
-    inline void SetConfig(NotificationChannelConfig&& value) { m_configHasBeenSet = true; m_config = std::move(value); }
-
-    /**
-     * <p> A <code>NotificationChannelConfig</code> object that contains information
-     * about configured notification channels. </p>
-     */
-    inline NotificationChannel& WithConfig(const NotificationChannelConfig& value) { SetConfig(value); return *this;}
-
-    /**
-     * <p> A <code>NotificationChannelConfig</code> object that contains information
-     * about configured notification channels. </p>
-     */
-    inline NotificationChannel& WithConfig(NotificationChannelConfig&& value) { SetConfig(std::move(value)); return *this;}
-
+    template<typename ConfigT = NotificationChannelConfig>
+    void SetConfig(ConfigT&& value) { m_configHasBeenSet = true; m_config = std::forward<ConfigT>(value); }
+    template<typename ConfigT = NotificationChannelConfig>
+    NotificationChannel& WithConfig(ConfigT&& value) { SetConfig(std::forward<ConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

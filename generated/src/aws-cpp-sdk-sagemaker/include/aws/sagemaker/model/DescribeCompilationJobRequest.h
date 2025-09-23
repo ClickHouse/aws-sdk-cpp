@@ -21,7 +21,7 @@ namespace Model
   class DescribeCompilationJobRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DescribeCompilationJobRequest();
+    AWS_SAGEMAKER_API DescribeCompilationJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the model compilation job that you want information about.</p>
      */
-    inline const Aws::String& GetCompilationJobName() const{ return m_compilationJobName; }
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
+    inline const Aws::String& GetCompilationJobName() const { return m_compilationJobName; }
     inline bool CompilationJobNameHasBeenSet() const { return m_compilationJobNameHasBeenSet; }
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
-    inline void SetCompilationJobName(const Aws::String& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = value; }
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
-    inline void SetCompilationJobName(Aws::String&& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = std::move(value); }
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
-    inline void SetCompilationJobName(const char* value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName.assign(value); }
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
-    inline DescribeCompilationJobRequest& WithCompilationJobName(const Aws::String& value) { SetCompilationJobName(value); return *this;}
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
-    inline DescribeCompilationJobRequest& WithCompilationJobName(Aws::String&& value) { SetCompilationJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the model compilation job that you want information about.</p>
-     */
-    inline DescribeCompilationJobRequest& WithCompilationJobName(const char* value) { SetCompilationJobName(value); return *this;}
-
+    template<typename CompilationJobNameT = Aws::String>
+    void SetCompilationJobName(CompilationJobNameT&& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = std::forward<CompilationJobNameT>(value); }
+    template<typename CompilationJobNameT = Aws::String>
+    DescribeCompilationJobRequest& WithCompilationJobName(CompilationJobNameT&& value) { SetCompilationJobName(std::forward<CompilationJobNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_compilationJobName;

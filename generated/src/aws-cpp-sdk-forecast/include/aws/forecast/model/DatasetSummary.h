@@ -39,187 +39,69 @@ namespace Model
   class DatasetSummary
   {
   public:
-    AWS_FORECASTSERVICE_API DatasetSummary();
+    AWS_FORECASTSERVICE_API DatasetSummary() = default;
     AWS_FORECASTSERVICE_API DatasetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API DatasetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the dataset.</p>
      */
-    inline const Aws::String& GetDatasetArn() const{ return m_datasetArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
+    inline const Aws::String& GetDatasetArn() const { return m_datasetArn; }
     inline bool DatasetArnHasBeenSet() const { return m_datasetArnHasBeenSet; }
+    template<typename DatasetArnT = Aws::String>
+    void SetDatasetArn(DatasetArnT&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::forward<DatasetArnT>(value); }
+    template<typename DatasetArnT = Aws::String>
+    DatasetSummary& WithDatasetArn(DatasetArnT&& value) { SetDatasetArn(std::forward<DatasetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline void SetDatasetArn(const Aws::String& value) { m_datasetArnHasBeenSet = true; m_datasetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline void SetDatasetArn(Aws::String&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline void SetDatasetArn(const char* value) { m_datasetArnHasBeenSet = true; m_datasetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetArn(const Aws::String& value) { SetDatasetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetArn(Aws::String&& value) { SetDatasetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetArn(const char* value) { SetDatasetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the dataset.</p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
     inline bool DatasetNameHasBeenSet() const { return m_datasetNameHasBeenSet; }
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    DatasetSummary& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetNameHasBeenSet = true; m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetNameHasBeenSet = true; m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dataset type.</p>
      */
-    inline const DatasetType& GetDatasetType() const{ return m_datasetType; }
-
-    /**
-     * <p>The dataset type.</p>
-     */
+    inline DatasetType GetDatasetType() const { return m_datasetType; }
     inline bool DatasetTypeHasBeenSet() const { return m_datasetTypeHasBeenSet; }
+    inline void SetDatasetType(DatasetType value) { m_datasetTypeHasBeenSet = true; m_datasetType = value; }
+    inline DatasetSummary& WithDatasetType(DatasetType value) { SetDatasetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The dataset type.</p>
-     */
-    inline void SetDatasetType(const DatasetType& value) { m_datasetTypeHasBeenSet = true; m_datasetType = value; }
-
-    /**
-     * <p>The dataset type.</p>
-     */
-    inline void SetDatasetType(DatasetType&& value) { m_datasetTypeHasBeenSet = true; m_datasetType = std::move(value); }
-
-    /**
-     * <p>The dataset type.</p>
-     */
-    inline DatasetSummary& WithDatasetType(const DatasetType& value) { SetDatasetType(value); return *this;}
-
-    /**
-     * <p>The dataset type.</p>
-     */
-    inline DatasetSummary& WithDatasetType(DatasetType&& value) { SetDatasetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The domain associated with the dataset.</p>
      */
-    inline const Domain& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The domain associated with the dataset.</p>
-     */
+    inline Domain GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    inline void SetDomain(Domain value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline DatasetSummary& WithDomain(Domain value) { SetDomain(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain associated with the dataset.</p>
-     */
-    inline void SetDomain(const Domain& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The domain associated with the dataset.</p>
-     */
-    inline void SetDomain(Domain&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The domain associated with the dataset.</p>
-     */
-    inline DatasetSummary& WithDomain(const Domain& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The domain associated with the dataset.</p>
-     */
-    inline DatasetSummary& WithDomain(Domain&& value) { SetDomain(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the dataset was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>When the dataset was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    DatasetSummary& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the dataset was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>When the dataset was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the dataset was created.</p>
-     */
-    inline DatasetSummary& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the dataset was created.</p>
-     */
-    inline DatasetSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When you create a dataset, <code>LastModificationTime</code> is the same as
      * <code>CreationTime</code>. While data is being imported to the dataset,
@@ -229,63 +111,13 @@ namespace Model
      * operation has finished, <code>LastModificationTime</code> is when the import job
      * completed or failed.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModificationTime() const{ return m_lastModificationTime; }
-
-    /**
-     * <p>When you create a dataset, <code>LastModificationTime</code> is the same as
-     * <code>CreationTime</code>. While data is being imported to the dataset,
-     * <code>LastModificationTime</code> is the current time of the
-     * <code>ListDatasets</code> call. After a <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html">CreateDatasetImportJob</a>
-     * operation has finished, <code>LastModificationTime</code> is when the import job
-     * completed or failed.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModificationTime() const { return m_lastModificationTime; }
     inline bool LastModificationTimeHasBeenSet() const { return m_lastModificationTimeHasBeenSet; }
-
-    /**
-     * <p>When you create a dataset, <code>LastModificationTime</code> is the same as
-     * <code>CreationTime</code>. While data is being imported to the dataset,
-     * <code>LastModificationTime</code> is the current time of the
-     * <code>ListDatasets</code> call. After a <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html">CreateDatasetImportJob</a>
-     * operation has finished, <code>LastModificationTime</code> is when the import job
-     * completed or failed.</p>
-     */
-    inline void SetLastModificationTime(const Aws::Utils::DateTime& value) { m_lastModificationTimeHasBeenSet = true; m_lastModificationTime = value; }
-
-    /**
-     * <p>When you create a dataset, <code>LastModificationTime</code> is the same as
-     * <code>CreationTime</code>. While data is being imported to the dataset,
-     * <code>LastModificationTime</code> is the current time of the
-     * <code>ListDatasets</code> call. After a <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html">CreateDatasetImportJob</a>
-     * operation has finished, <code>LastModificationTime</code> is when the import job
-     * completed or failed.</p>
-     */
-    inline void SetLastModificationTime(Aws::Utils::DateTime&& value) { m_lastModificationTimeHasBeenSet = true; m_lastModificationTime = std::move(value); }
-
-    /**
-     * <p>When you create a dataset, <code>LastModificationTime</code> is the same as
-     * <code>CreationTime</code>. While data is being imported to the dataset,
-     * <code>LastModificationTime</code> is the current time of the
-     * <code>ListDatasets</code> call. After a <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html">CreateDatasetImportJob</a>
-     * operation has finished, <code>LastModificationTime</code> is when the import job
-     * completed or failed.</p>
-     */
-    inline DatasetSummary& WithLastModificationTime(const Aws::Utils::DateTime& value) { SetLastModificationTime(value); return *this;}
-
-    /**
-     * <p>When you create a dataset, <code>LastModificationTime</code> is the same as
-     * <code>CreationTime</code>. While data is being imported to the dataset,
-     * <code>LastModificationTime</code> is the current time of the
-     * <code>ListDatasets</code> call. After a <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html">CreateDatasetImportJob</a>
-     * operation has finished, <code>LastModificationTime</code> is when the import job
-     * completed or failed.</p>
-     */
-    inline DatasetSummary& WithLastModificationTime(Aws::Utils::DateTime&& value) { SetLastModificationTime(std::move(value)); return *this;}
-
+    template<typename LastModificationTimeT = Aws::Utils::DateTime>
+    void SetLastModificationTime(LastModificationTimeT&& value) { m_lastModificationTimeHasBeenSet = true; m_lastModificationTime = std::forward<LastModificationTimeT>(value); }
+    template<typename LastModificationTimeT = Aws::Utils::DateTime>
+    DatasetSummary& WithLastModificationTime(LastModificationTimeT&& value) { SetLastModificationTime(std::forward<LastModificationTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetArn;
@@ -294,16 +126,16 @@ namespace Model
     Aws::String m_datasetName;
     bool m_datasetNameHasBeenSet = false;
 
-    DatasetType m_datasetType;
+    DatasetType m_datasetType{DatasetType::NOT_SET};
     bool m_datasetTypeHasBeenSet = false;
 
-    Domain m_domain;
+    Domain m_domain{Domain::NOT_SET};
     bool m_domainHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModificationTime;
+    Aws::Utils::DateTime m_lastModificationTime{};
     bool m_lastModificationTimeHasBeenSet = false;
   };
 

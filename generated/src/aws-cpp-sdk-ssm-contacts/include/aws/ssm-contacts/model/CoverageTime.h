@@ -32,73 +32,35 @@ namespace Model
   class CoverageTime
   {
   public:
-    AWS_SSMCONTACTS_API CoverageTime();
+    AWS_SSMCONTACTS_API CoverageTime() = default;
     AWS_SSMCONTACTS_API CoverageTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API CoverageTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about when the on-call rotation shift begins.</p>
      */
-    inline const HandOffTime& GetStart() const{ return m_start; }
-
-    /**
-     * <p>Information about when the on-call rotation shift begins.</p>
-     */
+    inline const HandOffTime& GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
+    template<typename StartT = HandOffTime>
+    void SetStart(StartT&& value) { m_startHasBeenSet = true; m_start = std::forward<StartT>(value); }
+    template<typename StartT = HandOffTime>
+    CoverageTime& WithStart(StartT&& value) { SetStart(std::forward<StartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about when the on-call rotation shift begins.</p>
-     */
-    inline void SetStart(const HandOffTime& value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * <p>Information about when the on-call rotation shift begins.</p>
-     */
-    inline void SetStart(HandOffTime&& value) { m_startHasBeenSet = true; m_start = std::move(value); }
-
-    /**
-     * <p>Information about when the on-call rotation shift begins.</p>
-     */
-    inline CoverageTime& WithStart(const HandOffTime& value) { SetStart(value); return *this;}
-
-    /**
-     * <p>Information about when the on-call rotation shift begins.</p>
-     */
-    inline CoverageTime& WithStart(HandOffTime&& value) { SetStart(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about when the on-call rotation shift ends.</p>
      */
-    inline const HandOffTime& GetEnd() const{ return m_end; }
-
-    /**
-     * <p>Information about when the on-call rotation shift ends.</p>
-     */
+    inline const HandOffTime& GetEnd() const { return m_end; }
     inline bool EndHasBeenSet() const { return m_endHasBeenSet; }
-
-    /**
-     * <p>Information about when the on-call rotation shift ends.</p>
-     */
-    inline void SetEnd(const HandOffTime& value) { m_endHasBeenSet = true; m_end = value; }
-
-    /**
-     * <p>Information about when the on-call rotation shift ends.</p>
-     */
-    inline void SetEnd(HandOffTime&& value) { m_endHasBeenSet = true; m_end = std::move(value); }
-
-    /**
-     * <p>Information about when the on-call rotation shift ends.</p>
-     */
-    inline CoverageTime& WithEnd(const HandOffTime& value) { SetEnd(value); return *this;}
-
-    /**
-     * <p>Information about when the on-call rotation shift ends.</p>
-     */
-    inline CoverageTime& WithEnd(HandOffTime&& value) { SetEnd(std::move(value)); return *this;}
-
+    template<typename EndT = HandOffTime>
+    void SetEnd(EndT&& value) { m_endHasBeenSet = true; m_end = std::forward<EndT>(value); }
+    template<typename EndT = HandOffTime>
+    CoverageTime& WithEnd(EndT&& value) { SetEnd(std::forward<EndT>(value)); return *this;}
+    ///@}
   private:
 
     HandOffTime m_start;

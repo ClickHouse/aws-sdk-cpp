@@ -39,251 +39,100 @@ namespace Model
   class CustomContentVisual
   {
   public:
-    AWS_QUICKSIGHT_API CustomContentVisual();
+    AWS_QUICKSIGHT_API CustomContentVisual() = default;
     AWS_QUICKSIGHT_API CustomContentVisual(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CustomContentVisual& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of a visual. This identifier must be unique within the
      * context of a dashboard, template, or analysis. Two dashboards, analyses, or
      * templates can have visuals with the same identifiers.</p>
      */
-    inline const Aws::String& GetVisualId() const{ return m_visualId; }
-
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
+    inline const Aws::String& GetVisualId() const { return m_visualId; }
     inline bool VisualIdHasBeenSet() const { return m_visualIdHasBeenSet; }
+    template<typename VisualIdT = Aws::String>
+    void SetVisualId(VisualIdT&& value) { m_visualIdHasBeenSet = true; m_visualId = std::forward<VisualIdT>(value); }
+    template<typename VisualIdT = Aws::String>
+    CustomContentVisual& WithVisualId(VisualIdT&& value) { SetVisualId(std::forward<VisualIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
-    inline void SetVisualId(const Aws::String& value) { m_visualIdHasBeenSet = true; m_visualId = value; }
-
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
-    inline void SetVisualId(Aws::String&& value) { m_visualIdHasBeenSet = true; m_visualId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
-    inline void SetVisualId(const char* value) { m_visualIdHasBeenSet = true; m_visualId.assign(value); }
-
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
-    inline CustomContentVisual& WithVisualId(const Aws::String& value) { SetVisualId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
-    inline CustomContentVisual& WithVisualId(Aws::String&& value) { SetVisualId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of a visual. This identifier must be unique within the
-     * context of a dashboard, template, or analysis. Two dashboards, analyses, or
-     * templates can have visuals with the same identifiers.</p>
-     */
-    inline CustomContentVisual& WithVisualId(const char* value) { SetVisualId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The title that is displayed on the visual.</p>
      */
-    inline const VisualTitleLabelOptions& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title that is displayed on the visual.</p>
-     */
+    inline const VisualTitleLabelOptions& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = VisualTitleLabelOptions>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = VisualTitleLabelOptions>
+    CustomContentVisual& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The title that is displayed on the visual.</p>
-     */
-    inline void SetTitle(const VisualTitleLabelOptions& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title that is displayed on the visual.</p>
-     */
-    inline void SetTitle(VisualTitleLabelOptions&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title that is displayed on the visual.</p>
-     */
-    inline CustomContentVisual& WithTitle(const VisualTitleLabelOptions& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title that is displayed on the visual.</p>
-     */
-    inline CustomContentVisual& WithTitle(VisualTitleLabelOptions&& value) { SetTitle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The subtitle that is displayed on the visual.</p>
      */
-    inline const VisualSubtitleLabelOptions& GetSubtitle() const{ return m_subtitle; }
-
-    /**
-     * <p>The subtitle that is displayed on the visual.</p>
-     */
+    inline const VisualSubtitleLabelOptions& GetSubtitle() const { return m_subtitle; }
     inline bool SubtitleHasBeenSet() const { return m_subtitleHasBeenSet; }
+    template<typename SubtitleT = VisualSubtitleLabelOptions>
+    void SetSubtitle(SubtitleT&& value) { m_subtitleHasBeenSet = true; m_subtitle = std::forward<SubtitleT>(value); }
+    template<typename SubtitleT = VisualSubtitleLabelOptions>
+    CustomContentVisual& WithSubtitle(SubtitleT&& value) { SetSubtitle(std::forward<SubtitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The subtitle that is displayed on the visual.</p>
-     */
-    inline void SetSubtitle(const VisualSubtitleLabelOptions& value) { m_subtitleHasBeenSet = true; m_subtitle = value; }
-
-    /**
-     * <p>The subtitle that is displayed on the visual.</p>
-     */
-    inline void SetSubtitle(VisualSubtitleLabelOptions&& value) { m_subtitleHasBeenSet = true; m_subtitle = std::move(value); }
-
-    /**
-     * <p>The subtitle that is displayed on the visual.</p>
-     */
-    inline CustomContentVisual& WithSubtitle(const VisualSubtitleLabelOptions& value) { SetSubtitle(value); return *this;}
-
-    /**
-     * <p>The subtitle that is displayed on the visual.</p>
-     */
-    inline CustomContentVisual& WithSubtitle(VisualSubtitleLabelOptions&& value) { SetSubtitle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration of a <code>CustomContentVisual</code>.</p>
      */
-    inline const CustomContentConfiguration& GetChartConfiguration() const{ return m_chartConfiguration; }
-
-    /**
-     * <p>The configuration of a <code>CustomContentVisual</code>.</p>
-     */
+    inline const CustomContentConfiguration& GetChartConfiguration() const { return m_chartConfiguration; }
     inline bool ChartConfigurationHasBeenSet() const { return m_chartConfigurationHasBeenSet; }
+    template<typename ChartConfigurationT = CustomContentConfiguration>
+    void SetChartConfiguration(ChartConfigurationT&& value) { m_chartConfigurationHasBeenSet = true; m_chartConfiguration = std::forward<ChartConfigurationT>(value); }
+    template<typename ChartConfigurationT = CustomContentConfiguration>
+    CustomContentVisual& WithChartConfiguration(ChartConfigurationT&& value) { SetChartConfiguration(std::forward<ChartConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration of a <code>CustomContentVisual</code>.</p>
-     */
-    inline void SetChartConfiguration(const CustomContentConfiguration& value) { m_chartConfigurationHasBeenSet = true; m_chartConfiguration = value; }
-
-    /**
-     * <p>The configuration of a <code>CustomContentVisual</code>.</p>
-     */
-    inline void SetChartConfiguration(CustomContentConfiguration&& value) { m_chartConfigurationHasBeenSet = true; m_chartConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration of a <code>CustomContentVisual</code>.</p>
-     */
-    inline CustomContentVisual& WithChartConfiguration(const CustomContentConfiguration& value) { SetChartConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration of a <code>CustomContentVisual</code>.</p>
-     */
-    inline CustomContentVisual& WithChartConfiguration(CustomContentConfiguration&& value) { SetChartConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of custom actions that are configured for a visual.</p>
      */
-    inline const Aws::Vector<VisualCustomAction>& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
+    inline const Aws::Vector<VisualCustomAction>& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
+    template<typename ActionsT = Aws::Vector<VisualCustomAction>>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = Aws::Vector<VisualCustomAction>>
+    CustomContentVisual& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    template<typename ActionsT = VisualCustomAction>
+    CustomContentVisual& AddActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions.emplace_back(std::forward<ActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
-    inline void SetActions(const Aws::Vector<VisualCustomAction>& value) { m_actionsHasBeenSet = true; m_actions = value; }
-
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
-    inline void SetActions(Aws::Vector<VisualCustomAction>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
-
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
-    inline CustomContentVisual& WithActions(const Aws::Vector<VisualCustomAction>& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
-    inline CustomContentVisual& WithActions(Aws::Vector<VisualCustomAction>&& value) { SetActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
-    inline CustomContentVisual& AddActions(const VisualCustomAction& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
-
-    /**
-     * <p>The list of custom actions that are configured for a visual.</p>
-     */
-    inline CustomContentVisual& AddActions(VisualCustomAction&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The dataset that is used to create the custom content visual. You can't
      * create a visual without a dataset.</p>
      */
-    inline const Aws::String& GetDataSetIdentifier() const{ return m_dataSetIdentifier; }
-
-    /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
-     */
+    inline const Aws::String& GetDataSetIdentifier() const { return m_dataSetIdentifier; }
     inline bool DataSetIdentifierHasBeenSet() const { return m_dataSetIdentifierHasBeenSet; }
+    template<typename DataSetIdentifierT = Aws::String>
+    void SetDataSetIdentifier(DataSetIdentifierT&& value) { m_dataSetIdentifierHasBeenSet = true; m_dataSetIdentifier = std::forward<DataSetIdentifierT>(value); }
+    template<typename DataSetIdentifierT = Aws::String>
+    CustomContentVisual& WithDataSetIdentifier(DataSetIdentifierT&& value) { SetDataSetIdentifier(std::forward<DataSetIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
+     * <p>The alt text for the visual.</p>
      */
-    inline void SetDataSetIdentifier(const Aws::String& value) { m_dataSetIdentifierHasBeenSet = true; m_dataSetIdentifier = value; }
-
-    /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
-     */
-    inline void SetDataSetIdentifier(Aws::String&& value) { m_dataSetIdentifierHasBeenSet = true; m_dataSetIdentifier = std::move(value); }
-
-    /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
-     */
-    inline void SetDataSetIdentifier(const char* value) { m_dataSetIdentifierHasBeenSet = true; m_dataSetIdentifier.assign(value); }
-
-    /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
-     */
-    inline CustomContentVisual& WithDataSetIdentifier(const Aws::String& value) { SetDataSetIdentifier(value); return *this;}
-
-    /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
-     */
-    inline CustomContentVisual& WithDataSetIdentifier(Aws::String&& value) { SetDataSetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The dataset that is used to create the custom content visual. You can't
-     * create a visual without a dataset.</p>
-     */
-    inline CustomContentVisual& WithDataSetIdentifier(const char* value) { SetDataSetIdentifier(value); return *this;}
-
+    inline const Aws::String& GetVisualContentAltText() const { return m_visualContentAltText; }
+    inline bool VisualContentAltTextHasBeenSet() const { return m_visualContentAltTextHasBeenSet; }
+    template<typename VisualContentAltTextT = Aws::String>
+    void SetVisualContentAltText(VisualContentAltTextT&& value) { m_visualContentAltTextHasBeenSet = true; m_visualContentAltText = std::forward<VisualContentAltTextT>(value); }
+    template<typename VisualContentAltTextT = Aws::String>
+    CustomContentVisual& WithVisualContentAltText(VisualContentAltTextT&& value) { SetVisualContentAltText(std::forward<VisualContentAltTextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_visualId;
@@ -303,6 +152,9 @@ namespace Model
 
     Aws::String m_dataSetIdentifier;
     bool m_dataSetIdentifierHasBeenSet = false;
+
+    Aws::String m_visualContentAltText;
+    bool m_visualContentAltTextHasBeenSet = false;
   };
 
 } // namespace Model

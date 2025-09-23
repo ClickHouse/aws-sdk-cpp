@@ -22,7 +22,7 @@ namespace Model
   class GetPercentilesRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API GetPercentilesRequest();
+    AWS_IOT_API GetPercentilesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,205 +33,66 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the index to search.</p>
      */
-    inline const Aws::String& GetIndexName() const{ return m_indexName; }
-
-    /**
-     * <p>The name of the index to search.</p>
-     */
+    inline const Aws::String& GetIndexName() const { return m_indexName; }
     inline bool IndexNameHasBeenSet() const { return m_indexNameHasBeenSet; }
+    template<typename IndexNameT = Aws::String>
+    void SetIndexName(IndexNameT&& value) { m_indexNameHasBeenSet = true; m_indexName = std::forward<IndexNameT>(value); }
+    template<typename IndexNameT = Aws::String>
+    GetPercentilesRequest& WithIndexName(IndexNameT&& value) { SetIndexName(std::forward<IndexNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the index to search.</p>
-     */
-    inline void SetIndexName(const Aws::String& value) { m_indexNameHasBeenSet = true; m_indexName = value; }
-
-    /**
-     * <p>The name of the index to search.</p>
-     */
-    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = std::move(value); }
-
-    /**
-     * <p>The name of the index to search.</p>
-     */
-    inline void SetIndexName(const char* value) { m_indexNameHasBeenSet = true; m_indexName.assign(value); }
-
-    /**
-     * <p>The name of the index to search.</p>
-     */
-    inline GetPercentilesRequest& WithIndexName(const Aws::String& value) { SetIndexName(value); return *this;}
-
-    /**
-     * <p>The name of the index to search.</p>
-     */
-    inline GetPercentilesRequest& WithIndexName(Aws::String&& value) { SetIndexName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the index to search.</p>
-     */
-    inline GetPercentilesRequest& WithIndexName(const char* value) { SetIndexName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The search query string.</p>
      */
-    inline const Aws::String& GetQueryString() const{ return m_queryString; }
-
-    /**
-     * <p>The search query string.</p>
-     */
+    inline const Aws::String& GetQueryString() const { return m_queryString; }
     inline bool QueryStringHasBeenSet() const { return m_queryStringHasBeenSet; }
+    template<typename QueryStringT = Aws::String>
+    void SetQueryString(QueryStringT&& value) { m_queryStringHasBeenSet = true; m_queryString = std::forward<QueryStringT>(value); }
+    template<typename QueryStringT = Aws::String>
+    GetPercentilesRequest& WithQueryString(QueryStringT&& value) { SetQueryString(std::forward<QueryStringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The search query string.</p>
-     */
-    inline void SetQueryString(const Aws::String& value) { m_queryStringHasBeenSet = true; m_queryString = value; }
-
-    /**
-     * <p>The search query string.</p>
-     */
-    inline void SetQueryString(Aws::String&& value) { m_queryStringHasBeenSet = true; m_queryString = std::move(value); }
-
-    /**
-     * <p>The search query string.</p>
-     */
-    inline void SetQueryString(const char* value) { m_queryStringHasBeenSet = true; m_queryString.assign(value); }
-
-    /**
-     * <p>The search query string.</p>
-     */
-    inline GetPercentilesRequest& WithQueryString(const Aws::String& value) { SetQueryString(value); return *this;}
-
-    /**
-     * <p>The search query string.</p>
-     */
-    inline GetPercentilesRequest& WithQueryString(Aws::String&& value) { SetQueryString(std::move(value)); return *this;}
-
-    /**
-     * <p>The search query string.</p>
-     */
-    inline GetPercentilesRequest& WithQueryString(const char* value) { SetQueryString(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The field to aggregate.</p>
      */
-    inline const Aws::String& GetAggregationField() const{ return m_aggregationField; }
-
-    /**
-     * <p>The field to aggregate.</p>
-     */
+    inline const Aws::String& GetAggregationField() const { return m_aggregationField; }
     inline bool AggregationFieldHasBeenSet() const { return m_aggregationFieldHasBeenSet; }
+    template<typename AggregationFieldT = Aws::String>
+    void SetAggregationField(AggregationFieldT&& value) { m_aggregationFieldHasBeenSet = true; m_aggregationField = std::forward<AggregationFieldT>(value); }
+    template<typename AggregationFieldT = Aws::String>
+    GetPercentilesRequest& WithAggregationField(AggregationFieldT&& value) { SetAggregationField(std::forward<AggregationFieldT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field to aggregate.</p>
-     */
-    inline void SetAggregationField(const Aws::String& value) { m_aggregationFieldHasBeenSet = true; m_aggregationField = value; }
-
-    /**
-     * <p>The field to aggregate.</p>
-     */
-    inline void SetAggregationField(Aws::String&& value) { m_aggregationFieldHasBeenSet = true; m_aggregationField = std::move(value); }
-
-    /**
-     * <p>The field to aggregate.</p>
-     */
-    inline void SetAggregationField(const char* value) { m_aggregationFieldHasBeenSet = true; m_aggregationField.assign(value); }
-
-    /**
-     * <p>The field to aggregate.</p>
-     */
-    inline GetPercentilesRequest& WithAggregationField(const Aws::String& value) { SetAggregationField(value); return *this;}
-
-    /**
-     * <p>The field to aggregate.</p>
-     */
-    inline GetPercentilesRequest& WithAggregationField(Aws::String&& value) { SetAggregationField(std::move(value)); return *this;}
-
-    /**
-     * <p>The field to aggregate.</p>
-     */
-    inline GetPercentilesRequest& WithAggregationField(const char* value) { SetAggregationField(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The query version.</p>
      */
-    inline const Aws::String& GetQueryVersion() const{ return m_queryVersion; }
-
-    /**
-     * <p>The query version.</p>
-     */
+    inline const Aws::String& GetQueryVersion() const { return m_queryVersion; }
     inline bool QueryVersionHasBeenSet() const { return m_queryVersionHasBeenSet; }
+    template<typename QueryVersionT = Aws::String>
+    void SetQueryVersion(QueryVersionT&& value) { m_queryVersionHasBeenSet = true; m_queryVersion = std::forward<QueryVersionT>(value); }
+    template<typename QueryVersionT = Aws::String>
+    GetPercentilesRequest& WithQueryVersion(QueryVersionT&& value) { SetQueryVersion(std::forward<QueryVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The query version.</p>
-     */
-    inline void SetQueryVersion(const Aws::String& value) { m_queryVersionHasBeenSet = true; m_queryVersion = value; }
-
-    /**
-     * <p>The query version.</p>
-     */
-    inline void SetQueryVersion(Aws::String&& value) { m_queryVersionHasBeenSet = true; m_queryVersion = std::move(value); }
-
-    /**
-     * <p>The query version.</p>
-     */
-    inline void SetQueryVersion(const char* value) { m_queryVersionHasBeenSet = true; m_queryVersion.assign(value); }
-
-    /**
-     * <p>The query version.</p>
-     */
-    inline GetPercentilesRequest& WithQueryVersion(const Aws::String& value) { SetQueryVersion(value); return *this;}
-
-    /**
-     * <p>The query version.</p>
-     */
-    inline GetPercentilesRequest& WithQueryVersion(Aws::String&& value) { SetQueryVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The query version.</p>
-     */
-    inline GetPercentilesRequest& WithQueryVersion(const char* value) { SetQueryVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The percentile groups returned.</p>
      */
-    inline const Aws::Vector<double>& GetPercents() const{ return m_percents; }
-
-    /**
-     * <p>The percentile groups returned.</p>
-     */
+    inline const Aws::Vector<double>& GetPercents() const { return m_percents; }
     inline bool PercentsHasBeenSet() const { return m_percentsHasBeenSet; }
-
-    /**
-     * <p>The percentile groups returned.</p>
-     */
-    inline void SetPercents(const Aws::Vector<double>& value) { m_percentsHasBeenSet = true; m_percents = value; }
-
-    /**
-     * <p>The percentile groups returned.</p>
-     */
-    inline void SetPercents(Aws::Vector<double>&& value) { m_percentsHasBeenSet = true; m_percents = std::move(value); }
-
-    /**
-     * <p>The percentile groups returned.</p>
-     */
-    inline GetPercentilesRequest& WithPercents(const Aws::Vector<double>& value) { SetPercents(value); return *this;}
-
-    /**
-     * <p>The percentile groups returned.</p>
-     */
-    inline GetPercentilesRequest& WithPercents(Aws::Vector<double>&& value) { SetPercents(std::move(value)); return *this;}
-
-    /**
-     * <p>The percentile groups returned.</p>
-     */
+    template<typename PercentsT = Aws::Vector<double>>
+    void SetPercents(PercentsT&& value) { m_percentsHasBeenSet = true; m_percents = std::forward<PercentsT>(value); }
+    template<typename PercentsT = Aws::Vector<double>>
+    GetPercentilesRequest& WithPercents(PercentsT&& value) { SetPercents(std::forward<PercentsT>(value)); return *this;}
     inline GetPercentilesRequest& AddPercents(double value) { m_percentsHasBeenSet = true; m_percents.push_back(value); return *this; }
-
+    ///@}
   private:
 
     Aws::String m_indexName;

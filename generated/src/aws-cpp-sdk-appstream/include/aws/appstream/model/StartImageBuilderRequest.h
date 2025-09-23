@@ -21,7 +21,7 @@ namespace Model
   class StartImageBuilderRequest : public AppStreamRequest
   {
   public:
-    AWS_APPSTREAM_API StartImageBuilderRequest();
+    AWS_APPSTREAM_API StartImageBuilderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_APPSTREAM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the image builder.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the image builder.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    StartImageBuilderRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the image builder.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the image builder.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the image builder.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the image builder.</p>
-     */
-    inline StartImageBuilderRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the image builder.</p>
-     */
-    inline StartImageBuilderRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the image builder.</p>
-     */
-    inline StartImageBuilderRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
      * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
      */
-    inline const Aws::String& GetAppstreamAgentVersion() const{ return m_appstreamAgentVersion; }
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
+    inline const Aws::String& GetAppstreamAgentVersion() const { return m_appstreamAgentVersion; }
     inline bool AppstreamAgentVersionHasBeenSet() const { return m_appstreamAgentVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
-    inline void SetAppstreamAgentVersion(const Aws::String& value) { m_appstreamAgentVersionHasBeenSet = true; m_appstreamAgentVersion = value; }
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
-    inline void SetAppstreamAgentVersion(Aws::String&& value) { m_appstreamAgentVersionHasBeenSet = true; m_appstreamAgentVersion = std::move(value); }
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
-    inline void SetAppstreamAgentVersion(const char* value) { m_appstreamAgentVersionHasBeenSet = true; m_appstreamAgentVersion.assign(value); }
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
-    inline StartImageBuilderRequest& WithAppstreamAgentVersion(const Aws::String& value) { SetAppstreamAgentVersion(value); return *this;}
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
-    inline StartImageBuilderRequest& WithAppstreamAgentVersion(Aws::String&& value) { SetAppstreamAgentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the AppStream 2.0 agent to use for this image builder. To use
-     * the latest version of the AppStream 2.0 agent, specify [LATEST]. </p>
-     */
-    inline StartImageBuilderRequest& WithAppstreamAgentVersion(const char* value) { SetAppstreamAgentVersion(value); return *this;}
-
+    template<typename AppstreamAgentVersionT = Aws::String>
+    void SetAppstreamAgentVersion(AppstreamAgentVersionT&& value) { m_appstreamAgentVersionHasBeenSet = true; m_appstreamAgentVersion = std::forward<AppstreamAgentVersionT>(value); }
+    template<typename AppstreamAgentVersionT = Aws::String>
+    StartImageBuilderRequest& WithAppstreamAgentVersion(AppstreamAgentVersionT&& value) { SetAppstreamAgentVersion(std::forward<AppstreamAgentVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

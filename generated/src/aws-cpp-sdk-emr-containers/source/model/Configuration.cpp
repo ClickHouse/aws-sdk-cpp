@@ -18,17 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-Configuration::Configuration() : 
-    m_classificationHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
-{
-}
-
-Configuration::Configuration(JsonView jsonValue) : 
-    m_classificationHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+Configuration::Configuration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ Configuration& Configuration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("classification"))
   {
     m_classification = jsonValue.GetString("classification");
-
     m_classificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("properties"))
   {
     Aws::Map<Aws::String, JsonView> propertiesJsonMap = jsonValue.GetObject("properties").GetAllObjects();
@@ -51,7 +39,6 @@ Configuration& Configuration::operator =(JsonView jsonValue)
     }
     m_propertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("configurations"))
   {
     Aws::Utils::Array<JsonView> configurationsJsonList = jsonValue.GetArray("configurations");
@@ -61,7 +48,6 @@ Configuration& Configuration::operator =(JsonView jsonValue)
     }
     m_configurationsHasBeenSet = true;
   }
-
   return *this;
 }
 

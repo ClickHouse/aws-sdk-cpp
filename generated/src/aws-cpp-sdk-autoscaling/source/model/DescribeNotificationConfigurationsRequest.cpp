@@ -10,26 +10,25 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeNotificationConfigurationsRequest::DescribeNotificationConfigurationsRequest() : 
-    m_autoScalingGroupNamesHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeNotificationConfigurationsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeNotificationConfigurations&";
   if(m_autoScalingGroupNamesHasBeenSet)
   {
-    unsigned autoScalingGroupNamesCount = 1;
-    for(auto& item : m_autoScalingGroupNames)
+    if (m_autoScalingGroupNames.empty())
     {
-      ss << "AutoScalingGroupNames.member." << autoScalingGroupNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      autoScalingGroupNamesCount++;
+      ss << "AutoScalingGroupNames=&";
+    }
+    else
+    {
+      unsigned autoScalingGroupNamesCount = 1;
+      for(auto& item : m_autoScalingGroupNames)
+      {
+        ss << "AutoScalingGroupNames.member." << autoScalingGroupNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        autoScalingGroupNamesCount++;
+      }
     }
   }
 

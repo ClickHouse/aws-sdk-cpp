@@ -20,23 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-LoggingConfig::LoggingConfig() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_includeCookies(false),
-    m_includeCookiesHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_prefixHasBeenSet(false)
-{
-}
-
-LoggingConfig::LoggingConfig(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_includeCookies(false),
-    m_includeCookiesHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_prefixHasBeenSet(false)
+LoggingConfig::LoggingConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

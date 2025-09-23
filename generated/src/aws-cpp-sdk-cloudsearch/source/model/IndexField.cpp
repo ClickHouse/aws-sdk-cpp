@@ -20,39 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-IndexField::IndexField() : 
-    m_indexFieldNameHasBeenSet(false),
-    m_indexFieldType(IndexFieldType::NOT_SET),
-    m_indexFieldTypeHasBeenSet(false),
-    m_intOptionsHasBeenSet(false),
-    m_doubleOptionsHasBeenSet(false),
-    m_literalOptionsHasBeenSet(false),
-    m_textOptionsHasBeenSet(false),
-    m_dateOptionsHasBeenSet(false),
-    m_latLonOptionsHasBeenSet(false),
-    m_intArrayOptionsHasBeenSet(false),
-    m_doubleArrayOptionsHasBeenSet(false),
-    m_literalArrayOptionsHasBeenSet(false),
-    m_textArrayOptionsHasBeenSet(false),
-    m_dateArrayOptionsHasBeenSet(false)
-{
-}
-
-IndexField::IndexField(const XmlNode& xmlNode) : 
-    m_indexFieldNameHasBeenSet(false),
-    m_indexFieldType(IndexFieldType::NOT_SET),
-    m_indexFieldTypeHasBeenSet(false),
-    m_intOptionsHasBeenSet(false),
-    m_doubleOptionsHasBeenSet(false),
-    m_literalOptionsHasBeenSet(false),
-    m_textOptionsHasBeenSet(false),
-    m_dateOptionsHasBeenSet(false),
-    m_latLonOptionsHasBeenSet(false),
-    m_intArrayOptionsHasBeenSet(false),
-    m_doubleArrayOptionsHasBeenSet(false),
-    m_literalArrayOptionsHasBeenSet(false),
-    m_textArrayOptionsHasBeenSet(false),
-    m_dateArrayOptionsHasBeenSet(false)
+IndexField::IndexField(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +40,7 @@ IndexField& IndexField::operator =(const XmlNode& xmlNode)
     XmlNode indexFieldTypeNode = resultNode.FirstChild("IndexFieldType");
     if(!indexFieldTypeNode.IsNull())
     {
-      m_indexFieldType = IndexFieldTypeMapper::GetIndexFieldTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(indexFieldTypeNode.GetText()).c_str()).c_str());
+      m_indexFieldType = IndexFieldTypeMapper::GetIndexFieldTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(indexFieldTypeNode.GetText()).c_str()));
       m_indexFieldTypeHasBeenSet = true;
     }
     XmlNode intOptionsNode = resultNode.FirstChild("IntOptions");
@@ -155,7 +123,7 @@ void IndexField::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_indexFieldTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IndexFieldType=" << IndexFieldTypeMapper::GetNameForIndexFieldType(m_indexFieldType) << "&";
+      oStream << location << index << locationValue << ".IndexFieldType=" << StringUtils::URLEncode(IndexFieldTypeMapper::GetNameForIndexFieldType(m_indexFieldType)) << "&";
   }
 
   if(m_intOptionsHasBeenSet)
@@ -245,7 +213,7 @@ void IndexField::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_indexFieldTypeHasBeenSet)
   {
-      oStream << location << ".IndexFieldType=" << IndexFieldTypeMapper::GetNameForIndexFieldType(m_indexFieldType) << "&";
+      oStream << location << ".IndexFieldType=" << StringUtils::URLEncode(IndexFieldTypeMapper::GetNameForIndexFieldType(m_indexFieldType)) << "&";
   }
   if(m_intOptionsHasBeenSet)
   {

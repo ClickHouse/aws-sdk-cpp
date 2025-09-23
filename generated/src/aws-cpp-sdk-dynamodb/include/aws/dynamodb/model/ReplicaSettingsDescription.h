@@ -37,53 +37,25 @@ namespace Model
   class ReplicaSettingsDescription
   {
   public:
-    AWS_DYNAMODB_API ReplicaSettingsDescription();
+    AWS_DYNAMODB_API ReplicaSettingsDescription() = default;
     AWS_DYNAMODB_API ReplicaSettingsDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API ReplicaSettingsDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Region name of the replica.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The Region name of the replica.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    ReplicaSettingsDescription& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Region name of the replica.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The Region name of the replica.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The Region name of the replica.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The Region name of the replica.</p>
-     */
-    inline ReplicaSettingsDescription& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The Region name of the replica.</p>
-     */
-    inline ReplicaSettingsDescription& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region name of the replica.</p>
-     */
-    inline ReplicaSettingsDescription& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the Region:</p> <ul> <li> <p> <code>CREATING</code> -
      * The Region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
@@ -91,85 +63,25 @@ namespace Model
      * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The Region is ready
      * for use.</p> </li> </ul>
      */
-    inline const ReplicaStatus& GetReplicaStatus() const{ return m_replicaStatus; }
-
-    /**
-     * <p>The current state of the Region:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The Region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * Region is being updated.</p> </li> <li> <p> <code>DELETING</code> - The Region
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The Region is ready
-     * for use.</p> </li> </ul>
-     */
+    inline ReplicaStatus GetReplicaStatus() const { return m_replicaStatus; }
     inline bool ReplicaStatusHasBeenSet() const { return m_replicaStatusHasBeenSet; }
+    inline void SetReplicaStatus(ReplicaStatus value) { m_replicaStatusHasBeenSet = true; m_replicaStatus = value; }
+    inline ReplicaSettingsDescription& WithReplicaStatus(ReplicaStatus value) { SetReplicaStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the Region:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The Region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * Region is being updated.</p> </li> <li> <p> <code>DELETING</code> - The Region
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The Region is ready
-     * for use.</p> </li> </ul>
-     */
-    inline void SetReplicaStatus(const ReplicaStatus& value) { m_replicaStatusHasBeenSet = true; m_replicaStatus = value; }
-
-    /**
-     * <p>The current state of the Region:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The Region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * Region is being updated.</p> </li> <li> <p> <code>DELETING</code> - The Region
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The Region is ready
-     * for use.</p> </li> </ul>
-     */
-    inline void SetReplicaStatus(ReplicaStatus&& value) { m_replicaStatusHasBeenSet = true; m_replicaStatus = std::move(value); }
-
-    /**
-     * <p>The current state of the Region:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The Region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * Region is being updated.</p> </li> <li> <p> <code>DELETING</code> - The Region
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The Region is ready
-     * for use.</p> </li> </ul>
-     */
-    inline ReplicaSettingsDescription& WithReplicaStatus(const ReplicaStatus& value) { SetReplicaStatus(value); return *this;}
-
-    /**
-     * <p>The current state of the Region:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The Region is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * Region is being updated.</p> </li> <li> <p> <code>DELETING</code> - The Region
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The Region is ready
-     * for use.</p> </li> </ul>
-     */
-    inline ReplicaSettingsDescription& WithReplicaStatus(ReplicaStatus&& value) { SetReplicaStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The read/write capacity mode of the replica.</p>
      */
-    inline const BillingModeSummary& GetReplicaBillingModeSummary() const{ return m_replicaBillingModeSummary; }
-
-    /**
-     * <p>The read/write capacity mode of the replica.</p>
-     */
+    inline const BillingModeSummary& GetReplicaBillingModeSummary() const { return m_replicaBillingModeSummary; }
     inline bool ReplicaBillingModeSummaryHasBeenSet() const { return m_replicaBillingModeSummaryHasBeenSet; }
+    template<typename ReplicaBillingModeSummaryT = BillingModeSummary>
+    void SetReplicaBillingModeSummary(ReplicaBillingModeSummaryT&& value) { m_replicaBillingModeSummaryHasBeenSet = true; m_replicaBillingModeSummary = std::forward<ReplicaBillingModeSummaryT>(value); }
+    template<typename ReplicaBillingModeSummaryT = BillingModeSummary>
+    ReplicaSettingsDescription& WithReplicaBillingModeSummary(ReplicaBillingModeSummaryT&& value) { SetReplicaBillingModeSummary(std::forward<ReplicaBillingModeSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The read/write capacity mode of the replica.</p>
-     */
-    inline void SetReplicaBillingModeSummary(const BillingModeSummary& value) { m_replicaBillingModeSummaryHasBeenSet = true; m_replicaBillingModeSummary = value; }
-
-    /**
-     * <p>The read/write capacity mode of the replica.</p>
-     */
-    inline void SetReplicaBillingModeSummary(BillingModeSummary&& value) { m_replicaBillingModeSummaryHasBeenSet = true; m_replicaBillingModeSummary = std::move(value); }
-
-    /**
-     * <p>The read/write capacity mode of the replica.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaBillingModeSummary(const BillingModeSummary& value) { SetReplicaBillingModeSummary(value); return *this;}
-
-    /**
-     * <p>The read/write capacity mode of the replica.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaBillingModeSummary(BillingModeSummary&& value) { SetReplicaBillingModeSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of strongly consistent reads consumed per second before
      * DynamoDB returns a <code>ThrottlingException</code>. For more information, see
@@ -178,70 +90,25 @@ namespace Model
      * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      */
-    inline long long GetReplicaProvisionedReadCapacityUnits() const{ return m_replicaProvisionedReadCapacityUnits; }
-
-    /**
-     * <p>The maximum number of strongly consistent reads consumed per second before
-     * DynamoDB returns a <code>ThrottlingException</code>. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying
-     * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>.
-     * </p>
-     */
+    inline long long GetReplicaProvisionedReadCapacityUnits() const { return m_replicaProvisionedReadCapacityUnits; }
     inline bool ReplicaProvisionedReadCapacityUnitsHasBeenSet() const { return m_replicaProvisionedReadCapacityUnitsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of strongly consistent reads consumed per second before
-     * DynamoDB returns a <code>ThrottlingException</code>. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying
-     * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>.
-     * </p>
-     */
     inline void SetReplicaProvisionedReadCapacityUnits(long long value) { m_replicaProvisionedReadCapacityUnitsHasBeenSet = true; m_replicaProvisionedReadCapacityUnits = value; }
-
-    /**
-     * <p>The maximum number of strongly consistent reads consumed per second before
-     * DynamoDB returns a <code>ThrottlingException</code>. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying
-     * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>.
-     * </p>
-     */
     inline ReplicaSettingsDescription& WithReplicaProvisionedReadCapacityUnits(long long value) { SetReplicaProvisionedReadCapacityUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Auto scaling settings for a global table replica's read capacity units.</p>
      */
-    inline const AutoScalingSettingsDescription& GetReplicaProvisionedReadCapacityAutoScalingSettings() const{ return m_replicaProvisionedReadCapacityAutoScalingSettings; }
-
-    /**
-     * <p>Auto scaling settings for a global table replica's read capacity units.</p>
-     */
+    inline const AutoScalingSettingsDescription& GetReplicaProvisionedReadCapacityAutoScalingSettings() const { return m_replicaProvisionedReadCapacityAutoScalingSettings; }
     inline bool ReplicaProvisionedReadCapacityAutoScalingSettingsHasBeenSet() const { return m_replicaProvisionedReadCapacityAutoScalingSettingsHasBeenSet; }
+    template<typename ReplicaProvisionedReadCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    void SetReplicaProvisionedReadCapacityAutoScalingSettings(ReplicaProvisionedReadCapacityAutoScalingSettingsT&& value) { m_replicaProvisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_replicaProvisionedReadCapacityAutoScalingSettings = std::forward<ReplicaProvisionedReadCapacityAutoScalingSettingsT>(value); }
+    template<typename ReplicaProvisionedReadCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    ReplicaSettingsDescription& WithReplicaProvisionedReadCapacityAutoScalingSettings(ReplicaProvisionedReadCapacityAutoScalingSettingsT&& value) { SetReplicaProvisionedReadCapacityAutoScalingSettings(std::forward<ReplicaProvisionedReadCapacityAutoScalingSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Auto scaling settings for a global table replica's read capacity units.</p>
-     */
-    inline void SetReplicaProvisionedReadCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { m_replicaProvisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_replicaProvisionedReadCapacityAutoScalingSettings = value; }
-
-    /**
-     * <p>Auto scaling settings for a global table replica's read capacity units.</p>
-     */
-    inline void SetReplicaProvisionedReadCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { m_replicaProvisionedReadCapacityAutoScalingSettingsHasBeenSet = true; m_replicaProvisionedReadCapacityAutoScalingSettings = std::move(value); }
-
-    /**
-     * <p>Auto scaling settings for a global table replica's read capacity units.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaProvisionedReadCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { SetReplicaProvisionedReadCapacityAutoScalingSettings(value); return *this;}
-
-    /**
-     * <p>Auto scaling settings for a global table replica's read capacity units.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaProvisionedReadCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { SetReplicaProvisionedReadCapacityAutoScalingSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of writes consumed per second before DynamoDB returns a
      * <code>ThrottlingException</code>. For more information, see <a
@@ -249,144 +116,65 @@ namespace Model
      * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer
      * Guide</i>.</p>
      */
-    inline long long GetReplicaProvisionedWriteCapacityUnits() const{ return m_replicaProvisionedWriteCapacityUnits; }
-
-    /**
-     * <p>The maximum number of writes consumed per second before DynamoDB returns a
-     * <code>ThrottlingException</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying
-     * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer
-     * Guide</i>.</p>
-     */
+    inline long long GetReplicaProvisionedWriteCapacityUnits() const { return m_replicaProvisionedWriteCapacityUnits; }
     inline bool ReplicaProvisionedWriteCapacityUnitsHasBeenSet() const { return m_replicaProvisionedWriteCapacityUnitsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of writes consumed per second before DynamoDB returns a
-     * <code>ThrottlingException</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying
-     * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer
-     * Guide</i>.</p>
-     */
     inline void SetReplicaProvisionedWriteCapacityUnits(long long value) { m_replicaProvisionedWriteCapacityUnitsHasBeenSet = true; m_replicaProvisionedWriteCapacityUnits = value; }
-
-    /**
-     * <p>The maximum number of writes consumed per second before DynamoDB returns a
-     * <code>ThrottlingException</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying
-     * Read and Write Requirements</a> in the <i>Amazon DynamoDB Developer
-     * Guide</i>.</p>
-     */
     inline ReplicaSettingsDescription& WithReplicaProvisionedWriteCapacityUnits(long long value) { SetReplicaProvisionedWriteCapacityUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Auto scaling settings for a global table replica's write capacity units.</p>
      */
-    inline const AutoScalingSettingsDescription& GetReplicaProvisionedWriteCapacityAutoScalingSettings() const{ return m_replicaProvisionedWriteCapacityAutoScalingSettings; }
-
-    /**
-     * <p>Auto scaling settings for a global table replica's write capacity units.</p>
-     */
+    inline const AutoScalingSettingsDescription& GetReplicaProvisionedWriteCapacityAutoScalingSettings() const { return m_replicaProvisionedWriteCapacityAutoScalingSettings; }
     inline bool ReplicaProvisionedWriteCapacityAutoScalingSettingsHasBeenSet() const { return m_replicaProvisionedWriteCapacityAutoScalingSettingsHasBeenSet; }
+    template<typename ReplicaProvisionedWriteCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    void SetReplicaProvisionedWriteCapacityAutoScalingSettings(ReplicaProvisionedWriteCapacityAutoScalingSettingsT&& value) { m_replicaProvisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_replicaProvisionedWriteCapacityAutoScalingSettings = std::forward<ReplicaProvisionedWriteCapacityAutoScalingSettingsT>(value); }
+    template<typename ReplicaProvisionedWriteCapacityAutoScalingSettingsT = AutoScalingSettingsDescription>
+    ReplicaSettingsDescription& WithReplicaProvisionedWriteCapacityAutoScalingSettings(ReplicaProvisionedWriteCapacityAutoScalingSettingsT&& value) { SetReplicaProvisionedWriteCapacityAutoScalingSettings(std::forward<ReplicaProvisionedWriteCapacityAutoScalingSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Auto scaling settings for a global table replica's write capacity units.</p>
-     */
-    inline void SetReplicaProvisionedWriteCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { m_replicaProvisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_replicaProvisionedWriteCapacityAutoScalingSettings = value; }
-
-    /**
-     * <p>Auto scaling settings for a global table replica's write capacity units.</p>
-     */
-    inline void SetReplicaProvisionedWriteCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { m_replicaProvisionedWriteCapacityAutoScalingSettingsHasBeenSet = true; m_replicaProvisionedWriteCapacityAutoScalingSettings = std::move(value); }
-
-    /**
-     * <p>Auto scaling settings for a global table replica's write capacity units.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaProvisionedWriteCapacityAutoScalingSettings(const AutoScalingSettingsDescription& value) { SetReplicaProvisionedWriteCapacityAutoScalingSettings(value); return *this;}
-
-    /**
-     * <p>Auto scaling settings for a global table replica's write capacity units.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaProvisionedWriteCapacityAutoScalingSettings(AutoScalingSettingsDescription&& value) { SetReplicaProvisionedWriteCapacityAutoScalingSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Replica global secondary index settings for the global table.</p>
      */
-    inline const Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>& GetReplicaGlobalSecondaryIndexSettings() const{ return m_replicaGlobalSecondaryIndexSettings; }
-
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
+    inline const Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>& GetReplicaGlobalSecondaryIndexSettings() const { return m_replicaGlobalSecondaryIndexSettings; }
     inline bool ReplicaGlobalSecondaryIndexSettingsHasBeenSet() const { return m_replicaGlobalSecondaryIndexSettingsHasBeenSet; }
+    template<typename ReplicaGlobalSecondaryIndexSettingsT = Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>>
+    void SetReplicaGlobalSecondaryIndexSettings(ReplicaGlobalSecondaryIndexSettingsT&& value) { m_replicaGlobalSecondaryIndexSettingsHasBeenSet = true; m_replicaGlobalSecondaryIndexSettings = std::forward<ReplicaGlobalSecondaryIndexSettingsT>(value); }
+    template<typename ReplicaGlobalSecondaryIndexSettingsT = Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>>
+    ReplicaSettingsDescription& WithReplicaGlobalSecondaryIndexSettings(ReplicaGlobalSecondaryIndexSettingsT&& value) { SetReplicaGlobalSecondaryIndexSettings(std::forward<ReplicaGlobalSecondaryIndexSettingsT>(value)); return *this;}
+    template<typename ReplicaGlobalSecondaryIndexSettingsT = ReplicaGlobalSecondaryIndexSettingsDescription>
+    ReplicaSettingsDescription& AddReplicaGlobalSecondaryIndexSettings(ReplicaGlobalSecondaryIndexSettingsT&& value) { m_replicaGlobalSecondaryIndexSettingsHasBeenSet = true; m_replicaGlobalSecondaryIndexSettings.emplace_back(std::forward<ReplicaGlobalSecondaryIndexSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
-    inline void SetReplicaGlobalSecondaryIndexSettings(const Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>& value) { m_replicaGlobalSecondaryIndexSettingsHasBeenSet = true; m_replicaGlobalSecondaryIndexSettings = value; }
-
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
-    inline void SetReplicaGlobalSecondaryIndexSettings(Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>&& value) { m_replicaGlobalSecondaryIndexSettingsHasBeenSet = true; m_replicaGlobalSecondaryIndexSettings = std::move(value); }
-
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaGlobalSecondaryIndexSettings(const Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>& value) { SetReplicaGlobalSecondaryIndexSettings(value); return *this;}
-
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
-    inline ReplicaSettingsDescription& WithReplicaGlobalSecondaryIndexSettings(Aws::Vector<ReplicaGlobalSecondaryIndexSettingsDescription>&& value) { SetReplicaGlobalSecondaryIndexSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
-    inline ReplicaSettingsDescription& AddReplicaGlobalSecondaryIndexSettings(const ReplicaGlobalSecondaryIndexSettingsDescription& value) { m_replicaGlobalSecondaryIndexSettingsHasBeenSet = true; m_replicaGlobalSecondaryIndexSettings.push_back(value); return *this; }
-
-    /**
-     * <p>Replica global secondary index settings for the global table.</p>
-     */
-    inline ReplicaSettingsDescription& AddReplicaGlobalSecondaryIndexSettings(ReplicaGlobalSecondaryIndexSettingsDescription&& value) { m_replicaGlobalSecondaryIndexSettingsHasBeenSet = true; m_replicaGlobalSecondaryIndexSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const TableClassSummary& GetReplicaTableClassSummary() const{ return m_replicaTableClassSummary; }
-
-    
+    inline const TableClassSummary& GetReplicaTableClassSummary() const { return m_replicaTableClassSummary; }
     inline bool ReplicaTableClassSummaryHasBeenSet() const { return m_replicaTableClassSummaryHasBeenSet; }
-
-    
-    inline void SetReplicaTableClassSummary(const TableClassSummary& value) { m_replicaTableClassSummaryHasBeenSet = true; m_replicaTableClassSummary = value; }
-
-    
-    inline void SetReplicaTableClassSummary(TableClassSummary&& value) { m_replicaTableClassSummaryHasBeenSet = true; m_replicaTableClassSummary = std::move(value); }
-
-    
-    inline ReplicaSettingsDescription& WithReplicaTableClassSummary(const TableClassSummary& value) { SetReplicaTableClassSummary(value); return *this;}
-
-    
-    inline ReplicaSettingsDescription& WithReplicaTableClassSummary(TableClassSummary&& value) { SetReplicaTableClassSummary(std::move(value)); return *this;}
-
+    template<typename ReplicaTableClassSummaryT = TableClassSummary>
+    void SetReplicaTableClassSummary(ReplicaTableClassSummaryT&& value) { m_replicaTableClassSummaryHasBeenSet = true; m_replicaTableClassSummary = std::forward<ReplicaTableClassSummaryT>(value); }
+    template<typename ReplicaTableClassSummaryT = TableClassSummary>
+    ReplicaSettingsDescription& WithReplicaTableClassSummary(ReplicaTableClassSummaryT&& value) { SetReplicaTableClassSummary(std::forward<ReplicaTableClassSummaryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;
     bool m_regionNameHasBeenSet = false;
 
-    ReplicaStatus m_replicaStatus;
+    ReplicaStatus m_replicaStatus{ReplicaStatus::NOT_SET};
     bool m_replicaStatusHasBeenSet = false;
 
     BillingModeSummary m_replicaBillingModeSummary;
     bool m_replicaBillingModeSummaryHasBeenSet = false;
 
-    long long m_replicaProvisionedReadCapacityUnits;
+    long long m_replicaProvisionedReadCapacityUnits{0};
     bool m_replicaProvisionedReadCapacityUnitsHasBeenSet = false;
 
     AutoScalingSettingsDescription m_replicaProvisionedReadCapacityAutoScalingSettings;
     bool m_replicaProvisionedReadCapacityAutoScalingSettingsHasBeenSet = false;
 
-    long long m_replicaProvisionedWriteCapacityUnits;
+    long long m_replicaProvisionedWriteCapacityUnits{0};
     bool m_replicaProvisionedWriteCapacityUnitsHasBeenSet = false;
 
     AutoScalingSettingsDescription m_replicaProvisionedWriteCapacityAutoScalingSettings;

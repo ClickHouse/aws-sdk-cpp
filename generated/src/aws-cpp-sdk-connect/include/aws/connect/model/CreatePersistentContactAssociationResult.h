@@ -27,80 +27,38 @@ namespace Model
   class CreatePersistentContactAssociationResult
   {
   public:
-    AWS_CONNECT_API CreatePersistentContactAssociationResult();
+    AWS_CONNECT_API CreatePersistentContactAssociationResult() = default;
     AWS_CONNECT_API CreatePersistentContactAssociationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONNECT_API CreatePersistentContactAssociationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The contactId from which a persistent chat session is started. This field is
      * populated only for persistent chat.</p>
      */
-    inline const Aws::String& GetContinuedFromContactId() const{ return m_continuedFromContactId; }
+    inline const Aws::String& GetContinuedFromContactId() const { return m_continuedFromContactId; }
+    template<typename ContinuedFromContactIdT = Aws::String>
+    void SetContinuedFromContactId(ContinuedFromContactIdT&& value) { m_continuedFromContactIdHasBeenSet = true; m_continuedFromContactId = std::forward<ContinuedFromContactIdT>(value); }
+    template<typename ContinuedFromContactIdT = Aws::String>
+    CreatePersistentContactAssociationResult& WithContinuedFromContactId(ContinuedFromContactIdT&& value) { SetContinuedFromContactId(std::forward<ContinuedFromContactIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The contactId from which a persistent chat session is started. This field is
-     * populated only for persistent chat.</p>
-     */
-    inline void SetContinuedFromContactId(const Aws::String& value) { m_continuedFromContactId = value; }
-
-    /**
-     * <p>The contactId from which a persistent chat session is started. This field is
-     * populated only for persistent chat.</p>
-     */
-    inline void SetContinuedFromContactId(Aws::String&& value) { m_continuedFromContactId = std::move(value); }
-
-    /**
-     * <p>The contactId from which a persistent chat session is started. This field is
-     * populated only for persistent chat.</p>
-     */
-    inline void SetContinuedFromContactId(const char* value) { m_continuedFromContactId.assign(value); }
-
-    /**
-     * <p>The contactId from which a persistent chat session is started. This field is
-     * populated only for persistent chat.</p>
-     */
-    inline CreatePersistentContactAssociationResult& WithContinuedFromContactId(const Aws::String& value) { SetContinuedFromContactId(value); return *this;}
-
-    /**
-     * <p>The contactId from which a persistent chat session is started. This field is
-     * populated only for persistent chat.</p>
-     */
-    inline CreatePersistentContactAssociationResult& WithContinuedFromContactId(Aws::String&& value) { SetContinuedFromContactId(std::move(value)); return *this;}
-
-    /**
-     * <p>The contactId from which a persistent chat session is started. This field is
-     * populated only for persistent chat.</p>
-     */
-    inline CreatePersistentContactAssociationResult& WithContinuedFromContactId(const char* value) { SetContinuedFromContactId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreatePersistentContactAssociationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreatePersistentContactAssociationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreatePersistentContactAssociationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreatePersistentContactAssociationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_continuedFromContactId;
+    bool m_continuedFromContactIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

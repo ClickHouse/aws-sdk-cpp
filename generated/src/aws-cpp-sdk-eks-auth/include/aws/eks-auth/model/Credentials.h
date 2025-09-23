@@ -33,181 +33,61 @@ namespace Model
   class Credentials
   {
   public:
-    AWS_EKSAUTH_API Credentials();
+    AWS_EKSAUTH_API Credentials() = default;
     AWS_EKSAUTH_API Credentials(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKSAUTH_API Credentials& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKSAUTH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The token that applications inside the pods must pass to any service API to
      * use the temporary credentials.</p>
      */
-    inline const Aws::String& GetSessionToken() const{ return m_sessionToken; }
-
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
+    inline const Aws::String& GetSessionToken() const { return m_sessionToken; }
     inline bool SessionTokenHasBeenSet() const { return m_sessionTokenHasBeenSet; }
+    template<typename SessionTokenT = Aws::String>
+    void SetSessionToken(SessionTokenT&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = std::forward<SessionTokenT>(value); }
+    template<typename SessionTokenT = Aws::String>
+    Credentials& WithSessionToken(SessionTokenT&& value) { SetSessionToken(std::forward<SessionTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
-    inline void SetSessionToken(const Aws::String& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = value; }
-
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
-    inline void SetSessionToken(Aws::String&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = std::move(value); }
-
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
-    inline void SetSessionToken(const char* value) { m_sessionTokenHasBeenSet = true; m_sessionToken.assign(value); }
-
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
-    inline Credentials& WithSessionToken(const Aws::String& value) { SetSessionToken(value); return *this;}
-
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
-    inline Credentials& WithSessionToken(Aws::String&& value) { SetSessionToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token that applications inside the pods must pass to any service API to
-     * use the temporary credentials.</p>
-     */
-    inline Credentials& WithSessionToken(const char* value) { SetSessionToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The secret access key that applications inside the pods use to sign
      * requests.</p>
      */
-    inline const Aws::String& GetSecretAccessKey() const{ return m_secretAccessKey; }
-
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
+    inline const Aws::String& GetSecretAccessKey() const { return m_secretAccessKey; }
     inline bool SecretAccessKeyHasBeenSet() const { return m_secretAccessKeyHasBeenSet; }
+    template<typename SecretAccessKeyT = Aws::String>
+    void SetSecretAccessKey(SecretAccessKeyT&& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = std::forward<SecretAccessKeyT>(value); }
+    template<typename SecretAccessKeyT = Aws::String>
+    Credentials& WithSecretAccessKey(SecretAccessKeyT&& value) { SetSecretAccessKey(std::forward<SecretAccessKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
-    inline void SetSecretAccessKey(const Aws::String& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = value; }
-
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
-    inline void SetSecretAccessKey(Aws::String&& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = std::move(value); }
-
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
-    inline void SetSecretAccessKey(const char* value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey.assign(value); }
-
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
-    inline Credentials& WithSecretAccessKey(const Aws::String& value) { SetSecretAccessKey(value); return *this;}
-
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
-    inline Credentials& WithSecretAccessKey(Aws::String&& value) { SetSecretAccessKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The secret access key that applications inside the pods use to sign
-     * requests.</p>
-     */
-    inline Credentials& WithSecretAccessKey(const char* value) { SetSecretAccessKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The access key ID that identifies the temporary security credentials.</p>
      */
-    inline const Aws::String& GetAccessKeyId() const{ return m_accessKeyId; }
-
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
+    inline const Aws::String& GetAccessKeyId() const { return m_accessKeyId; }
     inline bool AccessKeyIdHasBeenSet() const { return m_accessKeyIdHasBeenSet; }
+    template<typename AccessKeyIdT = Aws::String>
+    void SetAccessKeyId(AccessKeyIdT&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::forward<AccessKeyIdT>(value); }
+    template<typename AccessKeyIdT = Aws::String>
+    Credentials& WithAccessKeyId(AccessKeyIdT&& value) { SetAccessKeyId(std::forward<AccessKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
-    inline void SetAccessKeyId(const Aws::String& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = value; }
-
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
-    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::move(value); }
-
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
-    inline void SetAccessKeyId(const char* value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId.assign(value); }
-
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
-    inline Credentials& WithAccessKeyId(const Aws::String& value) { SetAccessKeyId(value); return *this;}
-
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
-    inline Credentials& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The access key ID that identifies the temporary security credentials.</p>
-     */
-    inline Credentials& WithAccessKeyId(const char* value) { SetAccessKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix epoch timestamp in seconds when the current credentials expire.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpiration() const{ return m_expiration; }
-
-    /**
-     * <p>The Unix epoch timestamp in seconds when the current credentials expire.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpiration() const { return m_expiration; }
     inline bool ExpirationHasBeenSet() const { return m_expirationHasBeenSet; }
-
-    /**
-     * <p>The Unix epoch timestamp in seconds when the current credentials expire.</p>
-     */
-    inline void SetExpiration(const Aws::Utils::DateTime& value) { m_expirationHasBeenSet = true; m_expiration = value; }
-
-    /**
-     * <p>The Unix epoch timestamp in seconds when the current credentials expire.</p>
-     */
-    inline void SetExpiration(Aws::Utils::DateTime&& value) { m_expirationHasBeenSet = true; m_expiration = std::move(value); }
-
-    /**
-     * <p>The Unix epoch timestamp in seconds when the current credentials expire.</p>
-     */
-    inline Credentials& WithExpiration(const Aws::Utils::DateTime& value) { SetExpiration(value); return *this;}
-
-    /**
-     * <p>The Unix epoch timestamp in seconds when the current credentials expire.</p>
-     */
-    inline Credentials& WithExpiration(Aws::Utils::DateTime&& value) { SetExpiration(std::move(value)); return *this;}
-
+    template<typename ExpirationT = Aws::Utils::DateTime>
+    void SetExpiration(ExpirationT&& value) { m_expirationHasBeenSet = true; m_expiration = std::forward<ExpirationT>(value); }
+    template<typename ExpirationT = Aws::Utils::DateTime>
+    Credentials& WithExpiration(ExpirationT&& value) { SetExpiration(std::forward<ExpirationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sessionToken;
@@ -219,7 +99,7 @@ namespace Model
     Aws::String m_accessKeyId;
     bool m_accessKeyIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expiration;
+    Aws::Utils::DateTime m_expiration{};
     bool m_expirationHasBeenSet = false;
   };
 

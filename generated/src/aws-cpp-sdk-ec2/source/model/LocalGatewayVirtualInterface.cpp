@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LocalGatewayVirtualInterface::LocalGatewayVirtualInterface() : 
-    m_localGatewayVirtualInterfaceIdHasBeenSet(false),
-    m_localGatewayIdHasBeenSet(false),
-    m_vlan(0),
-    m_vlanHasBeenSet(false),
-    m_localAddressHasBeenSet(false),
-    m_peerAddressHasBeenSet(false),
-    m_localBgpAsn(0),
-    m_localBgpAsnHasBeenSet(false),
-    m_peerBgpAsn(0),
-    m_peerBgpAsnHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-LocalGatewayVirtualInterface::LocalGatewayVirtualInterface(const XmlNode& xmlNode) : 
-    m_localGatewayVirtualInterfaceIdHasBeenSet(false),
-    m_localGatewayIdHasBeenSet(false),
-    m_vlan(0),
-    m_vlanHasBeenSet(false),
-    m_localAddressHasBeenSet(false),
-    m_peerAddressHasBeenSet(false),
-    m_localBgpAsn(0),
-    m_localBgpAsnHasBeenSet(false),
-    m_peerBgpAsn(0),
-    m_peerBgpAsnHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+LocalGatewayVirtualInterface::LocalGatewayVirtualInterface(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -70,6 +42,24 @@ LocalGatewayVirtualInterface& LocalGatewayVirtualInterface::operator =(const Xml
     {
       m_localGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(localGatewayIdNode.GetText());
       m_localGatewayIdHasBeenSet = true;
+    }
+    XmlNode localGatewayVirtualInterfaceGroupIdNode = resultNode.FirstChild("localGatewayVirtualInterfaceGroupId");
+    if(!localGatewayVirtualInterfaceGroupIdNode.IsNull())
+    {
+      m_localGatewayVirtualInterfaceGroupId = Aws::Utils::Xml::DecodeEscapedXmlText(localGatewayVirtualInterfaceGroupIdNode.GetText());
+      m_localGatewayVirtualInterfaceGroupIdHasBeenSet = true;
+    }
+    XmlNode localGatewayVirtualInterfaceArnNode = resultNode.FirstChild("localGatewayVirtualInterfaceArn");
+    if(!localGatewayVirtualInterfaceArnNode.IsNull())
+    {
+      m_localGatewayVirtualInterfaceArn = Aws::Utils::Xml::DecodeEscapedXmlText(localGatewayVirtualInterfaceArnNode.GetText());
+      m_localGatewayVirtualInterfaceArnHasBeenSet = true;
+    }
+    XmlNode outpostLagIdNode = resultNode.FirstChild("outpostLagId");
+    if(!outpostLagIdNode.IsNull())
+    {
+      m_outpostLagId = Aws::Utils::Xml::DecodeEscapedXmlText(outpostLagIdNode.GetText());
+      m_outpostLagIdHasBeenSet = true;
     }
     XmlNode vlanNode = resultNode.FirstChild("vlan");
     if(!vlanNode.IsNull())
@@ -101,6 +91,12 @@ LocalGatewayVirtualInterface& LocalGatewayVirtualInterface::operator =(const Xml
       m_peerBgpAsn = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(peerBgpAsnNode.GetText()).c_str()).c_str());
       m_peerBgpAsnHasBeenSet = true;
     }
+    XmlNode peerBgpAsnExtendedNode = resultNode.FirstChild("peerBgpAsnExtended");
+    if(!peerBgpAsnExtendedNode.IsNull())
+    {
+      m_peerBgpAsnExtended = StringUtils::ConvertToInt64(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(peerBgpAsnExtendedNode.GetText()).c_str()).c_str());
+      m_peerBgpAsnExtendedHasBeenSet = true;
+    }
     XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
     if(!ownerIdNode.IsNull())
     {
@@ -111,6 +107,7 @@ LocalGatewayVirtualInterface& LocalGatewayVirtualInterface::operator =(const Xml
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -118,6 +115,12 @@ LocalGatewayVirtualInterface& LocalGatewayVirtualInterface::operator =(const Xml
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode configurationStateNode = resultNode.FirstChild("configurationState");
+    if(!configurationStateNode.IsNull())
+    {
+      m_configurationState = LocalGatewayVirtualInterfaceConfigurationStateMapper::GetLocalGatewayVirtualInterfaceConfigurationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(configurationStateNode.GetText()).c_str()));
+      m_configurationStateHasBeenSet = true;
     }
   }
 
@@ -134,6 +137,21 @@ void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const c
   if(m_localGatewayIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".LocalGatewayId=" << StringUtils::URLEncode(m_localGatewayId.c_str()) << "&";
+  }
+
+  if(m_localGatewayVirtualInterfaceGroupIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".LocalGatewayVirtualInterfaceGroupId=" << StringUtils::URLEncode(m_localGatewayVirtualInterfaceGroupId.c_str()) << "&";
+  }
+
+  if(m_localGatewayVirtualInterfaceArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".LocalGatewayVirtualInterfaceArn=" << StringUtils::URLEncode(m_localGatewayVirtualInterfaceArn.c_str()) << "&";
+  }
+
+  if(m_outpostLagIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OutpostLagId=" << StringUtils::URLEncode(m_outpostLagId.c_str()) << "&";
   }
 
   if(m_vlanHasBeenSet)
@@ -161,6 +179,11 @@ void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const c
       oStream << location << index << locationValue << ".PeerBgpAsn=" << m_peerBgpAsn << "&";
   }
 
+  if(m_peerBgpAsnExtendedHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PeerBgpAsnExtended=" << m_peerBgpAsnExtended << "&";
+  }
+
   if(m_ownerIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
@@ -177,6 +200,11 @@ void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const c
       }
   }
 
+  if(m_configurationStateHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ConfigurationState=" << StringUtils::URLEncode(LocalGatewayVirtualInterfaceConfigurationStateMapper::GetNameForLocalGatewayVirtualInterfaceConfigurationState(m_configurationState)) << "&";
+  }
+
 }
 
 void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -188,6 +216,18 @@ void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const c
   if(m_localGatewayIdHasBeenSet)
   {
       oStream << location << ".LocalGatewayId=" << StringUtils::URLEncode(m_localGatewayId.c_str()) << "&";
+  }
+  if(m_localGatewayVirtualInterfaceGroupIdHasBeenSet)
+  {
+      oStream << location << ".LocalGatewayVirtualInterfaceGroupId=" << StringUtils::URLEncode(m_localGatewayVirtualInterfaceGroupId.c_str()) << "&";
+  }
+  if(m_localGatewayVirtualInterfaceArnHasBeenSet)
+  {
+      oStream << location << ".LocalGatewayVirtualInterfaceArn=" << StringUtils::URLEncode(m_localGatewayVirtualInterfaceArn.c_str()) << "&";
+  }
+  if(m_outpostLagIdHasBeenSet)
+  {
+      oStream << location << ".OutpostLagId=" << StringUtils::URLEncode(m_outpostLagId.c_str()) << "&";
   }
   if(m_vlanHasBeenSet)
   {
@@ -209,6 +249,10 @@ void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const c
   {
       oStream << location << ".PeerBgpAsn=" << m_peerBgpAsn << "&";
   }
+  if(m_peerBgpAsnExtendedHasBeenSet)
+  {
+      oStream << location << ".PeerBgpAsnExtended=" << m_peerBgpAsnExtended << "&";
+  }
   if(m_ownerIdHasBeenSet)
   {
       oStream << location << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
@@ -219,9 +263,13 @@ void LocalGatewayVirtualInterface::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_configurationStateHasBeenSet)
+  {
+      oStream << location << ".ConfigurationState=" << StringUtils::URLEncode(LocalGatewayVirtualInterfaceConfigurationStateMapper::GetNameForLocalGatewayVirtualInterfaceConfigurationState(m_configurationState)) << "&";
   }
 }
 

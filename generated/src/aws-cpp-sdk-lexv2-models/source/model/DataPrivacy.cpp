@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-DataPrivacy::DataPrivacy() : 
-    m_childDirected(false),
-    m_childDirectedHasBeenSet(false)
-{
-}
-
-DataPrivacy::DataPrivacy(JsonView jsonValue) : 
-    m_childDirected(false),
-    m_childDirectedHasBeenSet(false)
+DataPrivacy::DataPrivacy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DataPrivacy& DataPrivacy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("childDirected"))
   {
     m_childDirected = jsonValue.GetBool("childDirected");
-
     m_childDirectedHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -29,118 +29,54 @@ namespace Model
   class GetTableVersionsResult
   {
   public:
-    AWS_GLUE_API GetTableVersionsResult();
+    AWS_GLUE_API GetTableVersionsResult() = default;
     AWS_GLUE_API GetTableVersionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API GetTableVersionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of strings identifying available versions of the specified table.</p>
      */
-    inline const Aws::Vector<TableVersion>& GetTableVersions() const{ return m_tableVersions; }
+    inline const Aws::Vector<TableVersion>& GetTableVersions() const { return m_tableVersions; }
+    template<typename TableVersionsT = Aws::Vector<TableVersion>>
+    void SetTableVersions(TableVersionsT&& value) { m_tableVersionsHasBeenSet = true; m_tableVersions = std::forward<TableVersionsT>(value); }
+    template<typename TableVersionsT = Aws::Vector<TableVersion>>
+    GetTableVersionsResult& WithTableVersions(TableVersionsT&& value) { SetTableVersions(std::forward<TableVersionsT>(value)); return *this;}
+    template<typename TableVersionsT = TableVersion>
+    GetTableVersionsResult& AddTableVersions(TableVersionsT&& value) { m_tableVersionsHasBeenSet = true; m_tableVersions.emplace_back(std::forward<TableVersionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of strings identifying available versions of the specified table.</p>
-     */
-    inline void SetTableVersions(const Aws::Vector<TableVersion>& value) { m_tableVersions = value; }
-
-    /**
-     * <p>A list of strings identifying available versions of the specified table.</p>
-     */
-    inline void SetTableVersions(Aws::Vector<TableVersion>&& value) { m_tableVersions = std::move(value); }
-
-    /**
-     * <p>A list of strings identifying available versions of the specified table.</p>
-     */
-    inline GetTableVersionsResult& WithTableVersions(const Aws::Vector<TableVersion>& value) { SetTableVersions(value); return *this;}
-
-    /**
-     * <p>A list of strings identifying available versions of the specified table.</p>
-     */
-    inline GetTableVersionsResult& WithTableVersions(Aws::Vector<TableVersion>&& value) { SetTableVersions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of strings identifying available versions of the specified table.</p>
-     */
-    inline GetTableVersionsResult& AddTableVersions(const TableVersion& value) { m_tableVersions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of strings identifying available versions of the specified table.</p>
-     */
-    inline GetTableVersionsResult& AddTableVersions(TableVersion&& value) { m_tableVersions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A continuation token, if the list of available versions does not include the
      * last one.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetTableVersionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A continuation token, if the list of available versions does not include the
-     * last one.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A continuation token, if the list of available versions does not include the
-     * last one.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A continuation token, if the list of available versions does not include the
-     * last one.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A continuation token, if the list of available versions does not include the
-     * last one.</p>
-     */
-    inline GetTableVersionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A continuation token, if the list of available versions does not include the
-     * last one.</p>
-     */
-    inline GetTableVersionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A continuation token, if the list of available versions does not include the
-     * last one.</p>
-     */
-    inline GetTableVersionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetTableVersionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetTableVersionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetTableVersionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetTableVersionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TableVersion> m_tableVersions;
+    bool m_tableVersionsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

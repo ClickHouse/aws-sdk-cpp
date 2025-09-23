@@ -48,6 +48,7 @@
 #include <aws/lambda/model/GetFunctionConcurrencyRequest.h>
 #include <aws/lambda/model/GetFunctionConfigurationRequest.h>
 #include <aws/lambda/model/GetFunctionEventInvokeConfigRequest.h>
+#include <aws/lambda/model/GetFunctionRecursionConfigRequest.h>
 #include <aws/lambda/model/GetFunctionUrlConfigRequest.h>
 #include <aws/lambda/model/GetLayerVersionRequest.h>
 #include <aws/lambda/model/GetLayerVersionByArnRequest.h>
@@ -74,6 +75,7 @@
 #include <aws/lambda/model/PutFunctionCodeSigningConfigRequest.h>
 #include <aws/lambda/model/PutFunctionConcurrencyRequest.h>
 #include <aws/lambda/model/PutFunctionEventInvokeConfigRequest.h>
+#include <aws/lambda/model/PutFunctionRecursionConfigRequest.h>
 #include <aws/lambda/model/PutProvisionedConcurrencyConfigRequest.h>
 #include <aws/lambda/model/PutRuntimeManagementConfigRequest.h>
 #include <aws/lambda/model/RemoveLayerVersionPermissionRequest.h>
@@ -101,20 +103,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* LambdaClient::SERVICE_NAME = "lambda";
-const char* LambdaClient::ALLOCATION_TAG = "LambdaClient";
+namespace Aws
+{
+  namespace Lambda
+  {
+    const char SERVICE_NAME[] = "lambda";
+    const char ALLOCATION_TAG[] = "LambdaClient";
+  }
+}
+const char* LambdaClient::GetServiceName() {return SERVICE_NAME;}
+const char* LambdaClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 LambdaClient::LambdaClient(const Lambda::LambdaClientConfiguration& clientConfiguration,
                            std::shared_ptr<LambdaEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LambdaEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -129,8 +138,7 @@ LambdaClient::LambdaClient(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LambdaEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -145,8 +153,7 @@ LambdaClient::LambdaClient(const std::shared_ptr<AWSCredentialsProvider>& creden
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LambdaEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -155,12 +162,11 @@ LambdaClient::LambdaClient(const std::shared_ptr<AWSCredentialsProvider>& creden
   LambdaClient::LambdaClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<LambdaEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -175,7 +181,6 @@ LambdaClient::LambdaClient(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<LambdaEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -190,7 +195,6 @@ LambdaClient::LambdaClient(const std::shared_ptr<AWSCredentialsProvider>& creden
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<LambdaEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -210,6 +214,14 @@ std::shared_ptr<LambdaEndpointProviderBase>& LambdaClient::accessEndpointProvide
 void LambdaClient::init(const Lambda::LambdaClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Lambda");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -348,7 +360,7 @@ CreateCodeSigningConfigOutcome LambdaClient::CreateCodeSigningConfig(const Creat
           *meter,
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateCodeSigningConfig, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-      endpointResolutionOutcome.GetResult().AddPathSegments("/2020-04-22/code-signing-configs/");
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2020-04-22/code-signing-configs");
       return CreateCodeSigningConfigOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -375,7 +387,7 @@ CreateEventSourceMappingOutcome LambdaClient::CreateEventSourceMapping(const Cre
           *meter,
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateEventSourceMapping, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-      endpointResolutionOutcome.GetResult().AddPathSegments("/2015-03-31/event-source-mappings/");
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2015-03-31/event-source-mappings");
       return CreateEventSourceMappingOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -817,7 +829,7 @@ GetAccountSettingsOutcome LambdaClient::GetAccountSettings(const GetAccountSetti
           *meter,
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetAccountSettings, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-      endpointResolutionOutcome.GetResult().AddPathSegments("/2016-08-19/account-settings/");
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2016-08-19/account-settings");
       return GetAccountSettingsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -1094,6 +1106,40 @@ GetFunctionEventInvokeConfigOutcome LambdaClient::GetFunctionEventInvokeConfig(c
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetFunctionName());
       endpointResolutionOutcome.GetResult().AddPathSegments("/event-invoke-config");
       return GetFunctionEventInvokeConfigOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+GetFunctionRecursionConfigOutcome LambdaClient::GetFunctionRecursionConfig(const GetFunctionRecursionConfigRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetFunctionRecursionConfig);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetFunctionRecursionConfig, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.FunctionNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetFunctionRecursionConfig", "Required field: FunctionName, is not set");
+    return GetFunctionRecursionConfigOutcome(Aws::Client::AWSError<LambdaErrors>(LambdaErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [FunctionName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetFunctionRecursionConfig, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetFunctionRecursionConfig, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetFunctionRecursionConfig",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetFunctionRecursionConfigOutcome>(
+    [&]()-> GetFunctionRecursionConfigOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetFunctionRecursionConfig, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2024-08-31/functions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetFunctionName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/recursion-config");
+      return GetFunctionRecursionConfigOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -1421,6 +1467,14 @@ InvokeWithResponseStreamOutcome LambdaClient::InvokeWithResponseStream(InvokeWit
       request.SetResponseStreamFactory(
           [&] { request.GetEventStreamDecoder().Reset(); return Aws::New<Aws::Utils::Event::EventDecoderStream>(ALLOCATION_TAG, request.GetEventStreamDecoder()); }
       );
+      if (!request.GetHeadersReceivedEventHandler()) {
+        request.SetHeadersReceivedEventHandler([&request](const Http::HttpRequest*, Http::HttpResponse* response) {
+          AWS_CHECK_PTR("InvokeWithResponseStream", response);
+          if (const auto initialResponseHandler = request.GetEventStreamHandler().GetInitialResponseCallbackEx()) {
+            initialResponseHandler({response->GetHeaders()}, Utils::Event::InitialResponseType::ON_RESPONSE);
+          }
+        });
+      }
       return InvokeWithResponseStreamOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -1481,7 +1535,7 @@ ListCodeSigningConfigsOutcome LambdaClient::ListCodeSigningConfigs(const ListCod
           *meter,
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListCodeSigningConfigs, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-      endpointResolutionOutcome.GetResult().AddPathSegments("/2020-04-22/code-signing-configs/");
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2020-04-22/code-signing-configs");
       return ListCodeSigningConfigsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -1508,7 +1562,7 @@ ListEventSourceMappingsOutcome LambdaClient::ListEventSourceMappings(const ListE
           *meter,
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListEventSourceMappings, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-      endpointResolutionOutcome.GetResult().AddPathSegments("/2015-03-31/event-source-mappings/");
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2015-03-31/event-source-mappings");
       return ListEventSourceMappingsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -1603,7 +1657,7 @@ ListFunctionsOutcome LambdaClient::ListFunctions(const ListFunctionsRequest& req
           *meter,
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListFunctions, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-      endpointResolutionOutcome.GetResult().AddPathSegments("/2015-03-31/functions/");
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2015-03-31/functions");
       return ListFunctionsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
@@ -1974,6 +2028,40 @@ PutFunctionEventInvokeConfigOutcome LambdaClient::PutFunctionEventInvokeConfig(c
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetFunctionName());
       endpointResolutionOutcome.GetResult().AddPathSegments("/event-invoke-config");
       return PutFunctionEventInvokeConfigOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+PutFunctionRecursionConfigOutcome LambdaClient::PutFunctionRecursionConfig(const PutFunctionRecursionConfigRequest& request) const
+{
+  AWS_OPERATION_GUARD(PutFunctionRecursionConfig);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, PutFunctionRecursionConfig, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.FunctionNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("PutFunctionRecursionConfig", "Required field: FunctionName, is not set");
+    return PutFunctionRecursionConfigOutcome(Aws::Client::AWSError<LambdaErrors>(LambdaErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [FunctionName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, PutFunctionRecursionConfig, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, PutFunctionRecursionConfig, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".PutFunctionRecursionConfig",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<PutFunctionRecursionConfigOutcome>(
+    [&]()-> PutFunctionRecursionConfigOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, PutFunctionRecursionConfig, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/2024-08-31/functions/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetFunctionName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/recursion-config");
+      return PutFunctionRecursionConfigOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

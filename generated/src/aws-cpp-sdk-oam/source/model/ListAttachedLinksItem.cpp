@@ -18,17 +18,7 @@ namespace OAM
 namespace Model
 {
 
-ListAttachedLinksItem::ListAttachedLinksItem() : 
-    m_labelHasBeenSet(false),
-    m_linkArnHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false)
-{
-}
-
-ListAttachedLinksItem::ListAttachedLinksItem(JsonView jsonValue) : 
-    m_labelHasBeenSet(false),
-    m_linkArnHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false)
+ListAttachedLinksItem::ListAttachedLinksItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ListAttachedLinksItem& ListAttachedLinksItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Label"))
   {
     m_label = jsonValue.GetString("Label");
-
     m_labelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LinkArn"))
   {
     m_linkArn = jsonValue.GetString("LinkArn");
-
     m_linkArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTypes"))
   {
     Aws::Utils::Array<JsonView> resourceTypesJsonList = jsonValue.GetArray("ResourceTypes");
@@ -58,7 +44,6 @@ ListAttachedLinksItem& ListAttachedLinksItem::operator =(JsonView jsonValue)
     }
     m_resourceTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,14 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-StopStackSetOperationRequest::StopStackSetOperationRequest() : 
-    m_stackSetNameHasBeenSet(false),
-    m_operationIdHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false)
-{
-}
-
 Aws::String StopStackSetOperationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +26,7 @@ Aws::String StopStackSetOperationRequest::SerializePayload() const
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   ss << "Version=2010-05-15";

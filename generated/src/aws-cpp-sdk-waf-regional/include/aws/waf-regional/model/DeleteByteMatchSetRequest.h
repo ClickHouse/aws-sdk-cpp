@@ -21,7 +21,7 @@ namespace Model
   class DeleteByteMatchSetRequest : public WAFRegionalRequest
   {
   public:
-    AWS_WAFREGIONAL_API DeleteByteMatchSetRequest();
+    AWS_WAFREGIONAL_API DeleteByteMatchSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_WAFREGIONAL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
      * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
      * by <a>ListByteMatchSets</a>.</p>
      */
-    inline const Aws::String& GetByteMatchSetId() const{ return m_byteMatchSetId; }
-
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
+    inline const Aws::String& GetByteMatchSetId() const { return m_byteMatchSetId; }
     inline bool ByteMatchSetIdHasBeenSet() const { return m_byteMatchSetIdHasBeenSet; }
+    template<typename ByteMatchSetIdT = Aws::String>
+    void SetByteMatchSetId(ByteMatchSetIdT&& value) { m_byteMatchSetIdHasBeenSet = true; m_byteMatchSetId = std::forward<ByteMatchSetIdT>(value); }
+    template<typename ByteMatchSetIdT = Aws::String>
+    DeleteByteMatchSetRequest& WithByteMatchSetId(ByteMatchSetIdT&& value) { SetByteMatchSetId(std::forward<ByteMatchSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
-    inline void SetByteMatchSetId(const Aws::String& value) { m_byteMatchSetIdHasBeenSet = true; m_byteMatchSetId = value; }
-
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
-    inline void SetByteMatchSetId(Aws::String&& value) { m_byteMatchSetIdHasBeenSet = true; m_byteMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
-    inline void SetByteMatchSetId(const char* value) { m_byteMatchSetIdHasBeenSet = true; m_byteMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
-    inline DeleteByteMatchSetRequest& WithByteMatchSetId(const Aws::String& value) { SetByteMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
-    inline DeleteByteMatchSetRequest& WithByteMatchSetId(Aws::String&& value) { SetByteMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to
-     * delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and
-     * by <a>ListByteMatchSets</a>.</p>
-     */
-    inline DeleteByteMatchSetRequest& WithByteMatchSetId(const char* value) { SetByteMatchSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
      */
-    inline const Aws::String& GetChangeToken() const{ return m_changeToken; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
+    inline const Aws::String& GetChangeToken() const { return m_changeToken; }
     inline bool ChangeTokenHasBeenSet() const { return m_changeTokenHasBeenSet; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(const Aws::String& value) { m_changeTokenHasBeenSet = true; m_changeToken = value; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::move(value); }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(const char* value) { m_changeTokenHasBeenSet = true; m_changeToken.assign(value); }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline DeleteByteMatchSetRequest& WithChangeToken(const Aws::String& value) { SetChangeToken(value); return *this;}
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline DeleteByteMatchSetRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline DeleteByteMatchSetRequest& WithChangeToken(const char* value) { SetChangeToken(value); return *this;}
-
+    template<typename ChangeTokenT = Aws::String>
+    void SetChangeToken(ChangeTokenT&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::forward<ChangeTokenT>(value); }
+    template<typename ChangeTokenT = Aws::String>
+    DeleteByteMatchSetRequest& WithChangeToken(ChangeTokenT&& value) { SetChangeToken(std::forward<ChangeTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_byteMatchSetId;

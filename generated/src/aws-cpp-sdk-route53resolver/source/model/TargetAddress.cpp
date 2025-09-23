@@ -18,23 +18,7 @@ namespace Route53Resolver
 namespace Model
 {
 
-TargetAddress::TargetAddress() : 
-    m_ipHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_ipv6HasBeenSet(false),
-    m_protocol(Protocol::NOT_SET),
-    m_protocolHasBeenSet(false)
-{
-}
-
-TargetAddress::TargetAddress(JsonView jsonValue) : 
-    m_ipHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_ipv6HasBeenSet(false),
-    m_protocol(Protocol::NOT_SET),
-    m_protocolHasBeenSet(false)
+TargetAddress::TargetAddress(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,28 @@ TargetAddress& TargetAddress::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Ip"))
   {
     m_ip = jsonValue.GetString("Ip");
-
     m_ipHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Port"))
   {
     m_port = jsonValue.GetInteger("Port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ipv6"))
   {
     m_ipv6 = jsonValue.GetString("Ipv6");
-
     m_ipv6HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Protocol"))
   {
     m_protocol = ProtocolMapper::GetProtocolForName(jsonValue.GetString("Protocol"));
-
     m_protocolHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ServerNameIndication"))
+  {
+    m_serverNameIndication = jsonValue.GetString("ServerNameIndication");
+    m_serverNameIndicationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -97,6 +78,12 @@ JsonValue TargetAddress::Jsonize() const
   if(m_protocolHasBeenSet)
   {
    payload.WithString("Protocol", ProtocolMapper::GetNameForProtocol(m_protocol));
+  }
+
+  if(m_serverNameIndicationHasBeenSet)
+  {
+   payload.WithString("ServerNameIndication", m_serverNameIndication);
+
   }
 
   return payload;

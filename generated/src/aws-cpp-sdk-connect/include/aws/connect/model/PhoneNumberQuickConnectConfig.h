@@ -32,52 +32,23 @@ namespace Model
   class PhoneNumberQuickConnectConfig
   {
   public:
-    AWS_CONNECT_API PhoneNumberQuickConnectConfig();
+    AWS_CONNECT_API PhoneNumberQuickConnectConfig() = default;
     AWS_CONNECT_API PhoneNumberQuickConnectConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API PhoneNumberQuickConnectConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The phone number in E.164 format.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
-    inline PhoneNumberQuickConnectConfig& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
-    inline PhoneNumberQuickConnectConfig& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number in E.164 format.</p>
-     */
-    inline PhoneNumberQuickConnectConfig& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    PhoneNumberQuickConnectConfig& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_phoneNumber;

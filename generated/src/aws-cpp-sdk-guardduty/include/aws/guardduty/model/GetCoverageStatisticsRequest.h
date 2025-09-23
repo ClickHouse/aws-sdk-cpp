@@ -24,7 +24,7 @@ namespace Model
   class GetCoverageStatisticsRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API GetCoverageStatisticsRequest();
+    AWS_GUARDDUTY_API GetCoverageStatisticsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,126 +35,46 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
+     * <p>The unique ID of the GuardDuty detector.</p> <p>To find the
+     * <code>detectorId</code> in the current Region, see the Settings page in the
+     * GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    GetCoverageStatisticsRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
+     * <p>Represents the criteria used to filter the coverage statistics.</p>
      */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
-     */
-    inline GetCoverageStatisticsRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
-     */
-    inline GetCoverageStatisticsRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the GuardDuty detector associated to the coverage
-     * statistics.</p>
-     */
-    inline GetCoverageStatisticsRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
-    /**
-     * <p>Represents the criteria used to filter the coverage statistics</p>
-     */
-    inline const CoverageFilterCriteria& GetFilterCriteria() const{ return m_filterCriteria; }
-
-    /**
-     * <p>Represents the criteria used to filter the coverage statistics</p>
-     */
+    inline const CoverageFilterCriteria& GetFilterCriteria() const { return m_filterCriteria; }
     inline bool FilterCriteriaHasBeenSet() const { return m_filterCriteriaHasBeenSet; }
+    template<typename FilterCriteriaT = CoverageFilterCriteria>
+    void SetFilterCriteria(FilterCriteriaT&& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = std::forward<FilterCriteriaT>(value); }
+    template<typename FilterCriteriaT = CoverageFilterCriteria>
+    GetCoverageStatisticsRequest& WithFilterCriteria(FilterCriteriaT&& value) { SetFilterCriteria(std::forward<FilterCriteriaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the criteria used to filter the coverage statistics</p>
-     */
-    inline void SetFilterCriteria(const CoverageFilterCriteria& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = value; }
-
-    /**
-     * <p>Represents the criteria used to filter the coverage statistics</p>
-     */
-    inline void SetFilterCriteria(CoverageFilterCriteria&& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = std::move(value); }
-
-    /**
-     * <p>Represents the criteria used to filter the coverage statistics</p>
-     */
-    inline GetCoverageStatisticsRequest& WithFilterCriteria(const CoverageFilterCriteria& value) { SetFilterCriteria(value); return *this;}
-
-    /**
-     * <p>Represents the criteria used to filter the coverage statistics</p>
-     */
-    inline GetCoverageStatisticsRequest& WithFilterCriteria(CoverageFilterCriteria&& value) { SetFilterCriteria(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the statistics type used to aggregate the coverage details.</p>
      */
-    inline const Aws::Vector<CoverageStatisticsType>& GetStatisticsType() const{ return m_statisticsType; }
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
+    inline const Aws::Vector<CoverageStatisticsType>& GetStatisticsType() const { return m_statisticsType; }
     inline bool StatisticsTypeHasBeenSet() const { return m_statisticsTypeHasBeenSet; }
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
-    inline void SetStatisticsType(const Aws::Vector<CoverageStatisticsType>& value) { m_statisticsTypeHasBeenSet = true; m_statisticsType = value; }
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
-    inline void SetStatisticsType(Aws::Vector<CoverageStatisticsType>&& value) { m_statisticsTypeHasBeenSet = true; m_statisticsType = std::move(value); }
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
-    inline GetCoverageStatisticsRequest& WithStatisticsType(const Aws::Vector<CoverageStatisticsType>& value) { SetStatisticsType(value); return *this;}
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
-    inline GetCoverageStatisticsRequest& WithStatisticsType(Aws::Vector<CoverageStatisticsType>&& value) { SetStatisticsType(std::move(value)); return *this;}
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
-    inline GetCoverageStatisticsRequest& AddStatisticsType(const CoverageStatisticsType& value) { m_statisticsTypeHasBeenSet = true; m_statisticsType.push_back(value); return *this; }
-
-    /**
-     * <p>Represents the statistics type used to aggregate the coverage details.</p>
-     */
-    inline GetCoverageStatisticsRequest& AddStatisticsType(CoverageStatisticsType&& value) { m_statisticsTypeHasBeenSet = true; m_statisticsType.push_back(std::move(value)); return *this; }
-
+    template<typename StatisticsTypeT = Aws::Vector<CoverageStatisticsType>>
+    void SetStatisticsType(StatisticsTypeT&& value) { m_statisticsTypeHasBeenSet = true; m_statisticsType = std::forward<StatisticsTypeT>(value); }
+    template<typename StatisticsTypeT = Aws::Vector<CoverageStatisticsType>>
+    GetCoverageStatisticsRequest& WithStatisticsType(StatisticsTypeT&& value) { SetStatisticsType(std::forward<StatisticsTypeT>(value)); return *this;}
+    inline GetCoverageStatisticsRequest& AddStatisticsType(CoverageStatisticsType value) { m_statisticsTypeHasBeenSet = true; m_statisticsType.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_detectorId;

@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-HoursOfOperationSearchCriteria::HoursOfOperationSearchCriteria() : 
-    m_orConditionsHasBeenSet(false),
-    m_andConditionsHasBeenSet(false),
-    m_stringConditionHasBeenSet(false)
-{
-}
-
-HoursOfOperationSearchCriteria::HoursOfOperationSearchCriteria(JsonView jsonValue) : 
-    m_orConditionsHasBeenSet(false),
-    m_andConditionsHasBeenSet(false),
-    m_stringConditionHasBeenSet(false)
+HoursOfOperationSearchCriteria::HoursOfOperationSearchCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ HoursOfOperationSearchCriteria& HoursOfOperationSearchCriteria::operator =(JsonV
     }
     m_orConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AndConditions"))
   {
     Aws::Utils::Array<JsonView> andConditionsJsonList = jsonValue.GetArray("AndConditions");
@@ -54,14 +43,11 @@ HoursOfOperationSearchCriteria& HoursOfOperationSearchCriteria::operator =(JsonV
     }
     m_andConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringCondition"))
   {
     m_stringCondition = jsonValue.GetObject("StringCondition");
-
     m_stringConditionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-LFTagPair::LFTagPair() : 
-    m_catalogIdHasBeenSet(false),
-    m_tagKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
-{
-}
-
-LFTagPair::LFTagPair(JsonView jsonValue) : 
-    m_catalogIdHasBeenSet(false),
-    m_tagKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
+LFTagPair::LFTagPair(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LFTagPair& LFTagPair::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CatalogId"))
   {
     m_catalogId = jsonValue.GetString("CatalogId");
-
     m_catalogIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TagKey"))
   {
     m_tagKey = jsonValue.GetString("TagKey");
-
     m_tagKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TagValues"))
   {
     Aws::Utils::Array<JsonView> tagValuesJsonList = jsonValue.GetArray("TagValues");
@@ -58,7 +44,6 @@ LFTagPair& LFTagPair::operator =(JsonView jsonValue)
     }
     m_tagValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

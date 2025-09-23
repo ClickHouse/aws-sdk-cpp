@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-KmsGrantConstraints::KmsGrantConstraints() : 
-    m_encryptionContextEqualsHasBeenSet(false),
-    m_encryptionContextSubsetHasBeenSet(false)
-{
-}
-
-KmsGrantConstraints::KmsGrantConstraints(JsonView jsonValue) : 
-    m_encryptionContextEqualsHasBeenSet(false),
-    m_encryptionContextSubsetHasBeenSet(false)
+KmsGrantConstraints::KmsGrantConstraints(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ KmsGrantConstraints& KmsGrantConstraints::operator =(JsonView jsonValue)
     }
     m_encryptionContextEqualsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("encryptionContextSubset"))
   {
     Aws::Map<Aws::String, JsonView> encryptionContextSubsetJsonMap = jsonValue.GetObject("encryptionContextSubset").GetAllObjects();
@@ -52,7 +43,6 @@ KmsGrantConstraints& KmsGrantConstraints::operator =(JsonView jsonValue)
     }
     m_encryptionContextSubsetHasBeenSet = true;
   }
-
   return *this;
 }
 

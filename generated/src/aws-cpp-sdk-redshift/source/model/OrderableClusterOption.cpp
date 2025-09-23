@@ -20,19 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-OrderableClusterOption::OrderableClusterOption() : 
-    m_clusterVersionHasBeenSet(false),
-    m_clusterTypeHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false)
-{
-}
-
-OrderableClusterOption::OrderableClusterOption(const XmlNode& xmlNode) : 
-    m_clusterVersionHasBeenSet(false),
-    m_clusterTypeHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false)
+OrderableClusterOption::OrderableClusterOption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +53,7 @@ OrderableClusterOption& OrderableClusterOption::operator =(const XmlNode& xmlNod
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("AvailabilityZone");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember);
@@ -101,7 +90,7 @@ void OrderableClusterOption::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_availabilityZones)
       {
         Aws::StringStream availabilityZonesSs;
-        availabilityZonesSs << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++;
+        availabilityZonesSs << location << index << locationValue << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++;
         item.OutputToStream(oStream, availabilityZonesSs.str().c_str());
       }
   }
@@ -128,7 +117,7 @@ void OrderableClusterOption::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_availabilityZones)
       {
         Aws::StringStream availabilityZonesSs;
-        availabilityZonesSs << location <<  ".AvailabilityZone." << availabilityZonesIdx++;
+        availabilityZonesSs << location << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++;
         item.OutputToStream(oStream, availabilityZonesSs.str().c_str());
       }
   }

@@ -18,23 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-UpdateBridgeNetworkSourceRequest::UpdateBridgeNetworkSourceRequest() : 
-    m_multicastIpHasBeenSet(false),
-    m_networkNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_protocol(Protocol::NOT_SET),
-    m_protocolHasBeenSet(false)
-{
-}
-
-UpdateBridgeNetworkSourceRequest::UpdateBridgeNetworkSourceRequest(JsonView jsonValue) : 
-    m_multicastIpHasBeenSet(false),
-    m_networkNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_protocol(Protocol::NOT_SET),
-    m_protocolHasBeenSet(false)
+UpdateBridgeNetworkSourceRequest::UpdateBridgeNetworkSourceRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,28 @@ UpdateBridgeNetworkSourceRequest& UpdateBridgeNetworkSourceRequest::operator =(J
   if(jsonValue.ValueExists("multicastIp"))
   {
     m_multicastIp = jsonValue.GetString("multicastIp");
-
     m_multicastIpHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("multicastSourceSettings"))
+  {
+    m_multicastSourceSettings = jsonValue.GetObject("multicastSourceSettings");
+    m_multicastSourceSettingsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("networkName"))
   {
     m_networkName = jsonValue.GetString("networkName");
-
     m_networkNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("port"))
   {
     m_port = jsonValue.GetInteger("port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("protocol"))
   {
     m_protocol = ProtocolMapper::GetProtocolForName(jsonValue.GetString("protocol"));
-
     m_protocolHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -79,6 +60,12 @@ JsonValue UpdateBridgeNetworkSourceRequest::Jsonize() const
   if(m_multicastIpHasBeenSet)
   {
    payload.WithString("multicastIp", m_multicastIp);
+
+  }
+
+  if(m_multicastSourceSettingsHasBeenSet)
+  {
+   payload.WithObject("multicastSourceSettings", m_multicastSourceSettings.Jsonize());
 
   }
 

@@ -18,17 +18,7 @@ namespace MachineLearning
 namespace Model
 {
 
-RedshiftMetadata::RedshiftMetadata() : 
-    m_redshiftDatabaseHasBeenSet(false),
-    m_databaseUserNameHasBeenSet(false),
-    m_selectSqlQueryHasBeenSet(false)
-{
-}
-
-RedshiftMetadata::RedshiftMetadata(JsonView jsonValue) : 
-    m_redshiftDatabaseHasBeenSet(false),
-    m_databaseUserNameHasBeenSet(false),
-    m_selectSqlQueryHasBeenSet(false)
+RedshiftMetadata::RedshiftMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ RedshiftMetadata& RedshiftMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RedshiftDatabase"))
   {
     m_redshiftDatabase = jsonValue.GetObject("RedshiftDatabase");
-
     m_redshiftDatabaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatabaseUserName"))
   {
     m_databaseUserName = jsonValue.GetString("DatabaseUserName");
-
     m_databaseUserNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SelectSqlQuery"))
   {
     m_selectSqlQuery = jsonValue.GetString("SelectSqlQuery");
-
     m_selectSqlQueryHasBeenSet = true;
   }
-
   return *this;
 }
 

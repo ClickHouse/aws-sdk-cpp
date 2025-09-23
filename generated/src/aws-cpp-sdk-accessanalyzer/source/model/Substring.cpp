@@ -18,19 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-Substring::Substring() : 
-    m_start(0),
-    m_startHasBeenSet(false),
-    m_length(0),
-    m_lengthHasBeenSet(false)
-{
-}
-
-Substring::Substring(JsonView jsonValue) : 
-    m_start(0),
-    m_startHasBeenSet(false),
-    m_length(0),
-    m_lengthHasBeenSet(false)
+Substring::Substring(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ Substring& Substring::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("start"))
   {
     m_start = jsonValue.GetInteger("start");
-
     m_startHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("length"))
   {
     m_length = jsonValue.GetInteger("length");
-
     m_lengthHasBeenSet = true;
   }
-
   return *this;
 }
 

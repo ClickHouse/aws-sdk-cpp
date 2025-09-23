@@ -20,45 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-LoadBalancer::LoadBalancer() : 
-    m_loadBalancerArnHasBeenSet(false),
-    m_dNSNameHasBeenSet(false),
-    m_canonicalHostedZoneIdHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_loadBalancerNameHasBeenSet(false),
-    m_scheme(LoadBalancerSchemeEnum::NOT_SET),
-    m_schemeHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_type(LoadBalancerTypeEnum::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_ipAddressType(IpAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false),
-    m_customerOwnedIpv4PoolHasBeenSet(false),
-    m_enforceSecurityGroupInboundRulesOnPrivateLinkTrafficHasBeenSet(false)
-{
-}
-
-LoadBalancer::LoadBalancer(const XmlNode& xmlNode) : 
-    m_loadBalancerArnHasBeenSet(false),
-    m_dNSNameHasBeenSet(false),
-    m_canonicalHostedZoneIdHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_loadBalancerNameHasBeenSet(false),
-    m_scheme(LoadBalancerSchemeEnum::NOT_SET),
-    m_schemeHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_type(LoadBalancerTypeEnum::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_ipAddressType(IpAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false),
-    m_customerOwnedIpv4PoolHasBeenSet(false),
-    m_enforceSecurityGroupInboundRulesOnPrivateLinkTrafficHasBeenSet(false)
+LoadBalancer::LoadBalancer(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -102,7 +64,7 @@ LoadBalancer& LoadBalancer::operator =(const XmlNode& xmlNode)
     XmlNode schemeNode = resultNode.FirstChild("Scheme");
     if(!schemeNode.IsNull())
     {
-      m_scheme = LoadBalancerSchemeEnumMapper::GetLoadBalancerSchemeEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(schemeNode.GetText()).c_str()).c_str());
+      m_scheme = LoadBalancerSchemeEnumMapper::GetLoadBalancerSchemeEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(schemeNode.GetText()).c_str()));
       m_schemeHasBeenSet = true;
     }
     XmlNode vpcIdNode = resultNode.FirstChild("VpcId");
@@ -120,13 +82,14 @@ LoadBalancer& LoadBalancer::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = LoadBalancerTypeEnumMapper::GetLoadBalancerTypeEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = LoadBalancerTypeEnumMapper::GetLoadBalancerTypeEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode availabilityZonesNode = resultNode.FirstChild("AvailabilityZones");
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("member");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember);
@@ -139,6 +102,7 @@ LoadBalancer& LoadBalancer::operator =(const XmlNode& xmlNode)
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("member");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember.GetText());
@@ -150,7 +114,7 @@ LoadBalancer& LoadBalancer::operator =(const XmlNode& xmlNode)
     XmlNode ipAddressTypeNode = resultNode.FirstChild("IpAddressType");
     if(!ipAddressTypeNode.IsNull())
     {
-      m_ipAddressType = IpAddressTypeMapper::GetIpAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipAddressTypeNode.GetText()).c_str()).c_str());
+      m_ipAddressType = IpAddressTypeMapper::GetIpAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipAddressTypeNode.GetText()).c_str()));
       m_ipAddressTypeHasBeenSet = true;
     }
     XmlNode customerOwnedIpv4PoolNode = resultNode.FirstChild("CustomerOwnedIpv4Pool");
@@ -164,6 +128,18 @@ LoadBalancer& LoadBalancer::operator =(const XmlNode& xmlNode)
     {
       m_enforceSecurityGroupInboundRulesOnPrivateLinkTraffic = Aws::Utils::Xml::DecodeEscapedXmlText(enforceSecurityGroupInboundRulesOnPrivateLinkTrafficNode.GetText());
       m_enforceSecurityGroupInboundRulesOnPrivateLinkTrafficHasBeenSet = true;
+    }
+    XmlNode enablePrefixForIpv6SourceNatNode = resultNode.FirstChild("EnablePrefixForIpv6SourceNat");
+    if(!enablePrefixForIpv6SourceNatNode.IsNull())
+    {
+      m_enablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNatEnumMapper::GetEnablePrefixForIpv6SourceNatEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enablePrefixForIpv6SourceNatNode.GetText()).c_str()));
+      m_enablePrefixForIpv6SourceNatHasBeenSet = true;
+    }
+    XmlNode ipamPoolsNode = resultNode.FirstChild("IpamPools");
+    if(!ipamPoolsNode.IsNull())
+    {
+      m_ipamPools = ipamPoolsNode;
+      m_ipamPoolsHasBeenSet = true;
     }
   }
 
@@ -199,7 +175,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_schemeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Scheme=" << LoadBalancerSchemeEnumMapper::GetNameForLoadBalancerSchemeEnum(m_scheme) << "&";
+      oStream << location << index << locationValue << ".Scheme=" << StringUtils::URLEncode(LoadBalancerSchemeEnumMapper::GetNameForLoadBalancerSchemeEnum(m_scheme)) << "&";
   }
 
   if(m_vpcIdHasBeenSet)
@@ -216,7 +192,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << LoadBalancerTypeEnumMapper::GetNameForLoadBalancerTypeEnum(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(LoadBalancerTypeEnumMapper::GetNameForLoadBalancerTypeEnum(m_type)) << "&";
   }
 
   if(m_availabilityZonesHasBeenSet)
@@ -241,7 +217,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_ipAddressTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IpAddressType=" << IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType) << "&";
+      oStream << location << index << locationValue << ".IpAddressType=" << StringUtils::URLEncode(IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType)) << "&";
   }
 
   if(m_customerOwnedIpv4PoolHasBeenSet)
@@ -252,6 +228,18 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location, u
   if(m_enforceSecurityGroupInboundRulesOnPrivateLinkTrafficHasBeenSet)
   {
       oStream << location << index << locationValue << ".EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic=" << StringUtils::URLEncode(m_enforceSecurityGroupInboundRulesOnPrivateLinkTraffic.c_str()) << "&";
+  }
+
+  if(m_enablePrefixForIpv6SourceNatHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnablePrefixForIpv6SourceNat=" << StringUtils::URLEncode(EnablePrefixForIpv6SourceNatEnumMapper::GetNameForEnablePrefixForIpv6SourceNatEnum(m_enablePrefixForIpv6SourceNat)) << "&";
+  }
+
+  if(m_ipamPoolsHasBeenSet)
+  {
+      Aws::StringStream ipamPoolsLocationAndMemberSs;
+      ipamPoolsLocationAndMemberSs << location << index << locationValue << ".IpamPools";
+      m_ipamPools.OutputToStream(oStream, ipamPoolsLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -280,7 +268,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_schemeHasBeenSet)
   {
-      oStream << location << ".Scheme=" << LoadBalancerSchemeEnumMapper::GetNameForLoadBalancerSchemeEnum(m_scheme) << "&";
+      oStream << location << ".Scheme=" << StringUtils::URLEncode(LoadBalancerSchemeEnumMapper::GetNameForLoadBalancerSchemeEnum(m_scheme)) << "&";
   }
   if(m_vpcIdHasBeenSet)
   {
@@ -294,7 +282,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << LoadBalancerTypeEnumMapper::GetNameForLoadBalancerTypeEnum(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(LoadBalancerTypeEnumMapper::GetNameForLoadBalancerTypeEnum(m_type)) << "&";
   }
   if(m_availabilityZonesHasBeenSet)
   {
@@ -302,7 +290,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_availabilityZones)
       {
         Aws::StringStream availabilityZonesSs;
-        availabilityZonesSs << location <<  ".AvailabilityZones.member." << availabilityZonesIdx++;
+        availabilityZonesSs << location << ".AvailabilityZones.member." << availabilityZonesIdx++;
         item.OutputToStream(oStream, availabilityZonesSs.str().c_str());
       }
   }
@@ -316,7 +304,7 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_ipAddressTypeHasBeenSet)
   {
-      oStream << location << ".IpAddressType=" << IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType) << "&";
+      oStream << location << ".IpAddressType=" << StringUtils::URLEncode(IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType)) << "&";
   }
   if(m_customerOwnedIpv4PoolHasBeenSet)
   {
@@ -325,6 +313,16 @@ void LoadBalancer::OutputToStream(Aws::OStream& oStream, const char* location) c
   if(m_enforceSecurityGroupInboundRulesOnPrivateLinkTrafficHasBeenSet)
   {
       oStream << location << ".EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic=" << StringUtils::URLEncode(m_enforceSecurityGroupInboundRulesOnPrivateLinkTraffic.c_str()) << "&";
+  }
+  if(m_enablePrefixForIpv6SourceNatHasBeenSet)
+  {
+      oStream << location << ".EnablePrefixForIpv6SourceNat=" << StringUtils::URLEncode(EnablePrefixForIpv6SourceNatEnumMapper::GetNameForEnablePrefixForIpv6SourceNatEnum(m_enablePrefixForIpv6SourceNat)) << "&";
+  }
+  if(m_ipamPoolsHasBeenSet)
+  {
+      Aws::String ipamPoolsLocationAndMember(location);
+      ipamPoolsLocationAndMember += ".IpamPools";
+      m_ipamPools.OutputToStream(oStream, ipamPoolsLocationAndMember.c_str());
   }
 }
 

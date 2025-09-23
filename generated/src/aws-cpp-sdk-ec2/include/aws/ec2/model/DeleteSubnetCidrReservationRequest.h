@@ -21,7 +21,7 @@ namespace Model
   class DeleteSubnetCidrReservationRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DeleteSubnetCidrReservationRequest();
+    AWS_EC2_API DeleteSubnetCidrReservationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,85 +36,36 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the subnet CIDR reservation.</p>
      */
-    inline const Aws::String& GetSubnetCidrReservationId() const{ return m_subnetCidrReservationId; }
-
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
+    inline const Aws::String& GetSubnetCidrReservationId() const { return m_subnetCidrReservationId; }
     inline bool SubnetCidrReservationIdHasBeenSet() const { return m_subnetCidrReservationIdHasBeenSet; }
+    template<typename SubnetCidrReservationIdT = Aws::String>
+    void SetSubnetCidrReservationId(SubnetCidrReservationIdT&& value) { m_subnetCidrReservationIdHasBeenSet = true; m_subnetCidrReservationId = std::forward<SubnetCidrReservationIdT>(value); }
+    template<typename SubnetCidrReservationIdT = Aws::String>
+    DeleteSubnetCidrReservationRequest& WithSubnetCidrReservationId(SubnetCidrReservationIdT&& value) { SetSubnetCidrReservationId(std::forward<SubnetCidrReservationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
-    inline void SetSubnetCidrReservationId(const Aws::String& value) { m_subnetCidrReservationIdHasBeenSet = true; m_subnetCidrReservationId = value; }
-
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
-    inline void SetSubnetCidrReservationId(Aws::String&& value) { m_subnetCidrReservationIdHasBeenSet = true; m_subnetCidrReservationId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
-    inline void SetSubnetCidrReservationId(const char* value) { m_subnetCidrReservationIdHasBeenSet = true; m_subnetCidrReservationId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
-    inline DeleteSubnetCidrReservationRequest& WithSubnetCidrReservationId(const Aws::String& value) { SetSubnetCidrReservationId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
-    inline DeleteSubnetCidrReservationRequest& WithSubnetCidrReservationId(Aws::String&& value) { SetSubnetCidrReservationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet CIDR reservation.</p>
-     */
-    inline DeleteSubnetCidrReservationRequest& WithSubnetCidrReservationId(const char* value) { SetSubnetCidrReservationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DeleteSubnetCidrReservationRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_subnetCidrReservationId;
     bool m_subnetCidrReservationIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

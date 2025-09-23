@@ -33,134 +33,47 @@ namespace Model
   class EmergencyContact
   {
   public:
-    AWS_SHIELD_API EmergencyContact();
+    AWS_SHIELD_API EmergencyContact() = default;
     AWS_SHIELD_API EmergencyContact(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API EmergencyContact& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The email address for the contact.</p>
      */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The email address for the contact.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    EmergencyContact& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address for the contact.</p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The email address for the contact.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The email address for the contact.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The email address for the contact.</p>
-     */
-    inline EmergencyContact& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The email address for the contact.</p>
-     */
-    inline EmergencyContact& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address for the contact.</p>
-     */
-    inline EmergencyContact& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The phone number for the contact.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The phone number for the contact.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    EmergencyContact& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The phone number for the contact.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The phone number for the contact.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number for the contact.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number for the contact.</p>
-     */
-    inline EmergencyContact& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number for the contact.</p>
-     */
-    inline EmergencyContact& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number for the contact.</p>
-     */
-    inline EmergencyContact& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional notes regarding the contact. </p>
      */
-    inline const Aws::String& GetContactNotes() const{ return m_contactNotes; }
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
+    inline const Aws::String& GetContactNotes() const { return m_contactNotes; }
     inline bool ContactNotesHasBeenSet() const { return m_contactNotesHasBeenSet; }
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
-    inline void SetContactNotes(const Aws::String& value) { m_contactNotesHasBeenSet = true; m_contactNotes = value; }
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
-    inline void SetContactNotes(Aws::String&& value) { m_contactNotesHasBeenSet = true; m_contactNotes = std::move(value); }
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
-    inline void SetContactNotes(const char* value) { m_contactNotesHasBeenSet = true; m_contactNotes.assign(value); }
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
-    inline EmergencyContact& WithContactNotes(const Aws::String& value) { SetContactNotes(value); return *this;}
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
-    inline EmergencyContact& WithContactNotes(Aws::String&& value) { SetContactNotes(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional notes regarding the contact. </p>
-     */
-    inline EmergencyContact& WithContactNotes(const char* value) { SetContactNotes(value); return *this;}
-
+    template<typename ContactNotesT = Aws::String>
+    void SetContactNotes(ContactNotesT&& value) { m_contactNotesHasBeenSet = true; m_contactNotes = std::forward<ContactNotesT>(value); }
+    template<typename ContactNotesT = Aws::String>
+    EmergencyContact& WithContactNotes(ContactNotesT&& value) { SetContactNotes(std::forward<ContactNotesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_emailAddress;

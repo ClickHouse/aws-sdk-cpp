@@ -32,155 +32,72 @@ namespace Model
   class ActivityTaskCanceledEventAttributes
   {
   public:
-    AWS_SWF_API ActivityTaskCanceledEventAttributes();
+    AWS_SWF_API ActivityTaskCanceledEventAttributes() = default;
     AWS_SWF_API ActivityTaskCanceledEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API ActivityTaskCanceledEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details of the cancellation.</p>
      */
-    inline const Aws::String& GetDetails() const{ return m_details; }
-
-    /**
-     * <p>Details of the cancellation.</p>
-     */
+    inline const Aws::String& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
+    template<typename DetailsT = Aws::String>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Aws::String>
+    ActivityTaskCanceledEventAttributes& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details of the cancellation.</p>
-     */
-    inline void SetDetails(const Aws::String& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p>Details of the cancellation.</p>
-     */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p>Details of the cancellation.</p>
-     */
-    inline void SetDetails(const char* value) { m_detailsHasBeenSet = true; m_details.assign(value); }
-
-    /**
-     * <p>Details of the cancellation.</p>
-     */
-    inline ActivityTaskCanceledEventAttributes& WithDetails(const Aws::String& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>Details of the cancellation.</p>
-     */
-    inline ActivityTaskCanceledEventAttributes& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
-
-    /**
-     * <p>Details of the cancellation.</p>
-     */
-    inline ActivityTaskCanceledEventAttributes& WithDetails(const char* value) { SetDetails(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
      * this activity task was scheduled. This information can be useful for diagnosing
      * problems by tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetScheduledEventId() const{ return m_scheduledEventId; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
-     * this activity task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetScheduledEventId() const { return m_scheduledEventId; }
     inline bool ScheduledEventIdHasBeenSet() const { return m_scheduledEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
-     * this activity task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetScheduledEventId(long long value) { m_scheduledEventIdHasBeenSet = true; m_scheduledEventId = value; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when
-     * this activity task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline ActivityTaskCanceledEventAttributes& WithScheduledEventId(long long value) { SetScheduledEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
      * activity task was started. This information can be useful for diagnosing
      * problems by tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetStartedEventId() const{ return m_startedEventId; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
-     * activity task was started. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetStartedEventId() const { return m_startedEventId; }
     inline bool StartedEventIdHasBeenSet() const { return m_startedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
-     * activity task was started. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetStartedEventId(long long value) { m_startedEventIdHasBeenSet = true; m_startedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this
-     * activity task was started. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline ActivityTaskCanceledEventAttributes& WithStartedEventId(long long value) { SetStartedEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If set, contains the ID of the last <code>ActivityTaskCancelRequested</code>
      * event recorded for this activity task. This information can be useful for
      * diagnosing problems by tracing back the chain of events leading up to this
      * event.</p>
      */
-    inline long long GetLatestCancelRequestedEventId() const{ return m_latestCancelRequestedEventId; }
-
-    /**
-     * <p>If set, contains the ID of the last <code>ActivityTaskCancelRequested</code>
-     * event recorded for this activity task. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
+    inline long long GetLatestCancelRequestedEventId() const { return m_latestCancelRequestedEventId; }
     inline bool LatestCancelRequestedEventIdHasBeenSet() const { return m_latestCancelRequestedEventIdHasBeenSet; }
-
-    /**
-     * <p>If set, contains the ID of the last <code>ActivityTaskCancelRequested</code>
-     * event recorded for this activity task. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
     inline void SetLatestCancelRequestedEventId(long long value) { m_latestCancelRequestedEventIdHasBeenSet = true; m_latestCancelRequestedEventId = value; }
-
-    /**
-     * <p>If set, contains the ID of the last <code>ActivityTaskCancelRequested</code>
-     * event recorded for this activity task. This information can be useful for
-     * diagnosing problems by tracing back the chain of events leading up to this
-     * event.</p>
-     */
     inline ActivityTaskCanceledEventAttributes& WithLatestCancelRequestedEventId(long long value) { SetLatestCancelRequestedEventId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_details;
     bool m_detailsHasBeenSet = false;
 
-    long long m_scheduledEventId;
+    long long m_scheduledEventId{0};
     bool m_scheduledEventIdHasBeenSet = false;
 
-    long long m_startedEventId;
+    long long m_startedEventId{0};
     bool m_startedEventIdHasBeenSet = false;
 
-    long long m_latestCancelRequestedEventId;
+    long long m_latestCancelRequestedEventId{0};
     bool m_latestCancelRequestedEventIdHasBeenSet = false;
   };
 

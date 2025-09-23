@@ -18,15 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-UpdateFPorts::UpdateFPorts() : 
-    m_positioningHasBeenSet(false),
-    m_applicationsHasBeenSet(false)
-{
-}
-
-UpdateFPorts::UpdateFPorts(JsonView jsonValue) : 
-    m_positioningHasBeenSet(false),
-    m_applicationsHasBeenSet(false)
+UpdateFPorts::UpdateFPorts(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UpdateFPorts& UpdateFPorts::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Positioning"))
   {
     m_positioning = jsonValue.GetObject("Positioning");
-
     m_positioningHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Applications"))
   {
     Aws::Utils::Array<JsonView> applicationsJsonList = jsonValue.GetArray("Applications");
@@ -49,7 +39,6 @@ UpdateFPorts& UpdateFPorts::operator =(JsonView jsonValue)
     }
     m_applicationsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -29,83 +29,50 @@ namespace Model
   class RelationalDatabaseHardware
   {
   public:
-    AWS_LIGHTSAIL_API RelationalDatabaseHardware();
+    AWS_LIGHTSAIL_API RelationalDatabaseHardware() = default;
     AWS_LIGHTSAIL_API RelationalDatabaseHardware(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API RelationalDatabaseHardware& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of vCPUs for the database.</p>
      */
-    inline int GetCpuCount() const{ return m_cpuCount; }
-
-    /**
-     * <p>The number of vCPUs for the database.</p>
-     */
+    inline int GetCpuCount() const { return m_cpuCount; }
     inline bool CpuCountHasBeenSet() const { return m_cpuCountHasBeenSet; }
-
-    /**
-     * <p>The number of vCPUs for the database.</p>
-     */
     inline void SetCpuCount(int value) { m_cpuCountHasBeenSet = true; m_cpuCount = value; }
-
-    /**
-     * <p>The number of vCPUs for the database.</p>
-     */
     inline RelationalDatabaseHardware& WithCpuCount(int value) { SetCpuCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The size of the disk for the database.</p>
      */
-    inline int GetDiskSizeInGb() const{ return m_diskSizeInGb; }
-
-    /**
-     * <p>The size of the disk for the database.</p>
-     */
+    inline int GetDiskSizeInGb() const { return m_diskSizeInGb; }
     inline bool DiskSizeInGbHasBeenSet() const { return m_diskSizeInGbHasBeenSet; }
-
-    /**
-     * <p>The size of the disk for the database.</p>
-     */
     inline void SetDiskSizeInGb(int value) { m_diskSizeInGbHasBeenSet = true; m_diskSizeInGb = value; }
-
-    /**
-     * <p>The size of the disk for the database.</p>
-     */
     inline RelationalDatabaseHardware& WithDiskSizeInGb(int value) { SetDiskSizeInGb(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The amount of RAM in GB for the database.</p>
      */
-    inline double GetRamSizeInGb() const{ return m_ramSizeInGb; }
-
-    /**
-     * <p>The amount of RAM in GB for the database.</p>
-     */
+    inline double GetRamSizeInGb() const { return m_ramSizeInGb; }
     inline bool RamSizeInGbHasBeenSet() const { return m_ramSizeInGbHasBeenSet; }
-
-    /**
-     * <p>The amount of RAM in GB for the database.</p>
-     */
     inline void SetRamSizeInGb(double value) { m_ramSizeInGbHasBeenSet = true; m_ramSizeInGb = value; }
-
-    /**
-     * <p>The amount of RAM in GB for the database.</p>
-     */
     inline RelationalDatabaseHardware& WithRamSizeInGb(double value) { SetRamSizeInGb(value); return *this;}
-
+    ///@}
   private:
 
-    int m_cpuCount;
+    int m_cpuCount{0};
     bool m_cpuCountHasBeenSet = false;
 
-    int m_diskSizeInGb;
+    int m_diskSizeInGb{0};
     bool m_diskSizeInGbHasBeenSet = false;
 
-    double m_ramSizeInGb;
+    double m_ramSizeInGb{0.0};
     bool m_ramSizeInGbHasBeenSet = false;
   };
 

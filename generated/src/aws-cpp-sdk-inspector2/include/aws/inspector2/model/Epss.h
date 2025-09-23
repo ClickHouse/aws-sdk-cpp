@@ -30,35 +30,24 @@ namespace Model
   class Epss
   {
   public:
-    AWS_INSPECTOR2_API Epss();
+    AWS_INSPECTOR2_API Epss() = default;
     AWS_INSPECTOR2_API Epss(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Epss& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Exploit Prediction Scoring System (EPSS) score.</p>
      */
-    inline double GetScore() const{ return m_score; }
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score.</p>
-     */
+    inline double GetScore() const { return m_score; }
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score.</p>
-     */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score.</p>
-     */
     inline Epss& WithScore(double value) { SetScore(value); return *this;}
-
+    ///@}
   private:
 
-    double m_score;
+    double m_score{0.0};
     bool m_scoreHasBeenSet = false;
   };
 

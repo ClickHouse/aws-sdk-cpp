@@ -32,60 +32,24 @@ namespace Model
   class ScheduledJobRollout
   {
   public:
-    AWS_IOT_API ScheduledJobRollout();
+    AWS_IOT_API ScheduledJobRollout() = default;
     AWS_IOT_API ScheduledJobRollout(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API ScheduledJobRollout& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Displays the start times of the next seven maintenance window
      * occurrences.</p>
      */
-    inline const Aws::String& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
+    inline const Aws::String& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
-    inline void SetStartTime(const Aws::String& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
-    inline void SetStartTime(Aws::String&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
-    inline void SetStartTime(const char* value) { m_startTimeHasBeenSet = true; m_startTime.assign(value); }
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
-    inline ScheduledJobRollout& WithStartTime(const Aws::String& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
-    inline ScheduledJobRollout& WithStartTime(Aws::String&& value) { SetStartTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Displays the start times of the next seven maintenance window
-     * occurrences.</p>
-     */
-    inline ScheduledJobRollout& WithStartTime(const char* value) { SetStartTime(value); return *this;}
-
+    template<typename StartTimeT = Aws::String>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::String>
+    ScheduledJobRollout& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startTime;

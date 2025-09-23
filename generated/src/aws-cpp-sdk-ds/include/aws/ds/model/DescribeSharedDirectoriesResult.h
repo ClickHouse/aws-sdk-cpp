@@ -29,125 +29,55 @@ namespace Model
   class DescribeSharedDirectoriesResult
   {
   public:
-    AWS_DIRECTORYSERVICE_API DescribeSharedDirectoriesResult();
+    AWS_DIRECTORYSERVICE_API DescribeSharedDirectoriesResult() = default;
     AWS_DIRECTORYSERVICE_API DescribeSharedDirectoriesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DIRECTORYSERVICE_API DescribeSharedDirectoriesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of all shared directories in your account.</p>
      */
-    inline const Aws::Vector<SharedDirectory>& GetSharedDirectories() const{ return m_sharedDirectories; }
+    inline const Aws::Vector<SharedDirectory>& GetSharedDirectories() const { return m_sharedDirectories; }
+    template<typename SharedDirectoriesT = Aws::Vector<SharedDirectory>>
+    void SetSharedDirectories(SharedDirectoriesT&& value) { m_sharedDirectoriesHasBeenSet = true; m_sharedDirectories = std::forward<SharedDirectoriesT>(value); }
+    template<typename SharedDirectoriesT = Aws::Vector<SharedDirectory>>
+    DescribeSharedDirectoriesResult& WithSharedDirectories(SharedDirectoriesT&& value) { SetSharedDirectories(std::forward<SharedDirectoriesT>(value)); return *this;}
+    template<typename SharedDirectoriesT = SharedDirectory>
+    DescribeSharedDirectoriesResult& AddSharedDirectories(SharedDirectoriesT&& value) { m_sharedDirectoriesHasBeenSet = true; m_sharedDirectories.emplace_back(std::forward<SharedDirectoriesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of all shared directories in your account.</p>
-     */
-    inline void SetSharedDirectories(const Aws::Vector<SharedDirectory>& value) { m_sharedDirectories = value; }
-
-    /**
-     * <p>A list of all shared directories in your account.</p>
-     */
-    inline void SetSharedDirectories(Aws::Vector<SharedDirectory>&& value) { m_sharedDirectories = std::move(value); }
-
-    /**
-     * <p>A list of all shared directories in your account.</p>
-     */
-    inline DescribeSharedDirectoriesResult& WithSharedDirectories(const Aws::Vector<SharedDirectory>& value) { SetSharedDirectories(value); return *this;}
-
-    /**
-     * <p>A list of all shared directories in your account.</p>
-     */
-    inline DescribeSharedDirectoriesResult& WithSharedDirectories(Aws::Vector<SharedDirectory>&& value) { SetSharedDirectories(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of all shared directories in your account.</p>
-     */
-    inline DescribeSharedDirectoriesResult& AddSharedDirectories(const SharedDirectory& value) { m_sharedDirectories.push_back(value); return *this; }
-
-    /**
-     * <p>A list of all shared directories in your account.</p>
-     */
-    inline DescribeSharedDirectoriesResult& AddSharedDirectories(SharedDirectory&& value) { m_sharedDirectories.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If not null, token that indicates that more results are available. Pass this
      * value for the <code>NextToken</code> parameter in a subsequent call to
      * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeSharedDirectoriesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If not null, token that indicates that more results are available. Pass this
-     * value for the <code>NextToken</code> parameter in a subsequent call to
-     * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If not null, token that indicates that more results are available. Pass this
-     * value for the <code>NextToken</code> parameter in a subsequent call to
-     * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If not null, token that indicates that more results are available. Pass this
-     * value for the <code>NextToken</code> parameter in a subsequent call to
-     * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If not null, token that indicates that more results are available. Pass this
-     * value for the <code>NextToken</code> parameter in a subsequent call to
-     * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
-     */
-    inline DescribeSharedDirectoriesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If not null, token that indicates that more results are available. Pass this
-     * value for the <code>NextToken</code> parameter in a subsequent call to
-     * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
-     */
-    inline DescribeSharedDirectoriesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If not null, token that indicates that more results are available. Pass this
-     * value for the <code>NextToken</code> parameter in a subsequent call to
-     * <a>DescribeSharedDirectories</a> to retrieve the next set of items.</p>
-     */
-    inline DescribeSharedDirectoriesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeSharedDirectoriesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeSharedDirectoriesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeSharedDirectoriesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeSharedDirectoriesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SharedDirectory> m_sharedDirectories;
+    bool m_sharedDirectoriesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

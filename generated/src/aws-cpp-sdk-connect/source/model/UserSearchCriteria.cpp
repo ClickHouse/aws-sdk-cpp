@@ -18,19 +18,7 @@ namespace Connect
 namespace Model
 {
 
-UserSearchCriteria::UserSearchCriteria() : 
-    m_orConditionsHasBeenSet(false),
-    m_andConditionsHasBeenSet(false),
-    m_stringConditionHasBeenSet(false),
-    m_hierarchyGroupConditionHasBeenSet(false)
-{
-}
-
-UserSearchCriteria::UserSearchCriteria(JsonView jsonValue) : 
-    m_orConditionsHasBeenSet(false),
-    m_andConditionsHasBeenSet(false),
-    m_stringConditionHasBeenSet(false),
-    m_hierarchyGroupConditionHasBeenSet(false)
+UserSearchCriteria::UserSearchCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ UserSearchCriteria& UserSearchCriteria::operator =(JsonView jsonValue)
     }
     m_orConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AndConditions"))
   {
     Aws::Utils::Array<JsonView> andConditionsJsonList = jsonValue.GetArray("AndConditions");
@@ -56,21 +43,21 @@ UserSearchCriteria& UserSearchCriteria::operator =(JsonView jsonValue)
     }
     m_andConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringCondition"))
   {
     m_stringCondition = jsonValue.GetObject("StringCondition");
-
     m_stringConditionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ListCondition"))
+  {
+    m_listCondition = jsonValue.GetObject("ListCondition");
+    m_listConditionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("HierarchyGroupCondition"))
   {
     m_hierarchyGroupCondition = jsonValue.GetObject("HierarchyGroupCondition");
-
     m_hierarchyGroupConditionHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -103,6 +90,12 @@ JsonValue UserSearchCriteria::Jsonize() const
   if(m_stringConditionHasBeenSet)
   {
    payload.WithObject("StringCondition", m_stringCondition.Jsonize());
+
+  }
+
+  if(m_listConditionHasBeenSet)
+  {
+   payload.WithObject("ListCondition", m_listCondition.Jsonize());
 
   }
 

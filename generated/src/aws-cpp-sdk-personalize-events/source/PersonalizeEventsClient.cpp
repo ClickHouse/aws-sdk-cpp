@@ -40,20 +40,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* PersonalizeEventsClient::SERVICE_NAME = "personalize";
-const char* PersonalizeEventsClient::ALLOCATION_TAG = "PersonalizeEventsClient";
+namespace Aws
+{
+  namespace PersonalizeEvents
+  {
+    const char SERVICE_NAME[] = "personalize";
+    const char ALLOCATION_TAG[] = "PersonalizeEventsClient";
+  }
+}
+const char* PersonalizeEventsClient::GetServiceName() {return SERVICE_NAME;}
+const char* PersonalizeEventsClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 PersonalizeEventsClient::PersonalizeEventsClient(const PersonalizeEvents::PersonalizeEventsClientConfiguration& clientConfiguration,
                                                  std::shared_ptr<PersonalizeEventsEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PersonalizeEventsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PersonalizeEventsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -68,8 +75,7 @@ PersonalizeEventsClient::PersonalizeEventsClient(const AWSCredentials& credentia
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PersonalizeEventsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PersonalizeEventsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -84,8 +90,7 @@ PersonalizeEventsClient::PersonalizeEventsClient(const std::shared_ptr<AWSCreden
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PersonalizeEventsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PersonalizeEventsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -94,12 +99,11 @@ PersonalizeEventsClient::PersonalizeEventsClient(const std::shared_ptr<AWSCreden
   PersonalizeEventsClient::PersonalizeEventsClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PersonalizeEventsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<PersonalizeEventsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -114,7 +118,6 @@ PersonalizeEventsClient::PersonalizeEventsClient(const AWSCredentials& credentia
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PersonalizeEventsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PersonalizeEventsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -129,7 +132,6 @@ PersonalizeEventsClient::PersonalizeEventsClient(const std::shared_ptr<AWSCreden
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PersonalizeEventsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PersonalizeEventsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -149,6 +151,14 @@ std::shared_ptr<PersonalizeEventsEndpointProviderBase>& PersonalizeEventsClient:
 void PersonalizeEventsClient::init(const PersonalizeEvents::PersonalizeEventsClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Personalize Events");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

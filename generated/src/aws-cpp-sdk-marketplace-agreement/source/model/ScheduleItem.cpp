@@ -18,15 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-ScheduleItem::ScheduleItem() : 
-    m_chargeAmountHasBeenSet(false),
-    m_chargeDateHasBeenSet(false)
-{
-}
-
-ScheduleItem::ScheduleItem(JsonView jsonValue) : 
-    m_chargeAmountHasBeenSet(false),
-    m_chargeDateHasBeenSet(false)
+ScheduleItem::ScheduleItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ScheduleItem& ScheduleItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("chargeAmount"))
   {
     m_chargeAmount = jsonValue.GetString("chargeAmount");
-
     m_chargeAmountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("chargeDate"))
   {
     m_chargeDate = jsonValue.GetDouble("chargeDate");
-
     m_chargeDateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -36,12 +36,13 @@ namespace Model
   class Filter
   {
   public:
-    AWS_SECRETSMANAGER_API Filter();
+    AWS_SECRETSMANAGER_API Filter() = default;
     AWS_SECRETSMANAGER_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECRETSMANAGER_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECRETSMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The following are keys you can use:</p> <ul> <li> <p> <b>description</b>:
      * Prefix match, not case-sensitive.</p> </li> <li> <p> <b>name</b>: Prefix match,
@@ -53,131 +54,29 @@ namespace Model
      * into words and then searches all attributes for matches. Not case-sensitive.</p>
      * </li> </ul>
      */
-    inline const FilterNameStringType& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The following are keys you can use:</p> <ul> <li> <p> <b>description</b>:
-     * Prefix match, not case-sensitive.</p> </li> <li> <p> <b>name</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-key</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-value</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>primary-region</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>owning-service</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>all</b>: Breaks the filter value string
-     * into words and then searches all attributes for matches. Not case-sensitive.</p>
-     * </li> </ul>
-     */
+    inline FilterNameStringType GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    inline void SetKey(FilterNameStringType value) { m_keyHasBeenSet = true; m_key = value; }
+    inline Filter& WithKey(FilterNameStringType value) { SetKey(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The following are keys you can use:</p> <ul> <li> <p> <b>description</b>:
-     * Prefix match, not case-sensitive.</p> </li> <li> <p> <b>name</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-key</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-value</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>primary-region</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>owning-service</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>all</b>: Breaks the filter value string
-     * into words and then searches all attributes for matches. Not case-sensitive.</p>
-     * </li> </ul>
-     */
-    inline void SetKey(const FilterNameStringType& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The following are keys you can use:</p> <ul> <li> <p> <b>description</b>:
-     * Prefix match, not case-sensitive.</p> </li> <li> <p> <b>name</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-key</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-value</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>primary-region</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>owning-service</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>all</b>: Breaks the filter value string
-     * into words and then searches all attributes for matches. Not case-sensitive.</p>
-     * </li> </ul>
-     */
-    inline void SetKey(FilterNameStringType&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The following are keys you can use:</p> <ul> <li> <p> <b>description</b>:
-     * Prefix match, not case-sensitive.</p> </li> <li> <p> <b>name</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-key</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-value</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>primary-region</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>owning-service</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>all</b>: Breaks the filter value string
-     * into words and then searches all attributes for matches. Not case-sensitive.</p>
-     * </li> </ul>
-     */
-    inline Filter& WithKey(const FilterNameStringType& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The following are keys you can use:</p> <ul> <li> <p> <b>description</b>:
-     * Prefix match, not case-sensitive.</p> </li> <li> <p> <b>name</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-key</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>tag-value</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>primary-region</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>owning-service</b>: Prefix match,
-     * case-sensitive.</p> </li> <li> <p> <b>all</b>: Breaks the filter value string
-     * into words and then searches all attributes for matches. Not case-sensitive.</p>
-     * </li> </ul>
-     */
-    inline Filter& WithKey(FilterNameStringType&& value) { SetKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
      * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline Filter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline Filter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline Filter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline Filter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The keyword to filter for.</p> <p>You can prefix your search value with an
-     * exclamation mark (<code>!</code>) in order to perform negation filters. </p>
-     */
-    inline Filter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    Filter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    Filter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    FilterNameStringType m_key;
+    FilterNameStringType m_key{FilterNameStringType::NOT_SET};
     bool m_keyHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

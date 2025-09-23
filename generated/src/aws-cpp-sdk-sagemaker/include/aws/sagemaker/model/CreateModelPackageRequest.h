@@ -17,6 +17,9 @@
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/sagemaker/model/DriftCheckBaselines.h>
 #include <aws/sagemaker/model/SkipModelValidation.h>
+#include <aws/sagemaker/model/ModelPackageSecurityConfig.h>
+#include <aws/sagemaker/model/ModelPackageModelCard.h>
+#include <aws/sagemaker/model/ModelLifeCycle.h>
 #include <aws/sagemaker/model/Tag.h>
 #include <aws/sagemaker/model/AdditionalInferenceSpecificationDefinition.h>
 #include <utility>
@@ -34,7 +37,7 @@ namespace Model
   class CreateModelPackageRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API CreateModelPackageRequest();
+    AWS_SAGEMAKER_API CreateModelPackageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -47,325 +50,102 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the model package. The name must have 1 to 63 characters. Valid
      * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
      * for unversioned models. It is not applicable to versioned models.</p>
      */
-    inline const Aws::String& GetModelPackageName() const{ return m_modelPackageName; }
-
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
+    inline const Aws::String& GetModelPackageName() const { return m_modelPackageName; }
     inline bool ModelPackageNameHasBeenSet() const { return m_modelPackageNameHasBeenSet; }
+    template<typename ModelPackageNameT = Aws::String>
+    void SetModelPackageName(ModelPackageNameT&& value) { m_modelPackageNameHasBeenSet = true; m_modelPackageName = std::forward<ModelPackageNameT>(value); }
+    template<typename ModelPackageNameT = Aws::String>
+    CreateModelPackageRequest& WithModelPackageName(ModelPackageNameT&& value) { SetModelPackageName(std::forward<ModelPackageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
-    inline void SetModelPackageName(const Aws::String& value) { m_modelPackageNameHasBeenSet = true; m_modelPackageName = value; }
-
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
-    inline void SetModelPackageName(Aws::String&& value) { m_modelPackageNameHasBeenSet = true; m_modelPackageName = std::move(value); }
-
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
-    inline void SetModelPackageName(const char* value) { m_modelPackageNameHasBeenSet = true; m_modelPackageName.assign(value); }
-
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageName(const Aws::String& value) { SetModelPackageName(value); return *this;}
-
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageName(Aws::String&& value) { SetModelPackageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the model package. The name must have 1 to 63 characters. Valid
-     * characters are a-z, A-Z, 0-9, and - (hyphen).</p> <p>This parameter is required
-     * for unversioned models. It is not applicable to versioned models.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageName(const char* value) { SetModelPackageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or Amazon Resource Name (ARN) of the model package group that this
      * model version belongs to.</p> <p>This parameter is required for versioned
      * models, and does not apply to unversioned models.</p>
      */
-    inline const Aws::String& GetModelPackageGroupName() const{ return m_modelPackageGroupName; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
+    inline const Aws::String& GetModelPackageGroupName() const { return m_modelPackageGroupName; }
     inline bool ModelPackageGroupNameHasBeenSet() const { return m_modelPackageGroupNameHasBeenSet; }
+    template<typename ModelPackageGroupNameT = Aws::String>
+    void SetModelPackageGroupName(ModelPackageGroupNameT&& value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName = std::forward<ModelPackageGroupNameT>(value); }
+    template<typename ModelPackageGroupNameT = Aws::String>
+    CreateModelPackageRequest& WithModelPackageGroupName(ModelPackageGroupNameT&& value) { SetModelPackageGroupName(std::forward<ModelPackageGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
-    inline void SetModelPackageGroupName(const Aws::String& value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName = value; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
-    inline void SetModelPackageGroupName(Aws::String&& value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName = std::move(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
-    inline void SetModelPackageGroupName(const char* value) { m_modelPackageGroupNameHasBeenSet = true; m_modelPackageGroupName.assign(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageGroupName(const Aws::String& value) { SetModelPackageGroupName(value); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageGroupName(Aws::String&& value) { SetModelPackageGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the model package group that this
-     * model version belongs to.</p> <p>This parameter is required for versioned
-     * models, and does not apply to unversioned models.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageGroupName(const char* value) { SetModelPackageGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the model package.</p>
      */
-    inline const Aws::String& GetModelPackageDescription() const{ return m_modelPackageDescription; }
-
-    /**
-     * <p>A description of the model package.</p>
-     */
+    inline const Aws::String& GetModelPackageDescription() const { return m_modelPackageDescription; }
     inline bool ModelPackageDescriptionHasBeenSet() const { return m_modelPackageDescriptionHasBeenSet; }
+    template<typename ModelPackageDescriptionT = Aws::String>
+    void SetModelPackageDescription(ModelPackageDescriptionT&& value) { m_modelPackageDescriptionHasBeenSet = true; m_modelPackageDescription = std::forward<ModelPackageDescriptionT>(value); }
+    template<typename ModelPackageDescriptionT = Aws::String>
+    CreateModelPackageRequest& WithModelPackageDescription(ModelPackageDescriptionT&& value) { SetModelPackageDescription(std::forward<ModelPackageDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A description of the model package.</p>
+     * <p>Specifies details about inference jobs that you can run with models based on
+     * this model package, including the following information:</p> <ul> <li> <p>The
+     * Amazon ECR paths of containers that contain the inference code and model
+     * artifacts.</p> </li> <li> <p>The instance types that the model package supports
+     * for transform jobs and real-time endpoints used for inference.</p> </li> <li>
+     * <p>The input and output content formats that the model package supports for
+     * inference.</p> </li> </ul>
      */
-    inline void SetModelPackageDescription(const Aws::String& value) { m_modelPackageDescriptionHasBeenSet = true; m_modelPackageDescription = value; }
-
-    /**
-     * <p>A description of the model package.</p>
-     */
-    inline void SetModelPackageDescription(Aws::String&& value) { m_modelPackageDescriptionHasBeenSet = true; m_modelPackageDescription = std::move(value); }
-
-    /**
-     * <p>A description of the model package.</p>
-     */
-    inline void SetModelPackageDescription(const char* value) { m_modelPackageDescriptionHasBeenSet = true; m_modelPackageDescription.assign(value); }
-
-    /**
-     * <p>A description of the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageDescription(const Aws::String& value) { SetModelPackageDescription(value); return *this;}
-
-    /**
-     * <p>A description of the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageDescription(Aws::String&& value) { SetModelPackageDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithModelPackageDescription(const char* value) { SetModelPackageDescription(value); return *this;}
-
-
-    /**
-     * <p>Specifies details about inference jobs that can be run with models based on
-     * this model package, including the following:</p> <ul> <li> <p>The Amazon ECR
-     * paths of containers that contain the inference code and model artifacts.</p>
-     * </li> <li> <p>The instance types that the model package supports for transform
-     * jobs and real-time endpoints used for inference.</p> </li> <li> <p>The input and
-     * output content formats that the model package supports for inference.</p> </li>
-     * </ul>
-     */
-    inline const InferenceSpecification& GetInferenceSpecification() const{ return m_inferenceSpecification; }
-
-    /**
-     * <p>Specifies details about inference jobs that can be run with models based on
-     * this model package, including the following:</p> <ul> <li> <p>The Amazon ECR
-     * paths of containers that contain the inference code and model artifacts.</p>
-     * </li> <li> <p>The instance types that the model package supports for transform
-     * jobs and real-time endpoints used for inference.</p> </li> <li> <p>The input and
-     * output content formats that the model package supports for inference.</p> </li>
-     * </ul>
-     */
+    inline const InferenceSpecification& GetInferenceSpecification() const { return m_inferenceSpecification; }
     inline bool InferenceSpecificationHasBeenSet() const { return m_inferenceSpecificationHasBeenSet; }
+    template<typename InferenceSpecificationT = InferenceSpecification>
+    void SetInferenceSpecification(InferenceSpecificationT&& value) { m_inferenceSpecificationHasBeenSet = true; m_inferenceSpecification = std::forward<InferenceSpecificationT>(value); }
+    template<typename InferenceSpecificationT = InferenceSpecification>
+    CreateModelPackageRequest& WithInferenceSpecification(InferenceSpecificationT&& value) { SetInferenceSpecification(std::forward<InferenceSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies details about inference jobs that can be run with models based on
-     * this model package, including the following:</p> <ul> <li> <p>The Amazon ECR
-     * paths of containers that contain the inference code and model artifacts.</p>
-     * </li> <li> <p>The instance types that the model package supports for transform
-     * jobs and real-time endpoints used for inference.</p> </li> <li> <p>The input and
-     * output content formats that the model package supports for inference.</p> </li>
-     * </ul>
-     */
-    inline void SetInferenceSpecification(const InferenceSpecification& value) { m_inferenceSpecificationHasBeenSet = true; m_inferenceSpecification = value; }
-
-    /**
-     * <p>Specifies details about inference jobs that can be run with models based on
-     * this model package, including the following:</p> <ul> <li> <p>The Amazon ECR
-     * paths of containers that contain the inference code and model artifacts.</p>
-     * </li> <li> <p>The instance types that the model package supports for transform
-     * jobs and real-time endpoints used for inference.</p> </li> <li> <p>The input and
-     * output content formats that the model package supports for inference.</p> </li>
-     * </ul>
-     */
-    inline void SetInferenceSpecification(InferenceSpecification&& value) { m_inferenceSpecificationHasBeenSet = true; m_inferenceSpecification = std::move(value); }
-
-    /**
-     * <p>Specifies details about inference jobs that can be run with models based on
-     * this model package, including the following:</p> <ul> <li> <p>The Amazon ECR
-     * paths of containers that contain the inference code and model artifacts.</p>
-     * </li> <li> <p>The instance types that the model package supports for transform
-     * jobs and real-time endpoints used for inference.</p> </li> <li> <p>The input and
-     * output content formats that the model package supports for inference.</p> </li>
-     * </ul>
-     */
-    inline CreateModelPackageRequest& WithInferenceSpecification(const InferenceSpecification& value) { SetInferenceSpecification(value); return *this;}
-
-    /**
-     * <p>Specifies details about inference jobs that can be run with models based on
-     * this model package, including the following:</p> <ul> <li> <p>The Amazon ECR
-     * paths of containers that contain the inference code and model artifacts.</p>
-     * </li> <li> <p>The instance types that the model package supports for transform
-     * jobs and real-time endpoints used for inference.</p> </li> <li> <p>The input and
-     * output content formats that the model package supports for inference.</p> </li>
-     * </ul>
-     */
-    inline CreateModelPackageRequest& WithInferenceSpecification(InferenceSpecification&& value) { SetInferenceSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies configurations for one or more transform jobs that SageMaker runs
      * to test the model package.</p>
      */
-    inline const ModelPackageValidationSpecification& GetValidationSpecification() const{ return m_validationSpecification; }
-
-    /**
-     * <p>Specifies configurations for one or more transform jobs that SageMaker runs
-     * to test the model package.</p>
-     */
+    inline const ModelPackageValidationSpecification& GetValidationSpecification() const { return m_validationSpecification; }
     inline bool ValidationSpecificationHasBeenSet() const { return m_validationSpecificationHasBeenSet; }
+    template<typename ValidationSpecificationT = ModelPackageValidationSpecification>
+    void SetValidationSpecification(ValidationSpecificationT&& value) { m_validationSpecificationHasBeenSet = true; m_validationSpecification = std::forward<ValidationSpecificationT>(value); }
+    template<typename ValidationSpecificationT = ModelPackageValidationSpecification>
+    CreateModelPackageRequest& WithValidationSpecification(ValidationSpecificationT&& value) { SetValidationSpecification(std::forward<ValidationSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies configurations for one or more transform jobs that SageMaker runs
-     * to test the model package.</p>
-     */
-    inline void SetValidationSpecification(const ModelPackageValidationSpecification& value) { m_validationSpecificationHasBeenSet = true; m_validationSpecification = value; }
-
-    /**
-     * <p>Specifies configurations for one or more transform jobs that SageMaker runs
-     * to test the model package.</p>
-     */
-    inline void SetValidationSpecification(ModelPackageValidationSpecification&& value) { m_validationSpecificationHasBeenSet = true; m_validationSpecification = std::move(value); }
-
-    /**
-     * <p>Specifies configurations for one or more transform jobs that SageMaker runs
-     * to test the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithValidationSpecification(const ModelPackageValidationSpecification& value) { SetValidationSpecification(value); return *this;}
-
-    /**
-     * <p>Specifies configurations for one or more transform jobs that SageMaker runs
-     * to test the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithValidationSpecification(ModelPackageValidationSpecification&& value) { SetValidationSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the algorithm that was used to create the model package.</p>
      */
-    inline const SourceAlgorithmSpecification& GetSourceAlgorithmSpecification() const{ return m_sourceAlgorithmSpecification; }
-
-    /**
-     * <p>Details about the algorithm that was used to create the model package.</p>
-     */
+    inline const SourceAlgorithmSpecification& GetSourceAlgorithmSpecification() const { return m_sourceAlgorithmSpecification; }
     inline bool SourceAlgorithmSpecificationHasBeenSet() const { return m_sourceAlgorithmSpecificationHasBeenSet; }
+    template<typename SourceAlgorithmSpecificationT = SourceAlgorithmSpecification>
+    void SetSourceAlgorithmSpecification(SourceAlgorithmSpecificationT&& value) { m_sourceAlgorithmSpecificationHasBeenSet = true; m_sourceAlgorithmSpecification = std::forward<SourceAlgorithmSpecificationT>(value); }
+    template<typename SourceAlgorithmSpecificationT = SourceAlgorithmSpecification>
+    CreateModelPackageRequest& WithSourceAlgorithmSpecification(SourceAlgorithmSpecificationT&& value) { SetSourceAlgorithmSpecification(std::forward<SourceAlgorithmSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the algorithm that was used to create the model package.</p>
-     */
-    inline void SetSourceAlgorithmSpecification(const SourceAlgorithmSpecification& value) { m_sourceAlgorithmSpecificationHasBeenSet = true; m_sourceAlgorithmSpecification = value; }
-
-    /**
-     * <p>Details about the algorithm that was used to create the model package.</p>
-     */
-    inline void SetSourceAlgorithmSpecification(SourceAlgorithmSpecification&& value) { m_sourceAlgorithmSpecificationHasBeenSet = true; m_sourceAlgorithmSpecification = std::move(value); }
-
-    /**
-     * <p>Details about the algorithm that was used to create the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithSourceAlgorithmSpecification(const SourceAlgorithmSpecification& value) { SetSourceAlgorithmSpecification(value); return *this;}
-
-    /**
-     * <p>Details about the algorithm that was used to create the model package.</p>
-     */
-    inline CreateModelPackageRequest& WithSourceAlgorithmSpecification(SourceAlgorithmSpecification&& value) { SetSourceAlgorithmSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether to certify the model package for listing on Amazon Web Services
      * Marketplace.</p> <p>This parameter is optional for unversioned models, and does
      * not apply to versioned models.</p>
      */
-    inline bool GetCertifyForMarketplace() const{ return m_certifyForMarketplace; }
-
-    /**
-     * <p>Whether to certify the model package for listing on Amazon Web Services
-     * Marketplace.</p> <p>This parameter is optional for unversioned models, and does
-     * not apply to versioned models.</p>
-     */
+    inline bool GetCertifyForMarketplace() const { return m_certifyForMarketplace; }
     inline bool CertifyForMarketplaceHasBeenSet() const { return m_certifyForMarketplaceHasBeenSet; }
-
-    /**
-     * <p>Whether to certify the model package for listing on Amazon Web Services
-     * Marketplace.</p> <p>This parameter is optional for unversioned models, and does
-     * not apply to versioned models.</p>
-     */
     inline void SetCertifyForMarketplace(bool value) { m_certifyForMarketplaceHasBeenSet = true; m_certifyForMarketplace = value; }
-
-    /**
-     * <p>Whether to certify the model package for listing on Amazon Web Services
-     * Marketplace.</p> <p>This parameter is optional for unversioned models, and does
-     * not apply to versioned models.</p>
-     */
     inline CreateModelPackageRequest& WithCertifyForMarketplace(bool value) { SetCertifyForMarketplace(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of key value pairs associated with the model. For more information,
      * see <a
@@ -376,290 +156,78 @@ namespace Model
      * associated with the model group. In this case, you cannot supply a
      * <code>tag</code> argument. </p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateModelPackageRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateModelPackageRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
-    inline CreateModelPackageRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
-    inline CreateModelPackageRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
-    inline CreateModelPackageRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of key value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference Guide</i>.</p> <p>If you supply <code>ModelPackageGroupName</code>,
-     * your model package belongs to the model group you specify and uses the tags
-     * associated with the model group. In this case, you cannot supply a
-     * <code>tag</code> argument. </p>
-     */
-    inline CreateModelPackageRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Whether the model is approved for deployment.</p> <p>This parameter is
      * optional for versioned models, and does not apply to unversioned models.</p>
      * <p>For versioned models, the value of this parameter must be set to
      * <code>Approved</code> to deploy the model.</p>
      */
-    inline const ModelApprovalStatus& GetModelApprovalStatus() const{ return m_modelApprovalStatus; }
-
-    /**
-     * <p>Whether the model is approved for deployment.</p> <p>This parameter is
-     * optional for versioned models, and does not apply to unversioned models.</p>
-     * <p>For versioned models, the value of this parameter must be set to
-     * <code>Approved</code> to deploy the model.</p>
-     */
+    inline ModelApprovalStatus GetModelApprovalStatus() const { return m_modelApprovalStatus; }
     inline bool ModelApprovalStatusHasBeenSet() const { return m_modelApprovalStatusHasBeenSet; }
+    inline void SetModelApprovalStatus(ModelApprovalStatus value) { m_modelApprovalStatusHasBeenSet = true; m_modelApprovalStatus = value; }
+    inline CreateModelPackageRequest& WithModelApprovalStatus(ModelApprovalStatus value) { SetModelApprovalStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Whether the model is approved for deployment.</p> <p>This parameter is
-     * optional for versioned models, and does not apply to unversioned models.</p>
-     * <p>For versioned models, the value of this parameter must be set to
-     * <code>Approved</code> to deploy the model.</p>
-     */
-    inline void SetModelApprovalStatus(const ModelApprovalStatus& value) { m_modelApprovalStatusHasBeenSet = true; m_modelApprovalStatus = value; }
-
-    /**
-     * <p>Whether the model is approved for deployment.</p> <p>This parameter is
-     * optional for versioned models, and does not apply to unversioned models.</p>
-     * <p>For versioned models, the value of this parameter must be set to
-     * <code>Approved</code> to deploy the model.</p>
-     */
-    inline void SetModelApprovalStatus(ModelApprovalStatus&& value) { m_modelApprovalStatusHasBeenSet = true; m_modelApprovalStatus = std::move(value); }
-
-    /**
-     * <p>Whether the model is approved for deployment.</p> <p>This parameter is
-     * optional for versioned models, and does not apply to unversioned models.</p>
-     * <p>For versioned models, the value of this parameter must be set to
-     * <code>Approved</code> to deploy the model.</p>
-     */
-    inline CreateModelPackageRequest& WithModelApprovalStatus(const ModelApprovalStatus& value) { SetModelApprovalStatus(value); return *this;}
-
-    /**
-     * <p>Whether the model is approved for deployment.</p> <p>This parameter is
-     * optional for versioned models, and does not apply to unversioned models.</p>
-     * <p>For versioned models, the value of this parameter must be set to
-     * <code>Approved</code> to deploy the model.</p>
-     */
-    inline CreateModelPackageRequest& WithModelApprovalStatus(ModelApprovalStatus&& value) { SetModelApprovalStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const MetadataProperties& GetMetadataProperties() const{ return m_metadataProperties; }
-
-    
+    inline const MetadataProperties& GetMetadataProperties() const { return m_metadataProperties; }
     inline bool MetadataPropertiesHasBeenSet() const { return m_metadataPropertiesHasBeenSet; }
+    template<typename MetadataPropertiesT = MetadataProperties>
+    void SetMetadataProperties(MetadataPropertiesT&& value) { m_metadataPropertiesHasBeenSet = true; m_metadataProperties = std::forward<MetadataPropertiesT>(value); }
+    template<typename MetadataPropertiesT = MetadataProperties>
+    CreateModelPackageRequest& WithMetadataProperties(MetadataPropertiesT&& value) { SetMetadataProperties(std::forward<MetadataPropertiesT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMetadataProperties(const MetadataProperties& value) { m_metadataPropertiesHasBeenSet = true; m_metadataProperties = value; }
-
-    
-    inline void SetMetadataProperties(MetadataProperties&& value) { m_metadataPropertiesHasBeenSet = true; m_metadataProperties = std::move(value); }
-
-    
-    inline CreateModelPackageRequest& WithMetadataProperties(const MetadataProperties& value) { SetMetadataProperties(value); return *this;}
-
-    
-    inline CreateModelPackageRequest& WithMetadataProperties(MetadataProperties&& value) { SetMetadataProperties(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure that contains model metrics reports.</p>
      */
-    inline const ModelMetrics& GetModelMetrics() const{ return m_modelMetrics; }
-
-    /**
-     * <p>A structure that contains model metrics reports.</p>
-     */
+    inline const ModelMetrics& GetModelMetrics() const { return m_modelMetrics; }
     inline bool ModelMetricsHasBeenSet() const { return m_modelMetricsHasBeenSet; }
+    template<typename ModelMetricsT = ModelMetrics>
+    void SetModelMetrics(ModelMetricsT&& value) { m_modelMetricsHasBeenSet = true; m_modelMetrics = std::forward<ModelMetricsT>(value); }
+    template<typename ModelMetricsT = ModelMetrics>
+    CreateModelPackageRequest& WithModelMetrics(ModelMetricsT&& value) { SetModelMetrics(std::forward<ModelMetricsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that contains model metrics reports.</p>
-     */
-    inline void SetModelMetrics(const ModelMetrics& value) { m_modelMetricsHasBeenSet = true; m_modelMetrics = value; }
-
-    /**
-     * <p>A structure that contains model metrics reports.</p>
-     */
-    inline void SetModelMetrics(ModelMetrics&& value) { m_modelMetricsHasBeenSet = true; m_modelMetrics = std::move(value); }
-
-    /**
-     * <p>A structure that contains model metrics reports.</p>
-     */
-    inline CreateModelPackageRequest& WithModelMetrics(const ModelMetrics& value) { SetModelMetrics(value); return *this;}
-
-    /**
-     * <p>A structure that contains model metrics reports.</p>
-     */
-    inline CreateModelPackageRequest& WithModelMetrics(ModelMetrics&& value) { SetModelMetrics(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique token that guarantees that the call to this API is idempotent.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateModelPackageRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline CreateModelPackageRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline CreateModelPackageRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-     */
-    inline CreateModelPackageRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The machine learning domain of your model package and its components. Common
      * machine learning domains include computer vision and natural language
      * processing.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    CreateModelPackageRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
-    inline CreateModelPackageRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
-    inline CreateModelPackageRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The machine learning domain of your model package and its components. Common
-     * machine learning domains include computer vision and natural language
-     * processing.</p>
-     */
-    inline CreateModelPackageRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The machine learning task your model package accomplishes. Common machine
      * learning tasks include object detection and image classification. The following
@@ -670,93 +238,15 @@ namespace Model
      * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
      * of the tasks listed fit your use case.</p>
      */
-    inline const Aws::String& GetTask() const{ return m_task; }
-
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
+    inline const Aws::String& GetTask() const { return m_task; }
     inline bool TaskHasBeenSet() const { return m_taskHasBeenSet; }
+    template<typename TaskT = Aws::String>
+    void SetTask(TaskT&& value) { m_taskHasBeenSet = true; m_task = std::forward<TaskT>(value); }
+    template<typename TaskT = Aws::String>
+    CreateModelPackageRequest& WithTask(TaskT&& value) { SetTask(std::forward<TaskT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
-    inline void SetTask(const Aws::String& value) { m_taskHasBeenSet = true; m_task = value; }
-
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
-    inline void SetTask(Aws::String&& value) { m_taskHasBeenSet = true; m_task = std::move(value); }
-
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
-    inline void SetTask(const char* value) { m_taskHasBeenSet = true; m_task.assign(value); }
-
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
-    inline CreateModelPackageRequest& WithTask(const Aws::String& value) { SetTask(value); return *this;}
-
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
-    inline CreateModelPackageRequest& WithTask(Aws::String&& value) { SetTask(std::move(value)); return *this;}
-
-    /**
-     * <p>The machine learning task your model package accomplishes. Common machine
-     * learning tasks include object detection and image classification. The following
-     * tasks are supported by Inference Recommender:
-     * <code>"IMAGE_CLASSIFICATION"</code> | <code>"OBJECT_DETECTION"</code> |
-     * <code>"TEXT_GENERATION"</code> |<code>"IMAGE_SEGMENTATION"</code> |
-     * <code>"FILL_MASK"</code> | <code>"CLASSIFICATION"</code> |
-     * <code>"REGRESSION"</code> | <code>"OTHER"</code>.</p> <p>Specify "OTHER" if none
-     * of the tasks listed fit your use case.</p>
-     */
-    inline CreateModelPackageRequest& WithTask(const char* value) { SetTask(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
      * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
@@ -765,145 +255,31 @@ namespace Model
      * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
      * call.</p>
      */
-    inline const Aws::String& GetSamplePayloadUrl() const{ return m_samplePayloadUrl; }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
+    inline const Aws::String& GetSamplePayloadUrl() const { return m_samplePayloadUrl; }
     inline bool SamplePayloadUrlHasBeenSet() const { return m_samplePayloadUrlHasBeenSet; }
+    template<typename SamplePayloadUrlT = Aws::String>
+    void SetSamplePayloadUrl(SamplePayloadUrlT&& value) { m_samplePayloadUrlHasBeenSet = true; m_samplePayloadUrl = std::forward<SamplePayloadUrlT>(value); }
+    template<typename SamplePayloadUrlT = Aws::String>
+    CreateModelPackageRequest& WithSamplePayloadUrl(SamplePayloadUrlT&& value) { SetSamplePayloadUrl(std::forward<SamplePayloadUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
-    inline void SetSamplePayloadUrl(const Aws::String& value) { m_samplePayloadUrlHasBeenSet = true; m_samplePayloadUrl = value; }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
-    inline void SetSamplePayloadUrl(Aws::String&& value) { m_samplePayloadUrlHasBeenSet = true; m_samplePayloadUrl = std::move(value); }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
-    inline void SetSamplePayloadUrl(const char* value) { m_samplePayloadUrlHasBeenSet = true; m_samplePayloadUrl.assign(value); }
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
-    inline CreateModelPackageRequest& WithSamplePayloadUrl(const Aws::String& value) { SetSamplePayloadUrl(value); return *this;}
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
-    inline CreateModelPackageRequest& WithSamplePayloadUrl(Aws::String&& value) { SetSamplePayloadUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Simple Storage Service (Amazon S3) path where the sample payload
-     * is stored. This path must point to a single gzip compressed tar archive (.tar.gz
-     * suffix). This archive can hold multiple files that are all equally used in the
-     * load test. Each file in the archive must satisfy the size constraints of the <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax">InvokeEndpoint</a>
-     * call.</p>
-     */
-    inline CreateModelPackageRequest& WithSamplePayloadUrl(const char* value) { SetSamplePayloadUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata properties associated with the model package versions.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetCustomerMetadataProperties() const{ return m_customerMetadataProperties; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetCustomerMetadataProperties() const { return m_customerMetadataProperties; }
     inline bool CustomerMetadataPropertiesHasBeenSet() const { return m_customerMetadataPropertiesHasBeenSet; }
+    template<typename CustomerMetadataPropertiesT = Aws::Map<Aws::String, Aws::String>>
+    void SetCustomerMetadataProperties(CustomerMetadataPropertiesT&& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties = std::forward<CustomerMetadataPropertiesT>(value); }
+    template<typename CustomerMetadataPropertiesT = Aws::Map<Aws::String, Aws::String>>
+    CreateModelPackageRequest& WithCustomerMetadataProperties(CustomerMetadataPropertiesT&& value) { SetCustomerMetadataProperties(std::forward<CustomerMetadataPropertiesT>(value)); return *this;}
+    template<typename CustomerMetadataPropertiesKeyT = Aws::String, typename CustomerMetadataPropertiesValueT = Aws::String>
+    CreateModelPackageRequest& AddCustomerMetadataProperties(CustomerMetadataPropertiesKeyT&& key, CustomerMetadataPropertiesValueT&& value) {
+      m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(std::forward<CustomerMetadataPropertiesKeyT>(key), std::forward<CustomerMetadataPropertiesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline void SetCustomerMetadataProperties(const Aws::Map<Aws::String, Aws::String>& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties = value; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline void SetCustomerMetadataProperties(Aws::Map<Aws::String, Aws::String>&& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties = std::move(value); }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& WithCustomerMetadataProperties(const Aws::Map<Aws::String, Aws::String>& value) { SetCustomerMetadataProperties(value); return *this;}
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& WithCustomerMetadataProperties(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomerMetadataProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(const Aws::String& key, const Aws::String& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(key, value); return *this; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(Aws::String&& key, const Aws::String& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(const Aws::String& key, Aws::String&& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(Aws::String&& key, Aws::String&& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(const char* key, Aws::String&& value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(Aws::String&& key, const char* value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The metadata properties associated with the model package versions.</p>
-     */
-    inline CreateModelPackageRequest& AddCustomerMetadataProperties(const char* key, const char* value) { m_customerMetadataPropertiesHasBeenSet = true; m_customerMetadataProperties.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Represents the drift check baselines that can be used when the model monitor
      * is set using the model package. For more information, see the topic on <a
@@ -911,149 +287,104 @@ namespace Model
      * Detection against Previous Baselines in SageMaker Pipelines</a> in the <i>Amazon
      * SageMaker Developer Guide</i>. </p>
      */
-    inline const DriftCheckBaselines& GetDriftCheckBaselines() const{ return m_driftCheckBaselines; }
-
-    /**
-     * <p>Represents the drift check baselines that can be used when the model monitor
-     * is set using the model package. For more information, see the topic on <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection">Drift
-     * Detection against Previous Baselines in SageMaker Pipelines</a> in the <i>Amazon
-     * SageMaker Developer Guide</i>. </p>
-     */
+    inline const DriftCheckBaselines& GetDriftCheckBaselines() const { return m_driftCheckBaselines; }
     inline bool DriftCheckBaselinesHasBeenSet() const { return m_driftCheckBaselinesHasBeenSet; }
+    template<typename DriftCheckBaselinesT = DriftCheckBaselines>
+    void SetDriftCheckBaselines(DriftCheckBaselinesT&& value) { m_driftCheckBaselinesHasBeenSet = true; m_driftCheckBaselines = std::forward<DriftCheckBaselinesT>(value); }
+    template<typename DriftCheckBaselinesT = DriftCheckBaselines>
+    CreateModelPackageRequest& WithDriftCheckBaselines(DriftCheckBaselinesT&& value) { SetDriftCheckBaselines(std::forward<DriftCheckBaselinesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the drift check baselines that can be used when the model monitor
-     * is set using the model package. For more information, see the topic on <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection">Drift
-     * Detection against Previous Baselines in SageMaker Pipelines</a> in the <i>Amazon
-     * SageMaker Developer Guide</i>. </p>
-     */
-    inline void SetDriftCheckBaselines(const DriftCheckBaselines& value) { m_driftCheckBaselinesHasBeenSet = true; m_driftCheckBaselines = value; }
-
-    /**
-     * <p>Represents the drift check baselines that can be used when the model monitor
-     * is set using the model package. For more information, see the topic on <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection">Drift
-     * Detection against Previous Baselines in SageMaker Pipelines</a> in the <i>Amazon
-     * SageMaker Developer Guide</i>. </p>
-     */
-    inline void SetDriftCheckBaselines(DriftCheckBaselines&& value) { m_driftCheckBaselinesHasBeenSet = true; m_driftCheckBaselines = std::move(value); }
-
-    /**
-     * <p>Represents the drift check baselines that can be used when the model monitor
-     * is set using the model package. For more information, see the topic on <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection">Drift
-     * Detection against Previous Baselines in SageMaker Pipelines</a> in the <i>Amazon
-     * SageMaker Developer Guide</i>. </p>
-     */
-    inline CreateModelPackageRequest& WithDriftCheckBaselines(const DriftCheckBaselines& value) { SetDriftCheckBaselines(value); return *this;}
-
-    /**
-     * <p>Represents the drift check baselines that can be used when the model monitor
-     * is set using the model package. For more information, see the topic on <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection">Drift
-     * Detection against Previous Baselines in SageMaker Pipelines</a> in the <i>Amazon
-     * SageMaker Developer Guide</i>. </p>
-     */
-    inline CreateModelPackageRequest& WithDriftCheckBaselines(DriftCheckBaselines&& value) { SetDriftCheckBaselines(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of additional Inference Specification objects. Each additional
      * Inference Specification specifies artifacts based on this model package that can
      * be used on inference endpoints. Generally used with SageMaker Neo to store the
      * compiled artifacts. </p>
      */
-    inline const Aws::Vector<AdditionalInferenceSpecificationDefinition>& GetAdditionalInferenceSpecifications() const{ return m_additionalInferenceSpecifications; }
-
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
+    inline const Aws::Vector<AdditionalInferenceSpecificationDefinition>& GetAdditionalInferenceSpecifications() const { return m_additionalInferenceSpecifications; }
     inline bool AdditionalInferenceSpecificationsHasBeenSet() const { return m_additionalInferenceSpecificationsHasBeenSet; }
+    template<typename AdditionalInferenceSpecificationsT = Aws::Vector<AdditionalInferenceSpecificationDefinition>>
+    void SetAdditionalInferenceSpecifications(AdditionalInferenceSpecificationsT&& value) { m_additionalInferenceSpecificationsHasBeenSet = true; m_additionalInferenceSpecifications = std::forward<AdditionalInferenceSpecificationsT>(value); }
+    template<typename AdditionalInferenceSpecificationsT = Aws::Vector<AdditionalInferenceSpecificationDefinition>>
+    CreateModelPackageRequest& WithAdditionalInferenceSpecifications(AdditionalInferenceSpecificationsT&& value) { SetAdditionalInferenceSpecifications(std::forward<AdditionalInferenceSpecificationsT>(value)); return *this;}
+    template<typename AdditionalInferenceSpecificationsT = AdditionalInferenceSpecificationDefinition>
+    CreateModelPackageRequest& AddAdditionalInferenceSpecifications(AdditionalInferenceSpecificationsT&& value) { m_additionalInferenceSpecificationsHasBeenSet = true; m_additionalInferenceSpecifications.emplace_back(std::forward<AdditionalInferenceSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
-    inline void SetAdditionalInferenceSpecifications(const Aws::Vector<AdditionalInferenceSpecificationDefinition>& value) { m_additionalInferenceSpecificationsHasBeenSet = true; m_additionalInferenceSpecifications = value; }
-
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
-    inline void SetAdditionalInferenceSpecifications(Aws::Vector<AdditionalInferenceSpecificationDefinition>&& value) { m_additionalInferenceSpecificationsHasBeenSet = true; m_additionalInferenceSpecifications = std::move(value); }
-
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
-    inline CreateModelPackageRequest& WithAdditionalInferenceSpecifications(const Aws::Vector<AdditionalInferenceSpecificationDefinition>& value) { SetAdditionalInferenceSpecifications(value); return *this;}
-
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
-    inline CreateModelPackageRequest& WithAdditionalInferenceSpecifications(Aws::Vector<AdditionalInferenceSpecificationDefinition>&& value) { SetAdditionalInferenceSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
-    inline CreateModelPackageRequest& AddAdditionalInferenceSpecifications(const AdditionalInferenceSpecificationDefinition& value) { m_additionalInferenceSpecificationsHasBeenSet = true; m_additionalInferenceSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>An array of additional Inference Specification objects. Each additional
-     * Inference Specification specifies artifacts based on this model package that can
-     * be used on inference endpoints. Generally used with SageMaker Neo to store the
-     * compiled artifacts. </p>
-     */
-    inline CreateModelPackageRequest& AddAdditionalInferenceSpecifications(AdditionalInferenceSpecificationDefinition&& value) { m_additionalInferenceSpecificationsHasBeenSet = true; m_additionalInferenceSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates if you want to skip model validation.</p>
      */
-    inline const SkipModelValidation& GetSkipModelValidation() const{ return m_skipModelValidation; }
-
-    /**
-     * <p>Indicates if you want to skip model validation.</p>
-     */
+    inline SkipModelValidation GetSkipModelValidation() const { return m_skipModelValidation; }
     inline bool SkipModelValidationHasBeenSet() const { return m_skipModelValidationHasBeenSet; }
+    inline void SetSkipModelValidation(SkipModelValidation value) { m_skipModelValidationHasBeenSet = true; m_skipModelValidation = value; }
+    inline CreateModelPackageRequest& WithSkipModelValidation(SkipModelValidation value) { SetSkipModelValidation(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Indicates if you want to skip model validation.</p>
+     * <p>The URI of the source for the model package. If you want to clone a model
+     * package, set it to the model package Amazon Resource Name (ARN). If you want to
+     * register a model, set it to the model ARN.</p>
      */
-    inline void SetSkipModelValidation(const SkipModelValidation& value) { m_skipModelValidationHasBeenSet = true; m_skipModelValidation = value; }
+    inline const Aws::String& GetSourceUri() const { return m_sourceUri; }
+    inline bool SourceUriHasBeenSet() const { return m_sourceUriHasBeenSet; }
+    template<typename SourceUriT = Aws::String>
+    void SetSourceUri(SourceUriT&& value) { m_sourceUriHasBeenSet = true; m_sourceUri = std::forward<SourceUriT>(value); }
+    template<typename SourceUriT = Aws::String>
+    CreateModelPackageRequest& WithSourceUri(SourceUriT&& value) { SetSourceUri(std::forward<SourceUriT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Indicates if you want to skip model validation.</p>
+     * <p>The KMS Key ID (<code>KMSKeyId</code>) used for encryption of model package
+     * information.</p>
      */
-    inline void SetSkipModelValidation(SkipModelValidation&& value) { m_skipModelValidationHasBeenSet = true; m_skipModelValidation = std::move(value); }
+    inline const ModelPackageSecurityConfig& GetSecurityConfig() const { return m_securityConfig; }
+    inline bool SecurityConfigHasBeenSet() const { return m_securityConfigHasBeenSet; }
+    template<typename SecurityConfigT = ModelPackageSecurityConfig>
+    void SetSecurityConfig(SecurityConfigT&& value) { m_securityConfigHasBeenSet = true; m_securityConfig = std::forward<SecurityConfigT>(value); }
+    template<typename SecurityConfigT = ModelPackageSecurityConfig>
+    CreateModelPackageRequest& WithSecurityConfig(SecurityConfigT&& value) { SetSecurityConfig(std::forward<SecurityConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Indicates if you want to skip model validation.</p>
+     * <p>The model card associated with the model package. Since
+     * <code>ModelPackageModelCard</code> is tied to a model package, it is a specific
+     * usage of a model card and its schema is simplified compared to the schema of
+     * <code>ModelCard</code>. The <code>ModelPackageModelCard</code> schema does not
+     * include <code>model_package_details</code>, and <code>model_overview</code> is
+     * composed of the <code>model_creator</code> and <code>model_artifact</code>
+     * properties. For more information about the model package model card schema, see
+     * <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html#model-card-schema">Model
+     * package model card schema</a>. For more information about the model card
+     * associated with the model package, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html">View
+     * the Details of a Model Version</a>.</p>
      */
-    inline CreateModelPackageRequest& WithSkipModelValidation(const SkipModelValidation& value) { SetSkipModelValidation(value); return *this;}
+    inline const ModelPackageModelCard& GetModelCard() const { return m_modelCard; }
+    inline bool ModelCardHasBeenSet() const { return m_modelCardHasBeenSet; }
+    template<typename ModelCardT = ModelPackageModelCard>
+    void SetModelCard(ModelCardT&& value) { m_modelCardHasBeenSet = true; m_modelCard = std::forward<ModelCardT>(value); }
+    template<typename ModelCardT = ModelPackageModelCard>
+    CreateModelPackageRequest& WithModelCard(ModelCardT&& value) { SetModelCard(std::forward<ModelCardT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Indicates if you want to skip model validation.</p>
+     * <p> A structure describing the current state of the model in its life cycle.
+     * </p>
      */
-    inline CreateModelPackageRequest& WithSkipModelValidation(SkipModelValidation&& value) { SetSkipModelValidation(std::move(value)); return *this;}
-
+    inline const ModelLifeCycle& GetModelLifeCycle() const { return m_modelLifeCycle; }
+    inline bool ModelLifeCycleHasBeenSet() const { return m_modelLifeCycleHasBeenSet; }
+    template<typename ModelLifeCycleT = ModelLifeCycle>
+    void SetModelLifeCycle(ModelLifeCycleT&& value) { m_modelLifeCycleHasBeenSet = true; m_modelLifeCycle = std::forward<ModelLifeCycleT>(value); }
+    template<typename ModelLifeCycleT = ModelLifeCycle>
+    CreateModelPackageRequest& WithModelLifeCycle(ModelLifeCycleT&& value) { SetModelLifeCycle(std::forward<ModelLifeCycleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelPackageName;
@@ -1074,13 +405,13 @@ namespace Model
     SourceAlgorithmSpecification m_sourceAlgorithmSpecification;
     bool m_sourceAlgorithmSpecificationHasBeenSet = false;
 
-    bool m_certifyForMarketplace;
+    bool m_certifyForMarketplace{false};
     bool m_certifyForMarketplaceHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    ModelApprovalStatus m_modelApprovalStatus;
+    ModelApprovalStatus m_modelApprovalStatus{ModelApprovalStatus::NOT_SET};
     bool m_modelApprovalStatusHasBeenSet = false;
 
     MetadataProperties m_metadataProperties;
@@ -1089,8 +420,8 @@ namespace Model
     ModelMetrics m_modelMetrics;
     bool m_modelMetricsHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_domain;
     bool m_domainHasBeenSet = false;
@@ -1110,8 +441,20 @@ namespace Model
     Aws::Vector<AdditionalInferenceSpecificationDefinition> m_additionalInferenceSpecifications;
     bool m_additionalInferenceSpecificationsHasBeenSet = false;
 
-    SkipModelValidation m_skipModelValidation;
+    SkipModelValidation m_skipModelValidation{SkipModelValidation::NOT_SET};
     bool m_skipModelValidationHasBeenSet = false;
+
+    Aws::String m_sourceUri;
+    bool m_sourceUriHasBeenSet = false;
+
+    ModelPackageSecurityConfig m_securityConfig;
+    bool m_securityConfigHasBeenSet = false;
+
+    ModelPackageModelCard m_modelCard;
+    bool m_modelCardHasBeenSet = false;
+
+    ModelLifeCycle m_modelLifeCycle;
+    bool m_modelLifeCycleHasBeenSet = false;
   };
 
 } // namespace Model

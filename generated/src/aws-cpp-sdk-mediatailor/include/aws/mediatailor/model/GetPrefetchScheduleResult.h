@@ -8,6 +8,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/mediatailor/model/PrefetchConsumption.h>
 #include <aws/mediatailor/model/PrefetchRetrieval.h>
+#include <aws/mediatailor/model/PrefetchScheduleType.h>
+#include <aws/mediatailor/model/RecurringPrefetchConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -29,289 +31,145 @@ namespace Model
   class GetPrefetchScheduleResult
   {
   public:
-    AWS_MEDIATAILOR_API GetPrefetchScheduleResult();
+    AWS_MEDIATAILOR_API GetPrefetchScheduleResult() = default;
     AWS_MEDIATAILOR_API GetPrefetchScheduleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIATAILOR_API GetPrefetchScheduleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetPrefetchScheduleResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
+     * <p>The configuration settings for how and when MediaTailor consumes prefetched
+     * ads from the ad decision server for single prefetch schedules. Each consumption
+     * configuration contains an end time and an optional start time that define the
+     * <i>consumption window</i>. Prefetch schedules automatically expire no earlier
+     * than seven days after the end time.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
+    inline const PrefetchConsumption& GetConsumption() const { return m_consumption; }
+    template<typename ConsumptionT = PrefetchConsumption>
+    void SetConsumption(ConsumptionT&& value) { m_consumptionHasBeenSet = true; m_consumption = std::forward<ConsumptionT>(value); }
+    template<typename ConsumptionT = PrefetchConsumption>
+    GetPrefetchScheduleResult& WithConsumption(ConsumptionT&& value) { SetConsumption(std::forward<ConsumptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
-     */
-    inline GetPrefetchScheduleResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
-     */
-    inline GetPrefetchScheduleResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prefetch schedule.</p>
-     */
-    inline GetPrefetchScheduleResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>Consumption settings determine how, and when, MediaTailor places the
-     * prefetched ads into ad breaks. Ad consumption occurs within a span of time that
-     * you define, called a <i>consumption window</i>. You can designate which ad
-     * breaks that MediaTailor fills with prefetch ads by setting avail matching
-     * criteria.</p>
-     */
-    inline const PrefetchConsumption& GetConsumption() const{ return m_consumption; }
-
-    /**
-     * <p>Consumption settings determine how, and when, MediaTailor places the
-     * prefetched ads into ad breaks. Ad consumption occurs within a span of time that
-     * you define, called a <i>consumption window</i>. You can designate which ad
-     * breaks that MediaTailor fills with prefetch ads by setting avail matching
-     * criteria.</p>
-     */
-    inline void SetConsumption(const PrefetchConsumption& value) { m_consumption = value; }
-
-    /**
-     * <p>Consumption settings determine how, and when, MediaTailor places the
-     * prefetched ads into ad breaks. Ad consumption occurs within a span of time that
-     * you define, called a <i>consumption window</i>. You can designate which ad
-     * breaks that MediaTailor fills with prefetch ads by setting avail matching
-     * criteria.</p>
-     */
-    inline void SetConsumption(PrefetchConsumption&& value) { m_consumption = std::move(value); }
-
-    /**
-     * <p>Consumption settings determine how, and when, MediaTailor places the
-     * prefetched ads into ad breaks. Ad consumption occurs within a span of time that
-     * you define, called a <i>consumption window</i>. You can designate which ad
-     * breaks that MediaTailor fills with prefetch ads by setting avail matching
-     * criteria.</p>
-     */
-    inline GetPrefetchScheduleResult& WithConsumption(const PrefetchConsumption& value) { SetConsumption(value); return *this;}
-
-    /**
-     * <p>Consumption settings determine how, and when, MediaTailor places the
-     * prefetched ads into ad breaks. Ad consumption occurs within a span of time that
-     * you define, called a <i>consumption window</i>. You can designate which ad
-     * breaks that MediaTailor fills with prefetch ads by setting avail matching
-     * criteria.</p>
-     */
-    inline GetPrefetchScheduleResult& WithConsumption(PrefetchConsumption&& value) { SetConsumption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the prefetch schedule. The name must be unique among all prefetch
      * schedules that are associated with the specified playback configuration.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetPrefetchScheduleResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the prefetch schedule. The name must be unique among all prefetch
-     * schedules that are associated with the specified playback configuration.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the prefetch schedule. The name must be unique among all prefetch
-     * schedules that are associated with the specified playback configuration.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the prefetch schedule. The name must be unique among all prefetch
-     * schedules that are associated with the specified playback configuration.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the prefetch schedule. The name must be unique among all prefetch
-     * schedules that are associated with the specified playback configuration.</p>
-     */
-    inline GetPrefetchScheduleResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the prefetch schedule. The name must be unique among all prefetch
-     * schedules that are associated with the specified playback configuration.</p>
-     */
-    inline GetPrefetchScheduleResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the prefetch schedule. The name must be unique among all prefetch
-     * schedules that are associated with the specified playback configuration.</p>
-     */
-    inline GetPrefetchScheduleResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the playback configuration to create the prefetch schedule
      * for.</p>
      */
-    inline const Aws::String& GetPlaybackConfigurationName() const{ return m_playbackConfigurationName; }
+    inline const Aws::String& GetPlaybackConfigurationName() const { return m_playbackConfigurationName; }
+    template<typename PlaybackConfigurationNameT = Aws::String>
+    void SetPlaybackConfigurationName(PlaybackConfigurationNameT&& value) { m_playbackConfigurationNameHasBeenSet = true; m_playbackConfigurationName = std::forward<PlaybackConfigurationNameT>(value); }
+    template<typename PlaybackConfigurationNameT = Aws::String>
+    GetPrefetchScheduleResult& WithPlaybackConfigurationName(PlaybackConfigurationNameT&& value) { SetPlaybackConfigurationName(std::forward<PlaybackConfigurationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the playback configuration to create the prefetch schedule
-     * for.</p>
-     */
-    inline void SetPlaybackConfigurationName(const Aws::String& value) { m_playbackConfigurationName = value; }
-
-    /**
-     * <p>The name of the playback configuration to create the prefetch schedule
-     * for.</p>
-     */
-    inline void SetPlaybackConfigurationName(Aws::String&& value) { m_playbackConfigurationName = std::move(value); }
-
-    /**
-     * <p>The name of the playback configuration to create the prefetch schedule
-     * for.</p>
-     */
-    inline void SetPlaybackConfigurationName(const char* value) { m_playbackConfigurationName.assign(value); }
-
-    /**
-     * <p>The name of the playback configuration to create the prefetch schedule
-     * for.</p>
-     */
-    inline GetPrefetchScheduleResult& WithPlaybackConfigurationName(const Aws::String& value) { SetPlaybackConfigurationName(value); return *this;}
-
-    /**
-     * <p>The name of the playback configuration to create the prefetch schedule
-     * for.</p>
-     */
-    inline GetPrefetchScheduleResult& WithPlaybackConfigurationName(Aws::String&& value) { SetPlaybackConfigurationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the playback configuration to create the prefetch schedule
-     * for.</p>
-     */
-    inline GetPrefetchScheduleResult& WithPlaybackConfigurationName(const char* value) { SetPlaybackConfigurationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A complex type that contains settings for prefetch retrieval from the ad
      * decision server (ADS).</p>
      */
-    inline const PrefetchRetrieval& GetRetrieval() const{ return m_retrieval; }
+    inline const PrefetchRetrieval& GetRetrieval() const { return m_retrieval; }
+    template<typename RetrievalT = PrefetchRetrieval>
+    void SetRetrieval(RetrievalT&& value) { m_retrievalHasBeenSet = true; m_retrieval = std::forward<RetrievalT>(value); }
+    template<typename RetrievalT = PrefetchRetrieval>
+    GetPrefetchScheduleResult& WithRetrieval(RetrievalT&& value) { SetRetrieval(std::forward<RetrievalT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A complex type that contains settings for prefetch retrieval from the ad
-     * decision server (ADS).</p>
+     * <p>The frequency that MediaTailor creates prefetch schedules.
+     * <code>SINGLE</code> indicates that this schedule applies to one ad break.
+     * <code>RECURRING</code> indicates that MediaTailor automatically creates a
+     * schedule for each ad avail in a live event.</p>
      */
-    inline void SetRetrieval(const PrefetchRetrieval& value) { m_retrieval = value; }
+    inline PrefetchScheduleType GetScheduleType() const { return m_scheduleType; }
+    inline void SetScheduleType(PrefetchScheduleType value) { m_scheduleTypeHasBeenSet = true; m_scheduleType = value; }
+    inline GetPrefetchScheduleResult& WithScheduleType(PrefetchScheduleType value) { SetScheduleType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A complex type that contains settings for prefetch retrieval from the ad
-     * decision server (ADS).</p>
+     * <p>The configuration that defines how and when MediaTailor performs ad
+     * prefetching in a live event.</p>
      */
-    inline void SetRetrieval(PrefetchRetrieval&& value) { m_retrieval = std::move(value); }
+    inline const RecurringPrefetchConfiguration& GetRecurringPrefetchConfiguration() const { return m_recurringPrefetchConfiguration; }
+    template<typename RecurringPrefetchConfigurationT = RecurringPrefetchConfiguration>
+    void SetRecurringPrefetchConfiguration(RecurringPrefetchConfigurationT&& value) { m_recurringPrefetchConfigurationHasBeenSet = true; m_recurringPrefetchConfiguration = std::forward<RecurringPrefetchConfigurationT>(value); }
+    template<typename RecurringPrefetchConfigurationT = RecurringPrefetchConfiguration>
+    GetPrefetchScheduleResult& WithRecurringPrefetchConfiguration(RecurringPrefetchConfigurationT&& value) { SetRecurringPrefetchConfiguration(std::forward<RecurringPrefetchConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A complex type that contains settings for prefetch retrieval from the ad
-     * decision server (ADS).</p>
-     */
-    inline GetPrefetchScheduleResult& WithRetrieval(const PrefetchRetrieval& value) { SetRetrieval(value); return *this;}
-
-    /**
-     * <p>A complex type that contains settings for prefetch retrieval from the ad
-     * decision server (ADS).</p>
-     */
-    inline GetPrefetchScheduleResult& WithRetrieval(PrefetchRetrieval&& value) { SetRetrieval(std::move(value)); return *this;}
-
-
-    /**
-     * <p>An optional stream identifier that you can specify in order to prefetch for
-     * multiple streams that use the same playback configuration.</p>
-     */
-    inline const Aws::String& GetStreamId() const{ return m_streamId; }
-
-    /**
-     * <p>An optional stream identifier that you can specify in order to prefetch for
-     * multiple streams that use the same playback configuration.</p>
-     */
-    inline void SetStreamId(const Aws::String& value) { m_streamId = value; }
-
+    ///@{
     /**
      * <p>An optional stream identifier that you can specify in order to prefetch for
      * multiple streams that use the same playback configuration.</p>
      */
-    inline void SetStreamId(Aws::String&& value) { m_streamId = std::move(value); }
+    inline const Aws::String& GetStreamId() const { return m_streamId; }
+    template<typename StreamIdT = Aws::String>
+    void SetStreamId(StreamIdT&& value) { m_streamIdHasBeenSet = true; m_streamId = std::forward<StreamIdT>(value); }
+    template<typename StreamIdT = Aws::String>
+    GetPrefetchScheduleResult& WithStreamId(StreamIdT&& value) { SetStreamId(std::forward<StreamIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional stream identifier that you can specify in order to prefetch for
-     * multiple streams that use the same playback configuration.</p>
-     */
-    inline void SetStreamId(const char* value) { m_streamId.assign(value); }
-
-    /**
-     * <p>An optional stream identifier that you can specify in order to prefetch for
-     * multiple streams that use the same playback configuration.</p>
-     */
-    inline GetPrefetchScheduleResult& WithStreamId(const Aws::String& value) { SetStreamId(value); return *this;}
-
-    /**
-     * <p>An optional stream identifier that you can specify in order to prefetch for
-     * multiple streams that use the same playback configuration.</p>
-     */
-    inline GetPrefetchScheduleResult& WithStreamId(Aws::String&& value) { SetStreamId(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional stream identifier that you can specify in order to prefetch for
-     * multiple streams that use the same playback configuration.</p>
-     */
-    inline GetPrefetchScheduleResult& WithStreamId(const char* value) { SetStreamId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetPrefetchScheduleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetPrefetchScheduleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetPrefetchScheduleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetPrefetchScheduleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     PrefetchConsumption m_consumption;
+    bool m_consumptionHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_playbackConfigurationName;
+    bool m_playbackConfigurationNameHasBeenSet = false;
 
     PrefetchRetrieval m_retrieval;
+    bool m_retrievalHasBeenSet = false;
+
+    PrefetchScheduleType m_scheduleType{PrefetchScheduleType::NOT_SET};
+    bool m_scheduleTypeHasBeenSet = false;
+
+    RecurringPrefetchConfiguration m_recurringPrefetchConfiguration;
+    bool m_recurringPrefetchConfigurationHasBeenSet = false;
 
     Aws::String m_streamId;
+    bool m_streamIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,13 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-H264FilterSettings::H264FilterSettings() : 
-    m_temporalFilterSettingsHasBeenSet(false)
-{
-}
-
-H264FilterSettings::H264FilterSettings(JsonView jsonValue) : 
-    m_temporalFilterSettingsHasBeenSet(false)
+H264FilterSettings::H264FilterSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ H264FilterSettings& H264FilterSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("temporalFilterSettings"))
   {
     m_temporalFilterSettings = jsonValue.GetObject("temporalFilterSettings");
-
     m_temporalFilterSettingsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("bandwidthReductionFilterSettings"))
+  {
+    m_bandwidthReductionFilterSettings = jsonValue.GetObject("bandwidthReductionFilterSettings");
+    m_bandwidthReductionFilterSettingsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue H264FilterSettings::Jsonize() const
   if(m_temporalFilterSettingsHasBeenSet)
   {
    payload.WithObject("temporalFilterSettings", m_temporalFilterSettings.Jsonize());
+
+  }
+
+  if(m_bandwidthReductionFilterSettingsHasBeenSet)
+  {
+   payload.WithObject("bandwidthReductionFilterSettings", m_bandwidthReductionFilterSettings.Jsonize());
 
   }
 

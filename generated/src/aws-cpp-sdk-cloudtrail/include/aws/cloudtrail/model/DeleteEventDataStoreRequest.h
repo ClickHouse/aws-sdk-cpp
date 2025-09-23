@@ -21,7 +21,7 @@ namespace Model
   class DeleteEventDataStoreRequest : public CloudTrailRequest
   {
   public:
-    AWS_CLOUDTRAIL_API DeleteEventDataStoreRequest();
+    AWS_CLOUDTRAIL_API DeleteEventDataStoreRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CLOUDTRAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
      */
-    inline const Aws::String& GetEventDataStore() const{ return m_eventDataStore; }
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
+    inline const Aws::String& GetEventDataStore() const { return m_eventDataStore; }
     inline bool EventDataStoreHasBeenSet() const { return m_eventDataStoreHasBeenSet; }
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
-    inline void SetEventDataStore(const Aws::String& value) { m_eventDataStoreHasBeenSet = true; m_eventDataStore = value; }
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
-    inline void SetEventDataStore(Aws::String&& value) { m_eventDataStoreHasBeenSet = true; m_eventDataStore = std::move(value); }
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
-    inline void SetEventDataStore(const char* value) { m_eventDataStoreHasBeenSet = true; m_eventDataStore.assign(value); }
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
-    inline DeleteEventDataStoreRequest& WithEventDataStore(const Aws::String& value) { SetEventDataStore(value); return *this;}
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
-    inline DeleteEventDataStoreRequest& WithEventDataStore(Aws::String&& value) { SetEventDataStore(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN (or the ID suffix of the ARN) of the event data store to delete.</p>
-     */
-    inline DeleteEventDataStoreRequest& WithEventDataStore(const char* value) { SetEventDataStore(value); return *this;}
-
+    template<typename EventDataStoreT = Aws::String>
+    void SetEventDataStore(EventDataStoreT&& value) { m_eventDataStoreHasBeenSet = true; m_eventDataStore = std::forward<EventDataStoreT>(value); }
+    template<typename EventDataStoreT = Aws::String>
+    DeleteEventDataStoreRequest& WithEventDataStore(EventDataStoreT&& value) { SetEventDataStore(std::forward<EventDataStoreT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_eventDataStore;

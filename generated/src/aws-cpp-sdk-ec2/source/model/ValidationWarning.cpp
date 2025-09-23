@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ValidationWarning::ValidationWarning() : 
-    m_errorsHasBeenSet(false)
-{
-}
-
-ValidationWarning::ValidationWarning(const XmlNode& xmlNode) : 
-    m_errorsHasBeenSet(false)
+ValidationWarning::ValidationWarning(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ ValidationWarning& ValidationWarning::operator =(const XmlNode& xmlNode)
     if(!errorsNode.IsNull())
     {
       XmlNode errorsMember = errorsNode.FirstChild("item");
+      m_errorsHasBeenSet = !errorsMember.IsNull();
       while(!errorsMember.IsNull())
       {
         m_errors.push_back(errorsMember);
@@ -77,7 +72,7 @@ void ValidationWarning::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_errors)
       {
         Aws::StringStream errorsSs;
-        errorsSs << location <<  ".ErrorSet." << errorsIdx++;
+        errorsSs << location << ".ErrorSet." << errorsIdx++;
         item.OutputToStream(oStream, errorsSs.str().c_str());
       }
   }

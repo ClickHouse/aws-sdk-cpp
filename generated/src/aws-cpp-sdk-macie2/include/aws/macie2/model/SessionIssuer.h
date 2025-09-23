@@ -32,264 +32,77 @@ namespace Model
   class SessionIssuer
   {
   public:
-    AWS_MACIE2_API SessionIssuer();
+    AWS_MACIE2_API SessionIssuer() = default;
     AWS_MACIE2_API SessionIssuer(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API SessionIssuer& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the Amazon Web Services account that owns the
      * entity that was used to get the credentials.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    SessionIssuer& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
-    inline SessionIssuer& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
-    inline SessionIssuer& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that owns the
-     * entity that was used to get the credentials.</p>
-     */
-    inline SessionIssuer& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
      * Management (IAM) user, or role that was used to get the credentials.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    SessionIssuer& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
-    inline SessionIssuer& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
-    inline SessionIssuer& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source account, Identity and Access
-     * Management (IAM) user, or role that was used to get the credentials.</p>
-     */
-    inline SessionIssuer& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the entity that was used to get the
      * credentials.</p>
      */
-    inline const Aws::String& GetPrincipalId() const{ return m_principalId; }
-
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
+    inline const Aws::String& GetPrincipalId() const { return m_principalId; }
     inline bool PrincipalIdHasBeenSet() const { return m_principalIdHasBeenSet; }
+    template<typename PrincipalIdT = Aws::String>
+    void SetPrincipalId(PrincipalIdT&& value) { m_principalIdHasBeenSet = true; m_principalId = std::forward<PrincipalIdT>(value); }
+    template<typename PrincipalIdT = Aws::String>
+    SessionIssuer& WithPrincipalId(PrincipalIdT&& value) { SetPrincipalId(std::forward<PrincipalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
-    inline void SetPrincipalId(const Aws::String& value) { m_principalIdHasBeenSet = true; m_principalId = value; }
-
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
-    inline void SetPrincipalId(Aws::String&& value) { m_principalIdHasBeenSet = true; m_principalId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
-    inline void SetPrincipalId(const char* value) { m_principalIdHasBeenSet = true; m_principalId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
-    inline SessionIssuer& WithPrincipalId(const Aws::String& value) { SetPrincipalId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
-    inline SessionIssuer& WithPrincipalId(Aws::String&& value) { SetPrincipalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the entity that was used to get the
-     * credentials.</p>
-     */
-    inline SessionIssuer& WithPrincipalId(const char* value) { SetPrincipalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source of the temporary security credentials, such as Root, IAMUser, or
      * Role.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    SessionIssuer& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
-    inline SessionIssuer& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
-    inline SessionIssuer& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The source of the temporary security credentials, such as Root, IAMUser, or
-     * Role.</p>
-     */
-    inline SessionIssuer& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or alias of the user or role that issued the session. This value is
      * null if the credentials were obtained from a root account that doesn't have an
      * alias.</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
-    inline SessionIssuer& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
-    inline SessionIssuer& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or alias of the user or role that issued the session. This value is
-     * null if the credentials were obtained from a root account that doesn't have an
-     * alias.</p>
-     */
-    inline SessionIssuer& WithUserName(const char* value) { SetUserName(value); return *this;}
-
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    SessionIssuer& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

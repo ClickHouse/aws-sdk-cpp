@@ -12,18 +12,6 @@ using namespace Aws::MediaLive::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInputRequest::UpdateInputRequest() : 
-    m_destinationsHasBeenSet(false),
-    m_inputDevicesHasBeenSet(false),
-    m_inputIdHasBeenSet(false),
-    m_inputSecurityGroupsHasBeenSet(false),
-    m_mediaConnectFlowsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_sourcesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInputRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -92,6 +80,35 @@ Aws::String UpdateInputRequest::SerializePayload() const
      sourcesJsonList[sourcesIndex].AsObject(m_sources[sourcesIndex].Jsonize());
    }
    payload.WithArray("sources", std::move(sourcesJsonList));
+
+  }
+
+  if(m_srtSettingsHasBeenSet)
+  {
+   payload.WithObject("srtSettings", m_srtSettings.Jsonize());
+
+  }
+
+  if(m_multicastSettingsHasBeenSet)
+  {
+   payload.WithObject("multicastSettings", m_multicastSettings.Jsonize());
+
+  }
+
+  if(m_smpte2110ReceiverGroupSettingsHasBeenSet)
+  {
+   payload.WithObject("smpte2110ReceiverGroupSettings", m_smpte2110ReceiverGroupSettings.Jsonize());
+
+  }
+
+  if(m_sdiSourcesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> sdiSourcesJsonList(m_sdiSources.size());
+   for(unsigned sdiSourcesIndex = 0; sdiSourcesIndex < sdiSourcesJsonList.GetLength(); ++sdiSourcesIndex)
+   {
+     sdiSourcesJsonList[sdiSourcesIndex].AsString(m_sdiSources[sdiSourcesIndex]);
+   }
+   payload.WithArray("sdiSources", std::move(sdiSourcesJsonList));
 
   }
 

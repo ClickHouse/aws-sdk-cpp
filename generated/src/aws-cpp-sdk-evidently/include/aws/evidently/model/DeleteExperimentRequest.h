@@ -21,7 +21,7 @@ namespace Model
   class DeleteExperimentRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API DeleteExperimentRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API DeleteExperimentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the experiment to delete.</p>
      */
-    inline const Aws::String& GetExperiment() const{ return m_experiment; }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
+    inline const Aws::String& GetExperiment() const { return m_experiment; }
     inline bool ExperimentHasBeenSet() const { return m_experimentHasBeenSet; }
+    template<typename ExperimentT = Aws::String>
+    void SetExperiment(ExperimentT&& value) { m_experimentHasBeenSet = true; m_experiment = std::forward<ExperimentT>(value); }
+    template<typename ExperimentT = Aws::String>
+    DeleteExperimentRequest& WithExperiment(ExperimentT&& value) { SetExperiment(std::forward<ExperimentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline void SetExperiment(const Aws::String& value) { m_experimentHasBeenSet = true; m_experiment = value; }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline void SetExperiment(Aws::String&& value) { m_experimentHasBeenSet = true; m_experiment = std::move(value); }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline void SetExperiment(const char* value) { m_experimentHasBeenSet = true; m_experiment.assign(value); }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithExperiment(const Aws::String& value) { SetExperiment(value); return *this;}
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithExperiment(Aws::String&& value) { SetExperiment(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithExperiment(const char* value) { SetExperiment(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or ARN of the project that contains the experiment to delete.</p>
      */
-    inline const Aws::String& GetProject() const{ return m_project; }
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
+    inline const Aws::String& GetProject() const { return m_project; }
     inline bool ProjectHasBeenSet() const { return m_projectHasBeenSet; }
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
-    inline void SetProject(const Aws::String& value) { m_projectHasBeenSet = true; m_project = value; }
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
-    inline void SetProject(Aws::String&& value) { m_projectHasBeenSet = true; m_project = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
-    inline void SetProject(const char* value) { m_projectHasBeenSet = true; m_project.assign(value); }
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithProject(const Aws::String& value) { SetProject(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithProject(Aws::String&& value) { SetProject(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the project that contains the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithProject(const char* value) { SetProject(value); return *this;}
-
+    template<typename ProjectT = Aws::String>
+    void SetProject(ProjectT&& value) { m_projectHasBeenSet = true; m_project = std::forward<ProjectT>(value); }
+    template<typename ProjectT = Aws::String>
+    DeleteExperimentRequest& WithProject(ProjectT&& value) { SetProject(std::forward<ProjectT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_experiment;

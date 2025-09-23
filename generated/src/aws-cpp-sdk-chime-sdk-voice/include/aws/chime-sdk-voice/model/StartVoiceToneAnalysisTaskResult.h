@@ -28,63 +28,37 @@ namespace Model
   class StartVoiceToneAnalysisTaskResult
   {
   public:
-    AWS_CHIMESDKVOICE_API StartVoiceToneAnalysisTaskResult();
+    AWS_CHIMESDKVOICE_API StartVoiceToneAnalysisTaskResult() = default;
     AWS_CHIMESDKVOICE_API StartVoiceToneAnalysisTaskResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKVOICE_API StartVoiceToneAnalysisTaskResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The details of the voice tone analysis task.</p>
      */
-    inline const VoiceToneAnalysisTask& GetVoiceToneAnalysisTask() const{ return m_voiceToneAnalysisTask; }
+    inline const VoiceToneAnalysisTask& GetVoiceToneAnalysisTask() const { return m_voiceToneAnalysisTask; }
+    template<typename VoiceToneAnalysisTaskT = VoiceToneAnalysisTask>
+    void SetVoiceToneAnalysisTask(VoiceToneAnalysisTaskT&& value) { m_voiceToneAnalysisTaskHasBeenSet = true; m_voiceToneAnalysisTask = std::forward<VoiceToneAnalysisTaskT>(value); }
+    template<typename VoiceToneAnalysisTaskT = VoiceToneAnalysisTask>
+    StartVoiceToneAnalysisTaskResult& WithVoiceToneAnalysisTask(VoiceToneAnalysisTaskT&& value) { SetVoiceToneAnalysisTask(std::forward<VoiceToneAnalysisTaskT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The details of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTask(const VoiceToneAnalysisTask& value) { m_voiceToneAnalysisTask = value; }
-
-    /**
-     * <p>The details of the voice tone analysis task.</p>
-     */
-    inline void SetVoiceToneAnalysisTask(VoiceToneAnalysisTask&& value) { m_voiceToneAnalysisTask = std::move(value); }
-
-    /**
-     * <p>The details of the voice tone analysis task.</p>
-     */
-    inline StartVoiceToneAnalysisTaskResult& WithVoiceToneAnalysisTask(const VoiceToneAnalysisTask& value) { SetVoiceToneAnalysisTask(value); return *this;}
-
-    /**
-     * <p>The details of the voice tone analysis task.</p>
-     */
-    inline StartVoiceToneAnalysisTaskResult& WithVoiceToneAnalysisTask(VoiceToneAnalysisTask&& value) { SetVoiceToneAnalysisTask(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartVoiceToneAnalysisTaskResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartVoiceToneAnalysisTaskResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartVoiceToneAnalysisTaskResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartVoiceToneAnalysisTaskResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     VoiceToneAnalysisTask m_voiceToneAnalysisTask;
+    bool m_voiceToneAnalysisTaskHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

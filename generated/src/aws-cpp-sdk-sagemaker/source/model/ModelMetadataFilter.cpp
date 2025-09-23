@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelMetadataFilter::ModelMetadataFilter() : 
-    m_name(ModelMetadataFilterType::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ModelMetadataFilter::ModelMetadataFilter(JsonView jsonValue) : 
-    m_name(ModelMetadataFilterType::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ModelMetadataFilter::ModelMetadataFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ModelMetadataFilter& ModelMetadataFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = ModelMetadataFilterTypeMapper::GetModelMetadataFilterTypeForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

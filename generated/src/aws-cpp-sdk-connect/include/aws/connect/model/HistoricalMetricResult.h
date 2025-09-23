@@ -34,83 +34,37 @@ namespace Model
   class HistoricalMetricResult
   {
   public:
-    AWS_CONNECT_API HistoricalMetricResult();
+    AWS_CONNECT_API HistoricalMetricResult() = default;
     AWS_CONNECT_API HistoricalMetricResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API HistoricalMetricResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dimension for the metrics.</p>
      */
-    inline const Dimensions& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>The dimension for the metrics.</p>
-     */
+    inline const Dimensions& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
+    template<typename DimensionsT = Dimensions>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = Dimensions>
+    HistoricalMetricResult& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dimension for the metrics.</p>
-     */
-    inline void SetDimensions(const Dimensions& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>The dimension for the metrics.</p>
-     */
-    inline void SetDimensions(Dimensions&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>The dimension for the metrics.</p>
-     */
-    inline HistoricalMetricResult& WithDimensions(const Dimensions& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>The dimension for the metrics.</p>
-     */
-    inline HistoricalMetricResult& WithDimensions(Dimensions&& value) { SetDimensions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The set of metrics.</p>
      */
-    inline const Aws::Vector<HistoricalMetricData>& GetCollections() const{ return m_collections; }
-
-    /**
-     * <p>The set of metrics.</p>
-     */
+    inline const Aws::Vector<HistoricalMetricData>& GetCollections() const { return m_collections; }
     inline bool CollectionsHasBeenSet() const { return m_collectionsHasBeenSet; }
-
-    /**
-     * <p>The set of metrics.</p>
-     */
-    inline void SetCollections(const Aws::Vector<HistoricalMetricData>& value) { m_collectionsHasBeenSet = true; m_collections = value; }
-
-    /**
-     * <p>The set of metrics.</p>
-     */
-    inline void SetCollections(Aws::Vector<HistoricalMetricData>&& value) { m_collectionsHasBeenSet = true; m_collections = std::move(value); }
-
-    /**
-     * <p>The set of metrics.</p>
-     */
-    inline HistoricalMetricResult& WithCollections(const Aws::Vector<HistoricalMetricData>& value) { SetCollections(value); return *this;}
-
-    /**
-     * <p>The set of metrics.</p>
-     */
-    inline HistoricalMetricResult& WithCollections(Aws::Vector<HistoricalMetricData>&& value) { SetCollections(std::move(value)); return *this;}
-
-    /**
-     * <p>The set of metrics.</p>
-     */
-    inline HistoricalMetricResult& AddCollections(const HistoricalMetricData& value) { m_collectionsHasBeenSet = true; m_collections.push_back(value); return *this; }
-
-    /**
-     * <p>The set of metrics.</p>
-     */
-    inline HistoricalMetricResult& AddCollections(HistoricalMetricData&& value) { m_collectionsHasBeenSet = true; m_collections.push_back(std::move(value)); return *this; }
-
+    template<typename CollectionsT = Aws::Vector<HistoricalMetricData>>
+    void SetCollections(CollectionsT&& value) { m_collectionsHasBeenSet = true; m_collections = std::forward<CollectionsT>(value); }
+    template<typename CollectionsT = Aws::Vector<HistoricalMetricData>>
+    HistoricalMetricResult& WithCollections(CollectionsT&& value) { SetCollections(std::forward<CollectionsT>(value)); return *this;}
+    template<typename CollectionsT = HistoricalMetricData>
+    HistoricalMetricResult& AddCollections(CollectionsT&& value) { m_collectionsHasBeenSet = true; m_collections.emplace_back(std::forward<CollectionsT>(value)); return *this; }
+    ///@}
   private:
 
     Dimensions m_dimensions;

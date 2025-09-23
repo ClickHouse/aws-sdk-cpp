@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-TimePeriod::TimePeriod() : 
-    m_startHasBeenSet(false),
-    m_endHasBeenSet(false)
-{
-}
-
-TimePeriod::TimePeriod(JsonView jsonValue) : 
-    m_startHasBeenSet(false),
-    m_endHasBeenSet(false)
+TimePeriod::TimePeriod(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TimePeriod& TimePeriod::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("start"))
   {
     m_start = jsonValue.GetDouble("start");
-
     m_startHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("end"))
   {
     m_end = jsonValue.GetDouble("end");
-
     m_endHasBeenSet = true;
   }
-
   return *this;
 }
 

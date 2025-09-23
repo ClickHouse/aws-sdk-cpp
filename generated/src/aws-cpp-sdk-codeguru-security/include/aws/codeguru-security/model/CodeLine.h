@@ -31,80 +31,40 @@ namespace Model
   class CodeLine
   {
   public:
-    AWS_CODEGURUSECURITY_API CodeLine();
+    AWS_CODEGURUSECURITY_API CodeLine() = default;
     AWS_CODEGURUSECURITY_API CodeLine(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API CodeLine& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline const Aws::String& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline void SetContent(const Aws::String& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline void SetContent(Aws::String&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline void SetContent(const char* value) { m_contentHasBeenSet = true; m_content.assign(value); }
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline CodeLine& WithContent(const Aws::String& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline CodeLine& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
-
-    /**
-     * <p>The code that contains a vulnerability.</p>
-     */
-    inline CodeLine& WithContent(const char* value) { SetContent(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The code line number.</p>
      */
-    inline int GetNumber() const{ return m_number; }
-
-    /**
-     * <p>The code line number.</p>
-     */
+    inline int GetNumber() const { return m_number; }
     inline bool NumberHasBeenSet() const { return m_numberHasBeenSet; }
-
-    /**
-     * <p>The code line number.</p>
-     */
     inline void SetNumber(int value) { m_numberHasBeenSet = true; m_number = value; }
-
-    /**
-     * <p>The code line number.</p>
-     */
     inline CodeLine& WithNumber(int value) { SetNumber(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The code that contains a vulnerability.</p>
+     */
+    inline const Aws::String& GetContent() const { return m_content; }
+    inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
+    template<typename ContentT = Aws::String>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::String>
+    CodeLine& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
   private:
+
+    int m_number{0};
+    bool m_numberHasBeenSet = false;
 
     Aws::String m_content;
     bool m_contentHasBeenSet = false;
-
-    int m_number;
-    bool m_numberHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace Firehose
 namespace Model
 {
 
-HttpEndpointRetryOptions::HttpEndpointRetryOptions() : 
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
-{
-}
-
-HttpEndpointRetryOptions::HttpEndpointRetryOptions(JsonView jsonValue) : 
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
+HttpEndpointRetryOptions::HttpEndpointRetryOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ HttpEndpointRetryOptions& HttpEndpointRetryOptions::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("DurationInSeconds"))
   {
     m_durationInSeconds = jsonValue.GetInteger("DurationInSeconds");
-
     m_durationInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

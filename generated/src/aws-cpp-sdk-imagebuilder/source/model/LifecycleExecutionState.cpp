@@ -18,17 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LifecycleExecutionState::LifecycleExecutionState() : 
-    m_status(LifecycleExecutionStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_reasonHasBeenSet(false)
-{
-}
-
-LifecycleExecutionState::LifecycleExecutionState(JsonView jsonValue) : 
-    m_status(LifecycleExecutionStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_reasonHasBeenSet(false)
+LifecycleExecutionState::LifecycleExecutionState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LifecycleExecutionState& LifecycleExecutionState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = LifecycleExecutionStatusMapper::GetLifecycleExecutionStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = jsonValue.GetString("reason");
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

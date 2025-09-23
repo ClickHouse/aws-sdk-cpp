@@ -31,134 +31,47 @@ namespace Model
   class DataBarsOptions
   {
   public:
-    AWS_QUICKSIGHT_API DataBarsOptions();
+    AWS_QUICKSIGHT_API DataBarsOptions() = default;
     AWS_QUICKSIGHT_API DataBarsOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataBarsOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field ID for the data bars options.</p>
      */
-    inline const Aws::String& GetFieldId() const{ return m_fieldId; }
-
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
+    inline const Aws::String& GetFieldId() const { return m_fieldId; }
     inline bool FieldIdHasBeenSet() const { return m_fieldIdHasBeenSet; }
+    template<typename FieldIdT = Aws::String>
+    void SetFieldId(FieldIdT&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::forward<FieldIdT>(value); }
+    template<typename FieldIdT = Aws::String>
+    DataBarsOptions& WithFieldId(FieldIdT&& value) { SetFieldId(std::forward<FieldIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
-    inline void SetFieldId(const Aws::String& value) { m_fieldIdHasBeenSet = true; m_fieldId = value; }
-
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
-    inline void SetFieldId(Aws::String&& value) { m_fieldIdHasBeenSet = true; m_fieldId = std::move(value); }
-
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
-    inline void SetFieldId(const char* value) { m_fieldIdHasBeenSet = true; m_fieldId.assign(value); }
-
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
-    inline DataBarsOptions& WithFieldId(const Aws::String& value) { SetFieldId(value); return *this;}
-
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
-    inline DataBarsOptions& WithFieldId(Aws::String&& value) { SetFieldId(std::move(value)); return *this;}
-
-    /**
-     * <p>The field ID for the data bars options.</p>
-     */
-    inline DataBarsOptions& WithFieldId(const char* value) { SetFieldId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The color of the positive data bar.</p>
      */
-    inline const Aws::String& GetPositiveColor() const{ return m_positiveColor; }
-
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
+    inline const Aws::String& GetPositiveColor() const { return m_positiveColor; }
     inline bool PositiveColorHasBeenSet() const { return m_positiveColorHasBeenSet; }
+    template<typename PositiveColorT = Aws::String>
+    void SetPositiveColor(PositiveColorT&& value) { m_positiveColorHasBeenSet = true; m_positiveColor = std::forward<PositiveColorT>(value); }
+    template<typename PositiveColorT = Aws::String>
+    DataBarsOptions& WithPositiveColor(PositiveColorT&& value) { SetPositiveColor(std::forward<PositiveColorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
-    inline void SetPositiveColor(const Aws::String& value) { m_positiveColorHasBeenSet = true; m_positiveColor = value; }
-
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
-    inline void SetPositiveColor(Aws::String&& value) { m_positiveColorHasBeenSet = true; m_positiveColor = std::move(value); }
-
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
-    inline void SetPositiveColor(const char* value) { m_positiveColorHasBeenSet = true; m_positiveColor.assign(value); }
-
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
-    inline DataBarsOptions& WithPositiveColor(const Aws::String& value) { SetPositiveColor(value); return *this;}
-
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
-    inline DataBarsOptions& WithPositiveColor(Aws::String&& value) { SetPositiveColor(std::move(value)); return *this;}
-
-    /**
-     * <p>The color of the positive data bar.</p>
-     */
-    inline DataBarsOptions& WithPositiveColor(const char* value) { SetPositiveColor(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The color of the negative data bar.</p>
      */
-    inline const Aws::String& GetNegativeColor() const{ return m_negativeColor; }
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
+    inline const Aws::String& GetNegativeColor() const { return m_negativeColor; }
     inline bool NegativeColorHasBeenSet() const { return m_negativeColorHasBeenSet; }
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
-    inline void SetNegativeColor(const Aws::String& value) { m_negativeColorHasBeenSet = true; m_negativeColor = value; }
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
-    inline void SetNegativeColor(Aws::String&& value) { m_negativeColorHasBeenSet = true; m_negativeColor = std::move(value); }
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
-    inline void SetNegativeColor(const char* value) { m_negativeColorHasBeenSet = true; m_negativeColor.assign(value); }
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
-    inline DataBarsOptions& WithNegativeColor(const Aws::String& value) { SetNegativeColor(value); return *this;}
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
-    inline DataBarsOptions& WithNegativeColor(Aws::String&& value) { SetNegativeColor(std::move(value)); return *this;}
-
-    /**
-     * <p>The color of the negative data bar.</p>
-     */
-    inline DataBarsOptions& WithNegativeColor(const char* value) { SetNegativeColor(value); return *this;}
-
+    template<typename NegativeColorT = Aws::String>
+    void SetNegativeColor(NegativeColorT&& value) { m_negativeColorHasBeenSet = true; m_negativeColor = std::forward<NegativeColorT>(value); }
+    template<typename NegativeColorT = Aws::String>
+    DataBarsOptions& WithNegativeColor(NegativeColorT&& value) { SetNegativeColor(std::forward<NegativeColorT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fieldId;

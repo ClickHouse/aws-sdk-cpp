@@ -12,24 +12,9 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAccountAssignmentCreationStatusRequest::ListAccountAssignmentCreationStatusRequest() : 
-    m_filterHasBeenSet(false),
-    m_instanceArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAccountAssignmentCreationStatusRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filterHasBeenSet)
-  {
-   payload.WithObject("Filter", m_filter.Jsonize());
-
-  }
 
   if(m_instanceArnHasBeenSet)
   {
@@ -46,6 +31,12 @@ Aws::String ListAccountAssignmentCreationStatusRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_filterHasBeenSet)
+  {
+   payload.WithObject("Filter", m_filter.Jsonize());
 
   }
 

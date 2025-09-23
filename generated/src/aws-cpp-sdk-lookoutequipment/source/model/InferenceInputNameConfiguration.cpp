@@ -18,15 +18,7 @@ namespace LookoutEquipment
 namespace Model
 {
 
-InferenceInputNameConfiguration::InferenceInputNameConfiguration() : 
-    m_timestampFormatHasBeenSet(false),
-    m_componentTimestampDelimiterHasBeenSet(false)
-{
-}
-
-InferenceInputNameConfiguration::InferenceInputNameConfiguration(JsonView jsonValue) : 
-    m_timestampFormatHasBeenSet(false),
-    m_componentTimestampDelimiterHasBeenSet(false)
+InferenceInputNameConfiguration::InferenceInputNameConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InferenceInputNameConfiguration& InferenceInputNameConfiguration::operator =(Jso
   if(jsonValue.ValueExists("TimestampFormat"))
   {
     m_timestampFormat = jsonValue.GetString("TimestampFormat");
-
     m_timestampFormatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComponentTimestampDelimiter"))
   {
     m_componentTimestampDelimiter = jsonValue.GetString("ComponentTimestampDelimiter");
-
     m_componentTimestampDelimiterHasBeenSet = true;
   }
-
   return *this;
 }
 

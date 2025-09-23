@@ -32,175 +32,59 @@ namespace Model
   class InforNexusConnectorProfileCredentials
   {
   public:
-    AWS_APPFLOW_API InforNexusConnectorProfileCredentials();
+    AWS_APPFLOW_API InforNexusConnectorProfileCredentials() = default;
     AWS_APPFLOW_API InforNexusConnectorProfileCredentials(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API InforNexusConnectorProfileCredentials& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Access Key portion of the credentials. </p>
      */
-    inline const Aws::String& GetAccessKeyId() const{ return m_accessKeyId; }
-
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
+    inline const Aws::String& GetAccessKeyId() const { return m_accessKeyId; }
     inline bool AccessKeyIdHasBeenSet() const { return m_accessKeyIdHasBeenSet; }
+    template<typename AccessKeyIdT = Aws::String>
+    void SetAccessKeyId(AccessKeyIdT&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::forward<AccessKeyIdT>(value); }
+    template<typename AccessKeyIdT = Aws::String>
+    InforNexusConnectorProfileCredentials& WithAccessKeyId(AccessKeyIdT&& value) { SetAccessKeyId(std::forward<AccessKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
-    inline void SetAccessKeyId(const Aws::String& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = value; }
-
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
-    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::move(value); }
-
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
-    inline void SetAccessKeyId(const char* value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId.assign(value); }
-
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithAccessKeyId(const Aws::String& value) { SetAccessKeyId(value); return *this;}
-
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p> The Access Key portion of the credentials. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithAccessKeyId(const char* value) { SetAccessKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The identifier for the user. </p>
      */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p> The identifier for the user. </p>
-     */
+    inline const Aws::String& GetUserId() const { return m_userId; }
     inline bool UserIdHasBeenSet() const { return m_userIdHasBeenSet; }
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    InforNexusConnectorProfileCredentials& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The identifier for the user. </p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userIdHasBeenSet = true; m_userId = value; }
-
-    /**
-     * <p> The identifier for the user. </p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
-
-    /**
-     * <p> The identifier for the user. </p>
-     */
-    inline void SetUserId(const char* value) { m_userIdHasBeenSet = true; m_userId.assign(value); }
-
-    /**
-     * <p> The identifier for the user. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p> The identifier for the user. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p> The identifier for the user. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithUserId(const char* value) { SetUserId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The secret key used to sign requests. </p>
      */
-    inline const Aws::String& GetSecretAccessKey() const{ return m_secretAccessKey; }
-
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
+    inline const Aws::String& GetSecretAccessKey() const { return m_secretAccessKey; }
     inline bool SecretAccessKeyHasBeenSet() const { return m_secretAccessKeyHasBeenSet; }
+    template<typename SecretAccessKeyT = Aws::String>
+    void SetSecretAccessKey(SecretAccessKeyT&& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = std::forward<SecretAccessKeyT>(value); }
+    template<typename SecretAccessKeyT = Aws::String>
+    InforNexusConnectorProfileCredentials& WithSecretAccessKey(SecretAccessKeyT&& value) { SetSecretAccessKey(std::forward<SecretAccessKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
-    inline void SetSecretAccessKey(const Aws::String& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = value; }
-
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
-    inline void SetSecretAccessKey(Aws::String&& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = std::move(value); }
-
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
-    inline void SetSecretAccessKey(const char* value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey.assign(value); }
-
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithSecretAccessKey(const Aws::String& value) { SetSecretAccessKey(value); return *this;}
-
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithSecretAccessKey(Aws::String&& value) { SetSecretAccessKey(std::move(value)); return *this;}
-
-    /**
-     * <p> The secret key used to sign requests. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithSecretAccessKey(const char* value) { SetSecretAccessKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The encryption keys used to encrypt data. </p>
      */
-    inline const Aws::String& GetDatakey() const{ return m_datakey; }
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
+    inline const Aws::String& GetDatakey() const { return m_datakey; }
     inline bool DatakeyHasBeenSet() const { return m_datakeyHasBeenSet; }
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
-    inline void SetDatakey(const Aws::String& value) { m_datakeyHasBeenSet = true; m_datakey = value; }
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
-    inline void SetDatakey(Aws::String&& value) { m_datakeyHasBeenSet = true; m_datakey = std::move(value); }
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
-    inline void SetDatakey(const char* value) { m_datakeyHasBeenSet = true; m_datakey.assign(value); }
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithDatakey(const Aws::String& value) { SetDatakey(value); return *this;}
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithDatakey(Aws::String&& value) { SetDatakey(std::move(value)); return *this;}
-
-    /**
-     * <p> The encryption keys used to encrypt data. </p>
-     */
-    inline InforNexusConnectorProfileCredentials& WithDatakey(const char* value) { SetDatakey(value); return *this;}
-
+    template<typename DatakeyT = Aws::String>
+    void SetDatakey(DatakeyT&& value) { m_datakeyHasBeenSet = true; m_datakey = std::forward<DatakeyT>(value); }
+    template<typename DatakeyT = Aws::String>
+    InforNexusConnectorProfileCredentials& WithDatakey(DatakeyT&& value) { SetDatakey(std::forward<DatakeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessKeyId;

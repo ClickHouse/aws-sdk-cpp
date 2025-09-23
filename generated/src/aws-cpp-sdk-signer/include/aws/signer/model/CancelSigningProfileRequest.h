@@ -21,7 +21,7 @@ namespace Model
   class CancelSigningProfileRequest : public SignerRequest
   {
   public:
-    AWS_SIGNER_API CancelSigningProfileRequest();
+    AWS_SIGNER_API CancelSigningProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SIGNER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the signing profile to be canceled.</p>
      */
-    inline const Aws::String& GetProfileName() const{ return m_profileName; }
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
+    inline const Aws::String& GetProfileName() const { return m_profileName; }
     inline bool ProfileNameHasBeenSet() const { return m_profileNameHasBeenSet; }
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
-    inline void SetProfileName(const Aws::String& value) { m_profileNameHasBeenSet = true; m_profileName = value; }
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
-    inline void SetProfileName(Aws::String&& value) { m_profileNameHasBeenSet = true; m_profileName = std::move(value); }
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
-    inline void SetProfileName(const char* value) { m_profileNameHasBeenSet = true; m_profileName.assign(value); }
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
-    inline CancelSigningProfileRequest& WithProfileName(const Aws::String& value) { SetProfileName(value); return *this;}
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
-    inline CancelSigningProfileRequest& WithProfileName(Aws::String&& value) { SetProfileName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the signing profile to be canceled.</p>
-     */
-    inline CancelSigningProfileRequest& WithProfileName(const char* value) { SetProfileName(value); return *this;}
-
+    template<typename ProfileNameT = Aws::String>
+    void SetProfileName(ProfileNameT&& value) { m_profileNameHasBeenSet = true; m_profileName = std::forward<ProfileNameT>(value); }
+    template<typename ProfileNameT = Aws::String>
+    CancelSigningProfileRequest& WithProfileName(ProfileNameT&& value) { SetProfileName(std::forward<ProfileNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_profileName;

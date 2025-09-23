@@ -12,24 +12,6 @@ using namespace Aws::WAFV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateWebACLRequest::UpdateWebACLRequest() : 
-    m_nameHasBeenSet(false),
-    m_scope(Scope::NOT_SET),
-    m_scopeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_defaultActionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_rulesHasBeenSet(false),
-    m_visibilityConfigHasBeenSet(false),
-    m_lockTokenHasBeenSet(false),
-    m_customResponseBodiesHasBeenSet(false),
-    m_captchaConfigHasBeenSet(false),
-    m_challengeConfigHasBeenSet(false),
-    m_tokenDomainsHasBeenSet(false),
-    m_associationConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateWebACLRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -80,6 +62,12 @@ Aws::String UpdateWebACLRequest::SerializePayload() const
 
   }
 
+  if(m_dataProtectionConfigHasBeenSet)
+  {
+   payload.WithObject("DataProtectionConfig", m_dataProtectionConfig.Jsonize());
+
+  }
+
   if(m_lockTokenHasBeenSet)
   {
    payload.WithString("LockToken", m_lockToken);
@@ -123,6 +111,18 @@ Aws::String UpdateWebACLRequest::SerializePayload() const
   if(m_associationConfigHasBeenSet)
   {
    payload.WithObject("AssociationConfig", m_associationConfig.Jsonize());
+
+  }
+
+  if(m_onSourceDDoSProtectionConfigHasBeenSet)
+  {
+   payload.WithObject("OnSourceDDoSProtectionConfig", m_onSourceDDoSProtectionConfig.Jsonize());
+
+  }
+
+  if(m_applicationConfigHasBeenSet)
+  {
+   payload.WithObject("ApplicationConfig", m_applicationConfig.Jsonize());
 
   }
 

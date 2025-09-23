@@ -35,45 +35,24 @@ namespace Model
   class AccessPreviewStatusReason
   {
   public:
-    AWS_ACCESSANALYZER_API AccessPreviewStatusReason();
+    AWS_ACCESSANALYZER_API AccessPreviewStatusReason() = default;
     AWS_ACCESSANALYZER_API AccessPreviewStatusReason(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API AccessPreviewStatusReason& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The reason code for the current status of the access preview.</p>
      */
-    inline const AccessPreviewStatusReasonCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The reason code for the current status of the access preview.</p>
-     */
+    inline AccessPreviewStatusReasonCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The reason code for the current status of the access preview.</p>
-     */
-    inline void SetCode(const AccessPreviewStatusReasonCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The reason code for the current status of the access preview.</p>
-     */
-    inline void SetCode(AccessPreviewStatusReasonCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The reason code for the current status of the access preview.</p>
-     */
-    inline AccessPreviewStatusReason& WithCode(const AccessPreviewStatusReasonCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The reason code for the current status of the access preview.</p>
-     */
-    inline AccessPreviewStatusReason& WithCode(AccessPreviewStatusReasonCode&& value) { SetCode(std::move(value)); return *this;}
-
+    inline void SetCode(AccessPreviewStatusReasonCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline AccessPreviewStatusReason& WithCode(AccessPreviewStatusReasonCode value) { SetCode(value); return *this;}
+    ///@}
   private:
 
-    AccessPreviewStatusReasonCode m_code;
+    AccessPreviewStatusReasonCode m_code{AccessPreviewStatusReasonCode::NOT_SET};
     bool m_codeHasBeenSet = false;
   };
 

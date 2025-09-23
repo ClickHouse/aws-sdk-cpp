@@ -19,19 +19,7 @@ namespace APIGateway
 namespace Model
 {
 
-DocumentationPart::DocumentationPart() : 
-    m_idHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-DocumentationPart::DocumentationPart(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+DocumentationPart::DocumentationPart(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -41,24 +29,18 @@ DocumentationPart& DocumentationPart::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("location"))
   {
     m_location = jsonValue.GetObject("location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("properties"))
   {
     m_properties = jsonValue.GetString("properties");
-
     m_propertiesHasBeenSet = true;
   }
-
   return *this;
 }
 

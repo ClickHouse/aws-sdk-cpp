@@ -35,206 +35,71 @@ namespace Model
   class RemediationException
   {
   public:
-    AWS_CONFIGSERVICE_API RemediationException();
+    AWS_CONFIGSERVICE_API RemediationException() = default;
     AWS_CONFIGSERVICE_API RemediationException(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API RemediationException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Config rule.</p>
      */
-    inline const Aws::String& GetConfigRuleName() const{ return m_configRuleName; }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
+    inline const Aws::String& GetConfigRuleName() const { return m_configRuleName; }
     inline bool ConfigRuleNameHasBeenSet() const { return m_configRuleNameHasBeenSet; }
+    template<typename ConfigRuleNameT = Aws::String>
+    void SetConfigRuleName(ConfigRuleNameT&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::forward<ConfigRuleNameT>(value); }
+    template<typename ConfigRuleNameT = Aws::String>
+    RemediationException& WithConfigRuleName(ConfigRuleNameT&& value) { SetConfigRuleName(std::forward<ConfigRuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline void SetConfigRuleName(const Aws::String& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = value; }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline void SetConfigRuleName(Aws::String&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::move(value); }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline void SetConfigRuleName(const char* value) { m_configRuleNameHasBeenSet = true; m_configRuleName.assign(value); }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline RemediationException& WithConfigRuleName(const Aws::String& value) { SetConfigRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline RemediationException& WithConfigRuleName(Aws::String&& value) { SetConfigRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline RemediationException& WithConfigRuleName(const char* value) { SetConfigRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of a resource.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The type of a resource.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    RemediationException& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of a resource.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The type of a resource.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The type of a resource.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The type of a resource.</p>
-     */
-    inline RemediationException& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The type of a resource.</p>
-     */
-    inline RemediationException& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of a resource.</p>
-     */
-    inline RemediationException& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the resource (for example., sg-xxxxxx).</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    RemediationException& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
-    inline RemediationException& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
-    inline RemediationException& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the resource (for example., sg-xxxxxx).</p>
-     */
-    inline RemediationException& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An explanation of an remediation exception.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    RemediationException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
-    inline RemediationException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
-    inline RemediationException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An explanation of an remediation exception.</p>
-     */
-    inline RemediationException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the remediation exception will be deleted.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpirationTime() const{ return m_expirationTime; }
-
-    /**
-     * <p>The time when the remediation exception will be deleted.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpirationTime() const { return m_expirationTime; }
     inline bool ExpirationTimeHasBeenSet() const { return m_expirationTimeHasBeenSet; }
-
-    /**
-     * <p>The time when the remediation exception will be deleted.</p>
-     */
-    inline void SetExpirationTime(const Aws::Utils::DateTime& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = value; }
-
-    /**
-     * <p>The time when the remediation exception will be deleted.</p>
-     */
-    inline void SetExpirationTime(Aws::Utils::DateTime&& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = std::move(value); }
-
-    /**
-     * <p>The time when the remediation exception will be deleted.</p>
-     */
-    inline RemediationException& WithExpirationTime(const Aws::Utils::DateTime& value) { SetExpirationTime(value); return *this;}
-
-    /**
-     * <p>The time when the remediation exception will be deleted.</p>
-     */
-    inline RemediationException& WithExpirationTime(Aws::Utils::DateTime&& value) { SetExpirationTime(std::move(value)); return *this;}
-
+    template<typename ExpirationTimeT = Aws::Utils::DateTime>
+    void SetExpirationTime(ExpirationTimeT&& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = std::forward<ExpirationTimeT>(value); }
+    template<typename ExpirationTimeT = Aws::Utils::DateTime>
+    RemediationException& WithExpirationTime(ExpirationTimeT&& value) { SetExpirationTime(std::forward<ExpirationTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configRuleName;
@@ -249,7 +114,7 @@ namespace Model
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expirationTime;
+    Aws::Utils::DateTime m_expirationTime{};
     bool m_expirationTimeHasBeenSet = false;
   };
 

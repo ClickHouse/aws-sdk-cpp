@@ -18,15 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-FaceRecord::FaceRecord() : 
-    m_faceHasBeenSet(false),
-    m_faceDetailHasBeenSet(false)
-{
-}
-
-FaceRecord::FaceRecord(JsonView jsonValue) : 
-    m_faceHasBeenSet(false),
-    m_faceDetailHasBeenSet(false)
+FaceRecord::FaceRecord(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FaceRecord& FaceRecord::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Face"))
   {
     m_face = jsonValue.GetObject("Face");
-
     m_faceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FaceDetail"))
   {
     m_faceDetail = jsonValue.GetObject("FaceDetail");
-
     m_faceDetailHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-BatchDetectSyntaxItemResult::BatchDetectSyntaxItemResult() : 
-    m_index(0),
-    m_indexHasBeenSet(false),
-    m_syntaxTokensHasBeenSet(false)
-{
-}
-
-BatchDetectSyntaxItemResult::BatchDetectSyntaxItemResult(JsonView jsonValue) : 
-    m_index(0),
-    m_indexHasBeenSet(false),
-    m_syntaxTokensHasBeenSet(false)
+BatchDetectSyntaxItemResult::BatchDetectSyntaxItemResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ BatchDetectSyntaxItemResult& BatchDetectSyntaxItemResult::operator =(JsonView js
   if(jsonValue.ValueExists("Index"))
   {
     m_index = jsonValue.GetInteger("Index");
-
     m_indexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SyntaxTokens"))
   {
     Aws::Utils::Array<JsonView> syntaxTokensJsonList = jsonValue.GetArray("SyntaxTokens");
@@ -51,7 +39,6 @@ BatchDetectSyntaxItemResult& BatchDetectSyntaxItemResult::operator =(JsonView js
     }
     m_syntaxTokensHasBeenSet = true;
   }
-
   return *this;
 }
 

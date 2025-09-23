@@ -29,115 +29,65 @@ namespace Model
   class BusinessGoals
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API BusinessGoals();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API BusinessGoals() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API BusinessGoals(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API BusinessGoals& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Business goal to reduce license costs. </p>
      */
-    inline int GetLicenseCostReduction() const{ return m_licenseCostReduction; }
-
-    /**
-     * <p> Business goal to reduce license costs. </p>
-     */
+    inline int GetLicenseCostReduction() const { return m_licenseCostReduction; }
     inline bool LicenseCostReductionHasBeenSet() const { return m_licenseCostReductionHasBeenSet; }
-
-    /**
-     * <p> Business goal to reduce license costs. </p>
-     */
     inline void SetLicenseCostReduction(int value) { m_licenseCostReductionHasBeenSet = true; m_licenseCostReduction = value; }
-
-    /**
-     * <p> Business goal to reduce license costs. </p>
-     */
     inline BusinessGoals& WithLicenseCostReduction(int value) { SetLicenseCostReduction(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> Business goal to modernize infrastructure by moving to cloud native
      * technologies. </p>
      */
-    inline int GetModernizeInfrastructureWithCloudNativeTechnologies() const{ return m_modernizeInfrastructureWithCloudNativeTechnologies; }
-
-    /**
-     * <p> Business goal to modernize infrastructure by moving to cloud native
-     * technologies. </p>
-     */
+    inline int GetModernizeInfrastructureWithCloudNativeTechnologies() const { return m_modernizeInfrastructureWithCloudNativeTechnologies; }
     inline bool ModernizeInfrastructureWithCloudNativeTechnologiesHasBeenSet() const { return m_modernizeInfrastructureWithCloudNativeTechnologiesHasBeenSet; }
-
-    /**
-     * <p> Business goal to modernize infrastructure by moving to cloud native
-     * technologies. </p>
-     */
     inline void SetModernizeInfrastructureWithCloudNativeTechnologies(int value) { m_modernizeInfrastructureWithCloudNativeTechnologiesHasBeenSet = true; m_modernizeInfrastructureWithCloudNativeTechnologies = value; }
-
-    /**
-     * <p> Business goal to modernize infrastructure by moving to cloud native
-     * technologies. </p>
-     */
     inline BusinessGoals& WithModernizeInfrastructureWithCloudNativeTechnologies(int value) { SetModernizeInfrastructureWithCloudNativeTechnologies(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> Business goal to reduce the operational overhead on the team by moving into
      * managed services. </p>
      */
-    inline int GetReduceOperationalOverheadWithManagedServices() const{ return m_reduceOperationalOverheadWithManagedServices; }
-
-    /**
-     * <p> Business goal to reduce the operational overhead on the team by moving into
-     * managed services. </p>
-     */
+    inline int GetReduceOperationalOverheadWithManagedServices() const { return m_reduceOperationalOverheadWithManagedServices; }
     inline bool ReduceOperationalOverheadWithManagedServicesHasBeenSet() const { return m_reduceOperationalOverheadWithManagedServicesHasBeenSet; }
-
-    /**
-     * <p> Business goal to reduce the operational overhead on the team by moving into
-     * managed services. </p>
-     */
     inline void SetReduceOperationalOverheadWithManagedServices(int value) { m_reduceOperationalOverheadWithManagedServicesHasBeenSet = true; m_reduceOperationalOverheadWithManagedServices = value; }
-
-    /**
-     * <p> Business goal to reduce the operational overhead on the team by moving into
-     * managed services. </p>
-     */
     inline BusinessGoals& WithReduceOperationalOverheadWithManagedServices(int value) { SetReduceOperationalOverheadWithManagedServices(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> Business goal to achieve migration at a fast pace. </p>
      */
-    inline int GetSpeedOfMigration() const{ return m_speedOfMigration; }
-
-    /**
-     * <p> Business goal to achieve migration at a fast pace. </p>
-     */
+    inline int GetSpeedOfMigration() const { return m_speedOfMigration; }
     inline bool SpeedOfMigrationHasBeenSet() const { return m_speedOfMigrationHasBeenSet; }
-
-    /**
-     * <p> Business goal to achieve migration at a fast pace. </p>
-     */
     inline void SetSpeedOfMigration(int value) { m_speedOfMigrationHasBeenSet = true; m_speedOfMigration = value; }
-
-    /**
-     * <p> Business goal to achieve migration at a fast pace. </p>
-     */
     inline BusinessGoals& WithSpeedOfMigration(int value) { SetSpeedOfMigration(value); return *this;}
-
+    ///@}
   private:
 
-    int m_licenseCostReduction;
+    int m_licenseCostReduction{0};
     bool m_licenseCostReductionHasBeenSet = false;
 
-    int m_modernizeInfrastructureWithCloudNativeTechnologies;
+    int m_modernizeInfrastructureWithCloudNativeTechnologies{0};
     bool m_modernizeInfrastructureWithCloudNativeTechnologiesHasBeenSet = false;
 
-    int m_reduceOperationalOverheadWithManagedServices;
+    int m_reduceOperationalOverheadWithManagedServices{0};
     bool m_reduceOperationalOverheadWithManagedServicesHasBeenSet = false;
 
-    int m_speedOfMigration;
+    int m_speedOfMigration{0};
     bool m_speedOfMigrationHasBeenSet = false;
   };
 

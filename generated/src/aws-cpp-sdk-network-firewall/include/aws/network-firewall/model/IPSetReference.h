@@ -46,60 +46,24 @@ namespace Model
   class IPSetReference
   {
   public:
-    AWS_NETWORKFIREWALL_API IPSetReference();
+    AWS_NETWORKFIREWALL_API IPSetReference() = default;
     AWS_NETWORKFIREWALL_API IPSetReference(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API IPSetReference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
      * your rule group.</p>
      */
-    inline const Aws::String& GetReferenceArn() const{ return m_referenceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
+    inline const Aws::String& GetReferenceArn() const { return m_referenceArn; }
     inline bool ReferenceArnHasBeenSet() const { return m_referenceArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
-    inline void SetReferenceArn(const Aws::String& value) { m_referenceArnHasBeenSet = true; m_referenceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
-    inline void SetReferenceArn(Aws::String&& value) { m_referenceArnHasBeenSet = true; m_referenceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
-    inline void SetReferenceArn(const char* value) { m_referenceArnHasBeenSet = true; m_referenceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
-    inline IPSetReference& WithReferenceArn(const Aws::String& value) { SetReferenceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
-    inline IPSetReference& WithReferenceArn(Aws::String&& value) { SetReferenceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource that you are referencing in
-     * your rule group.</p>
-     */
-    inline IPSetReference& WithReferenceArn(const char* value) { SetReferenceArn(value); return *this;}
-
+    template<typename ReferenceArnT = Aws::String>
+    void SetReferenceArn(ReferenceArnT&& value) { m_referenceArnHasBeenSet = true; m_referenceArn = std::forward<ReferenceArnT>(value); }
+    template<typename ReferenceArnT = Aws::String>
+    IPSetReference& WithReferenceArn(ReferenceArnT&& value) { SetReferenceArn(std::forward<ReferenceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_referenceArn;

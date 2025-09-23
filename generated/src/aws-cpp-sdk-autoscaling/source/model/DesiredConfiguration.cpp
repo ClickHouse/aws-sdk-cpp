@@ -20,15 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-DesiredConfiguration::DesiredConfiguration() : 
-    m_launchTemplateHasBeenSet(false),
-    m_mixedInstancesPolicyHasBeenSet(false)
-{
-}
-
-DesiredConfiguration::DesiredConfiguration(const XmlNode& xmlNode) : 
-    m_launchTemplateHasBeenSet(false),
-    m_mixedInstancesPolicyHasBeenSet(false)
+DesiredConfiguration::DesiredConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

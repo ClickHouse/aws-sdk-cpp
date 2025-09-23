@@ -12,12 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DisableKinesisStreamingDestinationRequest::DisableKinesisStreamingDestinationRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_streamArnHasBeenSet(false)
-{
-}
-
 Aws::String DisableKinesisStreamingDestinationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -34,6 +28,12 @@ Aws::String DisableKinesisStreamingDestinationRequest::SerializePayload() const
 
   }
 
+  if(m_enableKinesisStreamingConfigurationHasBeenSet)
+  {
+   payload.WithObject("EnableKinesisStreamingConfiguration", m_enableKinesisStreamingConfiguration.Jsonize());
+
+  }
+
   return payload.View().WriteReadable();
 }
 
@@ -46,5 +46,15 @@ Aws::Http::HeaderValueCollection DisableKinesisStreamingDestinationRequest::GetR
 }
 
 
+
+DisableKinesisStreamingDestinationRequest::EndpointParameters DisableKinesisStreamingDestinationRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

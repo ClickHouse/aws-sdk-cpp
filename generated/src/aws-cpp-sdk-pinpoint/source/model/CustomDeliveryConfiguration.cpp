@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-CustomDeliveryConfiguration::CustomDeliveryConfiguration() : 
-    m_deliveryUriHasBeenSet(false),
-    m_endpointTypesHasBeenSet(false)
-{
-}
-
-CustomDeliveryConfiguration::CustomDeliveryConfiguration(JsonView jsonValue) : 
-    m_deliveryUriHasBeenSet(false),
-    m_endpointTypesHasBeenSet(false)
+CustomDeliveryConfiguration::CustomDeliveryConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CustomDeliveryConfiguration& CustomDeliveryConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("DeliveryUri"))
   {
     m_deliveryUri = jsonValue.GetString("DeliveryUri");
-
     m_deliveryUriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EndpointTypes"))
   {
     Aws::Utils::Array<JsonView> endpointTypesJsonList = jsonValue.GetArray("EndpointTypes");
@@ -49,7 +39,6 @@ CustomDeliveryConfiguration& CustomDeliveryConfiguration::operator =(JsonView js
     }
     m_endpointTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

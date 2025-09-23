@@ -30,63 +30,38 @@ namespace Model
   class ShotSegment
   {
   public:
-    AWS_REKOGNITION_API ShotSegment();
+    AWS_REKOGNITION_API ShotSegment() = default;
     AWS_REKOGNITION_API ShotSegment(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API ShotSegment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An Identifier for a shot detection segment detected in a video. </p>
      */
-    inline long long GetIndex() const{ return m_index; }
-
-    /**
-     * <p>An Identifier for a shot detection segment detected in a video. </p>
-     */
+    inline long long GetIndex() const { return m_index; }
     inline bool IndexHasBeenSet() const { return m_indexHasBeenSet; }
-
-    /**
-     * <p>An Identifier for a shot detection segment detected in a video. </p>
-     */
     inline void SetIndex(long long value) { m_indexHasBeenSet = true; m_index = value; }
-
-    /**
-     * <p>An Identifier for a shot detection segment detected in a video. </p>
-     */
     inline ShotSegment& WithIndex(long long value) { SetIndex(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
      * detected segment.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
-     * detected segment.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
-     * detected segment.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition Video has in the accuracy of the
-     * detected segment.</p>
-     */
     inline ShotSegment& WithConfidence(double value) { SetConfidence(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_index;
+    long long m_index{0};
     bool m_indexHasBeenSet = false;
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
   };
 

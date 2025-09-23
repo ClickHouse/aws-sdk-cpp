@@ -18,15 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-PermissionsBoundary::PermissionsBoundary() : 
-    m_customerManagedPolicyReferenceHasBeenSet(false),
-    m_managedPolicyArnHasBeenSet(false)
-{
-}
-
-PermissionsBoundary::PermissionsBoundary(JsonView jsonValue) : 
-    m_customerManagedPolicyReferenceHasBeenSet(false),
-    m_managedPolicyArnHasBeenSet(false)
+PermissionsBoundary::PermissionsBoundary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PermissionsBoundary& PermissionsBoundary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CustomerManagedPolicyReference"))
   {
     m_customerManagedPolicyReference = jsonValue.GetObject("CustomerManagedPolicyReference");
-
     m_customerManagedPolicyReferenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ManagedPolicyArn"))
   {
     m_managedPolicyArn = jsonValue.GetString("ManagedPolicyArn");
-
     m_managedPolicyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

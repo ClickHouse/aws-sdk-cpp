@@ -12,18 +12,6 @@ using namespace Aws::AppIntegrationsService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateApplicationRequest::CreateApplicationRequest() : 
-    m_nameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_applicationSourceConfigHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_permissionsHasBeenSet(false)
-{
-}
-
 Aws::String CreateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -77,6 +65,30 @@ Aws::String CreateApplicationRequest::SerializePayload() const
      permissionsJsonList[permissionsIndex].AsString(m_permissions[permissionsIndex]);
    }
    payload.WithArray("Permissions", std::move(permissionsJsonList));
+
+  }
+
+  if(m_isServiceHasBeenSet)
+  {
+   payload.WithBool("IsService", m_isService);
+
+  }
+
+  if(m_initializationTimeoutHasBeenSet)
+  {
+   payload.WithInteger("InitializationTimeout", m_initializationTimeout);
+
+  }
+
+  if(m_applicationConfigHasBeenSet)
+  {
+   payload.WithObject("ApplicationConfig", m_applicationConfig.Jsonize());
+
+  }
+
+  if(m_iframeConfigHasBeenSet)
+  {
+   payload.WithObject("IframeConfig", m_iframeConfig.Jsonize());
 
   }
 

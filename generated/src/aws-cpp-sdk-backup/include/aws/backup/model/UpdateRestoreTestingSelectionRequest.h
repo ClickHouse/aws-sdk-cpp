@@ -22,7 +22,7 @@ namespace Model
   class UpdateRestoreTestingSelectionRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API UpdateRestoreTestingSelectionRequest();
+    AWS_BACKUP_API UpdateRestoreTestingSelectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,152 +33,46 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The restore testing plan name is required to update the indicated testing
      * plan.</p>
      */
-    inline const Aws::String& GetRestoreTestingPlanName() const{ return m_restoreTestingPlanName; }
-
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
+    inline const Aws::String& GetRestoreTestingPlanName() const { return m_restoreTestingPlanName; }
     inline bool RestoreTestingPlanNameHasBeenSet() const { return m_restoreTestingPlanNameHasBeenSet; }
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    void SetRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::forward<RestoreTestingPlanNameT>(value); }
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    UpdateRestoreTestingSelectionRequest& WithRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { SetRestoreTestingPlanName(std::forward<RestoreTestingPlanNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
-    inline void SetRestoreTestingPlanName(const Aws::String& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = value; }
-
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
-    inline void SetRestoreTestingPlanName(Aws::String&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::move(value); }
-
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
-    inline void SetRestoreTestingPlanName(const char* value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName.assign(value); }
-
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingPlanName(const Aws::String& value) { SetRestoreTestingPlanName(value); return *this;}
-
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingPlanName(Aws::String&& value) { SetRestoreTestingPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>The restore testing plan name is required to update the indicated testing
-     * plan.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingPlanName(const char* value) { SetRestoreTestingPlanName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>To update your restore testing selection, you can use either protected
      * resource ARNs or conditions, but not both. That is, if your selection has
      * <code>ProtectedResourceArns</code>, requesting an update with the parameter
      * <code>ProtectedResourceConditions</code> will be unsuccessful.</p>
      */
-    inline const RestoreTestingSelectionForUpdate& GetRestoreTestingSelection() const{ return m_restoreTestingSelection; }
-
-    /**
-     * <p>To update your restore testing selection, you can use either protected
-     * resource ARNs or conditions, but not both. That is, if your selection has
-     * <code>ProtectedResourceArns</code>, requesting an update with the parameter
-     * <code>ProtectedResourceConditions</code> will be unsuccessful.</p>
-     */
+    inline const RestoreTestingSelectionForUpdate& GetRestoreTestingSelection() const { return m_restoreTestingSelection; }
     inline bool RestoreTestingSelectionHasBeenSet() const { return m_restoreTestingSelectionHasBeenSet; }
+    template<typename RestoreTestingSelectionT = RestoreTestingSelectionForUpdate>
+    void SetRestoreTestingSelection(RestoreTestingSelectionT&& value) { m_restoreTestingSelectionHasBeenSet = true; m_restoreTestingSelection = std::forward<RestoreTestingSelectionT>(value); }
+    template<typename RestoreTestingSelectionT = RestoreTestingSelectionForUpdate>
+    UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelection(RestoreTestingSelectionT&& value) { SetRestoreTestingSelection(std::forward<RestoreTestingSelectionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>To update your restore testing selection, you can use either protected
-     * resource ARNs or conditions, but not both. That is, if your selection has
-     * <code>ProtectedResourceArns</code>, requesting an update with the parameter
-     * <code>ProtectedResourceConditions</code> will be unsuccessful.</p>
+     * <p>The required restore testing selection name of the restore testing selection
+     * you wish to update.</p>
      */
-    inline void SetRestoreTestingSelection(const RestoreTestingSelectionForUpdate& value) { m_restoreTestingSelectionHasBeenSet = true; m_restoreTestingSelection = value; }
-
-    /**
-     * <p>To update your restore testing selection, you can use either protected
-     * resource ARNs or conditions, but not both. That is, if your selection has
-     * <code>ProtectedResourceArns</code>, requesting an update with the parameter
-     * <code>ProtectedResourceConditions</code> will be unsuccessful.</p>
-     */
-    inline void SetRestoreTestingSelection(RestoreTestingSelectionForUpdate&& value) { m_restoreTestingSelectionHasBeenSet = true; m_restoreTestingSelection = std::move(value); }
-
-    /**
-     * <p>To update your restore testing selection, you can use either protected
-     * resource ARNs or conditions, but not both. That is, if your selection has
-     * <code>ProtectedResourceArns</code>, requesting an update with the parameter
-     * <code>ProtectedResourceConditions</code> will be unsuccessful.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelection(const RestoreTestingSelectionForUpdate& value) { SetRestoreTestingSelection(value); return *this;}
-
-    /**
-     * <p>To update your restore testing selection, you can use either protected
-     * resource ARNs or conditions, but not both. That is, if your selection has
-     * <code>ProtectedResourceArns</code>, requesting an update with the parameter
-     * <code>ProtectedResourceConditions</code> will be unsuccessful.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelection(RestoreTestingSelectionForUpdate&& value) { SetRestoreTestingSelection(std::move(value)); return *this;}
-
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline const Aws::String& GetRestoreTestingSelectionName() const{ return m_restoreTestingSelectionName; }
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
+    inline const Aws::String& GetRestoreTestingSelectionName() const { return m_restoreTestingSelectionName; }
     inline bool RestoreTestingSelectionNameHasBeenSet() const { return m_restoreTestingSelectionNameHasBeenSet; }
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline void SetRestoreTestingSelectionName(const Aws::String& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = value; }
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline void SetRestoreTestingSelectionName(Aws::String&& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = std::move(value); }
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline void SetRestoreTestingSelectionName(const char* value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName.assign(value); }
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(const Aws::String& value) { SetRestoreTestingSelectionName(value); return *this;}
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(Aws::String&& value) { SetRestoreTestingSelectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the required restore testing selection name of the restore testing
-     * selection you wish to update.</p>
-     */
-    inline UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(const char* value) { SetRestoreTestingSelectionName(value); return *this;}
-
+    template<typename RestoreTestingSelectionNameT = Aws::String>
+    void SetRestoreTestingSelectionName(RestoreTestingSelectionNameT&& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = std::forward<RestoreTestingSelectionNameT>(value); }
+    template<typename RestoreTestingSelectionNameT = Aws::String>
+    UpdateRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(RestoreTestingSelectionNameT&& value) { SetRestoreTestingSelectionName(std::forward<RestoreTestingSelectionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restoreTestingPlanName;

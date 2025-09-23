@@ -34,7 +34,7 @@ namespace Model
   class DisableFastSnapshotRestoreSuccessItem
   {
   public:
-    AWS_EC2_API DisableFastSnapshotRestoreSuccessItem();
+    AWS_EC2_API DisableFastSnapshotRestoreSuccessItem() = default;
     AWS_EC2_API DisableFastSnapshotRestoreSuccessItem(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API DisableFastSnapshotRestoreSuccessItem& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,119 +42,41 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotId() const{ return m_snapshotId; }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotId() const { return m_snapshotId; }
     inline bool SnapshotIdHasBeenSet() const { return m_snapshotIdHasBeenSet; }
+    template<typename SnapshotIdT = Aws::String>
+    void SetSnapshotId(SnapshotIdT&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::forward<SnapshotIdT>(value); }
+    template<typename SnapshotIdT = Aws::String>
+    DisableFastSnapshotRestoreSuccessItem& WithSnapshotId(SnapshotIdT&& value) { SetSnapshotId(std::forward<SnapshotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(const Aws::String& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline void SetSnapshotId(const char* value) { m_snapshotIdHasBeenSet = true; m_snapshotId.assign(value); }
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithSnapshotId(const Aws::String& value) { SetSnapshotId(value); return *this;}
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithSnapshotId(const char* value) { SetSnapshotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    DisableFastSnapshotRestoreSuccessItem& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of fast snapshot restores for the snapshot.</p>
      */
-    inline const FastSnapshotRestoreStateCode& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of fast snapshot restores for the snapshot.</p>
-     */
+    inline FastSnapshotRestoreStateCode GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(FastSnapshotRestoreStateCode value) { m_stateHasBeenSet = true; m_state = value; }
+    inline DisableFastSnapshotRestoreSuccessItem& WithState(FastSnapshotRestoreStateCode value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of fast snapshot restores for the snapshot.</p>
-     */
-    inline void SetState(const FastSnapshotRestoreStateCode& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of fast snapshot restores for the snapshot.</p>
-     */
-    inline void SetState(FastSnapshotRestoreStateCode&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of fast snapshot restores for the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithState(const FastSnapshotRestoreStateCode& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of fast snapshot restores for the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithState(FastSnapshotRestoreStateCode&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the state transition. The possible values are as follows:</p>
      * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
@@ -163,361 +85,104 @@ namespace Model
      * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
      * <code>disabled</code>.</p> </li> </ul>
      */
-    inline const Aws::String& GetStateTransitionReason() const{ return m_stateTransitionReason; }
-
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
+    inline const Aws::String& GetStateTransitionReason() const { return m_stateTransitionReason; }
     inline bool StateTransitionReasonHasBeenSet() const { return m_stateTransitionReasonHasBeenSet; }
+    template<typename StateTransitionReasonT = Aws::String>
+    void SetStateTransitionReason(StateTransitionReasonT&& value) { m_stateTransitionReasonHasBeenSet = true; m_stateTransitionReason = std::forward<StateTransitionReasonT>(value); }
+    template<typename StateTransitionReasonT = Aws::String>
+    DisableFastSnapshotRestoreSuccessItem& WithStateTransitionReason(StateTransitionReasonT&& value) { SetStateTransitionReason(std::forward<StateTransitionReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
-    inline void SetStateTransitionReason(const Aws::String& value) { m_stateTransitionReasonHasBeenSet = true; m_stateTransitionReason = value; }
-
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
-    inline void SetStateTransitionReason(Aws::String&& value) { m_stateTransitionReasonHasBeenSet = true; m_stateTransitionReason = std::move(value); }
-
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
-    inline void SetStateTransitionReason(const char* value) { m_stateTransitionReasonHasBeenSet = true; m_stateTransitionReason.assign(value); }
-
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithStateTransitionReason(const Aws::String& value) { SetStateTransitionReason(value); return *this;}
-
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithStateTransitionReason(Aws::String&& value) { SetStateTransitionReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the state transition. The possible values are as follows:</p>
-     * <ul> <li> <p> <code>Client.UserInitiated</code> - The state successfully
-     * transitioned to <code>enabling</code> or <code>disabling</code>.</p> </li> <li>
-     * <p> <code>Client.UserInitiated - Lifecycle state transition</code> - The state
-     * successfully transitioned to <code>optimizing</code>, <code>enabled</code>, or
-     * <code>disabled</code>.</p> </li> </ul>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithStateTransitionReason(const char* value) { SetStateTransitionReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
      * on the snapshot.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    DisableFastSnapshotRestoreSuccessItem& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that enabled fast snapshot restores
-     * on the snapshot.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
      * the snapshot. This is intended for future use.</p>
      */
-    inline const Aws::String& GetOwnerAlias() const{ return m_ownerAlias; }
-
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
+    inline const Aws::String& GetOwnerAlias() const { return m_ownerAlias; }
     inline bool OwnerAliasHasBeenSet() const { return m_ownerAliasHasBeenSet; }
+    template<typename OwnerAliasT = Aws::String>
+    void SetOwnerAlias(OwnerAliasT&& value) { m_ownerAliasHasBeenSet = true; m_ownerAlias = std::forward<OwnerAliasT>(value); }
+    template<typename OwnerAliasT = Aws::String>
+    DisableFastSnapshotRestoreSuccessItem& WithOwnerAlias(OwnerAliasT&& value) { SetOwnerAlias(std::forward<OwnerAliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
-    inline void SetOwnerAlias(const Aws::String& value) { m_ownerAliasHasBeenSet = true; m_ownerAlias = value; }
-
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
-    inline void SetOwnerAlias(Aws::String&& value) { m_ownerAliasHasBeenSet = true; m_ownerAlias = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
-    inline void SetOwnerAlias(const char* value) { m_ownerAliasHasBeenSet = true; m_ownerAlias.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOwnerAlias(const Aws::String& value) { SetOwnerAlias(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOwnerAlias(Aws::String&& value) { SetOwnerAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services owner alias that enabled fast snapshot restores on
-     * the snapshot. This is intended for future use.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOwnerAlias(const char* value) { SetOwnerAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which fast snapshot restores entered the <code>enabling</code>
      * state.</p>
      */
-    inline const Aws::Utils::DateTime& GetEnablingTime() const{ return m_enablingTime; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabling</code>
-     * state.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEnablingTime() const { return m_enablingTime; }
     inline bool EnablingTimeHasBeenSet() const { return m_enablingTimeHasBeenSet; }
+    template<typename EnablingTimeT = Aws::Utils::DateTime>
+    void SetEnablingTime(EnablingTimeT&& value) { m_enablingTimeHasBeenSet = true; m_enablingTime = std::forward<EnablingTimeT>(value); }
+    template<typename EnablingTimeT = Aws::Utils::DateTime>
+    DisableFastSnapshotRestoreSuccessItem& WithEnablingTime(EnablingTimeT&& value) { SetEnablingTime(std::forward<EnablingTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabling</code>
-     * state.</p>
-     */
-    inline void SetEnablingTime(const Aws::Utils::DateTime& value) { m_enablingTimeHasBeenSet = true; m_enablingTime = value; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabling</code>
-     * state.</p>
-     */
-    inline void SetEnablingTime(Aws::Utils::DateTime&& value) { m_enablingTimeHasBeenSet = true; m_enablingTime = std::move(value); }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabling</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithEnablingTime(const Aws::Utils::DateTime& value) { SetEnablingTime(value); return *this;}
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabling</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithEnablingTime(Aws::Utils::DateTime&& value) { SetEnablingTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which fast snapshot restores entered the <code>optimizing</code>
      * state.</p>
      */
-    inline const Aws::Utils::DateTime& GetOptimizingTime() const{ return m_optimizingTime; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>optimizing</code>
-     * state.</p>
-     */
+    inline const Aws::Utils::DateTime& GetOptimizingTime() const { return m_optimizingTime; }
     inline bool OptimizingTimeHasBeenSet() const { return m_optimizingTimeHasBeenSet; }
+    template<typename OptimizingTimeT = Aws::Utils::DateTime>
+    void SetOptimizingTime(OptimizingTimeT&& value) { m_optimizingTimeHasBeenSet = true; m_optimizingTime = std::forward<OptimizingTimeT>(value); }
+    template<typename OptimizingTimeT = Aws::Utils::DateTime>
+    DisableFastSnapshotRestoreSuccessItem& WithOptimizingTime(OptimizingTimeT&& value) { SetOptimizingTime(std::forward<OptimizingTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>optimizing</code>
-     * state.</p>
-     */
-    inline void SetOptimizingTime(const Aws::Utils::DateTime& value) { m_optimizingTimeHasBeenSet = true; m_optimizingTime = value; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>optimizing</code>
-     * state.</p>
-     */
-    inline void SetOptimizingTime(Aws::Utils::DateTime&& value) { m_optimizingTimeHasBeenSet = true; m_optimizingTime = std::move(value); }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>optimizing</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOptimizingTime(const Aws::Utils::DateTime& value) { SetOptimizingTime(value); return *this;}
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>optimizing</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithOptimizingTime(Aws::Utils::DateTime&& value) { SetOptimizingTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which fast snapshot restores entered the <code>enabled</code>
      * state.</p>
      */
-    inline const Aws::Utils::DateTime& GetEnabledTime() const{ return m_enabledTime; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabled</code>
-     * state.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEnabledTime() const { return m_enabledTime; }
     inline bool EnabledTimeHasBeenSet() const { return m_enabledTimeHasBeenSet; }
+    template<typename EnabledTimeT = Aws::Utils::DateTime>
+    void SetEnabledTime(EnabledTimeT&& value) { m_enabledTimeHasBeenSet = true; m_enabledTime = std::forward<EnabledTimeT>(value); }
+    template<typename EnabledTimeT = Aws::Utils::DateTime>
+    DisableFastSnapshotRestoreSuccessItem& WithEnabledTime(EnabledTimeT&& value) { SetEnabledTime(std::forward<EnabledTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabled</code>
-     * state.</p>
-     */
-    inline void SetEnabledTime(const Aws::Utils::DateTime& value) { m_enabledTimeHasBeenSet = true; m_enabledTime = value; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabled</code>
-     * state.</p>
-     */
-    inline void SetEnabledTime(Aws::Utils::DateTime&& value) { m_enabledTimeHasBeenSet = true; m_enabledTime = std::move(value); }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabled</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithEnabledTime(const Aws::Utils::DateTime& value) { SetEnabledTime(value); return *this;}
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>enabled</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithEnabledTime(Aws::Utils::DateTime&& value) { SetEnabledTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which fast snapshot restores entered the <code>disabling</code>
      * state.</p>
      */
-    inline const Aws::Utils::DateTime& GetDisablingTime() const{ return m_disablingTime; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabling</code>
-     * state.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDisablingTime() const { return m_disablingTime; }
     inline bool DisablingTimeHasBeenSet() const { return m_disablingTimeHasBeenSet; }
+    template<typename DisablingTimeT = Aws::Utils::DateTime>
+    void SetDisablingTime(DisablingTimeT&& value) { m_disablingTimeHasBeenSet = true; m_disablingTime = std::forward<DisablingTimeT>(value); }
+    template<typename DisablingTimeT = Aws::Utils::DateTime>
+    DisableFastSnapshotRestoreSuccessItem& WithDisablingTime(DisablingTimeT&& value) { SetDisablingTime(std::forward<DisablingTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabling</code>
-     * state.</p>
-     */
-    inline void SetDisablingTime(const Aws::Utils::DateTime& value) { m_disablingTimeHasBeenSet = true; m_disablingTime = value; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabling</code>
-     * state.</p>
-     */
-    inline void SetDisablingTime(Aws::Utils::DateTime&& value) { m_disablingTimeHasBeenSet = true; m_disablingTime = std::move(value); }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabling</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithDisablingTime(const Aws::Utils::DateTime& value) { SetDisablingTime(value); return *this;}
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabling</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithDisablingTime(Aws::Utils::DateTime&& value) { SetDisablingTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which fast snapshot restores entered the <code>disabled</code>
      * state.</p>
      */
-    inline const Aws::Utils::DateTime& GetDisabledTime() const{ return m_disabledTime; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabled</code>
-     * state.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDisabledTime() const { return m_disabledTime; }
     inline bool DisabledTimeHasBeenSet() const { return m_disabledTimeHasBeenSet; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabled</code>
-     * state.</p>
-     */
-    inline void SetDisabledTime(const Aws::Utils::DateTime& value) { m_disabledTimeHasBeenSet = true; m_disabledTime = value; }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabled</code>
-     * state.</p>
-     */
-    inline void SetDisabledTime(Aws::Utils::DateTime&& value) { m_disabledTimeHasBeenSet = true; m_disabledTime = std::move(value); }
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabled</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithDisabledTime(const Aws::Utils::DateTime& value) { SetDisabledTime(value); return *this;}
-
-    /**
-     * <p>The time at which fast snapshot restores entered the <code>disabled</code>
-     * state.</p>
-     */
-    inline DisableFastSnapshotRestoreSuccessItem& WithDisabledTime(Aws::Utils::DateTime&& value) { SetDisabledTime(std::move(value)); return *this;}
-
+    template<typename DisabledTimeT = Aws::Utils::DateTime>
+    void SetDisabledTime(DisabledTimeT&& value) { m_disabledTimeHasBeenSet = true; m_disabledTime = std::forward<DisabledTimeT>(value); }
+    template<typename DisabledTimeT = Aws::Utils::DateTime>
+    DisableFastSnapshotRestoreSuccessItem& WithDisabledTime(DisabledTimeT&& value) { SetDisabledTime(std::forward<DisabledTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_snapshotId;
@@ -526,7 +191,7 @@ namespace Model
     Aws::String m_availabilityZone;
     bool m_availabilityZoneHasBeenSet = false;
 
-    FastSnapshotRestoreStateCode m_state;
+    FastSnapshotRestoreStateCode m_state{FastSnapshotRestoreStateCode::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_stateTransitionReason;
@@ -538,19 +203,19 @@ namespace Model
     Aws::String m_ownerAlias;
     bool m_ownerAliasHasBeenSet = false;
 
-    Aws::Utils::DateTime m_enablingTime;
+    Aws::Utils::DateTime m_enablingTime{};
     bool m_enablingTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_optimizingTime;
+    Aws::Utils::DateTime m_optimizingTime{};
     bool m_optimizingTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_enabledTime;
+    Aws::Utils::DateTime m_enabledTime{};
     bool m_enabledTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_disablingTime;
+    Aws::Utils::DateTime m_disablingTime{};
     bool m_disablingTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_disabledTime;
+    Aws::Utils::DateTime m_disabledTime{};
     bool m_disabledTimeHasBeenSet = false;
   };
 

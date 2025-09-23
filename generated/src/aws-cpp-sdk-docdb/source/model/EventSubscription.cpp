@@ -20,33 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-EventSubscription::EventSubscription() : 
-    m_customerAwsIdHasBeenSet(false),
-    m_custSubscriptionIdHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_subscriptionCreationTimeHasBeenSet(false),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceIdsListHasBeenSet(false),
-    m_eventCategoriesListHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_eventSubscriptionArnHasBeenSet(false)
-{
-}
-
-EventSubscription::EventSubscription(const XmlNode& xmlNode) : 
-    m_customerAwsIdHasBeenSet(false),
-    m_custSubscriptionIdHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_subscriptionCreationTimeHasBeenSet(false),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceIdsListHasBeenSet(false),
-    m_eventCategoriesListHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_eventSubscriptionArnHasBeenSet(false)
+EventSubscription::EventSubscription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -97,6 +71,7 @@ EventSubscription& EventSubscription::operator =(const XmlNode& xmlNode)
     if(!sourceIdsListNode.IsNull())
     {
       XmlNode sourceIdsListMember = sourceIdsListNode.FirstChild("SourceId");
+      m_sourceIdsListHasBeenSet = !sourceIdsListMember.IsNull();
       while(!sourceIdsListMember.IsNull())
       {
         m_sourceIdsList.push_back(sourceIdsListMember.GetText());
@@ -109,6 +84,7 @@ EventSubscription& EventSubscription::operator =(const XmlNode& xmlNode)
     if(!eventCategoriesListNode.IsNull())
     {
       XmlNode eventCategoriesListMember = eventCategoriesListNode.FirstChild("EventCategory");
+      m_eventCategoriesListHasBeenSet = !eventCategoriesListMember.IsNull();
       while(!eventCategoriesListMember.IsNull())
       {
         m_eventCategoriesList.push_back(eventCategoriesListMember.GetText());
@@ -171,7 +147,7 @@ void EventSubscription::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned sourceIdsListIdx = 1;
       for(auto& item : m_sourceIdsList)
       {
-        oStream << location << index << locationValue << ".SourceId." << sourceIdsListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".SourceIdsList.SourceId." << sourceIdsListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -180,7 +156,7 @@ void EventSubscription::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned eventCategoriesListIdx = 1;
       for(auto& item : m_eventCategoriesList)
       {
-        oStream << location << index << locationValue << ".EventCategory." << eventCategoriesListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".EventCategoriesList.EventCategory." << eventCategoriesListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -227,7 +203,7 @@ void EventSubscription::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned sourceIdsListIdx = 1;
       for(auto& item : m_sourceIdsList)
       {
-        oStream << location << ".SourceId." << sourceIdsListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SourceIdsList.SourceId." << sourceIdsListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_eventCategoriesListHasBeenSet)
@@ -235,7 +211,7 @@ void EventSubscription::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned eventCategoriesListIdx = 1;
       for(auto& item : m_eventCategoriesList)
       {
-        oStream << location << ".EventCategory." << eventCategoriesListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".EventCategoriesList.EventCategory." << eventCategoriesListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_enabledHasBeenSet)

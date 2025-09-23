@@ -18,17 +18,7 @@ namespace MemoryDB
 namespace Model
 {
 
-AuthenticationMode::AuthenticationMode() : 
-    m_type(InputAuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_passwordsHasBeenSet(false)
-{
-}
-
-AuthenticationMode::AuthenticationMode(JsonView jsonValue) : 
-    m_type(InputAuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_passwordsHasBeenSet(false)
+AuthenticationMode::AuthenticationMode(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ AuthenticationMode& AuthenticationMode::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = InputAuthenticationTypeMapper::GetInputAuthenticationTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Passwords"))
   {
     Aws::Utils::Array<JsonView> passwordsJsonList = jsonValue.GetArray("Passwords");
@@ -51,7 +39,6 @@ AuthenticationMode& AuthenticationMode::operator =(JsonView jsonValue)
     }
     m_passwordsHasBeenSet = true;
   }
-
   return *this;
 }
 

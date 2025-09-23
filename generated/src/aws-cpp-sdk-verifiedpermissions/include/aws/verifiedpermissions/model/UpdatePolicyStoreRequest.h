@@ -8,6 +8,7 @@
 #include <aws/verifiedpermissions/VerifiedPermissionsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/verifiedpermissions/model/ValidationSettings.h>
+#include <aws/verifiedpermissions/model/DeletionProtection.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +23,7 @@ namespace Model
   class UpdatePolicyStoreRequest : public VerifiedPermissionsRequest
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API UpdatePolicyStoreRequest();
+    AWS_VERIFIEDPERMISSIONS_API UpdatePolicyStoreRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,132 +36,55 @@ namespace Model
     AWS_VERIFIEDPERMISSIONS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the ID of the policy store that you want to update</p>
      */
-    inline const Aws::String& GetPolicyStoreId() const{ return m_policyStoreId; }
-
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
+    inline const Aws::String& GetPolicyStoreId() const { return m_policyStoreId; }
     inline bool PolicyStoreIdHasBeenSet() const { return m_policyStoreIdHasBeenSet; }
+    template<typename PolicyStoreIdT = Aws::String>
+    void SetPolicyStoreId(PolicyStoreIdT&& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = std::forward<PolicyStoreIdT>(value); }
+    template<typename PolicyStoreIdT = Aws::String>
+    UpdatePolicyStoreRequest& WithPolicyStoreId(PolicyStoreIdT&& value) { SetPolicyStoreId(std::forward<PolicyStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
-    inline void SetPolicyStoreId(const Aws::String& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = value; }
-
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
-    inline void SetPolicyStoreId(Aws::String&& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = std::move(value); }
-
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
-    inline void SetPolicyStoreId(const char* value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId.assign(value); }
-
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
-    inline UpdatePolicyStoreRequest& WithPolicyStoreId(const Aws::String& value) { SetPolicyStoreId(value); return *this;}
-
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
-    inline UpdatePolicyStoreRequest& WithPolicyStoreId(Aws::String&& value) { SetPolicyStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ID of the policy store that you want to update</p>
-     */
-    inline UpdatePolicyStoreRequest& WithPolicyStoreId(const char* value) { SetPolicyStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure that defines the validation settings that want to enable for the
      * policy store.</p>
      */
-    inline const ValidationSettings& GetValidationSettings() const{ return m_validationSettings; }
-
-    /**
-     * <p>A structure that defines the validation settings that want to enable for the
-     * policy store.</p>
-     */
+    inline const ValidationSettings& GetValidationSettings() const { return m_validationSettings; }
     inline bool ValidationSettingsHasBeenSet() const { return m_validationSettingsHasBeenSet; }
+    template<typename ValidationSettingsT = ValidationSettings>
+    void SetValidationSettings(ValidationSettingsT&& value) { m_validationSettingsHasBeenSet = true; m_validationSettings = std::forward<ValidationSettingsT>(value); }
+    template<typename ValidationSettingsT = ValidationSettings>
+    UpdatePolicyStoreRequest& WithValidationSettings(ValidationSettingsT&& value) { SetValidationSettings(std::forward<ValidationSettingsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A structure that defines the validation settings that want to enable for the
-     * policy store.</p>
+     * <p>Specifies whether the policy store can be deleted. If enabled, the policy
+     * store can't be deleted.</p> <p>When you call <code>UpdatePolicyStore</code>,
+     * this parameter is unchanged unless explicitly included in the call.</p>
      */
-    inline void SetValidationSettings(const ValidationSettings& value) { m_validationSettingsHasBeenSet = true; m_validationSettings = value; }
+    inline DeletionProtection GetDeletionProtection() const { return m_deletionProtection; }
+    inline bool DeletionProtectionHasBeenSet() const { return m_deletionProtectionHasBeenSet; }
+    inline void SetDeletionProtection(DeletionProtection value) { m_deletionProtectionHasBeenSet = true; m_deletionProtection = value; }
+    inline UpdatePolicyStoreRequest& WithDeletionProtection(DeletionProtection value) { SetDeletionProtection(value); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that defines the validation settings that want to enable for the
-     * policy store.</p>
-     */
-    inline void SetValidationSettings(ValidationSettings&& value) { m_validationSettingsHasBeenSet = true; m_validationSettings = std::move(value); }
-
-    /**
-     * <p>A structure that defines the validation settings that want to enable for the
-     * policy store.</p>
-     */
-    inline UpdatePolicyStoreRequest& WithValidationSettings(const ValidationSettings& value) { SetValidationSettings(value); return *this;}
-
-    /**
-     * <p>A structure that defines the validation settings that want to enable for the
-     * policy store.</p>
-     */
-    inline UpdatePolicyStoreRequest& WithValidationSettings(ValidationSettings&& value) { SetValidationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Descriptive text that you can provide to help with identification of the
      * current policy store.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline UpdatePolicyStoreRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline UpdatePolicyStoreRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline UpdatePolicyStoreRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdatePolicyStoreRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyStoreId;
@@ -168,6 +92,9 @@ namespace Model
 
     ValidationSettings m_validationSettings;
     bool m_validationSettingsHasBeenSet = false;
+
+    DeletionProtection m_deletionProtection{DeletionProtection::NOT_SET};
+    bool m_deletionProtectionHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;

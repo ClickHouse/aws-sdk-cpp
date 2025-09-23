@@ -35,210 +35,71 @@ namespace Model
   class BotVersionSummary
   {
   public:
-    AWS_LEXMODELSV2_API BotVersionSummary();
+    AWS_LEXMODELSV2_API BotVersionSummary() = default;
     AWS_LEXMODELSV2_API BotVersionSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BotVersionSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the bot associated with the version.</p>
      */
-    inline const Aws::String& GetBotName() const{ return m_botName; }
-
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
+    inline const Aws::String& GetBotName() const { return m_botName; }
     inline bool BotNameHasBeenSet() const { return m_botNameHasBeenSet; }
+    template<typename BotNameT = Aws::String>
+    void SetBotName(BotNameT&& value) { m_botNameHasBeenSet = true; m_botName = std::forward<BotNameT>(value); }
+    template<typename BotNameT = Aws::String>
+    BotVersionSummary& WithBotName(BotNameT&& value) { SetBotName(std::forward<BotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
-    inline void SetBotName(const Aws::String& value) { m_botNameHasBeenSet = true; m_botName = value; }
-
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
-    inline void SetBotName(Aws::String&& value) { m_botNameHasBeenSet = true; m_botName = std::move(value); }
-
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
-    inline void SetBotName(const char* value) { m_botNameHasBeenSet = true; m_botName.assign(value); }
-
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
-    inline BotVersionSummary& WithBotName(const Aws::String& value) { SetBotName(value); return *this;}
-
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
-    inline BotVersionSummary& WithBotName(Aws::String&& value) { SetBotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bot associated with the version.</p>
-     */
-    inline BotVersionSummary& WithBotName(const char* value) { SetBotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
      * is the version of the bot that can be updated..</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
-
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
     inline bool BotVersionHasBeenSet() const { return m_botVersionHasBeenSet; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    BotVersionSummary& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersionHasBeenSet = true; m_botVersion = value; }
-
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::move(value); }
-
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersionHasBeenSet = true; m_botVersion.assign(value); }
-
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
-    inline BotVersionSummary& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
-    inline BotVersionSummary& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The numeric version of the bot, or <code>DRAFT</code> to indicate that this
-     * is the version of the bot that can be updated..</p>
-     */
-    inline BotVersionSummary& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the version.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the version.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    BotVersionSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the version.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the version.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the version.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the version.</p>
-     */
-    inline BotVersionSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the version.</p>
-     */
-    inline BotVersionSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the version.</p>
-     */
-    inline BotVersionSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the bot. When the status is available, the version of the bot
      * is ready for use.</p>
      */
-    inline const BotStatus& GetBotStatus() const{ return m_botStatus; }
-
-    /**
-     * <p>The status of the bot. When the status is available, the version of the bot
-     * is ready for use.</p>
-     */
+    inline BotStatus GetBotStatus() const { return m_botStatus; }
     inline bool BotStatusHasBeenSet() const { return m_botStatusHasBeenSet; }
+    inline void SetBotStatus(BotStatus value) { m_botStatusHasBeenSet = true; m_botStatus = value; }
+    inline BotVersionSummary& WithBotStatus(BotStatus value) { SetBotStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the bot. When the status is available, the version of the bot
-     * is ready for use.</p>
-     */
-    inline void SetBotStatus(const BotStatus& value) { m_botStatusHasBeenSet = true; m_botStatus = value; }
-
-    /**
-     * <p>The status of the bot. When the status is available, the version of the bot
-     * is ready for use.</p>
-     */
-    inline void SetBotStatus(BotStatus&& value) { m_botStatusHasBeenSet = true; m_botStatus = std::move(value); }
-
-    /**
-     * <p>The status of the bot. When the status is available, the version of the bot
-     * is ready for use.</p>
-     */
-    inline BotVersionSummary& WithBotStatus(const BotStatus& value) { SetBotStatus(value); return *this;}
-
-    /**
-     * <p>The status of the bot. When the status is available, the version of the bot
-     * is ready for use.</p>
-     */
-    inline BotVersionSummary& WithBotStatus(BotStatus&& value) { SetBotStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp of the date and time that the version was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDateTime() const{ return m_creationDateTime; }
-
-    /**
-     * <p>A timestamp of the date and time that the version was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDateTime() const { return m_creationDateTime; }
     inline bool CreationDateTimeHasBeenSet() const { return m_creationDateTimeHasBeenSet; }
-
-    /**
-     * <p>A timestamp of the date and time that the version was created.</p>
-     */
-    inline void SetCreationDateTime(const Aws::Utils::DateTime& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = value; }
-
-    /**
-     * <p>A timestamp of the date and time that the version was created.</p>
-     */
-    inline void SetCreationDateTime(Aws::Utils::DateTime&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::move(value); }
-
-    /**
-     * <p>A timestamp of the date and time that the version was created.</p>
-     */
-    inline BotVersionSummary& WithCreationDateTime(const Aws::Utils::DateTime& value) { SetCreationDateTime(value); return *this;}
-
-    /**
-     * <p>A timestamp of the date and time that the version was created.</p>
-     */
-    inline BotVersionSummary& WithCreationDateTime(Aws::Utils::DateTime&& value) { SetCreationDateTime(std::move(value)); return *this;}
-
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    void SetCreationDateTime(CreationDateTimeT&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::forward<CreationDateTimeT>(value); }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    BotVersionSummary& WithCreationDateTime(CreationDateTimeT&& value) { SetCreationDateTime(std::forward<CreationDateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_botName;
@@ -250,10 +111,10 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    BotStatus m_botStatus;
+    BotStatus m_botStatus{BotStatus::NOT_SET};
     bool m_botStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDateTime;
+    Aws::Utils::DateTime m_creationDateTime{};
     bool m_creationDateTimeHasBeenSet = false;
   };
 

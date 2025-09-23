@@ -18,19 +18,7 @@ namespace GlobalAccelerator
 namespace Model
 {
 
-ByoipCidr::ByoipCidr() : 
-    m_cidrHasBeenSet(false),
-    m_state(ByoipCidrState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_eventsHasBeenSet(false)
-{
-}
-
-ByoipCidr::ByoipCidr(JsonView jsonValue) : 
-    m_cidrHasBeenSet(false),
-    m_state(ByoipCidrState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_eventsHasBeenSet(false)
+ByoipCidr::ByoipCidr(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ByoipCidr& ByoipCidr::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Cidr"))
   {
     m_cidr = jsonValue.GetString("Cidr");
-
     m_cidrHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("State"))
   {
     m_state = ByoipCidrStateMapper::GetByoipCidrStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Events"))
   {
     Aws::Utils::Array<JsonView> eventsJsonList = jsonValue.GetArray("Events");
@@ -60,7 +44,6 @@ ByoipCidr& ByoipCidr::operator =(JsonView jsonValue)
     }
     m_eventsHasBeenSet = true;
   }
-
   return *this;
 }
 

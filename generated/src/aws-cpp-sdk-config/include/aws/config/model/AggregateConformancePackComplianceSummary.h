@@ -33,91 +33,36 @@ namespace Model
   class AggregateConformancePackComplianceSummary
   {
   public:
-    AWS_CONFIGSERVICE_API AggregateConformancePackComplianceSummary();
+    AWS_CONFIGSERVICE_API AggregateConformancePackComplianceSummary() = default;
     AWS_CONFIGSERVICE_API AggregateConformancePackComplianceSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API AggregateConformancePackComplianceSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
      */
-    inline const AggregateConformancePackComplianceCount& GetComplianceSummary() const{ return m_complianceSummary; }
-
-    /**
-     * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
-     */
+    inline const AggregateConformancePackComplianceCount& GetComplianceSummary() const { return m_complianceSummary; }
     inline bool ComplianceSummaryHasBeenSet() const { return m_complianceSummaryHasBeenSet; }
+    template<typename ComplianceSummaryT = AggregateConformancePackComplianceCount>
+    void SetComplianceSummary(ComplianceSummaryT&& value) { m_complianceSummaryHasBeenSet = true; m_complianceSummary = std::forward<ComplianceSummaryT>(value); }
+    template<typename ComplianceSummaryT = AggregateConformancePackComplianceCount>
+    AggregateConformancePackComplianceSummary& WithComplianceSummary(ComplianceSummaryT&& value) { SetComplianceSummary(std::forward<ComplianceSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
-     */
-    inline void SetComplianceSummary(const AggregateConformancePackComplianceCount& value) { m_complianceSummaryHasBeenSet = true; m_complianceSummary = value; }
-
-    /**
-     * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
-     */
-    inline void SetComplianceSummary(AggregateConformancePackComplianceCount&& value) { m_complianceSummaryHasBeenSet = true; m_complianceSummary = std::move(value); }
-
-    /**
-     * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
-     */
-    inline AggregateConformancePackComplianceSummary& WithComplianceSummary(const AggregateConformancePackComplianceCount& value) { SetComplianceSummary(value); return *this;}
-
-    /**
-     * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
-     */
-    inline AggregateConformancePackComplianceSummary& WithComplianceSummary(AggregateConformancePackComplianceCount&& value) { SetComplianceSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
      * Services Region.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
-    inline AggregateConformancePackComplianceSummary& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
-    inline AggregateConformancePackComplianceSummary& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>Groups the result based on Amazon Web Services account ID or Amazon Web
-     * Services Region.</p>
-     */
-    inline AggregateConformancePackComplianceSummary& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    AggregateConformancePackComplianceSummary& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     AggregateConformancePackComplianceCount m_complianceSummary;

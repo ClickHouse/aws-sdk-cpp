@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcrRepositoryImageScanningConfigurationDetails::AwsEcrRepositoryImageScanningConfigurationDetails() : 
-    m_scanOnPush(false),
-    m_scanOnPushHasBeenSet(false)
-{
-}
-
-AwsEcrRepositoryImageScanningConfigurationDetails::AwsEcrRepositoryImageScanningConfigurationDetails(JsonView jsonValue) : 
-    m_scanOnPush(false),
-    m_scanOnPushHasBeenSet(false)
+AwsEcrRepositoryImageScanningConfigurationDetails::AwsEcrRepositoryImageScanningConfigurationDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsEcrRepositoryImageScanningConfigurationDetails& AwsEcrRepositoryImageScanning
   if(jsonValue.ValueExists("ScanOnPush"))
   {
     m_scanOnPush = jsonValue.GetBool("ScanOnPush");
-
     m_scanOnPushHasBeenSet = true;
   }
-
   return *this;
 }
 

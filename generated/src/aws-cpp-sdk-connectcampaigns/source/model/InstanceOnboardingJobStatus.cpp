@@ -18,21 +18,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-InstanceOnboardingJobStatus::InstanceOnboardingJobStatus() : 
-    m_connectInstanceIdHasBeenSet(false),
-    m_status(InstanceOnboardingJobStatusCode::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_failureCode(InstanceOnboardingJobFailureCode::NOT_SET),
-    m_failureCodeHasBeenSet(false)
-{
-}
-
-InstanceOnboardingJobStatus::InstanceOnboardingJobStatus(JsonView jsonValue) : 
-    m_connectInstanceIdHasBeenSet(false),
-    m_status(InstanceOnboardingJobStatusCode::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_failureCode(InstanceOnboardingJobFailureCode::NOT_SET),
-    m_failureCodeHasBeenSet(false)
+InstanceOnboardingJobStatus::InstanceOnboardingJobStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ InstanceOnboardingJobStatus& InstanceOnboardingJobStatus::operator =(JsonView js
   if(jsonValue.ValueExists("connectInstanceId"))
   {
     m_connectInstanceId = jsonValue.GetString("connectInstanceId");
-
     m_connectInstanceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = InstanceOnboardingJobStatusCodeMapper::GetInstanceOnboardingJobStatusCodeForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("failureCode"))
   {
     m_failureCode = InstanceOnboardingJobFailureCodeMapper::GetInstanceOnboardingJobFailureCodeForName(jsonValue.GetString("failureCode"));
-
     m_failureCodeHasBeenSet = true;
   }
-
   return *this;
 }
 

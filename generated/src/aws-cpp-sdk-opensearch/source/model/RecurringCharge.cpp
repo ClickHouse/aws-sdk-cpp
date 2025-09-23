@@ -18,17 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-RecurringCharge::RecurringCharge() : 
-    m_recurringChargeAmount(0.0),
-    m_recurringChargeAmountHasBeenSet(false),
-    m_recurringChargeFrequencyHasBeenSet(false)
-{
-}
-
-RecurringCharge::RecurringCharge(JsonView jsonValue) : 
-    m_recurringChargeAmount(0.0),
-    m_recurringChargeAmountHasBeenSet(false),
-    m_recurringChargeFrequencyHasBeenSet(false)
+RecurringCharge::RecurringCharge(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RecurringCharge& RecurringCharge::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RecurringChargeAmount"))
   {
     m_recurringChargeAmount = jsonValue.GetDouble("RecurringChargeAmount");
-
     m_recurringChargeAmountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecurringChargeFrequency"))
   {
     m_recurringChargeFrequency = jsonValue.GetString("RecurringChargeFrequency");
-
     m_recurringChargeFrequencyHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,7 +33,7 @@ namespace Model
   class BatchGetFrameMetricDataRequest : public CodeGuruProfilerRequest
   {
   public:
-    AWS_CODEGURUPROFILER_API BatchGetFrameMetricDataRequest();
+    AWS_CODEGURUPROFILER_API BatchGetFrameMetricDataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -46,269 +46,80 @@ namespace Model
     AWS_CODEGURUPROFILER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p> The end time of the time period for the returned time series values. This is
      * specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
      * represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p> The end time of the time period for the returned time series values. This is
-     * specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
-     * represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    BatchGetFrameMetricDataRequest& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The end time of the time period for the returned time series values. This is
-     * specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
-     * represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p> The end time of the time period for the returned time series values. This is
-     * specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
-     * represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p> The end time of the time period for the returned time series values. This is
-     * specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
-     * represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p> The end time of the time period for the returned time series values. This is
-     * specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
-     * represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The details of the metrics that are used to request a time series of values.
      * The metric includes the name of the frame, the aggregation type to calculate the
      * metric value for the frame, and the thread states to use to get the count for
      * the metric value of the frame.</p>
      */
-    inline const Aws::Vector<FrameMetric>& GetFrameMetrics() const{ return m_frameMetrics; }
-
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
+    inline const Aws::Vector<FrameMetric>& GetFrameMetrics() const { return m_frameMetrics; }
     inline bool FrameMetricsHasBeenSet() const { return m_frameMetricsHasBeenSet; }
+    template<typename FrameMetricsT = Aws::Vector<FrameMetric>>
+    void SetFrameMetrics(FrameMetricsT&& value) { m_frameMetricsHasBeenSet = true; m_frameMetrics = std::forward<FrameMetricsT>(value); }
+    template<typename FrameMetricsT = Aws::Vector<FrameMetric>>
+    BatchGetFrameMetricDataRequest& WithFrameMetrics(FrameMetricsT&& value) { SetFrameMetrics(std::forward<FrameMetricsT>(value)); return *this;}
+    template<typename FrameMetricsT = FrameMetric>
+    BatchGetFrameMetricDataRequest& AddFrameMetrics(FrameMetricsT&& value) { m_frameMetricsHasBeenSet = true; m_frameMetrics.emplace_back(std::forward<FrameMetricsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
-    inline void SetFrameMetrics(const Aws::Vector<FrameMetric>& value) { m_frameMetricsHasBeenSet = true; m_frameMetrics = value; }
-
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
-    inline void SetFrameMetrics(Aws::Vector<FrameMetric>&& value) { m_frameMetricsHasBeenSet = true; m_frameMetrics = std::move(value); }
-
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithFrameMetrics(const Aws::Vector<FrameMetric>& value) { SetFrameMetrics(value); return *this;}
-
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithFrameMetrics(Aws::Vector<FrameMetric>&& value) { SetFrameMetrics(std::move(value)); return *this;}
-
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
-    inline BatchGetFrameMetricDataRequest& AddFrameMetrics(const FrameMetric& value) { m_frameMetricsHasBeenSet = true; m_frameMetrics.push_back(value); return *this; }
-
-    /**
-     * <p> The details of the metrics that are used to request a time series of values.
-     * The metric includes the name of the frame, the aggregation type to calculate the
-     * metric value for the frame, and the thread states to use to get the count for
-     * the metric value of the frame.</p>
-     */
-    inline BatchGetFrameMetricDataRequest& AddFrameMetrics(FrameMetric&& value) { m_frameMetricsHasBeenSet = true; m_frameMetrics.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The duration of the frame metrics used to return the time series values.
      * Specify using the ISO 8601 format. The maximum period duration is one day
      * (<code>PT24H</code> or <code>P1D</code>). </p>
      */
-    inline const Aws::String& GetPeriod() const{ return m_period; }
-
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
+    inline const Aws::String& GetPeriod() const { return m_period; }
     inline bool PeriodHasBeenSet() const { return m_periodHasBeenSet; }
+    template<typename PeriodT = Aws::String>
+    void SetPeriod(PeriodT&& value) { m_periodHasBeenSet = true; m_period = std::forward<PeriodT>(value); }
+    template<typename PeriodT = Aws::String>
+    BatchGetFrameMetricDataRequest& WithPeriod(PeriodT&& value) { SetPeriod(std::forward<PeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
-    inline void SetPeriod(const Aws::String& value) { m_periodHasBeenSet = true; m_period = value; }
-
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
-    inline void SetPeriod(Aws::String&& value) { m_periodHasBeenSet = true; m_period = std::move(value); }
-
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
-    inline void SetPeriod(const char* value) { m_periodHasBeenSet = true; m_period.assign(value); }
-
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithPeriod(const Aws::String& value) { SetPeriod(value); return *this;}
-
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithPeriod(Aws::String&& value) { SetPeriod(std::move(value)); return *this;}
-
-    /**
-     * <p> The duration of the frame metrics used to return the time series values.
-     * Specify using the ISO 8601 format. The maximum period duration is one day
-     * (<code>PT24H</code> or <code>P1D</code>). </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithPeriod(const char* value) { SetPeriod(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the profiling group associated with the the frame metrics used
      * to return the time series values. </p>
      */
-    inline const Aws::String& GetProfilingGroupName() const{ return m_profilingGroupName; }
-
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
+    inline const Aws::String& GetProfilingGroupName() const { return m_profilingGroupName; }
     inline bool ProfilingGroupNameHasBeenSet() const { return m_profilingGroupNameHasBeenSet; }
+    template<typename ProfilingGroupNameT = Aws::String>
+    void SetProfilingGroupName(ProfilingGroupNameT&& value) { m_profilingGroupNameHasBeenSet = true; m_profilingGroupName = std::forward<ProfilingGroupNameT>(value); }
+    template<typename ProfilingGroupNameT = Aws::String>
+    BatchGetFrameMetricDataRequest& WithProfilingGroupName(ProfilingGroupNameT&& value) { SetProfilingGroupName(std::forward<ProfilingGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
-    inline void SetProfilingGroupName(const Aws::String& value) { m_profilingGroupNameHasBeenSet = true; m_profilingGroupName = value; }
-
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
-    inline void SetProfilingGroupName(Aws::String&& value) { m_profilingGroupNameHasBeenSet = true; m_profilingGroupName = std::move(value); }
-
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
-    inline void SetProfilingGroupName(const char* value) { m_profilingGroupNameHasBeenSet = true; m_profilingGroupName.assign(value); }
-
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithProfilingGroupName(const Aws::String& value) { SetProfilingGroupName(value); return *this;}
-
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithProfilingGroupName(Aws::String&& value) { SetProfilingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the profiling group associated with the the frame metrics used
-     * to return the time series values. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithProfilingGroupName(const char* value) { SetProfilingGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The start time of the time period for the frame metrics used to return the
      * time series values. This is specified using the ISO 8601 format. For example,
      * 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM
      * UTC. </p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p> The start time of the time period for the frame metrics used to return the
-     * time series values. This is specified using the ISO 8601 format. For example,
-     * 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM
-     * UTC. </p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    BatchGetFrameMetricDataRequest& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The start time of the time period for the frame metrics used to return the
-     * time series values. This is specified using the ISO 8601 format. For example,
-     * 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM
-     * UTC. </p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p> The start time of the time period for the frame metrics used to return the
-     * time series values. This is specified using the ISO 8601 format. For example,
-     * 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM
-     * UTC. </p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p> The start time of the time period for the frame metrics used to return the
-     * time series values. This is specified using the ISO 8601 format. For example,
-     * 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM
-     * UTC. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p> The start time of the time period for the frame metrics used to return the
-     * time series values. This is specified using the ISO 8601 format. For example,
-     * 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM
-     * UTC. </p>
-     */
-    inline BatchGetFrameMetricDataRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The requested resolution of time steps for the returned time series of
      * values. If the requested target resolution is not available due to data not
@@ -318,66 +129,14 @@ namespace Model
      * <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes
      * </p> </li> </ul>
      */
-    inline const AggregationPeriod& GetTargetResolution() const{ return m_targetResolution; }
-
-    /**
-     * <p>The requested resolution of time steps for the returned time series of
-     * values. If the requested target resolution is not available due to data not
-     * being retained we provide a best effort result by falling back to the most
-     * granular available resolution after the target resolution. There are 3 valid
-     * values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p>
-     * <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes
-     * </p> </li> </ul>
-     */
+    inline AggregationPeriod GetTargetResolution() const { return m_targetResolution; }
     inline bool TargetResolutionHasBeenSet() const { return m_targetResolutionHasBeenSet; }
-
-    /**
-     * <p>The requested resolution of time steps for the returned time series of
-     * values. If the requested target resolution is not available due to data not
-     * being retained we provide a best effort result by falling back to the most
-     * granular available resolution after the target resolution. There are 3 valid
-     * values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p>
-     * <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes
-     * </p> </li> </ul>
-     */
-    inline void SetTargetResolution(const AggregationPeriod& value) { m_targetResolutionHasBeenSet = true; m_targetResolution = value; }
-
-    /**
-     * <p>The requested resolution of time steps for the returned time series of
-     * values. If the requested target resolution is not available due to data not
-     * being retained we provide a best effort result by falling back to the most
-     * granular available resolution after the target resolution. There are 3 valid
-     * values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p>
-     * <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes
-     * </p> </li> </ul>
-     */
-    inline void SetTargetResolution(AggregationPeriod&& value) { m_targetResolutionHasBeenSet = true; m_targetResolution = std::move(value); }
-
-    /**
-     * <p>The requested resolution of time steps for the returned time series of
-     * values. If the requested target resolution is not available due to data not
-     * being retained we provide a best effort result by falling back to the most
-     * granular available resolution after the target resolution. There are 3 valid
-     * values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p>
-     * <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes
-     * </p> </li> </ul>
-     */
-    inline BatchGetFrameMetricDataRequest& WithTargetResolution(const AggregationPeriod& value) { SetTargetResolution(value); return *this;}
-
-    /**
-     * <p>The requested resolution of time steps for the returned time series of
-     * values. If the requested target resolution is not available due to data not
-     * being retained we provide a best effort result by falling back to the most
-     * granular available resolution after the target resolution. There are 3 valid
-     * values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p>
-     * <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes
-     * </p> </li> </ul>
-     */
-    inline BatchGetFrameMetricDataRequest& WithTargetResolution(AggregationPeriod&& value) { SetTargetResolution(std::move(value)); return *this;}
-
+    inline void SetTargetResolution(AggregationPeriod value) { m_targetResolutionHasBeenSet = true; m_targetResolution = value; }
+    inline BatchGetFrameMetricDataRequest& WithTargetResolution(AggregationPeriod value) { SetTargetResolution(value); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
     Aws::Vector<FrameMetric> m_frameMetrics;
@@ -389,10 +148,10 @@ namespace Model
     Aws::String m_profilingGroupName;
     bool m_profilingGroupNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    AggregationPeriod m_targetResolution;
+    AggregationPeriod m_targetResolution{AggregationPeriod::NOT_SET};
     bool m_targetResolutionHasBeenSet = false;
   };
 

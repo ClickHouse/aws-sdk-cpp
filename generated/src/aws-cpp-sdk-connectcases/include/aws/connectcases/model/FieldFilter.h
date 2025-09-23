@@ -32,197 +32,83 @@ namespace Model
   class FieldFilter
   {
   public:
-    AWS_CONNECTCASES_API FieldFilter();
+    AWS_CONNECTCASES_API FieldFilter() = default;
     AWS_CONNECTCASES_API FieldFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API FieldFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Object containing field identifier and value information.</p>
      */
-    inline const FieldValue& GetContains() const{ return m_contains; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
+    inline const FieldValue& GetContains() const { return m_contains; }
     inline bool ContainsHasBeenSet() const { return m_containsHasBeenSet; }
+    template<typename ContainsT = FieldValue>
+    void SetContains(ContainsT&& value) { m_containsHasBeenSet = true; m_contains = std::forward<ContainsT>(value); }
+    template<typename ContainsT = FieldValue>
+    FieldFilter& WithContains(ContainsT&& value) { SetContains(std::forward<ContainsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Object containing field identifier and value information.</p>
      */
-    inline void SetContains(const FieldValue& value) { m_containsHasBeenSet = true; m_contains = value; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline void SetContains(FieldValue&& value) { m_containsHasBeenSet = true; m_contains = std::move(value); }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithContains(const FieldValue& value) { SetContains(value); return *this;}
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithContains(FieldValue&& value) { SetContains(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline const FieldValue& GetEqualTo() const{ return m_equalTo; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
+    inline const FieldValue& GetEqualTo() const { return m_equalTo; }
     inline bool EqualToHasBeenSet() const { return m_equalToHasBeenSet; }
+    template<typename EqualToT = FieldValue>
+    void SetEqualTo(EqualToT&& value) { m_equalToHasBeenSet = true; m_equalTo = std::forward<EqualToT>(value); }
+    template<typename EqualToT = FieldValue>
+    FieldFilter& WithEqualTo(EqualToT&& value) { SetEqualTo(std::forward<EqualToT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Object containing field identifier and value information.</p>
      */
-    inline void SetEqualTo(const FieldValue& value) { m_equalToHasBeenSet = true; m_equalTo = value; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline void SetEqualTo(FieldValue&& value) { m_equalToHasBeenSet = true; m_equalTo = std::move(value); }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithEqualTo(const FieldValue& value) { SetEqualTo(value); return *this;}
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithEqualTo(FieldValue&& value) { SetEqualTo(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline const FieldValue& GetGreaterThan() const{ return m_greaterThan; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
+    inline const FieldValue& GetGreaterThan() const { return m_greaterThan; }
     inline bool GreaterThanHasBeenSet() const { return m_greaterThanHasBeenSet; }
+    template<typename GreaterThanT = FieldValue>
+    void SetGreaterThan(GreaterThanT&& value) { m_greaterThanHasBeenSet = true; m_greaterThan = std::forward<GreaterThanT>(value); }
+    template<typename GreaterThanT = FieldValue>
+    FieldFilter& WithGreaterThan(GreaterThanT&& value) { SetGreaterThan(std::forward<GreaterThanT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Object containing field identifier and value information.</p>
      */
-    inline void SetGreaterThan(const FieldValue& value) { m_greaterThanHasBeenSet = true; m_greaterThan = value; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline void SetGreaterThan(FieldValue&& value) { m_greaterThanHasBeenSet = true; m_greaterThan = std::move(value); }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithGreaterThan(const FieldValue& value) { SetGreaterThan(value); return *this;}
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithGreaterThan(FieldValue&& value) { SetGreaterThan(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline const FieldValue& GetGreaterThanOrEqualTo() const{ return m_greaterThanOrEqualTo; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
+    inline const FieldValue& GetGreaterThanOrEqualTo() const { return m_greaterThanOrEqualTo; }
     inline bool GreaterThanOrEqualToHasBeenSet() const { return m_greaterThanOrEqualToHasBeenSet; }
+    template<typename GreaterThanOrEqualToT = FieldValue>
+    void SetGreaterThanOrEqualTo(GreaterThanOrEqualToT&& value) { m_greaterThanOrEqualToHasBeenSet = true; m_greaterThanOrEqualTo = std::forward<GreaterThanOrEqualToT>(value); }
+    template<typename GreaterThanOrEqualToT = FieldValue>
+    FieldFilter& WithGreaterThanOrEqualTo(GreaterThanOrEqualToT&& value) { SetGreaterThanOrEqualTo(std::forward<GreaterThanOrEqualToT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Object containing field identifier and value information.</p>
      */
-    inline void SetGreaterThanOrEqualTo(const FieldValue& value) { m_greaterThanOrEqualToHasBeenSet = true; m_greaterThanOrEqualTo = value; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline void SetGreaterThanOrEqualTo(FieldValue&& value) { m_greaterThanOrEqualToHasBeenSet = true; m_greaterThanOrEqualTo = std::move(value); }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithGreaterThanOrEqualTo(const FieldValue& value) { SetGreaterThanOrEqualTo(value); return *this;}
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithGreaterThanOrEqualTo(FieldValue&& value) { SetGreaterThanOrEqualTo(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline const FieldValue& GetLessThan() const{ return m_lessThan; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
+    inline const FieldValue& GetLessThan() const { return m_lessThan; }
     inline bool LessThanHasBeenSet() const { return m_lessThanHasBeenSet; }
+    template<typename LessThanT = FieldValue>
+    void SetLessThan(LessThanT&& value) { m_lessThanHasBeenSet = true; m_lessThan = std::forward<LessThanT>(value); }
+    template<typename LessThanT = FieldValue>
+    FieldFilter& WithLessThan(LessThanT&& value) { SetLessThan(std::forward<LessThanT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline void SetLessThan(const FieldValue& value) { m_lessThanHasBeenSet = true; m_lessThan = value; }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline void SetLessThan(FieldValue&& value) { m_lessThanHasBeenSet = true; m_lessThan = std::move(value); }
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithLessThan(const FieldValue& value) { SetLessThan(value); return *this;}
-
-    /**
-     * <p>Object containing field identifier and value information.</p>
-     */
-    inline FieldFilter& WithLessThan(FieldValue&& value) { SetLessThan(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Object containing field identifier and value information. </p>
      */
-    inline const FieldValue& GetLessThanOrEqualTo() const{ return m_lessThanOrEqualTo; }
-
-    /**
-     * <p>Object containing field identifier and value information. </p>
-     */
+    inline const FieldValue& GetLessThanOrEqualTo() const { return m_lessThanOrEqualTo; }
     inline bool LessThanOrEqualToHasBeenSet() const { return m_lessThanOrEqualToHasBeenSet; }
-
-    /**
-     * <p>Object containing field identifier and value information. </p>
-     */
-    inline void SetLessThanOrEqualTo(const FieldValue& value) { m_lessThanOrEqualToHasBeenSet = true; m_lessThanOrEqualTo = value; }
-
-    /**
-     * <p>Object containing field identifier and value information. </p>
-     */
-    inline void SetLessThanOrEqualTo(FieldValue&& value) { m_lessThanOrEqualToHasBeenSet = true; m_lessThanOrEqualTo = std::move(value); }
-
-    /**
-     * <p>Object containing field identifier and value information. </p>
-     */
-    inline FieldFilter& WithLessThanOrEqualTo(const FieldValue& value) { SetLessThanOrEqualTo(value); return *this;}
-
-    /**
-     * <p>Object containing field identifier and value information. </p>
-     */
-    inline FieldFilter& WithLessThanOrEqualTo(FieldValue&& value) { SetLessThanOrEqualTo(std::move(value)); return *this;}
-
+    template<typename LessThanOrEqualToT = FieldValue>
+    void SetLessThanOrEqualTo(LessThanOrEqualToT&& value) { m_lessThanOrEqualToHasBeenSet = true; m_lessThanOrEqualTo = std::forward<LessThanOrEqualToT>(value); }
+    template<typename LessThanOrEqualToT = FieldValue>
+    FieldFilter& WithLessThanOrEqualTo(LessThanOrEqualToT&& value) { SetLessThanOrEqualTo(std::forward<LessThanOrEqualToT>(value)); return *this;}
+    ///@}
   private:
 
     FieldValue m_contains;

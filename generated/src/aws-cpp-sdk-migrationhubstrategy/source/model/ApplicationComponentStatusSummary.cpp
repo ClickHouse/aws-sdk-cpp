@@ -18,19 +18,7 @@ namespace MigrationHubStrategyRecommendations
 namespace Model
 {
 
-ApplicationComponentStatusSummary::ApplicationComponentStatusSummary() : 
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_srcCodeOrDbAnalysisStatus(SrcCodeOrDbAnalysisStatus::NOT_SET),
-    m_srcCodeOrDbAnalysisStatusHasBeenSet(false)
-{
-}
-
-ApplicationComponentStatusSummary::ApplicationComponentStatusSummary(JsonView jsonValue) : 
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_srcCodeOrDbAnalysisStatus(SrcCodeOrDbAnalysisStatus::NOT_SET),
-    m_srcCodeOrDbAnalysisStatusHasBeenSet(false)
+ApplicationComponentStatusSummary::ApplicationComponentStatusSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ApplicationComponentStatusSummary& ApplicationComponentStatusSummary::operator =
   if(jsonValue.ValueExists("count"))
   {
     m_count = jsonValue.GetInteger("count");
-
     m_countHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("srcCodeOrDbAnalysisStatus"))
   {
     m_srcCodeOrDbAnalysisStatus = SrcCodeOrDbAnalysisStatusMapper::GetSrcCodeOrDbAnalysisStatusForName(jsonValue.GetString("srcCodeOrDbAnalysisStatus"));
-
     m_srcCodeOrDbAnalysisStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,7 +25,7 @@ namespace Model
   class CreateInferenceComponentRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API CreateInferenceComponentRequest();
+    AWS_SAGEMAKER_API CreateInferenceComponentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,211 +38,70 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique name to assign to the inference component.</p>
      */
-    inline const Aws::String& GetInferenceComponentName() const{ return m_inferenceComponentName; }
-
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
+    inline const Aws::String& GetInferenceComponentName() const { return m_inferenceComponentName; }
     inline bool InferenceComponentNameHasBeenSet() const { return m_inferenceComponentNameHasBeenSet; }
+    template<typename InferenceComponentNameT = Aws::String>
+    void SetInferenceComponentName(InferenceComponentNameT&& value) { m_inferenceComponentNameHasBeenSet = true; m_inferenceComponentName = std::forward<InferenceComponentNameT>(value); }
+    template<typename InferenceComponentNameT = Aws::String>
+    CreateInferenceComponentRequest& WithInferenceComponentName(InferenceComponentNameT&& value) { SetInferenceComponentName(std::forward<InferenceComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
-    inline void SetInferenceComponentName(const Aws::String& value) { m_inferenceComponentNameHasBeenSet = true; m_inferenceComponentName = value; }
-
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
-    inline void SetInferenceComponentName(Aws::String&& value) { m_inferenceComponentNameHasBeenSet = true; m_inferenceComponentName = std::move(value); }
-
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
-    inline void SetInferenceComponentName(const char* value) { m_inferenceComponentNameHasBeenSet = true; m_inferenceComponentName.assign(value); }
-
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithInferenceComponentName(const Aws::String& value) { SetInferenceComponentName(value); return *this;}
-
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithInferenceComponentName(Aws::String&& value) { SetInferenceComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique name to assign to the inference component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithInferenceComponentName(const char* value) { SetInferenceComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of an existing endpoint where you host the inference component.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    CreateInferenceComponentRequest& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an existing endpoint where you host the inference component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of an existing production variant where you host the inference
      * component.</p>
      */
-    inline const Aws::String& GetVariantName() const{ return m_variantName; }
-
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
+    inline const Aws::String& GetVariantName() const { return m_variantName; }
     inline bool VariantNameHasBeenSet() const { return m_variantNameHasBeenSet; }
+    template<typename VariantNameT = Aws::String>
+    void SetVariantName(VariantNameT&& value) { m_variantNameHasBeenSet = true; m_variantName = std::forward<VariantNameT>(value); }
+    template<typename VariantNameT = Aws::String>
+    CreateInferenceComponentRequest& WithVariantName(VariantNameT&& value) { SetVariantName(std::forward<VariantNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
-    inline void SetVariantName(const Aws::String& value) { m_variantNameHasBeenSet = true; m_variantName = value; }
-
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
-    inline void SetVariantName(Aws::String&& value) { m_variantNameHasBeenSet = true; m_variantName = std::move(value); }
-
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
-    inline void SetVariantName(const char* value) { m_variantNameHasBeenSet = true; m_variantName.assign(value); }
-
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithVariantName(const Aws::String& value) { SetVariantName(value); return *this;}
-
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithVariantName(Aws::String&& value) { SetVariantName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an existing production variant where you host the inference
-     * component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithVariantName(const char* value) { SetVariantName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the resources to deploy with this inference component,
      * including the model, container, and compute resources.</p>
      */
-    inline const InferenceComponentSpecification& GetSpecification() const{ return m_specification; }
-
-    /**
-     * <p>Details about the resources to deploy with this inference component,
-     * including the model, container, and compute resources.</p>
-     */
+    inline const InferenceComponentSpecification& GetSpecification() const { return m_specification; }
     inline bool SpecificationHasBeenSet() const { return m_specificationHasBeenSet; }
+    template<typename SpecificationT = InferenceComponentSpecification>
+    void SetSpecification(SpecificationT&& value) { m_specificationHasBeenSet = true; m_specification = std::forward<SpecificationT>(value); }
+    template<typename SpecificationT = InferenceComponentSpecification>
+    CreateInferenceComponentRequest& WithSpecification(SpecificationT&& value) { SetSpecification(std::forward<SpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the resources to deploy with this inference component,
-     * including the model, container, and compute resources.</p>
-     */
-    inline void SetSpecification(const InferenceComponentSpecification& value) { m_specificationHasBeenSet = true; m_specification = value; }
-
-    /**
-     * <p>Details about the resources to deploy with this inference component,
-     * including the model, container, and compute resources.</p>
-     */
-    inline void SetSpecification(InferenceComponentSpecification&& value) { m_specificationHasBeenSet = true; m_specification = std::move(value); }
-
-    /**
-     * <p>Details about the resources to deploy with this inference component,
-     * including the model, container, and compute resources.</p>
-     */
-    inline CreateInferenceComponentRequest& WithSpecification(const InferenceComponentSpecification& value) { SetSpecification(value); return *this;}
-
-    /**
-     * <p>Details about the resources to deploy with this inference component,
-     * including the model, container, and compute resources.</p>
-     */
-    inline CreateInferenceComponentRequest& WithSpecification(InferenceComponentSpecification&& value) { SetSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Runtime settings for a model that is deployed with an inference
      * component.</p>
      */
-    inline const InferenceComponentRuntimeConfig& GetRuntimeConfig() const{ return m_runtimeConfig; }
-
-    /**
-     * <p>Runtime settings for a model that is deployed with an inference
-     * component.</p>
-     */
+    inline const InferenceComponentRuntimeConfig& GetRuntimeConfig() const { return m_runtimeConfig; }
     inline bool RuntimeConfigHasBeenSet() const { return m_runtimeConfigHasBeenSet; }
+    template<typename RuntimeConfigT = InferenceComponentRuntimeConfig>
+    void SetRuntimeConfig(RuntimeConfigT&& value) { m_runtimeConfigHasBeenSet = true; m_runtimeConfig = std::forward<RuntimeConfigT>(value); }
+    template<typename RuntimeConfigT = InferenceComponentRuntimeConfig>
+    CreateInferenceComponentRequest& WithRuntimeConfig(RuntimeConfigT&& value) { SetRuntimeConfig(std::forward<RuntimeConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Runtime settings for a model that is deployed with an inference
-     * component.</p>
-     */
-    inline void SetRuntimeConfig(const InferenceComponentRuntimeConfig& value) { m_runtimeConfigHasBeenSet = true; m_runtimeConfig = value; }
-
-    /**
-     * <p>Runtime settings for a model that is deployed with an inference
-     * component.</p>
-     */
-    inline void SetRuntimeConfig(InferenceComponentRuntimeConfig&& value) { m_runtimeConfigHasBeenSet = true; m_runtimeConfig = std::move(value); }
-
-    /**
-     * <p>Runtime settings for a model that is deployed with an inference
-     * component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithRuntimeConfig(const InferenceComponentRuntimeConfig& value) { SetRuntimeConfig(value); return *this;}
-
-    /**
-     * <p>Runtime settings for a model that is deployed with an inference
-     * component.</p>
-     */
-    inline CreateInferenceComponentRequest& WithRuntimeConfig(InferenceComponentRuntimeConfig&& value) { SetRuntimeConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of key-value pairs associated with the model. For more information,
      * see <a
@@ -250,71 +109,15 @@ namespace Model
      * Amazon Web Services resources</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateInferenceComponentRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateInferenceComponentRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateInferenceComponentRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of key-value pairs associated with the model. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline CreateInferenceComponentRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateInferenceComponentRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateInferenceComponentRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_inferenceComponentName;

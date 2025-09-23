@@ -21,7 +21,7 @@ namespace Model
   class AssociateSoftwareTokenRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API AssociateSoftwareTokenRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API AssociateSoftwareTokenRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,111 +34,35 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
+     * <p>A valid access token that Amazon Cognito issued to the currently signed-in
+     * user. Must include a scope claim for
+     * <code>aws.cognito.signin.user.admin</code>.</p> <p>You can provide either an
+     * access token or a session ID in the request.</p>
      */
-    inline const Aws::String& GetAccessToken() const{ return m_accessToken; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
-     */
+    inline const Aws::String& GetAccessToken() const { return m_accessToken; }
     inline bool AccessTokenHasBeenSet() const { return m_accessTokenHasBeenSet; }
+    template<typename AccessTokenT = Aws::String>
+    void SetAccessToken(AccessTokenT&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::forward<AccessTokenT>(value); }
+    template<typename AccessTokenT = Aws::String>
+    AssociateSoftwareTokenRequest& WithAccessToken(AccessTokenT&& value) { SetAccessToken(std::forward<AccessTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
+     * <p>The session identifier that maintains the state of authentication requests
+     * and challenge responses. In <code>AssociateSoftwareToken</code>, this is the
+     * session ID from a successful sign-in. You can provide either an access token or
+     * a session ID in the request.</p>
      */
-    inline void SetAccessToken(const Aws::String& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
-     */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
-     */
-    inline void SetAccessToken(const char* value) { m_accessTokenHasBeenSet = true; m_accessToken.assign(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
-     */
-    inline AssociateSoftwareTokenRequest& WithAccessToken(const Aws::String& value) { SetAccessToken(value); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
-     */
-    inline AssociateSoftwareTokenRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose software
-     * token you want to generate.</p>
-     */
-    inline AssociateSoftwareTokenRequest& WithAccessToken(const char* value) { SetAccessToken(value); return *this;}
-
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline const Aws::String& GetSession() const{ return m_session; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
+    inline const Aws::String& GetSession() const { return m_session; }
     inline bool SessionHasBeenSet() const { return m_sessionHasBeenSet; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline void SetSession(const Aws::String& value) { m_sessionHasBeenSet = true; m_session = value; }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline void SetSession(Aws::String&& value) { m_sessionHasBeenSet = true; m_session = std::move(value); }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline void SetSession(const char* value) { m_sessionHasBeenSet = true; m_session.assign(value); }
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline AssociateSoftwareTokenRequest& WithSession(const Aws::String& value) { SetSession(value); return *this;}
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline AssociateSoftwareTokenRequest& WithSession(Aws::String&& value) { SetSession(std::move(value)); return *this;}
-
-    /**
-     * <p>The session that should be passed both ways in challenge-response calls to
-     * the service. This allows authentication of the user as part of the MFA setup
-     * process.</p>
-     */
-    inline AssociateSoftwareTokenRequest& WithSession(const char* value) { SetSession(value); return *this;}
-
+    template<typename SessionT = Aws::String>
+    void SetSession(SessionT&& value) { m_sessionHasBeenSet = true; m_session = std::forward<SessionT>(value); }
+    template<typename SessionT = Aws::String>
+    AssociateSoftwareTokenRequest& WithSession(SessionT&& value) { SetSession(std::forward<SessionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessToken;

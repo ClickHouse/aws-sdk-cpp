@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackResourceDriftInformationSummary::StackResourceDriftInformationSummary() : 
-    m_stackResourceDriftStatus(StackResourceDriftStatus::NOT_SET),
-    m_stackResourceDriftStatusHasBeenSet(false),
-    m_lastCheckTimestampHasBeenSet(false)
-{
-}
-
-StackResourceDriftInformationSummary::StackResourceDriftInformationSummary(const XmlNode& xmlNode) : 
-    m_stackResourceDriftStatus(StackResourceDriftStatus::NOT_SET),
-    m_stackResourceDriftStatusHasBeenSet(false),
-    m_lastCheckTimestampHasBeenSet(false)
+StackResourceDriftInformationSummary::StackResourceDriftInformationSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ StackResourceDriftInformationSummary& StackResourceDriftInformationSummary::oper
     XmlNode stackResourceDriftStatusNode = resultNode.FirstChild("StackResourceDriftStatus");
     if(!stackResourceDriftStatusNode.IsNull())
     {
-      m_stackResourceDriftStatus = StackResourceDriftStatusMapper::GetStackResourceDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackResourceDriftStatusNode.GetText()).c_str()).c_str());
+      m_stackResourceDriftStatus = StackResourceDriftStatusMapper::GetStackResourceDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackResourceDriftStatusNode.GetText()).c_str()));
       m_stackResourceDriftStatusHasBeenSet = true;
     }
     XmlNode lastCheckTimestampNode = resultNode.FirstChild("LastCheckTimestamp");
@@ -62,7 +52,7 @@ void StackResourceDriftInformationSummary::OutputToStream(Aws::OStream& oStream,
 {
   if(m_stackResourceDriftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StackResourceDriftStatus=" << StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus) << "&";
+      oStream << location << index << locationValue << ".StackResourceDriftStatus=" << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus)) << "&";
   }
 
   if(m_lastCheckTimestampHasBeenSet)
@@ -76,7 +66,7 @@ void StackResourceDriftInformationSummary::OutputToStream(Aws::OStream& oStream,
 {
   if(m_stackResourceDriftStatusHasBeenSet)
   {
-      oStream << location << ".StackResourceDriftStatus=" << StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus) << "&";
+      oStream << location << ".StackResourceDriftStatus=" << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus)) << "&";
   }
   if(m_lastCheckTimestampHasBeenSet)
   {

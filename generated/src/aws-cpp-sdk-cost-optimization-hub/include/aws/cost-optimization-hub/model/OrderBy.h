@@ -33,89 +33,39 @@ namespace Model
   class OrderBy
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API OrderBy();
+    AWS_COSTOPTIMIZATIONHUB_API OrderBy() = default;
     AWS_COSTOPTIMIZATIONHUB_API OrderBy(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API OrderBy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Sorts by dimension values.</p>
      */
-    inline const Aws::String& GetDimension() const{ return m_dimension; }
-
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
+    inline const Aws::String& GetDimension() const { return m_dimension; }
     inline bool DimensionHasBeenSet() const { return m_dimensionHasBeenSet; }
+    template<typename DimensionT = Aws::String>
+    void SetDimension(DimensionT&& value) { m_dimensionHasBeenSet = true; m_dimension = std::forward<DimensionT>(value); }
+    template<typename DimensionT = Aws::String>
+    OrderBy& WithDimension(DimensionT&& value) { SetDimension(std::forward<DimensionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
-    inline void SetDimension(const Aws::String& value) { m_dimensionHasBeenSet = true; m_dimension = value; }
-
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
-    inline void SetDimension(Aws::String&& value) { m_dimensionHasBeenSet = true; m_dimension = std::move(value); }
-
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
-    inline void SetDimension(const char* value) { m_dimensionHasBeenSet = true; m_dimension.assign(value); }
-
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
-    inline OrderBy& WithDimension(const Aws::String& value) { SetDimension(value); return *this;}
-
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
-    inline OrderBy& WithDimension(Aws::String&& value) { SetDimension(std::move(value)); return *this;}
-
-    /**
-     * <p>Sorts by dimension values.</p>
-     */
-    inline OrderBy& WithDimension(const char* value) { SetDimension(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The order that's used to sort the data.</p>
      */
-    inline const Order& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order that's used to sort the data.</p>
-     */
+    inline Order GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>The order that's used to sort the data.</p>
-     */
-    inline void SetOrder(const Order& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order that's used to sort the data.</p>
-     */
-    inline void SetOrder(Order&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The order that's used to sort the data.</p>
-     */
-    inline OrderBy& WithOrder(const Order& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The order that's used to sort the data.</p>
-     */
-    inline OrderBy& WithOrder(Order&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(Order value) { m_orderHasBeenSet = true; m_order = value; }
+    inline OrderBy& WithOrder(Order value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_dimension;
     bool m_dimensionHasBeenSet = false;
 
-    Order m_order;
+    Order m_order{Order::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

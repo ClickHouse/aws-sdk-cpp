@@ -52,20 +52,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* MediaPackageVodClient::SERVICE_NAME = "mediapackage-vod";
-const char* MediaPackageVodClient::ALLOCATION_TAG = "MediaPackageVodClient";
+namespace Aws
+{
+  namespace MediaPackageVod
+  {
+    const char SERVICE_NAME[] = "mediapackage-vod";
+    const char ALLOCATION_TAG[] = "MediaPackageVodClient";
+  }
+}
+const char* MediaPackageVodClient::GetServiceName() {return SERVICE_NAME;}
+const char* MediaPackageVodClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 MediaPackageVodClient::MediaPackageVodClient(const MediaPackageVod::MediaPackageVodClientConfiguration& clientConfiguration,
                                              std::shared_ptr<MediaPackageVodEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaPackageVodErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MediaPackageVodEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -80,8 +87,7 @@ MediaPackageVodClient::MediaPackageVodClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaPackageVodErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MediaPackageVodEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -96,8 +102,7 @@ MediaPackageVodClient::MediaPackageVodClient(const std::shared_ptr<AWSCredential
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaPackageVodErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MediaPackageVodEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -106,12 +111,11 @@ MediaPackageVodClient::MediaPackageVodClient(const std::shared_ptr<AWSCredential
   MediaPackageVodClient::MediaPackageVodClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaPackageVodErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<MediaPackageVodEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -126,7 +130,6 @@ MediaPackageVodClient::MediaPackageVodClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaPackageVodErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MediaPackageVodEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -141,7 +144,6 @@ MediaPackageVodClient::MediaPackageVodClient(const std::shared_ptr<AWSCredential
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MediaPackageVodErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MediaPackageVodEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -161,6 +163,14 @@ std::shared_ptr<MediaPackageVodEndpointProviderBase>& MediaPackageVodClient::acc
 void MediaPackageVodClient::init(const MediaPackageVod::MediaPackageVodClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("MediaPackage Vod");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

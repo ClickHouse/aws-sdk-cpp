@@ -26,307 +26,133 @@ namespace Model
 {
 
   /**
-   * A single track or stream of media that contains video, audio, or ancillary data.
-   * After you add a media stream to a flow, you can associate it with sources and
-   * outputs on that flow, as long as they use the CDI protocol or the ST 2110 JPEG
-   * XS protocol. Each source or output can consist of one or many media
-   * streams.<p><h3>See Also:</h3>   <a
+   * <p> A media stream represents one component of your content, such as video,
+   * audio, or ancillary data. After you add a media stream to your flow, you can
+   * associate it with sources and outputs that use the ST 2110 JPEG XS or CDI
+   * protocol. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/MediaStream">AWS
    * API Reference</a></p>
    */
   class MediaStream
   {
   public:
-    AWS_MEDIACONNECT_API MediaStream();
+    AWS_MEDIACONNECT_API MediaStream() = default;
     AWS_MEDIACONNECT_API MediaStream(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API MediaStream& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * Attributes that are related to the media stream.
+     * <p> Attributes that are related to the media stream.</p>
      */
-    inline const MediaStreamAttributes& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * Attributes that are related to the media stream.
-     */
+    inline const MediaStreamAttributes& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = MediaStreamAttributes>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = MediaStreamAttributes>
+    MediaStream& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * Attributes that are related to the media stream.
+     * <p> The sample rate for the stream. This value is measured in Hz.</p>
      */
-    inline void SetAttributes(const MediaStreamAttributes& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * Attributes that are related to the media stream.
-     */
-    inline void SetAttributes(MediaStreamAttributes&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * Attributes that are related to the media stream.
-     */
-    inline MediaStream& WithAttributes(const MediaStreamAttributes& value) { SetAttributes(value); return *this;}
-
-    /**
-     * Attributes that are related to the media stream.
-     */
-    inline MediaStream& WithAttributes(MediaStreamAttributes&& value) { SetAttributes(std::move(value)); return *this;}
-
-
-    /**
-     * The sample rate for the stream. This value is measured in Hz.
-     */
-    inline int GetClockRate() const{ return m_clockRate; }
-
-    /**
-     * The sample rate for the stream. This value is measured in Hz.
-     */
+    inline int GetClockRate() const { return m_clockRate; }
     inline bool ClockRateHasBeenSet() const { return m_clockRateHasBeenSet; }
-
-    /**
-     * The sample rate for the stream. This value is measured in Hz.
-     */
     inline void SetClockRate(int value) { m_clockRateHasBeenSet = true; m_clockRate = value; }
-
-    /**
-     * The sample rate for the stream. This value is measured in Hz.
-     */
     inline MediaStream& WithClockRate(int value) { SetClockRate(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
+     * <p> A description that can help you quickly identify what your media stream is
+     * used for.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    MediaStream& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
+     * <p> The format type number (sometimes referred to as RTP payload type) of the
+     * media stream. MediaConnect assigns this value to the media stream. For ST 2110
+     * JPEG XS outputs, you need to provide this value to the receiver.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
-     */
-    inline MediaStream& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
-     */
-    inline MediaStream& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * A description that can help you quickly identify what your media stream is used
-     * for.
-     */
-    inline MediaStream& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * The format type number (sometimes referred to as RTP payload type) of the media
-     * stream. MediaConnect assigns this value to the media stream. For ST 2110 JPEG XS
-     * outputs, you need to provide this value to the receiver.
-     */
-    inline int GetFmt() const{ return m_fmt; }
-
-    /**
-     * The format type number (sometimes referred to as RTP payload type) of the media
-     * stream. MediaConnect assigns this value to the media stream. For ST 2110 JPEG XS
-     * outputs, you need to provide this value to the receiver.
-     */
+    inline int GetFmt() const { return m_fmt; }
     inline bool FmtHasBeenSet() const { return m_fmtHasBeenSet; }
-
-    /**
-     * The format type number (sometimes referred to as RTP payload type) of the media
-     * stream. MediaConnect assigns this value to the media stream. For ST 2110 JPEG XS
-     * outputs, you need to provide this value to the receiver.
-     */
     inline void SetFmt(int value) { m_fmtHasBeenSet = true; m_fmt = value; }
-
-    /**
-     * The format type number (sometimes referred to as RTP payload type) of the media
-     * stream. MediaConnect assigns this value to the media stream. For ST 2110 JPEG XS
-     * outputs, you need to provide this value to the receiver.
-     */
     inline MediaStream& WithFmt(int value) { SetFmt(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * A unique identifier for the media stream.
+     * <p> A unique identifier for the media stream. </p>
      */
-    inline int GetMediaStreamId() const{ return m_mediaStreamId; }
-
-    /**
-     * A unique identifier for the media stream.
-     */
+    inline int GetMediaStreamId() const { return m_mediaStreamId; }
     inline bool MediaStreamIdHasBeenSet() const { return m_mediaStreamIdHasBeenSet; }
-
-    /**
-     * A unique identifier for the media stream.
-     */
     inline void SetMediaStreamId(int value) { m_mediaStreamIdHasBeenSet = true; m_mediaStreamId = value; }
-
-    /**
-     * A unique identifier for the media stream.
-     */
     inline MediaStream& WithMediaStreamId(int value) { SetMediaStreamId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * A name that helps you distinguish one media stream from another.
+     * <p> A name that helps you distinguish one media stream from another. </p>
      */
-    inline const Aws::String& GetMediaStreamName() const{ return m_mediaStreamName; }
-
-    /**
-     * A name that helps you distinguish one media stream from another.
-     */
+    inline const Aws::String& GetMediaStreamName() const { return m_mediaStreamName; }
     inline bool MediaStreamNameHasBeenSet() const { return m_mediaStreamNameHasBeenSet; }
+    template<typename MediaStreamNameT = Aws::String>
+    void SetMediaStreamName(MediaStreamNameT&& value) { m_mediaStreamNameHasBeenSet = true; m_mediaStreamName = std::forward<MediaStreamNameT>(value); }
+    template<typename MediaStreamNameT = Aws::String>
+    MediaStream& WithMediaStreamName(MediaStreamNameT&& value) { SetMediaStreamName(std::forward<MediaStreamNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A name that helps you distinguish one media stream from another.
+     * <p> The type of media stream. </p>
      */
-    inline void SetMediaStreamName(const Aws::String& value) { m_mediaStreamNameHasBeenSet = true; m_mediaStreamName = value; }
-
-    /**
-     * A name that helps you distinguish one media stream from another.
-     */
-    inline void SetMediaStreamName(Aws::String&& value) { m_mediaStreamNameHasBeenSet = true; m_mediaStreamName = std::move(value); }
-
-    /**
-     * A name that helps you distinguish one media stream from another.
-     */
-    inline void SetMediaStreamName(const char* value) { m_mediaStreamNameHasBeenSet = true; m_mediaStreamName.assign(value); }
-
-    /**
-     * A name that helps you distinguish one media stream from another.
-     */
-    inline MediaStream& WithMediaStreamName(const Aws::String& value) { SetMediaStreamName(value); return *this;}
-
-    /**
-     * A name that helps you distinguish one media stream from another.
-     */
-    inline MediaStream& WithMediaStreamName(Aws::String&& value) { SetMediaStreamName(std::move(value)); return *this;}
-
-    /**
-     * A name that helps you distinguish one media stream from another.
-     */
-    inline MediaStream& WithMediaStreamName(const char* value) { SetMediaStreamName(value); return *this;}
-
-
-    /**
-     * The type of media stream.
-     */
-    inline const MediaStreamType& GetMediaStreamType() const{ return m_mediaStreamType; }
-
-    /**
-     * The type of media stream.
-     */
+    inline MediaStreamType GetMediaStreamType() const { return m_mediaStreamType; }
     inline bool MediaStreamTypeHasBeenSet() const { return m_mediaStreamTypeHasBeenSet; }
+    inline void SetMediaStreamType(MediaStreamType value) { m_mediaStreamTypeHasBeenSet = true; m_mediaStreamType = value; }
+    inline MediaStream& WithMediaStreamType(MediaStreamType value) { SetMediaStreamType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The type of media stream.
+     * <p> The resolution of the video. </p>
      */
-    inline void SetMediaStreamType(const MediaStreamType& value) { m_mediaStreamTypeHasBeenSet = true; m_mediaStreamType = value; }
-
-    /**
-     * The type of media stream.
-     */
-    inline void SetMediaStreamType(MediaStreamType&& value) { m_mediaStreamTypeHasBeenSet = true; m_mediaStreamType = std::move(value); }
-
-    /**
-     * The type of media stream.
-     */
-    inline MediaStream& WithMediaStreamType(const MediaStreamType& value) { SetMediaStreamType(value); return *this;}
-
-    /**
-     * The type of media stream.
-     */
-    inline MediaStream& WithMediaStreamType(MediaStreamType&& value) { SetMediaStreamType(std::move(value)); return *this;}
-
-
-    /**
-     * The resolution of the video.
-     */
-    inline const Aws::String& GetVideoFormat() const{ return m_videoFormat; }
-
-    /**
-     * The resolution of the video.
-     */
+    inline const Aws::String& GetVideoFormat() const { return m_videoFormat; }
     inline bool VideoFormatHasBeenSet() const { return m_videoFormatHasBeenSet; }
-
-    /**
-     * The resolution of the video.
-     */
-    inline void SetVideoFormat(const Aws::String& value) { m_videoFormatHasBeenSet = true; m_videoFormat = value; }
-
-    /**
-     * The resolution of the video.
-     */
-    inline void SetVideoFormat(Aws::String&& value) { m_videoFormatHasBeenSet = true; m_videoFormat = std::move(value); }
-
-    /**
-     * The resolution of the video.
-     */
-    inline void SetVideoFormat(const char* value) { m_videoFormatHasBeenSet = true; m_videoFormat.assign(value); }
-
-    /**
-     * The resolution of the video.
-     */
-    inline MediaStream& WithVideoFormat(const Aws::String& value) { SetVideoFormat(value); return *this;}
-
-    /**
-     * The resolution of the video.
-     */
-    inline MediaStream& WithVideoFormat(Aws::String&& value) { SetVideoFormat(std::move(value)); return *this;}
-
-    /**
-     * The resolution of the video.
-     */
-    inline MediaStream& WithVideoFormat(const char* value) { SetVideoFormat(value); return *this;}
-
+    template<typename VideoFormatT = Aws::String>
+    void SetVideoFormat(VideoFormatT&& value) { m_videoFormatHasBeenSet = true; m_videoFormat = std::forward<VideoFormatT>(value); }
+    template<typename VideoFormatT = Aws::String>
+    MediaStream& WithVideoFormat(VideoFormatT&& value) { SetVideoFormat(std::forward<VideoFormatT>(value)); return *this;}
+    ///@}
   private:
 
     MediaStreamAttributes m_attributes;
     bool m_attributesHasBeenSet = false;
 
-    int m_clockRate;
+    int m_clockRate{0};
     bool m_clockRateHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    int m_fmt;
+    int m_fmt{0};
     bool m_fmtHasBeenSet = false;
 
-    int m_mediaStreamId;
+    int m_mediaStreamId{0};
     bool m_mediaStreamIdHasBeenSet = false;
 
     Aws::String m_mediaStreamName;
     bool m_mediaStreamNameHasBeenSet = false;
 
-    MediaStreamType m_mediaStreamType;
+    MediaStreamType m_mediaStreamType{MediaStreamType::NOT_SET};
     bool m_mediaStreamTypeHasBeenSet = false;
 
     Aws::String m_videoFormat;

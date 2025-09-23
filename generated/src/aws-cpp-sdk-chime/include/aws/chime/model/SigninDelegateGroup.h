@@ -32,52 +32,23 @@ namespace Model
   class SigninDelegateGroup
   {
   public:
-    AWS_CHIME_API SigninDelegateGroup();
+    AWS_CHIME_API SigninDelegateGroup() = default;
     AWS_CHIME_API SigninDelegateGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API SigninDelegateGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The group name.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The group name.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline SigninDelegateGroup& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline SigninDelegateGroup& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The group name.</p>
-     */
-    inline SigninDelegateGroup& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    SigninDelegateGroup& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupName;

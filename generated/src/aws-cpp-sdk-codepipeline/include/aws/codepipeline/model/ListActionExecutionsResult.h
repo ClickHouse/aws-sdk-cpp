@@ -29,132 +29,56 @@ namespace Model
   class ListActionExecutionsResult
   {
   public:
-    AWS_CODEPIPELINE_API ListActionExecutionsResult();
+    AWS_CODEPIPELINE_API ListActionExecutionsResult() = default;
     AWS_CODEPIPELINE_API ListActionExecutionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEPIPELINE_API ListActionExecutionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The details for a list of recent executions, such as action execution ID.</p>
      */
-    inline const Aws::Vector<ActionExecutionDetail>& GetActionExecutionDetails() const{ return m_actionExecutionDetails; }
+    inline const Aws::Vector<ActionExecutionDetail>& GetActionExecutionDetails() const { return m_actionExecutionDetails; }
+    template<typename ActionExecutionDetailsT = Aws::Vector<ActionExecutionDetail>>
+    void SetActionExecutionDetails(ActionExecutionDetailsT&& value) { m_actionExecutionDetailsHasBeenSet = true; m_actionExecutionDetails = std::forward<ActionExecutionDetailsT>(value); }
+    template<typename ActionExecutionDetailsT = Aws::Vector<ActionExecutionDetail>>
+    ListActionExecutionsResult& WithActionExecutionDetails(ActionExecutionDetailsT&& value) { SetActionExecutionDetails(std::forward<ActionExecutionDetailsT>(value)); return *this;}
+    template<typename ActionExecutionDetailsT = ActionExecutionDetail>
+    ListActionExecutionsResult& AddActionExecutionDetails(ActionExecutionDetailsT&& value) { m_actionExecutionDetailsHasBeenSet = true; m_actionExecutionDetails.emplace_back(std::forward<ActionExecutionDetailsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The details for a list of recent executions, such as action execution ID.</p>
-     */
-    inline void SetActionExecutionDetails(const Aws::Vector<ActionExecutionDetail>& value) { m_actionExecutionDetails = value; }
-
-    /**
-     * <p>The details for a list of recent executions, such as action execution ID.</p>
-     */
-    inline void SetActionExecutionDetails(Aws::Vector<ActionExecutionDetail>&& value) { m_actionExecutionDetails = std::move(value); }
-
-    /**
-     * <p>The details for a list of recent executions, such as action execution ID.</p>
-     */
-    inline ListActionExecutionsResult& WithActionExecutionDetails(const Aws::Vector<ActionExecutionDetail>& value) { SetActionExecutionDetails(value); return *this;}
-
-    /**
-     * <p>The details for a list of recent executions, such as action execution ID.</p>
-     */
-    inline ListActionExecutionsResult& WithActionExecutionDetails(Aws::Vector<ActionExecutionDetail>&& value) { SetActionExecutionDetails(std::move(value)); return *this;}
-
-    /**
-     * <p>The details for a list of recent executions, such as action execution ID.</p>
-     */
-    inline ListActionExecutionsResult& AddActionExecutionDetails(const ActionExecutionDetail& value) { m_actionExecutionDetails.push_back(value); return *this; }
-
-    /**
-     * <p>The details for a list of recent executions, such as action execution ID.</p>
-     */
-    inline ListActionExecutionsResult& AddActionExecutionDetails(ActionExecutionDetail&& value) { m_actionExecutionDetails.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If the amount of returned information is significantly large, an identifier
      * is also returned and can be used in a subsequent
      * <code>ListActionExecutions</code> call to return the next set of action
      * executions in the list.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListActionExecutionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the amount of returned information is significantly large, an identifier
-     * is also returned and can be used in a subsequent
-     * <code>ListActionExecutions</code> call to return the next set of action
-     * executions in the list.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If the amount of returned information is significantly large, an identifier
-     * is also returned and can be used in a subsequent
-     * <code>ListActionExecutions</code> call to return the next set of action
-     * executions in the list.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the amount of returned information is significantly large, an identifier
-     * is also returned and can be used in a subsequent
-     * <code>ListActionExecutions</code> call to return the next set of action
-     * executions in the list.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If the amount of returned information is significantly large, an identifier
-     * is also returned and can be used in a subsequent
-     * <code>ListActionExecutions</code> call to return the next set of action
-     * executions in the list.</p>
-     */
-    inline ListActionExecutionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the amount of returned information is significantly large, an identifier
-     * is also returned and can be used in a subsequent
-     * <code>ListActionExecutions</code> call to return the next set of action
-     * executions in the list.</p>
-     */
-    inline ListActionExecutionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the amount of returned information is significantly large, an identifier
-     * is also returned and can be used in a subsequent
-     * <code>ListActionExecutions</code> call to return the next set of action
-     * executions in the list.</p>
-     */
-    inline ListActionExecutionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListActionExecutionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListActionExecutionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListActionExecutionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListActionExecutionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ActionExecutionDetail> m_actionExecutionDetails;
+    bool m_actionExecutionDetailsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

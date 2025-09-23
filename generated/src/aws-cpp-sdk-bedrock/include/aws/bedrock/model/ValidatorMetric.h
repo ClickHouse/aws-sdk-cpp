@@ -29,35 +29,24 @@ namespace Model
   class ValidatorMetric
   {
   public:
-    AWS_BEDROCK_API ValidatorMetric();
+    AWS_BEDROCK_API ValidatorMetric() = default;
     AWS_BEDROCK_API ValidatorMetric(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCK_API ValidatorMetric& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCK_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The validation loss associated with this validator.</p>
      */
-    inline double GetValidationLoss() const{ return m_validationLoss; }
-
-    /**
-     * <p>The validation loss associated with this validator.</p>
-     */
+    inline double GetValidationLoss() const { return m_validationLoss; }
     inline bool ValidationLossHasBeenSet() const { return m_validationLossHasBeenSet; }
-
-    /**
-     * <p>The validation loss associated with this validator.</p>
-     */
     inline void SetValidationLoss(double value) { m_validationLossHasBeenSet = true; m_validationLoss = value; }
-
-    /**
-     * <p>The validation loss associated with this validator.</p>
-     */
     inline ValidatorMetric& WithValidationLoss(double value) { SetValidationLoss(value); return *this;}
-
+    ///@}
   private:
 
-    double m_validationLoss;
+    double m_validationLoss{0.0};
     bool m_validationLossHasBeenSet = false;
   };
 

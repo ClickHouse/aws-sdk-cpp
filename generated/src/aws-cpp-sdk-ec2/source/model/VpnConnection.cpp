@@ -20,47 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VpnConnection::VpnConnection() : 
-    m_customerGatewayConfigurationHasBeenSet(false),
-    m_customerGatewayIdHasBeenSet(false),
-    m_categoryHasBeenSet(false),
-    m_state(VpnState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_type(GatewayType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_vpnConnectionIdHasBeenSet(false),
-    m_vpnGatewayIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_coreNetworkArnHasBeenSet(false),
-    m_coreNetworkAttachmentArnHasBeenSet(false),
-    m_gatewayAssociationState(GatewayAssociationState::NOT_SET),
-    m_gatewayAssociationStateHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_routesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vgwTelemetryHasBeenSet(false)
-{
-}
-
-VpnConnection::VpnConnection(const XmlNode& xmlNode) : 
-    m_customerGatewayConfigurationHasBeenSet(false),
-    m_customerGatewayIdHasBeenSet(false),
-    m_categoryHasBeenSet(false),
-    m_state(VpnState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_type(GatewayType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_vpnConnectionIdHasBeenSet(false),
-    m_vpnGatewayIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_coreNetworkArnHasBeenSet(false),
-    m_coreNetworkAttachmentArnHasBeenSet(false),
-    m_gatewayAssociationState(GatewayAssociationState::NOT_SET),
-    m_gatewayAssociationStateHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_routesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vgwTelemetryHasBeenSet(false)
+VpnConnection::VpnConnection(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -71,47 +31,11 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
 
   if(!resultNode.IsNull())
   {
-    XmlNode customerGatewayConfigurationNode = resultNode.FirstChild("customerGatewayConfiguration");
-    if(!customerGatewayConfigurationNode.IsNull())
-    {
-      m_customerGatewayConfiguration = Aws::Utils::Xml::DecodeEscapedXmlText(customerGatewayConfigurationNode.GetText());
-      m_customerGatewayConfigurationHasBeenSet = true;
-    }
-    XmlNode customerGatewayIdNode = resultNode.FirstChild("customerGatewayId");
-    if(!customerGatewayIdNode.IsNull())
-    {
-      m_customerGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(customerGatewayIdNode.GetText());
-      m_customerGatewayIdHasBeenSet = true;
-    }
     XmlNode categoryNode = resultNode.FirstChild("category");
     if(!categoryNode.IsNull())
     {
       m_category = Aws::Utils::Xml::DecodeEscapedXmlText(categoryNode.GetText());
       m_categoryHasBeenSet = true;
-    }
-    XmlNode stateNode = resultNode.FirstChild("state");
-    if(!stateNode.IsNull())
-    {
-      m_state = VpnStateMapper::GetVpnStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
-      m_stateHasBeenSet = true;
-    }
-    XmlNode typeNode = resultNode.FirstChild("type");
-    if(!typeNode.IsNull())
-    {
-      m_type = GatewayTypeMapper::GetGatewayTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
-      m_typeHasBeenSet = true;
-    }
-    XmlNode vpnConnectionIdNode = resultNode.FirstChild("vpnConnectionId");
-    if(!vpnConnectionIdNode.IsNull())
-    {
-      m_vpnConnectionId = Aws::Utils::Xml::DecodeEscapedXmlText(vpnConnectionIdNode.GetText());
-      m_vpnConnectionIdHasBeenSet = true;
-    }
-    XmlNode vpnGatewayIdNode = resultNode.FirstChild("vpnGatewayId");
-    if(!vpnGatewayIdNode.IsNull())
-    {
-      m_vpnGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(vpnGatewayIdNode.GetText());
-      m_vpnGatewayIdHasBeenSet = true;
     }
     XmlNode transitGatewayIdNode = resultNode.FirstChild("transitGatewayId");
     if(!transitGatewayIdNode.IsNull())
@@ -134,7 +58,7 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
     XmlNode gatewayAssociationStateNode = resultNode.FirstChild("gatewayAssociationState");
     if(!gatewayAssociationStateNode.IsNull())
     {
-      m_gatewayAssociationState = GatewayAssociationStateMapper::GetGatewayAssociationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(gatewayAssociationStateNode.GetText()).c_str()).c_str());
+      m_gatewayAssociationState = GatewayAssociationStateMapper::GetGatewayAssociationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(gatewayAssociationStateNode.GetText()).c_str()));
       m_gatewayAssociationStateHasBeenSet = true;
     }
     XmlNode optionsNode = resultNode.FirstChild("options");
@@ -147,6 +71,7 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
     if(!routesNode.IsNull())
     {
       XmlNode routesMember = routesNode.FirstChild("item");
+      m_routesHasBeenSet = !routesMember.IsNull();
       while(!routesMember.IsNull())
       {
         m_routes.push_back(routesMember);
@@ -159,6 +84,7 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -171,6 +97,7 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
     if(!vgwTelemetryNode.IsNull())
     {
       XmlNode vgwTelemetryMember = vgwTelemetryNode.FirstChild("item");
+      m_vgwTelemetryHasBeenSet = !vgwTelemetryMember.IsNull();
       while(!vgwTelemetryMember.IsNull())
       {
         m_vgwTelemetry.push_back(vgwTelemetryMember);
@@ -179,6 +106,48 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
 
       m_vgwTelemetryHasBeenSet = true;
     }
+    XmlNode preSharedKeyArnNode = resultNode.FirstChild("preSharedKeyArn");
+    if(!preSharedKeyArnNode.IsNull())
+    {
+      m_preSharedKeyArn = Aws::Utils::Xml::DecodeEscapedXmlText(preSharedKeyArnNode.GetText());
+      m_preSharedKeyArnHasBeenSet = true;
+    }
+    XmlNode vpnConnectionIdNode = resultNode.FirstChild("vpnConnectionId");
+    if(!vpnConnectionIdNode.IsNull())
+    {
+      m_vpnConnectionId = Aws::Utils::Xml::DecodeEscapedXmlText(vpnConnectionIdNode.GetText());
+      m_vpnConnectionIdHasBeenSet = true;
+    }
+    XmlNode stateNode = resultNode.FirstChild("state");
+    if(!stateNode.IsNull())
+    {
+      m_state = VpnStateMapper::GetVpnStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
+      m_stateHasBeenSet = true;
+    }
+    XmlNode customerGatewayConfigurationNode = resultNode.FirstChild("customerGatewayConfiguration");
+    if(!customerGatewayConfigurationNode.IsNull())
+    {
+      m_customerGatewayConfiguration = Aws::Utils::Xml::DecodeEscapedXmlText(customerGatewayConfigurationNode.GetText());
+      m_customerGatewayConfigurationHasBeenSet = true;
+    }
+    XmlNode typeNode = resultNode.FirstChild("type");
+    if(!typeNode.IsNull())
+    {
+      m_type = GatewayTypeMapper::GetGatewayTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
+      m_typeHasBeenSet = true;
+    }
+    XmlNode customerGatewayIdNode = resultNode.FirstChild("customerGatewayId");
+    if(!customerGatewayIdNode.IsNull())
+    {
+      m_customerGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(customerGatewayIdNode.GetText());
+      m_customerGatewayIdHasBeenSet = true;
+    }
+    XmlNode vpnGatewayIdNode = resultNode.FirstChild("vpnGatewayId");
+    if(!vpnGatewayIdNode.IsNull())
+    {
+      m_vpnGatewayId = Aws::Utils::Xml::DecodeEscapedXmlText(vpnGatewayIdNode.GetText());
+      m_vpnGatewayIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -186,39 +155,9 @@ VpnConnection& VpnConnection::operator =(const XmlNode& xmlNode)
 
 void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location, unsigned index, const char* locationValue) const
 {
-  if(m_customerGatewayConfigurationHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".CustomerGatewayConfiguration=" << StringUtils::URLEncode(m_customerGatewayConfiguration.c_str()) << "&";
-  }
-
-  if(m_customerGatewayIdHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".CustomerGatewayId=" << StringUtils::URLEncode(m_customerGatewayId.c_str()) << "&";
-  }
-
   if(m_categoryHasBeenSet)
   {
       oStream << location << index << locationValue << ".Category=" << StringUtils::URLEncode(m_category.c_str()) << "&";
-  }
-
-  if(m_stateHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".State=" << VpnStateMapper::GetNameForVpnState(m_state) << "&";
-  }
-
-  if(m_typeHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".Type=" << GatewayTypeMapper::GetNameForGatewayType(m_type) << "&";
-  }
-
-  if(m_vpnConnectionIdHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".VpnConnectionId=" << StringUtils::URLEncode(m_vpnConnectionId.c_str()) << "&";
-  }
-
-  if(m_vpnGatewayIdHasBeenSet)
-  {
-      oStream << location << index << locationValue << ".VpnGatewayId=" << StringUtils::URLEncode(m_vpnGatewayId.c_str()) << "&";
   }
 
   if(m_transitGatewayIdHasBeenSet)
@@ -238,7 +177,7 @@ void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_gatewayAssociationStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".GatewayAssociationState=" << GatewayAssociationStateMapper::GetNameForGatewayAssociationState(m_gatewayAssociationState) << "&";
+      oStream << location << index << locationValue << ".GatewayAssociationState=" << StringUtils::URLEncode(GatewayAssociationStateMapper::GetNameForGatewayAssociationState(m_gatewayAssociationState)) << "&";
   }
 
   if(m_optionsHasBeenSet)
@@ -281,37 +220,48 @@ void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location, 
       }
   }
 
+  if(m_preSharedKeyArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PreSharedKeyArn=" << StringUtils::URLEncode(m_preSharedKeyArn.c_str()) << "&";
+  }
+
+  if(m_vpnConnectionIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".VpnConnectionId=" << StringUtils::URLEncode(m_vpnConnectionId.c_str()) << "&";
+  }
+
+  if(m_stateHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(VpnStateMapper::GetNameForVpnState(m_state)) << "&";
+  }
+
+  if(m_customerGatewayConfigurationHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CustomerGatewayConfiguration=" << StringUtils::URLEncode(m_customerGatewayConfiguration.c_str()) << "&";
+  }
+
+  if(m_typeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(GatewayTypeMapper::GetNameForGatewayType(m_type)) << "&";
+  }
+
+  if(m_customerGatewayIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CustomerGatewayId=" << StringUtils::URLEncode(m_customerGatewayId.c_str()) << "&";
+  }
+
+  if(m_vpnGatewayIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".VpnGatewayId=" << StringUtils::URLEncode(m_vpnGatewayId.c_str()) << "&";
+  }
+
 }
 
 void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
-  if(m_customerGatewayConfigurationHasBeenSet)
-  {
-      oStream << location << ".CustomerGatewayConfiguration=" << StringUtils::URLEncode(m_customerGatewayConfiguration.c_str()) << "&";
-  }
-  if(m_customerGatewayIdHasBeenSet)
-  {
-      oStream << location << ".CustomerGatewayId=" << StringUtils::URLEncode(m_customerGatewayId.c_str()) << "&";
-  }
   if(m_categoryHasBeenSet)
   {
       oStream << location << ".Category=" << StringUtils::URLEncode(m_category.c_str()) << "&";
-  }
-  if(m_stateHasBeenSet)
-  {
-      oStream << location << ".State=" << VpnStateMapper::GetNameForVpnState(m_state) << "&";
-  }
-  if(m_typeHasBeenSet)
-  {
-      oStream << location << ".Type=" << GatewayTypeMapper::GetNameForGatewayType(m_type) << "&";
-  }
-  if(m_vpnConnectionIdHasBeenSet)
-  {
-      oStream << location << ".VpnConnectionId=" << StringUtils::URLEncode(m_vpnConnectionId.c_str()) << "&";
-  }
-  if(m_vpnGatewayIdHasBeenSet)
-  {
-      oStream << location << ".VpnGatewayId=" << StringUtils::URLEncode(m_vpnGatewayId.c_str()) << "&";
   }
   if(m_transitGatewayIdHasBeenSet)
   {
@@ -327,7 +277,7 @@ void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_gatewayAssociationStateHasBeenSet)
   {
-      oStream << location << ".GatewayAssociationState=" << GatewayAssociationStateMapper::GetNameForGatewayAssociationState(m_gatewayAssociationState) << "&";
+      oStream << location << ".GatewayAssociationState=" << StringUtils::URLEncode(GatewayAssociationStateMapper::GetNameForGatewayAssociationState(m_gatewayAssociationState)) << "&";
   }
   if(m_optionsHasBeenSet)
   {
@@ -341,7 +291,7 @@ void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_routes)
       {
         Aws::StringStream routesSs;
-        routesSs << location <<  ".Routes." << routesIdx++;
+        routesSs << location << ".Routes." << routesIdx++;
         item.OutputToStream(oStream, routesSs.str().c_str());
       }
   }
@@ -351,7 +301,7 @@ void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -361,9 +311,37 @@ void VpnConnection::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_vgwTelemetry)
       {
         Aws::StringStream vgwTelemetrySs;
-        vgwTelemetrySs << location <<  ".VgwTelemetry." << vgwTelemetryIdx++;
+        vgwTelemetrySs << location << ".VgwTelemetry." << vgwTelemetryIdx++;
         item.OutputToStream(oStream, vgwTelemetrySs.str().c_str());
       }
+  }
+  if(m_preSharedKeyArnHasBeenSet)
+  {
+      oStream << location << ".PreSharedKeyArn=" << StringUtils::URLEncode(m_preSharedKeyArn.c_str()) << "&";
+  }
+  if(m_vpnConnectionIdHasBeenSet)
+  {
+      oStream << location << ".VpnConnectionId=" << StringUtils::URLEncode(m_vpnConnectionId.c_str()) << "&";
+  }
+  if(m_stateHasBeenSet)
+  {
+      oStream << location << ".State=" << StringUtils::URLEncode(VpnStateMapper::GetNameForVpnState(m_state)) << "&";
+  }
+  if(m_customerGatewayConfigurationHasBeenSet)
+  {
+      oStream << location << ".CustomerGatewayConfiguration=" << StringUtils::URLEncode(m_customerGatewayConfiguration.c_str()) << "&";
+  }
+  if(m_typeHasBeenSet)
+  {
+      oStream << location << ".Type=" << StringUtils::URLEncode(GatewayTypeMapper::GetNameForGatewayType(m_type)) << "&";
+  }
+  if(m_customerGatewayIdHasBeenSet)
+  {
+      oStream << location << ".CustomerGatewayId=" << StringUtils::URLEncode(m_customerGatewayId.c_str()) << "&";
+  }
+  if(m_vpnGatewayIdHasBeenSet)
+  {
+      oStream << location << ".VpnGatewayId=" << StringUtils::URLEncode(m_vpnGatewayId.c_str()) << "&";
   }
 }
 

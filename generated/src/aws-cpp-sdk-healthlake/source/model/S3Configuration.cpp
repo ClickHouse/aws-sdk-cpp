@@ -18,15 +18,7 @@ namespace HealthLake
 namespace Model
 {
 
-S3Configuration::S3Configuration() : 
-    m_s3UriHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
-{
-}
-
-S3Configuration::S3Configuration(JsonView jsonValue) : 
-    m_s3UriHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+S3Configuration::S3Configuration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ S3Configuration& S3Configuration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3Uri"))
   {
     m_s3Uri = jsonValue.GetString("S3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("KmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

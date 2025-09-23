@@ -20,49 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ServiceConfiguration::ServiceConfiguration() : 
-    m_serviceTypeHasBeenSet(false),
-    m_serviceIdHasBeenSet(false),
-    m_serviceNameHasBeenSet(false),
-    m_serviceState(ServiceState::NOT_SET),
-    m_serviceStateHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_acceptanceRequired(false),
-    m_acceptanceRequiredHasBeenSet(false),
-    m_managesVpcEndpoints(false),
-    m_managesVpcEndpointsHasBeenSet(false),
-    m_networkLoadBalancerArnsHasBeenSet(false),
-    m_gatewayLoadBalancerArnsHasBeenSet(false),
-    m_supportedIpAddressTypesHasBeenSet(false),
-    m_baseEndpointDnsNamesHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_privateDnsNameConfigurationHasBeenSet(false),
-    m_payerResponsibility(PayerResponsibility::NOT_SET),
-    m_payerResponsibilityHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ServiceConfiguration::ServiceConfiguration(const XmlNode& xmlNode) : 
-    m_serviceTypeHasBeenSet(false),
-    m_serviceIdHasBeenSet(false),
-    m_serviceNameHasBeenSet(false),
-    m_serviceState(ServiceState::NOT_SET),
-    m_serviceStateHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_acceptanceRequired(false),
-    m_acceptanceRequiredHasBeenSet(false),
-    m_managesVpcEndpoints(false),
-    m_managesVpcEndpointsHasBeenSet(false),
-    m_networkLoadBalancerArnsHasBeenSet(false),
-    m_gatewayLoadBalancerArnsHasBeenSet(false),
-    m_supportedIpAddressTypesHasBeenSet(false),
-    m_baseEndpointDnsNamesHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_privateDnsNameConfigurationHasBeenSet(false),
-    m_payerResponsibility(PayerResponsibility::NOT_SET),
-    m_payerResponsibilityHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ServiceConfiguration::ServiceConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -77,6 +35,7 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     if(!serviceTypeNode.IsNull())
     {
       XmlNode serviceTypeMember = serviceTypeNode.FirstChild("item");
+      m_serviceTypeHasBeenSet = !serviceTypeMember.IsNull();
       while(!serviceTypeMember.IsNull())
       {
         m_serviceType.push_back(serviceTypeMember);
@@ -100,13 +59,27 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     XmlNode serviceStateNode = resultNode.FirstChild("serviceState");
     if(!serviceStateNode.IsNull())
     {
-      m_serviceState = ServiceStateMapper::GetServiceStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(serviceStateNode.GetText()).c_str()).c_str());
+      m_serviceState = ServiceStateMapper::GetServiceStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(serviceStateNode.GetText()).c_str()));
       m_serviceStateHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdsNode = resultNode.FirstChild("availabilityZoneIdSet");
+    if(!availabilityZoneIdsNode.IsNull())
+    {
+      XmlNode availabilityZoneIdsMember = availabilityZoneIdsNode.FirstChild("item");
+      m_availabilityZoneIdsHasBeenSet = !availabilityZoneIdsMember.IsNull();
+      while(!availabilityZoneIdsMember.IsNull())
+      {
+        m_availabilityZoneIds.push_back(availabilityZoneIdsMember.GetText());
+        availabilityZoneIdsMember = availabilityZoneIdsMember.NextNode("item");
+      }
+
+      m_availabilityZoneIdsHasBeenSet = true;
     }
     XmlNode availabilityZonesNode = resultNode.FirstChild("availabilityZoneSet");
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("item");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember.GetText());
@@ -131,6 +104,7 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     if(!networkLoadBalancerArnsNode.IsNull())
     {
       XmlNode networkLoadBalancerArnsMember = networkLoadBalancerArnsNode.FirstChild("item");
+      m_networkLoadBalancerArnsHasBeenSet = !networkLoadBalancerArnsMember.IsNull();
       while(!networkLoadBalancerArnsMember.IsNull())
       {
         m_networkLoadBalancerArns.push_back(networkLoadBalancerArnsMember.GetText());
@@ -143,6 +117,7 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     if(!gatewayLoadBalancerArnsNode.IsNull())
     {
       XmlNode gatewayLoadBalancerArnsMember = gatewayLoadBalancerArnsNode.FirstChild("item");
+      m_gatewayLoadBalancerArnsHasBeenSet = !gatewayLoadBalancerArnsMember.IsNull();
       while(!gatewayLoadBalancerArnsMember.IsNull())
       {
         m_gatewayLoadBalancerArns.push_back(gatewayLoadBalancerArnsMember.GetText());
@@ -155,6 +130,7 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     if(!supportedIpAddressTypesNode.IsNull())
     {
       XmlNode supportedIpAddressTypesMember = supportedIpAddressTypesNode.FirstChild("item");
+      m_supportedIpAddressTypesHasBeenSet = !supportedIpAddressTypesMember.IsNull();
       while(!supportedIpAddressTypesMember.IsNull())
       {
         m_supportedIpAddressTypes.push_back(ServiceConnectivityTypeMapper::GetServiceConnectivityTypeForName(StringUtils::Trim(supportedIpAddressTypesMember.GetText().c_str())));
@@ -167,6 +143,7 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     if(!baseEndpointDnsNamesNode.IsNull())
     {
       XmlNode baseEndpointDnsNamesMember = baseEndpointDnsNamesNode.FirstChild("item");
+      m_baseEndpointDnsNamesHasBeenSet = !baseEndpointDnsNamesMember.IsNull();
       while(!baseEndpointDnsNamesMember.IsNull())
       {
         m_baseEndpointDnsNames.push_back(baseEndpointDnsNamesMember.GetText());
@@ -190,13 +167,14 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
     XmlNode payerResponsibilityNode = resultNode.FirstChild("payerResponsibility");
     if(!payerResponsibilityNode.IsNull())
     {
-      m_payerResponsibility = PayerResponsibilityMapper::GetPayerResponsibilityForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(payerResponsibilityNode.GetText()).c_str()).c_str());
+      m_payerResponsibility = PayerResponsibilityMapper::GetPayerResponsibilityForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(payerResponsibilityNode.GetText()).c_str()));
       m_payerResponsibilityHasBeenSet = true;
     }
     XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -204,6 +182,25 @@ ServiceConfiguration& ServiceConfiguration::operator =(const XmlNode& xmlNode)
       }
 
       m_tagsHasBeenSet = true;
+    }
+    XmlNode supportedRegionsNode = resultNode.FirstChild("supportedRegionSet");
+    if(!supportedRegionsNode.IsNull())
+    {
+      XmlNode supportedRegionsMember = supportedRegionsNode.FirstChild("item");
+      m_supportedRegionsHasBeenSet = !supportedRegionsMember.IsNull();
+      while(!supportedRegionsMember.IsNull())
+      {
+        m_supportedRegions.push_back(supportedRegionsMember);
+        supportedRegionsMember = supportedRegionsMember.NextNode("item");
+      }
+
+      m_supportedRegionsHasBeenSet = true;
+    }
+    XmlNode remoteAccessEnabledNode = resultNode.FirstChild("remoteAccessEnabled");
+    if(!remoteAccessEnabledNode.IsNull())
+    {
+      m_remoteAccessEnabled = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(remoteAccessEnabledNode.GetText()).c_str()).c_str());
+      m_remoteAccessEnabledHasBeenSet = true;
     }
   }
 
@@ -235,7 +232,16 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_serviceStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ServiceState=" << ServiceStateMapper::GetNameForServiceState(m_serviceState) << "&";
+      oStream << location << index << locationValue << ".ServiceState=" << StringUtils::URLEncode(ServiceStateMapper::GetNameForServiceState(m_serviceState)) << "&";
+  }
+
+  if(m_availabilityZoneIdsHasBeenSet)
+  {
+      unsigned availabilityZoneIdsIdx = 1;
+      for(auto& item : m_availabilityZoneIds)
+      {
+        oStream << location << index << locationValue << ".AvailabilityZoneIdSet." << availabilityZoneIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
   }
 
   if(m_availabilityZonesHasBeenSet)
@@ -280,7 +286,7 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
       unsigned supportedIpAddressTypesIdx = 1;
       for(auto& item : m_supportedIpAddressTypes)
       {
-        oStream << location << index << locationValue << ".SupportedIpAddressTypeSet." << supportedIpAddressTypesIdx++ << "=" << ServiceConnectivityTypeMapper::GetNameForServiceConnectivityType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedIpAddressTypeSet." << supportedIpAddressTypesIdx++ << "=" << StringUtils::URLEncode(ServiceConnectivityTypeMapper::GetNameForServiceConnectivityType(item)) << "&";
       }
   }
 
@@ -307,7 +313,7 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_payerResponsibilityHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PayerResponsibility=" << PayerResponsibilityMapper::GetNameForPayerResponsibility(m_payerResponsibility) << "&";
+      oStream << location << index << locationValue << ".PayerResponsibility=" << StringUtils::URLEncode(PayerResponsibilityMapper::GetNameForPayerResponsibility(m_payerResponsibility)) << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -321,6 +327,22 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
       }
   }
 
+  if(m_supportedRegionsHasBeenSet)
+  {
+      unsigned supportedRegionsIdx = 1;
+      for(auto& item : m_supportedRegions)
+      {
+        Aws::StringStream supportedRegionsSs;
+        supportedRegionsSs << location << index << locationValue << ".SupportedRegionSet." << supportedRegionsIdx++;
+        item.OutputToStream(oStream, supportedRegionsSs.str().c_str());
+      }
+  }
+
+  if(m_remoteAccessEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".RemoteAccessEnabled=" << std::boolalpha << m_remoteAccessEnabled << "&";
+  }
+
 }
 
 void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -331,7 +353,7 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_serviceType)
       {
         Aws::StringStream serviceTypeSs;
-        serviceTypeSs << location <<  ".ServiceType." << serviceTypeIdx++;
+        serviceTypeSs << location << ".ServiceType." << serviceTypeIdx++;
         item.OutputToStream(oStream, serviceTypeSs.str().c_str());
       }
   }
@@ -345,7 +367,15 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_serviceStateHasBeenSet)
   {
-      oStream << location << ".ServiceState=" << ServiceStateMapper::GetNameForServiceState(m_serviceState) << "&";
+      oStream << location << ".ServiceState=" << StringUtils::URLEncode(ServiceStateMapper::GetNameForServiceState(m_serviceState)) << "&";
+  }
+  if(m_availabilityZoneIdsHasBeenSet)
+  {
+      unsigned availabilityZoneIdsIdx = 1;
+      for(auto& item : m_availabilityZoneIds)
+      {
+        oStream << location << ".AvailabilityZoneIdSet." << availabilityZoneIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
   }
   if(m_availabilityZonesHasBeenSet)
   {
@@ -384,7 +414,7 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
       unsigned supportedIpAddressTypesIdx = 1;
       for(auto& item : m_supportedIpAddressTypes)
       {
-        oStream << location << ".SupportedIpAddressTypeSet." << supportedIpAddressTypesIdx++ << "=" << ServiceConnectivityTypeMapper::GetNameForServiceConnectivityType(item) << "&";
+        oStream << location << ".SupportedIpAddressTypeSet." << supportedIpAddressTypesIdx++ << "=" << StringUtils::URLEncode(ServiceConnectivityTypeMapper::GetNameForServiceConnectivityType(item)) << "&";
       }
   }
   if(m_baseEndpointDnsNamesHasBeenSet)
@@ -407,7 +437,7 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_payerResponsibilityHasBeenSet)
   {
-      oStream << location << ".PayerResponsibility=" << PayerResponsibilityMapper::GetNameForPayerResponsibility(m_payerResponsibility) << "&";
+      oStream << location << ".PayerResponsibility=" << StringUtils::URLEncode(PayerResponsibilityMapper::GetNameForPayerResponsibility(m_payerResponsibility)) << "&";
   }
   if(m_tagsHasBeenSet)
   {
@@ -415,9 +445,23 @@ void ServiceConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
+  }
+  if(m_supportedRegionsHasBeenSet)
+  {
+      unsigned supportedRegionsIdx = 1;
+      for(auto& item : m_supportedRegions)
+      {
+        Aws::StringStream supportedRegionsSs;
+        supportedRegionsSs << location << ".SupportedRegionSet." << supportedRegionsIdx++;
+        item.OutputToStream(oStream, supportedRegionsSs.str().c_str());
+      }
+  }
+  if(m_remoteAccessEnabledHasBeenSet)
+  {
+      oStream << location << ".RemoteAccessEnabled=" << std::boolalpha << m_remoteAccessEnabled << "&";
   }
 }
 

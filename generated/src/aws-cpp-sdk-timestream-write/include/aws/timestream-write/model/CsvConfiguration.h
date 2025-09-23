@@ -32,204 +32,70 @@ namespace Model
   class CsvConfiguration
   {
   public:
-    AWS_TIMESTREAMWRITE_API CsvConfiguration();
+    AWS_TIMESTREAMWRITE_API CsvConfiguration() = default;
     AWS_TIMESTREAMWRITE_API CsvConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMWRITE_API CsvConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMWRITE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
      * tab('/t'), or blank space (' '). </p>
      */
-    inline const Aws::String& GetColumnSeparator() const{ return m_columnSeparator; }
-
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
+    inline const Aws::String& GetColumnSeparator() const { return m_columnSeparator; }
     inline bool ColumnSeparatorHasBeenSet() const { return m_columnSeparatorHasBeenSet; }
+    template<typename ColumnSeparatorT = Aws::String>
+    void SetColumnSeparator(ColumnSeparatorT&& value) { m_columnSeparatorHasBeenSet = true; m_columnSeparator = std::forward<ColumnSeparatorT>(value); }
+    template<typename ColumnSeparatorT = Aws::String>
+    CsvConfiguration& WithColumnSeparator(ColumnSeparatorT&& value) { SetColumnSeparator(std::forward<ColumnSeparatorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
-    inline void SetColumnSeparator(const Aws::String& value) { m_columnSeparatorHasBeenSet = true; m_columnSeparator = value; }
-
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
-    inline void SetColumnSeparator(Aws::String&& value) { m_columnSeparatorHasBeenSet = true; m_columnSeparator = std::move(value); }
-
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
-    inline void SetColumnSeparator(const char* value) { m_columnSeparatorHasBeenSet = true; m_columnSeparator.assign(value); }
-
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
-    inline CsvConfiguration& WithColumnSeparator(const Aws::String& value) { SetColumnSeparator(value); return *this;}
-
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
-    inline CsvConfiguration& WithColumnSeparator(Aws::String&& value) { SetColumnSeparator(std::move(value)); return *this;}
-
-    /**
-     * <p>Column separator can be one of comma (','), pipe ('|), semicolon (';'),
-     * tab('/t'), or blank space (' '). </p>
-     */
-    inline CsvConfiguration& WithColumnSeparator(const char* value) { SetColumnSeparator(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Escape character can be one of </p>
      */
-    inline const Aws::String& GetEscapeChar() const{ return m_escapeChar; }
-
-    /**
-     * <p>Escape character can be one of </p>
-     */
+    inline const Aws::String& GetEscapeChar() const { return m_escapeChar; }
     inline bool EscapeCharHasBeenSet() const { return m_escapeCharHasBeenSet; }
+    template<typename EscapeCharT = Aws::String>
+    void SetEscapeChar(EscapeCharT&& value) { m_escapeCharHasBeenSet = true; m_escapeChar = std::forward<EscapeCharT>(value); }
+    template<typename EscapeCharT = Aws::String>
+    CsvConfiguration& WithEscapeChar(EscapeCharT&& value) { SetEscapeChar(std::forward<EscapeCharT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Escape character can be one of </p>
-     */
-    inline void SetEscapeChar(const Aws::String& value) { m_escapeCharHasBeenSet = true; m_escapeChar = value; }
-
-    /**
-     * <p>Escape character can be one of </p>
-     */
-    inline void SetEscapeChar(Aws::String&& value) { m_escapeCharHasBeenSet = true; m_escapeChar = std::move(value); }
-
-    /**
-     * <p>Escape character can be one of </p>
-     */
-    inline void SetEscapeChar(const char* value) { m_escapeCharHasBeenSet = true; m_escapeChar.assign(value); }
-
-    /**
-     * <p>Escape character can be one of </p>
-     */
-    inline CsvConfiguration& WithEscapeChar(const Aws::String& value) { SetEscapeChar(value); return *this;}
-
-    /**
-     * <p>Escape character can be one of </p>
-     */
-    inline CsvConfiguration& WithEscapeChar(Aws::String&& value) { SetEscapeChar(std::move(value)); return *this;}
-
-    /**
-     * <p>Escape character can be one of </p>
-     */
-    inline CsvConfiguration& WithEscapeChar(const char* value) { SetEscapeChar(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Can be single quote (') or double quote (").</p>
      */
-    inline const Aws::String& GetQuoteChar() const{ return m_quoteChar; }
-
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
+    inline const Aws::String& GetQuoteChar() const { return m_quoteChar; }
     inline bool QuoteCharHasBeenSet() const { return m_quoteCharHasBeenSet; }
+    template<typename QuoteCharT = Aws::String>
+    void SetQuoteChar(QuoteCharT&& value) { m_quoteCharHasBeenSet = true; m_quoteChar = std::forward<QuoteCharT>(value); }
+    template<typename QuoteCharT = Aws::String>
+    CsvConfiguration& WithQuoteChar(QuoteCharT&& value) { SetQuoteChar(std::forward<QuoteCharT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
-    inline void SetQuoteChar(const Aws::String& value) { m_quoteCharHasBeenSet = true; m_quoteChar = value; }
-
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
-    inline void SetQuoteChar(Aws::String&& value) { m_quoteCharHasBeenSet = true; m_quoteChar = std::move(value); }
-
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
-    inline void SetQuoteChar(const char* value) { m_quoteCharHasBeenSet = true; m_quoteChar.assign(value); }
-
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
-    inline CsvConfiguration& WithQuoteChar(const Aws::String& value) { SetQuoteChar(value); return *this;}
-
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
-    inline CsvConfiguration& WithQuoteChar(Aws::String&& value) { SetQuoteChar(std::move(value)); return *this;}
-
-    /**
-     * <p>Can be single quote (') or double quote (").</p>
-     */
-    inline CsvConfiguration& WithQuoteChar(const char* value) { SetQuoteChar(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Can be blank space (' ').</p>
      */
-    inline const Aws::String& GetNullValue() const{ return m_nullValue; }
-
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
+    inline const Aws::String& GetNullValue() const { return m_nullValue; }
     inline bool NullValueHasBeenSet() const { return m_nullValueHasBeenSet; }
+    template<typename NullValueT = Aws::String>
+    void SetNullValue(NullValueT&& value) { m_nullValueHasBeenSet = true; m_nullValue = std::forward<NullValueT>(value); }
+    template<typename NullValueT = Aws::String>
+    CsvConfiguration& WithNullValue(NullValueT&& value) { SetNullValue(std::forward<NullValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
-    inline void SetNullValue(const Aws::String& value) { m_nullValueHasBeenSet = true; m_nullValue = value; }
-
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
-    inline void SetNullValue(Aws::String&& value) { m_nullValueHasBeenSet = true; m_nullValue = std::move(value); }
-
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
-    inline void SetNullValue(const char* value) { m_nullValueHasBeenSet = true; m_nullValue.assign(value); }
-
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
-    inline CsvConfiguration& WithNullValue(const Aws::String& value) { SetNullValue(value); return *this;}
-
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
-    inline CsvConfiguration& WithNullValue(Aws::String&& value) { SetNullValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Can be blank space (' ').</p>
-     */
-    inline CsvConfiguration& WithNullValue(const char* value) { SetNullValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies to trim leading and trailing white space.</p>
      */
-    inline bool GetTrimWhiteSpace() const{ return m_trimWhiteSpace; }
-
-    /**
-     * <p>Specifies to trim leading and trailing white space.</p>
-     */
+    inline bool GetTrimWhiteSpace() const { return m_trimWhiteSpace; }
     inline bool TrimWhiteSpaceHasBeenSet() const { return m_trimWhiteSpaceHasBeenSet; }
-
-    /**
-     * <p>Specifies to trim leading and trailing white space.</p>
-     */
     inline void SetTrimWhiteSpace(bool value) { m_trimWhiteSpaceHasBeenSet = true; m_trimWhiteSpace = value; }
-
-    /**
-     * <p>Specifies to trim leading and trailing white space.</p>
-     */
     inline CsvConfiguration& WithTrimWhiteSpace(bool value) { SetTrimWhiteSpace(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_columnSeparator;
@@ -244,7 +110,7 @@ namespace Model
     Aws::String m_nullValue;
     bool m_nullValueHasBeenSet = false;
 
-    bool m_trimWhiteSpace;
+    bool m_trimWhiteSpace{false};
     bool m_trimWhiteSpaceHasBeenSet = false;
   };
 

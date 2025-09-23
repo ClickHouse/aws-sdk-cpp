@@ -20,21 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-DBInstanceStatusInfo::DBInstanceStatusInfo() : 
-    m_statusTypeHasBeenSet(false),
-    m_normal(false),
-    m_normalHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-DBInstanceStatusInfo::DBInstanceStatusInfo(const XmlNode& xmlNode) : 
-    m_statusTypeHasBeenSet(false),
-    m_normal(false),
-    m_normalHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
+DBInstanceStatusInfo::DBInstanceStatusInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

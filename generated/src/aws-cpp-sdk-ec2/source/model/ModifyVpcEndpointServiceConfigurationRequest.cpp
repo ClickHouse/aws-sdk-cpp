@@ -10,24 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyVpcEndpointServiceConfigurationRequest::ModifyVpcEndpointServiceConfigurationRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_serviceIdHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_removePrivateDnsName(false),
-    m_removePrivateDnsNameHasBeenSet(false),
-    m_acceptanceRequired(false),
-    m_acceptanceRequiredHasBeenSet(false),
-    m_addNetworkLoadBalancerArnsHasBeenSet(false),
-    m_removeNetworkLoadBalancerArnsHasBeenSet(false),
-    m_addGatewayLoadBalancerArnsHasBeenSet(false),
-    m_removeGatewayLoadBalancerArnsHasBeenSet(false),
-    m_addSupportedIpAddressTypesHasBeenSet(false),
-    m_removeSupportedIpAddressTypesHasBeenSet(false)
-{
-}
-
 Aws::String ModifyVpcEndpointServiceConfigurationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -120,6 +102,28 @@ Aws::String ModifyVpcEndpointServiceConfigurationRequest::SerializePayload() con
       ss << "RemoveSupportedIpAddressType." << removeSupportedIpAddressTypesCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       removeSupportedIpAddressTypesCount++;
+    }
+  }
+
+  if(m_addSupportedRegionsHasBeenSet)
+  {
+    unsigned addSupportedRegionsCount = 1;
+    for(auto& item : m_addSupportedRegions)
+    {
+      ss << "AddSupportedRegion." << addSupportedRegionsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      addSupportedRegionsCount++;
+    }
+  }
+
+  if(m_removeSupportedRegionsHasBeenSet)
+  {
+    unsigned removeSupportedRegionsCount = 1;
+    for(auto& item : m_removeSupportedRegions)
+    {
+      ss << "RemoveSupportedRegion." << removeSupportedRegionsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      removeSupportedRegionsCount++;
     }
   }
 

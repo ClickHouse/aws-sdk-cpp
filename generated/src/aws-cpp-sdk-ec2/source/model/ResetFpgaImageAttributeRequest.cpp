@@ -10,15 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ResetFpgaImageAttributeRequest::ResetFpgaImageAttributeRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_fpgaImageIdHasBeenSet(false),
-    m_attribute(ResetFpgaImageAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false)
-{
-}
-
 Aws::String ResetFpgaImageAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -35,7 +26,7 @@ Aws::String ResetFpgaImageAttributeRequest::SerializePayload() const
 
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << ResetFpgaImageAttributeNameMapper::GetNameForResetFpgaImageAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(ResetFpgaImageAttributeNameMapper::GetNameForResetFpgaImageAttributeName(m_attribute)) << "&";
   }
 
   ss << "Version=2016-11-15";

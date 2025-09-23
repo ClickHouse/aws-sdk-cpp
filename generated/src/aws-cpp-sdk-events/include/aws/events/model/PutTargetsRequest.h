@@ -23,7 +23,7 @@ namespace Model
   class PutTargetsRequest : public CloudWatchEventsRequest
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API PutTargetsRequest();
+    AWS_CLOUDWATCHEVENTS_API PutTargetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,136 +36,44 @@ namespace Model
     AWS_CLOUDWATCHEVENTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the rule.</p>
      */
-    inline const Aws::String& GetRule() const{ return m_rule; }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
+    inline const Aws::String& GetRule() const { return m_rule; }
     inline bool RuleHasBeenSet() const { return m_ruleHasBeenSet; }
+    template<typename RuleT = Aws::String>
+    void SetRule(RuleT&& value) { m_ruleHasBeenSet = true; m_rule = std::forward<RuleT>(value); }
+    template<typename RuleT = Aws::String>
+    PutTargetsRequest& WithRule(RuleT&& value) { SetRule(std::forward<RuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline void SetRule(const Aws::String& value) { m_ruleHasBeenSet = true; m_rule = value; }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline void SetRule(Aws::String&& value) { m_ruleHasBeenSet = true; m_rule = std::move(value); }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline void SetRule(const char* value) { m_ruleHasBeenSet = true; m_rule.assign(value); }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline PutTargetsRequest& WithRule(const Aws::String& value) { SetRule(value); return *this;}
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline PutTargetsRequest& WithRule(Aws::String&& value) { SetRule(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline PutTargetsRequest& WithRule(const char* value) { SetRule(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or ARN of the event bus associated with the rule. If you omit this,
      * the default event bus is used.</p>
      */
-    inline const Aws::String& GetEventBusName() const{ return m_eventBusName; }
-
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
+    inline const Aws::String& GetEventBusName() const { return m_eventBusName; }
     inline bool EventBusNameHasBeenSet() const { return m_eventBusNameHasBeenSet; }
+    template<typename EventBusNameT = Aws::String>
+    void SetEventBusName(EventBusNameT&& value) { m_eventBusNameHasBeenSet = true; m_eventBusName = std::forward<EventBusNameT>(value); }
+    template<typename EventBusNameT = Aws::String>
+    PutTargetsRequest& WithEventBusName(EventBusNameT&& value) { SetEventBusName(std::forward<EventBusNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
-    inline void SetEventBusName(const Aws::String& value) { m_eventBusNameHasBeenSet = true; m_eventBusName = value; }
-
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
-    inline void SetEventBusName(Aws::String&& value) { m_eventBusNameHasBeenSet = true; m_eventBusName = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
-    inline void SetEventBusName(const char* value) { m_eventBusNameHasBeenSet = true; m_eventBusName.assign(value); }
-
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
-    inline PutTargetsRequest& WithEventBusName(const Aws::String& value) { SetEventBusName(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
-    inline PutTargetsRequest& WithEventBusName(Aws::String&& value) { SetEventBusName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the event bus associated with the rule. If you omit this,
-     * the default event bus is used.</p>
-     */
-    inline PutTargetsRequest& WithEventBusName(const char* value) { SetEventBusName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The targets to update or add to the rule.</p>
      */
-    inline const Aws::Vector<Target>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
+    inline const Aws::Vector<Target>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
-    inline void SetTargets(const Aws::Vector<Target>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
-    inline void SetTargets(Aws::Vector<Target>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
-    inline PutTargetsRequest& WithTargets(const Aws::Vector<Target>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
-    inline PutTargetsRequest& WithTargets(Aws::Vector<Target>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
-    inline PutTargetsRequest& AddTargets(const Target& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>The targets to update or add to the rule.</p>
-     */
-    inline PutTargetsRequest& AddTargets(Target&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
-
+    template<typename TargetsT = Aws::Vector<Target>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<Target>>
+    PutTargetsRequest& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = Target>
+    PutTargetsRequest& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_rule;

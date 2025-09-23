@@ -32,206 +32,69 @@ namespace Model
   class Type
   {
   public:
-    AWS_APPSYNC_API Type();
+    AWS_APPSYNC_API Type() = default;
     AWS_APPSYNC_API Type(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API Type& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The type name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Type& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The type name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The type name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The type name.</p>
-     */
-    inline Type& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The type name.</p>
-     */
-    inline Type& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The type name.</p>
-     */
-    inline Type& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The type description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Type& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The type description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The type description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The type description.</p>
-     */
-    inline Type& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The type description.</p>
-     */
-    inline Type& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The type description.</p>
-     */
-    inline Type& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type Amazon Resource Name (ARN).</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Type& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
-    inline Type& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
-    inline Type& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The type Amazon Resource Name (ARN).</p>
-     */
-    inline Type& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type definition.</p>
      */
-    inline const Aws::String& GetDefinition() const{ return m_definition; }
-
-    /**
-     * <p>The type definition.</p>
-     */
+    inline const Aws::String& GetDefinition() const { return m_definition; }
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
+    template<typename DefinitionT = Aws::String>
+    void SetDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition = std::forward<DefinitionT>(value); }
+    template<typename DefinitionT = Aws::String>
+    Type& WithDefinition(DefinitionT&& value) { SetDefinition(std::forward<DefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type definition.</p>
-     */
-    inline void SetDefinition(const Aws::String& value) { m_definitionHasBeenSet = true; m_definition = value; }
-
-    /**
-     * <p>The type definition.</p>
-     */
-    inline void SetDefinition(Aws::String&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
-
-    /**
-     * <p>The type definition.</p>
-     */
-    inline void SetDefinition(const char* value) { m_definitionHasBeenSet = true; m_definition.assign(value); }
-
-    /**
-     * <p>The type definition.</p>
-     */
-    inline Type& WithDefinition(const Aws::String& value) { SetDefinition(value); return *this;}
-
-    /**
-     * <p>The type definition.</p>
-     */
-    inline Type& WithDefinition(Aws::String&& value) { SetDefinition(std::move(value)); return *this;}
-
-    /**
-     * <p>The type definition.</p>
-     */
-    inline Type& WithDefinition(const char* value) { SetDefinition(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type format: SDL or JSON.</p>
      */
-    inline const TypeDefinitionFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The type format: SDL or JSON.</p>
-     */
+    inline TypeDefinitionFormat GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
-
-    /**
-     * <p>The type format: SDL or JSON.</p>
-     */
-    inline void SetFormat(const TypeDefinitionFormat& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The type format: SDL or JSON.</p>
-     */
-    inline void SetFormat(TypeDefinitionFormat&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The type format: SDL or JSON.</p>
-     */
-    inline Type& WithFormat(const TypeDefinitionFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The type format: SDL or JSON.</p>
-     */
-    inline Type& WithFormat(TypeDefinitionFormat&& value) { SetFormat(std::move(value)); return *this;}
-
+    inline void SetFormat(TypeDefinitionFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline Type& WithFormat(TypeDefinitionFormat value) { SetFormat(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -246,7 +109,7 @@ namespace Model
     Aws::String m_definition;
     bool m_definitionHasBeenSet = false;
 
-    TypeDefinitionFormat m_format;
+    TypeDefinitionFormat m_format{TypeDefinitionFormat::NOT_SET};
     bool m_formatHasBeenSet = false;
   };
 

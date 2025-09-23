@@ -18,13 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-TimeSeriesSelector::TimeSeriesSelector() : 
-    m_timeSeriesIdentifiersHasBeenSet(false)
-{
-}
-
-TimeSeriesSelector::TimeSeriesSelector(JsonView jsonValue) : 
-    m_timeSeriesIdentifiersHasBeenSet(false)
+TimeSeriesSelector::TimeSeriesSelector(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TimeSeriesSelector& TimeSeriesSelector::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TimeSeriesIdentifiers"))
   {
     m_timeSeriesIdentifiers = jsonValue.GetObject("TimeSeriesIdentifiers");
-
     m_timeSeriesIdentifiersHasBeenSet = true;
   }
-
   return *this;
 }
 

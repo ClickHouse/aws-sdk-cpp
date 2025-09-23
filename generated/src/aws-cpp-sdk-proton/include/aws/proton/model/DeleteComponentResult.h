@@ -28,63 +28,37 @@ namespace Model
   class DeleteComponentResult
   {
   public:
-    AWS_PROTON_API DeleteComponentResult();
+    AWS_PROTON_API DeleteComponentResult() = default;
     AWS_PROTON_API DeleteComponentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PROTON_API DeleteComponentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The detailed data of the component being deleted.</p>
      */
-    inline const Component& GetComponent() const{ return m_component; }
+    inline const Component& GetComponent() const { return m_component; }
+    template<typename ComponentT = Component>
+    void SetComponent(ComponentT&& value) { m_componentHasBeenSet = true; m_component = std::forward<ComponentT>(value); }
+    template<typename ComponentT = Component>
+    DeleteComponentResult& WithComponent(ComponentT&& value) { SetComponent(std::forward<ComponentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The detailed data of the component being deleted.</p>
-     */
-    inline void SetComponent(const Component& value) { m_component = value; }
-
-    /**
-     * <p>The detailed data of the component being deleted.</p>
-     */
-    inline void SetComponent(Component&& value) { m_component = std::move(value); }
-
-    /**
-     * <p>The detailed data of the component being deleted.</p>
-     */
-    inline DeleteComponentResult& WithComponent(const Component& value) { SetComponent(value); return *this;}
-
-    /**
-     * <p>The detailed data of the component being deleted.</p>
-     */
-    inline DeleteComponentResult& WithComponent(Component&& value) { SetComponent(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteComponentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteComponentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteComponentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteComponentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Component m_component;
+    bool m_componentHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

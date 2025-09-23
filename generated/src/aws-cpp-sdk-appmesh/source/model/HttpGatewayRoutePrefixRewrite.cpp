@@ -18,17 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-HttpGatewayRoutePrefixRewrite::HttpGatewayRoutePrefixRewrite() : 
-    m_defaultPrefix(DefaultGatewayRouteRewrite::NOT_SET),
-    m_defaultPrefixHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-HttpGatewayRoutePrefixRewrite::HttpGatewayRoutePrefixRewrite(JsonView jsonValue) : 
-    m_defaultPrefix(DefaultGatewayRouteRewrite::NOT_SET),
-    m_defaultPrefixHasBeenSet(false),
-    m_valueHasBeenSet(false)
+HttpGatewayRoutePrefixRewrite::HttpGatewayRoutePrefixRewrite(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ HttpGatewayRoutePrefixRewrite& HttpGatewayRoutePrefixRewrite::operator =(JsonVie
   if(jsonValue.ValueExists("defaultPrefix"))
   {
     m_defaultPrefix = DefaultGatewayRouteRewriteMapper::GetDefaultGatewayRouteRewriteForName(jsonValue.GetString("defaultPrefix"));
-
     m_defaultPrefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

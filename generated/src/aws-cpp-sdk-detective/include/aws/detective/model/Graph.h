@@ -32,101 +32,43 @@ namespace Model
   class Graph
   {
   public:
-    AWS_DETECTIVE_API Graph();
+    AWS_DETECTIVE_API Graph() = default;
     AWS_DETECTIVE_API Graph(Aws::Utils::Json::JsonView jsonValue);
     AWS_DETECTIVE_API Graph& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DETECTIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the behavior graph.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Graph& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline Graph& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline Graph& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline Graph& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the behavior graph was created. The value is an
      * ISO8601 formatted string. For example,
      * <code>2021-08-18T16:35:56.284Z</code>.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The date and time that the behavior graph was created. The value is an
-     * ISO8601 formatted string. For example,
-     * <code>2021-08-18T16:35:56.284Z</code>.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time that the behavior graph was created. The value is an
-     * ISO8601 formatted string. For example,
-     * <code>2021-08-18T16:35:56.284Z</code>.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The date and time that the behavior graph was created. The value is an
-     * ISO8601 formatted string. For example,
-     * <code>2021-08-18T16:35:56.284Z</code>.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the behavior graph was created. The value is an
-     * ISO8601 formatted string. For example,
-     * <code>2021-08-18T16:35:56.284Z</code>.</p>
-     */
-    inline Graph& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the behavior graph was created. The value is an
-     * ISO8601 formatted string. For example,
-     * <code>2021-08-18T16:35:56.284Z</code>.</p>
-     */
-    inline Graph& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    Graph& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
   };
 

@@ -12,19 +12,6 @@ using namespace Aws::SsmSap::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RegisterApplicationRequest::RegisterApplicationRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_applicationType(ApplicationType::NOT_SET),
-    m_applicationTypeHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_sapInstanceNumberHasBeenSet(false),
-    m_sidHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_credentialsHasBeenSet(false),
-    m_databaseArnHasBeenSet(false)
-{
-}
-
 Aws::String RegisterApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -88,6 +75,17 @@ Aws::String RegisterApplicationRequest::SerializePayload() const
   if(m_databaseArnHasBeenSet)
   {
    payload.WithString("DatabaseArn", m_databaseArn);
+
+  }
+
+  if(m_componentsInfoHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> componentsInfoJsonList(m_componentsInfo.size());
+   for(unsigned componentsInfoIndex = 0; componentsInfoIndex < componentsInfoJsonList.GetLength(); ++componentsInfoIndex)
+   {
+     componentsInfoJsonList[componentsInfoIndex].AsObject(m_componentsInfo[componentsInfoIndex].Jsonize());
+   }
+   payload.WithArray("ComponentsInfo", std::move(componentsInfoJsonList));
 
   }
 

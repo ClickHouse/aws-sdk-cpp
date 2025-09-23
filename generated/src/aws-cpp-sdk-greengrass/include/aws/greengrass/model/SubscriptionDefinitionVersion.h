@@ -32,52 +32,25 @@ namespace Model
   class SubscriptionDefinitionVersion
   {
   public:
-    AWS_GREENGRASS_API SubscriptionDefinitionVersion();
+    AWS_GREENGRASS_API SubscriptionDefinitionVersion() = default;
     AWS_GREENGRASS_API SubscriptionDefinitionVersion(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API SubscriptionDefinitionVersion& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * A list of subscriptions.
      */
-    inline const Aws::Vector<Subscription>& GetSubscriptions() const{ return m_subscriptions; }
-
-    /**
-     * A list of subscriptions.
-     */
+    inline const Aws::Vector<Subscription>& GetSubscriptions() const { return m_subscriptions; }
     inline bool SubscriptionsHasBeenSet() const { return m_subscriptionsHasBeenSet; }
-
-    /**
-     * A list of subscriptions.
-     */
-    inline void SetSubscriptions(const Aws::Vector<Subscription>& value) { m_subscriptionsHasBeenSet = true; m_subscriptions = value; }
-
-    /**
-     * A list of subscriptions.
-     */
-    inline void SetSubscriptions(Aws::Vector<Subscription>&& value) { m_subscriptionsHasBeenSet = true; m_subscriptions = std::move(value); }
-
-    /**
-     * A list of subscriptions.
-     */
-    inline SubscriptionDefinitionVersion& WithSubscriptions(const Aws::Vector<Subscription>& value) { SetSubscriptions(value); return *this;}
-
-    /**
-     * A list of subscriptions.
-     */
-    inline SubscriptionDefinitionVersion& WithSubscriptions(Aws::Vector<Subscription>&& value) { SetSubscriptions(std::move(value)); return *this;}
-
-    /**
-     * A list of subscriptions.
-     */
-    inline SubscriptionDefinitionVersion& AddSubscriptions(const Subscription& value) { m_subscriptionsHasBeenSet = true; m_subscriptions.push_back(value); return *this; }
-
-    /**
-     * A list of subscriptions.
-     */
-    inline SubscriptionDefinitionVersion& AddSubscriptions(Subscription&& value) { m_subscriptionsHasBeenSet = true; m_subscriptions.push_back(std::move(value)); return *this; }
-
+    template<typename SubscriptionsT = Aws::Vector<Subscription>>
+    void SetSubscriptions(SubscriptionsT&& value) { m_subscriptionsHasBeenSet = true; m_subscriptions = std::forward<SubscriptionsT>(value); }
+    template<typename SubscriptionsT = Aws::Vector<Subscription>>
+    SubscriptionDefinitionVersion& WithSubscriptions(SubscriptionsT&& value) { SetSubscriptions(std::forward<SubscriptionsT>(value)); return *this;}
+    template<typename SubscriptionsT = Subscription>
+    SubscriptionDefinitionVersion& AddSubscriptions(SubscriptionsT&& value) { m_subscriptionsHasBeenSet = true; m_subscriptions.emplace_back(std::forward<SubscriptionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Subscription> m_subscriptions;

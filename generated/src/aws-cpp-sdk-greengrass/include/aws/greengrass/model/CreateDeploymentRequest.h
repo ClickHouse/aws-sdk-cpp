@@ -22,7 +22,7 @@ namespace Model
   class CreateDeploymentRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API CreateDeploymentRequest();
+    AWS_GREENGRASS_API CreateDeploymentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,206 +35,64 @@ namespace Model
     AWS_GREENGRASS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * A client token used to correlate requests and responses.
      */
-    inline const Aws::String& GetAmznClientToken() const{ return m_amznClientToken; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
+    inline const Aws::String& GetAmznClientToken() const { return m_amznClientToken; }
     inline bool AmznClientTokenHasBeenSet() const { return m_amznClientTokenHasBeenSet; }
+    template<typename AmznClientTokenT = Aws::String>
+    void SetAmznClientToken(AmznClientTokenT&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::forward<AmznClientTokenT>(value); }
+    template<typename AmznClientTokenT = Aws::String>
+    CreateDeploymentRequest& WithAmznClientToken(AmznClientTokenT&& value) { SetAmznClientToken(std::forward<AmznClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const Aws::String& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = value; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(Aws::String&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::move(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const char* value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken.assign(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateDeploymentRequest& WithAmznClientToken(const Aws::String& value) { SetAmznClientToken(value); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateDeploymentRequest& WithAmznClientToken(Aws::String&& value) { SetAmznClientToken(std::move(value)); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateDeploymentRequest& WithAmznClientToken(const char* value) { SetAmznClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the deployment if you wish to redeploy a previous deployment.
      */
-    inline const Aws::String& GetDeploymentId() const{ return m_deploymentId; }
-
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
+    inline const Aws::String& GetDeploymentId() const { return m_deploymentId; }
     inline bool DeploymentIdHasBeenSet() const { return m_deploymentIdHasBeenSet; }
+    template<typename DeploymentIdT = Aws::String>
+    void SetDeploymentId(DeploymentIdT&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::forward<DeploymentIdT>(value); }
+    template<typename DeploymentIdT = Aws::String>
+    CreateDeploymentRequest& WithDeploymentId(DeploymentIdT&& value) { SetDeploymentId(std::forward<DeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
-    inline void SetDeploymentId(const Aws::String& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = value; }
-
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::move(value); }
-
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
-    inline void SetDeploymentId(const char* value) { m_deploymentIdHasBeenSet = true; m_deploymentId.assign(value); }
-
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
-    inline CreateDeploymentRequest& WithDeploymentId(const Aws::String& value) { SetDeploymentId(value); return *this;}
-
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
-    inline CreateDeploymentRequest& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the deployment if you wish to redeploy a previous deployment.
-     */
-    inline CreateDeploymentRequest& WithDeploymentId(const char* value) { SetDeploymentId(value); return *this;}
-
-
+    ///@{
     /**
      * The type of deployment. When used for ''CreateDeployment'', only
      * ''NewDeployment'' and ''Redeployment'' are valid.
      */
-    inline const DeploymentType& GetDeploymentType() const{ return m_deploymentType; }
-
-    /**
-     * The type of deployment. When used for ''CreateDeployment'', only
-     * ''NewDeployment'' and ''Redeployment'' are valid.
-     */
+    inline DeploymentType GetDeploymentType() const { return m_deploymentType; }
     inline bool DeploymentTypeHasBeenSet() const { return m_deploymentTypeHasBeenSet; }
+    inline void SetDeploymentType(DeploymentType value) { m_deploymentTypeHasBeenSet = true; m_deploymentType = value; }
+    inline CreateDeploymentRequest& WithDeploymentType(DeploymentType value) { SetDeploymentType(value); return *this;}
+    ///@}
 
-    /**
-     * The type of deployment. When used for ''CreateDeployment'', only
-     * ''NewDeployment'' and ''Redeployment'' are valid.
-     */
-    inline void SetDeploymentType(const DeploymentType& value) { m_deploymentTypeHasBeenSet = true; m_deploymentType = value; }
-
-    /**
-     * The type of deployment. When used for ''CreateDeployment'', only
-     * ''NewDeployment'' and ''Redeployment'' are valid.
-     */
-    inline void SetDeploymentType(DeploymentType&& value) { m_deploymentTypeHasBeenSet = true; m_deploymentType = std::move(value); }
-
-    /**
-     * The type of deployment. When used for ''CreateDeployment'', only
-     * ''NewDeployment'' and ''Redeployment'' are valid.
-     */
-    inline CreateDeploymentRequest& WithDeploymentType(const DeploymentType& value) { SetDeploymentType(value); return *this;}
-
-    /**
-     * The type of deployment. When used for ''CreateDeployment'', only
-     * ''NewDeployment'' and ''Redeployment'' are valid.
-     */
-    inline CreateDeploymentRequest& WithDeploymentType(DeploymentType&& value) { SetDeploymentType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * The ID of the Greengrass group.
      */
-    inline const Aws::String& GetGroupId() const{ return m_groupId; }
-
-    /**
-     * The ID of the Greengrass group.
-     */
+    inline const Aws::String& GetGroupId() const { return m_groupId; }
     inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
+    template<typename GroupIdT = Aws::String>
+    void SetGroupId(GroupIdT&& value) { m_groupIdHasBeenSet = true; m_groupId = std::forward<GroupIdT>(value); }
+    template<typename GroupIdT = Aws::String>
+    CreateDeploymentRequest& WithGroupId(GroupIdT&& value) { SetGroupId(std::forward<GroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the Greengrass group.
-     */
-    inline void SetGroupId(const Aws::String& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
-
-    /**
-     * The ID of the Greengrass group.
-     */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
-
-    /**
-     * The ID of the Greengrass group.
-     */
-    inline void SetGroupId(const char* value) { m_groupIdHasBeenSet = true; m_groupId.assign(value); }
-
-    /**
-     * The ID of the Greengrass group.
-     */
-    inline CreateDeploymentRequest& WithGroupId(const Aws::String& value) { SetGroupId(value); return *this;}
-
-    /**
-     * The ID of the Greengrass group.
-     */
-    inline CreateDeploymentRequest& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the Greengrass group.
-     */
-    inline CreateDeploymentRequest& WithGroupId(const char* value) { SetGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the group version to be deployed.
      */
-    inline const Aws::String& GetGroupVersionId() const{ return m_groupVersionId; }
-
-    /**
-     * The ID of the group version to be deployed.
-     */
+    inline const Aws::String& GetGroupVersionId() const { return m_groupVersionId; }
     inline bool GroupVersionIdHasBeenSet() const { return m_groupVersionIdHasBeenSet; }
-
-    /**
-     * The ID of the group version to be deployed.
-     */
-    inline void SetGroupVersionId(const Aws::String& value) { m_groupVersionIdHasBeenSet = true; m_groupVersionId = value; }
-
-    /**
-     * The ID of the group version to be deployed.
-     */
-    inline void SetGroupVersionId(Aws::String&& value) { m_groupVersionIdHasBeenSet = true; m_groupVersionId = std::move(value); }
-
-    /**
-     * The ID of the group version to be deployed.
-     */
-    inline void SetGroupVersionId(const char* value) { m_groupVersionIdHasBeenSet = true; m_groupVersionId.assign(value); }
-
-    /**
-     * The ID of the group version to be deployed.
-     */
-    inline CreateDeploymentRequest& WithGroupVersionId(const Aws::String& value) { SetGroupVersionId(value); return *this;}
-
-    /**
-     * The ID of the group version to be deployed.
-     */
-    inline CreateDeploymentRequest& WithGroupVersionId(Aws::String&& value) { SetGroupVersionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the group version to be deployed.
-     */
-    inline CreateDeploymentRequest& WithGroupVersionId(const char* value) { SetGroupVersionId(value); return *this;}
-
+    template<typename GroupVersionIdT = Aws::String>
+    void SetGroupVersionId(GroupVersionIdT&& value) { m_groupVersionIdHasBeenSet = true; m_groupVersionId = std::forward<GroupVersionIdT>(value); }
+    template<typename GroupVersionIdT = Aws::String>
+    CreateDeploymentRequest& WithGroupVersionId(GroupVersionIdT&& value) { SetGroupVersionId(std::forward<GroupVersionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_amznClientToken;
@@ -243,7 +101,7 @@ namespace Model
     Aws::String m_deploymentId;
     bool m_deploymentIdHasBeenSet = false;
 
-    DeploymentType m_deploymentType;
+    DeploymentType m_deploymentType{DeploymentType::NOT_SET};
     bool m_deploymentTypeHasBeenSet = false;
 
     Aws::String m_groupId;

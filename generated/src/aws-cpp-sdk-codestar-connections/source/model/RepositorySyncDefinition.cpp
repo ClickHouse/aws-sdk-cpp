@@ -18,19 +18,7 @@ namespace CodeStarconnections
 namespace Model
 {
 
-RepositorySyncDefinition::RepositorySyncDefinition() : 
-    m_branchHasBeenSet(false),
-    m_directoryHasBeenSet(false),
-    m_parentHasBeenSet(false),
-    m_targetHasBeenSet(false)
-{
-}
-
-RepositorySyncDefinition::RepositorySyncDefinition(JsonView jsonValue) : 
-    m_branchHasBeenSet(false),
-    m_directoryHasBeenSet(false),
-    m_parentHasBeenSet(false),
-    m_targetHasBeenSet(false)
+RepositorySyncDefinition::RepositorySyncDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ RepositorySyncDefinition& RepositorySyncDefinition::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Branch"))
   {
     m_branch = jsonValue.GetString("Branch");
-
     m_branchHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Directory"))
   {
     m_directory = jsonValue.GetString("Directory");
-
     m_directoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Parent"))
   {
     m_parent = jsonValue.GetString("Parent");
-
     m_parentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Target"))
   {
     m_target = jsonValue.GetString("Target");
-
     m_targetHasBeenSet = true;
   }
-
   return *this;
 }
 

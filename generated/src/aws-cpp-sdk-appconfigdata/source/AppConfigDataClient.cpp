@@ -37,20 +37,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* AppConfigDataClient::SERVICE_NAME = "appconfig";
-const char* AppConfigDataClient::ALLOCATION_TAG = "AppConfigDataClient";
+namespace Aws
+{
+  namespace AppConfigData
+  {
+    const char SERVICE_NAME[] = "appconfig";
+    const char ALLOCATION_TAG[] = "AppConfigDataClient";
+  }
+}
+const char* AppConfigDataClient::GetServiceName() {return SERVICE_NAME;}
+const char* AppConfigDataClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 AppConfigDataClient::AppConfigDataClient(const AppConfigData::AppConfigDataClientConfiguration& clientConfiguration,
                                          std::shared_ptr<AppConfigDataEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppConfigDataErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AppConfigDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -65,8 +72,7 @@ AppConfigDataClient::AppConfigDataClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppConfigDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AppConfigDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -81,8 +87,7 @@ AppConfigDataClient::AppConfigDataClient(const std::shared_ptr<AWSCredentialsPro
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppConfigDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AppConfigDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -91,12 +96,11 @@ AppConfigDataClient::AppConfigDataClient(const std::shared_ptr<AWSCredentialsPro
   AppConfigDataClient::AppConfigDataClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppConfigDataErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<AppConfigDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -111,7 +115,6 @@ AppConfigDataClient::AppConfigDataClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppConfigDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AppConfigDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -126,7 +129,6 @@ AppConfigDataClient::AppConfigDataClient(const std::shared_ptr<AWSCredentialsPro
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppConfigDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AppConfigDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -146,6 +148,14 @@ std::shared_ptr<AppConfigDataEndpointProviderBase>& AppConfigDataClient::accessE
 void AppConfigDataClient::init(const AppConfigData::AppConfigDataClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("AppConfigData");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

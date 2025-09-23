@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-OutboundCallerConfig::OutboundCallerConfig() : 
-    m_outboundCallerIdNameHasBeenSet(false),
-    m_outboundCallerIdNumberIdHasBeenSet(false),
-    m_outboundFlowIdHasBeenSet(false)
-{
-}
-
-OutboundCallerConfig::OutboundCallerConfig(JsonView jsonValue) : 
-    m_outboundCallerIdNameHasBeenSet(false),
-    m_outboundCallerIdNumberIdHasBeenSet(false),
-    m_outboundFlowIdHasBeenSet(false)
+OutboundCallerConfig::OutboundCallerConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ OutboundCallerConfig& OutboundCallerConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("OutboundCallerIdName"))
   {
     m_outboundCallerIdName = jsonValue.GetString("OutboundCallerIdName");
-
     m_outboundCallerIdNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutboundCallerIdNumberId"))
   {
     m_outboundCallerIdNumberId = jsonValue.GetString("OutboundCallerIdNumberId");
-
     m_outboundCallerIdNumberIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutboundFlowId"))
   {
     m_outboundFlowId = jsonValue.GetString("OutboundFlowId");
-
     m_outboundFlowIdHasBeenSet = true;
   }
-
   return *this;
 }
 

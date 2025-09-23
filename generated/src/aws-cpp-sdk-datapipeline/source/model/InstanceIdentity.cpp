@@ -18,15 +18,7 @@ namespace DataPipeline
 namespace Model
 {
 
-InstanceIdentity::InstanceIdentity() : 
-    m_documentHasBeenSet(false),
-    m_signatureHasBeenSet(false)
-{
-}
-
-InstanceIdentity::InstanceIdentity(JsonView jsonValue) : 
-    m_documentHasBeenSet(false),
-    m_signatureHasBeenSet(false)
+InstanceIdentity::InstanceIdentity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InstanceIdentity& InstanceIdentity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("document"))
   {
     m_document = jsonValue.GetString("document");
-
     m_documentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("signature"))
   {
     m_signature = jsonValue.GetString("signature");
-
     m_signatureHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,19 +20,7 @@ namespace Route53
 namespace Model
 {
 
-HealthCheckObservation::HealthCheckObservation() : 
-    m_region(HealthCheckRegion::NOT_SET),
-    m_regionHasBeenSet(false),
-    m_iPAddressHasBeenSet(false),
-    m_statusReportHasBeenSet(false)
-{
-}
-
-HealthCheckObservation::HealthCheckObservation(const XmlNode& xmlNode) : 
-    m_region(HealthCheckRegion::NOT_SET),
-    m_regionHasBeenSet(false),
-    m_iPAddressHasBeenSet(false),
-    m_statusReportHasBeenSet(false)
+HealthCheckObservation::HealthCheckObservation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ HealthCheckObservation& HealthCheckObservation::operator =(const XmlNode& xmlNod
     XmlNode regionNode = resultNode.FirstChild("Region");
     if(!regionNode.IsNull())
     {
-      m_region = HealthCheckRegionMapper::GetHealthCheckRegionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(regionNode.GetText()).c_str()).c_str());
+      m_region = HealthCheckRegionMapper::GetHealthCheckRegionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(regionNode.GetText()).c_str()));
       m_regionHasBeenSet = true;
     }
     XmlNode iPAddressNode = resultNode.FirstChild("IPAddress");

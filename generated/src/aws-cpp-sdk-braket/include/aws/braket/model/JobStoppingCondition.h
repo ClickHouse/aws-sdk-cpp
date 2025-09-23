@@ -22,47 +22,33 @@ namespace Model
 {
 
   /**
-   * <p>Specifies limits for how long an Amazon Braket job can run. </p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Specifies limits for how long an Amazon Braket hybrid job can run.
+   * </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/braket-2019-09-01/JobStoppingCondition">AWS
    * API Reference</a></p>
    */
   class JobStoppingCondition
   {
   public:
-    AWS_BRAKET_API JobStoppingCondition();
+    AWS_BRAKET_API JobStoppingCondition() = default;
     AWS_BRAKET_API JobStoppingCondition(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API JobStoppingCondition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The maximum length of time, in seconds, that an Amazon Braket job can
+     * <p>The maximum length of time, in seconds, that an Amazon Braket hybrid job can
      * run.</p>
      */
-    inline int GetMaxRuntimeInSeconds() const{ return m_maxRuntimeInSeconds; }
-
-    /**
-     * <p>The maximum length of time, in seconds, that an Amazon Braket job can
-     * run.</p>
-     */
+    inline int GetMaxRuntimeInSeconds() const { return m_maxRuntimeInSeconds; }
     inline bool MaxRuntimeInSecondsHasBeenSet() const { return m_maxRuntimeInSecondsHasBeenSet; }
-
-    /**
-     * <p>The maximum length of time, in seconds, that an Amazon Braket job can
-     * run.</p>
-     */
     inline void SetMaxRuntimeInSeconds(int value) { m_maxRuntimeInSecondsHasBeenSet = true; m_maxRuntimeInSeconds = value; }
-
-    /**
-     * <p>The maximum length of time, in seconds, that an Amazon Braket job can
-     * run.</p>
-     */
     inline JobStoppingCondition& WithMaxRuntimeInSeconds(int value) { SetMaxRuntimeInSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxRuntimeInSeconds;
+    int m_maxRuntimeInSeconds{0};
     bool m_maxRuntimeInSecondsHasBeenSet = false;
   };
 

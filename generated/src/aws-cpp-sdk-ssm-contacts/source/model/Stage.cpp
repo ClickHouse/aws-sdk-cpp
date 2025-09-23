@@ -18,17 +18,7 @@ namespace SSMContacts
 namespace Model
 {
 
-Stage::Stage() : 
-    m_durationInMinutes(0),
-    m_durationInMinutesHasBeenSet(false),
-    m_targetsHasBeenSet(false)
-{
-}
-
-Stage::Stage(JsonView jsonValue) : 
-    m_durationInMinutes(0),
-    m_durationInMinutesHasBeenSet(false),
-    m_targetsHasBeenSet(false)
+Stage::Stage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ Stage& Stage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DurationInMinutes"))
   {
     m_durationInMinutes = jsonValue.GetInteger("DurationInMinutes");
-
     m_durationInMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Targets"))
   {
     Aws::Utils::Array<JsonView> targetsJsonList = jsonValue.GetArray("Targets");
@@ -51,7 +39,6 @@ Stage& Stage::operator =(JsonView jsonValue)
     }
     m_targetsHasBeenSet = true;
   }
-
   return *this;
 }
 

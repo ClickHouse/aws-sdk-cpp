@@ -20,17 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBInstanceRole::DBInstanceRole() : 
-    m_roleArnHasBeenSet(false),
-    m_featureNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-DBInstanceRole::DBInstanceRole(const XmlNode& xmlNode) : 
-    m_roleArnHasBeenSet(false),
-    m_featureNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
+DBInstanceRole::DBInstanceRole(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

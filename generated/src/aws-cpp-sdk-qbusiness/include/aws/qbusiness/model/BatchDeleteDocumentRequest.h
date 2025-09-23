@@ -23,7 +23,7 @@ namespace Model
   class BatchDeleteDocumentRequest : public QBusinessRequest
   {
   public:
-    AWS_QBUSINESS_API BatchDeleteDocumentRequest();
+    AWS_QBUSINESS_API BatchDeleteDocumentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,198 +34,70 @@ namespace Model
     AWS_QBUSINESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q application.</p>
+     * <p>The identifier of the Amazon Q Business application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    BatchDeleteDocumentRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q application.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline const Aws::String& GetDataSourceSyncId() const{ return m_dataSourceSyncId; }
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline bool DataSourceSyncIdHasBeenSet() const { return m_dataSourceSyncIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline void SetDataSourceSyncId(const Aws::String& value) { m_dataSourceSyncIdHasBeenSet = true; m_dataSourceSyncId = value; }
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline void SetDataSourceSyncId(Aws::String&& value) { m_dataSourceSyncIdHasBeenSet = true; m_dataSourceSyncId = std::move(value); }
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline void SetDataSourceSyncId(const char* value) { m_dataSourceSyncIdHasBeenSet = true; m_dataSourceSyncId.assign(value); }
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithDataSourceSyncId(const Aws::String& value) { SetDataSourceSyncId(value); return *this;}
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithDataSourceSyncId(Aws::String&& value) { SetDataSourceSyncId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the data source sync during which the documents were
-     * deleted.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithDataSourceSyncId(const char* value) { SetDataSourceSyncId(value); return *this;}
-
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline const Aws::Vector<DeleteDocument>& GetDocuments() const{ return m_documents; }
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline bool DocumentsHasBeenSet() const { return m_documentsHasBeenSet; }
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline void SetDocuments(const Aws::Vector<DeleteDocument>& value) { m_documentsHasBeenSet = true; m_documents = value; }
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline void SetDocuments(Aws::Vector<DeleteDocument>&& value) { m_documentsHasBeenSet = true; m_documents = std::move(value); }
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithDocuments(const Aws::Vector<DeleteDocument>& value) { SetDocuments(value); return *this;}
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithDocuments(Aws::Vector<DeleteDocument>&& value) { SetDocuments(std::move(value)); return *this;}
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline BatchDeleteDocumentRequest& AddDocuments(const DeleteDocument& value) { m_documentsHasBeenSet = true; m_documents.push_back(value); return *this; }
-
-    /**
-     * <p>Documents deleted from the Amazon Q index.</p>
-     */
-    inline BatchDeleteDocumentRequest& AddDocuments(DeleteDocument&& value) { m_documentsHasBeenSet = true; m_documents.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
+     * <p>The identifier of the Amazon Q Business index that contains the documents to
      * delete.</p>
      */
-    inline const Aws::String& GetIndexId() const{ return m_indexId; }
-
-    /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
-     */
+    inline const Aws::String& GetIndexId() const { return m_indexId; }
     inline bool IndexIdHasBeenSet() const { return m_indexIdHasBeenSet; }
+    template<typename IndexIdT = Aws::String>
+    void SetIndexId(IndexIdT&& value) { m_indexIdHasBeenSet = true; m_indexId = std::forward<IndexIdT>(value); }
+    template<typename IndexIdT = Aws::String>
+    BatchDeleteDocumentRequest& WithIndexId(IndexIdT&& value) { SetIndexId(std::forward<IndexIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
+     * <p>Documents deleted from the Amazon Q Business index.</p>
      */
-    inline void SetIndexId(const Aws::String& value) { m_indexIdHasBeenSet = true; m_indexId = value; }
+    inline const Aws::Vector<DeleteDocument>& GetDocuments() const { return m_documents; }
+    inline bool DocumentsHasBeenSet() const { return m_documentsHasBeenSet; }
+    template<typename DocumentsT = Aws::Vector<DeleteDocument>>
+    void SetDocuments(DocumentsT&& value) { m_documentsHasBeenSet = true; m_documents = std::forward<DocumentsT>(value); }
+    template<typename DocumentsT = Aws::Vector<DeleteDocument>>
+    BatchDeleteDocumentRequest& WithDocuments(DocumentsT&& value) { SetDocuments(std::forward<DocumentsT>(value)); return *this;}
+    template<typename DocumentsT = DeleteDocument>
+    BatchDeleteDocumentRequest& AddDocuments(DocumentsT&& value) { m_documentsHasBeenSet = true; m_documents.emplace_back(std::forward<DocumentsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
+     * <p>The identifier of the data source sync during which the documents were
+     * deleted.</p>
      */
-    inline void SetIndexId(Aws::String&& value) { m_indexIdHasBeenSet = true; m_indexId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
-     */
-    inline void SetIndexId(const char* value) { m_indexIdHasBeenSet = true; m_indexId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithIndexId(const Aws::String& value) { SetIndexId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithIndexId(Aws::String&& value) { SetIndexId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q index that contains the documents to
-     * delete.</p>
-     */
-    inline BatchDeleteDocumentRequest& WithIndexId(const char* value) { SetIndexId(value); return *this;}
-
+    inline const Aws::String& GetDataSourceSyncId() const { return m_dataSourceSyncId; }
+    inline bool DataSourceSyncIdHasBeenSet() const { return m_dataSourceSyncIdHasBeenSet; }
+    template<typename DataSourceSyncIdT = Aws::String>
+    void SetDataSourceSyncId(DataSourceSyncIdT&& value) { m_dataSourceSyncIdHasBeenSet = true; m_dataSourceSyncId = std::forward<DataSourceSyncIdT>(value); }
+    template<typename DataSourceSyncIdT = Aws::String>
+    BatchDeleteDocumentRequest& WithDataSourceSyncId(DataSourceSyncIdT&& value) { SetDataSourceSyncId(std::forward<DataSourceSyncIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
     bool m_applicationIdHasBeenSet = false;
 
-    Aws::String m_dataSourceSyncId;
-    bool m_dataSourceSyncIdHasBeenSet = false;
+    Aws::String m_indexId;
+    bool m_indexIdHasBeenSet = false;
 
     Aws::Vector<DeleteDocument> m_documents;
     bool m_documentsHasBeenSet = false;
 
-    Aws::String m_indexId;
-    bool m_indexIdHasBeenSet = false;
+    Aws::String m_dataSourceSyncId;
+    bool m_dataSourceSyncIdHasBeenSet = false;
   };
 
 } // namespace Model

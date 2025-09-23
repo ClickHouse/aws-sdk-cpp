@@ -18,15 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-Content::Content() : 
-    m_dataHasBeenSet(false),
-    m_charsetHasBeenSet(false)
-{
-}
-
-Content::Content(JsonView jsonValue) : 
-    m_dataHasBeenSet(false),
-    m_charsetHasBeenSet(false)
+Content::Content(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Content& Content::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Data"))
   {
     m_data = jsonValue.GetString("Data");
-
     m_dataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Charset"))
   {
     m_charset = jsonValue.GetString("Charset");
-
     m_charsetHasBeenSet = true;
   }
-
   return *this;
 }
 

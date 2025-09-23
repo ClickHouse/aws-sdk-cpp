@@ -18,15 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-S3BucketDefinitionForJob::S3BucketDefinitionForJob() : 
-    m_accountIdHasBeenSet(false),
-    m_bucketsHasBeenSet(false)
-{
-}
-
-S3BucketDefinitionForJob::S3BucketDefinitionForJob(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_bucketsHasBeenSet(false)
+S3BucketDefinitionForJob::S3BucketDefinitionForJob(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ S3BucketDefinitionForJob& S3BucketDefinitionForJob::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("buckets"))
   {
     Aws::Utils::Array<JsonView> bucketsJsonList = jsonValue.GetArray("buckets");
@@ -49,7 +39,6 @@ S3BucketDefinitionForJob& S3BucketDefinitionForJob::operator =(JsonView jsonValu
     }
     m_bucketsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,14 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTopicRequest::CreateTopicRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_topicIdHasBeenSet(false),
-    m_topicHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateTopicRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -44,6 +36,23 @@ Aws::String CreateTopicRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_folderArnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> folderArnsJsonList(m_folderArns.size());
+   for(unsigned folderArnsIndex = 0; folderArnsIndex < folderArnsJsonList.GetLength(); ++folderArnsIndex)
+   {
+     folderArnsJsonList[folderArnsIndex].AsString(m_folderArns[folderArnsIndex]);
+   }
+   payload.WithArray("FolderArns", std::move(folderArnsJsonList));
+
+  }
+
+  if(m_customInstructionsHasBeenSet)
+  {
+   payload.WithObject("CustomInstructions", m_customInstructions.Jsonize());
 
   }
 

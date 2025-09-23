@@ -18,15 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-LambdaSavingsEstimationMode::LambdaSavingsEstimationMode() : 
-    m_source(LambdaSavingsEstimationModeSource::NOT_SET),
-    m_sourceHasBeenSet(false)
-{
-}
-
-LambdaSavingsEstimationMode::LambdaSavingsEstimationMode(JsonView jsonValue) : 
-    m_source(LambdaSavingsEstimationModeSource::NOT_SET),
-    m_sourceHasBeenSet(false)
+LambdaSavingsEstimationMode::LambdaSavingsEstimationMode(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LambdaSavingsEstimationMode& LambdaSavingsEstimationMode::operator =(JsonView js
   if(jsonValue.ValueExists("source"))
   {
     m_source = LambdaSavingsEstimationModeSourceMapper::GetLambdaSavingsEstimationModeSourceForName(jsonValue.GetString("source"));
-
     m_sourceHasBeenSet = true;
   }
-
   return *this;
 }
 

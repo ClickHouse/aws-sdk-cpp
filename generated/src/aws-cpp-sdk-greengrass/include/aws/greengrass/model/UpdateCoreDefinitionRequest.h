@@ -21,7 +21,7 @@ namespace Model
   class UpdateCoreDefinitionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API UpdateCoreDefinitionRequest();
+    AWS_GREENGRASS_API UpdateCoreDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_GREENGRASS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The ID of the core definition.
      */
-    inline const Aws::String& GetCoreDefinitionId() const{ return m_coreDefinitionId; }
-
-    /**
-     * The ID of the core definition.
-     */
+    inline const Aws::String& GetCoreDefinitionId() const { return m_coreDefinitionId; }
     inline bool CoreDefinitionIdHasBeenSet() const { return m_coreDefinitionIdHasBeenSet; }
+    template<typename CoreDefinitionIdT = Aws::String>
+    void SetCoreDefinitionId(CoreDefinitionIdT&& value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId = std::forward<CoreDefinitionIdT>(value); }
+    template<typename CoreDefinitionIdT = Aws::String>
+    UpdateCoreDefinitionRequest& WithCoreDefinitionId(CoreDefinitionIdT&& value) { SetCoreDefinitionId(std::forward<CoreDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the core definition.
-     */
-    inline void SetCoreDefinitionId(const Aws::String& value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId = value; }
-
-    /**
-     * The ID of the core definition.
-     */
-    inline void SetCoreDefinitionId(Aws::String&& value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the core definition.
-     */
-    inline void SetCoreDefinitionId(const char* value) { m_coreDefinitionIdHasBeenSet = true; m_coreDefinitionId.assign(value); }
-
-    /**
-     * The ID of the core definition.
-     */
-    inline UpdateCoreDefinitionRequest& WithCoreDefinitionId(const Aws::String& value) { SetCoreDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the core definition.
-     */
-    inline UpdateCoreDefinitionRequest& WithCoreDefinitionId(Aws::String&& value) { SetCoreDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the core definition.
-     */
-    inline UpdateCoreDefinitionRequest& WithCoreDefinitionId(const char* value) { SetCoreDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * The name of the definition.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the definition.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateCoreDefinitionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateCoreDefinitionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateCoreDefinitionRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateCoreDefinitionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_coreDefinitionId;

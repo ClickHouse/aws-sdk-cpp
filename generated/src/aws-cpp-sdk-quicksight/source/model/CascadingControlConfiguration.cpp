@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-CascadingControlConfiguration::CascadingControlConfiguration() : 
-    m_sourceControlsHasBeenSet(false)
-{
-}
-
-CascadingControlConfiguration::CascadingControlConfiguration(JsonView jsonValue) : 
-    m_sourceControlsHasBeenSet(false)
+CascadingControlConfiguration::CascadingControlConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ CascadingControlConfiguration& CascadingControlConfiguration::operator =(JsonVie
     }
     m_sourceControlsHasBeenSet = true;
   }
-
   return *this;
 }
 

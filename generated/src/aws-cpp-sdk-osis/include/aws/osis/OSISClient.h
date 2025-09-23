@@ -27,8 +27,8 @@ namespace OSIS
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef OSISClientConfiguration ClientConfigurationType;
       typedef OSISEndpointProvider EndpointProviderType;
@@ -38,14 +38,14 @@ namespace OSIS
         * is not specified, it will be initialized to default values.
         */
         OSISClient(const Aws::OSIS::OSISClientConfiguration& clientConfiguration = Aws::OSIS::OSISClientConfiguration(),
-                   std::shared_ptr<OSISEndpointProviderBase> endpointProvider = Aws::MakeShared<OSISEndpointProvider>(ALLOCATION_TAG));
+                   std::shared_ptr<OSISEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         OSISClient(const Aws::Auth::AWSCredentials& credentials,
-                   std::shared_ptr<OSISEndpointProviderBase> endpointProvider = Aws::MakeShared<OSISEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<OSISEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::OSIS::OSISClientConfiguration& clientConfiguration = Aws::OSIS::OSISClientConfiguration());
 
        /**
@@ -53,7 +53,7 @@ namespace OSIS
         * the default http client factory will be used
         */
         OSISClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                   std::shared_ptr<OSISEndpointProviderBase> endpointProvider = Aws::MakeShared<OSISEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<OSISEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::OSIS::OSISClientConfiguration& clientConfiguration = Aws::OSIS::OSISClientConfiguration());
 
 
@@ -109,6 +109,33 @@ namespace OSIS
         }
 
         /**
+         * <p>Creates a VPC endpoint for an OpenSearch Ingestion pipeline. Pipeline
+         * endpoints allow you to ingest data from your VPC into pipelines that you have
+         * access to.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/CreatePipelineEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreatePipelineEndpointOutcome CreatePipelineEndpoint(const Model::CreatePipelineEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreatePipelineEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreatePipelineEndpointRequestT = Model::CreatePipelineEndpointRequest>
+        Model::CreatePipelineEndpointOutcomeCallable CreatePipelineEndpointCallable(const CreatePipelineEndpointRequestT& request) const
+        {
+            return SubmitCallable(&OSISClient::CreatePipelineEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for CreatePipelineEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreatePipelineEndpointRequestT = Model::CreatePipelineEndpointRequest>
+        void CreatePipelineEndpointAsync(const CreatePipelineEndpointRequestT& request, const CreatePipelineEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OSISClient::CreatePipelineEndpoint, request, handler, context);
+        }
+
+        /**
          * <p>Deletes an OpenSearch Ingestion pipeline. For more information, see <a
          * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/delete-pipeline.html">Deleting
          * Amazon OpenSearch Ingestion pipelines</a>.</p><p><h3>See Also:</h3>   <a
@@ -133,6 +160,58 @@ namespace OSIS
         void DeletePipelineAsync(const DeletePipelineRequestT& request, const DeletePipelineResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&OSISClient::DeletePipeline, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes a VPC endpoint for an OpenSearch Ingestion pipeline.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/DeletePipelineEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeletePipelineEndpointOutcome DeletePipelineEndpoint(const Model::DeletePipelineEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeletePipelineEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeletePipelineEndpointRequestT = Model::DeletePipelineEndpointRequest>
+        Model::DeletePipelineEndpointOutcomeCallable DeletePipelineEndpointCallable(const DeletePipelineEndpointRequestT& request) const
+        {
+            return SubmitCallable(&OSISClient::DeletePipelineEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for DeletePipelineEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeletePipelineEndpointRequestT = Model::DeletePipelineEndpointRequest>
+        void DeletePipelineEndpointAsync(const DeletePipelineEndpointRequestT& request, const DeletePipelineEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OSISClient::DeletePipelineEndpoint, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes a resource-based policy from an OpenSearch Ingestion
+         * resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/DeleteResourcePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteResourcePolicyOutcome DeleteResourcePolicy(const Model::DeleteResourcePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
+        Model::DeleteResourcePolicyOutcomeCallable DeleteResourcePolicyCallable(const DeleteResourcePolicyRequestT& request) const
+        {
+            return SubmitCallable(&OSISClient::DeleteResourcePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
+        void DeleteResourcePolicyAsync(const DeleteResourcePolicyRequestT& request, const DeleteResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OSISClient::DeleteResourcePolicy, request, handler, context);
         }
 
         /**
@@ -221,6 +300,32 @@ namespace OSIS
         }
 
         /**
+         * <p>Retrieves the resource-based policy attached to an OpenSearch Ingestion
+         * resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/GetResourcePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetResourcePolicyOutcome GetResourcePolicy(const Model::GetResourcePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetResourcePolicyRequestT = Model::GetResourcePolicyRequest>
+        Model::GetResourcePolicyOutcomeCallable GetResourcePolicyCallable(const GetResourcePolicyRequestT& request) const
+        {
+            return SubmitCallable(&OSISClient::GetResourcePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for GetResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetResourcePolicyRequestT = Model::GetResourcePolicyRequest>
+        void GetResourcePolicyAsync(const GetResourcePolicyRequestT& request, const GetResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OSISClient::GetResourcePolicy, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves a list of all available blueprints for Data Prepper. For more
          * information, see <a
          * href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint">Using
@@ -228,13 +333,13 @@ namespace OSIS
          * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/ListPipelineBlueprints">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPipelineBlueprintsOutcome ListPipelineBlueprints(const Model::ListPipelineBlueprintsRequest& request) const;
+        virtual Model::ListPipelineBlueprintsOutcome ListPipelineBlueprints(const Model::ListPipelineBlueprintsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPipelineBlueprints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPipelineBlueprintsRequestT = Model::ListPipelineBlueprintsRequest>
-        Model::ListPipelineBlueprintsOutcomeCallable ListPipelineBlueprintsCallable(const ListPipelineBlueprintsRequestT& request) const
+        Model::ListPipelineBlueprintsOutcomeCallable ListPipelineBlueprintsCallable(const ListPipelineBlueprintsRequestT& request = {}) const
         {
             return SubmitCallable(&OSISClient::ListPipelineBlueprints, request);
         }
@@ -243,9 +348,60 @@ namespace OSIS
          * An Async wrapper for ListPipelineBlueprints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPipelineBlueprintsRequestT = Model::ListPipelineBlueprintsRequest>
-        void ListPipelineBlueprintsAsync(const ListPipelineBlueprintsRequestT& request, const ListPipelineBlueprintsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPipelineBlueprintsAsync(const ListPipelineBlueprintsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPipelineBlueprintsRequestT& request = {}) const
         {
             return SubmitAsync(&OSISClient::ListPipelineBlueprints, request, handler, context);
+        }
+
+        /**
+         * <p>Lists the pipeline endpoints connected to pipelines in your
+         * account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/ListPipelineEndpointConnections">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListPipelineEndpointConnectionsOutcome ListPipelineEndpointConnections(const Model::ListPipelineEndpointConnectionsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListPipelineEndpointConnections that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListPipelineEndpointConnectionsRequestT = Model::ListPipelineEndpointConnectionsRequest>
+        Model::ListPipelineEndpointConnectionsOutcomeCallable ListPipelineEndpointConnectionsCallable(const ListPipelineEndpointConnectionsRequestT& request = {}) const
+        {
+            return SubmitCallable(&OSISClient::ListPipelineEndpointConnections, request);
+        }
+
+        /**
+         * An Async wrapper for ListPipelineEndpointConnections that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListPipelineEndpointConnectionsRequestT = Model::ListPipelineEndpointConnectionsRequest>
+        void ListPipelineEndpointConnectionsAsync(const ListPipelineEndpointConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPipelineEndpointConnectionsRequestT& request = {}) const
+        {
+            return SubmitAsync(&OSISClient::ListPipelineEndpointConnections, request, handler, context);
+        }
+
+        /**
+         * <p>Lists all pipeline endpoints in your account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/ListPipelineEndpoints">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListPipelineEndpointsOutcome ListPipelineEndpoints(const Model::ListPipelineEndpointsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListPipelineEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListPipelineEndpointsRequestT = Model::ListPipelineEndpointsRequest>
+        Model::ListPipelineEndpointsOutcomeCallable ListPipelineEndpointsCallable(const ListPipelineEndpointsRequestT& request = {}) const
+        {
+            return SubmitCallable(&OSISClient::ListPipelineEndpoints, request);
+        }
+
+        /**
+         * An Async wrapper for ListPipelineEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListPipelineEndpointsRequestT = Model::ListPipelineEndpointsRequest>
+        void ListPipelineEndpointsAsync(const ListPipelineEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPipelineEndpointsRequestT& request = {}) const
+        {
+            return SubmitAsync(&OSISClient::ListPipelineEndpoints, request, handler, context);
         }
 
         /**
@@ -256,13 +412,13 @@ namespace OSIS
          * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/ListPipelines">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPipelinesOutcome ListPipelines(const Model::ListPipelinesRequest& request) const;
+        virtual Model::ListPipelinesOutcome ListPipelines(const Model::ListPipelinesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPipelines that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPipelinesRequestT = Model::ListPipelinesRequest>
-        Model::ListPipelinesOutcomeCallable ListPipelinesCallable(const ListPipelinesRequestT& request) const
+        Model::ListPipelinesOutcomeCallable ListPipelinesCallable(const ListPipelinesRequestT& request = {}) const
         {
             return SubmitCallable(&OSISClient::ListPipelines, request);
         }
@@ -271,7 +427,7 @@ namespace OSIS
          * An Async wrapper for ListPipelines that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPipelinesRequestT = Model::ListPipelinesRequest>
-        void ListPipelinesAsync(const ListPipelinesRequestT& request, const ListPipelinesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPipelinesAsync(const ListPipelinesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPipelinesRequestT& request = {}) const
         {
             return SubmitAsync(&OSISClient::ListPipelines, request, handler, context);
         }
@@ -302,6 +458,59 @@ namespace OSIS
         void ListTagsForResourceAsync(const ListTagsForResourceRequestT& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&OSISClient::ListTagsForResource, request, handler, context);
+        }
+
+        /**
+         * <p>Attaches a resource-based policy to an OpenSearch Ingestion resource.
+         * Resource-based policies grant permissions to principals to perform actions on
+         * the resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/PutResourcePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutResourcePolicyOutcome PutResourcePolicy(const Model::PutResourcePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
+        Model::PutResourcePolicyOutcomeCallable PutResourcePolicyCallable(const PutResourcePolicyRequestT& request) const
+        {
+            return SubmitCallable(&OSISClient::PutResourcePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for PutResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
+        void PutResourcePolicyAsync(const PutResourcePolicyRequestT& request, const PutResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OSISClient::PutResourcePolicy, request, handler, context);
+        }
+
+        /**
+         * <p>Revokes pipeline endpoints from specified endpoint IDs.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/osis-2022-01-01/RevokePipelineEndpointConnections">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::RevokePipelineEndpointConnectionsOutcome RevokePipelineEndpointConnections(const Model::RevokePipelineEndpointConnectionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for RevokePipelineEndpointConnections that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename RevokePipelineEndpointConnectionsRequestT = Model::RevokePipelineEndpointConnectionsRequest>
+        Model::RevokePipelineEndpointConnectionsOutcomeCallable RevokePipelineEndpointConnectionsCallable(const RevokePipelineEndpointConnectionsRequestT& request) const
+        {
+            return SubmitCallable(&OSISClient::RevokePipelineEndpointConnections, request);
+        }
+
+        /**
+         * An Async wrapper for RevokePipelineEndpointConnections that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename RevokePipelineEndpointConnectionsRequestT = Model::RevokePipelineEndpointConnectionsRequest>
+        void RevokePipelineEndpointConnectionsAsync(const RevokePipelineEndpointConnectionsRequestT& request, const RevokePipelineEndpointConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OSISClient::RevokePipelineEndpointConnections, request, handler, context);
         }
 
         /**
@@ -476,7 +685,6 @@ namespace OSIS
       void init(const OSISClientConfiguration& clientConfiguration);
 
       OSISClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<OSISEndpointProviderBase> m_endpointProvider;
   };
 

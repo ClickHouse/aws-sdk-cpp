@@ -34,60 +34,24 @@ namespace Model
   class ImagePermission
   {
   public:
-    AWS_WORKSPACES_API ImagePermission();
+    AWS_WORKSPACES_API ImagePermission() = default;
     AWS_WORKSPACES_API ImagePermission(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API ImagePermission& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon Web Services account that an image has been
      * shared with.</p>
      */
-    inline const Aws::String& GetSharedAccountId() const{ return m_sharedAccountId; }
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
+    inline const Aws::String& GetSharedAccountId() const { return m_sharedAccountId; }
     inline bool SharedAccountIdHasBeenSet() const { return m_sharedAccountIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
-    inline void SetSharedAccountId(const Aws::String& value) { m_sharedAccountIdHasBeenSet = true; m_sharedAccountId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
-    inline void SetSharedAccountId(Aws::String&& value) { m_sharedAccountIdHasBeenSet = true; m_sharedAccountId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
-    inline void SetSharedAccountId(const char* value) { m_sharedAccountIdHasBeenSet = true; m_sharedAccountId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
-    inline ImagePermission& WithSharedAccountId(const Aws::String& value) { SetSharedAccountId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
-    inline ImagePermission& WithSharedAccountId(Aws::String&& value) { SetSharedAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Web Services account that an image has been
-     * shared with.</p>
-     */
-    inline ImagePermission& WithSharedAccountId(const char* value) { SetSharedAccountId(value); return *this;}
-
+    template<typename SharedAccountIdT = Aws::String>
+    void SetSharedAccountId(SharedAccountIdT&& value) { m_sharedAccountIdHasBeenSet = true; m_sharedAccountId = std::forward<SharedAccountIdT>(value); }
+    template<typename SharedAccountIdT = Aws::String>
+    ImagePermission& WithSharedAccountId(SharedAccountIdT&& value) { SetSharedAccountId(std::forward<SharedAccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sharedAccountId;

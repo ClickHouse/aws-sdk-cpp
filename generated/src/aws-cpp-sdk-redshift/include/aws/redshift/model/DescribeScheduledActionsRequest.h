@@ -25,7 +25,7 @@ namespace Model
   class DescribeScheduledActionsRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DescribeScheduledActionsRequest();
+    AWS_REDSHIFT_API DescribeScheduledActionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,218 +40,80 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the scheduled action to retrieve. </p>
      */
-    inline const Aws::String& GetScheduledActionName() const{ return m_scheduledActionName; }
-
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
+    inline const Aws::String& GetScheduledActionName() const { return m_scheduledActionName; }
     inline bool ScheduledActionNameHasBeenSet() const { return m_scheduledActionNameHasBeenSet; }
+    template<typename ScheduledActionNameT = Aws::String>
+    void SetScheduledActionName(ScheduledActionNameT&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = std::forward<ScheduledActionNameT>(value); }
+    template<typename ScheduledActionNameT = Aws::String>
+    DescribeScheduledActionsRequest& WithScheduledActionName(ScheduledActionNameT&& value) { SetScheduledActionName(std::forward<ScheduledActionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
-    inline void SetScheduledActionName(const Aws::String& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = value; }
-
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
-    inline void SetScheduledActionName(Aws::String&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = std::move(value); }
-
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
-    inline void SetScheduledActionName(const char* value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName.assign(value); }
-
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithScheduledActionName(const Aws::String& value) { SetScheduledActionName(value); return *this;}
-
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithScheduledActionName(Aws::String&& value) { SetScheduledActionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the scheduled action to retrieve. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithScheduledActionName(const char* value) { SetScheduledActionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the scheduled actions to retrieve. </p>
      */
-    inline const ScheduledActionTypeValues& GetTargetActionType() const{ return m_targetActionType; }
-
-    /**
-     * <p>The type of the scheduled actions to retrieve. </p>
-     */
+    inline ScheduledActionTypeValues GetTargetActionType() const { return m_targetActionType; }
     inline bool TargetActionTypeHasBeenSet() const { return m_targetActionTypeHasBeenSet; }
+    inline void SetTargetActionType(ScheduledActionTypeValues value) { m_targetActionTypeHasBeenSet = true; m_targetActionType = value; }
+    inline DescribeScheduledActionsRequest& WithTargetActionType(ScheduledActionTypeValues value) { SetTargetActionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the scheduled actions to retrieve. </p>
-     */
-    inline void SetTargetActionType(const ScheduledActionTypeValues& value) { m_targetActionTypeHasBeenSet = true; m_targetActionType = value; }
-
-    /**
-     * <p>The type of the scheduled actions to retrieve. </p>
-     */
-    inline void SetTargetActionType(ScheduledActionTypeValues&& value) { m_targetActionTypeHasBeenSet = true; m_targetActionType = std::move(value); }
-
-    /**
-     * <p>The type of the scheduled actions to retrieve. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithTargetActionType(const ScheduledActionTypeValues& value) { SetTargetActionType(value); return *this;}
-
-    /**
-     * <p>The type of the scheduled actions to retrieve. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithTargetActionType(ScheduledActionTypeValues&& value) { SetTargetActionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The start time in UTC of the scheduled actions to retrieve. Only active
      * scheduled actions that have invocations after this time are retrieved.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The start time in UTC of the scheduled actions to retrieve. Only active
-     * scheduled actions that have invocations after this time are retrieved.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    DescribeScheduledActionsRequest& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The start time in UTC of the scheduled actions to retrieve. Only active
-     * scheduled actions that have invocations after this time are retrieved.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The start time in UTC of the scheduled actions to retrieve. Only active
-     * scheduled actions that have invocations after this time are retrieved.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The start time in UTC of the scheduled actions to retrieve. Only active
-     * scheduled actions that have invocations after this time are retrieved.</p>
-     */
-    inline DescribeScheduledActionsRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The start time in UTC of the scheduled actions to retrieve. Only active
-     * scheduled actions that have invocations after this time are retrieved.</p>
-     */
-    inline DescribeScheduledActionsRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The end time in UTC of the scheduled action to retrieve. Only active
      * scheduled actions that have invocations before this time are retrieved.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The end time in UTC of the scheduled action to retrieve. Only active
-     * scheduled actions that have invocations before this time are retrieved.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    DescribeScheduledActionsRequest& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The end time in UTC of the scheduled action to retrieve. Only active
-     * scheduled actions that have invocations before this time are retrieved.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The end time in UTC of the scheduled action to retrieve. Only active
-     * scheduled actions that have invocations before this time are retrieved.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The end time in UTC of the scheduled action to retrieve. Only active
-     * scheduled actions that have invocations before this time are retrieved.</p>
-     */
-    inline DescribeScheduledActionsRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The end time in UTC of the scheduled action to retrieve. Only active
-     * scheduled actions that have invocations before this time are retrieved.</p>
-     */
-    inline DescribeScheduledActionsRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If true, retrieve only active scheduled actions. If false, retrieve only
      * disabled scheduled actions. </p>
      */
-    inline bool GetActive() const{ return m_active; }
-
-    /**
-     * <p>If true, retrieve only active scheduled actions. If false, retrieve only
-     * disabled scheduled actions. </p>
-     */
+    inline bool GetActive() const { return m_active; }
     inline bool ActiveHasBeenSet() const { return m_activeHasBeenSet; }
-
-    /**
-     * <p>If true, retrieve only active scheduled actions. If false, retrieve only
-     * disabled scheduled actions. </p>
-     */
     inline void SetActive(bool value) { m_activeHasBeenSet = true; m_active = value; }
-
-    /**
-     * <p>If true, retrieve only active scheduled actions. If false, retrieve only
-     * disabled scheduled actions. </p>
-     */
     inline DescribeScheduledActionsRequest& WithActive(bool value) { SetActive(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>List of scheduled action filters. </p>
      */
-    inline const Aws::Vector<ScheduledActionFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
+    inline const Aws::Vector<ScheduledActionFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<ScheduledActionFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<ScheduledActionFilter>>
+    DescribeScheduledActionsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = ScheduledActionFilter>
+    DescribeScheduledActionsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
-    inline void SetFilters(const Aws::Vector<ScheduledActionFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
-    inline void SetFilters(Aws::Vector<ScheduledActionFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithFilters(const Aws::Vector<ScheduledActionFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithFilters(Aws::Vector<ScheduledActionFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
-    inline DescribeScheduledActionsRequest& AddFilters(const ScheduledActionFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>List of scheduled action filters. </p>
-     */
-    inline DescribeScheduledActionsRequest& AddFilters(ScheduledActionFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional parameter that specifies the starting point to return a set of
      * response records. When the results of a <a>DescribeScheduledActions</a> request
@@ -260,79 +122,15 @@ namespace Model
      * retrieve the next set of response records by providing the returned marker value
      * in the <code>Marker</code> parameter and retrying the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeScheduledActionsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeScheduledActions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeScheduledActionsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of response records to return in each call. If the number
      * of remaining response records exceeds the specified <code>MaxRecords</code>
@@ -341,53 +139,26 @@ namespace Model
      * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
      * maximum 100.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
     inline DescribeScheduledActionsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_scheduledActionName;
     bool m_scheduledActionNameHasBeenSet = false;
 
-    ScheduledActionTypeValues m_targetActionType;
+    ScheduledActionTypeValues m_targetActionType{ScheduledActionTypeValues::NOT_SET};
     bool m_targetActionTypeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
-    bool m_active;
+    bool m_active{false};
     bool m_activeHasBeenSet = false;
 
     Aws::Vector<ScheduledActionFilter> m_filters;
@@ -396,7 +167,7 @@ namespace Model
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
   };
 

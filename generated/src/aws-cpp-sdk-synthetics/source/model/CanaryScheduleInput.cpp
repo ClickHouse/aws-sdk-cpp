@@ -18,17 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-CanaryScheduleInput::CanaryScheduleInput() : 
-    m_expressionHasBeenSet(false),
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
-{
-}
-
-CanaryScheduleInput::CanaryScheduleInput(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false),
-    m_durationInSeconds(0),
-    m_durationInSecondsHasBeenSet(false)
+CanaryScheduleInput::CanaryScheduleInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ CanaryScheduleInput& CanaryScheduleInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Expression"))
   {
     m_expression = jsonValue.GetString("Expression");
-
     m_expressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DurationInSeconds"))
   {
     m_durationInSeconds = jsonValue.GetInt64("DurationInSeconds");
-
     m_durationInSecondsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RetryConfig"))
+  {
+    m_retryConfig = jsonValue.GetObject("RetryConfig");
+    m_retryConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,12 @@ JsonValue CanaryScheduleInput::Jsonize() const
   if(m_durationInSecondsHasBeenSet)
   {
    payload.WithInt64("DurationInSeconds", m_durationInSeconds);
+
+  }
+
+  if(m_retryConfigHasBeenSet)
+  {
+   payload.WithObject("RetryConfig", m_retryConfig.Jsonize());
 
   }
 

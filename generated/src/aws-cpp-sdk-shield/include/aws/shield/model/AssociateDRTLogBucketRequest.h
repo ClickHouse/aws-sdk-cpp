@@ -21,7 +21,7 @@ namespace Model
   class AssociateDRTLogBucketRequest : public ShieldRequest
   {
   public:
-    AWS_SHIELD_API AssociateDRTLogBucketRequest();
+    AWS_SHIELD_API AssociateDRTLogBucketRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SHIELD_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
      */
-    inline const Aws::String& GetLogBucket() const{ return m_logBucket; }
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
+    inline const Aws::String& GetLogBucket() const { return m_logBucket; }
     inline bool LogBucketHasBeenSet() const { return m_logBucketHasBeenSet; }
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
-    inline void SetLogBucket(const Aws::String& value) { m_logBucketHasBeenSet = true; m_logBucket = value; }
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
-    inline void SetLogBucket(Aws::String&& value) { m_logBucketHasBeenSet = true; m_logBucket = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
-    inline void SetLogBucket(const char* value) { m_logBucketHasBeenSet = true; m_logBucket.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
-    inline AssociateDRTLogBucketRequest& WithLogBucket(const Aws::String& value) { SetLogBucket(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
-    inline AssociateDRTLogBucketRequest& WithLogBucket(Aws::String&& value) { SetLogBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket that contains the logs that you want to share.</p>
-     */
-    inline AssociateDRTLogBucketRequest& WithLogBucket(const char* value) { SetLogBucket(value); return *this;}
-
+    template<typename LogBucketT = Aws::String>
+    void SetLogBucket(LogBucketT&& value) { m_logBucketHasBeenSet = true; m_logBucket = std::forward<LogBucketT>(value); }
+    template<typename LogBucketT = Aws::String>
+    AssociateDRTLogBucketRequest& WithLogBucket(LogBucketT&& value) { SetLogBucket(std::forward<LogBucketT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_logBucket;

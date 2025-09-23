@@ -23,7 +23,7 @@ namespace Model
   class BatchPutScheduledUpdateGroupActionRequest : public AutoScalingRequest
   {
   public:
-    AWS_AUTOSCALING_API BatchPutScheduledUpdateGroupActionRequest();
+    AWS_AUTOSCALING_API BatchPutScheduledUpdateGroupActionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,87 +38,31 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline const Aws::String& GetAutoScalingGroupName() const{ return m_autoScalingGroupName; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
+    inline const Aws::String& GetAutoScalingGroupName() const { return m_autoScalingGroupName; }
     inline bool AutoScalingGroupNameHasBeenSet() const { return m_autoScalingGroupNameHasBeenSet; }
+    template<typename AutoScalingGroupNameT = Aws::String>
+    void SetAutoScalingGroupName(AutoScalingGroupNameT&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::forward<AutoScalingGroupNameT>(value); }
+    template<typename AutoScalingGroupNameT = Aws::String>
+    BatchPutScheduledUpdateGroupActionRequest& WithAutoScalingGroupName(AutoScalingGroupNameT&& value) { SetAutoScalingGroupName(std::forward<AutoScalingGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(const Aws::String& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(const char* value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& WithAutoScalingGroupName(const Aws::String& value) { SetAutoScalingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& WithAutoScalingGroupName(const char* value) { SetAutoScalingGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
      */
-    inline const Aws::Vector<ScheduledUpdateGroupActionRequest>& GetScheduledUpdateGroupActions() const{ return m_scheduledUpdateGroupActions; }
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
+    inline const Aws::Vector<ScheduledUpdateGroupActionRequest>& GetScheduledUpdateGroupActions() const { return m_scheduledUpdateGroupActions; }
     inline bool ScheduledUpdateGroupActionsHasBeenSet() const { return m_scheduledUpdateGroupActionsHasBeenSet; }
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
-    inline void SetScheduledUpdateGroupActions(const Aws::Vector<ScheduledUpdateGroupActionRequest>& value) { m_scheduledUpdateGroupActionsHasBeenSet = true; m_scheduledUpdateGroupActions = value; }
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
-    inline void SetScheduledUpdateGroupActions(Aws::Vector<ScheduledUpdateGroupActionRequest>&& value) { m_scheduledUpdateGroupActionsHasBeenSet = true; m_scheduledUpdateGroupActions = std::move(value); }
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& WithScheduledUpdateGroupActions(const Aws::Vector<ScheduledUpdateGroupActionRequest>& value) { SetScheduledUpdateGroupActions(value); return *this;}
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& WithScheduledUpdateGroupActions(Aws::Vector<ScheduledUpdateGroupActionRequest>&& value) { SetScheduledUpdateGroupActions(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& AddScheduledUpdateGroupActions(const ScheduledUpdateGroupActionRequest& value) { m_scheduledUpdateGroupActionsHasBeenSet = true; m_scheduledUpdateGroupActions.push_back(value); return *this; }
-
-    /**
-     * <p>One or more scheduled actions. The maximum number allowed is 50.</p>
-     */
-    inline BatchPutScheduledUpdateGroupActionRequest& AddScheduledUpdateGroupActions(ScheduledUpdateGroupActionRequest&& value) { m_scheduledUpdateGroupActionsHasBeenSet = true; m_scheduledUpdateGroupActions.push_back(std::move(value)); return *this; }
-
+    template<typename ScheduledUpdateGroupActionsT = Aws::Vector<ScheduledUpdateGroupActionRequest>>
+    void SetScheduledUpdateGroupActions(ScheduledUpdateGroupActionsT&& value) { m_scheduledUpdateGroupActionsHasBeenSet = true; m_scheduledUpdateGroupActions = std::forward<ScheduledUpdateGroupActionsT>(value); }
+    template<typename ScheduledUpdateGroupActionsT = Aws::Vector<ScheduledUpdateGroupActionRequest>>
+    BatchPutScheduledUpdateGroupActionRequest& WithScheduledUpdateGroupActions(ScheduledUpdateGroupActionsT&& value) { SetScheduledUpdateGroupActions(std::forward<ScheduledUpdateGroupActionsT>(value)); return *this;}
+    template<typename ScheduledUpdateGroupActionsT = ScheduledUpdateGroupActionRequest>
+    BatchPutScheduledUpdateGroupActionRequest& AddScheduledUpdateGroupActions(ScheduledUpdateGroupActionsT&& value) { m_scheduledUpdateGroupActionsHasBeenSet = true; m_scheduledUpdateGroupActions.emplace_back(std::forward<ScheduledUpdateGroupActionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_autoScalingGroupName;

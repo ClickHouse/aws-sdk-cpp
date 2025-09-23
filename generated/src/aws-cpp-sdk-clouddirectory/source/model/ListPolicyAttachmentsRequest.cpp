@@ -13,17 +13,6 @@ using namespace Aws::CloudDirectory::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListPolicyAttachmentsRequest::ListPolicyAttachmentsRequest() : 
-    m_directoryArnHasBeenSet(false),
-    m_policyReferenceHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_consistencyLevel(ConsistencyLevel::NOT_SET),
-    m_consistencyLevelHasBeenSet(false)
-{
-}
-
 Aws::String ListPolicyAttachmentsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -60,7 +49,7 @@ Aws::Http::HeaderValueCollection ListPolicyAttachmentsRequest::GetRequestSpecifi
     ss.str("");
   }
 
-  if(m_consistencyLevelHasBeenSet)
+  if(m_consistencyLevelHasBeenSet && m_consistencyLevel != ConsistencyLevel::NOT_SET)
   {
     headers.emplace("x-amz-consistency-level", ConsistencyLevelMapper::GetNameForConsistencyLevel(m_consistencyLevel));
   }

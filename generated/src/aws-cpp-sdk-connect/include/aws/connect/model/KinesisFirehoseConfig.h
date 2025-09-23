@@ -32,52 +32,23 @@ namespace Model
   class KinesisFirehoseConfig
   {
   public:
-    AWS_CONNECT_API KinesisFirehoseConfig();
+    AWS_CONNECT_API KinesisFirehoseConfig() = default;
     AWS_CONNECT_API KinesisFirehoseConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API KinesisFirehoseConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
      */
-    inline const Aws::String& GetFirehoseArn() const{ return m_firehoseArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
+    inline const Aws::String& GetFirehoseArn() const { return m_firehoseArn; }
     inline bool FirehoseArnHasBeenSet() const { return m_firehoseArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
-    inline void SetFirehoseArn(const Aws::String& value) { m_firehoseArnHasBeenSet = true; m_firehoseArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
-    inline void SetFirehoseArn(Aws::String&& value) { m_firehoseArnHasBeenSet = true; m_firehoseArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
-    inline void SetFirehoseArn(const char* value) { m_firehoseArnHasBeenSet = true; m_firehoseArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
-    inline KinesisFirehoseConfig& WithFirehoseArn(const Aws::String& value) { SetFirehoseArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
-    inline KinesisFirehoseConfig& WithFirehoseArn(Aws::String&& value) { SetFirehoseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
-     */
-    inline KinesisFirehoseConfig& WithFirehoseArn(const char* value) { SetFirehoseArn(value); return *this;}
-
+    template<typename FirehoseArnT = Aws::String>
+    void SetFirehoseArn(FirehoseArnT&& value) { m_firehoseArnHasBeenSet = true; m_firehoseArn = std::forward<FirehoseArnT>(value); }
+    template<typename FirehoseArnT = Aws::String>
+    KinesisFirehoseConfig& WithFirehoseArn(FirehoseArnT&& value) { SetFirehoseArn(std::forward<FirehoseArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_firehoseArn;

@@ -25,7 +25,7 @@ namespace Model
   class CreateRotationRequest : public SSMContactsRequest
   {
   public:
-    AWS_SSMCONTACTS_API CreateRotationRequest();
+    AWS_SSMCONTACTS_API CreateRotationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,277 +38,81 @@ namespace Model
     AWS_SSMCONTACTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the rotation.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateRotationRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline CreateRotationRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline CreateRotationRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rotation.</p>
-     */
-    inline CreateRotationRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
+     *  <p>Only the <code>PERSONAL</code> contact type is supported. The contact
+     * types <code>ESCALATION</code> and <code>ONCALL_SCHEDULE</code> are not supported
+     * for this operation. </p>  <p>The order that you list the contacts in is
+     * their shift order in the rotation schedule. To change the order of the contact's
+     * shifts, use the <a>UpdateRotation</a> operation.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetContactIds() const{ return m_contactIds; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetContactIds() const { return m_contactIds; }
     inline bool ContactIdsHasBeenSet() const { return m_contactIdsHasBeenSet; }
+    template<typename ContactIdsT = Aws::Vector<Aws::String>>
+    void SetContactIds(ContactIdsT&& value) { m_contactIdsHasBeenSet = true; m_contactIds = std::forward<ContactIdsT>(value); }
+    template<typename ContactIdsT = Aws::Vector<Aws::String>>
+    CreateRotationRequest& WithContactIds(ContactIdsT&& value) { SetContactIds(std::forward<ContactIdsT>(value)); return *this;}
+    template<typename ContactIdsT = Aws::String>
+    CreateRotationRequest& AddContactIds(ContactIdsT&& value) { m_contactIdsHasBeenSet = true; m_contactIds.emplace_back(std::forward<ContactIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline void SetContactIds(const Aws::Vector<Aws::String>& value) { m_contactIdsHasBeenSet = true; m_contactIds = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline void SetContactIds(Aws::Vector<Aws::String>&& value) { m_contactIdsHasBeenSet = true; m_contactIds = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline CreateRotationRequest& WithContactIds(const Aws::Vector<Aws::String>& value) { SetContactIds(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline CreateRotationRequest& WithContactIds(Aws::Vector<Aws::String>&& value) { SetContactIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline CreateRotationRequest& AddContactIds(const Aws::String& value) { m_contactIdsHasBeenSet = true; m_contactIds.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline CreateRotationRequest& AddContactIds(Aws::String&& value) { m_contactIdsHasBeenSet = true; m_contactIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the contacts to add to the rotation.</p>
-     * <p>The order that you list the contacts in is their shift order in the rotation
-     * schedule. To change the order of the contact's shifts, use the
-     * <a>UpdateRotation</a> operation.</p>
-     */
-    inline CreateRotationRequest& AddContactIds(const char* value) { m_contactIdsHasBeenSet = true; m_contactIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The date and time that the rotation goes into effect.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The date and time that the rotation goes into effect.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    CreateRotationRequest& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the rotation goes into effect.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The date and time that the rotation goes into effect.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the rotation goes into effect.</p>
-     */
-    inline CreateRotationRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the rotation goes into effect.</p>
-     */
-    inline CreateRotationRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
      * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
      * "Asia/Seoul". For more information, see the <a
      * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
      * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
+     * Savings Time rules, such as Pacific Standard Time (PST), are not supported.</p>
+     * 
      */
-    inline const Aws::String& GetTimeZoneId() const{ return m_timeZoneId; }
-
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
+    inline const Aws::String& GetTimeZoneId() const { return m_timeZoneId; }
     inline bool TimeZoneIdHasBeenSet() const { return m_timeZoneIdHasBeenSet; }
+    template<typename TimeZoneIdT = Aws::String>
+    void SetTimeZoneId(TimeZoneIdT&& value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId = std::forward<TimeZoneIdT>(value); }
+    template<typename TimeZoneIdT = Aws::String>
+    CreateRotationRequest& WithTimeZoneId(TimeZoneIdT&& value) { SetTimeZoneId(std::forward<TimeZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
-    inline void SetTimeZoneId(const Aws::String& value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId = value; }
-
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
-    inline void SetTimeZoneId(Aws::String&& value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId = std::move(value); }
-
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
-    inline void SetTimeZoneId(const char* value) { m_timeZoneIdHasBeenSet = true; m_timeZoneId.assign(value); }
-
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
-    inline CreateRotationRequest& WithTimeZoneId(const Aws::String& value) { SetTimeZoneId(value); return *this;}
-
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
-    inline CreateRotationRequest& WithTimeZoneId(Aws::String&& value) { SetTimeZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The time zone to base the rotation’s activity on in Internet Assigned Numbers
-     * Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or
-     * "Asia/Seoul". For more information, see the <a
-     * href="https://www.iana.org/time-zones">Time Zone Database</a> on the IANA
-     * website.</p>  <p>Designators for time zones that don’t support Daylight
-     * Savings Time rules, such as Pacific Standard Time (PST) and Pacific Daylight
-     * Time (PDT), are not supported.</p> 
-     */
-    inline CreateRotationRequest& WithTimeZoneId(const char* value) { SetTimeZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the rule that specifies when a shift's team members
      * rotate.</p>
      */
-    inline const RecurrenceSettings& GetRecurrence() const{ return m_recurrence; }
-
-    /**
-     * <p>Information about the rule that specifies when a shift's team members
-     * rotate.</p>
-     */
+    inline const RecurrenceSettings& GetRecurrence() const { return m_recurrence; }
     inline bool RecurrenceHasBeenSet() const { return m_recurrenceHasBeenSet; }
+    template<typename RecurrenceT = RecurrenceSettings>
+    void SetRecurrence(RecurrenceT&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::forward<RecurrenceT>(value); }
+    template<typename RecurrenceT = RecurrenceSettings>
+    CreateRotationRequest& WithRecurrence(RecurrenceT&& value) { SetRecurrence(std::forward<RecurrenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the rule that specifies when a shift's team members
-     * rotate.</p>
-     */
-    inline void SetRecurrence(const RecurrenceSettings& value) { m_recurrenceHasBeenSet = true; m_recurrence = value; }
-
-    /**
-     * <p>Information about the rule that specifies when a shift's team members
-     * rotate.</p>
-     */
-    inline void SetRecurrence(RecurrenceSettings&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::move(value); }
-
-    /**
-     * <p>Information about the rule that specifies when a shift's team members
-     * rotate.</p>
-     */
-    inline CreateRotationRequest& WithRecurrence(const RecurrenceSettings& value) { SetRecurrence(value); return *this;}
-
-    /**
-     * <p>Information about the rule that specifies when a shift's team members
-     * rotate.</p>
-     */
-    inline CreateRotationRequest& WithRecurrence(RecurrenceSettings&& value) { SetRecurrence(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
      * resource in different ways, such as by purpose, owner, or environment. For more
@@ -316,120 +120,28 @@ namespace Model
      * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
      * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateRotationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateRotationRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
-    inline CreateRotationRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
-    inline CreateRotationRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
-    inline CreateRotationRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Optional metadata to assign to the rotation. Tags enable you to categorize a
-     * resource in different ways, such as by purpose, owner, or environment. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html">Tagging
-     * Incident Manager resources</a> in the <i>Incident Manager User Guide</i>.</p>
-     */
-    inline CreateRotationRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A token that ensures that the operation is called only once with the
      * specified details.</p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline CreateRotationRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline CreateRotationRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that ensures that the operation is called only once with the
-     * specified details.</p>
-     */
-    inline CreateRotationRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    CreateRotationRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -438,7 +150,7 @@ namespace Model
     Aws::Vector<Aws::String> m_contactIds;
     bool m_contactIdsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
     Aws::String m_timeZoneId;

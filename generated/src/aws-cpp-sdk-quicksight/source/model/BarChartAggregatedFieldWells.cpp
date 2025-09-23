@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-BarChartAggregatedFieldWells::BarChartAggregatedFieldWells() : 
-    m_categoryHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_colorsHasBeenSet(false),
-    m_smallMultiplesHasBeenSet(false)
-{
-}
-
-BarChartAggregatedFieldWells::BarChartAggregatedFieldWells(JsonView jsonValue) : 
-    m_categoryHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_colorsHasBeenSet(false),
-    m_smallMultiplesHasBeenSet(false)
+BarChartAggregatedFieldWells::BarChartAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ BarChartAggregatedFieldWells& BarChartAggregatedFieldWells::operator =(JsonView 
     }
     m_categoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -56,7 +43,6 @@ BarChartAggregatedFieldWells& BarChartAggregatedFieldWells::operator =(JsonView 
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Colors"))
   {
     Aws::Utils::Array<JsonView> colorsJsonList = jsonValue.GetArray("Colors");
@@ -66,7 +52,6 @@ BarChartAggregatedFieldWells& BarChartAggregatedFieldWells::operator =(JsonView 
     }
     m_colorsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SmallMultiples"))
   {
     Aws::Utils::Array<JsonView> smallMultiplesJsonList = jsonValue.GetArray("SmallMultiples");
@@ -76,7 +61,6 @@ BarChartAggregatedFieldWells& BarChartAggregatedFieldWells::operator =(JsonView 
     }
     m_smallMultiplesHasBeenSet = true;
   }
-
   return *this;
 }
 

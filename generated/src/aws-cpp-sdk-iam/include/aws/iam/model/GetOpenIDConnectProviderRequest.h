@@ -21,7 +21,7 @@ namespace Model
   class GetOpenIDConnectProviderRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API GetOpenIDConnectProviderRequest();
+    AWS_IAM_API GetOpenIDConnectProviderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,94 +36,24 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
      * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
+     * the <a
+     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_ListOpenIDConnectProviders.html">ListOpenIDConnectProviders</a>
+     * operation.</p> <p>For more information about ARNs, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
      * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
-    inline const Aws::String& GetOpenIDConnectProviderArn() const{ return m_openIDConnectProviderArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
+    inline const Aws::String& GetOpenIDConnectProviderArn() const { return m_openIDConnectProviderArn; }
     inline bool OpenIDConnectProviderArnHasBeenSet() const { return m_openIDConnectProviderArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetOpenIDConnectProviderArn(const Aws::String& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetOpenIDConnectProviderArn(Aws::String&& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetOpenIDConnectProviderArn(const char* value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline GetOpenIDConnectProviderRequest& WithOpenIDConnectProviderArn(const Aws::String& value) { SetOpenIDConnectProviderArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline GetOpenIDConnectProviderRequest& WithOpenIDConnectProviderArn(Aws::String&& value) { SetOpenIDConnectProviderArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to
-     * get information for. You can get a list of OIDC provider resource ARNs by using
-     * the <a>ListOpenIDConnectProviders</a> operation.</p> <p>For more information
-     * about ARNs, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline GetOpenIDConnectProviderRequest& WithOpenIDConnectProviderArn(const char* value) { SetOpenIDConnectProviderArn(value); return *this;}
-
+    template<typename OpenIDConnectProviderArnT = Aws::String>
+    void SetOpenIDConnectProviderArn(OpenIDConnectProviderArnT&& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = std::forward<OpenIDConnectProviderArnT>(value); }
+    template<typename OpenIDConnectProviderArnT = Aws::String>
+    GetOpenIDConnectProviderRequest& WithOpenIDConnectProviderArn(OpenIDConnectProviderArnT&& value) { SetOpenIDConnectProviderArn(std::forward<OpenIDConnectProviderArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_openIDConnectProviderArn;

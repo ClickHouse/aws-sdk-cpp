@@ -18,31 +18,7 @@ namespace Glue
 namespace Model
 {
 
-S3HudiDirectTarget::S3HudiDirectTarget() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_compression(HudiTargetCompressionType::NOT_SET),
-    m_compressionHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_format(TargetFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_additionalOptionsHasBeenSet(false),
-    m_schemaChangePolicyHasBeenSet(false)
-{
-}
-
-S3HudiDirectTarget::S3HudiDirectTarget(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_compression(HudiTargetCompressionType::NOT_SET),
-    m_compressionHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_format(TargetFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_additionalOptionsHasBeenSet(false),
-    m_schemaChangePolicyHasBeenSet(false)
+S3HudiDirectTarget::S3HudiDirectTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,10 +28,8 @@ S3HudiDirectTarget& S3HudiDirectTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -65,21 +39,21 @@ S3HudiDirectTarget& S3HudiDirectTarget::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Path"))
   {
     m_path = jsonValue.GetString("Path");
-
     m_pathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Compression"))
   {
     m_compression = HudiTargetCompressionTypeMapper::GetHudiTargetCompressionTypeForName(jsonValue.GetString("Compression"));
-
     m_compressionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("NumberTargetPartitions"))
+  {
+    m_numberTargetPartitions = jsonValue.GetString("NumberTargetPartitions");
+    m_numberTargetPartitionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("PartitionKeys"))
   {
     Aws::Utils::Array<JsonView> partitionKeysJsonList = jsonValue.GetArray("PartitionKeys");
@@ -96,14 +70,11 @@ S3HudiDirectTarget& S3HudiDirectTarget::operator =(JsonView jsonValue)
     }
     m_partitionKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Format"))
   {
     m_format = TargetFormatMapper::GetTargetFormatForName(jsonValue.GetString("Format"));
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdditionalOptions"))
   {
     Aws::Map<Aws::String, JsonView> additionalOptionsJsonMap = jsonValue.GetObject("AdditionalOptions").GetAllObjects();
@@ -113,14 +84,16 @@ S3HudiDirectTarget& S3HudiDirectTarget::operator =(JsonView jsonValue)
     }
     m_additionalOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaChangePolicy"))
   {
     m_schemaChangePolicy = jsonValue.GetObject("SchemaChangePolicy");
-
     m_schemaChangePolicyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AutoDataQuality"))
+  {
+    m_autoDataQuality = jsonValue.GetObject("AutoDataQuality");
+    m_autoDataQualityHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -154,6 +127,12 @@ JsonValue S3HudiDirectTarget::Jsonize() const
   if(m_compressionHasBeenSet)
   {
    payload.WithString("Compression", HudiTargetCompressionTypeMapper::GetNameForHudiTargetCompressionType(m_compression));
+  }
+
+  if(m_numberTargetPartitionsHasBeenSet)
+  {
+   payload.WithString("NumberTargetPartitions", m_numberTargetPartitions);
+
   }
 
   if(m_partitionKeysHasBeenSet)
@@ -191,6 +170,12 @@ JsonValue S3HudiDirectTarget::Jsonize() const
   if(m_schemaChangePolicyHasBeenSet)
   {
    payload.WithObject("SchemaChangePolicy", m_schemaChangePolicy.Jsonize());
+
+  }
+
+  if(m_autoDataQualityHasBeenSet)
+  {
+   payload.WithObject("AutoDataQuality", m_autoDataQuality.Jsonize());
 
   }
 

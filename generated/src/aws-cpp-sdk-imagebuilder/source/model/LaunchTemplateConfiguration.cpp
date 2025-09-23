@@ -18,19 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LaunchTemplateConfiguration::LaunchTemplateConfiguration() : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_accountIdHasBeenSet(false),
-    m_setDefaultVersion(false),
-    m_setDefaultVersionHasBeenSet(false)
-{
-}
-
-LaunchTemplateConfiguration::LaunchTemplateConfiguration(JsonView jsonValue) : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_accountIdHasBeenSet(false),
-    m_setDefaultVersion(false),
-    m_setDefaultVersionHasBeenSet(false)
+LaunchTemplateConfiguration::LaunchTemplateConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ LaunchTemplateConfiguration& LaunchTemplateConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("launchTemplateId"))
   {
     m_launchTemplateId = jsonValue.GetString("launchTemplateId");
-
     m_launchTemplateIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("setDefaultVersion"))
   {
     m_setDefaultVersion = jsonValue.GetBool("setDefaultVersion");
-
     m_setDefaultVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

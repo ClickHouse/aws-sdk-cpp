@@ -34,279 +34,89 @@ namespace Model
   class Region
   {
   public:
-    AWS_LIGHTSAIL_API Region();
+    AWS_LIGHTSAIL_API Region() = default;
     AWS_LIGHTSAIL_API Region(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Region& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
+     * <p>The continent code (<code>NA</code>, meaning North America).</p>
      */
-    inline const Aws::String& GetContinentCode() const{ return m_continentCode; }
-
-    /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
+    inline const Aws::String& GetContinentCode() const { return m_continentCode; }
     inline bool ContinentCodeHasBeenSet() const { return m_continentCodeHasBeenSet; }
+    template<typename ContinentCodeT = Aws::String>
+    void SetContinentCode(ContinentCodeT&& value) { m_continentCodeHasBeenSet = true; m_continentCode = std::forward<ContinentCodeT>(value); }
+    template<typename ContinentCodeT = Aws::String>
+    Region& WithContinentCode(ContinentCodeT&& value) { SetContinentCode(std::forward<ContinentCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
-    inline void SetContinentCode(const Aws::String& value) { m_continentCodeHasBeenSet = true; m_continentCode = value; }
-
-    /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
-    inline void SetContinentCode(Aws::String&& value) { m_continentCodeHasBeenSet = true; m_continentCode = std::move(value); }
-
-    /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
-    inline void SetContinentCode(const char* value) { m_continentCodeHasBeenSet = true; m_continentCode.assign(value); }
-
-    /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
-    inline Region& WithContinentCode(const Aws::String& value) { SetContinentCode(value); return *this;}
-
-    /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
-    inline Region& WithContinentCode(Aws::String&& value) { SetContinentCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
-     */
-    inline Region& WithContinentCode(const char* value) { SetContinentCode(value); return *this;}
-
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
+     * <p>The description of the Amazon Web Services Region (<code>This region is
      * recommended to serve users in the eastern United States and eastern
      * Canada</code>).</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Region& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
+     * <p>The display name (<code>Ohio</code>).</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
-     */
-    inline Region& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
-     */
-    inline Region& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the Amazon Web Services Region (e.g., <code>This region is
-     * recommended to serve users in the eastern United States and eastern
-     * Canada</code>).</p>
-     */
-    inline Region& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    Region& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
+     * <p>The region name (<code>us-east-2</code>).</p>
      */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
-    inline Region& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
-    inline Region& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name (e.g., <code>Ohio</code>).</p>
-     */
-    inline Region& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
-    /**
-     * <p>The region name (e.g., <code>us-east-2</code>).</p>
-     */
-    inline const RegionName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The region name (e.g., <code>us-east-2</code>).</p>
-     */
+    inline RegionName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(RegionName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline Region& WithName(RegionName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The region name (e.g., <code>us-east-2</code>).</p>
-     */
-    inline void SetName(const RegionName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The region name (e.g., <code>us-east-2</code>).</p>
-     */
-    inline void SetName(RegionName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The region name (e.g., <code>us-east-2</code>).</p>
-     */
-    inline Region& WithName(const RegionName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The region name (e.g., <code>us-east-2</code>).</p>
-     */
-    inline Region& WithName(RegionName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
      * (case-sensitive).</p>
      */
-    inline const Aws::Vector<AvailabilityZone>& GetAvailabilityZones() const{ return m_availabilityZones; }
-
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
+    inline const Aws::Vector<AvailabilityZone>& GetAvailabilityZones() const { return m_availabilityZones; }
     inline bool AvailabilityZonesHasBeenSet() const { return m_availabilityZonesHasBeenSet; }
+    template<typename AvailabilityZonesT = Aws::Vector<AvailabilityZone>>
+    void SetAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::forward<AvailabilityZonesT>(value); }
+    template<typename AvailabilityZonesT = Aws::Vector<AvailabilityZone>>
+    Region& WithAvailabilityZones(AvailabilityZonesT&& value) { SetAvailabilityZones(std::forward<AvailabilityZonesT>(value)); return *this;}
+    template<typename AvailabilityZonesT = AvailabilityZone>
+    Region& AddAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.emplace_back(std::forward<AvailabilityZonesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
-    inline void SetAvailabilityZones(const Aws::Vector<AvailabilityZone>& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
-
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
-    inline void SetAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
-
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
-    inline Region& WithAvailabilityZones(const Aws::Vector<AvailabilityZone>& value) { SetAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
-    inline Region& WithAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
-    inline Region& AddAvailabilityZones(const AvailabilityZone& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>The Availability Zones. Follows the format <code>us-east-2a</code>
-     * (case-sensitive).</p>
-     */
-    inline Region& AddAvailabilityZones(AvailabilityZone&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Availability Zones for databases. Follows the format
      * <code>us-east-2a</code> (case-sensitive).</p>
      */
-    inline const Aws::Vector<AvailabilityZone>& GetRelationalDatabaseAvailabilityZones() const{ return m_relationalDatabaseAvailabilityZones; }
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
+    inline const Aws::Vector<AvailabilityZone>& GetRelationalDatabaseAvailabilityZones() const { return m_relationalDatabaseAvailabilityZones; }
     inline bool RelationalDatabaseAvailabilityZonesHasBeenSet() const { return m_relationalDatabaseAvailabilityZonesHasBeenSet; }
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
-    inline void SetRelationalDatabaseAvailabilityZones(const Aws::Vector<AvailabilityZone>& value) { m_relationalDatabaseAvailabilityZonesHasBeenSet = true; m_relationalDatabaseAvailabilityZones = value; }
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
-    inline void SetRelationalDatabaseAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { m_relationalDatabaseAvailabilityZonesHasBeenSet = true; m_relationalDatabaseAvailabilityZones = std::move(value); }
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
-    inline Region& WithRelationalDatabaseAvailabilityZones(const Aws::Vector<AvailabilityZone>& value) { SetRelationalDatabaseAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
-    inline Region& WithRelationalDatabaseAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { SetRelationalDatabaseAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
-    inline Region& AddRelationalDatabaseAvailabilityZones(const AvailabilityZone& value) { m_relationalDatabaseAvailabilityZonesHasBeenSet = true; m_relationalDatabaseAvailabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>The Availability Zones for databases. Follows the format
-     * <code>us-east-2a</code> (case-sensitive).</p>
-     */
-    inline Region& AddRelationalDatabaseAvailabilityZones(AvailabilityZone&& value) { m_relationalDatabaseAvailabilityZonesHasBeenSet = true; m_relationalDatabaseAvailabilityZones.push_back(std::move(value)); return *this; }
-
+    template<typename RelationalDatabaseAvailabilityZonesT = Aws::Vector<AvailabilityZone>>
+    void SetRelationalDatabaseAvailabilityZones(RelationalDatabaseAvailabilityZonesT&& value) { m_relationalDatabaseAvailabilityZonesHasBeenSet = true; m_relationalDatabaseAvailabilityZones = std::forward<RelationalDatabaseAvailabilityZonesT>(value); }
+    template<typename RelationalDatabaseAvailabilityZonesT = Aws::Vector<AvailabilityZone>>
+    Region& WithRelationalDatabaseAvailabilityZones(RelationalDatabaseAvailabilityZonesT&& value) { SetRelationalDatabaseAvailabilityZones(std::forward<RelationalDatabaseAvailabilityZonesT>(value)); return *this;}
+    template<typename RelationalDatabaseAvailabilityZonesT = AvailabilityZone>
+    Region& AddRelationalDatabaseAvailabilityZones(RelationalDatabaseAvailabilityZonesT&& value) { m_relationalDatabaseAvailabilityZonesHasBeenSet = true; m_relationalDatabaseAvailabilityZones.emplace_back(std::forward<RelationalDatabaseAvailabilityZonesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_continentCode;
@@ -318,7 +128,7 @@ namespace Model
     Aws::String m_displayName;
     bool m_displayNameHasBeenSet = false;
 
-    RegionName m_name;
+    RegionName m_name{RegionName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::Vector<AvailabilityZone> m_availabilityZones;

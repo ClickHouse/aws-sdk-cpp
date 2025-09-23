@@ -33,7 +33,7 @@ namespace Model
   class ImageRecycleBinInfo
   {
   public:
-    AWS_EC2_API ImageRecycleBinInfo();
+    AWS_EC2_API ImageRecycleBinInfo() = default;
     AWS_EC2_API ImageRecycleBinInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ImageRecycleBinInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,196 +41,66 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline const Aws::String& GetImageId() const{ return m_imageId; }
-
-    /**
-     * <p>The ID of the AMI.</p>
-     */
+    inline const Aws::String& GetImageId() const { return m_imageId; }
     inline bool ImageIdHasBeenSet() const { return m_imageIdHasBeenSet; }
+    template<typename ImageIdT = Aws::String>
+    void SetImageId(ImageIdT&& value) { m_imageIdHasBeenSet = true; m_imageId = std::forward<ImageIdT>(value); }
+    template<typename ImageIdT = Aws::String>
+    ImageRecycleBinInfo& WithImageId(ImageIdT&& value) { SetImageId(std::forward<ImageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the AMI.</p>
-     */
-    inline void SetImageId(const Aws::String& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
-
-    /**
-     * <p>The ID of the AMI.</p>
-     */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
-
-    /**
-     * <p>The ID of the AMI.</p>
-     */
-    inline void SetImageId(const char* value) { m_imageIdHasBeenSet = true; m_imageId.assign(value); }
-
-    /**
-     * <p>The ID of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithImageId(const Aws::String& value) { SetImageId(value); return *this;}
-
-    /**
-     * <p>The ID of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithImageId(const char* value) { SetImageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the AMI.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the AMI.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ImageRecycleBinInfo& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the AMI.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the AMI.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the AMI.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the AMI.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the AMI.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ImageRecycleBinInfo& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the AMI.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the AMI.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the AMI.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the AMI.</p>
-     */
-    inline ImageRecycleBinInfo& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the AMI entered the Recycle Bin.</p>
      */
-    inline const Aws::Utils::DateTime& GetRecycleBinEnterTime() const{ return m_recycleBinEnterTime; }
-
-    /**
-     * <p>The date and time when the AMI entered the Recycle Bin.</p>
-     */
+    inline const Aws::Utils::DateTime& GetRecycleBinEnterTime() const { return m_recycleBinEnterTime; }
     inline bool RecycleBinEnterTimeHasBeenSet() const { return m_recycleBinEnterTimeHasBeenSet; }
+    template<typename RecycleBinEnterTimeT = Aws::Utils::DateTime>
+    void SetRecycleBinEnterTime(RecycleBinEnterTimeT&& value) { m_recycleBinEnterTimeHasBeenSet = true; m_recycleBinEnterTime = std::forward<RecycleBinEnterTimeT>(value); }
+    template<typename RecycleBinEnterTimeT = Aws::Utils::DateTime>
+    ImageRecycleBinInfo& WithRecycleBinEnterTime(RecycleBinEnterTimeT&& value) { SetRecycleBinEnterTime(std::forward<RecycleBinEnterTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the AMI entered the Recycle Bin.</p>
-     */
-    inline void SetRecycleBinEnterTime(const Aws::Utils::DateTime& value) { m_recycleBinEnterTimeHasBeenSet = true; m_recycleBinEnterTime = value; }
-
-    /**
-     * <p>The date and time when the AMI entered the Recycle Bin.</p>
-     */
-    inline void SetRecycleBinEnterTime(Aws::Utils::DateTime&& value) { m_recycleBinEnterTimeHasBeenSet = true; m_recycleBinEnterTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the AMI entered the Recycle Bin.</p>
-     */
-    inline ImageRecycleBinInfo& WithRecycleBinEnterTime(const Aws::Utils::DateTime& value) { SetRecycleBinEnterTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the AMI entered the Recycle Bin.</p>
-     */
-    inline ImageRecycleBinInfo& WithRecycleBinEnterTime(Aws::Utils::DateTime&& value) { SetRecycleBinEnterTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the AMI is to be permanently deleted from the Recycle
      * Bin.</p>
      */
-    inline const Aws::Utils::DateTime& GetRecycleBinExitTime() const{ return m_recycleBinExitTime; }
-
-    /**
-     * <p>The date and time when the AMI is to be permanently deleted from the Recycle
-     * Bin.</p>
-     */
+    inline const Aws::Utils::DateTime& GetRecycleBinExitTime() const { return m_recycleBinExitTime; }
     inline bool RecycleBinExitTimeHasBeenSet() const { return m_recycleBinExitTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time when the AMI is to be permanently deleted from the Recycle
-     * Bin.</p>
-     */
-    inline void SetRecycleBinExitTime(const Aws::Utils::DateTime& value) { m_recycleBinExitTimeHasBeenSet = true; m_recycleBinExitTime = value; }
-
-    /**
-     * <p>The date and time when the AMI is to be permanently deleted from the Recycle
-     * Bin.</p>
-     */
-    inline void SetRecycleBinExitTime(Aws::Utils::DateTime&& value) { m_recycleBinExitTimeHasBeenSet = true; m_recycleBinExitTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the AMI is to be permanently deleted from the Recycle
-     * Bin.</p>
-     */
-    inline ImageRecycleBinInfo& WithRecycleBinExitTime(const Aws::Utils::DateTime& value) { SetRecycleBinExitTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the AMI is to be permanently deleted from the Recycle
-     * Bin.</p>
-     */
-    inline ImageRecycleBinInfo& WithRecycleBinExitTime(Aws::Utils::DateTime&& value) { SetRecycleBinExitTime(std::move(value)); return *this;}
-
+    template<typename RecycleBinExitTimeT = Aws::Utils::DateTime>
+    void SetRecycleBinExitTime(RecycleBinExitTimeT&& value) { m_recycleBinExitTimeHasBeenSet = true; m_recycleBinExitTime = std::forward<RecycleBinExitTimeT>(value); }
+    template<typename RecycleBinExitTimeT = Aws::Utils::DateTime>
+    ImageRecycleBinInfo& WithRecycleBinExitTime(RecycleBinExitTimeT&& value) { SetRecycleBinExitTime(std::forward<RecycleBinExitTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_imageId;
@@ -242,10 +112,10 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_recycleBinEnterTime;
+    Aws::Utils::DateTime m_recycleBinEnterTime{};
     bool m_recycleBinEnterTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_recycleBinExitTime;
+    Aws::Utils::DateTime m_recycleBinExitTime{};
     bool m_recycleBinExitTimeHasBeenSet = false;
   };
 

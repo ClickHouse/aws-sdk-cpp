@@ -32,52 +32,23 @@ namespace Model
   class HttpProperties
   {
   public:
-    AWS_SERVICEDISCOVERY_API HttpProperties();
+    AWS_SERVICEDISCOVERY_API HttpProperties() = default;
     AWS_SERVICEDISCOVERY_API HttpProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API HttpProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an HTTP namespace.</p>
      */
-    inline const Aws::String& GetHttpName() const{ return m_httpName; }
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
+    inline const Aws::String& GetHttpName() const { return m_httpName; }
     inline bool HttpNameHasBeenSet() const { return m_httpNameHasBeenSet; }
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
-    inline void SetHttpName(const Aws::String& value) { m_httpNameHasBeenSet = true; m_httpName = value; }
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
-    inline void SetHttpName(Aws::String&& value) { m_httpNameHasBeenSet = true; m_httpName = std::move(value); }
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
-    inline void SetHttpName(const char* value) { m_httpNameHasBeenSet = true; m_httpName.assign(value); }
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
-    inline HttpProperties& WithHttpName(const Aws::String& value) { SetHttpName(value); return *this;}
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
-    inline HttpProperties& WithHttpName(Aws::String&& value) { SetHttpName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an HTTP namespace.</p>
-     */
-    inline HttpProperties& WithHttpName(const char* value) { SetHttpName(value); return *this;}
-
+    template<typename HttpNameT = Aws::String>
+    void SetHttpName(HttpNameT&& value) { m_httpNameHasBeenSet = true; m_httpName = std::forward<HttpNameT>(value); }
+    template<typename HttpNameT = Aws::String>
+    HttpProperties& WithHttpName(HttpNameT&& value) { SetHttpName(std::forward<HttpNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_httpName;

@@ -12,19 +12,27 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateParticipantTokenRequest::CreateParticipantTokenRequest() : 
-    m_attributesHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_stageArnHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateParticipantTokenRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_stageArnHasBeenSet)
+  {
+   payload.WithString("stageArn", m_stageArn);
+
+  }
+
+  if(m_durationHasBeenSet)
+  {
+   payload.WithInteger("duration", m_duration);
+
+  }
+
+  if(m_userIdHasBeenSet)
+  {
+   payload.WithString("userId", m_userId);
+
+  }
 
   if(m_attributesHasBeenSet)
   {
@@ -45,24 +53,6 @@ Aws::String CreateParticipantTokenRequest::SerializePayload() const
      capabilitiesJsonList[capabilitiesIndex].AsString(ParticipantTokenCapabilityMapper::GetNameForParticipantTokenCapability(m_capabilities[capabilitiesIndex]));
    }
    payload.WithArray("capabilities", std::move(capabilitiesJsonList));
-
-  }
-
-  if(m_durationHasBeenSet)
-  {
-   payload.WithInteger("duration", m_duration);
-
-  }
-
-  if(m_stageArnHasBeenSet)
-  {
-   payload.WithString("stageArn", m_stageArn);
-
-  }
-
-  if(m_userIdHasBeenSet)
-  {
-   payload.WithString("userId", m_userId);
 
   }
 

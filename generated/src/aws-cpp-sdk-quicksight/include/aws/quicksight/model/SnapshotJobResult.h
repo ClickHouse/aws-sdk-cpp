@@ -34,68 +34,27 @@ namespace Model
   class SnapshotJobResult
   {
   public:
-    AWS_QUICKSIGHT_API SnapshotJobResult();
+    AWS_QUICKSIGHT_API SnapshotJobResult() = default;
     AWS_QUICKSIGHT_API SnapshotJobResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SnapshotJobResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
      * information on anonymous users and their user configurations. This data provided
      * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
      */
-    inline const Aws::Vector<AnonymousUserSnapshotJobResult>& GetAnonymousUsers() const{ return m_anonymousUsers; }
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
+    inline const Aws::Vector<AnonymousUserSnapshotJobResult>& GetAnonymousUsers() const { return m_anonymousUsers; }
     inline bool AnonymousUsersHasBeenSet() const { return m_anonymousUsersHasBeenSet; }
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
-    inline void SetAnonymousUsers(const Aws::Vector<AnonymousUserSnapshotJobResult>& value) { m_anonymousUsersHasBeenSet = true; m_anonymousUsers = value; }
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
-    inline void SetAnonymousUsers(Aws::Vector<AnonymousUserSnapshotJobResult>&& value) { m_anonymousUsersHasBeenSet = true; m_anonymousUsers = std::move(value); }
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
-    inline SnapshotJobResult& WithAnonymousUsers(const Aws::Vector<AnonymousUserSnapshotJobResult>& value) { SetAnonymousUsers(value); return *this;}
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
-    inline SnapshotJobResult& WithAnonymousUsers(Aws::Vector<AnonymousUserSnapshotJobResult>&& value) { SetAnonymousUsers(std::move(value)); return *this;}
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
-    inline SnapshotJobResult& AddAnonymousUsers(const AnonymousUserSnapshotJobResult& value) { m_anonymousUsersHasBeenSet = true; m_anonymousUsers.push_back(value); return *this; }
-
-    /**
-     * <p> A list of <code>AnonymousUserSnapshotJobResult</code> objects that contain
-     * information on anonymous users and their user configurations. This data provided
-     * by you when you make a <code>StartDashboardSnapshotJob</code> API call.</p>
-     */
-    inline SnapshotJobResult& AddAnonymousUsers(AnonymousUserSnapshotJobResult&& value) { m_anonymousUsersHasBeenSet = true; m_anonymousUsers.push_back(std::move(value)); return *this; }
-
+    template<typename AnonymousUsersT = Aws::Vector<AnonymousUserSnapshotJobResult>>
+    void SetAnonymousUsers(AnonymousUsersT&& value) { m_anonymousUsersHasBeenSet = true; m_anonymousUsers = std::forward<AnonymousUsersT>(value); }
+    template<typename AnonymousUsersT = Aws::Vector<AnonymousUserSnapshotJobResult>>
+    SnapshotJobResult& WithAnonymousUsers(AnonymousUsersT&& value) { SetAnonymousUsers(std::forward<AnonymousUsersT>(value)); return *this;}
+    template<typename AnonymousUsersT = AnonymousUserSnapshotJobResult>
+    SnapshotJobResult& AddAnonymousUsers(AnonymousUsersT&& value) { m_anonymousUsersHasBeenSet = true; m_anonymousUsers.emplace_back(std::forward<AnonymousUsersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AnonymousUserSnapshotJobResult> m_anonymousUsers;

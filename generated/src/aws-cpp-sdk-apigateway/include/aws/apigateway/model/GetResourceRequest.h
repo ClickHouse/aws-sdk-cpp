@@ -29,7 +29,7 @@ namespace Model
   class GetResourceRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API GetResourceRequest();
+    AWS_APIGATEWAY_API GetResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,88 +42,31 @@ namespace Model
     AWS_APIGATEWAY_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    GetResourceRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline GetResourceRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline GetResourceRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline GetResourceRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier for the Resource resource.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    GetResourceRequest& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
-    inline GetResourceRequest& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
-    inline GetResourceRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the Resource resource.</p>
-     */
-    inline GetResourceRequest& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A query parameter to retrieve the specified resources embedded in the
      * returned Resource representation in the response. This <code>embed</code>
@@ -133,96 +76,15 @@ namespace Model
      * <code>"methods"</code> string. For example, <code>GET
      * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEmbed() const{ return m_embed; }
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEmbed() const { return m_embed; }
     inline bool EmbedHasBeenSet() const { return m_embedHasBeenSet; }
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline void SetEmbed(const Aws::Vector<Aws::String>& value) { m_embedHasBeenSet = true; m_embed = value; }
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline void SetEmbed(Aws::Vector<Aws::String>&& value) { m_embedHasBeenSet = true; m_embed = std::move(value); }
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline GetResourceRequest& WithEmbed(const Aws::Vector<Aws::String>& value) { SetEmbed(value); return *this;}
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline GetResourceRequest& WithEmbed(Aws::Vector<Aws::String>&& value) { SetEmbed(std::move(value)); return *this;}
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline GetResourceRequest& AddEmbed(const Aws::String& value) { m_embedHasBeenSet = true; m_embed.push_back(value); return *this; }
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline GetResourceRequest& AddEmbed(Aws::String&& value) { m_embedHasBeenSet = true; m_embed.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A query parameter to retrieve the specified resources embedded in the
-     * returned Resource representation in the response. This <code>embed</code>
-     * parameter value is a list of comma-separated strings. Currently, the request
-     * supports only retrieval of the embedded Method resources this way. The query
-     * parameter value must be a single-valued list and contain the
-     * <code>"methods"</code> string. For example, <code>GET
-     * /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
-     */
-    inline GetResourceRequest& AddEmbed(const char* value) { m_embedHasBeenSet = true; m_embed.push_back(value); return *this; }
-
+    template<typename EmbedT = Aws::Vector<Aws::String>>
+    void SetEmbed(EmbedT&& value) { m_embedHasBeenSet = true; m_embed = std::forward<EmbedT>(value); }
+    template<typename EmbedT = Aws::Vector<Aws::String>>
+    GetResourceRequest& WithEmbed(EmbedT&& value) { SetEmbed(std::forward<EmbedT>(value)); return *this;}
+    template<typename EmbedT = Aws::String>
+    GetResourceRequest& AddEmbed(EmbedT&& value) { m_embedHasBeenSet = true; m_embed.emplace_back(std::forward<EmbedT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_restApiId;

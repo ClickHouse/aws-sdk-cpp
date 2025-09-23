@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-CustomPosixUserConfig::CustomPosixUserConfig() : 
-    m_uid(0),
-    m_uidHasBeenSet(false),
-    m_gid(0),
-    m_gidHasBeenSet(false)
-{
-}
-
-CustomPosixUserConfig::CustomPosixUserConfig(JsonView jsonValue) : 
-    m_uid(0),
-    m_uidHasBeenSet(false),
-    m_gid(0),
-    m_gidHasBeenSet(false)
+CustomPosixUserConfig::CustomPosixUserConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CustomPosixUserConfig& CustomPosixUserConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Uid"))
   {
     m_uid = jsonValue.GetInt64("Uid");
-
     m_uidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Gid"))
   {
     m_gid = jsonValue.GetInt64("Gid");
-
     m_gidHasBeenSet = true;
   }
-
   return *this;
 }
 

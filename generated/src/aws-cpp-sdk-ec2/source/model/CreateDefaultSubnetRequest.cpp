@@ -10,15 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateDefaultSubnetRequest::CreateDefaultSubnetRequest() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipv6Native(false),
-    m_ipv6NativeHasBeenSet(false)
-{
-}
-
 Aws::String CreateDefaultSubnetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -36,6 +27,11 @@ Aws::String CreateDefaultSubnetRequest::SerializePayload() const
   if(m_ipv6NativeHasBeenSet)
   {
     ss << "Ipv6Native=" << std::boolalpha << m_ipv6Native << "&";
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+    ss << "AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

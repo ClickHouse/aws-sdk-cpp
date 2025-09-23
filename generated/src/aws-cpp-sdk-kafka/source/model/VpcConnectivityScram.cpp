@@ -18,15 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-VpcConnectivityScram::VpcConnectivityScram() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-VpcConnectivityScram::VpcConnectivityScram(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+VpcConnectivityScram::VpcConnectivityScram(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VpcConnectivityScram& VpcConnectivityScram::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

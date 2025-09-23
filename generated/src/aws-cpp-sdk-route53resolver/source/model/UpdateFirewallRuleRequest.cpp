@@ -12,24 +12,6 @@ using namespace Aws::Route53Resolver::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateFirewallRuleRequest::UpdateFirewallRuleRequest() : 
-    m_firewallRuleGroupIdHasBeenSet(false),
-    m_firewallDomainListIdHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_action(Action::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_blockResponse(BlockResponse::NOT_SET),
-    m_blockResponseHasBeenSet(false),
-    m_blockOverrideDomainHasBeenSet(false),
-    m_blockOverrideDnsType(BlockOverrideDnsType::NOT_SET),
-    m_blockOverrideDnsTypeHasBeenSet(false),
-    m_blockOverrideTtl(0),
-    m_blockOverrideTtlHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateFirewallRuleRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -43,6 +25,12 @@ Aws::String UpdateFirewallRuleRequest::SerializePayload() const
   if(m_firewallDomainListIdHasBeenSet)
   {
    payload.WithString("FirewallDomainListId", m_firewallDomainListId);
+
+  }
+
+  if(m_firewallThreatProtectionIdHasBeenSet)
+  {
+   payload.WithString("FirewallThreatProtectionId", m_firewallThreatProtectionId);
 
   }
 
@@ -83,6 +71,27 @@ Aws::String UpdateFirewallRuleRequest::SerializePayload() const
   {
    payload.WithString("Name", m_name);
 
+  }
+
+  if(m_firewallDomainRedirectionActionHasBeenSet)
+  {
+   payload.WithString("FirewallDomainRedirectionAction", FirewallDomainRedirectionActionMapper::GetNameForFirewallDomainRedirectionAction(m_firewallDomainRedirectionAction));
+  }
+
+  if(m_qtypeHasBeenSet)
+  {
+   payload.WithString("Qtype", m_qtype);
+
+  }
+
+  if(m_dnsThreatProtectionHasBeenSet)
+  {
+   payload.WithString("DnsThreatProtection", DnsThreatProtectionMapper::GetNameForDnsThreatProtection(m_dnsThreatProtection));
+  }
+
+  if(m_confidenceThresholdHasBeenSet)
+  {
+   payload.WithString("ConfidenceThreshold", ConfidenceThresholdMapper::GetNameForConfidenceThreshold(m_confidenceThreshold));
   }
 
   return payload.View().WriteReadable();

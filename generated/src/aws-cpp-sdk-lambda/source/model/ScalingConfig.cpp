@@ -18,15 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-ScalingConfig::ScalingConfig() : 
-    m_maximumConcurrency(0),
-    m_maximumConcurrencyHasBeenSet(false)
-{
-}
-
-ScalingConfig::ScalingConfig(JsonView jsonValue) : 
-    m_maximumConcurrency(0),
-    m_maximumConcurrencyHasBeenSet(false)
+ScalingConfig::ScalingConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ScalingConfig& ScalingConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MaximumConcurrency"))
   {
     m_maximumConcurrency = jsonValue.GetInteger("MaximumConcurrency");
-
     m_maximumConcurrencyHasBeenSet = true;
   }
-
   return *this;
 }
 

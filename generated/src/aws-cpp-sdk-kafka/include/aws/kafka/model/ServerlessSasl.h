@@ -34,54 +34,25 @@ namespace Model
   class ServerlessSasl
   {
   public:
-    AWS_KAFKA_API ServerlessSasl();
+    AWS_KAFKA_API ServerlessSasl() = default;
     AWS_KAFKA_API ServerlessSasl(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ServerlessSasl& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Indicates whether IAM access control is enabled.</p>
          
      */
-    inline const Iam& GetIam() const{ return m_iam; }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
+    inline const Iam& GetIam() const { return m_iam; }
     inline bool IamHasBeenSet() const { return m_iamHasBeenSet; }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline void SetIam(const Iam& value) { m_iamHasBeenSet = true; m_iam = value; }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline void SetIam(Iam&& value) { m_iamHasBeenSet = true; m_iam = std::move(value); }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline ServerlessSasl& WithIam(const Iam& value) { SetIam(value); return *this;}
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline ServerlessSasl& WithIam(Iam&& value) { SetIam(std::move(value)); return *this;}
-
+    template<typename IamT = Iam>
+    void SetIam(IamT&& value) { m_iamHasBeenSet = true; m_iam = std::forward<IamT>(value); }
+    template<typename IamT = Iam>
+    ServerlessSasl& WithIam(IamT&& value) { SetIam(std::forward<IamT>(value)); return *this;}
+    ///@}
   private:
 
     Iam m_iam;

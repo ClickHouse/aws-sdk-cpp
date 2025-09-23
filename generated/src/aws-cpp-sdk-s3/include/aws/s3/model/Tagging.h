@@ -31,53 +31,26 @@ namespace Model
   class Tagging
   {
   public:
-    AWS_S3_API Tagging();
+    AWS_S3_API Tagging() = default;
     AWS_S3_API Tagging(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API Tagging& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A collection for a set of tags</p>
      */
-    inline const Aws::Vector<Tag>& GetTagSet() const{ return m_tagSet; }
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
+    inline const Aws::Vector<Tag>& GetTagSet() const { return m_tagSet; }
     inline bool TagSetHasBeenSet() const { return m_tagSetHasBeenSet; }
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
-    inline void SetTagSet(const Aws::Vector<Tag>& value) { m_tagSetHasBeenSet = true; m_tagSet = value; }
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
-    inline void SetTagSet(Aws::Vector<Tag>&& value) { m_tagSetHasBeenSet = true; m_tagSet = std::move(value); }
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
-    inline Tagging& WithTagSet(const Aws::Vector<Tag>& value) { SetTagSet(value); return *this;}
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
-    inline Tagging& WithTagSet(Aws::Vector<Tag>&& value) { SetTagSet(std::move(value)); return *this;}
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
-    inline Tagging& AddTagSet(const Tag& value) { m_tagSetHasBeenSet = true; m_tagSet.push_back(value); return *this; }
-
-    /**
-     * <p>A collection for a set of tags</p>
-     */
-    inline Tagging& AddTagSet(Tag&& value) { m_tagSetHasBeenSet = true; m_tagSet.push_back(std::move(value)); return *this; }
-
+    template<typename TagSetT = Aws::Vector<Tag>>
+    void SetTagSet(TagSetT&& value) { m_tagSetHasBeenSet = true; m_tagSet = std::forward<TagSetT>(value); }
+    template<typename TagSetT = Aws::Vector<Tag>>
+    Tagging& WithTagSet(TagSetT&& value) { SetTagSet(std::forward<TagSetT>(value)); return *this;}
+    template<typename TagSetT = Tag>
+    Tagging& AddTagSet(TagSetT&& value) { m_tagSetHasBeenSet = true; m_tagSet.emplace_back(std::forward<TagSetT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Tag> m_tagSet;

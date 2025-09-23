@@ -32,86 +32,36 @@ namespace Model
   class OverrideButtonConfiguration
   {
   public:
-    AWS_PINPOINT_API OverrideButtonConfiguration();
+    AWS_PINPOINT_API OverrideButtonConfiguration() = default;
     AWS_PINPOINT_API OverrideButtonConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API OverrideButtonConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Action triggered by the button.</p>
      */
-    inline const ButtonAction& GetButtonAction() const{ return m_buttonAction; }
-
-    /**
-     * <p>Action triggered by the button.</p>
-     */
+    inline ButtonAction GetButtonAction() const { return m_buttonAction; }
     inline bool ButtonActionHasBeenSet() const { return m_buttonActionHasBeenSet; }
+    inline void SetButtonAction(ButtonAction value) { m_buttonActionHasBeenSet = true; m_buttonAction = value; }
+    inline OverrideButtonConfiguration& WithButtonAction(ButtonAction value) { SetButtonAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Action triggered by the button.</p>
-     */
-    inline void SetButtonAction(const ButtonAction& value) { m_buttonActionHasBeenSet = true; m_buttonAction = value; }
-
-    /**
-     * <p>Action triggered by the button.</p>
-     */
-    inline void SetButtonAction(ButtonAction&& value) { m_buttonActionHasBeenSet = true; m_buttonAction = std::move(value); }
-
-    /**
-     * <p>Action triggered by the button.</p>
-     */
-    inline OverrideButtonConfiguration& WithButtonAction(const ButtonAction& value) { SetButtonAction(value); return *this;}
-
-    /**
-     * <p>Action triggered by the button.</p>
-     */
-    inline OverrideButtonConfiguration& WithButtonAction(ButtonAction&& value) { SetButtonAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Button destination.</p>
      */
-    inline const Aws::String& GetLink() const{ return m_link; }
-
-    /**
-     * <p>Button destination.</p>
-     */
+    inline const Aws::String& GetLink() const { return m_link; }
     inline bool LinkHasBeenSet() const { return m_linkHasBeenSet; }
-
-    /**
-     * <p>Button destination.</p>
-     */
-    inline void SetLink(const Aws::String& value) { m_linkHasBeenSet = true; m_link = value; }
-
-    /**
-     * <p>Button destination.</p>
-     */
-    inline void SetLink(Aws::String&& value) { m_linkHasBeenSet = true; m_link = std::move(value); }
-
-    /**
-     * <p>Button destination.</p>
-     */
-    inline void SetLink(const char* value) { m_linkHasBeenSet = true; m_link.assign(value); }
-
-    /**
-     * <p>Button destination.</p>
-     */
-    inline OverrideButtonConfiguration& WithLink(const Aws::String& value) { SetLink(value); return *this;}
-
-    /**
-     * <p>Button destination.</p>
-     */
-    inline OverrideButtonConfiguration& WithLink(Aws::String&& value) { SetLink(std::move(value)); return *this;}
-
-    /**
-     * <p>Button destination.</p>
-     */
-    inline OverrideButtonConfiguration& WithLink(const char* value) { SetLink(value); return *this;}
-
+    template<typename LinkT = Aws::String>
+    void SetLink(LinkT&& value) { m_linkHasBeenSet = true; m_link = std::forward<LinkT>(value); }
+    template<typename LinkT = Aws::String>
+    OverrideButtonConfiguration& WithLink(LinkT&& value) { SetLink(std::forward<LinkT>(value)); return *this;}
+    ///@}
   private:
 
-    ButtonAction m_buttonAction;
+    ButtonAction m_buttonAction{ButtonAction::NOT_SET};
     bool m_buttonActionHasBeenSet = false;
 
     Aws::String m_link;

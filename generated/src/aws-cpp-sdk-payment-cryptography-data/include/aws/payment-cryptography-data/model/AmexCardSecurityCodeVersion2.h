@@ -32,101 +32,36 @@ namespace Model
   class AmexCardSecurityCodeVersion2
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API AmexCardSecurityCodeVersion2();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API AmexCardSecurityCodeVersion2() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API AmexCardSecurityCodeVersion2(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API AmexCardSecurityCodeVersion2& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The expiry date of a payment card.</p>
      */
-    inline const Aws::String& GetCardExpiryDate() const{ return m_cardExpiryDate; }
-
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
+    inline const Aws::String& GetCardExpiryDate() const { return m_cardExpiryDate; }
     inline bool CardExpiryDateHasBeenSet() const { return m_cardExpiryDateHasBeenSet; }
+    template<typename CardExpiryDateT = Aws::String>
+    void SetCardExpiryDate(CardExpiryDateT&& value) { m_cardExpiryDateHasBeenSet = true; m_cardExpiryDate = std::forward<CardExpiryDateT>(value); }
+    template<typename CardExpiryDateT = Aws::String>
+    AmexCardSecurityCodeVersion2& WithCardExpiryDate(CardExpiryDateT&& value) { SetCardExpiryDate(std::forward<CardExpiryDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
-    inline void SetCardExpiryDate(const Aws::String& value) { m_cardExpiryDateHasBeenSet = true; m_cardExpiryDate = value; }
-
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
-    inline void SetCardExpiryDate(Aws::String&& value) { m_cardExpiryDateHasBeenSet = true; m_cardExpiryDate = std::move(value); }
-
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
-    inline void SetCardExpiryDate(const char* value) { m_cardExpiryDateHasBeenSet = true; m_cardExpiryDate.assign(value); }
-
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
-    inline AmexCardSecurityCodeVersion2& WithCardExpiryDate(const Aws::String& value) { SetCardExpiryDate(value); return *this;}
-
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
-    inline AmexCardSecurityCodeVersion2& WithCardExpiryDate(Aws::String&& value) { SetCardExpiryDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The expiry date of a payment card.</p>
-     */
-    inline AmexCardSecurityCodeVersion2& WithCardExpiryDate(const char* value) { SetCardExpiryDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service code of the AMEX payment card. This is different from the Card
      * Security Code (CSC).</p>
      */
-    inline const Aws::String& GetServiceCode() const{ return m_serviceCode; }
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
+    inline const Aws::String& GetServiceCode() const { return m_serviceCode; }
     inline bool ServiceCodeHasBeenSet() const { return m_serviceCodeHasBeenSet; }
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
-    inline void SetServiceCode(const Aws::String& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = value; }
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
-    inline void SetServiceCode(Aws::String&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::move(value); }
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
-    inline void SetServiceCode(const char* value) { m_serviceCodeHasBeenSet = true; m_serviceCode.assign(value); }
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
-    inline AmexCardSecurityCodeVersion2& WithServiceCode(const Aws::String& value) { SetServiceCode(value); return *this;}
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
-    inline AmexCardSecurityCodeVersion2& WithServiceCode(Aws::String&& value) { SetServiceCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The service code of the AMEX payment card. This is different from the Card
-     * Security Code (CSC).</p>
-     */
-    inline AmexCardSecurityCodeVersion2& WithServiceCode(const char* value) { SetServiceCode(value); return *this;}
-
+    template<typename ServiceCodeT = Aws::String>
+    void SetServiceCode(ServiceCodeT&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::forward<ServiceCodeT>(value); }
+    template<typename ServiceCodeT = Aws::String>
+    AmexCardSecurityCodeVersion2& WithServiceCode(ServiceCodeT&& value) { SetServiceCode(std::forward<ServiceCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cardExpiryDate;

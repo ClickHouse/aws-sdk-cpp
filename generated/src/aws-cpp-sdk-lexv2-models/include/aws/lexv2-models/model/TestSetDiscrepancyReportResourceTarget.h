@@ -32,48 +32,24 @@ namespace Model
   class TestSetDiscrepancyReportResourceTarget
   {
   public:
-    AWS_LEXMODELSV2_API TestSetDiscrepancyReportResourceTarget();
+    AWS_LEXMODELSV2_API TestSetDiscrepancyReportResourceTarget() = default;
     AWS_LEXMODELSV2_API TestSetDiscrepancyReportResourceTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API TestSetDiscrepancyReportResourceTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about the bot alias used as the resource for the test
      * set discrepancy report.</p>
      */
-    inline const TestSetDiscrepancyReportBotAliasTarget& GetBotAliasTarget() const{ return m_botAliasTarget; }
-
-    /**
-     * <p>Contains information about the bot alias used as the resource for the test
-     * set discrepancy report.</p>
-     */
+    inline const TestSetDiscrepancyReportBotAliasTarget& GetBotAliasTarget() const { return m_botAliasTarget; }
     inline bool BotAliasTargetHasBeenSet() const { return m_botAliasTargetHasBeenSet; }
-
-    /**
-     * <p>Contains information about the bot alias used as the resource for the test
-     * set discrepancy report.</p>
-     */
-    inline void SetBotAliasTarget(const TestSetDiscrepancyReportBotAliasTarget& value) { m_botAliasTargetHasBeenSet = true; m_botAliasTarget = value; }
-
-    /**
-     * <p>Contains information about the bot alias used as the resource for the test
-     * set discrepancy report.</p>
-     */
-    inline void SetBotAliasTarget(TestSetDiscrepancyReportBotAliasTarget&& value) { m_botAliasTargetHasBeenSet = true; m_botAliasTarget = std::move(value); }
-
-    /**
-     * <p>Contains information about the bot alias used as the resource for the test
-     * set discrepancy report.</p>
-     */
-    inline TestSetDiscrepancyReportResourceTarget& WithBotAliasTarget(const TestSetDiscrepancyReportBotAliasTarget& value) { SetBotAliasTarget(value); return *this;}
-
-    /**
-     * <p>Contains information about the bot alias used as the resource for the test
-     * set discrepancy report.</p>
-     */
-    inline TestSetDiscrepancyReportResourceTarget& WithBotAliasTarget(TestSetDiscrepancyReportBotAliasTarget&& value) { SetBotAliasTarget(std::move(value)); return *this;}
-
+    template<typename BotAliasTargetT = TestSetDiscrepancyReportBotAliasTarget>
+    void SetBotAliasTarget(BotAliasTargetT&& value) { m_botAliasTargetHasBeenSet = true; m_botAliasTarget = std::forward<BotAliasTargetT>(value); }
+    template<typename BotAliasTargetT = TestSetDiscrepancyReportBotAliasTarget>
+    TestSetDiscrepancyReportResourceTarget& WithBotAliasTarget(BotAliasTargetT&& value) { SetBotAliasTarget(std::forward<BotAliasTargetT>(value)); return *this;}
+    ///@}
   private:
 
     TestSetDiscrepancyReportBotAliasTarget m_botAliasTarget;

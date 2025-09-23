@@ -18,17 +18,7 @@ namespace IoTEventsData
 namespace Model
 {
 
-DetectorStateDefinition::DetectorStateDefinition() : 
-    m_stateNameHasBeenSet(false),
-    m_variablesHasBeenSet(false),
-    m_timersHasBeenSet(false)
-{
-}
-
-DetectorStateDefinition::DetectorStateDefinition(JsonView jsonValue) : 
-    m_stateNameHasBeenSet(false),
-    m_variablesHasBeenSet(false),
-    m_timersHasBeenSet(false)
+DetectorStateDefinition::DetectorStateDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ DetectorStateDefinition& DetectorStateDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("stateName"))
   {
     m_stateName = jsonValue.GetString("stateName");
-
     m_stateNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("variables"))
   {
     Aws::Utils::Array<JsonView> variablesJsonList = jsonValue.GetArray("variables");
@@ -51,7 +39,6 @@ DetectorStateDefinition& DetectorStateDefinition::operator =(JsonView jsonValue)
     }
     m_variablesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timers"))
   {
     Aws::Utils::Array<JsonView> timersJsonList = jsonValue.GetArray("timers");
@@ -61,7 +48,6 @@ DetectorStateDefinition& DetectorStateDefinition::operator =(JsonView jsonValue)
     }
     m_timersHasBeenSet = true;
   }
-
   return *this;
 }
 

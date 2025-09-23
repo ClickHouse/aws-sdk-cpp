@@ -30,63 +30,38 @@ namespace Model
   class Statistics
   {
   public:
-    AWS_MACIE2_API Statistics();
+    AWS_MACIE2_API Statistics() = default;
     AWS_MACIE2_API Statistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Statistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The approximate number of objects that the job has yet to process during its
      * current run.</p>
      */
-    inline double GetApproximateNumberOfObjectsToProcess() const{ return m_approximateNumberOfObjectsToProcess; }
-
-    /**
-     * <p>The approximate number of objects that the job has yet to process during its
-     * current run.</p>
-     */
+    inline double GetApproximateNumberOfObjectsToProcess() const { return m_approximateNumberOfObjectsToProcess; }
     inline bool ApproximateNumberOfObjectsToProcessHasBeenSet() const { return m_approximateNumberOfObjectsToProcessHasBeenSet; }
-
-    /**
-     * <p>The approximate number of objects that the job has yet to process during its
-     * current run.</p>
-     */
     inline void SetApproximateNumberOfObjectsToProcess(double value) { m_approximateNumberOfObjectsToProcessHasBeenSet = true; m_approximateNumberOfObjectsToProcess = value; }
-
-    /**
-     * <p>The approximate number of objects that the job has yet to process during its
-     * current run.</p>
-     */
     inline Statistics& WithApproximateNumberOfObjectsToProcess(double value) { SetApproximateNumberOfObjectsToProcess(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of times that the job has run.</p>
      */
-    inline double GetNumberOfRuns() const{ return m_numberOfRuns; }
-
-    /**
-     * <p>The number of times that the job has run.</p>
-     */
+    inline double GetNumberOfRuns() const { return m_numberOfRuns; }
     inline bool NumberOfRunsHasBeenSet() const { return m_numberOfRunsHasBeenSet; }
-
-    /**
-     * <p>The number of times that the job has run.</p>
-     */
     inline void SetNumberOfRuns(double value) { m_numberOfRunsHasBeenSet = true; m_numberOfRuns = value; }
-
-    /**
-     * <p>The number of times that the job has run.</p>
-     */
     inline Statistics& WithNumberOfRuns(double value) { SetNumberOfRuns(value); return *this;}
-
+    ///@}
   private:
 
-    double m_approximateNumberOfObjectsToProcess;
+    double m_approximateNumberOfObjectsToProcess{0.0};
     bool m_approximateNumberOfObjectsToProcessHasBeenSet = false;
 
-    double m_numberOfRuns;
+    double m_numberOfRuns{0.0};
     bool m_numberOfRunsHasBeenSet = false;
   };
 

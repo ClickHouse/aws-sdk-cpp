@@ -18,19 +18,7 @@ namespace EMR
 namespace Model
 {
 
-PortRange::PortRange() : 
-    m_minRange(0),
-    m_minRangeHasBeenSet(false),
-    m_maxRange(0),
-    m_maxRangeHasBeenSet(false)
-{
-}
-
-PortRange::PortRange(JsonView jsonValue) : 
-    m_minRange(0),
-    m_minRangeHasBeenSet(false),
-    m_maxRange(0),
-    m_maxRangeHasBeenSet(false)
+PortRange::PortRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ PortRange& PortRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MinRange"))
   {
     m_minRange = jsonValue.GetInteger("MinRange");
-
     m_minRangeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxRange"))
   {
     m_maxRange = jsonValue.GetInteger("MaxRange");
-
     m_maxRangeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,19 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-ImagePermissions::ImagePermissions() : 
-    m_allowFleet(false),
-    m_allowFleetHasBeenSet(false),
-    m_allowImageBuilder(false),
-    m_allowImageBuilderHasBeenSet(false)
-{
-}
-
-ImagePermissions::ImagePermissions(JsonView jsonValue) : 
-    m_allowFleet(false),
-    m_allowFleetHasBeenSet(false),
-    m_allowImageBuilder(false),
-    m_allowImageBuilderHasBeenSet(false)
+ImagePermissions::ImagePermissions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ImagePermissions& ImagePermissions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("allowFleet"))
   {
     m_allowFleet = jsonValue.GetBool("allowFleet");
-
     m_allowFleetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("allowImageBuilder"))
   {
     m_allowImageBuilder = jsonValue.GetBool("allowImageBuilder");
-
     m_allowImageBuilderHasBeenSet = true;
   }
-
   return *this;
 }
 

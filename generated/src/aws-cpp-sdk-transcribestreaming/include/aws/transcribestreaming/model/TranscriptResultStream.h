@@ -6,11 +6,6 @@
 #pragma once
 #include <aws/transcribestreaming/TranscribeStreamingService_EXPORTS.h>
 #include <aws/transcribestreaming/model/TranscriptEvent.h>
-#include <aws/transcribestreaming/model/BadRequestException.h>
-#include <aws/transcribestreaming/model/LimitExceededException.h>
-#include <aws/transcribestreaming/model/InternalFailureException.h>
-#include <aws/transcribestreaming/model/ConflictException.h>
-#include <aws/transcribestreaming/model/ServiceUnavailableException.h>
 #include <utility>
 
 namespace Aws
@@ -37,257 +32,108 @@ namespace Model
   class TranscriptResultStream
   {
   public:
-    AWS_TRANSCRIBESTREAMINGSERVICE_API TranscriptResultStream();
+    AWS_TRANSCRIBESTREAMINGSERVICE_API TranscriptResultStream() = default;
     AWS_TRANSCRIBESTREAMINGSERVICE_API TranscriptResultStream(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API TranscriptResultStream& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains <code>Transcript</code>, which contains <code>Results</code>. The
      * <code/> object contains a set of transcription results from one or more audio
      * segments, along with additional information per your request parameters.</p>
      */
-    inline const TranscriptEvent& GetTranscriptEvent() const{ return m_transcriptEvent; }
-
-    /**
-     * <p>Contains <code>Transcript</code>, which contains <code>Results</code>. The
-     * <code/> object contains a set of transcription results from one or more audio
-     * segments, along with additional information per your request parameters.</p>
-     */
+    inline const TranscriptEvent& GetTranscriptEvent() const { return m_transcriptEvent; }
     inline bool TranscriptEventHasBeenSet() const { return m_transcriptEventHasBeenSet; }
+    template<typename TranscriptEventT = TranscriptEvent>
+    void SetTranscriptEvent(TranscriptEventT&& value) { m_transcriptEventHasBeenSet = true; m_transcriptEvent = std::forward<TranscriptEventT>(value); }
+    template<typename TranscriptEventT = TranscriptEvent>
+    TranscriptResultStream& WithTranscriptEvent(TranscriptEventT&& value) { SetTranscriptEvent(std::forward<TranscriptEventT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains <code>Transcript</code>, which contains <code>Results</code>. The
-     * <code/> object contains a set of transcription results from one or more audio
-     * segments, along with additional information per your request parameters.</p>
-     */
-    inline void SetTranscriptEvent(const TranscriptEvent& value) { m_transcriptEventHasBeenSet = true; m_transcriptEvent = value; }
-
-    /**
-     * <p>Contains <code>Transcript</code>, which contains <code>Results</code>. The
-     * <code/> object contains a set of transcription results from one or more audio
-     * segments, along with additional information per your request parameters.</p>
-     */
-    inline void SetTranscriptEvent(TranscriptEvent&& value) { m_transcriptEventHasBeenSet = true; m_transcriptEvent = std::move(value); }
-
-    /**
-     * <p>Contains <code>Transcript</code>, which contains <code>Results</code>. The
-     * <code/> object contains a set of transcription results from one or more audio
-     * segments, along with additional information per your request parameters.</p>
-     */
-    inline TranscriptResultStream& WithTranscriptEvent(const TranscriptEvent& value) { SetTranscriptEvent(value); return *this;}
-
-    /**
-     * <p>Contains <code>Transcript</code>, which contains <code>Results</code>. The
-     * <code/> object contains a set of transcription results from one or more audio
-     * segments, along with additional information per your request parameters.</p>
-     */
-    inline TranscriptResultStream& WithTranscriptEvent(TranscriptEvent&& value) { SetTranscriptEvent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A client error occurred when the stream was created. Check the parameters of
      * the request and try your request again.</p>
      */
-    inline const BadRequestException& GetBadRequestException() const{ return m_badRequestException; }
-
-    /**
-     * <p>A client error occurred when the stream was created. Check the parameters of
-     * the request and try your request again.</p>
-     */
+    inline const TranscribeStreamingServiceError& GetBadRequestException() const { return m_badRequestException; }
     inline bool BadRequestExceptionHasBeenSet() const { return m_badRequestExceptionHasBeenSet; }
+    template<typename BadRequestExceptionT = TranscribeStreamingServiceError>
+    void SetBadRequestException(BadRequestExceptionT&& value) { m_badRequestExceptionHasBeenSet = true; m_badRequestException = std::forward<BadRequestExceptionT>(value); }
+    template<typename BadRequestExceptionT = TranscribeStreamingServiceError>
+    TranscriptResultStream& WithBadRequestException(BadRequestExceptionT&& value) { SetBadRequestException(std::forward<BadRequestExceptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A client error occurred when the stream was created. Check the parameters of
-     * the request and try your request again.</p>
-     */
-    inline void SetBadRequestException(const BadRequestException& value) { m_badRequestExceptionHasBeenSet = true; m_badRequestException = value; }
-
-    /**
-     * <p>A client error occurred when the stream was created. Check the parameters of
-     * the request and try your request again.</p>
-     */
-    inline void SetBadRequestException(BadRequestException&& value) { m_badRequestExceptionHasBeenSet = true; m_badRequestException = std::move(value); }
-
-    /**
-     * <p>A client error occurred when the stream was created. Check the parameters of
-     * the request and try your request again.</p>
-     */
-    inline TranscriptResultStream& WithBadRequestException(const BadRequestException& value) { SetBadRequestException(value); return *this;}
-
-    /**
-     * <p>A client error occurred when the stream was created. Check the parameters of
-     * the request and try your request again.</p>
-     */
-    inline TranscriptResultStream& WithBadRequestException(BadRequestException&& value) { SetBadRequestException(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Your client has exceeded one of the Amazon Transcribe limits. This is
      * typically the audio length limit. Break your audio stream into smaller chunks
      * and try your request again.</p>
      */
-    inline const LimitExceededException& GetLimitExceededException() const{ return m_limitExceededException; }
-
-    /**
-     * <p>Your client has exceeded one of the Amazon Transcribe limits. This is
-     * typically the audio length limit. Break your audio stream into smaller chunks
-     * and try your request again.</p>
-     */
+    inline const TranscribeStreamingServiceError& GetLimitExceededException() const { return m_limitExceededException; }
     inline bool LimitExceededExceptionHasBeenSet() const { return m_limitExceededExceptionHasBeenSet; }
+    template<typename LimitExceededExceptionT = TranscribeStreamingServiceError>
+    void SetLimitExceededException(LimitExceededExceptionT&& value) { m_limitExceededExceptionHasBeenSet = true; m_limitExceededException = std::forward<LimitExceededExceptionT>(value); }
+    template<typename LimitExceededExceptionT = TranscribeStreamingServiceError>
+    TranscriptResultStream& WithLimitExceededException(LimitExceededExceptionT&& value) { SetLimitExceededException(std::forward<LimitExceededExceptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Your client has exceeded one of the Amazon Transcribe limits. This is
-     * typically the audio length limit. Break your audio stream into smaller chunks
-     * and try your request again.</p>
-     */
-    inline void SetLimitExceededException(const LimitExceededException& value) { m_limitExceededExceptionHasBeenSet = true; m_limitExceededException = value; }
-
-    /**
-     * <p>Your client has exceeded one of the Amazon Transcribe limits. This is
-     * typically the audio length limit. Break your audio stream into smaller chunks
-     * and try your request again.</p>
-     */
-    inline void SetLimitExceededException(LimitExceededException&& value) { m_limitExceededExceptionHasBeenSet = true; m_limitExceededException = std::move(value); }
-
-    /**
-     * <p>Your client has exceeded one of the Amazon Transcribe limits. This is
-     * typically the audio length limit. Break your audio stream into smaller chunks
-     * and try your request again.</p>
-     */
-    inline TranscriptResultStream& WithLimitExceededException(const LimitExceededException& value) { SetLimitExceededException(value); return *this;}
-
-    /**
-     * <p>Your client has exceeded one of the Amazon Transcribe limits. This is
-     * typically the audio length limit. Break your audio stream into smaller chunks
-     * and try your request again.</p>
-     */
-    inline TranscriptResultStream& WithLimitExceededException(LimitExceededException&& value) { SetLimitExceededException(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A problem occurred while processing the audio. Amazon Transcribe terminated
      * processing.</p>
      */
-    inline const InternalFailureException& GetInternalFailureException() const{ return m_internalFailureException; }
-
-    /**
-     * <p>A problem occurred while processing the audio. Amazon Transcribe terminated
-     * processing.</p>
-     */
+    inline const TranscribeStreamingServiceError& GetInternalFailureException() const { return m_internalFailureException; }
     inline bool InternalFailureExceptionHasBeenSet() const { return m_internalFailureExceptionHasBeenSet; }
+    template<typename InternalFailureExceptionT = TranscribeStreamingServiceError>
+    void SetInternalFailureException(InternalFailureExceptionT&& value) { m_internalFailureExceptionHasBeenSet = true; m_internalFailureException = std::forward<InternalFailureExceptionT>(value); }
+    template<typename InternalFailureExceptionT = TranscribeStreamingServiceError>
+    TranscriptResultStream& WithInternalFailureException(InternalFailureExceptionT&& value) { SetInternalFailureException(std::forward<InternalFailureExceptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A problem occurred while processing the audio. Amazon Transcribe terminated
-     * processing.</p>
-     */
-    inline void SetInternalFailureException(const InternalFailureException& value) { m_internalFailureExceptionHasBeenSet = true; m_internalFailureException = value; }
-
-    /**
-     * <p>A problem occurred while processing the audio. Amazon Transcribe terminated
-     * processing.</p>
-     */
-    inline void SetInternalFailureException(InternalFailureException&& value) { m_internalFailureExceptionHasBeenSet = true; m_internalFailureException = std::move(value); }
-
-    /**
-     * <p>A problem occurred while processing the audio. Amazon Transcribe terminated
-     * processing.</p>
-     */
-    inline TranscriptResultStream& WithInternalFailureException(const InternalFailureException& value) { SetInternalFailureException(value); return *this;}
-
-    /**
-     * <p>A problem occurred while processing the audio. Amazon Transcribe terminated
-     * processing.</p>
-     */
-    inline TranscriptResultStream& WithInternalFailureException(InternalFailureException&& value) { SetInternalFailureException(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A new stream started with the same session ID. The current stream has been
      * terminated.</p>
      */
-    inline const ConflictException& GetConflictException() const{ return m_conflictException; }
-
-    /**
-     * <p>A new stream started with the same session ID. The current stream has been
-     * terminated.</p>
-     */
+    inline const TranscribeStreamingServiceError& GetConflictException() const { return m_conflictException; }
     inline bool ConflictExceptionHasBeenSet() const { return m_conflictExceptionHasBeenSet; }
+    template<typename ConflictExceptionT = TranscribeStreamingServiceError>
+    void SetConflictException(ConflictExceptionT&& value) { m_conflictExceptionHasBeenSet = true; m_conflictException = std::forward<ConflictExceptionT>(value); }
+    template<typename ConflictExceptionT = TranscribeStreamingServiceError>
+    TranscriptResultStream& WithConflictException(ConflictExceptionT&& value) { SetConflictException(std::forward<ConflictExceptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A new stream started with the same session ID. The current stream has been
-     * terminated.</p>
-     */
-    inline void SetConflictException(const ConflictException& value) { m_conflictExceptionHasBeenSet = true; m_conflictException = value; }
-
-    /**
-     * <p>A new stream started with the same session ID. The current stream has been
-     * terminated.</p>
-     */
-    inline void SetConflictException(ConflictException&& value) { m_conflictExceptionHasBeenSet = true; m_conflictException = std::move(value); }
-
-    /**
-     * <p>A new stream started with the same session ID. The current stream has been
-     * terminated.</p>
-     */
-    inline TranscriptResultStream& WithConflictException(const ConflictException& value) { SetConflictException(value); return *this;}
-
-    /**
-     * <p>A new stream started with the same session ID. The current stream has been
-     * terminated.</p>
-     */
-    inline TranscriptResultStream& WithConflictException(ConflictException&& value) { SetConflictException(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The service is currently unavailable. Try your request later.</p>
      */
-    inline const ServiceUnavailableException& GetServiceUnavailableException() const{ return m_serviceUnavailableException; }
-
-    /**
-     * <p>The service is currently unavailable. Try your request later.</p>
-     */
+    inline const TranscribeStreamingServiceError& GetServiceUnavailableException() const { return m_serviceUnavailableException; }
     inline bool ServiceUnavailableExceptionHasBeenSet() const { return m_serviceUnavailableExceptionHasBeenSet; }
-
-    /**
-     * <p>The service is currently unavailable. Try your request later.</p>
-     */
-    inline void SetServiceUnavailableException(const ServiceUnavailableException& value) { m_serviceUnavailableExceptionHasBeenSet = true; m_serviceUnavailableException = value; }
-
-    /**
-     * <p>The service is currently unavailable. Try your request later.</p>
-     */
-    inline void SetServiceUnavailableException(ServiceUnavailableException&& value) { m_serviceUnavailableExceptionHasBeenSet = true; m_serviceUnavailableException = std::move(value); }
-
-    /**
-     * <p>The service is currently unavailable. Try your request later.</p>
-     */
-    inline TranscriptResultStream& WithServiceUnavailableException(const ServiceUnavailableException& value) { SetServiceUnavailableException(value); return *this;}
-
-    /**
-     * <p>The service is currently unavailable. Try your request later.</p>
-     */
-    inline TranscriptResultStream& WithServiceUnavailableException(ServiceUnavailableException&& value) { SetServiceUnavailableException(std::move(value)); return *this;}
-
+    template<typename ServiceUnavailableExceptionT = TranscribeStreamingServiceError>
+    void SetServiceUnavailableException(ServiceUnavailableExceptionT&& value) { m_serviceUnavailableExceptionHasBeenSet = true; m_serviceUnavailableException = std::forward<ServiceUnavailableExceptionT>(value); }
+    template<typename ServiceUnavailableExceptionT = TranscribeStreamingServiceError>
+    TranscriptResultStream& WithServiceUnavailableException(ServiceUnavailableExceptionT&& value) { SetServiceUnavailableException(std::forward<ServiceUnavailableExceptionT>(value)); return *this;}
+    ///@}
   private:
 
     TranscriptEvent m_transcriptEvent;
     bool m_transcriptEventHasBeenSet = false;
 
-    BadRequestException m_badRequestException;
+    TranscribeStreamingServiceError m_badRequestException;
     bool m_badRequestExceptionHasBeenSet = false;
 
-    LimitExceededException m_limitExceededException;
+    TranscribeStreamingServiceError m_limitExceededException;
     bool m_limitExceededExceptionHasBeenSet = false;
 
-    InternalFailureException m_internalFailureException;
+    TranscribeStreamingServiceError m_internalFailureException;
     bool m_internalFailureExceptionHasBeenSet = false;
 
-    ConflictException m_conflictException;
+    TranscribeStreamingServiceError m_conflictException;
     bool m_conflictExceptionHasBeenSet = false;
 
-    ServiceUnavailableException m_serviceUnavailableException;
+    TranscribeStreamingServiceError m_serviceUnavailableException;
     bool m_serviceUnavailableExceptionHasBeenSet = false;
   };
 

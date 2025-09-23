@@ -9,6 +9,7 @@
 #include <aws/connect/model/Channel.h>
 #include <aws/connect/model/RoutingProfileReference.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/connect/model/AgentStatusIdentifier.h>
 #include <utility>
 
 namespace Aws
@@ -35,139 +36,73 @@ namespace Model
   class Dimensions
   {
   public:
-    AWS_CONNECT_API Dimensions();
+    AWS_CONNECT_API Dimensions() = default;
     AWS_CONNECT_API Dimensions(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Dimensions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the queue for which metrics are returned.</p>
      */
-    inline const QueueReference& GetQueue() const{ return m_queue; }
-
-    /**
-     * <p>Information about the queue for which metrics are returned.</p>
-     */
+    inline const QueueReference& GetQueue() const { return m_queue; }
     inline bool QueueHasBeenSet() const { return m_queueHasBeenSet; }
+    template<typename QueueT = QueueReference>
+    void SetQueue(QueueT&& value) { m_queueHasBeenSet = true; m_queue = std::forward<QueueT>(value); }
+    template<typename QueueT = QueueReference>
+    Dimensions& WithQueue(QueueT&& value) { SetQueue(std::forward<QueueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the queue for which metrics are returned.</p>
-     */
-    inline void SetQueue(const QueueReference& value) { m_queueHasBeenSet = true; m_queue = value; }
-
-    /**
-     * <p>Information about the queue for which metrics are returned.</p>
-     */
-    inline void SetQueue(QueueReference&& value) { m_queueHasBeenSet = true; m_queue = std::move(value); }
-
-    /**
-     * <p>Information about the queue for which metrics are returned.</p>
-     */
-    inline Dimensions& WithQueue(const QueueReference& value) { SetQueue(value); return *this;}
-
-    /**
-     * <p>Information about the queue for which metrics are returned.</p>
-     */
-    inline Dimensions& WithQueue(QueueReference&& value) { SetQueue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The channel used for grouping and filters.</p>
      */
-    inline const Channel& GetChannel() const{ return m_channel; }
-
-    /**
-     * <p>The channel used for grouping and filters.</p>
-     */
+    inline Channel GetChannel() const { return m_channel; }
     inline bool ChannelHasBeenSet() const { return m_channelHasBeenSet; }
+    inline void SetChannel(Channel value) { m_channelHasBeenSet = true; m_channel = value; }
+    inline Dimensions& WithChannel(Channel value) { SetChannel(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The channel used for grouping and filters.</p>
-     */
-    inline void SetChannel(const Channel& value) { m_channelHasBeenSet = true; m_channel = value; }
-
-    /**
-     * <p>The channel used for grouping and filters.</p>
-     */
-    inline void SetChannel(Channel&& value) { m_channelHasBeenSet = true; m_channel = std::move(value); }
-
-    /**
-     * <p>The channel used for grouping and filters.</p>
-     */
-    inline Dimensions& WithChannel(const Channel& value) { SetChannel(value); return *this;}
-
-    /**
-     * <p>The channel used for grouping and filters.</p>
-     */
-    inline Dimensions& WithChannel(Channel&& value) { SetChannel(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const RoutingProfileReference& GetRoutingProfile() const{ return m_routingProfile; }
-
-    
+    inline const RoutingProfileReference& GetRoutingProfile() const { return m_routingProfile; }
     inline bool RoutingProfileHasBeenSet() const { return m_routingProfileHasBeenSet; }
+    template<typename RoutingProfileT = RoutingProfileReference>
+    void SetRoutingProfile(RoutingProfileT&& value) { m_routingProfileHasBeenSet = true; m_routingProfile = std::forward<RoutingProfileT>(value); }
+    template<typename RoutingProfileT = RoutingProfileReference>
+    Dimensions& WithRoutingProfile(RoutingProfileT&& value) { SetRoutingProfile(std::forward<RoutingProfileT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRoutingProfile(const RoutingProfileReference& value) { m_routingProfileHasBeenSet = true; m_routingProfile = value; }
-
-    
-    inline void SetRoutingProfile(RoutingProfileReference&& value) { m_routingProfileHasBeenSet = true; m_routingProfile = std::move(value); }
-
-    
-    inline Dimensions& WithRoutingProfile(const RoutingProfileReference& value) { SetRoutingProfile(value); return *this;}
-
-    
-    inline Dimensions& WithRoutingProfile(RoutingProfileReference&& value) { SetRoutingProfile(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The expression of a step in a routing criteria.</p>
      */
-    inline const Aws::String& GetRoutingStepExpression() const{ return m_routingStepExpression; }
-
-    /**
-     * <p>The expression of a step in a routing criteria.</p>
-     */
+    inline const Aws::String& GetRoutingStepExpression() const { return m_routingStepExpression; }
     inline bool RoutingStepExpressionHasBeenSet() const { return m_routingStepExpressionHasBeenSet; }
+    template<typename RoutingStepExpressionT = Aws::String>
+    void SetRoutingStepExpression(RoutingStepExpressionT&& value) { m_routingStepExpressionHasBeenSet = true; m_routingStepExpression = std::forward<RoutingStepExpressionT>(value); }
+    template<typename RoutingStepExpressionT = Aws::String>
+    Dimensions& WithRoutingStepExpression(RoutingStepExpressionT&& value) { SetRoutingStepExpression(std::forward<RoutingStepExpressionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The expression of a step in a routing criteria.</p>
+     * <p>Information about the agent status assigned to the user.</p>
      */
-    inline void SetRoutingStepExpression(const Aws::String& value) { m_routingStepExpressionHasBeenSet = true; m_routingStepExpression = value; }
-
-    /**
-     * <p>The expression of a step in a routing criteria.</p>
-     */
-    inline void SetRoutingStepExpression(Aws::String&& value) { m_routingStepExpressionHasBeenSet = true; m_routingStepExpression = std::move(value); }
-
-    /**
-     * <p>The expression of a step in a routing criteria.</p>
-     */
-    inline void SetRoutingStepExpression(const char* value) { m_routingStepExpressionHasBeenSet = true; m_routingStepExpression.assign(value); }
-
-    /**
-     * <p>The expression of a step in a routing criteria.</p>
-     */
-    inline Dimensions& WithRoutingStepExpression(const Aws::String& value) { SetRoutingStepExpression(value); return *this;}
-
-    /**
-     * <p>The expression of a step in a routing criteria.</p>
-     */
-    inline Dimensions& WithRoutingStepExpression(Aws::String&& value) { SetRoutingStepExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The expression of a step in a routing criteria.</p>
-     */
-    inline Dimensions& WithRoutingStepExpression(const char* value) { SetRoutingStepExpression(value); return *this;}
-
+    inline const AgentStatusIdentifier& GetAgentStatus() const { return m_agentStatus; }
+    inline bool AgentStatusHasBeenSet() const { return m_agentStatusHasBeenSet; }
+    template<typename AgentStatusT = AgentStatusIdentifier>
+    void SetAgentStatus(AgentStatusT&& value) { m_agentStatusHasBeenSet = true; m_agentStatus = std::forward<AgentStatusT>(value); }
+    template<typename AgentStatusT = AgentStatusIdentifier>
+    Dimensions& WithAgentStatus(AgentStatusT&& value) { SetAgentStatus(std::forward<AgentStatusT>(value)); return *this;}
+    ///@}
   private:
 
     QueueReference m_queue;
     bool m_queueHasBeenSet = false;
 
-    Channel m_channel;
+    Channel m_channel{Channel::NOT_SET};
     bool m_channelHasBeenSet = false;
 
     RoutingProfileReference m_routingProfile;
@@ -175,6 +110,9 @@ namespace Model
 
     Aws::String m_routingStepExpression;
     bool m_routingStepExpressionHasBeenSet = false;
+
+    AgentStatusIdentifier m_agentStatus;
+    bool m_agentStatusHasBeenSet = false;
   };
 
 } // namespace Model

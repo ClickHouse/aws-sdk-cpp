@@ -18,41 +18,7 @@ namespace GameLift
 namespace Model
 {
 
-Compute::Compute() : 
-    m_fleetIdHasBeenSet(false),
-    m_fleetArnHasBeenSet(false),
-    m_computeNameHasBeenSet(false),
-    m_computeArnHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_dnsNameHasBeenSet(false),
-    m_computeStatus(ComputeStatus::NOT_SET),
-    m_computeStatusHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_operatingSystem(OperatingSystem::NOT_SET),
-    m_operatingSystemHasBeenSet(false),
-    m_type(EC2InstanceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_gameLiftServiceSdkEndpointHasBeenSet(false)
-{
-}
-
-Compute::Compute(JsonView jsonValue) : 
-    m_fleetIdHasBeenSet(false),
-    m_fleetArnHasBeenSet(false),
-    m_computeNameHasBeenSet(false),
-    m_computeArnHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_dnsNameHasBeenSet(false),
-    m_computeStatus(ComputeStatus::NOT_SET),
-    m_computeStatusHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_operatingSystem(OperatingSystem::NOT_SET),
-    m_operatingSystemHasBeenSet(false),
-    m_type(EC2InstanceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_gameLiftServiceSdkEndpointHasBeenSet(false)
+Compute::Compute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -62,87 +28,87 @@ Compute& Compute::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FleetId"))
   {
     m_fleetId = jsonValue.GetString("FleetId");
-
     m_fleetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FleetArn"))
   {
     m_fleetArn = jsonValue.GetString("FleetArn");
-
     m_fleetArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComputeName"))
   {
     m_computeName = jsonValue.GetString("ComputeName");
-
     m_computeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComputeArn"))
   {
     m_computeArn = jsonValue.GetString("ComputeArn");
-
     m_computeArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IpAddress"))
   {
     m_ipAddress = jsonValue.GetString("IpAddress");
-
     m_ipAddressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DnsName"))
   {
     m_dnsName = jsonValue.GetString("DnsName");
-
     m_dnsNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComputeStatus"))
   {
     m_computeStatus = ComputeStatusMapper::GetComputeStatusForName(jsonValue.GetString("ComputeStatus"));
-
     m_computeStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Location"))
   {
     m_location = jsonValue.GetString("Location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetDouble("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OperatingSystem"))
   {
     m_operatingSystem = OperatingSystemMapper::GetOperatingSystemForName(jsonValue.GetString("OperatingSystem"));
-
     m_operatingSystemHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = EC2InstanceTypeMapper::GetEC2InstanceTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GameLiftServiceSdkEndpoint"))
   {
     m_gameLiftServiceSdkEndpoint = jsonValue.GetString("GameLiftServiceSdkEndpoint");
-
     m_gameLiftServiceSdkEndpointHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("GameLiftAgentEndpoint"))
+  {
+    m_gameLiftAgentEndpoint = jsonValue.GetString("GameLiftAgentEndpoint");
+    m_gameLiftAgentEndpointHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("InstanceId"))
+  {
+    m_instanceId = jsonValue.GetString("InstanceId");
+    m_instanceIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ContainerAttributes"))
+  {
+    Aws::Utils::Array<JsonView> containerAttributesJsonList = jsonValue.GetArray("ContainerAttributes");
+    for(unsigned containerAttributesIndex = 0; containerAttributesIndex < containerAttributesJsonList.GetLength(); ++containerAttributesIndex)
+    {
+      m_containerAttributes.push_back(containerAttributesJsonList[containerAttributesIndex].AsObject());
+    }
+    m_containerAttributesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("GameServerContainerGroupDefinitionArn"))
+  {
+    m_gameServerContainerGroupDefinitionArn = jsonValue.GetString("GameServerContainerGroupDefinitionArn");
+    m_gameServerContainerGroupDefinitionArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -215,6 +181,35 @@ JsonValue Compute::Jsonize() const
   if(m_gameLiftServiceSdkEndpointHasBeenSet)
   {
    payload.WithString("GameLiftServiceSdkEndpoint", m_gameLiftServiceSdkEndpoint);
+
+  }
+
+  if(m_gameLiftAgentEndpointHasBeenSet)
+  {
+   payload.WithString("GameLiftAgentEndpoint", m_gameLiftAgentEndpoint);
+
+  }
+
+  if(m_instanceIdHasBeenSet)
+  {
+   payload.WithString("InstanceId", m_instanceId);
+
+  }
+
+  if(m_containerAttributesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> containerAttributesJsonList(m_containerAttributes.size());
+   for(unsigned containerAttributesIndex = 0; containerAttributesIndex < containerAttributesJsonList.GetLength(); ++containerAttributesIndex)
+   {
+     containerAttributesJsonList[containerAttributesIndex].AsObject(m_containerAttributes[containerAttributesIndex].Jsonize());
+   }
+   payload.WithArray("ContainerAttributes", std::move(containerAttributesJsonList));
+
+  }
+
+  if(m_gameServerContainerGroupDefinitionArnHasBeenSet)
+  {
+   payload.WithString("GameServerContainerGroupDefinitionArn", m_gameServerContainerGroupDefinitionArn);
 
   }
 

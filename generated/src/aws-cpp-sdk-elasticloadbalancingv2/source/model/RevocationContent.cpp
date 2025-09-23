@@ -20,21 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-RevocationContent::RevocationContent() : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false),
-    m_s3ObjectVersionHasBeenSet(false),
-    m_revocationType(RevocationType::NOT_SET),
-    m_revocationTypeHasBeenSet(false)
-{
-}
-
-RevocationContent::RevocationContent(const XmlNode& xmlNode) : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false),
-    m_s3ObjectVersionHasBeenSet(false),
-    m_revocationType(RevocationType::NOT_SET),
-    m_revocationTypeHasBeenSet(false)
+RevocationContent::RevocationContent(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +52,7 @@ RevocationContent& RevocationContent::operator =(const XmlNode& xmlNode)
     XmlNode revocationTypeNode = resultNode.FirstChild("RevocationType");
     if(!revocationTypeNode.IsNull())
     {
-      m_revocationType = RevocationTypeMapper::GetRevocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(revocationTypeNode.GetText()).c_str()).c_str());
+      m_revocationType = RevocationTypeMapper::GetRevocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(revocationTypeNode.GetText()).c_str()));
       m_revocationTypeHasBeenSet = true;
     }
   }
@@ -93,7 +79,7 @@ void RevocationContent::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_revocationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RevocationType=" << RevocationTypeMapper::GetNameForRevocationType(m_revocationType) << "&";
+      oStream << location << index << locationValue << ".RevocationType=" << StringUtils::URLEncode(RevocationTypeMapper::GetNameForRevocationType(m_revocationType)) << "&";
   }
 
 }
@@ -114,7 +100,7 @@ void RevocationContent::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_revocationTypeHasBeenSet)
   {
-      oStream << location << ".RevocationType=" << RevocationTypeMapper::GetNameForRevocationType(m_revocationType) << "&";
+      oStream << location << ".RevocationType=" << StringUtils::URLEncode(RevocationTypeMapper::GetNameForRevocationType(m_revocationType)) << "&";
   }
 }
 

@@ -18,13 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-BudgetDetail::BudgetDetail() : 
-    m_budgetNameHasBeenSet(false)
-{
-}
-
-BudgetDetail::BudgetDetail(JsonView jsonValue) : 
-    m_budgetNameHasBeenSet(false)
+BudgetDetail::BudgetDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ BudgetDetail& BudgetDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BudgetName"))
   {
     m_budgetName = jsonValue.GetString("BudgetName");
-
     m_budgetNameHasBeenSet = true;
   }
-
   return *this;
 }
 

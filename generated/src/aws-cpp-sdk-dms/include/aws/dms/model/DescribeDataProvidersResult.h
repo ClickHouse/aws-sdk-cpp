@@ -29,11 +29,12 @@ namespace Model
   class DescribeDataProvidersResult
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DescribeDataProvidersResult();
+    AWS_DATABASEMIGRATIONSERVICE_API DescribeDataProvidersResult() = default;
     AWS_DATABASEMIGRATIONSERVICE_API DescribeDataProvidersResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATABASEMIGRATIONSERVICE_API DescribeDataProvidersResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Specifies the unique pagination token that makes it possible to display the
      * next page of results. If this parameter is specified, the response includes only
@@ -44,145 +45,44 @@ namespace Model
      * call again using the returned token and keeping all other arguments
      * unchanged.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeDataProvidersResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the unique pagination token that makes it possible to display the
-     * next page of results. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p> <p>If <code>Marker</code> is returned by a previous
-     * response, there are more results available. The value of <code>Marker</code> is
-     * a unique pagination token for each page. To retrieve the next page, make the
-     * call again using the returned token and keeping all other arguments
-     * unchanged.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>Specifies the unique pagination token that makes it possible to display the
-     * next page of results. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p> <p>If <code>Marker</code> is returned by a previous
-     * response, there are more results available. The value of <code>Marker</code> is
-     * a unique pagination token for each page. To retrieve the next page, make the
-     * call again using the returned token and keeping all other arguments
-     * unchanged.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>Specifies the unique pagination token that makes it possible to display the
-     * next page of results. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p> <p>If <code>Marker</code> is returned by a previous
-     * response, there are more results available. The value of <code>Marker</code> is
-     * a unique pagination token for each page. To retrieve the next page, make the
-     * call again using the returned token and keeping all other arguments
-     * unchanged.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>Specifies the unique pagination token that makes it possible to display the
-     * next page of results. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p> <p>If <code>Marker</code> is returned by a previous
-     * response, there are more results available. The value of <code>Marker</code> is
-     * a unique pagination token for each page. To retrieve the next page, make the
-     * call again using the returned token and keeping all other arguments
-     * unchanged.</p>
-     */
-    inline DescribeDataProvidersResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>Specifies the unique pagination token that makes it possible to display the
-     * next page of results. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p> <p>If <code>Marker</code> is returned by a previous
-     * response, there are more results available. The value of <code>Marker</code> is
-     * a unique pagination token for each page. To retrieve the next page, make the
-     * call again using the returned token and keeping all other arguments
-     * unchanged.</p>
-     */
-    inline DescribeDataProvidersResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the unique pagination token that makes it possible to display the
-     * next page of results. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <code>MaxRecords</code>.</p> <p>If <code>Marker</code> is returned by a previous
-     * response, there are more results available. The value of <code>Marker</code> is
-     * a unique pagination token for each page. To retrieve the next page, make the
-     * call again using the returned token and keeping all other arguments
-     * unchanged.</p>
-     */
-    inline DescribeDataProvidersResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of data providers.</p>
      */
-    inline const Aws::Vector<DataProvider>& GetDataProviders() const{ return m_dataProviders; }
+    inline const Aws::Vector<DataProvider>& GetDataProviders() const { return m_dataProviders; }
+    template<typename DataProvidersT = Aws::Vector<DataProvider>>
+    void SetDataProviders(DataProvidersT&& value) { m_dataProvidersHasBeenSet = true; m_dataProviders = std::forward<DataProvidersT>(value); }
+    template<typename DataProvidersT = Aws::Vector<DataProvider>>
+    DescribeDataProvidersResult& WithDataProviders(DataProvidersT&& value) { SetDataProviders(std::forward<DataProvidersT>(value)); return *this;}
+    template<typename DataProvidersT = DataProvider>
+    DescribeDataProvidersResult& AddDataProviders(DataProvidersT&& value) { m_dataProvidersHasBeenSet = true; m_dataProviders.emplace_back(std::forward<DataProvidersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A description of data providers.</p>
-     */
-    inline void SetDataProviders(const Aws::Vector<DataProvider>& value) { m_dataProviders = value; }
-
-    /**
-     * <p>A description of data providers.</p>
-     */
-    inline void SetDataProviders(Aws::Vector<DataProvider>&& value) { m_dataProviders = std::move(value); }
-
-    /**
-     * <p>A description of data providers.</p>
-     */
-    inline DescribeDataProvidersResult& WithDataProviders(const Aws::Vector<DataProvider>& value) { SetDataProviders(value); return *this;}
-
-    /**
-     * <p>A description of data providers.</p>
-     */
-    inline DescribeDataProvidersResult& WithDataProviders(Aws::Vector<DataProvider>&& value) { SetDataProviders(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of data providers.</p>
-     */
-    inline DescribeDataProvidersResult& AddDataProviders(const DataProvider& value) { m_dataProviders.push_back(value); return *this; }
-
-    /**
-     * <p>A description of data providers.</p>
-     */
-    inline DescribeDataProvidersResult& AddDataProviders(DataProvider&& value) { m_dataProviders.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDataProvidersResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDataProvidersResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDataProvidersResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDataProvidersResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<DataProvider> m_dataProviders;
+    bool m_dataProvidersHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

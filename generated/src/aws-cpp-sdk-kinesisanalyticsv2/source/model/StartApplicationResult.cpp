@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-StartApplicationResult::StartApplicationResult()
-{
-}
-
 StartApplicationResult::StartApplicationResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -28,13 +24,19 @@ StartApplicationResult::StartApplicationResult(const Aws::AmazonWebServiceResult
 
 StartApplicationResult& StartApplicationResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
-  AWS_UNREFERENCED_PARAM(result);
+  JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("OperationId"))
+  {
+    m_operationId = jsonValue.GetString("OperationId");
+    m_operationIdHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

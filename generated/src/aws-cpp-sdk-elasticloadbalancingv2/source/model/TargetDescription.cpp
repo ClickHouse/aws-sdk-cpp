@@ -20,19 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-TargetDescription::TargetDescription() : 
-    m_idHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false)
-{
-}
-
-TargetDescription::TargetDescription(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false)
+TargetDescription::TargetDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

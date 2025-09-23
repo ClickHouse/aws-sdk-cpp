@@ -31,93 +31,35 @@ namespace Model
   class UnauthorizedException
   {
   public:
-    AWS_MQ_API UnauthorizedException();
+    AWS_MQ_API UnauthorizedException() = default;
     AWS_MQ_API UnauthorizedException(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API UnauthorizedException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attribute which caused the error.</p>
      */
-    inline const Aws::String& GetErrorAttribute() const{ return m_errorAttribute; }
-
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
+    inline const Aws::String& GetErrorAttribute() const { return m_errorAttribute; }
     inline bool ErrorAttributeHasBeenSet() const { return m_errorAttributeHasBeenSet; }
+    template<typename ErrorAttributeT = Aws::String>
+    void SetErrorAttribute(ErrorAttributeT&& value) { m_errorAttributeHasBeenSet = true; m_errorAttribute = std::forward<ErrorAttributeT>(value); }
+    template<typename ErrorAttributeT = Aws::String>
+    UnauthorizedException& WithErrorAttribute(ErrorAttributeT&& value) { SetErrorAttribute(std::forward<ErrorAttributeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
-    inline void SetErrorAttribute(const Aws::String& value) { m_errorAttributeHasBeenSet = true; m_errorAttribute = value; }
-
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
-    inline void SetErrorAttribute(Aws::String&& value) { m_errorAttributeHasBeenSet = true; m_errorAttribute = std::move(value); }
-
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
-    inline void SetErrorAttribute(const char* value) { m_errorAttributeHasBeenSet = true; m_errorAttribute.assign(value); }
-
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
-    inline UnauthorizedException& WithErrorAttribute(const Aws::String& value) { SetErrorAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
-    inline UnauthorizedException& WithErrorAttribute(Aws::String&& value) { SetErrorAttribute(std::move(value)); return *this;}
-
-    /**
-     * <p>The attribute which caused the error.</p>
-     */
-    inline UnauthorizedException& WithErrorAttribute(const char* value) { SetErrorAttribute(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The explanation of the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
-    inline UnauthorizedException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
-    inline UnauthorizedException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The explanation of the error.</p>
-     */
-    inline UnauthorizedException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    UnauthorizedException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorAttribute;

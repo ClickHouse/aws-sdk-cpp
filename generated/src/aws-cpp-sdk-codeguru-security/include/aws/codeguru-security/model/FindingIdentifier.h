@@ -32,100 +32,42 @@ namespace Model
   class FindingIdentifier
   {
   public:
-    AWS_CODEGURUSECURITY_API FindingIdentifier();
+    AWS_CODEGURUSECURITY_API FindingIdentifier() = default;
     AWS_CODEGURUSECURITY_API FindingIdentifier(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API FindingIdentifier& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline const Aws::String& GetFindingId() const{ return m_findingId; }
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline bool FindingIdHasBeenSet() const { return m_findingIdHasBeenSet; }
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline void SetFindingId(const Aws::String& value) { m_findingIdHasBeenSet = true; m_findingId = value; }
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline void SetFindingId(Aws::String&& value) { m_findingIdHasBeenSet = true; m_findingId = std::move(value); }
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline void SetFindingId(const char* value) { m_findingIdHasBeenSet = true; m_findingId.assign(value); }
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline FindingIdentifier& WithFindingId(const Aws::String& value) { SetFindingId(value); return *this;}
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline FindingIdentifier& WithFindingId(Aws::String&& value) { SetFindingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for a finding.</p>
-     */
-    inline FindingIdentifier& WithFindingId(const char* value) { SetFindingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the scan that generated the finding. </p>
      */
-    inline const Aws::String& GetScanName() const{ return m_scanName; }
-
-    /**
-     * <p>The name of the scan that generated the finding. </p>
-     */
+    inline const Aws::String& GetScanName() const { return m_scanName; }
     inline bool ScanNameHasBeenSet() const { return m_scanNameHasBeenSet; }
+    template<typename ScanNameT = Aws::String>
+    void SetScanName(ScanNameT&& value) { m_scanNameHasBeenSet = true; m_scanName = std::forward<ScanNameT>(value); }
+    template<typename ScanNameT = Aws::String>
+    FindingIdentifier& WithScanName(ScanNameT&& value) { SetScanName(std::forward<ScanNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the scan that generated the finding. </p>
+     * <p>The identifier for a finding.</p>
      */
-    inline void SetScanName(const Aws::String& value) { m_scanNameHasBeenSet = true; m_scanName = value; }
-
-    /**
-     * <p>The name of the scan that generated the finding. </p>
-     */
-    inline void SetScanName(Aws::String&& value) { m_scanNameHasBeenSet = true; m_scanName = std::move(value); }
-
-    /**
-     * <p>The name of the scan that generated the finding. </p>
-     */
-    inline void SetScanName(const char* value) { m_scanNameHasBeenSet = true; m_scanName.assign(value); }
-
-    /**
-     * <p>The name of the scan that generated the finding. </p>
-     */
-    inline FindingIdentifier& WithScanName(const Aws::String& value) { SetScanName(value); return *this;}
-
-    /**
-     * <p>The name of the scan that generated the finding. </p>
-     */
-    inline FindingIdentifier& WithScanName(Aws::String&& value) { SetScanName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the scan that generated the finding. </p>
-     */
-    inline FindingIdentifier& WithScanName(const char* value) { SetScanName(value); return *this;}
-
+    inline const Aws::String& GetFindingId() const { return m_findingId; }
+    inline bool FindingIdHasBeenSet() const { return m_findingIdHasBeenSet; }
+    template<typename FindingIdT = Aws::String>
+    void SetFindingId(FindingIdT&& value) { m_findingIdHasBeenSet = true; m_findingId = std::forward<FindingIdT>(value); }
+    template<typename FindingIdT = Aws::String>
+    FindingIdentifier& WithFindingId(FindingIdT&& value) { SetFindingId(std::forward<FindingIdT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_findingId;
-    bool m_findingIdHasBeenSet = false;
 
     Aws::String m_scanName;
     bool m_scanNameHasBeenSet = false;
+
+    Aws::String m_findingId;
+    bool m_findingIdHasBeenSet = false;
   };
 
 } // namespace Model

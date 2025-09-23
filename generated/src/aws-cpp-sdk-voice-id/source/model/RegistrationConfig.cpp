@@ -18,21 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-RegistrationConfig::RegistrationConfig() : 
-    m_duplicateRegistrationAction(DuplicateRegistrationAction::NOT_SET),
-    m_duplicateRegistrationActionHasBeenSet(false),
-    m_fraudsterSimilarityThreshold(0),
-    m_fraudsterSimilarityThresholdHasBeenSet(false),
-    m_watchlistIdsHasBeenSet(false)
-{
-}
-
-RegistrationConfig::RegistrationConfig(JsonView jsonValue) : 
-    m_duplicateRegistrationAction(DuplicateRegistrationAction::NOT_SET),
-    m_duplicateRegistrationActionHasBeenSet(false),
-    m_fraudsterSimilarityThreshold(0),
-    m_fraudsterSimilarityThresholdHasBeenSet(false),
-    m_watchlistIdsHasBeenSet(false)
+RegistrationConfig::RegistrationConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ RegistrationConfig& RegistrationConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DuplicateRegistrationAction"))
   {
     m_duplicateRegistrationAction = DuplicateRegistrationActionMapper::GetDuplicateRegistrationActionForName(jsonValue.GetString("DuplicateRegistrationAction"));
-
     m_duplicateRegistrationActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FraudsterSimilarityThreshold"))
   {
     m_fraudsterSimilarityThreshold = jsonValue.GetInteger("FraudsterSimilarityThreshold");
-
     m_fraudsterSimilarityThresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WatchlistIds"))
   {
     Aws::Utils::Array<JsonView> watchlistIdsJsonList = jsonValue.GetArray("WatchlistIds");
@@ -62,7 +44,6 @@ RegistrationConfig& RegistrationConfig::operator =(JsonView jsonValue)
     }
     m_watchlistIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

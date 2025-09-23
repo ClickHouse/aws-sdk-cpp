@@ -18,15 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-Geometry::Geometry() : 
-    m_boundingBoxHasBeenSet(false),
-    m_polygonHasBeenSet(false)
-{
-}
-
-Geometry::Geometry(JsonView jsonValue) : 
-    m_boundingBoxHasBeenSet(false),
-    m_polygonHasBeenSet(false)
+Geometry::Geometry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Geometry& Geometry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BoundingBox"))
   {
     m_boundingBox = jsonValue.GetObject("BoundingBox");
-
     m_boundingBoxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Polygon"))
   {
     Aws::Utils::Array<JsonView> polygonJsonList = jsonValue.GetArray("Polygon");
@@ -49,7 +39,6 @@ Geometry& Geometry::operator =(JsonView jsonValue)
     }
     m_polygonHasBeenSet = true;
   }
-
   return *this;
 }
 

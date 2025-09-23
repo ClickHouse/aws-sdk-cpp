@@ -10,13 +10,6 @@
 using namespace Aws::SNS::Model;
 using namespace Aws::Utils;
 
-CreateSMSSandboxPhoneNumberRequest::CreateSMSSandboxPhoneNumberRequest() : 
-    m_phoneNumberHasBeenSet(false),
-    m_languageCode(LanguageCodeString::NOT_SET),
-    m_languageCodeHasBeenSet(false)
-{
-}
-
 Aws::String CreateSMSSandboxPhoneNumberRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,7 +21,7 @@ Aws::String CreateSMSSandboxPhoneNumberRequest::SerializePayload() const
 
   if(m_languageCodeHasBeenSet)
   {
-    ss << "LanguageCode=" << LanguageCodeStringMapper::GetNameForLanguageCodeString(m_languageCode) << "&";
+    ss << "LanguageCode=" << StringUtils::URLEncode(LanguageCodeStringMapper::GetNameForLanguageCodeString(m_languageCode)) << "&";
   }
 
   ss << "Version=2010-03-31";

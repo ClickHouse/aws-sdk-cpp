@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/opensearchserverless/OpenSearchServerless_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/opensearchserverless/model/LifecyclePolicyType.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
 namespace Aws
@@ -33,186 +33,71 @@ namespace Model
   class EffectiveLifecyclePolicyErrorDetail
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API EffectiveLifecyclePolicyErrorDetail();
+    AWS_OPENSEARCHSERVERLESS_API EffectiveLifecyclePolicyErrorDetail() = default;
     AWS_OPENSEARCHSERVERLESS_API EffectiveLifecyclePolicyErrorDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API EffectiveLifecyclePolicyErrorDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code for the request.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the error. For example, <code>The specified Index resource
-     * is not found</code>.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of OpenSearch Serverless index resource.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithResource(const char* value) { SetResource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of lifecycle policy.</p>
      */
-    inline const LifecyclePolicyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of lifecycle policy.</p>
-     */
+    inline LifecyclePolicyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(LifecyclePolicyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline EffectiveLifecyclePolicyErrorDetail& WithType(LifecyclePolicyType value) { SetType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>The name of OpenSearch Serverless index resource.</p>
      */
-    inline void SetType(const LifecyclePolicyType& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline const Aws::String& GetResource() const { return m_resource; }
+    inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    EffectiveLifecyclePolicyErrorDetail& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>A description of the error. For example, <code>The specified Index resource
+     * is not found</code>.</p>
      */
-    inline void SetType(LifecyclePolicyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
+    inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    EffectiveLifecyclePolicyErrorDetail& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of lifecycle policy.</p>
+     * <p>The error code for the request.</p>
      */
-    inline EffectiveLifecyclePolicyErrorDetail& WithType(const LifecyclePolicyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of lifecycle policy.</p>
-     */
-    inline EffectiveLifecyclePolicyErrorDetail& WithType(LifecyclePolicyType&& value) { SetType(std::move(value)); return *this;}
-
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
+    inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    EffectiveLifecyclePolicyErrorDetail& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_errorCode;
-    bool m_errorCodeHasBeenSet = false;
-
-    Aws::String m_errorMessage;
-    bool m_errorMessageHasBeenSet = false;
+    LifecyclePolicyType m_type{LifecyclePolicyType::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
     Aws::String m_resource;
     bool m_resourceHasBeenSet = false;
 
-    LifecyclePolicyType m_type;
-    bool m_typeHasBeenSet = false;
+    Aws::String m_errorMessage;
+    bool m_errorMessageHasBeenSet = false;
+
+    Aws::String m_errorCode;
+    bool m_errorCodeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -31,104 +31,50 @@ namespace Model
   class AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails();
+    AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails() = default;
     AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The port number on the container that is bound to the user-specified or
      * automatically assigned host port.</p>
      */
-    inline int GetContainerPort() const{ return m_containerPort; }
-
-    /**
-     * <p>The port number on the container that is bound to the user-specified or
-     * automatically assigned host port.</p>
-     */
+    inline int GetContainerPort() const { return m_containerPort; }
     inline bool ContainerPortHasBeenSet() const { return m_containerPortHasBeenSet; }
-
-    /**
-     * <p>The port number on the container that is bound to the user-specified or
-     * automatically assigned host port.</p>
-     */
     inline void SetContainerPort(int value) { m_containerPortHasBeenSet = true; m_containerPort = value; }
-
-    /**
-     * <p>The port number on the container that is bound to the user-specified or
-     * automatically assigned host port.</p>
-     */
     inline AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& WithContainerPort(int value) { SetContainerPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The port number on the container instance to reserve for the container.</p>
      */
-    inline int GetHostPort() const{ return m_hostPort; }
-
-    /**
-     * <p>The port number on the container instance to reserve for the container.</p>
-     */
+    inline int GetHostPort() const { return m_hostPort; }
     inline bool HostPortHasBeenSet() const { return m_hostPortHasBeenSet; }
-
-    /**
-     * <p>The port number on the container instance to reserve for the container.</p>
-     */
     inline void SetHostPort(int value) { m_hostPortHasBeenSet = true; m_hostPort = value; }
-
-    /**
-     * <p>The port number on the container instance to reserve for the container.</p>
-     */
     inline AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& WithHostPort(int value) { SetHostPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
      */
-    inline const Aws::String& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
+    inline const Aws::String& GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
-    inline void SetProtocol(const Aws::String& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
-    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
-    inline void SetProtocol(const char* value) { m_protocolHasBeenSet = true; m_protocol.assign(value); }
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& WithProtocol(const Aws::String& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>The protocol used for the port mapping. The default is <code>tcp</code>.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& WithProtocol(const char* value) { SetProtocol(value); return *this;}
-
+    template<typename ProtocolT = Aws::String>
+    void SetProtocol(ProtocolT&& value) { m_protocolHasBeenSet = true; m_protocol = std::forward<ProtocolT>(value); }
+    template<typename ProtocolT = Aws::String>
+    AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails& WithProtocol(ProtocolT&& value) { SetProtocol(std::forward<ProtocolT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_containerPort;
+    int m_containerPort{0};
     bool m_containerPortHasBeenSet = false;
 
-    int m_hostPort;
+    int m_hostPort{0};
     bool m_hostPortHasBeenSet = false;
 
     Aws::String m_protocol;

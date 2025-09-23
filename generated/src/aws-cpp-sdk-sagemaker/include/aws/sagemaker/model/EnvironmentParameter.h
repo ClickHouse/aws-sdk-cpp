@@ -32,142 +32,48 @@ namespace Model
   class EnvironmentParameter
   {
   public:
-    AWS_SAGEMAKER_API EnvironmentParameter();
+    AWS_SAGEMAKER_API EnvironmentParameter() = default;
     AWS_SAGEMAKER_API EnvironmentParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API EnvironmentParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The environment key suggested by the Amazon SageMaker Inference
      * Recommender.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    EnvironmentParameter& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
-    inline EnvironmentParameter& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
-    inline EnvironmentParameter& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The environment key suggested by the Amazon SageMaker Inference
-     * Recommender.</p>
-     */
-    inline EnvironmentParameter& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
      */
-    inline const Aws::String& GetValueType() const{ return m_valueType; }
-
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
+    inline const Aws::String& GetValueType() const { return m_valueType; }
     inline bool ValueTypeHasBeenSet() const { return m_valueTypeHasBeenSet; }
+    template<typename ValueTypeT = Aws::String>
+    void SetValueType(ValueTypeT&& value) { m_valueTypeHasBeenSet = true; m_valueType = std::forward<ValueTypeT>(value); }
+    template<typename ValueTypeT = Aws::String>
+    EnvironmentParameter& WithValueType(ValueTypeT&& value) { SetValueType(std::forward<ValueTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline void SetValueType(const Aws::String& value) { m_valueTypeHasBeenSet = true; m_valueType = value; }
-
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline void SetValueType(Aws::String&& value) { m_valueTypeHasBeenSet = true; m_valueType = std::move(value); }
-
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline void SetValueType(const char* value) { m_valueTypeHasBeenSet = true; m_valueType.assign(value); }
-
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline EnvironmentParameter& WithValueType(const Aws::String& value) { SetValueType(value); return *this;}
-
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline EnvironmentParameter& WithValueType(Aws::String&& value) { SetValueType(std::move(value)); return *this;}
-
-    /**
-     * <p>The value type suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline EnvironmentParameter& WithValueType(const char* value) { SetValueType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline EnvironmentParameter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline EnvironmentParameter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value suggested by the Amazon SageMaker Inference Recommender.</p>
-     */
-    inline EnvironmentParameter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    EnvironmentParameter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

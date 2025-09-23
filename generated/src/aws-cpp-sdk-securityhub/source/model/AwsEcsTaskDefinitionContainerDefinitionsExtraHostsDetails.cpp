@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails::AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails() : 
-    m_hostnameHasBeenSet(false),
-    m_ipAddressHasBeenSet(false)
-{
-}
-
-AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails::AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails(JsonView jsonValue) : 
-    m_hostnameHasBeenSet(false),
-    m_ipAddressHasBeenSet(false)
+AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails::AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails& AwsEcsTaskDefinitionC
   if(jsonValue.ValueExists("Hostname"))
   {
     m_hostname = jsonValue.GetString("Hostname");
-
     m_hostnameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IpAddress"))
   {
     m_ipAddress = jsonValue.GetString("IpAddress");
-
     m_ipAddressHasBeenSet = true;
   }
-
   return *this;
 }
 

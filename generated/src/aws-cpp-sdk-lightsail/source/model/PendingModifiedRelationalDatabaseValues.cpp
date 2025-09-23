@@ -18,19 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-PendingModifiedRelationalDatabaseValues::PendingModifiedRelationalDatabaseValues() : 
-    m_masterUserPasswordHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_backupRetentionEnabled(false),
-    m_backupRetentionEnabledHasBeenSet(false)
-{
-}
-
-PendingModifiedRelationalDatabaseValues::PendingModifiedRelationalDatabaseValues(JsonView jsonValue) : 
-    m_masterUserPasswordHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_backupRetentionEnabled(false),
-    m_backupRetentionEnabledHasBeenSet(false)
+PendingModifiedRelationalDatabaseValues::PendingModifiedRelationalDatabaseValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ PendingModifiedRelationalDatabaseValues& PendingModifiedRelationalDatabaseValues
   if(jsonValue.ValueExists("masterUserPassword"))
   {
     m_masterUserPassword = jsonValue.GetString("masterUserPassword");
-
     m_masterUserPasswordHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("engineVersion"))
   {
     m_engineVersion = jsonValue.GetString("engineVersion");
-
     m_engineVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("backupRetentionEnabled"))
   {
     m_backupRetentionEnabled = jsonValue.GetBool("backupRetentionEnabled");
-
     m_backupRetentionEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

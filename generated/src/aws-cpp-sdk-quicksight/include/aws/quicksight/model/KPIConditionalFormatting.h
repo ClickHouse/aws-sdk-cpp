@@ -32,52 +32,25 @@ namespace Model
   class KPIConditionalFormatting
   {
   public:
-    AWS_QUICKSIGHT_API KPIConditionalFormatting();
+    AWS_QUICKSIGHT_API KPIConditionalFormatting() = default;
     AWS_QUICKSIGHT_API KPIConditionalFormatting(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API KPIConditionalFormatting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The conditional formatting options of a KPI visual.</p>
      */
-    inline const Aws::Vector<KPIConditionalFormattingOption>& GetConditionalFormattingOptions() const{ return m_conditionalFormattingOptions; }
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
+    inline const Aws::Vector<KPIConditionalFormattingOption>& GetConditionalFormattingOptions() const { return m_conditionalFormattingOptions; }
     inline bool ConditionalFormattingOptionsHasBeenSet() const { return m_conditionalFormattingOptionsHasBeenSet; }
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
-    inline void SetConditionalFormattingOptions(const Aws::Vector<KPIConditionalFormattingOption>& value) { m_conditionalFormattingOptionsHasBeenSet = true; m_conditionalFormattingOptions = value; }
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
-    inline void SetConditionalFormattingOptions(Aws::Vector<KPIConditionalFormattingOption>&& value) { m_conditionalFormattingOptionsHasBeenSet = true; m_conditionalFormattingOptions = std::move(value); }
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
-    inline KPIConditionalFormatting& WithConditionalFormattingOptions(const Aws::Vector<KPIConditionalFormattingOption>& value) { SetConditionalFormattingOptions(value); return *this;}
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
-    inline KPIConditionalFormatting& WithConditionalFormattingOptions(Aws::Vector<KPIConditionalFormattingOption>&& value) { SetConditionalFormattingOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
-    inline KPIConditionalFormatting& AddConditionalFormattingOptions(const KPIConditionalFormattingOption& value) { m_conditionalFormattingOptionsHasBeenSet = true; m_conditionalFormattingOptions.push_back(value); return *this; }
-
-    /**
-     * <p>The conditional formatting options of a KPI visual.</p>
-     */
-    inline KPIConditionalFormatting& AddConditionalFormattingOptions(KPIConditionalFormattingOption&& value) { m_conditionalFormattingOptionsHasBeenSet = true; m_conditionalFormattingOptions.push_back(std::move(value)); return *this; }
-
+    template<typename ConditionalFormattingOptionsT = Aws::Vector<KPIConditionalFormattingOption>>
+    void SetConditionalFormattingOptions(ConditionalFormattingOptionsT&& value) { m_conditionalFormattingOptionsHasBeenSet = true; m_conditionalFormattingOptions = std::forward<ConditionalFormattingOptionsT>(value); }
+    template<typename ConditionalFormattingOptionsT = Aws::Vector<KPIConditionalFormattingOption>>
+    KPIConditionalFormatting& WithConditionalFormattingOptions(ConditionalFormattingOptionsT&& value) { SetConditionalFormattingOptions(std::forward<ConditionalFormattingOptionsT>(value)); return *this;}
+    template<typename ConditionalFormattingOptionsT = KPIConditionalFormattingOption>
+    KPIConditionalFormatting& AddConditionalFormattingOptions(ConditionalFormattingOptionsT&& value) { m_conditionalFormattingOptionsHasBeenSet = true; m_conditionalFormattingOptions.emplace_back(std::forward<ConditionalFormattingOptionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<KPIConditionalFormattingOption> m_conditionalFormattingOptions;

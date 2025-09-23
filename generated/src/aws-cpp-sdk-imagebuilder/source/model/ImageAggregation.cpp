@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-ImageAggregation::ImageAggregation() : 
-    m_imageBuildVersionArnHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
-{
-}
-
-ImageAggregation::ImageAggregation(JsonView jsonValue) : 
-    m_imageBuildVersionArnHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
+ImageAggregation::ImageAggregation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ImageAggregation& ImageAggregation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("imageBuildVersionArn"))
   {
     m_imageBuildVersionArn = jsonValue.GetString("imageBuildVersionArn");
-
     m_imageBuildVersionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("severityCounts"))
   {
     m_severityCounts = jsonValue.GetObject("severityCounts");
-
     m_severityCountsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,23 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartAssetBundleExportJobRequest::StartAssetBundleExportJobRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_assetBundleExportJobIdHasBeenSet(false),
-    m_resourceArnsHasBeenSet(false),
-    m_includeAllDependencies(false),
-    m_includeAllDependenciesHasBeenSet(false),
-    m_exportFormat(AssetBundleExportFormat::NOT_SET),
-    m_exportFormatHasBeenSet(false),
-    m_cloudFormationOverridePropertyConfigurationHasBeenSet(false),
-    m_includePermissions(false),
-    m_includePermissionsHasBeenSet(false),
-    m_includeTags(false),
-    m_includeTagsHasBeenSet(false),
-    m_validationStrategyHasBeenSet(false)
-{
-}
-
 Aws::String StartAssetBundleExportJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -83,6 +66,17 @@ Aws::String StartAssetBundleExportJobRequest::SerializePayload() const
   {
    payload.WithObject("ValidationStrategy", m_validationStrategy.Jsonize());
 
+  }
+
+  if(m_includeFolderMembershipsHasBeenSet)
+  {
+   payload.WithBool("IncludeFolderMemberships", m_includeFolderMemberships);
+
+  }
+
+  if(m_includeFolderMembersHasBeenSet)
+  {
+   payload.WithString("IncludeFolderMembers", IncludeFolderMembersMapper::GetNameForIncludeFolderMembers(m_includeFolderMembers));
   }
 
   return payload.View().WriteReadable();

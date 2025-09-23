@@ -18,15 +18,7 @@ namespace WellArchitected
 namespace Model
 {
 
-BestPractice::BestPractice() : 
-    m_choiceIdHasBeenSet(false),
-    m_choiceTitleHasBeenSet(false)
-{
-}
-
-BestPractice::BestPractice(JsonView jsonValue) : 
-    m_choiceIdHasBeenSet(false),
-    m_choiceTitleHasBeenSet(false)
+BestPractice::BestPractice(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BestPractice& BestPractice::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ChoiceId"))
   {
     m_choiceId = jsonValue.GetString("ChoiceId");
-
     m_choiceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChoiceTitle"))
   {
     m_choiceTitle = jsonValue.GetString("ChoiceTitle");
-
     m_choiceTitleHasBeenSet = true;
   }
-
   return *this;
 }
 

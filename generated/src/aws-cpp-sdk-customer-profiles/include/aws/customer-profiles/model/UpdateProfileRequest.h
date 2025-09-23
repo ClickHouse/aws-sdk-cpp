@@ -11,6 +11,8 @@
 #include <aws/customer-profiles/model/Gender.h>
 #include <aws/customer-profiles/model/UpdateAddress.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/customer-profiles/model/ProfileType.h>
+#include <aws/customer-profiles/model/EngagementPreferences.h>
 #include <utility>
 
 namespace Aws
@@ -25,7 +27,7 @@ namespace Model
   class UpdateProfileRequest : public CustomerProfilesRequest
   {
   public:
-    AWS_CUSTOMERPROFILES_API UpdateProfileRequest();
+    AWS_CUSTOMERPROFILES_API UpdateProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,1025 +38,331 @@ namespace Model
     AWS_CUSTOMERPROFILES_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique name of the domain.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    UpdateProfileRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline UpdateProfileRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline UpdateProfileRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline UpdateProfileRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of a customer profile.</p>
      */
-    inline const Aws::String& GetProfileId() const{ return m_profileId; }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
+    inline const Aws::String& GetProfileId() const { return m_profileId; }
     inline bool ProfileIdHasBeenSet() const { return m_profileIdHasBeenSet; }
+    template<typename ProfileIdT = Aws::String>
+    void SetProfileId(ProfileIdT&& value) { m_profileIdHasBeenSet = true; m_profileId = std::forward<ProfileIdT>(value); }
+    template<typename ProfileIdT = Aws::String>
+    UpdateProfileRequest& WithProfileId(ProfileIdT&& value) { SetProfileId(std::forward<ProfileIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline void SetProfileId(const Aws::String& value) { m_profileIdHasBeenSet = true; m_profileId = value; }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline void SetProfileId(Aws::String&& value) { m_profileIdHasBeenSet = true; m_profileId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline void SetProfileId(const char* value) { m_profileIdHasBeenSet = true; m_profileId.assign(value); }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& WithProfileId(const Aws::String& value) { SetProfileId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& WithProfileId(Aws::String&& value) { SetProfileId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& WithProfileId(const char* value) { SetProfileId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any additional information relevant to the customer’s profile.</p>
      */
-    inline const Aws::String& GetAdditionalInformation() const{ return m_additionalInformation; }
-
-    /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
-     */
+    inline const Aws::String& GetAdditionalInformation() const { return m_additionalInformation; }
     inline bool AdditionalInformationHasBeenSet() const { return m_additionalInformationHasBeenSet; }
+    template<typename AdditionalInformationT = Aws::String>
+    void SetAdditionalInformation(AdditionalInformationT&& value) { m_additionalInformationHasBeenSet = true; m_additionalInformation = std::forward<AdditionalInformationT>(value); }
+    template<typename AdditionalInformationT = Aws::String>
+    UpdateProfileRequest& WithAdditionalInformation(AdditionalInformationT&& value) { SetAdditionalInformation(std::forward<AdditionalInformationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
+     * <p>An account number that you have assigned to the customer.</p>
      */
-    inline void SetAdditionalInformation(const Aws::String& value) { m_additionalInformationHasBeenSet = true; m_additionalInformation = value; }
-
-    /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
-     */
-    inline void SetAdditionalInformation(Aws::String&& value) { m_additionalInformationHasBeenSet = true; m_additionalInformation = std::move(value); }
-
-    /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
-     */
-    inline void SetAdditionalInformation(const char* value) { m_additionalInformationHasBeenSet = true; m_additionalInformation.assign(value); }
-
-    /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
-     */
-    inline UpdateProfileRequest& WithAdditionalInformation(const Aws::String& value) { SetAdditionalInformation(value); return *this;}
-
-    /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
-     */
-    inline UpdateProfileRequest& WithAdditionalInformation(Aws::String&& value) { SetAdditionalInformation(std::move(value)); return *this;}
-
-    /**
-     * <p>Any additional information relevant to the customer’s profile.</p>
-     */
-    inline UpdateProfileRequest& WithAdditionalInformation(const char* value) { SetAdditionalInformation(value); return *this;}
-
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline const Aws::String& GetAccountNumber() const{ return m_accountNumber; }
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
+    inline const Aws::String& GetAccountNumber() const { return m_accountNumber; }
     inline bool AccountNumberHasBeenSet() const { return m_accountNumberHasBeenSet; }
+    template<typename AccountNumberT = Aws::String>
+    void SetAccountNumber(AccountNumberT&& value) { m_accountNumberHasBeenSet = true; m_accountNumber = std::forward<AccountNumberT>(value); }
+    template<typename AccountNumberT = Aws::String>
+    UpdateProfileRequest& WithAccountNumber(AccountNumberT&& value) { SetAccountNumber(std::forward<AccountNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline void SetAccountNumber(const Aws::String& value) { m_accountNumberHasBeenSet = true; m_accountNumber = value; }
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline void SetAccountNumber(Aws::String&& value) { m_accountNumberHasBeenSet = true; m_accountNumber = std::move(value); }
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline void SetAccountNumber(const char* value) { m_accountNumberHasBeenSet = true; m_accountNumber.assign(value); }
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline UpdateProfileRequest& WithAccountNumber(const Aws::String& value) { SetAccountNumber(value); return *this;}
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline UpdateProfileRequest& WithAccountNumber(Aws::String&& value) { SetAccountNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique account number that you have given to the customer.</p>
-     */
-    inline UpdateProfileRequest& WithAccountNumber(const char* value) { SetAccountNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of profile used to describe the customer.</p>
      */
-    inline const PartyType& GetPartyType() const{ return m_partyType; }
-
-    /**
-     * <p>The type of profile used to describe the customer.</p>
-     */
+    inline PartyType GetPartyType() const { return m_partyType; }
     inline bool PartyTypeHasBeenSet() const { return m_partyTypeHasBeenSet; }
+    inline void SetPartyType(PartyType value) { m_partyTypeHasBeenSet = true; m_partyType = value; }
+    inline UpdateProfileRequest& WithPartyType(PartyType value) { SetPartyType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of profile used to describe the customer.</p>
-     */
-    inline void SetPartyType(const PartyType& value) { m_partyTypeHasBeenSet = true; m_partyType = value; }
-
-    /**
-     * <p>The type of profile used to describe the customer.</p>
-     */
-    inline void SetPartyType(PartyType&& value) { m_partyTypeHasBeenSet = true; m_partyType = std::move(value); }
-
-    /**
-     * <p>The type of profile used to describe the customer.</p>
-     */
-    inline UpdateProfileRequest& WithPartyType(const PartyType& value) { SetPartyType(value); return *this;}
-
-    /**
-     * <p>The type of profile used to describe the customer.</p>
-     */
-    inline UpdateProfileRequest& WithPartyType(PartyType&& value) { SetPartyType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the customer’s business.</p>
      */
-    inline const Aws::String& GetBusinessName() const{ return m_businessName; }
-
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
+    inline const Aws::String& GetBusinessName() const { return m_businessName; }
     inline bool BusinessNameHasBeenSet() const { return m_businessNameHasBeenSet; }
+    template<typename BusinessNameT = Aws::String>
+    void SetBusinessName(BusinessNameT&& value) { m_businessNameHasBeenSet = true; m_businessName = std::forward<BusinessNameT>(value); }
+    template<typename BusinessNameT = Aws::String>
+    UpdateProfileRequest& WithBusinessName(BusinessNameT&& value) { SetBusinessName(std::forward<BusinessNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
-    inline void SetBusinessName(const Aws::String& value) { m_businessNameHasBeenSet = true; m_businessName = value; }
-
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
-    inline void SetBusinessName(Aws::String&& value) { m_businessNameHasBeenSet = true; m_businessName = std::move(value); }
-
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
-    inline void SetBusinessName(const char* value) { m_businessNameHasBeenSet = true; m_businessName.assign(value); }
-
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessName(const Aws::String& value) { SetBusinessName(value); return *this;}
-
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessName(Aws::String&& value) { SetBusinessName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the customer’s business.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessName(const char* value) { SetBusinessName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s first name.</p>
      */
-    inline const Aws::String& GetFirstName() const{ return m_firstName; }
-
-    /**
-     * <p>The customer’s first name.</p>
-     */
+    inline const Aws::String& GetFirstName() const { return m_firstName; }
     inline bool FirstNameHasBeenSet() const { return m_firstNameHasBeenSet; }
+    template<typename FirstNameT = Aws::String>
+    void SetFirstName(FirstNameT&& value) { m_firstNameHasBeenSet = true; m_firstName = std::forward<FirstNameT>(value); }
+    template<typename FirstNameT = Aws::String>
+    UpdateProfileRequest& WithFirstName(FirstNameT&& value) { SetFirstName(std::forward<FirstNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s first name.</p>
-     */
-    inline void SetFirstName(const Aws::String& value) { m_firstNameHasBeenSet = true; m_firstName = value; }
-
-    /**
-     * <p>The customer’s first name.</p>
-     */
-    inline void SetFirstName(Aws::String&& value) { m_firstNameHasBeenSet = true; m_firstName = std::move(value); }
-
-    /**
-     * <p>The customer’s first name.</p>
-     */
-    inline void SetFirstName(const char* value) { m_firstNameHasBeenSet = true; m_firstName.assign(value); }
-
-    /**
-     * <p>The customer’s first name.</p>
-     */
-    inline UpdateProfileRequest& WithFirstName(const Aws::String& value) { SetFirstName(value); return *this;}
-
-    /**
-     * <p>The customer’s first name.</p>
-     */
-    inline UpdateProfileRequest& WithFirstName(Aws::String&& value) { SetFirstName(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s first name.</p>
-     */
-    inline UpdateProfileRequest& WithFirstName(const char* value) { SetFirstName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s middle name.</p>
      */
-    inline const Aws::String& GetMiddleName() const{ return m_middleName; }
-
-    /**
-     * <p>The customer’s middle name.</p>
-     */
+    inline const Aws::String& GetMiddleName() const { return m_middleName; }
     inline bool MiddleNameHasBeenSet() const { return m_middleNameHasBeenSet; }
+    template<typename MiddleNameT = Aws::String>
+    void SetMiddleName(MiddleNameT&& value) { m_middleNameHasBeenSet = true; m_middleName = std::forward<MiddleNameT>(value); }
+    template<typename MiddleNameT = Aws::String>
+    UpdateProfileRequest& WithMiddleName(MiddleNameT&& value) { SetMiddleName(std::forward<MiddleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s middle name.</p>
-     */
-    inline void SetMiddleName(const Aws::String& value) { m_middleNameHasBeenSet = true; m_middleName = value; }
-
-    /**
-     * <p>The customer’s middle name.</p>
-     */
-    inline void SetMiddleName(Aws::String&& value) { m_middleNameHasBeenSet = true; m_middleName = std::move(value); }
-
-    /**
-     * <p>The customer’s middle name.</p>
-     */
-    inline void SetMiddleName(const char* value) { m_middleNameHasBeenSet = true; m_middleName.assign(value); }
-
-    /**
-     * <p>The customer’s middle name.</p>
-     */
-    inline UpdateProfileRequest& WithMiddleName(const Aws::String& value) { SetMiddleName(value); return *this;}
-
-    /**
-     * <p>The customer’s middle name.</p>
-     */
-    inline UpdateProfileRequest& WithMiddleName(Aws::String&& value) { SetMiddleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s middle name.</p>
-     */
-    inline UpdateProfileRequest& WithMiddleName(const char* value) { SetMiddleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s last name.</p>
      */
-    inline const Aws::String& GetLastName() const{ return m_lastName; }
-
-    /**
-     * <p>The customer’s last name.</p>
-     */
+    inline const Aws::String& GetLastName() const { return m_lastName; }
     inline bool LastNameHasBeenSet() const { return m_lastNameHasBeenSet; }
+    template<typename LastNameT = Aws::String>
+    void SetLastName(LastNameT&& value) { m_lastNameHasBeenSet = true; m_lastName = std::forward<LastNameT>(value); }
+    template<typename LastNameT = Aws::String>
+    UpdateProfileRequest& WithLastName(LastNameT&& value) { SetLastName(std::forward<LastNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s last name.</p>
-     */
-    inline void SetLastName(const Aws::String& value) { m_lastNameHasBeenSet = true; m_lastName = value; }
-
-    /**
-     * <p>The customer’s last name.</p>
-     */
-    inline void SetLastName(Aws::String&& value) { m_lastNameHasBeenSet = true; m_lastName = std::move(value); }
-
-    /**
-     * <p>The customer’s last name.</p>
-     */
-    inline void SetLastName(const char* value) { m_lastNameHasBeenSet = true; m_lastName.assign(value); }
-
-    /**
-     * <p>The customer’s last name.</p>
-     */
-    inline UpdateProfileRequest& WithLastName(const Aws::String& value) { SetLastName(value); return *this;}
-
-    /**
-     * <p>The customer’s last name.</p>
-     */
-    inline UpdateProfileRequest& WithLastName(Aws::String&& value) { SetLastName(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s last name.</p>
-     */
-    inline UpdateProfileRequest& WithLastName(const char* value) { SetLastName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s birth date. </p>
      */
-    inline const Aws::String& GetBirthDate() const{ return m_birthDate; }
-
-    /**
-     * <p>The customer’s birth date. </p>
-     */
+    inline const Aws::String& GetBirthDate() const { return m_birthDate; }
     inline bool BirthDateHasBeenSet() const { return m_birthDateHasBeenSet; }
+    template<typename BirthDateT = Aws::String>
+    void SetBirthDate(BirthDateT&& value) { m_birthDateHasBeenSet = true; m_birthDate = std::forward<BirthDateT>(value); }
+    template<typename BirthDateT = Aws::String>
+    UpdateProfileRequest& WithBirthDate(BirthDateT&& value) { SetBirthDate(std::forward<BirthDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s birth date. </p>
-     */
-    inline void SetBirthDate(const Aws::String& value) { m_birthDateHasBeenSet = true; m_birthDate = value; }
-
-    /**
-     * <p>The customer’s birth date. </p>
-     */
-    inline void SetBirthDate(Aws::String&& value) { m_birthDateHasBeenSet = true; m_birthDate = std::move(value); }
-
-    /**
-     * <p>The customer’s birth date. </p>
-     */
-    inline void SetBirthDate(const char* value) { m_birthDateHasBeenSet = true; m_birthDate.assign(value); }
-
-    /**
-     * <p>The customer’s birth date. </p>
-     */
-    inline UpdateProfileRequest& WithBirthDate(const Aws::String& value) { SetBirthDate(value); return *this;}
-
-    /**
-     * <p>The customer’s birth date. </p>
-     */
-    inline UpdateProfileRequest& WithBirthDate(Aws::String&& value) { SetBirthDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s birth date. </p>
-     */
-    inline UpdateProfileRequest& WithBirthDate(const char* value) { SetBirthDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The gender with which the customer identifies. </p>
      */
-    inline const Gender& GetGender() const{ return m_gender; }
-
-    /**
-     * <p>The gender with which the customer identifies. </p>
-     */
+    inline Gender GetGender() const { return m_gender; }
     inline bool GenderHasBeenSet() const { return m_genderHasBeenSet; }
+    inline void SetGender(Gender value) { m_genderHasBeenSet = true; m_gender = value; }
+    inline UpdateProfileRequest& WithGender(Gender value) { SetGender(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The gender with which the customer identifies. </p>
-     */
-    inline void SetGender(const Gender& value) { m_genderHasBeenSet = true; m_gender = value; }
-
-    /**
-     * <p>The gender with which the customer identifies. </p>
-     */
-    inline void SetGender(Gender&& value) { m_genderHasBeenSet = true; m_gender = std::move(value); }
-
-    /**
-     * <p>The gender with which the customer identifies. </p>
-     */
-    inline UpdateProfileRequest& WithGender(const Gender& value) { SetGender(value); return *this;}
-
-    /**
-     * <p>The gender with which the customer identifies. </p>
-     */
-    inline UpdateProfileRequest& WithGender(Gender&& value) { SetGender(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s phone number, which has not been specified as a mobile, home,
      * or business number. </p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    UpdateProfileRequest& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
-    inline UpdateProfileRequest& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
-    inline UpdateProfileRequest& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s phone number, which has not been specified as a mobile, home,
-     * or business number. </p>
-     */
-    inline UpdateProfileRequest& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s mobile phone number.</p>
      */
-    inline const Aws::String& GetMobilePhoneNumber() const{ return m_mobilePhoneNumber; }
-
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
+    inline const Aws::String& GetMobilePhoneNumber() const { return m_mobilePhoneNumber; }
     inline bool MobilePhoneNumberHasBeenSet() const { return m_mobilePhoneNumberHasBeenSet; }
+    template<typename MobilePhoneNumberT = Aws::String>
+    void SetMobilePhoneNumber(MobilePhoneNumberT&& value) { m_mobilePhoneNumberHasBeenSet = true; m_mobilePhoneNumber = std::forward<MobilePhoneNumberT>(value); }
+    template<typename MobilePhoneNumberT = Aws::String>
+    UpdateProfileRequest& WithMobilePhoneNumber(MobilePhoneNumberT&& value) { SetMobilePhoneNumber(std::forward<MobilePhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
-    inline void SetMobilePhoneNumber(const Aws::String& value) { m_mobilePhoneNumberHasBeenSet = true; m_mobilePhoneNumber = value; }
-
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
-    inline void SetMobilePhoneNumber(Aws::String&& value) { m_mobilePhoneNumberHasBeenSet = true; m_mobilePhoneNumber = std::move(value); }
-
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
-    inline void SetMobilePhoneNumber(const char* value) { m_mobilePhoneNumberHasBeenSet = true; m_mobilePhoneNumber.assign(value); }
-
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
-    inline UpdateProfileRequest& WithMobilePhoneNumber(const Aws::String& value) { SetMobilePhoneNumber(value); return *this;}
-
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
-    inline UpdateProfileRequest& WithMobilePhoneNumber(Aws::String&& value) { SetMobilePhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s mobile phone number.</p>
-     */
-    inline UpdateProfileRequest& WithMobilePhoneNumber(const char* value) { SetMobilePhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s home phone number.</p>
      */
-    inline const Aws::String& GetHomePhoneNumber() const{ return m_homePhoneNumber; }
-
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
+    inline const Aws::String& GetHomePhoneNumber() const { return m_homePhoneNumber; }
     inline bool HomePhoneNumberHasBeenSet() const { return m_homePhoneNumberHasBeenSet; }
+    template<typename HomePhoneNumberT = Aws::String>
+    void SetHomePhoneNumber(HomePhoneNumberT&& value) { m_homePhoneNumberHasBeenSet = true; m_homePhoneNumber = std::forward<HomePhoneNumberT>(value); }
+    template<typename HomePhoneNumberT = Aws::String>
+    UpdateProfileRequest& WithHomePhoneNumber(HomePhoneNumberT&& value) { SetHomePhoneNumber(std::forward<HomePhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
-    inline void SetHomePhoneNumber(const Aws::String& value) { m_homePhoneNumberHasBeenSet = true; m_homePhoneNumber = value; }
-
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
-    inline void SetHomePhoneNumber(Aws::String&& value) { m_homePhoneNumberHasBeenSet = true; m_homePhoneNumber = std::move(value); }
-
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
-    inline void SetHomePhoneNumber(const char* value) { m_homePhoneNumberHasBeenSet = true; m_homePhoneNumber.assign(value); }
-
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
-    inline UpdateProfileRequest& WithHomePhoneNumber(const Aws::String& value) { SetHomePhoneNumber(value); return *this;}
-
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
-    inline UpdateProfileRequest& WithHomePhoneNumber(Aws::String&& value) { SetHomePhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s home phone number.</p>
-     */
-    inline UpdateProfileRequest& WithHomePhoneNumber(const char* value) { SetHomePhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s business phone number.</p>
      */
-    inline const Aws::String& GetBusinessPhoneNumber() const{ return m_businessPhoneNumber; }
-
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
+    inline const Aws::String& GetBusinessPhoneNumber() const { return m_businessPhoneNumber; }
     inline bool BusinessPhoneNumberHasBeenSet() const { return m_businessPhoneNumberHasBeenSet; }
+    template<typename BusinessPhoneNumberT = Aws::String>
+    void SetBusinessPhoneNumber(BusinessPhoneNumberT&& value) { m_businessPhoneNumberHasBeenSet = true; m_businessPhoneNumber = std::forward<BusinessPhoneNumberT>(value); }
+    template<typename BusinessPhoneNumberT = Aws::String>
+    UpdateProfileRequest& WithBusinessPhoneNumber(BusinessPhoneNumberT&& value) { SetBusinessPhoneNumber(std::forward<BusinessPhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
-    inline void SetBusinessPhoneNumber(const Aws::String& value) { m_businessPhoneNumberHasBeenSet = true; m_businessPhoneNumber = value; }
-
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
-    inline void SetBusinessPhoneNumber(Aws::String&& value) { m_businessPhoneNumberHasBeenSet = true; m_businessPhoneNumber = std::move(value); }
-
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
-    inline void SetBusinessPhoneNumber(const char* value) { m_businessPhoneNumberHasBeenSet = true; m_businessPhoneNumber.assign(value); }
-
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessPhoneNumber(const Aws::String& value) { SetBusinessPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessPhoneNumber(Aws::String&& value) { SetBusinessPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s business phone number.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessPhoneNumber(const char* value) { SetBusinessPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s email address, which has not been specified as a personal or
      * business address. </p>
      */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    UpdateProfileRequest& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
-    inline UpdateProfileRequest& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
-    inline UpdateProfileRequest& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s email address, which has not been specified as a personal or
-     * business address. </p>
-     */
-    inline UpdateProfileRequest& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s personal email address.</p>
      */
-    inline const Aws::String& GetPersonalEmailAddress() const{ return m_personalEmailAddress; }
-
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
+    inline const Aws::String& GetPersonalEmailAddress() const { return m_personalEmailAddress; }
     inline bool PersonalEmailAddressHasBeenSet() const { return m_personalEmailAddressHasBeenSet; }
+    template<typename PersonalEmailAddressT = Aws::String>
+    void SetPersonalEmailAddress(PersonalEmailAddressT&& value) { m_personalEmailAddressHasBeenSet = true; m_personalEmailAddress = std::forward<PersonalEmailAddressT>(value); }
+    template<typename PersonalEmailAddressT = Aws::String>
+    UpdateProfileRequest& WithPersonalEmailAddress(PersonalEmailAddressT&& value) { SetPersonalEmailAddress(std::forward<PersonalEmailAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
-    inline void SetPersonalEmailAddress(const Aws::String& value) { m_personalEmailAddressHasBeenSet = true; m_personalEmailAddress = value; }
-
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
-    inline void SetPersonalEmailAddress(Aws::String&& value) { m_personalEmailAddressHasBeenSet = true; m_personalEmailAddress = std::move(value); }
-
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
-    inline void SetPersonalEmailAddress(const char* value) { m_personalEmailAddressHasBeenSet = true; m_personalEmailAddress.assign(value); }
-
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
-    inline UpdateProfileRequest& WithPersonalEmailAddress(const Aws::String& value) { SetPersonalEmailAddress(value); return *this;}
-
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
-    inline UpdateProfileRequest& WithPersonalEmailAddress(Aws::String&& value) { SetPersonalEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s personal email address.</p>
-     */
-    inline UpdateProfileRequest& WithPersonalEmailAddress(const char* value) { SetPersonalEmailAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s business email address.</p>
      */
-    inline const Aws::String& GetBusinessEmailAddress() const{ return m_businessEmailAddress; }
-
-    /**
-     * <p>The customer’s business email address.</p>
-     */
+    inline const Aws::String& GetBusinessEmailAddress() const { return m_businessEmailAddress; }
     inline bool BusinessEmailAddressHasBeenSet() const { return m_businessEmailAddressHasBeenSet; }
+    template<typename BusinessEmailAddressT = Aws::String>
+    void SetBusinessEmailAddress(BusinessEmailAddressT&& value) { m_businessEmailAddressHasBeenSet = true; m_businessEmailAddress = std::forward<BusinessEmailAddressT>(value); }
+    template<typename BusinessEmailAddressT = Aws::String>
+    UpdateProfileRequest& WithBusinessEmailAddress(BusinessEmailAddressT&& value) { SetBusinessEmailAddress(std::forward<BusinessEmailAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s business email address.</p>
-     */
-    inline void SetBusinessEmailAddress(const Aws::String& value) { m_businessEmailAddressHasBeenSet = true; m_businessEmailAddress = value; }
-
-    /**
-     * <p>The customer’s business email address.</p>
-     */
-    inline void SetBusinessEmailAddress(Aws::String&& value) { m_businessEmailAddressHasBeenSet = true; m_businessEmailAddress = std::move(value); }
-
-    /**
-     * <p>The customer’s business email address.</p>
-     */
-    inline void SetBusinessEmailAddress(const char* value) { m_businessEmailAddressHasBeenSet = true; m_businessEmailAddress.assign(value); }
-
-    /**
-     * <p>The customer’s business email address.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessEmailAddress(const Aws::String& value) { SetBusinessEmailAddress(value); return *this;}
-
-    /**
-     * <p>The customer’s business email address.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessEmailAddress(Aws::String&& value) { SetBusinessEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer’s business email address.</p>
-     */
-    inline UpdateProfileRequest& WithBusinessEmailAddress(const char* value) { SetBusinessEmailAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A generic address associated with the customer that is not mailing, shipping,
      * or billing.</p>
      */
-    inline const UpdateAddress& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>A generic address associated with the customer that is not mailing, shipping,
-     * or billing.</p>
-     */
+    inline const UpdateAddress& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
+    template<typename AddressT = UpdateAddress>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = UpdateAddress>
+    UpdateProfileRequest& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A generic address associated with the customer that is not mailing, shipping,
-     * or billing.</p>
-     */
-    inline void SetAddress(const UpdateAddress& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>A generic address associated with the customer that is not mailing, shipping,
-     * or billing.</p>
-     */
-    inline void SetAddress(UpdateAddress&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>A generic address associated with the customer that is not mailing, shipping,
-     * or billing.</p>
-     */
-    inline UpdateProfileRequest& WithAddress(const UpdateAddress& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>A generic address associated with the customer that is not mailing, shipping,
-     * or billing.</p>
-     */
-    inline UpdateProfileRequest& WithAddress(UpdateAddress&& value) { SetAddress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s shipping address.</p>
      */
-    inline const UpdateAddress& GetShippingAddress() const{ return m_shippingAddress; }
-
-    /**
-     * <p>The customer’s shipping address.</p>
-     */
+    inline const UpdateAddress& GetShippingAddress() const { return m_shippingAddress; }
     inline bool ShippingAddressHasBeenSet() const { return m_shippingAddressHasBeenSet; }
+    template<typename ShippingAddressT = UpdateAddress>
+    void SetShippingAddress(ShippingAddressT&& value) { m_shippingAddressHasBeenSet = true; m_shippingAddress = std::forward<ShippingAddressT>(value); }
+    template<typename ShippingAddressT = UpdateAddress>
+    UpdateProfileRequest& WithShippingAddress(ShippingAddressT&& value) { SetShippingAddress(std::forward<ShippingAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s shipping address.</p>
-     */
-    inline void SetShippingAddress(const UpdateAddress& value) { m_shippingAddressHasBeenSet = true; m_shippingAddress = value; }
-
-    /**
-     * <p>The customer’s shipping address.</p>
-     */
-    inline void SetShippingAddress(UpdateAddress&& value) { m_shippingAddressHasBeenSet = true; m_shippingAddress = std::move(value); }
-
-    /**
-     * <p>The customer’s shipping address.</p>
-     */
-    inline UpdateProfileRequest& WithShippingAddress(const UpdateAddress& value) { SetShippingAddress(value); return *this;}
-
-    /**
-     * <p>The customer’s shipping address.</p>
-     */
-    inline UpdateProfileRequest& WithShippingAddress(UpdateAddress&& value) { SetShippingAddress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s mailing address.</p>
      */
-    inline const UpdateAddress& GetMailingAddress() const{ return m_mailingAddress; }
-
-    /**
-     * <p>The customer’s mailing address.</p>
-     */
+    inline const UpdateAddress& GetMailingAddress() const { return m_mailingAddress; }
     inline bool MailingAddressHasBeenSet() const { return m_mailingAddressHasBeenSet; }
+    template<typename MailingAddressT = UpdateAddress>
+    void SetMailingAddress(MailingAddressT&& value) { m_mailingAddressHasBeenSet = true; m_mailingAddress = std::forward<MailingAddressT>(value); }
+    template<typename MailingAddressT = UpdateAddress>
+    UpdateProfileRequest& WithMailingAddress(MailingAddressT&& value) { SetMailingAddress(std::forward<MailingAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s mailing address.</p>
-     */
-    inline void SetMailingAddress(const UpdateAddress& value) { m_mailingAddressHasBeenSet = true; m_mailingAddress = value; }
-
-    /**
-     * <p>The customer’s mailing address.</p>
-     */
-    inline void SetMailingAddress(UpdateAddress&& value) { m_mailingAddressHasBeenSet = true; m_mailingAddress = std::move(value); }
-
-    /**
-     * <p>The customer’s mailing address.</p>
-     */
-    inline UpdateProfileRequest& WithMailingAddress(const UpdateAddress& value) { SetMailingAddress(value); return *this;}
-
-    /**
-     * <p>The customer’s mailing address.</p>
-     */
-    inline UpdateProfileRequest& WithMailingAddress(UpdateAddress&& value) { SetMailingAddress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer’s billing address.</p>
      */
-    inline const UpdateAddress& GetBillingAddress() const{ return m_billingAddress; }
-
-    /**
-     * <p>The customer’s billing address.</p>
-     */
+    inline const UpdateAddress& GetBillingAddress() const { return m_billingAddress; }
     inline bool BillingAddressHasBeenSet() const { return m_billingAddressHasBeenSet; }
+    template<typename BillingAddressT = UpdateAddress>
+    void SetBillingAddress(BillingAddressT&& value) { m_billingAddressHasBeenSet = true; m_billingAddress = std::forward<BillingAddressT>(value); }
+    template<typename BillingAddressT = UpdateAddress>
+    UpdateProfileRequest& WithBillingAddress(BillingAddressT&& value) { SetBillingAddress(std::forward<BillingAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer’s billing address.</p>
-     */
-    inline void SetBillingAddress(const UpdateAddress& value) { m_billingAddressHasBeenSet = true; m_billingAddress = value; }
-
-    /**
-     * <p>The customer’s billing address.</p>
-     */
-    inline void SetBillingAddress(UpdateAddress&& value) { m_billingAddressHasBeenSet = true; m_billingAddress = std::move(value); }
-
-    /**
-     * <p>The customer’s billing address.</p>
-     */
-    inline UpdateProfileRequest& WithBillingAddress(const UpdateAddress& value) { SetBillingAddress(value); return *this;}
-
-    /**
-     * <p>The customer’s billing address.</p>
-     */
-    inline UpdateProfileRequest& WithBillingAddress(UpdateAddress&& value) { SetBillingAddress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A key value pair of attributes of a customer profile.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = Aws::Map<Aws::String, Aws::String>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Map<Aws::String, Aws::String>>
+    UpdateProfileRequest& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesKeyT = Aws::String, typename AttributesValueT = Aws::String>
+    UpdateProfileRequest& AddAttributes(AttributesKeyT&& key, AttributesValueT&& value) {
+      m_attributesHasBeenSet = true; m_attributes.emplace(std::forward<AttributesKeyT>(key), std::forward<AttributesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline void SetAttributes(const Aws::Map<Aws::String, Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& WithAttributes(const Aws::Map<Aws::String, Aws::String>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(const char* key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(Aws::String&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key value pair of attributes of a customer profile.</p>
-     */
-    inline UpdateProfileRequest& AddAttributes(const char* key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>An alternative to <code>PartyType</code> which accepts any string as
      * input.</p>
      */
-    inline const Aws::String& GetPartyTypeString() const{ return m_partyTypeString; }
-
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
+    inline const Aws::String& GetPartyTypeString() const { return m_partyTypeString; }
     inline bool PartyTypeStringHasBeenSet() const { return m_partyTypeStringHasBeenSet; }
+    template<typename PartyTypeStringT = Aws::String>
+    void SetPartyTypeString(PartyTypeStringT&& value) { m_partyTypeStringHasBeenSet = true; m_partyTypeString = std::forward<PartyTypeStringT>(value); }
+    template<typename PartyTypeStringT = Aws::String>
+    UpdateProfileRequest& WithPartyTypeString(PartyTypeStringT&& value) { SetPartyTypeString(std::forward<PartyTypeStringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
-    inline void SetPartyTypeString(const Aws::String& value) { m_partyTypeStringHasBeenSet = true; m_partyTypeString = value; }
-
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
-    inline void SetPartyTypeString(Aws::String&& value) { m_partyTypeStringHasBeenSet = true; m_partyTypeString = std::move(value); }
-
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
-    inline void SetPartyTypeString(const char* value) { m_partyTypeStringHasBeenSet = true; m_partyTypeString.assign(value); }
-
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
-    inline UpdateProfileRequest& WithPartyTypeString(const Aws::String& value) { SetPartyTypeString(value); return *this;}
-
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
-    inline UpdateProfileRequest& WithPartyTypeString(Aws::String&& value) { SetPartyTypeString(std::move(value)); return *this;}
-
-    /**
-     * <p>An alternative to <code>PartyType</code> which accepts any string as
-     * input.</p>
-     */
-    inline UpdateProfileRequest& WithPartyTypeString(const char* value) { SetPartyTypeString(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
      */
-    inline const Aws::String& GetGenderString() const{ return m_genderString; }
-
-    /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
-     */
+    inline const Aws::String& GetGenderString() const { return m_genderString; }
     inline bool GenderStringHasBeenSet() const { return m_genderStringHasBeenSet; }
+    template<typename GenderStringT = Aws::String>
+    void SetGenderString(GenderStringT&& value) { m_genderStringHasBeenSet = true; m_genderString = std::forward<GenderStringT>(value); }
+    template<typename GenderStringT = Aws::String>
+    UpdateProfileRequest& WithGenderString(GenderStringT&& value) { SetGenderString(std::forward<GenderStringT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
+     * <p>Determines the type of the profile.</p>
      */
-    inline void SetGenderString(const Aws::String& value) { m_genderStringHasBeenSet = true; m_genderString = value; }
+    inline ProfileType GetProfileType() const { return m_profileType; }
+    inline bool ProfileTypeHasBeenSet() const { return m_profileTypeHasBeenSet; }
+    inline void SetProfileType(ProfileType value) { m_profileTypeHasBeenSet = true; m_profileType = value; }
+    inline UpdateProfileRequest& WithProfileType(ProfileType value) { SetProfileType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
+     * <p>Object that defines users preferred methods of engagement.</p>
      */
-    inline void SetGenderString(Aws::String&& value) { m_genderStringHasBeenSet = true; m_genderString = std::move(value); }
-
-    /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
-     */
-    inline void SetGenderString(const char* value) { m_genderStringHasBeenSet = true; m_genderString.assign(value); }
-
-    /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
-     */
-    inline UpdateProfileRequest& WithGenderString(const Aws::String& value) { SetGenderString(value); return *this;}
-
-    /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
-     */
-    inline UpdateProfileRequest& WithGenderString(Aws::String&& value) { SetGenderString(std::move(value)); return *this;}
-
-    /**
-     * <p>An alternative to <code>Gender</code> which accepts any string as input.</p>
-     */
-    inline UpdateProfileRequest& WithGenderString(const char* value) { SetGenderString(value); return *this;}
-
+    inline const EngagementPreferences& GetEngagementPreferences() const { return m_engagementPreferences; }
+    inline bool EngagementPreferencesHasBeenSet() const { return m_engagementPreferencesHasBeenSet; }
+    template<typename EngagementPreferencesT = EngagementPreferences>
+    void SetEngagementPreferences(EngagementPreferencesT&& value) { m_engagementPreferencesHasBeenSet = true; m_engagementPreferences = std::forward<EngagementPreferencesT>(value); }
+    template<typename EngagementPreferencesT = EngagementPreferences>
+    UpdateProfileRequest& WithEngagementPreferences(EngagementPreferencesT&& value) { SetEngagementPreferences(std::forward<EngagementPreferencesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
@@ -1069,7 +377,7 @@ namespace Model
     Aws::String m_accountNumber;
     bool m_accountNumberHasBeenSet = false;
 
-    PartyType m_partyType;
+    PartyType m_partyType{PartyType::NOT_SET};
     bool m_partyTypeHasBeenSet = false;
 
     Aws::String m_businessName;
@@ -1087,7 +395,7 @@ namespace Model
     Aws::String m_birthDate;
     bool m_birthDateHasBeenSet = false;
 
-    Gender m_gender;
+    Gender m_gender{Gender::NOT_SET};
     bool m_genderHasBeenSet = false;
 
     Aws::String m_phoneNumber;
@@ -1131,6 +439,12 @@ namespace Model
 
     Aws::String m_genderString;
     bool m_genderStringHasBeenSet = false;
+
+    ProfileType m_profileType{ProfileType::NOT_SET};
+    bool m_profileTypeHasBeenSet = false;
+
+    EngagementPreferences m_engagementPreferences;
+    bool m_engagementPreferencesHasBeenSet = false;
   };
 
 } // namespace Model

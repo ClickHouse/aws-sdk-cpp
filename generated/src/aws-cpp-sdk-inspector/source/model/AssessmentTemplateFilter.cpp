@@ -18,17 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-AssessmentTemplateFilter::AssessmentTemplateFilter() : 
-    m_namePatternHasBeenSet(false),
-    m_durationRangeHasBeenSet(false),
-    m_rulesPackageArnsHasBeenSet(false)
-{
-}
-
-AssessmentTemplateFilter::AssessmentTemplateFilter(JsonView jsonValue) : 
-    m_namePatternHasBeenSet(false),
-    m_durationRangeHasBeenSet(false),
-    m_rulesPackageArnsHasBeenSet(false)
+AssessmentTemplateFilter::AssessmentTemplateFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AssessmentTemplateFilter& AssessmentTemplateFilter::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("namePattern"))
   {
     m_namePattern = jsonValue.GetString("namePattern");
-
     m_namePatternHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("durationRange"))
   {
     m_durationRange = jsonValue.GetObject("durationRange");
-
     m_durationRangeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rulesPackageArns"))
   {
     Aws::Utils::Array<JsonView> rulesPackageArnsJsonList = jsonValue.GetArray("rulesPackageArns");
@@ -58,7 +44,6 @@ AssessmentTemplateFilter& AssessmentTemplateFilter::operator =(JsonView jsonValu
     }
     m_rulesPackageArnsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace NetworkManager
 namespace Model
 {
 
-VpcAttachment::VpcAttachment() : 
-    m_attachmentHasBeenSet(false),
-    m_subnetArnsHasBeenSet(false),
-    m_optionsHasBeenSet(false)
-{
-}
-
-VpcAttachment::VpcAttachment(JsonView jsonValue) : 
-    m_attachmentHasBeenSet(false),
-    m_subnetArnsHasBeenSet(false),
-    m_optionsHasBeenSet(false)
+VpcAttachment::VpcAttachment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ VpcAttachment& VpcAttachment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Attachment"))
   {
     m_attachment = jsonValue.GetObject("Attachment");
-
     m_attachmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubnetArns"))
   {
     Aws::Utils::Array<JsonView> subnetArnsJsonList = jsonValue.GetArray("SubnetArns");
@@ -51,14 +39,11 @@ VpcAttachment& VpcAttachment::operator =(JsonView jsonValue)
     }
     m_subnetArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Options"))
   {
     m_options = jsonValue.GetObject("Options");
-
     m_optionsHasBeenSet = true;
   }
-
   return *this;
 }
 

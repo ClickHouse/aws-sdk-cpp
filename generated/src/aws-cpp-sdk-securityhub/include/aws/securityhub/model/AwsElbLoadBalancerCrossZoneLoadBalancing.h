@@ -30,39 +30,25 @@ namespace Model
   class AwsElbLoadBalancerCrossZoneLoadBalancing
   {
   public:
-    AWS_SECURITYHUB_API AwsElbLoadBalancerCrossZoneLoadBalancing();
+    AWS_SECURITYHUB_API AwsElbLoadBalancerCrossZoneLoadBalancing() = default;
     AWS_SECURITYHUB_API AwsElbLoadBalancerCrossZoneLoadBalancing(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsElbLoadBalancerCrossZoneLoadBalancing& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether cross-zone load balancing is enabled for the load
      * balancer.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Indicates whether cross-zone load balancing is enabled for the load
-     * balancer.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether cross-zone load balancing is enabled for the load
-     * balancer.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Indicates whether cross-zone load balancing is enabled for the load
-     * balancer.</p>
-     */
     inline AwsElbLoadBalancerCrossZoneLoadBalancing& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

@@ -20,19 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-Endpoint::Endpoint() : 
-    m_addressHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_vpcEndpointsHasBeenSet(false)
-{
-}
-
-Endpoint::Endpoint(const XmlNode& xmlNode) : 
-    m_addressHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_vpcEndpointsHasBeenSet(false)
+Endpoint::Endpoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +47,7 @@ Endpoint& Endpoint::operator =(const XmlNode& xmlNode)
     if(!vpcEndpointsNode.IsNull())
     {
       XmlNode vpcEndpointsMember = vpcEndpointsNode.FirstChild("VpcEndpoint");
+      m_vpcEndpointsHasBeenSet = !vpcEndpointsMember.IsNull();
       while(!vpcEndpointsMember.IsNull())
       {
         m_vpcEndpoints.push_back(vpcEndpointsMember);
@@ -90,7 +79,7 @@ void Endpoint::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       for(auto& item : m_vpcEndpoints)
       {
         Aws::StringStream vpcEndpointsSs;
-        vpcEndpointsSs << location << index << locationValue << ".VpcEndpoint." << vpcEndpointsIdx++;
+        vpcEndpointsSs << location << index << locationValue << ".VpcEndpoints.VpcEndpoint." << vpcEndpointsIdx++;
         item.OutputToStream(oStream, vpcEndpointsSs.str().c_str());
       }
   }
@@ -113,7 +102,7 @@ void Endpoint::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_vpcEndpoints)
       {
         Aws::StringStream vpcEndpointsSs;
-        vpcEndpointsSs << location <<  ".VpcEndpoint." << vpcEndpointsIdx++;
+        vpcEndpointsSs << location << ".VpcEndpoints.VpcEndpoint." << vpcEndpointsIdx++;
         item.OutputToStream(oStream, vpcEndpointsSs.str().c_str());
       }
   }

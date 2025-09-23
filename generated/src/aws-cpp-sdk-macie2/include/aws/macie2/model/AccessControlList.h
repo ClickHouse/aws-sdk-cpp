@@ -30,67 +30,39 @@ namespace Model
   class AccessControlList
   {
   public:
-    AWS_MACIE2_API AccessControlList();
+    AWS_MACIE2_API AccessControlList() = default;
     AWS_MACIE2_API AccessControlList(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API AccessControlList& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether the ACL grants the general public with read access
      * permissions for the bucket.</p>
      */
-    inline bool GetAllowsPublicReadAccess() const{ return m_allowsPublicReadAccess; }
-
-    /**
-     * <p>Specifies whether the ACL grants the general public with read access
-     * permissions for the bucket.</p>
-     */
+    inline bool GetAllowsPublicReadAccess() const { return m_allowsPublicReadAccess; }
     inline bool AllowsPublicReadAccessHasBeenSet() const { return m_allowsPublicReadAccessHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the ACL grants the general public with read access
-     * permissions for the bucket.</p>
-     */
     inline void SetAllowsPublicReadAccess(bool value) { m_allowsPublicReadAccessHasBeenSet = true; m_allowsPublicReadAccess = value; }
-
-    /**
-     * <p>Specifies whether the ACL grants the general public with read access
-     * permissions for the bucket.</p>
-     */
     inline AccessControlList& WithAllowsPublicReadAccess(bool value) { SetAllowsPublicReadAccess(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies whether the ACL grants the general public with write access
      * permissions for the bucket.</p>
      */
-    inline bool GetAllowsPublicWriteAccess() const{ return m_allowsPublicWriteAccess; }
-
-    /**
-     * <p>Specifies whether the ACL grants the general public with write access
-     * permissions for the bucket.</p>
-     */
+    inline bool GetAllowsPublicWriteAccess() const { return m_allowsPublicWriteAccess; }
     inline bool AllowsPublicWriteAccessHasBeenSet() const { return m_allowsPublicWriteAccessHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the ACL grants the general public with write access
-     * permissions for the bucket.</p>
-     */
     inline void SetAllowsPublicWriteAccess(bool value) { m_allowsPublicWriteAccessHasBeenSet = true; m_allowsPublicWriteAccess = value; }
-
-    /**
-     * <p>Specifies whether the ACL grants the general public with write access
-     * permissions for the bucket.</p>
-     */
     inline AccessControlList& WithAllowsPublicWriteAccess(bool value) { SetAllowsPublicWriteAccess(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_allowsPublicReadAccess;
+    bool m_allowsPublicReadAccess{false};
     bool m_allowsPublicReadAccessHasBeenSet = false;
 
-    bool m_allowsPublicWriteAccess;
+    bool m_allowsPublicWriteAccess{false};
     bool m_allowsPublicWriteAccessHasBeenSet = false;
   };
 

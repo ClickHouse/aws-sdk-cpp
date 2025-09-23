@@ -21,7 +21,7 @@ namespace Model
   class GetGroupRequest : public XRayRequest
   {
   public:
-    AWS_XRAY_API GetGroupRequest();
+    AWS_XRAY_API GetGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_XRAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The case-sensitive name of the group.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    GetGroupRequest& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
-    inline GetGroupRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
-    inline GetGroupRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The case-sensitive name of the group.</p>
-     */
-    inline GetGroupRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the group that was generated on creation.</p>
      */
-    inline const Aws::String& GetGroupARN() const{ return m_groupARN; }
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
+    inline const Aws::String& GetGroupARN() const { return m_groupARN; }
     inline bool GroupARNHasBeenSet() const { return m_groupARNHasBeenSet; }
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
-    inline void SetGroupARN(const Aws::String& value) { m_groupARNHasBeenSet = true; m_groupARN = value; }
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
-    inline void SetGroupARN(Aws::String&& value) { m_groupARNHasBeenSet = true; m_groupARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
-    inline void SetGroupARN(const char* value) { m_groupARNHasBeenSet = true; m_groupARN.assign(value); }
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
-    inline GetGroupRequest& WithGroupARN(const Aws::String& value) { SetGroupARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
-    inline GetGroupRequest& WithGroupARN(Aws::String&& value) { SetGroupARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the group that was generated on creation.</p>
-     */
-    inline GetGroupRequest& WithGroupARN(const char* value) { SetGroupARN(value); return *this;}
-
+    template<typename GroupARNT = Aws::String>
+    void SetGroupARN(GroupARNT&& value) { m_groupARNHasBeenSet = true; m_groupARN = std::forward<GroupARNT>(value); }
+    template<typename GroupARNT = Aws::String>
+    GetGroupRequest& WithGroupARN(GroupARNT&& value) { SetGroupARN(std::forward<GroupARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupName;

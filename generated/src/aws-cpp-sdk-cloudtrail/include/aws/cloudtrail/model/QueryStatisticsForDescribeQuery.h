@@ -33,149 +33,80 @@ namespace Model
   class QueryStatisticsForDescribeQuery
   {
   public:
-    AWS_CLOUDTRAIL_API QueryStatisticsForDescribeQuery();
+    AWS_CLOUDTRAIL_API QueryStatisticsForDescribeQuery() = default;
     AWS_CLOUDTRAIL_API QueryStatisticsForDescribeQuery(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API QueryStatisticsForDescribeQuery& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of events that matched a query.</p>
      */
-    inline long long GetEventsMatched() const{ return m_eventsMatched; }
-
-    /**
-     * <p>The number of events that matched a query.</p>
-     */
+    inline long long GetEventsMatched() const { return m_eventsMatched; }
     inline bool EventsMatchedHasBeenSet() const { return m_eventsMatchedHasBeenSet; }
-
-    /**
-     * <p>The number of events that matched a query.</p>
-     */
     inline void SetEventsMatched(long long value) { m_eventsMatchedHasBeenSet = true; m_eventsMatched = value; }
-
-    /**
-     * <p>The number of events that matched a query.</p>
-     */
     inline QueryStatisticsForDescribeQuery& WithEventsMatched(long long value) { SetEventsMatched(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of events that the query scanned in the event data store.</p>
      */
-    inline long long GetEventsScanned() const{ return m_eventsScanned; }
-
-    /**
-     * <p>The number of events that the query scanned in the event data store.</p>
-     */
+    inline long long GetEventsScanned() const { return m_eventsScanned; }
     inline bool EventsScannedHasBeenSet() const { return m_eventsScannedHasBeenSet; }
-
-    /**
-     * <p>The number of events that the query scanned in the event data store.</p>
-     */
     inline void SetEventsScanned(long long value) { m_eventsScannedHasBeenSet = true; m_eventsScanned = value; }
-
-    /**
-     * <p>The number of events that the query scanned in the event data store.</p>
-     */
     inline QueryStatisticsForDescribeQuery& WithEventsScanned(long long value) { SetEventsScanned(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total bytes that the query scanned in the event data store. This value
      * matches the number of bytes for which your account is billed for the query,
      * unless the query is still running.</p>
      */
-    inline long long GetBytesScanned() const{ return m_bytesScanned; }
-
-    /**
-     * <p>The total bytes that the query scanned in the event data store. This value
-     * matches the number of bytes for which your account is billed for the query,
-     * unless the query is still running.</p>
-     */
+    inline long long GetBytesScanned() const { return m_bytesScanned; }
     inline bool BytesScannedHasBeenSet() const { return m_bytesScannedHasBeenSet; }
-
-    /**
-     * <p>The total bytes that the query scanned in the event data store. This value
-     * matches the number of bytes for which your account is billed for the query,
-     * unless the query is still running.</p>
-     */
     inline void SetBytesScanned(long long value) { m_bytesScannedHasBeenSet = true; m_bytesScanned = value; }
-
-    /**
-     * <p>The total bytes that the query scanned in the event data store. This value
-     * matches the number of bytes for which your account is billed for the query,
-     * unless the query is still running.</p>
-     */
     inline QueryStatisticsForDescribeQuery& WithBytesScanned(long long value) { SetBytesScanned(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The query's run time, in milliseconds.</p>
      */
-    inline int GetExecutionTimeInMillis() const{ return m_executionTimeInMillis; }
-
-    /**
-     * <p>The query's run time, in milliseconds.</p>
-     */
+    inline int GetExecutionTimeInMillis() const { return m_executionTimeInMillis; }
     inline bool ExecutionTimeInMillisHasBeenSet() const { return m_executionTimeInMillisHasBeenSet; }
-
-    /**
-     * <p>The query's run time, in milliseconds.</p>
-     */
     inline void SetExecutionTimeInMillis(int value) { m_executionTimeInMillisHasBeenSet = true; m_executionTimeInMillis = value; }
-
-    /**
-     * <p>The query's run time, in milliseconds.</p>
-     */
     inline QueryStatisticsForDescribeQuery& WithExecutionTimeInMillis(int value) { SetExecutionTimeInMillis(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The creation time of the query.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The creation time of the query.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
-
-    /**
-     * <p>The creation time of the query.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The creation time of the query.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The creation time of the query.</p>
-     */
-    inline QueryStatisticsForDescribeQuery& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The creation time of the query.</p>
-     */
-    inline QueryStatisticsForDescribeQuery& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    QueryStatisticsForDescribeQuery& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_eventsMatched;
+    long long m_eventsMatched{0};
     bool m_eventsMatchedHasBeenSet = false;
 
-    long long m_eventsScanned;
+    long long m_eventsScanned{0};
     bool m_eventsScannedHasBeenSet = false;
 
-    long long m_bytesScanned;
+    long long m_bytesScanned{0};
     bool m_bytesScannedHasBeenSet = false;
 
-    int m_executionTimeInMillis;
+    int m_executionTimeInMillis{0};
     bool m_executionTimeInMillisHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
   };
 

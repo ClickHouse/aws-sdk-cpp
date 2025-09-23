@@ -110,7 +110,12 @@ namespace Model
     Isabelle,
     Zayd,
     Danielle,
-    Gregory
+    Gregory,
+    Burcu,
+    Jitka,
+    Sabrina,
+    Jasmine,
+    Jihye
   };
 
 namespace VoiceIdMapper

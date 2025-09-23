@@ -34,299 +34,103 @@ namespace Model
   class Ingestion
   {
   public:
-    AWS_APPFABRIC_API Ingestion();
+    AWS_APPFABRIC_API Ingestion() = default;
     AWS_APPFABRIC_API Ingestion(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API Ingestion& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFABRIC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Ingestion& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline Ingestion& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline Ingestion& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the ingestion.</p>
-     */
-    inline Ingestion& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
      */
-    inline const Aws::String& GetAppBundleArn() const{ return m_appBundleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
+    inline const Aws::String& GetAppBundleArn() const { return m_appBundleArn; }
     inline bool AppBundleArnHasBeenSet() const { return m_appBundleArnHasBeenSet; }
+    template<typename AppBundleArnT = Aws::String>
+    void SetAppBundleArn(AppBundleArnT&& value) { m_appBundleArnHasBeenSet = true; m_appBundleArn = std::forward<AppBundleArnT>(value); }
+    template<typename AppBundleArnT = Aws::String>
+    Ingestion& WithAppBundleArn(AppBundleArnT&& value) { SetAppBundleArn(std::forward<AppBundleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
-    inline void SetAppBundleArn(const Aws::String& value) { m_appBundleArnHasBeenSet = true; m_appBundleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
-    inline void SetAppBundleArn(Aws::String&& value) { m_appBundleArnHasBeenSet = true; m_appBundleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
-    inline void SetAppBundleArn(const char* value) { m_appBundleArnHasBeenSet = true; m_appBundleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
-    inline Ingestion& WithAppBundleArn(const Aws::String& value) { SetAppBundleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
-    inline Ingestion& WithAppBundleArn(Aws::String&& value) { SetAppBundleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the app bundle for the ingestion.</p>
-     */
-    inline Ingestion& WithAppBundleArn(const char* value) { SetAppBundleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the application.</p>
      */
-    inline const Aws::String& GetApp() const{ return m_app; }
-
-    /**
-     * <p>The name of the application.</p>
-     */
+    inline const Aws::String& GetApp() const { return m_app; }
     inline bool AppHasBeenSet() const { return m_appHasBeenSet; }
+    template<typename AppT = Aws::String>
+    void SetApp(AppT&& value) { m_appHasBeenSet = true; m_app = std::forward<AppT>(value); }
+    template<typename AppT = Aws::String>
+    Ingestion& WithApp(AppT&& value) { SetApp(std::forward<AppT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetApp(const Aws::String& value) { m_appHasBeenSet = true; m_app = value; }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetApp(Aws::String&& value) { m_appHasBeenSet = true; m_app = std::move(value); }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetApp(const char* value) { m_appHasBeenSet = true; m_app.assign(value); }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline Ingestion& WithApp(const Aws::String& value) { SetApp(value); return *this;}
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline Ingestion& WithApp(Aws::String&& value) { SetApp(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline Ingestion& WithApp(const char* value) { SetApp(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the application tenant.</p>
      */
-    inline const Aws::String& GetTenantId() const{ return m_tenantId; }
-
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
+    inline const Aws::String& GetTenantId() const { return m_tenantId; }
     inline bool TenantIdHasBeenSet() const { return m_tenantIdHasBeenSet; }
+    template<typename TenantIdT = Aws::String>
+    void SetTenantId(TenantIdT&& value) { m_tenantIdHasBeenSet = true; m_tenantId = std::forward<TenantIdT>(value); }
+    template<typename TenantIdT = Aws::String>
+    Ingestion& WithTenantId(TenantIdT&& value) { SetTenantId(std::forward<TenantIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
-    inline void SetTenantId(const Aws::String& value) { m_tenantIdHasBeenSet = true; m_tenantId = value; }
-
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
-    inline void SetTenantId(Aws::String&& value) { m_tenantIdHasBeenSet = true; m_tenantId = std::move(value); }
-
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
-    inline void SetTenantId(const char* value) { m_tenantIdHasBeenSet = true; m_tenantId.assign(value); }
-
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
-    inline Ingestion& WithTenantId(const Aws::String& value) { SetTenantId(value); return *this;}
-
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
-    inline Ingestion& WithTenantId(Aws::String&& value) { SetTenantId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the application tenant.</p>
-     */
-    inline Ingestion& WithTenantId(const char* value) { SetTenantId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the ingestion was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp of when the ingestion was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Ingestion& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the ingestion was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the ingestion was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the ingestion was created.</p>
-     */
-    inline Ingestion& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the ingestion was created.</p>
-     */
-    inline Ingestion& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the ingestion was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The timestamp of when the ingestion was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    Ingestion& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the ingestion was last updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The timestamp of when the ingestion was last updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the ingestion was last updated.</p>
-     */
-    inline Ingestion& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the ingestion was last updated.</p>
-     */
-    inline Ingestion& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the ingestion.</p>
      */
-    inline const IngestionState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The status of the ingestion.</p>
-     */
+    inline IngestionState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(IngestionState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline Ingestion& WithState(IngestionState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the ingestion.</p>
-     */
-    inline void SetState(const IngestionState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The status of the ingestion.</p>
-     */
-    inline void SetState(IngestionState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The status of the ingestion.</p>
-     */
-    inline Ingestion& WithState(const IngestionState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The status of the ingestion.</p>
-     */
-    inline Ingestion& WithState(IngestionState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the ingestion.</p>
      */
-    inline const IngestionType& GetIngestionType() const{ return m_ingestionType; }
-
-    /**
-     * <p>The type of the ingestion.</p>
-     */
+    inline IngestionType GetIngestionType() const { return m_ingestionType; }
     inline bool IngestionTypeHasBeenSet() const { return m_ingestionTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the ingestion.</p>
-     */
-    inline void SetIngestionType(const IngestionType& value) { m_ingestionTypeHasBeenSet = true; m_ingestionType = value; }
-
-    /**
-     * <p>The type of the ingestion.</p>
-     */
-    inline void SetIngestionType(IngestionType&& value) { m_ingestionTypeHasBeenSet = true; m_ingestionType = std::move(value); }
-
-    /**
-     * <p>The type of the ingestion.</p>
-     */
-    inline Ingestion& WithIngestionType(const IngestionType& value) { SetIngestionType(value); return *this;}
-
-    /**
-     * <p>The type of the ingestion.</p>
-     */
-    inline Ingestion& WithIngestionType(IngestionType&& value) { SetIngestionType(std::move(value)); return *this;}
-
+    inline void SetIngestionType(IngestionType value) { m_ingestionTypeHasBeenSet = true; m_ingestionType = value; }
+    inline Ingestion& WithIngestionType(IngestionType value) { SetIngestionType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -341,16 +145,16 @@ namespace Model
     Aws::String m_tenantId;
     bool m_tenantIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
 
-    IngestionState m_state;
+    IngestionState m_state{IngestionState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    IngestionType m_ingestionType;
+    IngestionType m_ingestionType{IngestionType::NOT_SET};
     bool m_ingestionTypeHasBeenSet = false;
   };
 

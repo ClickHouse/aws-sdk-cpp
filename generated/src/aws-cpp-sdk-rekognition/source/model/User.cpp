@@ -18,17 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-User::User() : 
-    m_userIdHasBeenSet(false),
-    m_userStatus(UserStatus::NOT_SET),
-    m_userStatusHasBeenSet(false)
-{
-}
-
-User::User(JsonView jsonValue) : 
-    m_userIdHasBeenSet(false),
-    m_userStatus(UserStatus::NOT_SET),
-    m_userStatusHasBeenSet(false)
+User::User(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ User& User::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UserId"))
   {
     m_userId = jsonValue.GetString("UserId");
-
     m_userIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserStatus"))
   {
     m_userStatus = UserStatusMapper::GetUserStatusForName(jsonValue.GetString("UserStatus"));
-
     m_userStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

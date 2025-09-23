@@ -33,60 +33,24 @@ namespace Model
   class CustomRoutingEndpointDescription
   {
   public:
-    AWS_GLOBALACCELERATOR_API CustomRoutingEndpointDescription();
+    AWS_GLOBALACCELERATOR_API CustomRoutingEndpointDescription() = default;
     AWS_GLOBALACCELERATOR_API CustomRoutingEndpointDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLOBALACCELERATOR_API CustomRoutingEndpointDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLOBALACCELERATOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
      * private cloud (VPC) subnet ID. </p>
      */
-    inline const Aws::String& GetEndpointId() const{ return m_endpointId; }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
+    inline const Aws::String& GetEndpointId() const { return m_endpointId; }
     inline bool EndpointIdHasBeenSet() const { return m_endpointIdHasBeenSet; }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline void SetEndpointId(const Aws::String& value) { m_endpointIdHasBeenSet = true; m_endpointId = value; }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline void SetEndpointId(Aws::String&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::move(value); }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline void SetEndpointId(const char* value) { m_endpointIdHasBeenSet = true; m_endpointId.assign(value); }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline CustomRoutingEndpointDescription& WithEndpointId(const Aws::String& value) { SetEndpointId(value); return *this;}
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline CustomRoutingEndpointDescription& WithEndpointId(Aws::String&& value) { SetEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline CustomRoutingEndpointDescription& WithEndpointId(const char* value) { SetEndpointId(value); return *this;}
-
+    template<typename EndpointIdT = Aws::String>
+    void SetEndpointId(EndpointIdT&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::forward<EndpointIdT>(value); }
+    template<typename EndpointIdT = Aws::String>
+    CustomRoutingEndpointDescription& WithEndpointId(EndpointIdT&& value) { SetEndpointId(std::forward<EndpointIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointId;

@@ -13,12 +13,6 @@ using namespace Aws::ConnectParticipant::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetAttachmentRequest::GetAttachmentRequest() : 
-    m_attachmentIdHasBeenSet(false),
-    m_connectionTokenHasBeenSet(false)
-{
-}
-
 Aws::String GetAttachmentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -26,6 +20,12 @@ Aws::String GetAttachmentRequest::SerializePayload() const
   if(m_attachmentIdHasBeenSet)
   {
    payload.WithString("AttachmentId", m_attachmentId);
+
+  }
+
+  if(m_urlExpiryInSecondsHasBeenSet)
+  {
+   payload.WithInteger("UrlExpiryInSeconds", m_urlExpiryInSeconds);
 
   }
 

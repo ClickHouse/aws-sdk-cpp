@@ -20,25 +20,7 @@ namespace RDS
 namespace Model
 {
 
-OptionConfiguration::OptionConfiguration() : 
-    m_optionNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_optionVersionHasBeenSet(false),
-    m_dBSecurityGroupMembershipsHasBeenSet(false),
-    m_vpcSecurityGroupMembershipsHasBeenSet(false),
-    m_optionSettingsHasBeenSet(false)
-{
-}
-
-OptionConfiguration::OptionConfiguration(const XmlNode& xmlNode) : 
-    m_optionNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_optionVersionHasBeenSet(false),
-    m_dBSecurityGroupMembershipsHasBeenSet(false),
-    m_vpcSecurityGroupMembershipsHasBeenSet(false),
-    m_optionSettingsHasBeenSet(false)
+OptionConfiguration::OptionConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -71,6 +53,7 @@ OptionConfiguration& OptionConfiguration::operator =(const XmlNode& xmlNode)
     if(!dBSecurityGroupMembershipsNode.IsNull())
     {
       XmlNode dBSecurityGroupMembershipsMember = dBSecurityGroupMembershipsNode.FirstChild("DBSecurityGroupName");
+      m_dBSecurityGroupMembershipsHasBeenSet = !dBSecurityGroupMembershipsMember.IsNull();
       while(!dBSecurityGroupMembershipsMember.IsNull())
       {
         m_dBSecurityGroupMemberships.push_back(dBSecurityGroupMembershipsMember.GetText());
@@ -83,6 +66,7 @@ OptionConfiguration& OptionConfiguration::operator =(const XmlNode& xmlNode)
     if(!vpcSecurityGroupMembershipsNode.IsNull())
     {
       XmlNode vpcSecurityGroupMembershipsMember = vpcSecurityGroupMembershipsNode.FirstChild("VpcSecurityGroupId");
+      m_vpcSecurityGroupMembershipsHasBeenSet = !vpcSecurityGroupMembershipsMember.IsNull();
       while(!vpcSecurityGroupMembershipsMember.IsNull())
       {
         m_vpcSecurityGroupMemberships.push_back(vpcSecurityGroupMembershipsMember.GetText());
@@ -95,6 +79,7 @@ OptionConfiguration& OptionConfiguration::operator =(const XmlNode& xmlNode)
     if(!optionSettingsNode.IsNull())
     {
       XmlNode optionSettingsMember = optionSettingsNode.FirstChild("OptionSetting");
+      m_optionSettingsHasBeenSet = !optionSettingsMember.IsNull();
       while(!optionSettingsMember.IsNull())
       {
         m_optionSettings.push_back(optionSettingsMember);
@@ -130,7 +115,7 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       unsigned dBSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_dBSecurityGroupMemberships)
       {
-        oStream << location << index << locationValue << ".DBSecurityGroupName." << dBSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".DBSecurityGroupMemberships.DBSecurityGroupName." << dBSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -139,7 +124,7 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       unsigned vpcSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_vpcSecurityGroupMemberships)
       {
-        oStream << location << index << locationValue << ".VpcSecurityGroupId." << vpcSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".VpcSecurityGroupMemberships.VpcSecurityGroupId." << vpcSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -149,7 +134,7 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_optionSettings)
       {
         Aws::StringStream optionSettingsSs;
-        optionSettingsSs << location << index << locationValue << ".OptionSetting." << optionSettingsIdx++;
+        optionSettingsSs << location << index << locationValue << ".OptionSettings.OptionSetting." << optionSettingsIdx++;
         item.OutputToStream(oStream, optionSettingsSs.str().c_str());
       }
   }
@@ -175,7 +160,7 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       unsigned dBSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_dBSecurityGroupMemberships)
       {
-        oStream << location << ".DBSecurityGroupName." << dBSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".DBSecurityGroupMemberships.DBSecurityGroupName." << dBSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_vpcSecurityGroupMembershipsHasBeenSet)
@@ -183,7 +168,7 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       unsigned vpcSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_vpcSecurityGroupMemberships)
       {
-        oStream << location << ".VpcSecurityGroupId." << vpcSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".VpcSecurityGroupMemberships.VpcSecurityGroupId." << vpcSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_optionSettingsHasBeenSet)
@@ -192,7 +177,7 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_optionSettings)
       {
         Aws::StringStream optionSettingsSs;
-        optionSettingsSs << location <<  ".OptionSetting." << optionSettingsIdx++;
+        optionSettingsSs << location << ".OptionSettings.OptionSetting." << optionSettingsIdx++;
         item.OutputToStream(oStream, optionSettingsSs.str().c_str());
       }
   }

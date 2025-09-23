@@ -18,21 +18,7 @@ namespace finspace
 namespace Model
 {
 
-VpcConfiguration::VpcConfiguration() : 
-    m_vpcIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_ipAddressType(IPAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false)
-{
-}
-
-VpcConfiguration::VpcConfiguration(JsonView jsonValue) : 
-    m_vpcIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_ipAddressType(IPAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false)
+VpcConfiguration::VpcConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("vpcId"))
   {
     m_vpcId = jsonValue.GetString("vpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("securityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
@@ -55,7 +39,6 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -65,14 +48,11 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ipAddressType"))
   {
     m_ipAddressType = IPAddressTypeMapper::GetIPAddressTypeForName(jsonValue.GetString("ipAddressType"));
-
     m_ipAddressTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

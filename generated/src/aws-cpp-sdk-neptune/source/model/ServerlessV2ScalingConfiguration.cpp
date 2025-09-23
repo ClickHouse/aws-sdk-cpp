@@ -20,19 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-ServerlessV2ScalingConfiguration::ServerlessV2ScalingConfiguration() : 
-    m_minCapacity(0.0),
-    m_minCapacityHasBeenSet(false),
-    m_maxCapacity(0.0),
-    m_maxCapacityHasBeenSet(false)
-{
-}
-
-ServerlessV2ScalingConfiguration::ServerlessV2ScalingConfiguration(const XmlNode& xmlNode) : 
-    m_minCapacity(0.0),
-    m_minCapacityHasBeenSet(false),
-    m_maxCapacity(0.0),
-    m_maxCapacityHasBeenSet(false)
+ServerlessV2ScalingConfiguration::ServerlessV2ScalingConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,11 +66,11 @@ void ServerlessV2ScalingConfiguration::OutputToStream(Aws::OStream& oStream, con
 {
   if(m_minCapacityHasBeenSet)
   {
-        oStream << location << ".MinCapacity=" << StringUtils::URLEncode(m_minCapacity) << "&";
+      oStream << location << ".MinCapacity=" << StringUtils::URLEncode(m_minCapacity) << "&";
   }
   if(m_maxCapacityHasBeenSet)
   {
-        oStream << location << ".MaxCapacity=" << StringUtils::URLEncode(m_maxCapacity) << "&";
+      oStream << location << ".MaxCapacity=" << StringUtils::URLEncode(m_maxCapacity) << "&";
   }
 }
 

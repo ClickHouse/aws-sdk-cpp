@@ -37,7 +37,7 @@ namespace Model
   class ReservedInstancesListing
   {
   public:
-    AWS_EC2_API ReservedInstancesListing();
+    AWS_EC2_API ReservedInstancesListing() = default;
     AWS_EC2_API ReservedInstancesListing(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ReservedInstancesListing& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -45,423 +45,139 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A unique, case-sensitive key supplied by the client to ensure that the
      * request is idempotent. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * Idempotency</a>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    ReservedInstancesListing& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline ReservedInstancesListing& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline ReservedInstancesListing& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive key supplied by the client to ensure that the
-     * request is idempotent. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * Idempotency</a>.</p>
-     */
-    inline ReservedInstancesListing& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the listing was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateDate() const{ return m_createDate; }
-
-    /**
-     * <p>The time the listing was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateDate() const { return m_createDate; }
     inline bool CreateDateHasBeenSet() const { return m_createDateHasBeenSet; }
+    template<typename CreateDateT = Aws::Utils::DateTime>
+    void SetCreateDate(CreateDateT&& value) { m_createDateHasBeenSet = true; m_createDate = std::forward<CreateDateT>(value); }
+    template<typename CreateDateT = Aws::Utils::DateTime>
+    ReservedInstancesListing& WithCreateDate(CreateDateT&& value) { SetCreateDate(std::forward<CreateDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the listing was created.</p>
-     */
-    inline void SetCreateDate(const Aws::Utils::DateTime& value) { m_createDateHasBeenSet = true; m_createDate = value; }
-
-    /**
-     * <p>The time the listing was created.</p>
-     */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
-
-    /**
-     * <p>The time the listing was created.</p>
-     */
-    inline ReservedInstancesListing& WithCreateDate(const Aws::Utils::DateTime& value) { SetCreateDate(value); return *this;}
-
-    /**
-     * <p>The time the listing was created.</p>
-     */
-    inline ReservedInstancesListing& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of instances in this state.</p>
      */
-    inline const Aws::Vector<InstanceCount>& GetInstanceCounts() const{ return m_instanceCounts; }
-
-    /**
-     * <p>The number of instances in this state.</p>
-     */
+    inline const Aws::Vector<InstanceCount>& GetInstanceCounts() const { return m_instanceCounts; }
     inline bool InstanceCountsHasBeenSet() const { return m_instanceCountsHasBeenSet; }
+    template<typename InstanceCountsT = Aws::Vector<InstanceCount>>
+    void SetInstanceCounts(InstanceCountsT&& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts = std::forward<InstanceCountsT>(value); }
+    template<typename InstanceCountsT = Aws::Vector<InstanceCount>>
+    ReservedInstancesListing& WithInstanceCounts(InstanceCountsT&& value) { SetInstanceCounts(std::forward<InstanceCountsT>(value)); return *this;}
+    template<typename InstanceCountsT = InstanceCount>
+    ReservedInstancesListing& AddInstanceCounts(InstanceCountsT&& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts.emplace_back(std::forward<InstanceCountsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The number of instances in this state.</p>
-     */
-    inline void SetInstanceCounts(const Aws::Vector<InstanceCount>& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts = value; }
-
-    /**
-     * <p>The number of instances in this state.</p>
-     */
-    inline void SetInstanceCounts(Aws::Vector<InstanceCount>&& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts = std::move(value); }
-
-    /**
-     * <p>The number of instances in this state.</p>
-     */
-    inline ReservedInstancesListing& WithInstanceCounts(const Aws::Vector<InstanceCount>& value) { SetInstanceCounts(value); return *this;}
-
-    /**
-     * <p>The number of instances in this state.</p>
-     */
-    inline ReservedInstancesListing& WithInstanceCounts(Aws::Vector<InstanceCount>&& value) { SetInstanceCounts(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of instances in this state.</p>
-     */
-    inline ReservedInstancesListing& AddInstanceCounts(const InstanceCount& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts.push_back(value); return *this; }
-
-    /**
-     * <p>The number of instances in this state.</p>
-     */
-    inline ReservedInstancesListing& AddInstanceCounts(InstanceCount&& value) { m_instanceCountsHasBeenSet = true; m_instanceCounts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The price of the Reserved Instance listing.</p>
      */
-    inline const Aws::Vector<PriceSchedule>& GetPriceSchedules() const{ return m_priceSchedules; }
-
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
+    inline const Aws::Vector<PriceSchedule>& GetPriceSchedules() const { return m_priceSchedules; }
     inline bool PriceSchedulesHasBeenSet() const { return m_priceSchedulesHasBeenSet; }
+    template<typename PriceSchedulesT = Aws::Vector<PriceSchedule>>
+    void SetPriceSchedules(PriceSchedulesT&& value) { m_priceSchedulesHasBeenSet = true; m_priceSchedules = std::forward<PriceSchedulesT>(value); }
+    template<typename PriceSchedulesT = Aws::Vector<PriceSchedule>>
+    ReservedInstancesListing& WithPriceSchedules(PriceSchedulesT&& value) { SetPriceSchedules(std::forward<PriceSchedulesT>(value)); return *this;}
+    template<typename PriceSchedulesT = PriceSchedule>
+    ReservedInstancesListing& AddPriceSchedules(PriceSchedulesT&& value) { m_priceSchedulesHasBeenSet = true; m_priceSchedules.emplace_back(std::forward<PriceSchedulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
-    inline void SetPriceSchedules(const Aws::Vector<PriceSchedule>& value) { m_priceSchedulesHasBeenSet = true; m_priceSchedules = value; }
-
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
-    inline void SetPriceSchedules(Aws::Vector<PriceSchedule>&& value) { m_priceSchedulesHasBeenSet = true; m_priceSchedules = std::move(value); }
-
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithPriceSchedules(const Aws::Vector<PriceSchedule>& value) { SetPriceSchedules(value); return *this;}
-
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithPriceSchedules(Aws::Vector<PriceSchedule>&& value) { SetPriceSchedules(std::move(value)); return *this;}
-
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& AddPriceSchedules(const PriceSchedule& value) { m_priceSchedulesHasBeenSet = true; m_priceSchedules.push_back(value); return *this; }
-
-    /**
-     * <p>The price of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& AddPriceSchedules(PriceSchedule&& value) { m_priceSchedulesHasBeenSet = true; m_priceSchedules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the Reserved Instance.</p>
      */
-    inline const Aws::String& GetReservedInstancesId() const{ return m_reservedInstancesId; }
-
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
+    inline const Aws::String& GetReservedInstancesId() const { return m_reservedInstancesId; }
     inline bool ReservedInstancesIdHasBeenSet() const { return m_reservedInstancesIdHasBeenSet; }
+    template<typename ReservedInstancesIdT = Aws::String>
+    void SetReservedInstancesId(ReservedInstancesIdT&& value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId = std::forward<ReservedInstancesIdT>(value); }
+    template<typename ReservedInstancesIdT = Aws::String>
+    ReservedInstancesListing& WithReservedInstancesId(ReservedInstancesIdT&& value) { SetReservedInstancesId(std::forward<ReservedInstancesIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
-    inline void SetReservedInstancesId(const Aws::String& value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId = value; }
-
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
-    inline void SetReservedInstancesId(Aws::String&& value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId = std::move(value); }
-
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
-    inline void SetReservedInstancesId(const char* value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId.assign(value); }
-
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
-    inline ReservedInstancesListing& WithReservedInstancesId(const Aws::String& value) { SetReservedInstancesId(value); return *this;}
-
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
-    inline ReservedInstancesListing& WithReservedInstancesId(Aws::String&& value) { SetReservedInstancesId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Reserved Instance.</p>
-     */
-    inline ReservedInstancesListing& WithReservedInstancesId(const char* value) { SetReservedInstancesId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Reserved Instance listing.</p>
      */
-    inline const Aws::String& GetReservedInstancesListingId() const{ return m_reservedInstancesListingId; }
-
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
+    inline const Aws::String& GetReservedInstancesListingId() const { return m_reservedInstancesListingId; }
     inline bool ReservedInstancesListingIdHasBeenSet() const { return m_reservedInstancesListingIdHasBeenSet; }
+    template<typename ReservedInstancesListingIdT = Aws::String>
+    void SetReservedInstancesListingId(ReservedInstancesListingIdT&& value) { m_reservedInstancesListingIdHasBeenSet = true; m_reservedInstancesListingId = std::forward<ReservedInstancesListingIdT>(value); }
+    template<typename ReservedInstancesListingIdT = Aws::String>
+    ReservedInstancesListing& WithReservedInstancesListingId(ReservedInstancesListingIdT&& value) { SetReservedInstancesListingId(std::forward<ReservedInstancesListingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
-    inline void SetReservedInstancesListingId(const Aws::String& value) { m_reservedInstancesListingIdHasBeenSet = true; m_reservedInstancesListingId = value; }
-
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
-    inline void SetReservedInstancesListingId(Aws::String&& value) { m_reservedInstancesListingIdHasBeenSet = true; m_reservedInstancesListingId = std::move(value); }
-
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
-    inline void SetReservedInstancesListingId(const char* value) { m_reservedInstancesListingIdHasBeenSet = true; m_reservedInstancesListingId.assign(value); }
-
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithReservedInstancesListingId(const Aws::String& value) { SetReservedInstancesListingId(value); return *this;}
-
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithReservedInstancesListingId(Aws::String&& value) { SetReservedInstancesListingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithReservedInstancesListingId(const char* value) { SetReservedInstancesListingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the Reserved Instance listing.</p>
      */
-    inline const ListingStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the Reserved Instance listing.</p>
-     */
+    inline ListingStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ListingStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ReservedInstancesListing& WithStatus(ListingStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the Reserved Instance listing.</p>
-     */
-    inline void SetStatus(const ListingStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the Reserved Instance listing.</p>
-     */
-    inline void SetStatus(ListingStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithStatus(const ListingStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Reserved Instance listing.</p>
-     */
-    inline ReservedInstancesListing& WithStatus(ListingStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the current status of the Reserved Instance listing. The
      * response can be blank.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    ReservedInstancesListing& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
-    inline ReservedInstancesListing& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
-    inline ReservedInstancesListing& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the current status of the Reserved Instance listing. The
-     * response can be blank.</p>
-     */
-    inline ReservedInstancesListing& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any tags assigned to the resource.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ReservedInstancesListing& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ReservedInstancesListing& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
-    inline ReservedInstancesListing& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
-    inline ReservedInstancesListing& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
-    inline ReservedInstancesListing& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Any tags assigned to the resource.</p>
-     */
-    inline ReservedInstancesListing& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The last modified timestamp of the listing.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateDate() const{ return m_updateDate; }
-
-    /**
-     * <p>The last modified timestamp of the listing.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdateDate() const { return m_updateDate; }
     inline bool UpdateDateHasBeenSet() const { return m_updateDateHasBeenSet; }
-
-    /**
-     * <p>The last modified timestamp of the listing.</p>
-     */
-    inline void SetUpdateDate(const Aws::Utils::DateTime& value) { m_updateDateHasBeenSet = true; m_updateDate = value; }
-
-    /**
-     * <p>The last modified timestamp of the listing.</p>
-     */
-    inline void SetUpdateDate(Aws::Utils::DateTime&& value) { m_updateDateHasBeenSet = true; m_updateDate = std::move(value); }
-
-    /**
-     * <p>The last modified timestamp of the listing.</p>
-     */
-    inline ReservedInstancesListing& WithUpdateDate(const Aws::Utils::DateTime& value) { SetUpdateDate(value); return *this;}
-
-    /**
-     * <p>The last modified timestamp of the listing.</p>
-     */
-    inline ReservedInstancesListing& WithUpdateDate(Aws::Utils::DateTime&& value) { SetUpdateDate(std::move(value)); return *this;}
-
+    template<typename UpdateDateT = Aws::Utils::DateTime>
+    void SetUpdateDate(UpdateDateT&& value) { m_updateDateHasBeenSet = true; m_updateDate = std::forward<UpdateDateT>(value); }
+    template<typename UpdateDateT = Aws::Utils::DateTime>
+    ReservedInstancesListing& WithUpdateDate(UpdateDateT&& value) { SetUpdateDate(std::forward<UpdateDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clientToken;
     bool m_clientTokenHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createDate;
+    Aws::Utils::DateTime m_createDate{};
     bool m_createDateHasBeenSet = false;
 
     Aws::Vector<InstanceCount> m_instanceCounts;
@@ -476,7 +192,7 @@ namespace Model
     Aws::String m_reservedInstancesListingId;
     bool m_reservedInstancesListingIdHasBeenSet = false;
 
-    ListingStatus m_status;
+    ListingStatus m_status{ListingStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusMessage;
@@ -485,7 +201,7 @@ namespace Model
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateDate;
+    Aws::Utils::DateTime m_updateDate{};
     bool m_updateDateHasBeenSet = false;
   };
 

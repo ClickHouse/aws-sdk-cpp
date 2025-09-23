@@ -18,15 +18,7 @@ namespace ChimeSDKMediaPipelines
 namespace Model
 {
 
-SelectedVideoStreams::SelectedVideoStreams() : 
-    m_attendeeIdsHasBeenSet(false),
-    m_externalUserIdsHasBeenSet(false)
-{
-}
-
-SelectedVideoStreams::SelectedVideoStreams(JsonView jsonValue) : 
-    m_attendeeIdsHasBeenSet(false),
-    m_externalUserIdsHasBeenSet(false)
+SelectedVideoStreams::SelectedVideoStreams(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ SelectedVideoStreams& SelectedVideoStreams::operator =(JsonView jsonValue)
     }
     m_attendeeIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExternalUserIds"))
   {
     Aws::Utils::Array<JsonView> externalUserIdsJsonList = jsonValue.GetArray("ExternalUserIds");
@@ -52,7 +43,6 @@ SelectedVideoStreams& SelectedVideoStreams::operator =(JsonView jsonValue)
     }
     m_externalUserIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

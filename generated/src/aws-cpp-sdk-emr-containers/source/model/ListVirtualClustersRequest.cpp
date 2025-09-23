@@ -15,19 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListVirtualClustersRequest::ListVirtualClustersRequest() : 
-    m_containerProviderIdHasBeenSet(false),
-    m_containerProviderType(ContainerProviderType::NOT_SET),
-    m_containerProviderTypeHasBeenSet(false),
-    m_createdAfterHasBeenSet(false),
-    m_createdBeforeHasBeenSet(false),
-    m_statesHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListVirtualClustersRequest::SerializePayload() const
 {
   return {};
@@ -85,6 +72,13 @@ void ListVirtualClustersRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_eksAccessEntryIntegratedHasBeenSet)
+    {
+      ss << m_eksAccessEntryIntegrated;
+      uri.AddQueryStringParameter("eksAccessEntryIntegrated", ss.str());
       ss.str("");
     }
 

@@ -25,7 +25,7 @@ namespace Model
   class DeleteConnectorRequest : public KafkaConnectRequest
   {
   public:
-    AWS_KAFKACONNECT_API DeleteConnectorRequest();
+    AWS_KAFKACONNECT_API DeleteConnectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,87 +38,29 @@ namespace Model
     AWS_KAFKACONNECT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
      */
-    inline const Aws::String& GetConnectorArn() const{ return m_connectorArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
+    inline const Aws::String& GetConnectorArn() const { return m_connectorArn; }
     inline bool ConnectorArnHasBeenSet() const { return m_connectorArnHasBeenSet; }
+    template<typename ConnectorArnT = Aws::String>
+    void SetConnectorArn(ConnectorArnT&& value) { m_connectorArnHasBeenSet = true; m_connectorArn = std::forward<ConnectorArnT>(value); }
+    template<typename ConnectorArnT = Aws::String>
+    DeleteConnectorRequest& WithConnectorArn(ConnectorArnT&& value) { SetConnectorArn(std::forward<ConnectorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
-    inline void SetConnectorArn(const Aws::String& value) { m_connectorArnHasBeenSet = true; m_connectorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
-    inline void SetConnectorArn(Aws::String&& value) { m_connectorArnHasBeenSet = true; m_connectorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
-    inline void SetConnectorArn(const char* value) { m_connectorArnHasBeenSet = true; m_connectorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
-    inline DeleteConnectorRequest& WithConnectorArn(const Aws::String& value) { SetConnectorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
-    inline DeleteConnectorRequest& WithConnectorArn(Aws::String&& value) { SetConnectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the connector that you want to delete.</p>
-     */
-    inline DeleteConnectorRequest& WithConnectorArn(const char* value) { SetConnectorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current version of the connector that you want to delete.</p>
      */
-    inline const Aws::String& GetCurrentVersion() const{ return m_currentVersion; }
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
+    inline const Aws::String& GetCurrentVersion() const { return m_currentVersion; }
     inline bool CurrentVersionHasBeenSet() const { return m_currentVersionHasBeenSet; }
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
-    inline void SetCurrentVersion(const Aws::String& value) { m_currentVersionHasBeenSet = true; m_currentVersion = value; }
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
-    inline void SetCurrentVersion(Aws::String&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::move(value); }
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
-    inline void SetCurrentVersion(const char* value) { m_currentVersionHasBeenSet = true; m_currentVersion.assign(value); }
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
-    inline DeleteConnectorRequest& WithCurrentVersion(const Aws::String& value) { SetCurrentVersion(value); return *this;}
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
-    inline DeleteConnectorRequest& WithCurrentVersion(Aws::String&& value) { SetCurrentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The current version of the connector that you want to delete.</p>
-     */
-    inline DeleteConnectorRequest& WithCurrentVersion(const char* value) { SetCurrentVersion(value); return *this;}
-
+    template<typename CurrentVersionT = Aws::String>
+    void SetCurrentVersion(CurrentVersionT&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::forward<CurrentVersionT>(value); }
+    template<typename CurrentVersionT = Aws::String>
+    DeleteConnectorRequest& WithCurrentVersion(CurrentVersionT&& value) { SetCurrentVersion(std::forward<CurrentVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorArn;

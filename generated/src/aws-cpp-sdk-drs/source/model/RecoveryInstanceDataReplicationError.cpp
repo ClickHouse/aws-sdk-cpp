@@ -18,17 +18,7 @@ namespace drs
 namespace Model
 {
 
-RecoveryInstanceDataReplicationError::RecoveryInstanceDataReplicationError() : 
-    m_error(FailbackReplicationError::NOT_SET),
-    m_errorHasBeenSet(false),
-    m_rawErrorHasBeenSet(false)
-{
-}
-
-RecoveryInstanceDataReplicationError::RecoveryInstanceDataReplicationError(JsonView jsonValue) : 
-    m_error(FailbackReplicationError::NOT_SET),
-    m_errorHasBeenSet(false),
-    m_rawErrorHasBeenSet(false)
+RecoveryInstanceDataReplicationError::RecoveryInstanceDataReplicationError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RecoveryInstanceDataReplicationError& RecoveryInstanceDataReplicationError::oper
   if(jsonValue.ValueExists("error"))
   {
     m_error = FailbackReplicationErrorMapper::GetFailbackReplicationErrorForName(jsonValue.GetString("error"));
-
     m_errorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rawError"))
   {
     m_rawError = jsonValue.GetString("rawError");
-
     m_rawErrorHasBeenSet = true;
   }
-
   return *this;
 }
 

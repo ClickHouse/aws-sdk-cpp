@@ -18,21 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-AddObjectInput::AddObjectInput() : 
-    m_uriHasBeenSet(false),
-    m_eTagHasBeenSet(false),
-    m_size(0),
-    m_sizeHasBeenSet(false),
-    m_partitionValuesHasBeenSet(false)
-{
-}
-
-AddObjectInput::AddObjectInput(JsonView jsonValue) : 
-    m_uriHasBeenSet(false),
-    m_eTagHasBeenSet(false),
-    m_size(0),
-    m_sizeHasBeenSet(false),
-    m_partitionValuesHasBeenSet(false)
+AddObjectInput::AddObjectInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ AddObjectInput& AddObjectInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Uri"))
   {
     m_uri = jsonValue.GetString("Uri");
-
     m_uriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ETag"))
   {
     m_eTag = jsonValue.GetString("ETag");
-
     m_eTagHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Size"))
   {
     m_size = jsonValue.GetInt64("Size");
-
     m_sizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PartitionValues"))
   {
     Aws::Utils::Array<JsonView> partitionValuesJsonList = jsonValue.GetArray("PartitionValues");
@@ -69,7 +49,6 @@ AddObjectInput& AddObjectInput::operator =(JsonView jsonValue)
     }
     m_partitionValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

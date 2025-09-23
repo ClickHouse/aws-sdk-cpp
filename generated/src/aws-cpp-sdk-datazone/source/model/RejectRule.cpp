@@ -18,19 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-RejectRule::RejectRule() : 
-    m_rule(RejectRuleBehavior::NOT_SET),
-    m_ruleHasBeenSet(false),
-    m_threshold(0.0),
-    m_thresholdHasBeenSet(false)
-{
-}
-
-RejectRule::RejectRule(JsonView jsonValue) : 
-    m_rule(RejectRuleBehavior::NOT_SET),
-    m_ruleHasBeenSet(false),
-    m_threshold(0.0),
-    m_thresholdHasBeenSet(false)
+RejectRule::RejectRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ RejectRule& RejectRule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("rule"))
   {
     m_rule = RejectRuleBehaviorMapper::GetRejectRuleBehaviorForName(jsonValue.GetString("rule"));
-
     m_ruleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("threshold"))
   {
     m_threshold = jsonValue.GetDouble("threshold");
-
     m_thresholdHasBeenSet = true;
   }
-
   return *this;
 }
 

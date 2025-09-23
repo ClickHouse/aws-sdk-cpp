@@ -17,13 +17,7 @@ using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetSnapshotBlockPublicAccessStateResponse::GetSnapshotBlockPublicAccessStateResponse() : 
-    m_state(SnapshotBlockPublicAccessState::NOT_SET)
-{
-}
-
-GetSnapshotBlockPublicAccessStateResponse::GetSnapshotBlockPublicAccessStateResponse(const Aws::AmazonWebServiceResult<XmlDocument>& result) : 
-    m_state(SnapshotBlockPublicAccessState::NOT_SET)
+GetSnapshotBlockPublicAccessStateResponse::GetSnapshotBlockPublicAccessStateResponse(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
 }
@@ -43,7 +37,14 @@ GetSnapshotBlockPublicAccessStateResponse& GetSnapshotBlockPublicAccessStateResp
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = SnapshotBlockPublicAccessStateMapper::GetSnapshotBlockPublicAccessStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = SnapshotBlockPublicAccessStateMapper::GetSnapshotBlockPublicAccessStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
+      m_stateHasBeenSet = true;
+    }
+    XmlNode managedByNode = resultNode.FirstChild("managedBy");
+    if(!managedByNode.IsNull())
+    {
+      m_managedBy = ManagedByMapper::GetManagedByForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(managedByNode.GetText()).c_str()));
+      m_managedByHasBeenSet = true;
     }
   }
 
@@ -52,6 +53,7 @@ GetSnapshotBlockPublicAccessStateResponse& GetSnapshotBlockPublicAccessStateResp
     if (!requestIdNode.IsNull())
     {
       m_responseMetadata.SetRequestId(StringUtils::Trim(requestIdNode.GetText().c_str()));
+      m_responseMetadataHasBeenSet = true;
     }
     AWS_LOGSTREAM_DEBUG("Aws::EC2::Model::GetSnapshotBlockPublicAccessStateResponse", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
   }

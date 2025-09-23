@@ -22,7 +22,7 @@ namespace Model
   class AnalyzeIDRequest : public TextractRequest
   {
   public:
-    AWS_TEXTRACT_API AnalyzeIDRequest();
+    AWS_TEXTRACT_API AnalyzeIDRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,19 @@ namespace Model
     AWS_TEXTRACT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The document being passed to AnalyzeID.</p>
      */
-    inline const Aws::Vector<Document>& GetDocumentPages() const{ return m_documentPages; }
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
+    inline const Aws::Vector<Document>& GetDocumentPages() const { return m_documentPages; }
     inline bool DocumentPagesHasBeenSet() const { return m_documentPagesHasBeenSet; }
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
-    inline void SetDocumentPages(const Aws::Vector<Document>& value) { m_documentPagesHasBeenSet = true; m_documentPages = value; }
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
-    inline void SetDocumentPages(Aws::Vector<Document>&& value) { m_documentPagesHasBeenSet = true; m_documentPages = std::move(value); }
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
-    inline AnalyzeIDRequest& WithDocumentPages(const Aws::Vector<Document>& value) { SetDocumentPages(value); return *this;}
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
-    inline AnalyzeIDRequest& WithDocumentPages(Aws::Vector<Document>&& value) { SetDocumentPages(std::move(value)); return *this;}
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
-    inline AnalyzeIDRequest& AddDocumentPages(const Document& value) { m_documentPagesHasBeenSet = true; m_documentPages.push_back(value); return *this; }
-
-    /**
-     * <p>The document being passed to AnalyzeID.</p>
-     */
-    inline AnalyzeIDRequest& AddDocumentPages(Document&& value) { m_documentPagesHasBeenSet = true; m_documentPages.push_back(std::move(value)); return *this; }
-
+    template<typename DocumentPagesT = Aws::Vector<Document>>
+    void SetDocumentPages(DocumentPagesT&& value) { m_documentPagesHasBeenSet = true; m_documentPages = std::forward<DocumentPagesT>(value); }
+    template<typename DocumentPagesT = Aws::Vector<Document>>
+    AnalyzeIDRequest& WithDocumentPages(DocumentPagesT&& value) { SetDocumentPages(std::forward<DocumentPagesT>(value)); return *this;}
+    template<typename DocumentPagesT = Document>
+    AnalyzeIDRequest& AddDocumentPages(DocumentPagesT&& value) { m_documentPagesHasBeenSet = true; m_documentPages.emplace_back(std::forward<DocumentPagesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Document> m_documentPages;

@@ -12,24 +12,9 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListApplicationsRequest::ListApplicationsRequest() : 
-    m_filterHasBeenSet(false),
-    m_instanceArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListApplicationsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filterHasBeenSet)
-  {
-   payload.WithObject("Filter", m_filter.Jsonize());
-
-  }
 
   if(m_instanceArnHasBeenSet)
   {
@@ -46,6 +31,12 @@ Aws::String ListApplicationsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_filterHasBeenSet)
+  {
+   payload.WithObject("Filter", m_filter.Jsonize());
 
   }
 

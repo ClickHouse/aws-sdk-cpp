@@ -28,11 +28,12 @@ namespace Model
   class CreateRuleGroupResult
   {
   public:
-    AWS_WAFV2_API CreateRuleGroupResult();
+    AWS_WAFV2_API CreateRuleGroupResult() = default;
     AWS_WAFV2_API CreateRuleGroupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFV2_API CreateRuleGroupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>High-level information about a <a>RuleGroup</a>, returned by operations like
      * create and list. This provides information like the ID, that you can use to
@@ -40,71 +41,28 @@ namespace Model
      * the <a>RuleGroupReferenceStatement</a> to use the rule group in a
      * <a>Rule</a>.</p>
      */
-    inline const RuleGroupSummary& GetSummary() const{ return m_summary; }
+    inline const RuleGroupSummary& GetSummary() const { return m_summary; }
+    template<typename SummaryT = RuleGroupSummary>
+    void SetSummary(SummaryT&& value) { m_summaryHasBeenSet = true; m_summary = std::forward<SummaryT>(value); }
+    template<typename SummaryT = RuleGroupSummary>
+    CreateRuleGroupResult& WithSummary(SummaryT&& value) { SetSummary(std::forward<SummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>High-level information about a <a>RuleGroup</a>, returned by operations like
-     * create and list. This provides information like the ID, that you can use to
-     * retrieve and manage a <code>RuleGroup</code>, and the ARN, that you provide to
-     * the <a>RuleGroupReferenceStatement</a> to use the rule group in a
-     * <a>Rule</a>.</p>
-     */
-    inline void SetSummary(const RuleGroupSummary& value) { m_summary = value; }
-
-    /**
-     * <p>High-level information about a <a>RuleGroup</a>, returned by operations like
-     * create and list. This provides information like the ID, that you can use to
-     * retrieve and manage a <code>RuleGroup</code>, and the ARN, that you provide to
-     * the <a>RuleGroupReferenceStatement</a> to use the rule group in a
-     * <a>Rule</a>.</p>
-     */
-    inline void SetSummary(RuleGroupSummary&& value) { m_summary = std::move(value); }
-
-    /**
-     * <p>High-level information about a <a>RuleGroup</a>, returned by operations like
-     * create and list. This provides information like the ID, that you can use to
-     * retrieve and manage a <code>RuleGroup</code>, and the ARN, that you provide to
-     * the <a>RuleGroupReferenceStatement</a> to use the rule group in a
-     * <a>Rule</a>.</p>
-     */
-    inline CreateRuleGroupResult& WithSummary(const RuleGroupSummary& value) { SetSummary(value); return *this;}
-
-    /**
-     * <p>High-level information about a <a>RuleGroup</a>, returned by operations like
-     * create and list. This provides information like the ID, that you can use to
-     * retrieve and manage a <code>RuleGroup</code>, and the ARN, that you provide to
-     * the <a>RuleGroupReferenceStatement</a> to use the rule group in a
-     * <a>Rule</a>.</p>
-     */
-    inline CreateRuleGroupResult& WithSummary(RuleGroupSummary&& value) { SetSummary(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateRuleGroupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateRuleGroupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateRuleGroupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateRuleGroupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     RuleGroupSummary m_summary;
+    bool m_summaryHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

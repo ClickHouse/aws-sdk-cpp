@@ -25,7 +25,7 @@ namespace Model
   class ValidateConfigurationRequest : public AppConfigRequest
   {
   public:
-    AWS_APPCONFIG_API ValidateConfigurationRequest();
+    AWS_APPCONFIG_API ValidateConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,128 +38,41 @@ namespace Model
     AWS_APPCONFIG_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The application ID.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The application ID.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    ValidateConfigurationRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ValidateConfigurationRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ValidateConfigurationRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The application ID.</p>
-     */
-    inline ValidateConfigurationRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration profile ID.</p>
      */
-    inline const Aws::String& GetConfigurationProfileId() const{ return m_configurationProfileId; }
-
-    /**
-     * <p>The configuration profile ID.</p>
-     */
+    inline const Aws::String& GetConfigurationProfileId() const { return m_configurationProfileId; }
     inline bool ConfigurationProfileIdHasBeenSet() const { return m_configurationProfileIdHasBeenSet; }
+    template<typename ConfigurationProfileIdT = Aws::String>
+    void SetConfigurationProfileId(ConfigurationProfileIdT&& value) { m_configurationProfileIdHasBeenSet = true; m_configurationProfileId = std::forward<ConfigurationProfileIdT>(value); }
+    template<typename ConfigurationProfileIdT = Aws::String>
+    ValidateConfigurationRequest& WithConfigurationProfileId(ConfigurationProfileIdT&& value) { SetConfigurationProfileId(std::forward<ConfigurationProfileIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration profile ID.</p>
-     */
-    inline void SetConfigurationProfileId(const Aws::String& value) { m_configurationProfileIdHasBeenSet = true; m_configurationProfileId = value; }
-
-    /**
-     * <p>The configuration profile ID.</p>
-     */
-    inline void SetConfigurationProfileId(Aws::String&& value) { m_configurationProfileIdHasBeenSet = true; m_configurationProfileId = std::move(value); }
-
-    /**
-     * <p>The configuration profile ID.</p>
-     */
-    inline void SetConfigurationProfileId(const char* value) { m_configurationProfileIdHasBeenSet = true; m_configurationProfileId.assign(value); }
-
-    /**
-     * <p>The configuration profile ID.</p>
-     */
-    inline ValidateConfigurationRequest& WithConfigurationProfileId(const Aws::String& value) { SetConfigurationProfileId(value); return *this;}
-
-    /**
-     * <p>The configuration profile ID.</p>
-     */
-    inline ValidateConfigurationRequest& WithConfigurationProfileId(Aws::String&& value) { SetConfigurationProfileId(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration profile ID.</p>
-     */
-    inline ValidateConfigurationRequest& WithConfigurationProfileId(const char* value) { SetConfigurationProfileId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the configuration to validate.</p>
      */
-    inline const Aws::String& GetConfigurationVersion() const{ return m_configurationVersion; }
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
+    inline const Aws::String& GetConfigurationVersion() const { return m_configurationVersion; }
     inline bool ConfigurationVersionHasBeenSet() const { return m_configurationVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
-    inline void SetConfigurationVersion(const Aws::String& value) { m_configurationVersionHasBeenSet = true; m_configurationVersion = value; }
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
-    inline void SetConfigurationVersion(Aws::String&& value) { m_configurationVersionHasBeenSet = true; m_configurationVersion = std::move(value); }
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
-    inline void SetConfigurationVersion(const char* value) { m_configurationVersionHasBeenSet = true; m_configurationVersion.assign(value); }
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
-    inline ValidateConfigurationRequest& WithConfigurationVersion(const Aws::String& value) { SetConfigurationVersion(value); return *this;}
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
-    inline ValidateConfigurationRequest& WithConfigurationVersion(Aws::String&& value) { SetConfigurationVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the configuration to validate.</p>
-     */
-    inline ValidateConfigurationRequest& WithConfigurationVersion(const char* value) { SetConfigurationVersion(value); return *this;}
-
+    template<typename ConfigurationVersionT = Aws::String>
+    void SetConfigurationVersion(ConfigurationVersionT&& value) { m_configurationVersionHasBeenSet = true; m_configurationVersion = std::forward<ConfigurationVersionT>(value); }
+    template<typename ConfigurationVersionT = Aws::String>
+    ValidateConfigurationRequest& WithConfigurationVersion(ConfigurationVersionT&& value) { SetConfigurationVersion(std::forward<ConfigurationVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

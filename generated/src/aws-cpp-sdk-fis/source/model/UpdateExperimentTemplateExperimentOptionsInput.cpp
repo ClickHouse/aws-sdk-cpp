@@ -18,15 +18,7 @@ namespace FIS
 namespace Model
 {
 
-UpdateExperimentTemplateExperimentOptionsInput::UpdateExperimentTemplateExperimentOptionsInput() : 
-    m_emptyTargetResolutionMode(EmptyTargetResolutionMode::NOT_SET),
-    m_emptyTargetResolutionModeHasBeenSet(false)
-{
-}
-
-UpdateExperimentTemplateExperimentOptionsInput::UpdateExperimentTemplateExperimentOptionsInput(JsonView jsonValue) : 
-    m_emptyTargetResolutionMode(EmptyTargetResolutionMode::NOT_SET),
-    m_emptyTargetResolutionModeHasBeenSet(false)
+UpdateExperimentTemplateExperimentOptionsInput::UpdateExperimentTemplateExperimentOptionsInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UpdateExperimentTemplateExperimentOptionsInput& UpdateExperimentTemplateExperime
   if(jsonValue.ValueExists("emptyTargetResolutionMode"))
   {
     m_emptyTargetResolutionMode = EmptyTargetResolutionModeMapper::GetEmptyTargetResolutionModeForName(jsonValue.GetString("emptyTargetResolutionMode"));
-
     m_emptyTargetResolutionModeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,16 +12,6 @@ using namespace Aws::LicenseManager::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateGrantRequest::CreateGrantRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_grantNameHasBeenSet(false),
-    m_licenseArnHasBeenSet(false),
-    m_principalsHasBeenSet(false),
-    m_homeRegionHasBeenSet(false),
-    m_allowedOperationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateGrantRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -69,6 +59,17 @@ Aws::String CreateGrantRequest::SerializePayload() const
      allowedOperationsJsonList[allowedOperationsIndex].AsString(AllowedOperationMapper::GetNameForAllowedOperation(m_allowedOperations[allowedOperationsIndex]));
    }
    payload.WithArray("AllowedOperations", std::move(allowedOperationsJsonList));
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
 
   }
 

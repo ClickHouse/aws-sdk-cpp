@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-HostProperties::HostProperties() : 
-    m_cores(0),
-    m_coresHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_sockets(0),
-    m_socketsHasBeenSet(false),
-    m_totalVCpus(0),
-    m_totalVCpusHasBeenSet(false)
-{
-}
-
-HostProperties::HostProperties(const XmlNode& xmlNode) : 
-    m_cores(0),
-    m_coresHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_sockets(0),
-    m_socketsHasBeenSet(false),
-    m_totalVCpus(0),
-    m_totalVCpusHasBeenSet(false)
+HostProperties::HostProperties(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

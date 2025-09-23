@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-EvaluationAnswerOutput::EvaluationAnswerOutput() : 
-    m_valueHasBeenSet(false),
-    m_systemSuggestedValueHasBeenSet(false)
-{
-}
-
-EvaluationAnswerOutput::EvaluationAnswerOutput(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_systemSuggestedValueHasBeenSet(false)
+EvaluationAnswerOutput::EvaluationAnswerOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EvaluationAnswerOutput& EvaluationAnswerOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetObject("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SystemSuggestedValue"))
   {
     m_systemSuggestedValue = jsonValue.GetObject("SystemSuggestedValue");
-
     m_systemSuggestedValueHasBeenSet = true;
   }
-
   return *this;
 }
 

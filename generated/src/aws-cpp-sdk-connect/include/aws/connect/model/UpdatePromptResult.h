@@ -27,111 +27,51 @@ namespace Model
   class UpdatePromptResult
   {
   public:
-    AWS_CONNECT_API UpdatePromptResult();
+    AWS_CONNECT_API UpdatePromptResult() = default;
     AWS_CONNECT_API UpdatePromptResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONNECT_API UpdatePromptResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the prompt.</p>
      */
-    inline const Aws::String& GetPromptARN() const{ return m_promptARN; }
+    inline const Aws::String& GetPromptARN() const { return m_promptARN; }
+    template<typename PromptARNT = Aws::String>
+    void SetPromptARN(PromptARNT&& value) { m_promptARNHasBeenSet = true; m_promptARN = std::forward<PromptARNT>(value); }
+    template<typename PromptARNT = Aws::String>
+    UpdatePromptResult& WithPromptARN(PromptARNT&& value) { SetPromptARN(std::forward<PromptARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prompt.</p>
-     */
-    inline void SetPromptARN(const Aws::String& value) { m_promptARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prompt.</p>
-     */
-    inline void SetPromptARN(Aws::String&& value) { m_promptARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prompt.</p>
-     */
-    inline void SetPromptARN(const char* value) { m_promptARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prompt.</p>
-     */
-    inline UpdatePromptResult& WithPromptARN(const Aws::String& value) { SetPromptARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prompt.</p>
-     */
-    inline UpdatePromptResult& WithPromptARN(Aws::String&& value) { SetPromptARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the prompt.</p>
-     */
-    inline UpdatePromptResult& WithPromptARN(const char* value) { SetPromptARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the prompt.</p>
      */
-    inline const Aws::String& GetPromptId() const{ return m_promptId; }
+    inline const Aws::String& GetPromptId() const { return m_promptId; }
+    template<typename PromptIdT = Aws::String>
+    void SetPromptId(PromptIdT&& value) { m_promptIdHasBeenSet = true; m_promptId = std::forward<PromptIdT>(value); }
+    template<typename PromptIdT = Aws::String>
+    UpdatePromptResult& WithPromptId(PromptIdT&& value) { SetPromptId(std::forward<PromptIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the prompt.</p>
-     */
-    inline void SetPromptId(const Aws::String& value) { m_promptId = value; }
-
-    /**
-     * <p>A unique identifier for the prompt.</p>
-     */
-    inline void SetPromptId(Aws::String&& value) { m_promptId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the prompt.</p>
-     */
-    inline void SetPromptId(const char* value) { m_promptId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the prompt.</p>
-     */
-    inline UpdatePromptResult& WithPromptId(const Aws::String& value) { SetPromptId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the prompt.</p>
-     */
-    inline UpdatePromptResult& WithPromptId(Aws::String&& value) { SetPromptId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the prompt.</p>
-     */
-    inline UpdatePromptResult& WithPromptId(const char* value) { SetPromptId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdatePromptResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdatePromptResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdatePromptResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdatePromptResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_promptARN;
+    bool m_promptARNHasBeenSet = false;
 
     Aws::String m_promptId;
+    bool m_promptIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

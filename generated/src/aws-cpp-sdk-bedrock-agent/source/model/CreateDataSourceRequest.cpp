@@ -12,18 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDataSourceRequest::CreateDataSourceRequest() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dataSourceConfigurationHasBeenSet(false),
-    m_serverSideEncryptionConfigurationHasBeenSet(false),
-    m_vectorIngestionConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateDataSourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +38,11 @@ Aws::String CreateDataSourceRequest::SerializePayload() const
   {
    payload.WithObject("dataSourceConfiguration", m_dataSourceConfiguration.Jsonize());
 
+  }
+
+  if(m_dataDeletionPolicyHasBeenSet)
+  {
+   payload.WithString("dataDeletionPolicy", DataDeletionPolicyMapper::GetNameForDataDeletionPolicy(m_dataDeletionPolicy));
   }
 
   if(m_serverSideEncryptionConfigurationHasBeenSet)

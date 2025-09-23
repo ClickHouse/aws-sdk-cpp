@@ -18,27 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-TopicReplicationUpdate::TopicReplicationUpdate() : 
-    m_copyAccessControlListsForTopics(false),
-    m_copyAccessControlListsForTopicsHasBeenSet(false),
-    m_copyTopicConfigurations(false),
-    m_copyTopicConfigurationsHasBeenSet(false),
-    m_detectAndCopyNewTopics(false),
-    m_detectAndCopyNewTopicsHasBeenSet(false),
-    m_topicsToExcludeHasBeenSet(false),
-    m_topicsToReplicateHasBeenSet(false)
-{
-}
-
-TopicReplicationUpdate::TopicReplicationUpdate(JsonView jsonValue) : 
-    m_copyAccessControlListsForTopics(false),
-    m_copyAccessControlListsForTopicsHasBeenSet(false),
-    m_copyTopicConfigurations(false),
-    m_copyTopicConfigurationsHasBeenSet(false),
-    m_detectAndCopyNewTopics(false),
-    m_detectAndCopyNewTopicsHasBeenSet(false),
-    m_topicsToExcludeHasBeenSet(false),
-    m_topicsToReplicateHasBeenSet(false)
+TopicReplicationUpdate::TopicReplicationUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,24 +28,18 @@ TopicReplicationUpdate& TopicReplicationUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("copyAccessControlListsForTopics"))
   {
     m_copyAccessControlListsForTopics = jsonValue.GetBool("copyAccessControlListsForTopics");
-
     m_copyAccessControlListsForTopicsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("copyTopicConfigurations"))
   {
     m_copyTopicConfigurations = jsonValue.GetBool("copyTopicConfigurations");
-
     m_copyTopicConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("detectAndCopyNewTopics"))
   {
     m_detectAndCopyNewTopics = jsonValue.GetBool("detectAndCopyNewTopics");
-
     m_detectAndCopyNewTopicsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("topicsToExclude"))
   {
     Aws::Utils::Array<JsonView> topicsToExcludeJsonList = jsonValue.GetArray("topicsToExclude");
@@ -75,7 +49,6 @@ TopicReplicationUpdate& TopicReplicationUpdate::operator =(JsonView jsonValue)
     }
     m_topicsToExcludeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("topicsToReplicate"))
   {
     Aws::Utils::Array<JsonView> topicsToReplicateJsonList = jsonValue.GetArray("topicsToReplicate");
@@ -85,7 +58,6 @@ TopicReplicationUpdate& TopicReplicationUpdate::operator =(JsonView jsonValue)
     }
     m_topicsToReplicateHasBeenSet = true;
   }
-
   return *this;
 }
 

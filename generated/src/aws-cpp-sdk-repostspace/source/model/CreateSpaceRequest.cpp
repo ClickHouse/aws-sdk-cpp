@@ -12,27 +12,9 @@ using namespace Aws::repostspace::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSpaceRequest::CreateSpaceRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_subdomainHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_tier(TierLevel::NOT_SET),
-    m_tierHasBeenSet(false),
-    m_userKMSKeyHasBeenSet(false)
-{
-}
-
 Aws::String CreateSpaceRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
-
-  }
 
   if(m_nameHasBeenSet)
   {
@@ -40,15 +22,26 @@ Aws::String CreateSpaceRequest::SerializePayload() const
 
   }
 
-  if(m_roleArnHasBeenSet)
-  {
-   payload.WithString("roleArn", m_roleArn);
-
-  }
-
   if(m_subdomainHasBeenSet)
   {
    payload.WithString("subdomain", m_subdomain);
+
+  }
+
+  if(m_tierHasBeenSet)
+  {
+   payload.WithString("tier", TierLevelMapper::GetNameForTierLevel(m_tier));
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("description", m_description);
+
+  }
+
+  if(m_userKMSKeyHasBeenSet)
+  {
+   payload.WithString("userKMSKey", m_userKMSKey);
 
   }
 
@@ -63,14 +56,15 @@ Aws::String CreateSpaceRequest::SerializePayload() const
 
   }
 
-  if(m_tierHasBeenSet)
+  if(m_roleArnHasBeenSet)
   {
-   payload.WithString("tier", TierLevelMapper::GetNameForTierLevel(m_tier));
+   payload.WithString("roleArn", m_roleArn);
+
   }
 
-  if(m_userKMSKeyHasBeenSet)
+  if(m_supportedEmailDomainsHasBeenSet)
   {
-   payload.WithString("userKMSKey", m_userKMSKey);
+   payload.WithObject("supportedEmailDomains", m_supportedEmailDomains.Jsonize());
 
   }
 

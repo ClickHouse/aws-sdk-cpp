@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LoadPermissionRequest::LoadPermissionRequest() : 
-    m_group(PermissionGroup::NOT_SET),
-    m_groupHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
-LoadPermissionRequest::LoadPermissionRequest(const XmlNode& xmlNode) : 
-    m_group(PermissionGroup::NOT_SET),
-    m_groupHasBeenSet(false),
-    m_userIdHasBeenSet(false)
+LoadPermissionRequest::LoadPermissionRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ LoadPermissionRequest& LoadPermissionRequest::operator =(const XmlNode& xmlNode)
     XmlNode groupNode = resultNode.FirstChild("Group");
     if(!groupNode.IsNull())
     {
-      m_group = PermissionGroupMapper::GetPermissionGroupForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(groupNode.GetText()).c_str()).c_str());
+      m_group = PermissionGroupMapper::GetPermissionGroupForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(groupNode.GetText()).c_str()));
       m_groupHasBeenSet = true;
     }
     XmlNode userIdNode = resultNode.FirstChild("UserId");
@@ -62,7 +52,7 @@ void LoadPermissionRequest::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_groupHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Group=" << PermissionGroupMapper::GetNameForPermissionGroup(m_group) << "&";
+      oStream << location << index << locationValue << ".Group=" << StringUtils::URLEncode(PermissionGroupMapper::GetNameForPermissionGroup(m_group)) << "&";
   }
 
   if(m_userIdHasBeenSet)
@@ -76,7 +66,7 @@ void LoadPermissionRequest::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_groupHasBeenSet)
   {
-      oStream << location << ".Group=" << PermissionGroupMapper::GetNameForPermissionGroup(m_group) << "&";
+      oStream << location << ".Group=" << StringUtils::URLEncode(PermissionGroupMapper::GetNameForPermissionGroup(m_group)) << "&";
   }
   if(m_userIdHasBeenSet)
   {

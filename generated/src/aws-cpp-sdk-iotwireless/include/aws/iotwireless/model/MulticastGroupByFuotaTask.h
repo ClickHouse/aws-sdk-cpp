@@ -32,36 +32,21 @@ namespace Model
   class MulticastGroupByFuotaTask
   {
   public:
-    AWS_IOTWIRELESS_API MulticastGroupByFuotaTask();
+    AWS_IOTWIRELESS_API MulticastGroupByFuotaTask() = default;
     AWS_IOTWIRELESS_API MulticastGroupByFuotaTask(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API MulticastGroupByFuotaTask& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    
-    inline MulticastGroupByFuotaTask& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    
-    inline MulticastGroupByFuotaTask& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    
-    inline MulticastGroupByFuotaTask& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    MulticastGroupByFuotaTask& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

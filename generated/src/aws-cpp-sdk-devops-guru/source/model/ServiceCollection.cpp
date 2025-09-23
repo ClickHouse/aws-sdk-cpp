@@ -18,13 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-ServiceCollection::ServiceCollection() : 
-    m_serviceNamesHasBeenSet(false)
-{
-}
-
-ServiceCollection::ServiceCollection(JsonView jsonValue) : 
-    m_serviceNamesHasBeenSet(false)
+ServiceCollection::ServiceCollection(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ServiceCollection& ServiceCollection::operator =(JsonView jsonValue)
     }
     m_serviceNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

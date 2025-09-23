@@ -21,7 +21,7 @@ namespace Model
   class GetMLTaskRunRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API GetMLTaskRunRequest();
+    AWS_GLUE_API GetMLTaskRunRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the machine learning transform.</p>
      */
-    inline const Aws::String& GetTransformId() const{ return m_transformId; }
-
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
+    inline const Aws::String& GetTransformId() const { return m_transformId; }
     inline bool TransformIdHasBeenSet() const { return m_transformIdHasBeenSet; }
+    template<typename TransformIdT = Aws::String>
+    void SetTransformId(TransformIdT&& value) { m_transformIdHasBeenSet = true; m_transformId = std::forward<TransformIdT>(value); }
+    template<typename TransformIdT = Aws::String>
+    GetMLTaskRunRequest& WithTransformId(TransformIdT&& value) { SetTransformId(std::forward<TransformIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
-    inline void SetTransformId(const Aws::String& value) { m_transformIdHasBeenSet = true; m_transformId = value; }
-
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
-    inline void SetTransformId(Aws::String&& value) { m_transformIdHasBeenSet = true; m_transformId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
-    inline void SetTransformId(const char* value) { m_transformIdHasBeenSet = true; m_transformId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
-    inline GetMLTaskRunRequest& WithTransformId(const Aws::String& value) { SetTransformId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
-    inline GetMLTaskRunRequest& WithTransformId(Aws::String&& value) { SetTransformId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the machine learning transform.</p>
-     */
-    inline GetMLTaskRunRequest& WithTransformId(const char* value) { SetTransformId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the task run.</p>
      */
-    inline const Aws::String& GetTaskRunId() const{ return m_taskRunId; }
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
+    inline const Aws::String& GetTaskRunId() const { return m_taskRunId; }
     inline bool TaskRunIdHasBeenSet() const { return m_taskRunIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
-    inline void SetTaskRunId(const Aws::String& value) { m_taskRunIdHasBeenSet = true; m_taskRunId = value; }
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
-    inline void SetTaskRunId(Aws::String&& value) { m_taskRunIdHasBeenSet = true; m_taskRunId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
-    inline void SetTaskRunId(const char* value) { m_taskRunIdHasBeenSet = true; m_taskRunId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
-    inline GetMLTaskRunRequest& WithTaskRunId(const Aws::String& value) { SetTaskRunId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
-    inline GetMLTaskRunRequest& WithTaskRunId(Aws::String&& value) { SetTaskRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the task run.</p>
-     */
-    inline GetMLTaskRunRequest& WithTaskRunId(const char* value) { SetTaskRunId(value); return *this;}
-
+    template<typename TaskRunIdT = Aws::String>
+    void SetTaskRunId(TaskRunIdT&& value) { m_taskRunIdHasBeenSet = true; m_taskRunId = std::forward<TaskRunIdT>(value); }
+    template<typename TaskRunIdT = Aws::String>
+    GetMLTaskRunRequest& WithTaskRunId(TaskRunIdT&& value) { SetTaskRunId(std::forward<TaskRunIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_transformId;

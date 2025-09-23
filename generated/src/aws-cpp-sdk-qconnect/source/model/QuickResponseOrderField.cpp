@@ -18,17 +18,7 @@ namespace QConnect
 namespace Model
 {
 
-QuickResponseOrderField::QuickResponseOrderField() : 
-    m_nameHasBeenSet(false),
-    m_order(Order::NOT_SET),
-    m_orderHasBeenSet(false)
-{
-}
-
-QuickResponseOrderField::QuickResponseOrderField(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_order(Order::NOT_SET),
-    m_orderHasBeenSet(false)
+QuickResponseOrderField::QuickResponseOrderField(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ QuickResponseOrderField& QuickResponseOrderField::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("order"))
   {
     m_order = OrderMapper::GetOrderForName(jsonValue.GetString("order"));
-
     m_orderHasBeenSet = true;
   }
-
   return *this;
 }
 

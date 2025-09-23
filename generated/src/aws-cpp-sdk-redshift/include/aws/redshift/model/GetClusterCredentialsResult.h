@@ -35,11 +35,12 @@ namespace Model
   class GetClusterCredentialsResult
   {
   public:
-    AWS_REDSHIFT_API GetClusterCredentialsResult();
+    AWS_REDSHIFT_API GetClusterCredentialsResult() = default;
     AWS_REDSHIFT_API GetClusterCredentialsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_REDSHIFT_API GetClusterCredentialsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A database user name that is authorized to log on to the database
      * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
@@ -49,168 +50,57 @@ namespace Model
      * is added to the listed groups for any sessions created using these
      * credentials.</p>
      */
-    inline const Aws::String& GetDbUser() const{ return m_dbUser; }
+    inline const Aws::String& GetDbUser() const { return m_dbUser; }
+    template<typename DbUserT = Aws::String>
+    void SetDbUser(DbUserT&& value) { m_dbUserHasBeenSet = true; m_dbUser = std::forward<DbUserT>(value); }
+    template<typename DbUserT = Aws::String>
+    GetClusterCredentialsResult& WithDbUser(DbUserT&& value) { SetDbUser(std::forward<DbUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A database user name that is authorized to log on to the database
-     * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
-     * DbUser exists in the database, the new user name has the same database
-     * permissions as the the user named in DbUser. By default, the user is added to
-     * PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code>
-     * is added to the listed groups for any sessions created using these
-     * credentials.</p>
-     */
-    inline void SetDbUser(const Aws::String& value) { m_dbUser = value; }
-
-    /**
-     * <p>A database user name that is authorized to log on to the database
-     * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
-     * DbUser exists in the database, the new user name has the same database
-     * permissions as the the user named in DbUser. By default, the user is added to
-     * PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code>
-     * is added to the listed groups for any sessions created using these
-     * credentials.</p>
-     */
-    inline void SetDbUser(Aws::String&& value) { m_dbUser = std::move(value); }
-
-    /**
-     * <p>A database user name that is authorized to log on to the database
-     * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
-     * DbUser exists in the database, the new user name has the same database
-     * permissions as the the user named in DbUser. By default, the user is added to
-     * PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code>
-     * is added to the listed groups for any sessions created using these
-     * credentials.</p>
-     */
-    inline void SetDbUser(const char* value) { m_dbUser.assign(value); }
-
-    /**
-     * <p>A database user name that is authorized to log on to the database
-     * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
-     * DbUser exists in the database, the new user name has the same database
-     * permissions as the the user named in DbUser. By default, the user is added to
-     * PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code>
-     * is added to the listed groups for any sessions created using these
-     * credentials.</p>
-     */
-    inline GetClusterCredentialsResult& WithDbUser(const Aws::String& value) { SetDbUser(value); return *this;}
-
-    /**
-     * <p>A database user name that is authorized to log on to the database
-     * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
-     * DbUser exists in the database, the new user name has the same database
-     * permissions as the the user named in DbUser. By default, the user is added to
-     * PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code>
-     * is added to the listed groups for any sessions created using these
-     * credentials.</p>
-     */
-    inline GetClusterCredentialsResult& WithDbUser(Aws::String&& value) { SetDbUser(std::move(value)); return *this;}
-
-    /**
-     * <p>A database user name that is authorized to log on to the database
-     * <code>DbName</code> using the password <code>DbPassword</code>. If the specified
-     * DbUser exists in the database, the new user name has the same database
-     * permissions as the the user named in DbUser. By default, the user is added to
-     * PUBLIC. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code>
-     * is added to the listed groups for any sessions created using these
-     * credentials.</p>
-     */
-    inline GetClusterCredentialsResult& WithDbUser(const char* value) { SetDbUser(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A temporary password that authorizes the user name returned by
      * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
      */
-    inline const Aws::String& GetDbPassword() const{ return m_dbPassword; }
+    inline const Aws::String& GetDbPassword() const { return m_dbPassword; }
+    template<typename DbPasswordT = Aws::String>
+    void SetDbPassword(DbPasswordT&& value) { m_dbPasswordHasBeenSet = true; m_dbPassword = std::forward<DbPasswordT>(value); }
+    template<typename DbPasswordT = Aws::String>
+    GetClusterCredentialsResult& WithDbPassword(DbPasswordT&& value) { SetDbPassword(std::forward<DbPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A temporary password that authorizes the user name returned by
-     * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
-     */
-    inline void SetDbPassword(const Aws::String& value) { m_dbPassword = value; }
-
-    /**
-     * <p>A temporary password that authorizes the user name returned by
-     * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
-     */
-    inline void SetDbPassword(Aws::String&& value) { m_dbPassword = std::move(value); }
-
-    /**
-     * <p>A temporary password that authorizes the user name returned by
-     * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
-     */
-    inline void SetDbPassword(const char* value) { m_dbPassword.assign(value); }
-
-    /**
-     * <p>A temporary password that authorizes the user name returned by
-     * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
-     */
-    inline GetClusterCredentialsResult& WithDbPassword(const Aws::String& value) { SetDbPassword(value); return *this;}
-
-    /**
-     * <p>A temporary password that authorizes the user name returned by
-     * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
-     */
-    inline GetClusterCredentialsResult& WithDbPassword(Aws::String&& value) { SetDbPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>A temporary password that authorizes the user name returned by
-     * <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
-     */
-    inline GetClusterCredentialsResult& WithDbPassword(const char* value) { SetDbPassword(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the password in <code>DbPassword</code> expires.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpiration() const{ return m_expiration; }
+    inline const Aws::Utils::DateTime& GetExpiration() const { return m_expiration; }
+    template<typename ExpirationT = Aws::Utils::DateTime>
+    void SetExpiration(ExpirationT&& value) { m_expirationHasBeenSet = true; m_expiration = std::forward<ExpirationT>(value); }
+    template<typename ExpirationT = Aws::Utils::DateTime>
+    GetClusterCredentialsResult& WithExpiration(ExpirationT&& value) { SetExpiration(std::forward<ExpirationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the password in <code>DbPassword</code> expires.</p>
-     */
-    inline void SetExpiration(const Aws::Utils::DateTime& value) { m_expiration = value; }
-
-    /**
-     * <p>The date and time the password in <code>DbPassword</code> expires.</p>
-     */
-    inline void SetExpiration(Aws::Utils::DateTime&& value) { m_expiration = std::move(value); }
-
-    /**
-     * <p>The date and time the password in <code>DbPassword</code> expires.</p>
-     */
-    inline GetClusterCredentialsResult& WithExpiration(const Aws::Utils::DateTime& value) { SetExpiration(value); return *this;}
-
-    /**
-     * <p>The date and time the password in <code>DbPassword</code> expires.</p>
-     */
-    inline GetClusterCredentialsResult& WithExpiration(Aws::Utils::DateTime&& value) { SetExpiration(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GetClusterCredentialsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GetClusterCredentialsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GetClusterCredentialsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dbUser;
+    bool m_dbUserHasBeenSet = false;
 
     Aws::String m_dbPassword;
+    bool m_dbPasswordHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expiration;
+    Aws::Utils::DateTime m_expiration{};
+    bool m_expirationHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

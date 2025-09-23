@@ -12,11 +12,6 @@ using namespace Aws::OAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetSinkRequest::GetSinkRequest() : 
-    m_identifierHasBeenSet(false)
-{
-}
-
 Aws::String GetSinkRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String GetSinkRequest::SerializePayload() const
   if(m_identifierHasBeenSet)
   {
    payload.WithString("Identifier", m_identifier);
+
+  }
+
+  if(m_includeTagsHasBeenSet)
+  {
+   payload.WithBool("IncludeTags", m_includeTags);
 
   }
 

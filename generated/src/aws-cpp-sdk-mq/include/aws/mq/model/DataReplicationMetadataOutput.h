@@ -34,103 +34,38 @@ namespace Model
   class DataReplicationMetadataOutput
   {
   public:
-    AWS_MQ_API DataReplicationMetadataOutput();
+    AWS_MQ_API DataReplicationMetadataOutput() = default;
     AWS_MQ_API DataReplicationMetadataOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API DataReplicationMetadataOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the replica/primary broker. Only returned if this broker is
      * currently set as a primary or replica in the broker's dataReplicationRole
      * property.</p>
      */
-    inline const DataReplicationCounterpart& GetDataReplicationCounterpart() const{ return m_dataReplicationCounterpart; }
-
-    /**
-     * <p>Describes the replica/primary broker. Only returned if this broker is
-     * currently set as a primary or replica in the broker's dataReplicationRole
-     * property.</p>
-     */
+    inline const DataReplicationCounterpart& GetDataReplicationCounterpart() const { return m_dataReplicationCounterpart; }
     inline bool DataReplicationCounterpartHasBeenSet() const { return m_dataReplicationCounterpartHasBeenSet; }
+    template<typename DataReplicationCounterpartT = DataReplicationCounterpart>
+    void SetDataReplicationCounterpart(DataReplicationCounterpartT&& value) { m_dataReplicationCounterpartHasBeenSet = true; m_dataReplicationCounterpart = std::forward<DataReplicationCounterpartT>(value); }
+    template<typename DataReplicationCounterpartT = DataReplicationCounterpart>
+    DataReplicationMetadataOutput& WithDataReplicationCounterpart(DataReplicationCounterpartT&& value) { SetDataReplicationCounterpart(std::forward<DataReplicationCounterpartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the replica/primary broker. Only returned if this broker is
-     * currently set as a primary or replica in the broker's dataReplicationRole
-     * property.</p>
-     */
-    inline void SetDataReplicationCounterpart(const DataReplicationCounterpart& value) { m_dataReplicationCounterpartHasBeenSet = true; m_dataReplicationCounterpart = value; }
-
-    /**
-     * <p>Describes the replica/primary broker. Only returned if this broker is
-     * currently set as a primary or replica in the broker's dataReplicationRole
-     * property.</p>
-     */
-    inline void SetDataReplicationCounterpart(DataReplicationCounterpart&& value) { m_dataReplicationCounterpartHasBeenSet = true; m_dataReplicationCounterpart = std::move(value); }
-
-    /**
-     * <p>Describes the replica/primary broker. Only returned if this broker is
-     * currently set as a primary or replica in the broker's dataReplicationRole
-     * property.</p>
-     */
-    inline DataReplicationMetadataOutput& WithDataReplicationCounterpart(const DataReplicationCounterpart& value) { SetDataReplicationCounterpart(value); return *this;}
-
-    /**
-     * <p>Describes the replica/primary broker. Only returned if this broker is
-     * currently set as a primary or replica in the broker's dataReplicationRole
-     * property.</p>
-     */
-    inline DataReplicationMetadataOutput& WithDataReplicationCounterpart(DataReplicationCounterpart&& value) { SetDataReplicationCounterpart(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Defines the role of this broker in a data replication pair. When a replica
      * broker is promoted to primary, this role is interchanged.</p>
      */
-    inline const Aws::String& GetDataReplicationRole() const{ return m_dataReplicationRole; }
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
+    inline const Aws::String& GetDataReplicationRole() const { return m_dataReplicationRole; }
     inline bool DataReplicationRoleHasBeenSet() const { return m_dataReplicationRoleHasBeenSet; }
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
-    inline void SetDataReplicationRole(const Aws::String& value) { m_dataReplicationRoleHasBeenSet = true; m_dataReplicationRole = value; }
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
-    inline void SetDataReplicationRole(Aws::String&& value) { m_dataReplicationRoleHasBeenSet = true; m_dataReplicationRole = std::move(value); }
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
-    inline void SetDataReplicationRole(const char* value) { m_dataReplicationRoleHasBeenSet = true; m_dataReplicationRole.assign(value); }
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
-    inline DataReplicationMetadataOutput& WithDataReplicationRole(const Aws::String& value) { SetDataReplicationRole(value); return *this;}
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
-    inline DataReplicationMetadataOutput& WithDataReplicationRole(Aws::String&& value) { SetDataReplicationRole(std::move(value)); return *this;}
-
-    /**
-     * <p>Defines the role of this broker in a data replication pair. When a replica
-     * broker is promoted to primary, this role is interchanged.</p>
-     */
-    inline DataReplicationMetadataOutput& WithDataReplicationRole(const char* value) { SetDataReplicationRole(value); return *this;}
-
+    template<typename DataReplicationRoleT = Aws::String>
+    void SetDataReplicationRole(DataReplicationRoleT&& value) { m_dataReplicationRoleHasBeenSet = true; m_dataReplicationRole = std::forward<DataReplicationRoleT>(value); }
+    template<typename DataReplicationRoleT = Aws::String>
+    DataReplicationMetadataOutput& WithDataReplicationRole(DataReplicationRoleT&& value) { SetDataReplicationRole(std::forward<DataReplicationRoleT>(value)); return *this;}
+    ///@}
   private:
 
     DataReplicationCounterpart m_dataReplicationCounterpart;

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-ApplyMapping::ApplyMapping() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_mappingHasBeenSet(false)
-{
-}
-
-ApplyMapping::ApplyMapping(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_mappingHasBeenSet(false)
+ApplyMapping::ApplyMapping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ApplyMapping& ApplyMapping::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -51,7 +39,6 @@ ApplyMapping& ApplyMapping::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Mapping"))
   {
     Aws::Utils::Array<JsonView> mappingJsonList = jsonValue.GetArray("Mapping");
@@ -61,7 +48,6 @@ ApplyMapping& ApplyMapping::operator =(JsonView jsonValue)
     }
     m_mappingHasBeenSet = true;
   }
-
   return *this;
 }
 

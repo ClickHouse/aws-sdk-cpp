@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/timestream-query/model/QueryStatus.h>
+#include <aws/timestream-query/model/QueryInsightsResponse.h>
 #include <aws/timestream-query/model/Row.h>
 #include <aws/timestream-query/model/ColumnInfo.h>
 #include <utility>
@@ -31,227 +32,114 @@ namespace Model
   class QueryResult
   {
   public:
-    AWS_TIMESTREAMQUERY_API QueryResult();
+    AWS_TIMESTREAMQUERY_API QueryResult() = default;
     AWS_TIMESTREAMQUERY_API QueryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TIMESTREAMQUERY_API QueryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> A unique ID for the given query. </p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    QueryResult& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A unique ID for the given query. </p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryId = value; }
-
-    /**
-     * <p> A unique ID for the given query. </p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryId = std::move(value); }
-
-    /**
-     * <p> A unique ID for the given query. </p>
-     */
-    inline void SetQueryId(const char* value) { m_queryId.assign(value); }
-
-    /**
-     * <p> A unique ID for the given query. </p>
-     */
-    inline QueryResult& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p> A unique ID for the given query. </p>
-     */
-    inline QueryResult& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p> A unique ID for the given query. </p>
-     */
-    inline QueryResult& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> A pagination token that can be used again on a <code>Query</code> call to
      * get the next set of results. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    QueryResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A pagination token that can be used again on a <code>Query</code> call to
-     * get the next set of results. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p> A pagination token that can be used again on a <code>Query</code> call to
-     * get the next set of results. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p> A pagination token that can be used again on a <code>Query</code> call to
-     * get the next set of results. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p> A pagination token that can be used again on a <code>Query</code> call to
-     * get the next set of results. </p>
-     */
-    inline QueryResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> A pagination token that can be used again on a <code>Query</code> call to
-     * get the next set of results. </p>
-     */
-    inline QueryResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> A pagination token that can be used again on a <code>Query</code> call to
-     * get the next set of results. </p>
-     */
-    inline QueryResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The result set rows returned by the query. </p>
      */
-    inline const Aws::Vector<Row>& GetRows() const{ return m_rows; }
+    inline const Aws::Vector<Row>& GetRows() const { return m_rows; }
+    template<typename RowsT = Aws::Vector<Row>>
+    void SetRows(RowsT&& value) { m_rowsHasBeenSet = true; m_rows = std::forward<RowsT>(value); }
+    template<typename RowsT = Aws::Vector<Row>>
+    QueryResult& WithRows(RowsT&& value) { SetRows(std::forward<RowsT>(value)); return *this;}
+    template<typename RowsT = Row>
+    QueryResult& AddRows(RowsT&& value) { m_rowsHasBeenSet = true; m_rows.emplace_back(std::forward<RowsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The result set rows returned by the query. </p>
-     */
-    inline void SetRows(const Aws::Vector<Row>& value) { m_rows = value; }
-
-    /**
-     * <p> The result set rows returned by the query. </p>
-     */
-    inline void SetRows(Aws::Vector<Row>&& value) { m_rows = std::move(value); }
-
-    /**
-     * <p> The result set rows returned by the query. </p>
-     */
-    inline QueryResult& WithRows(const Aws::Vector<Row>& value) { SetRows(value); return *this;}
-
-    /**
-     * <p> The result set rows returned by the query. </p>
-     */
-    inline QueryResult& WithRows(Aws::Vector<Row>&& value) { SetRows(std::move(value)); return *this;}
-
-    /**
-     * <p> The result set rows returned by the query. </p>
-     */
-    inline QueryResult& AddRows(const Row& value) { m_rows.push_back(value); return *this; }
-
-    /**
-     * <p> The result set rows returned by the query. </p>
-     */
-    inline QueryResult& AddRows(Row&& value) { m_rows.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The column data types of the returned result set. </p>
      */
-    inline const Aws::Vector<ColumnInfo>& GetColumnInfo() const{ return m_columnInfo; }
+    inline const Aws::Vector<ColumnInfo>& GetColumnInfo() const { return m_columnInfo; }
+    template<typename ColumnInfoT = Aws::Vector<ColumnInfo>>
+    void SetColumnInfo(ColumnInfoT&& value) { m_columnInfoHasBeenSet = true; m_columnInfo = std::forward<ColumnInfoT>(value); }
+    template<typename ColumnInfoT = Aws::Vector<ColumnInfo>>
+    QueryResult& WithColumnInfo(ColumnInfoT&& value) { SetColumnInfo(std::forward<ColumnInfoT>(value)); return *this;}
+    template<typename ColumnInfoT = ColumnInfo>
+    QueryResult& AddColumnInfo(ColumnInfoT&& value) { m_columnInfoHasBeenSet = true; m_columnInfo.emplace_back(std::forward<ColumnInfoT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The column data types of the returned result set. </p>
-     */
-    inline void SetColumnInfo(const Aws::Vector<ColumnInfo>& value) { m_columnInfo = value; }
-
-    /**
-     * <p> The column data types of the returned result set. </p>
-     */
-    inline void SetColumnInfo(Aws::Vector<ColumnInfo>&& value) { m_columnInfo = std::move(value); }
-
-    /**
-     * <p> The column data types of the returned result set. </p>
-     */
-    inline QueryResult& WithColumnInfo(const Aws::Vector<ColumnInfo>& value) { SetColumnInfo(value); return *this;}
-
-    /**
-     * <p> The column data types of the returned result set. </p>
-     */
-    inline QueryResult& WithColumnInfo(Aws::Vector<ColumnInfo>&& value) { SetColumnInfo(std::move(value)); return *this;}
-
-    /**
-     * <p> The column data types of the returned result set. </p>
-     */
-    inline QueryResult& AddColumnInfo(const ColumnInfo& value) { m_columnInfo.push_back(value); return *this; }
-
-    /**
-     * <p> The column data types of the returned result set. </p>
-     */
-    inline QueryResult& AddColumnInfo(ColumnInfo&& value) { m_columnInfo.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the status of the query, including progress and bytes
      * scanned.</p>
      */
-    inline const QueryStatus& GetQueryStatus() const{ return m_queryStatus; }
+    inline const QueryStatus& GetQueryStatus() const { return m_queryStatus; }
+    template<typename QueryStatusT = QueryStatus>
+    void SetQueryStatus(QueryStatusT&& value) { m_queryStatusHasBeenSet = true; m_queryStatus = std::forward<QueryStatusT>(value); }
+    template<typename QueryStatusT = QueryStatus>
+    QueryResult& WithQueryStatus(QueryStatusT&& value) { SetQueryStatus(std::forward<QueryStatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Information about the status of the query, including progress and bytes
-     * scanned.</p>
+     * <p>Encapsulates <code>QueryInsights</code> containing insights and metrics
+     * related to the query that you executed.</p>
      */
-    inline void SetQueryStatus(const QueryStatus& value) { m_queryStatus = value; }
+    inline const QueryInsightsResponse& GetQueryInsightsResponse() const { return m_queryInsightsResponse; }
+    template<typename QueryInsightsResponseT = QueryInsightsResponse>
+    void SetQueryInsightsResponse(QueryInsightsResponseT&& value) { m_queryInsightsResponseHasBeenSet = true; m_queryInsightsResponse = std::forward<QueryInsightsResponseT>(value); }
+    template<typename QueryInsightsResponseT = QueryInsightsResponse>
+    QueryResult& WithQueryInsightsResponse(QueryInsightsResponseT&& value) { SetQueryInsightsResponse(std::forward<QueryInsightsResponseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the status of the query, including progress and bytes
-     * scanned.</p>
-     */
-    inline void SetQueryStatus(QueryStatus&& value) { m_queryStatus = std::move(value); }
-
-    /**
-     * <p>Information about the status of the query, including progress and bytes
-     * scanned.</p>
-     */
-    inline QueryResult& WithQueryStatus(const QueryStatus& value) { SetQueryStatus(value); return *this;}
-
-    /**
-     * <p>Information about the status of the query, including progress and bytes
-     * scanned.</p>
-     */
-    inline QueryResult& WithQueryStatus(QueryStatus&& value) { SetQueryStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline QueryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline QueryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline QueryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    QueryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;
+    bool m_queryIdHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<Row> m_rows;
+    bool m_rowsHasBeenSet = false;
 
     Aws::Vector<ColumnInfo> m_columnInfo;
+    bool m_columnInfoHasBeenSet = false;
 
     QueryStatus m_queryStatus;
+    bool m_queryStatusHasBeenSet = false;
+
+    QueryInsightsResponse m_queryInsightsResponse;
+    bool m_queryInsightsResponseHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

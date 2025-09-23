@@ -44,8 +44,8 @@ namespace PI
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef PIClientConfiguration ClientConfigurationType;
       typedef PIEndpointProvider EndpointProviderType;
@@ -55,14 +55,14 @@ namespace PI
         * is not specified, it will be initialized to default values.
         */
         PIClient(const Aws::PI::PIClientConfiguration& clientConfiguration = Aws::PI::PIClientConfiguration(),
-                 std::shared_ptr<PIEndpointProviderBase> endpointProvider = Aws::MakeShared<PIEndpointProvider>(ALLOCATION_TAG));
+                 std::shared_ptr<PIEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         PIClient(const Aws::Auth::AWSCredentials& credentials,
-                 std::shared_ptr<PIEndpointProviderBase> endpointProvider = Aws::MakeShared<PIEndpointProvider>(ALLOCATION_TAG),
+                 std::shared_ptr<PIEndpointProviderBase> endpointProvider = nullptr,
                  const Aws::PI::PIClientConfiguration& clientConfiguration = Aws::PI::PIClientConfiguration());
 
        /**
@@ -70,7 +70,7 @@ namespace PI
         * the default http client factory will be used
         */
         PIClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                 std::shared_ptr<PIEndpointProviderBase> endpointProvider = Aws::MakeShared<PIEndpointProvider>(ALLOCATION_TAG),
+                 std::shared_ptr<PIEndpointProviderBase> endpointProvider = nullptr,
                  const Aws::PI::PIClientConfiguration& clientConfiguration = Aws::PI::PIClientConfiguration());
 
 
@@ -183,8 +183,8 @@ namespace PI
          * <code>GetDimensionKeyDetails</code> retrieves the full text of the dimension
          * <code>db.sql.statement</code> associated with this ID. This operation is useful
          * because <code>GetResourceMetrics</code> and <code>DescribeDimensionKeys</code>
-         * don't support retrieval of large SQL statement text.</p><p><h3>See Also:</h3>  
-         * <a
+         * don't support retrieval of large SQL statement text, lock snapshots, and
+         * execution plans.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/pi-2018-02-27/GetDimensionKeyDetails">AWS
          * API Reference</a></p>
          */
@@ -267,10 +267,10 @@ namespace PI
         /**
          * <p>Retrieve Performance Insights metrics for a set of data sources over a time
          * period. You can provide specific dimension groups and dimensions, and provide
-         * aggregation and filtering criteria for each group.</p>  <p>Each response
-         * element returns a maximum of 500 bytes. For larger elements, such as SQL
-         * statements, only the first 500 bytes are returned.</p> <p><h3>See
-         * Also:</h3>   <a
+         * filtering criteria for each group. You must specify an aggregate function for
+         * each metric.</p>  <p>Each response element returns a maximum of 500 bytes.
+         * For larger elements, such as SQL statements, only the first 500 bytes are
+         * returned.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/pi-2018-02-27/GetResourceMetrics">AWS
          * API Reference</a></p>
          */
@@ -458,7 +458,6 @@ namespace PI
       void init(const PIClientConfiguration& clientConfiguration);
 
       PIClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<PIEndpointProviderBase> m_endpointProvider;
   };
 

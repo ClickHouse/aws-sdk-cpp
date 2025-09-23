@@ -10,42 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyHostsRequest::ModifyHostsRequest() : 
-    m_autoPlacement(AutoPlacement::NOT_SET),
-    m_autoPlacementHasBeenSet(false),
-    m_hostIdsHasBeenSet(false),
-    m_hostRecovery(HostRecovery::NOT_SET),
-    m_hostRecoveryHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_hostMaintenance(HostMaintenance::NOT_SET),
-    m_hostMaintenanceHasBeenSet(false)
-{
-}
-
 Aws::String ModifyHostsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ModifyHosts&";
-  if(m_autoPlacementHasBeenSet)
-  {
-    ss << "AutoPlacement=" << AutoPlacementMapper::GetNameForAutoPlacement(m_autoPlacement) << "&";
-  }
-
-  if(m_hostIdsHasBeenSet)
-  {
-    unsigned hostIdsCount = 1;
-    for(auto& item : m_hostIds)
-    {
-      ss << "HostId." << hostIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      hostIdsCount++;
-    }
-  }
-
   if(m_hostRecoveryHasBeenSet)
   {
-    ss << "HostRecovery=" << HostRecoveryMapper::GetNameForHostRecovery(m_hostRecovery) << "&";
+    ss << "HostRecovery=" << StringUtils::URLEncode(HostRecoveryMapper::GetNameForHostRecovery(m_hostRecovery)) << "&";
   }
 
   if(m_instanceTypeHasBeenSet)
@@ -60,7 +31,23 @@ Aws::String ModifyHostsRequest::SerializePayload() const
 
   if(m_hostMaintenanceHasBeenSet)
   {
-    ss << "HostMaintenance=" << HostMaintenanceMapper::GetNameForHostMaintenance(m_hostMaintenance) << "&";
+    ss << "HostMaintenance=" << StringUtils::URLEncode(HostMaintenanceMapper::GetNameForHostMaintenance(m_hostMaintenance)) << "&";
+  }
+
+  if(m_hostIdsHasBeenSet)
+  {
+    unsigned hostIdsCount = 1;
+    for(auto& item : m_hostIds)
+    {
+      ss << "HostId." << hostIdsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      hostIdsCount++;
+    }
+  }
+
+  if(m_autoPlacementHasBeenSet)
+  {
+    ss << "AutoPlacement=" << StringUtils::URLEncode(AutoPlacementMapper::GetNameForAutoPlacement(m_autoPlacement)) << "&";
   }
 
   ss << "Version=2016-11-15";

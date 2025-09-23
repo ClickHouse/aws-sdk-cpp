@@ -27,7 +27,7 @@ namespace Model
   class CreateCompilationJobRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API CreateCompilationJobRequest();
+    AWS_SAGEMAKER_API CreateCompilationJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,321 +40,84 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A name for the model compilation job. The name must be unique within the
      * Amazon Web Services Region and within your Amazon Web Services account. </p>
      */
-    inline const Aws::String& GetCompilationJobName() const{ return m_compilationJobName; }
-
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
+    inline const Aws::String& GetCompilationJobName() const { return m_compilationJobName; }
     inline bool CompilationJobNameHasBeenSet() const { return m_compilationJobNameHasBeenSet; }
+    template<typename CompilationJobNameT = Aws::String>
+    void SetCompilationJobName(CompilationJobNameT&& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = std::forward<CompilationJobNameT>(value); }
+    template<typename CompilationJobNameT = Aws::String>
+    CreateCompilationJobRequest& WithCompilationJobName(CompilationJobNameT&& value) { SetCompilationJobName(std::forward<CompilationJobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
-    inline void SetCompilationJobName(const Aws::String& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = value; }
-
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
-    inline void SetCompilationJobName(Aws::String&& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = std::move(value); }
-
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
-    inline void SetCompilationJobName(const char* value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName.assign(value); }
-
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
-    inline CreateCompilationJobRequest& WithCompilationJobName(const Aws::String& value) { SetCompilationJobName(value); return *this;}
-
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
-    inline CreateCompilationJobRequest& WithCompilationJobName(Aws::String&& value) { SetCompilationJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for the model compilation job. The name must be unique within the
-     * Amazon Web Services Region and within your Amazon Web Services account. </p>
-     */
-    inline CreateCompilationJobRequest& WithCompilationJobName(const char* value) { SetCompilationJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
+     * AI to perform tasks on your behalf. </p> <p>During model compilation, Amazon
+     * SageMaker AI needs your permission to:</p> <ul> <li> <p>Read input data from an
+     * S3 bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
      * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
      * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
+     * tasks to an IAM role. To pass this role to Amazon SageMaker AI, the caller of
+     * this API must have the <code>iam:PassRole</code> permission. For more
+     * information, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
+     * SageMaker AI Roles.</a> </p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    CreateCompilationJobRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
-    inline CreateCompilationJobRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
-    inline CreateCompilationJobRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker
-     * to perform tasks on your behalf. </p> <p>During model compilation, Amazon
-     * SageMaker needs your permission to:</p> <ul> <li> <p>Read input data from an S3
-     * bucket</p> </li> <li> <p>Write model artifacts to an S3 bucket</p> </li> <li>
-     * <p>Write logs to Amazon CloudWatch Logs</p> </li> <li> <p>Publish metrics to
-     * Amazon CloudWatch</p> </li> </ul> <p>You grant permissions for all of these
-     * tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this
-     * API must have the <code>iam:PassRole</code> permission. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html">Amazon
-     * SageMaker Roles.</a> </p>
-     */
-    inline CreateCompilationJobRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
      * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
      * request syntax. The presence of both objects in the
      * <code>CreateCompilationJob</code> request will return an exception.</p>
      */
-    inline const Aws::String& GetModelPackageVersionArn() const{ return m_modelPackageVersionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
+    inline const Aws::String& GetModelPackageVersionArn() const { return m_modelPackageVersionArn; }
     inline bool ModelPackageVersionArnHasBeenSet() const { return m_modelPackageVersionArnHasBeenSet; }
+    template<typename ModelPackageVersionArnT = Aws::String>
+    void SetModelPackageVersionArn(ModelPackageVersionArnT&& value) { m_modelPackageVersionArnHasBeenSet = true; m_modelPackageVersionArn = std::forward<ModelPackageVersionArnT>(value); }
+    template<typename ModelPackageVersionArnT = Aws::String>
+    CreateCompilationJobRequest& WithModelPackageVersionArn(ModelPackageVersionArnT&& value) { SetModelPackageVersionArn(std::forward<ModelPackageVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
-    inline void SetModelPackageVersionArn(const Aws::String& value) { m_modelPackageVersionArnHasBeenSet = true; m_modelPackageVersionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
-    inline void SetModelPackageVersionArn(Aws::String&& value) { m_modelPackageVersionArnHasBeenSet = true; m_modelPackageVersionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
-    inline void SetModelPackageVersionArn(const char* value) { m_modelPackageVersionArnHasBeenSet = true; m_modelPackageVersionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
-    inline CreateCompilationJobRequest& WithModelPackageVersionArn(const Aws::String& value) { SetModelPackageVersionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
-    inline CreateCompilationJobRequest& WithModelPackageVersionArn(Aws::String&& value) { SetModelPackageVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a versioned model package. Provide either a
-     * <code>ModelPackageVersionArn</code> or an <code>InputConfig</code> object in the
-     * request syntax. The presence of both objects in the
-     * <code>CreateCompilationJob</code> request will return an exception.</p>
-     */
-    inline CreateCompilationJobRequest& WithModelPackageVersionArn(const char* value) { SetModelPackageVersionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides information about the location of input model artifacts, the name
      * and shape of the expected data inputs, and the framework in which the model was
      * trained.</p>
      */
-    inline const InputConfig& GetInputConfig() const{ return m_inputConfig; }
-
-    /**
-     * <p>Provides information about the location of input model artifacts, the name
-     * and shape of the expected data inputs, and the framework in which the model was
-     * trained.</p>
-     */
+    inline const InputConfig& GetInputConfig() const { return m_inputConfig; }
     inline bool InputConfigHasBeenSet() const { return m_inputConfigHasBeenSet; }
+    template<typename InputConfigT = InputConfig>
+    void SetInputConfig(InputConfigT&& value) { m_inputConfigHasBeenSet = true; m_inputConfig = std::forward<InputConfigT>(value); }
+    template<typename InputConfigT = InputConfig>
+    CreateCompilationJobRequest& WithInputConfig(InputConfigT&& value) { SetInputConfig(std::forward<InputConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides information about the location of input model artifacts, the name
-     * and shape of the expected data inputs, and the framework in which the model was
-     * trained.</p>
-     */
-    inline void SetInputConfig(const InputConfig& value) { m_inputConfigHasBeenSet = true; m_inputConfig = value; }
-
-    /**
-     * <p>Provides information about the location of input model artifacts, the name
-     * and shape of the expected data inputs, and the framework in which the model was
-     * trained.</p>
-     */
-    inline void SetInputConfig(InputConfig&& value) { m_inputConfigHasBeenSet = true; m_inputConfig = std::move(value); }
-
-    /**
-     * <p>Provides information about the location of input model artifacts, the name
-     * and shape of the expected data inputs, and the framework in which the model was
-     * trained.</p>
-     */
-    inline CreateCompilationJobRequest& WithInputConfig(const InputConfig& value) { SetInputConfig(value); return *this;}
-
-    /**
-     * <p>Provides information about the location of input model artifacts, the name
-     * and shape of the expected data inputs, and the framework in which the model was
-     * trained.</p>
-     */
-    inline CreateCompilationJobRequest& WithInputConfig(InputConfig&& value) { SetInputConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides information about the output location for the compiled model and the
      * target device the model runs on.</p>
      */
-    inline const OutputConfig& GetOutputConfig() const{ return m_outputConfig; }
-
-    /**
-     * <p>Provides information about the output location for the compiled model and the
-     * target device the model runs on.</p>
-     */
+    inline const OutputConfig& GetOutputConfig() const { return m_outputConfig; }
     inline bool OutputConfigHasBeenSet() const { return m_outputConfigHasBeenSet; }
+    template<typename OutputConfigT = OutputConfig>
+    void SetOutputConfig(OutputConfigT&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::forward<OutputConfigT>(value); }
+    template<typename OutputConfigT = OutputConfig>
+    CreateCompilationJobRequest& WithOutputConfig(OutputConfigT&& value) { SetOutputConfig(std::forward<OutputConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides information about the output location for the compiled model and the
-     * target device the model runs on.</p>
-     */
-    inline void SetOutputConfig(const OutputConfig& value) { m_outputConfigHasBeenSet = true; m_outputConfig = value; }
-
-    /**
-     * <p>Provides information about the output location for the compiled model and the
-     * target device the model runs on.</p>
-     */
-    inline void SetOutputConfig(OutputConfig&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::move(value); }
-
-    /**
-     * <p>Provides information about the output location for the compiled model and the
-     * target device the model runs on.</p>
-     */
-    inline CreateCompilationJobRequest& WithOutputConfig(const OutputConfig& value) { SetOutputConfig(value); return *this;}
-
-    /**
-     * <p>Provides information about the output location for the compiled model and the
-     * target device the model runs on.</p>
-     */
-    inline CreateCompilationJobRequest& WithOutputConfig(OutputConfig&& value) { SetOutputConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html">VpcConfig</a>
@@ -363,102 +126,29 @@ namespace Model
      * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html">Protect
      * Compilation Jobs by Using an Amazon Virtual Private Cloud</a>.</p>
      */
-    inline const NeoVpcConfig& GetVpcConfig() const{ return m_vpcConfig; }
-
-    /**
-     * <p>A <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html">VpcConfig</a>
-     * object that specifies the VPC that you want your compilation job to connect to.
-     * Control access to your models by configuring the VPC. For more information, see
-     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html">Protect
-     * Compilation Jobs by Using an Amazon Virtual Private Cloud</a>.</p>
-     */
+    inline const NeoVpcConfig& GetVpcConfig() const { return m_vpcConfig; }
     inline bool VpcConfigHasBeenSet() const { return m_vpcConfigHasBeenSet; }
+    template<typename VpcConfigT = NeoVpcConfig>
+    void SetVpcConfig(VpcConfigT&& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = std::forward<VpcConfigT>(value); }
+    template<typename VpcConfigT = NeoVpcConfig>
+    CreateCompilationJobRequest& WithVpcConfig(VpcConfigT&& value) { SetVpcConfig(std::forward<VpcConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html">VpcConfig</a>
-     * object that specifies the VPC that you want your compilation job to connect to.
-     * Control access to your models by configuring the VPC. For more information, see
-     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html">Protect
-     * Compilation Jobs by Using an Amazon Virtual Private Cloud</a>.</p>
-     */
-    inline void SetVpcConfig(const NeoVpcConfig& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = value; }
-
-    /**
-     * <p>A <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html">VpcConfig</a>
-     * object that specifies the VPC that you want your compilation job to connect to.
-     * Control access to your models by configuring the VPC. For more information, see
-     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html">Protect
-     * Compilation Jobs by Using an Amazon Virtual Private Cloud</a>.</p>
-     */
-    inline void SetVpcConfig(NeoVpcConfig&& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = std::move(value); }
-
-    /**
-     * <p>A <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html">VpcConfig</a>
-     * object that specifies the VPC that you want your compilation job to connect to.
-     * Control access to your models by configuring the VPC. For more information, see
-     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html">Protect
-     * Compilation Jobs by Using an Amazon Virtual Private Cloud</a>.</p>
-     */
-    inline CreateCompilationJobRequest& WithVpcConfig(const NeoVpcConfig& value) { SetVpcConfig(value); return *this;}
-
-    /**
-     * <p>A <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html">VpcConfig</a>
-     * object that specifies the VPC that you want your compilation job to connect to.
-     * Control access to your models by configuring the VPC. For more information, see
-     * <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html">Protect
-     * Compilation Jobs by Using an Amazon Virtual Private Cloud</a>.</p>
-     */
-    inline CreateCompilationJobRequest& WithVpcConfig(NeoVpcConfig&& value) { SetVpcConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies a limit to how long a model compilation job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the compilation job. Use this API
-     * to cap model training costs.</p>
+     * reaches the time limit, Amazon SageMaker AI ends the compilation job. Use this
+     * API to cap model training costs.</p>
      */
-    inline const StoppingCondition& GetStoppingCondition() const{ return m_stoppingCondition; }
-
-    /**
-     * <p>Specifies a limit to how long a model compilation job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the compilation job. Use this API
-     * to cap model training costs.</p>
-     */
+    inline const StoppingCondition& GetStoppingCondition() const { return m_stoppingCondition; }
     inline bool StoppingConditionHasBeenSet() const { return m_stoppingConditionHasBeenSet; }
+    template<typename StoppingConditionT = StoppingCondition>
+    void SetStoppingCondition(StoppingConditionT&& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = std::forward<StoppingConditionT>(value); }
+    template<typename StoppingConditionT = StoppingCondition>
+    CreateCompilationJobRequest& WithStoppingCondition(StoppingConditionT&& value) { SetStoppingCondition(std::forward<StoppingConditionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies a limit to how long a model compilation job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the compilation job. Use this API
-     * to cap model training costs.</p>
-     */
-    inline void SetStoppingCondition(const StoppingCondition& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = value; }
-
-    /**
-     * <p>Specifies a limit to how long a model compilation job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the compilation job. Use this API
-     * to cap model training costs.</p>
-     */
-    inline void SetStoppingCondition(StoppingCondition&& value) { m_stoppingConditionHasBeenSet = true; m_stoppingCondition = std::move(value); }
-
-    /**
-     * <p>Specifies a limit to how long a model compilation job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the compilation job. Use this API
-     * to cap model training costs.</p>
-     */
-    inline CreateCompilationJobRequest& WithStoppingCondition(const StoppingCondition& value) { SetStoppingCondition(value); return *this;}
-
-    /**
-     * <p>Specifies a limit to how long a model compilation job can run. When the job
-     * reaches the time limit, Amazon SageMaker ends the compilation job. Use this API
-     * to cap model training costs.</p>
-     */
-    inline CreateCompilationJobRequest& WithStoppingCondition(StoppingCondition&& value) { SetStoppingCondition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
      * Services resources in different ways, for example, by purpose, owner, or
@@ -466,71 +156,15 @@ namespace Model
      * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
      * Amazon Web Services Resources</a>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
-    inline CreateCompilationJobRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
-    inline CreateCompilationJobRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
-    inline CreateCompilationJobRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An array of key-value pairs. You can use tags to categorize your Amazon Web
-     * Services resources in different ways, for example, by purpose, owner, or
-     * environment. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services Resources</a>.</p>
-     */
-    inline CreateCompilationJobRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateCompilationJobRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateCompilationJobRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_compilationJobName;

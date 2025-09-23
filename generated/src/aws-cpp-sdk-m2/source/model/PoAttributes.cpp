@@ -18,17 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-PoAttributes::PoAttributes() : 
-    m_encodingHasBeenSet(false),
-    m_formatHasBeenSet(false),
-    m_memberFileExtensionsHasBeenSet(false)
-{
-}
-
-PoAttributes::PoAttributes(JsonView jsonValue) : 
-    m_encodingHasBeenSet(false),
-    m_formatHasBeenSet(false),
-    m_memberFileExtensionsHasBeenSet(false)
+PoAttributes::PoAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PoAttributes& PoAttributes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("encoding"))
   {
     m_encoding = jsonValue.GetString("encoding");
-
     m_encodingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("format"))
   {
     m_format = jsonValue.GetString("format");
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("memberFileExtensions"))
   {
     Aws::Utils::Array<JsonView> memberFileExtensionsJsonList = jsonValue.GetArray("memberFileExtensions");
@@ -58,7 +44,6 @@ PoAttributes& PoAttributes::operator =(JsonView jsonValue)
     }
     m_memberFileExtensionsHasBeenSet = true;
   }
-
   return *this;
 }
 

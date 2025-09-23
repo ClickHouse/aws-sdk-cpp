@@ -18,19 +18,7 @@ namespace SWF
 namespace Model
 {
 
-MarkerRecordedEventAttributes::MarkerRecordedEventAttributes() : 
-    m_markerNameHasBeenSet(false),
-    m_detailsHasBeenSet(false),
-    m_decisionTaskCompletedEventId(0),
-    m_decisionTaskCompletedEventIdHasBeenSet(false)
-{
-}
-
-MarkerRecordedEventAttributes::MarkerRecordedEventAttributes(JsonView jsonValue) : 
-    m_markerNameHasBeenSet(false),
-    m_detailsHasBeenSet(false),
-    m_decisionTaskCompletedEventId(0),
-    m_decisionTaskCompletedEventIdHasBeenSet(false)
+MarkerRecordedEventAttributes::MarkerRecordedEventAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ MarkerRecordedEventAttributes& MarkerRecordedEventAttributes::operator =(JsonVie
   if(jsonValue.ValueExists("markerName"))
   {
     m_markerName = jsonValue.GetString("markerName");
-
     m_markerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("details"))
   {
     m_details = jsonValue.GetString("details");
-
     m_detailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("decisionTaskCompletedEventId"))
   {
     m_decisionTaskCompletedEventId = jsonValue.GetInt64("decisionTaskCompletedEventId");
-
     m_decisionTaskCompletedEventIdHasBeenSet = true;
   }
-
   return *this;
 }
 

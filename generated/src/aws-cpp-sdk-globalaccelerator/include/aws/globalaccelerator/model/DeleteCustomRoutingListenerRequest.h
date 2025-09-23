@@ -21,7 +21,7 @@ namespace Model
   class DeleteCustomRoutingListenerRequest : public GlobalAcceleratorRequest
   {
   public:
-    AWS_GLOBALACCELERATOR_API DeleteCustomRoutingListenerRequest();
+    AWS_GLOBALACCELERATOR_API DeleteCustomRoutingListenerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_GLOBALACCELERATOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
      */
-    inline const Aws::String& GetListenerArn() const{ return m_listenerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
+    inline const Aws::String& GetListenerArn() const { return m_listenerArn; }
     inline bool ListenerArnHasBeenSet() const { return m_listenerArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
-    inline void SetListenerArn(const Aws::String& value) { m_listenerArnHasBeenSet = true; m_listenerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
-    inline void SetListenerArn(Aws::String&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
-    inline void SetListenerArn(const char* value) { m_listenerArnHasBeenSet = true; m_listenerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
-    inline DeleteCustomRoutingListenerRequest& WithListenerArn(const Aws::String& value) { SetListenerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
-    inline DeleteCustomRoutingListenerRequest& WithListenerArn(Aws::String&& value) { SetListenerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener to delete.</p>
-     */
-    inline DeleteCustomRoutingListenerRequest& WithListenerArn(const char* value) { SetListenerArn(value); return *this;}
-
+    template<typename ListenerArnT = Aws::String>
+    void SetListenerArn(ListenerArnT&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::forward<ListenerArnT>(value); }
+    template<typename ListenerArnT = Aws::String>
+    DeleteCustomRoutingListenerRequest& WithListenerArn(ListenerArnT&& value) { SetListenerArn(std::forward<ListenerArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_listenerArn;

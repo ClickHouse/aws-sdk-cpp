@@ -24,59 +24,30 @@ namespace Model
 {
 
   /**
-   * <p>The container for the identifier of the owner.</p><p><h3>See Also:</h3>   <a
+   * <p>The container for the owner identifier.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/OwnerIdentifier">AWS
    * API Reference</a></p>
    */
   class OwnerIdentifier
   {
   public:
-    AWS_MANAGEDBLOCKCHAINQUERY_API OwnerIdentifier();
+    AWS_MANAGEDBLOCKCHAINQUERY_API OwnerIdentifier() = default;
     AWS_MANAGEDBLOCKCHAINQUERY_API OwnerIdentifier(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAINQUERY_API OwnerIdentifier& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAINQUERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The contract or wallet address for the owner.</p>
      */
-    inline const Aws::String& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
+    inline const Aws::String& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
-    inline void SetAddress(const Aws::String& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
-    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
-    inline void SetAddress(const char* value) { m_addressHasBeenSet = true; m_address.assign(value); }
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
-    inline OwnerIdentifier& WithAddress(const Aws::String& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
-    inline OwnerIdentifier& WithAddress(Aws::String&& value) { SetAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The contract or wallet address for the owner.</p>
-     */
-    inline OwnerIdentifier& WithAddress(const char* value) { SetAddress(value); return *this;}
-
+    template<typename AddressT = Aws::String>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Aws::String>
+    OwnerIdentifier& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_address;

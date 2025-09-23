@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-AuditContext::AuditContext() : 
-    m_additionalAuditContextHasBeenSet(false),
-    m_requestedColumnsHasBeenSet(false),
-    m_allColumnsRequested(false),
-    m_allColumnsRequestedHasBeenSet(false)
-{
-}
-
-AuditContext::AuditContext(JsonView jsonValue) : 
-    m_additionalAuditContextHasBeenSet(false),
-    m_requestedColumnsHasBeenSet(false),
-    m_allColumnsRequested(false),
-    m_allColumnsRequestedHasBeenSet(false)
+AuditContext::AuditContext(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ AuditContext& AuditContext::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AdditionalAuditContext"))
   {
     m_additionalAuditContext = jsonValue.GetString("AdditionalAuditContext");
-
     m_additionalAuditContextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestedColumns"))
   {
     Aws::Utils::Array<JsonView> requestedColumnsJsonList = jsonValue.GetArray("RequestedColumns");
@@ -53,14 +39,11 @@ AuditContext& AuditContext::operator =(JsonView jsonValue)
     }
     m_requestedColumnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllColumnsRequested"))
   {
     m_allColumnsRequested = jsonValue.GetBool("AllColumnsRequested");
-
     m_allColumnsRequestedHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-CampaignState::CampaignState() : 
-    m_campaignStatus(CampaignStatus::NOT_SET),
-    m_campaignStatusHasBeenSet(false)
-{
-}
-
-CampaignState::CampaignState(JsonView jsonValue) : 
-    m_campaignStatus(CampaignStatus::NOT_SET),
-    m_campaignStatusHasBeenSet(false)
+CampaignState::CampaignState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CampaignState& CampaignState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CampaignStatus"))
   {
     m_campaignStatus = CampaignStatusMapper::GetCampaignStatusForName(jsonValue.GetString("CampaignStatus"));
-
     m_campaignStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

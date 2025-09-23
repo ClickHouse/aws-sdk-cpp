@@ -33,101 +33,49 @@ namespace Model
   class FirewallMetadata
   {
   public:
-    AWS_NETWORKFIREWALL_API FirewallMetadata();
+    AWS_NETWORKFIREWALL_API FirewallMetadata() = default;
     AWS_NETWORKFIREWALL_API FirewallMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API FirewallMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The descriptive name of the firewall. You can't change the name of a firewall
      * after you create it.</p>
      */
-    inline const Aws::String& GetFirewallName() const{ return m_firewallName; }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
+    inline const Aws::String& GetFirewallName() const { return m_firewallName; }
     inline bool FirewallNameHasBeenSet() const { return m_firewallNameHasBeenSet; }
+    template<typename FirewallNameT = Aws::String>
+    void SetFirewallName(FirewallNameT&& value) { m_firewallNameHasBeenSet = true; m_firewallName = std::forward<FirewallNameT>(value); }
+    template<typename FirewallNameT = Aws::String>
+    FirewallMetadata& WithFirewallName(FirewallNameT&& value) { SetFirewallName(std::forward<FirewallNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
-    inline void SetFirewallName(const Aws::String& value) { m_firewallNameHasBeenSet = true; m_firewallName = value; }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
-    inline void SetFirewallName(Aws::String&& value) { m_firewallNameHasBeenSet = true; m_firewallName = std::move(value); }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
-    inline void SetFirewallName(const char* value) { m_firewallNameHasBeenSet = true; m_firewallName.assign(value); }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
-    inline FirewallMetadata& WithFirewallName(const Aws::String& value) { SetFirewallName(value); return *this;}
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
-    inline FirewallMetadata& WithFirewallName(Aws::String&& value) { SetFirewallName(std::move(value)); return *this;}
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p>
-     */
-    inline FirewallMetadata& WithFirewallName(const char* value) { SetFirewallName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the firewall.</p>
      */
-    inline const Aws::String& GetFirewallArn() const{ return m_firewallArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
-     */
+    inline const Aws::String& GetFirewallArn() const { return m_firewallArn; }
     inline bool FirewallArnHasBeenSet() const { return m_firewallArnHasBeenSet; }
+    template<typename FirewallArnT = Aws::String>
+    void SetFirewallArn(FirewallArnT&& value) { m_firewallArnHasBeenSet = true; m_firewallArn = std::forward<FirewallArnT>(value); }
+    template<typename FirewallArnT = Aws::String>
+    FirewallMetadata& WithFirewallArn(FirewallArnT&& value) { SetFirewallArn(std::forward<FirewallArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
+     * <p>The unique identifier of the transit gateway attachment associated with this
+     * firewall. This field is only present for transit gateway-attached firewalls.</p>
      */
-    inline void SetFirewallArn(const Aws::String& value) { m_firewallArnHasBeenSet = true; m_firewallArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
-     */
-    inline void SetFirewallArn(Aws::String&& value) { m_firewallArnHasBeenSet = true; m_firewallArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
-     */
-    inline void SetFirewallArn(const char* value) { m_firewallArnHasBeenSet = true; m_firewallArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
-     */
-    inline FirewallMetadata& WithFirewallArn(const Aws::String& value) { SetFirewallArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
-     */
-    inline FirewallMetadata& WithFirewallArn(Aws::String&& value) { SetFirewallArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p>
-     */
-    inline FirewallMetadata& WithFirewallArn(const char* value) { SetFirewallArn(value); return *this;}
-
+    inline const Aws::String& GetTransitGatewayAttachmentId() const { return m_transitGatewayAttachmentId; }
+    inline bool TransitGatewayAttachmentIdHasBeenSet() const { return m_transitGatewayAttachmentIdHasBeenSet; }
+    template<typename TransitGatewayAttachmentIdT = Aws::String>
+    void SetTransitGatewayAttachmentId(TransitGatewayAttachmentIdT&& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = std::forward<TransitGatewayAttachmentIdT>(value); }
+    template<typename TransitGatewayAttachmentIdT = Aws::String>
+    FirewallMetadata& WithTransitGatewayAttachmentId(TransitGatewayAttachmentIdT&& value) { SetTransitGatewayAttachmentId(std::forward<TransitGatewayAttachmentIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_firewallName;
@@ -135,6 +83,9 @@ namespace Model
 
     Aws::String m_firewallArn;
     bool m_firewallArnHasBeenSet = false;
+
+    Aws::String m_transitGatewayAttachmentId;
+    bool m_transitGatewayAttachmentIdHasBeenSet = false;
   };
 
 } // namespace Model

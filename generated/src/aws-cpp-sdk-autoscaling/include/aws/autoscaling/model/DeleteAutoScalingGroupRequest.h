@@ -21,7 +21,7 @@ namespace Model
   class DeleteAutoScalingGroupRequest : public AutoScalingRequest
   {
   public:
-    AWS_AUTOSCALING_API DeleteAutoScalingGroupRequest();
+    AWS_AUTOSCALING_API DeleteAutoScalingGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,81 +36,35 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline const Aws::String& GetAutoScalingGroupName() const{ return m_autoScalingGroupName; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
+    inline const Aws::String& GetAutoScalingGroupName() const { return m_autoScalingGroupName; }
     inline bool AutoScalingGroupNameHasBeenSet() const { return m_autoScalingGroupNameHasBeenSet; }
+    template<typename AutoScalingGroupNameT = Aws::String>
+    void SetAutoScalingGroupName(AutoScalingGroupNameT&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::forward<AutoScalingGroupNameT>(value); }
+    template<typename AutoScalingGroupNameT = Aws::String>
+    DeleteAutoScalingGroupRequest& WithAutoScalingGroupName(AutoScalingGroupNameT&& value) { SetAutoScalingGroupName(std::forward<AutoScalingGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(const Aws::String& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline void SetAutoScalingGroupName(const char* value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline DeleteAutoScalingGroupRequest& WithAutoScalingGroupName(const Aws::String& value) { SetAutoScalingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline DeleteAutoScalingGroupRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Auto Scaling group.</p>
-     */
-    inline DeleteAutoScalingGroupRequest& WithAutoScalingGroupName(const char* value) { SetAutoScalingGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies that the group is to be deleted along with all instances associated
      * with the group, without waiting for all instances to be terminated. This action
      * also deletes any outstanding lifecycle actions associated with the group.</p>
      */
-    inline bool GetForceDelete() const{ return m_forceDelete; }
-
-    /**
-     * <p>Specifies that the group is to be deleted along with all instances associated
-     * with the group, without waiting for all instances to be terminated. This action
-     * also deletes any outstanding lifecycle actions associated with the group.</p>
-     */
+    inline bool GetForceDelete() const { return m_forceDelete; }
     inline bool ForceDeleteHasBeenSet() const { return m_forceDeleteHasBeenSet; }
-
-    /**
-     * <p>Specifies that the group is to be deleted along with all instances associated
-     * with the group, without waiting for all instances to be terminated. This action
-     * also deletes any outstanding lifecycle actions associated with the group.</p>
-     */
     inline void SetForceDelete(bool value) { m_forceDeleteHasBeenSet = true; m_forceDelete = value; }
-
-    /**
-     * <p>Specifies that the group is to be deleted along with all instances associated
-     * with the group, without waiting for all instances to be terminated. This action
-     * also deletes any outstanding lifecycle actions associated with the group.</p>
-     */
     inline DeleteAutoScalingGroupRequest& WithForceDelete(bool value) { SetForceDelete(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_autoScalingGroupName;
     bool m_autoScalingGroupNameHasBeenSet = false;
 
-    bool m_forceDelete;
+    bool m_forceDelete{false};
     bool m_forceDeleteHasBeenSet = false;
   };
 

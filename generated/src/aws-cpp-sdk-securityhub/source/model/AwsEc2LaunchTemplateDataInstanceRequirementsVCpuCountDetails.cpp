@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails::AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails() : 
-    m_max(0),
-    m_maxHasBeenSet(false),
-    m_min(0),
-    m_minHasBeenSet(false)
-{
-}
-
-AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails::AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails(JsonView jsonValue) : 
-    m_max(0),
-    m_maxHasBeenSet(false),
-    m_min(0),
-    m_minHasBeenSet(false)
+AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails::AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails& AwsEc2LaunchTempla
   if(jsonValue.ValueExists("Max"))
   {
     m_max = jsonValue.GetInteger("Max");
-
     m_maxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Min"))
   {
     m_min = jsonValue.GetInteger("Min");
-
     m_minHasBeenSet = true;
   }
-
   return *this;
 }
 

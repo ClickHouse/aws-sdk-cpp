@@ -33,124 +33,45 @@ namespace Model
   class NotificationResource
   {
   public:
-    AWS_DATAZONE_API NotificationResource();
+    AWS_DATAZONE_API NotificationResource() = default;
     AWS_DATAZONE_API NotificationResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API NotificationResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the resource mentioned in a notification.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    NotificationResource& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource mentioned in a notification.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    NotificationResource& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the resource mentioned in a notification.</p>
      */
-    inline const NotificationResourceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the resource mentioned in a notification.</p>
-     */
+    inline NotificationResourceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of the resource mentioned in a notification.</p>
-     */
-    inline void SetType(const NotificationResourceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the resource mentioned in a notification.</p>
-     */
-    inline void SetType(NotificationResourceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithType(const NotificationResourceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the resource mentioned in a notification.</p>
-     */
-    inline NotificationResource& WithType(NotificationResourceType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(NotificationResourceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline NotificationResource& WithType(NotificationResourceType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -159,7 +80,7 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    NotificationResourceType m_type;
+    NotificationResourceType m_type{NotificationResourceType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

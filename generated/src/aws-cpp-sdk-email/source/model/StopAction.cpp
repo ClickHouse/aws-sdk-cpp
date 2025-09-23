@@ -20,17 +20,7 @@ namespace SES
 namespace Model
 {
 
-StopAction::StopAction() : 
-    m_scope(StopScope::NOT_SET),
-    m_scopeHasBeenSet(false),
-    m_topicArnHasBeenSet(false)
-{
-}
-
-StopAction::StopAction(const XmlNode& xmlNode) : 
-    m_scope(StopScope::NOT_SET),
-    m_scopeHasBeenSet(false),
-    m_topicArnHasBeenSet(false)
+StopAction::StopAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ StopAction& StopAction::operator =(const XmlNode& xmlNode)
     XmlNode scopeNode = resultNode.FirstChild("Scope");
     if(!scopeNode.IsNull())
     {
-      m_scope = StopScopeMapper::GetStopScopeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scopeNode.GetText()).c_str()).c_str());
+      m_scope = StopScopeMapper::GetStopScopeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scopeNode.GetText()).c_str()));
       m_scopeHasBeenSet = true;
     }
     XmlNode topicArnNode = resultNode.FirstChild("TopicArn");
@@ -62,7 +52,7 @@ void StopAction::OutputToStream(Aws::OStream& oStream, const char* location, uns
 {
   if(m_scopeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Scope=" << StopScopeMapper::GetNameForStopScope(m_scope) << "&";
+      oStream << location << index << locationValue << ".Scope=" << StringUtils::URLEncode(StopScopeMapper::GetNameForStopScope(m_scope)) << "&";
   }
 
   if(m_topicArnHasBeenSet)
@@ -76,7 +66,7 @@ void StopAction::OutputToStream(Aws::OStream& oStream, const char* location) con
 {
   if(m_scopeHasBeenSet)
   {
-      oStream << location << ".Scope=" << StopScopeMapper::GetNameForStopScope(m_scope) << "&";
+      oStream << location << ".Scope=" << StringUtils::URLEncode(StopScopeMapper::GetNameForStopScope(m_scope)) << "&";
   }
   if(m_topicArnHasBeenSet)
   {

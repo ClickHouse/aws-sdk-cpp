@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-EbsOptimizedInfo::EbsOptimizedInfo() : 
-    m_baselineBandwidthInMbps(0),
-    m_baselineBandwidthInMbpsHasBeenSet(false),
-    m_baselineThroughputInMBps(0.0),
-    m_baselineThroughputInMBpsHasBeenSet(false),
-    m_baselineIops(0),
-    m_baselineIopsHasBeenSet(false),
-    m_maximumBandwidthInMbps(0),
-    m_maximumBandwidthInMbpsHasBeenSet(false),
-    m_maximumThroughputInMBps(0.0),
-    m_maximumThroughputInMBpsHasBeenSet(false),
-    m_maximumIops(0),
-    m_maximumIopsHasBeenSet(false)
-{
-}
-
-EbsOptimizedInfo::EbsOptimizedInfo(const XmlNode& xmlNode) : 
-    m_baselineBandwidthInMbps(0),
-    m_baselineBandwidthInMbpsHasBeenSet(false),
-    m_baselineThroughputInMBps(0.0),
-    m_baselineThroughputInMBpsHasBeenSet(false),
-    m_baselineIops(0),
-    m_baselineIopsHasBeenSet(false),
-    m_maximumBandwidthInMbps(0),
-    m_maximumBandwidthInMbpsHasBeenSet(false),
-    m_maximumThroughputInMBps(0.0),
-    m_maximumThroughputInMBpsHasBeenSet(false),
-    m_maximumIops(0),
-    m_maximumIopsHasBeenSet(false)
+EbsOptimizedInfo::EbsOptimizedInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -142,7 +114,7 @@ void EbsOptimizedInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_baselineThroughputInMBpsHasBeenSet)
   {
-        oStream << location << ".BaselineThroughputInMBps=" << StringUtils::URLEncode(m_baselineThroughputInMBps) << "&";
+      oStream << location << ".BaselineThroughputInMBps=" << StringUtils::URLEncode(m_baselineThroughputInMBps) << "&";
   }
   if(m_baselineIopsHasBeenSet)
   {
@@ -154,7 +126,7 @@ void EbsOptimizedInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_maximumThroughputInMBpsHasBeenSet)
   {
-        oStream << location << ".MaximumThroughputInMBps=" << StringUtils::URLEncode(m_maximumThroughputInMBps) << "&";
+      oStream << location << ".MaximumThroughputInMBps=" << StringUtils::URLEncode(m_maximumThroughputInMBps) << "&";
   }
   if(m_maximumIopsHasBeenSet)
   {

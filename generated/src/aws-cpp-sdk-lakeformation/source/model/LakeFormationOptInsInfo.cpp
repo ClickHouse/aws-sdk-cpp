@@ -18,19 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-LakeFormationOptInsInfo::LakeFormationOptInsInfo() : 
-    m_resourceHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false),
-    m_lastUpdatedByHasBeenSet(false)
-{
-}
-
-LakeFormationOptInsInfo::LakeFormationOptInsInfo(JsonView jsonValue) : 
-    m_resourceHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false),
-    m_lastUpdatedByHasBeenSet(false)
+LakeFormationOptInsInfo::LakeFormationOptInsInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,28 @@ LakeFormationOptInsInfo& LakeFormationOptInsInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Resource"))
   {
     m_resource = jsonValue.GetObject("Resource");
-
     m_resourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Principal"))
   {
     m_principal = jsonValue.GetObject("Principal");
-
     m_principalHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Condition"))
+  {
+    m_condition = jsonValue.GetObject("Condition");
+    m_conditionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("LastModified"))
   {
     m_lastModified = jsonValue.GetDouble("LastModified");
-
     m_lastModifiedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdatedBy"))
   {
     m_lastUpdatedBy = jsonValue.GetString("LastUpdatedBy");
-
     m_lastUpdatedByHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -81,6 +66,12 @@ JsonValue LakeFormationOptInsInfo::Jsonize() const
   if(m_principalHasBeenSet)
   {
    payload.WithObject("Principal", m_principal.Jsonize());
+
+  }
+
+  if(m_conditionHasBeenSet)
+  {
+   payload.WithObject("Condition", m_condition.Jsonize());
 
   }
 

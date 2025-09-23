@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-RecommendationJobPayloadConfig::RecommendationJobPayloadConfig() : 
-    m_samplePayloadUrlHasBeenSet(false),
-    m_supportedContentTypesHasBeenSet(false)
-{
-}
-
-RecommendationJobPayloadConfig::RecommendationJobPayloadConfig(JsonView jsonValue) : 
-    m_samplePayloadUrlHasBeenSet(false),
-    m_supportedContentTypesHasBeenSet(false)
+RecommendationJobPayloadConfig::RecommendationJobPayloadConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RecommendationJobPayloadConfig& RecommendationJobPayloadConfig::operator =(JsonV
   if(jsonValue.ValueExists("SamplePayloadUrl"))
   {
     m_samplePayloadUrl = jsonValue.GetString("SamplePayloadUrl");
-
     m_samplePayloadUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedContentTypes"))
   {
     Aws::Utils::Array<JsonView> supportedContentTypesJsonList = jsonValue.GetArray("SupportedContentTypes");
@@ -49,7 +39,6 @@ RecommendationJobPayloadConfig& RecommendationJobPayloadConfig::operator =(JsonV
     }
     m_supportedContentTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

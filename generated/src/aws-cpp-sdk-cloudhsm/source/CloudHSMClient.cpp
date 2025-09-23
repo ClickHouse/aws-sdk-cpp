@@ -35,20 +35,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* CloudHSMClient::SERVICE_NAME = "cloudhsm";
-const char* CloudHSMClient::ALLOCATION_TAG = "CloudHSMClient";
+namespace Aws
+{
+  namespace CloudHSM
+  {
+    const char SERVICE_NAME[] = "cloudhsm";
+    const char ALLOCATION_TAG[] = "CloudHSMClient";
+  }
+}
+const char* CloudHSMClient::GetServiceName() {return SERVICE_NAME;}
+const char* CloudHSMClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 CloudHSMClient::CloudHSMClient(const CloudHSM::CloudHSMClientConfiguration& clientConfiguration,
                                std::shared_ptr<CloudHSMEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudHSMErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudHSMEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -63,8 +70,7 @@ CloudHSMClient::CloudHSMClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudHSMErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudHSMEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -79,8 +85,7 @@ CloudHSMClient::CloudHSMClient(const std::shared_ptr<AWSCredentialsProvider>& cr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudHSMErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudHSMEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -89,12 +94,11 @@ CloudHSMClient::CloudHSMClient(const std::shared_ptr<AWSCredentialsProvider>& cr
   CloudHSMClient::CloudHSMClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudHSMErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<CloudHSMEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -109,7 +113,6 @@ CloudHSMClient::CloudHSMClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudHSMErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CloudHSMEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -124,7 +127,6 @@ CloudHSMClient::CloudHSMClient(const std::shared_ptr<AWSCredentialsProvider>& cr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudHSMErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CloudHSMEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -144,6 +146,14 @@ std::shared_ptr<CloudHSMEndpointProviderBase>& CloudHSMClient::accessEndpointPro
 void CloudHSMClient::init(const CloudHSM::CloudHSMClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("CloudHSM");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

@@ -12,15 +12,6 @@ using namespace Aws::MediaTailor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListPrefetchSchedulesRequest::ListPrefetchSchedulesRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_playbackConfigurationNameHasBeenSet(false),
-    m_streamIdHasBeenSet(false)
-{
-}
-
 Aws::String ListPrefetchSchedulesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -35,6 +26,11 @@ Aws::String ListPrefetchSchedulesRequest::SerializePayload() const
   {
    payload.WithString("NextToken", m_nextToken);
 
+  }
+
+  if(m_scheduleTypeHasBeenSet)
+  {
+   payload.WithString("ScheduleType", ListPrefetchScheduleTypeMapper::GetNameForListPrefetchScheduleType(m_scheduleType));
   }
 
   if(m_streamIdHasBeenSet)

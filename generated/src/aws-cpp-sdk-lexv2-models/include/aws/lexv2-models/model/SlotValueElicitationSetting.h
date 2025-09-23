@@ -39,280 +39,106 @@ namespace Model
   class SlotValueElicitationSetting
   {
   public:
-    AWS_LEXMODELSV2_API SlotValueElicitationSetting();
+    AWS_LEXMODELSV2_API SlotValueElicitationSetting() = default;
     AWS_LEXMODELSV2_API SlotValueElicitationSetting(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SlotValueElicitationSetting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of default values for a slot. Default values are used when Amazon Lex
      * hasn't determined a value for a slot. You can specify default values from
      * context variables, session attributes, and defined values.</p>
      */
-    inline const SlotDefaultValueSpecification& GetDefaultValueSpecification() const{ return m_defaultValueSpecification; }
-
-    /**
-     * <p>A list of default values for a slot. Default values are used when Amazon Lex
-     * hasn't determined a value for a slot. You can specify default values from
-     * context variables, session attributes, and defined values.</p>
-     */
+    inline const SlotDefaultValueSpecification& GetDefaultValueSpecification() const { return m_defaultValueSpecification; }
     inline bool DefaultValueSpecificationHasBeenSet() const { return m_defaultValueSpecificationHasBeenSet; }
+    template<typename DefaultValueSpecificationT = SlotDefaultValueSpecification>
+    void SetDefaultValueSpecification(DefaultValueSpecificationT&& value) { m_defaultValueSpecificationHasBeenSet = true; m_defaultValueSpecification = std::forward<DefaultValueSpecificationT>(value); }
+    template<typename DefaultValueSpecificationT = SlotDefaultValueSpecification>
+    SlotValueElicitationSetting& WithDefaultValueSpecification(DefaultValueSpecificationT&& value) { SetDefaultValueSpecification(std::forward<DefaultValueSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A list of default values for a slot. Default values are used when Amazon Lex
-     * hasn't determined a value for a slot. You can specify default values from
-     * context variables, session attributes, and defined values.</p>
-     */
-    inline void SetDefaultValueSpecification(const SlotDefaultValueSpecification& value) { m_defaultValueSpecificationHasBeenSet = true; m_defaultValueSpecification = value; }
-
-    /**
-     * <p>A list of default values for a slot. Default values are used when Amazon Lex
-     * hasn't determined a value for a slot. You can specify default values from
-     * context variables, session attributes, and defined values.</p>
-     */
-    inline void SetDefaultValueSpecification(SlotDefaultValueSpecification&& value) { m_defaultValueSpecificationHasBeenSet = true; m_defaultValueSpecification = std::move(value); }
-
-    /**
-     * <p>A list of default values for a slot. Default values are used when Amazon Lex
-     * hasn't determined a value for a slot. You can specify default values from
-     * context variables, session attributes, and defined values.</p>
-     */
-    inline SlotValueElicitationSetting& WithDefaultValueSpecification(const SlotDefaultValueSpecification& value) { SetDefaultValueSpecification(value); return *this;}
-
-    /**
-     * <p>A list of default values for a slot. Default values are used when Amazon Lex
-     * hasn't determined a value for a slot. You can specify default values from
-     * context variables, session attributes, and defined values.</p>
-     */
-    inline SlotValueElicitationSetting& WithDefaultValueSpecification(SlotDefaultValueSpecification&& value) { SetDefaultValueSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the slot is required or optional.</p>
      */
-    inline const SlotConstraint& GetSlotConstraint() const{ return m_slotConstraint; }
-
-    /**
-     * <p>Specifies whether the slot is required or optional.</p>
-     */
+    inline SlotConstraint GetSlotConstraint() const { return m_slotConstraint; }
     inline bool SlotConstraintHasBeenSet() const { return m_slotConstraintHasBeenSet; }
+    inline void SetSlotConstraint(SlotConstraint value) { m_slotConstraintHasBeenSet = true; m_slotConstraint = value; }
+    inline SlotValueElicitationSetting& WithSlotConstraint(SlotConstraint value) { SetSlotConstraint(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether the slot is required or optional.</p>
-     */
-    inline void SetSlotConstraint(const SlotConstraint& value) { m_slotConstraintHasBeenSet = true; m_slotConstraint = value; }
-
-    /**
-     * <p>Specifies whether the slot is required or optional.</p>
-     */
-    inline void SetSlotConstraint(SlotConstraint&& value) { m_slotConstraintHasBeenSet = true; m_slotConstraint = std::move(value); }
-
-    /**
-     * <p>Specifies whether the slot is required or optional.</p>
-     */
-    inline SlotValueElicitationSetting& WithSlotConstraint(const SlotConstraint& value) { SetSlotConstraint(value); return *this;}
-
-    /**
-     * <p>Specifies whether the slot is required or optional.</p>
-     */
-    inline SlotValueElicitationSetting& WithSlotConstraint(SlotConstraint&& value) { SetSlotConstraint(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
      */
-    inline const PromptSpecification& GetPromptSpecification() const{ return m_promptSpecification; }
-
-    /**
-     * <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
-     */
+    inline const PromptSpecification& GetPromptSpecification() const { return m_promptSpecification; }
     inline bool PromptSpecificationHasBeenSet() const { return m_promptSpecificationHasBeenSet; }
+    template<typename PromptSpecificationT = PromptSpecification>
+    void SetPromptSpecification(PromptSpecificationT&& value) { m_promptSpecificationHasBeenSet = true; m_promptSpecification = std::forward<PromptSpecificationT>(value); }
+    template<typename PromptSpecificationT = PromptSpecification>
+    SlotValueElicitationSetting& WithPromptSpecification(PromptSpecificationT&& value) { SetPromptSpecification(std::forward<PromptSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
-     */
-    inline void SetPromptSpecification(const PromptSpecification& value) { m_promptSpecificationHasBeenSet = true; m_promptSpecification = value; }
-
-    /**
-     * <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
-     */
-    inline void SetPromptSpecification(PromptSpecification&& value) { m_promptSpecificationHasBeenSet = true; m_promptSpecification = std::move(value); }
-
-    /**
-     * <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
-     */
-    inline SlotValueElicitationSetting& WithPromptSpecification(const PromptSpecification& value) { SetPromptSpecification(value); return *this;}
-
-    /**
-     * <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
-     */
-    inline SlotValueElicitationSetting& WithPromptSpecification(PromptSpecification&& value) { SetPromptSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If you know a specific pattern that users might respond to an Amazon Lex
      * request for a slot value, you can provide those utterances to improve accuracy.
      * This is optional. In most cases, Amazon Lex is capable of understanding user
      * utterances.</p>
      */
-    inline const Aws::Vector<SampleUtterance>& GetSampleUtterances() const{ return m_sampleUtterances; }
-
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
+    inline const Aws::Vector<SampleUtterance>& GetSampleUtterances() const { return m_sampleUtterances; }
     inline bool SampleUtterancesHasBeenSet() const { return m_sampleUtterancesHasBeenSet; }
+    template<typename SampleUtterancesT = Aws::Vector<SampleUtterance>>
+    void SetSampleUtterances(SampleUtterancesT&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = std::forward<SampleUtterancesT>(value); }
+    template<typename SampleUtterancesT = Aws::Vector<SampleUtterance>>
+    SlotValueElicitationSetting& WithSampleUtterances(SampleUtterancesT&& value) { SetSampleUtterances(std::forward<SampleUtterancesT>(value)); return *this;}
+    template<typename SampleUtterancesT = SampleUtterance>
+    SlotValueElicitationSetting& AddSampleUtterances(SampleUtterancesT&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.emplace_back(std::forward<SampleUtterancesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
-    inline void SetSampleUtterances(const Aws::Vector<SampleUtterance>& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = value; }
-
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
-    inline void SetSampleUtterances(Aws::Vector<SampleUtterance>&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = std::move(value); }
-
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
-    inline SlotValueElicitationSetting& WithSampleUtterances(const Aws::Vector<SampleUtterance>& value) { SetSampleUtterances(value); return *this;}
-
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
-    inline SlotValueElicitationSetting& WithSampleUtterances(Aws::Vector<SampleUtterance>&& value) { SetSampleUtterances(std::move(value)); return *this;}
-
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
-    inline SlotValueElicitationSetting& AddSampleUtterances(const SampleUtterance& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.push_back(value); return *this; }
-
-    /**
-     * <p>If you know a specific pattern that users might respond to an Amazon Lex
-     * request for a slot value, you can provide those utterances to improve accuracy.
-     * This is optional. In most cases, Amazon Lex is capable of understanding user
-     * utterances.</p>
-     */
-    inline SlotValueElicitationSetting& AddSampleUtterances(SampleUtterance&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const WaitAndContinueSpecification& GetWaitAndContinueSpecification() const{ return m_waitAndContinueSpecification; }
-
-    
+    inline const WaitAndContinueSpecification& GetWaitAndContinueSpecification() const { return m_waitAndContinueSpecification; }
     inline bool WaitAndContinueSpecificationHasBeenSet() const { return m_waitAndContinueSpecificationHasBeenSet; }
+    template<typename WaitAndContinueSpecificationT = WaitAndContinueSpecification>
+    void SetWaitAndContinueSpecification(WaitAndContinueSpecificationT&& value) { m_waitAndContinueSpecificationHasBeenSet = true; m_waitAndContinueSpecification = std::forward<WaitAndContinueSpecificationT>(value); }
+    template<typename WaitAndContinueSpecificationT = WaitAndContinueSpecification>
+    SlotValueElicitationSetting& WithWaitAndContinueSpecification(WaitAndContinueSpecificationT&& value) { SetWaitAndContinueSpecification(std::forward<WaitAndContinueSpecificationT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetWaitAndContinueSpecification(const WaitAndContinueSpecification& value) { m_waitAndContinueSpecificationHasBeenSet = true; m_waitAndContinueSpecification = value; }
-
-    
-    inline void SetWaitAndContinueSpecification(WaitAndContinueSpecification&& value) { m_waitAndContinueSpecificationHasBeenSet = true; m_waitAndContinueSpecification = std::move(value); }
-
-    
-    inline SlotValueElicitationSetting& WithWaitAndContinueSpecification(const WaitAndContinueSpecification& value) { SetWaitAndContinueSpecification(value); return *this;}
-
-    
-    inline SlotValueElicitationSetting& WithWaitAndContinueSpecification(WaitAndContinueSpecification&& value) { SetWaitAndContinueSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the settings that Amazon Lex uses when a slot value is successfully
      * entered by a user.</p>
      */
-    inline const SlotCaptureSetting& GetSlotCaptureSetting() const{ return m_slotCaptureSetting; }
-
-    /**
-     * <p>Specifies the settings that Amazon Lex uses when a slot value is successfully
-     * entered by a user.</p>
-     */
+    inline const SlotCaptureSetting& GetSlotCaptureSetting() const { return m_slotCaptureSetting; }
     inline bool SlotCaptureSettingHasBeenSet() const { return m_slotCaptureSettingHasBeenSet; }
+    template<typename SlotCaptureSettingT = SlotCaptureSetting>
+    void SetSlotCaptureSetting(SlotCaptureSettingT&& value) { m_slotCaptureSettingHasBeenSet = true; m_slotCaptureSetting = std::forward<SlotCaptureSettingT>(value); }
+    template<typename SlotCaptureSettingT = SlotCaptureSetting>
+    SlotValueElicitationSetting& WithSlotCaptureSetting(SlotCaptureSettingT&& value) { SetSlotCaptureSetting(std::forward<SlotCaptureSettingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the settings that Amazon Lex uses when a slot value is successfully
-     * entered by a user.</p>
-     */
-    inline void SetSlotCaptureSetting(const SlotCaptureSetting& value) { m_slotCaptureSettingHasBeenSet = true; m_slotCaptureSetting = value; }
-
-    /**
-     * <p>Specifies the settings that Amazon Lex uses when a slot value is successfully
-     * entered by a user.</p>
-     */
-    inline void SetSlotCaptureSetting(SlotCaptureSetting&& value) { m_slotCaptureSettingHasBeenSet = true; m_slotCaptureSetting = std::move(value); }
-
-    /**
-     * <p>Specifies the settings that Amazon Lex uses when a slot value is successfully
-     * entered by a user.</p>
-     */
-    inline SlotValueElicitationSetting& WithSlotCaptureSetting(const SlotCaptureSetting& value) { SetSlotCaptureSetting(value); return *this;}
-
-    /**
-     * <p>Specifies the settings that Amazon Lex uses when a slot value is successfully
-     * entered by a user.</p>
-     */
-    inline SlotValueElicitationSetting& WithSlotCaptureSetting(SlotCaptureSetting&& value) { SetSlotCaptureSetting(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object containing information about whether assisted slot resolution is
      * turned on for the slot or not.</p>
      */
-    inline const SlotResolutionSetting& GetSlotResolutionSetting() const{ return m_slotResolutionSetting; }
-
-    /**
-     * <p>An object containing information about whether assisted slot resolution is
-     * turned on for the slot or not.</p>
-     */
+    inline const SlotResolutionSetting& GetSlotResolutionSetting() const { return m_slotResolutionSetting; }
     inline bool SlotResolutionSettingHasBeenSet() const { return m_slotResolutionSettingHasBeenSet; }
-
-    /**
-     * <p>An object containing information about whether assisted slot resolution is
-     * turned on for the slot or not.</p>
-     */
-    inline void SetSlotResolutionSetting(const SlotResolutionSetting& value) { m_slotResolutionSettingHasBeenSet = true; m_slotResolutionSetting = value; }
-
-    /**
-     * <p>An object containing information about whether assisted slot resolution is
-     * turned on for the slot or not.</p>
-     */
-    inline void SetSlotResolutionSetting(SlotResolutionSetting&& value) { m_slotResolutionSettingHasBeenSet = true; m_slotResolutionSetting = std::move(value); }
-
-    /**
-     * <p>An object containing information about whether assisted slot resolution is
-     * turned on for the slot or not.</p>
-     */
-    inline SlotValueElicitationSetting& WithSlotResolutionSetting(const SlotResolutionSetting& value) { SetSlotResolutionSetting(value); return *this;}
-
-    /**
-     * <p>An object containing information about whether assisted slot resolution is
-     * turned on for the slot or not.</p>
-     */
-    inline SlotValueElicitationSetting& WithSlotResolutionSetting(SlotResolutionSetting&& value) { SetSlotResolutionSetting(std::move(value)); return *this;}
-
+    template<typename SlotResolutionSettingT = SlotResolutionSetting>
+    void SetSlotResolutionSetting(SlotResolutionSettingT&& value) { m_slotResolutionSettingHasBeenSet = true; m_slotResolutionSetting = std::forward<SlotResolutionSettingT>(value); }
+    template<typename SlotResolutionSettingT = SlotResolutionSetting>
+    SlotValueElicitationSetting& WithSlotResolutionSetting(SlotResolutionSettingT&& value) { SetSlotResolutionSetting(std::forward<SlotResolutionSettingT>(value)); return *this;}
+    ///@}
   private:
 
     SlotDefaultValueSpecification m_defaultValueSpecification;
     bool m_defaultValueSpecificationHasBeenSet = false;
 
-    SlotConstraint m_slotConstraint;
+    SlotConstraint m_slotConstraint{SlotConstraint::NOT_SET};
     bool m_slotConstraintHasBeenSet = false;
 
     PromptSpecification m_promptSpecification;

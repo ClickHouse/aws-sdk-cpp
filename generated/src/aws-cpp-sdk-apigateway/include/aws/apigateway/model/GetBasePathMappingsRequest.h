@@ -29,7 +29,7 @@ namespace Model
   class GetBasePathMappingsRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API GetBasePathMappingsRequest();
+    AWS_APIGATEWAY_API GetBasePathMappingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,121 +42,65 @@ namespace Model
     AWS_APIGATEWAY_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The domain name of a BasePathMapping resource.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The domain name of a BasePathMapping resource.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    GetBasePathMappingsRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The domain name of a BasePathMapping resource.</p>
+     * <p> The identifier for the domain name resource. Supported only for private
+     * custom domain names. </p>
      */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline const Aws::String& GetDomainNameId() const { return m_domainNameId; }
+    inline bool DomainNameIdHasBeenSet() const { return m_domainNameIdHasBeenSet; }
+    template<typename DomainNameIdT = Aws::String>
+    void SetDomainNameId(DomainNameIdT&& value) { m_domainNameIdHasBeenSet = true; m_domainNameId = std::forward<DomainNameIdT>(value); }
+    template<typename DomainNameIdT = Aws::String>
+    GetBasePathMappingsRequest& WithDomainNameId(DomainNameIdT&& value) { SetDomainNameId(std::forward<DomainNameIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain name of a BasePathMapping resource.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The domain name of a BasePathMapping resource.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The domain name of a BasePathMapping resource.</p>
-     */
-    inline GetBasePathMappingsRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The domain name of a BasePathMapping resource.</p>
-     */
-    inline GetBasePathMappingsRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain name of a BasePathMapping resource.</p>
-     */
-    inline GetBasePathMappingsRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current pagination position in the paged result set.</p>
      */
-    inline const Aws::String& GetPosition() const{ return m_position; }
-
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
+    inline const Aws::String& GetPosition() const { return m_position; }
     inline bool PositionHasBeenSet() const { return m_positionHasBeenSet; }
+    template<typename PositionT = Aws::String>
+    void SetPosition(PositionT&& value) { m_positionHasBeenSet = true; m_position = std::forward<PositionT>(value); }
+    template<typename PositionT = Aws::String>
+    GetBasePathMappingsRequest& WithPosition(PositionT&& value) { SetPosition(std::forward<PositionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
-    inline void SetPosition(const Aws::String& value) { m_positionHasBeenSet = true; m_position = value; }
-
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
-    inline void SetPosition(Aws::String&& value) { m_positionHasBeenSet = true; m_position = std::move(value); }
-
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
-    inline void SetPosition(const char* value) { m_positionHasBeenSet = true; m_position.assign(value); }
-
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
-    inline GetBasePathMappingsRequest& WithPosition(const Aws::String& value) { SetPosition(value); return *this;}
-
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
-    inline GetBasePathMappingsRequest& WithPosition(Aws::String&& value) { SetPosition(std::move(value)); return *this;}
-
-    /**
-     * <p>The current pagination position in the paged result set.</p>
-     */
-    inline GetBasePathMappingsRequest& WithPosition(const char* value) { SetPosition(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of returned results per page. The default value is 25 and
      * the maximum value is 500.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The maximum number of returned results per page. The default value is 25 and
-     * the maximum value is 500.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The maximum number of returned results per page. The default value is 25 and
-     * the maximum value is 500.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The maximum number of returned results per page. The default value is 25 and
-     * the maximum value is 500.</p>
-     */
     inline GetBasePathMappingsRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_domainName;
     bool m_domainNameHasBeenSet = false;
 
+    Aws::String m_domainNameId;
+    bool m_domainNameIdHasBeenSet = false;
+
     Aws::String m_position;
     bool m_positionHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

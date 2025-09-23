@@ -32,324 +32,101 @@ namespace Model
   class TokenData
   {
   public:
-    AWS_LICENSEMANAGER_API TokenData();
+    AWS_LICENSEMANAGER_API TokenData() = default;
     AWS_LICENSEMANAGER_API TokenData(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API TokenData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Token ID.</p>
      */
-    inline const Aws::String& GetTokenId() const{ return m_tokenId; }
-
-    /**
-     * <p>Token ID.</p>
-     */
+    inline const Aws::String& GetTokenId() const { return m_tokenId; }
     inline bool TokenIdHasBeenSet() const { return m_tokenIdHasBeenSet; }
+    template<typename TokenIdT = Aws::String>
+    void SetTokenId(TokenIdT&& value) { m_tokenIdHasBeenSet = true; m_tokenId = std::forward<TokenIdT>(value); }
+    template<typename TokenIdT = Aws::String>
+    TokenData& WithTokenId(TokenIdT&& value) { SetTokenId(std::forward<TokenIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Token ID.</p>
-     */
-    inline void SetTokenId(const Aws::String& value) { m_tokenIdHasBeenSet = true; m_tokenId = value; }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline void SetTokenId(Aws::String&& value) { m_tokenIdHasBeenSet = true; m_tokenId = std::move(value); }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline void SetTokenId(const char* value) { m_tokenIdHasBeenSet = true; m_tokenId.assign(value); }
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline TokenData& WithTokenId(const Aws::String& value) { SetTokenId(value); return *this;}
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline TokenData& WithTokenId(Aws::String&& value) { SetTokenId(std::move(value)); return *this;}
-
-    /**
-     * <p>Token ID.</p>
-     */
-    inline TokenData& WithTokenId(const char* value) { SetTokenId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Type of token generated. The supported value is
      * <code>REFRESH_TOKEN</code>.</p>
      */
-    inline const Aws::String& GetTokenType() const{ return m_tokenType; }
-
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
+    inline const Aws::String& GetTokenType() const { return m_tokenType; }
     inline bool TokenTypeHasBeenSet() const { return m_tokenTypeHasBeenSet; }
+    template<typename TokenTypeT = Aws::String>
+    void SetTokenType(TokenTypeT&& value) { m_tokenTypeHasBeenSet = true; m_tokenType = std::forward<TokenTypeT>(value); }
+    template<typename TokenTypeT = Aws::String>
+    TokenData& WithTokenType(TokenTypeT&& value) { SetTokenType(std::forward<TokenTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
-    inline void SetTokenType(const Aws::String& value) { m_tokenTypeHasBeenSet = true; m_tokenType = value; }
-
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
-    inline void SetTokenType(Aws::String&& value) { m_tokenTypeHasBeenSet = true; m_tokenType = std::move(value); }
-
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
-    inline void SetTokenType(const char* value) { m_tokenTypeHasBeenSet = true; m_tokenType.assign(value); }
-
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
-    inline TokenData& WithTokenType(const Aws::String& value) { SetTokenType(value); return *this;}
-
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
-    inline TokenData& WithTokenType(Aws::String&& value) { SetTokenType(std::move(value)); return *this;}
-
-    /**
-     * <p>Type of token generated. The supported value is
-     * <code>REFRESH_TOKEN</code>.</p>
-     */
-    inline TokenData& WithTokenType(const char* value) { SetTokenType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the license.</p>
      */
-    inline const Aws::String& GetLicenseArn() const{ return m_licenseArn; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
+    inline const Aws::String& GetLicenseArn() const { return m_licenseArn; }
     inline bool LicenseArnHasBeenSet() const { return m_licenseArnHasBeenSet; }
+    template<typename LicenseArnT = Aws::String>
+    void SetLicenseArn(LicenseArnT&& value) { m_licenseArnHasBeenSet = true; m_licenseArn = std::forward<LicenseArnT>(value); }
+    template<typename LicenseArnT = Aws::String>
+    TokenData& WithLicenseArn(LicenseArnT&& value) { SetLicenseArn(std::forward<LicenseArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline void SetLicenseArn(const Aws::String& value) { m_licenseArnHasBeenSet = true; m_licenseArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline void SetLicenseArn(Aws::String&& value) { m_licenseArnHasBeenSet = true; m_licenseArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline void SetLicenseArn(const char* value) { m_licenseArnHasBeenSet = true; m_licenseArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline TokenData& WithLicenseArn(const Aws::String& value) { SetLicenseArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline TokenData& WithLicenseArn(Aws::String&& value) { SetLicenseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline TokenData& WithLicenseArn(const char* value) { SetLicenseArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Token expiration time, in ISO8601-UTC format.</p>
      */
-    inline const Aws::String& GetExpirationTime() const{ return m_expirationTime; }
-
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
+    inline const Aws::String& GetExpirationTime() const { return m_expirationTime; }
     inline bool ExpirationTimeHasBeenSet() const { return m_expirationTimeHasBeenSet; }
+    template<typename ExpirationTimeT = Aws::String>
+    void SetExpirationTime(ExpirationTimeT&& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = std::forward<ExpirationTimeT>(value); }
+    template<typename ExpirationTimeT = Aws::String>
+    TokenData& WithExpirationTime(ExpirationTimeT&& value) { SetExpirationTime(std::forward<ExpirationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
-    inline void SetExpirationTime(const Aws::String& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = value; }
-
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
-    inline void SetExpirationTime(Aws::String&& value) { m_expirationTimeHasBeenSet = true; m_expirationTime = std::move(value); }
-
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
-    inline void SetExpirationTime(const char* value) { m_expirationTimeHasBeenSet = true; m_expirationTime.assign(value); }
-
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
-    inline TokenData& WithExpirationTime(const Aws::String& value) { SetExpirationTime(value); return *this;}
-
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
-    inline TokenData& WithExpirationTime(Aws::String&& value) { SetExpirationTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Token expiration time, in ISO8601-UTC format.</p>
-     */
-    inline TokenData& WithExpirationTime(const char* value) { SetExpirationTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Data specified by the caller.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTokenProperties() const{ return m_tokenProperties; }
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTokenProperties() const { return m_tokenProperties; }
     inline bool TokenPropertiesHasBeenSet() const { return m_tokenPropertiesHasBeenSet; }
+    template<typename TokenPropertiesT = Aws::Vector<Aws::String>>
+    void SetTokenProperties(TokenPropertiesT&& value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties = std::forward<TokenPropertiesT>(value); }
+    template<typename TokenPropertiesT = Aws::Vector<Aws::String>>
+    TokenData& WithTokenProperties(TokenPropertiesT&& value) { SetTokenProperties(std::forward<TokenPropertiesT>(value)); return *this;}
+    template<typename TokenPropertiesT = Aws::String>
+    TokenData& AddTokenProperties(TokenPropertiesT&& value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties.emplace_back(std::forward<TokenPropertiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline void SetTokenProperties(const Aws::Vector<Aws::String>& value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties = value; }
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline void SetTokenProperties(Aws::Vector<Aws::String>&& value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties = std::move(value); }
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline TokenData& WithTokenProperties(const Aws::Vector<Aws::String>& value) { SetTokenProperties(value); return *this;}
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline TokenData& WithTokenProperties(Aws::Vector<Aws::String>&& value) { SetTokenProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline TokenData& AddTokenProperties(const Aws::String& value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties.push_back(value); return *this; }
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline TokenData& AddTokenProperties(Aws::String&& value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Data specified by the caller.</p>
-     */
-    inline TokenData& AddTokenProperties(const char* value) { m_tokenPropertiesHasBeenSet = true; m_tokenProperties.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRoleArns() const{ return m_roleArns; }
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRoleArns() const { return m_roleArns; }
     inline bool RoleArnsHasBeenSet() const { return m_roleArnsHasBeenSet; }
+    template<typename RoleArnsT = Aws::Vector<Aws::String>>
+    void SetRoleArns(RoleArnsT&& value) { m_roleArnsHasBeenSet = true; m_roleArns = std::forward<RoleArnsT>(value); }
+    template<typename RoleArnsT = Aws::Vector<Aws::String>>
+    TokenData& WithRoleArns(RoleArnsT&& value) { SetRoleArns(std::forward<RoleArnsT>(value)); return *this;}
+    template<typename RoleArnsT = Aws::String>
+    TokenData& AddRoleArns(RoleArnsT&& value) { m_roleArnsHasBeenSet = true; m_roleArns.emplace_back(std::forward<RoleArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline void SetRoleArns(const Aws::Vector<Aws::String>& value) { m_roleArnsHasBeenSet = true; m_roleArns = value; }
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline void SetRoleArns(Aws::Vector<Aws::String>&& value) { m_roleArnsHasBeenSet = true; m_roleArns = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline TokenData& WithRoleArns(const Aws::Vector<Aws::String>& value) { SetRoleArns(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline TokenData& WithRoleArns(Aws::Vector<Aws::String>&& value) { SetRoleArns(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline TokenData& AddRoleArns(const Aws::String& value) { m_roleArnsHasBeenSet = true; m_roleArns.push_back(value); return *this; }
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline TokenData& AddRoleArns(Aws::String&& value) { m_roleArnsHasBeenSet = true; m_roleArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Amazon Resource Names (ARN) of the roles included in the token.</p>
-     */
-    inline TokenData& AddRoleArns(const char* value) { m_roleArnsHasBeenSet = true; m_roleArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Token status. The possible values are <code>AVAILABLE</code> and
      * <code>DELETED</code>.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
-    inline TokenData& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
-    inline TokenData& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>Token status. The possible values are <code>AVAILABLE</code> and
-     * <code>DELETED</code>.</p>
-     */
-    inline TokenData& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    TokenData& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tokenId;

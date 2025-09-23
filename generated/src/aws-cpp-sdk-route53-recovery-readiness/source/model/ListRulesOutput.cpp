@@ -18,17 +18,7 @@ namespace Route53RecoveryReadiness
 namespace Model
 {
 
-ListRulesOutput::ListRulesOutput() : 
-    m_resourceTypeHasBeenSet(false),
-    m_ruleDescriptionHasBeenSet(false),
-    m_ruleIdHasBeenSet(false)
-{
-}
-
-ListRulesOutput::ListRulesOutput(JsonView jsonValue) : 
-    m_resourceTypeHasBeenSet(false),
-    m_ruleDescriptionHasBeenSet(false),
-    m_ruleIdHasBeenSet(false)
+ListRulesOutput::ListRulesOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ListRulesOutput& ListRulesOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ruleDescription"))
   {
     m_ruleDescription = jsonValue.GetString("ruleDescription");
-
     m_ruleDescriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ruleId"))
   {
     m_ruleId = jsonValue.GetString("ruleId");
-
     m_ruleIdHasBeenSet = true;
   }
-
   return *this;
 }
 

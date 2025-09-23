@@ -33,68 +33,27 @@ namespace Model
   class SnapshotDestinationConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API SnapshotDestinationConfiguration();
+    AWS_QUICKSIGHT_API SnapshotDestinationConfiguration() = default;
     AWS_QUICKSIGHT_API SnapshotDestinationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SnapshotDestinationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
      * contain Amazon S3 destination configurations. This structure can hold a maximum
      * of 1 <code>S3DestinationConfiguration</code>. </p>
      */
-    inline const Aws::Vector<SnapshotS3DestinationConfiguration>& GetS3Destinations() const{ return m_s3Destinations; }
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
+    inline const Aws::Vector<SnapshotS3DestinationConfiguration>& GetS3Destinations() const { return m_s3Destinations; }
     inline bool S3DestinationsHasBeenSet() const { return m_s3DestinationsHasBeenSet; }
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
-    inline void SetS3Destinations(const Aws::Vector<SnapshotS3DestinationConfiguration>& value) { m_s3DestinationsHasBeenSet = true; m_s3Destinations = value; }
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
-    inline void SetS3Destinations(Aws::Vector<SnapshotS3DestinationConfiguration>&& value) { m_s3DestinationsHasBeenSet = true; m_s3Destinations = std::move(value); }
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
-    inline SnapshotDestinationConfiguration& WithS3Destinations(const Aws::Vector<SnapshotS3DestinationConfiguration>& value) { SetS3Destinations(value); return *this;}
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
-    inline SnapshotDestinationConfiguration& WithS3Destinations(Aws::Vector<SnapshotS3DestinationConfiguration>&& value) { SetS3Destinations(std::move(value)); return *this;}
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
-    inline SnapshotDestinationConfiguration& AddS3Destinations(const SnapshotS3DestinationConfiguration& value) { m_s3DestinationsHasBeenSet = true; m_s3Destinations.push_back(value); return *this; }
-
-    /**
-     * <p> A list of <code>SnapshotS3DestinationConfiguration</code> objects that
-     * contain Amazon S3 destination configurations. This structure can hold a maximum
-     * of 1 <code>S3DestinationConfiguration</code>. </p>
-     */
-    inline SnapshotDestinationConfiguration& AddS3Destinations(SnapshotS3DestinationConfiguration&& value) { m_s3DestinationsHasBeenSet = true; m_s3Destinations.push_back(std::move(value)); return *this; }
-
+    template<typename S3DestinationsT = Aws::Vector<SnapshotS3DestinationConfiguration>>
+    void SetS3Destinations(S3DestinationsT&& value) { m_s3DestinationsHasBeenSet = true; m_s3Destinations = std::forward<S3DestinationsT>(value); }
+    template<typename S3DestinationsT = Aws::Vector<SnapshotS3DestinationConfiguration>>
+    SnapshotDestinationConfiguration& WithS3Destinations(S3DestinationsT&& value) { SetS3Destinations(std::forward<S3DestinationsT>(value)); return *this;}
+    template<typename S3DestinationsT = SnapshotS3DestinationConfiguration>
+    SnapshotDestinationConfiguration& AddS3Destinations(S3DestinationsT&& value) { m_s3DestinationsHasBeenSet = true; m_s3Destinations.emplace_back(std::forward<S3DestinationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SnapshotS3DestinationConfiguration> m_s3Destinations;

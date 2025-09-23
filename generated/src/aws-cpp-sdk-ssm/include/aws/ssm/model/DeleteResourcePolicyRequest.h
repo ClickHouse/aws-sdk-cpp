@@ -21,7 +21,7 @@ namespace Model
   class DeleteResourcePolicyRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DeleteResourcePolicyRequest();
+    AWS_SSM_API DeleteResourcePolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,144 +34,43 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the resource to which the policies are
      * attached.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    DeleteResourcePolicyRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the resource to which the policies are
-     * attached.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The policy ID.</p>
      */
-    inline const Aws::String& GetPolicyId() const{ return m_policyId; }
-
-    /**
-     * <p>The policy ID.</p>
-     */
+    inline const Aws::String& GetPolicyId() const { return m_policyId; }
     inline bool PolicyIdHasBeenSet() const { return m_policyIdHasBeenSet; }
+    template<typename PolicyIdT = Aws::String>
+    void SetPolicyId(PolicyIdT&& value) { m_policyIdHasBeenSet = true; m_policyId = std::forward<PolicyIdT>(value); }
+    template<typename PolicyIdT = Aws::String>
+    DeleteResourcePolicyRequest& WithPolicyId(PolicyIdT&& value) { SetPolicyId(std::forward<PolicyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The policy ID.</p>
-     */
-    inline void SetPolicyId(const Aws::String& value) { m_policyIdHasBeenSet = true; m_policyId = value; }
-
-    /**
-     * <p>The policy ID.</p>
-     */
-    inline void SetPolicyId(Aws::String&& value) { m_policyIdHasBeenSet = true; m_policyId = std::move(value); }
-
-    /**
-     * <p>The policy ID.</p>
-     */
-    inline void SetPolicyId(const char* value) { m_policyIdHasBeenSet = true; m_policyId.assign(value); }
-
-    /**
-     * <p>The policy ID.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithPolicyId(const Aws::String& value) { SetPolicyId(value); return *this;}
-
-    /**
-     * <p>The policy ID.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithPolicyId(Aws::String&& value) { SetPolicyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The policy ID.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithPolicyId(const char* value) { SetPolicyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ID of the current policy version. The hash helps to prevent multiple calls
      * from attempting to overwrite a policy.</p>
      */
-    inline const Aws::String& GetPolicyHash() const{ return m_policyHash; }
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
+    inline const Aws::String& GetPolicyHash() const { return m_policyHash; }
     inline bool PolicyHashHasBeenSet() const { return m_policyHashHasBeenSet; }
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
-    inline void SetPolicyHash(const Aws::String& value) { m_policyHashHasBeenSet = true; m_policyHash = value; }
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
-    inline void SetPolicyHash(Aws::String&& value) { m_policyHashHasBeenSet = true; m_policyHash = std::move(value); }
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
-    inline void SetPolicyHash(const char* value) { m_policyHashHasBeenSet = true; m_policyHash.assign(value); }
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithPolicyHash(const Aws::String& value) { SetPolicyHash(value); return *this;}
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithPolicyHash(Aws::String&& value) { SetPolicyHash(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the current policy version. The hash helps to prevent multiple calls
-     * from attempting to overwrite a policy.</p>
-     */
-    inline DeleteResourcePolicyRequest& WithPolicyHash(const char* value) { SetPolicyHash(value); return *this;}
-
+    template<typename PolicyHashT = Aws::String>
+    void SetPolicyHash(PolicyHashT&& value) { m_policyHashHasBeenSet = true; m_policyHash = std::forward<PolicyHashT>(value); }
+    template<typename PolicyHashT = Aws::String>
+    DeleteResourcePolicyRequest& WithPolicyHash(PolicyHashT&& value) { SetPolicyHash(std::forward<PolicyHashT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;

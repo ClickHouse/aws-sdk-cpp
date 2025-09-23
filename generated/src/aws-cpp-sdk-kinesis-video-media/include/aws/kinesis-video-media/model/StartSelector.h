@@ -43,12 +43,13 @@ namespace Model
   class StartSelector
   {
   public:
-    AWS_KINESISVIDEOMEDIA_API StartSelector();
+    AWS_KINESISVIDEOMEDIA_API StartSelector() = default;
     AWS_KINESISVIDEOMEDIA_API StartSelector(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEOMEDIA_API StartSelector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEOMEDIA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifies the fragment on the Kinesis video stream where you want to start
      * getting the data from.</p> <ul> <li> <p>NOW - Start with the latest chunk on the
@@ -63,252 +64,62 @@ namespace Model
      * <code>startSelectorType</code>, you don't provide any additional information in
      * the <code>startSelector</code>.</p> 
      */
-    inline const StartSelectorType& GetStartSelectorType() const{ return m_startSelectorType; }
-
-    /**
-     * <p>Identifies the fragment on the Kinesis video stream where you want to start
-     * getting the data from.</p> <ul> <li> <p>NOW - Start with the latest chunk on the
-     * stream.</p> </li> <li> <p>EARLIEST - Start with earliest available chunk on the
-     * stream.</p> </li> <li> <p>FRAGMENT_NUMBER - Start with the chunk after a
-     * specific fragment. You must also specify the <code>AfterFragmentNumber</code>
-     * parameter.</p> </li> <li> <p>PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with
-     * the chunk containing a fragment with the specified producer or server timestamp.
-     * You specify the timestamp by adding <code>StartTimestamp</code>.</p> </li> <li>
-     * <p> CONTINUATION_TOKEN - Read using the specified continuation token. </p> </li>
-     * </ul>  <p>If you choose the NOW, EARLIEST, or CONTINUATION_TOKEN as the
-     * <code>startSelectorType</code>, you don't provide any additional information in
-     * the <code>startSelector</code>.</p> 
-     */
+    inline StartSelectorType GetStartSelectorType() const { return m_startSelectorType; }
     inline bool StartSelectorTypeHasBeenSet() const { return m_startSelectorTypeHasBeenSet; }
+    inline void SetStartSelectorType(StartSelectorType value) { m_startSelectorTypeHasBeenSet = true; m_startSelectorType = value; }
+    inline StartSelector& WithStartSelectorType(StartSelectorType value) { SetStartSelectorType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifies the fragment on the Kinesis video stream where you want to start
-     * getting the data from.</p> <ul> <li> <p>NOW - Start with the latest chunk on the
-     * stream.</p> </li> <li> <p>EARLIEST - Start with earliest available chunk on the
-     * stream.</p> </li> <li> <p>FRAGMENT_NUMBER - Start with the chunk after a
-     * specific fragment. You must also specify the <code>AfterFragmentNumber</code>
-     * parameter.</p> </li> <li> <p>PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with
-     * the chunk containing a fragment with the specified producer or server timestamp.
-     * You specify the timestamp by adding <code>StartTimestamp</code>.</p> </li> <li>
-     * <p> CONTINUATION_TOKEN - Read using the specified continuation token. </p> </li>
-     * </ul>  <p>If you choose the NOW, EARLIEST, or CONTINUATION_TOKEN as the
-     * <code>startSelectorType</code>, you don't provide any additional information in
-     * the <code>startSelector</code>.</p> 
-     */
-    inline void SetStartSelectorType(const StartSelectorType& value) { m_startSelectorTypeHasBeenSet = true; m_startSelectorType = value; }
-
-    /**
-     * <p>Identifies the fragment on the Kinesis video stream where you want to start
-     * getting the data from.</p> <ul> <li> <p>NOW - Start with the latest chunk on the
-     * stream.</p> </li> <li> <p>EARLIEST - Start with earliest available chunk on the
-     * stream.</p> </li> <li> <p>FRAGMENT_NUMBER - Start with the chunk after a
-     * specific fragment. You must also specify the <code>AfterFragmentNumber</code>
-     * parameter.</p> </li> <li> <p>PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with
-     * the chunk containing a fragment with the specified producer or server timestamp.
-     * You specify the timestamp by adding <code>StartTimestamp</code>.</p> </li> <li>
-     * <p> CONTINUATION_TOKEN - Read using the specified continuation token. </p> </li>
-     * </ul>  <p>If you choose the NOW, EARLIEST, or CONTINUATION_TOKEN as the
-     * <code>startSelectorType</code>, you don't provide any additional information in
-     * the <code>startSelector</code>.</p> 
-     */
-    inline void SetStartSelectorType(StartSelectorType&& value) { m_startSelectorTypeHasBeenSet = true; m_startSelectorType = std::move(value); }
-
-    /**
-     * <p>Identifies the fragment on the Kinesis video stream where you want to start
-     * getting the data from.</p> <ul> <li> <p>NOW - Start with the latest chunk on the
-     * stream.</p> </li> <li> <p>EARLIEST - Start with earliest available chunk on the
-     * stream.</p> </li> <li> <p>FRAGMENT_NUMBER - Start with the chunk after a
-     * specific fragment. You must also specify the <code>AfterFragmentNumber</code>
-     * parameter.</p> </li> <li> <p>PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with
-     * the chunk containing a fragment with the specified producer or server timestamp.
-     * You specify the timestamp by adding <code>StartTimestamp</code>.</p> </li> <li>
-     * <p> CONTINUATION_TOKEN - Read using the specified continuation token. </p> </li>
-     * </ul>  <p>If you choose the NOW, EARLIEST, or CONTINUATION_TOKEN as the
-     * <code>startSelectorType</code>, you don't provide any additional information in
-     * the <code>startSelector</code>.</p> 
-     */
-    inline StartSelector& WithStartSelectorType(const StartSelectorType& value) { SetStartSelectorType(value); return *this;}
-
-    /**
-     * <p>Identifies the fragment on the Kinesis video stream where you want to start
-     * getting the data from.</p> <ul> <li> <p>NOW - Start with the latest chunk on the
-     * stream.</p> </li> <li> <p>EARLIEST - Start with earliest available chunk on the
-     * stream.</p> </li> <li> <p>FRAGMENT_NUMBER - Start with the chunk after a
-     * specific fragment. You must also specify the <code>AfterFragmentNumber</code>
-     * parameter.</p> </li> <li> <p>PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with
-     * the chunk containing a fragment with the specified producer or server timestamp.
-     * You specify the timestamp by adding <code>StartTimestamp</code>.</p> </li> <li>
-     * <p> CONTINUATION_TOKEN - Read using the specified continuation token. </p> </li>
-     * </ul>  <p>If you choose the NOW, EARLIEST, or CONTINUATION_TOKEN as the
-     * <code>startSelectorType</code>, you don't provide any additional information in
-     * the <code>startSelector</code>.</p> 
-     */
-    inline StartSelector& WithStartSelectorType(StartSelectorType&& value) { SetStartSelectorType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
      * API to start returning the fragments. </p>
      */
-    inline const Aws::String& GetAfterFragmentNumber() const{ return m_afterFragmentNumber; }
-
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
+    inline const Aws::String& GetAfterFragmentNumber() const { return m_afterFragmentNumber; }
     inline bool AfterFragmentNumberHasBeenSet() const { return m_afterFragmentNumberHasBeenSet; }
+    template<typename AfterFragmentNumberT = Aws::String>
+    void SetAfterFragmentNumber(AfterFragmentNumberT&& value) { m_afterFragmentNumberHasBeenSet = true; m_afterFragmentNumber = std::forward<AfterFragmentNumberT>(value); }
+    template<typename AfterFragmentNumberT = Aws::String>
+    StartSelector& WithAfterFragmentNumber(AfterFragmentNumberT&& value) { SetAfterFragmentNumber(std::forward<AfterFragmentNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
-    inline void SetAfterFragmentNumber(const Aws::String& value) { m_afterFragmentNumberHasBeenSet = true; m_afterFragmentNumber = value; }
-
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
-    inline void SetAfterFragmentNumber(Aws::String&& value) { m_afterFragmentNumberHasBeenSet = true; m_afterFragmentNumber = std::move(value); }
-
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
-    inline void SetAfterFragmentNumber(const char* value) { m_afterFragmentNumberHasBeenSet = true; m_afterFragmentNumber.assign(value); }
-
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
-    inline StartSelector& WithAfterFragmentNumber(const Aws::String& value) { SetAfterFragmentNumber(value); return *this;}
-
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
-    inline StartSelector& WithAfterFragmentNumber(Aws::String&& value) { SetAfterFragmentNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the fragment number from where you want the <code>GetMedia</code>
-     * API to start returning the fragments. </p>
-     */
-    inline StartSelector& WithAfterFragmentNumber(const char* value) { SetAfterFragmentNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp value. This value is required if you choose the
      * PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
      * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with
      * the chunk containing the fragment that has the specified timestamp.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTimestamp() const{ return m_startTimestamp; }
-
-    /**
-     * <p>A timestamp value. This value is required if you choose the
-     * PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
-     * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with
-     * the chunk containing the fragment that has the specified timestamp.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTimestamp() const { return m_startTimestamp; }
     inline bool StartTimestampHasBeenSet() const { return m_startTimestampHasBeenSet; }
+    template<typename StartTimestampT = Aws::Utils::DateTime>
+    void SetStartTimestamp(StartTimestampT&& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = std::forward<StartTimestampT>(value); }
+    template<typename StartTimestampT = Aws::Utils::DateTime>
+    StartSelector& WithStartTimestamp(StartTimestampT&& value) { SetStartTimestamp(std::forward<StartTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp value. This value is required if you choose the
-     * PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
-     * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with
-     * the chunk containing the fragment that has the specified timestamp.</p>
-     */
-    inline void SetStartTimestamp(const Aws::Utils::DateTime& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = value; }
-
-    /**
-     * <p>A timestamp value. This value is required if you choose the
-     * PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
-     * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with
-     * the chunk containing the fragment that has the specified timestamp.</p>
-     */
-    inline void SetStartTimestamp(Aws::Utils::DateTime&& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = std::move(value); }
-
-    /**
-     * <p>A timestamp value. This value is required if you choose the
-     * PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
-     * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with
-     * the chunk containing the fragment that has the specified timestamp.</p>
-     */
-    inline StartSelector& WithStartTimestamp(const Aws::Utils::DateTime& value) { SetStartTimestamp(value); return *this;}
-
-    /**
-     * <p>A timestamp value. This value is required if you choose the
-     * PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
-     * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with
-     * the chunk containing the fragment that has the specified timestamp.</p>
-     */
-    inline StartSelector& WithStartTimestamp(Aws::Utils::DateTime&& value) { SetStartTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Continuation token that Kinesis Video Streams returned in the previous
      * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
      * the chunk identified by the continuation token.</p>
      */
-    inline const Aws::String& GetContinuationToken() const{ return m_continuationToken; }
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
+    inline const Aws::String& GetContinuationToken() const { return m_continuationToken; }
     inline bool ContinuationTokenHasBeenSet() const { return m_continuationTokenHasBeenSet; }
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
-    inline void SetContinuationToken(const Aws::String& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = value; }
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
-    inline void SetContinuationToken(Aws::String&& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = std::move(value); }
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
-    inline void SetContinuationToken(const char* value) { m_continuationTokenHasBeenSet = true; m_continuationToken.assign(value); }
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
-    inline StartSelector& WithContinuationToken(const Aws::String& value) { SetContinuationToken(value); return *this;}
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
-    inline StartSelector& WithContinuationToken(Aws::String&& value) { SetContinuationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Continuation token that Kinesis Video Streams returned in the previous
-     * <code>GetMedia</code> response. The <code>GetMedia</code> API then starts with
-     * the chunk identified by the continuation token.</p>
-     */
-    inline StartSelector& WithContinuationToken(const char* value) { SetContinuationToken(value); return *this;}
-
+    template<typename ContinuationTokenT = Aws::String>
+    void SetContinuationToken(ContinuationTokenT&& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = std::forward<ContinuationTokenT>(value); }
+    template<typename ContinuationTokenT = Aws::String>
+    StartSelector& WithContinuationToken(ContinuationTokenT&& value) { SetContinuationToken(std::forward<ContinuationTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    StartSelectorType m_startSelectorType;
+    StartSelectorType m_startSelectorType{StartSelectorType::NOT_SET};
     bool m_startSelectorTypeHasBeenSet = false;
 
     Aws::String m_afterFragmentNumber;
     bool m_afterFragmentNumberHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTimestamp;
+    Aws::Utils::DateTime m_startTimestamp{};
     bool m_startTimestampHasBeenSet = false;
 
     Aws::String m_continuationToken;

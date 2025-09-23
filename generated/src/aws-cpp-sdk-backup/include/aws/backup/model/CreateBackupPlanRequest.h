@@ -10,6 +10,7 @@
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
+#include <aws/core/utils/UUID.h>
 
 namespace Aws
 {
@@ -23,7 +24,7 @@ namespace Model
   class CreateBackupPlanRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API CreateBackupPlanRequest();
+    AWS_BACKUP_API CreateBackupPlanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,135 +35,36 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
+     * <p>The body of a backup plan. Includes a <code>BackupPlanName</code> and one or
+     * more sets of <code>Rules</code>.</p>
      */
-    inline const BackupPlanInput& GetBackupPlan() const{ return m_backupPlan; }
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
+    inline const BackupPlanInput& GetBackupPlan() const { return m_backupPlan; }
     inline bool BackupPlanHasBeenSet() const { return m_backupPlanHasBeenSet; }
+    template<typename BackupPlanT = BackupPlanInput>
+    void SetBackupPlan(BackupPlanT&& value) { m_backupPlanHasBeenSet = true; m_backupPlan = std::forward<BackupPlanT>(value); }
+    template<typename BackupPlanT = BackupPlanInput>
+    CreateBackupPlanRequest& WithBackupPlan(BackupPlanT&& value) { SetBackupPlan(std::forward<BackupPlanT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
+     * <p>The tags to assign to the backup plan.</p>
      */
-    inline void SetBackupPlan(const BackupPlanInput& value) { m_backupPlanHasBeenSet = true; m_backupPlan = value; }
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline void SetBackupPlan(BackupPlanInput&& value) { m_backupPlanHasBeenSet = true; m_backupPlan = std::move(value); }
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline CreateBackupPlanRequest& WithBackupPlan(const BackupPlanInput& value) { SetBackupPlan(value); return *this;}
-
-    /**
-     * <p>Specifies the body of a backup plan. Includes a <code>BackupPlanName</code>
-     * and one or more sets of <code>Rules</code>.</p>
-     */
-    inline CreateBackupPlanRequest& WithBackupPlan(BackupPlanInput&& value) { SetBackupPlan(std::move(value)); return *this;}
-
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetBackupPlanTags() const{ return m_backupPlanTags; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetBackupPlanTags() const { return m_backupPlanTags; }
     inline bool BackupPlanTagsHasBeenSet() const { return m_backupPlanTagsHasBeenSet; }
+    template<typename BackupPlanTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetBackupPlanTags(BackupPlanTagsT&& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags = std::forward<BackupPlanTagsT>(value); }
+    template<typename BackupPlanTagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateBackupPlanRequest& WithBackupPlanTags(BackupPlanTagsT&& value) { SetBackupPlanTags(std::forward<BackupPlanTagsT>(value)); return *this;}
+    template<typename BackupPlanTagsKeyT = Aws::String, typename BackupPlanTagsValueT = Aws::String>
+    CreateBackupPlanRequest& AddBackupPlanTags(BackupPlanTagsKeyT&& key, BackupPlanTagsValueT&& value) {
+      m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(std::forward<BackupPlanTagsKeyT>(key), std::forward<BackupPlanTagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline void SetBackupPlanTags(const Aws::Map<Aws::String, Aws::String>& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags = value; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline void SetBackupPlanTags(Aws::Map<Aws::String, Aws::String>&& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags = std::move(value); }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& WithBackupPlanTags(const Aws::Map<Aws::String, Aws::String>& value) { SetBackupPlanTags(value); return *this;}
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& WithBackupPlanTags(Aws::Map<Aws::String, Aws::String>&& value) { SetBackupPlanTags(std::move(value)); return *this;}
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(const Aws::String& key, const Aws::String& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(Aws::String&& key, const Aws::String& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(const Aws::String& key, Aws::String&& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(Aws::String&& key, Aws::String&& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(const char* key, Aws::String&& value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(Aws::String&& key, const char* value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>To help organize your resources, you can assign your own metadata to the
-     * resources that you create. Each tag is a key-value pair. The specified tags are
-     * assigned to all backups created with this plan.</p>
-     */
-    inline CreateBackupPlanRequest& AddBackupPlanTags(const char* key, const char* value) { m_backupPlanTagsHasBeenSet = true; m_backupPlanTags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Identifies the request and allows failed requests to be retried without the
      * risk of running the operation twice. If the request includes a
@@ -170,71 +72,13 @@ namespace Model
      * returned. This parameter is optional.</p> <p>If used, this parameter must
      * contain 1 to 50 alphanumeric or '-_.' characters.</p>
      */
-    inline const Aws::String& GetCreatorRequestId() const{ return m_creatorRequestId; }
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
+    inline const Aws::String& GetCreatorRequestId() const { return m_creatorRequestId; }
     inline bool CreatorRequestIdHasBeenSet() const { return m_creatorRequestIdHasBeenSet; }
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline void SetCreatorRequestId(const Aws::String& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = value; }
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline void SetCreatorRequestId(Aws::String&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::move(value); }
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline void SetCreatorRequestId(const char* value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId.assign(value); }
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline CreateBackupPlanRequest& WithCreatorRequestId(const Aws::String& value) { SetCreatorRequestId(value); return *this;}
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline CreateBackupPlanRequest& WithCreatorRequestId(Aws::String&& value) { SetCreatorRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifies the request and allows failed requests to be retried without the
-     * risk of running the operation twice. If the request includes a
-     * <code>CreatorRequestId</code> that matches an existing backup plan, that plan is
-     * returned. This parameter is optional.</p> <p>If used, this parameter must
-     * contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline CreateBackupPlanRequest& WithCreatorRequestId(const char* value) { SetCreatorRequestId(value); return *this;}
-
+    template<typename CreatorRequestIdT = Aws::String>
+    void SetCreatorRequestId(CreatorRequestIdT&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::forward<CreatorRequestIdT>(value); }
+    template<typename CreatorRequestIdT = Aws::String>
+    CreateBackupPlanRequest& WithCreatorRequestId(CreatorRequestIdT&& value) { SetCreatorRequestId(std::forward<CreatorRequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     BackupPlanInput m_backupPlan;
@@ -243,8 +87,8 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_backupPlanTags;
     bool m_backupPlanTagsHasBeenSet = false;
 
-    Aws::String m_creatorRequestId;
-    bool m_creatorRequestIdHasBeenSet = false;
+    Aws::String m_creatorRequestId{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_creatorRequestIdHasBeenSet = true;
   };
 
 } // namespace Model

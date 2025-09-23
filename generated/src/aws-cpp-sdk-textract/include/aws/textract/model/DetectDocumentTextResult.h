@@ -30,151 +30,69 @@ namespace Model
   class DetectDocumentTextResult
   {
   public:
-    AWS_TEXTRACT_API DetectDocumentTextResult();
+    AWS_TEXTRACT_API DetectDocumentTextResult() = default;
     AWS_TEXTRACT_API DetectDocumentTextResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TEXTRACT_API DetectDocumentTextResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Metadata about the document. It contains the number of pages that are
      * detected in the document.</p>
      */
-    inline const DocumentMetadata& GetDocumentMetadata() const{ return m_documentMetadata; }
+    inline const DocumentMetadata& GetDocumentMetadata() const { return m_documentMetadata; }
+    template<typename DocumentMetadataT = DocumentMetadata>
+    void SetDocumentMetadata(DocumentMetadataT&& value) { m_documentMetadataHasBeenSet = true; m_documentMetadata = std::forward<DocumentMetadataT>(value); }
+    template<typename DocumentMetadataT = DocumentMetadata>
+    DetectDocumentTextResult& WithDocumentMetadata(DocumentMetadataT&& value) { SetDocumentMetadata(std::forward<DocumentMetadataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Metadata about the document. It contains the number of pages that are
-     * detected in the document.</p>
-     */
-    inline void SetDocumentMetadata(const DocumentMetadata& value) { m_documentMetadata = value; }
-
-    /**
-     * <p>Metadata about the document. It contains the number of pages that are
-     * detected in the document.</p>
-     */
-    inline void SetDocumentMetadata(DocumentMetadata&& value) { m_documentMetadata = std::move(value); }
-
-    /**
-     * <p>Metadata about the document. It contains the number of pages that are
-     * detected in the document.</p>
-     */
-    inline DetectDocumentTextResult& WithDocumentMetadata(const DocumentMetadata& value) { SetDocumentMetadata(value); return *this;}
-
-    /**
-     * <p>Metadata about the document. It contains the number of pages that are
-     * detected in the document.</p>
-     */
-    inline DetectDocumentTextResult& WithDocumentMetadata(DocumentMetadata&& value) { SetDocumentMetadata(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <code>Block</code> objects that contain the text that's detected
      * in the document.</p>
      */
-    inline const Aws::Vector<Block>& GetBlocks() const{ return m_blocks; }
+    inline const Aws::Vector<Block>& GetBlocks() const { return m_blocks; }
+    template<typename BlocksT = Aws::Vector<Block>>
+    void SetBlocks(BlocksT&& value) { m_blocksHasBeenSet = true; m_blocks = std::forward<BlocksT>(value); }
+    template<typename BlocksT = Aws::Vector<Block>>
+    DetectDocumentTextResult& WithBlocks(BlocksT&& value) { SetBlocks(std::forward<BlocksT>(value)); return *this;}
+    template<typename BlocksT = Block>
+    DetectDocumentTextResult& AddBlocks(BlocksT&& value) { m_blocksHasBeenSet = true; m_blocks.emplace_back(std::forward<BlocksT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>Block</code> objects that contain the text that's detected
-     * in the document.</p>
-     */
-    inline void SetBlocks(const Aws::Vector<Block>& value) { m_blocks = value; }
-
-    /**
-     * <p>An array of <code>Block</code> objects that contain the text that's detected
-     * in the document.</p>
-     */
-    inline void SetBlocks(Aws::Vector<Block>&& value) { m_blocks = std::move(value); }
-
-    /**
-     * <p>An array of <code>Block</code> objects that contain the text that's detected
-     * in the document.</p>
-     */
-    inline DetectDocumentTextResult& WithBlocks(const Aws::Vector<Block>& value) { SetBlocks(value); return *this;}
-
-    /**
-     * <p>An array of <code>Block</code> objects that contain the text that's detected
-     * in the document.</p>
-     */
-    inline DetectDocumentTextResult& WithBlocks(Aws::Vector<Block>&& value) { SetBlocks(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>Block</code> objects that contain the text that's detected
-     * in the document.</p>
-     */
-    inline DetectDocumentTextResult& AddBlocks(const Block& value) { m_blocks.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>Block</code> objects that contain the text that's detected
-     * in the document.</p>
-     */
-    inline DetectDocumentTextResult& AddBlocks(Block&& value) { m_blocks.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetDetectDocumentTextModelVersion() const{ return m_detectDocumentTextModelVersion; }
+    inline const Aws::String& GetDetectDocumentTextModelVersion() const { return m_detectDocumentTextModelVersion; }
+    template<typename DetectDocumentTextModelVersionT = Aws::String>
+    void SetDetectDocumentTextModelVersion(DetectDocumentTextModelVersionT&& value) { m_detectDocumentTextModelVersionHasBeenSet = true; m_detectDocumentTextModelVersion = std::forward<DetectDocumentTextModelVersionT>(value); }
+    template<typename DetectDocumentTextModelVersionT = Aws::String>
+    DetectDocumentTextResult& WithDetectDocumentTextModelVersion(DetectDocumentTextModelVersionT&& value) { SetDetectDocumentTextModelVersion(std::forward<DetectDocumentTextModelVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p/>
-     */
-    inline void SetDetectDocumentTextModelVersion(const Aws::String& value) { m_detectDocumentTextModelVersion = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetDetectDocumentTextModelVersion(Aws::String&& value) { m_detectDocumentTextModelVersion = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetDetectDocumentTextModelVersion(const char* value) { m_detectDocumentTextModelVersion.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline DetectDocumentTextResult& WithDetectDocumentTextModelVersion(const Aws::String& value) { SetDetectDocumentTextModelVersion(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline DetectDocumentTextResult& WithDetectDocumentTextModelVersion(Aws::String&& value) { SetDetectDocumentTextModelVersion(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline DetectDocumentTextResult& WithDetectDocumentTextModelVersion(const char* value) { SetDetectDocumentTextModelVersion(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DetectDocumentTextResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DetectDocumentTextResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DetectDocumentTextResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DetectDocumentTextResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DocumentMetadata m_documentMetadata;
+    bool m_documentMetadataHasBeenSet = false;
 
     Aws::Vector<Block> m_blocks;
+    bool m_blocksHasBeenSet = false;
 
     Aws::String m_detectDocumentTextModelVersion;
+    bool m_detectDocumentTextModelVersionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

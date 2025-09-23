@@ -22,7 +22,7 @@ namespace Model
   class StopContactRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API StopContactRequest();
+    AWS_CONNECT_API StopContactRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,140 +33,44 @@ namespace Model
     AWS_CONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the contact.</p>
      */
-    inline const Aws::String& GetContactId() const{ return m_contactId; }
-
-    /**
-     * <p>The ID of the contact.</p>
-     */
+    inline const Aws::String& GetContactId() const { return m_contactId; }
     inline bool ContactIdHasBeenSet() const { return m_contactIdHasBeenSet; }
+    template<typename ContactIdT = Aws::String>
+    void SetContactId(ContactIdT&& value) { m_contactIdHasBeenSet = true; m_contactId = std::forward<ContactIdT>(value); }
+    template<typename ContactIdT = Aws::String>
+    StopContactRequest& WithContactId(ContactIdT&& value) { SetContactId(std::forward<ContactIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the contact.</p>
-     */
-    inline void SetContactId(const Aws::String& value) { m_contactIdHasBeenSet = true; m_contactId = value; }
-
-    /**
-     * <p>The ID of the contact.</p>
-     */
-    inline void SetContactId(Aws::String&& value) { m_contactIdHasBeenSet = true; m_contactId = std::move(value); }
-
-    /**
-     * <p>The ID of the contact.</p>
-     */
-    inline void SetContactId(const char* value) { m_contactIdHasBeenSet = true; m_contactId.assign(value); }
-
-    /**
-     * <p>The ID of the contact.</p>
-     */
-    inline StopContactRequest& WithContactId(const Aws::String& value) { SetContactId(value); return *this;}
-
-    /**
-     * <p>The ID of the contact.</p>
-     */
-    inline StopContactRequest& WithContactId(Aws::String&& value) { SetContactId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the contact.</p>
-     */
-    inline StopContactRequest& WithContactId(const char* value) { SetContactId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can <a
      * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
      * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    StopContactRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline StopContactRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline StopContactRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline StopContactRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason a contact can be disconnected. Only Amazon Connect outbound
      * campaigns can provide this field.</p>
      */
-    inline const DisconnectReason& GetDisconnectReason() const{ return m_disconnectReason; }
-
-    /**
-     * <p>The reason a contact can be disconnected. Only Amazon Connect outbound
-     * campaigns can provide this field.</p>
-     */
+    inline const DisconnectReason& GetDisconnectReason() const { return m_disconnectReason; }
     inline bool DisconnectReasonHasBeenSet() const { return m_disconnectReasonHasBeenSet; }
-
-    /**
-     * <p>The reason a contact can be disconnected. Only Amazon Connect outbound
-     * campaigns can provide this field.</p>
-     */
-    inline void SetDisconnectReason(const DisconnectReason& value) { m_disconnectReasonHasBeenSet = true; m_disconnectReason = value; }
-
-    /**
-     * <p>The reason a contact can be disconnected. Only Amazon Connect outbound
-     * campaigns can provide this field.</p>
-     */
-    inline void SetDisconnectReason(DisconnectReason&& value) { m_disconnectReasonHasBeenSet = true; m_disconnectReason = std::move(value); }
-
-    /**
-     * <p>The reason a contact can be disconnected. Only Amazon Connect outbound
-     * campaigns can provide this field.</p>
-     */
-    inline StopContactRequest& WithDisconnectReason(const DisconnectReason& value) { SetDisconnectReason(value); return *this;}
-
-    /**
-     * <p>The reason a contact can be disconnected. Only Amazon Connect outbound
-     * campaigns can provide this field.</p>
-     */
-    inline StopContactRequest& WithDisconnectReason(DisconnectReason&& value) { SetDisconnectReason(std::move(value)); return *this;}
-
+    template<typename DisconnectReasonT = DisconnectReason>
+    void SetDisconnectReason(DisconnectReasonT&& value) { m_disconnectReasonHasBeenSet = true; m_disconnectReason = std::forward<DisconnectReasonT>(value); }
+    template<typename DisconnectReasonT = DisconnectReason>
+    StopContactRequest& WithDisconnectReason(DisconnectReasonT&& value) { SetDisconnectReason(std::forward<DisconnectReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contactId;

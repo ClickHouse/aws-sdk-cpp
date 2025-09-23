@@ -12,16 +12,6 @@ using namespace Aws::CloudHSMV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeBackupsRequest::DescribeBackupsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_sortAscending(false),
-    m_sortAscendingHasBeenSet(false)
-{
-}
-
 Aws::String DescribeBackupsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +41,12 @@ Aws::String DescribeBackupsRequest::SerializePayload() const
      filtersJsonMap.WithArray(filtersItem.first, std::move(stringsJsonList));
    }
    payload.WithObject("Filters", std::move(filtersJsonMap));
+
+  }
+
+  if(m_sharedHasBeenSet)
+  {
+   payload.WithBool("Shared", m_shared);
 
   }
 

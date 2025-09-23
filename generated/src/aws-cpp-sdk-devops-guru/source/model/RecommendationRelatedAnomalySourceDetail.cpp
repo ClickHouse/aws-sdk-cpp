@@ -18,13 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-RecommendationRelatedAnomalySourceDetail::RecommendationRelatedAnomalySourceDetail() : 
-    m_cloudWatchMetricsHasBeenSet(false)
-{
-}
-
-RecommendationRelatedAnomalySourceDetail::RecommendationRelatedAnomalySourceDetail(JsonView jsonValue) : 
-    m_cloudWatchMetricsHasBeenSet(false)
+RecommendationRelatedAnomalySourceDetail::RecommendationRelatedAnomalySourceDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ RecommendationRelatedAnomalySourceDetail& RecommendationRelatedAnomalySourceDeta
     }
     m_cloudWatchMetricsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,7 +25,7 @@ namespace Model
   class ListServiceNetworkVpcAssociationsRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API ListServiceNetworkVpcAssociationsRequest();
+    AWS_VPCLATTICE_API ListServiceNetworkVpcAssociationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,152 +38,54 @@ namespace Model
     AWS_VPCLATTICE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The maximum number of results to return.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
     inline ListServiceNetworkVpcAssociationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A pagination token for the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A pagination token for the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListServiceNetworkVpcAssociationsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A pagination token for the next page of results.</p>
+     * <p>The ID or ARN of the service network.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A pagination token for the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token for the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token for the next page of results.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token for the next page of results.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token for the next page of results.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline const Aws::String& GetServiceNetworkIdentifier() const{ return m_serviceNetworkIdentifier; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
+    inline const Aws::String& GetServiceNetworkIdentifier() const { return m_serviceNetworkIdentifier; }
     inline bool ServiceNetworkIdentifierHasBeenSet() const { return m_serviceNetworkIdentifierHasBeenSet; }
+    template<typename ServiceNetworkIdentifierT = Aws::String>
+    void SetServiceNetworkIdentifier(ServiceNetworkIdentifierT&& value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier = std::forward<ServiceNetworkIdentifierT>(value); }
+    template<typename ServiceNetworkIdentifierT = Aws::String>
+    ListServiceNetworkVpcAssociationsRequest& WithServiceNetworkIdentifier(ServiceNetworkIdentifierT&& value) { SetServiceNetworkIdentifier(std::forward<ServiceNetworkIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
+     * <p>The ID or ARN of the VPC.</p>
      */
-    inline void SetServiceNetworkIdentifier(const Aws::String& value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline void SetServiceNetworkIdentifier(Aws::String&& value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline void SetServiceNetworkIdentifier(const char* value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithServiceNetworkIdentifier(const Aws::String& value) { SetServiceNetworkIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithServiceNetworkIdentifier(Aws::String&& value) { SetServiceNetworkIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the service network.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithServiceNetworkIdentifier(const char* value) { SetServiceNetworkIdentifier(value); return *this;}
-
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline const Aws::String& GetVpcIdentifier() const{ return m_vpcIdentifier; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
+    inline const Aws::String& GetVpcIdentifier() const { return m_vpcIdentifier; }
     inline bool VpcIdentifierHasBeenSet() const { return m_vpcIdentifierHasBeenSet; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline void SetVpcIdentifier(const Aws::String& value) { m_vpcIdentifierHasBeenSet = true; m_vpcIdentifier = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline void SetVpcIdentifier(Aws::String&& value) { m_vpcIdentifierHasBeenSet = true; m_vpcIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline void SetVpcIdentifier(const char* value) { m_vpcIdentifierHasBeenSet = true; m_vpcIdentifier.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithVpcIdentifier(const Aws::String& value) { SetVpcIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithVpcIdentifier(Aws::String&& value) { SetVpcIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the VPC.</p>
-     */
-    inline ListServiceNetworkVpcAssociationsRequest& WithVpcIdentifier(const char* value) { SetVpcIdentifier(value); return *this;}
-
+    template<typename VpcIdentifierT = Aws::String>
+    void SetVpcIdentifier(VpcIdentifierT&& value) { m_vpcIdentifierHasBeenSet = true; m_vpcIdentifier = std::forward<VpcIdentifierT>(value); }
+    template<typename VpcIdentifierT = Aws::String>
+    ListServiceNetworkVpcAssociationsRequest& WithVpcIdentifier(VpcIdentifierT&& value) { SetVpcIdentifier(std::forward<VpcIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

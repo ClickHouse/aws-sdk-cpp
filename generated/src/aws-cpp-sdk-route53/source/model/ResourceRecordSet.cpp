@@ -20,51 +20,7 @@ namespace Route53
 namespace Model
 {
 
-ResourceRecordSet::ResourceRecordSet() : 
-    m_nameHasBeenSet(false),
-    m_type(RRType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_setIdentifierHasBeenSet(false),
-    m_weight(0),
-    m_weightHasBeenSet(false),
-    m_region(ResourceRecordSetRegion::NOT_SET),
-    m_regionHasBeenSet(false),
-    m_geoLocationHasBeenSet(false),
-    m_failover(ResourceRecordSetFailover::NOT_SET),
-    m_failoverHasBeenSet(false),
-    m_multiValueAnswer(false),
-    m_multiValueAnswerHasBeenSet(false),
-    m_tTL(0),
-    m_tTLHasBeenSet(false),
-    m_resourceRecordsHasBeenSet(false),
-    m_aliasTargetHasBeenSet(false),
-    m_healthCheckIdHasBeenSet(false),
-    m_trafficPolicyInstanceIdHasBeenSet(false),
-    m_cidrRoutingConfigHasBeenSet(false)
-{
-}
-
-ResourceRecordSet::ResourceRecordSet(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_type(RRType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_setIdentifierHasBeenSet(false),
-    m_weight(0),
-    m_weightHasBeenSet(false),
-    m_region(ResourceRecordSetRegion::NOT_SET),
-    m_regionHasBeenSet(false),
-    m_geoLocationHasBeenSet(false),
-    m_failover(ResourceRecordSetFailover::NOT_SET),
-    m_failoverHasBeenSet(false),
-    m_multiValueAnswer(false),
-    m_multiValueAnswerHasBeenSet(false),
-    m_tTL(0),
-    m_tTLHasBeenSet(false),
-    m_resourceRecordsHasBeenSet(false),
-    m_aliasTargetHasBeenSet(false),
-    m_healthCheckIdHasBeenSet(false),
-    m_trafficPolicyInstanceIdHasBeenSet(false),
-    m_cidrRoutingConfigHasBeenSet(false)
+ResourceRecordSet::ResourceRecordSet(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -84,7 +40,7 @@ ResourceRecordSet& ResourceRecordSet::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = RRTypeMapper::GetRRTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = RRTypeMapper::GetRRTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode setIdentifierNode = resultNode.FirstChild("SetIdentifier");
@@ -102,7 +58,7 @@ ResourceRecordSet& ResourceRecordSet::operator =(const XmlNode& xmlNode)
     XmlNode regionNode = resultNode.FirstChild("Region");
     if(!regionNode.IsNull())
     {
-      m_region = ResourceRecordSetRegionMapper::GetResourceRecordSetRegionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(regionNode.GetText()).c_str()).c_str());
+      m_region = ResourceRecordSetRegionMapper::GetResourceRecordSetRegionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(regionNode.GetText()).c_str()));
       m_regionHasBeenSet = true;
     }
     XmlNode geoLocationNode = resultNode.FirstChild("GeoLocation");
@@ -114,7 +70,7 @@ ResourceRecordSet& ResourceRecordSet::operator =(const XmlNode& xmlNode)
     XmlNode failoverNode = resultNode.FirstChild("Failover");
     if(!failoverNode.IsNull())
     {
-      m_failover = ResourceRecordSetFailoverMapper::GetResourceRecordSetFailoverForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(failoverNode.GetText()).c_str()).c_str());
+      m_failover = ResourceRecordSetFailoverMapper::GetResourceRecordSetFailoverForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(failoverNode.GetText()).c_str()));
       m_failoverHasBeenSet = true;
     }
     XmlNode multiValueAnswerNode = resultNode.FirstChild("MultiValueAnswer");
@@ -133,6 +89,7 @@ ResourceRecordSet& ResourceRecordSet::operator =(const XmlNode& xmlNode)
     if(!resourceRecordsNode.IsNull())
     {
       XmlNode resourceRecordsMember = resourceRecordsNode.FirstChild("ResourceRecord");
+      m_resourceRecordsHasBeenSet = !resourceRecordsMember.IsNull();
       while(!resourceRecordsMember.IsNull())
       {
         m_resourceRecords.push_back(resourceRecordsMember);
@@ -164,6 +121,12 @@ ResourceRecordSet& ResourceRecordSet::operator =(const XmlNode& xmlNode)
     {
       m_cidrRoutingConfig = cidrRoutingConfigNode;
       m_cidrRoutingConfigHasBeenSet = true;
+    }
+    XmlNode geoProximityLocationNode = resultNode.FirstChild("GeoProximityLocation");
+    if(!geoProximityLocationNode.IsNull())
+    {
+      m_geoProximityLocation = geoProximityLocationNode;
+      m_geoProximityLocationHasBeenSet = true;
     }
   }
 
@@ -265,6 +228,12 @@ void ResourceRecordSet::AddToNode(XmlNode& parentNode) const
   {
    XmlNode cidrRoutingConfigNode = parentNode.CreateChildElement("CidrRoutingConfig");
    m_cidrRoutingConfig.AddToNode(cidrRoutingConfigNode);
+  }
+
+  if(m_geoProximityLocationHasBeenSet)
+  {
+   XmlNode geoProximityLocationNode = parentNode.CreateChildElement("GeoProximityLocation");
+   m_geoProximityLocation.AddToNode(geoProximityLocationNode);
   }
 
 }

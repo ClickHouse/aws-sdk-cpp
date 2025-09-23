@@ -18,29 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RuleAction::RuleAction() : 
-    m_actionType(ActionType::NOT_SET),
-    m_actionTypeHasBeenSet(false),
-    m_taskActionHasBeenSet(false),
-    m_eventBridgeActionHasBeenSet(false),
-    m_assignContactCategoryActionHasBeenSet(false),
-    m_sendNotificationActionHasBeenSet(false),
-    m_createCaseActionHasBeenSet(false),
-    m_updateCaseActionHasBeenSet(false),
-    m_endAssociatedTasksActionHasBeenSet(false)
-{
-}
-
-RuleAction::RuleAction(JsonView jsonValue) : 
-    m_actionType(ActionType::NOT_SET),
-    m_actionTypeHasBeenSet(false),
-    m_taskActionHasBeenSet(false),
-    m_eventBridgeActionHasBeenSet(false),
-    m_assignContactCategoryActionHasBeenSet(false),
-    m_sendNotificationActionHasBeenSet(false),
-    m_createCaseActionHasBeenSet(false),
-    m_updateCaseActionHasBeenSet(false),
-    m_endAssociatedTasksActionHasBeenSet(false)
+RuleAction::RuleAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,59 +28,53 @@ RuleAction& RuleAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ActionType"))
   {
     m_actionType = ActionTypeMapper::GetActionTypeForName(jsonValue.GetString("ActionType"));
-
     m_actionTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TaskAction"))
   {
     m_taskAction = jsonValue.GetObject("TaskAction");
-
     m_taskActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventBridgeAction"))
   {
     m_eventBridgeAction = jsonValue.GetObject("EventBridgeAction");
-
     m_eventBridgeActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AssignContactCategoryAction"))
   {
     m_assignContactCategoryAction = jsonValue.GetObject("AssignContactCategoryAction");
-
     m_assignContactCategoryActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SendNotificationAction"))
   {
     m_sendNotificationAction = jsonValue.GetObject("SendNotificationAction");
-
     m_sendNotificationActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreateCaseAction"))
   {
     m_createCaseAction = jsonValue.GetObject("CreateCaseAction");
-
     m_createCaseActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UpdateCaseAction"))
   {
     m_updateCaseAction = jsonValue.GetObject("UpdateCaseAction");
-
     m_updateCaseActionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AssignSlaAction"))
+  {
+    m_assignSlaAction = jsonValue.GetObject("AssignSlaAction");
+    m_assignSlaActionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("EndAssociatedTasksAction"))
   {
     m_endAssociatedTasksAction = jsonValue.GetObject("EndAssociatedTasksAction");
-
     m_endAssociatedTasksActionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SubmitAutoEvaluationAction"))
+  {
+    m_submitAutoEvaluationAction = jsonValue.GetObject("SubmitAutoEvaluationAction");
+    m_submitAutoEvaluationActionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -151,9 +123,21 @@ JsonValue RuleAction::Jsonize() const
 
   }
 
+  if(m_assignSlaActionHasBeenSet)
+  {
+   payload.WithObject("AssignSlaAction", m_assignSlaAction.Jsonize());
+
+  }
+
   if(m_endAssociatedTasksActionHasBeenSet)
   {
    payload.WithObject("EndAssociatedTasksAction", m_endAssociatedTasksAction.Jsonize());
+
+  }
+
+  if(m_submitAutoEvaluationActionHasBeenSet)
+  {
+   payload.WithObject("SubmitAutoEvaluationAction", m_submitAutoEvaluationAction.Jsonize());
 
   }
 

@@ -38,305 +38,85 @@ namespace Model
   class AwsCertificateManagerCertificateDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsCertificateManagerCertificateDetails();
+    AWS_SECURITYHUB_API AwsCertificateManagerCertificateDetails() = default;
     AWS_SECURITYHUB_API AwsCertificateManagerCertificateDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsCertificateManagerCertificateDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the private certificate authority (CA) that will be used to issue
      * the certificate.</p>
      */
-    inline const Aws::String& GetCertificateAuthorityArn() const{ return m_certificateAuthorityArn; }
-
-    /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
-     */
+    inline const Aws::String& GetCertificateAuthorityArn() const { return m_certificateAuthorityArn; }
     inline bool CertificateAuthorityArnHasBeenSet() const { return m_certificateAuthorityArnHasBeenSet; }
+    template<typename CertificateAuthorityArnT = Aws::String>
+    void SetCertificateAuthorityArn(CertificateAuthorityArnT&& value) { m_certificateAuthorityArnHasBeenSet = true; m_certificateAuthorityArn = std::forward<CertificateAuthorityArnT>(value); }
+    template<typename CertificateAuthorityArnT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithCertificateAuthorityArn(CertificateAuthorityArnT&& value) { SetCertificateAuthorityArn(std::forward<CertificateAuthorityArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
+     * <p>Indicates when the certificate was requested.</p> <p>For more information
+     * about the validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetCertificateAuthorityArn(const Aws::String& value) { m_certificateAuthorityArnHasBeenSet = true; m_certificateAuthorityArn = value; }
-
-    /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
-     */
-    inline void SetCertificateAuthorityArn(Aws::String&& value) { m_certificateAuthorityArnHasBeenSet = true; m_certificateAuthorityArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
-     */
-    inline void SetCertificateAuthorityArn(const char* value) { m_certificateAuthorityArnHasBeenSet = true; m_certificateAuthorityArn.assign(value); }
-
-    /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithCertificateAuthorityArn(const Aws::String& value) { SetCertificateAuthorityArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithCertificateAuthorityArn(Aws::String&& value) { SetCertificateAuthorityArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the private certificate authority (CA) that will be used to issue
-     * the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithCertificateAuthorityArn(const char* value) { SetCertificateAuthorityArn(value); return *this;}
-
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::String>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedAt(const Aws::String& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedAt(const char* value) { m_createdAtHasBeenSet = true; m_createdAt.assign(value); }
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithCreatedAt(const Aws::String& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithCreatedAt(Aws::String&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the certificate was requested.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithCreatedAt(const char* value) { SetCreatedAt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
      * secured by the certificate.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The fully qualified domain name (FQDN), such as www.example.com, that is
-     * secured by the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about the initial validation of each domain name that
      * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
      * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
      */
-    inline const Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>& GetDomainValidationOptions() const{ return m_domainValidationOptions; }
-
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
+    inline const Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>& GetDomainValidationOptions() const { return m_domainValidationOptions; }
     inline bool DomainValidationOptionsHasBeenSet() const { return m_domainValidationOptionsHasBeenSet; }
+    template<typename DomainValidationOptionsT = Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>>
+    void SetDomainValidationOptions(DomainValidationOptionsT&& value) { m_domainValidationOptionsHasBeenSet = true; m_domainValidationOptions = std::forward<DomainValidationOptionsT>(value); }
+    template<typename DomainValidationOptionsT = Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>>
+    AwsCertificateManagerCertificateDetails& WithDomainValidationOptions(DomainValidationOptionsT&& value) { SetDomainValidationOptions(std::forward<DomainValidationOptionsT>(value)); return *this;}
+    template<typename DomainValidationOptionsT = AwsCertificateManagerCertificateDomainValidationOption>
+    AwsCertificateManagerCertificateDetails& AddDomainValidationOptions(DomainValidationOptionsT&& value) { m_domainValidationOptionsHasBeenSet = true; m_domainValidationOptions.emplace_back(std::forward<DomainValidationOptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline void SetDomainValidationOptions(const Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>& value) { m_domainValidationOptionsHasBeenSet = true; m_domainValidationOptions = value; }
-
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline void SetDomainValidationOptions(Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>&& value) { m_domainValidationOptionsHasBeenSet = true; m_domainValidationOptions = std::move(value); }
-
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithDomainValidationOptions(const Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>& value) { SetDomainValidationOptions(value); return *this;}
-
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithDomainValidationOptions(Aws::Vector<AwsCertificateManagerCertificateDomainValidationOption>&& value) { SetDomainValidationOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddDomainValidationOptions(const AwsCertificateManagerCertificateDomainValidationOption& value) { m_domainValidationOptionsHasBeenSet = true; m_domainValidationOptions.push_back(value); return *this; }
-
-    /**
-     * <p>Contains information about the initial validation of each domain name that
-     * occurs as a result of the <code>RequestCertificate</code> request.</p> <p>Only
-     * provided if the certificate type is <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddDomainValidationOptions(AwsCertificateManagerCertificateDomainValidationOption&& value) { m_domainValidationOptionsHasBeenSet = true; m_domainValidationOptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
      * specifies a purpose for which the certificate public key can be used and
      * consists of a name and an object identifier (OID).</p>
      */
-    inline const Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>& GetExtendedKeyUsages() const{ return m_extendedKeyUsages; }
-
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
+    inline const Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>& GetExtendedKeyUsages() const { return m_extendedKeyUsages; }
     inline bool ExtendedKeyUsagesHasBeenSet() const { return m_extendedKeyUsagesHasBeenSet; }
+    template<typename ExtendedKeyUsagesT = Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>>
+    void SetExtendedKeyUsages(ExtendedKeyUsagesT&& value) { m_extendedKeyUsagesHasBeenSet = true; m_extendedKeyUsages = std::forward<ExtendedKeyUsagesT>(value); }
+    template<typename ExtendedKeyUsagesT = Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>>
+    AwsCertificateManagerCertificateDetails& WithExtendedKeyUsages(ExtendedKeyUsagesT&& value) { SetExtendedKeyUsages(std::forward<ExtendedKeyUsagesT>(value)); return *this;}
+    template<typename ExtendedKeyUsagesT = AwsCertificateManagerCertificateExtendedKeyUsage>
+    AwsCertificateManagerCertificateDetails& AddExtendedKeyUsages(ExtendedKeyUsagesT&& value) { m_extendedKeyUsagesHasBeenSet = true; m_extendedKeyUsages.emplace_back(std::forward<ExtendedKeyUsagesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
-    inline void SetExtendedKeyUsages(const Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>& value) { m_extendedKeyUsagesHasBeenSet = true; m_extendedKeyUsages = value; }
-
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
-    inline void SetExtendedKeyUsages(Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>&& value) { m_extendedKeyUsagesHasBeenSet = true; m_extendedKeyUsages = std::move(value); }
-
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithExtendedKeyUsages(const Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>& value) { SetExtendedKeyUsages(value); return *this;}
-
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithExtendedKeyUsages(Aws::Vector<AwsCertificateManagerCertificateExtendedKeyUsage>&& value) { SetExtendedKeyUsages(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddExtendedKeyUsages(const AwsCertificateManagerCertificateExtendedKeyUsage& value) { m_extendedKeyUsagesHasBeenSet = true; m_extendedKeyUsages.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object
-     * specifies a purpose for which the certificate public key can be used and
-     * consists of a name and an object identifier (OID).</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddExtendedKeyUsages(AwsCertificateManagerCertificateExtendedKeyUsage&& value) { m_extendedKeyUsagesHasBeenSet = true; m_extendedKeyUsages.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
      * values: <code>NO_AVAILABLE_CONTACTS</code> |
@@ -349,966 +129,224 @@ namespace Model
      * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
      * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>For a failed certificate request, the reason for the failure.</p> <p>Valid
-     * values: <code>NO_AVAILABLE_CONTACTS</code> |
-     * <code>ADDITIONAL_VERIFICATION_REQUIRED</code> | <code>DOMAIN_NOT_ALLOWED</code>
-     * | <code>INVALID_PUBLIC_DOMAIN</code> | <code>DOMAIN_VALIDATION_DENIED</code> |
-     * <code>CAA_ERROR</code> | <code>PCA_LIMIT_EXCEEDED</code> |
-     * <code>PCA_INVALID_ARN</code> | <code>PCA_INVALID_STATE</code> |
-     * <code>PCA_REQUEST_FAILED</code> | <code>PCA_NAME_CONSTRAINTS_VALIDATION</code> |
-     * <code>PCA_RESOURCE_NOT_FOUND</code> | <code>PCA_INVALID_ARGS</code> |
-     * <code>PCA_INVALID_DURATION</code> | <code>PCA_ACCESS_DENIED</code> |
-     * <code>SLR_NOT_FOUND</code> | <code>OTHER</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * is <code>IMPORTED</code>.</p> <p>For more information about the validation and
+     * formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline const Aws::String& GetImportedAt() const{ return m_importedAt; }
-
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetImportedAt() const { return m_importedAt; }
     inline bool ImportedAtHasBeenSet() const { return m_importedAtHasBeenSet; }
+    template<typename ImportedAtT = Aws::String>
+    void SetImportedAt(ImportedAtT&& value) { m_importedAtHasBeenSet = true; m_importedAt = std::forward<ImportedAtT>(value); }
+    template<typename ImportedAtT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithImportedAt(ImportedAtT&& value) { SetImportedAt(std::forward<ImportedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetImportedAt(const Aws::String& value) { m_importedAtHasBeenSet = true; m_importedAt = value; }
-
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetImportedAt(Aws::String&& value) { m_importedAtHasBeenSet = true; m_importedAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetImportedAt(const char* value) { m_importedAtHasBeenSet = true; m_importedAt.assign(value); }
-
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithImportedAt(const Aws::String& value) { SetImportedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithImportedAt(Aws::String&& value) { SetImportedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the certificate was imported. Provided if the certificate type
-     * is <code>IMPORTED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithImportedAt(const char* value) { SetImportedAt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of ARNs for the Amazon Web Services resources that use the
      * certificate.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInUseBy() const{ return m_inUseBy; }
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInUseBy() const { return m_inUseBy; }
     inline bool InUseByHasBeenSet() const { return m_inUseByHasBeenSet; }
+    template<typename InUseByT = Aws::Vector<Aws::String>>
+    void SetInUseBy(InUseByT&& value) { m_inUseByHasBeenSet = true; m_inUseBy = std::forward<InUseByT>(value); }
+    template<typename InUseByT = Aws::Vector<Aws::String>>
+    AwsCertificateManagerCertificateDetails& WithInUseBy(InUseByT&& value) { SetInUseBy(std::forward<InUseByT>(value)); return *this;}
+    template<typename InUseByT = Aws::String>
+    AwsCertificateManagerCertificateDetails& AddInUseBy(InUseByT&& value) { m_inUseByHasBeenSet = true; m_inUseBy.emplace_back(std::forward<InUseByT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline void SetInUseBy(const Aws::Vector<Aws::String>& value) { m_inUseByHasBeenSet = true; m_inUseBy = value; }
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline void SetInUseBy(Aws::Vector<Aws::String>&& value) { m_inUseByHasBeenSet = true; m_inUseBy = std::move(value); }
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithInUseBy(const Aws::Vector<Aws::String>& value) { SetInUseBy(value); return *this;}
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithInUseBy(Aws::Vector<Aws::String>&& value) { SetInUseBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddInUseBy(const Aws::String& value) { m_inUseByHasBeenSet = true; m_inUseBy.push_back(value); return *this; }
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddInUseBy(Aws::String&& value) { m_inUseByHasBeenSet = true; m_inUseBy.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of ARNs for the Amazon Web Services resources that use the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddInUseBy(const char* value) { m_inUseByHasBeenSet = true; m_inUseBy.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * is <code>AMAZON_ISSUED</code>.</p> <p>For more information about the validation
+     * and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline const Aws::String& GetIssuedAt() const{ return m_issuedAt; }
-
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetIssuedAt() const { return m_issuedAt; }
     inline bool IssuedAtHasBeenSet() const { return m_issuedAtHasBeenSet; }
+    template<typename IssuedAtT = Aws::String>
+    void SetIssuedAt(IssuedAtT&& value) { m_issuedAtHasBeenSet = true; m_issuedAt = std::forward<IssuedAtT>(value); }
+    template<typename IssuedAtT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithIssuedAt(IssuedAtT&& value) { SetIssuedAt(std::forward<IssuedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetIssuedAt(const Aws::String& value) { m_issuedAtHasBeenSet = true; m_issuedAt = value; }
-
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetIssuedAt(Aws::String&& value) { m_issuedAtHasBeenSet = true; m_issuedAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetIssuedAt(const char* value) { m_issuedAtHasBeenSet = true; m_issuedAt.assign(value); }
-
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithIssuedAt(const Aws::String& value) { SetIssuedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithIssuedAt(Aws::String&& value) { SetIssuedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the certificate was issued. Provided if the certificate type
-     * is <code>AMAZON_ISSUED</code>.</p> <p>Uses the <code>date-time</code> format
-     * specified in <a href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339
-     * section 5.6, Internet Date/Time Format</a>. The value cannot contain spaces, and
-     * date and time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithIssuedAt(const char* value) { SetIssuedAt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the certificate authority that issued and signed the
      * certificate.</p>
      */
-    inline const Aws::String& GetIssuer() const{ return m_issuer; }
-
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
+    inline const Aws::String& GetIssuer() const { return m_issuer; }
     inline bool IssuerHasBeenSet() const { return m_issuerHasBeenSet; }
+    template<typename IssuerT = Aws::String>
+    void SetIssuer(IssuerT&& value) { m_issuerHasBeenSet = true; m_issuer = std::forward<IssuerT>(value); }
+    template<typename IssuerT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithIssuer(IssuerT&& value) { SetIssuer(std::forward<IssuerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
-    inline void SetIssuer(const Aws::String& value) { m_issuerHasBeenSet = true; m_issuer = value; }
-
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
-    inline void SetIssuer(Aws::String&& value) { m_issuerHasBeenSet = true; m_issuer = std::move(value); }
-
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
-    inline void SetIssuer(const char* value) { m_issuerHasBeenSet = true; m_issuer.assign(value); }
-
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithIssuer(const Aws::String& value) { SetIssuer(value); return *this;}
-
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithIssuer(Aws::String&& value) { SetIssuer(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the certificate authority that issued and signed the
-     * certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithIssuer(const char* value) { SetIssuer(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The algorithm that was used to generate the public-private key pair.</p>
      * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
      * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
      * <code>EC_secp521r1</code> </p>
      */
-    inline const Aws::String& GetKeyAlgorithm() const{ return m_keyAlgorithm; }
-
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
+    inline const Aws::String& GetKeyAlgorithm() const { return m_keyAlgorithm; }
     inline bool KeyAlgorithmHasBeenSet() const { return m_keyAlgorithmHasBeenSet; }
+    template<typename KeyAlgorithmT = Aws::String>
+    void SetKeyAlgorithm(KeyAlgorithmT&& value) { m_keyAlgorithmHasBeenSet = true; m_keyAlgorithm = std::forward<KeyAlgorithmT>(value); }
+    template<typename KeyAlgorithmT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithKeyAlgorithm(KeyAlgorithmT&& value) { SetKeyAlgorithm(std::forward<KeyAlgorithmT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
-    inline void SetKeyAlgorithm(const Aws::String& value) { m_keyAlgorithmHasBeenSet = true; m_keyAlgorithm = value; }
-
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
-    inline void SetKeyAlgorithm(Aws::String&& value) { m_keyAlgorithmHasBeenSet = true; m_keyAlgorithm = std::move(value); }
-
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
-    inline void SetKeyAlgorithm(const char* value) { m_keyAlgorithmHasBeenSet = true; m_keyAlgorithm.assign(value); }
-
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithKeyAlgorithm(const Aws::String& value) { SetKeyAlgorithm(value); return *this;}
-
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithKeyAlgorithm(Aws::String&& value) { SetKeyAlgorithm(std::move(value)); return *this;}
-
-    /**
-     * <p>The algorithm that was used to generate the public-private key pair.</p>
-     * <p>Valid values: <code>RSA_2048</code> | <code>RSA_1024</code> |<code>
-     * RSA_4096</code> | <code>EC_prime256v1</code> | <code>EC_secp384r1</code> |
-     * <code>EC_secp521r1</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithKeyAlgorithm(const char* value) { SetKeyAlgorithm(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of key usage X.509 v3 extension objects.</p>
      */
-    inline const Aws::Vector<AwsCertificateManagerCertificateKeyUsage>& GetKeyUsages() const{ return m_keyUsages; }
-
-    /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
-     */
+    inline const Aws::Vector<AwsCertificateManagerCertificateKeyUsage>& GetKeyUsages() const { return m_keyUsages; }
     inline bool KeyUsagesHasBeenSet() const { return m_keyUsagesHasBeenSet; }
+    template<typename KeyUsagesT = Aws::Vector<AwsCertificateManagerCertificateKeyUsage>>
+    void SetKeyUsages(KeyUsagesT&& value) { m_keyUsagesHasBeenSet = true; m_keyUsages = std::forward<KeyUsagesT>(value); }
+    template<typename KeyUsagesT = Aws::Vector<AwsCertificateManagerCertificateKeyUsage>>
+    AwsCertificateManagerCertificateDetails& WithKeyUsages(KeyUsagesT&& value) { SetKeyUsages(std::forward<KeyUsagesT>(value)); return *this;}
+    template<typename KeyUsagesT = AwsCertificateManagerCertificateKeyUsage>
+    AwsCertificateManagerCertificateDetails& AddKeyUsages(KeyUsagesT&& value) { m_keyUsagesHasBeenSet = true; m_keyUsages.emplace_back(std::forward<KeyUsagesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
+     * <p>The time after which the certificate becomes invalid.</p> <p>For more
+     * information about the validation and formatting of timestamp fields in Security
+     * Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetKeyUsages(const Aws::Vector<AwsCertificateManagerCertificateKeyUsage>& value) { m_keyUsagesHasBeenSet = true; m_keyUsages = value; }
-
-    /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
-     */
-    inline void SetKeyUsages(Aws::Vector<AwsCertificateManagerCertificateKeyUsage>&& value) { m_keyUsagesHasBeenSet = true; m_keyUsages = std::move(value); }
-
-    /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithKeyUsages(const Aws::Vector<AwsCertificateManagerCertificateKeyUsage>& value) { SetKeyUsages(value); return *this;}
-
-    /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithKeyUsages(Aws::Vector<AwsCertificateManagerCertificateKeyUsage>&& value) { SetKeyUsages(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddKeyUsages(const AwsCertificateManagerCertificateKeyUsage& value) { m_keyUsagesHasBeenSet = true; m_keyUsages.push_back(value); return *this; }
-
-    /**
-     * <p>A list of key usage X.509 v3 extension objects.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddKeyUsages(AwsCertificateManagerCertificateKeyUsage&& value) { m_keyUsagesHasBeenSet = true; m_keyUsages.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetNotAfter() const{ return m_notAfter; }
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetNotAfter() const { return m_notAfter; }
     inline bool NotAfterHasBeenSet() const { return m_notAfterHasBeenSet; }
+    template<typename NotAfterT = Aws::String>
+    void SetNotAfter(NotAfterT&& value) { m_notAfterHasBeenSet = true; m_notAfter = std::forward<NotAfterT>(value); }
+    template<typename NotAfterT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithNotAfter(NotAfterT&& value) { SetNotAfter(std::forward<NotAfterT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * <p>The time before which the certificate is not valid.</p> <p>For more
+     * information about the validation and formatting of timestamp fields in Security
+     * Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetNotAfter(const Aws::String& value) { m_notAfterHasBeenSet = true; m_notAfter = value; }
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetNotAfter(Aws::String&& value) { m_notAfterHasBeenSet = true; m_notAfter = std::move(value); }
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetNotAfter(const char* value) { m_notAfterHasBeenSet = true; m_notAfter.assign(value); }
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithNotAfter(const Aws::String& value) { SetNotAfter(value); return *this;}
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithNotAfter(Aws::String&& value) { SetNotAfter(std::move(value)); return *this;}
-
-    /**
-     * <p>The time after which the certificate becomes invalid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithNotAfter(const char* value) { SetNotAfter(value); return *this;}
-
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetNotBefore() const{ return m_notBefore; }
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetNotBefore() const { return m_notBefore; }
     inline bool NotBeforeHasBeenSet() const { return m_notBeforeHasBeenSet; }
+    template<typename NotBeforeT = Aws::String>
+    void SetNotBefore(NotBeforeT&& value) { m_notBeforeHasBeenSet = true; m_notBefore = std::forward<NotBeforeT>(value); }
+    template<typename NotBeforeT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithNotBefore(NotBeforeT&& value) { SetNotBefore(std::forward<NotBeforeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetNotBefore(const Aws::String& value) { m_notBeforeHasBeenSet = true; m_notBefore = value; }
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetNotBefore(Aws::String&& value) { m_notBeforeHasBeenSet = true; m_notBefore = std::move(value); }
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetNotBefore(const char* value) { m_notBeforeHasBeenSet = true; m_notBefore.assign(value); }
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithNotBefore(const Aws::String& value) { SetNotBefore(value); return *this;}
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithNotBefore(Aws::String&& value) { SetNotBefore(std::move(value)); return *this;}
-
-    /**
-     * <p>The time before which the certificate is not valid.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithNotBefore(const char* value) { SetNotBefore(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides a value that specifies whether to add the certificate to a
      * transparency log.</p>
      */
-    inline const AwsCertificateManagerCertificateOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>Provides a value that specifies whether to add the certificate to a
-     * transparency log.</p>
-     */
+    inline const AwsCertificateManagerCertificateOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = AwsCertificateManagerCertificateOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = AwsCertificateManagerCertificateOptions>
+    AwsCertificateManagerCertificateDetails& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides a value that specifies whether to add the certificate to a
-     * transparency log.</p>
-     */
-    inline void SetOptions(const AwsCertificateManagerCertificateOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>Provides a value that specifies whether to add the certificate to a
-     * transparency log.</p>
-     */
-    inline void SetOptions(AwsCertificateManagerCertificateOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>Provides a value that specifies whether to add the certificate to a
-     * transparency log.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithOptions(const AwsCertificateManagerCertificateOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>Provides a value that specifies whether to add the certificate to a
-     * transparency log.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithOptions(AwsCertificateManagerCertificateOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
      * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
      */
-    inline const Aws::String& GetRenewalEligibility() const{ return m_renewalEligibility; }
-
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
+    inline const Aws::String& GetRenewalEligibility() const { return m_renewalEligibility; }
     inline bool RenewalEligibilityHasBeenSet() const { return m_renewalEligibilityHasBeenSet; }
+    template<typename RenewalEligibilityT = Aws::String>
+    void SetRenewalEligibility(RenewalEligibilityT&& value) { m_renewalEligibilityHasBeenSet = true; m_renewalEligibility = std::forward<RenewalEligibilityT>(value); }
+    template<typename RenewalEligibilityT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithRenewalEligibility(RenewalEligibilityT&& value) { SetRenewalEligibility(std::forward<RenewalEligibilityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
-    inline void SetRenewalEligibility(const Aws::String& value) { m_renewalEligibilityHasBeenSet = true; m_renewalEligibility = value; }
-
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
-    inline void SetRenewalEligibility(Aws::String&& value) { m_renewalEligibilityHasBeenSet = true; m_renewalEligibility = std::move(value); }
-
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
-    inline void SetRenewalEligibility(const char* value) { m_renewalEligibilityHasBeenSet = true; m_renewalEligibility.assign(value); }
-
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithRenewalEligibility(const Aws::String& value) { SetRenewalEligibility(value); return *this;}
-
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithRenewalEligibility(Aws::String&& value) { SetRenewalEligibility(std::move(value)); return *this;}
-
-    /**
-     * <p>Whether the certificate is eligible for renewal.</p> <p>Valid values:
-     * <code>ELIGIBLE</code> | <code>INELIGIBLE</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithRenewalEligibility(const char* value) { SetRenewalEligibility(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the status of the Certificate Manager managed renewal for
      * the certificate. Provided only when the certificate type is
      * <code>AMAZON_ISSUED</code>.</p>
      */
-    inline const AwsCertificateManagerCertificateRenewalSummary& GetRenewalSummary() const{ return m_renewalSummary; }
-
-    /**
-     * <p>Information about the status of the Certificate Manager managed renewal for
-     * the certificate. Provided only when the certificate type is
-     * <code>AMAZON_ISSUED</code>.</p>
-     */
+    inline const AwsCertificateManagerCertificateRenewalSummary& GetRenewalSummary() const { return m_renewalSummary; }
     inline bool RenewalSummaryHasBeenSet() const { return m_renewalSummaryHasBeenSet; }
+    template<typename RenewalSummaryT = AwsCertificateManagerCertificateRenewalSummary>
+    void SetRenewalSummary(RenewalSummaryT&& value) { m_renewalSummaryHasBeenSet = true; m_renewalSummary = std::forward<RenewalSummaryT>(value); }
+    template<typename RenewalSummaryT = AwsCertificateManagerCertificateRenewalSummary>
+    AwsCertificateManagerCertificateDetails& WithRenewalSummary(RenewalSummaryT&& value) { SetRenewalSummary(std::forward<RenewalSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the status of the Certificate Manager managed renewal for
-     * the certificate. Provided only when the certificate type is
-     * <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline void SetRenewalSummary(const AwsCertificateManagerCertificateRenewalSummary& value) { m_renewalSummaryHasBeenSet = true; m_renewalSummary = value; }
-
-    /**
-     * <p>Information about the status of the Certificate Manager managed renewal for
-     * the certificate. Provided only when the certificate type is
-     * <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline void SetRenewalSummary(AwsCertificateManagerCertificateRenewalSummary&& value) { m_renewalSummaryHasBeenSet = true; m_renewalSummary = std::move(value); }
-
-    /**
-     * <p>Information about the status of the Certificate Manager managed renewal for
-     * the certificate. Provided only when the certificate type is
-     * <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithRenewalSummary(const AwsCertificateManagerCertificateRenewalSummary& value) { SetRenewalSummary(value); return *this;}
-
-    /**
-     * <p>Information about the status of the Certificate Manager managed renewal for
-     * the certificate. Provided only when the certificate type is
-     * <code>AMAZON_ISSUED</code>.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithRenewalSummary(AwsCertificateManagerCertificateRenewalSummary&& value) { SetRenewalSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The serial number of the certificate.</p>
      */
-    inline const Aws::String& GetSerial() const{ return m_serial; }
-
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
+    inline const Aws::String& GetSerial() const { return m_serial; }
     inline bool SerialHasBeenSet() const { return m_serialHasBeenSet; }
+    template<typename SerialT = Aws::String>
+    void SetSerial(SerialT&& value) { m_serialHasBeenSet = true; m_serial = std::forward<SerialT>(value); }
+    template<typename SerialT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithSerial(SerialT&& value) { SetSerial(std::forward<SerialT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
-    inline void SetSerial(const Aws::String& value) { m_serialHasBeenSet = true; m_serial = value; }
-
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
-    inline void SetSerial(Aws::String&& value) { m_serialHasBeenSet = true; m_serial = std::move(value); }
-
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
-    inline void SetSerial(const char* value) { m_serialHasBeenSet = true; m_serial.assign(value); }
-
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSerial(const Aws::String& value) { SetSerial(value); return *this;}
-
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSerial(Aws::String&& value) { SetSerial(std::move(value)); return *this;}
-
-    /**
-     * <p>The serial number of the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSerial(const char* value) { SetSerial(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The algorithm that was used to sign the certificate.</p>
      */
-    inline const Aws::String& GetSignatureAlgorithm() const{ return m_signatureAlgorithm; }
-
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
+    inline const Aws::String& GetSignatureAlgorithm() const { return m_signatureAlgorithm; }
     inline bool SignatureAlgorithmHasBeenSet() const { return m_signatureAlgorithmHasBeenSet; }
+    template<typename SignatureAlgorithmT = Aws::String>
+    void SetSignatureAlgorithm(SignatureAlgorithmT&& value) { m_signatureAlgorithmHasBeenSet = true; m_signatureAlgorithm = std::forward<SignatureAlgorithmT>(value); }
+    template<typename SignatureAlgorithmT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithSignatureAlgorithm(SignatureAlgorithmT&& value) { SetSignatureAlgorithm(std::forward<SignatureAlgorithmT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
-    inline void SetSignatureAlgorithm(const Aws::String& value) { m_signatureAlgorithmHasBeenSet = true; m_signatureAlgorithm = value; }
-
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
-    inline void SetSignatureAlgorithm(Aws::String&& value) { m_signatureAlgorithmHasBeenSet = true; m_signatureAlgorithm = std::move(value); }
-
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
-    inline void SetSignatureAlgorithm(const char* value) { m_signatureAlgorithmHasBeenSet = true; m_signatureAlgorithm.assign(value); }
-
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSignatureAlgorithm(const Aws::String& value) { SetSignatureAlgorithm(value); return *this;}
-
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSignatureAlgorithm(Aws::String&& value) { SetSignatureAlgorithm(std::move(value)); return *this;}
-
-    /**
-     * <p>The algorithm that was used to sign the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSignatureAlgorithm(const char* value) { SetSignatureAlgorithm(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the certificate.</p> <p>Valid values:
      * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
      * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
      * | <code>FAILED</code> </p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the certificate.</p> <p>Valid values:
-     * <code>PENDING_VALIDATION</code> | <code>ISSUED</code> | <code>INACTIVE</code> |
-     * <code>EXPIRED</code> | <code>VALIDATION_TIMED_OUT</code> | <code>REVOKED</code>
-     * | <code>FAILED</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the entity that is associated with the public key contained in
      * the certificate.</p>
      */
-    inline const Aws::String& GetSubject() const{ return m_subject; }
-
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
+    inline const Aws::String& GetSubject() const { return m_subject; }
     inline bool SubjectHasBeenSet() const { return m_subjectHasBeenSet; }
+    template<typename SubjectT = Aws::String>
+    void SetSubject(SubjectT&& value) { m_subjectHasBeenSet = true; m_subject = std::forward<SubjectT>(value); }
+    template<typename SubjectT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithSubject(SubjectT&& value) { SetSubject(std::forward<SubjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
-    inline void SetSubject(const Aws::String& value) { m_subjectHasBeenSet = true; m_subject = value; }
-
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
-    inline void SetSubject(Aws::String&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
-
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
-    inline void SetSubject(const char* value) { m_subjectHasBeenSet = true; m_subject.assign(value); }
-
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSubject(const Aws::String& value) { SetSubject(value); return *this;}
-
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSubject(Aws::String&& value) { SetSubject(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the entity that is associated with the public key contained in
-     * the certificate.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSubject(const char* value) { SetSubject(value); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more domain names (subject alternative names) included in the
      * certificate. This list contains the domain names that are bound to the public
@@ -1316,81 +354,17 @@ namespace Model
      * include the canonical domain name (CN) of the certificate and additional domain
      * names that can be used to connect to the website.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubjectAlternativeNames() const{ return m_subjectAlternativeNames; }
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubjectAlternativeNames() const { return m_subjectAlternativeNames; }
     inline bool SubjectAlternativeNamesHasBeenSet() const { return m_subjectAlternativeNamesHasBeenSet; }
+    template<typename SubjectAlternativeNamesT = Aws::Vector<Aws::String>>
+    void SetSubjectAlternativeNames(SubjectAlternativeNamesT&& value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames = std::forward<SubjectAlternativeNamesT>(value); }
+    template<typename SubjectAlternativeNamesT = Aws::Vector<Aws::String>>
+    AwsCertificateManagerCertificateDetails& WithSubjectAlternativeNames(SubjectAlternativeNamesT&& value) { SetSubjectAlternativeNames(std::forward<SubjectAlternativeNamesT>(value)); return *this;}
+    template<typename SubjectAlternativeNamesT = Aws::String>
+    AwsCertificateManagerCertificateDetails& AddSubjectAlternativeNames(SubjectAlternativeNamesT&& value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames.emplace_back(std::forward<SubjectAlternativeNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline void SetSubjectAlternativeNames(const Aws::Vector<Aws::String>& value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames = value; }
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline void SetSubjectAlternativeNames(Aws::Vector<Aws::String>&& value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames = std::move(value); }
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSubjectAlternativeNames(const Aws::Vector<Aws::String>& value) { SetSubjectAlternativeNames(value); return *this;}
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithSubjectAlternativeNames(Aws::Vector<Aws::String>&& value) { SetSubjectAlternativeNames(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddSubjectAlternativeNames(const Aws::String& value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames.push_back(value); return *this; }
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddSubjectAlternativeNames(Aws::String&& value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>One or more domain names (subject alternative names) included in the
-     * certificate. This list contains the domain names that are bound to the public
-     * key that is contained in the certificate.</p> <p>The subject alternative names
-     * include the canonical domain name (CN) of the certificate and additional domain
-     * names that can be used to connect to the website.</p>
-     */
-    inline AwsCertificateManagerCertificateDetails& AddSubjectAlternativeNames(const char* value) { m_subjectAlternativeNamesHasBeenSet = true; m_subjectAlternativeNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The source of the certificate. For certificates that Certificate Manager
      * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
@@ -1398,71 +372,13 @@ namespace Model
      * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
      * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The source of the certificate. For certificates that Certificate Manager
-     * provides, <code>Type</code> is <code>AMAZON_ISSUED</code>. For certificates that
-     * are imported with <code>ImportCertificate</code>, <code>Type</code> is
-     * <code>IMPORTED</code>.</p> <p>Valid values: <code>IMPORTED</code> |
-     * <code>AMAZON_ISSUED</code> | <code>PRIVATE</code> </p>
-     */
-    inline AwsCertificateManagerCertificateDetails& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    AwsCertificateManagerCertificateDetails& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateAuthorityArn;

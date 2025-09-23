@@ -37,20 +37,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ForecastQueryServiceClient::SERVICE_NAME = "forecast";
-const char* ForecastQueryServiceClient::ALLOCATION_TAG = "ForecastQueryServiceClient";
+namespace Aws
+{
+  namespace ForecastQueryService
+  {
+    const char SERVICE_NAME[] = "forecast";
+    const char ALLOCATION_TAG[] = "ForecastQueryServiceClient";
+  }
+}
+const char* ForecastQueryServiceClient::GetServiceName() {return SERVICE_NAME;}
+const char* ForecastQueryServiceClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ForecastQueryServiceClient::ForecastQueryServiceClient(const ForecastQueryService::ForecastQueryServiceClientConfiguration& clientConfiguration,
                                                        std::shared_ptr<ForecastQueryServiceEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ForecastQueryServiceErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ForecastQueryServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -65,8 +72,7 @@ ForecastQueryServiceClient::ForecastQueryServiceClient(const AWSCredentials& cre
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ForecastQueryServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ForecastQueryServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -81,8 +87,7 @@ ForecastQueryServiceClient::ForecastQueryServiceClient(const std::shared_ptr<AWS
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ForecastQueryServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ForecastQueryServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -91,12 +96,11 @@ ForecastQueryServiceClient::ForecastQueryServiceClient(const std::shared_ptr<AWS
   ForecastQueryServiceClient::ForecastQueryServiceClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ForecastQueryServiceErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ForecastQueryServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -111,7 +115,6 @@ ForecastQueryServiceClient::ForecastQueryServiceClient(const AWSCredentials& cre
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ForecastQueryServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ForecastQueryServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -126,7 +129,6 @@ ForecastQueryServiceClient::ForecastQueryServiceClient(const std::shared_ptr<AWS
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ForecastQueryServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ForecastQueryServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -146,6 +148,14 @@ std::shared_ptr<ForecastQueryServiceEndpointProviderBase>& ForecastQueryServiceC
 void ForecastQueryServiceClient::init(const ForecastQueryService::ForecastQueryServiceClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("forecastquery");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

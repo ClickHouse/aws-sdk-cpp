@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-PartitionedPrefix::PartitionedPrefix() : 
-    m_partitionDateSource(PartitionDateSource::NOT_SET),
-    m_partitionDateSourceHasBeenSet(false)
-{
-}
-
-PartitionedPrefix::PartitionedPrefix(const XmlNode& xmlNode) : 
-    m_partitionDateSource(PartitionDateSource::NOT_SET),
-    m_partitionDateSourceHasBeenSet(false)
+PartitionedPrefix::PartitionedPrefix(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ PartitionedPrefix& PartitionedPrefix::operator =(const XmlNode& xmlNode)
     XmlNode partitionDateSourceNode = resultNode.FirstChild("PartitionDateSource");
     if(!partitionDateSourceNode.IsNull())
     {
-      m_partitionDateSource = PartitionDateSourceMapper::GetPartitionDateSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(partitionDateSourceNode.GetText()).c_str()).c_str());
+      m_partitionDateSource = PartitionDateSourceMapper::GetPartitionDateSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(partitionDateSourceNode.GetText()).c_str()));
       m_partitionDateSourceHasBeenSet = true;
     }
   }

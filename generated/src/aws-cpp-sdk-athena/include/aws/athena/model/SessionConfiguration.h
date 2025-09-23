@@ -32,149 +32,57 @@ namespace Model
   class SessionConfiguration
   {
   public:
-    AWS_ATHENA_API SessionConfiguration();
+    AWS_ATHENA_API SessionConfiguration() = default;
     AWS_ATHENA_API SessionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API SessionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the execution role used to access user resources for Spark
      * sessions and Identity Center enabled workgroups. This property applies only to
      * Spark enabled workgroups and Identity Center enabled workgroups.</p>
      */
-    inline const Aws::String& GetExecutionRole() const{ return m_executionRole; }
-
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
+    inline const Aws::String& GetExecutionRole() const { return m_executionRole; }
     inline bool ExecutionRoleHasBeenSet() const { return m_executionRoleHasBeenSet; }
+    template<typename ExecutionRoleT = Aws::String>
+    void SetExecutionRole(ExecutionRoleT&& value) { m_executionRoleHasBeenSet = true; m_executionRole = std::forward<ExecutionRoleT>(value); }
+    template<typename ExecutionRoleT = Aws::String>
+    SessionConfiguration& WithExecutionRole(ExecutionRoleT&& value) { SetExecutionRole(std::forward<ExecutionRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
-    inline void SetExecutionRole(const Aws::String& value) { m_executionRoleHasBeenSet = true; m_executionRole = value; }
-
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
-    inline void SetExecutionRole(Aws::String&& value) { m_executionRoleHasBeenSet = true; m_executionRole = std::move(value); }
-
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
-    inline void SetExecutionRole(const char* value) { m_executionRoleHasBeenSet = true; m_executionRole.assign(value); }
-
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
-    inline SessionConfiguration& WithExecutionRole(const Aws::String& value) { SetExecutionRole(value); return *this;}
-
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
-    inline SessionConfiguration& WithExecutionRole(Aws::String&& value) { SetExecutionRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the execution role used to access user resources for Spark
-     * sessions and Identity Center enabled workgroups. This property applies only to
-     * Spark enabled workgroups and Identity Center enabled workgroups.</p>
-     */
-    inline SessionConfiguration& WithExecutionRole(const char* value) { SetExecutionRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 location that stores information for the notebook.</p>
      */
-    inline const Aws::String& GetWorkingDirectory() const{ return m_workingDirectory; }
-
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
+    inline const Aws::String& GetWorkingDirectory() const { return m_workingDirectory; }
     inline bool WorkingDirectoryHasBeenSet() const { return m_workingDirectoryHasBeenSet; }
+    template<typename WorkingDirectoryT = Aws::String>
+    void SetWorkingDirectory(WorkingDirectoryT&& value) { m_workingDirectoryHasBeenSet = true; m_workingDirectory = std::forward<WorkingDirectoryT>(value); }
+    template<typename WorkingDirectoryT = Aws::String>
+    SessionConfiguration& WithWorkingDirectory(WorkingDirectoryT&& value) { SetWorkingDirectory(std::forward<WorkingDirectoryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
-    inline void SetWorkingDirectory(const Aws::String& value) { m_workingDirectoryHasBeenSet = true; m_workingDirectory = value; }
-
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
-    inline void SetWorkingDirectory(Aws::String&& value) { m_workingDirectoryHasBeenSet = true; m_workingDirectory = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
-    inline void SetWorkingDirectory(const char* value) { m_workingDirectoryHasBeenSet = true; m_workingDirectory.assign(value); }
-
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
-    inline SessionConfiguration& WithWorkingDirectory(const Aws::String& value) { SetWorkingDirectory(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
-    inline SessionConfiguration& WithWorkingDirectory(Aws::String&& value) { SetWorkingDirectory(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 location that stores information for the notebook.</p>
-     */
-    inline SessionConfiguration& WithWorkingDirectory(const char* value) { SetWorkingDirectory(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The idle timeout in seconds for the session.</p>
      */
-    inline long long GetIdleTimeoutSeconds() const{ return m_idleTimeoutSeconds; }
-
-    /**
-     * <p>The idle timeout in seconds for the session.</p>
-     */
+    inline long long GetIdleTimeoutSeconds() const { return m_idleTimeoutSeconds; }
     inline bool IdleTimeoutSecondsHasBeenSet() const { return m_idleTimeoutSecondsHasBeenSet; }
-
-    /**
-     * <p>The idle timeout in seconds for the session.</p>
-     */
     inline void SetIdleTimeoutSeconds(long long value) { m_idleTimeoutSecondsHasBeenSet = true; m_idleTimeoutSeconds = value; }
-
-    /**
-     * <p>The idle timeout in seconds for the session.</p>
-     */
     inline SessionConfiguration& WithIdleTimeoutSeconds(long long value) { SetIdleTimeoutSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const EncryptionConfiguration& GetEncryptionConfiguration() const{ return m_encryptionConfiguration; }
-
-    
+    inline const EncryptionConfiguration& GetEncryptionConfiguration() const { return m_encryptionConfiguration; }
     inline bool EncryptionConfigurationHasBeenSet() const { return m_encryptionConfigurationHasBeenSet; }
-
-    
-    inline void SetEncryptionConfiguration(const EncryptionConfiguration& value) { m_encryptionConfigurationHasBeenSet = true; m_encryptionConfiguration = value; }
-
-    
-    inline void SetEncryptionConfiguration(EncryptionConfiguration&& value) { m_encryptionConfigurationHasBeenSet = true; m_encryptionConfiguration = std::move(value); }
-
-    
-    inline SessionConfiguration& WithEncryptionConfiguration(const EncryptionConfiguration& value) { SetEncryptionConfiguration(value); return *this;}
-
-    
-    inline SessionConfiguration& WithEncryptionConfiguration(EncryptionConfiguration&& value) { SetEncryptionConfiguration(std::move(value)); return *this;}
-
+    template<typename EncryptionConfigurationT = EncryptionConfiguration>
+    void SetEncryptionConfiguration(EncryptionConfigurationT&& value) { m_encryptionConfigurationHasBeenSet = true; m_encryptionConfiguration = std::forward<EncryptionConfigurationT>(value); }
+    template<typename EncryptionConfigurationT = EncryptionConfiguration>
+    SessionConfiguration& WithEncryptionConfiguration(EncryptionConfigurationT&& value) { SetEncryptionConfiguration(std::forward<EncryptionConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_executionRole;
@@ -183,7 +91,7 @@ namespace Model
     Aws::String m_workingDirectory;
     bool m_workingDirectoryHasBeenSet = false;
 
-    long long m_idleTimeoutSeconds;
+    long long m_idleTimeoutSeconds{0};
     bool m_idleTimeoutSecondsHasBeenSet = false;
 
     EncryptionConfiguration m_encryptionConfiguration;

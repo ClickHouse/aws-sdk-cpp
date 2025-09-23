@@ -18,17 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-Event::Event() : 
-    m_eventNameHasBeenSet(false),
-    m_conditionHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-Event::Event(JsonView jsonValue) : 
-    m_eventNameHasBeenSet(false),
-    m_conditionHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+Event::Event(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Event& Event::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("eventName"))
   {
     m_eventName = jsonValue.GetString("eventName");
-
     m_eventNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("condition"))
   {
     m_condition = jsonValue.GetString("condition");
-
     m_conditionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("actions");
@@ -58,7 +44,6 @@ Event& Event::operator =(JsonView jsonValue)
     }
     m_actionsHasBeenSet = true;
   }
-
   return *this;
 }
 

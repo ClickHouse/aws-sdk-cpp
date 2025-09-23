@@ -20,17 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-RestoreStatus::RestoreStatus() : 
-    m_isRestoreInProgress(false),
-    m_isRestoreInProgressHasBeenSet(false),
-    m_restoreExpiryDateHasBeenSet(false)
-{
-}
-
-RestoreStatus::RestoreStatus(const XmlNode& xmlNode) : 
-    m_isRestoreInProgress(false),
-    m_isRestoreInProgressHasBeenSet(false),
-    m_restoreExpiryDateHasBeenSet(false)
+RestoreStatus::RestoreStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

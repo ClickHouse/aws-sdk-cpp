@@ -32,535 +32,163 @@ namespace Model
   class ContactInformation
   {
   public:
-    AWS_ACCOUNT_API ContactInformation();
+    AWS_ACCOUNT_API ContactInformation() = default;
     AWS_ACCOUNT_API ContactInformation(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCOUNT_API ContactInformation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCOUNT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The first line of the primary contact address.</p>
      */
-    inline const Aws::String& GetAddressLine1() const{ return m_addressLine1; }
-
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
+    inline const Aws::String& GetAddressLine1() const { return m_addressLine1; }
     inline bool AddressLine1HasBeenSet() const { return m_addressLine1HasBeenSet; }
+    template<typename AddressLine1T = Aws::String>
+    void SetAddressLine1(AddressLine1T&& value) { m_addressLine1HasBeenSet = true; m_addressLine1 = std::forward<AddressLine1T>(value); }
+    template<typename AddressLine1T = Aws::String>
+    ContactInformation& WithAddressLine1(AddressLine1T&& value) { SetAddressLine1(std::forward<AddressLine1T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
-    inline void SetAddressLine1(const Aws::String& value) { m_addressLine1HasBeenSet = true; m_addressLine1 = value; }
-
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
-    inline void SetAddressLine1(Aws::String&& value) { m_addressLine1HasBeenSet = true; m_addressLine1 = std::move(value); }
-
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
-    inline void SetAddressLine1(const char* value) { m_addressLine1HasBeenSet = true; m_addressLine1.assign(value); }
-
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
-    inline ContactInformation& WithAddressLine1(const Aws::String& value) { SetAddressLine1(value); return *this;}
-
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
-    inline ContactInformation& WithAddressLine1(Aws::String&& value) { SetAddressLine1(std::move(value)); return *this;}
-
-    /**
-     * <p>The first line of the primary contact address.</p>
-     */
-    inline ContactInformation& WithAddressLine1(const char* value) { SetAddressLine1(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The second line of the primary contact address, if any.</p>
      */
-    inline const Aws::String& GetAddressLine2() const{ return m_addressLine2; }
-
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
+    inline const Aws::String& GetAddressLine2() const { return m_addressLine2; }
     inline bool AddressLine2HasBeenSet() const { return m_addressLine2HasBeenSet; }
+    template<typename AddressLine2T = Aws::String>
+    void SetAddressLine2(AddressLine2T&& value) { m_addressLine2HasBeenSet = true; m_addressLine2 = std::forward<AddressLine2T>(value); }
+    template<typename AddressLine2T = Aws::String>
+    ContactInformation& WithAddressLine2(AddressLine2T&& value) { SetAddressLine2(std::forward<AddressLine2T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
-    inline void SetAddressLine2(const Aws::String& value) { m_addressLine2HasBeenSet = true; m_addressLine2 = value; }
-
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
-    inline void SetAddressLine2(Aws::String&& value) { m_addressLine2HasBeenSet = true; m_addressLine2 = std::move(value); }
-
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
-    inline void SetAddressLine2(const char* value) { m_addressLine2HasBeenSet = true; m_addressLine2.assign(value); }
-
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithAddressLine2(const Aws::String& value) { SetAddressLine2(value); return *this;}
-
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithAddressLine2(Aws::String&& value) { SetAddressLine2(std::move(value)); return *this;}
-
-    /**
-     * <p>The second line of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithAddressLine2(const char* value) { SetAddressLine2(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The third line of the primary contact address, if any.</p>
      */
-    inline const Aws::String& GetAddressLine3() const{ return m_addressLine3; }
-
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
+    inline const Aws::String& GetAddressLine3() const { return m_addressLine3; }
     inline bool AddressLine3HasBeenSet() const { return m_addressLine3HasBeenSet; }
+    template<typename AddressLine3T = Aws::String>
+    void SetAddressLine3(AddressLine3T&& value) { m_addressLine3HasBeenSet = true; m_addressLine3 = std::forward<AddressLine3T>(value); }
+    template<typename AddressLine3T = Aws::String>
+    ContactInformation& WithAddressLine3(AddressLine3T&& value) { SetAddressLine3(std::forward<AddressLine3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
-    inline void SetAddressLine3(const Aws::String& value) { m_addressLine3HasBeenSet = true; m_addressLine3 = value; }
-
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
-    inline void SetAddressLine3(Aws::String&& value) { m_addressLine3HasBeenSet = true; m_addressLine3 = std::move(value); }
-
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
-    inline void SetAddressLine3(const char* value) { m_addressLine3HasBeenSet = true; m_addressLine3.assign(value); }
-
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithAddressLine3(const Aws::String& value) { SetAddressLine3(value); return *this;}
-
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithAddressLine3(Aws::String&& value) { SetAddressLine3(std::move(value)); return *this;}
-
-    /**
-     * <p>The third line of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithAddressLine3(const char* value) { SetAddressLine3(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The city of the primary contact address.</p>
      */
-    inline const Aws::String& GetCity() const{ return m_city; }
-
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
+    inline const Aws::String& GetCity() const { return m_city; }
     inline bool CityHasBeenSet() const { return m_cityHasBeenSet; }
+    template<typename CityT = Aws::String>
+    void SetCity(CityT&& value) { m_cityHasBeenSet = true; m_city = std::forward<CityT>(value); }
+    template<typename CityT = Aws::String>
+    ContactInformation& WithCity(CityT&& value) { SetCity(std::forward<CityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
-    inline void SetCity(const Aws::String& value) { m_cityHasBeenSet = true; m_city = value; }
-
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
-    inline void SetCity(Aws::String&& value) { m_cityHasBeenSet = true; m_city = std::move(value); }
-
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
-    inline void SetCity(const char* value) { m_cityHasBeenSet = true; m_city.assign(value); }
-
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
-    inline ContactInformation& WithCity(const Aws::String& value) { SetCity(value); return *this;}
-
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
-    inline ContactInformation& WithCity(Aws::String&& value) { SetCity(std::move(value)); return *this;}
-
-    /**
-     * <p>The city of the primary contact address.</p>
-     */
-    inline ContactInformation& WithCity(const char* value) { SetCity(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the company associated with the primary contact information, if
      * any.</p>
      */
-    inline const Aws::String& GetCompanyName() const{ return m_companyName; }
-
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
+    inline const Aws::String& GetCompanyName() const { return m_companyName; }
     inline bool CompanyNameHasBeenSet() const { return m_companyNameHasBeenSet; }
+    template<typename CompanyNameT = Aws::String>
+    void SetCompanyName(CompanyNameT&& value) { m_companyNameHasBeenSet = true; m_companyName = std::forward<CompanyNameT>(value); }
+    template<typename CompanyNameT = Aws::String>
+    ContactInformation& WithCompanyName(CompanyNameT&& value) { SetCompanyName(std::forward<CompanyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
-    inline void SetCompanyName(const Aws::String& value) { m_companyNameHasBeenSet = true; m_companyName = value; }
-
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
-    inline void SetCompanyName(Aws::String&& value) { m_companyNameHasBeenSet = true; m_companyName = std::move(value); }
-
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
-    inline void SetCompanyName(const char* value) { m_companyNameHasBeenSet = true; m_companyName.assign(value); }
-
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
-    inline ContactInformation& WithCompanyName(const Aws::String& value) { SetCompanyName(value); return *this;}
-
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
-    inline ContactInformation& WithCompanyName(Aws::String&& value) { SetCompanyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the company associated with the primary contact information, if
-     * any.</p>
-     */
-    inline ContactInformation& WithCompanyName(const char* value) { SetCompanyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
      */
-    inline const Aws::String& GetCountryCode() const{ return m_countryCode; }
-
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
+    inline const Aws::String& GetCountryCode() const { return m_countryCode; }
     inline bool CountryCodeHasBeenSet() const { return m_countryCodeHasBeenSet; }
+    template<typename CountryCodeT = Aws::String>
+    void SetCountryCode(CountryCodeT&& value) { m_countryCodeHasBeenSet = true; m_countryCode = std::forward<CountryCodeT>(value); }
+    template<typename CountryCodeT = Aws::String>
+    ContactInformation& WithCountryCode(CountryCodeT&& value) { SetCountryCode(std::forward<CountryCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
-    inline void SetCountryCode(const Aws::String& value) { m_countryCodeHasBeenSet = true; m_countryCode = value; }
-
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
-    inline void SetCountryCode(Aws::String&& value) { m_countryCodeHasBeenSet = true; m_countryCode = std::move(value); }
-
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
-    inline void SetCountryCode(const char* value) { m_countryCodeHasBeenSet = true; m_countryCode.assign(value); }
-
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
-    inline ContactInformation& WithCountryCode(const Aws::String& value) { SetCountryCode(value); return *this;}
-
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
-    inline ContactInformation& WithCountryCode(Aws::String&& value) { SetCountryCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The ISO-3166 two-letter country code for the primary contact address.</p>
-     */
-    inline ContactInformation& WithCountryCode(const char* value) { SetCountryCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The district or county of the primary contact address, if any.</p>
      */
-    inline const Aws::String& GetDistrictOrCounty() const{ return m_districtOrCounty; }
-
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
+    inline const Aws::String& GetDistrictOrCounty() const { return m_districtOrCounty; }
     inline bool DistrictOrCountyHasBeenSet() const { return m_districtOrCountyHasBeenSet; }
+    template<typename DistrictOrCountyT = Aws::String>
+    void SetDistrictOrCounty(DistrictOrCountyT&& value) { m_districtOrCountyHasBeenSet = true; m_districtOrCounty = std::forward<DistrictOrCountyT>(value); }
+    template<typename DistrictOrCountyT = Aws::String>
+    ContactInformation& WithDistrictOrCounty(DistrictOrCountyT&& value) { SetDistrictOrCounty(std::forward<DistrictOrCountyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
-    inline void SetDistrictOrCounty(const Aws::String& value) { m_districtOrCountyHasBeenSet = true; m_districtOrCounty = value; }
-
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
-    inline void SetDistrictOrCounty(Aws::String&& value) { m_districtOrCountyHasBeenSet = true; m_districtOrCounty = std::move(value); }
-
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
-    inline void SetDistrictOrCounty(const char* value) { m_districtOrCountyHasBeenSet = true; m_districtOrCounty.assign(value); }
-
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithDistrictOrCounty(const Aws::String& value) { SetDistrictOrCounty(value); return *this;}
-
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithDistrictOrCounty(Aws::String&& value) { SetDistrictOrCounty(std::move(value)); return *this;}
-
-    /**
-     * <p>The district or county of the primary contact address, if any.</p>
-     */
-    inline ContactInformation& WithDistrictOrCounty(const char* value) { SetDistrictOrCounty(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The full name of the primary contact address.</p>
      */
-    inline const Aws::String& GetFullName() const{ return m_fullName; }
-
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
+    inline const Aws::String& GetFullName() const { return m_fullName; }
     inline bool FullNameHasBeenSet() const { return m_fullNameHasBeenSet; }
+    template<typename FullNameT = Aws::String>
+    void SetFullName(FullNameT&& value) { m_fullNameHasBeenSet = true; m_fullName = std::forward<FullNameT>(value); }
+    template<typename FullNameT = Aws::String>
+    ContactInformation& WithFullName(FullNameT&& value) { SetFullName(std::forward<FullNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
-    inline void SetFullName(const Aws::String& value) { m_fullNameHasBeenSet = true; m_fullName = value; }
-
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
-    inline void SetFullName(Aws::String&& value) { m_fullNameHasBeenSet = true; m_fullName = std::move(value); }
-
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
-    inline void SetFullName(const char* value) { m_fullNameHasBeenSet = true; m_fullName.assign(value); }
-
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
-    inline ContactInformation& WithFullName(const Aws::String& value) { SetFullName(value); return *this;}
-
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
-    inline ContactInformation& WithFullName(Aws::String&& value) { SetFullName(std::move(value)); return *this;}
-
-    /**
-     * <p>The full name of the primary contact address.</p>
-     */
-    inline ContactInformation& WithFullName(const char* value) { SetFullName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The phone number of the primary contact information. The number will be
      * validated and, in some countries, checked for activation.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    ContactInformation& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
-    inline ContactInformation& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
-    inline ContactInformation& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number of the primary contact information. The number will be
-     * validated and, in some countries, checked for activation.</p>
-     */
-    inline ContactInformation& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The postal code of the primary contact address.</p>
      */
-    inline const Aws::String& GetPostalCode() const{ return m_postalCode; }
-
-    /**
-     * <p>The postal code of the primary contact address.</p>
-     */
+    inline const Aws::String& GetPostalCode() const { return m_postalCode; }
     inline bool PostalCodeHasBeenSet() const { return m_postalCodeHasBeenSet; }
+    template<typename PostalCodeT = Aws::String>
+    void SetPostalCode(PostalCodeT&& value) { m_postalCodeHasBeenSet = true; m_postalCode = std::forward<PostalCodeT>(value); }
+    template<typename PostalCodeT = Aws::String>
+    ContactInformation& WithPostalCode(PostalCodeT&& value) { SetPostalCode(std::forward<PostalCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The postal code of the primary contact address.</p>
+     * <p>The state or region of the primary contact address. If the mailing address is
+     * within the United States (US), the value in this field can be either a two
+     * character state code (for example, <code>NJ</code>) or the full state name (for
+     * example, <code>New Jersey</code>). This field is required in the following
+     * countries: <code>US</code>, <code>CA</code>, <code>GB</code>, <code>DE</code>,
+     * <code>JP</code>, <code>IN</code>, and <code>BR</code>.</p>
      */
-    inline void SetPostalCode(const Aws::String& value) { m_postalCodeHasBeenSet = true; m_postalCode = value; }
-
-    /**
-     * <p>The postal code of the primary contact address.</p>
-     */
-    inline void SetPostalCode(Aws::String&& value) { m_postalCodeHasBeenSet = true; m_postalCode = std::move(value); }
-
-    /**
-     * <p>The postal code of the primary contact address.</p>
-     */
-    inline void SetPostalCode(const char* value) { m_postalCodeHasBeenSet = true; m_postalCode.assign(value); }
-
-    /**
-     * <p>The postal code of the primary contact address.</p>
-     */
-    inline ContactInformation& WithPostalCode(const Aws::String& value) { SetPostalCode(value); return *this;}
-
-    /**
-     * <p>The postal code of the primary contact address.</p>
-     */
-    inline ContactInformation& WithPostalCode(Aws::String&& value) { SetPostalCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The postal code of the primary contact address.</p>
-     */
-    inline ContactInformation& WithPostalCode(const char* value) { SetPostalCode(value); return *this;}
-
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline const Aws::String& GetStateOrRegion() const{ return m_stateOrRegion; }
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
+    inline const Aws::String& GetStateOrRegion() const { return m_stateOrRegion; }
     inline bool StateOrRegionHasBeenSet() const { return m_stateOrRegionHasBeenSet; }
+    template<typename StateOrRegionT = Aws::String>
+    void SetStateOrRegion(StateOrRegionT&& value) { m_stateOrRegionHasBeenSet = true; m_stateOrRegion = std::forward<StateOrRegionT>(value); }
+    template<typename StateOrRegionT = Aws::String>
+    ContactInformation& WithStateOrRegion(StateOrRegionT&& value) { SetStateOrRegion(std::forward<StateOrRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline void SetStateOrRegion(const Aws::String& value) { m_stateOrRegionHasBeenSet = true; m_stateOrRegion = value; }
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline void SetStateOrRegion(Aws::String&& value) { m_stateOrRegionHasBeenSet = true; m_stateOrRegion = std::move(value); }
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline void SetStateOrRegion(const char* value) { m_stateOrRegionHasBeenSet = true; m_stateOrRegion.assign(value); }
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline ContactInformation& WithStateOrRegion(const Aws::String& value) { SetStateOrRegion(value); return *this;}
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline ContactInformation& WithStateOrRegion(Aws::String&& value) { SetStateOrRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The state or region of the primary contact address. This field is required in
-     * selected countries.</p>
-     */
-    inline ContactInformation& WithStateOrRegion(const char* value) { SetStateOrRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of the website associated with the primary contact information, if
      * any.</p>
      */
-    inline const Aws::String& GetWebsiteUrl() const{ return m_websiteUrl; }
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
+    inline const Aws::String& GetWebsiteUrl() const { return m_websiteUrl; }
     inline bool WebsiteUrlHasBeenSet() const { return m_websiteUrlHasBeenSet; }
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
-    inline void SetWebsiteUrl(const Aws::String& value) { m_websiteUrlHasBeenSet = true; m_websiteUrl = value; }
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
-    inline void SetWebsiteUrl(Aws::String&& value) { m_websiteUrlHasBeenSet = true; m_websiteUrl = std::move(value); }
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
-    inline void SetWebsiteUrl(const char* value) { m_websiteUrlHasBeenSet = true; m_websiteUrl.assign(value); }
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
-    inline ContactInformation& WithWebsiteUrl(const Aws::String& value) { SetWebsiteUrl(value); return *this;}
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
-    inline ContactInformation& WithWebsiteUrl(Aws::String&& value) { SetWebsiteUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the website associated with the primary contact information, if
-     * any.</p>
-     */
-    inline ContactInformation& WithWebsiteUrl(const char* value) { SetWebsiteUrl(value); return *this;}
-
+    template<typename WebsiteUrlT = Aws::String>
+    void SetWebsiteUrl(WebsiteUrlT&& value) { m_websiteUrlHasBeenSet = true; m_websiteUrl = std::forward<WebsiteUrlT>(value); }
+    template<typename WebsiteUrlT = Aws::String>
+    ContactInformation& WithWebsiteUrl(WebsiteUrlT&& value) { SetWebsiteUrl(std::forward<WebsiteUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_addressLine1;

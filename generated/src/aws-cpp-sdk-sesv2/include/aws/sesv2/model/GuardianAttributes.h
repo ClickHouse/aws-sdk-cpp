@@ -32,63 +32,27 @@ namespace Model
   class GuardianAttributes
   {
   public:
-    AWS_SESV2_API GuardianAttributes();
+    AWS_SESV2_API GuardianAttributes() = default;
     AWS_SESV2_API GuardianAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API GuardianAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the status of your VDM optimized shared delivery. Can be one of the
      * following:</p> <ul> <li> <p> <code>ENABLED</code> – Amazon SES enables optimized
      * shared delivery for your account.</p> </li> <li> <p> <code>DISABLED</code> –
      * Amazon SES disables optimized shared delivery for your account.</p> </li> </ul>
      */
-    inline const FeatureStatus& GetOptimizedSharedDelivery() const{ return m_optimizedSharedDelivery; }
-
-    /**
-     * <p>Specifies the status of your VDM optimized shared delivery. Can be one of the
-     * following:</p> <ul> <li> <p> <code>ENABLED</code> – Amazon SES enables optimized
-     * shared delivery for your account.</p> </li> <li> <p> <code>DISABLED</code> –
-     * Amazon SES disables optimized shared delivery for your account.</p> </li> </ul>
-     */
+    inline FeatureStatus GetOptimizedSharedDelivery() const { return m_optimizedSharedDelivery; }
     inline bool OptimizedSharedDeliveryHasBeenSet() const { return m_optimizedSharedDeliveryHasBeenSet; }
-
-    /**
-     * <p>Specifies the status of your VDM optimized shared delivery. Can be one of the
-     * following:</p> <ul> <li> <p> <code>ENABLED</code> – Amazon SES enables optimized
-     * shared delivery for your account.</p> </li> <li> <p> <code>DISABLED</code> –
-     * Amazon SES disables optimized shared delivery for your account.</p> </li> </ul>
-     */
-    inline void SetOptimizedSharedDelivery(const FeatureStatus& value) { m_optimizedSharedDeliveryHasBeenSet = true; m_optimizedSharedDelivery = value; }
-
-    /**
-     * <p>Specifies the status of your VDM optimized shared delivery. Can be one of the
-     * following:</p> <ul> <li> <p> <code>ENABLED</code> – Amazon SES enables optimized
-     * shared delivery for your account.</p> </li> <li> <p> <code>DISABLED</code> –
-     * Amazon SES disables optimized shared delivery for your account.</p> </li> </ul>
-     */
-    inline void SetOptimizedSharedDelivery(FeatureStatus&& value) { m_optimizedSharedDeliveryHasBeenSet = true; m_optimizedSharedDelivery = std::move(value); }
-
-    /**
-     * <p>Specifies the status of your VDM optimized shared delivery. Can be one of the
-     * following:</p> <ul> <li> <p> <code>ENABLED</code> – Amazon SES enables optimized
-     * shared delivery for your account.</p> </li> <li> <p> <code>DISABLED</code> –
-     * Amazon SES disables optimized shared delivery for your account.</p> </li> </ul>
-     */
-    inline GuardianAttributes& WithOptimizedSharedDelivery(const FeatureStatus& value) { SetOptimizedSharedDelivery(value); return *this;}
-
-    /**
-     * <p>Specifies the status of your VDM optimized shared delivery. Can be one of the
-     * following:</p> <ul> <li> <p> <code>ENABLED</code> – Amazon SES enables optimized
-     * shared delivery for your account.</p> </li> <li> <p> <code>DISABLED</code> –
-     * Amazon SES disables optimized shared delivery for your account.</p> </li> </ul>
-     */
-    inline GuardianAttributes& WithOptimizedSharedDelivery(FeatureStatus&& value) { SetOptimizedSharedDelivery(std::move(value)); return *this;}
-
+    inline void SetOptimizedSharedDelivery(FeatureStatus value) { m_optimizedSharedDeliveryHasBeenSet = true; m_optimizedSharedDelivery = value; }
+    inline GuardianAttributes& WithOptimizedSharedDelivery(FeatureStatus value) { SetOptimizedSharedDelivery(value); return *this;}
+    ///@}
   private:
 
-    FeatureStatus m_optimizedSharedDelivery;
+    FeatureStatus m_optimizedSharedDelivery{FeatureStatus::NOT_SET};
     bool m_optimizedSharedDeliveryHasBeenSet = false;
   };
 

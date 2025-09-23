@@ -32,175 +32,59 @@ namespace Model
   class TaskStartFailedEventDetails
   {
   public:
-    AWS_SFN_API TaskStartFailedEventDetails();
+    AWS_SFN_API TaskStartFailedEventDetails() = default;
     AWS_SFN_API TaskStartFailedEventDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API TaskStartFailedEventDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The service name of the resource in a task state.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    TaskStartFailedEventDetails& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline TaskStartFailedEventDetails& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline TaskStartFailedEventDetails& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The service name of the resource in a task state.</p>
-     */
-    inline TaskStartFailedEventDetails& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The action of the resource called by a task state.</p>
      */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
+    inline const Aws::String& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    TaskStartFailedEventDetails& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline TaskStartFailedEventDetails& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline TaskStartFailedEventDetails& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The action of the resource called by a task state.</p>
-     */
-    inline TaskStartFailedEventDetails& WithResource(const char* value) { SetResource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error code of the failure.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
+    inline const Aws::String& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    TaskStartFailedEventDetails& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const char* value) { m_errorHasBeenSet = true; m_error.assign(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline TaskStartFailedEventDetails& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline TaskStartFailedEventDetails& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline TaskStartFailedEventDetails& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A more detailed explanation of the cause of the failure.</p>
      */
-    inline const Aws::String& GetCause() const{ return m_cause; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
+    inline const Aws::String& GetCause() const { return m_cause; }
     inline bool CauseHasBeenSet() const { return m_causeHasBeenSet; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(const Aws::String& value) { m_causeHasBeenSet = true; m_cause = value; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(Aws::String&& value) { m_causeHasBeenSet = true; m_cause = std::move(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(const char* value) { m_causeHasBeenSet = true; m_cause.assign(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline TaskStartFailedEventDetails& WithCause(const Aws::String& value) { SetCause(value); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline TaskStartFailedEventDetails& WithCause(Aws::String&& value) { SetCause(std::move(value)); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline TaskStartFailedEventDetails& WithCause(const char* value) { SetCause(value); return *this;}
-
+    template<typename CauseT = Aws::String>
+    void SetCause(CauseT&& value) { m_causeHasBeenSet = true; m_cause = std::forward<CauseT>(value); }
+    template<typename CauseT = Aws::String>
+    TaskStartFailedEventDetails& WithCause(CauseT&& value) { SetCause(std::forward<CauseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceType;

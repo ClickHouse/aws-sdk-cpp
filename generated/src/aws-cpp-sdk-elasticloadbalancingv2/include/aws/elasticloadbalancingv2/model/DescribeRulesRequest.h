@@ -22,7 +22,7 @@ namespace Model
   class DescribeRulesRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API DescribeRulesRequest();
+    AWS_ELASTICLOADBALANCINGV2_API DescribeRulesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,162 +37,54 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
      */
-    inline const Aws::String& GetListenerArn() const{ return m_listenerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
+    inline const Aws::String& GetListenerArn() const { return m_listenerArn; }
     inline bool ListenerArnHasBeenSet() const { return m_listenerArnHasBeenSet; }
+    template<typename ListenerArnT = Aws::String>
+    void SetListenerArn(ListenerArnT&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::forward<ListenerArnT>(value); }
+    template<typename ListenerArnT = Aws::String>
+    DescribeRulesRequest& WithListenerArn(ListenerArnT&& value) { SetListenerArn(std::forward<ListenerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(const Aws::String& value) { m_listenerArnHasBeenSet = true; m_listenerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(Aws::String&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(const char* value) { m_listenerArnHasBeenSet = true; m_listenerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline DescribeRulesRequest& WithListenerArn(const Aws::String& value) { SetListenerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline DescribeRulesRequest& WithListenerArn(Aws::String&& value) { SetListenerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline DescribeRulesRequest& WithListenerArn(const char* value) { SetListenerArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Names (ARN) of the rules.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRuleArns() const{ return m_ruleArns; }
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRuleArns() const { return m_ruleArns; }
     inline bool RuleArnsHasBeenSet() const { return m_ruleArnsHasBeenSet; }
+    template<typename RuleArnsT = Aws::Vector<Aws::String>>
+    void SetRuleArns(RuleArnsT&& value) { m_ruleArnsHasBeenSet = true; m_ruleArns = std::forward<RuleArnsT>(value); }
+    template<typename RuleArnsT = Aws::Vector<Aws::String>>
+    DescribeRulesRequest& WithRuleArns(RuleArnsT&& value) { SetRuleArns(std::forward<RuleArnsT>(value)); return *this;}
+    template<typename RuleArnsT = Aws::String>
+    DescribeRulesRequest& AddRuleArns(RuleArnsT&& value) { m_ruleArnsHasBeenSet = true; m_ruleArns.emplace_back(std::forward<RuleArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline void SetRuleArns(const Aws::Vector<Aws::String>& value) { m_ruleArnsHasBeenSet = true; m_ruleArns = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline void SetRuleArns(Aws::Vector<Aws::String>&& value) { m_ruleArnsHasBeenSet = true; m_ruleArns = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline DescribeRulesRequest& WithRuleArns(const Aws::Vector<Aws::String>& value) { SetRuleArns(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline DescribeRulesRequest& WithRuleArns(Aws::Vector<Aws::String>&& value) { SetRuleArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline DescribeRulesRequest& AddRuleArns(const Aws::String& value) { m_ruleArnsHasBeenSet = true; m_ruleArns.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline DescribeRulesRequest& AddRuleArns(Aws::String&& value) { m_ruleArnsHasBeenSet = true; m_ruleArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARN) of the rules.</p>
-     */
-    inline DescribeRulesRequest& AddRuleArns(const char* value) { m_ruleArnsHasBeenSet = true; m_ruleArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeRulesRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeRulesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeRulesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeRulesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return with this call.</p>
      */
-    inline int GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>The maximum number of results to return with this call.</p>
-     */
+    inline int GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return with this call.</p>
-     */
     inline void SetPageSize(int value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>The maximum number of results to return with this call.</p>
-     */
     inline DescribeRulesRequest& WithPageSize(int value) { SetPageSize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_listenerArn;
@@ -204,7 +96,7 @@ namespace Model
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_pageSize;
+    int m_pageSize{0};
     bool m_pageSizeHasBeenSet = false;
   };
 

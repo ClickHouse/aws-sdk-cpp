@@ -18,15 +18,7 @@ namespace finspace
 namespace Model
 {
 
-KxDeploymentConfiguration::KxDeploymentConfiguration() : 
-    m_deploymentStrategy(KxDeploymentStrategy::NOT_SET),
-    m_deploymentStrategyHasBeenSet(false)
-{
-}
-
-KxDeploymentConfiguration::KxDeploymentConfiguration(JsonView jsonValue) : 
-    m_deploymentStrategy(KxDeploymentStrategy::NOT_SET),
-    m_deploymentStrategyHasBeenSet(false)
+KxDeploymentConfiguration::KxDeploymentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ KxDeploymentConfiguration& KxDeploymentConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("deploymentStrategy"))
   {
     m_deploymentStrategy = KxDeploymentStrategyMapper::GetKxDeploymentStrategyForName(jsonValue.GetString("deploymentStrategy"));
-
     m_deploymentStrategyHasBeenSet = true;
   }
-
   return *this;
 }
 

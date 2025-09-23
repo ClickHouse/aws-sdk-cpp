@@ -32,89 +32,36 @@ namespace Model
   class Filter
   {
   public:
-    AWS_SSMINCIDENTS_API Filter();
+    AWS_SSMINCIDENTS_API Filter() = default;
     AWS_SSMINCIDENTS_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The condition accepts before or after a specified time, equal to a string, or
      * equal to an integer.</p>
      */
-    inline const Condition& GetCondition() const{ return m_condition; }
-
-    /**
-     * <p>The condition accepts before or after a specified time, equal to a string, or
-     * equal to an integer.</p>
-     */
+    inline const Condition& GetCondition() const { return m_condition; }
     inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
+    template<typename ConditionT = Condition>
+    void SetCondition(ConditionT&& value) { m_conditionHasBeenSet = true; m_condition = std::forward<ConditionT>(value); }
+    template<typename ConditionT = Condition>
+    Filter& WithCondition(ConditionT&& value) { SetCondition(std::forward<ConditionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The condition accepts before or after a specified time, equal to a string, or
-     * equal to an integer.</p>
-     */
-    inline void SetCondition(const Condition& value) { m_conditionHasBeenSet = true; m_condition = value; }
-
-    /**
-     * <p>The condition accepts before or after a specified time, equal to a string, or
-     * equal to an integer.</p>
-     */
-    inline void SetCondition(Condition&& value) { m_conditionHasBeenSet = true; m_condition = std::move(value); }
-
-    /**
-     * <p>The condition accepts before or after a specified time, equal to a string, or
-     * equal to an integer.</p>
-     */
-    inline Filter& WithCondition(const Condition& value) { SetCondition(value); return *this;}
-
-    /**
-     * <p>The condition accepts before or after a specified time, equal to a string, or
-     * equal to an integer.</p>
-     */
-    inline Filter& WithCondition(Condition&& value) { SetCondition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The key that you're filtering on.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
-    inline Filter& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
-    inline Filter& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key that you're filtering on.</p>
-     */
-    inline Filter& WithKey(const char* value) { SetKey(value); return *this;}
-
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    Filter& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
   private:
 
     Condition m_condition;

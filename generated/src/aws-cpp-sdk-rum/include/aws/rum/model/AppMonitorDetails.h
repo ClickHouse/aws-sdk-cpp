@@ -32,134 +32,47 @@ namespace Model
   class AppMonitorDetails
   {
   public:
-    AWS_CLOUDWATCHRUM_API AppMonitorDetails();
+    AWS_CLOUDWATCHRUM_API AppMonitorDetails() = default;
     AWS_CLOUDWATCHRUM_API AppMonitorDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHRUM_API AppMonitorDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHRUM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique ID of the app monitor.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    AppMonitorDetails& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the app monitor.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the app monitor.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AppMonitorDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the app monitor.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the app monitor.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the app monitor.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the app monitor.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the app monitor.</p>
-     */
-    inline AppMonitorDetails& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    AppMonitorDetails& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

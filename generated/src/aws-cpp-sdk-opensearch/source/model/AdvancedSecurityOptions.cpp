@@ -18,27 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-AdvancedSecurityOptions::AdvancedSecurityOptions() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_internalUserDatabaseEnabled(false),
-    m_internalUserDatabaseEnabledHasBeenSet(false),
-    m_sAMLOptionsHasBeenSet(false),
-    m_anonymousAuthDisableDateHasBeenSet(false),
-    m_anonymousAuthEnabled(false),
-    m_anonymousAuthEnabledHasBeenSet(false)
-{
-}
-
-AdvancedSecurityOptions::AdvancedSecurityOptions(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_internalUserDatabaseEnabled(false),
-    m_internalUserDatabaseEnabledHasBeenSet(false),
-    m_sAMLOptionsHasBeenSet(false),
-    m_anonymousAuthDisableDateHasBeenSet(false),
-    m_anonymousAuthEnabled(false),
-    m_anonymousAuthEnabledHasBeenSet(false)
+AdvancedSecurityOptions::AdvancedSecurityOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,38 +28,38 @@ AdvancedSecurityOptions& AdvancedSecurityOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InternalUserDatabaseEnabled"))
   {
     m_internalUserDatabaseEnabled = jsonValue.GetBool("InternalUserDatabaseEnabled");
-
     m_internalUserDatabaseEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SAMLOptions"))
   {
     m_sAMLOptions = jsonValue.GetObject("SAMLOptions");
-
     m_sAMLOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("JWTOptions"))
+  {
+    m_jWTOptions = jsonValue.GetObject("JWTOptions");
+    m_jWTOptionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("IAMFederationOptions"))
+  {
+    m_iAMFederationOptions = jsonValue.GetObject("IAMFederationOptions");
+    m_iAMFederationOptionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("AnonymousAuthDisableDate"))
   {
     m_anonymousAuthDisableDate = jsonValue.GetDouble("AnonymousAuthDisableDate");
-
     m_anonymousAuthDisableDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AnonymousAuthEnabled"))
   {
     m_anonymousAuthEnabled = jsonValue.GetBool("AnonymousAuthEnabled");
-
     m_anonymousAuthEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -102,6 +82,18 @@ JsonValue AdvancedSecurityOptions::Jsonize() const
   if(m_sAMLOptionsHasBeenSet)
   {
    payload.WithObject("SAMLOptions", m_sAMLOptions.Jsonize());
+
+  }
+
+  if(m_jWTOptionsHasBeenSet)
+  {
+   payload.WithObject("JWTOptions", m_jWTOptions.Jsonize());
+
+  }
+
+  if(m_iAMFederationOptionsHasBeenSet)
+  {
+   payload.WithObject("IAMFederationOptions", m_iAMFederationOptions.Jsonize());
 
   }
 

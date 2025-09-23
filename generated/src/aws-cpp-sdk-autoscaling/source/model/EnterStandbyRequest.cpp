@@ -10,26 +10,25 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-EnterStandbyRequest::EnterStandbyRequest() : 
-    m_instanceIdsHasBeenSet(false),
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_shouldDecrementDesiredCapacity(false),
-    m_shouldDecrementDesiredCapacityHasBeenSet(false)
-{
-}
-
 Aws::String EnterStandbyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=EnterStandby&";
   if(m_instanceIdsHasBeenSet)
   {
-    unsigned instanceIdsCount = 1;
-    for(auto& item : m_instanceIds)
+    if (m_instanceIds.empty())
     {
-      ss << "InstanceIds.member." << instanceIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      instanceIdsCount++;
+      ss << "InstanceIds=&";
+    }
+    else
+    {
+      unsigned instanceIdsCount = 1;
+      for(auto& item : m_instanceIds)
+      {
+        ss << "InstanceIds.member." << instanceIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        instanceIdsCount++;
+      }
     }
   }
 

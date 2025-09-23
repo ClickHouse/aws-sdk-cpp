@@ -32,266 +32,96 @@ namespace Model
   class EmailChannelRequest
   {
   public:
-    AWS_PINPOINT_API EmailChannelRequest();
+    AWS_PINPOINT_API EmailChannelRequest() = default;
     AWS_PINPOINT_API EmailChannelRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API EmailChannelRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
      * SES configuration set</a> that you want to apply to messages that you send
      * through the channel.</p>
      */
-    inline const Aws::String& GetConfigurationSet() const{ return m_configurationSet; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
+    inline const Aws::String& GetConfigurationSet() const { return m_configurationSet; }
     inline bool ConfigurationSetHasBeenSet() const { return m_configurationSetHasBeenSet; }
+    template<typename ConfigurationSetT = Aws::String>
+    void SetConfigurationSet(ConfigurationSetT&& value) { m_configurationSetHasBeenSet = true; m_configurationSet = std::forward<ConfigurationSetT>(value); }
+    template<typename ConfigurationSetT = Aws::String>
+    EmailChannelRequest& WithConfigurationSet(ConfigurationSetT&& value) { SetConfigurationSet(std::forward<ConfigurationSetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
-    inline void SetConfigurationSet(const Aws::String& value) { m_configurationSetHasBeenSet = true; m_configurationSet = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
-    inline void SetConfigurationSet(Aws::String&& value) { m_configurationSetHasBeenSet = true; m_configurationSet = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
-    inline void SetConfigurationSet(const char* value) { m_configurationSetHasBeenSet = true; m_configurationSet.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
-    inline EmailChannelRequest& WithConfigurationSet(const Aws::String& value) { SetConfigurationSet(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
-    inline EmailChannelRequest& WithConfigurationSet(Aws::String&& value) { SetConfigurationSet(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html">Amazon
-     * SES configuration set</a> that you want to apply to messages that you send
-     * through the channel.</p>
-     */
-    inline EmailChannelRequest& WithConfigurationSet(const char* value) { SetConfigurationSet(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to enable the email channel for the application.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether to enable the email channel for the application.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to enable the email channel for the application.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether to enable the email channel for the application.</p>
-     */
     inline EmailChannelRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The verified email address that you want to send email from when you send
      * email through the channel.</p>
      */
-    inline const Aws::String& GetFromAddress() const{ return m_fromAddress; }
-
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
+    inline const Aws::String& GetFromAddress() const { return m_fromAddress; }
     inline bool FromAddressHasBeenSet() const { return m_fromAddressHasBeenSet; }
+    template<typename FromAddressT = Aws::String>
+    void SetFromAddress(FromAddressT&& value) { m_fromAddressHasBeenSet = true; m_fromAddress = std::forward<FromAddressT>(value); }
+    template<typename FromAddressT = Aws::String>
+    EmailChannelRequest& WithFromAddress(FromAddressT&& value) { SetFromAddress(std::forward<FromAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
-    inline void SetFromAddress(const Aws::String& value) { m_fromAddressHasBeenSet = true; m_fromAddress = value; }
-
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
-    inline void SetFromAddress(Aws::String&& value) { m_fromAddressHasBeenSet = true; m_fromAddress = std::move(value); }
-
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
-    inline void SetFromAddress(const char* value) { m_fromAddressHasBeenSet = true; m_fromAddress.assign(value); }
-
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
-    inline EmailChannelRequest& WithFromAddress(const Aws::String& value) { SetFromAddress(value); return *this;}
-
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
-    inline EmailChannelRequest& WithFromAddress(Aws::String&& value) { SetFromAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The verified email address that you want to send email from when you send
-     * email through the channel.</p>
-     */
-    inline EmailChannelRequest& WithFromAddress(const char* value) { SetFromAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
      * Email Service (Amazon SES), that you want to use when you send email through the
      * channel.</p>
      */
-    inline const Aws::String& GetIdentity() const{ return m_identity; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
+    inline const Aws::String& GetIdentity() const { return m_identity; }
     inline bool IdentityHasBeenSet() const { return m_identityHasBeenSet; }
+    template<typename IdentityT = Aws::String>
+    void SetIdentity(IdentityT&& value) { m_identityHasBeenSet = true; m_identity = std::forward<IdentityT>(value); }
+    template<typename IdentityT = Aws::String>
+    EmailChannelRequest& WithIdentity(IdentityT&& value) { SetIdentity(std::forward<IdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
-    inline void SetIdentity(const Aws::String& value) { m_identityHasBeenSet = true; m_identity = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
-    inline void SetIdentity(const char* value) { m_identityHasBeenSet = true; m_identity.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
-    inline EmailChannelRequest& WithIdentity(const Aws::String& value) { SetIdentity(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
-    inline EmailChannelRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple
-     * Email Service (Amazon SES), that you want to use when you send email through the
-     * channel.</p>
-     */
-    inline EmailChannelRequest& WithIdentity(const char* value) { SetIdentity(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
      * Amazon Pinpoint to use when it submits email-related event data for the
      * channel.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    EmailChannelRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
+     * <p>The ARN of an IAM role for Amazon Pinpoint to use to send email from your
+     * campaigns or journeys through Amazon SES.</p>
      */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
-     */
-    inline EmailChannelRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
-     */
-    inline EmailChannelRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the AWS Identity and Access Management (IAM) role that you want
-     * Amazon Pinpoint to use when it submits email-related event data for the
-     * channel.</p>
-     */
-    inline EmailChannelRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
+    inline const Aws::String& GetOrchestrationSendingRoleArn() const { return m_orchestrationSendingRoleArn; }
+    inline bool OrchestrationSendingRoleArnHasBeenSet() const { return m_orchestrationSendingRoleArnHasBeenSet; }
+    template<typename OrchestrationSendingRoleArnT = Aws::String>
+    void SetOrchestrationSendingRoleArn(OrchestrationSendingRoleArnT&& value) { m_orchestrationSendingRoleArnHasBeenSet = true; m_orchestrationSendingRoleArn = std::forward<OrchestrationSendingRoleArnT>(value); }
+    template<typename OrchestrationSendingRoleArnT = Aws::String>
+    EmailChannelRequest& WithOrchestrationSendingRoleArn(OrchestrationSendingRoleArnT&& value) { SetOrchestrationSendingRoleArn(std::forward<OrchestrationSendingRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationSet;
     bool m_configurationSetHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_fromAddress;
@@ -302,6 +132,9 @@ namespace Model
 
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet = false;
+
+    Aws::String m_orchestrationSendingRoleArn;
+    bool m_orchestrationSendingRoleArnHasBeenSet = false;
   };
 
 } // namespace Model

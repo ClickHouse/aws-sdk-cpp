@@ -18,19 +18,7 @@ namespace TranscribeService
 namespace Model
 {
 
-SubtitlesOutput::SubtitlesOutput() : 
-    m_formatsHasBeenSet(false),
-    m_subtitleFileUrisHasBeenSet(false),
-    m_outputStartIndex(0),
-    m_outputStartIndexHasBeenSet(false)
-{
-}
-
-SubtitlesOutput::SubtitlesOutput(JsonView jsonValue) : 
-    m_formatsHasBeenSet(false),
-    m_subtitleFileUrisHasBeenSet(false),
-    m_outputStartIndex(0),
-    m_outputStartIndexHasBeenSet(false)
+SubtitlesOutput::SubtitlesOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ SubtitlesOutput& SubtitlesOutput::operator =(JsonView jsonValue)
     }
     m_formatsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubtitleFileUris"))
   {
     Aws::Utils::Array<JsonView> subtitleFileUrisJsonList = jsonValue.GetArray("SubtitleFileUris");
@@ -56,14 +43,11 @@ SubtitlesOutput& SubtitlesOutput::operator =(JsonView jsonValue)
     }
     m_subtitleFileUrisHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputStartIndex"))
   {
     m_outputStartIndex = jsonValue.GetInteger("OutputStartIndex");
-
     m_outputStartIndexHasBeenSet = true;
   }
-
   return *this;
 }
 

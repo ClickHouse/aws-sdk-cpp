@@ -24,67 +24,32 @@ namespace Model
 {
 
   /**
-   * Settings for the action to emit HLS metadata<p><h3>See Also:</h3>   <a
+   * Settings for the action to insert ID3 metadata (as a one-time action) in HLS
+   * output groups.<p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsTimedMetadataScheduleActionSettings">AWS
    * API Reference</a></p>
    */
   class HlsTimedMetadataScheduleActionSettings
   {
   public:
-    AWS_MEDIALIVE_API HlsTimedMetadataScheduleActionSettings();
+    AWS_MEDIALIVE_API HlsTimedMetadataScheduleActionSettings() = default;
     AWS_MEDIALIVE_API HlsTimedMetadataScheduleActionSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API HlsTimedMetadataScheduleActionSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
+     * Enter a base64 string that contains one or more fully formed ID3 tags.See the
+     * ID3 specification: http://id3.org/id3v2.4.0-structure
      */
-    inline const Aws::String& GetId3() const{ return m_id3; }
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
+    inline const Aws::String& GetId3() const { return m_id3; }
     inline bool Id3HasBeenSet() const { return m_id3HasBeenSet; }
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
-    inline void SetId3(const Aws::String& value) { m_id3HasBeenSet = true; m_id3 = value; }
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
-    inline void SetId3(Aws::String&& value) { m_id3HasBeenSet = true; m_id3 = std::move(value); }
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
-    inline void SetId3(const char* value) { m_id3HasBeenSet = true; m_id3.assign(value); }
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
-    inline HlsTimedMetadataScheduleActionSettings& WithId3(const Aws::String& value) { SetId3(value); return *this;}
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
-    inline HlsTimedMetadataScheduleActionSettings& WithId3(Aws::String&& value) { SetId3(std::move(value)); return *this;}
-
-    /**
-     * Base64 string formatted according to the ID3 specification:
-     * http://id3.org/id3v2.4.0-structure
-     */
-    inline HlsTimedMetadataScheduleActionSettings& WithId3(const char* value) { SetId3(value); return *this;}
-
+    template<typename Id3T = Aws::String>
+    void SetId3(Id3T&& value) { m_id3HasBeenSet = true; m_id3 = std::forward<Id3T>(value); }
+    template<typename Id3T = Aws::String>
+    HlsTimedMetadataScheduleActionSettings& WithId3(Id3T&& value) { SetId3(std::forward<Id3T>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id3;

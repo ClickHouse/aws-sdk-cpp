@@ -9,6 +9,7 @@
 #include <aws/quicksight/model/TablePinnedFieldOptions.h>
 #include <aws/quicksight/model/TableFieldOption.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/quicksight/model/TransposedTableOption.h>
 #include <utility>
 
 namespace Aws
@@ -34,138 +35,66 @@ namespace Model
   class TableFieldOptions
   {
   public:
-    AWS_QUICKSIGHT_API TableFieldOptions();
+    AWS_QUICKSIGHT_API TableFieldOptions() = default;
     AWS_QUICKSIGHT_API TableFieldOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TableFieldOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field options to be configured to a table.</p>
      */
-    inline const Aws::Vector<TableFieldOption>& GetSelectedFieldOptions() const{ return m_selectedFieldOptions; }
-
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
+    inline const Aws::Vector<TableFieldOption>& GetSelectedFieldOptions() const { return m_selectedFieldOptions; }
     inline bool SelectedFieldOptionsHasBeenSet() const { return m_selectedFieldOptionsHasBeenSet; }
+    template<typename SelectedFieldOptionsT = Aws::Vector<TableFieldOption>>
+    void SetSelectedFieldOptions(SelectedFieldOptionsT&& value) { m_selectedFieldOptionsHasBeenSet = true; m_selectedFieldOptions = std::forward<SelectedFieldOptionsT>(value); }
+    template<typename SelectedFieldOptionsT = Aws::Vector<TableFieldOption>>
+    TableFieldOptions& WithSelectedFieldOptions(SelectedFieldOptionsT&& value) { SetSelectedFieldOptions(std::forward<SelectedFieldOptionsT>(value)); return *this;}
+    template<typename SelectedFieldOptionsT = TableFieldOption>
+    TableFieldOptions& AddSelectedFieldOptions(SelectedFieldOptionsT&& value) { m_selectedFieldOptionsHasBeenSet = true; m_selectedFieldOptions.emplace_back(std::forward<SelectedFieldOptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
-    inline void SetSelectedFieldOptions(const Aws::Vector<TableFieldOption>& value) { m_selectedFieldOptionsHasBeenSet = true; m_selectedFieldOptions = value; }
-
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
-    inline void SetSelectedFieldOptions(Aws::Vector<TableFieldOption>&& value) { m_selectedFieldOptionsHasBeenSet = true; m_selectedFieldOptions = std::move(value); }
-
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
-    inline TableFieldOptions& WithSelectedFieldOptions(const Aws::Vector<TableFieldOption>& value) { SetSelectedFieldOptions(value); return *this;}
-
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
-    inline TableFieldOptions& WithSelectedFieldOptions(Aws::Vector<TableFieldOption>&& value) { SetSelectedFieldOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
-    inline TableFieldOptions& AddSelectedFieldOptions(const TableFieldOption& value) { m_selectedFieldOptionsHasBeenSet = true; m_selectedFieldOptions.push_back(value); return *this; }
-
-    /**
-     * <p>The field options to be configured to a table.</p>
-     */
-    inline TableFieldOptions& AddSelectedFieldOptions(TableFieldOption&& value) { m_selectedFieldOptionsHasBeenSet = true; m_selectedFieldOptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The order of the field IDs that are configured as field options for a table
      * visual.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
+    template<typename OrderT = Aws::Vector<Aws::String>>
+    void SetOrder(OrderT&& value) { m_orderHasBeenSet = true; m_order = std::forward<OrderT>(value); }
+    template<typename OrderT = Aws::Vector<Aws::String>>
+    TableFieldOptions& WithOrder(OrderT&& value) { SetOrder(std::forward<OrderT>(value)); return *this;}
+    template<typename OrderT = Aws::String>
+    TableFieldOptions& AddOrder(OrderT&& value) { m_orderHasBeenSet = true; m_order.emplace_back(std::forward<OrderT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline void SetOrder(const Aws::Vector<Aws::String>& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline void SetOrder(Aws::Vector<Aws::String>&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline TableFieldOptions& WithOrder(const Aws::Vector<Aws::String>& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline TableFieldOptions& WithOrder(Aws::Vector<Aws::String>&& value) { SetOrder(std::move(value)); return *this;}
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline TableFieldOptions& AddOrder(const Aws::String& value) { m_orderHasBeenSet = true; m_order.push_back(value); return *this; }
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline TableFieldOptions& AddOrder(Aws::String&& value) { m_orderHasBeenSet = true; m_order.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The order of the field IDs that are configured as field options for a table
-     * visual.</p>
-     */
-    inline TableFieldOptions& AddOrder(const char* value) { m_orderHasBeenSet = true; m_order.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The settings for the pinned columns of a table visual.</p>
      */
-    inline const TablePinnedFieldOptions& GetPinnedFieldOptions() const{ return m_pinnedFieldOptions; }
-
-    /**
-     * <p>The settings for the pinned columns of a table visual.</p>
-     */
+    inline const TablePinnedFieldOptions& GetPinnedFieldOptions() const { return m_pinnedFieldOptions; }
     inline bool PinnedFieldOptionsHasBeenSet() const { return m_pinnedFieldOptionsHasBeenSet; }
+    template<typename PinnedFieldOptionsT = TablePinnedFieldOptions>
+    void SetPinnedFieldOptions(PinnedFieldOptionsT&& value) { m_pinnedFieldOptionsHasBeenSet = true; m_pinnedFieldOptions = std::forward<PinnedFieldOptionsT>(value); }
+    template<typename PinnedFieldOptionsT = TablePinnedFieldOptions>
+    TableFieldOptions& WithPinnedFieldOptions(PinnedFieldOptionsT&& value) { SetPinnedFieldOptions(std::forward<PinnedFieldOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The settings for the pinned columns of a table visual.</p>
+     * <p>The <code>TableOptions</code> of a transposed table.</p>
      */
-    inline void SetPinnedFieldOptions(const TablePinnedFieldOptions& value) { m_pinnedFieldOptionsHasBeenSet = true; m_pinnedFieldOptions = value; }
-
-    /**
-     * <p>The settings for the pinned columns of a table visual.</p>
-     */
-    inline void SetPinnedFieldOptions(TablePinnedFieldOptions&& value) { m_pinnedFieldOptionsHasBeenSet = true; m_pinnedFieldOptions = std::move(value); }
-
-    /**
-     * <p>The settings for the pinned columns of a table visual.</p>
-     */
-    inline TableFieldOptions& WithPinnedFieldOptions(const TablePinnedFieldOptions& value) { SetPinnedFieldOptions(value); return *this;}
-
-    /**
-     * <p>The settings for the pinned columns of a table visual.</p>
-     */
-    inline TableFieldOptions& WithPinnedFieldOptions(TablePinnedFieldOptions&& value) { SetPinnedFieldOptions(std::move(value)); return *this;}
-
+    inline const Aws::Vector<TransposedTableOption>& GetTransposedTableOptions() const { return m_transposedTableOptions; }
+    inline bool TransposedTableOptionsHasBeenSet() const { return m_transposedTableOptionsHasBeenSet; }
+    template<typename TransposedTableOptionsT = Aws::Vector<TransposedTableOption>>
+    void SetTransposedTableOptions(TransposedTableOptionsT&& value) { m_transposedTableOptionsHasBeenSet = true; m_transposedTableOptions = std::forward<TransposedTableOptionsT>(value); }
+    template<typename TransposedTableOptionsT = Aws::Vector<TransposedTableOption>>
+    TableFieldOptions& WithTransposedTableOptions(TransposedTableOptionsT&& value) { SetTransposedTableOptions(std::forward<TransposedTableOptionsT>(value)); return *this;}
+    template<typename TransposedTableOptionsT = TransposedTableOption>
+    TableFieldOptions& AddTransposedTableOptions(TransposedTableOptionsT&& value) { m_transposedTableOptionsHasBeenSet = true; m_transposedTableOptions.emplace_back(std::forward<TransposedTableOptionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<TableFieldOption> m_selectedFieldOptions;
@@ -176,6 +105,9 @@ namespace Model
 
     TablePinnedFieldOptions m_pinnedFieldOptions;
     bool m_pinnedFieldOptionsHasBeenSet = false;
+
+    Aws::Vector<TransposedTableOption> m_transposedTableOptions;
+    bool m_transposedTableOptionsHasBeenSet = false;
   };
 
 } // namespace Model

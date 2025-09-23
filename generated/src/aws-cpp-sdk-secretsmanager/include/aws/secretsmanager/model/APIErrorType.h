@@ -32,53 +32,25 @@ namespace Model
   class APIErrorType
   {
   public:
-    AWS_SECRETSMANAGER_API APIErrorType();
+    AWS_SECRETSMANAGER_API APIErrorType() = default;
     AWS_SECRETSMANAGER_API APIErrorType(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECRETSMANAGER_API APIErrorType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECRETSMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN or name of the secret.</p>
      */
-    inline const Aws::String& GetSecretId() const{ return m_secretId; }
-
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
+    inline const Aws::String& GetSecretId() const { return m_secretId; }
     inline bool SecretIdHasBeenSet() const { return m_secretIdHasBeenSet; }
+    template<typename SecretIdT = Aws::String>
+    void SetSecretId(SecretIdT&& value) { m_secretIdHasBeenSet = true; m_secretId = std::forward<SecretIdT>(value); }
+    template<typename SecretIdT = Aws::String>
+    APIErrorType& WithSecretId(SecretIdT&& value) { SetSecretId(std::forward<SecretIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
-    inline void SetSecretId(const Aws::String& value) { m_secretIdHasBeenSet = true; m_secretId = value; }
-
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
-    inline void SetSecretId(Aws::String&& value) { m_secretIdHasBeenSet = true; m_secretId = std::move(value); }
-
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
-    inline void SetSecretId(const char* value) { m_secretIdHasBeenSet = true; m_secretId.assign(value); }
-
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
-    inline APIErrorType& WithSecretId(const Aws::String& value) { SetSecretId(value); return *this;}
-
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
-    inline APIErrorType& WithSecretId(Aws::String&& value) { SetSecretId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN or name of the secret.</p>
-     */
-    inline APIErrorType& WithSecretId(const char* value) { SetSecretId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error Secrets Manager encountered while retrieving an individual secret
      * as part of <a>BatchGetSecretValue</a>, for example
@@ -86,112 +58,25 @@ namespace Model
      * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
      * <code>AccessDeniedException</code>.</p>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    APIErrorType& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
-    inline APIErrorType& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
-    inline APIErrorType& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The error Secrets Manager encountered while retrieving an individual secret
-     * as part of <a>BatchGetSecretValue</a>, for example
-     * <code>ResourceNotFoundException</code>,<code>InvalidParameterException</code>,
-     * <code>InvalidRequestException</code>, <code>DecryptionFailure</code>, or
-     * <code>AccessDeniedException</code>.</p>
-     */
-    inline APIErrorType& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A message describing the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A message describing the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>A message describing the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A message describing the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A message describing the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A message describing the error.</p>
-     */
-    inline APIErrorType& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A message describing the error.</p>
-     */
-    inline APIErrorType& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A message describing the error.</p>
-     */
-    inline APIErrorType& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    APIErrorType& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_secretId;

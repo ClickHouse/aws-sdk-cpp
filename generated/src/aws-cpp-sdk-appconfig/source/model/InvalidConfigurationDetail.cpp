@@ -18,21 +18,7 @@ namespace AppConfig
 namespace Model
 {
 
-InvalidConfigurationDetail::InvalidConfigurationDetail() : 
-    m_constraintHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_reasonHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-InvalidConfigurationDetail::InvalidConfigurationDetail(JsonView jsonValue) : 
-    m_constraintHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_reasonHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+InvalidConfigurationDetail::InvalidConfigurationDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,28 @@ InvalidConfigurationDetail& InvalidConfigurationDetail::operator =(JsonView json
   if(jsonValue.ValueExists("Constraint"))
   {
     m_constraint = jsonValue.GetString("Constraint");
-
     m_constraintHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Location"))
   {
     m_location = jsonValue.GetString("Location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reason"))
   {
     m_reason = jsonValue.GetString("Reason");
-
     m_reasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

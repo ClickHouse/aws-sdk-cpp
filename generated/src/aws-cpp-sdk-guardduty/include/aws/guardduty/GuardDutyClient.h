@@ -10,7 +10,6 @@
 #include <aws/core/client/AWSClientAsyncCRTP.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/guardduty/GuardDutyServiceClientModel.h>
-#include <aws/guardduty/model/GetOrganizationStatisticsRequest.h>
 
 namespace Aws
 {
@@ -44,8 +43,8 @@ namespace GuardDuty
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef GuardDutyClientConfiguration ClientConfigurationType;
       typedef GuardDutyEndpointProvider EndpointProviderType;
@@ -55,14 +54,14 @@ namespace GuardDuty
         * is not specified, it will be initialized to default values.
         */
         GuardDutyClient(const Aws::GuardDuty::GuardDutyClientConfiguration& clientConfiguration = Aws::GuardDuty::GuardDutyClientConfiguration(),
-                        std::shared_ptr<GuardDutyEndpointProviderBase> endpointProvider = Aws::MakeShared<GuardDutyEndpointProvider>(ALLOCATION_TAG));
+                        std::shared_ptr<GuardDutyEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         GuardDutyClient(const Aws::Auth::AWSCredentials& credentials,
-                        std::shared_ptr<GuardDutyEndpointProviderBase> endpointProvider = Aws::MakeShared<GuardDutyEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<GuardDutyEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::GuardDuty::GuardDutyClientConfiguration& clientConfiguration = Aws::GuardDuty::GuardDutyClientConfiguration());
 
        /**
@@ -70,7 +69,7 @@ namespace GuardDuty
         * the default http client factory will be used
         */
         GuardDutyClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                        std::shared_ptr<GuardDutyEndpointProviderBase> endpointProvider = Aws::MakeShared<GuardDutyEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<GuardDutyEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::GuardDuty::GuardDutyClientConfiguration& clientConfiguration = Aws::GuardDuty::GuardDutyClientConfiguration());
 
 
@@ -154,13 +153,24 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Creates a single Amazon GuardDuty detector. A detector is a resource that
-         * represents the GuardDuty service. To start using GuardDuty, you must create a
-         * detector in each Region where you enable the service. You can have only one
-         * detector per account per Region. All data sources are enabled in a new detector
-         * by default.</p> <p>There might be regional differences because some data sources
-         * might not be available in all the Amazon Web Services Regions where GuardDuty is
-         * presently supported. For more information, see <a
+         * <p>Creates a single GuardDuty detector. A detector is a resource that represents
+         * the GuardDuty service. To start using GuardDuty, you must create a detector in
+         * each Region where you enable the service. You can have only one detector per
+         * account per Region. All data sources are enabled in a new detector by
+         * default.</p> <ul> <li> <p>When you don't specify any <code>features</code>, with
+         * an exception to <code>RUNTIME_MONITORING</code>, all the optional features are
+         * enabled by default.</p> </li> <li> <p>When you specify some of the
+         * <code>features</code>, any feature that is not specified in the API call gets
+         * enabled by default, with an exception to <code>RUNTIME_MONITORING</code>. </p>
+         * </li> </ul> <p>Specifying both EKS Runtime Monitoring
+         * (<code>EKS_RUNTIME_MONITORING</code>) and Runtime Monitoring
+         * (<code>RUNTIME_MONITORING</code>) will cause an error. You can add only one of
+         * these two features because Runtime Monitoring already includes the threat
+         * detection for Amazon EKS resources. For more information, see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html">Runtime
+         * Monitoring</a>.</p> <p>There might be regional differences because some data
+         * sources might not be available in all the Amazon Web Services Regions where
+         * GuardDuty is presently supported. For more information, see <a
          * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
          * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateDetector">AWS
@@ -246,6 +256,36 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Creates a new Malware Protection plan for the protected resource.</p> <p>When
+         * you create a Malware Protection plan, the Amazon Web Services service terms for
+         * GuardDuty Malware Protection apply. For more information, see <a
+         * href="http://aws.amazon.com/service-terms/#87._Amazon_GuardDuty">Amazon Web
+         * Services service terms for GuardDuty Malware Protection</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateMalwareProtectionPlan">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateMalwareProtectionPlanOutcome CreateMalwareProtectionPlan(const Model::CreateMalwareProtectionPlanRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateMalwareProtectionPlan that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateMalwareProtectionPlanRequestT = Model::CreateMalwareProtectionPlanRequest>
+        Model::CreateMalwareProtectionPlanOutcomeCallable CreateMalwareProtectionPlanCallable(const CreateMalwareProtectionPlanRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::CreateMalwareProtectionPlan, request);
+        }
+
+        /**
+         * An Async wrapper for CreateMalwareProtectionPlan that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateMalwareProtectionPlanRequestT = Model::CreateMalwareProtectionPlanRequest>
+        void CreateMalwareProtectionPlanAsync(const CreateMalwareProtectionPlanRequestT& request, const CreateMalwareProtectionPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::CreateMalwareProtectionPlan, request, handler, context);
+        }
+
+        /**
          * <p>Creates member accounts of the current Amazon Web Services account by
          * specifying a list of Amazon Web Services account IDs. This step is a
          * prerequisite for managing the associated member accounts either by invitation or
@@ -259,19 +299,19 @@ namespace GuardDuty
          * existing members. For more information about the existing auto-enable settings
          * for your organization, see <a
          * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeOrganizationConfiguration.html">DescribeOrganizationConfiguration</a>.</p>
-         * <p>If you are adding accounts by invitation, before using <a
-         * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html">InviteMembers</a>,
-         * use <code>CreateMembers</code> after GuardDuty has been enabled in potential
-         * member accounts.</p> <p>If you disassociate a member from a GuardDuty delegated
-         * administrator, the member account details obtained from this API, including the
-         * associated email addresses, will be retained. This is done so that the delegated
-         * administrator can invoke the <a
+         * <p>If you disassociate a member account that was added by invitation, the member
+         * account details obtained from this API, including the associated email
+         * addresses, will be retained. This is done so that the delegated administrator
+         * can invoke the <a
          * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html">InviteMembers</a>
          * API without the need to invoke the CreateMembers API again. To remove the
          * details associated with a member account, the delegated administrator must
          * invoke the <a
          * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html">DeleteMembers</a>
-         * API. </p><p><h3>See Also:</h3>   <a
+         * API. </p> <p>When the member accounts added through Organizations are later
+         * disassociated, you (administrator) can't invite them by calling the
+         * InviteMembers API. You can create an association with these member accounts
+         * again only by calling the CreateMembers API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateMembers">AWS
          * API Reference</a></p>
          */
@@ -296,9 +336,9 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Creates a publishing destination to export findings to. The resource to
-         * export findings to must exist before you use this operation.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Creates a publishing destination where you can export your GuardDuty
+         * findings. Before you start exporting the findings, the destination resource must
+         * exist.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreatePublishingDestination">AWS
          * API Reference</a></p>
          */
@@ -350,6 +390,35 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Creates a new threat entity set. In a threat entity set, you can provide
+         * known malicious IP addresses and domains for your Amazon Web Services
+         * environment. GuardDuty generates findings based on the entries in the threat
+         * entity sets. Only users of the administrator account can manage entity sets,
+         * which automatically apply to member accounts.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateThreatEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateThreatEntitySetOutcome CreateThreatEntitySet(const Model::CreateThreatEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateThreatEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateThreatEntitySetRequestT = Model::CreateThreatEntitySetRequest>
+        Model::CreateThreatEntitySetOutcomeCallable CreateThreatEntitySetCallable(const CreateThreatEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::CreateThreatEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for CreateThreatEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateThreatEntitySetRequestT = Model::CreateThreatEntitySetRequest>
+        void CreateThreatEntitySetAsync(const CreateThreatEntitySetRequestT& request, const CreateThreatEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::CreateThreatEntitySet, request, handler, context);
+        }
+
+        /**
          * <p>Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP
          * addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of
          * the administrator account can use this operation.</p><p><h3>See Also:</h3>   <a
@@ -374,6 +443,37 @@ namespace GuardDuty
         void CreateThreatIntelSetAsync(const CreateThreatIntelSetRequestT& request, const CreateThreatIntelSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&GuardDutyClient::CreateThreatIntelSet, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a new trusted entity set. In the trusted entity set, you can provide
+         * IP addresses and domains that you believe are secure for communication in your
+         * Amazon Web Services environment. GuardDuty will not generate findings for the
+         * entries that are specified in a trusted entity set. At any given time, you can
+         * have only one trusted entity set. </p> <p>Only users of the administrator
+         * account can manage the entity sets, which automatically apply to member
+         * accounts.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateTrustedEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateTrustedEntitySetOutcome CreateTrustedEntitySet(const Model::CreateTrustedEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateTrustedEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateTrustedEntitySetRequestT = Model::CreateTrustedEntitySetRequest>
+        Model::CreateTrustedEntitySetOutcomeCallable CreateTrustedEntitySetCallable(const CreateTrustedEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::CreateTrustedEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for CreateTrustedEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateTrustedEntitySetRequestT = Model::CreateTrustedEntitySetRequest>
+        void CreateTrustedEntitySetAsync(const CreateTrustedEntitySetRequestT& request, const CreateTrustedEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::CreateTrustedEntitySet, request, handler, context);
         }
 
         /**
@@ -507,6 +607,33 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Deletes the Malware Protection plan ID associated with the Malware Protection
+         * plan resource. Use this API only when you no longer want to protect the resource
+         * associated with this Malware Protection plan ID.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteMalwareProtectionPlan">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteMalwareProtectionPlanOutcome DeleteMalwareProtectionPlan(const Model::DeleteMalwareProtectionPlanRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteMalwareProtectionPlan that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteMalwareProtectionPlanRequestT = Model::DeleteMalwareProtectionPlanRequest>
+        Model::DeleteMalwareProtectionPlanOutcomeCallable DeleteMalwareProtectionPlanCallable(const DeleteMalwareProtectionPlanRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::DeleteMalwareProtectionPlan, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteMalwareProtectionPlan that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteMalwareProtectionPlanRequestT = Model::DeleteMalwareProtectionPlanRequest>
+        void DeleteMalwareProtectionPlanAsync(const DeleteMalwareProtectionPlanRequestT& request, const DeleteMalwareProtectionPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::DeleteMalwareProtectionPlan, request, handler, context);
+        }
+
+        /**
          * <p>Deletes GuardDuty member accounts (to the current GuardDuty administrator
          * account) specified by the account IDs.</p> <p>With
          * <code>autoEnableOrganizationMembers</code> configuration for your organization
@@ -563,6 +690,32 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Deletes the threat entity set that is associated with the specified
+         * <code>threatEntitySetId</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteThreatEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteThreatEntitySetOutcome DeleteThreatEntitySet(const Model::DeleteThreatEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteThreatEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteThreatEntitySetRequestT = Model::DeleteThreatEntitySetRequest>
+        Model::DeleteThreatEntitySetOutcomeCallable DeleteThreatEntitySetCallable(const DeleteThreatEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::DeleteThreatEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteThreatEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteThreatEntitySetRequestT = Model::DeleteThreatEntitySetRequest>
+        void DeleteThreatEntitySetAsync(const DeleteThreatEntitySetRequestT& request, const DeleteThreatEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::DeleteThreatEntitySet, request, handler, context);
+        }
+
+        /**
          * <p>Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteThreatIntelSet">AWS
@@ -586,6 +739,32 @@ namespace GuardDuty
         void DeleteThreatIntelSetAsync(const DeleteThreatIntelSetRequestT& request, const DeleteThreatIntelSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&GuardDutyClient::DeleteThreatIntelSet, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the trusted entity set that is associated with the specified
+         * <code>trustedEntitySetId</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteTrustedEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteTrustedEntitySetOutcome DeleteTrustedEntitySet(const Model::DeleteTrustedEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteTrustedEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteTrustedEntitySetRequestT = Model::DeleteTrustedEntitySetRequest>
+        Model::DeleteTrustedEntitySetOutcomeCallable DeleteTrustedEntitySetCallable(const DeleteTrustedEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::DeleteTrustedEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteTrustedEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteTrustedEntitySetRequestT = Model::DeleteTrustedEntitySetRequest>
+        void DeleteTrustedEntitySetAsync(const DeleteTrustedEntitySetRequestT& request, const DeleteTrustedEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::DeleteTrustedEntitySet, request, handler, context);
         }
 
         /**
@@ -756,7 +935,19 @@ namespace GuardDuty
          * API. </p> <p>With <code>autoEnableOrganizationMembers</code> configuration for
          * your organization set to <code>ALL</code>, you'll receive an error if you
          * attempt to disassociate a member account before removing them from your
-         * organization.</p><p><h3>See Also:</h3>   <a
+         * organization.</p> <p>If you disassociate a member account that was added by
+         * invitation, the member account details obtained from this API, including the
+         * associated email addresses, will be retained. This is done so that the delegated
+         * administrator can invoke the <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html">InviteMembers</a>
+         * API without the need to invoke the CreateMembers API again. To remove the
+         * details associated with a member account, the delegated administrator must
+         * invoke the <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html">DeleteMembers</a>
+         * API. </p> <p>When the member accounts added through Organizations are later
+         * disassociated, you (administrator) can't invite them by calling the
+         * InviteMembers API. You can create an association with these member accounts
+         * again only by calling the CreateMembers API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DisassociateMembers">AWS
          * API Reference</a></p>
          */
@@ -809,10 +1000,15 @@ namespace GuardDuty
 
         /**
          * <p>Provides the details of the GuardDuty administrator account associated with
-         * the current GuardDuty member account.</p>  <p>If the organization's
-         * management account or a delegated administrator runs this API, it will return
-         * success (<code>HTTP 200</code>) but no content.</p> <p><h3>See Also:</h3>
-         * <a
+         * the current GuardDuty member account.</p> <p>Based on the type of account that
+         * runs this API, the following list shows how the API behavior varies:</p> <ul>
+         * <li> <p>When the GuardDuty administrator account runs this API, it will return
+         * success (<code>HTTP 200</code>) but no content.</p> </li> <li> <p>When a member
+         * account runs this API, it will return the details of the GuardDuty administrator
+         * account that is associated with this calling member account.</p> </li> <li>
+         * <p>When an individual account (not associated with an organization) runs this
+         * API, it will return success (<code>HTTP 200</code>) but no content.</p> </li>
+         * </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetAdministratorAccount">AWS
          * API Reference</a></p>
          */
@@ -866,10 +1062,10 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Retrieves an Amazon GuardDuty detector specified by the detectorId.</p>
-         * <p>There might be regional differences because some data sources might not be
-         * available in all the Amazon Web Services Regions where GuardDuty is presently
-         * supported. For more information, see <a
+         * <p>Retrieves a GuardDuty detector specified by the detectorId.</p> <p>There
+         * might be regional differences because some data sources might not be available
+         * in all the Amazon Web Services Regions where GuardDuty is presently supported.
+         * For more information, see <a
          * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
          * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetDetector">AWS
@@ -948,8 +1144,15 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Lists Amazon GuardDuty findings statistics for the specified detector
-         * ID.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists GuardDuty findings statistics for the specified detector ID.</p> <p>You
+         * must provide either <code>findingStatisticTypes</code> or <code>groupBy</code>
+         * parameter, and not both. You can use the <code>maxResults</code> and
+         * <code>orderBy</code> parameters only when using <code>groupBy</code>.</p>
+         * <p>There might be regional differences because some flags might not be available
+         * in all the Regions where GuardDuty is currently supported. For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
+         * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetFindingsStatistics">AWS
          * API Reference</a></p>
          */
@@ -1006,13 +1209,13 @@ namespace GuardDuty
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetInvitationsCount">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetInvitationsCountOutcome GetInvitationsCount(const Model::GetInvitationsCountRequest& request) const;
+        virtual Model::GetInvitationsCountOutcome GetInvitationsCount(const Model::GetInvitationsCountRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetInvitationsCount that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetInvitationsCountRequestT = Model::GetInvitationsCountRequest>
-        Model::GetInvitationsCountOutcomeCallable GetInvitationsCountCallable(const GetInvitationsCountRequestT& request) const
+        Model::GetInvitationsCountOutcomeCallable GetInvitationsCountCallable(const GetInvitationsCountRequestT& request = {}) const
         {
             return SubmitCallable(&GuardDutyClient::GetInvitationsCount, request);
         }
@@ -1021,9 +1224,35 @@ namespace GuardDuty
          * An Async wrapper for GetInvitationsCount that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetInvitationsCountRequestT = Model::GetInvitationsCountRequest>
-        void GetInvitationsCountAsync(const GetInvitationsCountRequestT& request, const GetInvitationsCountResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetInvitationsCountAsync(const GetInvitationsCountResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetInvitationsCountRequestT& request = {}) const
         {
             return SubmitAsync(&GuardDutyClient::GetInvitationsCount, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves the Malware Protection plan details associated with a Malware
+         * Protection plan ID.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetMalwareProtectionPlan">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetMalwareProtectionPlanOutcome GetMalwareProtectionPlan(const Model::GetMalwareProtectionPlanRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetMalwareProtectionPlan that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetMalwareProtectionPlanRequestT = Model::GetMalwareProtectionPlanRequest>
+        Model::GetMalwareProtectionPlanOutcomeCallable GetMalwareProtectionPlanCallable(const GetMalwareProtectionPlanRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::GetMalwareProtectionPlan, request);
+        }
+
+        /**
+         * An Async wrapper for GetMalwareProtectionPlan that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetMalwareProtectionPlanRequestT = Model::GetMalwareProtectionPlanRequest>
+        void GetMalwareProtectionPlanAsync(const GetMalwareProtectionPlanRequestT& request, const GetMalwareProtectionPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::GetMalwareProtectionPlan, request, handler, context);
         }
 
         /**
@@ -1113,12 +1342,11 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Retrieves how many active member accounts in your Amazon Web Services
-         * organization have each feature enabled within GuardDuty. Only a delegated
-         * GuardDuty administrator of an organization can run this API.</p> <p>When you
-         * create a new Amazon Web Services organization, it might take up to 24 hours to
-         * generate the statistics for the entire organization.</p><p><h3>See Also:</h3>  
-         * <a
+         * <p>Retrieves how many active member accounts have each feature enabled within
+         * GuardDuty. Only a delegated GuardDuty administrator of an organization can run
+         * this API.</p> <p>When you create a new organization, it might take up to 24
+         * hours to generate the statistics for the entire organization.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetOrganizationStatistics">AWS
          * API Reference</a></p>
          */
@@ -1169,6 +1397,32 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Retrieves the threat entity set associated with the specified
+         * <code>threatEntitySetId</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetThreatEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetThreatEntitySetOutcome GetThreatEntitySet(const Model::GetThreatEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetThreatEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetThreatEntitySetRequestT = Model::GetThreatEntitySetRequest>
+        Model::GetThreatEntitySetOutcomeCallable GetThreatEntitySetCallable(const GetThreatEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::GetThreatEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for GetThreatEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetThreatEntitySetRequestT = Model::GetThreatEntitySetRequest>
+        void GetThreatEntitySetAsync(const GetThreatEntitySetRequestT& request, const GetThreatEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::GetThreatEntitySet, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
          * ID.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetThreatIntelSet">AWS
@@ -1192,6 +1446,32 @@ namespace GuardDuty
         void GetThreatIntelSetAsync(const GetThreatIntelSetRequestT& request, const GetThreatIntelSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&GuardDutyClient::GetThreatIntelSet, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves the trusted entity set associated with the specified
+         * <code>trustedEntitySetId</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetTrustedEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetTrustedEntitySetOutcome GetTrustedEntitySet(const Model::GetTrustedEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetTrustedEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetTrustedEntitySetRequestT = Model::GetTrustedEntitySetRequest>
+        Model::GetTrustedEntitySetOutcomeCallable GetTrustedEntitySetCallable(const GetTrustedEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::GetTrustedEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for GetTrustedEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetTrustedEntitySetRequestT = Model::GetTrustedEntitySetRequest>
+        void GetTrustedEntitySetAsync(const GetTrustedEntitySetRequestT& request, const GetTrustedEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::GetTrustedEntitySet, request, handler, context);
         }
 
         /**
@@ -1250,7 +1530,19 @@ namespace GuardDuty
          * again. To remove the details associated with a member account, you must also
          * invoke <a
          * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html">DeleteMembers</a>.
-         * </p><p><h3>See Also:</h3>   <a
+         * </p> <p>If you disassociate a member account that was added by invitation, the
+         * member account details obtained from this API, including the associated email
+         * addresses, will be retained. This is done so that the delegated administrator
+         * can invoke the <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html">InviteMembers</a>
+         * API without the need to invoke the CreateMembers API again. To remove the
+         * details associated with a member account, the delegated administrator must
+         * invoke the <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html">DeleteMembers</a>
+         * API. </p> <p>When the member accounts added through Organizations are later
+         * disassociated, you (administrator) can't invite them by calling the
+         * InviteMembers API. You can create an association with these member accounts
+         * again only by calling the CreateMembers API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/InviteMembers">AWS
          * API Reference</a></p>
          */
@@ -1309,13 +1601,13 @@ namespace GuardDuty
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListDetectors">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDetectorsOutcome ListDetectors(const Model::ListDetectorsRequest& request) const;
+        virtual Model::ListDetectorsOutcome ListDetectors(const Model::ListDetectorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDetectors that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDetectorsRequestT = Model::ListDetectorsRequest>
-        Model::ListDetectorsOutcomeCallable ListDetectorsCallable(const ListDetectorsRequestT& request) const
+        Model::ListDetectorsOutcomeCallable ListDetectorsCallable(const ListDetectorsRequestT& request = {}) const
         {
             return SubmitCallable(&GuardDutyClient::ListDetectors, request);
         }
@@ -1324,7 +1616,7 @@ namespace GuardDuty
          * An Async wrapper for ListDetectors that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDetectorsRequestT = Model::ListDetectorsRequest>
-        void ListDetectorsAsync(const ListDetectorsRequestT& request, const ListDetectorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDetectorsAsync(const ListDetectorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDetectorsRequestT& request = {}) const
         {
             return SubmitAsync(&GuardDutyClient::ListDetectors, request, handler, context);
         }
@@ -1356,8 +1648,11 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Lists Amazon GuardDuty findings for the specified detector ID.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Lists GuardDuty findings for the specified detector ID.</p> <p>There might be
+         * regional differences because some flags might not be available in all the
+         * Regions where GuardDuty is currently supported. For more information, see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
+         * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListFindings">AWS
          * API Reference</a></p>
          */
@@ -1414,13 +1709,13 @@ namespace GuardDuty
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListInvitations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListInvitationsOutcome ListInvitations(const Model::ListInvitationsRequest& request) const;
+        virtual Model::ListInvitationsOutcome ListInvitations(const Model::ListInvitationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListInvitations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListInvitationsRequestT = Model::ListInvitationsRequest>
-        Model::ListInvitationsOutcomeCallable ListInvitationsCallable(const ListInvitationsRequestT& request) const
+        Model::ListInvitationsOutcomeCallable ListInvitationsCallable(const ListInvitationsRequestT& request = {}) const
         {
             return SubmitCallable(&GuardDutyClient::ListInvitations, request);
         }
@@ -1429,9 +1724,35 @@ namespace GuardDuty
          * An Async wrapper for ListInvitations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListInvitationsRequestT = Model::ListInvitationsRequest>
-        void ListInvitationsAsync(const ListInvitationsRequestT& request, const ListInvitationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListInvitationsAsync(const ListInvitationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListInvitationsRequestT& request = {}) const
         {
             return SubmitAsync(&GuardDutyClient::ListInvitations, request, handler, context);
+        }
+
+        /**
+         * <p>Lists the Malware Protection plan IDs associated with the protected resources
+         * in your Amazon Web Services account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListMalwareProtectionPlans">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListMalwareProtectionPlansOutcome ListMalwareProtectionPlans(const Model::ListMalwareProtectionPlansRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListMalwareProtectionPlans that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListMalwareProtectionPlansRequestT = Model::ListMalwareProtectionPlansRequest>
+        Model::ListMalwareProtectionPlansOutcomeCallable ListMalwareProtectionPlansCallable(const ListMalwareProtectionPlansRequestT& request = {}) const
+        {
+            return SubmitCallable(&GuardDutyClient::ListMalwareProtectionPlans, request);
+        }
+
+        /**
+         * An Async wrapper for ListMalwareProtectionPlans that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListMalwareProtectionPlansRequestT = Model::ListMalwareProtectionPlansRequest>
+        void ListMalwareProtectionPlansAsync(const ListMalwareProtectionPlansResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMalwareProtectionPlansRequestT& request = {}) const
+        {
+            return SubmitAsync(&GuardDutyClient::ListMalwareProtectionPlans, request, handler, context);
         }
 
         /**
@@ -1467,13 +1788,13 @@ namespace GuardDuty
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListOrganizationAdminAccounts">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListOrganizationAdminAccountsOutcome ListOrganizationAdminAccounts(const Model::ListOrganizationAdminAccountsRequest& request) const;
+        virtual Model::ListOrganizationAdminAccountsOutcome ListOrganizationAdminAccounts(const Model::ListOrganizationAdminAccountsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListOrganizationAdminAccounts that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListOrganizationAdminAccountsRequestT = Model::ListOrganizationAdminAccountsRequest>
-        Model::ListOrganizationAdminAccountsOutcomeCallable ListOrganizationAdminAccountsCallable(const ListOrganizationAdminAccountsRequestT& request) const
+        Model::ListOrganizationAdminAccountsOutcomeCallable ListOrganizationAdminAccountsCallable(const ListOrganizationAdminAccountsRequestT& request = {}) const
         {
             return SubmitCallable(&GuardDutyClient::ListOrganizationAdminAccounts, request);
         }
@@ -1482,7 +1803,7 @@ namespace GuardDuty
          * An Async wrapper for ListOrganizationAdminAccounts that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListOrganizationAdminAccountsRequestT = Model::ListOrganizationAdminAccountsRequest>
-        void ListOrganizationAdminAccountsAsync(const ListOrganizationAdminAccountsRequestT& request, const ListOrganizationAdminAccountsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListOrganizationAdminAccountsAsync(const ListOrganizationAdminAccountsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListOrganizationAdminAccountsRequestT& request = {}) const
         {
             return SubmitAsync(&GuardDutyClient::ListOrganizationAdminAccounts, request, handler, context);
         }
@@ -1542,6 +1863,34 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Lists the threat entity sets associated with the specified GuardDuty detector
+         * ID. If you use this operation from a member account, the threat entity sets that
+         * are returned as a response, belong to the administrator account.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListThreatEntitySets">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListThreatEntitySetsOutcome ListThreatEntitySets(const Model::ListThreatEntitySetsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListThreatEntitySets that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListThreatEntitySetsRequestT = Model::ListThreatEntitySetsRequest>
+        Model::ListThreatEntitySetsOutcomeCallable ListThreatEntitySetsCallable(const ListThreatEntitySetsRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::ListThreatEntitySets, request);
+        }
+
+        /**
+         * An Async wrapper for ListThreatEntitySets that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListThreatEntitySetsRequestT = Model::ListThreatEntitySetsRequest>
+        void ListThreatEntitySetsAsync(const ListThreatEntitySetsRequestT& request, const ListThreatEntitySetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::ListThreatEntitySets, request, handler, context);
+        }
+
+        /**
          * <p>Lists the ThreatIntelSets of the GuardDuty service specified by the detector
          * ID. If you use this operation from a member account, the ThreatIntelSets
          * associated with the administrator account are returned.</p><p><h3>See Also:</h3>
@@ -1570,10 +1919,42 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Lists the trusted entity sets associated with the specified GuardDuty
+         * detector ID. If you use this operation from a member account, the trusted entity
+         * sets that are returned as a response, belong to the administrator
+         * account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListTrustedEntitySets">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListTrustedEntitySetsOutcome ListTrustedEntitySets(const Model::ListTrustedEntitySetsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListTrustedEntitySets that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListTrustedEntitySetsRequestT = Model::ListTrustedEntitySetsRequest>
+        Model::ListTrustedEntitySetsOutcomeCallable ListTrustedEntitySetsCallable(const ListTrustedEntitySetsRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::ListTrustedEntitySets, request);
+        }
+
+        /**
+         * An Async wrapper for ListTrustedEntitySets that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListTrustedEntitySetsRequestT = Model::ListTrustedEntitySetsRequest>
+        void ListTrustedEntitySetsAsync(const ListTrustedEntitySetsRequestT& request, const ListTrustedEntitySetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::ListTrustedEntitySets, request, handler, context);
+        }
+
+        /**
          * <p>Initiates the malware scan. Invoking this API will automatically create the
          * <a
          * href="https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html">Service-linked
-         * role </a> in the corresponding account.</p><p><h3>See Also:</h3>   <a
+         * role</a> in the corresponding account.</p> <p>When the malware scan starts, you
+         * can use the associated scan ID to track the status of the scan. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeMalwareScans.html">DescribeMalwareScans</a>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/StartMalwareScan">AWS
          * API Reference</a></p>
          */
@@ -1733,10 +2114,16 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Updates the Amazon GuardDuty detector specified by the detectorId.</p>
-         * <p>There might be regional differences because some data sources might not be
-         * available in all the Amazon Web Services Regions where GuardDuty is presently
-         * supported. For more information, see <a
+         * <p>Updates the GuardDuty detector specified by the detector ID.</p>
+         * <p>Specifying both EKS Runtime Monitoring (<code>EKS_RUNTIME_MONITORING</code>)
+         * and Runtime Monitoring (<code>RUNTIME_MONITORING</code>) will cause an error.
+         * You can add only one of these two features because Runtime Monitoring already
+         * includes the threat detection for Amazon EKS resources. For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html">Runtime
+         * Monitoring</a>.</p> <p>There might be regional differences because some data
+         * sources might not be available in all the Amazon Web Services Regions where
+         * GuardDuty is presently supported. For more information, see <a
          * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
          * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateDetector">AWS
@@ -1840,6 +2227,32 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Updates an existing Malware Protection plan resource.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateMalwareProtectionPlan">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateMalwareProtectionPlanOutcome UpdateMalwareProtectionPlan(const Model::UpdateMalwareProtectionPlanRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateMalwareProtectionPlan that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateMalwareProtectionPlanRequestT = Model::UpdateMalwareProtectionPlanRequest>
+        Model::UpdateMalwareProtectionPlanOutcomeCallable UpdateMalwareProtectionPlanCallable(const UpdateMalwareProtectionPlanRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::UpdateMalwareProtectionPlan, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateMalwareProtectionPlan that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateMalwareProtectionPlanRequestT = Model::UpdateMalwareProtectionPlanRequest>
+        void UpdateMalwareProtectionPlanAsync(const UpdateMalwareProtectionPlanRequestT& request, const UpdateMalwareProtectionPlanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::UpdateMalwareProtectionPlan, request, handler, context);
+        }
+
+        /**
          * <p>Updates the malware scan settings.</p> <p>There might be regional differences
          * because some data sources might not be available in all the Amazon Web Services
          * Regions where GuardDuty is presently supported. For more information, see <a
@@ -1869,10 +2282,15 @@ namespace GuardDuty
         }
 
         /**
-         * <p>Contains information on member accounts to be updated.</p> <p>There might be
-         * regional differences because some data sources might not be available in all the
-         * Amazon Web Services Regions where GuardDuty is presently supported. For more
-         * information, see <a
+         * <p>Contains information on member accounts to be updated.</p> <p>Specifying both
+         * EKS Runtime Monitoring (<code>EKS_RUNTIME_MONITORING</code>) and Runtime
+         * Monitoring (<code>RUNTIME_MONITORING</code>) will cause an error. You can add
+         * only one of these two features because Runtime Monitoring already includes the
+         * threat detection for Amazon EKS resources. For more information, see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html">Runtime
+         * Monitoring</a>.</p> <p>There might be regional differences because some data
+         * sources might not be available in all the Amazon Web Services Regions where
+         * GuardDuty is presently supported. For more information, see <a
          * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
          * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateMemberDetectors">AWS
@@ -1901,10 +2319,15 @@ namespace GuardDuty
         /**
          * <p>Configures the delegated administrator account with the provided values. You
          * must provide a value for either <code>autoEnableOrganizationMembers</code> or
-         * <code>autoEnable</code>, but not both. </p> <p>There might be regional
-         * differences because some data sources might not be available in all the Amazon
-         * Web Services Regions where GuardDuty is presently supported. For more
-         * information, see <a
+         * <code>autoEnable</code>, but not both. </p> <p>Specifying both EKS Runtime
+         * Monitoring (<code>EKS_RUNTIME_MONITORING</code>) and Runtime Monitoring
+         * (<code>RUNTIME_MONITORING</code>) will cause an error. You can add only one of
+         * these two features because Runtime Monitoring already includes the threat
+         * detection for Amazon EKS resources. For more information, see <a
+         * href="https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html">Runtime
+         * Monitoring</a>.</p> <p>There might be regional differences because some data
+         * sources might not be available in all the Amazon Web Services Regions where
+         * GuardDuty is presently supported. For more information, see <a
          * href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html">Regions
          * and endpoints</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateOrganizationConfiguration">AWS
@@ -1957,6 +2380,32 @@ namespace GuardDuty
         }
 
         /**
+         * <p>Updates the threat entity set associated with the specified
+         * <code>threatEntitySetId</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateThreatEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateThreatEntitySetOutcome UpdateThreatEntitySet(const Model::UpdateThreatEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateThreatEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateThreatEntitySetRequestT = Model::UpdateThreatEntitySetRequest>
+        Model::UpdateThreatEntitySetOutcomeCallable UpdateThreatEntitySetCallable(const UpdateThreatEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::UpdateThreatEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateThreatEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateThreatEntitySetRequestT = Model::UpdateThreatEntitySetRequest>
+        void UpdateThreatEntitySetAsync(const UpdateThreatEntitySetRequestT& request, const UpdateThreatEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::UpdateThreatEntitySet, request, handler, context);
+        }
+
+        /**
          * <p>Updates the ThreatIntelSet specified by the ThreatIntelSet ID.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateThreatIntelSet">AWS
@@ -1982,6 +2431,32 @@ namespace GuardDuty
             return SubmitAsync(&GuardDutyClient::UpdateThreatIntelSet, request, handler, context);
         }
 
+        /**
+         * <p>Updates the trusted entity set associated with the specified
+         * <code>trustedEntitySetId</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateTrustedEntitySet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateTrustedEntitySetOutcome UpdateTrustedEntitySet(const Model::UpdateTrustedEntitySetRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateTrustedEntitySet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateTrustedEntitySetRequestT = Model::UpdateTrustedEntitySetRequest>
+        Model::UpdateTrustedEntitySetOutcomeCallable UpdateTrustedEntitySetCallable(const UpdateTrustedEntitySetRequestT& request) const
+        {
+            return SubmitCallable(&GuardDutyClient::UpdateTrustedEntitySet, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateTrustedEntitySet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateTrustedEntitySetRequestT = Model::UpdateTrustedEntitySetRequest>
+        void UpdateTrustedEntitySetAsync(const UpdateTrustedEntitySetRequestT& request, const UpdateTrustedEntitySetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&GuardDutyClient::UpdateTrustedEntitySet, request, handler, context);
+        }
+
 
       void OverrideEndpoint(const Aws::String& endpoint);
       std::shared_ptr<GuardDutyEndpointProviderBase>& accessEndpointProvider();
@@ -1990,7 +2465,6 @@ namespace GuardDuty
       void init(const GuardDutyClientConfiguration& clientConfiguration);
 
       GuardDutyClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<GuardDutyEndpointProviderBase> m_endpointProvider;
   };
 

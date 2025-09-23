@@ -18,15 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-DatastoreActivity::DatastoreActivity() : 
-    m_nameHasBeenSet(false),
-    m_datastoreNameHasBeenSet(false)
-{
-}
-
-DatastoreActivity::DatastoreActivity(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_datastoreNameHasBeenSet(false)
+DatastoreActivity::DatastoreActivity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DatastoreActivity& DatastoreActivity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("datastoreName"))
   {
     m_datastoreName = jsonValue.GetString("datastoreName");
-
     m_datastoreNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace Batch
 namespace Model
 {
 
-EksMetadata::EksMetadata() : 
-    m_labelsHasBeenSet(false)
-{
-}
-
-EksMetadata::EksMetadata(JsonView jsonValue) : 
-    m_labelsHasBeenSet(false)
+EksMetadata::EksMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,20 @@ EksMetadata& EksMetadata::operator =(JsonView jsonValue)
     }
     m_labelsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("annotations"))
+  {
+    Aws::Map<Aws::String, JsonView> annotationsJsonMap = jsonValue.GetObject("annotations").GetAllObjects();
+    for(auto& annotationsItem : annotationsJsonMap)
+    {
+      m_annotations[annotationsItem.first] = annotationsItem.second.AsString();
+    }
+    m_annotationsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("namespace"))
+  {
+    m_namespace = jsonValue.GetString("namespace");
+    m_namespaceHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,6 +63,23 @@ JsonValue EksMetadata::Jsonize() const
      labelsJsonMap.WithString(labelsItem.first, labelsItem.second);
    }
    payload.WithObject("labels", std::move(labelsJsonMap));
+
+  }
+
+  if(m_annotationsHasBeenSet)
+  {
+   JsonValue annotationsJsonMap;
+   for(auto& annotationsItem : m_annotations)
+   {
+     annotationsJsonMap.WithString(annotationsItem.first, annotationsItem.second);
+   }
+   payload.WithObject("annotations", std::move(annotationsJsonMap));
+
+  }
+
+  if(m_namespaceHasBeenSet)
+  {
+   payload.WithString("namespace", m_namespace);
 
   }
 

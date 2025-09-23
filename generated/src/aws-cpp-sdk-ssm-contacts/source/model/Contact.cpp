@@ -18,21 +18,7 @@ namespace SSMContacts
 namespace Model
 {
 
-Contact::Contact() : 
-    m_contactArnHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_type(ContactType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-Contact::Contact(JsonView jsonValue) : 
-    m_contactArnHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_type(ContactType::NOT_SET),
-    m_typeHasBeenSet(false)
+Contact::Contact(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ Contact& Contact::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ContactArn"))
   {
     m_contactArn = jsonValue.GetString("ContactArn");
-
     m_contactArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Alias"))
   {
     m_alias = jsonValue.GetString("Alias");
-
     m_aliasHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = ContactTypeMapper::GetContactTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-TaskTemplateDefaultFieldValue::TaskTemplateDefaultFieldValue() : 
-    m_idHasBeenSet(false),
-    m_defaultValueHasBeenSet(false)
-{
-}
-
-TaskTemplateDefaultFieldValue::TaskTemplateDefaultFieldValue(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_defaultValueHasBeenSet(false)
+TaskTemplateDefaultFieldValue::TaskTemplateDefaultFieldValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TaskTemplateDefaultFieldValue& TaskTemplateDefaultFieldValue::operator =(JsonVie
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetObject("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DefaultValue"))
   {
     m_defaultValue = jsonValue.GetString("DefaultValue");
-
     m_defaultValueHasBeenSet = true;
   }
-
   return *this;
 }
 

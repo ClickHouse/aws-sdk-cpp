@@ -25,7 +25,7 @@ namespace Model
   class ListSchemaVersionsRequest : public SchemasRequest
   {
   public:
-    AWS_SCHEMAS_API ListSchemaVersionsRequest();
+    AWS_SCHEMAS_API ListSchemaVersionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,160 +38,54 @@ namespace Model
     AWS_SCHEMAS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     
-    inline int GetLimit() const{ return m_limit; }
-
-    
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    
     inline ListSchemaVersionsRequest& WithLimit(int value) { SetLimit(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token that specifies the next page of results to return. To request the
      * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
      * be shared with other accounts.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSchemaVersionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline ListSchemaVersionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline ListSchemaVersionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline ListSchemaVersionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the registry.</p>
      */
-    inline const Aws::String& GetRegistryName() const{ return m_registryName; }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
+    inline const Aws::String& GetRegistryName() const { return m_registryName; }
     inline bool RegistryNameHasBeenSet() const { return m_registryNameHasBeenSet; }
+    template<typename RegistryNameT = Aws::String>
+    void SetRegistryName(RegistryNameT&& value) { m_registryNameHasBeenSet = true; m_registryName = std::forward<RegistryNameT>(value); }
+    template<typename RegistryNameT = Aws::String>
+    ListSchemaVersionsRequest& WithRegistryName(RegistryNameT&& value) { SetRegistryName(std::forward<RegistryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline void SetRegistryName(const Aws::String& value) { m_registryNameHasBeenSet = true; m_registryName = value; }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline void SetRegistryName(Aws::String&& value) { m_registryNameHasBeenSet = true; m_registryName = std::move(value); }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline void SetRegistryName(const char* value) { m_registryNameHasBeenSet = true; m_registryName.assign(value); }
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline ListSchemaVersionsRequest& WithRegistryName(const Aws::String& value) { SetRegistryName(value); return *this;}
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline ListSchemaVersionsRequest& WithRegistryName(Aws::String&& value) { SetRegistryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the registry.</p>
-     */
-    inline ListSchemaVersionsRequest& WithRegistryName(const char* value) { SetRegistryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the schema.</p>
      */
-    inline const Aws::String& GetSchemaName() const{ return m_schemaName; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
+    inline const Aws::String& GetSchemaName() const { return m_schemaName; }
     inline bool SchemaNameHasBeenSet() const { return m_schemaNameHasBeenSet; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetSchemaName(const Aws::String& value) { m_schemaNameHasBeenSet = true; m_schemaName = value; }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetSchemaName(Aws::String&& value) { m_schemaNameHasBeenSet = true; m_schemaName = std::move(value); }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline void SetSchemaName(const char* value) { m_schemaNameHasBeenSet = true; m_schemaName.assign(value); }
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline ListSchemaVersionsRequest& WithSchemaName(const Aws::String& value) { SetSchemaName(value); return *this;}
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline ListSchemaVersionsRequest& WithSchemaName(Aws::String&& value) { SetSchemaName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the schema.</p>
-     */
-    inline ListSchemaVersionsRequest& WithSchemaName(const char* value) { SetSchemaName(value); return *this;}
-
+    template<typename SchemaNameT = Aws::String>
+    void SetSchemaName(SchemaNameT&& value) { m_schemaNameHasBeenSet = true; m_schemaName = std::forward<SchemaNameT>(value); }
+    template<typename SchemaNameT = Aws::String>
+    ListSchemaVersionsRequest& WithSchemaName(SchemaNameT&& value) { SetSchemaName(std::forward<SchemaNameT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
 
     Aws::String m_nextToken;

@@ -21,7 +21,7 @@ namespace Model
   class UpdateBlueprintRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API UpdateBlueprintRequest();
+    AWS_GLUE_API UpdateBlueprintRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,128 +34,41 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the blueprint.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateBlueprintRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline UpdateBlueprintRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline UpdateBlueprintRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline UpdateBlueprintRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the blueprint.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the blueprint.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateBlueprintRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the blueprint.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the blueprint.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the blueprint.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the blueprint.</p>
-     */
-    inline UpdateBlueprintRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the blueprint.</p>
-     */
-    inline UpdateBlueprintRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the blueprint.</p>
-     */
-    inline UpdateBlueprintRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
      */
-    inline const Aws::String& GetBlueprintLocation() const{ return m_blueprintLocation; }
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
+    inline const Aws::String& GetBlueprintLocation() const { return m_blueprintLocation; }
     inline bool BlueprintLocationHasBeenSet() const { return m_blueprintLocationHasBeenSet; }
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
-    inline void SetBlueprintLocation(const Aws::String& value) { m_blueprintLocationHasBeenSet = true; m_blueprintLocation = value; }
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
-    inline void SetBlueprintLocation(Aws::String&& value) { m_blueprintLocationHasBeenSet = true; m_blueprintLocation = std::move(value); }
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
-    inline void SetBlueprintLocation(const char* value) { m_blueprintLocationHasBeenSet = true; m_blueprintLocation.assign(value); }
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
-    inline UpdateBlueprintRequest& WithBlueprintLocation(const Aws::String& value) { SetBlueprintLocation(value); return *this;}
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
-    inline UpdateBlueprintRequest& WithBlueprintLocation(Aws::String&& value) { SetBlueprintLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies a path in Amazon S3 where the blueprint is published.</p>
-     */
-    inline UpdateBlueprintRequest& WithBlueprintLocation(const char* value) { SetBlueprintLocation(value); return *this;}
-
+    template<typename BlueprintLocationT = Aws::String>
+    void SetBlueprintLocation(BlueprintLocationT&& value) { m_blueprintLocationHasBeenSet = true; m_blueprintLocation = std::forward<BlueprintLocationT>(value); }
+    template<typename BlueprintLocationT = Aws::String>
+    UpdateBlueprintRequest& WithBlueprintLocation(BlueprintLocationT&& value) { SetBlueprintLocation(std::forward<BlueprintLocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

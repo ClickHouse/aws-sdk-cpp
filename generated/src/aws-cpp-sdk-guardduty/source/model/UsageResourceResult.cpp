@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-UsageResourceResult::UsageResourceResult() : 
-    m_resourceHasBeenSet(false),
-    m_totalHasBeenSet(false)
-{
-}
-
-UsageResourceResult::UsageResourceResult(JsonView jsonValue) : 
-    m_resourceHasBeenSet(false),
-    m_totalHasBeenSet(false)
+UsageResourceResult::UsageResourceResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ UsageResourceResult& UsageResourceResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("resource"))
   {
     m_resource = jsonValue.GetString("resource");
-
     m_resourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("total"))
   {
     m_total = jsonValue.GetObject("total");
-
     m_totalHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,203 +33,64 @@ namespace Model
   class AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails();
+    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails() = default;
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The device name. </p>
      */
-    inline const Aws::String& GetDeviceName() const{ return m_deviceName; }
-
-    /**
-     * <p> The device name. </p>
-     */
+    inline const Aws::String& GetDeviceName() const { return m_deviceName; }
     inline bool DeviceNameHasBeenSet() const { return m_deviceNameHasBeenSet; }
+    template<typename DeviceNameT = Aws::String>
+    void SetDeviceName(DeviceNameT&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::forward<DeviceNameT>(value); }
+    template<typename DeviceNameT = Aws::String>
+    AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithDeviceName(DeviceNameT&& value) { SetDeviceName(std::forward<DeviceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The device name. </p>
-     */
-    inline void SetDeviceName(const Aws::String& value) { m_deviceNameHasBeenSet = true; m_deviceName = value; }
-
-    /**
-     * <p> The device name. </p>
-     */
-    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::move(value); }
-
-    /**
-     * <p> The device name. </p>
-     */
-    inline void SetDeviceName(const char* value) { m_deviceNameHasBeenSet = true; m_deviceName.assign(value); }
-
-    /**
-     * <p> The device name. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithDeviceName(const Aws::String& value) { SetDeviceName(value); return *this;}
-
-    /**
-     * <p> The device name. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithDeviceName(Aws::String&& value) { SetDeviceName(std::move(value)); return *this;}
-
-    /**
-     * <p> The device name. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithDeviceName(const char* value) { SetDeviceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Parameters used to automatically set up Amazon EBS volumes when the instance
      * is launched. </p>
      */
-    inline const AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails& GetEbs() const{ return m_ebs; }
-
-    /**
-     * <p> Parameters used to automatically set up Amazon EBS volumes when the instance
-     * is launched. </p>
-     */
+    inline const AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails& GetEbs() const { return m_ebs; }
     inline bool EbsHasBeenSet() const { return m_ebsHasBeenSet; }
+    template<typename EbsT = AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails>
+    void SetEbs(EbsT&& value) { m_ebsHasBeenSet = true; m_ebs = std::forward<EbsT>(value); }
+    template<typename EbsT = AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails>
+    AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithEbs(EbsT&& value) { SetEbs(std::forward<EbsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Parameters used to automatically set up Amazon EBS volumes when the instance
-     * is launched. </p>
-     */
-    inline void SetEbs(const AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails& value) { m_ebsHasBeenSet = true; m_ebs = value; }
-
-    /**
-     * <p> Parameters used to automatically set up Amazon EBS volumes when the instance
-     * is launched. </p>
-     */
-    inline void SetEbs(AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails&& value) { m_ebsHasBeenSet = true; m_ebs = std::move(value); }
-
-    /**
-     * <p> Parameters used to automatically set up Amazon EBS volumes when the instance
-     * is launched. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithEbs(const AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails& value) { SetEbs(value); return *this;}
-
-    /**
-     * <p> Parameters used to automatically set up Amazon EBS volumes when the instance
-     * is launched. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithEbs(AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails&& value) { SetEbs(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Omits the device from the block device mapping when an empty string is
      * specified. </p>
      */
-    inline const Aws::String& GetNoDevice() const{ return m_noDevice; }
-
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
+    inline const Aws::String& GetNoDevice() const { return m_noDevice; }
     inline bool NoDeviceHasBeenSet() const { return m_noDeviceHasBeenSet; }
+    template<typename NoDeviceT = Aws::String>
+    void SetNoDevice(NoDeviceT&& value) { m_noDeviceHasBeenSet = true; m_noDevice = std::forward<NoDeviceT>(value); }
+    template<typename NoDeviceT = Aws::String>
+    AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithNoDevice(NoDeviceT&& value) { SetNoDevice(std::forward<NoDeviceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
-    inline void SetNoDevice(const Aws::String& value) { m_noDeviceHasBeenSet = true; m_noDevice = value; }
-
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
-    inline void SetNoDevice(Aws::String&& value) { m_noDeviceHasBeenSet = true; m_noDevice = std::move(value); }
-
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
-    inline void SetNoDevice(const char* value) { m_noDeviceHasBeenSet = true; m_noDevice.assign(value); }
-
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithNoDevice(const Aws::String& value) { SetNoDevice(value); return *this;}
-
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithNoDevice(Aws::String&& value) { SetNoDevice(std::move(value)); return *this;}
-
-    /**
-     * <p> Omits the device from the block device mapping when an empty string is
-     * specified. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithNoDevice(const char* value) { SetNoDevice(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
      * starting from 0. An instance type with 2 available instance store volumes can
      * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
      * number of available instance store volumes depends on the instance type. </p>
      */
-    inline const Aws::String& GetVirtualName() const{ return m_virtualName; }
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
+    inline const Aws::String& GetVirtualName() const { return m_virtualName; }
     inline bool VirtualNameHasBeenSet() const { return m_virtualNameHasBeenSet; }
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
-    inline void SetVirtualName(const Aws::String& value) { m_virtualNameHasBeenSet = true; m_virtualName = value; }
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
-    inline void SetVirtualName(Aws::String&& value) { m_virtualNameHasBeenSet = true; m_virtualName = std::move(value); }
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
-    inline void SetVirtualName(const char* value) { m_virtualNameHasBeenSet = true; m_virtualName.assign(value); }
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithVirtualName(const Aws::String& value) { SetVirtualName(value); return *this;}
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithVirtualName(Aws::String&& value) { SetVirtualName(std::move(value)); return *this;}
-
-    /**
-     * <p> The virtual device name (ephemeralN). Instance store volumes are numbered
-     * starting from 0. An instance type with 2 available instance store volumes can
-     * specify mappings for <code>ephemeral0</code> and <code>ephemeral1</code>. The
-     * number of available instance store volumes depends on the instance type. </p>
-     */
-    inline AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithVirtualName(const char* value) { SetVirtualName(value); return *this;}
-
+    template<typename VirtualNameT = Aws::String>
+    void SetVirtualName(VirtualNameT&& value) { m_virtualNameHasBeenSet = true; m_virtualName = std::forward<VirtualNameT>(value); }
+    template<typename VirtualNameT = Aws::String>
+    AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails& WithVirtualName(VirtualNameT&& value) { SetVirtualName(std::forward<VirtualNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deviceName;

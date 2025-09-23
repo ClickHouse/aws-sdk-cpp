@@ -18,15 +18,7 @@ namespace MemoryDB
 namespace Model
 {
 
-ShardConfigurationRequest::ShardConfigurationRequest() : 
-    m_shardCount(0),
-    m_shardCountHasBeenSet(false)
-{
-}
-
-ShardConfigurationRequest::ShardConfigurationRequest(JsonView jsonValue) : 
-    m_shardCount(0),
-    m_shardCountHasBeenSet(false)
+ShardConfigurationRequest::ShardConfigurationRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ShardConfigurationRequest& ShardConfigurationRequest::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ShardCount"))
   {
     m_shardCount = jsonValue.GetInteger("ShardCount");
-
     m_shardCountHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DeleteDataSourceRequest : public MachineLearningRequest
   {
   public:
-    AWS_MACHINELEARNING_API DeleteDataSourceRequest();
+    AWS_MACHINELEARNING_API DeleteDataSourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_MACHINELEARNING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
     inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId.assign(value); }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
-    inline DeleteDataSourceRequest& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
-    inline DeleteDataSourceRequest& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
-     */
-    inline DeleteDataSourceRequest& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    DeleteDataSourceRequest& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSourceId;

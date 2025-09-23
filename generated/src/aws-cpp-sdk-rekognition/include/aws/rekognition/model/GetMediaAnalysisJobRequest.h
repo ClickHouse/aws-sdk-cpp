@@ -21,7 +21,7 @@ namespace Model
   class GetMediaAnalysisJobRequest : public RekognitionRequest
   {
   public:
-    AWS_REKOGNITION_API GetMediaAnalysisJobRequest();
+    AWS_REKOGNITION_API GetMediaAnalysisJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_REKOGNITION_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Unique identifier for the media analysis job for which you want to retrieve
      * results.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
-    inline GetMediaAnalysisJobRequest& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
-    inline GetMediaAnalysisJobRequest& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique identifier for the media analysis job for which you want to retrieve
-     * results.</p>
-     */
-    inline GetMediaAnalysisJobRequest& WithJobId(const char* value) { SetJobId(value); return *this;}
-
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    GetMediaAnalysisJobRequest& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;

@@ -18,21 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-EnrollmentJobFraudDetectionConfig::EnrollmentJobFraudDetectionConfig() : 
-    m_fraudDetectionAction(FraudDetectionAction::NOT_SET),
-    m_fraudDetectionActionHasBeenSet(false),
-    m_riskThreshold(0),
-    m_riskThresholdHasBeenSet(false),
-    m_watchlistIdsHasBeenSet(false)
-{
-}
-
-EnrollmentJobFraudDetectionConfig::EnrollmentJobFraudDetectionConfig(JsonView jsonValue) : 
-    m_fraudDetectionAction(FraudDetectionAction::NOT_SET),
-    m_fraudDetectionActionHasBeenSet(false),
-    m_riskThreshold(0),
-    m_riskThresholdHasBeenSet(false),
-    m_watchlistIdsHasBeenSet(false)
+EnrollmentJobFraudDetectionConfig::EnrollmentJobFraudDetectionConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ EnrollmentJobFraudDetectionConfig& EnrollmentJobFraudDetectionConfig::operator =
   if(jsonValue.ValueExists("FraudDetectionAction"))
   {
     m_fraudDetectionAction = FraudDetectionActionMapper::GetFraudDetectionActionForName(jsonValue.GetString("FraudDetectionAction"));
-
     m_fraudDetectionActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RiskThreshold"))
   {
     m_riskThreshold = jsonValue.GetInteger("RiskThreshold");
-
     m_riskThresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WatchlistIds"))
   {
     Aws::Utils::Array<JsonView> watchlistIdsJsonList = jsonValue.GetArray("WatchlistIds");
@@ -62,7 +44,6 @@ EnrollmentJobFraudDetectionConfig& EnrollmentJobFraudDetectionConfig::operator =
     }
     m_watchlistIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

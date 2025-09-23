@@ -18,15 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-DetectorModelDefinition::DetectorModelDefinition() : 
-    m_statesHasBeenSet(false),
-    m_initialStateNameHasBeenSet(false)
-{
-}
-
-DetectorModelDefinition::DetectorModelDefinition(JsonView jsonValue) : 
-    m_statesHasBeenSet(false),
-    m_initialStateNameHasBeenSet(false)
+DetectorModelDefinition::DetectorModelDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ DetectorModelDefinition& DetectorModelDefinition::operator =(JsonView jsonValue)
     }
     m_statesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("initialStateName"))
   {
     m_initialStateName = jsonValue.GetString("initialStateName");
-
     m_initialStateNameHasBeenSet = true;
   }
-
   return *this;
 }
 

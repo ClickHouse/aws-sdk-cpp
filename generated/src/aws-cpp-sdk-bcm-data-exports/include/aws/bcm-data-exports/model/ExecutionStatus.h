@@ -33,181 +33,82 @@ namespace Model
   class ExecutionStatus
   {
   public:
-    AWS_BCMDATAEXPORTS_API ExecutionStatus();
+    AWS_BCMDATAEXPORTS_API ExecutionStatus() = default;
     AWS_BCMDATAEXPORTS_API ExecutionStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_BCMDATAEXPORTS_API ExecutionStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BCMDATAEXPORTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time when the execution was completed.</p>
      */
-    inline const Aws::Utils::DateTime& GetCompletedAt() const{ return m_completedAt; }
-
-    /**
-     * <p>The time when the execution was completed.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCompletedAt() const { return m_completedAt; }
     inline bool CompletedAtHasBeenSet() const { return m_completedAtHasBeenSet; }
+    template<typename CompletedAtT = Aws::Utils::DateTime>
+    void SetCompletedAt(CompletedAtT&& value) { m_completedAtHasBeenSet = true; m_completedAt = std::forward<CompletedAtT>(value); }
+    template<typename CompletedAtT = Aws::Utils::DateTime>
+    ExecutionStatus& WithCompletedAt(CompletedAtT&& value) { SetCompletedAt(std::forward<CompletedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the execution was completed.</p>
-     */
-    inline void SetCompletedAt(const Aws::Utils::DateTime& value) { m_completedAtHasBeenSet = true; m_completedAt = value; }
-
-    /**
-     * <p>The time when the execution was completed.</p>
-     */
-    inline void SetCompletedAt(Aws::Utils::DateTime&& value) { m_completedAtHasBeenSet = true; m_completedAt = std::move(value); }
-
-    /**
-     * <p>The time when the execution was completed.</p>
-     */
-    inline ExecutionStatus& WithCompletedAt(const Aws::Utils::DateTime& value) { SetCompletedAt(value); return *this;}
-
-    /**
-     * <p>The time when the execution was completed.</p>
-     */
-    inline ExecutionStatus& WithCompletedAt(Aws::Utils::DateTime&& value) { SetCompletedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the execution was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time when the execution was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    ExecutionStatus& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the execution was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time when the execution was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time when the execution was created.</p>
-     */
-    inline ExecutionStatus& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time when the execution was created.</p>
-     */
-    inline ExecutionStatus& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the execution was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The time when the execution was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    ExecutionStatus& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the execution was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The time when the execution was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The time when the execution was last updated.</p>
-     */
-    inline ExecutionStatus& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The time when the execution was last updated.</p>
-     */
-    inline ExecutionStatus& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The code for the status of the execution.</p>
      */
-    inline const ExecutionStatusCode& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>The code for the status of the execution.</p>
-     */
+    inline ExecutionStatusCode GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
+    inline void SetStatusCode(ExecutionStatusCode value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
+    inline ExecutionStatus& WithStatusCode(ExecutionStatusCode value) { SetStatusCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The code for the status of the execution.</p>
-     */
-    inline void SetStatusCode(const ExecutionStatusCode& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>The code for the status of the execution.</p>
-     */
-    inline void SetStatusCode(ExecutionStatusCode&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>The code for the status of the execution.</p>
-     */
-    inline ExecutionStatus& WithStatusCode(const ExecutionStatusCode& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>The code for the status of the execution.</p>
-     */
-    inline ExecutionStatus& WithStatusCode(ExecutionStatusCode&& value) { SetStatusCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the failed status.</p>
      */
-    inline const ExecutionStatusReason& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>The reason for the failed status.</p>
-     */
+    inline ExecutionStatusReason GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the failed status.</p>
-     */
-    inline void SetStatusReason(const ExecutionStatusReason& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>The reason for the failed status.</p>
-     */
-    inline void SetStatusReason(ExecutionStatusReason&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for the failed status.</p>
-     */
-    inline ExecutionStatus& WithStatusReason(const ExecutionStatusReason& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for the failed status.</p>
-     */
-    inline ExecutionStatus& WithStatusReason(ExecutionStatusReason&& value) { SetStatusReason(std::move(value)); return *this;}
-
+    inline void SetStatusReason(ExecutionStatusReason value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
+    inline ExecutionStatus& WithStatusReason(ExecutionStatusReason value) { SetStatusReason(value); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_completedAt;
+    Aws::Utils::DateTime m_completedAt{};
     bool m_completedAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
 
-    ExecutionStatusCode m_statusCode;
+    ExecutionStatusCode m_statusCode{ExecutionStatusCode::NOT_SET};
     bool m_statusCodeHasBeenSet = false;
 
-    ExecutionStatusReason m_statusReason;
+    ExecutionStatusReason m_statusReason{ExecutionStatusReason::NOT_SET};
     bool m_statusReasonHasBeenSet = false;
   };
 

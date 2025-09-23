@@ -46,176 +46,57 @@ namespace Model
   class RestoreTestingSelectionForCreate
   {
   public:
-    AWS_BACKUP_API RestoreTestingSelectionForCreate();
+    AWS_BACKUP_API RestoreTestingSelectionForCreate() = default;
     AWS_BACKUP_API RestoreTestingSelectionForCreate(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API RestoreTestingSelectionForCreate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
      * target resource; for example:
      * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
      */
-    inline const Aws::String& GetIamRoleArn() const{ return m_iamRoleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
+    inline const Aws::String& GetIamRoleArn() const { return m_iamRoleArn; }
     inline bool IamRoleArnHasBeenSet() const { return m_iamRoleArnHasBeenSet; }
+    template<typename IamRoleArnT = Aws::String>
+    void SetIamRoleArn(IamRoleArnT&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::forward<IamRoleArnT>(value); }
+    template<typename IamRoleArnT = Aws::String>
+    RestoreTestingSelectionForCreate& WithIamRoleArn(IamRoleArnT&& value) { SetIamRoleArn(std::forward<IamRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
-    inline void SetIamRoleArn(const Aws::String& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
-    inline void SetIamRoleArn(Aws::String&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
-    inline void SetIamRoleArn(const char* value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
-    inline RestoreTestingSelectionForCreate& WithIamRoleArn(const Aws::String& value) { SetIamRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
-    inline RestoreTestingSelectionForCreate& WithIamRoleArn(Aws::String&& value) { SetIamRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role that Backup uses to create the
-     * target resource; for example:
-     * <code>arn:aws:iam::123456789012:role/S3Access</code>. </p>
-     */
-    inline RestoreTestingSelectionForCreate& WithIamRoleArn(const char* value) { SetIamRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Each protected resource can be filtered by its specific ARNs, such as
      * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
      * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetProtectedResourceArns() const{ return m_protectedResourceArns; }
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetProtectedResourceArns() const { return m_protectedResourceArns; }
     inline bool ProtectedResourceArnsHasBeenSet() const { return m_protectedResourceArnsHasBeenSet; }
+    template<typename ProtectedResourceArnsT = Aws::Vector<Aws::String>>
+    void SetProtectedResourceArns(ProtectedResourceArnsT&& value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns = std::forward<ProtectedResourceArnsT>(value); }
+    template<typename ProtectedResourceArnsT = Aws::Vector<Aws::String>>
+    RestoreTestingSelectionForCreate& WithProtectedResourceArns(ProtectedResourceArnsT&& value) { SetProtectedResourceArns(std::forward<ProtectedResourceArnsT>(value)); return *this;}
+    template<typename ProtectedResourceArnsT = Aws::String>
+    RestoreTestingSelectionForCreate& AddProtectedResourceArns(ProtectedResourceArnsT&& value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns.emplace_back(std::forward<ProtectedResourceArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline void SetProtectedResourceArns(const Aws::Vector<Aws::String>& value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns = value; }
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline void SetProtectedResourceArns(Aws::Vector<Aws::String>&& value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns = std::move(value); }
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceArns(const Aws::Vector<Aws::String>& value) { SetProtectedResourceArns(value); return *this;}
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceArns(Aws::Vector<Aws::String>&& value) { SetProtectedResourceArns(std::move(value)); return *this;}
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddProtectedResourceArns(const Aws::String& value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns.push_back(value); return *this; }
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddProtectedResourceArns(Aws::String&& value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Each protected resource can be filtered by its specific ARNs, such as
-     * <code>ProtectedResourceArns: ["arn:aws:...", "arn:aws:..."]</code> or by a
-     * wildcard: <code>ProtectedResourceArns: ["*"]</code>, but not both.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddProtectedResourceArns(const char* value) { m_protectedResourceArnsHasBeenSet = true; m_protectedResourceArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>If you have included the wildcard in ProtectedResourceArns, you can include
      * resource conditions, such as <code>ProtectedResourceConditions: { StringEquals:
      * [{ key: "XXXX", value: "YYYY" }]</code>.</p>
      */
-    inline const ProtectedResourceConditions& GetProtectedResourceConditions() const{ return m_protectedResourceConditions; }
-
-    /**
-     * <p>If you have included the wildcard in ProtectedResourceArns, you can include
-     * resource conditions, such as <code>ProtectedResourceConditions: { StringEquals:
-     * [{ key: "XXXX", value: "YYYY" }]</code>.</p>
-     */
+    inline const ProtectedResourceConditions& GetProtectedResourceConditions() const { return m_protectedResourceConditions; }
     inline bool ProtectedResourceConditionsHasBeenSet() const { return m_protectedResourceConditionsHasBeenSet; }
+    template<typename ProtectedResourceConditionsT = ProtectedResourceConditions>
+    void SetProtectedResourceConditions(ProtectedResourceConditionsT&& value) { m_protectedResourceConditionsHasBeenSet = true; m_protectedResourceConditions = std::forward<ProtectedResourceConditionsT>(value); }
+    template<typename ProtectedResourceConditionsT = ProtectedResourceConditions>
+    RestoreTestingSelectionForCreate& WithProtectedResourceConditions(ProtectedResourceConditionsT&& value) { SetProtectedResourceConditions(std::forward<ProtectedResourceConditionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If you have included the wildcard in ProtectedResourceArns, you can include
-     * resource conditions, such as <code>ProtectedResourceConditions: { StringEquals:
-     * [{ key: "XXXX", value: "YYYY" }]</code>.</p>
-     */
-    inline void SetProtectedResourceConditions(const ProtectedResourceConditions& value) { m_protectedResourceConditionsHasBeenSet = true; m_protectedResourceConditions = value; }
-
-    /**
-     * <p>If you have included the wildcard in ProtectedResourceArns, you can include
-     * resource conditions, such as <code>ProtectedResourceConditions: { StringEquals:
-     * [{ key: "XXXX", value: "YYYY" }]</code>.</p>
-     */
-    inline void SetProtectedResourceConditions(ProtectedResourceConditions&& value) { m_protectedResourceConditionsHasBeenSet = true; m_protectedResourceConditions = std::move(value); }
-
-    /**
-     * <p>If you have included the wildcard in ProtectedResourceArns, you can include
-     * resource conditions, such as <code>ProtectedResourceConditions: { StringEquals:
-     * [{ key: "XXXX", value: "YYYY" }]</code>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceConditions(const ProtectedResourceConditions& value) { SetProtectedResourceConditions(value); return *this;}
-
-    /**
-     * <p>If you have included the wildcard in ProtectedResourceArns, you can include
-     * resource conditions, such as <code>ProtectedResourceConditions: { StringEquals:
-     * [{ key: "XXXX", value: "YYYY" }]</code>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceConditions(ProtectedResourceConditions&& value) { SetProtectedResourceConditions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of Amazon Web Services resource included in a restore testing
      * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
@@ -230,121 +111,15 @@ namespace Model
      * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
      * Amazon S3</p> </li> </ul>
      */
-    inline const Aws::String& GetProtectedResourceType() const{ return m_protectedResourceType; }
-
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
+    inline const Aws::String& GetProtectedResourceType() const { return m_protectedResourceType; }
     inline bool ProtectedResourceTypeHasBeenSet() const { return m_protectedResourceTypeHasBeenSet; }
+    template<typename ProtectedResourceTypeT = Aws::String>
+    void SetProtectedResourceType(ProtectedResourceTypeT&& value) { m_protectedResourceTypeHasBeenSet = true; m_protectedResourceType = std::forward<ProtectedResourceTypeT>(value); }
+    template<typename ProtectedResourceTypeT = Aws::String>
+    RestoreTestingSelectionForCreate& WithProtectedResourceType(ProtectedResourceTypeT&& value) { SetProtectedResourceType(std::forward<ProtectedResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
-    inline void SetProtectedResourceType(const Aws::String& value) { m_protectedResourceTypeHasBeenSet = true; m_protectedResourceType = value; }
-
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
-    inline void SetProtectedResourceType(Aws::String&& value) { m_protectedResourceTypeHasBeenSet = true; m_protectedResourceType = std::move(value); }
-
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
-    inline void SetProtectedResourceType(const char* value) { m_protectedResourceTypeHasBeenSet = true; m_protectedResourceType.assign(value); }
-
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceType(const Aws::String& value) { SetProtectedResourceType(value); return *this;}
-
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceType(Aws::String&& value) { SetProtectedResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of Amazon Web Services resource included in a restore testing
-     * selection; for example, an Amazon EBS volume or an Amazon RDS database.</p>
-     * <p>Supported resource types accepted include:</p> <ul> <li> <p>
-     * <code>Aurora</code> for Amazon Aurora</p> </li> <li> <p> <code>DocumentDB</code>
-     * for Amazon DocumentDB (with MongoDB compatibility)</p> </li> <li> <p>
-     * <code>DynamoDB</code> for Amazon DynamoDB</p> </li> <li> <p> <code>EBS</code>
-     * for Amazon Elastic Block Store</p> </li> <li> <p> <code>EC2</code> for Amazon
-     * Elastic Compute Cloud</p> </li> <li> <p> <code>EFS</code> for Amazon Elastic
-     * File System</p> </li> <li> <p> <code>FSx</code> for Amazon FSx</p> </li> <li>
-     * <p> <code>Neptune</code> for Amazon Neptune</p> </li> <li> <p> <code>RDS</code>
-     * for Amazon Relational Database Service</p> </li> <li> <p> <code>S3</code> for
-     * Amazon S3</p> </li> </ul>
-     */
-    inline RestoreTestingSelectionForCreate& WithProtectedResourceType(const char* value) { SetProtectedResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>You can override certain restore metadata keys by including the parameter
      * <code>RestoreMetadataOverrides</code> in the body of
@@ -353,206 +128,42 @@ namespace Model
      * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
      * testing inferred metadata</a>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetRestoreMetadataOverrides() const{ return m_restoreMetadataOverrides; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetRestoreMetadataOverrides() const { return m_restoreMetadataOverrides; }
     inline bool RestoreMetadataOverridesHasBeenSet() const { return m_restoreMetadataOverridesHasBeenSet; }
+    template<typename RestoreMetadataOverridesT = Aws::Map<Aws::String, Aws::String>>
+    void SetRestoreMetadataOverrides(RestoreMetadataOverridesT&& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides = std::forward<RestoreMetadataOverridesT>(value); }
+    template<typename RestoreMetadataOverridesT = Aws::Map<Aws::String, Aws::String>>
+    RestoreTestingSelectionForCreate& WithRestoreMetadataOverrides(RestoreMetadataOverridesT&& value) { SetRestoreMetadataOverrides(std::forward<RestoreMetadataOverridesT>(value)); return *this;}
+    template<typename RestoreMetadataOverridesKeyT = Aws::String, typename RestoreMetadataOverridesValueT = Aws::String>
+    RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(RestoreMetadataOverridesKeyT&& key, RestoreMetadataOverridesValueT&& value) {
+      m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(std::forward<RestoreMetadataOverridesKeyT>(key), std::forward<RestoreMetadataOverridesValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
+     * <p>The unique name of the restore testing selection that belongs to the related
+     * restore testing plan.</p>
      */
-    inline void SetRestoreMetadataOverrides(const Aws::Map<Aws::String, Aws::String>& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides = value; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline void SetRestoreMetadataOverrides(Aws::Map<Aws::String, Aws::String>&& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides = std::move(value); }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithRestoreMetadataOverrides(const Aws::Map<Aws::String, Aws::String>& value) { SetRestoreMetadataOverrides(value); return *this;}
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithRestoreMetadataOverrides(Aws::Map<Aws::String, Aws::String>&& value) { SetRestoreMetadataOverrides(std::move(value)); return *this;}
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(const Aws::String& key, const Aws::String& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(key, value); return *this; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(Aws::String&& key, const Aws::String& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(const Aws::String& key, Aws::String&& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(Aws::String&& key, Aws::String&& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(const char* key, Aws::String&& value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(Aws::String&& key, const char* value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>You can override certain restore metadata keys by including the parameter
-     * <code>RestoreMetadataOverrides</code> in the body of
-     * <code>RestoreTestingSelection</code>. Key values are not case sensitive.</p>
-     * <p>See the complete list of <a
-     * href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html">restore
-     * testing inferred metadata</a>.</p>
-     */
-    inline RestoreTestingSelectionForCreate& AddRestoreMetadataOverrides(const char* key, const char* value) { m_restoreMetadataOverridesHasBeenSet = true; m_restoreMetadataOverrides.emplace(key, value); return *this; }
-
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline const Aws::String& GetRestoreTestingSelectionName() const{ return m_restoreTestingSelectionName; }
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
+    inline const Aws::String& GetRestoreTestingSelectionName() const { return m_restoreTestingSelectionName; }
     inline bool RestoreTestingSelectionNameHasBeenSet() const { return m_restoreTestingSelectionNameHasBeenSet; }
+    template<typename RestoreTestingSelectionNameT = Aws::String>
+    void SetRestoreTestingSelectionName(RestoreTestingSelectionNameT&& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = std::forward<RestoreTestingSelectionNameT>(value); }
+    template<typename RestoreTestingSelectionNameT = Aws::String>
+    RestoreTestingSelectionForCreate& WithRestoreTestingSelectionName(RestoreTestingSelectionNameT&& value) { SetRestoreTestingSelectionName(std::forward<RestoreTestingSelectionNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline void SetRestoreTestingSelectionName(const Aws::String& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = value; }
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline void SetRestoreTestingSelectionName(Aws::String&& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = std::move(value); }
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline void SetRestoreTestingSelectionName(const char* value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName.assign(value); }
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithRestoreTestingSelectionName(const Aws::String& value) { SetRestoreTestingSelectionName(value); return *this;}
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithRestoreTestingSelectionName(Aws::String&& value) { SetRestoreTestingSelectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the unique name of the restore testing selection that belongs to the
-     * related restore testing plan.</p>
-     */
-    inline RestoreTestingSelectionForCreate& WithRestoreTestingSelectionName(const char* value) { SetRestoreTestingSelectionName(value); return *this;}
-
-
-    /**
-     * <p>This is amount of hours (1 to 168) available to run a validation script on
+     * <p>This is amount of hours (0 to 168) available to run a validation script on
      * the data. The data will be deleted upon the completion of the validation script
      * or the end of the specified retention period, whichever comes first.</p>
      */
-    inline int GetValidationWindowHours() const{ return m_validationWindowHours; }
-
-    /**
-     * <p>This is amount of hours (1 to 168) available to run a validation script on
-     * the data. The data will be deleted upon the completion of the validation script
-     * or the end of the specified retention period, whichever comes first.</p>
-     */
+    inline int GetValidationWindowHours() const { return m_validationWindowHours; }
     inline bool ValidationWindowHoursHasBeenSet() const { return m_validationWindowHoursHasBeenSet; }
-
-    /**
-     * <p>This is amount of hours (1 to 168) available to run a validation script on
-     * the data. The data will be deleted upon the completion of the validation script
-     * or the end of the specified retention period, whichever comes first.</p>
-     */
     inline void SetValidationWindowHours(int value) { m_validationWindowHoursHasBeenSet = true; m_validationWindowHours = value; }
-
-    /**
-     * <p>This is amount of hours (1 to 168) available to run a validation script on
-     * the data. The data will be deleted upon the completion of the validation script
-     * or the end of the specified retention period, whichever comes first.</p>
-     */
     inline RestoreTestingSelectionForCreate& WithValidationWindowHours(int value) { SetValidationWindowHours(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_iamRoleArn;
@@ -573,7 +184,7 @@ namespace Model
     Aws::String m_restoreTestingSelectionName;
     bool m_restoreTestingSelectionNameHasBeenSet = false;
 
-    int m_validationWindowHours;
+    int m_validationWindowHours{0};
     bool m_validationWindowHoursHasBeenSet = false;
   };
 

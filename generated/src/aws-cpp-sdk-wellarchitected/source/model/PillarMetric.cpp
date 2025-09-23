@@ -18,17 +18,7 @@ namespace WellArchitected
 namespace Model
 {
 
-PillarMetric::PillarMetric() : 
-    m_pillarIdHasBeenSet(false),
-    m_riskCountsHasBeenSet(false),
-    m_questionsHasBeenSet(false)
-{
-}
-
-PillarMetric::PillarMetric(JsonView jsonValue) : 
-    m_pillarIdHasBeenSet(false),
-    m_riskCountsHasBeenSet(false),
-    m_questionsHasBeenSet(false)
+PillarMetric::PillarMetric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ PillarMetric& PillarMetric::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PillarId"))
   {
     m_pillarId = jsonValue.GetString("PillarId");
-
     m_pillarIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RiskCounts"))
   {
     Aws::Map<Aws::String, JsonView> riskCountsJsonMap = jsonValue.GetObject("RiskCounts").GetAllObjects();
@@ -51,7 +39,6 @@ PillarMetric& PillarMetric::operator =(JsonView jsonValue)
     }
     m_riskCountsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Questions"))
   {
     Aws::Utils::Array<JsonView> questionsJsonList = jsonValue.GetArray("Questions");
@@ -61,7 +48,6 @@ PillarMetric& PillarMetric::operator =(JsonView jsonValue)
     }
     m_questionsHasBeenSet = true;
   }
-
   return *this;
 }
 

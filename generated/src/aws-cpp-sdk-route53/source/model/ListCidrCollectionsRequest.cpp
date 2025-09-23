@@ -6,6 +6,7 @@
 #include <aws/route53/model/ListCidrCollectionsRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,11 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListCidrCollectionsRequest::ListCidrCollectionsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResultsHasBeenSet(false)
-{
-}
 
 Aws::String ListCidrCollectionsRequest::SerializePayload() const
 {

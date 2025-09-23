@@ -8,6 +8,7 @@
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
+#include <aws/core/utils/UUID.h>
 
 namespace Aws
 {
@@ -21,7 +22,7 @@ namespace Model
   class ModifyLaunchTemplateRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ModifyLaunchTemplateRequest();
+    AWS_EC2_API ModifyLaunchTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,265 +37,79 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ModifyLaunchTemplateRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
+     * the request. If a client token isn't specified, a randomly generated token is
+     * used in the request to ensure idempotency.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    ModifyLaunchTemplateRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
+     * <p>The ID of the launch template.</p> <p>You must specify either the launch
+     * template ID or the launch template name, but not both.</p>
      */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure the idempotency of
-     * the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a>.</p> <p>Constraint: Maximum 128 ASCII characters.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
-    inline const Aws::String& GetLaunchTemplateId() const{ return m_launchTemplateId; }
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
+    inline const Aws::String& GetLaunchTemplateId() const { return m_launchTemplateId; }
     inline bool LaunchTemplateIdHasBeenSet() const { return m_launchTemplateIdHasBeenSet; }
+    template<typename LaunchTemplateIdT = Aws::String>
+    void SetLaunchTemplateId(LaunchTemplateIdT&& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = std::forward<LaunchTemplateIdT>(value); }
+    template<typename LaunchTemplateIdT = Aws::String>
+    ModifyLaunchTemplateRequest& WithLaunchTemplateId(LaunchTemplateIdT&& value) { SetLaunchTemplateId(std::forward<LaunchTemplateIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
+     * <p>The name of the launch template.</p> <p>You must specify either the launch
+     * template ID or the launch template name, but not both.</p>
      */
-    inline void SetLaunchTemplateId(const Aws::String& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = value; }
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
-    inline void SetLaunchTemplateId(Aws::String&& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = std::move(value); }
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
-    inline void SetLaunchTemplateId(const char* value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId.assign(value); }
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithLaunchTemplateId(const Aws::String& value) { SetLaunchTemplateId(value); return *this;}
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithLaunchTemplateId(Aws::String&& value) { SetLaunchTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateId</code> or the <code>LaunchTemplateName</code>, but not
-     * both.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithLaunchTemplateId(const char* value) { SetLaunchTemplateId(value); return *this;}
-
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline const Aws::String& GetLaunchTemplateName() const{ return m_launchTemplateName; }
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
+    inline const Aws::String& GetLaunchTemplateName() const { return m_launchTemplateName; }
     inline bool LaunchTemplateNameHasBeenSet() const { return m_launchTemplateNameHasBeenSet; }
+    template<typename LaunchTemplateNameT = Aws::String>
+    void SetLaunchTemplateName(LaunchTemplateNameT&& value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName = std::forward<LaunchTemplateNameT>(value); }
+    template<typename LaunchTemplateNameT = Aws::String>
+    ModifyLaunchTemplateRequest& WithLaunchTemplateName(LaunchTemplateNameT&& value) { SetLaunchTemplateName(std::forward<LaunchTemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline void SetLaunchTemplateName(const Aws::String& value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName = value; }
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline void SetLaunchTemplateName(Aws::String&& value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName = std::move(value); }
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline void SetLaunchTemplateName(const char* value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName.assign(value); }
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithLaunchTemplateName(const Aws::String& value) { SetLaunchTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithLaunchTemplateName(Aws::String&& value) { SetLaunchTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the launch template.</p> <p>You must specify either the
-     * <code>LaunchTemplateName</code> or the <code>LaunchTemplateId</code>, but not
-     * both.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithLaunchTemplateName(const char* value) { SetLaunchTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version number of the launch template to set as the default version.</p>
      */
-    inline const Aws::String& GetDefaultVersion() const{ return m_defaultVersion; }
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
+    inline const Aws::String& GetDefaultVersion() const { return m_defaultVersion; }
     inline bool DefaultVersionHasBeenSet() const { return m_defaultVersionHasBeenSet; }
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
-    inline void SetDefaultVersion(const Aws::String& value) { m_defaultVersionHasBeenSet = true; m_defaultVersion = value; }
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
-    inline void SetDefaultVersion(Aws::String&& value) { m_defaultVersionHasBeenSet = true; m_defaultVersion = std::move(value); }
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
-    inline void SetDefaultVersion(const char* value) { m_defaultVersionHasBeenSet = true; m_defaultVersion.assign(value); }
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithDefaultVersion(const Aws::String& value) { SetDefaultVersion(value); return *this;}
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithDefaultVersion(Aws::String&& value) { SetDefaultVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version number of the launch template to set as the default version.</p>
-     */
-    inline ModifyLaunchTemplateRequest& WithDefaultVersion(const char* value) { SetDefaultVersion(value); return *this;}
-
+    template<typename DefaultVersionT = Aws::String>
+    void SetDefaultVersion(DefaultVersionT&& value) { m_defaultVersionHasBeenSet = true; m_defaultVersion = std::forward<DefaultVersionT>(value); }
+    template<typename DefaultVersionT = Aws::String>
+    ModifyLaunchTemplateRequest& WithDefaultVersion(DefaultVersionT&& value) { SetDefaultVersion(std::forward<DefaultVersionT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_launchTemplateId;
     bool m_launchTemplateIdHasBeenSet = false;

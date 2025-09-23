@@ -31,63 +31,38 @@ namespace Model
   class CoversBodyPart
   {
   public:
-    AWS_REKOGNITION_API CoversBodyPart();
+    AWS_REKOGNITION_API CoversBodyPart() = default;
     AWS_REKOGNITION_API CoversBodyPart(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API CoversBodyPart& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The confidence that Amazon Rekognition has in the value of
      * <code>Value</code>.</p>
      */
-    inline double GetConfidence() const{ return m_confidence; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition has in the value of
-     * <code>Value</code>.</p>
-     */
+    inline double GetConfidence() const { return m_confidence; }
     inline bool ConfidenceHasBeenSet() const { return m_confidenceHasBeenSet; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition has in the value of
-     * <code>Value</code>.</p>
-     */
     inline void SetConfidence(double value) { m_confidenceHasBeenSet = true; m_confidence = value; }
-
-    /**
-     * <p>The confidence that Amazon Rekognition has in the value of
-     * <code>Value</code>.</p>
-     */
     inline CoversBodyPart& WithConfidence(double value) { SetConfidence(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>True if the PPE covers the corresponding body part, otherwise false.</p>
      */
-    inline bool GetValue() const{ return m_value; }
-
-    /**
-     * <p>True if the PPE covers the corresponding body part, otherwise false.</p>
-     */
+    inline bool GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>True if the PPE covers the corresponding body part, otherwise false.</p>
-     */
     inline void SetValue(bool value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>True if the PPE covers the corresponding body part, otherwise false.</p>
-     */
     inline CoversBodyPart& WithValue(bool value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    double m_confidence;
+    double m_confidence{0.0};
     bool m_confidenceHasBeenSet = false;
 
-    bool m_value;
+    bool m_value{false};
     bool m_valueHasBeenSet = false;
   };
 

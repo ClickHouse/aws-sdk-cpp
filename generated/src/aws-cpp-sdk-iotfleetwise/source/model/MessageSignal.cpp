@@ -18,15 +18,7 @@ namespace IoTFleetWise
 namespace Model
 {
 
-MessageSignal::MessageSignal() : 
-    m_topicNameHasBeenSet(false),
-    m_structuredMessageHasBeenSet(false)
-{
-}
-
-MessageSignal::MessageSignal(JsonView jsonValue) : 
-    m_topicNameHasBeenSet(false),
-    m_structuredMessageHasBeenSet(false)
+MessageSignal::MessageSignal(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MessageSignal& MessageSignal::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("topicName"))
   {
     m_topicName = jsonValue.GetString("topicName");
-
     m_topicNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("structuredMessage"))
   {
     m_structuredMessage = jsonValue.GetObject("structuredMessage");
-
     m_structuredMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

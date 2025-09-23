@@ -35,327 +35,115 @@ namespace Model
   class ListedCertificate
   {
   public:
-    AWS_TRANSFER_API ListedCertificate();
+    AWS_TRANSFER_API ListedCertificate() = default;
     AWS_TRANSFER_API ListedCertificate(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API ListedCertificate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ListedCertificate& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
-    inline ListedCertificate& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
-    inline ListedCertificate& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the specified certificate.</p>
-     */
-    inline ListedCertificate& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of identifiers for the imported certificates. You use this
      * identifier for working with profiles and partner profiles.</p>
      */
-    inline const Aws::String& GetCertificateId() const{ return m_certificateId; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
+    inline const Aws::String& GetCertificateId() const { return m_certificateId; }
     inline bool CertificateIdHasBeenSet() const { return m_certificateIdHasBeenSet; }
+    template<typename CertificateIdT = Aws::String>
+    void SetCertificateId(CertificateIdT&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::forward<CertificateIdT>(value); }
+    template<typename CertificateIdT = Aws::String>
+    ListedCertificate& WithCertificateId(CertificateIdT&& value) { SetCertificateId(std::forward<CertificateIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
+     * <p>Specifies how this certificate is used. It can be used in the following
+     * ways:</p> <ul> <li> <p> <code>SIGNING</code>: For signing AS2 messages</p> </li>
+     * <li> <p> <code>ENCRYPTION</code>: For encrypting AS2 messages</p> </li> <li> <p>
+     * <code>TLS</code>: For securing AS2 communications sent over HTTPS</p> </li>
+     * </ul>
      */
-    inline void SetCertificateId(const Aws::String& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateId(const char* value) { m_certificateIdHasBeenSet = true; m_certificateId.assign(value); }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline ListedCertificate& WithCertificateId(const Aws::String& value) { SetCertificateId(value); return *this;}
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline ListedCertificate& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline ListedCertificate& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
-
-
-    /**
-     * <p>Specifies whether this certificate is used for signing or encryption.</p>
-     */
-    inline const CertificateUsageType& GetUsage() const{ return m_usage; }
-
-    /**
-     * <p>Specifies whether this certificate is used for signing or encryption.</p>
-     */
+    inline CertificateUsageType GetUsage() const { return m_usage; }
     inline bool UsageHasBeenSet() const { return m_usageHasBeenSet; }
+    inline void SetUsage(CertificateUsageType value) { m_usageHasBeenSet = true; m_usage = value; }
+    inline ListedCertificate& WithUsage(CertificateUsageType value) { SetUsage(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether this certificate is used for signing or encryption.</p>
-     */
-    inline void SetUsage(const CertificateUsageType& value) { m_usageHasBeenSet = true; m_usage = value; }
-
-    /**
-     * <p>Specifies whether this certificate is used for signing or encryption.</p>
-     */
-    inline void SetUsage(CertificateUsageType&& value) { m_usageHasBeenSet = true; m_usage = std::move(value); }
-
-    /**
-     * <p>Specifies whether this certificate is used for signing or encryption.</p>
-     */
-    inline ListedCertificate& WithUsage(const CertificateUsageType& value) { SetUsage(value); return *this;}
-
-    /**
-     * <p>Specifies whether this certificate is used for signing or encryption.</p>
-     */
-    inline ListedCertificate& WithUsage(CertificateUsageType&& value) { SetUsage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The certificate can be either <code>ACTIVE</code>,
      * <code>PENDING_ROTATION</code>, or <code>INACTIVE</code>.
      * <code>PENDING_ROTATION</code> means that this certificate will replace the
      * current certificate when it expires.</p>
      */
-    inline const CertificateStatusType& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The certificate can be either <code>ACTIVE</code>,
-     * <code>PENDING_ROTATION</code>, or <code>INACTIVE</code>.
-     * <code>PENDING_ROTATION</code> means that this certificate will replace the
-     * current certificate when it expires.</p>
-     */
+    inline CertificateStatusType GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(CertificateStatusType value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListedCertificate& WithStatus(CertificateStatusType value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The certificate can be either <code>ACTIVE</code>,
-     * <code>PENDING_ROTATION</code>, or <code>INACTIVE</code>.
-     * <code>PENDING_ROTATION</code> means that this certificate will replace the
-     * current certificate when it expires.</p>
+     * <p>An optional date that specifies when the certificate becomes active. If you
+     * do not specify a value, <code>ActiveDate</code> takes the same value as
+     * <code>NotBeforeDate</code>, which is specified by the CA. </p>
      */
-    inline void SetStatus(const CertificateStatusType& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The certificate can be either <code>ACTIVE</code>,
-     * <code>PENDING_ROTATION</code>, or <code>INACTIVE</code>.
-     * <code>PENDING_ROTATION</code> means that this certificate will replace the
-     * current certificate when it expires.</p>
-     */
-    inline void SetStatus(CertificateStatusType&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The certificate can be either <code>ACTIVE</code>,
-     * <code>PENDING_ROTATION</code>, or <code>INACTIVE</code>.
-     * <code>PENDING_ROTATION</code> means that this certificate will replace the
-     * current certificate when it expires.</p>
-     */
-    inline ListedCertificate& WithStatus(const CertificateStatusType& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The certificate can be either <code>ACTIVE</code>,
-     * <code>PENDING_ROTATION</code>, or <code>INACTIVE</code>.
-     * <code>PENDING_ROTATION</code> means that this certificate will replace the
-     * current certificate when it expires.</p>
-     */
-    inline ListedCertificate& WithStatus(CertificateStatusType&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes active.</p>
-     */
-    inline const Aws::Utils::DateTime& GetActiveDate() const{ return m_activeDate; }
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes active.</p>
-     */
+    inline const Aws::Utils::DateTime& GetActiveDate() const { return m_activeDate; }
     inline bool ActiveDateHasBeenSet() const { return m_activeDateHasBeenSet; }
+    template<typename ActiveDateT = Aws::Utils::DateTime>
+    void SetActiveDate(ActiveDateT&& value) { m_activeDateHasBeenSet = true; m_activeDate = std::forward<ActiveDateT>(value); }
+    template<typename ActiveDateT = Aws::Utils::DateTime>
+    ListedCertificate& WithActiveDate(ActiveDateT&& value) { SetActiveDate(std::forward<ActiveDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An optional date that specifies when the certificate becomes active.</p>
+     * <p>An optional date that specifies when the certificate becomes inactive. If you
+     * do not specify a value, <code>InactiveDate</code> takes the same value as
+     * <code>NotAfterDate</code>, which is specified by the CA.</p>
      */
-    inline void SetActiveDate(const Aws::Utils::DateTime& value) { m_activeDateHasBeenSet = true; m_activeDate = value; }
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes active.</p>
-     */
-    inline void SetActiveDate(Aws::Utils::DateTime&& value) { m_activeDateHasBeenSet = true; m_activeDate = std::move(value); }
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes active.</p>
-     */
-    inline ListedCertificate& WithActiveDate(const Aws::Utils::DateTime& value) { SetActiveDate(value); return *this;}
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes active.</p>
-     */
-    inline ListedCertificate& WithActiveDate(Aws::Utils::DateTime&& value) { SetActiveDate(std::move(value)); return *this;}
-
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes inactive.</p>
-     */
-    inline const Aws::Utils::DateTime& GetInactiveDate() const{ return m_inactiveDate; }
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes inactive.</p>
-     */
+    inline const Aws::Utils::DateTime& GetInactiveDate() const { return m_inactiveDate; }
     inline bool InactiveDateHasBeenSet() const { return m_inactiveDateHasBeenSet; }
+    template<typename InactiveDateT = Aws::Utils::DateTime>
+    void SetInactiveDate(InactiveDateT&& value) { m_inactiveDateHasBeenSet = true; m_inactiveDate = std::forward<InactiveDateT>(value); }
+    template<typename InactiveDateT = Aws::Utils::DateTime>
+    ListedCertificate& WithInactiveDate(InactiveDateT&& value) { SetInactiveDate(std::forward<InactiveDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional date that specifies when the certificate becomes inactive.</p>
-     */
-    inline void SetInactiveDate(const Aws::Utils::DateTime& value) { m_inactiveDateHasBeenSet = true; m_inactiveDate = value; }
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes inactive.</p>
-     */
-    inline void SetInactiveDate(Aws::Utils::DateTime&& value) { m_inactiveDateHasBeenSet = true; m_inactiveDate = std::move(value); }
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes inactive.</p>
-     */
-    inline ListedCertificate& WithInactiveDate(const Aws::Utils::DateTime& value) { SetInactiveDate(value); return *this;}
-
-    /**
-     * <p>An optional date that specifies when the certificate becomes inactive.</p>
-     */
-    inline ListedCertificate& WithInactiveDate(Aws::Utils::DateTime&& value) { SetInactiveDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type for the certificate. If a private key has been specified for the
      * certificate, its type is <code>CERTIFICATE_WITH_PRIVATE_KEY</code>. If there is
      * no private key, the type is <code>CERTIFICATE</code>.</p>
      */
-    inline const CertificateType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type for the certificate. If a private key has been specified for the
-     * certificate, its type is <code>CERTIFICATE_WITH_PRIVATE_KEY</code>. If there is
-     * no private key, the type is <code>CERTIFICATE</code>.</p>
-     */
+    inline CertificateType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(CertificateType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ListedCertificate& WithType(CertificateType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type for the certificate. If a private key has been specified for the
-     * certificate, its type is <code>CERTIFICATE_WITH_PRIVATE_KEY</code>. If there is
-     * no private key, the type is <code>CERTIFICATE</code>.</p>
-     */
-    inline void SetType(const CertificateType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type for the certificate. If a private key has been specified for the
-     * certificate, its type is <code>CERTIFICATE_WITH_PRIVATE_KEY</code>. If there is
-     * no private key, the type is <code>CERTIFICATE</code>.</p>
-     */
-    inline void SetType(CertificateType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type for the certificate. If a private key has been specified for the
-     * certificate, its type is <code>CERTIFICATE_WITH_PRIVATE_KEY</code>. If there is
-     * no private key, the type is <code>CERTIFICATE</code>.</p>
-     */
-    inline ListedCertificate& WithType(const CertificateType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type for the certificate. If a private key has been specified for the
-     * certificate, its type is <code>CERTIFICATE_WITH_PRIVATE_KEY</code>. If there is
-     * no private key, the type is <code>CERTIFICATE</code>.</p>
-     */
-    inline ListedCertificate& WithType(CertificateType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or short description that's used to identify the certificate.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
-    inline ListedCertificate& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
-    inline ListedCertificate& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or short description that's used to identify the certificate.</p>
-     */
-    inline ListedCertificate& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ListedCertificate& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -364,19 +152,19 @@ namespace Model
     Aws::String m_certificateId;
     bool m_certificateIdHasBeenSet = false;
 
-    CertificateUsageType m_usage;
+    CertificateUsageType m_usage{CertificateUsageType::NOT_SET};
     bool m_usageHasBeenSet = false;
 
-    CertificateStatusType m_status;
+    CertificateStatusType m_status{CertificateStatusType::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_activeDate;
+    Aws::Utils::DateTime m_activeDate{};
     bool m_activeDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_inactiveDate;
+    Aws::Utils::DateTime m_inactiveDate{};
     bool m_inactiveDateHasBeenSet = false;
 
-    CertificateType m_type;
+    CertificateType m_type{CertificateType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_description;

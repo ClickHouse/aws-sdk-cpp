@@ -36,52 +36,25 @@ namespace Model
   class EmailRecipients
   {
   public:
-    AWS_IOTEVENTS_API EmailRecipients();
+    AWS_IOTEVENTS_API EmailRecipients() = default;
     AWS_IOTEVENTS_API EmailRecipients(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API EmailRecipients& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies one or more recipients who receive the email.</p>
      */
-    inline const Aws::Vector<RecipientDetail>& GetTo() const{ return m_to; }
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
+    inline const Aws::Vector<RecipientDetail>& GetTo() const { return m_to; }
     inline bool ToHasBeenSet() const { return m_toHasBeenSet; }
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
-    inline void SetTo(const Aws::Vector<RecipientDetail>& value) { m_toHasBeenSet = true; m_to = value; }
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
-    inline void SetTo(Aws::Vector<RecipientDetail>&& value) { m_toHasBeenSet = true; m_to = std::move(value); }
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
-    inline EmailRecipients& WithTo(const Aws::Vector<RecipientDetail>& value) { SetTo(value); return *this;}
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
-    inline EmailRecipients& WithTo(Aws::Vector<RecipientDetail>&& value) { SetTo(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
-    inline EmailRecipients& AddTo(const RecipientDetail& value) { m_toHasBeenSet = true; m_to.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies one or more recipients who receive the email.</p>
-     */
-    inline EmailRecipients& AddTo(RecipientDetail&& value) { m_toHasBeenSet = true; m_to.push_back(std::move(value)); return *this; }
-
+    template<typename ToT = Aws::Vector<RecipientDetail>>
+    void SetTo(ToT&& value) { m_toHasBeenSet = true; m_to = std::forward<ToT>(value); }
+    template<typename ToT = Aws::Vector<RecipientDetail>>
+    EmailRecipients& WithTo(ToT&& value) { SetTo(std::forward<ToT>(value)); return *this;}
+    template<typename ToT = RecipientDetail>
+    EmailRecipients& AddTo(ToT&& value) { m_toHasBeenSet = true; m_to.emplace_back(std::forward<ToT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<RecipientDetail> m_to;

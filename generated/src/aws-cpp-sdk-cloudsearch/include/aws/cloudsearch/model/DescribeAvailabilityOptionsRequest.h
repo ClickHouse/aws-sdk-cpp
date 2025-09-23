@@ -28,7 +28,7 @@ namespace Model
   class DescribeAvailabilityOptionsRequest : public CloudSearchRequest
   {
   public:
-    AWS_CLOUDSEARCH_API DescribeAvailabilityOptionsRequest();
+    AWS_CLOUDSEARCH_API DescribeAvailabilityOptionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,77 +43,34 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the domain you want to describe.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    DescribeAvailabilityOptionsRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
-    inline DescribeAvailabilityOptionsRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
-    inline DescribeAvailabilityOptionsRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain you want to describe.</p>
-     */
-    inline DescribeAvailabilityOptionsRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether to display the deployed configuration (<code>true</code>) or include
      * any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
      */
-    inline bool GetDeployed() const{ return m_deployed; }
-
-    /**
-     * <p>Whether to display the deployed configuration (<code>true</code>) or include
-     * any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-     */
+    inline bool GetDeployed() const { return m_deployed; }
     inline bool DeployedHasBeenSet() const { return m_deployedHasBeenSet; }
-
-    /**
-     * <p>Whether to display the deployed configuration (<code>true</code>) or include
-     * any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-     */
     inline void SetDeployed(bool value) { m_deployedHasBeenSet = true; m_deployed = value; }
-
-    /**
-     * <p>Whether to display the deployed configuration (<code>true</code>) or include
-     * any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
-     */
     inline DescribeAvailabilityOptionsRequest& WithDeployed(bool value) { SetDeployed(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_domainName;
     bool m_domainNameHasBeenSet = false;
 
-    bool m_deployed;
+    bool m_deployed{false};
     bool m_deployedHasBeenSet = false;
   };
 

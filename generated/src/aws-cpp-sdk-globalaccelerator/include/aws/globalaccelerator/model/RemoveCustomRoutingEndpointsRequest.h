@@ -22,7 +22,7 @@ namespace Model
   class RemoveCustomRoutingEndpointsRequest : public GlobalAcceleratorRequest
   {
   public:
-    AWS_GLOBALACCELERATOR_API RemoveCustomRoutingEndpointsRequest();
+    AWS_GLOBALACCELERATOR_API RemoveCustomRoutingEndpointsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,109 +35,33 @@ namespace Model
     AWS_GLOBALACCELERATOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
      * the virtual private cloud (VPC) subnet IDs. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetEndpointIds() const{ return m_endpointIds; }
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEndpointIds() const { return m_endpointIds; }
     inline bool EndpointIdsHasBeenSet() const { return m_endpointIdsHasBeenSet; }
+    template<typename EndpointIdsT = Aws::Vector<Aws::String>>
+    void SetEndpointIds(EndpointIdsT&& value) { m_endpointIdsHasBeenSet = true; m_endpointIds = std::forward<EndpointIdsT>(value); }
+    template<typename EndpointIdsT = Aws::Vector<Aws::String>>
+    RemoveCustomRoutingEndpointsRequest& WithEndpointIds(EndpointIdsT&& value) { SetEndpointIds(std::forward<EndpointIdsT>(value)); return *this;}
+    template<typename EndpointIdsT = Aws::String>
+    RemoveCustomRoutingEndpointsRequest& AddEndpointIds(EndpointIdsT&& value) { m_endpointIdsHasBeenSet = true; m_endpointIds.emplace_back(std::forward<EndpointIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline void SetEndpointIds(const Aws::Vector<Aws::String>& value) { m_endpointIdsHasBeenSet = true; m_endpointIds = value; }
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline void SetEndpointIds(Aws::Vector<Aws::String>&& value) { m_endpointIdsHasBeenSet = true; m_endpointIds = std::move(value); }
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& WithEndpointIds(const Aws::Vector<Aws::String>& value) { SetEndpointIds(value); return *this;}
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& WithEndpointIds(Aws::Vector<Aws::String>&& value) { SetEndpointIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& AddEndpointIds(const Aws::String& value) { m_endpointIdsHasBeenSet = true; m_endpointIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& AddEndpointIds(Aws::String&& value) { m_endpointIdsHasBeenSet = true; m_endpointIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs for the endpoints. For custom routing accelerators, endpoint IDs are
-     * the virtual private cloud (VPC) subnet IDs. </p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& AddEndpointIds(const char* value) { m_endpointIdsHasBeenSet = true; m_endpointIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
      * from.</p>
      */
-    inline const Aws::String& GetEndpointGroupArn() const{ return m_endpointGroupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
+    inline const Aws::String& GetEndpointGroupArn() const { return m_endpointGroupArn; }
     inline bool EndpointGroupArnHasBeenSet() const { return m_endpointGroupArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
-    inline void SetEndpointGroupArn(const Aws::String& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
-    inline void SetEndpointGroupArn(Aws::String&& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
-    inline void SetEndpointGroupArn(const char* value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& WithEndpointGroupArn(const Aws::String& value) { SetEndpointGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& WithEndpointGroupArn(Aws::String&& value) { SetEndpointGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
-     * from.</p>
-     */
-    inline RemoveCustomRoutingEndpointsRequest& WithEndpointGroupArn(const char* value) { SetEndpointGroupArn(value); return *this;}
-
+    template<typename EndpointGroupArnT = Aws::String>
+    void SetEndpointGroupArn(EndpointGroupArnT&& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = std::forward<EndpointGroupArnT>(value); }
+    template<typename EndpointGroupArnT = Aws::String>
+    RemoveCustomRoutingEndpointsRequest& WithEndpointGroupArn(EndpointGroupArnT&& value) { SetEndpointGroupArn(std::forward<EndpointGroupArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_endpointIds;

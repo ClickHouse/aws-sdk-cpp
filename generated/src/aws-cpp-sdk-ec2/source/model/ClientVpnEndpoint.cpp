@@ -20,65 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientVpnEndpoint::ClientVpnEndpoint() : 
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_dnsNameHasBeenSet(false),
-    m_clientCidrBlockHasBeenSet(false),
-    m_dnsServersHasBeenSet(false),
-    m_splitTunnel(false),
-    m_splitTunnelHasBeenSet(false),
-    m_vpnProtocol(VpnProtocol::NOT_SET),
-    m_vpnProtocolHasBeenSet(false),
-    m_transportProtocol(TransportProtocol::NOT_SET),
-    m_transportProtocolHasBeenSet(false),
-    m_vpnPort(0),
-    m_vpnPortHasBeenSet(false),
-    m_serverCertificateArnHasBeenSet(false),
-    m_authenticationOptionsHasBeenSet(false),
-    m_connectionLogOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_selfServicePortalUrlHasBeenSet(false),
-    m_clientConnectOptionsHasBeenSet(false),
-    m_sessionTimeoutHours(0),
-    m_sessionTimeoutHoursHasBeenSet(false),
-    m_clientLoginBannerOptionsHasBeenSet(false)
-{
-}
-
-ClientVpnEndpoint::ClientVpnEndpoint(const XmlNode& xmlNode) : 
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_deletionTimeHasBeenSet(false),
-    m_dnsNameHasBeenSet(false),
-    m_clientCidrBlockHasBeenSet(false),
-    m_dnsServersHasBeenSet(false),
-    m_splitTunnel(false),
-    m_splitTunnelHasBeenSet(false),
-    m_vpnProtocol(VpnProtocol::NOT_SET),
-    m_vpnProtocolHasBeenSet(false),
-    m_transportProtocol(TransportProtocol::NOT_SET),
-    m_transportProtocolHasBeenSet(false),
-    m_vpnPort(0),
-    m_vpnPortHasBeenSet(false),
-    m_serverCertificateArnHasBeenSet(false),
-    m_authenticationOptionsHasBeenSet(false),
-    m_connectionLogOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_selfServicePortalUrlHasBeenSet(false),
-    m_clientConnectOptionsHasBeenSet(false),
-    m_sessionTimeoutHours(0),
-    m_sessionTimeoutHoursHasBeenSet(false),
-    m_clientLoginBannerOptionsHasBeenSet(false)
+ClientVpnEndpoint::ClientVpnEndpoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -135,6 +77,7 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
     if(!dnsServersNode.IsNull())
     {
       XmlNode dnsServersMember = dnsServersNode.FirstChild("item");
+      m_dnsServersHasBeenSet = !dnsServersMember.IsNull();
       while(!dnsServersMember.IsNull())
       {
         m_dnsServers.push_back(dnsServersMember.GetText());
@@ -152,13 +95,13 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
     XmlNode vpnProtocolNode = resultNode.FirstChild("vpnProtocol");
     if(!vpnProtocolNode.IsNull())
     {
-      m_vpnProtocol = VpnProtocolMapper::GetVpnProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(vpnProtocolNode.GetText()).c_str()).c_str());
+      m_vpnProtocol = VpnProtocolMapper::GetVpnProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(vpnProtocolNode.GetText()).c_str()));
       m_vpnProtocolHasBeenSet = true;
     }
     XmlNode transportProtocolNode = resultNode.FirstChild("transportProtocol");
     if(!transportProtocolNode.IsNull())
     {
-      m_transportProtocol = TransportProtocolMapper::GetTransportProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transportProtocolNode.GetText()).c_str()).c_str());
+      m_transportProtocol = TransportProtocolMapper::GetTransportProtocolForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transportProtocolNode.GetText()).c_str()));
       m_transportProtocolHasBeenSet = true;
     }
     XmlNode vpnPortNode = resultNode.FirstChild("vpnPort");
@@ -177,6 +120,7 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
     if(!authenticationOptionsNode.IsNull())
     {
       XmlNode authenticationOptionsMember = authenticationOptionsNode.FirstChild("item");
+      m_authenticationOptionsHasBeenSet = !authenticationOptionsMember.IsNull();
       while(!authenticationOptionsMember.IsNull())
       {
         m_authenticationOptions.push_back(authenticationOptionsMember);
@@ -195,6 +139,7 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -207,6 +152,7 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
     if(!securityGroupIdsNode.IsNull())
     {
       XmlNode securityGroupIdsMember = securityGroupIdsNode.FirstChild("item");
+      m_securityGroupIdsHasBeenSet = !securityGroupIdsMember.IsNull();
       while(!securityGroupIdsMember.IsNull())
       {
         m_securityGroupIds.push_back(securityGroupIdsMember.GetText());
@@ -244,6 +190,30 @@ ClientVpnEndpoint& ClientVpnEndpoint::operator =(const XmlNode& xmlNode)
     {
       m_clientLoginBannerOptions = clientLoginBannerOptionsNode;
       m_clientLoginBannerOptionsHasBeenSet = true;
+    }
+    XmlNode clientRouteEnforcementOptionsNode = resultNode.FirstChild("clientRouteEnforcementOptions");
+    if(!clientRouteEnforcementOptionsNode.IsNull())
+    {
+      m_clientRouteEnforcementOptions = clientRouteEnforcementOptionsNode;
+      m_clientRouteEnforcementOptionsHasBeenSet = true;
+    }
+    XmlNode disconnectOnSessionTimeoutNode = resultNode.FirstChild("disconnectOnSessionTimeout");
+    if(!disconnectOnSessionTimeoutNode.IsNull())
+    {
+      m_disconnectOnSessionTimeout = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(disconnectOnSessionTimeoutNode.GetText()).c_str()).c_str());
+      m_disconnectOnSessionTimeoutHasBeenSet = true;
+    }
+    XmlNode endpointIpAddressTypeNode = resultNode.FirstChild("endpointIpAddressType");
+    if(!endpointIpAddressTypeNode.IsNull())
+    {
+      m_endpointIpAddressType = EndpointIpAddressTypeMapper::GetEndpointIpAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endpointIpAddressTypeNode.GetText()).c_str()));
+      m_endpointIpAddressTypeHasBeenSet = true;
+    }
+    XmlNode trafficIpAddressTypeNode = resultNode.FirstChild("trafficIpAddressType");
+    if(!trafficIpAddressTypeNode.IsNull())
+    {
+      m_trafficIpAddressType = TrafficIpAddressTypeMapper::GetTrafficIpAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(trafficIpAddressTypeNode.GetText()).c_str()));
+      m_trafficIpAddressTypeHasBeenSet = true;
     }
   }
 
@@ -305,12 +275,12 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_vpnProtocolHasBeenSet)
   {
-      oStream << location << index << locationValue << ".VpnProtocol=" << VpnProtocolMapper::GetNameForVpnProtocol(m_vpnProtocol) << "&";
+      oStream << location << index << locationValue << ".VpnProtocol=" << StringUtils::URLEncode(VpnProtocolMapper::GetNameForVpnProtocol(m_vpnProtocol)) << "&";
   }
 
   if(m_transportProtocolHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TransportProtocol=" << TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol) << "&";
+      oStream << location << index << locationValue << ".TransportProtocol=" << StringUtils::URLEncode(TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol)) << "&";
   }
 
   if(m_vpnPortHasBeenSet)
@@ -390,6 +360,28 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
       m_clientLoginBannerOptions.OutputToStream(oStream, clientLoginBannerOptionsLocationAndMemberSs.str().c_str());
   }
 
+  if(m_clientRouteEnforcementOptionsHasBeenSet)
+  {
+      Aws::StringStream clientRouteEnforcementOptionsLocationAndMemberSs;
+      clientRouteEnforcementOptionsLocationAndMemberSs << location << index << locationValue << ".ClientRouteEnforcementOptions";
+      m_clientRouteEnforcementOptions.OutputToStream(oStream, clientRouteEnforcementOptionsLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_disconnectOnSessionTimeoutHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DisconnectOnSessionTimeout=" << std::boolalpha << m_disconnectOnSessionTimeout << "&";
+  }
+
+  if(m_endpointIpAddressTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EndpointIpAddressType=" << StringUtils::URLEncode(EndpointIpAddressTypeMapper::GetNameForEndpointIpAddressType(m_endpointIpAddressType)) << "&";
+  }
+
+  if(m_trafficIpAddressTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".TrafficIpAddressType=" << StringUtils::URLEncode(TrafficIpAddressTypeMapper::GetNameForTrafficIpAddressType(m_trafficIpAddressType)) << "&";
+  }
+
 }
 
 void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -438,11 +430,11 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_vpnProtocolHasBeenSet)
   {
-      oStream << location << ".VpnProtocol=" << VpnProtocolMapper::GetNameForVpnProtocol(m_vpnProtocol) << "&";
+      oStream << location << ".VpnProtocol=" << StringUtils::URLEncode(VpnProtocolMapper::GetNameForVpnProtocol(m_vpnProtocol)) << "&";
   }
   if(m_transportProtocolHasBeenSet)
   {
-      oStream << location << ".TransportProtocol=" << TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol) << "&";
+      oStream << location << ".TransportProtocol=" << StringUtils::URLEncode(TransportProtocolMapper::GetNameForTransportProtocol(m_transportProtocol)) << "&";
   }
   if(m_vpnPortHasBeenSet)
   {
@@ -458,7 +450,7 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_authenticationOptions)
       {
         Aws::StringStream authenticationOptionsSs;
-        authenticationOptionsSs << location <<  ".AuthenticationOptions." << authenticationOptionsIdx++;
+        authenticationOptionsSs << location << ".AuthenticationOptions." << authenticationOptionsIdx++;
         item.OutputToStream(oStream, authenticationOptionsSs.str().c_str());
       }
   }
@@ -474,7 +466,7 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -509,6 +501,24 @@ void ClientVpnEndpoint::OutputToStream(Aws::OStream& oStream, const char* locati
       Aws::String clientLoginBannerOptionsLocationAndMember(location);
       clientLoginBannerOptionsLocationAndMember += ".ClientLoginBannerOptions";
       m_clientLoginBannerOptions.OutputToStream(oStream, clientLoginBannerOptionsLocationAndMember.c_str());
+  }
+  if(m_clientRouteEnforcementOptionsHasBeenSet)
+  {
+      Aws::String clientRouteEnforcementOptionsLocationAndMember(location);
+      clientRouteEnforcementOptionsLocationAndMember += ".ClientRouteEnforcementOptions";
+      m_clientRouteEnforcementOptions.OutputToStream(oStream, clientRouteEnforcementOptionsLocationAndMember.c_str());
+  }
+  if(m_disconnectOnSessionTimeoutHasBeenSet)
+  {
+      oStream << location << ".DisconnectOnSessionTimeout=" << std::boolalpha << m_disconnectOnSessionTimeout << "&";
+  }
+  if(m_endpointIpAddressTypeHasBeenSet)
+  {
+      oStream << location << ".EndpointIpAddressType=" << StringUtils::URLEncode(EndpointIpAddressTypeMapper::GetNameForEndpointIpAddressType(m_endpointIpAddressType)) << "&";
+  }
+  if(m_trafficIpAddressTypeHasBeenSet)
+  {
+      oStream << location << ".TrafficIpAddressType=" << StringUtils::URLEncode(TrafficIpAddressTypeMapper::GetNameForTrafficIpAddressType(m_trafficIpAddressType)) << "&";
   }
 }
 

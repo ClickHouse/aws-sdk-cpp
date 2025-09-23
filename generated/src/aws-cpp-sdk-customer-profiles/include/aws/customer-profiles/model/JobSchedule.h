@@ -33,86 +33,36 @@ namespace Model
   class JobSchedule
   {
   public:
-    AWS_CUSTOMERPROFILES_API JobSchedule();
+    AWS_CUSTOMERPROFILES_API JobSchedule() = default;
     AWS_CUSTOMERPROFILES_API JobSchedule(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API JobSchedule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The day when the Identity Resolution Job should run every week.</p>
      */
-    inline const JobScheduleDayOfTheWeek& GetDayOfTheWeek() const{ return m_dayOfTheWeek; }
-
-    /**
-     * <p>The day when the Identity Resolution Job should run every week.</p>
-     */
+    inline JobScheduleDayOfTheWeek GetDayOfTheWeek() const { return m_dayOfTheWeek; }
     inline bool DayOfTheWeekHasBeenSet() const { return m_dayOfTheWeekHasBeenSet; }
+    inline void SetDayOfTheWeek(JobScheduleDayOfTheWeek value) { m_dayOfTheWeekHasBeenSet = true; m_dayOfTheWeek = value; }
+    inline JobSchedule& WithDayOfTheWeek(JobScheduleDayOfTheWeek value) { SetDayOfTheWeek(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The day when the Identity Resolution Job should run every week.</p>
-     */
-    inline void SetDayOfTheWeek(const JobScheduleDayOfTheWeek& value) { m_dayOfTheWeekHasBeenSet = true; m_dayOfTheWeek = value; }
-
-    /**
-     * <p>The day when the Identity Resolution Job should run every week.</p>
-     */
-    inline void SetDayOfTheWeek(JobScheduleDayOfTheWeek&& value) { m_dayOfTheWeekHasBeenSet = true; m_dayOfTheWeek = std::move(value); }
-
-    /**
-     * <p>The day when the Identity Resolution Job should run every week.</p>
-     */
-    inline JobSchedule& WithDayOfTheWeek(const JobScheduleDayOfTheWeek& value) { SetDayOfTheWeek(value); return *this;}
-
-    /**
-     * <p>The day when the Identity Resolution Job should run every week.</p>
-     */
-    inline JobSchedule& WithDayOfTheWeek(JobScheduleDayOfTheWeek&& value) { SetDayOfTheWeek(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the Identity Resolution Job should run every week.</p>
      */
-    inline const Aws::String& GetTime() const{ return m_time; }
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
+    inline const Aws::String& GetTime() const { return m_time; }
     inline bool TimeHasBeenSet() const { return m_timeHasBeenSet; }
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
-    inline void SetTime(const Aws::String& value) { m_timeHasBeenSet = true; m_time = value; }
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
-    inline void SetTime(Aws::String&& value) { m_timeHasBeenSet = true; m_time = std::move(value); }
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
-    inline void SetTime(const char* value) { m_timeHasBeenSet = true; m_time.assign(value); }
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
-    inline JobSchedule& WithTime(const Aws::String& value) { SetTime(value); return *this;}
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
-    inline JobSchedule& WithTime(Aws::String&& value) { SetTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when the Identity Resolution Job should run every week.</p>
-     */
-    inline JobSchedule& WithTime(const char* value) { SetTime(value); return *this;}
-
+    template<typename TimeT = Aws::String>
+    void SetTime(TimeT&& value) { m_timeHasBeenSet = true; m_time = std::forward<TimeT>(value); }
+    template<typename TimeT = Aws::String>
+    JobSchedule& WithTime(TimeT&& value) { SetTime(std::forward<TimeT>(value)); return *this;}
+    ///@}
   private:
 
-    JobScheduleDayOfTheWeek m_dayOfTheWeek;
+    JobScheduleDayOfTheWeek m_dayOfTheWeek{JobScheduleDayOfTheWeek::NOT_SET};
     bool m_dayOfTheWeekHasBeenSet = false;
 
     Aws::String m_time;

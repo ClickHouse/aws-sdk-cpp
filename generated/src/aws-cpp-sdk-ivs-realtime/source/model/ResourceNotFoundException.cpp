@@ -5,6 +5,7 @@
 
 #include <aws/ivs-realtime/model/ResourceNotFoundException.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
@@ -18,13 +19,7 @@ namespace ivsrealtime
 namespace Model
 {
 
-ResourceNotFoundException::ResourceNotFoundException() : 
-    m_exceptionMessageHasBeenSet(false)
-{
-}
-
-ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue) : 
-    m_exceptionMessageHasBeenSet(false)
+ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +29,8 @@ ResourceNotFoundException& ResourceNotFoundException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("exceptionMessage"))
   {
     m_exceptionMessage = jsonValue.GetString("exceptionMessage");
-
     m_exceptionMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

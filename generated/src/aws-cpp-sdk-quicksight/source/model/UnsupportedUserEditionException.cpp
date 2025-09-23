@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-UnsupportedUserEditionException::UnsupportedUserEditionException() : 
-    m_messageHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-UnsupportedUserEditionException::UnsupportedUserEditionException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+UnsupportedUserEditionException::UnsupportedUserEditionException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ UnsupportedUserEditionException& UnsupportedUserEditionException::operator =(Jso
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestId"))
   {
     m_requestId = jsonValue.GetString("RequestId");
-
     m_requestIdHasBeenSet = true;
   }
-
   return *this;
 }
 

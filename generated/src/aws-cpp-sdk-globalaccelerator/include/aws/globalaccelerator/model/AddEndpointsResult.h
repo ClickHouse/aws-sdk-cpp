@@ -29,111 +29,53 @@ namespace Model
   class AddEndpointsResult
   {
   public:
-    AWS_GLOBALACCELERATOR_API AddEndpointsResult();
+    AWS_GLOBALACCELERATOR_API AddEndpointsResult() = default;
     AWS_GLOBALACCELERATOR_API AddEndpointsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLOBALACCELERATOR_API AddEndpointsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The list of endpoint objects.</p>
      */
-    inline const Aws::Vector<EndpointDescription>& GetEndpointDescriptions() const{ return m_endpointDescriptions; }
+    inline const Aws::Vector<EndpointDescription>& GetEndpointDescriptions() const { return m_endpointDescriptions; }
+    template<typename EndpointDescriptionsT = Aws::Vector<EndpointDescription>>
+    void SetEndpointDescriptions(EndpointDescriptionsT&& value) { m_endpointDescriptionsHasBeenSet = true; m_endpointDescriptions = std::forward<EndpointDescriptionsT>(value); }
+    template<typename EndpointDescriptionsT = Aws::Vector<EndpointDescription>>
+    AddEndpointsResult& WithEndpointDescriptions(EndpointDescriptionsT&& value) { SetEndpointDescriptions(std::forward<EndpointDescriptionsT>(value)); return *this;}
+    template<typename EndpointDescriptionsT = EndpointDescription>
+    AddEndpointsResult& AddEndpointDescriptions(EndpointDescriptionsT&& value) { m_endpointDescriptionsHasBeenSet = true; m_endpointDescriptions.emplace_back(std::forward<EndpointDescriptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of endpoint objects.</p>
-     */
-    inline void SetEndpointDescriptions(const Aws::Vector<EndpointDescription>& value) { m_endpointDescriptions = value; }
-
-    /**
-     * <p>The list of endpoint objects.</p>
-     */
-    inline void SetEndpointDescriptions(Aws::Vector<EndpointDescription>&& value) { m_endpointDescriptions = std::move(value); }
-
-    /**
-     * <p>The list of endpoint objects.</p>
-     */
-    inline AddEndpointsResult& WithEndpointDescriptions(const Aws::Vector<EndpointDescription>& value) { SetEndpointDescriptions(value); return *this;}
-
-    /**
-     * <p>The list of endpoint objects.</p>
-     */
-    inline AddEndpointsResult& WithEndpointDescriptions(Aws::Vector<EndpointDescription>&& value) { SetEndpointDescriptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of endpoint objects.</p>
-     */
-    inline AddEndpointsResult& AddEndpointDescriptions(const EndpointDescription& value) { m_endpointDescriptions.push_back(value); return *this; }
-
-    /**
-     * <p>The list of endpoint objects.</p>
-     */
-    inline AddEndpointsResult& AddEndpointDescriptions(EndpointDescription&& value) { m_endpointDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
      */
-    inline const Aws::String& GetEndpointGroupArn() const{ return m_endpointGroupArn; }
+    inline const Aws::String& GetEndpointGroupArn() const { return m_endpointGroupArn; }
+    template<typename EndpointGroupArnT = Aws::String>
+    void SetEndpointGroupArn(EndpointGroupArnT&& value) { m_endpointGroupArnHasBeenSet = true; m_endpointGroupArn = std::forward<EndpointGroupArnT>(value); }
+    template<typename EndpointGroupArnT = Aws::String>
+    AddEndpointsResult& WithEndpointGroupArn(EndpointGroupArnT&& value) { SetEndpointGroupArn(std::forward<EndpointGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
-     */
-    inline void SetEndpointGroupArn(const Aws::String& value) { m_endpointGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
-     */
-    inline void SetEndpointGroupArn(Aws::String&& value) { m_endpointGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
-     */
-    inline void SetEndpointGroupArn(const char* value) { m_endpointGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
-     */
-    inline AddEndpointsResult& WithEndpointGroupArn(const Aws::String& value) { SetEndpointGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
-     */
-    inline AddEndpointsResult& WithEndpointGroupArn(Aws::String&& value) { SetEndpointGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the endpoint group.</p>
-     */
-    inline AddEndpointsResult& WithEndpointGroupArn(const char* value) { SetEndpointGroupArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AddEndpointsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AddEndpointsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AddEndpointsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AddEndpointsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<EndpointDescription> m_endpointDescriptions;
+    bool m_endpointDescriptionsHasBeenSet = false;
 
     Aws::String m_endpointGroupArn;
+    bool m_endpointGroupArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

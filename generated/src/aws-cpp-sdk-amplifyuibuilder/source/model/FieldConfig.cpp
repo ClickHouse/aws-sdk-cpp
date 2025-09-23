@@ -18,23 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-FieldConfig::FieldConfig() : 
-    m_labelHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_excluded(false),
-    m_excludedHasBeenSet(false),
-    m_inputTypeHasBeenSet(false),
-    m_validationsHasBeenSet(false)
-{
-}
-
-FieldConfig::FieldConfig(JsonView jsonValue) : 
-    m_labelHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_excluded(false),
-    m_excludedHasBeenSet(false),
-    m_inputTypeHasBeenSet(false),
-    m_validationsHasBeenSet(false)
+FieldConfig::FieldConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,23 @@ FieldConfig& FieldConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("label"))
   {
     m_label = jsonValue.GetString("label");
-
     m_labelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("position"))
   {
     m_position = jsonValue.GetObject("position");
-
     m_positionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("excluded"))
   {
     m_excluded = jsonValue.GetBool("excluded");
-
     m_excludedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputType"))
   {
     m_inputType = jsonValue.GetObject("inputType");
-
     m_inputTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("validations"))
   {
     Aws::Utils::Array<JsonView> validationsJsonList = jsonValue.GetArray("validations");
@@ -78,7 +54,6 @@ FieldConfig& FieldConfig::operator =(JsonView jsonValue)
     }
     m_validationsHasBeenSet = true;
   }
-
   return *this;
 }
 

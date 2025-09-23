@@ -33,86 +33,36 @@ namespace Model
   class AccountAttribute
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API AccountAttribute();
+    AWS_PINPOINTSMSVOICEV2_API AccountAttribute() = default;
     AWS_PINPOINTSMSVOICEV2_API AccountAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICEV2_API AccountAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the account attribute.</p>
      */
-    inline const AccountAttributeName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the account attribute.</p>
-     */
+    inline AccountAttributeName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(AccountAttributeName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline AccountAttribute& WithName(AccountAttributeName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the account attribute.</p>
-     */
-    inline void SetName(const AccountAttributeName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the account attribute.</p>
-     */
-    inline void SetName(AccountAttributeName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the account attribute.</p>
-     */
-    inline AccountAttribute& WithName(const AccountAttributeName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the account attribute.</p>
-     */
-    inline AccountAttribute& WithName(AccountAttributeName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value associated with the account attribute name.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
-    inline AccountAttribute& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
-    inline AccountAttribute& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value associated with the account attribute name.</p>
-     */
-    inline AccountAttribute& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    AccountAttribute& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    AccountAttributeName m_name;
+    AccountAttributeName m_name{AccountAttributeName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::String m_value;

@@ -33,73 +33,35 @@ namespace Model
   class RuntimeDetails
   {
   public:
-    AWS_GUARDDUTY_API RuntimeDetails();
+    AWS_GUARDDUTY_API RuntimeDetails() = default;
     AWS_GUARDDUTY_API RuntimeDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API RuntimeDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the observed process.</p>
      */
-    inline const ProcessDetails& GetProcess() const{ return m_process; }
-
-    /**
-     * <p>Information about the observed process.</p>
-     */
+    inline const ProcessDetails& GetProcess() const { return m_process; }
     inline bool ProcessHasBeenSet() const { return m_processHasBeenSet; }
+    template<typename ProcessT = ProcessDetails>
+    void SetProcess(ProcessT&& value) { m_processHasBeenSet = true; m_process = std::forward<ProcessT>(value); }
+    template<typename ProcessT = ProcessDetails>
+    RuntimeDetails& WithProcess(ProcessT&& value) { SetProcess(std::forward<ProcessT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the observed process.</p>
-     */
-    inline void SetProcess(const ProcessDetails& value) { m_processHasBeenSet = true; m_process = value; }
-
-    /**
-     * <p>Information about the observed process.</p>
-     */
-    inline void SetProcess(ProcessDetails&& value) { m_processHasBeenSet = true; m_process = std::move(value); }
-
-    /**
-     * <p>Information about the observed process.</p>
-     */
-    inline RuntimeDetails& WithProcess(const ProcessDetails& value) { SetProcess(value); return *this;}
-
-    /**
-     * <p>Information about the observed process.</p>
-     */
-    inline RuntimeDetails& WithProcess(ProcessDetails&& value) { SetProcess(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional information about the suspicious activity.</p>
      */
-    inline const RuntimeContext& GetContext() const{ return m_context; }
-
-    /**
-     * <p>Additional information about the suspicious activity.</p>
-     */
+    inline const RuntimeContext& GetContext() const { return m_context; }
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
-
-    /**
-     * <p>Additional information about the suspicious activity.</p>
-     */
-    inline void SetContext(const RuntimeContext& value) { m_contextHasBeenSet = true; m_context = value; }
-
-    /**
-     * <p>Additional information about the suspicious activity.</p>
-     */
-    inline void SetContext(RuntimeContext&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
-
-    /**
-     * <p>Additional information about the suspicious activity.</p>
-     */
-    inline RuntimeDetails& WithContext(const RuntimeContext& value) { SetContext(value); return *this;}
-
-    /**
-     * <p>Additional information about the suspicious activity.</p>
-     */
-    inline RuntimeDetails& WithContext(RuntimeContext&& value) { SetContext(std::move(value)); return *this;}
-
+    template<typename ContextT = RuntimeContext>
+    void SetContext(ContextT&& value) { m_contextHasBeenSet = true; m_context = std::forward<ContextT>(value); }
+    template<typename ContextT = RuntimeContext>
+    RuntimeDetails& WithContext(ContextT&& value) { SetContext(std::forward<ContextT>(value)); return *this;}
+    ///@}
   private:
 
     ProcessDetails m_process;

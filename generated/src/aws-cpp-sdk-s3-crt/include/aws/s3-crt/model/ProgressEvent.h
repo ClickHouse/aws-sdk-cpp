@@ -31,43 +31,24 @@ namespace Model
   class ProgressEvent
   {
   public:
-    AWS_S3CRT_API ProgressEvent();
+    AWS_S3CRT_API ProgressEvent() = default;
     AWS_S3CRT_API ProgressEvent(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API ProgressEvent& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The Progress event details.</p>
      */
-    inline const Progress& GetDetails() const{ return m_details; }
-
-    /**
-     * <p>The Progress event details.</p>
-     */
+    inline const Progress& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
-
-    /**
-     * <p>The Progress event details.</p>
-     */
-    inline void SetDetails(const Progress& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p>The Progress event details.</p>
-     */
-    inline void SetDetails(Progress&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p>The Progress event details.</p>
-     */
-    inline ProgressEvent& WithDetails(const Progress& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>The Progress event details.</p>
-     */
-    inline ProgressEvent& WithDetails(Progress&& value) { SetDetails(std::move(value)); return *this;}
-
+    template<typename DetailsT = Progress>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Progress>
+    ProgressEvent& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
   private:
 
     Progress m_details;

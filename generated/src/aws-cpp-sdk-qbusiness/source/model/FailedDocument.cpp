@@ -18,44 +18,28 @@ namespace QBusiness
 namespace Model
 {
 
-FailedDocument::FailedDocument() : 
-    m_dataSourceIdHasBeenSet(false),
-    m_errorHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
-FailedDocument::FailedDocument(JsonView jsonValue) : 
-    m_dataSourceIdHasBeenSet(false),
-    m_errorHasBeenSet(false),
-    m_idHasBeenSet(false)
+FailedDocument::FailedDocument(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 FailedDocument& FailedDocument::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("dataSourceId"))
-  {
-    m_dataSourceId = jsonValue.GetString("dataSourceId");
-
-    m_dataSourceIdHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("error"))
-  {
-    m_error = jsonValue.GetObject("error");
-
-    m_errorHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("error"))
+  {
+    m_error = jsonValue.GetObject("error");
+    m_errorHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("dataSourceId"))
+  {
+    m_dataSourceId = jsonValue.GetString("dataSourceId");
+    m_dataSourceIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,9 +47,9 @@ JsonValue FailedDocument::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_dataSourceIdHasBeenSet)
+  if(m_idHasBeenSet)
   {
-   payload.WithString("dataSourceId", m_dataSourceId);
+   payload.WithString("id", m_id);
 
   }
 
@@ -75,9 +59,9 @@ JsonValue FailedDocument::Jsonize() const
 
   }
 
-  if(m_idHasBeenSet)
+  if(m_dataSourceIdHasBeenSet)
   {
-   payload.WithString("id", m_id);
+   payload.WithString("dataSourceId", m_dataSourceId);
 
   }
 

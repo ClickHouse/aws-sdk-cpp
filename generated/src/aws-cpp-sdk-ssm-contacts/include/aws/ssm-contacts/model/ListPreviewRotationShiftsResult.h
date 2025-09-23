@@ -29,118 +29,54 @@ namespace Model
   class ListPreviewRotationShiftsResult
   {
   public:
-    AWS_SSMCONTACTS_API ListPreviewRotationShiftsResult();
+    AWS_SSMCONTACTS_API ListPreviewRotationShiftsResult() = default;
     AWS_SSMCONTACTS_API ListPreviewRotationShiftsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSMCONTACTS_API ListPreviewRotationShiftsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Details about a rotation shift, including times, types, and contacts.</p>
      */
-    inline const Aws::Vector<RotationShift>& GetRotationShifts() const{ return m_rotationShifts; }
+    inline const Aws::Vector<RotationShift>& GetRotationShifts() const { return m_rotationShifts; }
+    template<typename RotationShiftsT = Aws::Vector<RotationShift>>
+    void SetRotationShifts(RotationShiftsT&& value) { m_rotationShiftsHasBeenSet = true; m_rotationShifts = std::forward<RotationShiftsT>(value); }
+    template<typename RotationShiftsT = Aws::Vector<RotationShift>>
+    ListPreviewRotationShiftsResult& WithRotationShifts(RotationShiftsT&& value) { SetRotationShifts(std::forward<RotationShiftsT>(value)); return *this;}
+    template<typename RotationShiftsT = RotationShift>
+    ListPreviewRotationShiftsResult& AddRotationShifts(RotationShiftsT&& value) { m_rotationShiftsHasBeenSet = true; m_rotationShifts.emplace_back(std::forward<RotationShiftsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Details about a rotation shift, including times, types, and contacts.</p>
-     */
-    inline void SetRotationShifts(const Aws::Vector<RotationShift>& value) { m_rotationShifts = value; }
-
-    /**
-     * <p>Details about a rotation shift, including times, types, and contacts.</p>
-     */
-    inline void SetRotationShifts(Aws::Vector<RotationShift>&& value) { m_rotationShifts = std::move(value); }
-
-    /**
-     * <p>Details about a rotation shift, including times, types, and contacts.</p>
-     */
-    inline ListPreviewRotationShiftsResult& WithRotationShifts(const Aws::Vector<RotationShift>& value) { SetRotationShifts(value); return *this;}
-
-    /**
-     * <p>Details about a rotation shift, including times, types, and contacts.</p>
-     */
-    inline ListPreviewRotationShiftsResult& WithRotationShifts(Aws::Vector<RotationShift>&& value) { SetRotationShifts(std::move(value)); return *this;}
-
-    /**
-     * <p>Details about a rotation shift, including times, types, and contacts.</p>
-     */
-    inline ListPreviewRotationShiftsResult& AddRotationShifts(const RotationShift& value) { m_rotationShifts.push_back(value); return *this; }
-
-    /**
-     * <p>Details about a rotation shift, including times, types, and contacts.</p>
-     */
-    inline ListPreviewRotationShiftsResult& AddRotationShifts(RotationShift&& value) { m_rotationShifts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. This token is used to get the
      * next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPreviewRotationShiftsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of items to return. This token is used to get the
-     * next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. This token is used to get the
-     * next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. This token is used to get the
-     * next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. This token is used to get the
-     * next set of results.</p>
-     */
-    inline ListPreviewRotationShiftsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. This token is used to get the
-     * next set of results.</p>
-     */
-    inline ListPreviewRotationShiftsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. This token is used to get the
-     * next set of results.</p>
-     */
-    inline ListPreviewRotationShiftsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListPreviewRotationShiftsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListPreviewRotationShiftsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListPreviewRotationShiftsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListPreviewRotationShiftsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<RotationShift> m_rotationShifts;
+    bool m_rotationShiftsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,91 +32,42 @@ namespace Model
   class RemoteAccountDetails
   {
   public:
-    AWS_GUARDDUTY_API RemoteAccountDetails();
+    AWS_GUARDDUTY_API RemoteAccountDetails() = default;
     AWS_GUARDDUTY_API RemoteAccountDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API RemoteAccountDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the remote API caller.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    RemoteAccountDetails& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
-    inline RemoteAccountDetails& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
-    inline RemoteAccountDetails& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the remote API caller.</p>
-     */
-    inline RemoteAccountDetails& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details on whether the Amazon Web Services account of the remote API caller
      * is related to your GuardDuty environment. If this value is <code>True</code> the
      * API caller is affiliated to your account in some way. If it is
      * <code>False</code> the API caller is from outside your environment.</p>
      */
-    inline bool GetAffiliated() const{ return m_affiliated; }
-
-    /**
-     * <p>Details on whether the Amazon Web Services account of the remote API caller
-     * is related to your GuardDuty environment. If this value is <code>True</code> the
-     * API caller is affiliated to your account in some way. If it is
-     * <code>False</code> the API caller is from outside your environment.</p>
-     */
+    inline bool GetAffiliated() const { return m_affiliated; }
     inline bool AffiliatedHasBeenSet() const { return m_affiliatedHasBeenSet; }
-
-    /**
-     * <p>Details on whether the Amazon Web Services account of the remote API caller
-     * is related to your GuardDuty environment. If this value is <code>True</code> the
-     * API caller is affiliated to your account in some way. If it is
-     * <code>False</code> the API caller is from outside your environment.</p>
-     */
     inline void SetAffiliated(bool value) { m_affiliatedHasBeenSet = true; m_affiliated = value; }
-
-    /**
-     * <p>Details on whether the Amazon Web Services account of the remote API caller
-     * is related to your GuardDuty environment. If this value is <code>True</code> the
-     * API caller is affiliated to your account in some way. If it is
-     * <code>False</code> the API caller is from outside your environment.</p>
-     */
     inline RemoteAccountDetails& WithAffiliated(bool value) { SetAffiliated(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_accountId;
     bool m_accountIdHasBeenSet = false;
 
-    bool m_affiliated;
+    bool m_affiliated{false};
     bool m_affiliatedHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TopicDetails::TopicDetails() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dataSetsHasBeenSet(false)
-{
-}
-
-TopicDetails::TopicDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dataSetsHasBeenSet(false)
+TopicDetails::TopicDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ TopicDetails& TopicDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UserExperienceVersion"))
+  {
+    m_userExperienceVersion = TopicUserExperienceVersionMapper::GetTopicUserExperienceVersionForName(jsonValue.GetString("UserExperienceVersion"));
+    m_userExperienceVersionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("DataSets"))
   {
     Aws::Utils::Array<JsonView> dataSetsJsonList = jsonValue.GetArray("DataSets");
@@ -58,7 +49,11 @@ TopicDetails& TopicDetails::operator =(JsonView jsonValue)
     }
     m_dataSetsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ConfigOptions"))
+  {
+    m_configOptions = jsonValue.GetObject("ConfigOptions");
+    m_configOptionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +73,11 @@ JsonValue TopicDetails::Jsonize() const
 
   }
 
+  if(m_userExperienceVersionHasBeenSet)
+  {
+   payload.WithString("UserExperienceVersion", TopicUserExperienceVersionMapper::GetNameForTopicUserExperienceVersion(m_userExperienceVersion));
+  }
+
   if(m_dataSetsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> dataSetsJsonList(m_dataSets.size());
@@ -86,6 +86,12 @@ JsonValue TopicDetails::Jsonize() const
      dataSetsJsonList[dataSetsIndex].AsObject(m_dataSets[dataSetsIndex].Jsonize());
    }
    payload.WithArray("DataSets", std::move(dataSetsJsonList));
+
+  }
+
+  if(m_configOptionsHasBeenSet)
+  {
+   payload.WithObject("ConfigOptions", m_configOptions.Jsonize());
 
   }
 

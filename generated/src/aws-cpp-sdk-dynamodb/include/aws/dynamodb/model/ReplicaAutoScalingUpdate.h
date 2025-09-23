@@ -35,120 +35,48 @@ namespace Model
   class ReplicaAutoScalingUpdate
   {
   public:
-    AWS_DYNAMODB_API ReplicaAutoScalingUpdate();
+    AWS_DYNAMODB_API ReplicaAutoScalingUpdate() = default;
     AWS_DYNAMODB_API ReplicaAutoScalingUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API ReplicaAutoScalingUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Region where the replica exists.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    ReplicaAutoScalingUpdate& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
-    inline ReplicaAutoScalingUpdate& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
-    inline ReplicaAutoScalingUpdate& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region where the replica exists.</p>
-     */
-    inline ReplicaAutoScalingUpdate& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the auto scaling settings of global secondary indexes that will be
      * modified.</p>
      */
-    inline const Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>& GetReplicaGlobalSecondaryIndexUpdates() const{ return m_replicaGlobalSecondaryIndexUpdates; }
-
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
+    inline const Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>& GetReplicaGlobalSecondaryIndexUpdates() const { return m_replicaGlobalSecondaryIndexUpdates; }
     inline bool ReplicaGlobalSecondaryIndexUpdatesHasBeenSet() const { return m_replicaGlobalSecondaryIndexUpdatesHasBeenSet; }
+    template<typename ReplicaGlobalSecondaryIndexUpdatesT = Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>>
+    void SetReplicaGlobalSecondaryIndexUpdates(ReplicaGlobalSecondaryIndexUpdatesT&& value) { m_replicaGlobalSecondaryIndexUpdatesHasBeenSet = true; m_replicaGlobalSecondaryIndexUpdates = std::forward<ReplicaGlobalSecondaryIndexUpdatesT>(value); }
+    template<typename ReplicaGlobalSecondaryIndexUpdatesT = Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>>
+    ReplicaAutoScalingUpdate& WithReplicaGlobalSecondaryIndexUpdates(ReplicaGlobalSecondaryIndexUpdatesT&& value) { SetReplicaGlobalSecondaryIndexUpdates(std::forward<ReplicaGlobalSecondaryIndexUpdatesT>(value)); return *this;}
+    template<typename ReplicaGlobalSecondaryIndexUpdatesT = ReplicaGlobalSecondaryIndexAutoScalingUpdate>
+    ReplicaAutoScalingUpdate& AddReplicaGlobalSecondaryIndexUpdates(ReplicaGlobalSecondaryIndexUpdatesT&& value) { m_replicaGlobalSecondaryIndexUpdatesHasBeenSet = true; m_replicaGlobalSecondaryIndexUpdates.emplace_back(std::forward<ReplicaGlobalSecondaryIndexUpdatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
-    inline void SetReplicaGlobalSecondaryIndexUpdates(const Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>& value) { m_replicaGlobalSecondaryIndexUpdatesHasBeenSet = true; m_replicaGlobalSecondaryIndexUpdates = value; }
-
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
-    inline void SetReplicaGlobalSecondaryIndexUpdates(Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>&& value) { m_replicaGlobalSecondaryIndexUpdatesHasBeenSet = true; m_replicaGlobalSecondaryIndexUpdates = std::move(value); }
-
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
-    inline ReplicaAutoScalingUpdate& WithReplicaGlobalSecondaryIndexUpdates(const Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>& value) { SetReplicaGlobalSecondaryIndexUpdates(value); return *this;}
-
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
-    inline ReplicaAutoScalingUpdate& WithReplicaGlobalSecondaryIndexUpdates(Aws::Vector<ReplicaGlobalSecondaryIndexAutoScalingUpdate>&& value) { SetReplicaGlobalSecondaryIndexUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
-    inline ReplicaAutoScalingUpdate& AddReplicaGlobalSecondaryIndexUpdates(const ReplicaGlobalSecondaryIndexAutoScalingUpdate& value) { m_replicaGlobalSecondaryIndexUpdatesHasBeenSet = true; m_replicaGlobalSecondaryIndexUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>Represents the auto scaling settings of global secondary indexes that will be
-     * modified.</p>
-     */
-    inline ReplicaAutoScalingUpdate& AddReplicaGlobalSecondaryIndexUpdates(ReplicaGlobalSecondaryIndexAutoScalingUpdate&& value) { m_replicaGlobalSecondaryIndexUpdatesHasBeenSet = true; m_replicaGlobalSecondaryIndexUpdates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const AutoScalingSettingsUpdate& GetReplicaProvisionedReadCapacityAutoScalingUpdate() const{ return m_replicaProvisionedReadCapacityAutoScalingUpdate; }
-
-    
+    inline const AutoScalingSettingsUpdate& GetReplicaProvisionedReadCapacityAutoScalingUpdate() const { return m_replicaProvisionedReadCapacityAutoScalingUpdate; }
     inline bool ReplicaProvisionedReadCapacityAutoScalingUpdateHasBeenSet() const { return m_replicaProvisionedReadCapacityAutoScalingUpdateHasBeenSet; }
-
-    
-    inline void SetReplicaProvisionedReadCapacityAutoScalingUpdate(const AutoScalingSettingsUpdate& value) { m_replicaProvisionedReadCapacityAutoScalingUpdateHasBeenSet = true; m_replicaProvisionedReadCapacityAutoScalingUpdate = value; }
-
-    
-    inline void SetReplicaProvisionedReadCapacityAutoScalingUpdate(AutoScalingSettingsUpdate&& value) { m_replicaProvisionedReadCapacityAutoScalingUpdateHasBeenSet = true; m_replicaProvisionedReadCapacityAutoScalingUpdate = std::move(value); }
-
-    
-    inline ReplicaAutoScalingUpdate& WithReplicaProvisionedReadCapacityAutoScalingUpdate(const AutoScalingSettingsUpdate& value) { SetReplicaProvisionedReadCapacityAutoScalingUpdate(value); return *this;}
-
-    
-    inline ReplicaAutoScalingUpdate& WithReplicaProvisionedReadCapacityAutoScalingUpdate(AutoScalingSettingsUpdate&& value) { SetReplicaProvisionedReadCapacityAutoScalingUpdate(std::move(value)); return *this;}
-
+    template<typename ReplicaProvisionedReadCapacityAutoScalingUpdateT = AutoScalingSettingsUpdate>
+    void SetReplicaProvisionedReadCapacityAutoScalingUpdate(ReplicaProvisionedReadCapacityAutoScalingUpdateT&& value) { m_replicaProvisionedReadCapacityAutoScalingUpdateHasBeenSet = true; m_replicaProvisionedReadCapacityAutoScalingUpdate = std::forward<ReplicaProvisionedReadCapacityAutoScalingUpdateT>(value); }
+    template<typename ReplicaProvisionedReadCapacityAutoScalingUpdateT = AutoScalingSettingsUpdate>
+    ReplicaAutoScalingUpdate& WithReplicaProvisionedReadCapacityAutoScalingUpdate(ReplicaProvisionedReadCapacityAutoScalingUpdateT&& value) { SetReplicaProvisionedReadCapacityAutoScalingUpdate(std::forward<ReplicaProvisionedReadCapacityAutoScalingUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;

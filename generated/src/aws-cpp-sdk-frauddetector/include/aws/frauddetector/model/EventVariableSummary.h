@@ -32,134 +32,47 @@ namespace Model
   class EventVariableSummary
   {
   public:
-    AWS_FRAUDDETECTOR_API EventVariableSummary();
+    AWS_FRAUDDETECTOR_API EventVariableSummary() = default;
     AWS_FRAUDDETECTOR_API EventVariableSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API EventVariableSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The event variable name. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p> The event variable name. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EventVariableSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The event variable name. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p> The event variable name. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p> The event variable name. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p> The event variable name. </p>
-     */
-    inline EventVariableSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The event variable name. </p>
-     */
-    inline EventVariableSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> The event variable name. </p>
-     */
-    inline EventVariableSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The value of the event variable. </p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p> The value of the event variable. </p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    EventVariableSummary& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The value of the event variable. </p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p> The value of the event variable. </p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p> The value of the event variable. </p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p> The value of the event variable. </p>
-     */
-    inline EventVariableSummary& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p> The value of the event variable. </p>
-     */
-    inline EventVariableSummary& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p> The value of the event variable. </p>
-     */
-    inline EventVariableSummary& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The event variable source. </p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p> The event variable source. </p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
-
-    /**
-     * <p> The event variable source. </p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p> The event variable source. </p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p> The event variable source. </p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p> The event variable source. </p>
-     */
-    inline EventVariableSummary& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p> The event variable source. </p>
-     */
-    inline EventVariableSummary& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p> The event variable source. </p>
-     */
-    inline EventVariableSummary& WithSource(const char* value) { SetSource(value); return *this;}
-
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    EventVariableSummary& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

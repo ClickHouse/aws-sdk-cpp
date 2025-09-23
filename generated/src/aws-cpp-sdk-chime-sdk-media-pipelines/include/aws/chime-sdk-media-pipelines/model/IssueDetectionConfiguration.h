@@ -32,52 +32,23 @@ namespace Model
   class IssueDetectionConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API IssueDetectionConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API IssueDetectionConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API IssueDetectionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API IssueDetectionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the issue detection rule.</p>
      */
-    inline const Aws::String& GetRuleName() const{ return m_ruleName; }
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
+    inline const Aws::String& GetRuleName() const { return m_ruleName; }
     inline bool RuleNameHasBeenSet() const { return m_ruleNameHasBeenSet; }
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
-    inline void SetRuleName(const Aws::String& value) { m_ruleNameHasBeenSet = true; m_ruleName = value; }
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
-    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::move(value); }
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
-    inline void SetRuleName(const char* value) { m_ruleNameHasBeenSet = true; m_ruleName.assign(value); }
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
-    inline IssueDetectionConfiguration& WithRuleName(const Aws::String& value) { SetRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
-    inline IssueDetectionConfiguration& WithRuleName(Aws::String&& value) { SetRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the issue detection rule.</p>
-     */
-    inline IssueDetectionConfiguration& WithRuleName(const char* value) { SetRuleName(value); return *this;}
-
+    template<typename RuleNameT = Aws::String>
+    void SetRuleName(RuleNameT&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::forward<RuleNameT>(value); }
+    template<typename RuleNameT = Aws::String>
+    IssueDetectionConfiguration& WithRuleName(RuleNameT&& value) { SetRuleName(std::forward<RuleNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleName;

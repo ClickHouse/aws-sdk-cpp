@@ -27,104 +27,37 @@ namespace Model
   class StartSessionResult
   {
   public:
-    AWS_SSM_API StartSessionResult();
+    AWS_SSM_API StartSessionResult() = default;
     AWS_SSM_API StartSessionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSM_API StartSessionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the session.</p>
      */
-    inline const Aws::String& GetSessionId() const{ return m_sessionId; }
+    inline const Aws::String& GetSessionId() const { return m_sessionId; }
+    template<typename SessionIdT = Aws::String>
+    void SetSessionId(SessionIdT&& value) { m_sessionIdHasBeenSet = true; m_sessionId = std::forward<SessionIdT>(value); }
+    template<typename SessionIdT = Aws::String>
+    StartSessionResult& WithSessionId(SessionIdT&& value) { SetSessionId(std::forward<SessionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the session.</p>
-     */
-    inline void SetSessionId(const Aws::String& value) { m_sessionId = value; }
-
-    /**
-     * <p>The ID of the session.</p>
-     */
-    inline void SetSessionId(Aws::String&& value) { m_sessionId = std::move(value); }
-
-    /**
-     * <p>The ID of the session.</p>
-     */
-    inline void SetSessionId(const char* value) { m_sessionId.assign(value); }
-
-    /**
-     * <p>The ID of the session.</p>
-     */
-    inline StartSessionResult& WithSessionId(const Aws::String& value) { SetSessionId(value); return *this;}
-
-    /**
-     * <p>The ID of the session.</p>
-     */
-    inline StartSessionResult& WithSessionId(Aws::String&& value) { SetSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the session.</p>
-     */
-    inline StartSessionResult& WithSessionId(const char* value) { SetSessionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An encrypted token value containing session and caller information. This
      * token is used to authenticate the connection to the managed node, and is valid
      * only long enough to ensure the connection is successful. Never share your
      * session's token.</p>
      */
-    inline const Aws::String& GetTokenValue() const{ return m_tokenValue; }
+    inline const Aws::String& GetTokenValue() const { return m_tokenValue; }
+    template<typename TokenValueT = Aws::String>
+    void SetTokenValue(TokenValueT&& value) { m_tokenValueHasBeenSet = true; m_tokenValue = std::forward<TokenValueT>(value); }
+    template<typename TokenValueT = Aws::String>
+    StartSessionResult& WithTokenValue(TokenValueT&& value) { SetTokenValue(std::forward<TokenValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An encrypted token value containing session and caller information. This
-     * token is used to authenticate the connection to the managed node, and is valid
-     * only long enough to ensure the connection is successful. Never share your
-     * session's token.</p>
-     */
-    inline void SetTokenValue(const Aws::String& value) { m_tokenValue = value; }
-
-    /**
-     * <p>An encrypted token value containing session and caller information. This
-     * token is used to authenticate the connection to the managed node, and is valid
-     * only long enough to ensure the connection is successful. Never share your
-     * session's token.</p>
-     */
-    inline void SetTokenValue(Aws::String&& value) { m_tokenValue = std::move(value); }
-
-    /**
-     * <p>An encrypted token value containing session and caller information. This
-     * token is used to authenticate the connection to the managed node, and is valid
-     * only long enough to ensure the connection is successful. Never share your
-     * session's token.</p>
-     */
-    inline void SetTokenValue(const char* value) { m_tokenValue.assign(value); }
-
-    /**
-     * <p>An encrypted token value containing session and caller information. This
-     * token is used to authenticate the connection to the managed node, and is valid
-     * only long enough to ensure the connection is successful. Never share your
-     * session's token.</p>
-     */
-    inline StartSessionResult& WithTokenValue(const Aws::String& value) { SetTokenValue(value); return *this;}
-
-    /**
-     * <p>An encrypted token value containing session and caller information. This
-     * token is used to authenticate the connection to the managed node, and is valid
-     * only long enough to ensure the connection is successful. Never share your
-     * session's token.</p>
-     */
-    inline StartSessionResult& WithTokenValue(Aws::String&& value) { SetTokenValue(std::move(value)); return *this;}
-
-    /**
-     * <p>An encrypted token value containing session and caller information. This
-     * token is used to authenticate the connection to the managed node, and is valid
-     * only long enough to ensure the connection is successful. Never share your
-     * session's token.</p>
-     */
-    inline StartSessionResult& WithTokenValue(const char* value) { SetTokenValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A URL back to SSM Agent on the managed node that the Session Manager client
      * uses to send commands and receive output from the node. Format:
@@ -138,129 +71,34 @@ namespace Model
      * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
      * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
      */
-    inline const Aws::String& GetStreamUrl() const{ return m_streamUrl; }
+    inline const Aws::String& GetStreamUrl() const { return m_streamUrl; }
+    template<typename StreamUrlT = Aws::String>
+    void SetStreamUrl(StreamUrlT&& value) { m_streamUrlHasBeenSet = true; m_streamUrl = std::forward<StreamUrlT>(value); }
+    template<typename StreamUrlT = Aws::String>
+    StartSessionResult& WithStreamUrl(StreamUrlT&& value) { SetStreamUrl(std::forward<StreamUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A URL back to SSM Agent on the managed node that the Session Manager client
-     * uses to send commands and receive output from the node. Format:
-     * <code>wss://ssmmessages.<b>region</b>.amazonaws.com/v1/data-channel/<b>session-id</b>?stream=(input|output)</code>
-     * </p> <p> <b>region</b> represents the Region identifier for an Amazon Web
-     * Services Region supported by Amazon Web Services Systems Manager, such as
-     * <code>us-east-2</code> for the US East (Ohio) Region. For a list of supported
-     * <b>region</b> values, see the <b>Region</b> column in <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/ssm.html#ssm_region">Systems
-     * Manager service endpoints</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
-     * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
-     */
-    inline void SetStreamUrl(const Aws::String& value) { m_streamUrl = value; }
-
-    /**
-     * <p>A URL back to SSM Agent on the managed node that the Session Manager client
-     * uses to send commands and receive output from the node. Format:
-     * <code>wss://ssmmessages.<b>region</b>.amazonaws.com/v1/data-channel/<b>session-id</b>?stream=(input|output)</code>
-     * </p> <p> <b>region</b> represents the Region identifier for an Amazon Web
-     * Services Region supported by Amazon Web Services Systems Manager, such as
-     * <code>us-east-2</code> for the US East (Ohio) Region. For a list of supported
-     * <b>region</b> values, see the <b>Region</b> column in <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/ssm.html#ssm_region">Systems
-     * Manager service endpoints</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
-     * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
-     */
-    inline void SetStreamUrl(Aws::String&& value) { m_streamUrl = std::move(value); }
-
-    /**
-     * <p>A URL back to SSM Agent on the managed node that the Session Manager client
-     * uses to send commands and receive output from the node. Format:
-     * <code>wss://ssmmessages.<b>region</b>.amazonaws.com/v1/data-channel/<b>session-id</b>?stream=(input|output)</code>
-     * </p> <p> <b>region</b> represents the Region identifier for an Amazon Web
-     * Services Region supported by Amazon Web Services Systems Manager, such as
-     * <code>us-east-2</code> for the US East (Ohio) Region. For a list of supported
-     * <b>region</b> values, see the <b>Region</b> column in <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/ssm.html#ssm_region">Systems
-     * Manager service endpoints</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
-     * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
-     */
-    inline void SetStreamUrl(const char* value) { m_streamUrl.assign(value); }
-
-    /**
-     * <p>A URL back to SSM Agent on the managed node that the Session Manager client
-     * uses to send commands and receive output from the node. Format:
-     * <code>wss://ssmmessages.<b>region</b>.amazonaws.com/v1/data-channel/<b>session-id</b>?stream=(input|output)</code>
-     * </p> <p> <b>region</b> represents the Region identifier for an Amazon Web
-     * Services Region supported by Amazon Web Services Systems Manager, such as
-     * <code>us-east-2</code> for the US East (Ohio) Region. For a list of supported
-     * <b>region</b> values, see the <b>Region</b> column in <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/ssm.html#ssm_region">Systems
-     * Manager service endpoints</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
-     * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
-     */
-    inline StartSessionResult& WithStreamUrl(const Aws::String& value) { SetStreamUrl(value); return *this;}
-
-    /**
-     * <p>A URL back to SSM Agent on the managed node that the Session Manager client
-     * uses to send commands and receive output from the node. Format:
-     * <code>wss://ssmmessages.<b>region</b>.amazonaws.com/v1/data-channel/<b>session-id</b>?stream=(input|output)</code>
-     * </p> <p> <b>region</b> represents the Region identifier for an Amazon Web
-     * Services Region supported by Amazon Web Services Systems Manager, such as
-     * <code>us-east-2</code> for the US East (Ohio) Region. For a list of supported
-     * <b>region</b> values, see the <b>Region</b> column in <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/ssm.html#ssm_region">Systems
-     * Manager service endpoints</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
-     * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
-     */
-    inline StartSessionResult& WithStreamUrl(Aws::String&& value) { SetStreamUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>A URL back to SSM Agent on the managed node that the Session Manager client
-     * uses to send commands and receive output from the node. Format:
-     * <code>wss://ssmmessages.<b>region</b>.amazonaws.com/v1/data-channel/<b>session-id</b>?stream=(input|output)</code>
-     * </p> <p> <b>region</b> represents the Region identifier for an Amazon Web
-     * Services Region supported by Amazon Web Services Systems Manager, such as
-     * <code>us-east-2</code> for the US East (Ohio) Region. For a list of supported
-     * <b>region</b> values, see the <b>Region</b> column in <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/ssm.html#ssm_region">Systems
-     * Manager service endpoints</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p> <p> <b>session-id</b> represents the ID of a Session Manager
-     * session, such as <code>1a2b3c4dEXAMPLE</code>.</p>
-     */
-    inline StartSessionResult& WithStreamUrl(const char* value) { SetStreamUrl(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartSessionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartSessionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartSessionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartSessionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sessionId;
+    bool m_sessionIdHasBeenSet = false;
 
     Aws::String m_tokenValue;
+    bool m_tokenValueHasBeenSet = false;
 
     Aws::String m_streamUrl;
+    bool m_streamUrlHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

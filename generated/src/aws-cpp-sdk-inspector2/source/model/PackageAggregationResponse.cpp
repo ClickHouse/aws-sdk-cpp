@@ -18,44 +18,28 @@ namespace Inspector2
 namespace Model
 {
 
-PackageAggregationResponse::PackageAggregationResponse() : 
-    m_accountIdHasBeenSet(false),
-    m_packageNameHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
-{
-}
-
-PackageAggregationResponse::PackageAggregationResponse(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_packageNameHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
+PackageAggregationResponse::PackageAggregationResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 PackageAggregationResponse& PackageAggregationResponse::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("accountId"))
-  {
-    m_accountId = jsonValue.GetString("accountId");
-
-    m_accountIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("packageName"))
   {
     m_packageName = jsonValue.GetString("packageName");
-
     m_packageNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("accountId"))
+  {
+    m_accountId = jsonValue.GetString("accountId");
+    m_accountIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("severityCounts"))
   {
     m_severityCounts = jsonValue.GetObject("severityCounts");
-
     m_severityCountsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -63,15 +47,15 @@ JsonValue PackageAggregationResponse::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_accountIdHasBeenSet)
-  {
-   payload.WithString("accountId", m_accountId);
-
-  }
-
   if(m_packageNameHasBeenSet)
   {
    payload.WithString("packageName", m_packageName);
+
+  }
+
+  if(m_accountIdHasBeenSet)
+  {
+   payload.WithString("accountId", m_accountId);
 
   }
 

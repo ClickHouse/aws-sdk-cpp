@@ -31,6 +31,7 @@
 #include <aws/apigatewayv2/model/CreateModelRequest.h>
 #include <aws/apigatewayv2/model/CreateRouteRequest.h>
 #include <aws/apigatewayv2/model/CreateRouteResponseRequest.h>
+#include <aws/apigatewayv2/model/CreateRoutingRuleRequest.h>
 #include <aws/apigatewayv2/model/CreateStageRequest.h>
 #include <aws/apigatewayv2/model/CreateVpcLinkRequest.h>
 #include <aws/apigatewayv2/model/DeleteAccessLogSettingsRequest.h>
@@ -47,6 +48,7 @@
 #include <aws/apigatewayv2/model/DeleteRouteRequestParameterRequest.h>
 #include <aws/apigatewayv2/model/DeleteRouteResponseRequest.h>
 #include <aws/apigatewayv2/model/DeleteRouteSettingsRequest.h>
+#include <aws/apigatewayv2/model/DeleteRoutingRuleRequest.h>
 #include <aws/apigatewayv2/model/DeleteStageRequest.h>
 #include <aws/apigatewayv2/model/DeleteVpcLinkRequest.h>
 #include <aws/apigatewayv2/model/ExportApiRequest.h>
@@ -71,12 +73,15 @@
 #include <aws/apigatewayv2/model/GetRouteResponseRequest.h>
 #include <aws/apigatewayv2/model/GetRouteResponsesRequest.h>
 #include <aws/apigatewayv2/model/GetRoutesRequest.h>
+#include <aws/apigatewayv2/model/GetRoutingRuleRequest.h>
 #include <aws/apigatewayv2/model/GetStageRequest.h>
 #include <aws/apigatewayv2/model/GetStagesRequest.h>
 #include <aws/apigatewayv2/model/GetTagsRequest.h>
 #include <aws/apigatewayv2/model/GetVpcLinkRequest.h>
 #include <aws/apigatewayv2/model/GetVpcLinksRequest.h>
 #include <aws/apigatewayv2/model/ImportApiRequest.h>
+#include <aws/apigatewayv2/model/ListRoutingRulesRequest.h>
+#include <aws/apigatewayv2/model/PutRoutingRuleRequest.h>
 #include <aws/apigatewayv2/model/ReimportApiRequest.h>
 #include <aws/apigatewayv2/model/ResetAuthorizersCacheRequest.h>
 #include <aws/apigatewayv2/model/TagResourceRequest.h>
@@ -107,20 +112,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ApiGatewayV2Client::SERVICE_NAME = "apigateway";
-const char* ApiGatewayV2Client::ALLOCATION_TAG = "ApiGatewayV2Client";
+namespace Aws
+{
+  namespace ApiGatewayV2
+  {
+    const char SERVICE_NAME[] = "apigateway";
+    const char ALLOCATION_TAG[] = "ApiGatewayV2Client";
+  }
+}
+const char* ApiGatewayV2Client::GetServiceName() {return SERVICE_NAME;}
+const char* ApiGatewayV2Client::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ApiGatewayV2Client::ApiGatewayV2Client(const ApiGatewayV2::ApiGatewayV2ClientConfiguration& clientConfiguration,
                                        std::shared_ptr<ApiGatewayV2EndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayV2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -135,8 +147,7 @@ ApiGatewayV2Client::ApiGatewayV2Client(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -151,8 +162,7 @@ ApiGatewayV2Client::ApiGatewayV2Client(const std::shared_ptr<AWSCredentialsProvi
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -161,12 +171,11 @@ ApiGatewayV2Client::ApiGatewayV2Client(const std::shared_ptr<AWSCredentialsProvi
   ApiGatewayV2Client::ApiGatewayV2Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayV2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -181,7 +190,6 @@ ApiGatewayV2Client::ApiGatewayV2Client(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -196,7 +204,6 @@ ApiGatewayV2Client::ApiGatewayV2Client(const std::shared_ptr<AWSCredentialsProvi
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ApiGatewayV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -216,6 +223,14 @@ std::shared_ptr<ApiGatewayV2EndpointProviderBase>& ApiGatewayV2Client::accessEnd
 void ApiGatewayV2Client::init(const ApiGatewayV2::ApiGatewayV2ClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("ApiGatewayV2");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -560,6 +575,40 @@ CreateRouteResponseOutcome ApiGatewayV2Client::CreateRouteResponse(const CreateR
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetRouteId());
       endpointResolutionOutcome.GetResult().AddPathSegments("/routeresponses");
       return CreateRouteResponseOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+CreateRoutingRuleOutcome ApiGatewayV2Client::CreateRoutingRule(const CreateRoutingRuleRequest& request) const
+{
+  AWS_OPERATION_GUARD(CreateRoutingRule);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CreateRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DomainNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateRoutingRule", "Required field: DomainName, is not set");
+    return CreateRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DomainName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CreateRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CreateRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".CreateRoutingRule",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CreateRoutingRuleOutcome>(
+    [&]()-> CreateRoutingRuleOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/v2/domainnames/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDomainName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/routingrules");
+      return CreateRoutingRuleOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -1190,6 +1239,46 @@ DeleteRouteSettingsOutcome ApiGatewayV2Client::DeleteRouteSettings(const DeleteR
       endpointResolutionOutcome.GetResult().AddPathSegments("/routesettings/");
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetRouteKey());
       return DeleteRouteSettingsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+DeleteRoutingRuleOutcome ApiGatewayV2Client::DeleteRoutingRule(const DeleteRoutingRuleRequest& request) const
+{
+  AWS_OPERATION_GUARD(DeleteRoutingRule);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, DeleteRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DomainNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("DeleteRoutingRule", "Required field: DomainName, is not set");
+    return DeleteRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DomainName]", false));
+  }
+  if (!request.RoutingRuleIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("DeleteRoutingRule", "Required field: RoutingRuleId, is not set");
+    return DeleteRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [RoutingRuleId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, DeleteRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, DeleteRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".DeleteRoutingRule",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<DeleteRoutingRuleOutcome>(
+    [&]()-> DeleteRoutingRuleOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, DeleteRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/v2/domainnames/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDomainName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/routingrules/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetRoutingRuleId());
+      return DeleteRoutingRuleOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -2095,6 +2184,46 @@ GetRoutesOutcome ApiGatewayV2Client::GetRoutes(const GetRoutesRequest& request) 
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
+GetRoutingRuleOutcome ApiGatewayV2Client::GetRoutingRule(const GetRoutingRuleRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetRoutingRule);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DomainNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetRoutingRule", "Required field: DomainName, is not set");
+    return GetRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DomainName]", false));
+  }
+  if (!request.RoutingRuleIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetRoutingRule", "Required field: RoutingRuleId, is not set");
+    return GetRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [RoutingRuleId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetRoutingRule",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetRoutingRuleOutcome>(
+    [&]()-> GetRoutingRuleOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/v2/domainnames/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDomainName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/routingrules/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetRoutingRuleId());
+      return GetRoutingRuleOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
 GetStageOutcome ApiGatewayV2Client::GetStage(const GetStageRequest& request) const
 {
   AWS_OPERATION_GUARD(GetStage);
@@ -2283,6 +2412,80 @@ ImportApiOutcome ApiGatewayV2Client::ImportApi(const ImportApiRequest& request) 
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ImportApi, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/v2/apis");
       return ImportApiOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ListRoutingRulesOutcome ApiGatewayV2Client::ListRoutingRules(const ListRoutingRulesRequest& request) const
+{
+  AWS_OPERATION_GUARD(ListRoutingRules);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListRoutingRules, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DomainNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListRoutingRules", "Required field: DomainName, is not set");
+    return ListRoutingRulesOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DomainName]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListRoutingRules, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ListRoutingRules, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ListRoutingRules",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ListRoutingRulesOutcome>(
+    [&]()-> ListRoutingRulesOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListRoutingRules, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/v2/domainnames/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDomainName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/routingrules");
+      return ListRoutingRulesOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+PutRoutingRuleOutcome ApiGatewayV2Client::PutRoutingRule(const PutRoutingRuleRequest& request) const
+{
+  AWS_OPERATION_GUARD(PutRoutingRule);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, PutRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DomainNameHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("PutRoutingRule", "Required field: DomainName, is not set");
+    return PutRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DomainName]", false));
+  }
+  if (!request.RoutingRuleIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("PutRoutingRule", "Required field: RoutingRuleId, is not set");
+    return PutRoutingRuleOutcome(Aws::Client::AWSError<ApiGatewayV2Errors>(ApiGatewayV2Errors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [RoutingRuleId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, PutRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, PutRoutingRule, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".PutRoutingRule",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<PutRoutingRuleOutcome>(
+    [&]()-> PutRoutingRuleOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, PutRoutingRule, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/v2/domainnames/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDomainName());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/routingrules/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetRoutingRuleId());
+      return PutRoutingRuleOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

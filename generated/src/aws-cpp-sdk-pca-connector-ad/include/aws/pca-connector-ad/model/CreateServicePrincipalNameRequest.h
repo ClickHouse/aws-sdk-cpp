@@ -22,7 +22,7 @@ namespace Model
   class CreateServicePrincipalNameRequest : public PcaConnectorAdRequest
   {
   public:
-    AWS_PCACONNECTORAD_API CreateServicePrincipalNameRequest();
+    AWS_PCACONNECTORAD_API CreateServicePrincipalNameRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,148 +33,47 @@ namespace Model
     AWS_PCACONNECTORAD_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Idempotency token.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Idempotency token.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateServicePrincipalNameRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Idempotency token.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Idempotency token.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Idempotency token.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Idempotency token.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Idempotency token.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Idempotency token.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) that was returned when you called <a
      * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
      */
-    inline const Aws::String& GetConnectorArn() const{ return m_connectorArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
+    inline const Aws::String& GetConnectorArn() const { return m_connectorArn; }
     inline bool ConnectorArnHasBeenSet() const { return m_connectorArnHasBeenSet; }
+    template<typename ConnectorArnT = Aws::String>
+    void SetConnectorArn(ConnectorArnT&& value) { m_connectorArnHasBeenSet = true; m_connectorArn = std::forward<ConnectorArnT>(value); }
+    template<typename ConnectorArnT = Aws::String>
+    CreateServicePrincipalNameRequest& WithConnectorArn(ConnectorArnT&& value) { SetConnectorArn(std::forward<ConnectorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline void SetConnectorArn(const Aws::String& value) { m_connectorArnHasBeenSet = true; m_connectorArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline void SetConnectorArn(Aws::String&& value) { m_connectorArnHasBeenSet = true; m_connectorArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline void SetConnectorArn(const char* value) { m_connectorArnHasBeenSet = true; m_connectorArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithConnectorArn(const Aws::String& value) { SetConnectorArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithConnectorArn(Aws::String&& value) { SetConnectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithConnectorArn(const char* value) { SetConnectorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that was returned when you called <a
      * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
      */
-    inline const Aws::String& GetDirectoryRegistrationArn() const{ return m_directoryRegistrationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
+    inline const Aws::String& GetDirectoryRegistrationArn() const { return m_directoryRegistrationArn; }
     inline bool DirectoryRegistrationArnHasBeenSet() const { return m_directoryRegistrationArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
-    inline void SetDirectoryRegistrationArn(const Aws::String& value) { m_directoryRegistrationArnHasBeenSet = true; m_directoryRegistrationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
-    inline void SetDirectoryRegistrationArn(Aws::String&& value) { m_directoryRegistrationArnHasBeenSet = true; m_directoryRegistrationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
-    inline void SetDirectoryRegistrationArn(const char* value) { m_directoryRegistrationArnHasBeenSet = true; m_directoryRegistrationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithDirectoryRegistrationArn(const Aws::String& value) { SetDirectoryRegistrationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithDirectoryRegistrationArn(Aws::String&& value) { SetDirectoryRegistrationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration.html">CreateDirectoryRegistration</a>.</p>
-     */
-    inline CreateServicePrincipalNameRequest& WithDirectoryRegistrationArn(const char* value) { SetDirectoryRegistrationArn(value); return *this;}
-
+    template<typename DirectoryRegistrationArnT = Aws::String>
+    void SetDirectoryRegistrationArn(DirectoryRegistrationArnT&& value) { m_directoryRegistrationArnHasBeenSet = true; m_directoryRegistrationArn = std::forward<DirectoryRegistrationArnT>(value); }
+    template<typename DirectoryRegistrationArnT = Aws::String>
+    CreateServicePrincipalNameRequest& WithDirectoryRegistrationArn(DirectoryRegistrationArnT&& value) { SetDirectoryRegistrationArn(std::forward<DirectoryRegistrationArnT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_connectorArn;
     bool m_connectorArnHasBeenSet = false;

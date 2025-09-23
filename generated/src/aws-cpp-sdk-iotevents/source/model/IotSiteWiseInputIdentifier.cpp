@@ -18,13 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-IotSiteWiseInputIdentifier::IotSiteWiseInputIdentifier() : 
-    m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet(false)
-{
-}
-
-IotSiteWiseInputIdentifier::IotSiteWiseInputIdentifier(JsonView jsonValue) : 
-    m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet(false)
+IotSiteWiseInputIdentifier::IotSiteWiseInputIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ IotSiteWiseInputIdentifier& IotSiteWiseInputIdentifier::operator =(JsonView json
   if(jsonValue.ValueExists("iotSiteWiseAssetModelPropertyIdentifier"))
   {
     m_iotSiteWiseAssetModelPropertyIdentifier = jsonValue.GetObject("iotSiteWiseAssetModelPropertyIdentifier");
-
     m_iotSiteWiseAssetModelPropertyIdentifierHasBeenSet = true;
   }
-
   return *this;
 }
 

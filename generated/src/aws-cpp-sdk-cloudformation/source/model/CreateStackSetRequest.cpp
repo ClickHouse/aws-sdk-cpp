@@ -10,28 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-CreateStackSetRequest::CreateStackSetRequest() : 
-    m_stackSetNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_templateBodyHasBeenSet(false),
-    m_templateURLHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_administrationRoleARNHasBeenSet(false),
-    m_executionRoleNameHasBeenSet(false),
-    m_permissionModel(PermissionModels::NOT_SET),
-    m_permissionModelHasBeenSet(false),
-    m_autoDeploymentHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_managedExecutionHasBeenSet(false)
-{
-}
-
 Aws::String CreateStackSetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -63,32 +41,53 @@ Aws::String CreateStackSetRequest::SerializePayload() const
 
   if(m_parametersHasBeenSet)
   {
-    unsigned parametersCount = 1;
-    for(auto& item : m_parameters)
+    if (m_parameters.empty())
     {
-      item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
-      parametersCount++;
+      ss << "Parameters=&";
+    }
+    else
+    {
+      unsigned parametersCount = 1;
+      for(auto& item : m_parameters)
+      {
+        item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
+        parametersCount++;
+      }
     }
   }
 
   if(m_capabilitiesHasBeenSet)
   {
-    unsigned capabilitiesCount = 1;
-    for(auto& item : m_capabilities)
+    if (m_capabilities.empty())
     {
-      ss << "Capabilities.member." << capabilitiesCount << "="
-          << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item).c_str()) << "&";
-      capabilitiesCount++;
+      ss << "Capabilities=&";
+    }
+    else
+    {
+      unsigned capabilitiesCount = 1;
+      for(auto& item : m_capabilities)
+      {
+        ss << "Capabilities.member." << capabilitiesCount << "="
+            << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item)) << "&";
+        capabilitiesCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -104,7 +103,7 @@ Aws::String CreateStackSetRequest::SerializePayload() const
 
   if(m_permissionModelHasBeenSet)
   {
-    ss << "PermissionModel=" << PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel) << "&";
+    ss << "PermissionModel=" << StringUtils::URLEncode(PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel)) << "&";
   }
 
   if(m_autoDeploymentHasBeenSet)
@@ -114,7 +113,7 @@ Aws::String CreateStackSetRequest::SerializePayload() const
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   if(m_clientRequestTokenHasBeenSet)

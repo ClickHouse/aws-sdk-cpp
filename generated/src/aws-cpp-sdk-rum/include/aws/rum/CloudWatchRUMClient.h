@@ -32,8 +32,8 @@ namespace CloudWatchRUM
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef CloudWatchRUMClientConfiguration ClientConfigurationType;
       typedef CloudWatchRUMEndpointProvider EndpointProviderType;
@@ -43,14 +43,14 @@ namespace CloudWatchRUM
         * is not specified, it will be initialized to default values.
         */
         CloudWatchRUMClient(const Aws::CloudWatchRUM::CloudWatchRUMClientConfiguration& clientConfiguration = Aws::CloudWatchRUM::CloudWatchRUMClientConfiguration(),
-                            std::shared_ptr<CloudWatchRUMEndpointProviderBase> endpointProvider = Aws::MakeShared<CloudWatchRUMEndpointProvider>(ALLOCATION_TAG));
+                            std::shared_ptr<CloudWatchRUMEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CloudWatchRUMClient(const Aws::Auth::AWSCredentials& credentials,
-                            std::shared_ptr<CloudWatchRUMEndpointProviderBase> endpointProvider = Aws::MakeShared<CloudWatchRUMEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<CloudWatchRUMEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::CloudWatchRUM::CloudWatchRUMClientConfiguration& clientConfiguration = Aws::CloudWatchRUM::CloudWatchRUMClientConfiguration());
 
        /**
@@ -58,7 +58,7 @@ namespace CloudWatchRUM
         * the default http client factory will be used
         */
         CloudWatchRUMClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                            std::shared_ptr<CloudWatchRUMEndpointProviderBase> endpointProvider = Aws::MakeShared<CloudWatchRUMEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<CloudWatchRUMEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::CloudWatchRUM::CloudWatchRUMClientConfiguration& clientConfiguration = Aws::CloudWatchRUM::CloudWatchRUMClientConfiguration());
 
 
@@ -93,20 +93,20 @@ namespace CloudWatchRUM
          * CloudWatch. These default metrics are listed in <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-metrics.html">CloudWatch
          * metrics that you can collect with CloudWatch RUM</a>.</p> <p>In addition to
-         * these default metrics, you can choose to send extended metrics or custom metrics
-         * or both.</p> <ul> <li> <p>Extended metrics enable you to send metrics with
-         * additional dimensions not included in the default metrics. You can also send
-         * extended metrics to Evidently as well as CloudWatch. The valid dimension names
-         * for the additional dimensions for extended metrics are <code>BrowserName</code>,
+         * these default metrics, you can choose to send extended metrics, custom metrics,
+         * or both.</p> <ul> <li> <p>Extended metrics let you send metrics with additional
+         * dimensions that aren't included in the default metrics. You can also send
+         * extended metrics to both Evidently and CloudWatch. The valid dimension names for
+         * the additional dimensions for extended metrics are <code>BrowserName</code>,
          * <code>CountryCode</code>, <code>DeviceType</code>, <code>FileType</code>,
          * <code>OSName</code>, and <code>PageId</code>. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-vended-metrics.html">
          * Extended metrics that you can send to CloudWatch and CloudWatch
          * Evidently</a>.</p> </li> <li> <p>Custom metrics are metrics that you define. You
-         * can send custom metrics to CloudWatch or to CloudWatch Evidently or to both.
-         * With custom metrics, you can use any metric name and namespace, and to derive
-         * the metrics you can use any custom events, built-in events, custom attributes,
-         * or default attributes. </p> <p>You can't send custom metrics to the
+         * can send custom metrics to CloudWatch. CloudWatch Evidently, or both. With
+         * custom metrics, you can use any metric name and namespace. To derive the
+         * metrics, you can use any custom events, built-in events, custom attributes, or
+         * default attributes. </p> <p>You can't send custom metrics to the
          * <code>AWS/RUM</code> namespace. You must send custom metrics to a custom
          * namespace that you define. The namespace that you use can't start with
          * <code>AWS/</code>. CloudWatch RUM prepends <code>RUM/CustomMetrics/</code> to
@@ -270,6 +270,32 @@ namespace CloudWatchRUM
         }
 
         /**
+         * <p>Removes the association of a resource-based policy from an app
+         * monitor.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rum-2018-05-10/DeleteResourcePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteResourcePolicyOutcome DeleteResourcePolicy(const Model::DeleteResourcePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
+        Model::DeleteResourcePolicyOutcomeCallable DeleteResourcePolicyCallable(const DeleteResourcePolicyRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchRUMClient::DeleteResourcePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
+        void DeleteResourcePolicyAsync(const DeleteResourcePolicyRequestT& request, const DeleteResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchRUMClient::DeleteResourcePolicy, request, handler, context);
+        }
+
+        /**
          * <p>Deletes a destination for CloudWatch RUM extended metrics, so that the
          * specified app monitor stops sending extended metrics to that
          * destination.</p><p><h3>See Also:</h3>   <a
@@ -350,18 +376,44 @@ namespace CloudWatchRUM
         }
 
         /**
+         * <p>Use this operation to retrieve information about a resource-based policy that
+         * is attached to an app monitor.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rum-2018-05-10/GetResourcePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetResourcePolicyOutcome GetResourcePolicy(const Model::GetResourcePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetResourcePolicyRequestT = Model::GetResourcePolicyRequest>
+        Model::GetResourcePolicyOutcomeCallable GetResourcePolicyCallable(const GetResourcePolicyRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchRUMClient::GetResourcePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for GetResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetResourcePolicyRequestT = Model::GetResourcePolicyRequest>
+        void GetResourcePolicyAsync(const GetResourcePolicyRequestT& request, const GetResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchRUMClient::GetResourcePolicy, request, handler, context);
+        }
+
+        /**
          * <p>Returns a list of the Amazon CloudWatch RUM app monitors in the
          * account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rum-2018-05-10/ListAppMonitors">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAppMonitorsOutcome ListAppMonitors(const Model::ListAppMonitorsRequest& request) const;
+        virtual Model::ListAppMonitorsOutcome ListAppMonitors(const Model::ListAppMonitorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAppMonitors that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAppMonitorsRequestT = Model::ListAppMonitorsRequest>
-        Model::ListAppMonitorsOutcomeCallable ListAppMonitorsCallable(const ListAppMonitorsRequestT& request) const
+        Model::ListAppMonitorsOutcomeCallable ListAppMonitorsCallable(const ListAppMonitorsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchRUMClient::ListAppMonitors, request);
         }
@@ -370,7 +422,7 @@ namespace CloudWatchRUM
          * An Async wrapper for ListAppMonitors that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAppMonitorsRequestT = Model::ListAppMonitorsRequest>
-        void ListAppMonitorsAsync(const ListAppMonitorsRequestT& request, const ListAppMonitorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAppMonitorsAsync(const ListAppMonitorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAppMonitorsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchRUMClient::ListAppMonitors, request, handler, context);
         }
@@ -428,6 +480,36 @@ namespace CloudWatchRUM
         void ListTagsForResourceAsync(const ListTagsForResourceRequestT& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CloudWatchRUMClient::ListTagsForResource, request, handler, context);
+        }
+
+        /**
+         * <p>Use this operation to assign a resource-based policy to a CloudWatch RUM app
+         * monitor to control access to it. Each app monitor can have one resource-based
+         * policy. The maximum size of the policy is 4 KB. To learn more about using
+         * resource policies with RUM, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html">Using
+         * resource-based policies with CloudWatch RUM</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rum-2018-05-10/PutResourcePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutResourcePolicyOutcome PutResourcePolicy(const Model::PutResourcePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
+        Model::PutResourcePolicyOutcomeCallable PutResourcePolicyCallable(const PutResourcePolicyRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchRUMClient::PutResourcePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for PutResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
+        void PutResourcePolicyAsync(const PutResourcePolicyRequestT& request, const PutResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchRUMClient::PutResourcePolicy, request, handler, context);
         }
 
         /**
@@ -626,7 +708,6 @@ namespace CloudWatchRUM
       void init(const CloudWatchRUMClientConfiguration& clientConfiguration);
 
       CloudWatchRUMClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<CloudWatchRUMEndpointProviderBase> m_endpointProvider;
   };
 

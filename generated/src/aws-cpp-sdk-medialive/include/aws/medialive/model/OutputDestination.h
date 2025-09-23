@@ -10,6 +10,7 @@
 #include <aws/medialive/model/MultiplexProgramChannelDestinationSettings.h>
 #include <aws/medialive/model/MediaPackageOutputDestinationSettings.h>
 #include <aws/medialive/model/OutputDestinationSettings.h>
+#include <aws/medialive/model/SrtOutputDestinationSettings.h>
 #include <utility>
 
 namespace Aws
@@ -35,181 +36,94 @@ namespace Model
   class OutputDestination
   {
   public:
-    AWS_MEDIALIVE_API OutputDestination();
+    AWS_MEDIALIVE_API OutputDestination() = default;
     AWS_MEDIALIVE_API OutputDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API OutputDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * User-specified id. This is used in an output group or an output.
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    OutputDestination& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
-    inline OutputDestination& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
-    inline OutputDestination& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * User-specified id. This is used in an output group or an output.
-     */
-    inline OutputDestination& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * Destination settings for a MediaPackage output; one destination for both
      * encoders.
      */
-    inline const Aws::Vector<MediaPackageOutputDestinationSettings>& GetMediaPackageSettings() const{ return m_mediaPackageSettings; }
-
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
+    inline const Aws::Vector<MediaPackageOutputDestinationSettings>& GetMediaPackageSettings() const { return m_mediaPackageSettings; }
     inline bool MediaPackageSettingsHasBeenSet() const { return m_mediaPackageSettingsHasBeenSet; }
+    template<typename MediaPackageSettingsT = Aws::Vector<MediaPackageOutputDestinationSettings>>
+    void SetMediaPackageSettings(MediaPackageSettingsT&& value) { m_mediaPackageSettingsHasBeenSet = true; m_mediaPackageSettings = std::forward<MediaPackageSettingsT>(value); }
+    template<typename MediaPackageSettingsT = Aws::Vector<MediaPackageOutputDestinationSettings>>
+    OutputDestination& WithMediaPackageSettings(MediaPackageSettingsT&& value) { SetMediaPackageSettings(std::forward<MediaPackageSettingsT>(value)); return *this;}
+    template<typename MediaPackageSettingsT = MediaPackageOutputDestinationSettings>
+    OutputDestination& AddMediaPackageSettings(MediaPackageSettingsT&& value) { m_mediaPackageSettingsHasBeenSet = true; m_mediaPackageSettings.emplace_back(std::forward<MediaPackageSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
-    inline void SetMediaPackageSettings(const Aws::Vector<MediaPackageOutputDestinationSettings>& value) { m_mediaPackageSettingsHasBeenSet = true; m_mediaPackageSettings = value; }
-
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
-    inline void SetMediaPackageSettings(Aws::Vector<MediaPackageOutputDestinationSettings>&& value) { m_mediaPackageSettingsHasBeenSet = true; m_mediaPackageSettings = std::move(value); }
-
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
-    inline OutputDestination& WithMediaPackageSettings(const Aws::Vector<MediaPackageOutputDestinationSettings>& value) { SetMediaPackageSettings(value); return *this;}
-
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
-    inline OutputDestination& WithMediaPackageSettings(Aws::Vector<MediaPackageOutputDestinationSettings>&& value) { SetMediaPackageSettings(std::move(value)); return *this;}
-
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
-    inline OutputDestination& AddMediaPackageSettings(const MediaPackageOutputDestinationSettings& value) { m_mediaPackageSettingsHasBeenSet = true; m_mediaPackageSettings.push_back(value); return *this; }
-
-    /**
-     * Destination settings for a MediaPackage output; one destination for both
-     * encoders.
-     */
-    inline OutputDestination& AddMediaPackageSettings(MediaPackageOutputDestinationSettings&& value) { m_mediaPackageSettingsHasBeenSet = true; m_mediaPackageSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * Destination settings for a Multiplex output; one destination for both encoders.
      */
-    inline const MultiplexProgramChannelDestinationSettings& GetMultiplexSettings() const{ return m_multiplexSettings; }
-
-    /**
-     * Destination settings for a Multiplex output; one destination for both encoders.
-     */
+    inline const MultiplexProgramChannelDestinationSettings& GetMultiplexSettings() const { return m_multiplexSettings; }
     inline bool MultiplexSettingsHasBeenSet() const { return m_multiplexSettingsHasBeenSet; }
+    template<typename MultiplexSettingsT = MultiplexProgramChannelDestinationSettings>
+    void SetMultiplexSettings(MultiplexSettingsT&& value) { m_multiplexSettingsHasBeenSet = true; m_multiplexSettings = std::forward<MultiplexSettingsT>(value); }
+    template<typename MultiplexSettingsT = MultiplexProgramChannelDestinationSettings>
+    OutputDestination& WithMultiplexSettings(MultiplexSettingsT&& value) { SetMultiplexSettings(std::forward<MultiplexSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Destination settings for a Multiplex output; one destination for both encoders.
-     */
-    inline void SetMultiplexSettings(const MultiplexProgramChannelDestinationSettings& value) { m_multiplexSettingsHasBeenSet = true; m_multiplexSettings = value; }
-
-    /**
-     * Destination settings for a Multiplex output; one destination for both encoders.
-     */
-    inline void SetMultiplexSettings(MultiplexProgramChannelDestinationSettings&& value) { m_multiplexSettingsHasBeenSet = true; m_multiplexSettings = std::move(value); }
-
-    /**
-     * Destination settings for a Multiplex output; one destination for both encoders.
-     */
-    inline OutputDestination& WithMultiplexSettings(const MultiplexProgramChannelDestinationSettings& value) { SetMultiplexSettings(value); return *this;}
-
-    /**
-     * Destination settings for a Multiplex output; one destination for both encoders.
-     */
-    inline OutputDestination& WithMultiplexSettings(MultiplexProgramChannelDestinationSettings&& value) { SetMultiplexSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Destination settings for a standard output; one destination for each redundant
      * encoder.
      */
-    inline const Aws::Vector<OutputDestinationSettings>& GetSettings() const{ return m_settings; }
-
-    /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
-     */
+    inline const Aws::Vector<OutputDestinationSettings>& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
+    template<typename SettingsT = Aws::Vector<OutputDestinationSettings>>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = Aws::Vector<OutputDestinationSettings>>
+    OutputDestination& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    template<typename SettingsT = OutputDestinationSettings>
+    OutputDestination& AddSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings.emplace_back(std::forward<SettingsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
+     * SRT settings for an SRT output; one destination for each redundant encoder.
      */
-    inline void SetSettings(const Aws::Vector<OutputDestinationSettings>& value) { m_settingsHasBeenSet = true; m_settings = value; }
+    inline const Aws::Vector<SrtOutputDestinationSettings>& GetSrtSettings() const { return m_srtSettings; }
+    inline bool SrtSettingsHasBeenSet() const { return m_srtSettingsHasBeenSet; }
+    template<typename SrtSettingsT = Aws::Vector<SrtOutputDestinationSettings>>
+    void SetSrtSettings(SrtSettingsT&& value) { m_srtSettingsHasBeenSet = true; m_srtSettings = std::forward<SrtSettingsT>(value); }
+    template<typename SrtSettingsT = Aws::Vector<SrtOutputDestinationSettings>>
+    OutputDestination& WithSrtSettings(SrtSettingsT&& value) { SetSrtSettings(std::forward<SrtSettingsT>(value)); return *this;}
+    template<typename SrtSettingsT = SrtOutputDestinationSettings>
+    OutputDestination& AddSrtSettings(SrtSettingsT&& value) { m_srtSettingsHasBeenSet = true; m_srtSettings.emplace_back(std::forward<SrtSettingsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
+     * Optional assignment of an output to a logical interface on the Node. Only
+     * applies to on premises channels.
      */
-    inline void SetSettings(Aws::Vector<OutputDestinationSettings>&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
-     */
-    inline OutputDestination& WithSettings(const Aws::Vector<OutputDestinationSettings>& value) { SetSettings(value); return *this;}
-
-    /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
-     */
-    inline OutputDestination& WithSettings(Aws::Vector<OutputDestinationSettings>&& value) { SetSettings(std::move(value)); return *this;}
-
-    /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
-     */
-    inline OutputDestination& AddSettings(const OutputDestinationSettings& value) { m_settingsHasBeenSet = true; m_settings.push_back(value); return *this; }
-
-    /**
-     * Destination settings for a standard output; one destination for each redundant
-     * encoder.
-     */
-    inline OutputDestination& AddSettings(OutputDestinationSettings&& value) { m_settingsHasBeenSet = true; m_settings.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<Aws::String>& GetLogicalInterfaceNames() const { return m_logicalInterfaceNames; }
+    inline bool LogicalInterfaceNamesHasBeenSet() const { return m_logicalInterfaceNamesHasBeenSet; }
+    template<typename LogicalInterfaceNamesT = Aws::Vector<Aws::String>>
+    void SetLogicalInterfaceNames(LogicalInterfaceNamesT&& value) { m_logicalInterfaceNamesHasBeenSet = true; m_logicalInterfaceNames = std::forward<LogicalInterfaceNamesT>(value); }
+    template<typename LogicalInterfaceNamesT = Aws::Vector<Aws::String>>
+    OutputDestination& WithLogicalInterfaceNames(LogicalInterfaceNamesT&& value) { SetLogicalInterfaceNames(std::forward<LogicalInterfaceNamesT>(value)); return *this;}
+    template<typename LogicalInterfaceNamesT = Aws::String>
+    OutputDestination& AddLogicalInterfaceNames(LogicalInterfaceNamesT&& value) { m_logicalInterfaceNamesHasBeenSet = true; m_logicalInterfaceNames.emplace_back(std::forward<LogicalInterfaceNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_id;
@@ -223,6 +137,12 @@ namespace Model
 
     Aws::Vector<OutputDestinationSettings> m_settings;
     bool m_settingsHasBeenSet = false;
+
+    Aws::Vector<SrtOutputDestinationSettings> m_srtSettings;
+    bool m_srtSettingsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_logicalInterfaceNames;
+    bool m_logicalInterfaceNamesHasBeenSet = false;
   };
 
 } // namespace Model

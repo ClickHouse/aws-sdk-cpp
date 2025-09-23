@@ -12,31 +12,6 @@ using namespace Aws::NeptuneGraph::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateGraphUsingImportTaskRequest::CreateGraphUsingImportTaskRequest() : 
-    m_graphNameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_publicConnectivity(false),
-    m_publicConnectivityHasBeenSet(false),
-    m_kmsKeyIdentifierHasBeenSet(false),
-    m_vectorSearchConfigurationHasBeenSet(false),
-    m_replicaCount(0),
-    m_replicaCountHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_importOptionsHasBeenSet(false),
-    m_maxProvisionedMemory(0),
-    m_maxProvisionedMemoryHasBeenSet(false),
-    m_minProvisionedMemory(0),
-    m_minProvisionedMemoryHasBeenSet(false),
-    m_failOnError(false),
-    m_failOnErrorHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_format(Format::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
-{
-}
-
 Aws::String CreateGraphUsingImportTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -121,6 +96,16 @@ Aws::String CreateGraphUsingImportTaskRequest::SerializePayload() const
   if(m_formatHasBeenSet)
   {
    payload.WithString("format", FormatMapper::GetNameForFormat(m_format));
+  }
+
+  if(m_parquetTypeHasBeenSet)
+  {
+   payload.WithString("parquetType", ParquetTypeMapper::GetNameForParquetType(m_parquetType));
+  }
+
+  if(m_blankNodeHandlingHasBeenSet)
+  {
+   payload.WithString("blankNodeHandling", BlankNodeHandlingMapper::GetNameForBlankNodeHandling(m_blankNodeHandling));
   }
 
   if(m_roleArnHasBeenSet)

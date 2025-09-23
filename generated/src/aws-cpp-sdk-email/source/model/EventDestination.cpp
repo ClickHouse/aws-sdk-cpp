@@ -20,25 +20,7 @@ namespace SES
 namespace Model
 {
 
-EventDestination::EventDestination() : 
-    m_nameHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_matchingEventTypesHasBeenSet(false),
-    m_kinesisFirehoseDestinationHasBeenSet(false),
-    m_cloudWatchDestinationHasBeenSet(false),
-    m_sNSDestinationHasBeenSet(false)
-{
-}
-
-EventDestination::EventDestination(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_matchingEventTypesHasBeenSet(false),
-    m_kinesisFirehoseDestinationHasBeenSet(false),
-    m_cloudWatchDestinationHasBeenSet(false),
-    m_sNSDestinationHasBeenSet(false)
+EventDestination::EventDestination(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +47,7 @@ EventDestination& EventDestination::operator =(const XmlNode& xmlNode)
     if(!matchingEventTypesNode.IsNull())
     {
       XmlNode matchingEventTypesMember = matchingEventTypesNode.FirstChild("member");
+      m_matchingEventTypesHasBeenSet = !matchingEventTypesMember.IsNull();
       while(!matchingEventTypesMember.IsNull())
       {
         m_matchingEventTypes.push_back(EventTypeMapper::GetEventTypeForName(StringUtils::Trim(matchingEventTypesMember.GetText().c_str())));
@@ -113,7 +96,7 @@ void EventDestination::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned matchingEventTypesIdx = 1;
       for(auto& item : m_matchingEventTypes)
       {
-        oStream << location << index << locationValue << ".MatchingEventTypes.member." << matchingEventTypesIdx++ << "=" << EventTypeMapper::GetNameForEventType(item) << "&";
+        oStream << location << index << locationValue << ".MatchingEventTypes.member." << matchingEventTypesIdx++ << "=" << StringUtils::URLEncode(EventTypeMapper::GetNameForEventType(item)) << "&";
       }
   }
 
@@ -155,7 +138,7 @@ void EventDestination::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned matchingEventTypesIdx = 1;
       for(auto& item : m_matchingEventTypes)
       {
-        oStream << location << ".MatchingEventTypes.member." << matchingEventTypesIdx++ << "=" << EventTypeMapper::GetNameForEventType(item) << "&";
+        oStream << location << ".MatchingEventTypes.member." << matchingEventTypesIdx++ << "=" << StringUtils::URLEncode(EventTypeMapper::GetNameForEventType(item)) << "&";
       }
   }
   if(m_kinesisFirehoseDestinationHasBeenSet)

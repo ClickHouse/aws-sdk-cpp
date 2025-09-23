@@ -18,15 +18,7 @@ namespace MarketplaceDeployment
 namespace Model
 {
 
-DeploymentParameterInput::DeploymentParameterInput() : 
-    m_nameHasBeenSet(false),
-    m_secretStringHasBeenSet(false)
-{
-}
-
-DeploymentParameterInput::DeploymentParameterInput(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_secretStringHasBeenSet(false)
+DeploymentParameterInput::DeploymentParameterInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DeploymentParameterInput& DeploymentParameterInput::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("secretString"))
   {
     m_secretString = jsonValue.GetString("secretString");
-
     m_secretStringHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,13 +20,7 @@ namespace ElasticLoadBalancing
 namespace Model
 {
 
-TagKeyOnly::TagKeyOnly() : 
-    m_keyHasBeenSet(false)
-{
-}
-
-TagKeyOnly::TagKeyOnly(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false)
+TagKeyOnly::TagKeyOnly(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

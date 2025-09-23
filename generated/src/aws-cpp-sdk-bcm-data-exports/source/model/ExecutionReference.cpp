@@ -18,15 +18,7 @@ namespace BCMDataExports
 namespace Model
 {
 
-ExecutionReference::ExecutionReference() : 
-    m_executionIdHasBeenSet(false),
-    m_executionStatusHasBeenSet(false)
-{
-}
-
-ExecutionReference::ExecutionReference(JsonView jsonValue) : 
-    m_executionIdHasBeenSet(false),
-    m_executionStatusHasBeenSet(false)
+ExecutionReference::ExecutionReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExecutionReference& ExecutionReference::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ExecutionId"))
   {
     m_executionId = jsonValue.GetString("ExecutionId");
-
     m_executionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExecutionStatus"))
   {
     m_executionStatus = jsonValue.GetObject("ExecutionStatus");
-
     m_executionStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

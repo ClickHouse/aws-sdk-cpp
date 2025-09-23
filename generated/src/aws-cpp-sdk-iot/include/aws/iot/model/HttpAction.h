@@ -34,69 +34,27 @@ namespace Model
   class HttpAction
   {
   public:
-    AWS_IOT_API HttpAction();
+    AWS_IOT_API HttpAction() = default;
     AWS_IOT_API HttpAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API HttpAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The endpoint URL. If substitution templates are used in the URL, you must
      * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
      * <code>TopicRuleDestination</code> is created if possible.</p>
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    HttpAction& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
-    inline HttpAction& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
-    inline HttpAction& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint URL. If substitution templates are used in the URL, you must
-     * also specify a <code>confirmationUrl</code>. If this is a new destination, a new
-     * <code>TopicRuleDestination</code> is created if possible.</p>
-     */
-    inline HttpAction& WithUrl(const char* value) { SetUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL to which IoT sends a confirmation message. The value of the
      * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
@@ -105,150 +63,39 @@ namespace Model
      * rule destinations that match each possible value of the substitution template
      * before traffic is allowed to your endpoint URL.</p>
      */
-    inline const Aws::String& GetConfirmationUrl() const{ return m_confirmationUrl; }
-
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
+    inline const Aws::String& GetConfirmationUrl() const { return m_confirmationUrl; }
     inline bool ConfirmationUrlHasBeenSet() const { return m_confirmationUrlHasBeenSet; }
+    template<typename ConfirmationUrlT = Aws::String>
+    void SetConfirmationUrl(ConfirmationUrlT&& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = std::forward<ConfirmationUrlT>(value); }
+    template<typename ConfirmationUrlT = Aws::String>
+    HttpAction& WithConfirmationUrl(ConfirmationUrlT&& value) { SetConfirmationUrl(std::forward<ConfirmationUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
-    inline void SetConfirmationUrl(const Aws::String& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = value; }
-
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
-    inline void SetConfirmationUrl(Aws::String&& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = std::move(value); }
-
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
-    inline void SetConfirmationUrl(const char* value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl.assign(value); }
-
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
-    inline HttpAction& WithConfirmationUrl(const Aws::String& value) { SetConfirmationUrl(value); return *this;}
-
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
-    inline HttpAction& WithConfirmationUrl(Aws::String&& value) { SetConfirmationUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL to which IoT sends a confirmation message. The value of the
-     * confirmation URL must be a prefix of the endpoint URL. If you do not specify a
-     * confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use
-     * substitution templates in the confirmationUrl, you must create and enable topic
-     * rule destinations that match each possible value of the substitution template
-     * before traffic is allowed to your endpoint URL.</p>
-     */
-    inline HttpAction& WithConfirmationUrl(const char* value) { SetConfirmationUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP headers to send with the message data.</p>
      */
-    inline const Aws::Vector<HttpActionHeader>& GetHeaders() const{ return m_headers; }
-
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
+    inline const Aws::Vector<HttpActionHeader>& GetHeaders() const { return m_headers; }
     inline bool HeadersHasBeenSet() const { return m_headersHasBeenSet; }
+    template<typename HeadersT = Aws::Vector<HttpActionHeader>>
+    void SetHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers = std::forward<HeadersT>(value); }
+    template<typename HeadersT = Aws::Vector<HttpActionHeader>>
+    HttpAction& WithHeaders(HeadersT&& value) { SetHeaders(std::forward<HeadersT>(value)); return *this;}
+    template<typename HeadersT = HttpActionHeader>
+    HttpAction& AddHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers.emplace_back(std::forward<HeadersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
-    inline void SetHeaders(const Aws::Vector<HttpActionHeader>& value) { m_headersHasBeenSet = true; m_headers = value; }
-
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
-    inline void SetHeaders(Aws::Vector<HttpActionHeader>&& value) { m_headersHasBeenSet = true; m_headers = std::move(value); }
-
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
-    inline HttpAction& WithHeaders(const Aws::Vector<HttpActionHeader>& value) { SetHeaders(value); return *this;}
-
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
-    inline HttpAction& WithHeaders(Aws::Vector<HttpActionHeader>&& value) { SetHeaders(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
-    inline HttpAction& AddHeaders(const HttpActionHeader& value) { m_headersHasBeenSet = true; m_headers.push_back(value); return *this; }
-
-    /**
-     * <p>The HTTP headers to send with the message data.</p>
-     */
-    inline HttpAction& AddHeaders(HttpActionHeader&& value) { m_headersHasBeenSet = true; m_headers.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The authentication method to use when sending data to an HTTPS endpoint.</p>
      */
-    inline const HttpAuthorization& GetAuth() const{ return m_auth; }
-
-    /**
-     * <p>The authentication method to use when sending data to an HTTPS endpoint.</p>
-     */
+    inline const HttpAuthorization& GetAuth() const { return m_auth; }
     inline bool AuthHasBeenSet() const { return m_authHasBeenSet; }
-
-    /**
-     * <p>The authentication method to use when sending data to an HTTPS endpoint.</p>
-     */
-    inline void SetAuth(const HttpAuthorization& value) { m_authHasBeenSet = true; m_auth = value; }
-
-    /**
-     * <p>The authentication method to use when sending data to an HTTPS endpoint.</p>
-     */
-    inline void SetAuth(HttpAuthorization&& value) { m_authHasBeenSet = true; m_auth = std::move(value); }
-
-    /**
-     * <p>The authentication method to use when sending data to an HTTPS endpoint.</p>
-     */
-    inline HttpAction& WithAuth(const HttpAuthorization& value) { SetAuth(value); return *this;}
-
-    /**
-     * <p>The authentication method to use when sending data to an HTTPS endpoint.</p>
-     */
-    inline HttpAction& WithAuth(HttpAuthorization&& value) { SetAuth(std::move(value)); return *this;}
-
+    template<typename AuthT = HttpAuthorization>
+    void SetAuth(AuthT&& value) { m_authHasBeenSet = true; m_auth = std::forward<AuthT>(value); }
+    template<typename AuthT = HttpAuthorization>
+    HttpAction& WithAuth(AuthT&& value) { SetAuth(std::forward<AuthT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_url;

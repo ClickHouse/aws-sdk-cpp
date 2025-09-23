@@ -21,7 +21,7 @@ namespace Model
   class SetDefaultSenderIdRequest : public PinpointSMSVoiceV2Request
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API SetDefaultSenderIdRequest();
+    AWS_PINPOINTSMSVOICEV2_API SetDefaultSenderIdRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,55 +34,20 @@ namespace Model
     AWS_PINPOINTSMSVOICEV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The configuration set to updated with a new default SenderId. This field can
      * be the ConsigurationSetName or ConfigurationSetArn.</p>
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    SetDefaultSenderIdRequest& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
-    inline SetDefaultSenderIdRequest& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
-    inline SetDefaultSenderIdRequest& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration set to updated with a new default SenderId. This field can
-     * be the ConsigurationSetName or ConfigurationSetArn.</p>
-     */
-    inline SetDefaultSenderIdRequest& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current sender ID for the configuration set. When sending a text message
      * to a destination country which supports SenderIds, the default sender ID on the
@@ -90,71 +55,13 @@ namespace Model
      * dedicated origination phone numbers or registered SenderIds are available in
      * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
      */
-    inline const Aws::String& GetSenderId() const{ return m_senderId; }
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
+    inline const Aws::String& GetSenderId() const { return m_senderId; }
     inline bool SenderIdHasBeenSet() const { return m_senderIdHasBeenSet; }
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
-    inline void SetSenderId(const Aws::String& value) { m_senderIdHasBeenSet = true; m_senderId = value; }
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
-    inline void SetSenderId(Aws::String&& value) { m_senderIdHasBeenSet = true; m_senderId = std::move(value); }
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
-    inline void SetSenderId(const char* value) { m_senderIdHasBeenSet = true; m_senderId.assign(value); }
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
-    inline SetDefaultSenderIdRequest& WithSenderId(const Aws::String& value) { SetSenderId(value); return *this;}
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
-    inline SetDefaultSenderIdRequest& WithSenderId(Aws::String&& value) { SetSenderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The current sender ID for the configuration set. When sending a text message
-     * to a destination country which supports SenderIds, the default sender ID on the
-     * configuration set specified on <a>SendTextMessage</a> will be used if no
-     * dedicated origination phone numbers or registered SenderIds are available in
-     * your account, instead of a generic sender ID, such as 'NOTICE'.</p>
-     */
-    inline SetDefaultSenderIdRequest& WithSenderId(const char* value) { SetSenderId(value); return *this;}
-
+    template<typename SenderIdT = Aws::String>
+    void SetSenderId(SenderIdT&& value) { m_senderIdHasBeenSet = true; m_senderId = std::forward<SenderIdT>(value); }
+    template<typename SenderIdT = Aws::String>
+    SetDefaultSenderIdRequest& WithSenderId(SenderIdT&& value) { SetSenderId(std::forward<SenderIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationSetName;

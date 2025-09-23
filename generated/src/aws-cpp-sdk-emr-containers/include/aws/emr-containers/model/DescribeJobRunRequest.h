@@ -21,7 +21,7 @@ namespace Model
   class DescribeJobRunRequest : public EMRContainersRequest
   {
   public:
-    AWS_EMRCONTAINERS_API DescribeJobRunRequest();
+    AWS_EMRCONTAINERS_API DescribeJobRunRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_EMRCONTAINERS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the job run request. </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the job run request. </p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    DescribeJobRunRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the job run request. </p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the job run request. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the job run request. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the job run request. </p>
-     */
-    inline DescribeJobRunRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the job run request. </p>
-     */
-    inline DescribeJobRunRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the job run request. </p>
-     */
-    inline DescribeJobRunRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the virtual cluster for which the job run is submitted.</p>
      */
-    inline const Aws::String& GetVirtualClusterId() const{ return m_virtualClusterId; }
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
+    inline const Aws::String& GetVirtualClusterId() const { return m_virtualClusterId; }
     inline bool VirtualClusterIdHasBeenSet() const { return m_virtualClusterIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
-    inline void SetVirtualClusterId(const Aws::String& value) { m_virtualClusterIdHasBeenSet = true; m_virtualClusterId = value; }
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
-    inline void SetVirtualClusterId(Aws::String&& value) { m_virtualClusterIdHasBeenSet = true; m_virtualClusterId = std::move(value); }
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
-    inline void SetVirtualClusterId(const char* value) { m_virtualClusterIdHasBeenSet = true; m_virtualClusterId.assign(value); }
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
-    inline DescribeJobRunRequest& WithVirtualClusterId(const Aws::String& value) { SetVirtualClusterId(value); return *this;}
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
-    inline DescribeJobRunRequest& WithVirtualClusterId(Aws::String&& value) { SetVirtualClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the virtual cluster for which the job run is submitted.</p>
-     */
-    inline DescribeJobRunRequest& WithVirtualClusterId(const char* value) { SetVirtualClusterId(value); return *this;}
-
+    template<typename VirtualClusterIdT = Aws::String>
+    void SetVirtualClusterId(VirtualClusterIdT&& value) { m_virtualClusterIdHasBeenSet = true; m_virtualClusterId = std::forward<VirtualClusterIdT>(value); }
+    template<typename VirtualClusterIdT = Aws::String>
+    DescribeJobRunRequest& WithVirtualClusterId(VirtualClusterIdT&& value) { SetVirtualClusterId(std::forward<VirtualClusterIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

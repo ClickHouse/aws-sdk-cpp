@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-CertificateValidity::CertificateValidity() : 
-    m_notBeforeHasBeenSet(false),
-    m_notAfterHasBeenSet(false)
-{
-}
-
-CertificateValidity::CertificateValidity(JsonView jsonValue) : 
-    m_notBeforeHasBeenSet(false),
-    m_notAfterHasBeenSet(false)
+CertificateValidity::CertificateValidity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CertificateValidity& CertificateValidity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("notBefore"))
   {
     m_notBefore = jsonValue.GetDouble("notBefore");
-
     m_notBeforeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("notAfter"))
   {
     m_notAfter = jsonValue.GetDouble("notAfter");
-
     m_notAfterHasBeenSet = true;
   }
-
   return *this;
 }
 

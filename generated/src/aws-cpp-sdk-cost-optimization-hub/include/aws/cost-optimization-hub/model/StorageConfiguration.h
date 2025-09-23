@@ -32,80 +32,40 @@ namespace Model
   class StorageConfiguration
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API StorageConfiguration();
+    AWS_COSTOPTIMIZATIONHUB_API StorageConfiguration() = default;
     AWS_COSTOPTIMIZATIONHUB_API StorageConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API StorageConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The storage volume.</p>
-     */
-    inline double GetSizeInGb() const{ return m_sizeInGb; }
-
-    /**
-     * <p>The storage volume.</p>
-     */
-    inline bool SizeInGbHasBeenSet() const { return m_sizeInGbHasBeenSet; }
-
-    /**
-     * <p>The storage volume.</p>
-     */
-    inline void SetSizeInGb(double value) { m_sizeInGbHasBeenSet = true; m_sizeInGb = value; }
-
-    /**
-     * <p>The storage volume.</p>
-     */
-    inline StorageConfiguration& WithSizeInGb(double value) { SetSizeInGb(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The storage type.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The storage type.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    StorageConfiguration& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The storage type.</p>
+     * <p>The storage volume.</p>
      */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The storage type.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The storage type.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The storage type.</p>
-     */
-    inline StorageConfiguration& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The storage type.</p>
-     */
-    inline StorageConfiguration& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The storage type.</p>
-     */
-    inline StorageConfiguration& WithType(const char* value) { SetType(value); return *this;}
-
+    inline double GetSizeInGb() const { return m_sizeInGb; }
+    inline bool SizeInGbHasBeenSet() const { return m_sizeInGbHasBeenSet; }
+    inline void SetSizeInGb(double value) { m_sizeInGbHasBeenSet = true; m_sizeInGb = value; }
+    inline StorageConfiguration& WithSizeInGb(double value) { SetSizeInGb(value); return *this;}
+    ///@}
   private:
-
-    double m_sizeInGb;
-    bool m_sizeInGbHasBeenSet = false;
 
     Aws::String m_type;
     bool m_typeHasBeenSet = false;
+
+    double m_sizeInGb{0.0};
+    bool m_sizeInGbHasBeenSet = false;
   };
 
 } // namespace Model

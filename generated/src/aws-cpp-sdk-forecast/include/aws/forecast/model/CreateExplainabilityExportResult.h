@@ -27,73 +27,37 @@ namespace Model
   class CreateExplainabilityExportResult
   {
   public:
-    AWS_FORECASTSERVICE_API CreateExplainabilityExportResult();
+    AWS_FORECASTSERVICE_API CreateExplainabilityExportResult() = default;
     AWS_FORECASTSERVICE_API CreateExplainabilityExportResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FORECASTSERVICE_API CreateExplainabilityExportResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the export.</p>
      */
-    inline const Aws::String& GetExplainabilityExportArn() const{ return m_explainabilityExportArn; }
+    inline const Aws::String& GetExplainabilityExportArn() const { return m_explainabilityExportArn; }
+    template<typename ExplainabilityExportArnT = Aws::String>
+    void SetExplainabilityExportArn(ExplainabilityExportArnT&& value) { m_explainabilityExportArnHasBeenSet = true; m_explainabilityExportArn = std::forward<ExplainabilityExportArnT>(value); }
+    template<typename ExplainabilityExportArnT = Aws::String>
+    CreateExplainabilityExportResult& WithExplainabilityExportArn(ExplainabilityExportArnT&& value) { SetExplainabilityExportArn(std::forward<ExplainabilityExportArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export.</p>
-     */
-    inline void SetExplainabilityExportArn(const Aws::String& value) { m_explainabilityExportArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export.</p>
-     */
-    inline void SetExplainabilityExportArn(Aws::String&& value) { m_explainabilityExportArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export.</p>
-     */
-    inline void SetExplainabilityExportArn(const char* value) { m_explainabilityExportArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export.</p>
-     */
-    inline CreateExplainabilityExportResult& WithExplainabilityExportArn(const Aws::String& value) { SetExplainabilityExportArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export.</p>
-     */
-    inline CreateExplainabilityExportResult& WithExplainabilityExportArn(Aws::String&& value) { SetExplainabilityExportArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the export.</p>
-     */
-    inline CreateExplainabilityExportResult& WithExplainabilityExportArn(const char* value) { SetExplainabilityExportArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateExplainabilityExportResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateExplainabilityExportResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateExplainabilityExportResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateExplainabilityExportResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_explainabilityExportArn;
+    bool m_explainabilityExportArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

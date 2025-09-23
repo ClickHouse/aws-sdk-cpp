@@ -18,17 +18,7 @@ namespace Support
 namespace Model
 {
 
-Service::Service() : 
-    m_codeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_categoriesHasBeenSet(false)
-{
-}
-
-Service::Service(JsonView jsonValue) : 
-    m_codeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_categoriesHasBeenSet(false)
+Service::Service(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Service& Service::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetString("code");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("categories"))
   {
     Aws::Utils::Array<JsonView> categoriesJsonList = jsonValue.GetArray("categories");
@@ -58,7 +44,6 @@ Service& Service::operator =(JsonView jsonValue)
     }
     m_categoriesHasBeenSet = true;
   }
-
   return *this;
 }
 

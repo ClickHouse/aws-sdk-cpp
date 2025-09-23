@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-IpFilter::IpFilter() : 
-    m_cidrHasBeenSet(false)
-{
-}
-
-IpFilter::IpFilter(JsonView jsonValue) : 
-    m_cidrHasBeenSet(false)
+IpFilter::IpFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ IpFilter& IpFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Cidr"))
   {
     m_cidr = jsonValue.GetString("Cidr");
-
     m_cidrHasBeenSet = true;
   }
-
   return *this;
 }
 

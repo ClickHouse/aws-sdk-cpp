@@ -6,6 +6,7 @@
 #include <aws/route53/model/ListTrafficPolicyInstancesByPolicyRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,17 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListTrafficPolicyInstancesByPolicyRequest::ListTrafficPolicyInstancesByPolicyRequest() : 
-    m_trafficPolicyIdHasBeenSet(false),
-    m_trafficPolicyVersion(0),
-    m_trafficPolicyVersionHasBeenSet(false),
-    m_hostedZoneIdMarkerHasBeenSet(false),
-    m_trafficPolicyInstanceNameMarkerHasBeenSet(false),
-    m_trafficPolicyInstanceTypeMarker(RRType::NOT_SET),
-    m_trafficPolicyInstanceTypeMarkerHasBeenSet(false),
-    m_maxItemsHasBeenSet(false)
-{
-}
 
 Aws::String ListTrafficPolicyInstancesByPolicyRequest::SerializePayload() const
 {

@@ -28,68 +28,38 @@ namespace Model
   class GetResolverEndpointResult
   {
   public:
-    AWS_ROUTE53RESOLVER_API GetResolverEndpointResult();
+    AWS_ROUTE53RESOLVER_API GetResolverEndpointResult() = default;
     AWS_ROUTE53RESOLVER_API GetResolverEndpointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ROUTE53RESOLVER_API GetResolverEndpointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the Resolver endpoint that you specified in a
      * <code>GetResolverEndpoint</code> request.</p>
      */
-    inline const ResolverEndpoint& GetResolverEndpoint() const{ return m_resolverEndpoint; }
+    inline const ResolverEndpoint& GetResolverEndpoint() const { return m_resolverEndpoint; }
+    template<typename ResolverEndpointT = ResolverEndpoint>
+    void SetResolverEndpoint(ResolverEndpointT&& value) { m_resolverEndpointHasBeenSet = true; m_resolverEndpoint = std::forward<ResolverEndpointT>(value); }
+    template<typename ResolverEndpointT = ResolverEndpoint>
+    GetResolverEndpointResult& WithResolverEndpoint(ResolverEndpointT&& value) { SetResolverEndpoint(std::forward<ResolverEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the Resolver endpoint that you specified in a
-     * <code>GetResolverEndpoint</code> request.</p>
-     */
-    inline void SetResolverEndpoint(const ResolverEndpoint& value) { m_resolverEndpoint = value; }
-
-    /**
-     * <p>Information about the Resolver endpoint that you specified in a
-     * <code>GetResolverEndpoint</code> request.</p>
-     */
-    inline void SetResolverEndpoint(ResolverEndpoint&& value) { m_resolverEndpoint = std::move(value); }
-
-    /**
-     * <p>Information about the Resolver endpoint that you specified in a
-     * <code>GetResolverEndpoint</code> request.</p>
-     */
-    inline GetResolverEndpointResult& WithResolverEndpoint(const ResolverEndpoint& value) { SetResolverEndpoint(value); return *this;}
-
-    /**
-     * <p>Information about the Resolver endpoint that you specified in a
-     * <code>GetResolverEndpoint</code> request.</p>
-     */
-    inline GetResolverEndpointResult& WithResolverEndpoint(ResolverEndpoint&& value) { SetResolverEndpoint(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetResolverEndpointResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetResolverEndpointResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetResolverEndpointResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetResolverEndpointResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ResolverEndpoint m_resolverEndpoint;
+    bool m_resolverEndpointHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

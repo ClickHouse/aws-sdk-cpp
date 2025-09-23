@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-SlotMigration::SlotMigration() : 
-    m_progressPercentage(0.0),
-    m_progressPercentageHasBeenSet(false)
-{
-}
-
-SlotMigration::SlotMigration(const XmlNode& xmlNode) : 
-    m_progressPercentage(0.0),
-    m_progressPercentageHasBeenSet(false)
+SlotMigration::SlotMigration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -63,7 +55,7 @@ void SlotMigration::OutputToStream(Aws::OStream& oStream, const char* location) 
 {
   if(m_progressPercentageHasBeenSet)
   {
-        oStream << location << ".ProgressPercentage=" << StringUtils::URLEncode(m_progressPercentage) << "&";
+      oStream << location << ".ProgressPercentage=" << StringUtils::URLEncode(m_progressPercentage) << "&";
   }
 }
 

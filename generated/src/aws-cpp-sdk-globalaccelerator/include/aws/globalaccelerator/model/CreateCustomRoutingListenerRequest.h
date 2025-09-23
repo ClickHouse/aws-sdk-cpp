@@ -24,7 +24,7 @@ namespace Model
   class CreateCustomRoutingListenerRequest : public GlobalAcceleratorRequest
   {
   public:
-    AWS_GLOBALACCELERATOR_API CreateCustomRoutingListenerRequest();
+    AWS_GLOBALACCELERATOR_API CreateCustomRoutingListenerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,55 +37,20 @@ namespace Model
     AWS_GLOBALACCELERATOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
      * listener.</p>
      */
-    inline const Aws::String& GetAcceleratorArn() const{ return m_acceleratorArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
+    inline const Aws::String& GetAcceleratorArn() const { return m_acceleratorArn; }
     inline bool AcceleratorArnHasBeenSet() const { return m_acceleratorArnHasBeenSet; }
+    template<typename AcceleratorArnT = Aws::String>
+    void SetAcceleratorArn(AcceleratorArnT&& value) { m_acceleratorArnHasBeenSet = true; m_acceleratorArn = std::forward<AcceleratorArnT>(value); }
+    template<typename AcceleratorArnT = Aws::String>
+    CreateCustomRoutingListenerRequest& WithAcceleratorArn(AcceleratorArnT&& value) { SetAcceleratorArn(std::forward<AcceleratorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
-    inline void SetAcceleratorArn(const Aws::String& value) { m_acceleratorArnHasBeenSet = true; m_acceleratorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
-    inline void SetAcceleratorArn(Aws::String&& value) { m_acceleratorArnHasBeenSet = true; m_acceleratorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
-    inline void SetAcceleratorArn(const char* value) { m_acceleratorArnHasBeenSet = true; m_acceleratorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithAcceleratorArn(const Aws::String& value) { SetAcceleratorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithAcceleratorArn(Aws::String&& value) { SetAcceleratorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the accelerator for a custom routing
-     * listener.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithAcceleratorArn(const char* value) { SetAcceleratorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port range to support for connections from clients to your
      * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
@@ -93,120 +58,28 @@ namespace Model
      * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
      * endpoints for custom routing accelerators</a>.</p>
      */
-    inline const Aws::Vector<PortRange>& GetPortRanges() const{ return m_portRanges; }
-
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
+    inline const Aws::Vector<PortRange>& GetPortRanges() const { return m_portRanges; }
     inline bool PortRangesHasBeenSet() const { return m_portRangesHasBeenSet; }
+    template<typename PortRangesT = Aws::Vector<PortRange>>
+    void SetPortRanges(PortRangesT&& value) { m_portRangesHasBeenSet = true; m_portRanges = std::forward<PortRangesT>(value); }
+    template<typename PortRangesT = Aws::Vector<PortRange>>
+    CreateCustomRoutingListenerRequest& WithPortRanges(PortRangesT&& value) { SetPortRanges(std::forward<PortRangesT>(value)); return *this;}
+    template<typename PortRangesT = PortRange>
+    CreateCustomRoutingListenerRequest& AddPortRanges(PortRangesT&& value) { m_portRangesHasBeenSet = true; m_portRanges.emplace_back(std::forward<PortRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
-    inline void SetPortRanges(const Aws::Vector<PortRange>& value) { m_portRangesHasBeenSet = true; m_portRanges = value; }
-
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
-    inline void SetPortRanges(Aws::Vector<PortRange>&& value) { m_portRangesHasBeenSet = true; m_portRanges = std::move(value); }
-
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithPortRanges(const Aws::Vector<PortRange>& value) { SetPortRanges(value); return *this;}
-
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithPortRanges(Aws::Vector<PortRange>&& value) { SetPortRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& AddPortRanges(const PortRange& value) { m_portRangesHasBeenSet = true; m_portRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The port range to support for connections from clients to your
-     * accelerator.</p> <p>Separately, you set port ranges for endpoints. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html">About
-     * endpoints for custom routing accelerators</a>.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& AddPortRanges(PortRange&& value) { m_portRangesHasBeenSet = true; m_portRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A unique, case-sensitive identifier that you provide to ensure the
      * idempotency—that is, the uniqueness—of the request.</p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline CreateCustomRoutingListenerRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    CreateCustomRoutingListenerRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_acceleratorArn;
@@ -215,8 +88,8 @@ namespace Model
     Aws::Vector<PortRange> m_portRanges;
     bool m_portRangesHasBeenSet = false;
 
-    Aws::String m_idempotencyToken;
-    bool m_idempotencyTokenHasBeenSet = false;
+    Aws::String m_idempotencyToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_idempotencyTokenHasBeenSet = true;
   };
 
 } // namespace Model

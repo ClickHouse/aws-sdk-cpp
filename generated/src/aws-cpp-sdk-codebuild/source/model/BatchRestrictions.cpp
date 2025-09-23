@@ -18,17 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-BatchRestrictions::BatchRestrictions() : 
-    m_maximumBuildsAllowed(0),
-    m_maximumBuildsAllowedHasBeenSet(false),
-    m_computeTypesAllowedHasBeenSet(false)
-{
-}
-
-BatchRestrictions::BatchRestrictions(JsonView jsonValue) : 
-    m_maximumBuildsAllowed(0),
-    m_maximumBuildsAllowedHasBeenSet(false),
-    m_computeTypesAllowedHasBeenSet(false)
+BatchRestrictions::BatchRestrictions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ BatchRestrictions& BatchRestrictions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("maximumBuildsAllowed"))
   {
     m_maximumBuildsAllowed = jsonValue.GetInteger("maximumBuildsAllowed");
-
     m_maximumBuildsAllowedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("computeTypesAllowed"))
   {
     Aws::Utils::Array<JsonView> computeTypesAllowedJsonList = jsonValue.GetArray("computeTypesAllowed");
@@ -51,7 +39,15 @@ BatchRestrictions& BatchRestrictions::operator =(JsonView jsonValue)
     }
     m_computeTypesAllowedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("fleetsAllowed"))
+  {
+    Aws::Utils::Array<JsonView> fleetsAllowedJsonList = jsonValue.GetArray("fleetsAllowed");
+    for(unsigned fleetsAllowedIndex = 0; fleetsAllowedIndex < fleetsAllowedJsonList.GetLength(); ++fleetsAllowedIndex)
+    {
+      m_fleetsAllowed.push_back(fleetsAllowedJsonList[fleetsAllowedIndex].AsString());
+    }
+    m_fleetsAllowedHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -73,6 +69,17 @@ JsonValue BatchRestrictions::Jsonize() const
      computeTypesAllowedJsonList[computeTypesAllowedIndex].AsString(m_computeTypesAllowed[computeTypesAllowedIndex]);
    }
    payload.WithArray("computeTypesAllowed", std::move(computeTypesAllowedJsonList));
+
+  }
+
+  if(m_fleetsAllowedHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> fleetsAllowedJsonList(m_fleetsAllowed.size());
+   for(unsigned fleetsAllowedIndex = 0; fleetsAllowedIndex < fleetsAllowedJsonList.GetLength(); ++fleetsAllowedIndex)
+   {
+     fleetsAllowedJsonList[fleetsAllowedIndex].AsString(m_fleetsAllowed[fleetsAllowedIndex]);
+   }
+   payload.WithArray("fleetsAllowed", std::move(fleetsAllowedJsonList));
 
   }
 

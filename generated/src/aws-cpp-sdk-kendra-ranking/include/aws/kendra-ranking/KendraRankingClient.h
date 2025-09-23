@@ -23,8 +23,8 @@ namespace KendraRanking
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef KendraRankingClientConfiguration ClientConfigurationType;
       typedef KendraRankingEndpointProvider EndpointProviderType;
@@ -34,14 +34,14 @@ namespace KendraRanking
         * is not specified, it will be initialized to default values.
         */
         KendraRankingClient(const Aws::KendraRanking::KendraRankingClientConfiguration& clientConfiguration = Aws::KendraRanking::KendraRankingClientConfiguration(),
-                            std::shared_ptr<KendraRankingEndpointProviderBase> endpointProvider = Aws::MakeShared<KendraRankingEndpointProvider>(ALLOCATION_TAG));
+                            std::shared_ptr<KendraRankingEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         KendraRankingClient(const Aws::Auth::AWSCredentials& credentials,
-                            std::shared_ptr<KendraRankingEndpointProviderBase> endpointProvider = Aws::MakeShared<KendraRankingEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<KendraRankingEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::KendraRanking::KendraRankingClientConfiguration& clientConfiguration = Aws::KendraRanking::KendraRankingClientConfiguration());
 
        /**
@@ -49,7 +49,7 @@ namespace KendraRanking
         * the default http client factory will be used
         */
         KendraRankingClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                            std::shared_ptr<KendraRankingEndpointProviderBase> endpointProvider = Aws::MakeShared<KendraRankingEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<KendraRankingEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::KendraRanking::KendraRankingClientConfiguration& clientConfiguration = Aws::KendraRanking::KendraRankingClientConfiguration());
 
 
@@ -171,13 +171,13 @@ namespace KendraRanking
          * href="http://docs.aws.amazon.com/goto/WebAPI/kendra-ranking-2022-10-19/ListRescoreExecutionPlans">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRescoreExecutionPlansOutcome ListRescoreExecutionPlans(const Model::ListRescoreExecutionPlansRequest& request) const;
+        virtual Model::ListRescoreExecutionPlansOutcome ListRescoreExecutionPlans(const Model::ListRescoreExecutionPlansRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRescoreExecutionPlans that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRescoreExecutionPlansRequestT = Model::ListRescoreExecutionPlansRequest>
-        Model::ListRescoreExecutionPlansOutcomeCallable ListRescoreExecutionPlansCallable(const ListRescoreExecutionPlansRequestT& request) const
+        Model::ListRescoreExecutionPlansOutcomeCallable ListRescoreExecutionPlansCallable(const ListRescoreExecutionPlansRequestT& request = {}) const
         {
             return SubmitCallable(&KendraRankingClient::ListRescoreExecutionPlans, request);
         }
@@ -186,7 +186,7 @@ namespace KendraRanking
          * An Async wrapper for ListRescoreExecutionPlans that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRescoreExecutionPlansRequestT = Model::ListRescoreExecutionPlansRequest>
-        void ListRescoreExecutionPlansAsync(const ListRescoreExecutionPlansRequestT& request, const ListRescoreExecutionPlansResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRescoreExecutionPlansAsync(const ListRescoreExecutionPlansResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRescoreExecutionPlansRequestT& request = {}) const
         {
             return SubmitAsync(&KendraRankingClient::ListRescoreExecutionPlans, request, handler, context);
         }
@@ -338,7 +338,6 @@ namespace KendraRanking
       void init(const KendraRankingClientConfiguration& clientConfiguration);
 
       KendraRankingClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<KendraRankingEndpointProviderBase> m_endpointProvider;
   };
 

@@ -18,21 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelVariantConfigSummary::ModelVariantConfigSummary() : 
-    m_modelNameHasBeenSet(false),
-    m_variantNameHasBeenSet(false),
-    m_infrastructureConfigHasBeenSet(false),
-    m_status(ModelVariantStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ModelVariantConfigSummary::ModelVariantConfigSummary(JsonView jsonValue) : 
-    m_modelNameHasBeenSet(false),
-    m_variantNameHasBeenSet(false),
-    m_infrastructureConfigHasBeenSet(false),
-    m_status(ModelVariantStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ModelVariantConfigSummary::ModelVariantConfigSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ ModelVariantConfigSummary& ModelVariantConfigSummary::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ModelName"))
   {
     m_modelName = jsonValue.GetString("ModelName");
-
     m_modelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VariantName"))
   {
     m_variantName = jsonValue.GetString("VariantName");
-
     m_variantNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InfrastructureConfig"))
   {
     m_infrastructureConfig = jsonValue.GetObject("InfrastructureConfig");
-
     m_infrastructureConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = ModelVariantStatusMapper::GetModelVariantStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,73 +27,37 @@ namespace Model
   class GetRepositoryEndpointResult
   {
   public:
-    AWS_CODEARTIFACT_API GetRepositoryEndpointResult();
+    AWS_CODEARTIFACT_API GetRepositoryEndpointResult() = default;
     AWS_CODEARTIFACT_API GetRepositoryEndpointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEARTIFACT_API GetRepositoryEndpointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> A string that specifies the URL of the returned endpoint. </p>
      */
-    inline const Aws::String& GetRepositoryEndpoint() const{ return m_repositoryEndpoint; }
+    inline const Aws::String& GetRepositoryEndpoint() const { return m_repositoryEndpoint; }
+    template<typename RepositoryEndpointT = Aws::String>
+    void SetRepositoryEndpoint(RepositoryEndpointT&& value) { m_repositoryEndpointHasBeenSet = true; m_repositoryEndpoint = std::forward<RepositoryEndpointT>(value); }
+    template<typename RepositoryEndpointT = Aws::String>
+    GetRepositoryEndpointResult& WithRepositoryEndpoint(RepositoryEndpointT&& value) { SetRepositoryEndpoint(std::forward<RepositoryEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A string that specifies the URL of the returned endpoint. </p>
-     */
-    inline void SetRepositoryEndpoint(const Aws::String& value) { m_repositoryEndpoint = value; }
-
-    /**
-     * <p> A string that specifies the URL of the returned endpoint. </p>
-     */
-    inline void SetRepositoryEndpoint(Aws::String&& value) { m_repositoryEndpoint = std::move(value); }
-
-    /**
-     * <p> A string that specifies the URL of the returned endpoint. </p>
-     */
-    inline void SetRepositoryEndpoint(const char* value) { m_repositoryEndpoint.assign(value); }
-
-    /**
-     * <p> A string that specifies the URL of the returned endpoint. </p>
-     */
-    inline GetRepositoryEndpointResult& WithRepositoryEndpoint(const Aws::String& value) { SetRepositoryEndpoint(value); return *this;}
-
-    /**
-     * <p> A string that specifies the URL of the returned endpoint. </p>
-     */
-    inline GetRepositoryEndpointResult& WithRepositoryEndpoint(Aws::String&& value) { SetRepositoryEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p> A string that specifies the URL of the returned endpoint. </p>
-     */
-    inline GetRepositoryEndpointResult& WithRepositoryEndpoint(const char* value) { SetRepositoryEndpoint(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetRepositoryEndpointResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetRepositoryEndpointResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetRepositoryEndpointResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetRepositoryEndpointResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_repositoryEndpoint;
+    bool m_repositoryEndpointHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

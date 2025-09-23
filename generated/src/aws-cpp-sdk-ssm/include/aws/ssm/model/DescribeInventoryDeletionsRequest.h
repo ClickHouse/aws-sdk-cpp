@@ -21,7 +21,7 @@ namespace Model
   class DescribeInventoryDeletionsRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DescribeInventoryDeletionsRequest();
+    AWS_SSM_API DescribeInventoryDeletionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,132 +34,43 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specify the delete inventory ID for which you want information. This ID was
      * returned by the <code>DeleteInventory</code> operation.</p>
      */
-    inline const Aws::String& GetDeletionId() const{ return m_deletionId; }
-
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
+    inline const Aws::String& GetDeletionId() const { return m_deletionId; }
     inline bool DeletionIdHasBeenSet() const { return m_deletionIdHasBeenSet; }
+    template<typename DeletionIdT = Aws::String>
+    void SetDeletionId(DeletionIdT&& value) { m_deletionIdHasBeenSet = true; m_deletionId = std::forward<DeletionIdT>(value); }
+    template<typename DeletionIdT = Aws::String>
+    DescribeInventoryDeletionsRequest& WithDeletionId(DeletionIdT&& value) { SetDeletionId(std::forward<DeletionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
-    inline void SetDeletionId(const Aws::String& value) { m_deletionIdHasBeenSet = true; m_deletionId = value; }
-
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
-    inline void SetDeletionId(Aws::String&& value) { m_deletionIdHasBeenSet = true; m_deletionId = std::move(value); }
-
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
-    inline void SetDeletionId(const char* value) { m_deletionIdHasBeenSet = true; m_deletionId.assign(value); }
-
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
-    inline DescribeInventoryDeletionsRequest& WithDeletionId(const Aws::String& value) { SetDeletionId(value); return *this;}
-
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
-    inline DescribeInventoryDeletionsRequest& WithDeletionId(Aws::String&& value) { SetDeletionId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify the delete inventory ID for which you want information. This ID was
-     * returned by the <code>DeleteInventory</code> operation.</p>
-     */
-    inline DescribeInventoryDeletionsRequest& WithDeletionId(const char* value) { SetDeletionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A token to start the list. Use this token to get the next set of results.
      * </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeInventoryDeletionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
-    inline DescribeInventoryDeletionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
-    inline DescribeInventoryDeletionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token to start the list. Use this token to get the next set of results.
-     * </p>
-     */
-    inline DescribeInventoryDeletionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
      * token that you can specify in a subsequent call to get the next set of
      * results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of items to return for this call. The call also returns a
-     * token that you can specify in a subsequent call to get the next set of
-     * results.</p>
-     */
     inline DescribeInventoryDeletionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_deletionId;
@@ -168,7 +79,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

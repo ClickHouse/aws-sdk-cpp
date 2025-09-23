@@ -34,77 +34,28 @@ namespace Model
   class PolicySummary
   {
   public:
-    AWS_ORGANIZATIONS_API PolicySummary();
+    AWS_ORGANIZATIONS_API PolicySummary() = default;
     AWS_ORGANIZATIONS_API PolicySummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API PolicySummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier (ID) of the policy.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
      * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
      * or the underscore character (_).</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    PolicySummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
-    inline PolicySummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
-    inline PolicySummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string
-     * requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits,
-     * or the underscore character (_).</p>
-     */
-    inline PolicySummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
      * about ARNs in Organizations, see <a
@@ -112,237 +63,62 @@ namespace Model
      * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
      * Authorization Reference</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    PolicySummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline PolicySummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline PolicySummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information
-     * about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline PolicySummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The friendly name of the policy.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
      * validate this parameter is a string of any of the characters in the ASCII
      * character range.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    PolicySummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
-    inline PolicySummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
-    inline PolicySummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The friendly name of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to
-     * validate this parameter is a string of any of the characters in the ASCII
-     * character range.</p>
-     */
-    inline PolicySummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the policy.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the policy.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    PolicySummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the policy.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the policy.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the policy.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the policy.</p>
-     */
-    inline PolicySummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the policy.</p>
-     */
-    inline PolicySummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the policy.</p>
-     */
-    inline PolicySummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of policy.</p>
      */
-    inline const PolicyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of policy.</p>
-     */
+    inline PolicyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(PolicyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline PolicySummary& WithType(PolicyType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of policy.</p>
-     */
-    inline void SetType(const PolicyType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of policy.</p>
-     */
-    inline void SetType(PolicyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of policy.</p>
-     */
-    inline PolicySummary& WithType(const PolicyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of policy.</p>
-     */
-    inline PolicySummary& WithType(PolicyType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A boolean value that indicates whether the specified policy is an Amazon Web
      * Services managed policy. If true, then you can attach the policy to roots, OUs,
      * or accounts, but you cannot edit it.</p>
      */
-    inline bool GetAwsManaged() const{ return m_awsManaged; }
-
-    /**
-     * <p>A boolean value that indicates whether the specified policy is an Amazon Web
-     * Services managed policy. If true, then you can attach the policy to roots, OUs,
-     * or accounts, but you cannot edit it.</p>
-     */
+    inline bool GetAwsManaged() const { return m_awsManaged; }
     inline bool AwsManagedHasBeenSet() const { return m_awsManagedHasBeenSet; }
-
-    /**
-     * <p>A boolean value that indicates whether the specified policy is an Amazon Web
-     * Services managed policy. If true, then you can attach the policy to roots, OUs,
-     * or accounts, but you cannot edit it.</p>
-     */
     inline void SetAwsManaged(bool value) { m_awsManagedHasBeenSet = true; m_awsManaged = value; }
-
-    /**
-     * <p>A boolean value that indicates whether the specified policy is an Amazon Web
-     * Services managed policy. If true, then you can attach the policy to roots, OUs,
-     * or accounts, but you cannot edit it.</p>
-     */
     inline PolicySummary& WithAwsManaged(bool value) { SetAwsManaged(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_id;
@@ -357,10 +133,10 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    PolicyType m_type;
+    PolicyType m_type{PolicyType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    bool m_awsManaged;
+    bool m_awsManaged{false};
     bool m_awsManagedHasBeenSet = false;
   };
 

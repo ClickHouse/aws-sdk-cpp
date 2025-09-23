@@ -27,8 +27,13 @@ namespace Model
   /**
    * <p>Action setting to use in the place of a rule action that is configured inside
    * the rule group. You specify one override for each rule whose action you want to
-   * change. </p> <p>You can use overrides for testing, for example you can override
-   * all of rule actions to <code>Count</code> and then monitor the resulting count
+   * change. </p>  <p>Verify the rule names in your overrides carefully. With
+   * managed rule groups, WAF silently ignores any override that uses an invalid rule
+   * name. With customer-owned rule groups, invalid rule names in your overrides will
+   * cause web ACL updates to fail. An invalid rule name is any name that doesn't
+   * exactly match the case-sensitive name of an existing rule in the rule group.</p>
+   *  <p>You can use overrides for testing, for example you can override all
+   * of rule actions to <code>Count</code> and then monitor the resulting count
    * metrics to understand how the rule group would handle your web traffic. You can
    * also permanently override some or all actions, to modify how the rule group
    * manages your web traffic.</p><p><h3>See Also:</h3>   <a
@@ -38,89 +43,41 @@ namespace Model
   class RuleActionOverride
   {
   public:
-    AWS_WAFV2_API RuleActionOverride();
+    AWS_WAFV2_API RuleActionOverride() = default;
     AWS_WAFV2_API RuleActionOverride(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API RuleActionOverride& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The name of the rule to override.</p>
+     * <p>The name of the rule to override.</p>  <p>Verify the rule names in your
+     * overrides carefully. With managed rule groups, WAF silently ignores any override
+     * that uses an invalid rule name. With customer-owned rule groups, invalid rule
+     * names in your overrides will cause web ACL updates to fail. An invalid rule name
+     * is any name that doesn't exactly match the case-sensitive name of an existing
+     * rule in the rule group.</p> 
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the rule to override.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RuleActionOverride& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rule to override.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the rule to override.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the rule to override.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the rule to override.</p>
-     */
-    inline RuleActionOverride& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the rule to override.</p>
-     */
-    inline RuleActionOverride& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule to override.</p>
-     */
-    inline RuleActionOverride& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The override action to use, in place of the configured action of the rule in
      * the rule group. </p>
      */
-    inline const RuleAction& GetActionToUse() const{ return m_actionToUse; }
-
-    /**
-     * <p>The override action to use, in place of the configured action of the rule in
-     * the rule group. </p>
-     */
+    inline const RuleAction& GetActionToUse() const { return m_actionToUse; }
     inline bool ActionToUseHasBeenSet() const { return m_actionToUseHasBeenSet; }
-
-    /**
-     * <p>The override action to use, in place of the configured action of the rule in
-     * the rule group. </p>
-     */
-    inline void SetActionToUse(const RuleAction& value) { m_actionToUseHasBeenSet = true; m_actionToUse = value; }
-
-    /**
-     * <p>The override action to use, in place of the configured action of the rule in
-     * the rule group. </p>
-     */
-    inline void SetActionToUse(RuleAction&& value) { m_actionToUseHasBeenSet = true; m_actionToUse = std::move(value); }
-
-    /**
-     * <p>The override action to use, in place of the configured action of the rule in
-     * the rule group. </p>
-     */
-    inline RuleActionOverride& WithActionToUse(const RuleAction& value) { SetActionToUse(value); return *this;}
-
-    /**
-     * <p>The override action to use, in place of the configured action of the rule in
-     * the rule group. </p>
-     */
-    inline RuleActionOverride& WithActionToUse(RuleAction&& value) { SetActionToUse(std::move(value)); return *this;}
-
+    template<typename ActionToUseT = RuleAction>
+    void SetActionToUse(ActionToUseT&& value) { m_actionToUseHasBeenSet = true; m_actionToUse = std::forward<ActionToUseT>(value); }
+    template<typename ActionToUseT = RuleAction>
+    RuleActionOverride& WithActionToUse(ActionToUseT&& value) { SetActionToUse(std::forward<ActionToUseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -32,42 +32,23 @@ namespace Model
   class AssistantAssociationOutputData
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API AssistantAssociationOutputData();
+    AWS_CONNECTWISDOMSERVICE_API AssistantAssociationOutputData() = default;
     AWS_CONNECTWISDOMSERVICE_API AssistantAssociationOutputData(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API AssistantAssociationOutputData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The knowledge base where output data is sent.</p>
      */
-    inline const KnowledgeBaseAssociationData& GetKnowledgeBaseAssociation() const{ return m_knowledgeBaseAssociation; }
-
-    /**
-     * <p>The knowledge base where output data is sent.</p>
-     */
+    inline const KnowledgeBaseAssociationData& GetKnowledgeBaseAssociation() const { return m_knowledgeBaseAssociation; }
     inline bool KnowledgeBaseAssociationHasBeenSet() const { return m_knowledgeBaseAssociationHasBeenSet; }
-
-    /**
-     * <p>The knowledge base where output data is sent.</p>
-     */
-    inline void SetKnowledgeBaseAssociation(const KnowledgeBaseAssociationData& value) { m_knowledgeBaseAssociationHasBeenSet = true; m_knowledgeBaseAssociation = value; }
-
-    /**
-     * <p>The knowledge base where output data is sent.</p>
-     */
-    inline void SetKnowledgeBaseAssociation(KnowledgeBaseAssociationData&& value) { m_knowledgeBaseAssociationHasBeenSet = true; m_knowledgeBaseAssociation = std::move(value); }
-
-    /**
-     * <p>The knowledge base where output data is sent.</p>
-     */
-    inline AssistantAssociationOutputData& WithKnowledgeBaseAssociation(const KnowledgeBaseAssociationData& value) { SetKnowledgeBaseAssociation(value); return *this;}
-
-    /**
-     * <p>The knowledge base where output data is sent.</p>
-     */
-    inline AssistantAssociationOutputData& WithKnowledgeBaseAssociation(KnowledgeBaseAssociationData&& value) { SetKnowledgeBaseAssociation(std::move(value)); return *this;}
-
+    template<typename KnowledgeBaseAssociationT = KnowledgeBaseAssociationData>
+    void SetKnowledgeBaseAssociation(KnowledgeBaseAssociationT&& value) { m_knowledgeBaseAssociationHasBeenSet = true; m_knowledgeBaseAssociation = std::forward<KnowledgeBaseAssociationT>(value); }
+    template<typename KnowledgeBaseAssociationT = KnowledgeBaseAssociationData>
+    AssistantAssociationOutputData& WithKnowledgeBaseAssociation(KnowledgeBaseAssociationT&& value) { SetKnowledgeBaseAssociation(std::forward<KnowledgeBaseAssociationT>(value)); return *this;}
+    ///@}
   private:
 
     KnowledgeBaseAssociationData m_knowledgeBaseAssociation;

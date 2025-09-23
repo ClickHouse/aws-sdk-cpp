@@ -25,7 +25,7 @@ namespace Model
   class ListMonitoringAlertHistoryRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API ListMonitoringAlertHistoryRequest();
+    AWS_SAGEMAKER_API ListMonitoringAlertHistoryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,332 +38,109 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of a monitoring schedule.</p>
      */
-    inline const Aws::String& GetMonitoringScheduleName() const{ return m_monitoringScheduleName; }
-
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
+    inline const Aws::String& GetMonitoringScheduleName() const { return m_monitoringScheduleName; }
     inline bool MonitoringScheduleNameHasBeenSet() const { return m_monitoringScheduleNameHasBeenSet; }
+    template<typename MonitoringScheduleNameT = Aws::String>
+    void SetMonitoringScheduleName(MonitoringScheduleNameT&& value) { m_monitoringScheduleNameHasBeenSet = true; m_monitoringScheduleName = std::forward<MonitoringScheduleNameT>(value); }
+    template<typename MonitoringScheduleNameT = Aws::String>
+    ListMonitoringAlertHistoryRequest& WithMonitoringScheduleName(MonitoringScheduleNameT&& value) { SetMonitoringScheduleName(std::forward<MonitoringScheduleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
-    inline void SetMonitoringScheduleName(const Aws::String& value) { m_monitoringScheduleNameHasBeenSet = true; m_monitoringScheduleName = value; }
-
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
-    inline void SetMonitoringScheduleName(Aws::String&& value) { m_monitoringScheduleNameHasBeenSet = true; m_monitoringScheduleName = std::move(value); }
-
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
-    inline void SetMonitoringScheduleName(const char* value) { m_monitoringScheduleNameHasBeenSet = true; m_monitoringScheduleName.assign(value); }
-
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithMonitoringScheduleName(const Aws::String& value) { SetMonitoringScheduleName(value); return *this;}
-
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithMonitoringScheduleName(Aws::String&& value) { SetMonitoringScheduleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a monitoring schedule.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithMonitoringScheduleName(const char* value) { SetMonitoringScheduleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a monitoring alert.</p>
      */
-    inline const Aws::String& GetMonitoringAlertName() const{ return m_monitoringAlertName; }
-
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
+    inline const Aws::String& GetMonitoringAlertName() const { return m_monitoringAlertName; }
     inline bool MonitoringAlertNameHasBeenSet() const { return m_monitoringAlertNameHasBeenSet; }
+    template<typename MonitoringAlertNameT = Aws::String>
+    void SetMonitoringAlertName(MonitoringAlertNameT&& value) { m_monitoringAlertNameHasBeenSet = true; m_monitoringAlertName = std::forward<MonitoringAlertNameT>(value); }
+    template<typename MonitoringAlertNameT = Aws::String>
+    ListMonitoringAlertHistoryRequest& WithMonitoringAlertName(MonitoringAlertNameT&& value) { SetMonitoringAlertName(std::forward<MonitoringAlertNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
-    inline void SetMonitoringAlertName(const Aws::String& value) { m_monitoringAlertNameHasBeenSet = true; m_monitoringAlertName = value; }
-
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
-    inline void SetMonitoringAlertName(Aws::String&& value) { m_monitoringAlertNameHasBeenSet = true; m_monitoringAlertName = std::move(value); }
-
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
-    inline void SetMonitoringAlertName(const char* value) { m_monitoringAlertNameHasBeenSet = true; m_monitoringAlertName.assign(value); }
-
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithMonitoringAlertName(const Aws::String& value) { SetMonitoringAlertName(value); return *this;}
-
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithMonitoringAlertName(Aws::String&& value) { SetMonitoringAlertName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a monitoring alert.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithMonitoringAlertName(const char* value) { SetMonitoringAlertName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The field used to sort results. The default is <code>CreationTime</code>.</p>
      */
-    inline const MonitoringAlertHistorySortKey& GetSortBy() const{ return m_sortBy; }
-
-    /**
-     * <p>The field used to sort results. The default is <code>CreationTime</code>.</p>
-     */
+    inline MonitoringAlertHistorySortKey GetSortBy() const { return m_sortBy; }
     inline bool SortByHasBeenSet() const { return m_sortByHasBeenSet; }
+    inline void SetSortBy(MonitoringAlertHistorySortKey value) { m_sortByHasBeenSet = true; m_sortBy = value; }
+    inline ListMonitoringAlertHistoryRequest& WithSortBy(MonitoringAlertHistorySortKey value) { SetSortBy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The field used to sort results. The default is <code>CreationTime</code>.</p>
-     */
-    inline void SetSortBy(const MonitoringAlertHistorySortKey& value) { m_sortByHasBeenSet = true; m_sortBy = value; }
-
-    /**
-     * <p>The field used to sort results. The default is <code>CreationTime</code>.</p>
-     */
-    inline void SetSortBy(MonitoringAlertHistorySortKey&& value) { m_sortByHasBeenSet = true; m_sortBy = std::move(value); }
-
-    /**
-     * <p>The field used to sort results. The default is <code>CreationTime</code>.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithSortBy(const MonitoringAlertHistorySortKey& value) { SetSortBy(value); return *this;}
-
-    /**
-     * <p>The field used to sort results. The default is <code>CreationTime</code>.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithSortBy(MonitoringAlertHistorySortKey&& value) { SetSortBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort order, whether <code>Ascending</code> or <code>Descending</code>, of
      * the alert history. The default is <code>Descending</code>.</p>
      */
-    inline const SortOrder& GetSortOrder() const{ return m_sortOrder; }
-
-    /**
-     * <p>The sort order, whether <code>Ascending</code> or <code>Descending</code>, of
-     * the alert history. The default is <code>Descending</code>.</p>
-     */
+    inline SortOrder GetSortOrder() const { return m_sortOrder; }
     inline bool SortOrderHasBeenSet() const { return m_sortOrderHasBeenSet; }
+    inline void SetSortOrder(SortOrder value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
+    inline ListMonitoringAlertHistoryRequest& WithSortOrder(SortOrder value) { SetSortOrder(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort order, whether <code>Ascending</code> or <code>Descending</code>, of
-     * the alert history. The default is <code>Descending</code>.</p>
-     */
-    inline void SetSortOrder(const SortOrder& value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
-
-    /**
-     * <p>The sort order, whether <code>Ascending</code> or <code>Descending</code>, of
-     * the alert history. The default is <code>Descending</code>.</p>
-     */
-    inline void SetSortOrder(SortOrder&& value) { m_sortOrderHasBeenSet = true; m_sortOrder = std::move(value); }
-
-    /**
-     * <p>The sort order, whether <code>Ascending</code> or <code>Descending</code>, of
-     * the alert history. The default is <code>Descending</code>.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithSortOrder(const SortOrder& value) { SetSortOrder(value); return *this;}
-
-    /**
-     * <p>The sort order, whether <code>Ascending</code> or <code>Descending</code>, of
-     * the alert history. The default is <code>Descending</code>.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithSortOrder(SortOrder&& value) { SetSortOrder(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
      * was truncated, the response includes a <code>NextToken</code>. To retrieve the
      * next set of alerts in the history, use the token in the next request.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListMonitoringAlertHistoryRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the result of the previous <code>ListMonitoringAlertHistory</code> request
-     * was truncated, the response includes a <code>NextToken</code>. To retrieve the
-     * next set of alerts in the history, use the token in the next request.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to display. The default is 100.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to display. The default is 100.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to display. The default is 100.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to display. The default is 100.</p>
-     */
     inline ListMonitoringAlertHistoryRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A filter that returns only alerts created on or before the specified
      * time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTimeBefore() const{ return m_creationTimeBefore; }
-
-    /**
-     * <p>A filter that returns only alerts created on or before the specified
-     * time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTimeBefore() const { return m_creationTimeBefore; }
     inline bool CreationTimeBeforeHasBeenSet() const { return m_creationTimeBeforeHasBeenSet; }
+    template<typename CreationTimeBeforeT = Aws::Utils::DateTime>
+    void SetCreationTimeBefore(CreationTimeBeforeT&& value) { m_creationTimeBeforeHasBeenSet = true; m_creationTimeBefore = std::forward<CreationTimeBeforeT>(value); }
+    template<typename CreationTimeBeforeT = Aws::Utils::DateTime>
+    ListMonitoringAlertHistoryRequest& WithCreationTimeBefore(CreationTimeBeforeT&& value) { SetCreationTimeBefore(std::forward<CreationTimeBeforeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter that returns only alerts created on or before the specified
-     * time.</p>
-     */
-    inline void SetCreationTimeBefore(const Aws::Utils::DateTime& value) { m_creationTimeBeforeHasBeenSet = true; m_creationTimeBefore = value; }
-
-    /**
-     * <p>A filter that returns only alerts created on or before the specified
-     * time.</p>
-     */
-    inline void SetCreationTimeBefore(Aws::Utils::DateTime&& value) { m_creationTimeBeforeHasBeenSet = true; m_creationTimeBefore = std::move(value); }
-
-    /**
-     * <p>A filter that returns only alerts created on or before the specified
-     * time.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithCreationTimeBefore(const Aws::Utils::DateTime& value) { SetCreationTimeBefore(value); return *this;}
-
-    /**
-     * <p>A filter that returns only alerts created on or before the specified
-     * time.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithCreationTimeBefore(Aws::Utils::DateTime&& value) { SetCreationTimeBefore(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter that returns only alerts created on or after the specified time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTimeAfter() const{ return m_creationTimeAfter; }
-
-    /**
-     * <p>A filter that returns only alerts created on or after the specified time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTimeAfter() const { return m_creationTimeAfter; }
     inline bool CreationTimeAfterHasBeenSet() const { return m_creationTimeAfterHasBeenSet; }
+    template<typename CreationTimeAfterT = Aws::Utils::DateTime>
+    void SetCreationTimeAfter(CreationTimeAfterT&& value) { m_creationTimeAfterHasBeenSet = true; m_creationTimeAfter = std::forward<CreationTimeAfterT>(value); }
+    template<typename CreationTimeAfterT = Aws::Utils::DateTime>
+    ListMonitoringAlertHistoryRequest& WithCreationTimeAfter(CreationTimeAfterT&& value) { SetCreationTimeAfter(std::forward<CreationTimeAfterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter that returns only alerts created on or after the specified time.</p>
-     */
-    inline void SetCreationTimeAfter(const Aws::Utils::DateTime& value) { m_creationTimeAfterHasBeenSet = true; m_creationTimeAfter = value; }
-
-    /**
-     * <p>A filter that returns only alerts created on or after the specified time.</p>
-     */
-    inline void SetCreationTimeAfter(Aws::Utils::DateTime&& value) { m_creationTimeAfterHasBeenSet = true; m_creationTimeAfter = std::move(value); }
-
-    /**
-     * <p>A filter that returns only alerts created on or after the specified time.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithCreationTimeAfter(const Aws::Utils::DateTime& value) { SetCreationTimeAfter(value); return *this;}
-
-    /**
-     * <p>A filter that returns only alerts created on or after the specified time.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithCreationTimeAfter(Aws::Utils::DateTime&& value) { SetCreationTimeAfter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter that retrieves only alerts with a specific status.</p>
      */
-    inline const MonitoringAlertStatus& GetStatusEquals() const{ return m_statusEquals; }
-
-    /**
-     * <p>A filter that retrieves only alerts with a specific status.</p>
-     */
+    inline MonitoringAlertStatus GetStatusEquals() const { return m_statusEquals; }
     inline bool StatusEqualsHasBeenSet() const { return m_statusEqualsHasBeenSet; }
-
-    /**
-     * <p>A filter that retrieves only alerts with a specific status.</p>
-     */
-    inline void SetStatusEquals(const MonitoringAlertStatus& value) { m_statusEqualsHasBeenSet = true; m_statusEquals = value; }
-
-    /**
-     * <p>A filter that retrieves only alerts with a specific status.</p>
-     */
-    inline void SetStatusEquals(MonitoringAlertStatus&& value) { m_statusEqualsHasBeenSet = true; m_statusEquals = std::move(value); }
-
-    /**
-     * <p>A filter that retrieves only alerts with a specific status.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithStatusEquals(const MonitoringAlertStatus& value) { SetStatusEquals(value); return *this;}
-
-    /**
-     * <p>A filter that retrieves only alerts with a specific status.</p>
-     */
-    inline ListMonitoringAlertHistoryRequest& WithStatusEquals(MonitoringAlertStatus&& value) { SetStatusEquals(std::move(value)); return *this;}
-
+    inline void SetStatusEquals(MonitoringAlertStatus value) { m_statusEqualsHasBeenSet = true; m_statusEquals = value; }
+    inline ListMonitoringAlertHistoryRequest& WithStatusEquals(MonitoringAlertStatus value) { SetStatusEquals(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_monitoringScheduleName;
@@ -372,25 +149,25 @@ namespace Model
     Aws::String m_monitoringAlertName;
     bool m_monitoringAlertNameHasBeenSet = false;
 
-    MonitoringAlertHistorySortKey m_sortBy;
+    MonitoringAlertHistorySortKey m_sortBy{MonitoringAlertHistorySortKey::NOT_SET};
     bool m_sortByHasBeenSet = false;
 
-    SortOrder m_sortOrder;
+    SortOrder m_sortOrder{SortOrder::NOT_SET};
     bool m_sortOrderHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTimeBefore;
+    Aws::Utils::DateTime m_creationTimeBefore{};
     bool m_creationTimeBeforeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTimeAfter;
+    Aws::Utils::DateTime m_creationTimeAfter{};
     bool m_creationTimeAfterHasBeenSet = false;
 
-    MonitoringAlertStatus m_statusEquals;
+    MonitoringAlertStatus m_statusEquals{MonitoringAlertStatus::NOT_SET};
     bool m_statusEqualsHasBeenSet = false;
   };
 

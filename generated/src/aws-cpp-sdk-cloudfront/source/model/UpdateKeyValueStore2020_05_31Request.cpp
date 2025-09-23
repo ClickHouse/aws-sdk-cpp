@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/UpdateKeyValueStore2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,12 +15,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-UpdateKeyValueStore2020_05_31Request::UpdateKeyValueStore2020_05_31Request() : 
-    m_nameHasBeenSet(false),
-    m_commentHasBeenSet(false),
-    m_ifMatchHasBeenSet(false)
-{
-}
 
 Aws::String UpdateKeyValueStore2020_05_31Request::SerializePayload() const
 {

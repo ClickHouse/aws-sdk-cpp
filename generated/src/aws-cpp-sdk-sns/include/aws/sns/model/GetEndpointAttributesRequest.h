@@ -17,14 +17,15 @@ namespace Model
 {
 
   /**
-   * <p>Input for GetEndpointAttributes action.</p><p><h3>See Also:</h3>   <a
+   * <p>Input for <code>GetEndpointAttributes</code> action.</p><p><h3>See Also:</h3>
+   * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetEndpointAttributesInput">AWS
    * API Reference</a></p>
    */
   class GetEndpointAttributesRequest : public SNSRequest
   {
   public:
-    AWS_SNS_API GetEndpointAttributesRequest();
+    AWS_SNS_API GetEndpointAttributesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,46 +40,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
+     * <p> <code>EndpointArn</code> for <code>GetEndpointAttributes</code> input.</p>
      */
-    inline const Aws::String& GetEndpointArn() const{ return m_endpointArn; }
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
+    inline const Aws::String& GetEndpointArn() const { return m_endpointArn; }
     inline bool EndpointArnHasBeenSet() const { return m_endpointArnHasBeenSet; }
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
-    inline void SetEndpointArn(const Aws::String& value) { m_endpointArnHasBeenSet = true; m_endpointArn = value; }
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
-    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::move(value); }
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
-    inline void SetEndpointArn(const char* value) { m_endpointArnHasBeenSet = true; m_endpointArn.assign(value); }
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
-    inline GetEndpointAttributesRequest& WithEndpointArn(const Aws::String& value) { SetEndpointArn(value); return *this;}
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
-    inline GetEndpointAttributesRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>EndpointArn for GetEndpointAttributes input.</p>
-     */
-    inline GetEndpointAttributesRequest& WithEndpointArn(const char* value) { SetEndpointArn(value); return *this;}
-
+    template<typename EndpointArnT = Aws::String>
+    void SetEndpointArn(EndpointArnT&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::forward<EndpointArnT>(value); }
+    template<typename EndpointArnT = Aws::String>
+    GetEndpointAttributesRequest& WithEndpointArn(EndpointArnT&& value) { SetEndpointArn(std::forward<EndpointArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointArn;

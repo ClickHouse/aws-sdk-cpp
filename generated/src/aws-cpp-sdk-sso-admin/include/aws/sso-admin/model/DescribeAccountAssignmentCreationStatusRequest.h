@@ -21,7 +21,7 @@ namespace Model
   class DescribeAccountAssignmentCreationStatusRequest : public SSOAdminRequest
   {
   public:
-    AWS_SSOADMIN_API DescribeAccountAssignmentCreationStatusRequest();
+    AWS_SSOADMIN_API DescribeAccountAssignmentCreationStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,7 @@ namespace Model
     AWS_SSOADMIN_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline const Aws::String& GetAccountAssignmentCreationRequestId() const{ return m_accountAssignmentCreationRequestId; }
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline bool AccountAssignmentCreationRequestIdHasBeenSet() const { return m_accountAssignmentCreationRequestIdHasBeenSet; }
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline void SetAccountAssignmentCreationRequestId(const Aws::String& value) { m_accountAssignmentCreationRequestIdHasBeenSet = true; m_accountAssignmentCreationRequestId = value; }
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline void SetAccountAssignmentCreationRequestId(Aws::String&& value) { m_accountAssignmentCreationRequestIdHasBeenSet = true; m_accountAssignmentCreationRequestId = std::move(value); }
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline void SetAccountAssignmentCreationRequestId(const char* value) { m_accountAssignmentCreationRequestIdHasBeenSet = true; m_accountAssignmentCreationRequestId.assign(value); }
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline DescribeAccountAssignmentCreationStatusRequest& WithAccountAssignmentCreationRequestId(const Aws::String& value) { SetAccountAssignmentCreationRequestId(value); return *this;}
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline DescribeAccountAssignmentCreationStatusRequest& WithAccountAssignmentCreationRequestId(Aws::String&& value) { SetAccountAssignmentCreationRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier that is used to track the request operation progress.</p>
-     */
-    inline DescribeAccountAssignmentCreationStatusRequest& WithAccountAssignmentCreationRequestId(const char* value) { SetAccountAssignmentCreationRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the IAM Identity Center instance under which the operation will be
      * executed. For more information about ARNs, see <a
@@ -82,78 +42,32 @@ namespace Model
      * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
      * Services General Reference</i>.</p>
      */
-    inline const Aws::String& GetInstanceArn() const{ return m_instanceArn; }
-
-    /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
-     */
+    inline const Aws::String& GetInstanceArn() const { return m_instanceArn; }
     inline bool InstanceArnHasBeenSet() const { return m_instanceArnHasBeenSet; }
+    template<typename InstanceArnT = Aws::String>
+    void SetInstanceArn(InstanceArnT&& value) { m_instanceArnHasBeenSet = true; m_instanceArn = std::forward<InstanceArnT>(value); }
+    template<typename InstanceArnT = Aws::String>
+    DescribeAccountAssignmentCreationStatusRequest& WithInstanceArn(InstanceArnT&& value) { SetInstanceArn(std::forward<InstanceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
+     * <p>The identifier that is used to track the request operation progress.</p>
      */
-    inline void SetInstanceArn(const Aws::String& value) { m_instanceArnHasBeenSet = true; m_instanceArn = value; }
-
-    /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
-     */
-    inline void SetInstanceArn(Aws::String&& value) { m_instanceArnHasBeenSet = true; m_instanceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
-     */
-    inline void SetInstanceArn(const char* value) { m_instanceArnHasBeenSet = true; m_instanceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
-     */
-    inline DescribeAccountAssignmentCreationStatusRequest& WithInstanceArn(const Aws::String& value) { SetInstanceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
-     */
-    inline DescribeAccountAssignmentCreationStatusRequest& WithInstanceArn(Aws::String&& value) { SetInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM Identity Center instance under which the operation will be
-     * executed. For more information about ARNs, see <a
-     * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
-     * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
-     * Services General Reference</i>.</p>
-     */
-    inline DescribeAccountAssignmentCreationStatusRequest& WithInstanceArn(const char* value) { SetInstanceArn(value); return *this;}
-
+    inline const Aws::String& GetAccountAssignmentCreationRequestId() const { return m_accountAssignmentCreationRequestId; }
+    inline bool AccountAssignmentCreationRequestIdHasBeenSet() const { return m_accountAssignmentCreationRequestIdHasBeenSet; }
+    template<typename AccountAssignmentCreationRequestIdT = Aws::String>
+    void SetAccountAssignmentCreationRequestId(AccountAssignmentCreationRequestIdT&& value) { m_accountAssignmentCreationRequestIdHasBeenSet = true; m_accountAssignmentCreationRequestId = std::forward<AccountAssignmentCreationRequestIdT>(value); }
+    template<typename AccountAssignmentCreationRequestIdT = Aws::String>
+    DescribeAccountAssignmentCreationStatusRequest& WithAccountAssignmentCreationRequestId(AccountAssignmentCreationRequestIdT&& value) { SetAccountAssignmentCreationRequestId(std::forward<AccountAssignmentCreationRequestIdT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_accountAssignmentCreationRequestId;
-    bool m_accountAssignmentCreationRequestIdHasBeenSet = false;
 
     Aws::String m_instanceArn;
     bool m_instanceArnHasBeenSet = false;
+
+    Aws::String m_accountAssignmentCreationRequestId;
+    bool m_accountAssignmentCreationRequestIdHasBeenSet = false;
   };
 
 } // namespace Model

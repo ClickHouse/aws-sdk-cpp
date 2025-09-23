@@ -12,12 +12,6 @@ using namespace Aws::DataExchange::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateEventActionRequest::CreateEventActionRequest() : 
-    m_actionHasBeenSet(false),
-    m_eventHasBeenSet(false)
-{
-}
-
 Aws::String CreateEventActionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,17 @@ Aws::String CreateEventActionRequest::SerializePayload() const
   if(m_eventHasBeenSet)
   {
    payload.WithObject("Event", m_event.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

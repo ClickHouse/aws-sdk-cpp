@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-DeregisterTargetsRequest::DeregisterTargetsRequest() : 
-    m_targetGroupArnHasBeenSet(false),
-    m_targetsHasBeenSet(false)
-{
-}
-
 Aws::String DeregisterTargetsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String DeregisterTargetsRequest::SerializePayload() const
 
   if(m_targetsHasBeenSet)
   {
-    unsigned targetsCount = 1;
-    for(auto& item : m_targets)
+    if (m_targets.empty())
     {
-      item.OutputToStream(ss, "Targets.member.", targetsCount, "");
-      targetsCount++;
+      ss << "Targets=&";
+    }
+    else
+    {
+      unsigned targetsCount = 1;
+      for(auto& item : m_targets)
+      {
+        item.OutputToStream(ss, "Targets.member.", targetsCount, "");
+        targetsCount++;
+      }
     }
   }
 

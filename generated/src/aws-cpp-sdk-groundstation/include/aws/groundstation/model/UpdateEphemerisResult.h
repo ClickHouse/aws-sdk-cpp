@@ -27,73 +27,37 @@ namespace Model
   class UpdateEphemerisResult
   {
   public:
-    AWS_GROUNDSTATION_API UpdateEphemerisResult();
+    AWS_GROUNDSTATION_API UpdateEphemerisResult() = default;
     AWS_GROUNDSTATION_API UpdateEphemerisResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GROUNDSTATION_API UpdateEphemerisResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The AWS Ground Station ephemeris ID.</p>
      */
-    inline const Aws::String& GetEphemerisId() const{ return m_ephemerisId; }
+    inline const Aws::String& GetEphemerisId() const { return m_ephemerisId; }
+    template<typename EphemerisIdT = Aws::String>
+    void SetEphemerisId(EphemerisIdT&& value) { m_ephemerisIdHasBeenSet = true; m_ephemerisId = std::forward<EphemerisIdT>(value); }
+    template<typename EphemerisIdT = Aws::String>
+    UpdateEphemerisResult& WithEphemerisId(EphemerisIdT&& value) { SetEphemerisId(std::forward<EphemerisIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS Ground Station ephemeris ID.</p>
-     */
-    inline void SetEphemerisId(const Aws::String& value) { m_ephemerisId = value; }
-
-    /**
-     * <p>The AWS Ground Station ephemeris ID.</p>
-     */
-    inline void SetEphemerisId(Aws::String&& value) { m_ephemerisId = std::move(value); }
-
-    /**
-     * <p>The AWS Ground Station ephemeris ID.</p>
-     */
-    inline void SetEphemerisId(const char* value) { m_ephemerisId.assign(value); }
-
-    /**
-     * <p>The AWS Ground Station ephemeris ID.</p>
-     */
-    inline UpdateEphemerisResult& WithEphemerisId(const Aws::String& value) { SetEphemerisId(value); return *this;}
-
-    /**
-     * <p>The AWS Ground Station ephemeris ID.</p>
-     */
-    inline UpdateEphemerisResult& WithEphemerisId(Aws::String&& value) { SetEphemerisId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS Ground Station ephemeris ID.</p>
-     */
-    inline UpdateEphemerisResult& WithEphemerisId(const char* value) { SetEphemerisId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateEphemerisResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateEphemerisResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateEphemerisResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateEphemerisResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ephemerisId;
+    bool m_ephemerisIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

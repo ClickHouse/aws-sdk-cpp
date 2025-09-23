@@ -10,28 +10,23 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateInstanceExportTaskRequest::CreateInstanceExportTaskRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_exportToS3TaskHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_targetEnvironment(ExportEnvironment::NOT_SET),
-    m_targetEnvironmentHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateInstanceExportTaskRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CreateInstanceExportTask&";
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
+  }
+
   if(m_descriptionHasBeenSet)
   {
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
-  }
-
-  if(m_exportToS3TaskHasBeenSet)
-  {
-    m_exportToS3Task.OutputToStream(ss, "ExportToS3");
   }
 
   if(m_instanceIdHasBeenSet)
@@ -41,17 +36,12 @@ Aws::String CreateInstanceExportTaskRequest::SerializePayload() const
 
   if(m_targetEnvironmentHasBeenSet)
   {
-    ss << "TargetEnvironment=" << ExportEnvironmentMapper::GetNameForExportEnvironment(m_targetEnvironment) << "&";
+    ss << "TargetEnvironment=" << StringUtils::URLEncode(ExportEnvironmentMapper::GetNameForExportEnvironment(m_targetEnvironment)) << "&";
   }
 
-  if(m_tagSpecificationsHasBeenSet)
+  if(m_exportToS3TaskHasBeenSet)
   {
-    unsigned tagSpecificationsCount = 1;
-    for(auto& item : m_tagSpecifications)
-    {
-      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
-      tagSpecificationsCount++;
-    }
+    m_exportToS3Task.OutputToStream(ss, "ExportToS3");
   }
 
   ss << "Version=2016-11-15";

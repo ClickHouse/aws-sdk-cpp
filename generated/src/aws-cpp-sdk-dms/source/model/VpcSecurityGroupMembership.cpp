@@ -18,15 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-VpcSecurityGroupMembership::VpcSecurityGroupMembership() : 
-    m_vpcSecurityGroupIdHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-VpcSecurityGroupMembership::VpcSecurityGroupMembership(JsonView jsonValue) : 
-    m_vpcSecurityGroupIdHasBeenSet(false),
-    m_statusHasBeenSet(false)
+VpcSecurityGroupMembership::VpcSecurityGroupMembership(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ VpcSecurityGroupMembership& VpcSecurityGroupMembership::operator =(JsonView json
   if(jsonValue.ValueExists("VpcSecurityGroupId"))
   {
     m_vpcSecurityGroupId = jsonValue.GetString("VpcSecurityGroupId");
-
     m_vpcSecurityGroupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetString("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

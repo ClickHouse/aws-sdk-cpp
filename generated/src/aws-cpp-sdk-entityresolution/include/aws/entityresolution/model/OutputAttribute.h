@@ -34,88 +34,41 @@ namespace Model
   class OutputAttribute
   {
   public:
-    AWS_ENTITYRESOLUTION_API OutputAttribute();
+    AWS_ENTITYRESOLUTION_API OutputAttribute() = default;
     AWS_ENTITYRESOLUTION_API OutputAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API OutputAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Enables the ability to hash the column values in the output.</p>
-     */
-    inline bool GetHashed() const{ return m_hashed; }
-
-    /**
-     * <p>Enables the ability to hash the column values in the output.</p>
-     */
-    inline bool HashedHasBeenSet() const { return m_hashedHasBeenSet; }
-
-    /**
-     * <p>Enables the ability to hash the column values in the output.</p>
-     */
-    inline void SetHashed(bool value) { m_hashedHasBeenSet = true; m_hashed = value; }
-
-    /**
-     * <p>Enables the ability to hash the column values in the output.</p>
-     */
-    inline OutputAttribute& WithHashed(bool value) { SetHashed(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name of a column to be written to the output. This must be an
      * <code>InputField</code> name in the schema mapping.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    OutputAttribute& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
+     * <p>Enables the ability to hash the column values in the output.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
-     */
-    inline OutputAttribute& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
-     */
-    inline OutputAttribute& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name of a column to be written to the output. This must be an
-     * <code>InputField</code> name in the schema mapping.</p>
-     */
-    inline OutputAttribute& WithName(const char* value) { SetName(value); return *this;}
-
+    inline bool GetHashed() const { return m_hashed; }
+    inline bool HashedHasBeenSet() const { return m_hashedHasBeenSet; }
+    inline void SetHashed(bool value) { m_hashedHasBeenSet = true; m_hashed = value; }
+    inline OutputAttribute& WithHashed(bool value) { SetHashed(value); return *this;}
+    ///@}
   private:
-
-    bool m_hashed;
-    bool m_hashedHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    bool m_hashed{false};
+    bool m_hashedHasBeenSet = false;
   };
 
 } // namespace Model

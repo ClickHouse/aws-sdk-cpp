@@ -32,212 +32,75 @@ namespace Model
   class ComputeSavingsPlansConfiguration
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API ComputeSavingsPlansConfiguration();
+    AWS_COSTOPTIMIZATIONHUB_API ComputeSavingsPlansConfiguration() = default;
     AWS_COSTOPTIMIZATIONHUB_API ComputeSavingsPlansConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API ComputeSavingsPlansConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
+     * <p>The account scope for which you want recommendations. Amazon Web Services
      * calculates recommendations including the management account and member accounts
      * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
      * recommendations are calculated for individual member accounts only.</p>
      */
-    inline const Aws::String& GetAccountScope() const{ return m_accountScope; }
-
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
+    inline const Aws::String& GetAccountScope() const { return m_accountScope; }
     inline bool AccountScopeHasBeenSet() const { return m_accountScopeHasBeenSet; }
+    template<typename AccountScopeT = Aws::String>
+    void SetAccountScope(AccountScopeT&& value) { m_accountScopeHasBeenSet = true; m_accountScope = std::forward<AccountScopeT>(value); }
+    template<typename AccountScopeT = Aws::String>
+    ComputeSavingsPlansConfiguration& WithAccountScope(AccountScopeT&& value) { SetAccountScope(std::forward<AccountScopeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
-    inline void SetAccountScope(const Aws::String& value) { m_accountScopeHasBeenSet = true; m_accountScope = value; }
-
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
-    inline void SetAccountScope(Aws::String&& value) { m_accountScopeHasBeenSet = true; m_accountScope = std::move(value); }
-
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
-    inline void SetAccountScope(const char* value) { m_accountScopeHasBeenSet = true; m_accountScope.assign(value); }
-
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithAccountScope(const Aws::String& value) { SetAccountScope(value); return *this;}
-
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithAccountScope(Aws::String&& value) { SetAccountScope(std::move(value)); return *this;}
-
-    /**
-     * <p>The account scope that you want your recommendations for. Amazon Web Services
-     * calculates recommendations including the management account and member accounts
-     * if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>,
-     * recommendations are calculated for individual member accounts only.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithAccountScope(const char* value) { SetAccountScope(value); return *this;}
-
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline const Aws::String& GetHourlyCommitment() const{ return m_hourlyCommitment; }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline bool HourlyCommitmentHasBeenSet() const { return m_hourlyCommitmentHasBeenSet; }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline void SetHourlyCommitment(const Aws::String& value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment = value; }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline void SetHourlyCommitment(Aws::String&& value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment = std::move(value); }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline void SetHourlyCommitment(const char* value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment.assign(value); }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithHourlyCommitment(const Aws::String& value) { SetHourlyCommitment(value); return *this;}
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithHourlyCommitment(Aws::String&& value) { SetHourlyCommitment(std::move(value)); return *this;}
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithHourlyCommitment(const char* value) { SetHourlyCommitment(value); return *this;}
-
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline const Aws::String& GetPaymentOption() const{ return m_paymentOption; }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline void SetPaymentOption(const Aws::String& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline void SetPaymentOption(Aws::String&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::move(value); }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline void SetPaymentOption(const char* value) { m_paymentOptionHasBeenSet = true; m_paymentOption.assign(value); }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithPaymentOption(const Aws::String& value) { SetPaymentOption(value); return *this;}
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithPaymentOption(Aws::String&& value) { SetPaymentOption(std::move(value)); return *this;}
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithPaymentOption(const char* value) { SetPaymentOption(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Savings Plans recommendation term in years.</p>
      */
-    inline const Aws::String& GetTerm() const{ return m_term; }
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
+    inline const Aws::String& GetTerm() const { return m_term; }
     inline bool TermHasBeenSet() const { return m_termHasBeenSet; }
+    template<typename TermT = Aws::String>
+    void SetTerm(TermT&& value) { m_termHasBeenSet = true; m_term = std::forward<TermT>(value); }
+    template<typename TermT = Aws::String>
+    ComputeSavingsPlansConfiguration& WithTerm(TermT&& value) { SetTerm(std::forward<TermT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Savings Plans recommendation term in years.</p>
+     * <p>The payment option for the commitment.</p>
      */
-    inline void SetTerm(const Aws::String& value) { m_termHasBeenSet = true; m_term = value; }
+    inline const Aws::String& GetPaymentOption() const { return m_paymentOption; }
+    inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
+    template<typename PaymentOptionT = Aws::String>
+    void SetPaymentOption(PaymentOptionT&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::forward<PaymentOptionT>(value); }
+    template<typename PaymentOptionT = Aws::String>
+    ComputeSavingsPlansConfiguration& WithPaymentOption(PaymentOptionT&& value) { SetPaymentOption(std::forward<PaymentOptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Savings Plans recommendation term in years.</p>
+     * <p>The hourly commitment for the Savings Plans type.</p>
      */
-    inline void SetTerm(Aws::String&& value) { m_termHasBeenSet = true; m_term = std::move(value); }
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
-    inline void SetTerm(const char* value) { m_termHasBeenSet = true; m_term.assign(value); }
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithTerm(const Aws::String& value) { SetTerm(value); return *this;}
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithTerm(Aws::String&& value) { SetTerm(std::move(value)); return *this;}
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
-    inline ComputeSavingsPlansConfiguration& WithTerm(const char* value) { SetTerm(value); return *this;}
-
+    inline const Aws::String& GetHourlyCommitment() const { return m_hourlyCommitment; }
+    inline bool HourlyCommitmentHasBeenSet() const { return m_hourlyCommitmentHasBeenSet; }
+    template<typename HourlyCommitmentT = Aws::String>
+    void SetHourlyCommitment(HourlyCommitmentT&& value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment = std::forward<HourlyCommitmentT>(value); }
+    template<typename HourlyCommitmentT = Aws::String>
+    ComputeSavingsPlansConfiguration& WithHourlyCommitment(HourlyCommitmentT&& value) { SetHourlyCommitment(std::forward<HourlyCommitmentT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountScope;
     bool m_accountScopeHasBeenSet = false;
 
-    Aws::String m_hourlyCommitment;
-    bool m_hourlyCommitmentHasBeenSet = false;
+    Aws::String m_term;
+    bool m_termHasBeenSet = false;
 
     Aws::String m_paymentOption;
     bool m_paymentOptionHasBeenSet = false;
 
-    Aws::String m_term;
-    bool m_termHasBeenSet = false;
+    Aws::String m_hourlyCommitment;
+    bool m_hourlyCommitmentHasBeenSet = false;
   };
 
 } // namespace Model

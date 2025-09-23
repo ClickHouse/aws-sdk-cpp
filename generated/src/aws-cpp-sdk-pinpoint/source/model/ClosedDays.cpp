@@ -18,21 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-ClosedDays::ClosedDays() : 
-    m_eMAILHasBeenSet(false),
-    m_sMSHasBeenSet(false),
-    m_pUSHHasBeenSet(false),
-    m_vOICEHasBeenSet(false),
-    m_cUSTOMHasBeenSet(false)
-{
-}
-
-ClosedDays::ClosedDays(JsonView jsonValue) : 
-    m_eMAILHasBeenSet(false),
-    m_sMSHasBeenSet(false),
-    m_pUSHHasBeenSet(false),
-    m_vOICEHasBeenSet(false),
-    m_cUSTOMHasBeenSet(false)
+ClosedDays::ClosedDays(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,7 +34,6 @@ ClosedDays& ClosedDays::operator =(JsonView jsonValue)
     }
     m_eMAILHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SMS"))
   {
     Aws::Utils::Array<JsonView> sMSJsonList = jsonValue.GetArray("SMS");
@@ -58,7 +43,6 @@ ClosedDays& ClosedDays::operator =(JsonView jsonValue)
     }
     m_sMSHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PUSH"))
   {
     Aws::Utils::Array<JsonView> pUSHJsonList = jsonValue.GetArray("PUSH");
@@ -68,7 +52,6 @@ ClosedDays& ClosedDays::operator =(JsonView jsonValue)
     }
     m_pUSHHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VOICE"))
   {
     Aws::Utils::Array<JsonView> vOICEJsonList = jsonValue.GetArray("VOICE");
@@ -78,7 +61,6 @@ ClosedDays& ClosedDays::operator =(JsonView jsonValue)
     }
     m_vOICEHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CUSTOM"))
   {
     Aws::Utils::Array<JsonView> cUSTOMJsonList = jsonValue.GetArray("CUSTOM");
@@ -88,7 +70,6 @@ ClosedDays& ClosedDays::operator =(JsonView jsonValue)
     }
     m_cUSTOMHasBeenSet = true;
   }
-
   return *this;
 }
 

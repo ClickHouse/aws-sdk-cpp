@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListRoomsResult::ListRoomsResult()
-{
-}
-
 ListRoomsResult::ListRoomsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListRoomsResult::ListRoomsResult(const Aws::AmazonWebServiceResult<JsonValue>& r
 ListRoomsResult& ListRoomsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("rooms"))
   {
     Aws::Utils::Array<JsonView> roomsJsonList = jsonValue.GetArray("rooms");
@@ -42,14 +32,20 @@ ListRoomsResult& ListRoomsResult::operator =(const Aws::AmazonWebServiceResult<J
     {
       m_rooms.push_back(roomsJsonList[roomsIndex].AsObject());
     }
+    m_roomsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

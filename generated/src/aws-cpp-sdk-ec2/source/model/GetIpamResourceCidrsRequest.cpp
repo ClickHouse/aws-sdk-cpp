@@ -10,23 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-GetIpamResourceCidrsRequest::GetIpamResourceCidrsRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_ipamScopeIdHasBeenSet(false),
-    m_ipamPoolIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(IpamResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceTagHasBeenSet(false),
-    m_resourceOwnerHasBeenSet(false)
-{
-}
-
 Aws::String GetIpamResourceCidrsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -73,7 +56,7 @@ Aws::String GetIpamResourceCidrsRequest::SerializePayload() const
 
   if(m_resourceTypeHasBeenSet)
   {
-    ss << "ResourceType=" << IpamResourceTypeMapper::GetNameForIpamResourceType(m_resourceType) << "&";
+    ss << "ResourceType=" << StringUtils::URLEncode(IpamResourceTypeMapper::GetNameForIpamResourceType(m_resourceType)) << "&";
   }
 
   if(m_resourceTagHasBeenSet)

@@ -9,6 +9,7 @@
 #include <aws/iotsitewise/model/TargetResource.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iotsitewise/model/ActionPayload.h>
+#include <aws/iotsitewise/model/ResolveTo.h>
 #include <utility>
 
 namespace Aws
@@ -23,7 +24,7 @@ namespace Model
   class ExecuteActionRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API ExecuteActionRequest();
+    AWS_IOTSITEWISE_API ExecuteActionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,165 +35,67 @@ namespace Model
     AWS_IOTSITEWISE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The resource the action will be taken on.</p>
      */
-    inline const TargetResource& GetTargetResource() const{ return m_targetResource; }
-
-    /**
-     * <p>The resource the action will be taken on.</p>
-     */
+    inline const TargetResource& GetTargetResource() const { return m_targetResource; }
     inline bool TargetResourceHasBeenSet() const { return m_targetResourceHasBeenSet; }
+    template<typename TargetResourceT = TargetResource>
+    void SetTargetResource(TargetResourceT&& value) { m_targetResourceHasBeenSet = true; m_targetResource = std::forward<TargetResourceT>(value); }
+    template<typename TargetResourceT = TargetResource>
+    ExecuteActionRequest& WithTargetResource(TargetResourceT&& value) { SetTargetResource(std::forward<TargetResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource the action will be taken on.</p>
-     */
-    inline void SetTargetResource(const TargetResource& value) { m_targetResourceHasBeenSet = true; m_targetResource = value; }
-
-    /**
-     * <p>The resource the action will be taken on.</p>
-     */
-    inline void SetTargetResource(TargetResource&& value) { m_targetResourceHasBeenSet = true; m_targetResource = std::move(value); }
-
-    /**
-     * <p>The resource the action will be taken on.</p>
-     */
-    inline ExecuteActionRequest& WithTargetResource(const TargetResource& value) { SetTargetResource(value); return *this;}
-
-    /**
-     * <p>The resource the action will be taken on.</p>
-     */
-    inline ExecuteActionRequest& WithTargetResource(TargetResource&& value) { SetTargetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the action definition.</p>
      */
-    inline const Aws::String& GetActionDefinitionId() const{ return m_actionDefinitionId; }
-
-    /**
-     * <p>The ID of the action definition.</p>
-     */
+    inline const Aws::String& GetActionDefinitionId() const { return m_actionDefinitionId; }
     inline bool ActionDefinitionIdHasBeenSet() const { return m_actionDefinitionIdHasBeenSet; }
+    template<typename ActionDefinitionIdT = Aws::String>
+    void SetActionDefinitionId(ActionDefinitionIdT&& value) { m_actionDefinitionIdHasBeenSet = true; m_actionDefinitionId = std::forward<ActionDefinitionIdT>(value); }
+    template<typename ActionDefinitionIdT = Aws::String>
+    ExecuteActionRequest& WithActionDefinitionId(ActionDefinitionIdT&& value) { SetActionDefinitionId(std::forward<ActionDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the action definition.</p>
-     */
-    inline void SetActionDefinitionId(const Aws::String& value) { m_actionDefinitionIdHasBeenSet = true; m_actionDefinitionId = value; }
-
-    /**
-     * <p>The ID of the action definition.</p>
-     */
-    inline void SetActionDefinitionId(Aws::String&& value) { m_actionDefinitionIdHasBeenSet = true; m_actionDefinitionId = std::move(value); }
-
-    /**
-     * <p>The ID of the action definition.</p>
-     */
-    inline void SetActionDefinitionId(const char* value) { m_actionDefinitionIdHasBeenSet = true; m_actionDefinitionId.assign(value); }
-
-    /**
-     * <p>The ID of the action definition.</p>
-     */
-    inline ExecuteActionRequest& WithActionDefinitionId(const Aws::String& value) { SetActionDefinitionId(value); return *this;}
-
-    /**
-     * <p>The ID of the action definition.</p>
-     */
-    inline ExecuteActionRequest& WithActionDefinitionId(Aws::String&& value) { SetActionDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the action definition.</p>
-     */
-    inline ExecuteActionRequest& WithActionDefinitionId(const char* value) { SetActionDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The JSON payload of the action.</p>
      */
-    inline const ActionPayload& GetActionPayload() const{ return m_actionPayload; }
-
-    /**
-     * <p>The JSON payload of the action.</p>
-     */
+    inline const ActionPayload& GetActionPayload() const { return m_actionPayload; }
     inline bool ActionPayloadHasBeenSet() const { return m_actionPayloadHasBeenSet; }
+    template<typename ActionPayloadT = ActionPayload>
+    void SetActionPayload(ActionPayloadT&& value) { m_actionPayloadHasBeenSet = true; m_actionPayload = std::forward<ActionPayloadT>(value); }
+    template<typename ActionPayloadT = ActionPayload>
+    ExecuteActionRequest& WithActionPayload(ActionPayloadT&& value) { SetActionPayload(std::forward<ActionPayloadT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The JSON payload of the action.</p>
-     */
-    inline void SetActionPayload(const ActionPayload& value) { m_actionPayloadHasBeenSet = true; m_actionPayload = value; }
-
-    /**
-     * <p>The JSON payload of the action.</p>
-     */
-    inline void SetActionPayload(ActionPayload&& value) { m_actionPayloadHasBeenSet = true; m_actionPayload = std::move(value); }
-
-    /**
-     * <p>The JSON payload of the action.</p>
-     */
-    inline ExecuteActionRequest& WithActionPayload(const ActionPayload& value) { SetActionPayload(value); return *this;}
-
-    /**
-     * <p>The JSON payload of the action.</p>
-     */
-    inline ExecuteActionRequest& WithActionPayload(ActionPayload&& value) { SetActionPayload(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique case-sensitive identifier that you can provide to ensure the
      * idempotency of the request. Don't reuse this client token if a new idempotent
      * request is required.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    ExecuteActionRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
+     * <p>The detailed resource this action resolves to.</p>
      */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline ExecuteActionRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline ExecuteActionRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline ExecuteActionRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    inline const ResolveTo& GetResolveTo() const { return m_resolveTo; }
+    inline bool ResolveToHasBeenSet() const { return m_resolveToHasBeenSet; }
+    template<typename ResolveToT = ResolveTo>
+    void SetResolveTo(ResolveToT&& value) { m_resolveToHasBeenSet = true; m_resolveTo = std::forward<ResolveToT>(value); }
+    template<typename ResolveToT = ResolveTo>
+    ExecuteActionRequest& WithResolveTo(ResolveToT&& value) { SetResolveTo(std::forward<ResolveToT>(value)); return *this;}
+    ///@}
   private:
 
     TargetResource m_targetResource;
@@ -206,6 +109,9 @@ namespace Model
 
     Aws::String m_clientToken;
     bool m_clientTokenHasBeenSet = false;
+
+    ResolveTo m_resolveTo;
+    bool m_resolveToHasBeenSet = false;
   };
 
 } // namespace Model

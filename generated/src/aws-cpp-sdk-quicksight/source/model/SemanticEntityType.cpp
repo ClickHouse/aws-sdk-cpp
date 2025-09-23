@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SemanticEntityType::SemanticEntityType() : 
-    m_typeNameHasBeenSet(false),
-    m_subTypeNameHasBeenSet(false),
-    m_typeParametersHasBeenSet(false)
-{
-}
-
-SemanticEntityType::SemanticEntityType(JsonView jsonValue) : 
-    m_typeNameHasBeenSet(false),
-    m_subTypeNameHasBeenSet(false),
-    m_typeParametersHasBeenSet(false)
+SemanticEntityType::SemanticEntityType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SemanticEntityType& SemanticEntityType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TypeName"))
   {
     m_typeName = jsonValue.GetString("TypeName");
-
     m_typeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubTypeName"))
   {
     m_subTypeName = jsonValue.GetString("SubTypeName");
-
     m_subTypeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TypeParameters"))
   {
     Aws::Map<Aws::String, JsonView> typeParametersJsonMap = jsonValue.GetObject("TypeParameters").GetAllObjects();
@@ -58,7 +44,6 @@ SemanticEntityType& SemanticEntityType::operator =(JsonView jsonValue)
     }
     m_typeParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,76 +32,28 @@ namespace Model
   class DifferentialPrivacyConfiguration
   {
   public:
-    AWS_CLEANROOMS_API DifferentialPrivacyConfiguration();
+    AWS_CLEANROOMS_API DifferentialPrivacyConfiguration() = default;
     AWS_CLEANROOMS_API DifferentialPrivacyConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API DifferentialPrivacyConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the column (such as user_id) that contains the unique identifier
      * of your users whose privacy you want to protect. If you want to turn on
      * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
      * the same column as the user identiﬁer column in both analysis rules.</p>
      */
-    inline const Aws::Vector<DifferentialPrivacyColumn>& GetColumns() const{ return m_columns; }
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
+    inline const Aws::Vector<DifferentialPrivacyColumn>& GetColumns() const { return m_columns; }
     inline bool ColumnsHasBeenSet() const { return m_columnsHasBeenSet; }
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
-    inline void SetColumns(const Aws::Vector<DifferentialPrivacyColumn>& value) { m_columnsHasBeenSet = true; m_columns = value; }
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
-    inline void SetColumns(Aws::Vector<DifferentialPrivacyColumn>&& value) { m_columnsHasBeenSet = true; m_columns = std::move(value); }
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
-    inline DifferentialPrivacyConfiguration& WithColumns(const Aws::Vector<DifferentialPrivacyColumn>& value) { SetColumns(value); return *this;}
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
-    inline DifferentialPrivacyConfiguration& WithColumns(Aws::Vector<DifferentialPrivacyColumn>&& value) { SetColumns(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
-    inline DifferentialPrivacyConfiguration& AddColumns(const DifferentialPrivacyColumn& value) { m_columnsHasBeenSet = true; m_columns.push_back(value); return *this; }
-
-    /**
-     * <p>The name of the column (such as user_id) that contains the unique identifier
-     * of your users whose privacy you want to protect. If you want to turn on
-     * diﬀerential privacy for two or more tables in a collaboration, you must conﬁgure
-     * the same column as the user identiﬁer column in both analysis rules.</p>
-     */
-    inline DifferentialPrivacyConfiguration& AddColumns(DifferentialPrivacyColumn&& value) { m_columnsHasBeenSet = true; m_columns.push_back(std::move(value)); return *this; }
-
+    template<typename ColumnsT = Aws::Vector<DifferentialPrivacyColumn>>
+    void SetColumns(ColumnsT&& value) { m_columnsHasBeenSet = true; m_columns = std::forward<ColumnsT>(value); }
+    template<typename ColumnsT = Aws::Vector<DifferentialPrivacyColumn>>
+    DifferentialPrivacyConfiguration& WithColumns(ColumnsT&& value) { SetColumns(std::forward<ColumnsT>(value)); return *this;}
+    template<typename ColumnsT = DifferentialPrivacyColumn>
+    DifferentialPrivacyConfiguration& AddColumns(ColumnsT&& value) { m_columnsHasBeenSet = true; m_columns.emplace_back(std::forward<ColumnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DifferentialPrivacyColumn> m_columns;

@@ -12,11 +12,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-EnableKeyRotationRequest::EnableKeyRotationRequest() : 
-    m_keyIdHasBeenSet(false)
-{
-}
-
 Aws::String EnableKeyRotationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String EnableKeyRotationRequest::SerializePayload() const
   if(m_keyIdHasBeenSet)
   {
    payload.WithString("KeyId", m_keyId);
+
+  }
+
+  if(m_rotationPeriodInDaysHasBeenSet)
+  {
+   payload.WithInteger("RotationPeriodInDays", m_rotationPeriodInDays);
 
   }
 

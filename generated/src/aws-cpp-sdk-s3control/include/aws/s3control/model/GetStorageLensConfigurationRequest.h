@@ -21,7 +21,7 @@ namespace Model
   class GetStorageLensConfigurationRequest : public S3ControlRequest
   {
   public:
-    AWS_S3CONTROL_API GetStorageLensConfigurationRequest();
+    AWS_S3CONTROL_API GetStorageLensConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,87 +38,29 @@ namespace Model
      */
     AWS_S3CONTROL_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
      */
-    inline const Aws::String& GetConfigId() const{ return m_configId; }
-
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
+    inline const Aws::String& GetConfigId() const { return m_configId; }
     inline bool ConfigIdHasBeenSet() const { return m_configIdHasBeenSet; }
+    template<typename ConfigIdT = Aws::String>
+    void SetConfigId(ConfigIdT&& value) { m_configIdHasBeenSet = true; m_configId = std::forward<ConfigIdT>(value); }
+    template<typename ConfigIdT = Aws::String>
+    GetStorageLensConfigurationRequest& WithConfigId(ConfigIdT&& value) { SetConfigId(std::forward<ConfigIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
-    inline void SetConfigId(const Aws::String& value) { m_configIdHasBeenSet = true; m_configId = value; }
-
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
-    inline void SetConfigId(Aws::String&& value) { m_configIdHasBeenSet = true; m_configId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
-    inline void SetConfigId(const char* value) { m_configIdHasBeenSet = true; m_configId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
-    inline GetStorageLensConfigurationRequest& WithConfigId(const Aws::String& value) { SetConfigId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
-    inline GetStorageLensConfigurationRequest& WithConfigId(Aws::String&& value) { SetConfigId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon S3 Storage Lens configuration.</p>
-     */
-    inline GetStorageLensConfigurationRequest& WithConfigId(const char* value) { SetConfigId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The account ID of the requester.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
-    inline GetStorageLensConfigurationRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
-    inline GetStorageLensConfigurationRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID of the requester.</p>
-     */
-    inline GetStorageLensConfigurationRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    GetStorageLensConfigurationRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configId;

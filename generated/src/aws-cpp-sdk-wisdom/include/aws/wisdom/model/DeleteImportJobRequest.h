@@ -21,7 +21,7 @@ namespace Model
   class DeleteImportJobRequest : public ConnectWisdomServiceRequest
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API DeleteImportJobRequest();
+    AWS_CONNECTWISDOMSERVICE_API DeleteImportJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_CONNECTWISDOMSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the import job to be deleted.</p>
      */
-    inline const Aws::String& GetImportJobId() const{ return m_importJobId; }
-
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
+    inline const Aws::String& GetImportJobId() const { return m_importJobId; }
     inline bool ImportJobIdHasBeenSet() const { return m_importJobIdHasBeenSet; }
+    template<typename ImportJobIdT = Aws::String>
+    void SetImportJobId(ImportJobIdT&& value) { m_importJobIdHasBeenSet = true; m_importJobId = std::forward<ImportJobIdT>(value); }
+    template<typename ImportJobIdT = Aws::String>
+    DeleteImportJobRequest& WithImportJobId(ImportJobIdT&& value) { SetImportJobId(std::forward<ImportJobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
-    inline void SetImportJobId(const Aws::String& value) { m_importJobIdHasBeenSet = true; m_importJobId = value; }
-
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
-    inline void SetImportJobId(Aws::String&& value) { m_importJobIdHasBeenSet = true; m_importJobId = std::move(value); }
-
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
-    inline void SetImportJobId(const char* value) { m_importJobIdHasBeenSet = true; m_importJobId.assign(value); }
-
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
-    inline DeleteImportJobRequest& WithImportJobId(const Aws::String& value) { SetImportJobId(value); return *this;}
-
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
-    inline DeleteImportJobRequest& WithImportJobId(Aws::String&& value) { SetImportJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the import job to be deleted.</p>
-     */
-    inline DeleteImportJobRequest& WithImportJobId(const char* value) { SetImportJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
      * type knowledge base if you're storing Wisdom Content resource to it.</p>
      */
-    inline const Aws::String& GetKnowledgeBaseId() const{ return m_knowledgeBaseId; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseId() const { return m_knowledgeBaseId; }
     inline bool KnowledgeBaseIdHasBeenSet() const { return m_knowledgeBaseIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const Aws::String& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = value; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(Aws::String&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::move(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const char* value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId.assign(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline DeleteImportJobRequest& WithKnowledgeBaseId(const Aws::String& value) { SetKnowledgeBaseId(value); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline DeleteImportJobRequest& WithKnowledgeBaseId(Aws::String&& value) { SetKnowledgeBaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline DeleteImportJobRequest& WithKnowledgeBaseId(const char* value) { SetKnowledgeBaseId(value); return *this;}
-
+    template<typename KnowledgeBaseIdT = Aws::String>
+    void SetKnowledgeBaseId(KnowledgeBaseIdT&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::forward<KnowledgeBaseIdT>(value); }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    DeleteImportJobRequest& WithKnowledgeBaseId(KnowledgeBaseIdT&& value) { SetKnowledgeBaseId(std::forward<KnowledgeBaseIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importJobId;

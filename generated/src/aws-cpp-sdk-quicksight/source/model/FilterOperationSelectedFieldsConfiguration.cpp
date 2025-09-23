@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FilterOperationSelectedFieldsConfiguration::FilterOperationSelectedFieldsConfiguration() : 
-    m_selectedFieldsHasBeenSet(false),
-    m_selectedFieldOptions(SelectedFieldOptions::NOT_SET),
-    m_selectedFieldOptionsHasBeenSet(false),
-    m_selectedColumnsHasBeenSet(false)
-{
-}
-
-FilterOperationSelectedFieldsConfiguration::FilterOperationSelectedFieldsConfiguration(JsonView jsonValue) : 
-    m_selectedFieldsHasBeenSet(false),
-    m_selectedFieldOptions(SelectedFieldOptions::NOT_SET),
-    m_selectedFieldOptionsHasBeenSet(false),
-    m_selectedColumnsHasBeenSet(false)
+FilterOperationSelectedFieldsConfiguration::FilterOperationSelectedFieldsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,14 +34,11 @@ FilterOperationSelectedFieldsConfiguration& FilterOperationSelectedFieldsConfigu
     }
     m_selectedFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SelectedFieldOptions"))
   {
     m_selectedFieldOptions = SelectedFieldOptionsMapper::GetSelectedFieldOptionsForName(jsonValue.GetString("SelectedFieldOptions"));
-
     m_selectedFieldOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SelectedColumns"))
   {
     Aws::Utils::Array<JsonView> selectedColumnsJsonList = jsonValue.GetArray("SelectedColumns");
@@ -63,7 +48,6 @@ FilterOperationSelectedFieldsConfiguration& FilterOperationSelectedFieldsConfigu
     }
     m_selectedColumnsHasBeenSet = true;
   }
-
   return *this;
 }
 

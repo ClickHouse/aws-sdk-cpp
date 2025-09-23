@@ -32,59 +32,37 @@ namespace Model
   class Point
   {
   public:
-    AWS_COMPREHEND_API Point();
+    AWS_COMPREHEND_API Point() = default;
     AWS_COMPREHEND_API Point(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Point& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the X coordinate for a point on a polygon</p>
      */
-    inline double GetX() const{ return m_x; }
-
-    /**
-     * <p>The value of the X coordinate for a point on a polygon</p>
-     */
+    inline double GetX() const { return m_x; }
     inline bool XHasBeenSet() const { return m_xHasBeenSet; }
-
-    /**
-     * <p>The value of the X coordinate for a point on a polygon</p>
-     */
     inline void SetX(double value) { m_xHasBeenSet = true; m_x = value; }
-
-    /**
-     * <p>The value of the X coordinate for a point on a polygon</p>
-     */
     inline Point& WithX(double value) { SetX(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The value of the Y coordinate for a point on a polygon</p>
      */
-    inline double GetY() const{ return m_y; }
-
-    /**
-     * <p>The value of the Y coordinate for a point on a polygon</p>
-     */
+    inline double GetY() const { return m_y; }
     inline bool YHasBeenSet() const { return m_yHasBeenSet; }
-
-    /**
-     * <p>The value of the Y coordinate for a point on a polygon</p>
-     */
     inline void SetY(double value) { m_yHasBeenSet = true; m_y = value; }
-
-    /**
-     * <p>The value of the Y coordinate for a point on a polygon</p>
-     */
     inline Point& WithY(double value) { SetY(value); return *this;}
-
+    ///@}
   private:
 
-    double m_x;
+    double m_x{0.0};
     bool m_xHasBeenSet = false;
 
-    double m_y;
+    double m_y{0.0};
     bool m_yHasBeenSet = false;
   };
 

@@ -18,10 +18,6 @@ namespace LakeFormation
 namespace Model
 {
 
-CatalogResource::CatalogResource()
-{
-}
-
 CatalogResource::CatalogResource(JsonView jsonValue)
 {
   *this = jsonValue;
@@ -29,13 +25,23 @@ CatalogResource::CatalogResource(JsonView jsonValue)
 
 CatalogResource& CatalogResource::operator =(JsonView jsonValue)
 {
-  AWS_UNREFERENCED_PARAM(jsonValue);
+  if(jsonValue.ValueExists("Id"))
+  {
+    m_id = jsonValue.GetString("Id");
+    m_idHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue CatalogResource::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_idHasBeenSet)
+  {
+   payload.WithString("Id", m_id);
+
+  }
 
   return payload;
 }

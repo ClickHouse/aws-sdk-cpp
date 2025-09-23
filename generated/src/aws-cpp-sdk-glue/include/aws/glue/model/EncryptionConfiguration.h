@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/glue/model/CloudWatchEncryption.h>
 #include <aws/glue/model/JobBookmarksEncryption.h>
+#include <aws/glue/model/DataQualityEncryption.h>
 #include <aws/glue/model/S3Encryption.h>
 #include <utility>
 
@@ -34,122 +35,62 @@ namespace Model
   class EncryptionConfiguration
   {
   public:
-    AWS_GLUE_API EncryptionConfiguration();
+    AWS_GLUE_API EncryptionConfiguration() = default;
     AWS_GLUE_API EncryptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API EncryptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
      * data.</p>
      */
-    inline const Aws::Vector<S3Encryption>& GetS3Encryption() const{ return m_s3Encryption; }
-
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
+    inline const Aws::Vector<S3Encryption>& GetS3Encryption() const { return m_s3Encryption; }
     inline bool S3EncryptionHasBeenSet() const { return m_s3EncryptionHasBeenSet; }
+    template<typename S3EncryptionT = Aws::Vector<S3Encryption>>
+    void SetS3Encryption(S3EncryptionT&& value) { m_s3EncryptionHasBeenSet = true; m_s3Encryption = std::forward<S3EncryptionT>(value); }
+    template<typename S3EncryptionT = Aws::Vector<S3Encryption>>
+    EncryptionConfiguration& WithS3Encryption(S3EncryptionT&& value) { SetS3Encryption(std::forward<S3EncryptionT>(value)); return *this;}
+    template<typename S3EncryptionT = S3Encryption>
+    EncryptionConfiguration& AddS3Encryption(S3EncryptionT&& value) { m_s3EncryptionHasBeenSet = true; m_s3Encryption.emplace_back(std::forward<S3EncryptionT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
-    inline void SetS3Encryption(const Aws::Vector<S3Encryption>& value) { m_s3EncryptionHasBeenSet = true; m_s3Encryption = value; }
-
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
-    inline void SetS3Encryption(Aws::Vector<S3Encryption>&& value) { m_s3EncryptionHasBeenSet = true; m_s3Encryption = std::move(value); }
-
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
-    inline EncryptionConfiguration& WithS3Encryption(const Aws::Vector<S3Encryption>& value) { SetS3Encryption(value); return *this;}
-
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
-    inline EncryptionConfiguration& WithS3Encryption(Aws::Vector<S3Encryption>&& value) { SetS3Encryption(std::move(value)); return *this;}
-
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
-    inline EncryptionConfiguration& AddS3Encryption(const S3Encryption& value) { m_s3EncryptionHasBeenSet = true; m_s3Encryption.push_back(value); return *this; }
-
-    /**
-     * <p>The encryption configuration for Amazon Simple Storage Service (Amazon S3)
-     * data.</p>
-     */
-    inline EncryptionConfiguration& AddS3Encryption(S3Encryption&& value) { m_s3EncryptionHasBeenSet = true; m_s3Encryption.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The encryption configuration for Amazon CloudWatch.</p>
      */
-    inline const CloudWatchEncryption& GetCloudWatchEncryption() const{ return m_cloudWatchEncryption; }
-
-    /**
-     * <p>The encryption configuration for Amazon CloudWatch.</p>
-     */
+    inline const CloudWatchEncryption& GetCloudWatchEncryption() const { return m_cloudWatchEncryption; }
     inline bool CloudWatchEncryptionHasBeenSet() const { return m_cloudWatchEncryptionHasBeenSet; }
+    template<typename CloudWatchEncryptionT = CloudWatchEncryption>
+    void SetCloudWatchEncryption(CloudWatchEncryptionT&& value) { m_cloudWatchEncryptionHasBeenSet = true; m_cloudWatchEncryption = std::forward<CloudWatchEncryptionT>(value); }
+    template<typename CloudWatchEncryptionT = CloudWatchEncryption>
+    EncryptionConfiguration& WithCloudWatchEncryption(CloudWatchEncryptionT&& value) { SetCloudWatchEncryption(std::forward<CloudWatchEncryptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The encryption configuration for Amazon CloudWatch.</p>
-     */
-    inline void SetCloudWatchEncryption(const CloudWatchEncryption& value) { m_cloudWatchEncryptionHasBeenSet = true; m_cloudWatchEncryption = value; }
-
-    /**
-     * <p>The encryption configuration for Amazon CloudWatch.</p>
-     */
-    inline void SetCloudWatchEncryption(CloudWatchEncryption&& value) { m_cloudWatchEncryptionHasBeenSet = true; m_cloudWatchEncryption = std::move(value); }
-
-    /**
-     * <p>The encryption configuration for Amazon CloudWatch.</p>
-     */
-    inline EncryptionConfiguration& WithCloudWatchEncryption(const CloudWatchEncryption& value) { SetCloudWatchEncryption(value); return *this;}
-
-    /**
-     * <p>The encryption configuration for Amazon CloudWatch.</p>
-     */
-    inline EncryptionConfiguration& WithCloudWatchEncryption(CloudWatchEncryption&& value) { SetCloudWatchEncryption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption configuration for job bookmarks.</p>
      */
-    inline const JobBookmarksEncryption& GetJobBookmarksEncryption() const{ return m_jobBookmarksEncryption; }
-
-    /**
-     * <p>The encryption configuration for job bookmarks.</p>
-     */
+    inline const JobBookmarksEncryption& GetJobBookmarksEncryption() const { return m_jobBookmarksEncryption; }
     inline bool JobBookmarksEncryptionHasBeenSet() const { return m_jobBookmarksEncryptionHasBeenSet; }
+    template<typename JobBookmarksEncryptionT = JobBookmarksEncryption>
+    void SetJobBookmarksEncryption(JobBookmarksEncryptionT&& value) { m_jobBookmarksEncryptionHasBeenSet = true; m_jobBookmarksEncryption = std::forward<JobBookmarksEncryptionT>(value); }
+    template<typename JobBookmarksEncryptionT = JobBookmarksEncryption>
+    EncryptionConfiguration& WithJobBookmarksEncryption(JobBookmarksEncryptionT&& value) { SetJobBookmarksEncryption(std::forward<JobBookmarksEncryptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The encryption configuration for job bookmarks.</p>
+     * <p>The encryption configuration for Glue Data Quality assets.</p>
      */
-    inline void SetJobBookmarksEncryption(const JobBookmarksEncryption& value) { m_jobBookmarksEncryptionHasBeenSet = true; m_jobBookmarksEncryption = value; }
-
-    /**
-     * <p>The encryption configuration for job bookmarks.</p>
-     */
-    inline void SetJobBookmarksEncryption(JobBookmarksEncryption&& value) { m_jobBookmarksEncryptionHasBeenSet = true; m_jobBookmarksEncryption = std::move(value); }
-
-    /**
-     * <p>The encryption configuration for job bookmarks.</p>
-     */
-    inline EncryptionConfiguration& WithJobBookmarksEncryption(const JobBookmarksEncryption& value) { SetJobBookmarksEncryption(value); return *this;}
-
-    /**
-     * <p>The encryption configuration for job bookmarks.</p>
-     */
-    inline EncryptionConfiguration& WithJobBookmarksEncryption(JobBookmarksEncryption&& value) { SetJobBookmarksEncryption(std::move(value)); return *this;}
-
+    inline const DataQualityEncryption& GetDataQualityEncryption() const { return m_dataQualityEncryption; }
+    inline bool DataQualityEncryptionHasBeenSet() const { return m_dataQualityEncryptionHasBeenSet; }
+    template<typename DataQualityEncryptionT = DataQualityEncryption>
+    void SetDataQualityEncryption(DataQualityEncryptionT&& value) { m_dataQualityEncryptionHasBeenSet = true; m_dataQualityEncryption = std::forward<DataQualityEncryptionT>(value); }
+    template<typename DataQualityEncryptionT = DataQualityEncryption>
+    EncryptionConfiguration& WithDataQualityEncryption(DataQualityEncryptionT&& value) { SetDataQualityEncryption(std::forward<DataQualityEncryptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<S3Encryption> m_s3Encryption;
@@ -160,6 +101,9 @@ namespace Model
 
     JobBookmarksEncryption m_jobBookmarksEncryption;
     bool m_jobBookmarksEncryptionHasBeenSet = false;
+
+    DataQualityEncryption m_dataQualityEncryption;
+    bool m_dataQualityEncryptionHasBeenSet = false;
   };
 
 } // namespace Model

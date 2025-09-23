@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ScheduledActionFilter::ScheduledActionFilter() : 
-    m_name(ScheduledActionFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-ScheduledActionFilter::ScheduledActionFilter(const XmlNode& xmlNode) : 
-    m_name(ScheduledActionFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+ScheduledActionFilter::ScheduledActionFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,13 +34,14 @@ ScheduledActionFilter& ScheduledActionFilter::operator =(const XmlNode& xmlNode)
     XmlNode nameNode = resultNode.FirstChild("Name");
     if(!nameNode.IsNull())
     {
-      m_name = ScheduledActionFilterNameMapper::GetScheduledActionFilterNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()).c_str());
+      m_name = ScheduledActionFilterNameMapper::GetScheduledActionFilterNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()));
       m_nameHasBeenSet = true;
     }
     XmlNode valuesNode = resultNode.FirstChild("Values");
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("item");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember.GetText());
@@ -68,7 +59,7 @@ void ScheduledActionFilter::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_nameHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Name=" << ScheduledActionFilterNameMapper::GetNameForScheduledActionFilterName(m_name) << "&";
+      oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(ScheduledActionFilterNameMapper::GetNameForScheduledActionFilterName(m_name)) << "&";
   }
 
   if(m_valuesHasBeenSet)
@@ -76,7 +67,7 @@ void ScheduledActionFilter::OutputToStream(Aws::OStream& oStream, const char* lo
       unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        oStream << location << index << locationValue << ".item." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".Values.item." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -86,14 +77,14 @@ void ScheduledActionFilter::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_nameHasBeenSet)
   {
-      oStream << location << ".Name=" << ScheduledActionFilterNameMapper::GetNameForScheduledActionFilterName(m_name) << "&";
+      oStream << location << ".Name=" << StringUtils::URLEncode(ScheduledActionFilterNameMapper::GetNameForScheduledActionFilterName(m_name)) << "&";
   }
   if(m_valuesHasBeenSet)
   {
       unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        oStream << location << ".item." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".Values.item." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

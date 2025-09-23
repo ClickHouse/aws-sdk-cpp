@@ -20,33 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-GlobalCluster::GlobalCluster() : 
-    m_globalClusterIdentifierHasBeenSet(false),
-    m_globalClusterResourceIdHasBeenSet(false),
-    m_globalClusterArnHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_globalClusterMembersHasBeenSet(false)
-{
-}
-
-GlobalCluster::GlobalCluster(const XmlNode& xmlNode) : 
-    m_globalClusterIdentifierHasBeenSet(false),
-    m_globalClusterResourceIdHasBeenSet(false),
-    m_globalClusterArnHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_globalClusterMembersHasBeenSet(false)
+GlobalCluster::GlobalCluster(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -109,6 +83,7 @@ GlobalCluster& GlobalCluster::operator =(const XmlNode& xmlNode)
     if(!globalClusterMembersNode.IsNull())
     {
       XmlNode globalClusterMembersMember = globalClusterMembersNode.FirstChild("GlobalClusterMember");
+      m_globalClusterMembersHasBeenSet = !globalClusterMembersMember.IsNull();
       while(!globalClusterMembersMember.IsNull())
       {
         m_globalClusterMembers.push_back(globalClusterMembersMember);
@@ -116,6 +91,12 @@ GlobalCluster& GlobalCluster::operator =(const XmlNode& xmlNode)
       }
 
       m_globalClusterMembersHasBeenSet = true;
+    }
+    XmlNode failoverStateNode = resultNode.FirstChild("FailoverState");
+    if(!failoverStateNode.IsNull())
+    {
+      m_failoverState = failoverStateNode;
+      m_failoverStateHasBeenSet = true;
     }
   }
 
@@ -170,9 +151,16 @@ void GlobalCluster::OutputToStream(Aws::OStream& oStream, const char* location, 
       for(auto& item : m_globalClusterMembers)
       {
         Aws::StringStream globalClusterMembersSs;
-        globalClusterMembersSs << location << index << locationValue << ".GlobalClusterMember." << globalClusterMembersIdx++;
+        globalClusterMembersSs << location << index << locationValue << ".GlobalClusterMembers.GlobalClusterMember." << globalClusterMembersIdx++;
         item.OutputToStream(oStream, globalClusterMembersSs.str().c_str());
       }
+  }
+
+  if(m_failoverStateHasBeenSet)
+  {
+      Aws::StringStream failoverStateLocationAndMemberSs;
+      failoverStateLocationAndMemberSs << location << index << locationValue << ".FailoverState";
+      m_failoverState.OutputToStream(oStream, failoverStateLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -217,9 +205,15 @@ void GlobalCluster::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_globalClusterMembers)
       {
         Aws::StringStream globalClusterMembersSs;
-        globalClusterMembersSs << location <<  ".GlobalClusterMember." << globalClusterMembersIdx++;
+        globalClusterMembersSs << location << ".GlobalClusterMembers.GlobalClusterMember." << globalClusterMembersIdx++;
         item.OutputToStream(oStream, globalClusterMembersSs.str().c_str());
       }
+  }
+  if(m_failoverStateHasBeenSet)
+  {
+      Aws::String failoverStateLocationAndMember(location);
+      failoverStateLocationAndMember += ".FailoverState";
+      m_failoverState.OutputToStream(oStream, failoverStateLocationAndMember.c_str());
   }
 }
 

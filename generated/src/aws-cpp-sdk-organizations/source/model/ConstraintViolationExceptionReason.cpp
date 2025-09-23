@@ -47,6 +47,7 @@ namespace Aws
         static const int CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR_HASH = HashingUtils::HashString("CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR");
         static const int CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG_HASH = HashingUtils::HashString("CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG");
         static const int DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE_HASH = HashingUtils::HashString("DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE");
+        static const int POLICY_TYPE_ENABLED_FOR_THIS_SERVICE_HASH = HashingUtils::HashString("POLICY_TYPE_ENABLED_FOR_THIS_SERVICE");
         static const int MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE_HASH = HashingUtils::HashString("MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE");
         static const int CANNOT_CLOSE_MANAGEMENT_ACCOUNT_HASH = HashingUtils::HashString("CANNOT_CLOSE_MANAGEMENT_ACCOUNT");
         static const int CLOSE_ACCOUNT_QUOTA_EXCEEDED_HASH = HashingUtils::HashString("CLOSE_ACCOUNT_QUOTA_EXCEEDED");
@@ -54,6 +55,8 @@ namespace Aws
         static const int SERVICE_ACCESS_NOT_ENABLED_HASH = HashingUtils::HashString("SERVICE_ACCESS_NOT_ENABLED");
         static const int INVALID_PAYMENT_INSTRUMENT_HASH = HashingUtils::HashString("INVALID_PAYMENT_INSTRUMENT");
         static const int ACCOUNT_CREATION_NOT_COMPLETE_HASH = HashingUtils::HashString("ACCOUNT_CREATION_NOT_COMPLETE");
+        static const int CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR_HASH = HashingUtils::HashString("CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR");
+        static const int ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED");
 
 
         ConstraintViolationExceptionReason GetConstraintViolationExceptionReasonForName(const Aws::String& name)
@@ -167,6 +170,10 @@ namespace Aws
           {
             return ConstraintViolationExceptionReason::DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE;
           }
+          else if (hashCode == POLICY_TYPE_ENABLED_FOR_THIS_SERVICE_HASH)
+          {
+            return ConstraintViolationExceptionReason::POLICY_TYPE_ENABLED_FOR_THIS_SERVICE;
+          }
           else if (hashCode == MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE_HASH)
           {
             return ConstraintViolationExceptionReason::MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE;
@@ -194,6 +201,14 @@ namespace Aws
           else if (hashCode == ACCOUNT_CREATION_NOT_COMPLETE_HASH)
           {
             return ConstraintViolationExceptionReason::ACCOUNT_CREATION_NOT_COMPLETE;
+          }
+          else if (hashCode == CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR_HASH)
+          {
+            return ConstraintViolationExceptionReason::CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR;
+          }
+          else if (hashCode == ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED_HASH)
+          {
+            return ConstraintViolationExceptionReason::ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -265,6 +280,8 @@ namespace Aws
             return "CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG";
           case ConstraintViolationExceptionReason::DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE:
             return "DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE";
+          case ConstraintViolationExceptionReason::POLICY_TYPE_ENABLED_FOR_THIS_SERVICE:
+            return "POLICY_TYPE_ENABLED_FOR_THIS_SERVICE";
           case ConstraintViolationExceptionReason::MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE:
             return "MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE";
           case ConstraintViolationExceptionReason::CANNOT_CLOSE_MANAGEMENT_ACCOUNT:
@@ -279,6 +296,10 @@ namespace Aws
             return "INVALID_PAYMENT_INSTRUMENT";
           case ConstraintViolationExceptionReason::ACCOUNT_CREATION_NOT_COMPLETE:
             return "ACCOUNT_CREATION_NOT_COMPLETE";
+          case ConstraintViolationExceptionReason::CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR:
+            return "CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR";
+          case ConstraintViolationExceptionReason::ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED:
+            return "ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

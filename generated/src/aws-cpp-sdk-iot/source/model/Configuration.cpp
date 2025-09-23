@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-Configuration::Configuration() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-Configuration::Configuration(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+Configuration::Configuration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Configuration& Configuration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

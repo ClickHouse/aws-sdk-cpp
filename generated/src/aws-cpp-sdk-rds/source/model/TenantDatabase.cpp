@@ -20,39 +20,7 @@ namespace RDS
 namespace Model
 {
 
-TenantDatabase::TenantDatabase() : 
-    m_tenantDatabaseCreateTimeHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_tenantDBNameHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_dbiResourceIdHasBeenSet(false),
-    m_tenantDatabaseResourceIdHasBeenSet(false),
-    m_tenantDatabaseARNHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_ncharCharacterSetNameHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_tagListHasBeenSet(false)
-{
-}
-
-TenantDatabase::TenantDatabase(const XmlNode& xmlNode) : 
-    m_tenantDatabaseCreateTimeHasBeenSet(false),
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_tenantDBNameHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_dbiResourceIdHasBeenSet(false),
-    m_tenantDatabaseResourceIdHasBeenSet(false),
-    m_tenantDatabaseARNHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_ncharCharacterSetNameHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_tagListHasBeenSet(false)
+TenantDatabase::TenantDatabase(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -135,10 +103,17 @@ TenantDatabase& TenantDatabase::operator =(const XmlNode& xmlNode)
       m_pendingModifiedValues = pendingModifiedValuesNode;
       m_pendingModifiedValuesHasBeenSet = true;
     }
+    XmlNode masterUserSecretNode = resultNode.FirstChild("MasterUserSecret");
+    if(!masterUserSecretNode.IsNull())
+    {
+      m_masterUserSecret = masterUserSecretNode;
+      m_masterUserSecretHasBeenSet = true;
+    }
     XmlNode tagListNode = resultNode.FirstChild("TagList");
     if(!tagListNode.IsNull())
     {
       XmlNode tagListMember = tagListNode.FirstChild("Tag");
+      m_tagListHasBeenSet = !tagListMember.IsNull();
       while(!tagListMember.IsNull())
       {
         m_tagList.push_back(tagListMember);
@@ -216,13 +191,20 @@ void TenantDatabase::OutputToStream(Aws::OStream& oStream, const char* location,
       m_pendingModifiedValues.OutputToStream(oStream, pendingModifiedValuesLocationAndMemberSs.str().c_str());
   }
 
+  if(m_masterUserSecretHasBeenSet)
+  {
+      Aws::StringStream masterUserSecretLocationAndMemberSs;
+      masterUserSecretLocationAndMemberSs << location << index << locationValue << ".MasterUserSecret";
+      m_masterUserSecret.OutputToStream(oStream, masterUserSecretLocationAndMemberSs.str().c_str());
+  }
+
   if(m_tagListHasBeenSet)
   {
       unsigned tagListIdx = 1;
       for(auto& item : m_tagList)
       {
         Aws::StringStream tagListSs;
-        tagListSs << location << index << locationValue << ".Tag." << tagListIdx++;
+        tagListSs << location << index << locationValue << ".TagList.Tag." << tagListIdx++;
         item.OutputToStream(oStream, tagListSs.str().c_str());
       }
   }
@@ -281,13 +263,19 @@ void TenantDatabase::OutputToStream(Aws::OStream& oStream, const char* location)
       pendingModifiedValuesLocationAndMember += ".PendingModifiedValues";
       m_pendingModifiedValues.OutputToStream(oStream, pendingModifiedValuesLocationAndMember.c_str());
   }
+  if(m_masterUserSecretHasBeenSet)
+  {
+      Aws::String masterUserSecretLocationAndMember(location);
+      masterUserSecretLocationAndMember += ".MasterUserSecret";
+      m_masterUserSecret.OutputToStream(oStream, masterUserSecretLocationAndMember.c_str());
+  }
   if(m_tagListHasBeenSet)
   {
       unsigned tagListIdx = 1;
       for(auto& item : m_tagList)
       {
         Aws::StringStream tagListSs;
-        tagListSs << location <<  ".Tag." << tagListIdx++;
+        tagListSs << location << ".TagList.Tag." << tagListIdx++;
         item.OutputToStream(oStream, tagListSs.str().c_str());
       }
   }

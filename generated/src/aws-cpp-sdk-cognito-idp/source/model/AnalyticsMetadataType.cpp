@@ -18,13 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-AnalyticsMetadataType::AnalyticsMetadataType() : 
-    m_analyticsEndpointIdHasBeenSet(false)
-{
-}
-
-AnalyticsMetadataType::AnalyticsMetadataType(JsonView jsonValue) : 
-    m_analyticsEndpointIdHasBeenSet(false)
+AnalyticsMetadataType::AnalyticsMetadataType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AnalyticsMetadataType& AnalyticsMetadataType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AnalyticsEndpointId"))
   {
     m_analyticsEndpointId = jsonValue.GetString("AnalyticsEndpointId");
-
     m_analyticsEndpointIdHasBeenSet = true;
   }
-
   return *this;
 }
 

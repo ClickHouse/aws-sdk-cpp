@@ -18,15 +18,7 @@ namespace MigrationHubStrategyRecommendations
 namespace Model
 {
 
-ServerError::ServerError() : 
-    m_serverErrorCategory(ServerErrorCategory::NOT_SET),
-    m_serverErrorCategoryHasBeenSet(false)
-{
-}
-
-ServerError::ServerError(JsonView jsonValue) : 
-    m_serverErrorCategory(ServerErrorCategory::NOT_SET),
-    m_serverErrorCategoryHasBeenSet(false)
+ServerError::ServerError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ServerError& ServerError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("serverErrorCategory"))
   {
     m_serverErrorCategory = ServerErrorCategoryMapper::GetServerErrorCategoryForName(jsonValue.GetString("serverErrorCategory"));
-
     m_serverErrorCategoryHasBeenSet = true;
   }
-
   return *this;
 }
 

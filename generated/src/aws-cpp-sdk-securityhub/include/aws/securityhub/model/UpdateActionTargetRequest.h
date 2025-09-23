@@ -21,7 +21,7 @@ namespace Model
   class UpdateActionTargetRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API UpdateActionTargetRequest();
+    AWS_SECURITYHUB_API UpdateActionTargetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,128 +32,41 @@ namespace Model
     AWS_SECURITYHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the custom action target to update.</p>
      */
-    inline const Aws::String& GetActionTargetArn() const{ return m_actionTargetArn; }
-
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
+    inline const Aws::String& GetActionTargetArn() const { return m_actionTargetArn; }
     inline bool ActionTargetArnHasBeenSet() const { return m_actionTargetArnHasBeenSet; }
+    template<typename ActionTargetArnT = Aws::String>
+    void SetActionTargetArn(ActionTargetArnT&& value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn = std::forward<ActionTargetArnT>(value); }
+    template<typename ActionTargetArnT = Aws::String>
+    UpdateActionTargetRequest& WithActionTargetArn(ActionTargetArnT&& value) { SetActionTargetArn(std::forward<ActionTargetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
-    inline void SetActionTargetArn(const Aws::String& value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn = value; }
-
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
-    inline void SetActionTargetArn(Aws::String&& value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
-    inline void SetActionTargetArn(const char* value) { m_actionTargetArnHasBeenSet = true; m_actionTargetArn.assign(value); }
-
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
-    inline UpdateActionTargetRequest& WithActionTargetArn(const Aws::String& value) { SetActionTargetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
-    inline UpdateActionTargetRequest& WithActionTargetArn(Aws::String&& value) { SetActionTargetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the custom action target to update.</p>
-     */
-    inline UpdateActionTargetRequest& WithActionTargetArn(const char* value) { SetActionTargetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated name of the custom action target.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateActionTargetRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
-    inline UpdateActionTargetRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
-    inline UpdateActionTargetRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated name of the custom action target.</p>
-     */
-    inline UpdateActionTargetRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated description for the custom action target.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
-    inline UpdateActionTargetRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
-    inline UpdateActionTargetRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated description for the custom action target.</p>
-     */
-    inline UpdateActionTargetRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateActionTargetRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionTargetArn;

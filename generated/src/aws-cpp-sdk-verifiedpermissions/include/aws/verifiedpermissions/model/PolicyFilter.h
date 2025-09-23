@@ -36,165 +36,60 @@ namespace Model
   class PolicyFilter
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API PolicyFilter();
+    AWS_VERIFIEDPERMISSIONS_API PolicyFilter() = default;
     AWS_VERIFIEDPERMISSIONS_API PolicyFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API PolicyFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Filters the output to only policies that reference the specified
      * principal.</p>
      */
-    inline const EntityReference& GetPrincipal() const{ return m_principal; }
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * principal.</p>
-     */
+    inline const EntityReference& GetPrincipal() const { return m_principal; }
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
+    template<typename PrincipalT = EntityReference>
+    void SetPrincipal(PrincipalT&& value) { m_principalHasBeenSet = true; m_principal = std::forward<PrincipalT>(value); }
+    template<typename PrincipalT = EntityReference>
+    PolicyFilter& WithPrincipal(PrincipalT&& value) { SetPrincipal(std::forward<PrincipalT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * principal.</p>
-     */
-    inline void SetPrincipal(const EntityReference& value) { m_principalHasBeenSet = true; m_principal = value; }
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * principal.</p>
-     */
-    inline void SetPrincipal(EntityReference&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * principal.</p>
-     */
-    inline PolicyFilter& WithPrincipal(const EntityReference& value) { SetPrincipal(value); return *this;}
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * principal.</p>
-     */
-    inline PolicyFilter& WithPrincipal(EntityReference&& value) { SetPrincipal(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters the output to only policies that reference the specified
      * resource.</p>
      */
-    inline const EntityReference& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * resource.</p>
-     */
+    inline const EntityReference& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = EntityReference>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = EntityReference>
+    PolicyFilter& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * resource.</p>
-     */
-    inline void SetResource(const EntityReference& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * resource.</p>
-     */
-    inline void SetResource(EntityReference&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * resource.</p>
-     */
-    inline PolicyFilter& WithResource(const EntityReference& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>Filters the output to only policies that reference the specified
-     * resource.</p>
-     */
-    inline PolicyFilter& WithResource(EntityReference&& value) { SetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters the output to only policies of the specified type.</p>
      */
-    inline const PolicyType& GetPolicyType() const{ return m_policyType; }
-
-    /**
-     * <p>Filters the output to only policies of the specified type.</p>
-     */
+    inline PolicyType GetPolicyType() const { return m_policyType; }
     inline bool PolicyTypeHasBeenSet() const { return m_policyTypeHasBeenSet; }
+    inline void SetPolicyType(PolicyType value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+    inline PolicyFilter& WithPolicyType(PolicyType value) { SetPolicyType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Filters the output to only policies of the specified type.</p>
-     */
-    inline void SetPolicyType(const PolicyType& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
-
-    /**
-     * <p>Filters the output to only policies of the specified type.</p>
-     */
-    inline void SetPolicyType(PolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
-
-    /**
-     * <p>Filters the output to only policies of the specified type.</p>
-     */
-    inline PolicyFilter& WithPolicyType(const PolicyType& value) { SetPolicyType(value); return *this;}
-
-    /**
-     * <p>Filters the output to only policies of the specified type.</p>
-     */
-    inline PolicyFilter& WithPolicyType(PolicyType&& value) { SetPolicyType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters the output to only template-linked policies that were instantiated
      * from the specified policy template.</p>
      */
-    inline const Aws::String& GetPolicyTemplateId() const{ return m_policyTemplateId; }
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
+    inline const Aws::String& GetPolicyTemplateId() const { return m_policyTemplateId; }
     inline bool PolicyTemplateIdHasBeenSet() const { return m_policyTemplateIdHasBeenSet; }
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
-    inline void SetPolicyTemplateId(const Aws::String& value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId = value; }
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
-    inline void SetPolicyTemplateId(Aws::String&& value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId = std::move(value); }
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
-    inline void SetPolicyTemplateId(const char* value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId.assign(value); }
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
-    inline PolicyFilter& WithPolicyTemplateId(const Aws::String& value) { SetPolicyTemplateId(value); return *this;}
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
-    inline PolicyFilter& WithPolicyTemplateId(Aws::String&& value) { SetPolicyTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>Filters the output to only template-linked policies that were instantiated
-     * from the specified policy template.</p>
-     */
-    inline PolicyFilter& WithPolicyTemplateId(const char* value) { SetPolicyTemplateId(value); return *this;}
-
+    template<typename PolicyTemplateIdT = Aws::String>
+    void SetPolicyTemplateId(PolicyTemplateIdT&& value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId = std::forward<PolicyTemplateIdT>(value); }
+    template<typename PolicyTemplateIdT = Aws::String>
+    PolicyFilter& WithPolicyTemplateId(PolicyTemplateIdT&& value) { SetPolicyTemplateId(std::forward<PolicyTemplateIdT>(value)); return *this;}
+    ///@}
   private:
 
     EntityReference m_principal;
@@ -203,7 +98,7 @@ namespace Model
     EntityReference m_resource;
     bool m_resourceHasBeenSet = false;
 
-    PolicyType m_policyType;
+    PolicyType m_policyType{PolicyType::NOT_SET};
     bool m_policyTypeHasBeenSet = false;
 
     Aws::String m_policyTemplateId;

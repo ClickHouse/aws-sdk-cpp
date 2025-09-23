@@ -18,15 +18,7 @@ namespace QBusiness
 namespace Model
 {
 
-AttachmentsConfiguration::AttachmentsConfiguration() : 
-    m_attachmentsControlMode(AttachmentsControlMode::NOT_SET),
-    m_attachmentsControlModeHasBeenSet(false)
-{
-}
-
-AttachmentsConfiguration::AttachmentsConfiguration(JsonView jsonValue) : 
-    m_attachmentsControlMode(AttachmentsControlMode::NOT_SET),
-    m_attachmentsControlModeHasBeenSet(false)
+AttachmentsConfiguration::AttachmentsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AttachmentsConfiguration& AttachmentsConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("attachmentsControlMode"))
   {
     m_attachmentsControlMode = AttachmentsControlModeMapper::GetAttachmentsControlModeForName(jsonValue.GetString("attachmentsControlMode"));
-
     m_attachmentsControlModeHasBeenSet = true;
   }
-
   return *this;
 }
 

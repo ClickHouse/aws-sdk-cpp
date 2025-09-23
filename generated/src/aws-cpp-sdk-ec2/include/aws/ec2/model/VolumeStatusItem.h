@@ -9,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/VolumeStatusInfo.h>
+#include <aws/ec2/model/InitializationStatusDetails.h>
 #include <aws/ec2/model/VolumeStatusAction.h>
 #include <aws/ec2/model/VolumeStatusEvent.h>
 #include <aws/ec2/model/VolumeStatusAttachmentStatus.h>
@@ -36,7 +37,7 @@ namespace Model
   class VolumeStatusItem
   {
   public:
-    AWS_EC2_API VolumeStatusItem();
+    AWS_EC2_API VolumeStatusItem() = default;
     AWS_EC2_API VolumeStatusItem(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VolumeStatusItem& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -44,282 +45,124 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The details of the operation.</p>
      */
-    inline const Aws::Vector<VolumeStatusAction>& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>The details of the operation.</p>
-     */
+    inline const Aws::Vector<VolumeStatusAction>& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
+    template<typename ActionsT = Aws::Vector<VolumeStatusAction>>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = Aws::Vector<VolumeStatusAction>>
+    VolumeStatusItem& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    template<typename ActionsT = VolumeStatusAction>
+    VolumeStatusItem& AddActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions.emplace_back(std::forward<ActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The details of the operation.</p>
-     */
-    inline void SetActions(const Aws::Vector<VolumeStatusAction>& value) { m_actionsHasBeenSet = true; m_actions = value; }
-
-    /**
-     * <p>The details of the operation.</p>
-     */
-    inline void SetActions(Aws::Vector<VolumeStatusAction>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
-
-    /**
-     * <p>The details of the operation.</p>
-     */
-    inline VolumeStatusItem& WithActions(const Aws::Vector<VolumeStatusAction>& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>The details of the operation.</p>
-     */
-    inline VolumeStatusItem& WithActions(Aws::Vector<VolumeStatusAction>&& value) { SetActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The details of the operation.</p>
-     */
-    inline VolumeStatusItem& AddActions(const VolumeStatusAction& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
-
-    /**
-     * <p>The details of the operation.</p>
-     */
-    inline VolumeStatusItem& AddActions(VolumeStatusAction&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Availability Zone of the volume.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    VolumeStatusItem& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
-    inline VolumeStatusItem& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
-    inline VolumeStatusItem& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone of the volume.</p>
-     */
-    inline VolumeStatusItem& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
      */
-    inline const Aws::String& GetOutpostArn() const{ return m_outpostArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
+    inline const Aws::String& GetOutpostArn() const { return m_outpostArn; }
     inline bool OutpostArnHasBeenSet() const { return m_outpostArnHasBeenSet; }
+    template<typename OutpostArnT = Aws::String>
+    void SetOutpostArn(OutpostArnT&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::forward<OutpostArnT>(value); }
+    template<typename OutpostArnT = Aws::String>
+    VolumeStatusItem& WithOutpostArn(OutpostArnT&& value) { SetOutpostArn(std::forward<OutpostArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
-    inline void SetOutpostArn(const Aws::String& value) { m_outpostArnHasBeenSet = true; m_outpostArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
-    inline void SetOutpostArn(Aws::String&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
-    inline void SetOutpostArn(const char* value) { m_outpostArnHasBeenSet = true; m_outpostArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
-    inline VolumeStatusItem& WithOutpostArn(const Aws::String& value) { SetOutpostArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
-    inline VolumeStatusItem& WithOutpostArn(Aws::String&& value) { SetOutpostArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-     */
-    inline VolumeStatusItem& WithOutpostArn(const char* value) { SetOutpostArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of events associated with the volume.</p>
      */
-    inline const Aws::Vector<VolumeStatusEvent>& GetEvents() const{ return m_events; }
-
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
+    inline const Aws::Vector<VolumeStatusEvent>& GetEvents() const { return m_events; }
     inline bool EventsHasBeenSet() const { return m_eventsHasBeenSet; }
+    template<typename EventsT = Aws::Vector<VolumeStatusEvent>>
+    void SetEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events = std::forward<EventsT>(value); }
+    template<typename EventsT = Aws::Vector<VolumeStatusEvent>>
+    VolumeStatusItem& WithEvents(EventsT&& value) { SetEvents(std::forward<EventsT>(value)); return *this;}
+    template<typename EventsT = VolumeStatusEvent>
+    VolumeStatusItem& AddEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events.emplace_back(std::forward<EventsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
-    inline void SetEvents(const Aws::Vector<VolumeStatusEvent>& value) { m_eventsHasBeenSet = true; m_events = value; }
-
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
-    inline void SetEvents(Aws::Vector<VolumeStatusEvent>&& value) { m_eventsHasBeenSet = true; m_events = std::move(value); }
-
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
-    inline VolumeStatusItem& WithEvents(const Aws::Vector<VolumeStatusEvent>& value) { SetEvents(value); return *this;}
-
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
-    inline VolumeStatusItem& WithEvents(Aws::Vector<VolumeStatusEvent>&& value) { SetEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
-    inline VolumeStatusItem& AddEvents(const VolumeStatusEvent& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
-
-    /**
-     * <p>A list of events associated with the volume.</p>
-     */
-    inline VolumeStatusItem& AddEvents(VolumeStatusEvent&& value) { m_eventsHasBeenSet = true; m_events.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The volume ID.</p>
      */
-    inline const Aws::String& GetVolumeId() const{ return m_volumeId; }
-
-    /**
-     * <p>The volume ID.</p>
-     */
+    inline const Aws::String& GetVolumeId() const { return m_volumeId; }
     inline bool VolumeIdHasBeenSet() const { return m_volumeIdHasBeenSet; }
+    template<typename VolumeIdT = Aws::String>
+    void SetVolumeId(VolumeIdT&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::forward<VolumeIdT>(value); }
+    template<typename VolumeIdT = Aws::String>
+    VolumeStatusItem& WithVolumeId(VolumeIdT&& value) { SetVolumeId(std::forward<VolumeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The volume ID.</p>
-     */
-    inline void SetVolumeId(const Aws::String& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
-
-    /**
-     * <p>The volume ID.</p>
-     */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
-
-    /**
-     * <p>The volume ID.</p>
-     */
-    inline void SetVolumeId(const char* value) { m_volumeIdHasBeenSet = true; m_volumeId.assign(value); }
-
-    /**
-     * <p>The volume ID.</p>
-     */
-    inline VolumeStatusItem& WithVolumeId(const Aws::String& value) { SetVolumeId(value); return *this;}
-
-    /**
-     * <p>The volume ID.</p>
-     */
-    inline VolumeStatusItem& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The volume ID.</p>
-     */
-    inline VolumeStatusItem& WithVolumeId(const char* value) { SetVolumeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The volume status.</p>
      */
-    inline const VolumeStatusInfo& GetVolumeStatus() const{ return m_volumeStatus; }
-
-    /**
-     * <p>The volume status.</p>
-     */
+    inline const VolumeStatusInfo& GetVolumeStatus() const { return m_volumeStatus; }
     inline bool VolumeStatusHasBeenSet() const { return m_volumeStatusHasBeenSet; }
+    template<typename VolumeStatusT = VolumeStatusInfo>
+    void SetVolumeStatus(VolumeStatusT&& value) { m_volumeStatusHasBeenSet = true; m_volumeStatus = std::forward<VolumeStatusT>(value); }
+    template<typename VolumeStatusT = VolumeStatusInfo>
+    VolumeStatusItem& WithVolumeStatus(VolumeStatusT&& value) { SetVolumeStatus(std::forward<VolumeStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The volume status.</p>
-     */
-    inline void SetVolumeStatus(const VolumeStatusInfo& value) { m_volumeStatusHasBeenSet = true; m_volumeStatus = value; }
-
-    /**
-     * <p>The volume status.</p>
-     */
-    inline void SetVolumeStatus(VolumeStatusInfo&& value) { m_volumeStatusHasBeenSet = true; m_volumeStatus = std::move(value); }
-
-    /**
-     * <p>The volume status.</p>
-     */
-    inline VolumeStatusItem& WithVolumeStatus(const VolumeStatusInfo& value) { SetVolumeStatus(value); return *this;}
-
-    /**
-     * <p>The volume status.</p>
-     */
-    inline VolumeStatusItem& WithVolumeStatus(VolumeStatusInfo&& value) { SetVolumeStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the instances to which the volume is attached.</p>
      */
-    inline const Aws::Vector<VolumeStatusAttachmentStatus>& GetAttachmentStatuses() const{ return m_attachmentStatuses; }
-
-    /**
-     * <p>Information about the instances to which the volume is attached.</p>
-     */
+    inline const Aws::Vector<VolumeStatusAttachmentStatus>& GetAttachmentStatuses() const { return m_attachmentStatuses; }
     inline bool AttachmentStatusesHasBeenSet() const { return m_attachmentStatusesHasBeenSet; }
+    template<typename AttachmentStatusesT = Aws::Vector<VolumeStatusAttachmentStatus>>
+    void SetAttachmentStatuses(AttachmentStatusesT&& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses = std::forward<AttachmentStatusesT>(value); }
+    template<typename AttachmentStatusesT = Aws::Vector<VolumeStatusAttachmentStatus>>
+    VolumeStatusItem& WithAttachmentStatuses(AttachmentStatusesT&& value) { SetAttachmentStatuses(std::forward<AttachmentStatusesT>(value)); return *this;}
+    template<typename AttachmentStatusesT = VolumeStatusAttachmentStatus>
+    VolumeStatusItem& AddAttachmentStatuses(AttachmentStatusesT&& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses.emplace_back(std::forward<AttachmentStatusesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Information about the instances to which the volume is attached.</p>
+     * <p>Information about the volume initialization. It can take up to 5 minutes for
+     * the volume initialization information to be updated.</p> <p>Only available for
+     * volumes created from snapshots. Not available for empty volumes created without
+     * a snapshot.</p> <p>For more information, see <a
+     * href="https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html">
+     * Initialize Amazon EBS volumes</a>.</p>
      */
-    inline void SetAttachmentStatuses(const Aws::Vector<VolumeStatusAttachmentStatus>& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses = value; }
+    inline const InitializationStatusDetails& GetInitializationStatusDetails() const { return m_initializationStatusDetails; }
+    inline bool InitializationStatusDetailsHasBeenSet() const { return m_initializationStatusDetailsHasBeenSet; }
+    template<typename InitializationStatusDetailsT = InitializationStatusDetails>
+    void SetInitializationStatusDetails(InitializationStatusDetailsT&& value) { m_initializationStatusDetailsHasBeenSet = true; m_initializationStatusDetails = std::forward<InitializationStatusDetailsT>(value); }
+    template<typename InitializationStatusDetailsT = InitializationStatusDetails>
+    VolumeStatusItem& WithInitializationStatusDetails(InitializationStatusDetailsT&& value) { SetInitializationStatusDetails(std::forward<InitializationStatusDetailsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Information about the instances to which the volume is attached.</p>
+     * <p>The ID of the Availability Zone.</p>
      */
-    inline void SetAttachmentStatuses(Aws::Vector<VolumeStatusAttachmentStatus>&& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses = std::move(value); }
-
-    /**
-     * <p>Information about the instances to which the volume is attached.</p>
-     */
-    inline VolumeStatusItem& WithAttachmentStatuses(const Aws::Vector<VolumeStatusAttachmentStatus>& value) { SetAttachmentStatuses(value); return *this;}
-
-    /**
-     * <p>Information about the instances to which the volume is attached.</p>
-     */
-    inline VolumeStatusItem& WithAttachmentStatuses(Aws::Vector<VolumeStatusAttachmentStatus>&& value) { SetAttachmentStatuses(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the instances to which the volume is attached.</p>
-     */
-    inline VolumeStatusItem& AddAttachmentStatuses(const VolumeStatusAttachmentStatus& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the instances to which the volume is attached.</p>
-     */
-    inline VolumeStatusItem& AddAttachmentStatuses(VolumeStatusAttachmentStatus&& value) { m_attachmentStatusesHasBeenSet = true; m_attachmentStatuses.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetAvailabilityZoneId() const { return m_availabilityZoneId; }
+    inline bool AvailabilityZoneIdHasBeenSet() const { return m_availabilityZoneIdHasBeenSet; }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    void SetAvailabilityZoneId(AvailabilityZoneIdT&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::forward<AvailabilityZoneIdT>(value); }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    VolumeStatusItem& WithAvailabilityZoneId(AvailabilityZoneIdT&& value) { SetAvailabilityZoneId(std::forward<AvailabilityZoneIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<VolumeStatusAction> m_actions;
@@ -342,6 +185,12 @@ namespace Model
 
     Aws::Vector<VolumeStatusAttachmentStatus> m_attachmentStatuses;
     bool m_attachmentStatusesHasBeenSet = false;
+
+    InitializationStatusDetails m_initializationStatusDetails;
+    bool m_initializationStatusDetailsHasBeenSet = false;
+
+    Aws::String m_availabilityZoneId;
+    bool m_availabilityZoneIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,17 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-InputSchemaUpdate::InputSchemaUpdate() : 
-    m_recordFormatUpdateHasBeenSet(false),
-    m_recordEncodingUpdateHasBeenSet(false),
-    m_recordColumnUpdatesHasBeenSet(false)
-{
-}
-
-InputSchemaUpdate::InputSchemaUpdate(JsonView jsonValue) : 
-    m_recordFormatUpdateHasBeenSet(false),
-    m_recordEncodingUpdateHasBeenSet(false),
-    m_recordColumnUpdatesHasBeenSet(false)
+InputSchemaUpdate::InputSchemaUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InputSchemaUpdate& InputSchemaUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RecordFormatUpdate"))
   {
     m_recordFormatUpdate = jsonValue.GetObject("RecordFormatUpdate");
-
     m_recordFormatUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecordEncodingUpdate"))
   {
     m_recordEncodingUpdate = jsonValue.GetString("RecordEncodingUpdate");
-
     m_recordEncodingUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecordColumnUpdates"))
   {
     Aws::Utils::Array<JsonView> recordColumnUpdatesJsonList = jsonValue.GetArray("RecordColumnUpdates");
@@ -58,7 +44,6 @@ InputSchemaUpdate& InputSchemaUpdate::operator =(JsonView jsonValue)
     }
     m_recordColumnUpdatesHasBeenSet = true;
   }
-
   return *this;
 }
 

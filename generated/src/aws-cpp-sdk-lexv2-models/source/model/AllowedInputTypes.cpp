@@ -18,19 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-AllowedInputTypes::AllowedInputTypes() : 
-    m_allowAudioInput(false),
-    m_allowAudioInputHasBeenSet(false),
-    m_allowDTMFInput(false),
-    m_allowDTMFInputHasBeenSet(false)
-{
-}
-
-AllowedInputTypes::AllowedInputTypes(JsonView jsonValue) : 
-    m_allowAudioInput(false),
-    m_allowAudioInputHasBeenSet(false),
-    m_allowDTMFInput(false),
-    m_allowDTMFInputHasBeenSet(false)
+AllowedInputTypes::AllowedInputTypes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AllowedInputTypes& AllowedInputTypes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("allowAudioInput"))
   {
     m_allowAudioInput = jsonValue.GetBool("allowAudioInput");
-
     m_allowAudioInputHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("allowDTMFInput"))
   {
     m_allowDTMFInput = jsonValue.GetBool("allowDTMFInput");
-
     m_allowDTMFInputHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -22,7 +22,7 @@ namespace Model
   class UpdateGcmChannelRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API UpdateGcmChannelRequest();
+    AWS_PINPOINT_API UpdateGcmChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,73 +33,28 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application. This identifier is displayed as
      * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    UpdateGcmChannelRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline UpdateGcmChannelRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline UpdateGcmChannelRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline UpdateGcmChannelRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     
-    inline const GCMChannelRequest& GetGCMChannelRequest() const{ return m_gCMChannelRequest; }
-
-    
+    inline const GCMChannelRequest& GetGCMChannelRequest() const { return m_gCMChannelRequest; }
     inline bool GCMChannelRequestHasBeenSet() const { return m_gCMChannelRequestHasBeenSet; }
-
-    
-    inline void SetGCMChannelRequest(const GCMChannelRequest& value) { m_gCMChannelRequestHasBeenSet = true; m_gCMChannelRequest = value; }
-
-    
-    inline void SetGCMChannelRequest(GCMChannelRequest&& value) { m_gCMChannelRequestHasBeenSet = true; m_gCMChannelRequest = std::move(value); }
-
-    
-    inline UpdateGcmChannelRequest& WithGCMChannelRequest(const GCMChannelRequest& value) { SetGCMChannelRequest(value); return *this;}
-
-    
-    inline UpdateGcmChannelRequest& WithGCMChannelRequest(GCMChannelRequest&& value) { SetGCMChannelRequest(std::move(value)); return *this;}
-
+    template<typename GCMChannelRequestT = GCMChannelRequest>
+    void SetGCMChannelRequest(GCMChannelRequestT&& value) { m_gCMChannelRequestHasBeenSet = true; m_gCMChannelRequest = std::forward<GCMChannelRequestT>(value); }
+    template<typename GCMChannelRequestT = GCMChannelRequest>
+    UpdateGcmChannelRequest& WithGCMChannelRequest(GCMChannelRequestT&& value) { SetGCMChannelRequest(std::forward<GCMChannelRequestT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

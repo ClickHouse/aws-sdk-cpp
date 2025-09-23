@@ -35,141 +35,60 @@ namespace Model
   class VirtualGatewayListener
   {
   public:
-    AWS_APPMESH_API VirtualGatewayListener();
+    AWS_APPMESH_API VirtualGatewayListener() = default;
     AWS_APPMESH_API VirtualGatewayListener(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualGatewayListener& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The connection pool information for the virtual gateway listener.</p>
      */
-    inline const VirtualGatewayConnectionPool& GetConnectionPool() const{ return m_connectionPool; }
-
-    /**
-     * <p>The connection pool information for the virtual gateway listener.</p>
-     */
+    inline const VirtualGatewayConnectionPool& GetConnectionPool() const { return m_connectionPool; }
     inline bool ConnectionPoolHasBeenSet() const { return m_connectionPoolHasBeenSet; }
+    template<typename ConnectionPoolT = VirtualGatewayConnectionPool>
+    void SetConnectionPool(ConnectionPoolT&& value) { m_connectionPoolHasBeenSet = true; m_connectionPool = std::forward<ConnectionPoolT>(value); }
+    template<typename ConnectionPoolT = VirtualGatewayConnectionPool>
+    VirtualGatewayListener& WithConnectionPool(ConnectionPoolT&& value) { SetConnectionPool(std::forward<ConnectionPoolT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The connection pool information for the virtual gateway listener.</p>
-     */
-    inline void SetConnectionPool(const VirtualGatewayConnectionPool& value) { m_connectionPoolHasBeenSet = true; m_connectionPool = value; }
-
-    /**
-     * <p>The connection pool information for the virtual gateway listener.</p>
-     */
-    inline void SetConnectionPool(VirtualGatewayConnectionPool&& value) { m_connectionPoolHasBeenSet = true; m_connectionPool = std::move(value); }
-
-    /**
-     * <p>The connection pool information for the virtual gateway listener.</p>
-     */
-    inline VirtualGatewayListener& WithConnectionPool(const VirtualGatewayConnectionPool& value) { SetConnectionPool(value); return *this;}
-
-    /**
-     * <p>The connection pool information for the virtual gateway listener.</p>
-     */
-    inline VirtualGatewayListener& WithConnectionPool(VirtualGatewayConnectionPool&& value) { SetConnectionPool(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The health check information for the listener.</p>
      */
-    inline const VirtualGatewayHealthCheckPolicy& GetHealthCheck() const{ return m_healthCheck; }
-
-    /**
-     * <p>The health check information for the listener.</p>
-     */
+    inline const VirtualGatewayHealthCheckPolicy& GetHealthCheck() const { return m_healthCheck; }
     inline bool HealthCheckHasBeenSet() const { return m_healthCheckHasBeenSet; }
+    template<typename HealthCheckT = VirtualGatewayHealthCheckPolicy>
+    void SetHealthCheck(HealthCheckT&& value) { m_healthCheckHasBeenSet = true; m_healthCheck = std::forward<HealthCheckT>(value); }
+    template<typename HealthCheckT = VirtualGatewayHealthCheckPolicy>
+    VirtualGatewayListener& WithHealthCheck(HealthCheckT&& value) { SetHealthCheck(std::forward<HealthCheckT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The health check information for the listener.</p>
-     */
-    inline void SetHealthCheck(const VirtualGatewayHealthCheckPolicy& value) { m_healthCheckHasBeenSet = true; m_healthCheck = value; }
-
-    /**
-     * <p>The health check information for the listener.</p>
-     */
-    inline void SetHealthCheck(VirtualGatewayHealthCheckPolicy&& value) { m_healthCheckHasBeenSet = true; m_healthCheck = std::move(value); }
-
-    /**
-     * <p>The health check information for the listener.</p>
-     */
-    inline VirtualGatewayListener& WithHealthCheck(const VirtualGatewayHealthCheckPolicy& value) { SetHealthCheck(value); return *this;}
-
-    /**
-     * <p>The health check information for the listener.</p>
-     */
-    inline VirtualGatewayListener& WithHealthCheck(VirtualGatewayHealthCheckPolicy&& value) { SetHealthCheck(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The port mapping information for the listener.</p>
      */
-    inline const VirtualGatewayPortMapping& GetPortMapping() const{ return m_portMapping; }
-
-    /**
-     * <p>The port mapping information for the listener.</p>
-     */
+    inline const VirtualGatewayPortMapping& GetPortMapping() const { return m_portMapping; }
     inline bool PortMappingHasBeenSet() const { return m_portMappingHasBeenSet; }
+    template<typename PortMappingT = VirtualGatewayPortMapping>
+    void SetPortMapping(PortMappingT&& value) { m_portMappingHasBeenSet = true; m_portMapping = std::forward<PortMappingT>(value); }
+    template<typename PortMappingT = VirtualGatewayPortMapping>
+    VirtualGatewayListener& WithPortMapping(PortMappingT&& value) { SetPortMapping(std::forward<PortMappingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The port mapping information for the listener.</p>
-     */
-    inline void SetPortMapping(const VirtualGatewayPortMapping& value) { m_portMappingHasBeenSet = true; m_portMapping = value; }
-
-    /**
-     * <p>The port mapping information for the listener.</p>
-     */
-    inline void SetPortMapping(VirtualGatewayPortMapping&& value) { m_portMappingHasBeenSet = true; m_portMapping = std::move(value); }
-
-    /**
-     * <p>The port mapping information for the listener.</p>
-     */
-    inline VirtualGatewayListener& WithPortMapping(const VirtualGatewayPortMapping& value) { SetPortMapping(value); return *this;}
-
-    /**
-     * <p>The port mapping information for the listener.</p>
-     */
-    inline VirtualGatewayListener& WithPortMapping(VirtualGatewayPortMapping&& value) { SetPortMapping(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A reference to an object that represents the Transport Layer Security (TLS)
      * properties for the listener.</p>
      */
-    inline const VirtualGatewayListenerTls& GetTls() const{ return m_tls; }
-
-    /**
-     * <p>A reference to an object that represents the Transport Layer Security (TLS)
-     * properties for the listener.</p>
-     */
+    inline const VirtualGatewayListenerTls& GetTls() const { return m_tls; }
     inline bool TlsHasBeenSet() const { return m_tlsHasBeenSet; }
-
-    /**
-     * <p>A reference to an object that represents the Transport Layer Security (TLS)
-     * properties for the listener.</p>
-     */
-    inline void SetTls(const VirtualGatewayListenerTls& value) { m_tlsHasBeenSet = true; m_tls = value; }
-
-    /**
-     * <p>A reference to an object that represents the Transport Layer Security (TLS)
-     * properties for the listener.</p>
-     */
-    inline void SetTls(VirtualGatewayListenerTls&& value) { m_tlsHasBeenSet = true; m_tls = std::move(value); }
-
-    /**
-     * <p>A reference to an object that represents the Transport Layer Security (TLS)
-     * properties for the listener.</p>
-     */
-    inline VirtualGatewayListener& WithTls(const VirtualGatewayListenerTls& value) { SetTls(value); return *this;}
-
-    /**
-     * <p>A reference to an object that represents the Transport Layer Security (TLS)
-     * properties for the listener.</p>
-     */
-    inline VirtualGatewayListener& WithTls(VirtualGatewayListenerTls&& value) { SetTls(std::move(value)); return *this;}
-
+    template<typename TlsT = VirtualGatewayListenerTls>
+    void SetTls(TlsT&& value) { m_tlsHasBeenSet = true; m_tls = std::forward<TlsT>(value); }
+    template<typename TlsT = VirtualGatewayListenerTls>
+    VirtualGatewayListener& WithTls(TlsT&& value) { SetTls(std::forward<TlsT>(value)); return *this;}
+    ///@}
   private:
 
     VirtualGatewayConnectionPool m_connectionPool;

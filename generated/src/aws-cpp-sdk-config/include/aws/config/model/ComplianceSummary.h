@@ -33,116 +33,49 @@ namespace Model
   class ComplianceSummary
   {
   public:
-    AWS_CONFIGSERVICE_API ComplianceSummary();
+    AWS_CONFIGSERVICE_API ComplianceSummary() = default;
     AWS_CONFIGSERVICE_API ComplianceSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API ComplianceSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of Config rules or Amazon Web Services resources that are
      * compliant, up to a maximum of 25 for rules and 100 for resources.</p>
      */
-    inline const ComplianceContributorCount& GetCompliantResourceCount() const{ return m_compliantResourceCount; }
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * compliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
+    inline const ComplianceContributorCount& GetCompliantResourceCount() const { return m_compliantResourceCount; }
     inline bool CompliantResourceCountHasBeenSet() const { return m_compliantResourceCountHasBeenSet; }
+    template<typename CompliantResourceCountT = ComplianceContributorCount>
+    void SetCompliantResourceCount(CompliantResourceCountT&& value) { m_compliantResourceCountHasBeenSet = true; m_compliantResourceCount = std::forward<CompliantResourceCountT>(value); }
+    template<typename CompliantResourceCountT = ComplianceContributorCount>
+    ComplianceSummary& WithCompliantResourceCount(CompliantResourceCountT&& value) { SetCompliantResourceCount(std::forward<CompliantResourceCountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * compliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline void SetCompliantResourceCount(const ComplianceContributorCount& value) { m_compliantResourceCountHasBeenSet = true; m_compliantResourceCount = value; }
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * compliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline void SetCompliantResourceCount(ComplianceContributorCount&& value) { m_compliantResourceCountHasBeenSet = true; m_compliantResourceCount = std::move(value); }
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * compliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline ComplianceSummary& WithCompliantResourceCount(const ComplianceContributorCount& value) { SetCompliantResourceCount(value); return *this;}
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * compliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline ComplianceSummary& WithCompliantResourceCount(ComplianceContributorCount&& value) { SetCompliantResourceCount(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of Config rules or Amazon Web Services resources that are
      * noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
      */
-    inline const ComplianceContributorCount& GetNonCompliantResourceCount() const{ return m_nonCompliantResourceCount; }
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
+    inline const ComplianceContributorCount& GetNonCompliantResourceCount() const { return m_nonCompliantResourceCount; }
     inline bool NonCompliantResourceCountHasBeenSet() const { return m_nonCompliantResourceCountHasBeenSet; }
+    template<typename NonCompliantResourceCountT = ComplianceContributorCount>
+    void SetNonCompliantResourceCount(NonCompliantResourceCountT&& value) { m_nonCompliantResourceCountHasBeenSet = true; m_nonCompliantResourceCount = std::forward<NonCompliantResourceCountT>(value); }
+    template<typename NonCompliantResourceCountT = ComplianceContributorCount>
+    ComplianceSummary& WithNonCompliantResourceCount(NonCompliantResourceCountT&& value) { SetNonCompliantResourceCount(std::forward<NonCompliantResourceCountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline void SetNonCompliantResourceCount(const ComplianceContributorCount& value) { m_nonCompliantResourceCountHasBeenSet = true; m_nonCompliantResourceCount = value; }
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline void SetNonCompliantResourceCount(ComplianceContributorCount&& value) { m_nonCompliantResourceCountHasBeenSet = true; m_nonCompliantResourceCount = std::move(value); }
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline ComplianceSummary& WithNonCompliantResourceCount(const ComplianceContributorCount& value) { SetNonCompliantResourceCount(value); return *this;}
-
-    /**
-     * <p>The number of Config rules or Amazon Web Services resources that are
-     * noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
-     */
-    inline ComplianceSummary& WithNonCompliantResourceCount(ComplianceContributorCount&& value) { SetNonCompliantResourceCount(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that Config created the compliance summary.</p>
      */
-    inline const Aws::Utils::DateTime& GetComplianceSummaryTimestamp() const{ return m_complianceSummaryTimestamp; }
-
-    /**
-     * <p>The time that Config created the compliance summary.</p>
-     */
+    inline const Aws::Utils::DateTime& GetComplianceSummaryTimestamp() const { return m_complianceSummaryTimestamp; }
     inline bool ComplianceSummaryTimestampHasBeenSet() const { return m_complianceSummaryTimestampHasBeenSet; }
-
-    /**
-     * <p>The time that Config created the compliance summary.</p>
-     */
-    inline void SetComplianceSummaryTimestamp(const Aws::Utils::DateTime& value) { m_complianceSummaryTimestampHasBeenSet = true; m_complianceSummaryTimestamp = value; }
-
-    /**
-     * <p>The time that Config created the compliance summary.</p>
-     */
-    inline void SetComplianceSummaryTimestamp(Aws::Utils::DateTime&& value) { m_complianceSummaryTimestampHasBeenSet = true; m_complianceSummaryTimestamp = std::move(value); }
-
-    /**
-     * <p>The time that Config created the compliance summary.</p>
-     */
-    inline ComplianceSummary& WithComplianceSummaryTimestamp(const Aws::Utils::DateTime& value) { SetComplianceSummaryTimestamp(value); return *this;}
-
-    /**
-     * <p>The time that Config created the compliance summary.</p>
-     */
-    inline ComplianceSummary& WithComplianceSummaryTimestamp(Aws::Utils::DateTime&& value) { SetComplianceSummaryTimestamp(std::move(value)); return *this;}
-
+    template<typename ComplianceSummaryTimestampT = Aws::Utils::DateTime>
+    void SetComplianceSummaryTimestamp(ComplianceSummaryTimestampT&& value) { m_complianceSummaryTimestampHasBeenSet = true; m_complianceSummaryTimestamp = std::forward<ComplianceSummaryTimestampT>(value); }
+    template<typename ComplianceSummaryTimestampT = Aws::Utils::DateTime>
+    ComplianceSummary& WithComplianceSummaryTimestamp(ComplianceSummaryTimestampT&& value) { SetComplianceSummaryTimestamp(std::forward<ComplianceSummaryTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     ComplianceContributorCount m_compliantResourceCount;
@@ -151,7 +84,7 @@ namespace Model
     ComplianceContributorCount m_nonCompliantResourceCount;
     bool m_nonCompliantResourceCountHasBeenSet = false;
 
-    Aws::Utils::DateTime m_complianceSummaryTimestamp;
+    Aws::Utils::DateTime m_complianceSummaryTimestamp{};
     bool m_complianceSummaryTimestampHasBeenSet = false;
   };
 

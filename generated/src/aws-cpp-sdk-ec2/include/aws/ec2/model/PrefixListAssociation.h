@@ -32,7 +32,7 @@ namespace Model
   class PrefixListAssociation
   {
   public:
-    AWS_EC2_API PrefixListAssociation();
+    AWS_EC2_API PrefixListAssociation() = default;
     AWS_EC2_API PrefixListAssociation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PrefixListAssociation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,87 +40,29 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the resource.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    PrefixListAssociation& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline PrefixListAssociation& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline PrefixListAssociation& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the resource.</p>
-     */
-    inline PrefixListAssociation& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The owner of the resource.</p>
      */
-    inline const Aws::String& GetResourceOwner() const{ return m_resourceOwner; }
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
+    inline const Aws::String& GetResourceOwner() const { return m_resourceOwner; }
     inline bool ResourceOwnerHasBeenSet() const { return m_resourceOwnerHasBeenSet; }
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
-    inline void SetResourceOwner(const Aws::String& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = value; }
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
-    inline void SetResourceOwner(Aws::String&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = std::move(value); }
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
-    inline void SetResourceOwner(const char* value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner.assign(value); }
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
-    inline PrefixListAssociation& WithResourceOwner(const Aws::String& value) { SetResourceOwner(value); return *this;}
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
-    inline PrefixListAssociation& WithResourceOwner(Aws::String&& value) { SetResourceOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The owner of the resource.</p>
-     */
-    inline PrefixListAssociation& WithResourceOwner(const char* value) { SetResourceOwner(value); return *this;}
-
+    template<typename ResourceOwnerT = Aws::String>
+    void SetResourceOwner(ResourceOwnerT&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = std::forward<ResourceOwnerT>(value); }
+    template<typename ResourceOwnerT = Aws::String>
+    PrefixListAssociation& WithResourceOwner(ResourceOwnerT&& value) { SetResourceOwner(std::forward<ResourceOwnerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceId;

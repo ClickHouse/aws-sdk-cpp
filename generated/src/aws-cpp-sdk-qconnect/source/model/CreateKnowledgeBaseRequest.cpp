@@ -12,20 +12,6 @@ using namespace Aws::QConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateKnowledgeBaseRequest::CreateKnowledgeBaseRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_knowledgeBaseType(KnowledgeBaseType::NOT_SET),
-    m_knowledgeBaseTypeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_renderingConfigurationHasBeenSet(false),
-    m_serverSideEncryptionConfigurationHasBeenSet(false),
-    m_sourceConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateKnowledgeBaseRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,9 +22,9 @@ Aws::String CreateKnowledgeBaseRequest::SerializePayload() const
 
   }
 
-  if(m_descriptionHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   payload.WithString("description", m_description);
+   payload.WithString("name", m_name);
 
   }
 
@@ -47,9 +33,9 @@ Aws::String CreateKnowledgeBaseRequest::SerializePayload() const
    payload.WithString("knowledgeBaseType", KnowledgeBaseTypeMapper::GetNameForKnowledgeBaseType(m_knowledgeBaseType));
   }
 
-  if(m_nameHasBeenSet)
+  if(m_sourceConfigurationHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithObject("sourceConfiguration", m_sourceConfiguration.Jsonize());
 
   }
 
@@ -59,15 +45,21 @@ Aws::String CreateKnowledgeBaseRequest::SerializePayload() const
 
   }
 
+  if(m_vectorIngestionConfigurationHasBeenSet)
+  {
+   payload.WithObject("vectorIngestionConfiguration", m_vectorIngestionConfiguration.Jsonize());
+
+  }
+
   if(m_serverSideEncryptionConfigurationHasBeenSet)
   {
    payload.WithObject("serverSideEncryptionConfiguration", m_serverSideEncryptionConfiguration.Jsonize());
 
   }
 
-  if(m_sourceConfigurationHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithObject("sourceConfiguration", m_sourceConfiguration.Jsonize());
+   payload.WithString("description", m_description);
 
   }
 

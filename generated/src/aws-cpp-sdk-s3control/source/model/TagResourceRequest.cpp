@@ -6,6 +6,7 @@
 #include <aws/s3control/model/TagResourceRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,12 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-TagResourceRequest::TagResourceRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_resourceArnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
 
 Aws::String TagResourceRequest::SerializePayload() const
 {
@@ -65,6 +60,9 @@ TagResourceRequest::EndpointParameters TagResourceRequest::GetEndpointContextPar
     // Operation context parameters
     if (AccountIdHasBeenSet()) {
         parameters.emplace_back(Aws::String("AccountId"), this->GetAccountId(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    if (ResourceArnHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetResourceArn(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
     }
     return parameters;
 }

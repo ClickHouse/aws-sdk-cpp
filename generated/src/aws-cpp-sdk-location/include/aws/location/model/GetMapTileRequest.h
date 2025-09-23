@@ -25,7 +25,7 @@ namespace Model
   class GetMapTileRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API GetMapTileRequest();
+    AWS_LOCATIONSERVICE_API GetMapTileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,233 +38,74 @@ namespace Model
     AWS_LOCATIONSERVICE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline GetMapTileRequest& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline GetMapTileRequest& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The optional <a
-     * href="https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html">API
-     * key</a> to authorize the request.</p>
-     */
-    inline GetMapTileRequest& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The map resource to retrieve the map tiles from.</p>
      */
-    inline const Aws::String& GetMapName() const{ return m_mapName; }
-
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
+    inline const Aws::String& GetMapName() const { return m_mapName; }
     inline bool MapNameHasBeenSet() const { return m_mapNameHasBeenSet; }
+    template<typename MapNameT = Aws::String>
+    void SetMapName(MapNameT&& value) { m_mapNameHasBeenSet = true; m_mapName = std::forward<MapNameT>(value); }
+    template<typename MapNameT = Aws::String>
+    GetMapTileRequest& WithMapName(MapNameT&& value) { SetMapName(std::forward<MapNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
-    inline void SetMapName(const Aws::String& value) { m_mapNameHasBeenSet = true; m_mapName = value; }
-
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
-    inline void SetMapName(Aws::String&& value) { m_mapNameHasBeenSet = true; m_mapName = std::move(value); }
-
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
-    inline void SetMapName(const char* value) { m_mapNameHasBeenSet = true; m_mapName.assign(value); }
-
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
-    inline GetMapTileRequest& WithMapName(const Aws::String& value) { SetMapName(value); return *this;}
-
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
-    inline GetMapTileRequest& WithMapName(Aws::String&& value) { SetMapName(std::move(value)); return *this;}
-
-    /**
-     * <p>The map resource to retrieve the map tiles from.</p>
-     */
-    inline GetMapTileRequest& WithMapName(const char* value) { SetMapName(value); return *this;}
-
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline const Aws::String& GetX() const{ return m_x; }
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline bool XHasBeenSet() const { return m_xHasBeenSet; }
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline void SetX(const Aws::String& value) { m_xHasBeenSet = true; m_x = value; }
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline void SetX(Aws::String&& value) { m_xHasBeenSet = true; m_x = std::move(value); }
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline void SetX(const char* value) { m_xHasBeenSet = true; m_x.assign(value); }
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline GetMapTileRequest& WithX(const Aws::String& value) { SetX(value); return *this;}
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline GetMapTileRequest& WithX(Aws::String&& value) { SetX(std::move(value)); return *this;}
-
-    /**
-     * <p>The X axis value for the map tile.</p>
-     */
-    inline GetMapTileRequest& WithX(const char* value) { SetX(value); return *this;}
-
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline const Aws::String& GetY() const{ return m_y; }
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline bool YHasBeenSet() const { return m_yHasBeenSet; }
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline void SetY(const Aws::String& value) { m_yHasBeenSet = true; m_y = value; }
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline void SetY(Aws::String&& value) { m_yHasBeenSet = true; m_y = std::move(value); }
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline void SetY(const char* value) { m_yHasBeenSet = true; m_y.assign(value); }
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline GetMapTileRequest& WithY(const Aws::String& value) { SetY(value); return *this;}
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline GetMapTileRequest& WithY(Aws::String&& value) { SetY(std::move(value)); return *this;}
-
-    /**
-     * <p>The Y axis value for the map tile. </p>
-     */
-    inline GetMapTileRequest& WithY(const char* value) { SetY(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The zoom value for the map tile.</p>
      */
-    inline const Aws::String& GetZ() const{ return m_z; }
-
-    /**
-     * <p>The zoom value for the map tile.</p>
-     */
+    inline const Aws::String& GetZ() const { return m_z; }
     inline bool ZHasBeenSet() const { return m_zHasBeenSet; }
+    template<typename ZT = Aws::String>
+    void SetZ(ZT&& value) { m_zHasBeenSet = true; m_z = std::forward<ZT>(value); }
+    template<typename ZT = Aws::String>
+    GetMapTileRequest& WithZ(ZT&& value) { SetZ(std::forward<ZT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The zoom value for the map tile.</p>
+     * <p>The X axis value for the map tile.</p>
      */
-    inline void SetZ(const Aws::String& value) { m_zHasBeenSet = true; m_z = value; }
+    inline const Aws::String& GetX() const { return m_x; }
+    inline bool XHasBeenSet() const { return m_xHasBeenSet; }
+    template<typename XT = Aws::String>
+    void SetX(XT&& value) { m_xHasBeenSet = true; m_x = std::forward<XT>(value); }
+    template<typename XT = Aws::String>
+    GetMapTileRequest& WithX(XT&& value) { SetX(std::forward<XT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The zoom value for the map tile.</p>
+     * <p>The Y axis value for the map tile. </p>
      */
-    inline void SetZ(Aws::String&& value) { m_zHasBeenSet = true; m_z = std::move(value); }
+    inline const Aws::String& GetY() const { return m_y; }
+    inline bool YHasBeenSet() const { return m_yHasBeenSet; }
+    template<typename YT = Aws::String>
+    void SetY(YT&& value) { m_yHasBeenSet = true; m_y = std::forward<YT>(value); }
+    template<typename YT = Aws::String>
+    GetMapTileRequest& WithY(YT&& value) { SetY(std::forward<YT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The zoom value for the map tile.</p>
+     * <p>The optional <a
+     * href="https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html">API
+     * key</a> to authorize the request.</p>
      */
-    inline void SetZ(const char* value) { m_zHasBeenSet = true; m_z.assign(value); }
-
-    /**
-     * <p>The zoom value for the map tile.</p>
-     */
-    inline GetMapTileRequest& WithZ(const Aws::String& value) { SetZ(value); return *this;}
-
-    /**
-     * <p>The zoom value for the map tile.</p>
-     */
-    inline GetMapTileRequest& WithZ(Aws::String&& value) { SetZ(std::move(value)); return *this;}
-
-    /**
-     * <p>The zoom value for the map tile.</p>
-     */
-    inline GetMapTileRequest& WithZ(const char* value) { SetZ(value); return *this;}
-
+    inline const Aws::String& GetKey() const { return m_key; }
+    inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    GetMapTileRequest& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_key;
-    bool m_keyHasBeenSet = false;
 
     Aws::String m_mapName;
     bool m_mapNameHasBeenSet = false;
+
+    Aws::String m_z;
+    bool m_zHasBeenSet = false;
 
     Aws::String m_x;
     bool m_xHasBeenSet = false;
@@ -272,8 +113,8 @@ namespace Model
     Aws::String m_y;
     bool m_yHasBeenSet = false;
 
-    Aws::String m_z;
-    bool m_zHasBeenSet = false;
+    Aws::String m_key;
+    bool m_keyHasBeenSet = false;
   };
 
 } // namespace Model

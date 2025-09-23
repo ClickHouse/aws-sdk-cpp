@@ -12,18 +12,6 @@ using namespace Aws::CleanRooms::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAnalysisTemplateRequest::CreateAnalysisTemplateRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_membershipIdentifierHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_format(AnalysisFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_analysisParametersHasBeenSet(false)
-{
-}
-
 Aws::String CreateAnalysisTemplateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -70,6 +58,18 @@ Aws::String CreateAnalysisTemplateRequest::SerializePayload() const
      analysisParametersJsonList[analysisParametersIndex].AsObject(m_analysisParameters[analysisParametersIndex].Jsonize());
    }
    payload.WithArray("analysisParameters", std::move(analysisParametersJsonList));
+
+  }
+
+  if(m_schemaHasBeenSet)
+  {
+   payload.WithObject("schema", m_schema.Jsonize());
+
+  }
+
+  if(m_errorMessageConfigurationHasBeenSet)
+  {
+   payload.WithObject("errorMessageConfiguration", m_errorMessageConfiguration.Jsonize());
 
   }
 

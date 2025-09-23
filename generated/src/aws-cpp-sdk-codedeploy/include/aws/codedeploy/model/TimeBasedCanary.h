@@ -32,67 +32,39 @@ namespace Model
   class TimeBasedCanary
   {
   public:
-    AWS_CODEDEPLOY_API TimeBasedCanary();
+    AWS_CODEDEPLOY_API TimeBasedCanary() = default;
     AWS_CODEDEPLOY_API TimeBasedCanary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API TimeBasedCanary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The percentage of traffic to shift in the first increment of a
      * <code>TimeBasedCanary</code> deployment.</p>
      */
-    inline int GetCanaryPercentage() const{ return m_canaryPercentage; }
-
-    /**
-     * <p>The percentage of traffic to shift in the first increment of a
-     * <code>TimeBasedCanary</code> deployment.</p>
-     */
+    inline int GetCanaryPercentage() const { return m_canaryPercentage; }
     inline bool CanaryPercentageHasBeenSet() const { return m_canaryPercentageHasBeenSet; }
-
-    /**
-     * <p>The percentage of traffic to shift in the first increment of a
-     * <code>TimeBasedCanary</code> deployment.</p>
-     */
     inline void SetCanaryPercentage(int value) { m_canaryPercentageHasBeenSet = true; m_canaryPercentage = value; }
-
-    /**
-     * <p>The percentage of traffic to shift in the first increment of a
-     * <code>TimeBasedCanary</code> deployment.</p>
-     */
     inline TimeBasedCanary& WithCanaryPercentage(int value) { SetCanaryPercentage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of minutes between the first and second traffic shifts of a
      * <code>TimeBasedCanary</code> deployment.</p>
      */
-    inline int GetCanaryInterval() const{ return m_canaryInterval; }
-
-    /**
-     * <p>The number of minutes between the first and second traffic shifts of a
-     * <code>TimeBasedCanary</code> deployment.</p>
-     */
+    inline int GetCanaryInterval() const { return m_canaryInterval; }
     inline bool CanaryIntervalHasBeenSet() const { return m_canaryIntervalHasBeenSet; }
-
-    /**
-     * <p>The number of minutes between the first and second traffic shifts of a
-     * <code>TimeBasedCanary</code> deployment.</p>
-     */
     inline void SetCanaryInterval(int value) { m_canaryIntervalHasBeenSet = true; m_canaryInterval = value; }
-
-    /**
-     * <p>The number of minutes between the first and second traffic shifts of a
-     * <code>TimeBasedCanary</code> deployment.</p>
-     */
     inline TimeBasedCanary& WithCanaryInterval(int value) { SetCanaryInterval(value); return *this;}
-
+    ///@}
   private:
 
-    int m_canaryPercentage;
+    int m_canaryPercentage{0};
     bool m_canaryPercentageHasBeenSet = false;
 
-    int m_canaryInterval;
+    int m_canaryInterval{0};
     bool m_canaryIntervalHasBeenSet = false;
   };
 

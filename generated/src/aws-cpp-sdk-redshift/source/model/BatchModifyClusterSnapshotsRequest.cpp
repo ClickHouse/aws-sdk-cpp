@@ -10,27 +10,25 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-BatchModifyClusterSnapshotsRequest::BatchModifyClusterSnapshotsRequest() : 
-    m_snapshotIdentifierListHasBeenSet(false),
-    m_manualSnapshotRetentionPeriod(0),
-    m_manualSnapshotRetentionPeriodHasBeenSet(false),
-    m_force(false),
-    m_forceHasBeenSet(false)
-{
-}
-
 Aws::String BatchModifyClusterSnapshotsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=BatchModifyClusterSnapshots&";
   if(m_snapshotIdentifierListHasBeenSet)
   {
-    unsigned snapshotIdentifierListCount = 1;
-    for(auto& item : m_snapshotIdentifierList)
+    if (m_snapshotIdentifierList.empty())
     {
-      ss << "SnapshotIdentifierList.member." << snapshotIdentifierListCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      snapshotIdentifierListCount++;
+      ss << "SnapshotIdentifierList=&";
+    }
+    else
+    {
+      unsigned snapshotIdentifierListCount = 1;
+      for(auto& item : m_snapshotIdentifierList)
+      {
+        ss << "SnapshotIdentifierList.String." << snapshotIdentifierListCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        snapshotIdentifierListCount++;
+      }
     }
   }
 

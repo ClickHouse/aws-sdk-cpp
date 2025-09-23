@@ -20,15 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ClusterIamRole::ClusterIamRole() : 
-    m_iamRoleArnHasBeenSet(false),
-    m_applyStatusHasBeenSet(false)
-{
-}
-
-ClusterIamRole::ClusterIamRole(const XmlNode& xmlNode) : 
-    m_iamRoleArnHasBeenSet(false),
-    m_applyStatusHasBeenSet(false)
+ClusterIamRole::ClusterIamRole(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -18,41 +18,50 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-KnowledgeBaseRetrieveAndGenerateConfiguration::KnowledgeBaseRetrieveAndGenerateConfiguration() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_modelArnHasBeenSet(false)
-{
-}
-
-KnowledgeBaseRetrieveAndGenerateConfiguration::KnowledgeBaseRetrieveAndGenerateConfiguration(JsonView jsonValue) : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_modelArnHasBeenSet(false)
+KnowledgeBaseRetrieveAndGenerateConfiguration::KnowledgeBaseRetrieveAndGenerateConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 KnowledgeBaseRetrieveAndGenerateConfiguration& KnowledgeBaseRetrieveAndGenerateConfiguration::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("generationConfiguration"))
+  {
+    m_generationConfiguration = jsonValue.GetObject("generationConfiguration");
+    m_generationConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("knowledgeBaseId"))
   {
     m_knowledgeBaseId = jsonValue.GetString("knowledgeBaseId");
-
     m_knowledgeBaseIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelArn"))
   {
     m_modelArn = jsonValue.GetString("modelArn");
-
     m_modelArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("orchestrationConfiguration"))
+  {
+    m_orchestrationConfiguration = jsonValue.GetObject("orchestrationConfiguration");
+    m_orchestrationConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("retrievalConfiguration"))
+  {
+    m_retrievalConfiguration = jsonValue.GetObject("retrievalConfiguration");
+    m_retrievalConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue KnowledgeBaseRetrieveAndGenerateConfiguration::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_generationConfigurationHasBeenSet)
+  {
+   payload.WithObject("generationConfiguration", m_generationConfiguration.Jsonize());
+
+  }
 
   if(m_knowledgeBaseIdHasBeenSet)
   {
@@ -63,6 +72,18 @@ JsonValue KnowledgeBaseRetrieveAndGenerateConfiguration::Jsonize() const
   if(m_modelArnHasBeenSet)
   {
    payload.WithString("modelArn", m_modelArn);
+
+  }
+
+  if(m_orchestrationConfigurationHasBeenSet)
+  {
+   payload.WithObject("orchestrationConfiguration", m_orchestrationConfiguration.Jsonize());
+
+  }
+
+  if(m_retrievalConfigurationHasBeenSet)
+  {
+   payload.WithObject("retrievalConfiguration", m_retrievalConfiguration.Jsonize());
 
   }
 

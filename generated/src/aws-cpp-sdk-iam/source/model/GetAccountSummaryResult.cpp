@@ -17,10 +17,6 @@ using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetAccountSummaryResult::GetAccountSummaryResult()
-{
-}
-
 GetAccountSummaryResult::GetAccountSummaryResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
@@ -43,21 +39,24 @@ GetAccountSummaryResult& GetAccountSummaryResult::operator =(const Aws::AmazonWe
     if(!summaryMapNode.IsNull())
     {
       XmlNode summaryMapEntry = summaryMapNode.FirstChild("entry");
+      m_summaryMapHasBeenSet = !summaryMapEntry.IsNull();
       while(!summaryMapEntry.IsNull())
       {
         XmlNode keyNode = summaryMapEntry.FirstChild("key");
         XmlNode valueNode = summaryMapEntry.FirstChild("value");
         m_summaryMap[SummaryKeyTypeMapper::GetSummaryKeyTypeForName(StringUtils::Trim(keyNode.GetText().c_str()))] =
-           StringUtils::ConvertToInt32(StringUtils::Trim(valueNode.GetText().c_str()).c_str());
+            StringUtils::ConvertToInt32(StringUtils::Trim(valueNode.GetText().c_str()).c_str());
         summaryMapEntry = summaryMapEntry.NextNode("entry");
       }
 
+      m_summaryMapHasBeenSet = true;
     }
   }
 
   if (!rootNode.IsNull()) {
     XmlNode responseMetadataNode = rootNode.FirstChild("ResponseMetadata");
     m_responseMetadata = responseMetadataNode;
+    m_responseMetadataHasBeenSet = true;
     AWS_LOGSTREAM_DEBUG("Aws::IAM::Model::GetAccountSummaryResult", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
   }
   return *this;

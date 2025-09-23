@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-WorkmailAction::WorkmailAction() : 
-    m_topicArnHasBeenSet(false),
-    m_organizationArnHasBeenSet(false)
-{
-}
-
-WorkmailAction::WorkmailAction(const XmlNode& xmlNode) : 
-    m_topicArnHasBeenSet(false),
-    m_organizationArnHasBeenSet(false)
+WorkmailAction::WorkmailAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

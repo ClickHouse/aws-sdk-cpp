@@ -18,19 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-FunctionCodeLocation::FunctionCodeLocation() : 
-    m_repositoryTypeHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_imageUriHasBeenSet(false),
-    m_resolvedImageUriHasBeenSet(false)
-{
-}
-
-FunctionCodeLocation::FunctionCodeLocation(JsonView jsonValue) : 
-    m_repositoryTypeHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_imageUriHasBeenSet(false),
-    m_resolvedImageUriHasBeenSet(false)
+FunctionCodeLocation::FunctionCodeLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,28 @@ FunctionCodeLocation& FunctionCodeLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RepositoryType"))
   {
     m_repositoryType = jsonValue.GetString("RepositoryType");
-
     m_repositoryTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Location"))
   {
     m_location = jsonValue.GetString("Location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImageUri"))
   {
     m_imageUri = jsonValue.GetString("ImageUri");
-
     m_imageUriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResolvedImageUri"))
   {
     m_resolvedImageUri = jsonValue.GetString("ResolvedImageUri");
-
     m_resolvedImageUriHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SourceKMSKeyArn"))
+  {
+    m_sourceKMSKeyArn = jsonValue.GetString("SourceKMSKeyArn");
+    m_sourceKMSKeyArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +78,12 @@ JsonValue FunctionCodeLocation::Jsonize() const
   if(m_resolvedImageUriHasBeenSet)
   {
    payload.WithString("ResolvedImageUri", m_resolvedImageUri);
+
+  }
+
+  if(m_sourceKMSKeyArnHasBeenSet)
+  {
+   payload.WithString("SourceKMSKeyArn", m_sourceKMSKeyArn);
 
   }
 

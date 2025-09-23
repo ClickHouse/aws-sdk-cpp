@@ -18,21 +18,7 @@ namespace ECS
 namespace Model
 {
 
-LoadBalancer::LoadBalancer() : 
-    m_targetGroupArnHasBeenSet(false),
-    m_loadBalancerNameHasBeenSet(false),
-    m_containerNameHasBeenSet(false),
-    m_containerPort(0),
-    m_containerPortHasBeenSet(false)
-{
-}
-
-LoadBalancer::LoadBalancer(JsonView jsonValue) : 
-    m_targetGroupArnHasBeenSet(false),
-    m_loadBalancerNameHasBeenSet(false),
-    m_containerNameHasBeenSet(false),
-    m_containerPort(0),
-    m_containerPortHasBeenSet(false)
+LoadBalancer::LoadBalancer(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,28 @@ LoadBalancer& LoadBalancer::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("targetGroupArn"))
   {
     m_targetGroupArn = jsonValue.GetString("targetGroupArn");
-
     m_targetGroupArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("loadBalancerName"))
   {
     m_loadBalancerName = jsonValue.GetString("loadBalancerName");
-
     m_loadBalancerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containerName"))
   {
     m_containerName = jsonValue.GetString("containerName");
-
     m_containerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containerPort"))
   {
     m_containerPort = jsonValue.GetInteger("containerPort");
-
     m_containerPortHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("advancedConfiguration"))
+  {
+    m_advancedConfiguration = jsonValue.GetObject("advancedConfiguration");
+    m_advancedConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -95,6 +78,12 @@ JsonValue LoadBalancer::Jsonize() const
   if(m_containerPortHasBeenSet)
   {
    payload.WithInteger("containerPort", m_containerPort);
+
+  }
+
+  if(m_advancedConfigurationHasBeenSet)
+  {
+   payload.WithObject("advancedConfiguration", m_advancedConfiguration.Jsonize());
 
   }
 

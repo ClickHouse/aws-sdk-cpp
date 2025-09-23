@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/omics/model/TaskStatus.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/omics/model/ImageDetails.h>
 #include <utility>
 
 namespace Aws
@@ -29,429 +30,238 @@ namespace Model
   class GetRunTaskResult
   {
   public:
-    AWS_OMICS_API GetRunTaskResult();
+    AWS_OMICS_API GetRunTaskResult() = default;
     AWS_OMICS_API GetRunTaskResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API GetRunTaskResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The task's ID.</p>
      */
-    inline const Aws::String& GetTaskId() const{ return m_taskId; }
+    inline const Aws::String& GetTaskId() const { return m_taskId; }
+    template<typename TaskIdT = Aws::String>
+    void SetTaskId(TaskIdT&& value) { m_taskIdHasBeenSet = true; m_taskId = std::forward<TaskIdT>(value); }
+    template<typename TaskIdT = Aws::String>
+    GetRunTaskResult& WithTaskId(TaskIdT&& value) { SetTaskId(std::forward<TaskIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The task's ID.</p>
-     */
-    inline void SetTaskId(const Aws::String& value) { m_taskId = value; }
-
-    /**
-     * <p>The task's ID.</p>
-     */
-    inline void SetTaskId(Aws::String&& value) { m_taskId = std::move(value); }
-
-    /**
-     * <p>The task's ID.</p>
-     */
-    inline void SetTaskId(const char* value) { m_taskId.assign(value); }
-
-    /**
-     * <p>The task's ID.</p>
-     */
-    inline GetRunTaskResult& WithTaskId(const Aws::String& value) { SetTaskId(value); return *this;}
-
-    /**
-     * <p>The task's ID.</p>
-     */
-    inline GetRunTaskResult& WithTaskId(Aws::String&& value) { SetTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The task's ID.</p>
-     */
-    inline GetRunTaskResult& WithTaskId(const char* value) { SetTaskId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's status.</p>
      */
-    inline const TaskStatus& GetStatus() const{ return m_status; }
+    inline TaskStatus GetStatus() const { return m_status; }
+    inline void SetStatus(TaskStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetRunTaskResult& WithStatus(TaskStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The task's status.</p>
-     */
-    inline void SetStatus(const TaskStatus& value) { m_status = value; }
-
-    /**
-     * <p>The task's status.</p>
-     */
-    inline void SetStatus(TaskStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The task's status.</p>
-     */
-    inline GetRunTaskResult& WithStatus(const TaskStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The task's status.</p>
-     */
-    inline GetRunTaskResult& WithStatus(TaskStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetRunTaskResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The task's name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The task's name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The task's name.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The task's name.</p>
-     */
-    inline GetRunTaskResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The task's name.</p>
-     */
-    inline GetRunTaskResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The task's name.</p>
-     */
-    inline GetRunTaskResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's CPU usage.</p>
      */
-    inline int GetCpus() const{ return m_cpus; }
-
-    /**
-     * <p>The task's CPU usage.</p>
-     */
-    inline void SetCpus(int value) { m_cpus = value; }
-
-    /**
-     * <p>The task's CPU usage.</p>
-     */
+    inline int GetCpus() const { return m_cpus; }
+    inline void SetCpus(int value) { m_cpusHasBeenSet = true; m_cpus = value; }
     inline GetRunTaskResult& WithCpus(int value) { SetCpus(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Set to true if Amazon Web Services HealthOmics found a matching entry in the
+     * run cache for this task.</p>
+     */
+    inline bool GetCacheHit() const { return m_cacheHit; }
+    inline void SetCacheHit(bool value) { m_cacheHitHasBeenSet = true; m_cacheHit = value; }
+    inline GetRunTaskResult& WithCacheHit(bool value) { SetCacheHit(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The S3 URI of the cache location.</p>
+     */
+    inline const Aws::String& GetCacheS3Uri() const { return m_cacheS3Uri; }
+    template<typename CacheS3UriT = Aws::String>
+    void SetCacheS3Uri(CacheS3UriT&& value) { m_cacheS3UriHasBeenSet = true; m_cacheS3Uri = std::forward<CacheS3UriT>(value); }
+    template<typename CacheS3UriT = Aws::String>
+    GetRunTaskResult& WithCacheS3Uri(CacheS3UriT&& value) { SetCacheS3Uri(std::forward<CacheS3UriT>(value)); return *this;}
+    ///@}
+
+    ///@{
     /**
      * <p>The task's memory use in gigabytes.</p>
      */
-    inline int GetMemory() const{ return m_memory; }
-
-    /**
-     * <p>The task's memory use in gigabytes.</p>
-     */
-    inline void SetMemory(int value) { m_memory = value; }
-
-    /**
-     * <p>The task's memory use in gigabytes.</p>
-     */
+    inline int GetMemory() const { return m_memory; }
+    inline void SetMemory(int value) { m_memoryHasBeenSet = true; m_memory = value; }
     inline GetRunTaskResult& WithMemory(int value) { SetMemory(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>When the task was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    GetRunTaskResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the task was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>When the task was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the task was created.</p>
-     */
-    inline GetRunTaskResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the task was created.</p>
-     */
-    inline GetRunTaskResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's start time.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    GetRunTaskResult& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The task's start time.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTime = value; }
-
-    /**
-     * <p>The task's start time.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTime = std::move(value); }
-
-    /**
-     * <p>The task's start time.</p>
-     */
-    inline GetRunTaskResult& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The task's start time.</p>
-     */
-    inline GetRunTaskResult& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's stop time.</p>
      */
-    inline const Aws::Utils::DateTime& GetStopTime() const{ return m_stopTime; }
+    inline const Aws::Utils::DateTime& GetStopTime() const { return m_stopTime; }
+    template<typename StopTimeT = Aws::Utils::DateTime>
+    void SetStopTime(StopTimeT&& value) { m_stopTimeHasBeenSet = true; m_stopTime = std::forward<StopTimeT>(value); }
+    template<typename StopTimeT = Aws::Utils::DateTime>
+    GetRunTaskResult& WithStopTime(StopTimeT&& value) { SetStopTime(std::forward<StopTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The task's stop time.</p>
-     */
-    inline void SetStopTime(const Aws::Utils::DateTime& value) { m_stopTime = value; }
-
-    /**
-     * <p>The task's stop time.</p>
-     */
-    inline void SetStopTime(Aws::Utils::DateTime&& value) { m_stopTime = std::move(value); }
-
-    /**
-     * <p>The task's stop time.</p>
-     */
-    inline GetRunTaskResult& WithStopTime(const Aws::Utils::DateTime& value) { SetStopTime(value); return *this;}
-
-    /**
-     * <p>The task's stop time.</p>
-     */
-    inline GetRunTaskResult& WithStopTime(Aws::Utils::DateTime&& value) { SetStopTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's status message.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    GetRunTaskResult& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The task's status message.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessage = value; }
-
-    /**
-     * <p>The task's status message.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = std::move(value); }
-
-    /**
-     * <p>The task's status message.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessage.assign(value); }
-
-    /**
-     * <p>The task's status message.</p>
-     */
-    inline GetRunTaskResult& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>The task's status message.</p>
-     */
-    inline GetRunTaskResult& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The task's status message.</p>
-     */
-    inline GetRunTaskResult& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The task's log stream.</p>
      */
-    inline const Aws::String& GetLogStream() const{ return m_logStream; }
+    inline const Aws::String& GetLogStream() const { return m_logStream; }
+    template<typename LogStreamT = Aws::String>
+    void SetLogStream(LogStreamT&& value) { m_logStreamHasBeenSet = true; m_logStream = std::forward<LogStreamT>(value); }
+    template<typename LogStreamT = Aws::String>
+    GetRunTaskResult& WithLogStream(LogStreamT&& value) { SetLogStream(std::forward<LogStreamT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The task's log stream.</p>
+     * <p>The number of Graphics Processing Units (GPU) specified in the task.</p>
      */
-    inline void SetLogStream(const Aws::String& value) { m_logStream = value; }
-
-    /**
-     * <p>The task's log stream.</p>
-     */
-    inline void SetLogStream(Aws::String&& value) { m_logStream = std::move(value); }
-
-    /**
-     * <p>The task's log stream.</p>
-     */
-    inline void SetLogStream(const char* value) { m_logStream.assign(value); }
-
-    /**
-     * <p>The task's log stream.</p>
-     */
-    inline GetRunTaskResult& WithLogStream(const Aws::String& value) { SetLogStream(value); return *this;}
-
-    /**
-     * <p>The task's log stream.</p>
-     */
-    inline GetRunTaskResult& WithLogStream(Aws::String&& value) { SetLogStream(std::move(value)); return *this;}
-
-    /**
-     * <p>The task's log stream.</p>
-     */
-    inline GetRunTaskResult& WithLogStream(const char* value) { SetLogStream(value); return *this;}
-
-
-    /**
-     * <p> The number of Graphics Processing Units (GPU) specified in the task. </p>
-     */
-    inline int GetGpus() const{ return m_gpus; }
-
-    /**
-     * <p> The number of Graphics Processing Units (GPU) specified in the task. </p>
-     */
-    inline void SetGpus(int value) { m_gpus = value; }
-
-    /**
-     * <p> The number of Graphics Processing Units (GPU) specified in the task. </p>
-     */
+    inline int GetGpus() const { return m_gpus; }
+    inline void SetGpus(int value) { m_gpusHasBeenSet = true; m_gpus = value; }
     inline GetRunTaskResult& WithGpus(int value) { SetGpus(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p> The instance type for a task. </p>
+     * <p>The instance type for a task.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    GetRunTaskResult& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The instance type for a task. </p>
+     * <p>The reason a task has failed.</p>
      */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceType = value; }
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    GetRunTaskResult& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The instance type for a task. </p>
+     * <p>Details about the container image that this task uses.</p>
      */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceType = std::move(value); }
+    inline const ImageDetails& GetImageDetails() const { return m_imageDetails; }
+    template<typename ImageDetailsT = ImageDetails>
+    void SetImageDetails(ImageDetailsT&& value) { m_imageDetailsHasBeenSet = true; m_imageDetails = std::forward<ImageDetailsT>(value); }
+    template<typename ImageDetailsT = ImageDetails>
+    GetRunTaskResult& WithImageDetails(ImageDetailsT&& value) { SetImageDetails(std::forward<ImageDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The instance type for a task. </p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceType.assign(value); }
-
-    /**
-     * <p> The instance type for a task. </p>
-     */
-    inline GetRunTaskResult& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p> The instance type for a task. </p>
-     */
-    inline GetRunTaskResult& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p> The instance type for a task. </p>
-     */
-    inline GetRunTaskResult& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReason = value; }
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReason = std::move(value); }
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReason.assign(value); }
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline GetRunTaskResult& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline GetRunTaskResult& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p> The reason a task has failed. </p>
-     */
-    inline GetRunTaskResult& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetRunTaskResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetRunTaskResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetRunTaskResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetRunTaskResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskId;
+    bool m_taskIdHasBeenSet = false;
 
-    TaskStatus m_status;
+    TaskStatus m_status{TaskStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
-    int m_cpus;
+    int m_cpus{0};
+    bool m_cpusHasBeenSet = false;
 
-    int m_memory;
+    bool m_cacheHit{false};
+    bool m_cacheHitHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::String m_cacheS3Uri;
+    bool m_cacheS3UriHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    int m_memory{0};
+    bool m_memoryHasBeenSet = false;
 
-    Aws::Utils::DateTime m_stopTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_startTime{};
+    bool m_startTimeHasBeenSet = false;
+
+    Aws::Utils::DateTime m_stopTime{};
+    bool m_stopTimeHasBeenSet = false;
 
     Aws::String m_statusMessage;
+    bool m_statusMessageHasBeenSet = false;
 
     Aws::String m_logStream;
+    bool m_logStreamHasBeenSet = false;
 
-    int m_gpus;
+    int m_gpus{0};
+    bool m_gpusHasBeenSet = false;
 
     Aws::String m_instanceType;
+    bool m_instanceTypeHasBeenSet = false;
 
     Aws::String m_failureReason;
+    bool m_failureReasonHasBeenSet = false;
+
+    ImageDetails m_imageDetails;
+    bool m_imageDetailsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

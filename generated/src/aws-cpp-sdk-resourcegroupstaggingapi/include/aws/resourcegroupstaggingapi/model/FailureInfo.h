@@ -54,128 +54,52 @@ namespace Model
   class FailureInfo
   {
   public:
-    AWS_RESOURCEGROUPSTAGGINGAPI_API FailureInfo();
+    AWS_RESOURCEGROUPSTAGGINGAPI_API FailureInfo() = default;
     AWS_RESOURCEGROUPSTAGGINGAPI_API FailureInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEGROUPSTAGGINGAPI_API FailureInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEGROUPSTAGGINGAPI_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The HTTP status code of the common error.</p>
      */
-    inline int GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>The HTTP status code of the common error.</p>
-     */
+    inline int GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
-
-    /**
-     * <p>The HTTP status code of the common error.</p>
-     */
     inline void SetStatusCode(int value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>The HTTP status code of the common error.</p>
-     */
     inline FailureInfo& WithStatusCode(int value) { SetStatusCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The code of the common error. Valid values include
      * <code>InternalServiceException</code>, <code>InvalidParameterException</code>,
      * and any valid error code returned by the Amazon Web Services service that hosts
      * the resource that you want to tag.</p>
      */
-    inline const ErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The code of the common error. Valid values include
-     * <code>InternalServiceException</code>, <code>InvalidParameterException</code>,
-     * and any valid error code returned by the Amazon Web Services service that hosts
-     * the resource that you want to tag.</p>
-     */
+    inline ErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(ErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline FailureInfo& WithErrorCode(ErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The code of the common error. Valid values include
-     * <code>InternalServiceException</code>, <code>InvalidParameterException</code>,
-     * and any valid error code returned by the Amazon Web Services service that hosts
-     * the resource that you want to tag.</p>
-     */
-    inline void SetErrorCode(const ErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The code of the common error. Valid values include
-     * <code>InternalServiceException</code>, <code>InvalidParameterException</code>,
-     * and any valid error code returned by the Amazon Web Services service that hosts
-     * the resource that you want to tag.</p>
-     */
-    inline void SetErrorCode(ErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The code of the common error. Valid values include
-     * <code>InternalServiceException</code>, <code>InvalidParameterException</code>,
-     * and any valid error code returned by the Amazon Web Services service that hosts
-     * the resource that you want to tag.</p>
-     */
-    inline FailureInfo& WithErrorCode(const ErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The code of the common error. Valid values include
-     * <code>InternalServiceException</code>, <code>InvalidParameterException</code>,
-     * and any valid error code returned by the Amazon Web Services service that hosts
-     * the resource that you want to tag.</p>
-     */
-    inline FailureInfo& WithErrorCode(ErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message of the common error.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The message of the common error.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>The message of the common error.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The message of the common error.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The message of the common error.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The message of the common error.</p>
-     */
-    inline FailureInfo& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The message of the common error.</p>
-     */
-    inline FailureInfo& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message of the common error.</p>
-     */
-    inline FailureInfo& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    FailureInfo& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_statusCode;
+    int m_statusCode{0};
     bool m_statusCodeHasBeenSet = false;
 
-    ErrorCode m_errorCode;
+    ErrorCode m_errorCode{ErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;

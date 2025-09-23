@@ -31,45 +31,24 @@ namespace Model
   class AppUnitError
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AppUnitError();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AppUnitError() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AppUnitError(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AppUnitError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The category of the error.</p>
      */
-    inline const AppUnitErrorCategory& GetAppUnitErrorCategory() const{ return m_appUnitErrorCategory; }
-
-    /**
-     * <p>The category of the error.</p>
-     */
+    inline AppUnitErrorCategory GetAppUnitErrorCategory() const { return m_appUnitErrorCategory; }
     inline bool AppUnitErrorCategoryHasBeenSet() const { return m_appUnitErrorCategoryHasBeenSet; }
-
-    /**
-     * <p>The category of the error.</p>
-     */
-    inline void SetAppUnitErrorCategory(const AppUnitErrorCategory& value) { m_appUnitErrorCategoryHasBeenSet = true; m_appUnitErrorCategory = value; }
-
-    /**
-     * <p>The category of the error.</p>
-     */
-    inline void SetAppUnitErrorCategory(AppUnitErrorCategory&& value) { m_appUnitErrorCategoryHasBeenSet = true; m_appUnitErrorCategory = std::move(value); }
-
-    /**
-     * <p>The category of the error.</p>
-     */
-    inline AppUnitError& WithAppUnitErrorCategory(const AppUnitErrorCategory& value) { SetAppUnitErrorCategory(value); return *this;}
-
-    /**
-     * <p>The category of the error.</p>
-     */
-    inline AppUnitError& WithAppUnitErrorCategory(AppUnitErrorCategory&& value) { SetAppUnitErrorCategory(std::move(value)); return *this;}
-
+    inline void SetAppUnitErrorCategory(AppUnitErrorCategory value) { m_appUnitErrorCategoryHasBeenSet = true; m_appUnitErrorCategory = value; }
+    inline AppUnitError& WithAppUnitErrorCategory(AppUnitErrorCategory value) { SetAppUnitErrorCategory(value); return *this;}
+    ///@}
   private:
 
-    AppUnitErrorCategory m_appUnitErrorCategory;
+    AppUnitErrorCategory m_appUnitErrorCategory{AppUnitErrorCategory::NOT_SET};
     bool m_appUnitErrorCategoryHasBeenSet = false;
   };
 

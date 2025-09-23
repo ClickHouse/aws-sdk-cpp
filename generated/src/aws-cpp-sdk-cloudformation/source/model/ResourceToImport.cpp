@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ResourceToImport::ResourceToImport() : 
-    m_resourceTypeHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_resourceIdentifierHasBeenSet(false)
-{
-}
-
-ResourceToImport::ResourceToImport(const XmlNode& xmlNode) : 
-    m_resourceTypeHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_resourceIdentifierHasBeenSet(false)
+ResourceToImport::ResourceToImport(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,6 +48,7 @@ ResourceToImport& ResourceToImport::operator =(const XmlNode& xmlNode)
     if(!resourceIdentifierNode.IsNull())
     {
       XmlNode resourceIdentifierEntry = resourceIdentifierNode.FirstChild("entry");
+      m_resourceIdentifierHasBeenSet = !resourceIdentifierEntry.IsNull();
       while(!resourceIdentifierEntry.IsNull())
       {
         XmlNode keyNode = resourceIdentifierEntry.FirstChild("key");
@@ -116,13 +107,12 @@ void ResourceToImport::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned resourceIdentifierIdx = 1;
       for(auto& item : m_resourceIdentifier)
       {
-        oStream << location << ".ResourceIdentifier.entry."  << resourceIdentifierIdx << ".key="
+        oStream << location << ".ResourceIdentifier.entry." << resourceIdentifierIdx << ".key="
             << StringUtils::URLEncode(item.first.c_str()) << "&";
-        oStream << location <<  ".ResourceIdentifier.entry." << resourceIdentifierIdx << ".value="
+        oStream << location << ".ResourceIdentifier.entry." << resourceIdentifierIdx << ".value="
             << StringUtils::URLEncode(item.second.c_str()) << "&";
         resourceIdentifierIdx++;
       }
-
   }
 }
 

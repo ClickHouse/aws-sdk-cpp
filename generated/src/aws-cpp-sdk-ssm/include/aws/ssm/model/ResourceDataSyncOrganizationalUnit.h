@@ -32,52 +32,23 @@ namespace Model
   class ResourceDataSyncOrganizationalUnit
   {
   public:
-    AWS_SSM_API ResourceDataSyncOrganizationalUnit();
+    AWS_SSM_API ResourceDataSyncOrganizationalUnit() = default;
     AWS_SSM_API ResourceDataSyncOrganizationalUnit(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API ResourceDataSyncOrganizationalUnit& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Organizations unit ID data source for the sync.</p>
      */
-    inline const Aws::String& GetOrganizationalUnitId() const{ return m_organizationalUnitId; }
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
+    inline const Aws::String& GetOrganizationalUnitId() const { return m_organizationalUnitId; }
     inline bool OrganizationalUnitIdHasBeenSet() const { return m_organizationalUnitIdHasBeenSet; }
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
-    inline void SetOrganizationalUnitId(const Aws::String& value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId = value; }
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
-    inline void SetOrganizationalUnitId(Aws::String&& value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId = std::move(value); }
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
-    inline void SetOrganizationalUnitId(const char* value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId.assign(value); }
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
-    inline ResourceDataSyncOrganizationalUnit& WithOrganizationalUnitId(const Aws::String& value) { SetOrganizationalUnitId(value); return *this;}
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
-    inline ResourceDataSyncOrganizationalUnit& WithOrganizationalUnitId(Aws::String&& value) { SetOrganizationalUnitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Organizations unit ID data source for the sync.</p>
-     */
-    inline ResourceDataSyncOrganizationalUnit& WithOrganizationalUnitId(const char* value) { SetOrganizationalUnitId(value); return *this;}
-
+    template<typename OrganizationalUnitIdT = Aws::String>
+    void SetOrganizationalUnitId(OrganizationalUnitIdT&& value) { m_organizationalUnitIdHasBeenSet = true; m_organizationalUnitId = std::forward<OrganizationalUnitIdT>(value); }
+    template<typename OrganizationalUnitIdT = Aws::String>
+    ResourceDataSyncOrganizationalUnit& WithOrganizationalUnitId(OrganizationalUnitIdT&& value) { SetOrganizationalUnitId(std::forward<OrganizationalUnitIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_organizationalUnitId;

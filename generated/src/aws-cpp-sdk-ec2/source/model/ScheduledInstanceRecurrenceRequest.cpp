@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ScheduledInstanceRecurrenceRequest::ScheduledInstanceRecurrenceRequest() : 
-    m_frequencyHasBeenSet(false),
-    m_interval(0),
-    m_intervalHasBeenSet(false),
-    m_occurrenceDaysHasBeenSet(false),
-    m_occurrenceRelativeToEnd(false),
-    m_occurrenceRelativeToEndHasBeenSet(false),
-    m_occurrenceUnitHasBeenSet(false)
-{
-}
-
-ScheduledInstanceRecurrenceRequest::ScheduledInstanceRecurrenceRequest(const XmlNode& xmlNode) : 
-    m_frequencyHasBeenSet(false),
-    m_interval(0),
-    m_intervalHasBeenSet(false),
-    m_occurrenceDaysHasBeenSet(false),
-    m_occurrenceRelativeToEnd(false),
-    m_occurrenceRelativeToEndHasBeenSet(false),
-    m_occurrenceUnitHasBeenSet(false)
+ScheduledInstanceRecurrenceRequest::ScheduledInstanceRecurrenceRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,9 +47,10 @@ ScheduledInstanceRecurrenceRequest& ScheduledInstanceRecurrenceRequest::operator
     if(!occurrenceDaysNode.IsNull())
     {
       XmlNode occurrenceDaysMember = occurrenceDaysNode.FirstChild("OccurenceDay");
+      m_occurrenceDaysHasBeenSet = !occurrenceDaysMember.IsNull();
       while(!occurrenceDaysMember.IsNull())
       {
-         m_occurrenceDays.push_back(StringUtils::ConvertToInt32(StringUtils::Trim(occurrenceDaysMember.GetText().c_str()).c_str()));
+        m_occurrenceDays.push_back(StringUtils::ConvertToInt32(StringUtils::Trim(occurrenceDaysMember.GetText().c_str()).c_str()));
         occurrenceDaysMember = occurrenceDaysMember.NextNode("OccurenceDay");
       }
 

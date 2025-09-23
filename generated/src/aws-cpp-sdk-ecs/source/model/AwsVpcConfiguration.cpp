@@ -18,19 +18,7 @@ namespace ECS
 namespace Model
 {
 
-AwsVpcConfiguration::AwsVpcConfiguration() : 
-    m_subnetsHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_assignPublicIp(AssignPublicIp::NOT_SET),
-    m_assignPublicIpHasBeenSet(false)
-{
-}
-
-AwsVpcConfiguration::AwsVpcConfiguration(JsonView jsonValue) : 
-    m_subnetsHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_assignPublicIp(AssignPublicIp::NOT_SET),
-    m_assignPublicIpHasBeenSet(false)
+AwsVpcConfiguration::AwsVpcConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ AwsVpcConfiguration& AwsVpcConfiguration::operator =(JsonView jsonValue)
     }
     m_subnetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("securityGroups"))
   {
     Aws::Utils::Array<JsonView> securityGroupsJsonList = jsonValue.GetArray("securityGroups");
@@ -56,14 +43,11 @@ AwsVpcConfiguration& AwsVpcConfiguration::operator =(JsonView jsonValue)
     }
     m_securityGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assignPublicIp"))
   {
     m_assignPublicIp = AssignPublicIpMapper::GetAssignPublicIpForName(jsonValue.GetString("assignPublicIp"));
-
     m_assignPublicIpHasBeenSet = true;
   }
-
   return *this;
 }
 

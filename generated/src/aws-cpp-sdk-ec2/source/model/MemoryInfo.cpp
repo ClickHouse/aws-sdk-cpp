@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-MemoryInfo::MemoryInfo() : 
-    m_sizeInMiB(0),
-    m_sizeInMiBHasBeenSet(false)
-{
-}
-
-MemoryInfo::MemoryInfo(const XmlNode& xmlNode) : 
-    m_sizeInMiB(0),
-    m_sizeInMiBHasBeenSet(false)
+MemoryInfo::MemoryInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

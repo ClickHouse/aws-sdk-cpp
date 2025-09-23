@@ -12,25 +12,9 @@ using namespace Aws::CostOptimizationHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListEnrollmentStatusesRequest::ListEnrollmentStatusesRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_includeOrganizationInfo(false),
-    m_includeOrganizationInfoHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListEnrollmentStatusesRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_accountIdHasBeenSet)
-  {
-   payload.WithString("accountId", m_accountId);
-
-  }
 
   if(m_includeOrganizationInfoHasBeenSet)
   {
@@ -38,15 +22,21 @@ Aws::String ListEnrollmentStatusesRequest::SerializePayload() const
 
   }
 
-  if(m_maxResultsHasBeenSet)
+  if(m_accountIdHasBeenSet)
   {
-   payload.WithInteger("maxResults", m_maxResults);
+   payload.WithString("accountId", m_accountId);
 
   }
 
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("nextToken", m_nextToken);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
 
   }
 

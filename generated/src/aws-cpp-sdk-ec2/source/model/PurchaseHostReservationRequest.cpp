@@ -10,17 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-PurchaseHostReservationRequest::PurchaseHostReservationRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_currencyCode(CurrencyCodeValues::NOT_SET),
-    m_currencyCodeHasBeenSet(false),
-    m_hostIdSetHasBeenSet(false),
-    m_limitPriceHasBeenSet(false),
-    m_offeringIdHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String PurchaseHostReservationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -32,7 +21,7 @@ Aws::String PurchaseHostReservationRequest::SerializePayload() const
 
   if(m_currencyCodeHasBeenSet)
   {
-    ss << "CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
+    ss << "CurrencyCode=" << StringUtils::URLEncode(CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode)) << "&";
   }
 
   if(m_hostIdSetHasBeenSet)

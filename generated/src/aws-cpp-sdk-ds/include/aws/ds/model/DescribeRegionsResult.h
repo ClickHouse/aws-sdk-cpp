@@ -29,132 +29,56 @@ namespace Model
   class DescribeRegionsResult
   {
   public:
-    AWS_DIRECTORYSERVICE_API DescribeRegionsResult();
+    AWS_DIRECTORYSERVICE_API DescribeRegionsResult() = default;
     AWS_DIRECTORYSERVICE_API DescribeRegionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DIRECTORYSERVICE_API DescribeRegionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>List of Region information related to the directory for each replicated
      * Region.</p>
      */
-    inline const Aws::Vector<RegionDescription>& GetRegionsDescription() const{ return m_regionsDescription; }
+    inline const Aws::Vector<RegionDescription>& GetRegionsDescription() const { return m_regionsDescription; }
+    template<typename RegionsDescriptionT = Aws::Vector<RegionDescription>>
+    void SetRegionsDescription(RegionsDescriptionT&& value) { m_regionsDescriptionHasBeenSet = true; m_regionsDescription = std::forward<RegionsDescriptionT>(value); }
+    template<typename RegionsDescriptionT = Aws::Vector<RegionDescription>>
+    DescribeRegionsResult& WithRegionsDescription(RegionsDescriptionT&& value) { SetRegionsDescription(std::forward<RegionsDescriptionT>(value)); return *this;}
+    template<typename RegionsDescriptionT = RegionDescription>
+    DescribeRegionsResult& AddRegionsDescription(RegionsDescriptionT&& value) { m_regionsDescriptionHasBeenSet = true; m_regionsDescription.emplace_back(std::forward<RegionsDescriptionT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of Region information related to the directory for each replicated
-     * Region.</p>
-     */
-    inline void SetRegionsDescription(const Aws::Vector<RegionDescription>& value) { m_regionsDescription = value; }
-
-    /**
-     * <p>List of Region information related to the directory for each replicated
-     * Region.</p>
-     */
-    inline void SetRegionsDescription(Aws::Vector<RegionDescription>&& value) { m_regionsDescription = std::move(value); }
-
-    /**
-     * <p>List of Region information related to the directory for each replicated
-     * Region.</p>
-     */
-    inline DescribeRegionsResult& WithRegionsDescription(const Aws::Vector<RegionDescription>& value) { SetRegionsDescription(value); return *this;}
-
-    /**
-     * <p>List of Region information related to the directory for each replicated
-     * Region.</p>
-     */
-    inline DescribeRegionsResult& WithRegionsDescription(Aws::Vector<RegionDescription>&& value) { SetRegionsDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>List of Region information related to the directory for each replicated
-     * Region.</p>
-     */
-    inline DescribeRegionsResult& AddRegionsDescription(const RegionDescription& value) { m_regionsDescription.push_back(value); return *this; }
-
-    /**
-     * <p>List of Region information related to the directory for each replicated
-     * Region.</p>
-     */
-    inline DescribeRegionsResult& AddRegionsDescription(RegionDescription&& value) { m_regionsDescription.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If not null, more results are available. Pass this value for the
      * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
      * to retrieve the next set of items.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeRegionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
-     * to retrieve the next set of items.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
-     * to retrieve the next set of items.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
-     * to retrieve the next set of items.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
-     * to retrieve the next set of items.</p>
-     */
-    inline DescribeRegionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
-     * to retrieve the next set of items.</p>
-     */
-    inline DescribeRegionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If not null, more results are available. Pass this value for the
-     * <code>NextToken</code> parameter in a subsequent call to <a>DescribeRegions</a>
-     * to retrieve the next set of items.</p>
-     */
-    inline DescribeRegionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeRegionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeRegionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeRegionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeRegionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<RegionDescription> m_regionsDescription;
+    bool m_regionsDescriptionHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

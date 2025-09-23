@@ -18,21 +18,18 @@ namespace EntityResolution
 namespace Model
 {
 
-Rule::Rule() : 
-    m_matchingKeysHasBeenSet(false),
-    m_ruleNameHasBeenSet(false)
-{
-}
-
-Rule::Rule(JsonView jsonValue) : 
-    m_matchingKeysHasBeenSet(false),
-    m_ruleNameHasBeenSet(false)
+Rule::Rule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Rule& Rule::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("ruleName"))
+  {
+    m_ruleName = jsonValue.GetString("ruleName");
+    m_ruleNameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("matchingKeys"))
   {
     Aws::Utils::Array<JsonView> matchingKeysJsonList = jsonValue.GetArray("matchingKeys");
@@ -42,20 +39,18 @@ Rule& Rule::operator =(JsonView jsonValue)
     }
     m_matchingKeysHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("ruleName"))
-  {
-    m_ruleName = jsonValue.GetString("ruleName");
-
-    m_ruleNameHasBeenSet = true;
-  }
-
   return *this;
 }
 
 JsonValue Rule::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_ruleNameHasBeenSet)
+  {
+   payload.WithString("ruleName", m_ruleName);
+
+  }
 
   if(m_matchingKeysHasBeenSet)
   {
@@ -65,12 +60,6 @@ JsonValue Rule::Jsonize() const
      matchingKeysJsonList[matchingKeysIndex].AsString(m_matchingKeys[matchingKeysIndex]);
    }
    payload.WithArray("matchingKeys", std::move(matchingKeysJsonList));
-
-  }
-
-  if(m_ruleNameHasBeenSet)
-  {
-   payload.WithString("ruleName", m_ruleName);
 
   }
 

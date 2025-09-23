@@ -32,52 +32,23 @@ namespace Model
   class CustomVocabularyEntryId
   {
   public:
-    AWS_LEXMODELSV2_API CustomVocabularyEntryId();
+    AWS_LEXMODELSV2_API CustomVocabularyEntryId() = default;
     AWS_LEXMODELSV2_API CustomVocabularyEntryId(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API CustomVocabularyEntryId& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique item identifier for the custom vocabulary items.</p>
      */
-    inline const Aws::String& GetItemId() const{ return m_itemId; }
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
+    inline const Aws::String& GetItemId() const { return m_itemId; }
     inline bool ItemIdHasBeenSet() const { return m_itemIdHasBeenSet; }
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
-    inline void SetItemId(const Aws::String& value) { m_itemIdHasBeenSet = true; m_itemId = value; }
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
-    inline void SetItemId(Aws::String&& value) { m_itemIdHasBeenSet = true; m_itemId = std::move(value); }
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
-    inline void SetItemId(const char* value) { m_itemIdHasBeenSet = true; m_itemId.assign(value); }
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
-    inline CustomVocabularyEntryId& WithItemId(const Aws::String& value) { SetItemId(value); return *this;}
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
-    inline CustomVocabularyEntryId& WithItemId(Aws::String&& value) { SetItemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique item identifier for the custom vocabulary items.</p>
-     */
-    inline CustomVocabularyEntryId& WithItemId(const char* value) { SetItemId(value); return *this;}
-
+    template<typename ItemIdT = Aws::String>
+    void SetItemId(ItemIdT&& value) { m_itemIdHasBeenSet = true; m_itemId = std::forward<ItemIdT>(value); }
+    template<typename ItemIdT = Aws::String>
+    CustomVocabularyEntryId& WithItemId(ItemIdT&& value) { SetItemId(std::forward<ItemIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_itemId;

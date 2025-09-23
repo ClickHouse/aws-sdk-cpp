@@ -21,7 +21,7 @@ namespace Model
   class GetConnectivityInfoRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API GetConnectivityInfoRequest();
+    AWS_GREENGRASS_API GetConnectivityInfoRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_GREENGRASS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The thing name.
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
-
-    /**
-     * The thing name.
-     */
+    inline const Aws::String& GetThingName() const { return m_thingName; }
     inline bool ThingNameHasBeenSet() const { return m_thingNameHasBeenSet; }
-
-    /**
-     * The thing name.
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingNameHasBeenSet = true; m_thingName = value; }
-
-    /**
-     * The thing name.
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingNameHasBeenSet = true; m_thingName = std::move(value); }
-
-    /**
-     * The thing name.
-     */
-    inline void SetThingName(const char* value) { m_thingNameHasBeenSet = true; m_thingName.assign(value); }
-
-    /**
-     * The thing name.
-     */
-    inline GetConnectivityInfoRequest& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * The thing name.
-     */
-    inline GetConnectivityInfoRequest& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * The thing name.
-     */
-    inline GetConnectivityInfoRequest& WithThingName(const char* value) { SetThingName(value); return *this;}
-
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    GetConnectivityInfoRequest& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thingName;

@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-NegativeFormat::NegativeFormat() : 
-    m_prefixHasBeenSet(false),
-    m_suffixHasBeenSet(false)
-{
-}
-
-NegativeFormat::NegativeFormat(JsonView jsonValue) : 
-    m_prefixHasBeenSet(false),
-    m_suffixHasBeenSet(false)
+NegativeFormat::NegativeFormat(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NegativeFormat& NegativeFormat::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Prefix"))
   {
     m_prefix = jsonValue.GetString("Prefix");
-
     m_prefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Suffix"))
   {
     m_suffix = jsonValue.GetString("Suffix");
-
     m_suffixHasBeenSet = true;
   }
-
   return *this;
 }
 

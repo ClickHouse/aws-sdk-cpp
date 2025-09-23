@@ -18,29 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-ErrorMetric::ErrorMetric() : 
-    m_forecastTypeHasBeenSet(false),
-    m_wAPE(0.0),
-    m_wAPEHasBeenSet(false),
-    m_rMSE(0.0),
-    m_rMSEHasBeenSet(false),
-    m_mASE(0.0),
-    m_mASEHasBeenSet(false),
-    m_mAPE(0.0),
-    m_mAPEHasBeenSet(false)
-{
-}
-
-ErrorMetric::ErrorMetric(JsonView jsonValue) : 
-    m_forecastTypeHasBeenSet(false),
-    m_wAPE(0.0),
-    m_wAPEHasBeenSet(false),
-    m_rMSE(0.0),
-    m_rMSEHasBeenSet(false),
-    m_mASE(0.0),
-    m_mASEHasBeenSet(false),
-    m_mAPE(0.0),
-    m_mAPEHasBeenSet(false)
+ErrorMetric::ErrorMetric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,38 +28,28 @@ ErrorMetric& ErrorMetric::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ForecastType"))
   {
     m_forecastType = jsonValue.GetString("ForecastType");
-
     m_forecastTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WAPE"))
   {
     m_wAPE = jsonValue.GetDouble("WAPE");
-
     m_wAPEHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RMSE"))
   {
     m_rMSE = jsonValue.GetDouble("RMSE");
-
     m_rMSEHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MASE"))
   {
     m_mASE = jsonValue.GetDouble("MASE");
-
     m_mASEHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MAPE"))
   {
     m_mAPE = jsonValue.GetDouble("MAPE");
-
     m_mAPEHasBeenSet = true;
   }
-
   return *this;
 }
 

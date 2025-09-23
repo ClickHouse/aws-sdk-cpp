@@ -25,7 +25,7 @@ namespace Model
   class ListReplicatorsRequest : public KafkaRequest
   {
   public:
-    AWS_KAFKA_API ListReplicatorsRequest();
+    AWS_KAFKA_API ListReplicatorsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,131 +38,45 @@ namespace Model
     AWS_KAFKA_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The maximum number of results to return in the response. If there are more
      * results, the response includes a NextToken parameter.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in the response. If there are more
-     * results, the response includes a NextToken parameter.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in the response. If there are more
-     * results, the response includes a NextToken parameter.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in the response. If there are more
-     * results, the response includes a NextToken parameter.</p>
-     */
     inline ListReplicatorsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If the response of ListReplicators is truncated, it returns a NextToken in
      * the response. This NextToken should be sent in the subsequent request to
      * ListReplicators.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListReplicatorsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
-    inline ListReplicatorsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
-    inline ListReplicatorsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the response of ListReplicators is truncated, it returns a NextToken in
-     * the response. This NextToken should be sent in the subsequent request to
-     * ListReplicators.</p>
-     */
-    inline ListReplicatorsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns replicators starting with given name.</p>
      */
-    inline const Aws::String& GetReplicatorNameFilter() const{ return m_replicatorNameFilter; }
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
+    inline const Aws::String& GetReplicatorNameFilter() const { return m_replicatorNameFilter; }
     inline bool ReplicatorNameFilterHasBeenSet() const { return m_replicatorNameFilterHasBeenSet; }
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
-    inline void SetReplicatorNameFilter(const Aws::String& value) { m_replicatorNameFilterHasBeenSet = true; m_replicatorNameFilter = value; }
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
-    inline void SetReplicatorNameFilter(Aws::String&& value) { m_replicatorNameFilterHasBeenSet = true; m_replicatorNameFilter = std::move(value); }
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
-    inline void SetReplicatorNameFilter(const char* value) { m_replicatorNameFilterHasBeenSet = true; m_replicatorNameFilter.assign(value); }
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
-    inline ListReplicatorsRequest& WithReplicatorNameFilter(const Aws::String& value) { SetReplicatorNameFilter(value); return *this;}
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
-    inline ListReplicatorsRequest& WithReplicatorNameFilter(Aws::String&& value) { SetReplicatorNameFilter(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns replicators starting with given name.</p>
-     */
-    inline ListReplicatorsRequest& WithReplicatorNameFilter(const char* value) { SetReplicatorNameFilter(value); return *this;}
-
+    template<typename ReplicatorNameFilterT = Aws::String>
+    void SetReplicatorNameFilter(ReplicatorNameFilterT&& value) { m_replicatorNameFilterHasBeenSet = true; m_replicatorNameFilter = std::forward<ReplicatorNameFilterT>(value); }
+    template<typename ReplicatorNameFilterT = Aws::String>
+    ListReplicatorsRequest& WithReplicatorNameFilter(ReplicatorNameFilterT&& value) { SetReplicatorNameFilter(std::forward<ReplicatorNameFilterT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

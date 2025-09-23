@@ -21,7 +21,7 @@ namespace Model
   class DeleteRouteCalculatorRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API DeleteRouteCalculatorRequest();
+    AWS_LOCATIONSERVICE_API DeleteRouteCalculatorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the route calculator resource to be deleted.</p>
      */
-    inline const Aws::String& GetCalculatorName() const{ return m_calculatorName; }
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
+    inline const Aws::String& GetCalculatorName() const { return m_calculatorName; }
     inline bool CalculatorNameHasBeenSet() const { return m_calculatorNameHasBeenSet; }
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
-    inline void SetCalculatorName(const Aws::String& value) { m_calculatorNameHasBeenSet = true; m_calculatorName = value; }
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
-    inline void SetCalculatorName(Aws::String&& value) { m_calculatorNameHasBeenSet = true; m_calculatorName = std::move(value); }
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
-    inline void SetCalculatorName(const char* value) { m_calculatorNameHasBeenSet = true; m_calculatorName.assign(value); }
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
-    inline DeleteRouteCalculatorRequest& WithCalculatorName(const Aws::String& value) { SetCalculatorName(value); return *this;}
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
-    inline DeleteRouteCalculatorRequest& WithCalculatorName(Aws::String&& value) { SetCalculatorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the route calculator resource to be deleted.</p>
-     */
-    inline DeleteRouteCalculatorRequest& WithCalculatorName(const char* value) { SetCalculatorName(value); return *this;}
-
+    template<typename CalculatorNameT = Aws::String>
+    void SetCalculatorName(CalculatorNameT&& value) { m_calculatorNameHasBeenSet = true; m_calculatorName = std::forward<CalculatorNameT>(value); }
+    template<typename CalculatorNameT = Aws::String>
+    DeleteRouteCalculatorRequest& WithCalculatorName(CalculatorNameT&& value) { SetCalculatorName(std::forward<CalculatorNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_calculatorName;

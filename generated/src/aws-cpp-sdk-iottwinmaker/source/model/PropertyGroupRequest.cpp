@@ -18,17 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-PropertyGroupRequest::PropertyGroupRequest() : 
-    m_groupType(GroupType::NOT_SET),
-    m_groupTypeHasBeenSet(false),
-    m_propertyNamesHasBeenSet(false)
-{
-}
-
-PropertyGroupRequest::PropertyGroupRequest(JsonView jsonValue) : 
-    m_groupType(GroupType::NOT_SET),
-    m_groupTypeHasBeenSet(false),
-    m_propertyNamesHasBeenSet(false)
+PropertyGroupRequest::PropertyGroupRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ PropertyGroupRequest& PropertyGroupRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("groupType"))
   {
     m_groupType = GroupTypeMapper::GetGroupTypeForName(jsonValue.GetString("groupType"));
-
     m_groupTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propertyNames"))
   {
     Aws::Utils::Array<JsonView> propertyNamesJsonList = jsonValue.GetArray("propertyNames");
@@ -51,7 +39,6 @@ PropertyGroupRequest& PropertyGroupRequest::operator =(JsonView jsonValue)
     }
     m_propertyNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

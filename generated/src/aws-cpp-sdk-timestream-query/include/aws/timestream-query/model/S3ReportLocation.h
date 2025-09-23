@@ -32,93 +32,35 @@ namespace Model
   class S3ReportLocation
   {
   public:
-    AWS_TIMESTREAMQUERY_API S3ReportLocation();
+    AWS_TIMESTREAMQUERY_API S3ReportLocation() = default;
     AWS_TIMESTREAMQUERY_API S3ReportLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMQUERY_API S3ReportLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMQUERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> S3 bucket name. </p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p> S3 bucket name. </p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3ReportLocation& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> S3 bucket name. </p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p> S3 bucket name. </p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p> S3 bucket name. </p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p> S3 bucket name. </p>
-     */
-    inline S3ReportLocation& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p> S3 bucket name. </p>
-     */
-    inline S3ReportLocation& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p> S3 bucket name. </p>
-     */
-    inline S3ReportLocation& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>S3 key. </p>
      */
-    inline const Aws::String& GetObjectKey() const{ return m_objectKey; }
-
-    /**
-     * <p>S3 key. </p>
-     */
+    inline const Aws::String& GetObjectKey() const { return m_objectKey; }
     inline bool ObjectKeyHasBeenSet() const { return m_objectKeyHasBeenSet; }
-
-    /**
-     * <p>S3 key. </p>
-     */
-    inline void SetObjectKey(const Aws::String& value) { m_objectKeyHasBeenSet = true; m_objectKey = value; }
-
-    /**
-     * <p>S3 key. </p>
-     */
-    inline void SetObjectKey(Aws::String&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::move(value); }
-
-    /**
-     * <p>S3 key. </p>
-     */
-    inline void SetObjectKey(const char* value) { m_objectKeyHasBeenSet = true; m_objectKey.assign(value); }
-
-    /**
-     * <p>S3 key. </p>
-     */
-    inline S3ReportLocation& WithObjectKey(const Aws::String& value) { SetObjectKey(value); return *this;}
-
-    /**
-     * <p>S3 key. </p>
-     */
-    inline S3ReportLocation& WithObjectKey(Aws::String&& value) { SetObjectKey(std::move(value)); return *this;}
-
-    /**
-     * <p>S3 key. </p>
-     */
-    inline S3ReportLocation& WithObjectKey(const char* value) { SetObjectKey(value); return *this;}
-
+    template<typename ObjectKeyT = Aws::String>
+    void SetObjectKey(ObjectKeyT&& value) { m_objectKeyHasBeenSet = true; m_objectKey = std::forward<ObjectKeyT>(value); }
+    template<typename ObjectKeyT = Aws::String>
+    S3ReportLocation& WithObjectKey(ObjectKeyT&& value) { SetObjectKey(std::forward<ObjectKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

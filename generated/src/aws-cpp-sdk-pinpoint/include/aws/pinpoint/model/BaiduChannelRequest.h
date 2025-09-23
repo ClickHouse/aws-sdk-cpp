@@ -32,136 +32,53 @@ namespace Model
   class BaiduChannelRequest
   {
   public:
-    AWS_PINPOINT_API BaiduChannelRequest();
+    AWS_PINPOINT_API BaiduChannelRequest() = default;
     AWS_PINPOINT_API BaiduChannelRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API BaiduChannelRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The API key that you received from the Baidu Cloud Push service to
      * communicate with the service.</p>
      */
-    inline const Aws::String& GetApiKey() const{ return m_apiKey; }
-
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
+    inline const Aws::String& GetApiKey() const { return m_apiKey; }
     inline bool ApiKeyHasBeenSet() const { return m_apiKeyHasBeenSet; }
+    template<typename ApiKeyT = Aws::String>
+    void SetApiKey(ApiKeyT&& value) { m_apiKeyHasBeenSet = true; m_apiKey = std::forward<ApiKeyT>(value); }
+    template<typename ApiKeyT = Aws::String>
+    BaiduChannelRequest& WithApiKey(ApiKeyT&& value) { SetApiKey(std::forward<ApiKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline void SetApiKey(const Aws::String& value) { m_apiKeyHasBeenSet = true; m_apiKey = value; }
-
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline void SetApiKey(Aws::String&& value) { m_apiKeyHasBeenSet = true; m_apiKey = std::move(value); }
-
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline void SetApiKey(const char* value) { m_apiKeyHasBeenSet = true; m_apiKey.assign(value); }
-
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline BaiduChannelRequest& WithApiKey(const Aws::String& value) { SetApiKey(value); return *this;}
-
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline BaiduChannelRequest& WithApiKey(Aws::String&& value) { SetApiKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The API key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline BaiduChannelRequest& WithApiKey(const char* value) { SetApiKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to enable the Baidu channel for the application.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether to enable the Baidu channel for the application.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to enable the Baidu channel for the application.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether to enable the Baidu channel for the application.</p>
-     */
     inline BaiduChannelRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The secret key that you received from the Baidu Cloud Push service to
      * communicate with the service.</p>
      */
-    inline const Aws::String& GetSecretKey() const{ return m_secretKey; }
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
+    inline const Aws::String& GetSecretKey() const { return m_secretKey; }
     inline bool SecretKeyHasBeenSet() const { return m_secretKeyHasBeenSet; }
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline void SetSecretKey(const Aws::String& value) { m_secretKeyHasBeenSet = true; m_secretKey = value; }
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline void SetSecretKey(Aws::String&& value) { m_secretKeyHasBeenSet = true; m_secretKey = std::move(value); }
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline void SetSecretKey(const char* value) { m_secretKeyHasBeenSet = true; m_secretKey.assign(value); }
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline BaiduChannelRequest& WithSecretKey(const Aws::String& value) { SetSecretKey(value); return *this;}
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline BaiduChannelRequest& WithSecretKey(Aws::String&& value) { SetSecretKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The secret key that you received from the Baidu Cloud Push service to
-     * communicate with the service.</p>
-     */
-    inline BaiduChannelRequest& WithSecretKey(const char* value) { SetSecretKey(value); return *this;}
-
+    template<typename SecretKeyT = Aws::String>
+    void SetSecretKey(SecretKeyT&& value) { m_secretKeyHasBeenSet = true; m_secretKey = std::forward<SecretKeyT>(value); }
+    template<typename SecretKeyT = Aws::String>
+    BaiduChannelRequest& WithSecretKey(SecretKeyT&& value) { SetSecretKey(std::forward<SecretKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiKey;
     bool m_apiKeyHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_secretKey;

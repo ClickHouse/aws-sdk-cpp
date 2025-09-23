@@ -21,7 +21,7 @@ namespace Model
   class DisassociateSubnetCidrBlockRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DisassociateSubnetCidrBlockRequest();
+    AWS_EC2_API DisassociateSubnetCidrBlockRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The association ID for the CIDR block.</p>
      */
-    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
+    inline const Aws::String& GetAssociationId() const { return m_associationId; }
     inline bool AssociationIdHasBeenSet() const { return m_associationIdHasBeenSet; }
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
-    inline void SetAssociationId(const Aws::String& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
-    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
-    inline void SetAssociationId(const char* value) { m_associationIdHasBeenSet = true; m_associationId.assign(value); }
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
-    inline DisassociateSubnetCidrBlockRequest& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
-    inline DisassociateSubnetCidrBlockRequest& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The association ID for the CIDR block.</p>
-     */
-    inline DisassociateSubnetCidrBlockRequest& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
-
+    template<typename AssociationIdT = Aws::String>
+    void SetAssociationId(AssociationIdT&& value) { m_associationIdHasBeenSet = true; m_associationId = std::forward<AssociationIdT>(value); }
+    template<typename AssociationIdT = Aws::String>
+    DisassociateSubnetCidrBlockRequest& WithAssociationId(AssociationIdT&& value) { SetAssociationId(std::forward<AssociationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_associationId;

@@ -28,37 +28,23 @@ namespace Model
   class CreatePermissionResult
   {
   public:
-    AWS_RAM_API CreatePermissionResult();
+    AWS_RAM_API CreatePermissionResult() = default;
     AWS_RAM_API CreatePermissionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RAM_API CreatePermissionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A structure with information about this customer managed permission.</p>
      */
-    inline const ResourceSharePermissionSummary& GetPermission() const{ return m_permission; }
+    inline const ResourceSharePermissionSummary& GetPermission() const { return m_permission; }
+    template<typename PermissionT = ResourceSharePermissionSummary>
+    void SetPermission(PermissionT&& value) { m_permissionHasBeenSet = true; m_permission = std::forward<PermissionT>(value); }
+    template<typename PermissionT = ResourceSharePermissionSummary>
+    CreatePermissionResult& WithPermission(PermissionT&& value) { SetPermission(std::forward<PermissionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure with information about this customer managed permission.</p>
-     */
-    inline void SetPermission(const ResourceSharePermissionSummary& value) { m_permission = value; }
-
-    /**
-     * <p>A structure with information about this customer managed permission.</p>
-     */
-    inline void SetPermission(ResourceSharePermissionSummary&& value) { m_permission = std::move(value); }
-
-    /**
-     * <p>A structure with information about this customer managed permission.</p>
-     */
-    inline CreatePermissionResult& WithPermission(const ResourceSharePermissionSummary& value) { SetPermission(value); return *this;}
-
-    /**
-     * <p>A structure with information about this customer managed permission.</p>
-     */
-    inline CreatePermissionResult& WithPermission(ResourceSharePermissionSummary&& value) { SetPermission(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The idempotency identifier associated with this request. If you want to
      * repeat the same operation in an idempotent manner then you must include this
@@ -66,91 +52,31 @@ namespace Model
      * other parameters must also have the same values that you used in the first
      * call.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreatePermissionResult& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The idempotency identifier associated with this request. If you want to
-     * repeat the same operation in an idempotent manner then you must include this
-     * value in the <code>clientToken</code> request parameter of that later call. All
-     * other parameters must also have the same values that you used in the first
-     * call.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientToken = value; }
-
-    /**
-     * <p>The idempotency identifier associated with this request. If you want to
-     * repeat the same operation in an idempotent manner then you must include this
-     * value in the <code>clientToken</code> request parameter of that later call. All
-     * other parameters must also have the same values that you used in the first
-     * call.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientToken = std::move(value); }
-
-    /**
-     * <p>The idempotency identifier associated with this request. If you want to
-     * repeat the same operation in an idempotent manner then you must include this
-     * value in the <code>clientToken</code> request parameter of that later call. All
-     * other parameters must also have the same values that you used in the first
-     * call.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientToken.assign(value); }
-
-    /**
-     * <p>The idempotency identifier associated with this request. If you want to
-     * repeat the same operation in an idempotent manner then you must include this
-     * value in the <code>clientToken</code> request parameter of that later call. All
-     * other parameters must also have the same values that you used in the first
-     * call.</p>
-     */
-    inline CreatePermissionResult& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The idempotency identifier associated with this request. If you want to
-     * repeat the same operation in an idempotent manner then you must include this
-     * value in the <code>clientToken</code> request parameter of that later call. All
-     * other parameters must also have the same values that you used in the first
-     * call.</p>
-     */
-    inline CreatePermissionResult& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The idempotency identifier associated with this request. If you want to
-     * repeat the same operation in an idempotent manner then you must include this
-     * value in the <code>clientToken</code> request parameter of that later call. All
-     * other parameters must also have the same values that you used in the first
-     * call.</p>
-     */
-    inline CreatePermissionResult& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreatePermissionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreatePermissionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreatePermissionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreatePermissionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ResourceSharePermissionSummary m_permission;
+    bool m_permissionHasBeenSet = false;
 
     Aws::String m_clientToken;
+    bool m_clientTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

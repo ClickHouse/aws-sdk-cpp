@@ -32,48 +32,24 @@ namespace Model
   class IdentityProviderConfigResponse
   {
   public:
-    AWS_EKS_API IdentityProviderConfigResponse();
+    AWS_EKS_API IdentityProviderConfigResponse() = default;
     AWS_EKS_API IdentityProviderConfigResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API IdentityProviderConfigResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object representing an OpenID Connect (OIDC) identity provider
      * configuration.</p>
      */
-    inline const OidcIdentityProviderConfig& GetOidc() const{ return m_oidc; }
-
-    /**
-     * <p>An object representing an OpenID Connect (OIDC) identity provider
-     * configuration.</p>
-     */
+    inline const OidcIdentityProviderConfig& GetOidc() const { return m_oidc; }
     inline bool OidcHasBeenSet() const { return m_oidcHasBeenSet; }
-
-    /**
-     * <p>An object representing an OpenID Connect (OIDC) identity provider
-     * configuration.</p>
-     */
-    inline void SetOidc(const OidcIdentityProviderConfig& value) { m_oidcHasBeenSet = true; m_oidc = value; }
-
-    /**
-     * <p>An object representing an OpenID Connect (OIDC) identity provider
-     * configuration.</p>
-     */
-    inline void SetOidc(OidcIdentityProviderConfig&& value) { m_oidcHasBeenSet = true; m_oidc = std::move(value); }
-
-    /**
-     * <p>An object representing an OpenID Connect (OIDC) identity provider
-     * configuration.</p>
-     */
-    inline IdentityProviderConfigResponse& WithOidc(const OidcIdentityProviderConfig& value) { SetOidc(value); return *this;}
-
-    /**
-     * <p>An object representing an OpenID Connect (OIDC) identity provider
-     * configuration.</p>
-     */
-    inline IdentityProviderConfigResponse& WithOidc(OidcIdentityProviderConfig&& value) { SetOidc(std::move(value)); return *this;}
-
+    template<typename OidcT = OidcIdentityProviderConfig>
+    void SetOidc(OidcT&& value) { m_oidcHasBeenSet = true; m_oidc = std::forward<OidcT>(value); }
+    template<typename OidcT = OidcIdentityProviderConfig>
+    IdentityProviderConfigResponse& WithOidc(OidcT&& value) { SetOidc(std::forward<OidcT>(value)); return *this;}
+    ///@}
   private:
 
     OidcIdentityProviderConfig m_oidc;

@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/inspector2/Inspector2_EXPORTS.h>
 #include <aws/inspector2/model/EcrRescanDuration.h>
+#include <aws/inspector2/model/EcrPullDateRescanDuration.h>
+#include <aws/inspector2/model/EcrPullDateRescanMode.h>
 #include <utility>
 
 namespace Aws
@@ -32,70 +34,51 @@ namespace Model
   class EcrConfiguration
   {
   public:
-    AWS_INSPECTOR2_API EcrConfiguration();
+    AWS_INSPECTOR2_API EcrConfiguration() = default;
     AWS_INSPECTOR2_API EcrConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API EcrConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The ECR automated re-scan duration defines how long an ECR image will be
-     * actively scanned by Amazon Inspector. When the number of days since an image was
-     * last pushed exceeds the automated re-scan duration the monitoring state of that
-     * image becomes <code>inactive</code> and all associated findings are scheduled
-     * for closure.</p>
+     * <p>The rescan duration configured for image push date.</p>
      */
-    inline const EcrRescanDuration& GetRescanDuration() const{ return m_rescanDuration; }
-
-    /**
-     * <p>The ECR automated re-scan duration defines how long an ECR image will be
-     * actively scanned by Amazon Inspector. When the number of days since an image was
-     * last pushed exceeds the automated re-scan duration the monitoring state of that
-     * image becomes <code>inactive</code> and all associated findings are scheduled
-     * for closure.</p>
-     */
+    inline EcrRescanDuration GetRescanDuration() const { return m_rescanDuration; }
     inline bool RescanDurationHasBeenSet() const { return m_rescanDurationHasBeenSet; }
+    inline void SetRescanDuration(EcrRescanDuration value) { m_rescanDurationHasBeenSet = true; m_rescanDuration = value; }
+    inline EcrConfiguration& WithRescanDuration(EcrRescanDuration value) { SetRescanDuration(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ECR automated re-scan duration defines how long an ECR image will be
-     * actively scanned by Amazon Inspector. When the number of days since an image was
-     * last pushed exceeds the automated re-scan duration the monitoring state of that
-     * image becomes <code>inactive</code> and all associated findings are scheduled
-     * for closure.</p>
+     * <p>The rescan duration configured for image pull date.</p>
      */
-    inline void SetRescanDuration(const EcrRescanDuration& value) { m_rescanDurationHasBeenSet = true; m_rescanDuration = value; }
+    inline EcrPullDateRescanDuration GetPullDateRescanDuration() const { return m_pullDateRescanDuration; }
+    inline bool PullDateRescanDurationHasBeenSet() const { return m_pullDateRescanDurationHasBeenSet; }
+    inline void SetPullDateRescanDuration(EcrPullDateRescanDuration value) { m_pullDateRescanDurationHasBeenSet = true; m_pullDateRescanDuration = value; }
+    inline EcrConfiguration& WithPullDateRescanDuration(EcrPullDateRescanDuration value) { SetPullDateRescanDuration(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ECR automated re-scan duration defines how long an ECR image will be
-     * actively scanned by Amazon Inspector. When the number of days since an image was
-     * last pushed exceeds the automated re-scan duration the monitoring state of that
-     * image becomes <code>inactive</code> and all associated findings are scheduled
-     * for closure.</p>
+     * <p>The pull date for the re-scan mode.</p>
      */
-    inline void SetRescanDuration(EcrRescanDuration&& value) { m_rescanDurationHasBeenSet = true; m_rescanDuration = std::move(value); }
-
-    /**
-     * <p>The ECR automated re-scan duration defines how long an ECR image will be
-     * actively scanned by Amazon Inspector. When the number of days since an image was
-     * last pushed exceeds the automated re-scan duration the monitoring state of that
-     * image becomes <code>inactive</code> and all associated findings are scheduled
-     * for closure.</p>
-     */
-    inline EcrConfiguration& WithRescanDuration(const EcrRescanDuration& value) { SetRescanDuration(value); return *this;}
-
-    /**
-     * <p>The ECR automated re-scan duration defines how long an ECR image will be
-     * actively scanned by Amazon Inspector. When the number of days since an image was
-     * last pushed exceeds the automated re-scan duration the monitoring state of that
-     * image becomes <code>inactive</code> and all associated findings are scheduled
-     * for closure.</p>
-     */
-    inline EcrConfiguration& WithRescanDuration(EcrRescanDuration&& value) { SetRescanDuration(std::move(value)); return *this;}
-
+    inline EcrPullDateRescanMode GetPullDateRescanMode() const { return m_pullDateRescanMode; }
+    inline bool PullDateRescanModeHasBeenSet() const { return m_pullDateRescanModeHasBeenSet; }
+    inline void SetPullDateRescanMode(EcrPullDateRescanMode value) { m_pullDateRescanModeHasBeenSet = true; m_pullDateRescanMode = value; }
+    inline EcrConfiguration& WithPullDateRescanMode(EcrPullDateRescanMode value) { SetPullDateRescanMode(value); return *this;}
+    ///@}
   private:
 
-    EcrRescanDuration m_rescanDuration;
+    EcrRescanDuration m_rescanDuration{EcrRescanDuration::NOT_SET};
     bool m_rescanDurationHasBeenSet = false;
+
+    EcrPullDateRescanDuration m_pullDateRescanDuration{EcrPullDateRescanDuration::NOT_SET};
+    bool m_pullDateRescanDurationHasBeenSet = false;
+
+    EcrPullDateRescanMode m_pullDateRescanMode{EcrPullDateRescanMode::NOT_SET};
+    bool m_pullDateRescanModeHasBeenSet = false;
   };
 
 } // namespace Model

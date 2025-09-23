@@ -20,15 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-SuspendedProcess::SuspendedProcess() : 
-    m_processNameHasBeenSet(false),
-    m_suspensionReasonHasBeenSet(false)
-{
-}
-
-SuspendedProcess::SuspendedProcess(const XmlNode& xmlNode) : 
-    m_processNameHasBeenSet(false),
-    m_suspensionReasonHasBeenSet(false)
+SuspendedProcess::SuspendedProcess(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -35,79 +35,39 @@ namespace Model
   class LocalSizeConfig
   {
   public:
-    AWS_KINESISVIDEO_API LocalSizeConfig();
+    AWS_KINESISVIDEO_API LocalSizeConfig() = default;
     AWS_KINESISVIDEO_API LocalSizeConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API LocalSizeConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The overall maximum size of the media that you want to store for a stream on
      * the Edge Agent. </p>
      */
-    inline int GetMaxLocalMediaSizeInMB() const{ return m_maxLocalMediaSizeInMB; }
-
-    /**
-     * <p>The overall maximum size of the media that you want to store for a stream on
-     * the Edge Agent. </p>
-     */
+    inline int GetMaxLocalMediaSizeInMB() const { return m_maxLocalMediaSizeInMB; }
     inline bool MaxLocalMediaSizeInMBHasBeenSet() const { return m_maxLocalMediaSizeInMBHasBeenSet; }
-
-    /**
-     * <p>The overall maximum size of the media that you want to store for a stream on
-     * the Edge Agent. </p>
-     */
     inline void SetMaxLocalMediaSizeInMB(int value) { m_maxLocalMediaSizeInMBHasBeenSet = true; m_maxLocalMediaSizeInMB = value; }
-
-    /**
-     * <p>The overall maximum size of the media that you want to store for a stream on
-     * the Edge Agent. </p>
-     */
     inline LocalSizeConfig& WithMaxLocalMediaSizeInMB(int value) { SetMaxLocalMediaSizeInMB(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The strategy to perform when a stream’s <code>MaxLocalMediaSizeInMB</code>
      * limit is reached.</p>
      */
-    inline const StrategyOnFullSize& GetStrategyOnFullSize() const{ return m_strategyOnFullSize; }
-
-    /**
-     * <p>The strategy to perform when a stream’s <code>MaxLocalMediaSizeInMB</code>
-     * limit is reached.</p>
-     */
+    inline StrategyOnFullSize GetStrategyOnFullSize() const { return m_strategyOnFullSize; }
     inline bool StrategyOnFullSizeHasBeenSet() const { return m_strategyOnFullSizeHasBeenSet; }
-
-    /**
-     * <p>The strategy to perform when a stream’s <code>MaxLocalMediaSizeInMB</code>
-     * limit is reached.</p>
-     */
-    inline void SetStrategyOnFullSize(const StrategyOnFullSize& value) { m_strategyOnFullSizeHasBeenSet = true; m_strategyOnFullSize = value; }
-
-    /**
-     * <p>The strategy to perform when a stream’s <code>MaxLocalMediaSizeInMB</code>
-     * limit is reached.</p>
-     */
-    inline void SetStrategyOnFullSize(StrategyOnFullSize&& value) { m_strategyOnFullSizeHasBeenSet = true; m_strategyOnFullSize = std::move(value); }
-
-    /**
-     * <p>The strategy to perform when a stream’s <code>MaxLocalMediaSizeInMB</code>
-     * limit is reached.</p>
-     */
-    inline LocalSizeConfig& WithStrategyOnFullSize(const StrategyOnFullSize& value) { SetStrategyOnFullSize(value); return *this;}
-
-    /**
-     * <p>The strategy to perform when a stream’s <code>MaxLocalMediaSizeInMB</code>
-     * limit is reached.</p>
-     */
-    inline LocalSizeConfig& WithStrategyOnFullSize(StrategyOnFullSize&& value) { SetStrategyOnFullSize(std::move(value)); return *this;}
-
+    inline void SetStrategyOnFullSize(StrategyOnFullSize value) { m_strategyOnFullSizeHasBeenSet = true; m_strategyOnFullSize = value; }
+    inline LocalSizeConfig& WithStrategyOnFullSize(StrategyOnFullSize value) { SetStrategyOnFullSize(value); return *this;}
+    ///@}
   private:
 
-    int m_maxLocalMediaSizeInMB;
+    int m_maxLocalMediaSizeInMB{0};
     bool m_maxLocalMediaSizeInMBHasBeenSet = false;
 
-    StrategyOnFullSize m_strategyOnFullSize;
+    StrategyOnFullSize m_strategyOnFullSize{StrategyOnFullSize::NOT_SET};
     bool m_strategyOnFullSizeHasBeenSet = false;
   };
 

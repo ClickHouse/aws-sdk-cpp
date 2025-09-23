@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-HsmStatus::HsmStatus() : 
-    m_hsmClientCertificateIdentifierHasBeenSet(false),
-    m_hsmConfigurationIdentifierHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-HsmStatus::HsmStatus(const XmlNode& xmlNode) : 
-    m_hsmClientCertificateIdentifierHasBeenSet(false),
-    m_hsmConfigurationIdentifierHasBeenSet(false),
-    m_statusHasBeenSet(false)
+HsmStatus::HsmStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

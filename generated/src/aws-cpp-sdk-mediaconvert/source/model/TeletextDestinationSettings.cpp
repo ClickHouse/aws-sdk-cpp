@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-TeletextDestinationSettings::TeletextDestinationSettings() : 
-    m_pageNumberHasBeenSet(false),
-    m_pageTypesHasBeenSet(false)
-{
-}
-
-TeletextDestinationSettings::TeletextDestinationSettings(JsonView jsonValue) : 
-    m_pageNumberHasBeenSet(false),
-    m_pageTypesHasBeenSet(false)
+TeletextDestinationSettings::TeletextDestinationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TeletextDestinationSettings& TeletextDestinationSettings::operator =(JsonView js
   if(jsonValue.ValueExists("pageNumber"))
   {
     m_pageNumber = jsonValue.GetString("pageNumber");
-
     m_pageNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pageTypes"))
   {
     Aws::Utils::Array<JsonView> pageTypesJsonList = jsonValue.GetArray("pageTypes");
@@ -49,7 +39,6 @@ TeletextDestinationSettings& TeletextDestinationSettings::operator =(JsonView js
     }
     m_pageTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

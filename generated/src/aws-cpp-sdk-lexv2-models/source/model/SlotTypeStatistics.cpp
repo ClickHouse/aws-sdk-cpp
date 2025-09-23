@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-SlotTypeStatistics::SlotTypeStatistics() : 
-    m_discoveredSlotTypeCount(0),
-    m_discoveredSlotTypeCountHasBeenSet(false)
-{
-}
-
-SlotTypeStatistics::SlotTypeStatistics(JsonView jsonValue) : 
-    m_discoveredSlotTypeCount(0),
-    m_discoveredSlotTypeCountHasBeenSet(false)
+SlotTypeStatistics::SlotTypeStatistics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SlotTypeStatistics& SlotTypeStatistics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("discoveredSlotTypeCount"))
   {
     m_discoveredSlotTypeCount = jsonValue.GetInteger("discoveredSlotTypeCount");
-
     m_discoveredSlotTypeCountHasBeenSet = true;
   }
-
   return *this;
 }
 

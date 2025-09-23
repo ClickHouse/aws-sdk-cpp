@@ -12,16 +12,6 @@ using namespace Aws::DataZone::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSubscriptionRequestRequest::CreateSubscriptionRequestRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_domainIdentifierHasBeenSet(false),
-    m_requestReasonHasBeenSet(false),
-    m_subscribedListingsHasBeenSet(false),
-    m_subscribedPrincipalsHasBeenSet(false)
-{
-}
-
 Aws::String CreateSubscriptionRequestRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -29,6 +19,17 @@ Aws::String CreateSubscriptionRequestRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
    payload.WithString("clientToken", m_clientToken);
+
+  }
+
+  if(m_metadataFormsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> metadataFormsJsonList(m_metadataForms.size());
+   for(unsigned metadataFormsIndex = 0; metadataFormsIndex < metadataFormsJsonList.GetLength(); ++metadataFormsIndex)
+   {
+     metadataFormsJsonList[metadataFormsIndex].AsObject(m_metadataForms[metadataFormsIndex].Jsonize());
+   }
+   payload.WithArray("metadataForms", std::move(metadataFormsJsonList));
 
   }
 

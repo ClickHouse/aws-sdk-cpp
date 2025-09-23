@@ -34,115 +34,41 @@ namespace Model
   class Plan
   {
   public:
-    AWS_SSMCONTACTS_API Plan();
+    AWS_SSMCONTACTS_API Plan() = default;
     AWS_SSMCONTACTS_API Plan(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Plan& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of stages that the escalation plan or engagement plan uses to engage
      * contacts and contact methods.</p>
      */
-    inline const Aws::Vector<Stage>& GetStages() const{ return m_stages; }
-
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
+    inline const Aws::Vector<Stage>& GetStages() const { return m_stages; }
     inline bool StagesHasBeenSet() const { return m_stagesHasBeenSet; }
+    template<typename StagesT = Aws::Vector<Stage>>
+    void SetStages(StagesT&& value) { m_stagesHasBeenSet = true; m_stages = std::forward<StagesT>(value); }
+    template<typename StagesT = Aws::Vector<Stage>>
+    Plan& WithStages(StagesT&& value) { SetStages(std::forward<StagesT>(value)); return *this;}
+    template<typename StagesT = Stage>
+    Plan& AddStages(StagesT&& value) { m_stagesHasBeenSet = true; m_stages.emplace_back(std::forward<StagesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
-    inline void SetStages(const Aws::Vector<Stage>& value) { m_stagesHasBeenSet = true; m_stages = value; }
-
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
-    inline void SetStages(Aws::Vector<Stage>&& value) { m_stagesHasBeenSet = true; m_stages = std::move(value); }
-
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
-    inline Plan& WithStages(const Aws::Vector<Stage>& value) { SetStages(value); return *this;}
-
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
-    inline Plan& WithStages(Aws::Vector<Stage>&& value) { SetStages(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
-    inline Plan& AddStages(const Stage& value) { m_stagesHasBeenSet = true; m_stages.push_back(value); return *this; }
-
-    /**
-     * <p>A list of stages that the escalation plan or engagement plan uses to engage
-     * contacts and contact methods.</p>
-     */
-    inline Plan& AddStages(Stage&& value) { m_stagesHasBeenSet = true; m_stages.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
      * plan. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetRotationIds() const{ return m_rotationIds; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRotationIds() const { return m_rotationIds; }
     inline bool RotationIdsHasBeenSet() const { return m_rotationIdsHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline void SetRotationIds(const Aws::Vector<Aws::String>& value) { m_rotationIdsHasBeenSet = true; m_rotationIds = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline void SetRotationIds(Aws::Vector<Aws::String>&& value) { m_rotationIdsHasBeenSet = true; m_rotationIds = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline Plan& WithRotationIds(const Aws::Vector<Aws::String>& value) { SetRotationIds(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline Plan& WithRotationIds(Aws::Vector<Aws::String>&& value) { SetRotationIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline Plan& AddRotationIds(const Aws::String& value) { m_rotationIdsHasBeenSet = true; m_rotationIds.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline Plan& AddRotationIds(Aws::String&& value) { m_rotationIdsHasBeenSet = true; m_rotationIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the on-call rotations associated with the
-     * plan. </p>
-     */
-    inline Plan& AddRotationIds(const char* value) { m_rotationIdsHasBeenSet = true; m_rotationIds.push_back(value); return *this; }
-
+    template<typename RotationIdsT = Aws::Vector<Aws::String>>
+    void SetRotationIds(RotationIdsT&& value) { m_rotationIdsHasBeenSet = true; m_rotationIds = std::forward<RotationIdsT>(value); }
+    template<typename RotationIdsT = Aws::Vector<Aws::String>>
+    Plan& WithRotationIds(RotationIdsT&& value) { SetRotationIds(std::forward<RotationIdsT>(value)); return *this;}
+    template<typename RotationIdsT = Aws::String>
+    Plan& AddRotationIds(RotationIdsT&& value) { m_rotationIdsHasBeenSet = true; m_rotationIds.emplace_back(std::forward<RotationIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Stage> m_stages;

@@ -39,469 +39,195 @@ namespace Model
   class PipelineExecution
   {
   public:
-    AWS_SAGEMAKER_API PipelineExecution();
+    AWS_SAGEMAKER_API PipelineExecution() = default;
     AWS_SAGEMAKER_API PipelineExecution(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API PipelineExecution& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
      */
-    inline const Aws::String& GetPipelineArn() const{ return m_pipelineArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
+    inline const Aws::String& GetPipelineArn() const { return m_pipelineArn; }
     inline bool PipelineArnHasBeenSet() const { return m_pipelineArnHasBeenSet; }
+    template<typename PipelineArnT = Aws::String>
+    void SetPipelineArn(PipelineArnT&& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = std::forward<PipelineArnT>(value); }
+    template<typename PipelineArnT = Aws::String>
+    PipelineExecution& WithPipelineArn(PipelineArnT&& value) { SetPipelineArn(std::forward<PipelineArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
-    inline void SetPipelineArn(const Aws::String& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
-    inline void SetPipelineArn(Aws::String&& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
-    inline void SetPipelineArn(const char* value) { m_pipelineArnHasBeenSet = true; m_pipelineArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
-    inline PipelineExecution& WithPipelineArn(const Aws::String& value) { SetPipelineArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
-    inline PipelineExecution& WithPipelineArn(Aws::String&& value) { SetPipelineArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline that was executed.</p>
-     */
-    inline PipelineExecution& WithPipelineArn(const char* value) { SetPipelineArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
      */
-    inline const Aws::String& GetPipelineExecutionArn() const{ return m_pipelineExecutionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
+    inline const Aws::String& GetPipelineExecutionArn() const { return m_pipelineExecutionArn; }
     inline bool PipelineExecutionArnHasBeenSet() const { return m_pipelineExecutionArnHasBeenSet; }
+    template<typename PipelineExecutionArnT = Aws::String>
+    void SetPipelineExecutionArn(PipelineExecutionArnT&& value) { m_pipelineExecutionArnHasBeenSet = true; m_pipelineExecutionArn = std::forward<PipelineExecutionArnT>(value); }
+    template<typename PipelineExecutionArnT = Aws::String>
+    PipelineExecution& WithPipelineExecutionArn(PipelineExecutionArnT&& value) { SetPipelineExecutionArn(std::forward<PipelineExecutionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionArn(const Aws::String& value) { m_pipelineExecutionArnHasBeenSet = true; m_pipelineExecutionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionArn(Aws::String&& value) { m_pipelineExecutionArnHasBeenSet = true; m_pipelineExecutionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionArn(const char* value) { m_pipelineExecutionArnHasBeenSet = true; m_pipelineExecutionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionArn(const Aws::String& value) { SetPipelineExecutionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionArn(Aws::String&& value) { SetPipelineExecutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionArn(const char* value) { SetPipelineExecutionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the pipeline execution.</p>
      */
-    inline const Aws::String& GetPipelineExecutionDisplayName() const{ return m_pipelineExecutionDisplayName; }
-
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
+    inline const Aws::String& GetPipelineExecutionDisplayName() const { return m_pipelineExecutionDisplayName; }
     inline bool PipelineExecutionDisplayNameHasBeenSet() const { return m_pipelineExecutionDisplayNameHasBeenSet; }
+    template<typename PipelineExecutionDisplayNameT = Aws::String>
+    void SetPipelineExecutionDisplayName(PipelineExecutionDisplayNameT&& value) { m_pipelineExecutionDisplayNameHasBeenSet = true; m_pipelineExecutionDisplayName = std::forward<PipelineExecutionDisplayNameT>(value); }
+    template<typename PipelineExecutionDisplayNameT = Aws::String>
+    PipelineExecution& WithPipelineExecutionDisplayName(PipelineExecutionDisplayNameT&& value) { SetPipelineExecutionDisplayName(std::forward<PipelineExecutionDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionDisplayName(const Aws::String& value) { m_pipelineExecutionDisplayNameHasBeenSet = true; m_pipelineExecutionDisplayName = value; }
-
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionDisplayName(Aws::String&& value) { m_pipelineExecutionDisplayNameHasBeenSet = true; m_pipelineExecutionDisplayName = std::move(value); }
-
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionDisplayName(const char* value) { m_pipelineExecutionDisplayNameHasBeenSet = true; m_pipelineExecutionDisplayName.assign(value); }
-
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionDisplayName(const Aws::String& value) { SetPipelineExecutionDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionDisplayName(Aws::String&& value) { SetPipelineExecutionDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionDisplayName(const char* value) { SetPipelineExecutionDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the pipeline status.</p>
      */
-    inline const PipelineExecutionStatus& GetPipelineExecutionStatus() const{ return m_pipelineExecutionStatus; }
-
-    /**
-     * <p>The status of the pipeline status.</p>
-     */
+    inline PipelineExecutionStatus GetPipelineExecutionStatus() const { return m_pipelineExecutionStatus; }
     inline bool PipelineExecutionStatusHasBeenSet() const { return m_pipelineExecutionStatusHasBeenSet; }
+    inline void SetPipelineExecutionStatus(PipelineExecutionStatus value) { m_pipelineExecutionStatusHasBeenSet = true; m_pipelineExecutionStatus = value; }
+    inline PipelineExecution& WithPipelineExecutionStatus(PipelineExecutionStatus value) { SetPipelineExecutionStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the pipeline status.</p>
-     */
-    inline void SetPipelineExecutionStatus(const PipelineExecutionStatus& value) { m_pipelineExecutionStatusHasBeenSet = true; m_pipelineExecutionStatus = value; }
-
-    /**
-     * <p>The status of the pipeline status.</p>
-     */
-    inline void SetPipelineExecutionStatus(PipelineExecutionStatus&& value) { m_pipelineExecutionStatusHasBeenSet = true; m_pipelineExecutionStatus = std::move(value); }
-
-    /**
-     * <p>The status of the pipeline status.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionStatus(const PipelineExecutionStatus& value) { SetPipelineExecutionStatus(value); return *this;}
-
-    /**
-     * <p>The status of the pipeline status.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionStatus(PipelineExecutionStatus&& value) { SetPipelineExecutionStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the pipeline execution.</p>
      */
-    inline const Aws::String& GetPipelineExecutionDescription() const{ return m_pipelineExecutionDescription; }
-
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
+    inline const Aws::String& GetPipelineExecutionDescription() const { return m_pipelineExecutionDescription; }
     inline bool PipelineExecutionDescriptionHasBeenSet() const { return m_pipelineExecutionDescriptionHasBeenSet; }
+    template<typename PipelineExecutionDescriptionT = Aws::String>
+    void SetPipelineExecutionDescription(PipelineExecutionDescriptionT&& value) { m_pipelineExecutionDescriptionHasBeenSet = true; m_pipelineExecutionDescription = std::forward<PipelineExecutionDescriptionT>(value); }
+    template<typename PipelineExecutionDescriptionT = Aws::String>
+    PipelineExecution& WithPipelineExecutionDescription(PipelineExecutionDescriptionT&& value) { SetPipelineExecutionDescription(std::forward<PipelineExecutionDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionDescription(const Aws::String& value) { m_pipelineExecutionDescriptionHasBeenSet = true; m_pipelineExecutionDescription = value; }
-
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionDescription(Aws::String&& value) { m_pipelineExecutionDescriptionHasBeenSet = true; m_pipelineExecutionDescription = std::move(value); }
-
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
-    inline void SetPipelineExecutionDescription(const char* value) { m_pipelineExecutionDescriptionHasBeenSet = true; m_pipelineExecutionDescription.assign(value); }
-
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionDescription(const Aws::String& value) { SetPipelineExecutionDescription(value); return *this;}
-
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionDescription(Aws::String&& value) { SetPipelineExecutionDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithPipelineExecutionDescription(const char* value) { SetPipelineExecutionDescription(value); return *this;}
-
-
+    ///@{
     
-    inline const PipelineExperimentConfig& GetPipelineExperimentConfig() const{ return m_pipelineExperimentConfig; }
-
-    
+    inline const PipelineExperimentConfig& GetPipelineExperimentConfig() const { return m_pipelineExperimentConfig; }
     inline bool PipelineExperimentConfigHasBeenSet() const { return m_pipelineExperimentConfigHasBeenSet; }
+    template<typename PipelineExperimentConfigT = PipelineExperimentConfig>
+    void SetPipelineExperimentConfig(PipelineExperimentConfigT&& value) { m_pipelineExperimentConfigHasBeenSet = true; m_pipelineExperimentConfig = std::forward<PipelineExperimentConfigT>(value); }
+    template<typename PipelineExperimentConfigT = PipelineExperimentConfig>
+    PipelineExecution& WithPipelineExperimentConfig(PipelineExperimentConfigT&& value) { SetPipelineExperimentConfig(std::forward<PipelineExperimentConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPipelineExperimentConfig(const PipelineExperimentConfig& value) { m_pipelineExperimentConfigHasBeenSet = true; m_pipelineExperimentConfig = value; }
-
-    
-    inline void SetPipelineExperimentConfig(PipelineExperimentConfig&& value) { m_pipelineExperimentConfigHasBeenSet = true; m_pipelineExperimentConfig = std::move(value); }
-
-    
-    inline PipelineExecution& WithPipelineExperimentConfig(const PipelineExperimentConfig& value) { SetPipelineExperimentConfig(value); return *this;}
-
-    
-    inline PipelineExecution& WithPipelineExperimentConfig(PipelineExperimentConfig&& value) { SetPipelineExperimentConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the execution failed, a message describing why.</p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    PipelineExecution& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
-    inline PipelineExecution& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
-    inline PipelineExecution& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>If the execution failed, a message describing why.</p>
-     */
-    inline PipelineExecution& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation time of the pipeline execution.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The creation time of the pipeline execution.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    PipelineExecution& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation time of the pipeline execution.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The creation time of the pipeline execution.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The creation time of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The creation time of the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the pipeline execution was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>The time that the pipeline execution was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    PipelineExecution& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the pipeline execution was last modified.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>The time that the pipeline execution was last modified.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The time that the pipeline execution was last modified.</p>
-     */
-    inline PipelineExecution& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The time that the pipeline execution was last modified.</p>
-     */
-    inline PipelineExecution& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const UserContext& GetCreatedBy() const{ return m_createdBy; }
-
-    
+    inline const UserContext& GetCreatedBy() const { return m_createdBy; }
     inline bool CreatedByHasBeenSet() const { return m_createdByHasBeenSet; }
+    template<typename CreatedByT = UserContext>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = UserContext>
+    PipelineExecution& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetCreatedBy(const UserContext& value) { m_createdByHasBeenSet = true; m_createdBy = value; }
-
-    
-    inline void SetCreatedBy(UserContext&& value) { m_createdByHasBeenSet = true; m_createdBy = std::move(value); }
-
-    
-    inline PipelineExecution& WithCreatedBy(const UserContext& value) { SetCreatedBy(value); return *this;}
-
-    
-    inline PipelineExecution& WithCreatedBy(UserContext&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-
-    
-    inline const UserContext& GetLastModifiedBy() const{ return m_lastModifiedBy; }
-
-    
+    inline const UserContext& GetLastModifiedBy() const { return m_lastModifiedBy; }
     inline bool LastModifiedByHasBeenSet() const { return m_lastModifiedByHasBeenSet; }
+    template<typename LastModifiedByT = UserContext>
+    void SetLastModifiedBy(LastModifiedByT&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::forward<LastModifiedByT>(value); }
+    template<typename LastModifiedByT = UserContext>
+    PipelineExecution& WithLastModifiedBy(LastModifiedByT&& value) { SetLastModifiedBy(std::forward<LastModifiedByT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetLastModifiedBy(const UserContext& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = value; }
-
-    
-    inline void SetLastModifiedBy(UserContext&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::move(value); }
-
-    
-    inline PipelineExecution& WithLastModifiedBy(const UserContext& value) { SetLastModifiedBy(value); return *this;}
-
-    
-    inline PipelineExecution& WithLastModifiedBy(UserContext&& value) { SetLastModifiedBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The parallelism configuration applied to the pipeline execution.</p>
      */
-    inline const ParallelismConfiguration& GetParallelismConfiguration() const{ return m_parallelismConfiguration; }
-
-    /**
-     * <p>The parallelism configuration applied to the pipeline execution.</p>
-     */
+    inline const ParallelismConfiguration& GetParallelismConfiguration() const { return m_parallelismConfiguration; }
     inline bool ParallelismConfigurationHasBeenSet() const { return m_parallelismConfigurationHasBeenSet; }
+    template<typename ParallelismConfigurationT = ParallelismConfiguration>
+    void SetParallelismConfiguration(ParallelismConfigurationT&& value) { m_parallelismConfigurationHasBeenSet = true; m_parallelismConfiguration = std::forward<ParallelismConfigurationT>(value); }
+    template<typename ParallelismConfigurationT = ParallelismConfiguration>
+    PipelineExecution& WithParallelismConfiguration(ParallelismConfigurationT&& value) { SetParallelismConfiguration(std::forward<ParallelismConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parallelism configuration applied to the pipeline execution.</p>
-     */
-    inline void SetParallelismConfiguration(const ParallelismConfiguration& value) { m_parallelismConfigurationHasBeenSet = true; m_parallelismConfiguration = value; }
-
-    /**
-     * <p>The parallelism configuration applied to the pipeline execution.</p>
-     */
-    inline void SetParallelismConfiguration(ParallelismConfiguration&& value) { m_parallelismConfigurationHasBeenSet = true; m_parallelismConfiguration = std::move(value); }
-
-    /**
-     * <p>The parallelism configuration applied to the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithParallelismConfiguration(const ParallelismConfiguration& value) { SetParallelismConfiguration(value); return *this;}
-
-    /**
-     * <p>The parallelism configuration applied to the pipeline execution.</p>
-     */
-    inline PipelineExecution& WithParallelismConfiguration(ParallelismConfiguration&& value) { SetParallelismConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The selective execution configuration applied to the pipeline run.</p>
      */
-    inline const SelectiveExecutionConfig& GetSelectiveExecutionConfig() const{ return m_selectiveExecutionConfig; }
-
-    /**
-     * <p>The selective execution configuration applied to the pipeline run.</p>
-     */
+    inline const SelectiveExecutionConfig& GetSelectiveExecutionConfig() const { return m_selectiveExecutionConfig; }
     inline bool SelectiveExecutionConfigHasBeenSet() const { return m_selectiveExecutionConfigHasBeenSet; }
+    template<typename SelectiveExecutionConfigT = SelectiveExecutionConfig>
+    void SetSelectiveExecutionConfig(SelectiveExecutionConfigT&& value) { m_selectiveExecutionConfigHasBeenSet = true; m_selectiveExecutionConfig = std::forward<SelectiveExecutionConfigT>(value); }
+    template<typename SelectiveExecutionConfigT = SelectiveExecutionConfig>
+    PipelineExecution& WithSelectiveExecutionConfig(SelectiveExecutionConfigT&& value) { SetSelectiveExecutionConfig(std::forward<SelectiveExecutionConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The selective execution configuration applied to the pipeline run.</p>
-     */
-    inline void SetSelectiveExecutionConfig(const SelectiveExecutionConfig& value) { m_selectiveExecutionConfigHasBeenSet = true; m_selectiveExecutionConfig = value; }
-
-    /**
-     * <p>The selective execution configuration applied to the pipeline run.</p>
-     */
-    inline void SetSelectiveExecutionConfig(SelectiveExecutionConfig&& value) { m_selectiveExecutionConfigHasBeenSet = true; m_selectiveExecutionConfig = std::move(value); }
-
-    /**
-     * <p>The selective execution configuration applied to the pipeline run.</p>
-     */
-    inline PipelineExecution& WithSelectiveExecutionConfig(const SelectiveExecutionConfig& value) { SetSelectiveExecutionConfig(value); return *this;}
-
-    /**
-     * <p>The selective execution configuration applied to the pipeline run.</p>
-     */
-    inline PipelineExecution& WithSelectiveExecutionConfig(SelectiveExecutionConfig&& value) { SetSelectiveExecutionConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains a list of pipeline parameters. This list can be empty. </p>
      */
-    inline const Aws::Vector<Parameter>& GetPipelineParameters() const{ return m_pipelineParameters; }
-
-    /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
-     */
+    inline const Aws::Vector<Parameter>& GetPipelineParameters() const { return m_pipelineParameters; }
     inline bool PipelineParametersHasBeenSet() const { return m_pipelineParametersHasBeenSet; }
+    template<typename PipelineParametersT = Aws::Vector<Parameter>>
+    void SetPipelineParameters(PipelineParametersT&& value) { m_pipelineParametersHasBeenSet = true; m_pipelineParameters = std::forward<PipelineParametersT>(value); }
+    template<typename PipelineParametersT = Aws::Vector<Parameter>>
+    PipelineExecution& WithPipelineParameters(PipelineParametersT&& value) { SetPipelineParameters(std::forward<PipelineParametersT>(value)); return *this;}
+    template<typename PipelineParametersT = Parameter>
+    PipelineExecution& AddPipelineParameters(PipelineParametersT&& value) { m_pipelineParametersHasBeenSet = true; m_pipelineParameters.emplace_back(std::forward<PipelineParametersT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
+     * <p>The ID of the pipeline version that started this execution.</p>
      */
-    inline void SetPipelineParameters(const Aws::Vector<Parameter>& value) { m_pipelineParametersHasBeenSet = true; m_pipelineParameters = value; }
+    inline long long GetPipelineVersionId() const { return m_pipelineVersionId; }
+    inline bool PipelineVersionIdHasBeenSet() const { return m_pipelineVersionIdHasBeenSet; }
+    inline void SetPipelineVersionId(long long value) { m_pipelineVersionIdHasBeenSet = true; m_pipelineVersionId = value; }
+    inline PipelineExecution& WithPipelineVersionId(long long value) { SetPipelineVersionId(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
+     * <p>The display name of the pipeline version that started this execution.</p>
      */
-    inline void SetPipelineParameters(Aws::Vector<Parameter>&& value) { m_pipelineParametersHasBeenSet = true; m_pipelineParameters = std::move(value); }
-
-    /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
-     */
-    inline PipelineExecution& WithPipelineParameters(const Aws::Vector<Parameter>& value) { SetPipelineParameters(value); return *this;}
-
-    /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
-     */
-    inline PipelineExecution& WithPipelineParameters(Aws::Vector<Parameter>&& value) { SetPipelineParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
-     */
-    inline PipelineExecution& AddPipelineParameters(const Parameter& value) { m_pipelineParametersHasBeenSet = true; m_pipelineParameters.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a list of pipeline parameters. This list can be empty. </p>
-     */
-    inline PipelineExecution& AddPipelineParameters(Parameter&& value) { m_pipelineParametersHasBeenSet = true; m_pipelineParameters.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetPipelineVersionDisplayName() const { return m_pipelineVersionDisplayName; }
+    inline bool PipelineVersionDisplayNameHasBeenSet() const { return m_pipelineVersionDisplayNameHasBeenSet; }
+    template<typename PipelineVersionDisplayNameT = Aws::String>
+    void SetPipelineVersionDisplayName(PipelineVersionDisplayNameT&& value) { m_pipelineVersionDisplayNameHasBeenSet = true; m_pipelineVersionDisplayName = std::forward<PipelineVersionDisplayNameT>(value); }
+    template<typename PipelineVersionDisplayNameT = Aws::String>
+    PipelineExecution& WithPipelineVersionDisplayName(PipelineVersionDisplayNameT&& value) { SetPipelineVersionDisplayName(std::forward<PipelineVersionDisplayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineArn;
@@ -513,7 +239,7 @@ namespace Model
     Aws::String m_pipelineExecutionDisplayName;
     bool m_pipelineExecutionDisplayNameHasBeenSet = false;
 
-    PipelineExecutionStatus m_pipelineExecutionStatus;
+    PipelineExecutionStatus m_pipelineExecutionStatus{PipelineExecutionStatus::NOT_SET};
     bool m_pipelineExecutionStatusHasBeenSet = false;
 
     Aws::String m_pipelineExecutionDescription;
@@ -525,10 +251,10 @@ namespace Model
     Aws::String m_failureReason;
     bool m_failureReasonHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
     UserContext m_createdBy;
@@ -545,6 +271,12 @@ namespace Model
 
     Aws::Vector<Parameter> m_pipelineParameters;
     bool m_pipelineParametersHasBeenSet = false;
+
+    long long m_pipelineVersionId{0};
+    bool m_pipelineVersionIdHasBeenSet = false;
+
+    Aws::String m_pipelineVersionDisplayName;
+    bool m_pipelineVersionDisplayNameHasBeenSet = false;
   };
 
 } // namespace Model

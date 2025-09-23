@@ -18,17 +18,7 @@ namespace XRay
 namespace Model
 {
 
-FaultRootCause::FaultRootCause() : 
-    m_servicesHasBeenSet(false),
-    m_clientImpacting(false),
-    m_clientImpactingHasBeenSet(false)
-{
-}
-
-FaultRootCause::FaultRootCause(JsonView jsonValue) : 
-    m_servicesHasBeenSet(false),
-    m_clientImpacting(false),
-    m_clientImpactingHasBeenSet(false)
+FaultRootCause::FaultRootCause(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ FaultRootCause& FaultRootCause::operator =(JsonView jsonValue)
     }
     m_servicesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClientImpacting"))
   {
     m_clientImpacting = jsonValue.GetBool("ClientImpacting");
-
     m_clientImpactingHasBeenSet = true;
   }
-
   return *this;
 }
 

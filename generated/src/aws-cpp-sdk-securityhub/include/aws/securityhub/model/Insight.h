@@ -33,201 +33,65 @@ namespace Model
   class Insight
   {
   public:
-    AWS_SECURITYHUB_API Insight();
+    AWS_SECURITYHUB_API Insight() = default;
     AWS_SECURITYHUB_API Insight(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Insight& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of a Security Hub insight.</p>
      */
-    inline const Aws::String& GetInsightArn() const{ return m_insightArn; }
-
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
+    inline const Aws::String& GetInsightArn() const { return m_insightArn; }
     inline bool InsightArnHasBeenSet() const { return m_insightArnHasBeenSet; }
+    template<typename InsightArnT = Aws::String>
+    void SetInsightArn(InsightArnT&& value) { m_insightArnHasBeenSet = true; m_insightArn = std::forward<InsightArnT>(value); }
+    template<typename InsightArnT = Aws::String>
+    Insight& WithInsightArn(InsightArnT&& value) { SetInsightArn(std::forward<InsightArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
-    inline void SetInsightArn(const Aws::String& value) { m_insightArnHasBeenSet = true; m_insightArn = value; }
-
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
-    inline void SetInsightArn(Aws::String&& value) { m_insightArnHasBeenSet = true; m_insightArn = std::move(value); }
-
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
-    inline void SetInsightArn(const char* value) { m_insightArnHasBeenSet = true; m_insightArn.assign(value); }
-
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
-    inline Insight& WithInsightArn(const Aws::String& value) { SetInsightArn(value); return *this;}
-
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
-    inline Insight& WithInsightArn(Aws::String&& value) { SetInsightArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a Security Hub insight.</p>
-     */
-    inline Insight& WithInsightArn(const char* value) { SetInsightArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a Security Hub insight.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Insight& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
-    inline Insight& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
-    inline Insight& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a Security Hub insight.</p>
-     */
-    inline Insight& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more attributes used to filter the findings included in the insight.
-     * The insight only includes findings that match the criteria defined in the
-     * filters.</p>
+     * You can filter by up to ten finding attributes. For each attribute, you can
+     * provide up to 20 filter values. The insight only includes findings that match
+     * the criteria defined in the filters.</p>
      */
-    inline const AwsSecurityFindingFilters& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>One or more attributes used to filter the findings included in the insight.
-     * The insight only includes findings that match the criteria defined in the
-     * filters.</p>
-     */
+    inline const AwsSecurityFindingFilters& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = AwsSecurityFindingFilters>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = AwsSecurityFindingFilters>
+    Insight& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>One or more attributes used to filter the findings included in the insight.
-     * The insight only includes findings that match the criteria defined in the
-     * filters.</p>
-     */
-    inline void SetFilters(const AwsSecurityFindingFilters& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>One or more attributes used to filter the findings included in the insight.
-     * The insight only includes findings that match the criteria defined in the
-     * filters.</p>
-     */
-    inline void SetFilters(AwsSecurityFindingFilters&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>One or more attributes used to filter the findings included in the insight.
-     * The insight only includes findings that match the criteria defined in the
-     * filters.</p>
-     */
-    inline Insight& WithFilters(const AwsSecurityFindingFilters& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>One or more attributes used to filter the findings included in the insight.
-     * The insight only includes findings that match the criteria defined in the
-     * filters.</p>
-     */
-    inline Insight& WithFilters(AwsSecurityFindingFilters&& value) { SetFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The grouping attribute for the insight's findings. Indicates how to group the
      * matching findings, and identifies the type of item that the insight applies to.
      * For example, if an insight is grouped by resource identifier, then the insight
      * produces a list of resource identifiers.</p>
      */
-    inline const Aws::String& GetGroupByAttribute() const{ return m_groupByAttribute; }
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
+    inline const Aws::String& GetGroupByAttribute() const { return m_groupByAttribute; }
     inline bool GroupByAttributeHasBeenSet() const { return m_groupByAttributeHasBeenSet; }
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
-    inline void SetGroupByAttribute(const Aws::String& value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute = value; }
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
-    inline void SetGroupByAttribute(Aws::String&& value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute = std::move(value); }
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
-    inline void SetGroupByAttribute(const char* value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute.assign(value); }
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
-    inline Insight& WithGroupByAttribute(const Aws::String& value) { SetGroupByAttribute(value); return *this;}
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
-    inline Insight& WithGroupByAttribute(Aws::String&& value) { SetGroupByAttribute(std::move(value)); return *this;}
-
-    /**
-     * <p>The grouping attribute for the insight's findings. Indicates how to group the
-     * matching findings, and identifies the type of item that the insight applies to.
-     * For example, if an insight is grouped by resource identifier, then the insight
-     * produces a list of resource identifiers.</p>
-     */
-    inline Insight& WithGroupByAttribute(const char* value) { SetGroupByAttribute(value); return *this;}
-
+    template<typename GroupByAttributeT = Aws::String>
+    void SetGroupByAttribute(GroupByAttributeT&& value) { m_groupByAttributeHasBeenSet = true; m_groupByAttribute = std::forward<GroupByAttributeT>(value); }
+    template<typename GroupByAttributeT = Aws::String>
+    Insight& WithGroupByAttribute(GroupByAttributeT&& value) { SetGroupByAttribute(std::forward<GroupByAttributeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_insightArn;

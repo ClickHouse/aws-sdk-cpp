@@ -22,7 +22,7 @@ namespace Model
   class DeleteDomainRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteDomainRequest();
+    AWS_SAGEMAKER_API DeleteDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,89 +35,31 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The domain ID.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The domain ID.</p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    DeleteDomainRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline DeleteDomainRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline DeleteDomainRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline DeleteDomainRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The retention policy for this domain, which specifies whether resources will
      * be retained after the Domain is deleted. By default, all resources are retained
      * (not automatically deleted). </p>
      */
-    inline const RetentionPolicy& GetRetentionPolicy() const{ return m_retentionPolicy; }
-
-    /**
-     * <p>The retention policy for this domain, which specifies whether resources will
-     * be retained after the Domain is deleted. By default, all resources are retained
-     * (not automatically deleted). </p>
-     */
+    inline const RetentionPolicy& GetRetentionPolicy() const { return m_retentionPolicy; }
     inline bool RetentionPolicyHasBeenSet() const { return m_retentionPolicyHasBeenSet; }
-
-    /**
-     * <p>The retention policy for this domain, which specifies whether resources will
-     * be retained after the Domain is deleted. By default, all resources are retained
-     * (not automatically deleted). </p>
-     */
-    inline void SetRetentionPolicy(const RetentionPolicy& value) { m_retentionPolicyHasBeenSet = true; m_retentionPolicy = value; }
-
-    /**
-     * <p>The retention policy for this domain, which specifies whether resources will
-     * be retained after the Domain is deleted. By default, all resources are retained
-     * (not automatically deleted). </p>
-     */
-    inline void SetRetentionPolicy(RetentionPolicy&& value) { m_retentionPolicyHasBeenSet = true; m_retentionPolicy = std::move(value); }
-
-    /**
-     * <p>The retention policy for this domain, which specifies whether resources will
-     * be retained after the Domain is deleted. By default, all resources are retained
-     * (not automatically deleted). </p>
-     */
-    inline DeleteDomainRequest& WithRetentionPolicy(const RetentionPolicy& value) { SetRetentionPolicy(value); return *this;}
-
-    /**
-     * <p>The retention policy for this domain, which specifies whether resources will
-     * be retained after the Domain is deleted. By default, all resources are retained
-     * (not automatically deleted). </p>
-     */
-    inline DeleteDomainRequest& WithRetentionPolicy(RetentionPolicy&& value) { SetRetentionPolicy(std::move(value)); return *this;}
-
+    template<typename RetentionPolicyT = RetentionPolicy>
+    void SetRetentionPolicy(RetentionPolicyT&& value) { m_retentionPolicyHasBeenSet = true; m_retentionPolicy = std::forward<RetentionPolicyT>(value); }
+    template<typename RetentionPolicyT = RetentionPolicy>
+    DeleteDomainRequest& WithRetentionPolicy(RetentionPolicyT&& value) { SetRetentionPolicy(std::forward<RetentionPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainId;

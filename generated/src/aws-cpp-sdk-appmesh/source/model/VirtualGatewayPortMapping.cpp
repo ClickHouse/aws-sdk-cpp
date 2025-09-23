@@ -18,19 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualGatewayPortMapping::VirtualGatewayPortMapping() : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_protocol(VirtualGatewayPortProtocol::NOT_SET),
-    m_protocolHasBeenSet(false)
-{
-}
-
-VirtualGatewayPortMapping::VirtualGatewayPortMapping(JsonView jsonValue) : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_protocol(VirtualGatewayPortProtocol::NOT_SET),
-    m_protocolHasBeenSet(false)
+VirtualGatewayPortMapping::VirtualGatewayPortMapping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ VirtualGatewayPortMapping& VirtualGatewayPortMapping::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("port"))
   {
     m_port = jsonValue.GetInteger("port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("protocol"))
   {
     m_protocol = VirtualGatewayPortProtocolMapper::GetVirtualGatewayPortProtocolForName(jsonValue.GetString("protocol"));
-
     m_protocolHasBeenSet = true;
   }
-
   return *this;
 }
 

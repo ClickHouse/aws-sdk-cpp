@@ -10,22 +10,13 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-PublishTypeRequest::PublishTypeRequest() : 
-    m_type(ThirdPartyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_typeNameHasBeenSet(false),
-    m_publicVersionNumberHasBeenSet(false)
-{
-}
-
 Aws::String PublishTypeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=PublishType&";
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type)) << "&";
   }
 
   if(m_arnHasBeenSet)

@@ -18,19 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-JourneyExecutionMetricsResponse::JourneyExecutionMetricsResponse() : 
-    m_applicationIdHasBeenSet(false),
-    m_journeyIdHasBeenSet(false),
-    m_lastEvaluatedTimeHasBeenSet(false),
-    m_metricsHasBeenSet(false)
-{
-}
-
-JourneyExecutionMetricsResponse::JourneyExecutionMetricsResponse(JsonView jsonValue) : 
-    m_applicationIdHasBeenSet(false),
-    m_journeyIdHasBeenSet(false),
-    m_lastEvaluatedTimeHasBeenSet(false),
-    m_metricsHasBeenSet(false)
+JourneyExecutionMetricsResponse::JourneyExecutionMetricsResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ JourneyExecutionMetricsResponse& JourneyExecutionMetricsResponse::operator =(Jso
   if(jsonValue.ValueExists("ApplicationId"))
   {
     m_applicationId = jsonValue.GetString("ApplicationId");
-
     m_applicationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JourneyId"))
   {
     m_journeyId = jsonValue.GetString("JourneyId");
-
     m_journeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastEvaluatedTime"))
   {
     m_lastEvaluatedTime = jsonValue.GetString("LastEvaluatedTime");
-
     m_lastEvaluatedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Metrics"))
   {
     Aws::Map<Aws::String, JsonView> metricsJsonMap = jsonValue.GetObject("Metrics").GetAllObjects();
@@ -67,7 +49,6 @@ JourneyExecutionMetricsResponse& JourneyExecutionMetricsResponse::operator =(Jso
     }
     m_metricsHasBeenSet = true;
   }
-
   return *this;
 }
 

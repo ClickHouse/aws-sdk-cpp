@@ -34,12 +34,13 @@ namespace Model
   class Role
   {
   public:
-    AWS_AUDITMANAGER_API Role();
+    AWS_AUDITMANAGER_API Role() = default;
     AWS_AUDITMANAGER_API Role(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Role& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The type of customer persona. </p>  <p>In
      * <code>CreateAssessment</code>, <code>roleType</code> can only be
@@ -48,102 +49,26 @@ namespace Model
      * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
      * be <code>RESOURCE_OWNER</code>.</p> 
      */
-    inline const RoleType& GetRoleType() const{ return m_roleType; }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
+    inline RoleType GetRoleType() const { return m_roleType; }
     inline bool RoleTypeHasBeenSet() const { return m_roleTypeHasBeenSet; }
+    inline void SetRoleType(RoleType value) { m_roleTypeHasBeenSet = true; m_roleType = value; }
+    inline Role& WithRoleType(RoleType value) { SetRoleType(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline void SetRoleType(const RoleType& value) { m_roleTypeHasBeenSet = true; m_roleType = value; }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline void SetRoleType(RoleType&& value) { m_roleTypeHasBeenSet = true; m_roleType = std::move(value); }
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline Role& WithRoleType(const RoleType& value) { SetRoleType(value); return *this;}
-
-    /**
-     * <p> The type of customer persona. </p>  <p>In
-     * <code>CreateAssessment</code>, <code>roleType</code> can only be
-     * <code>PROCESS_OWNER</code>. </p> <p>In <code>UpdateSettings</code>,
-     * <code>roleType</code> can only be <code>PROCESS_OWNER</code>.</p> <p>In
-     * <code>BatchCreateDelegationByAssessment</code>, <code>roleType</code> can only
-     * be <code>RESOURCE_OWNER</code>.</p> 
-     */
-    inline Role& WithRoleType(RoleType&& value) { SetRoleType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline Role& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline Role& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the IAM role. </p>
-     */
-    inline Role& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    Role& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
   private:
 
-    RoleType m_roleType;
+    RoleType m_roleType{RoleType::NOT_SET};
     bool m_roleTypeHasBeenSet = false;
 
     Aws::String m_roleArn;

@@ -18,15 +18,7 @@ namespace ECS
 namespace Model
 {
 
-InferenceAccelerator::InferenceAccelerator() : 
-    m_deviceNameHasBeenSet(false),
-    m_deviceTypeHasBeenSet(false)
-{
-}
-
-InferenceAccelerator::InferenceAccelerator(JsonView jsonValue) : 
-    m_deviceNameHasBeenSet(false),
-    m_deviceTypeHasBeenSet(false)
+InferenceAccelerator::InferenceAccelerator(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InferenceAccelerator& InferenceAccelerator::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("deviceName"))
   {
     m_deviceName = jsonValue.GetString("deviceName");
-
     m_deviceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deviceType"))
   {
     m_deviceType = jsonValue.GetString("deviceType");
-
     m_deviceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

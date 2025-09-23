@@ -37,489 +37,159 @@ namespace Model
   class VPCConnectionSummary
   {
   public:
-    AWS_QUICKSIGHT_API VPCConnectionSummary();
+    AWS_QUICKSIGHT_API VPCConnectionSummary() = default;
     AWS_QUICKSIGHT_API VPCConnectionSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API VPCConnectionSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the VPC connection that you're creating. This ID is a unique
      * identifier for each Amazon Web Services Region in an Amazon Web Services
      * account.</p>
      */
-    inline const Aws::String& GetVPCConnectionId() const{ return m_vPCConnectionId; }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
+    inline const Aws::String& GetVPCConnectionId() const { return m_vPCConnectionId; }
     inline bool VPCConnectionIdHasBeenSet() const { return m_vPCConnectionIdHasBeenSet; }
+    template<typename VPCConnectionIdT = Aws::String>
+    void SetVPCConnectionId(VPCConnectionIdT&& value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId = std::forward<VPCConnectionIdT>(value); }
+    template<typename VPCConnectionIdT = Aws::String>
+    VPCConnectionSummary& WithVPCConnectionId(VPCConnectionIdT&& value) { SetVPCConnectionId(std::forward<VPCConnectionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline void SetVPCConnectionId(const Aws::String& value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId = value; }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline void SetVPCConnectionId(Aws::String&& value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline void SetVPCConnectionId(const char* value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline VPCConnectionSummary& WithVPCConnectionId(const Aws::String& value) { SetVPCConnectionId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline VPCConnectionSummary& WithVPCConnectionId(Aws::String&& value) { SetVPCConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline VPCConnectionSummary& WithVPCConnectionId(const char* value) { SetVPCConnectionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    VPCConnectionSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name for the VPC connection.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    VPCConnectionSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
      */
-    inline const Aws::String& GetVPCId() const{ return m_vPCId; }
-
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
+    inline const Aws::String& GetVPCId() const { return m_vPCId; }
     inline bool VPCIdHasBeenSet() const { return m_vPCIdHasBeenSet; }
+    template<typename VPCIdT = Aws::String>
+    void SetVPCId(VPCIdT&& value) { m_vPCIdHasBeenSet = true; m_vPCId = std::forward<VPCIdT>(value); }
+    template<typename VPCIdT = Aws::String>
+    VPCConnectionSummary& WithVPCId(VPCIdT&& value) { SetVPCId(std::forward<VPCIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
-    inline void SetVPCId(const Aws::String& value) { m_vPCIdHasBeenSet = true; m_vPCId = value; }
-
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
-    inline void SetVPCId(Aws::String&& value) { m_vPCIdHasBeenSet = true; m_vPCId = std::move(value); }
-
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
-    inline void SetVPCId(const char* value) { m_vPCIdHasBeenSet = true; m_vPCId.assign(value); }
-
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithVPCId(const Aws::String& value) { SetVPCId(value); return *this;}
-
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithVPCId(Aws::String&& value) { SetVPCId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EC2 VPC ID associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithVPCId(const char* value) { SetVPCId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const{ return m_securityGroupIds; }
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const { return m_securityGroupIds; }
     inline bool SecurityGroupIdsHasBeenSet() const { return m_securityGroupIdsHasBeenSet; }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::forward<SecurityGroupIdsT>(value); }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    VPCConnectionSummary& WithSecurityGroupIds(SecurityGroupIdsT&& value) { SetSecurityGroupIds(std::forward<SecurityGroupIdsT>(value)); return *this;}
+    template<typename SecurityGroupIdsT = Aws::String>
+    VPCConnectionSummary& AddSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.emplace_back(std::forward<SecurityGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline void SetSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetSecurityGroupIds(value); return *this;}
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& AddSecurityGroupIds(const Aws::String& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon EC2 security group IDs associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& AddSecurityGroupIds(const char* value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDnsResolvers() const{ return m_dnsResolvers; }
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDnsResolvers() const { return m_dnsResolvers; }
     inline bool DnsResolversHasBeenSet() const { return m_dnsResolversHasBeenSet; }
+    template<typename DnsResolversT = Aws::Vector<Aws::String>>
+    void SetDnsResolvers(DnsResolversT&& value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers = std::forward<DnsResolversT>(value); }
+    template<typename DnsResolversT = Aws::Vector<Aws::String>>
+    VPCConnectionSummary& WithDnsResolvers(DnsResolversT&& value) { SetDnsResolvers(std::forward<DnsResolversT>(value)); return *this;}
+    template<typename DnsResolversT = Aws::String>
+    VPCConnectionSummary& AddDnsResolvers(DnsResolversT&& value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers.emplace_back(std::forward<DnsResolversT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline void SetDnsResolvers(const Aws::Vector<Aws::String>& value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers = value; }
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline void SetDnsResolvers(Aws::Vector<Aws::String>&& value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers = std::move(value); }
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithDnsResolvers(const Aws::Vector<Aws::String>& value) { SetDnsResolvers(value); return *this;}
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithDnsResolvers(Aws::Vector<Aws::String>&& value) { SetDnsResolvers(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& AddDnsResolvers(const Aws::String& value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers.push_back(value); return *this; }
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& AddDnsResolvers(Aws::String&& value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of IP addresses of DNS resolver endpoints for the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& AddDnsResolvers(const char* value) { m_dnsResolversHasBeenSet = true; m_dnsResolvers.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The status of the VPC connection.</p>
      */
-    inline const VPCConnectionResourceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the VPC connection.</p>
-     */
+    inline VPCConnectionResourceStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(VPCConnectionResourceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline VPCConnectionSummary& WithStatus(VPCConnectionResourceStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the VPC connection.</p>
-     */
-    inline void SetStatus(const VPCConnectionResourceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the VPC connection.</p>
-     */
-    inline void SetStatus(VPCConnectionResourceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithStatus(const VPCConnectionResourceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithStatus(VPCConnectionResourceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The availability status of the VPC connection.</p>
      */
-    inline const VPCConnectionAvailabilityStatus& GetAvailabilityStatus() const{ return m_availabilityStatus; }
-
-    /**
-     * <p>The availability status of the VPC connection.</p>
-     */
+    inline VPCConnectionAvailabilityStatus GetAvailabilityStatus() const { return m_availabilityStatus; }
     inline bool AvailabilityStatusHasBeenSet() const { return m_availabilityStatusHasBeenSet; }
+    inline void SetAvailabilityStatus(VPCConnectionAvailabilityStatus value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = value; }
+    inline VPCConnectionSummary& WithAvailabilityStatus(VPCConnectionAvailabilityStatus value) { SetAvailabilityStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The availability status of the VPC connection.</p>
-     */
-    inline void SetAvailabilityStatus(const VPCConnectionAvailabilityStatus& value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = value; }
-
-    /**
-     * <p>The availability status of the VPC connection.</p>
-     */
-    inline void SetAvailabilityStatus(VPCConnectionAvailabilityStatus&& value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = std::move(value); }
-
-    /**
-     * <p>The availability status of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithAvailabilityStatus(const VPCConnectionAvailabilityStatus& value) { SetAvailabilityStatus(value); return *this;}
-
-    /**
-     * <p>The availability status of the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithAvailabilityStatus(VPCConnectionAvailabilityStatus&& value) { SetAvailabilityStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of network interfaces.</p>
      */
-    inline const Aws::Vector<NetworkInterface>& GetNetworkInterfaces() const{ return m_networkInterfaces; }
-
-    /**
-     * <p>A list of network interfaces.</p>
-     */
+    inline const Aws::Vector<NetworkInterface>& GetNetworkInterfaces() const { return m_networkInterfaces; }
     inline bool NetworkInterfacesHasBeenSet() const { return m_networkInterfacesHasBeenSet; }
+    template<typename NetworkInterfacesT = Aws::Vector<NetworkInterface>>
+    void SetNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::forward<NetworkInterfacesT>(value); }
+    template<typename NetworkInterfacesT = Aws::Vector<NetworkInterface>>
+    VPCConnectionSummary& WithNetworkInterfaces(NetworkInterfacesT&& value) { SetNetworkInterfaces(std::forward<NetworkInterfacesT>(value)); return *this;}
+    template<typename NetworkInterfacesT = NetworkInterface>
+    VPCConnectionSummary& AddNetworkInterfaces(NetworkInterfacesT&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.emplace_back(std::forward<NetworkInterfacesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of network interfaces.</p>
-     */
-    inline void SetNetworkInterfaces(const Aws::Vector<NetworkInterface>& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
-
-    /**
-     * <p>A list of network interfaces.</p>
-     */
-    inline void SetNetworkInterfaces(Aws::Vector<NetworkInterface>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::move(value); }
-
-    /**
-     * <p>A list of network interfaces.</p>
-     */
-    inline VPCConnectionSummary& WithNetworkInterfaces(const Aws::Vector<NetworkInterface>& value) { SetNetworkInterfaces(value); return *this;}
-
-    /**
-     * <p>A list of network interfaces.</p>
-     */
-    inline VPCConnectionSummary& WithNetworkInterfaces(Aws::Vector<NetworkInterface>&& value) { SetNetworkInterfaces(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of network interfaces.</p>
-     */
-    inline VPCConnectionSummary& AddNetworkInterfaces(const NetworkInterface& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
-
-    /**
-     * <p>A list of network interfaces.</p>
-     */
-    inline VPCConnectionSummary& AddNetworkInterfaces(NetworkInterface&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN of the IAM role associated with the VPC connection.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    VPCConnectionSummary& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role associated with the VPC connection.</p>
-     */
-    inline VPCConnectionSummary& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the VPC connection was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time that the VPC connection was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    VPCConnectionSummary& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the VPC connection was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time that the VPC connection was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time that the VPC connection was created.</p>
-     */
-    inline VPCConnectionSummary& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time that the VPC connection was created.</p>
-     */
-    inline VPCConnectionSummary& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the VPC connection was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The time that the VPC connection was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
-
-    /**
-     * <p>The time that the VPC connection was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The time that the VPC connection was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The time that the VPC connection was last updated.</p>
-     */
-    inline VPCConnectionSummary& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The time that the VPC connection was last updated.</p>
-     */
-    inline VPCConnectionSummary& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    VPCConnectionSummary& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vPCConnectionId;
@@ -540,10 +210,10 @@ namespace Model
     Aws::Vector<Aws::String> m_dnsResolvers;
     bool m_dnsResolversHasBeenSet = false;
 
-    VPCConnectionResourceStatus m_status;
+    VPCConnectionResourceStatus m_status{VPCConnectionResourceStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    VPCConnectionAvailabilityStatus m_availabilityStatus;
+    VPCConnectionAvailabilityStatus m_availabilityStatus{VPCConnectionAvailabilityStatus::NOT_SET};
     bool m_availabilityStatusHasBeenSet = false;
 
     Aws::Vector<NetworkInterface> m_networkInterfaces;
@@ -552,10 +222,10 @@ namespace Model
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
   };
 

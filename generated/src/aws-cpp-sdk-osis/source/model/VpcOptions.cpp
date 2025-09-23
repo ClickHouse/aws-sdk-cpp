@@ -18,15 +18,7 @@ namespace OSIS
 namespace Model
 {
 
-VpcOptions::VpcOptions() : 
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
-{
-}
-
-VpcOptions::VpcOptions(JsonView jsonValue) : 
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
+VpcOptions::VpcOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ VpcOptions& VpcOptions::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("SecurityGroupIds");
@@ -52,7 +43,16 @@ VpcOptions& VpcOptions::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("VpcAttachmentOptions"))
+  {
+    m_vpcAttachmentOptions = jsonValue.GetObject("VpcAttachmentOptions");
+    m_vpcAttachmentOptionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("VpcEndpointManagement"))
+  {
+    m_vpcEndpointManagement = VpcEndpointManagementMapper::GetVpcEndpointManagementForName(jsonValue.GetString("VpcEndpointManagement"));
+    m_vpcEndpointManagementHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +80,17 @@ JsonValue VpcOptions::Jsonize() const
    }
    payload.WithArray("SecurityGroupIds", std::move(securityGroupIdsJsonList));
 
+  }
+
+  if(m_vpcAttachmentOptionsHasBeenSet)
+  {
+   payload.WithObject("VpcAttachmentOptions", m_vpcAttachmentOptions.Jsonize());
+
+  }
+
+  if(m_vpcEndpointManagementHasBeenSet)
+  {
+   payload.WithString("VpcEndpointManagement", VpcEndpointManagementMapper::GetNameForVpcEndpointManagement(m_vpcEndpointManagement));
   }
 
   return payload;

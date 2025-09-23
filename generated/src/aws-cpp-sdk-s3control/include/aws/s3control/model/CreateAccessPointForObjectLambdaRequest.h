@@ -22,7 +22,7 @@ namespace Model
   class CreateAccessPointForObjectLambdaRequest : public S3ControlRequest
   {
   public:
-    AWS_S3CONTROL_API CreateAccessPointForObjectLambdaRequest();
+    AWS_S3CONTROL_API CreateAccessPointForObjectLambdaRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,126 +39,42 @@ namespace Model
      */
     AWS_S3CONTROL_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
      * Access Point.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    CreateAccessPointForObjectLambdaRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for owner of the specified Object Lambda
-     * Access Point.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name you want to assign to this Object Lambda Access Point.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateAccessPointForObjectLambdaRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name you want to assign to this Object Lambda Access Point.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Object Lambda Access Point configuration as a JSON document.</p>
      */
-    inline const ObjectLambdaConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>Object Lambda Access Point configuration as a JSON document.</p>
-     */
+    inline const ObjectLambdaConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
-
-    /**
-     * <p>Object Lambda Access Point configuration as a JSON document.</p>
-     */
-    inline void SetConfiguration(const ObjectLambdaConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>Object Lambda Access Point configuration as a JSON document.</p>
-     */
-    inline void SetConfiguration(ObjectLambdaConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>Object Lambda Access Point configuration as a JSON document.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithConfiguration(const ObjectLambdaConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>Object Lambda Access Point configuration as a JSON document.</p>
-     */
-    inline CreateAccessPointForObjectLambdaRequest& WithConfiguration(ObjectLambdaConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
+    template<typename ConfigurationT = ObjectLambdaConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = ObjectLambdaConfiguration>
+    CreateAccessPointForObjectLambdaRequest& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

@@ -18,19 +18,7 @@ namespace FMS
 namespace Model
 {
 
-NetworkFirewallUnexpectedGatewayRoutesViolation::NetworkFirewallUnexpectedGatewayRoutesViolation() : 
-    m_gatewayIdHasBeenSet(false),
-    m_violatingRoutesHasBeenSet(false),
-    m_routeTableIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-NetworkFirewallUnexpectedGatewayRoutesViolation::NetworkFirewallUnexpectedGatewayRoutesViolation(JsonView jsonValue) : 
-    m_gatewayIdHasBeenSet(false),
-    m_violatingRoutesHasBeenSet(false),
-    m_routeTableIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+NetworkFirewallUnexpectedGatewayRoutesViolation::NetworkFirewallUnexpectedGatewayRoutesViolation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ NetworkFirewallUnexpectedGatewayRoutesViolation& NetworkFirewallUnexpectedGatewa
   if(jsonValue.ValueExists("GatewayId"))
   {
     m_gatewayId = jsonValue.GetString("GatewayId");
-
     m_gatewayIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ViolatingRoutes"))
   {
     Aws::Utils::Array<JsonView> violatingRoutesJsonList = jsonValue.GetArray("ViolatingRoutes");
@@ -53,21 +39,16 @@ NetworkFirewallUnexpectedGatewayRoutesViolation& NetworkFirewallUnexpectedGatewa
     }
     m_violatingRoutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RouteTableId"))
   {
     m_routeTableId = jsonValue.GetString("RouteTableId");
-
     m_routeTableIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcId"))
   {
     m_vpcId = jsonValue.GetString("VpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   return *this;
 }
 

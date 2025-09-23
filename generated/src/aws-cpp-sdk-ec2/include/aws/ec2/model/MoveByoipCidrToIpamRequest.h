@@ -21,7 +21,7 @@ namespace Model
   class MoveByoipCidrToIpamRequest : public EC2Request
   {
   public:
-    AWS_EC2_API MoveByoipCidrToIpamRequest();
+    AWS_EC2_API MoveByoipCidrToIpamRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,164 +36,57 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline MoveByoipCidrToIpamRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The BYOIP CIDR.</p>
      */
-    inline const Aws::String& GetCidr() const{ return m_cidr; }
-
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
+    inline const Aws::String& GetCidr() const { return m_cidr; }
     inline bool CidrHasBeenSet() const { return m_cidrHasBeenSet; }
+    template<typename CidrT = Aws::String>
+    void SetCidr(CidrT&& value) { m_cidrHasBeenSet = true; m_cidr = std::forward<CidrT>(value); }
+    template<typename CidrT = Aws::String>
+    MoveByoipCidrToIpamRequest& WithCidr(CidrT&& value) { SetCidr(std::forward<CidrT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
-    inline void SetCidr(const Aws::String& value) { m_cidrHasBeenSet = true; m_cidr = value; }
-
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
-    inline void SetCidr(Aws::String&& value) { m_cidrHasBeenSet = true; m_cidr = std::move(value); }
-
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
-    inline void SetCidr(const char* value) { m_cidrHasBeenSet = true; m_cidr.assign(value); }
-
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithCidr(const Aws::String& value) { SetCidr(value); return *this;}
-
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithCidr(Aws::String&& value) { SetCidr(std::move(value)); return *this;}
-
-    /**
-     * <p>The BYOIP CIDR.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithCidr(const char* value) { SetCidr(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IPAM pool ID.</p>
      */
-    inline const Aws::String& GetIpamPoolId() const{ return m_ipamPoolId; }
-
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
+    inline const Aws::String& GetIpamPoolId() const { return m_ipamPoolId; }
     inline bool IpamPoolIdHasBeenSet() const { return m_ipamPoolIdHasBeenSet; }
+    template<typename IpamPoolIdT = Aws::String>
+    void SetIpamPoolId(IpamPoolIdT&& value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId = std::forward<IpamPoolIdT>(value); }
+    template<typename IpamPoolIdT = Aws::String>
+    MoveByoipCidrToIpamRequest& WithIpamPoolId(IpamPoolIdT&& value) { SetIpamPoolId(std::forward<IpamPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
-    inline void SetIpamPoolId(const Aws::String& value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId = value; }
-
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
-    inline void SetIpamPoolId(Aws::String&& value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId = std::move(value); }
-
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
-    inline void SetIpamPoolId(const char* value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId.assign(value); }
-
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithIpamPoolId(const Aws::String& value) { SetIpamPoolId(value); return *this;}
-
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithIpamPoolId(Aws::String&& value) { SetIpamPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPAM pool ID.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithIpamPoolId(const char* value) { SetIpamPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
      */
-    inline const Aws::String& GetIpamPoolOwner() const{ return m_ipamPoolOwner; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
+    inline const Aws::String& GetIpamPoolOwner() const { return m_ipamPoolOwner; }
     inline bool IpamPoolOwnerHasBeenSet() const { return m_ipamPoolOwnerHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
-    inline void SetIpamPoolOwner(const Aws::String& value) { m_ipamPoolOwnerHasBeenSet = true; m_ipamPoolOwner = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
-    inline void SetIpamPoolOwner(Aws::String&& value) { m_ipamPoolOwnerHasBeenSet = true; m_ipamPoolOwner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
-    inline void SetIpamPoolOwner(const char* value) { m_ipamPoolOwnerHasBeenSet = true; m_ipamPoolOwner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithIpamPoolOwner(const Aws::String& value) { SetIpamPoolOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithIpamPoolOwner(Aws::String&& value) { SetIpamPoolOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the IPAM pool.</p>
-     */
-    inline MoveByoipCidrToIpamRequest& WithIpamPoolOwner(const char* value) { SetIpamPoolOwner(value); return *this;}
-
+    template<typename IpamPoolOwnerT = Aws::String>
+    void SetIpamPoolOwner(IpamPoolOwnerT&& value) { m_ipamPoolOwnerHasBeenSet = true; m_ipamPoolOwner = std::forward<IpamPoolOwnerT>(value); }
+    template<typename IpamPoolOwnerT = Aws::String>
+    MoveByoipCidrToIpamRequest& WithIpamPoolOwner(IpamPoolOwnerT&& value) { SetIpamPoolOwner(std::forward<IpamPoolOwnerT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_cidr;

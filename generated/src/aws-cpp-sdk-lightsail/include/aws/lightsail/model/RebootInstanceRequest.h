@@ -21,7 +21,7 @@ namespace Model
   class RebootInstanceRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API RebootInstanceRequest();
+    AWS_LIGHTSAIL_API RebootInstanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the instance to reboot.</p>
      */
-    inline const Aws::String& GetInstanceName() const{ return m_instanceName; }
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
+    inline const Aws::String& GetInstanceName() const { return m_instanceName; }
     inline bool InstanceNameHasBeenSet() const { return m_instanceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
-    inline void SetInstanceName(const Aws::String& value) { m_instanceNameHasBeenSet = true; m_instanceName = value; }
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
-    inline void SetInstanceName(Aws::String&& value) { m_instanceNameHasBeenSet = true; m_instanceName = std::move(value); }
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
-    inline void SetInstanceName(const char* value) { m_instanceNameHasBeenSet = true; m_instanceName.assign(value); }
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
-    inline RebootInstanceRequest& WithInstanceName(const Aws::String& value) { SetInstanceName(value); return *this;}
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
-    inline RebootInstanceRequest& WithInstanceName(Aws::String&& value) { SetInstanceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the instance to reboot.</p>
-     */
-    inline RebootInstanceRequest& WithInstanceName(const char* value) { SetInstanceName(value); return *this;}
-
+    template<typename InstanceNameT = Aws::String>
+    void SetInstanceName(InstanceNameT&& value) { m_instanceNameHasBeenSet = true; m_instanceName = std::forward<InstanceNameT>(value); }
+    template<typename InstanceNameT = Aws::String>
+    RebootInstanceRequest& WithInstanceName(InstanceNameT&& value) { SetInstanceName(std::forward<InstanceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceName;

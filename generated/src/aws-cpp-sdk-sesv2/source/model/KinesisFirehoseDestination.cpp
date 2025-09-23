@@ -18,15 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-KinesisFirehoseDestination::KinesisFirehoseDestination() : 
-    m_iamRoleArnHasBeenSet(false),
-    m_deliveryStreamArnHasBeenSet(false)
-{
-}
-
-KinesisFirehoseDestination::KinesisFirehoseDestination(JsonView jsonValue) : 
-    m_iamRoleArnHasBeenSet(false),
-    m_deliveryStreamArnHasBeenSet(false)
+KinesisFirehoseDestination::KinesisFirehoseDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ KinesisFirehoseDestination& KinesisFirehoseDestination::operator =(JsonView json
   if(jsonValue.ValueExists("IamRoleArn"))
   {
     m_iamRoleArn = jsonValue.GetString("IamRoleArn");
-
     m_iamRoleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeliveryStreamArn"))
   {
     m_deliveryStreamArn = jsonValue.GetString("DeliveryStreamArn");
-
     m_deliveryStreamArnHasBeenSet = true;
   }
-
   return *this;
 }
 

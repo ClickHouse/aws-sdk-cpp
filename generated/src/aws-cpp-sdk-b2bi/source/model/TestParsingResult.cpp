@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-TestParsingResult::TestParsingResult()
-{
-}
-
 TestParsingResult::TestParsingResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -32,15 +28,33 @@ TestParsingResult& TestParsingResult::operator =(const Aws::AmazonWebServiceResu
   if(jsonValue.ValueExists("parsedFileContent"))
   {
     m_parsedFileContent = jsonValue.GetString("parsedFileContent");
-
+    m_parsedFileContentHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("parsedSplitFileContents"))
+  {
+    Aws::Utils::Array<JsonView> parsedSplitFileContentsJsonList = jsonValue.GetArray("parsedSplitFileContents");
+    for(unsigned parsedSplitFileContentsIndex = 0; parsedSplitFileContentsIndex < parsedSplitFileContentsJsonList.GetLength(); ++parsedSplitFileContentsIndex)
+    {
+      m_parsedSplitFileContents.push_back(parsedSplitFileContentsJsonList[parsedSplitFileContentsIndex].AsString());
+    }
+    m_parsedSplitFileContentsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("validationMessages"))
+  {
+    Aws::Utils::Array<JsonView> validationMessagesJsonList = jsonValue.GetArray("validationMessages");
+    for(unsigned validationMessagesIndex = 0; validationMessagesIndex < validationMessagesJsonList.GetLength(); ++validationMessagesIndex)
+    {
+      m_validationMessages.push_back(validationMessagesJsonList[validationMessagesIndex].AsString());
+    }
+    m_validationMessagesHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

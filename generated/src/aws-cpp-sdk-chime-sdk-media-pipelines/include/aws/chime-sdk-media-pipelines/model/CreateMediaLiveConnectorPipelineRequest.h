@@ -26,7 +26,7 @@ namespace Model
   class CreateMediaLiveConnectorPipelineRequest : public ChimeSDKMediaPipelinesRequest
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API CreateMediaLiveConnectorPipelineRequest();
+    AWS_CHIMESDKMEDIAPIPELINES_API CreateMediaLiveConnectorPipelineRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,169 +37,59 @@ namespace Model
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The media live connector pipeline's data sources.</p>
      */
-    inline const Aws::Vector<LiveConnectorSourceConfiguration>& GetSources() const{ return m_sources; }
-
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
+    inline const Aws::Vector<LiveConnectorSourceConfiguration>& GetSources() const { return m_sources; }
     inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+    template<typename SourcesT = Aws::Vector<LiveConnectorSourceConfiguration>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<LiveConnectorSourceConfiguration>>
+    CreateMediaLiveConnectorPipelineRequest& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = LiveConnectorSourceConfiguration>
+    CreateMediaLiveConnectorPipelineRequest& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
-    inline void SetSources(const Aws::Vector<LiveConnectorSourceConfiguration>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
-
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
-    inline void SetSources(Aws::Vector<LiveConnectorSourceConfiguration>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
-
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithSources(const Aws::Vector<LiveConnectorSourceConfiguration>& value) { SetSources(value); return *this;}
-
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithSources(Aws::Vector<LiveConnectorSourceConfiguration>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& AddSources(const LiveConnectorSourceConfiguration& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
-
-    /**
-     * <p>The media live connector pipeline's data sources.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& AddSources(LiveConnectorSourceConfiguration&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The media live connector pipeline's data sinks.</p>
      */
-    inline const Aws::Vector<LiveConnectorSinkConfiguration>& GetSinks() const{ return m_sinks; }
-
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
+    inline const Aws::Vector<LiveConnectorSinkConfiguration>& GetSinks() const { return m_sinks; }
     inline bool SinksHasBeenSet() const { return m_sinksHasBeenSet; }
+    template<typename SinksT = Aws::Vector<LiveConnectorSinkConfiguration>>
+    void SetSinks(SinksT&& value) { m_sinksHasBeenSet = true; m_sinks = std::forward<SinksT>(value); }
+    template<typename SinksT = Aws::Vector<LiveConnectorSinkConfiguration>>
+    CreateMediaLiveConnectorPipelineRequest& WithSinks(SinksT&& value) { SetSinks(std::forward<SinksT>(value)); return *this;}
+    template<typename SinksT = LiveConnectorSinkConfiguration>
+    CreateMediaLiveConnectorPipelineRequest& AddSinks(SinksT&& value) { m_sinksHasBeenSet = true; m_sinks.emplace_back(std::forward<SinksT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
-    inline void SetSinks(const Aws::Vector<LiveConnectorSinkConfiguration>& value) { m_sinksHasBeenSet = true; m_sinks = value; }
-
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
-    inline void SetSinks(Aws::Vector<LiveConnectorSinkConfiguration>&& value) { m_sinksHasBeenSet = true; m_sinks = std::move(value); }
-
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithSinks(const Aws::Vector<LiveConnectorSinkConfiguration>& value) { SetSinks(value); return *this;}
-
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithSinks(Aws::Vector<LiveConnectorSinkConfiguration>&& value) { SetSinks(std::move(value)); return *this;}
-
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& AddSinks(const LiveConnectorSinkConfiguration& value) { m_sinksHasBeenSet = true; m_sinks.push_back(value); return *this; }
-
-    /**
-     * <p>The media live connector pipeline's data sinks.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& AddSinks(LiveConnectorSinkConfiguration&& value) { m_sinksHasBeenSet = true; m_sinks.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token assigned to the client making the request.</p>
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    CreateMediaLiveConnectorPipelineRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token assigned to the client making the request.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags associated with the media live connector pipeline.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags associated with the media live connector pipeline.</p>
-     */
-    inline CreateMediaLiveConnectorPipelineRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateMediaLiveConnectorPipelineRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateMediaLiveConnectorPipelineRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<LiveConnectorSourceConfiguration> m_sources;
@@ -208,8 +98,8 @@ namespace Model
     Aws::Vector<LiveConnectorSinkConfiguration> m_sinks;
     bool m_sinksHasBeenSet = false;
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;

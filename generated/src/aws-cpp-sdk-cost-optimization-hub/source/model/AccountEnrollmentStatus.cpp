@@ -18,21 +18,7 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-AccountEnrollmentStatus::AccountEnrollmentStatus() : 
-    m_accountIdHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false),
-    m_lastUpdatedTimestampHasBeenSet(false),
-    m_status(EnrollmentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-AccountEnrollmentStatus::AccountEnrollmentStatus(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false),
-    m_lastUpdatedTimestampHasBeenSet(false),
-    m_status(EnrollmentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+AccountEnrollmentStatus::AccountEnrollmentStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ AccountEnrollmentStatus& AccountEnrollmentStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("createdTimestamp"))
-  {
-    m_createdTimestamp = jsonValue.GetDouble("createdTimestamp");
-
-    m_createdTimestampHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("lastUpdatedTimestamp"))
-  {
-    m_lastUpdatedTimestamp = jsonValue.GetDouble("lastUpdatedTimestamp");
-
-    m_lastUpdatedTimestampHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = EnrollmentStatusMapper::GetEnrollmentStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lastUpdatedTimestamp"))
+  {
+    m_lastUpdatedTimestamp = jsonValue.GetDouble("lastUpdatedTimestamp");
+    m_lastUpdatedTimestampHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdTimestamp"))
+  {
+    m_createdTimestamp = jsonValue.GetDouble("createdTimestamp");
+    m_createdTimestampHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,9 +58,9 @@ JsonValue AccountEnrollmentStatus::Jsonize() const
 
   }
 
-  if(m_createdTimestampHasBeenSet)
+  if(m_statusHasBeenSet)
   {
-   payload.WithDouble("createdTimestamp", m_createdTimestamp.SecondsWithMSPrecision());
+   payload.WithString("status", EnrollmentStatusMapper::GetNameForEnrollmentStatus(m_status));
   }
 
   if(m_lastUpdatedTimestampHasBeenSet)
@@ -90,9 +68,9 @@ JsonValue AccountEnrollmentStatus::Jsonize() const
    payload.WithDouble("lastUpdatedTimestamp", m_lastUpdatedTimestamp.SecondsWithMSPrecision());
   }
 
-  if(m_statusHasBeenSet)
+  if(m_createdTimestampHasBeenSet)
   {
-   payload.WithString("status", EnrollmentStatusMapper::GetNameForEnrollmentStatus(m_status));
+   payload.WithDouble("createdTimestamp", m_createdTimestamp.SecondsWithMSPrecision());
   }
 
   return payload;

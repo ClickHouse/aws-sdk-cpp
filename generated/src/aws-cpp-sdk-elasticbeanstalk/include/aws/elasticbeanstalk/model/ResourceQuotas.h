@@ -33,7 +33,7 @@ namespace Model
   class ResourceQuotas
   {
   public:
-    AWS_ELASTICBEANSTALK_API ResourceQuotas();
+    AWS_ELASTICBEANSTALK_API ResourceQuotas() = default;
     AWS_ELASTICBEANSTALK_API ResourceQuotas(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICBEANSTALK_API ResourceQuotas& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,160 +41,65 @@ namespace Model
     AWS_ELASTICBEANSTALK_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The quota for applications in the AWS account.</p>
      */
-    inline const ResourceQuota& GetApplicationQuota() const{ return m_applicationQuota; }
-
-    /**
-     * <p>The quota for applications in the AWS account.</p>
-     */
+    inline const ResourceQuota& GetApplicationQuota() const { return m_applicationQuota; }
     inline bool ApplicationQuotaHasBeenSet() const { return m_applicationQuotaHasBeenSet; }
+    template<typename ApplicationQuotaT = ResourceQuota>
+    void SetApplicationQuota(ApplicationQuotaT&& value) { m_applicationQuotaHasBeenSet = true; m_applicationQuota = std::forward<ApplicationQuotaT>(value); }
+    template<typename ApplicationQuotaT = ResourceQuota>
+    ResourceQuotas& WithApplicationQuota(ApplicationQuotaT&& value) { SetApplicationQuota(std::forward<ApplicationQuotaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The quota for applications in the AWS account.</p>
-     */
-    inline void SetApplicationQuota(const ResourceQuota& value) { m_applicationQuotaHasBeenSet = true; m_applicationQuota = value; }
-
-    /**
-     * <p>The quota for applications in the AWS account.</p>
-     */
-    inline void SetApplicationQuota(ResourceQuota&& value) { m_applicationQuotaHasBeenSet = true; m_applicationQuota = std::move(value); }
-
-    /**
-     * <p>The quota for applications in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithApplicationQuota(const ResourceQuota& value) { SetApplicationQuota(value); return *this;}
-
-    /**
-     * <p>The quota for applications in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithApplicationQuota(ResourceQuota&& value) { SetApplicationQuota(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The quota for application versions in the AWS account.</p>
      */
-    inline const ResourceQuota& GetApplicationVersionQuota() const{ return m_applicationVersionQuota; }
-
-    /**
-     * <p>The quota for application versions in the AWS account.</p>
-     */
+    inline const ResourceQuota& GetApplicationVersionQuota() const { return m_applicationVersionQuota; }
     inline bool ApplicationVersionQuotaHasBeenSet() const { return m_applicationVersionQuotaHasBeenSet; }
+    template<typename ApplicationVersionQuotaT = ResourceQuota>
+    void SetApplicationVersionQuota(ApplicationVersionQuotaT&& value) { m_applicationVersionQuotaHasBeenSet = true; m_applicationVersionQuota = std::forward<ApplicationVersionQuotaT>(value); }
+    template<typename ApplicationVersionQuotaT = ResourceQuota>
+    ResourceQuotas& WithApplicationVersionQuota(ApplicationVersionQuotaT&& value) { SetApplicationVersionQuota(std::forward<ApplicationVersionQuotaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The quota for application versions in the AWS account.</p>
-     */
-    inline void SetApplicationVersionQuota(const ResourceQuota& value) { m_applicationVersionQuotaHasBeenSet = true; m_applicationVersionQuota = value; }
-
-    /**
-     * <p>The quota for application versions in the AWS account.</p>
-     */
-    inline void SetApplicationVersionQuota(ResourceQuota&& value) { m_applicationVersionQuotaHasBeenSet = true; m_applicationVersionQuota = std::move(value); }
-
-    /**
-     * <p>The quota for application versions in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithApplicationVersionQuota(const ResourceQuota& value) { SetApplicationVersionQuota(value); return *this;}
-
-    /**
-     * <p>The quota for application versions in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithApplicationVersionQuota(ResourceQuota&& value) { SetApplicationVersionQuota(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The quota for environments in the AWS account.</p>
      */
-    inline const ResourceQuota& GetEnvironmentQuota() const{ return m_environmentQuota; }
-
-    /**
-     * <p>The quota for environments in the AWS account.</p>
-     */
+    inline const ResourceQuota& GetEnvironmentQuota() const { return m_environmentQuota; }
     inline bool EnvironmentQuotaHasBeenSet() const { return m_environmentQuotaHasBeenSet; }
+    template<typename EnvironmentQuotaT = ResourceQuota>
+    void SetEnvironmentQuota(EnvironmentQuotaT&& value) { m_environmentQuotaHasBeenSet = true; m_environmentQuota = std::forward<EnvironmentQuotaT>(value); }
+    template<typename EnvironmentQuotaT = ResourceQuota>
+    ResourceQuotas& WithEnvironmentQuota(EnvironmentQuotaT&& value) { SetEnvironmentQuota(std::forward<EnvironmentQuotaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The quota for environments in the AWS account.</p>
-     */
-    inline void SetEnvironmentQuota(const ResourceQuota& value) { m_environmentQuotaHasBeenSet = true; m_environmentQuota = value; }
-
-    /**
-     * <p>The quota for environments in the AWS account.</p>
-     */
-    inline void SetEnvironmentQuota(ResourceQuota&& value) { m_environmentQuotaHasBeenSet = true; m_environmentQuota = std::move(value); }
-
-    /**
-     * <p>The quota for environments in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithEnvironmentQuota(const ResourceQuota& value) { SetEnvironmentQuota(value); return *this;}
-
-    /**
-     * <p>The quota for environments in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithEnvironmentQuota(ResourceQuota&& value) { SetEnvironmentQuota(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The quota for configuration templates in the AWS account.</p>
      */
-    inline const ResourceQuota& GetConfigurationTemplateQuota() const{ return m_configurationTemplateQuota; }
-
-    /**
-     * <p>The quota for configuration templates in the AWS account.</p>
-     */
+    inline const ResourceQuota& GetConfigurationTemplateQuota() const { return m_configurationTemplateQuota; }
     inline bool ConfigurationTemplateQuotaHasBeenSet() const { return m_configurationTemplateQuotaHasBeenSet; }
+    template<typename ConfigurationTemplateQuotaT = ResourceQuota>
+    void SetConfigurationTemplateQuota(ConfigurationTemplateQuotaT&& value) { m_configurationTemplateQuotaHasBeenSet = true; m_configurationTemplateQuota = std::forward<ConfigurationTemplateQuotaT>(value); }
+    template<typename ConfigurationTemplateQuotaT = ResourceQuota>
+    ResourceQuotas& WithConfigurationTemplateQuota(ConfigurationTemplateQuotaT&& value) { SetConfigurationTemplateQuota(std::forward<ConfigurationTemplateQuotaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The quota for configuration templates in the AWS account.</p>
-     */
-    inline void SetConfigurationTemplateQuota(const ResourceQuota& value) { m_configurationTemplateQuotaHasBeenSet = true; m_configurationTemplateQuota = value; }
-
-    /**
-     * <p>The quota for configuration templates in the AWS account.</p>
-     */
-    inline void SetConfigurationTemplateQuota(ResourceQuota&& value) { m_configurationTemplateQuotaHasBeenSet = true; m_configurationTemplateQuota = std::move(value); }
-
-    /**
-     * <p>The quota for configuration templates in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithConfigurationTemplateQuota(const ResourceQuota& value) { SetConfigurationTemplateQuota(value); return *this;}
-
-    /**
-     * <p>The quota for configuration templates in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithConfigurationTemplateQuota(ResourceQuota&& value) { SetConfigurationTemplateQuota(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The quota for custom platforms in the AWS account.</p>
      */
-    inline const ResourceQuota& GetCustomPlatformQuota() const{ return m_customPlatformQuota; }
-
-    /**
-     * <p>The quota for custom platforms in the AWS account.</p>
-     */
+    inline const ResourceQuota& GetCustomPlatformQuota() const { return m_customPlatformQuota; }
     inline bool CustomPlatformQuotaHasBeenSet() const { return m_customPlatformQuotaHasBeenSet; }
-
-    /**
-     * <p>The quota for custom platforms in the AWS account.</p>
-     */
-    inline void SetCustomPlatformQuota(const ResourceQuota& value) { m_customPlatformQuotaHasBeenSet = true; m_customPlatformQuota = value; }
-
-    /**
-     * <p>The quota for custom platforms in the AWS account.</p>
-     */
-    inline void SetCustomPlatformQuota(ResourceQuota&& value) { m_customPlatformQuotaHasBeenSet = true; m_customPlatformQuota = std::move(value); }
-
-    /**
-     * <p>The quota for custom platforms in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithCustomPlatformQuota(const ResourceQuota& value) { SetCustomPlatformQuota(value); return *this;}
-
-    /**
-     * <p>The quota for custom platforms in the AWS account.</p>
-     */
-    inline ResourceQuotas& WithCustomPlatformQuota(ResourceQuota&& value) { SetCustomPlatformQuota(std::move(value)); return *this;}
-
+    template<typename CustomPlatformQuotaT = ResourceQuota>
+    void SetCustomPlatformQuota(CustomPlatformQuotaT&& value) { m_customPlatformQuotaHasBeenSet = true; m_customPlatformQuota = std::forward<CustomPlatformQuotaT>(value); }
+    template<typename CustomPlatformQuotaT = ResourceQuota>
+    ResourceQuotas& WithCustomPlatformQuota(CustomPlatformQuotaT&& value) { SetCustomPlatformQuota(std::forward<CustomPlatformQuotaT>(value)); return *this;}
+    ///@}
   private:
 
     ResourceQuota m_applicationQuota;

@@ -32,76 +32,36 @@ namespace Model
   class Cvss2
   {
   public:
-    AWS_INSPECTOR2_API Cvss2();
+    AWS_INSPECTOR2_API Cvss2() = default;
     AWS_INSPECTOR2_API Cvss2(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Cvss2& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The CVSS v2 base score for the vulnerability.</p>
      */
-    inline double GetBaseScore() const{ return m_baseScore; }
-
-    /**
-     * <p>The CVSS v2 base score for the vulnerability.</p>
-     */
+    inline double GetBaseScore() const { return m_baseScore; }
     inline bool BaseScoreHasBeenSet() const { return m_baseScoreHasBeenSet; }
-
-    /**
-     * <p>The CVSS v2 base score for the vulnerability.</p>
-     */
     inline void SetBaseScore(double value) { m_baseScoreHasBeenSet = true; m_baseScore = value; }
-
-    /**
-     * <p>The CVSS v2 base score for the vulnerability.</p>
-     */
     inline Cvss2& WithBaseScore(double value) { SetBaseScore(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The scoring vector associated with the CVSS v2 score.</p>
      */
-    inline const Aws::String& GetScoringVector() const{ return m_scoringVector; }
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
+    inline const Aws::String& GetScoringVector() const { return m_scoringVector; }
     inline bool ScoringVectorHasBeenSet() const { return m_scoringVectorHasBeenSet; }
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
-    inline void SetScoringVector(const Aws::String& value) { m_scoringVectorHasBeenSet = true; m_scoringVector = value; }
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
-    inline void SetScoringVector(Aws::String&& value) { m_scoringVectorHasBeenSet = true; m_scoringVector = std::move(value); }
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
-    inline void SetScoringVector(const char* value) { m_scoringVectorHasBeenSet = true; m_scoringVector.assign(value); }
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
-    inline Cvss2& WithScoringVector(const Aws::String& value) { SetScoringVector(value); return *this;}
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
-    inline Cvss2& WithScoringVector(Aws::String&& value) { SetScoringVector(std::move(value)); return *this;}
-
-    /**
-     * <p>The scoring vector associated with the CVSS v2 score.</p>
-     */
-    inline Cvss2& WithScoringVector(const char* value) { SetScoringVector(value); return *this;}
-
+    template<typename ScoringVectorT = Aws::String>
+    void SetScoringVector(ScoringVectorT&& value) { m_scoringVectorHasBeenSet = true; m_scoringVector = std::forward<ScoringVectorT>(value); }
+    template<typename ScoringVectorT = Aws::String>
+    Cvss2& WithScoringVector(ScoringVectorT&& value) { SetScoringVector(std::forward<ScoringVectorT>(value)); return *this;}
+    ///@}
   private:
 
-    double m_baseScore;
+    double m_baseScore{0.0};
     bool m_baseScoreHasBeenSet = false;
 
     Aws::String m_scoringVector;

@@ -12,14 +12,6 @@ using namespace Aws::TimestreamQuery::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ExecuteScheduledQueryRequest::ExecuteScheduledQueryRequest() : 
-    m_scheduledQueryArnHasBeenSet(false),
-    m_invocationTimeHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String ExecuteScheduledQueryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +30,12 @@ Aws::String ExecuteScheduledQueryRequest::SerializePayload() const
   if(m_clientTokenHasBeenSet)
   {
    payload.WithString("ClientToken", m_clientToken);
+
+  }
+
+  if(m_queryInsightsHasBeenSet)
+  {
+   payload.WithObject("QueryInsights", m_queryInsights.Jsonize());
 
   }
 

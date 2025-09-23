@@ -32,52 +32,23 @@ namespace Model
   class InforNexusConnectorProfileProperties
   {
   public:
-    AWS_APPFLOW_API InforNexusConnectorProfileProperties();
+    AWS_APPFLOW_API InforNexusConnectorProfileProperties() = default;
     AWS_APPFLOW_API InforNexusConnectorProfileProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API InforNexusConnectorProfileProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The location of the Infor Nexus resource. </p>
      */
-    inline const Aws::String& GetInstanceUrl() const{ return m_instanceUrl; }
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
+    inline const Aws::String& GetInstanceUrl() const { return m_instanceUrl; }
     inline bool InstanceUrlHasBeenSet() const { return m_instanceUrlHasBeenSet; }
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
-    inline void SetInstanceUrl(const Aws::String& value) { m_instanceUrlHasBeenSet = true; m_instanceUrl = value; }
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
-    inline void SetInstanceUrl(Aws::String&& value) { m_instanceUrlHasBeenSet = true; m_instanceUrl = std::move(value); }
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
-    inline void SetInstanceUrl(const char* value) { m_instanceUrlHasBeenSet = true; m_instanceUrl.assign(value); }
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
-    inline InforNexusConnectorProfileProperties& WithInstanceUrl(const Aws::String& value) { SetInstanceUrl(value); return *this;}
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
-    inline InforNexusConnectorProfileProperties& WithInstanceUrl(Aws::String&& value) { SetInstanceUrl(std::move(value)); return *this;}
-
-    /**
-     * <p> The location of the Infor Nexus resource. </p>
-     */
-    inline InforNexusConnectorProfileProperties& WithInstanceUrl(const char* value) { SetInstanceUrl(value); return *this;}
-
+    template<typename InstanceUrlT = Aws::String>
+    void SetInstanceUrl(InstanceUrlT&& value) { m_instanceUrlHasBeenSet = true; m_instanceUrl = std::forward<InstanceUrlT>(value); }
+    template<typename InstanceUrlT = Aws::String>
+    InforNexusConnectorProfileProperties& WithInstanceUrl(InstanceUrlT&& value) { SetInstanceUrl(std::forward<InstanceUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceUrl;

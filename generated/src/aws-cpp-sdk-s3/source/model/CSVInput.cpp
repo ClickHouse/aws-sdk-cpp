@@ -20,29 +20,7 @@ namespace S3
 namespace Model
 {
 
-CSVInput::CSVInput() : 
-    m_fileHeaderInfo(FileHeaderInfo::NOT_SET),
-    m_fileHeaderInfoHasBeenSet(false),
-    m_commentsHasBeenSet(false),
-    m_quoteEscapeCharacterHasBeenSet(false),
-    m_recordDelimiterHasBeenSet(false),
-    m_fieldDelimiterHasBeenSet(false),
-    m_quoteCharacterHasBeenSet(false),
-    m_allowQuotedRecordDelimiter(false),
-    m_allowQuotedRecordDelimiterHasBeenSet(false)
-{
-}
-
-CSVInput::CSVInput(const XmlNode& xmlNode) : 
-    m_fileHeaderInfo(FileHeaderInfo::NOT_SET),
-    m_fileHeaderInfoHasBeenSet(false),
-    m_commentsHasBeenSet(false),
-    m_quoteEscapeCharacterHasBeenSet(false),
-    m_recordDelimiterHasBeenSet(false),
-    m_fieldDelimiterHasBeenSet(false),
-    m_quoteCharacterHasBeenSet(false),
-    m_allowQuotedRecordDelimiter(false),
-    m_allowQuotedRecordDelimiterHasBeenSet(false)
+CSVInput::CSVInput(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -56,7 +34,7 @@ CSVInput& CSVInput::operator =(const XmlNode& xmlNode)
     XmlNode fileHeaderInfoNode = resultNode.FirstChild("FileHeaderInfo");
     if(!fileHeaderInfoNode.IsNull())
     {
-      m_fileHeaderInfo = FileHeaderInfoMapper::GetFileHeaderInfoForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fileHeaderInfoNode.GetText()).c_str()).c_str());
+      m_fileHeaderInfo = FileHeaderInfoMapper::GetFileHeaderInfoForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fileHeaderInfoNode.GetText()).c_str()));
       m_fileHeaderInfoHasBeenSet = true;
     }
     XmlNode commentsNode = resultNode.FirstChild("Comments");

@@ -15,22 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListCustomModelsRequest::ListCustomModelsRequest() : 
-    m_creationTimeBeforeHasBeenSet(false),
-    m_creationTimeAfterHasBeenSet(false),
-    m_nameContainsHasBeenSet(false),
-    m_baseModelArnEqualsHasBeenSet(false),
-    m_foundationModelArnEqualsHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_sortBy(SortModelsBy::NOT_SET),
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
 Aws::String ListCustomModelsRequest::SerializePayload() const
 {
   return {};
@@ -99,6 +83,20 @@ void ListCustomModelsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << SortOrderMapper::GetNameForSortOrder(m_sortOrder);
       uri.AddQueryStringParameter("sortOrder", ss.str());
+      ss.str("");
+    }
+
+    if(m_isOwnedHasBeenSet)
+    {
+      ss << m_isOwned;
+      uri.AddQueryStringParameter("isOwned", ss.str());
+      ss.str("");
+    }
+
+    if(m_modelStatusHasBeenSet)
+    {
+      ss << ModelStatusMapper::GetNameForModelStatus(m_modelStatus);
+      uri.AddQueryStringParameter("modelStatus", ss.str());
       ss.str("");
     }
 

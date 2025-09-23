@@ -33,52 +33,23 @@ namespace Model
   class PublishFindingToSnsParams
   {
   public:
-    AWS_IOT_API PublishFindingToSnsParams();
+    AWS_IOT_API PublishFindingToSnsParams() = default;
     AWS_IOT_API PublishFindingToSnsParams(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API PublishFindingToSnsParams& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the topic to which you want to publish the findings.</p>
      */
-    inline const Aws::String& GetTopicArn() const{ return m_topicArn; }
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
+    inline const Aws::String& GetTopicArn() const { return m_topicArn; }
     inline bool TopicArnHasBeenSet() const { return m_topicArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
-    inline void SetTopicArn(const Aws::String& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
-    inline void SetTopicArn(const char* value) { m_topicArnHasBeenSet = true; m_topicArn.assign(value); }
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
-    inline PublishFindingToSnsParams& WithTopicArn(const Aws::String& value) { SetTopicArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
-    inline PublishFindingToSnsParams& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the topic to which you want to publish the findings.</p>
-     */
-    inline PublishFindingToSnsParams& WithTopicArn(const char* value) { SetTopicArn(value); return *this;}
-
+    template<typename TopicArnT = Aws::String>
+    void SetTopicArn(TopicArnT&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::forward<TopicArnT>(value); }
+    template<typename TopicArnT = Aws::String>
+    PublishFindingToSnsParams& WithTopicArn(TopicArnT&& value) { SetTopicArn(std::forward<TopicArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_topicArn;

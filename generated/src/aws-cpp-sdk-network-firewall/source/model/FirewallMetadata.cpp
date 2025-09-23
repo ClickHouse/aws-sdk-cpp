@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-FirewallMetadata::FirewallMetadata() : 
-    m_firewallNameHasBeenSet(false),
-    m_firewallArnHasBeenSet(false)
-{
-}
-
-FirewallMetadata::FirewallMetadata(JsonView jsonValue) : 
-    m_firewallNameHasBeenSet(false),
-    m_firewallArnHasBeenSet(false)
+FirewallMetadata::FirewallMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ FirewallMetadata& FirewallMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FirewallName"))
   {
     m_firewallName = jsonValue.GetString("FirewallName");
-
     m_firewallNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FirewallArn"))
   {
     m_firewallArn = jsonValue.GetString("FirewallArn");
-
     m_firewallArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TransitGatewayAttachmentId"))
+  {
+    m_transitGatewayAttachmentId = jsonValue.GetString("TransitGatewayAttachmentId");
+    m_transitGatewayAttachmentIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue FirewallMetadata::Jsonize() const
   if(m_firewallArnHasBeenSet)
   {
    payload.WithString("FirewallArn", m_firewallArn);
+
+  }
+
+  if(m_transitGatewayAttachmentIdHasBeenSet)
+  {
+   payload.WithString("TransitGatewayAttachmentId", m_transitGatewayAttachmentId);
 
   }
 

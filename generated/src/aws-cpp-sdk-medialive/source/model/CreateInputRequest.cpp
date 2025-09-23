@@ -12,23 +12,6 @@ using namespace Aws::MediaLive::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateInputRequest::CreateInputRequest() : 
-    m_destinationsHasBeenSet(false),
-    m_inputDevicesHasBeenSet(false),
-    m_inputSecurityGroupsHasBeenSet(false),
-    m_mediaConnectFlowsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_requestId(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_requestIdHasBeenSet(true),
-    m_roleArnHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_type(InputType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_vpcHasBeenSet(false)
-{
-}
-
 Aws::String CreateInputRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -125,6 +108,40 @@ Aws::String CreateInputRequest::SerializePayload() const
   if(m_vpcHasBeenSet)
   {
    payload.WithObject("vpc", m_vpc.Jsonize());
+
+  }
+
+  if(m_srtSettingsHasBeenSet)
+  {
+   payload.WithObject("srtSettings", m_srtSettings.Jsonize());
+
+  }
+
+  if(m_inputNetworkLocationHasBeenSet)
+  {
+   payload.WithString("inputNetworkLocation", InputNetworkLocationMapper::GetNameForInputNetworkLocation(m_inputNetworkLocation));
+  }
+
+  if(m_multicastSettingsHasBeenSet)
+  {
+   payload.WithObject("multicastSettings", m_multicastSettings.Jsonize());
+
+  }
+
+  if(m_smpte2110ReceiverGroupSettingsHasBeenSet)
+  {
+   payload.WithObject("smpte2110ReceiverGroupSettings", m_smpte2110ReceiverGroupSettings.Jsonize());
+
+  }
+
+  if(m_sdiSourcesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> sdiSourcesJsonList(m_sdiSources.size());
+   for(unsigned sdiSourcesIndex = 0; sdiSourcesIndex < sdiSourcesJsonList.GetLength(); ++sdiSourcesIndex)
+   {
+     sdiSourcesJsonList[sdiSourcesIndex].AsString(m_sdiSources[sdiSourcesIndex]);
+   }
+   payload.WithArray("sdiSources", std::move(sdiSourcesJsonList));
 
   }
 

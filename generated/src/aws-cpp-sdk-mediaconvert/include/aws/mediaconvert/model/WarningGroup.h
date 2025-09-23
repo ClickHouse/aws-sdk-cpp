@@ -30,67 +30,39 @@ namespace Model
   class WarningGroup
   {
   public:
-    AWS_MEDIACONVERT_API WarningGroup();
+    AWS_MEDIACONVERT_API WarningGroup() = default;
     AWS_MEDIACONVERT_API WarningGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API WarningGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Warning code that identifies a specific warning in the job. For more
      * information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html
      */
-    inline int GetCode() const{ return m_code; }
-
-    /**
-     * Warning code that identifies a specific warning in the job. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html
-     */
+    inline int GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * Warning code that identifies a specific warning in the job. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html
-     */
     inline void SetCode(int value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * Warning code that identifies a specific warning in the job. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html
-     */
     inline WarningGroup& WithCode(int value) { SetCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The number of times this warning occurred in the job.
      */
-    inline int GetCount() const{ return m_count; }
-
-    /**
-     * The number of times this warning occurred in the job.
-     */
+    inline int GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * The number of times this warning occurred in the job.
-     */
     inline void SetCount(int value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * The number of times this warning occurred in the job.
-     */
     inline WarningGroup& WithCount(int value) { SetCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_code;
+    int m_code{0};
     bool m_codeHasBeenSet = false;
 
-    int m_count;
+    int m_count{0};
     bool m_countHasBeenSet = false;
   };
 

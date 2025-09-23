@@ -20,31 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackSetOperationSummary::StackSetOperationSummary() : 
-    m_operationIdHasBeenSet(false),
-    m_action(StackSetOperationAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_status(StackSetOperationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false),
-    m_endTimestampHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_statusDetailsHasBeenSet(false),
-    m_operationPreferencesHasBeenSet(false)
-{
-}
-
-StackSetOperationSummary::StackSetOperationSummary(const XmlNode& xmlNode) : 
-    m_operationIdHasBeenSet(false),
-    m_action(StackSetOperationAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_status(StackSetOperationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_creationTimestampHasBeenSet(false),
-    m_endTimestampHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_statusDetailsHasBeenSet(false),
-    m_operationPreferencesHasBeenSet(false)
+StackSetOperationSummary::StackSetOperationSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -64,13 +40,13 @@ StackSetOperationSummary& StackSetOperationSummary::operator =(const XmlNode& xm
     XmlNode actionNode = resultNode.FirstChild("Action");
     if(!actionNode.IsNull())
     {
-      m_action = StackSetOperationActionMapper::GetStackSetOperationActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(actionNode.GetText()).c_str()).c_str());
+      m_action = StackSetOperationActionMapper::GetStackSetOperationActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(actionNode.GetText()).c_str()));
       m_actionHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = StackSetOperationStatusMapper::GetStackSetOperationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = StackSetOperationStatusMapper::GetStackSetOperationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode creationTimestampNode = resultNode.FirstChild("CreationTimestamp");
@@ -117,12 +93,12 @@ void StackSetOperationSummary::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_actionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Action=" << StackSetOperationActionMapper::GetNameForStackSetOperationAction(m_action) << "&";
+      oStream << location << index << locationValue << ".Action=" << StringUtils::URLEncode(StackSetOperationActionMapper::GetNameForStackSetOperationAction(m_action)) << "&";
   }
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << StackSetOperationStatusMapper::GetNameForStackSetOperationStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(StackSetOperationStatusMapper::GetNameForStackSetOperationStatus(m_status)) << "&";
   }
 
   if(m_creationTimestampHasBeenSet)
@@ -164,11 +140,11 @@ void StackSetOperationSummary::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_actionHasBeenSet)
   {
-      oStream << location << ".Action=" << StackSetOperationActionMapper::GetNameForStackSetOperationAction(m_action) << "&";
+      oStream << location << ".Action=" << StringUtils::URLEncode(StackSetOperationActionMapper::GetNameForStackSetOperationAction(m_action)) << "&";
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << StackSetOperationStatusMapper::GetNameForStackSetOperationStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(StackSetOperationStatusMapper::GetNameForStackSetOperationStatus(m_status)) << "&";
   }
   if(m_creationTimestampHasBeenSet)
   {

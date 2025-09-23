@@ -21,7 +21,7 @@ namespace Model
   class DescribeTableReplicaAutoScalingRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeTableReplicaAutoScalingRequest();
+    AWS_DYNAMODB_API DescribeTableReplicaAutoScalingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,47 +33,23 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
-
     /**
-     * <p>The name of the table.</p>
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
-     * <p>The name of the table.</p>
+     * <p>The name of the table. You can also provide the Amazon Resource Name (ARN) of
+     * the table in this parameter.</p>
      */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline DescribeTableReplicaAutoScalingRequest& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline DescribeTableReplicaAutoScalingRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline DescribeTableReplicaAutoScalingRequest& WithTableName(const char* value) { SetTableName(value); return *this;}
-
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    DescribeTableReplicaAutoScalingRequest& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tableName;

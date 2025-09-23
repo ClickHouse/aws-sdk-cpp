@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AxisDataOptions::AxisDataOptions() : 
-    m_numericAxisOptionsHasBeenSet(false),
-    m_dateAxisOptionsHasBeenSet(false)
-{
-}
-
-AxisDataOptions::AxisDataOptions(JsonView jsonValue) : 
-    m_numericAxisOptionsHasBeenSet(false),
-    m_dateAxisOptionsHasBeenSet(false)
+AxisDataOptions::AxisDataOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AxisDataOptions& AxisDataOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("NumericAxisOptions"))
   {
     m_numericAxisOptions = jsonValue.GetObject("NumericAxisOptions");
-
     m_numericAxisOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DateAxisOptions"))
   {
     m_dateAxisOptions = jsonValue.GetObject("DateAxisOptions");
-
     m_dateAxisOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

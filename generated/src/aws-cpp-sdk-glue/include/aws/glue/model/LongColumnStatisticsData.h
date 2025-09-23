@@ -30,107 +30,63 @@ namespace Model
   class LongColumnStatisticsData
   {
   public:
-    AWS_GLUE_API LongColumnStatisticsData();
+    AWS_GLUE_API LongColumnStatisticsData() = default;
     AWS_GLUE_API LongColumnStatisticsData(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API LongColumnStatisticsData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The lowest value in the column.</p>
      */
-    inline long long GetMinimumValue() const{ return m_minimumValue; }
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
+    inline long long GetMinimumValue() const { return m_minimumValue; }
     inline bool MinimumValueHasBeenSet() const { return m_minimumValueHasBeenSet; }
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
     inline void SetMinimumValue(long long value) { m_minimumValueHasBeenSet = true; m_minimumValue = value; }
-
-    /**
-     * <p>The lowest value in the column.</p>
-     */
     inline LongColumnStatisticsData& WithMinimumValue(long long value) { SetMinimumValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The highest value in the column.</p>
      */
-    inline long long GetMaximumValue() const{ return m_maximumValue; }
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
+    inline long long GetMaximumValue() const { return m_maximumValue; }
     inline bool MaximumValueHasBeenSet() const { return m_maximumValueHasBeenSet; }
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
     inline void SetMaximumValue(long long value) { m_maximumValueHasBeenSet = true; m_maximumValue = value; }
-
-    /**
-     * <p>The highest value in the column.</p>
-     */
     inline LongColumnStatisticsData& WithMaximumValue(long long value) { SetMaximumValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of null values in the column.</p>
      */
-    inline long long GetNumberOfNulls() const{ return m_numberOfNulls; }
-
-    /**
-     * <p>The number of null values in the column.</p>
-     */
+    inline long long GetNumberOfNulls() const { return m_numberOfNulls; }
     inline bool NumberOfNullsHasBeenSet() const { return m_numberOfNullsHasBeenSet; }
-
-    /**
-     * <p>The number of null values in the column.</p>
-     */
     inline void SetNumberOfNulls(long long value) { m_numberOfNullsHasBeenSet = true; m_numberOfNulls = value; }
-
-    /**
-     * <p>The number of null values in the column.</p>
-     */
     inline LongColumnStatisticsData& WithNumberOfNulls(long long value) { SetNumberOfNulls(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct values in a column.</p>
      */
-    inline long long GetNumberOfDistinctValues() const{ return m_numberOfDistinctValues; }
-
-    /**
-     * <p>The number of distinct values in a column.</p>
-     */
+    inline long long GetNumberOfDistinctValues() const { return m_numberOfDistinctValues; }
     inline bool NumberOfDistinctValuesHasBeenSet() const { return m_numberOfDistinctValuesHasBeenSet; }
-
-    /**
-     * <p>The number of distinct values in a column.</p>
-     */
     inline void SetNumberOfDistinctValues(long long value) { m_numberOfDistinctValuesHasBeenSet = true; m_numberOfDistinctValues = value; }
-
-    /**
-     * <p>The number of distinct values in a column.</p>
-     */
     inline LongColumnStatisticsData& WithNumberOfDistinctValues(long long value) { SetNumberOfDistinctValues(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_minimumValue;
+    long long m_minimumValue{0};
     bool m_minimumValueHasBeenSet = false;
 
-    long long m_maximumValue;
+    long long m_maximumValue{0};
     bool m_maximumValueHasBeenSet = false;
 
-    long long m_numberOfNulls;
+    long long m_numberOfNulls{0};
     bool m_numberOfNullsHasBeenSet = false;
 
-    long long m_numberOfDistinctValues;
+    long long m_numberOfDistinctValues{0};
     bool m_numberOfDistinctValuesHasBeenSet = false;
   };
 

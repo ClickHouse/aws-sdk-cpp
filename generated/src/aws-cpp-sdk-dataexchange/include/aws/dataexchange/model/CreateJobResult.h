@@ -33,289 +33,133 @@ namespace Model
   class CreateJobResult
   {
   public:
-    AWS_DATAEXCHANGE_API CreateJobResult();
+    AWS_DATAEXCHANGE_API CreateJobResult() = default;
     AWS_DATAEXCHANGE_API CreateJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAEXCHANGE_API CreateJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN for the job.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CreateJobResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN for the job.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The ARN for the job.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN for the job.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN for the job.</p>
-     */
-    inline CreateJobResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN for the job.</p>
-     */
-    inline CreateJobResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for the job.</p>
-     */
-    inline CreateJobResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the job was created, in ISO 8601 format.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    CreateJobResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the job was created, in ISO 8601 format.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The date and time that the job was created, in ISO 8601 format.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the job was created, in ISO 8601 format.</p>
-     */
-    inline CreateJobResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the job was created, in ISO 8601 format.</p>
-     */
-    inline CreateJobResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the job.</p>
      */
-    inline const ResponseDetails& GetDetails() const{ return m_details; }
+    inline const ResponseDetails& GetDetails() const { return m_details; }
+    template<typename DetailsT = ResponseDetails>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = ResponseDetails>
+    CreateJobResult& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the job.</p>
-     */
-    inline void SetDetails(const ResponseDetails& value) { m_details = value; }
-
-    /**
-     * <p>Details about the job.</p>
-     */
-    inline void SetDetails(ResponseDetails&& value) { m_details = std::move(value); }
-
-    /**
-     * <p>Details about the job.</p>
-     */
-    inline CreateJobResult& WithDetails(const ResponseDetails& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>Details about the job.</p>
-     */
-    inline CreateJobResult& WithDetails(ResponseDetails&& value) { SetDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The errors associated with jobs.</p>
      */
-    inline const Aws::Vector<JobError>& GetErrors() const{ return m_errors; }
+    inline const Aws::Vector<JobError>& GetErrors() const { return m_errors; }
+    template<typename ErrorsT = Aws::Vector<JobError>>
+    void SetErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors = std::forward<ErrorsT>(value); }
+    template<typename ErrorsT = Aws::Vector<JobError>>
+    CreateJobResult& WithErrors(ErrorsT&& value) { SetErrors(std::forward<ErrorsT>(value)); return *this;}
+    template<typename ErrorsT = JobError>
+    CreateJobResult& AddErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors.emplace_back(std::forward<ErrorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The errors associated with jobs.</p>
-     */
-    inline void SetErrors(const Aws::Vector<JobError>& value) { m_errors = value; }
-
-    /**
-     * <p>The errors associated with jobs.</p>
-     */
-    inline void SetErrors(Aws::Vector<JobError>&& value) { m_errors = std::move(value); }
-
-    /**
-     * <p>The errors associated with jobs.</p>
-     */
-    inline CreateJobResult& WithErrors(const Aws::Vector<JobError>& value) { SetErrors(value); return *this;}
-
-    /**
-     * <p>The errors associated with jobs.</p>
-     */
-    inline CreateJobResult& WithErrors(Aws::Vector<JobError>&& value) { SetErrors(std::move(value)); return *this;}
-
-    /**
-     * <p>The errors associated with jobs.</p>
-     */
-    inline CreateJobResult& AddErrors(const JobError& value) { m_errors.push_back(value); return *this; }
-
-    /**
-     * <p>The errors associated with jobs.</p>
-     */
-    inline CreateJobResult& AddErrors(JobError&& value) { m_errors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The unique identifier for the job.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    CreateJobResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline CreateJobResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline CreateJobResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline CreateJobResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the job.</p>
      */
-    inline const State& GetState() const{ return m_state; }
+    inline State GetState() const { return m_state; }
+    inline void SetState(State value) { m_stateHasBeenSet = true; m_state = value; }
+    inline CreateJobResult& WithState(State value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the job.</p>
-     */
-    inline void SetState(const State& value) { m_state = value; }
-
-    /**
-     * <p>The state of the job.</p>
-     */
-    inline void SetState(State&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The state of the job.</p>
-     */
-    inline CreateJobResult& WithState(const State& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the job.</p>
-     */
-    inline CreateJobResult& WithState(State&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The job type.</p>
      */
-    inline const Type& GetType() const{ return m_type; }
+    inline Type GetType() const { return m_type; }
+    inline void SetType(Type value) { m_typeHasBeenSet = true; m_type = value; }
+    inline CreateJobResult& WithType(Type value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The job type.</p>
-     */
-    inline void SetType(const Type& value) { m_type = value; }
-
-    /**
-     * <p>The job type.</p>
-     */
-    inline void SetType(Type&& value) { m_type = std::move(value); }
-
-    /**
-     * <p>The job type.</p>
-     */
-    inline CreateJobResult& WithType(const Type& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The job type.</p>
-     */
-    inline CreateJobResult& WithType(Type&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the job was last updated, in ISO 8601 format.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    CreateJobResult& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the job was last updated, in ISO 8601 format.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAt = value; }
-
-    /**
-     * <p>The date and time that the job was last updated, in ISO 8601 format.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the job was last updated, in ISO 8601 format.</p>
-     */
-    inline CreateJobResult& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the job was last updated, in ISO 8601 format.</p>
-     */
-    inline CreateJobResult& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     ResponseDetails m_details;
+    bool m_detailsHasBeenSet = false;
 
     Aws::Vector<JobError> m_errors;
+    bool m_errorsHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
-    State m_state;
+    State m_state{State::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
-    Type m_type;
+    Type m_type{Type::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
+    bool m_updatedAtHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

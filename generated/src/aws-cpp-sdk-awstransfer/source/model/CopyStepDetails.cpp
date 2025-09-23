@@ -18,21 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-CopyStepDetails::CopyStepDetails() : 
-    m_nameHasBeenSet(false),
-    m_destinationFileLocationHasBeenSet(false),
-    m_overwriteExisting(OverwriteExisting::NOT_SET),
-    m_overwriteExistingHasBeenSet(false),
-    m_sourceFileLocationHasBeenSet(false)
-{
-}
-
-CopyStepDetails::CopyStepDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_destinationFileLocationHasBeenSet(false),
-    m_overwriteExisting(OverwriteExisting::NOT_SET),
-    m_overwriteExistingHasBeenSet(false),
-    m_sourceFileLocationHasBeenSet(false)
+CopyStepDetails::CopyStepDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ CopyStepDetails& CopyStepDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DestinationFileLocation"))
   {
     m_destinationFileLocation = jsonValue.GetObject("DestinationFileLocation");
-
     m_destinationFileLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OverwriteExisting"))
   {
     m_overwriteExisting = OverwriteExistingMapper::GetOverwriteExistingForName(jsonValue.GetString("OverwriteExisting"));
-
     m_overwriteExistingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceFileLocation"))
   {
     m_sourceFileLocation = jsonValue.GetString("SourceFileLocation");
-
     m_sourceFileLocationHasBeenSet = true;
   }
-
   return *this;
 }
 

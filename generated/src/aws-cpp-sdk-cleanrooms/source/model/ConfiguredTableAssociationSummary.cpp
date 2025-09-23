@@ -18,27 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-ConfiguredTableAssociationSummary::ConfiguredTableAssociationSummary() : 
-    m_configuredTableIdHasBeenSet(false),
-    m_membershipIdHasBeenSet(false),
-    m_membershipArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false)
-{
-}
-
-ConfiguredTableAssociationSummary::ConfiguredTableAssociationSummary(JsonView jsonValue) : 
-    m_configuredTableIdHasBeenSet(false),
-    m_membershipIdHasBeenSet(false),
-    m_membershipArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false)
+ConfiguredTableAssociationSummary::ConfiguredTableAssociationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,59 +28,52 @@ ConfiguredTableAssociationSummary& ConfiguredTableAssociationSummary::operator =
   if(jsonValue.ValueExists("configuredTableId"))
   {
     m_configuredTableId = jsonValue.GetString("configuredTableId");
-
     m_configuredTableIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("membershipId"))
   {
     m_membershipId = jsonValue.GetString("membershipId");
-
     m_membershipIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("membershipArn"))
   {
     m_membershipArn = jsonValue.GetString("membershipArn");
-
     m_membershipArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetDouble("createTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updateTime"))
   {
     m_updateTime = jsonValue.GetDouble("updateTime");
-
     m_updateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("analysisRuleTypes"))
+  {
+    Aws::Utils::Array<JsonView> analysisRuleTypesJsonList = jsonValue.GetArray("analysisRuleTypes");
+    for(unsigned analysisRuleTypesIndex = 0; analysisRuleTypesIndex < analysisRuleTypesJsonList.GetLength(); ++analysisRuleTypesIndex)
+    {
+      m_analysisRuleTypes.push_back(ConfiguredTableAssociationAnalysisRuleTypeMapper::GetConfiguredTableAssociationAnalysisRuleTypeForName(analysisRuleTypesJsonList[analysisRuleTypesIndex].AsString()));
+    }
+    m_analysisRuleTypesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -151,6 +124,17 @@ JsonValue ConfiguredTableAssociationSummary::Jsonize() const
   if(m_arnHasBeenSet)
   {
    payload.WithString("arn", m_arn);
+
+  }
+
+  if(m_analysisRuleTypesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> analysisRuleTypesJsonList(m_analysisRuleTypes.size());
+   for(unsigned analysisRuleTypesIndex = 0; analysisRuleTypesIndex < analysisRuleTypesJsonList.GetLength(); ++analysisRuleTypesIndex)
+   {
+     analysisRuleTypesJsonList[analysisRuleTypesIndex].AsString(ConfiguredTableAssociationAnalysisRuleTypeMapper::GetNameForConfiguredTableAssociationAnalysisRuleType(m_analysisRuleTypes[analysisRuleTypesIndex]));
+   }
+   payload.WithArray("analysisRuleTypes", std::move(analysisRuleTypesJsonList));
 
   }
 

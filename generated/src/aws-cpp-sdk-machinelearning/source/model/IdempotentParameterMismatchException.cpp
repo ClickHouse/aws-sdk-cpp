@@ -18,17 +18,7 @@ namespace MachineLearning
 namespace Model
 {
 
-IdempotentParameterMismatchException::IdempotentParameterMismatchException() : 
-    m_messageHasBeenSet(false),
-    m_code(0),
-    m_codeHasBeenSet(false)
-{
-}
-
-IdempotentParameterMismatchException::IdempotentParameterMismatchException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_code(0),
-    m_codeHasBeenSet(false)
+IdempotentParameterMismatchException::IdempotentParameterMismatchException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ IdempotentParameterMismatchException& IdempotentParameterMismatchException::oper
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetInteger("code");
-
     m_codeHasBeenSet = true;
   }
-
   return *this;
 }
 

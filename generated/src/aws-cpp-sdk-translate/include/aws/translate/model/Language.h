@@ -31,93 +31,35 @@ namespace Model
   class Language
   {
   public:
-    AWS_TRANSLATE_API Language();
+    AWS_TRANSLATE_API Language() = default;
     AWS_TRANSLATE_API Language(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Language& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Language name of the supported language.</p>
      */
-    inline const Aws::String& GetLanguageName() const{ return m_languageName; }
-
-    /**
-     * <p>Language name of the supported language.</p>
-     */
+    inline const Aws::String& GetLanguageName() const { return m_languageName; }
     inline bool LanguageNameHasBeenSet() const { return m_languageNameHasBeenSet; }
+    template<typename LanguageNameT = Aws::String>
+    void SetLanguageName(LanguageNameT&& value) { m_languageNameHasBeenSet = true; m_languageName = std::forward<LanguageNameT>(value); }
+    template<typename LanguageNameT = Aws::String>
+    Language& WithLanguageName(LanguageNameT&& value) { SetLanguageName(std::forward<LanguageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Language name of the supported language.</p>
-     */
-    inline void SetLanguageName(const Aws::String& value) { m_languageNameHasBeenSet = true; m_languageName = value; }
-
-    /**
-     * <p>Language name of the supported language.</p>
-     */
-    inline void SetLanguageName(Aws::String&& value) { m_languageNameHasBeenSet = true; m_languageName = std::move(value); }
-
-    /**
-     * <p>Language name of the supported language.</p>
-     */
-    inline void SetLanguageName(const char* value) { m_languageNameHasBeenSet = true; m_languageName.assign(value); }
-
-    /**
-     * <p>Language name of the supported language.</p>
-     */
-    inline Language& WithLanguageName(const Aws::String& value) { SetLanguageName(value); return *this;}
-
-    /**
-     * <p>Language name of the supported language.</p>
-     */
-    inline Language& WithLanguageName(Aws::String&& value) { SetLanguageName(std::move(value)); return *this;}
-
-    /**
-     * <p>Language name of the supported language.</p>
-     */
-    inline Language& WithLanguageName(const char* value) { SetLanguageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Language code for the supported language.</p>
      */
-    inline const Aws::String& GetLanguageCode() const{ return m_languageCode; }
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
+    inline const Aws::String& GetLanguageCode() const { return m_languageCode; }
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
-    inline void SetLanguageCode(const Aws::String& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
-    inline void SetLanguageCode(Aws::String&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
-    inline void SetLanguageCode(const char* value) { m_languageCodeHasBeenSet = true; m_languageCode.assign(value); }
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
-    inline Language& WithLanguageCode(const Aws::String& value) { SetLanguageCode(value); return *this;}
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
-    inline Language& WithLanguageCode(Aws::String&& value) { SetLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * <p>Language code for the supported language.</p>
-     */
-    inline Language& WithLanguageCode(const char* value) { SetLanguageCode(value); return *this;}
-
+    template<typename LanguageCodeT = Aws::String>
+    void SetLanguageCode(LanguageCodeT&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::forward<LanguageCodeT>(value); }
+    template<typename LanguageCodeT = Aws::String>
+    Language& WithLanguageCode(LanguageCodeT&& value) { SetLanguageCode(std::forward<LanguageCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_languageName;

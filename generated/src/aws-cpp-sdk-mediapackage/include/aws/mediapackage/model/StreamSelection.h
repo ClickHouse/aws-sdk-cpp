@@ -31,93 +31,50 @@ namespace Model
   class StreamSelection
   {
   public:
-    AWS_MEDIAPACKAGE_API StreamSelection();
+    AWS_MEDIAPACKAGE_API StreamSelection() = default;
     AWS_MEDIAPACKAGE_API StreamSelection(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API StreamSelection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The maximum video bitrate (bps) to include in output.
      */
-    inline int GetMaxVideoBitsPerSecond() const{ return m_maxVideoBitsPerSecond; }
-
-    /**
-     * The maximum video bitrate (bps) to include in output.
-     */
+    inline int GetMaxVideoBitsPerSecond() const { return m_maxVideoBitsPerSecond; }
     inline bool MaxVideoBitsPerSecondHasBeenSet() const { return m_maxVideoBitsPerSecondHasBeenSet; }
-
-    /**
-     * The maximum video bitrate (bps) to include in output.
-     */
     inline void SetMaxVideoBitsPerSecond(int value) { m_maxVideoBitsPerSecondHasBeenSet = true; m_maxVideoBitsPerSecond = value; }
-
-    /**
-     * The maximum video bitrate (bps) to include in output.
-     */
     inline StreamSelection& WithMaxVideoBitsPerSecond(int value) { SetMaxVideoBitsPerSecond(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The minimum video bitrate (bps) to include in output.
      */
-    inline int GetMinVideoBitsPerSecond() const{ return m_minVideoBitsPerSecond; }
-
-    /**
-     * The minimum video bitrate (bps) to include in output.
-     */
+    inline int GetMinVideoBitsPerSecond() const { return m_minVideoBitsPerSecond; }
     inline bool MinVideoBitsPerSecondHasBeenSet() const { return m_minVideoBitsPerSecondHasBeenSet; }
-
-    /**
-     * The minimum video bitrate (bps) to include in output.
-     */
     inline void SetMinVideoBitsPerSecond(int value) { m_minVideoBitsPerSecondHasBeenSet = true; m_minVideoBitsPerSecond = value; }
-
-    /**
-     * The minimum video bitrate (bps) to include in output.
-     */
     inline StreamSelection& WithMinVideoBitsPerSecond(int value) { SetMinVideoBitsPerSecond(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * A directive that determines the order of streams in the output.
      */
-    inline const StreamOrder& GetStreamOrder() const{ return m_streamOrder; }
-
-    /**
-     * A directive that determines the order of streams in the output.
-     */
+    inline StreamOrder GetStreamOrder() const { return m_streamOrder; }
     inline bool StreamOrderHasBeenSet() const { return m_streamOrderHasBeenSet; }
-
-    /**
-     * A directive that determines the order of streams in the output.
-     */
-    inline void SetStreamOrder(const StreamOrder& value) { m_streamOrderHasBeenSet = true; m_streamOrder = value; }
-
-    /**
-     * A directive that determines the order of streams in the output.
-     */
-    inline void SetStreamOrder(StreamOrder&& value) { m_streamOrderHasBeenSet = true; m_streamOrder = std::move(value); }
-
-    /**
-     * A directive that determines the order of streams in the output.
-     */
-    inline StreamSelection& WithStreamOrder(const StreamOrder& value) { SetStreamOrder(value); return *this;}
-
-    /**
-     * A directive that determines the order of streams in the output.
-     */
-    inline StreamSelection& WithStreamOrder(StreamOrder&& value) { SetStreamOrder(std::move(value)); return *this;}
-
+    inline void SetStreamOrder(StreamOrder value) { m_streamOrderHasBeenSet = true; m_streamOrder = value; }
+    inline StreamSelection& WithStreamOrder(StreamOrder value) { SetStreamOrder(value); return *this;}
+    ///@}
   private:
 
-    int m_maxVideoBitsPerSecond;
+    int m_maxVideoBitsPerSecond{0};
     bool m_maxVideoBitsPerSecondHasBeenSet = false;
 
-    int m_minVideoBitsPerSecond;
+    int m_minVideoBitsPerSecond{0};
     bool m_minVideoBitsPerSecondHasBeenSet = false;
 
-    StreamOrder m_streamOrder;
+    StreamOrder m_streamOrder{StreamOrder::NOT_SET};
     bool m_streamOrderHasBeenSet = false;
   };
 

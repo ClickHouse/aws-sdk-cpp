@@ -25,114 +25,46 @@ namespace Model
 {
 
   /**
-   * <p> One or more actions to update finding fields if a finding matches the
-   * defined criteria of the rule. </p><p><h3>See Also:</h3>   <a
+   * <p> One or more actions that Security Hub takes when a finding matches the
+   * defined criteria of a rule. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/AutomationRulesAction">AWS
    * API Reference</a></p>
    */
   class AutomationRulesAction
   {
   public:
-    AWS_SECURITYHUB_API AutomationRulesAction();
+    AWS_SECURITYHUB_API AutomationRulesAction() = default;
     AWS_SECURITYHUB_API AutomationRulesAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AutomationRulesAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> Specifies that the rule action should update the <code>Types</code> finding
-     * field. The <code>Types</code> finding field classifies findings in the format of
-     * namespace/category/classifier. For more information, see <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format-type-taxonomy.html">Types
-     * taxonomy for ASFF</a> in the <i>Security Hub User Guide</i>. </p>
+     * <p> Specifies the type of action that Security Hub takes when a finding matches
+     * the defined criteria of a rule. </p>
      */
-    inline const AutomationRulesActionType& GetType() const{ return m_type; }
-
-    /**
-     * <p> Specifies that the rule action should update the <code>Types</code> finding
-     * field. The <code>Types</code> finding field classifies findings in the format of
-     * namespace/category/classifier. For more information, see <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format-type-taxonomy.html">Types
-     * taxonomy for ASFF</a> in the <i>Security Hub User Guide</i>. </p>
-     */
+    inline AutomationRulesActionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(AutomationRulesActionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline AutomationRulesAction& WithType(AutomationRulesActionType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies that the rule action should update the <code>Types</code> finding
-     * field. The <code>Types</code> finding field classifies findings in the format of
-     * namespace/category/classifier. For more information, see <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format-type-taxonomy.html">Types
-     * taxonomy for ASFF</a> in the <i>Security Hub User Guide</i>. </p>
-     */
-    inline void SetType(const AutomationRulesActionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p> Specifies that the rule action should update the <code>Types</code> finding
-     * field. The <code>Types</code> finding field classifies findings in the format of
-     * namespace/category/classifier. For more information, see <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format-type-taxonomy.html">Types
-     * taxonomy for ASFF</a> in the <i>Security Hub User Guide</i>. </p>
-     */
-    inline void SetType(AutomationRulesActionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p> Specifies that the rule action should update the <code>Types</code> finding
-     * field. The <code>Types</code> finding field classifies findings in the format of
-     * namespace/category/classifier. For more information, see <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format-type-taxonomy.html">Types
-     * taxonomy for ASFF</a> in the <i>Security Hub User Guide</i>. </p>
-     */
-    inline AutomationRulesAction& WithType(const AutomationRulesActionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p> Specifies that the rule action should update the <code>Types</code> finding
-     * field. The <code>Types</code> finding field classifies findings in the format of
-     * namespace/category/classifier. For more information, see <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format-type-taxonomy.html">Types
-     * taxonomy for ASFF</a> in the <i>Security Hub User Guide</i>. </p>
-     */
-    inline AutomationRulesAction& WithType(AutomationRulesActionType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies that the automation rule action is an update to a finding field.
      * </p>
      */
-    inline const AutomationRulesFindingFieldsUpdate& GetFindingFieldsUpdate() const{ return m_findingFieldsUpdate; }
-
-    /**
-     * <p> Specifies that the automation rule action is an update to a finding field.
-     * </p>
-     */
+    inline const AutomationRulesFindingFieldsUpdate& GetFindingFieldsUpdate() const { return m_findingFieldsUpdate; }
     inline bool FindingFieldsUpdateHasBeenSet() const { return m_findingFieldsUpdateHasBeenSet; }
-
-    /**
-     * <p> Specifies that the automation rule action is an update to a finding field.
-     * </p>
-     */
-    inline void SetFindingFieldsUpdate(const AutomationRulesFindingFieldsUpdate& value) { m_findingFieldsUpdateHasBeenSet = true; m_findingFieldsUpdate = value; }
-
-    /**
-     * <p> Specifies that the automation rule action is an update to a finding field.
-     * </p>
-     */
-    inline void SetFindingFieldsUpdate(AutomationRulesFindingFieldsUpdate&& value) { m_findingFieldsUpdateHasBeenSet = true; m_findingFieldsUpdate = std::move(value); }
-
-    /**
-     * <p> Specifies that the automation rule action is an update to a finding field.
-     * </p>
-     */
-    inline AutomationRulesAction& WithFindingFieldsUpdate(const AutomationRulesFindingFieldsUpdate& value) { SetFindingFieldsUpdate(value); return *this;}
-
-    /**
-     * <p> Specifies that the automation rule action is an update to a finding field.
-     * </p>
-     */
-    inline AutomationRulesAction& WithFindingFieldsUpdate(AutomationRulesFindingFieldsUpdate&& value) { SetFindingFieldsUpdate(std::move(value)); return *this;}
-
+    template<typename FindingFieldsUpdateT = AutomationRulesFindingFieldsUpdate>
+    void SetFindingFieldsUpdate(FindingFieldsUpdateT&& value) { m_findingFieldsUpdateHasBeenSet = true; m_findingFieldsUpdate = std::forward<FindingFieldsUpdateT>(value); }
+    template<typename FindingFieldsUpdateT = AutomationRulesFindingFieldsUpdate>
+    AutomationRulesAction& WithFindingFieldsUpdate(FindingFieldsUpdateT&& value) { SetFindingFieldsUpdate(std::forward<FindingFieldsUpdateT>(value)); return *this;}
+    ///@}
   private:
 
-    AutomationRulesActionType m_type;
+    AutomationRulesActionType m_type{AutomationRulesActionType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     AutomationRulesFindingFieldsUpdate m_findingFieldsUpdate;

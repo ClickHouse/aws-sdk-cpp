@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SankeyDiagramVisual::SankeyDiagramVisual() : 
-    m_visualIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_subtitleHasBeenSet(false),
-    m_chartConfigurationHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-SankeyDiagramVisual::SankeyDiagramVisual(JsonView jsonValue) : 
-    m_visualIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_subtitleHasBeenSet(false),
-    m_chartConfigurationHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+SankeyDiagramVisual::SankeyDiagramVisual(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ SankeyDiagramVisual& SankeyDiagramVisual::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VisualId"))
   {
     m_visualId = jsonValue.GetString("VisualId");
-
     m_visualIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Title"))
   {
     m_title = jsonValue.GetObject("Title");
-
     m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subtitle"))
   {
     m_subtitle = jsonValue.GetObject("Subtitle");
-
     m_subtitleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChartConfiguration"))
   {
     m_chartConfiguration = jsonValue.GetObject("ChartConfiguration");
-
     m_chartConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("Actions");
@@ -76,7 +54,11 @@ SankeyDiagramVisual& SankeyDiagramVisual::operator =(JsonView jsonValue)
     }
     m_actionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("VisualContentAltText"))
+  {
+    m_visualContentAltText = jsonValue.GetString("VisualContentAltText");
+    m_visualContentAltTextHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -116,6 +98,12 @@ JsonValue SankeyDiagramVisual::Jsonize() const
      actionsJsonList[actionsIndex].AsObject(m_actions[actionsIndex].Jsonize());
    }
    payload.WithArray("Actions", std::move(actionsJsonList));
+
+  }
+
+  if(m_visualContentAltTextHasBeenSet)
+  {
+   payload.WithString("VisualContentAltText", m_visualContentAltText);
 
   }
 

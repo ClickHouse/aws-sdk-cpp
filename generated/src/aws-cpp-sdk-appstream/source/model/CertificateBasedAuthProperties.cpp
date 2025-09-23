@@ -18,17 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-CertificateBasedAuthProperties::CertificateBasedAuthProperties() : 
-    m_status(CertificateBasedAuthStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_certificateAuthorityArnHasBeenSet(false)
-{
-}
-
-CertificateBasedAuthProperties::CertificateBasedAuthProperties(JsonView jsonValue) : 
-    m_status(CertificateBasedAuthStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_certificateAuthorityArnHasBeenSet(false)
+CertificateBasedAuthProperties::CertificateBasedAuthProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CertificateBasedAuthProperties& CertificateBasedAuthProperties::operator =(JsonV
   if(jsonValue.ValueExists("Status"))
   {
     m_status = CertificateBasedAuthStatusMapper::GetCertificateBasedAuthStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CertificateAuthorityArn"))
   {
     m_certificateAuthorityArn = jsonValue.GetString("CertificateAuthorityArn");
-
     m_certificateAuthorityArnHasBeenSet = true;
   }
-
   return *this;
 }
 

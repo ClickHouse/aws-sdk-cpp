@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-OriginRequestPolicyHeadersConfig::OriginRequestPolicyHeadersConfig() : 
-    m_headerBehavior(OriginRequestPolicyHeaderBehavior::NOT_SET),
-    m_headerBehaviorHasBeenSet(false),
-    m_headersHasBeenSet(false)
-{
-}
-
-OriginRequestPolicyHeadersConfig::OriginRequestPolicyHeadersConfig(const XmlNode& xmlNode) : 
-    m_headerBehavior(OriginRequestPolicyHeaderBehavior::NOT_SET),
-    m_headerBehaviorHasBeenSet(false),
-    m_headersHasBeenSet(false)
+OriginRequestPolicyHeadersConfig::OriginRequestPolicyHeadersConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ OriginRequestPolicyHeadersConfig& OriginRequestPolicyHeadersConfig::operator =(c
     XmlNode headerBehaviorNode = resultNode.FirstChild("HeaderBehavior");
     if(!headerBehaviorNode.IsNull())
     {
-      m_headerBehavior = OriginRequestPolicyHeaderBehaviorMapper::GetOriginRequestPolicyHeaderBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(headerBehaviorNode.GetText()).c_str()).c_str());
+      m_headerBehavior = OriginRequestPolicyHeaderBehaviorMapper::GetOriginRequestPolicyHeaderBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(headerBehaviorNode.GetText()).c_str()));
       m_headerBehaviorHasBeenSet = true;
     }
     XmlNode headersNode = resultNode.FirstChild("Headers");

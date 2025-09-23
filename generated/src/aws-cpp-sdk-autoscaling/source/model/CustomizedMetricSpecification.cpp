@@ -20,25 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-CustomizedMetricSpecification::CustomizedMetricSpecification() : 
-    m_metricNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_statistic(MetricStatistic::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_unitHasBeenSet(false),
-    m_metricsHasBeenSet(false)
-{
-}
-
-CustomizedMetricSpecification::CustomizedMetricSpecification(const XmlNode& xmlNode) : 
-    m_metricNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_statistic(MetricStatistic::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_unitHasBeenSet(false),
-    m_metricsHasBeenSet(false)
+CustomizedMetricSpecification::CustomizedMetricSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +47,7 @@ CustomizedMetricSpecification& CustomizedMetricSpecification::operator =(const X
     if(!dimensionsNode.IsNull())
     {
       XmlNode dimensionsMember = dimensionsNode.FirstChild("member");
+      m_dimensionsHasBeenSet = !dimensionsMember.IsNull();
       while(!dimensionsMember.IsNull())
       {
         m_dimensions.push_back(dimensionsMember);
@@ -76,7 +59,7 @@ CustomizedMetricSpecification& CustomizedMetricSpecification::operator =(const X
     XmlNode statisticNode = resultNode.FirstChild("Statistic");
     if(!statisticNode.IsNull())
     {
-      m_statistic = MetricStatisticMapper::GetMetricStatisticForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statisticNode.GetText()).c_str()).c_str());
+      m_statistic = MetricStatisticMapper::GetMetricStatisticForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statisticNode.GetText()).c_str()));
       m_statisticHasBeenSet = true;
     }
     XmlNode unitNode = resultNode.FirstChild("Unit");
@@ -85,10 +68,17 @@ CustomizedMetricSpecification& CustomizedMetricSpecification::operator =(const X
       m_unit = Aws::Utils::Xml::DecodeEscapedXmlText(unitNode.GetText());
       m_unitHasBeenSet = true;
     }
+    XmlNode periodNode = resultNode.FirstChild("Period");
+    if(!periodNode.IsNull())
+    {
+      m_period = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(periodNode.GetText()).c_str()).c_str());
+      m_periodHasBeenSet = true;
+    }
     XmlNode metricsNode = resultNode.FirstChild("Metrics");
     if(!metricsNode.IsNull())
     {
       XmlNode metricsMember = metricsNode.FirstChild("member");
+      m_metricsHasBeenSet = !metricsMember.IsNull();
       while(!metricsMember.IsNull())
       {
         m_metrics.push_back(metricsMember);
@@ -127,12 +117,17 @@ void CustomizedMetricSpecification::OutputToStream(Aws::OStream& oStream, const 
 
   if(m_statisticHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Statistic=" << MetricStatisticMapper::GetNameForMetricStatistic(m_statistic) << "&";
+      oStream << location << index << locationValue << ".Statistic=" << StringUtils::URLEncode(MetricStatisticMapper::GetNameForMetricStatistic(m_statistic)) << "&";
   }
 
   if(m_unitHasBeenSet)
   {
       oStream << location << index << locationValue << ".Unit=" << StringUtils::URLEncode(m_unit.c_str()) << "&";
+  }
+
+  if(m_periodHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Period=" << m_period << "&";
   }
 
   if(m_metricsHasBeenSet)
@@ -164,17 +159,21 @@ void CustomizedMetricSpecification::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_dimensions)
       {
         Aws::StringStream dimensionsSs;
-        dimensionsSs << location <<  ".Dimensions.member." << dimensionsIdx++;
+        dimensionsSs << location << ".Dimensions.member." << dimensionsIdx++;
         item.OutputToStream(oStream, dimensionsSs.str().c_str());
       }
   }
   if(m_statisticHasBeenSet)
   {
-      oStream << location << ".Statistic=" << MetricStatisticMapper::GetNameForMetricStatistic(m_statistic) << "&";
+      oStream << location << ".Statistic=" << StringUtils::URLEncode(MetricStatisticMapper::GetNameForMetricStatistic(m_statistic)) << "&";
   }
   if(m_unitHasBeenSet)
   {
       oStream << location << ".Unit=" << StringUtils::URLEncode(m_unit.c_str()) << "&";
+  }
+  if(m_periodHasBeenSet)
+  {
+      oStream << location << ".Period=" << m_period << "&";
   }
   if(m_metricsHasBeenSet)
   {
@@ -182,7 +181,7 @@ void CustomizedMetricSpecification::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_metrics)
       {
         Aws::StringStream metricsSs;
-        metricsSs << location <<  ".Metrics.member." << metricsIdx++;
+        metricsSs << location << ".Metrics.member." << metricsIdx++;
         item.OutputToStream(oStream, metricsSs.str().c_str());
       }
   }

@@ -18,15 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-VisualReferenceInput::VisualReferenceInput() : 
-    m_baseScreenshotsHasBeenSet(false),
-    m_baseCanaryRunIdHasBeenSet(false)
-{
-}
-
-VisualReferenceInput::VisualReferenceInput(JsonView jsonValue) : 
-    m_baseScreenshotsHasBeenSet(false),
-    m_baseCanaryRunIdHasBeenSet(false)
+VisualReferenceInput::VisualReferenceInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,16 @@ VisualReferenceInput& VisualReferenceInput::operator =(JsonView jsonValue)
     }
     m_baseScreenshotsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BaseCanaryRunId"))
   {
     m_baseCanaryRunId = jsonValue.GetString("BaseCanaryRunId");
-
     m_baseCanaryRunIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("BrowserType"))
+  {
+    m_browserType = BrowserTypeMapper::GetBrowserTypeForName(jsonValue.GetString("BrowserType"));
+    m_browserTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,6 +66,11 @@ JsonValue VisualReferenceInput::Jsonize() const
   {
    payload.WithString("BaseCanaryRunId", m_baseCanaryRunId);
 
+  }
+
+  if(m_browserTypeHasBeenSet)
+  {
+   payload.WithString("BrowserType", BrowserTypeMapper::GetNameForBrowserType(m_browserType));
   }
 
   return payload;

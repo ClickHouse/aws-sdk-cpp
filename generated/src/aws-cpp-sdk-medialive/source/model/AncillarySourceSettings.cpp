@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-AncillarySourceSettings::AncillarySourceSettings() : 
-    m_sourceAncillaryChannelNumber(0),
-    m_sourceAncillaryChannelNumberHasBeenSet(false)
-{
-}
-
-AncillarySourceSettings::AncillarySourceSettings(JsonView jsonValue) : 
-    m_sourceAncillaryChannelNumber(0),
-    m_sourceAncillaryChannelNumberHasBeenSet(false)
+AncillarySourceSettings::AncillarySourceSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AncillarySourceSettings& AncillarySourceSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sourceAncillaryChannelNumber"))
   {
     m_sourceAncillaryChannelNumber = jsonValue.GetInteger("sourceAncillaryChannelNumber");
-
     m_sourceAncillaryChannelNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

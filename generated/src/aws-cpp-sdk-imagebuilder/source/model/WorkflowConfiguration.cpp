@@ -18,21 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-WorkflowConfiguration::WorkflowConfiguration() : 
-    m_workflowArnHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_parallelGroupHasBeenSet(false),
-    m_onFailure(OnWorkflowFailure::NOT_SET),
-    m_onFailureHasBeenSet(false)
-{
-}
-
-WorkflowConfiguration::WorkflowConfiguration(JsonView jsonValue) : 
-    m_workflowArnHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_parallelGroupHasBeenSet(false),
-    m_onFailure(OnWorkflowFailure::NOT_SET),
-    m_onFailureHasBeenSet(false)
+WorkflowConfiguration::WorkflowConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ WorkflowConfiguration& WorkflowConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("workflowArn"))
   {
     m_workflowArn = jsonValue.GetString("workflowArn");
-
     m_workflowArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parameters"))
   {
     Aws::Utils::Array<JsonView> parametersJsonList = jsonValue.GetArray("parameters");
@@ -55,21 +39,16 @@ WorkflowConfiguration& WorkflowConfiguration::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parallelGroup"))
   {
     m_parallelGroup = jsonValue.GetString("parallelGroup");
-
     m_parallelGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("onFailure"))
   {
     m_onFailure = OnWorkflowFailureMapper::GetOnWorkflowFailureForName(jsonValue.GetString("onFailure"));
-
     m_onFailureHasBeenSet = true;
   }
-
   return *this;
 }
 

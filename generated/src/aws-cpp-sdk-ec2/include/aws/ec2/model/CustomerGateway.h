@@ -33,7 +33,7 @@ namespace Model
   class CustomerGateway
   {
   public:
-    AWS_EC2_API CustomerGateway();
+    AWS_EC2_API CustomerGateway() = default;
     AWS_EC2_API CustomerGateway(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API CustomerGateway& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,370 +41,143 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline const Aws::String& GetBgpAsn() const{ return m_bgpAsn; }
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline bool BgpAsnHasBeenSet() const { return m_bgpAsnHasBeenSet; }
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline void SetBgpAsn(const Aws::String& value) { m_bgpAsnHasBeenSet = true; m_bgpAsn = value; }
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline void SetBgpAsn(Aws::String&& value) { m_bgpAsnHasBeenSet = true; m_bgpAsn = std::move(value); }
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline void SetBgpAsn(const char* value) { m_bgpAsnHasBeenSet = true; m_bgpAsn.assign(value); }
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline CustomerGateway& WithBgpAsn(const Aws::String& value) { SetBgpAsn(value); return *this;}
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline CustomerGateway& WithBgpAsn(Aws::String&& value) { SetBgpAsn(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number
-     * (ASN).</p>
-     */
-    inline CustomerGateway& WithBgpAsn(const char* value) { SetBgpAsn(value); return *this;}
-
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline const Aws::String& GetCustomerGatewayId() const{ return m_customerGatewayId; }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline bool CustomerGatewayIdHasBeenSet() const { return m_customerGatewayIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline void SetCustomerGatewayId(const Aws::String& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = value; }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline void SetCustomerGatewayId(Aws::String&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline void SetCustomerGatewayId(const char* value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline CustomerGateway& WithCustomerGatewayId(const Aws::String& value) { SetCustomerGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline CustomerGateway& WithCustomerGatewayId(Aws::String&& value) { SetCustomerGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the customer gateway.</p>
-     */
-    inline CustomerGateway& WithCustomerGatewayId(const char* value) { SetCustomerGatewayId(value); return *this;}
-
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline void SetIpAddress(const Aws::String& value) { m_ipAddressHasBeenSet = true; m_ipAddress = value; }
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline void SetIpAddress(Aws::String&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::move(value); }
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline void SetIpAddress(const char* value) { m_ipAddressHasBeenSet = true; m_ipAddress.assign(value); }
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline CustomerGateway& WithIpAddress(const Aws::String& value) { SetIpAddress(value); return *this;}
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline CustomerGateway& WithIpAddress(Aws::String&& value) { SetIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address of the customer gateway device's outside interface.</p>
-     */
-    inline CustomerGateway& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
      */
-    inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
+    inline const Aws::String& GetCertificateArn() const { return m_certificateArn; }
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
+    template<typename CertificateArnT = Aws::String>
+    void SetCertificateArn(CertificateArnT&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::forward<CertificateArnT>(value); }
+    template<typename CertificateArnT = Aws::String>
+    CustomerGateway& WithCertificateArn(CertificateArnT&& value) { SetCertificateArn(std::forward<CertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
-    inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
-    inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
-    inline CustomerGateway& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
-    inline CustomerGateway& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the customer gateway certificate.</p>
-     */
-    inline CustomerGateway& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
-
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline const Aws::String& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline void SetState(const Aws::String& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline void SetState(const char* value) { m_stateHasBeenSet = true; m_state.assign(value); }
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline CustomerGateway& WithState(const Aws::String& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline CustomerGateway& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
-
-    /**
-     * <p>The current state of the customer gateway (<code>pending | available |
-     * deleting | deleted</code>).</p>
-     */
-    inline CustomerGateway& WithState(const char* value) { SetState(value); return *this;}
-
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline CustomerGateway& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline CustomerGateway& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of VPN connection the customer gateway supports
-     * (<code>ipsec.1</code>).</p>
-     */
-    inline CustomerGateway& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of customer gateway device.</p>
      */
-    inline const Aws::String& GetDeviceName() const{ return m_deviceName; }
-
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
+    inline const Aws::String& GetDeviceName() const { return m_deviceName; }
     inline bool DeviceNameHasBeenSet() const { return m_deviceNameHasBeenSet; }
+    template<typename DeviceNameT = Aws::String>
+    void SetDeviceName(DeviceNameT&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::forward<DeviceNameT>(value); }
+    template<typename DeviceNameT = Aws::String>
+    CustomerGateway& WithDeviceName(DeviceNameT&& value) { SetDeviceName(std::forward<DeviceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
-    inline void SetDeviceName(const Aws::String& value) { m_deviceNameHasBeenSet = true; m_deviceName = value; }
-
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
-    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::move(value); }
-
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
-    inline void SetDeviceName(const char* value) { m_deviceNameHasBeenSet = true; m_deviceName.assign(value); }
-
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
-    inline CustomerGateway& WithDeviceName(const Aws::String& value) { SetDeviceName(value); return *this;}
-
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
-    inline CustomerGateway& WithDeviceName(Aws::String&& value) { SetDeviceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of customer gateway device.</p>
-     */
-    inline CustomerGateway& WithDeviceName(const char* value) { SetDeviceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Any tags assigned to the customer gateway.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags assigned to the customer gateway.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CustomerGateway& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CustomerGateway& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Any tags assigned to the customer gateway.</p>
+     * <p>The customer gateway device's Border Gateway Protocol (BGP) Autonomous System
+     * Number (ASN).</p> <p>Valid values: <code>2,147,483,648</code> to
+     * <code>4,294,967,295</code> </p>
      */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline const Aws::String& GetBgpAsnExtended() const { return m_bgpAsnExtended; }
+    inline bool BgpAsnExtendedHasBeenSet() const { return m_bgpAsnExtendedHasBeenSet; }
+    template<typename BgpAsnExtendedT = Aws::String>
+    void SetBgpAsnExtended(BgpAsnExtendedT&& value) { m_bgpAsnExtendedHasBeenSet = true; m_bgpAsnExtended = std::forward<BgpAsnExtendedT>(value); }
+    template<typename BgpAsnExtendedT = Aws::String>
+    CustomerGateway& WithBgpAsnExtended(BgpAsnExtendedT&& value) { SetBgpAsnExtended(std::forward<BgpAsnExtendedT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Any tags assigned to the customer gateway.</p>
+     * <p>The ID of the customer gateway.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
+    inline const Aws::String& GetCustomerGatewayId() const { return m_customerGatewayId; }
+    inline bool CustomerGatewayIdHasBeenSet() const { return m_customerGatewayIdHasBeenSet; }
+    template<typename CustomerGatewayIdT = Aws::String>
+    void SetCustomerGatewayId(CustomerGatewayIdT&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = std::forward<CustomerGatewayIdT>(value); }
+    template<typename CustomerGatewayIdT = Aws::String>
+    CustomerGateway& WithCustomerGatewayId(CustomerGatewayIdT&& value) { SetCustomerGatewayId(std::forward<CustomerGatewayIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Any tags assigned to the customer gateway.</p>
+     * <p>The current state of the customer gateway (<code>pending | available |
+     * deleting | deleted</code>).</p>
      */
-    inline CustomerGateway& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+    inline const Aws::String& GetState() const { return m_state; }
+    inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    template<typename StateT = Aws::String>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = Aws::String>
+    CustomerGateway& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Any tags assigned to the customer gateway.</p>
+     * <p>The type of VPN connection the customer gateway supports
+     * (<code>ipsec.1</code>).</p>
      */
-    inline CustomerGateway& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
+    inline const Aws::String& GetType() const { return m_type; }
+    inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    CustomerGateway& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Any tags assigned to the customer gateway.</p>
+     * <p> The IP address for the customer gateway device's outside interface. The
+     * address must be static. If <code>OutsideIpAddressType</code> in your VPN
+     * connection options is set to <code>PrivateIpv4</code>, you can use an RFC6598 or
+     * RFC1918 private IPv4 address. If <code>OutsideIpAddressType</code> is set to
+     * <code>PublicIpv4</code>, you can use a public IPv4 address. If
+     * <code>OutsideIpAddressType</code> is set to <code>Ipv6</code>, you can use a
+     * public IPv6 address. </p>
      */
-    inline CustomerGateway& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline const Aws::String& GetIpAddress() const { return m_ipAddress; }
+    inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
+    template<typename IpAddressT = Aws::String>
+    void SetIpAddress(IpAddressT&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::forward<IpAddressT>(value); }
+    template<typename IpAddressT = Aws::String>
+    CustomerGateway& WithIpAddress(IpAddressT&& value) { SetIpAddress(std::forward<IpAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Any tags assigned to the customer gateway.</p>
+     * <p>The customer gateway device's Border Gateway Protocol (BGP) Autonomous System
+     * Number (ASN).</p> <p>Valid values: <code>1</code> to <code>2,147,483,647</code>
+     * </p>
      */
-    inline CustomerGateway& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetBgpAsn() const { return m_bgpAsn; }
+    inline bool BgpAsnHasBeenSet() const { return m_bgpAsnHasBeenSet; }
+    template<typename BgpAsnT = Aws::String>
+    void SetBgpAsn(BgpAsnT&& value) { m_bgpAsnHasBeenSet = true; m_bgpAsn = std::forward<BgpAsnT>(value); }
+    template<typename BgpAsnT = Aws::String>
+    CustomerGateway& WithBgpAsn(BgpAsnT&& value) { SetBgpAsn(std::forward<BgpAsnT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_bgpAsn;
-    bool m_bgpAsnHasBeenSet = false;
-
-    Aws::String m_customerGatewayId;
-    bool m_customerGatewayIdHasBeenSet = false;
-
-    Aws::String m_ipAddress;
-    bool m_ipAddressHasBeenSet = false;
 
     Aws::String m_certificateArn;
     bool m_certificateArnHasBeenSet = false;
+
+    Aws::String m_deviceName;
+    bool m_deviceNameHasBeenSet = false;
+
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
+
+    Aws::String m_bgpAsnExtended;
+    bool m_bgpAsnExtendedHasBeenSet = false;
+
+    Aws::String m_customerGatewayId;
+    bool m_customerGatewayIdHasBeenSet = false;
 
     Aws::String m_state;
     bool m_stateHasBeenSet = false;
@@ -412,11 +185,11 @@ namespace Model
     Aws::String m_type;
     bool m_typeHasBeenSet = false;
 
-    Aws::String m_deviceName;
-    bool m_deviceNameHasBeenSet = false;
+    Aws::String m_ipAddress;
+    bool m_ipAddressHasBeenSet = false;
 
-    Aws::Vector<Tag> m_tags;
-    bool m_tagsHasBeenSet = false;
+    Aws::String m_bgpAsn;
+    bool m_bgpAsnHasBeenSet = false;
   };
 
 } // namespace Model

@@ -52,20 +52,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* CognitoSyncClient::SERVICE_NAME = "cognito-sync";
-const char* CognitoSyncClient::ALLOCATION_TAG = "CognitoSyncClient";
+namespace Aws
+{
+  namespace CognitoSync
+  {
+    const char SERVICE_NAME[] = "cognito-sync";
+    const char ALLOCATION_TAG[] = "CognitoSyncClient";
+  }
+}
+const char* CognitoSyncClient::GetServiceName() {return SERVICE_NAME;}
+const char* CognitoSyncClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 CognitoSyncClient::CognitoSyncClient(const CognitoSync::CognitoSyncClientConfiguration& clientConfiguration,
                                      std::shared_ptr<CognitoSyncEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CognitoSyncErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CognitoSyncEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -80,8 +87,7 @@ CognitoSyncClient::CognitoSyncClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CognitoSyncErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CognitoSyncEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -96,8 +102,7 @@ CognitoSyncClient::CognitoSyncClient(const std::shared_ptr<AWSCredentialsProvide
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CognitoSyncErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CognitoSyncEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -106,12 +111,11 @@ CognitoSyncClient::CognitoSyncClient(const std::shared_ptr<AWSCredentialsProvide
   CognitoSyncClient::CognitoSyncClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CognitoSyncErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<CognitoSyncEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -126,7 +130,6 @@ CognitoSyncClient::CognitoSyncClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CognitoSyncErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CognitoSyncEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -141,7 +144,6 @@ CognitoSyncClient::CognitoSyncClient(const std::shared_ptr<AWSCredentialsProvide
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CognitoSyncErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CognitoSyncEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -161,6 +163,14 @@ std::shared_ptr<CognitoSyncEndpointProviderBase>& CognitoSyncClient::accessEndpo
 void CognitoSyncClient::init(const CognitoSync::CognitoSyncClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Cognito Sync");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

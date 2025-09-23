@@ -20,21 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-HsmConfiguration::HsmConfiguration() : 
-    m_hsmConfigurationIdentifierHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_hsmIpAddressHasBeenSet(false),
-    m_hsmPartitionNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-HsmConfiguration::HsmConfiguration(const XmlNode& xmlNode) : 
-    m_hsmConfigurationIdentifierHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_hsmIpAddressHasBeenSet(false),
-    m_hsmPartitionNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+HsmConfiguration::HsmConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +59,7 @@ HsmConfiguration& HsmConfiguration::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -114,7 +101,7 @@ void HsmConfiguration::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -145,7 +132,7 @@ void HsmConfiguration::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tag." << tagsIdx++;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

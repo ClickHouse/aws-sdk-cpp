@@ -18,15 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-AmiProductLastModifiedDateFilterDateRange::AmiProductLastModifiedDateFilterDateRange() : 
-    m_afterValueHasBeenSet(false),
-    m_beforeValueHasBeenSet(false)
-{
-}
-
-AmiProductLastModifiedDateFilterDateRange::AmiProductLastModifiedDateFilterDateRange(JsonView jsonValue) : 
-    m_afterValueHasBeenSet(false),
-    m_beforeValueHasBeenSet(false)
+AmiProductLastModifiedDateFilterDateRange::AmiProductLastModifiedDateFilterDateRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AmiProductLastModifiedDateFilterDateRange& AmiProductLastModifiedDateFilterDateR
   if(jsonValue.ValueExists("AfterValue"))
   {
     m_afterValue = jsonValue.GetString("AfterValue");
-
     m_afterValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BeforeValue"))
   {
     m_beforeValue = jsonValue.GetString("BeforeValue");
-
     m_beforeValueHasBeenSet = true;
   }
-
   return *this;
 }
 

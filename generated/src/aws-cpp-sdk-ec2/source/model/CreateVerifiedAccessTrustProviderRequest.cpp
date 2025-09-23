@@ -10,43 +10,23 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVerifiedAccessTrustProviderRequest::CreateVerifiedAccessTrustProviderRequest() : 
-    m_trustProviderType(TrustProviderType::NOT_SET),
-    m_trustProviderTypeHasBeenSet(false),
-    m_userTrustProviderType(UserTrustProviderType::NOT_SET),
-    m_userTrustProviderTypeHasBeenSet(false),
-    m_deviceTrustProviderType(DeviceTrustProviderType::NOT_SET),
-    m_deviceTrustProviderTypeHasBeenSet(false),
-    m_oidcOptionsHasBeenSet(false),
-    m_deviceOptionsHasBeenSet(false),
-    m_policyReferenceNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_sseSpecificationHasBeenSet(false)
-{
-}
-
 Aws::String CreateVerifiedAccessTrustProviderRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CreateVerifiedAccessTrustProvider&";
   if(m_trustProviderTypeHasBeenSet)
   {
-    ss << "TrustProviderType=" << TrustProviderTypeMapper::GetNameForTrustProviderType(m_trustProviderType) << "&";
+    ss << "TrustProviderType=" << StringUtils::URLEncode(TrustProviderTypeMapper::GetNameForTrustProviderType(m_trustProviderType)) << "&";
   }
 
   if(m_userTrustProviderTypeHasBeenSet)
   {
-    ss << "UserTrustProviderType=" << UserTrustProviderTypeMapper::GetNameForUserTrustProviderType(m_userTrustProviderType) << "&";
+    ss << "UserTrustProviderType=" << StringUtils::URLEncode(UserTrustProviderTypeMapper::GetNameForUserTrustProviderType(m_userTrustProviderType)) << "&";
   }
 
   if(m_deviceTrustProviderTypeHasBeenSet)
   {
-    ss << "DeviceTrustProviderType=" << DeviceTrustProviderTypeMapper::GetNameForDeviceTrustProviderType(m_deviceTrustProviderType) << "&";
+    ss << "DeviceTrustProviderType=" << StringUtils::URLEncode(DeviceTrustProviderTypeMapper::GetNameForDeviceTrustProviderType(m_deviceTrustProviderType)) << "&";
   }
 
   if(m_oidcOptionsHasBeenSet)
@@ -92,6 +72,11 @@ Aws::String CreateVerifiedAccessTrustProviderRequest::SerializePayload() const
   if(m_sseSpecificationHasBeenSet)
   {
     m_sseSpecification.OutputToStream(ss, "SseSpecification");
+  }
+
+  if(m_nativeApplicationOidcOptionsHasBeenSet)
+  {
+    m_nativeApplicationOidcOptions.OutputToStream(ss, "NativeApplicationOidcOptions");
   }
 
   ss << "Version=2016-11-15";

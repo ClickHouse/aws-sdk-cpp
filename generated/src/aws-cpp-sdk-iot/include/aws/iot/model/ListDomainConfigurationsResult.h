@@ -29,118 +29,54 @@ namespace Model
   class ListDomainConfigurationsResult
   {
   public:
-    AWS_IOT_API ListDomainConfigurationsResult();
+    AWS_IOT_API ListDomainConfigurationsResult() = default;
     AWS_IOT_API ListDomainConfigurationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOT_API ListDomainConfigurationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of objects that contain summary information about the user's domain
      * configurations.</p>
      */
-    inline const Aws::Vector<DomainConfigurationSummary>& GetDomainConfigurations() const{ return m_domainConfigurations; }
+    inline const Aws::Vector<DomainConfigurationSummary>& GetDomainConfigurations() const { return m_domainConfigurations; }
+    template<typename DomainConfigurationsT = Aws::Vector<DomainConfigurationSummary>>
+    void SetDomainConfigurations(DomainConfigurationsT&& value) { m_domainConfigurationsHasBeenSet = true; m_domainConfigurations = std::forward<DomainConfigurationsT>(value); }
+    template<typename DomainConfigurationsT = Aws::Vector<DomainConfigurationSummary>>
+    ListDomainConfigurationsResult& WithDomainConfigurations(DomainConfigurationsT&& value) { SetDomainConfigurations(std::forward<DomainConfigurationsT>(value)); return *this;}
+    template<typename DomainConfigurationsT = DomainConfigurationSummary>
+    ListDomainConfigurationsResult& AddDomainConfigurations(DomainConfigurationsT&& value) { m_domainConfigurationsHasBeenSet = true; m_domainConfigurations.emplace_back(std::forward<DomainConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of objects that contain summary information about the user's domain
-     * configurations.</p>
-     */
-    inline void SetDomainConfigurations(const Aws::Vector<DomainConfigurationSummary>& value) { m_domainConfigurations = value; }
-
-    /**
-     * <p>A list of objects that contain summary information about the user's domain
-     * configurations.</p>
-     */
-    inline void SetDomainConfigurations(Aws::Vector<DomainConfigurationSummary>&& value) { m_domainConfigurations = std::move(value); }
-
-    /**
-     * <p>A list of objects that contain summary information about the user's domain
-     * configurations.</p>
-     */
-    inline ListDomainConfigurationsResult& WithDomainConfigurations(const Aws::Vector<DomainConfigurationSummary>& value) { SetDomainConfigurations(value); return *this;}
-
-    /**
-     * <p>A list of objects that contain summary information about the user's domain
-     * configurations.</p>
-     */
-    inline ListDomainConfigurationsResult& WithDomainConfigurations(Aws::Vector<DomainConfigurationSummary>&& value) { SetDomainConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of objects that contain summary information about the user's domain
-     * configurations.</p>
-     */
-    inline ListDomainConfigurationsResult& AddDomainConfigurations(const DomainConfigurationSummary& value) { m_domainConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>A list of objects that contain summary information about the user's domain
-     * configurations.</p>
-     */
-    inline ListDomainConfigurationsResult& AddDomainConfigurations(DomainConfigurationSummary&& value) { m_domainConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The marker for the next set of results.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ListDomainConfigurationsResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The marker for the next set of results.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
-
-    /**
-     * <p>The marker for the next set of results.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>The marker for the next set of results.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>The marker for the next set of results.</p>
-     */
-    inline ListDomainConfigurationsResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>The marker for the next set of results.</p>
-     */
-    inline ListDomainConfigurationsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The marker for the next set of results.</p>
-     */
-    inline ListDomainConfigurationsResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListDomainConfigurationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListDomainConfigurationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListDomainConfigurationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListDomainConfigurationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DomainConfigurationSummary> m_domainConfigurations;
+    bool m_domainConfigurationsHasBeenSet = false;
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

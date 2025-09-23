@@ -13,20 +13,6 @@ using namespace Aws::DataSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLocationObjectStorageRequest::UpdateLocationObjectStorageRequest() : 
-    m_locationArnHasBeenSet(false),
-    m_serverPort(0),
-    m_serverPortHasBeenSet(false),
-    m_serverProtocol(ObjectStorageServerProtocol::NOT_SET),
-    m_serverProtocolHasBeenSet(false),
-    m_subdirectoryHasBeenSet(false),
-    m_accessKeyHasBeenSet(false),
-    m_secretKeyHasBeenSet(false),
-    m_agentArnsHasBeenSet(false),
-    m_serverCertificateHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLocationObjectStorageRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +37,12 @@ Aws::String UpdateLocationObjectStorageRequest::SerializePayload() const
   if(m_subdirectoryHasBeenSet)
   {
    payload.WithString("Subdirectory", m_subdirectory);
+
+  }
+
+  if(m_serverHostnameHasBeenSet)
+  {
+   payload.WithString("ServerHostname", m_serverHostname);
 
   }
 
@@ -80,6 +72,18 @@ Aws::String UpdateLocationObjectStorageRequest::SerializePayload() const
   if(m_serverCertificateHasBeenSet)
   {
    payload.WithString("ServerCertificate", HashingUtils::Base64Encode(m_serverCertificate));
+  }
+
+  if(m_cmkSecretConfigHasBeenSet)
+  {
+   payload.WithObject("CmkSecretConfig", m_cmkSecretConfig.Jsonize());
+
+  }
+
+  if(m_customSecretConfigHasBeenSet)
+  {
+   payload.WithObject("CustomSecretConfig", m_customSecretConfig.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

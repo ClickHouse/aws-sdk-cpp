@@ -18,31 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-LoRaWANServiceProfile::LoRaWANServiceProfile() : 
-    m_addGwMetadata(false),
-    m_addGwMetadataHasBeenSet(false),
-    m_drMin(0),
-    m_drMinHasBeenSet(false),
-    m_drMax(0),
-    m_drMaxHasBeenSet(false),
-    m_prAllowed(false),
-    m_prAllowedHasBeenSet(false),
-    m_raAllowed(false),
-    m_raAllowedHasBeenSet(false)
-{
-}
-
-LoRaWANServiceProfile::LoRaWANServiceProfile(JsonView jsonValue) : 
-    m_addGwMetadata(false),
-    m_addGwMetadataHasBeenSet(false),
-    m_drMin(0),
-    m_drMinHasBeenSet(false),
-    m_drMax(0),
-    m_drMaxHasBeenSet(false),
-    m_prAllowed(false),
-    m_prAllowedHasBeenSet(false),
-    m_raAllowed(false),
-    m_raAllowedHasBeenSet(false)
+LoRaWANServiceProfile::LoRaWANServiceProfile(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,38 +28,48 @@ LoRaWANServiceProfile& LoRaWANServiceProfile::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AddGwMetadata"))
   {
     m_addGwMetadata = jsonValue.GetBool("AddGwMetadata");
-
     m_addGwMetadataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DrMin"))
   {
     m_drMin = jsonValue.GetInteger("DrMin");
-
     m_drMinHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DrMax"))
   {
     m_drMax = jsonValue.GetInteger("DrMax");
-
     m_drMaxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrAllowed"))
   {
     m_prAllowed = jsonValue.GetBool("PrAllowed");
-
     m_prAllowedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RaAllowed"))
   {
     m_raAllowed = jsonValue.GetBool("RaAllowed");
-
     m_raAllowedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TxPowerIndexMin"))
+  {
+    m_txPowerIndexMin = jsonValue.GetInteger("TxPowerIndexMin");
+    m_txPowerIndexMinHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("TxPowerIndexMax"))
+  {
+    m_txPowerIndexMax = jsonValue.GetInteger("TxPowerIndexMax");
+    m_txPowerIndexMaxHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("NbTransMin"))
+  {
+    m_nbTransMin = jsonValue.GetInteger("NbTransMin");
+    m_nbTransMinHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("NbTransMax"))
+  {
+    m_nbTransMax = jsonValue.GetInteger("NbTransMax");
+    m_nbTransMaxHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -118,6 +104,30 @@ JsonValue LoRaWANServiceProfile::Jsonize() const
   if(m_raAllowedHasBeenSet)
   {
    payload.WithBool("RaAllowed", m_raAllowed);
+
+  }
+
+  if(m_txPowerIndexMinHasBeenSet)
+  {
+   payload.WithInteger("TxPowerIndexMin", m_txPowerIndexMin);
+
+  }
+
+  if(m_txPowerIndexMaxHasBeenSet)
+  {
+   payload.WithInteger("TxPowerIndexMax", m_txPowerIndexMax);
+
+  }
+
+  if(m_nbTransMinHasBeenSet)
+  {
+   payload.WithInteger("NbTransMin", m_nbTransMin);
+
+  }
+
+  if(m_nbTransMaxHasBeenSet)
+  {
+   payload.WithInteger("NbTransMax", m_nbTransMax);
 
   }
 

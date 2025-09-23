@@ -42,94 +42,39 @@ namespace Model
   class RuleUpdate
   {
   public:
-    AWS_WAF_API RuleUpdate();
+    AWS_WAF_API RuleUpdate() = default;
     AWS_WAF_API RuleUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API RuleUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
      * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
      * from a <code>Rule</code>.</p>
      */
-    inline const ChangeAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
-     * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
-     * from a <code>Rule</code>.</p>
-     */
+    inline ChangeAction GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(ChangeAction value) { m_actionHasBeenSet = true; m_action = value; }
+    inline RuleUpdate& WithAction(ChangeAction value) { SetAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
-     * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
-     * from a <code>Rule</code>.</p>
-     */
-    inline void SetAction(const ChangeAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
-     * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
-     * from a <code>Rule</code>.</p>
-     */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
-     * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
-     * from a <code>Rule</code>.</p>
-     */
-    inline RuleUpdate& WithAction(const ChangeAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
-     * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
-     * from a <code>Rule</code>.</p>
-     */
-    inline RuleUpdate& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
      * want to add to a <code>Rule</code>.</p>
      */
-    inline const Predicate& GetPredicate() const{ return m_predicate; }
-
-    /**
-     * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
-     * want to add to a <code>Rule</code>.</p>
-     */
+    inline const Predicate& GetPredicate() const { return m_predicate; }
     inline bool PredicateHasBeenSet() const { return m_predicateHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
-     * want to add to a <code>Rule</code>.</p>
-     */
-    inline void SetPredicate(const Predicate& value) { m_predicateHasBeenSet = true; m_predicate = value; }
-
-    /**
-     * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
-     * want to add to a <code>Rule</code>.</p>
-     */
-    inline void SetPredicate(Predicate&& value) { m_predicateHasBeenSet = true; m_predicate = std::move(value); }
-
-    /**
-     * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
-     * want to add to a <code>Rule</code>.</p>
-     */
-    inline RuleUpdate& WithPredicate(const Predicate& value) { SetPredicate(value); return *this;}
-
-    /**
-     * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
-     * want to add to a <code>Rule</code>.</p>
-     */
-    inline RuleUpdate& WithPredicate(Predicate&& value) { SetPredicate(std::move(value)); return *this;}
-
+    template<typename PredicateT = Predicate>
+    void SetPredicate(PredicateT&& value) { m_predicateHasBeenSet = true; m_predicate = std::forward<PredicateT>(value); }
+    template<typename PredicateT = Predicate>
+    RuleUpdate& WithPredicate(PredicateT&& value) { SetPredicate(std::forward<PredicateT>(value)); return *this;}
+    ///@}
   private:
 
-    ChangeAction m_action;
+    ChangeAction m_action{ChangeAction::NOT_SET};
     bool m_actionHasBeenSet = false;
 
     Predicate m_predicate;

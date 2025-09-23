@@ -41,12 +41,13 @@ namespace Model
   class RegexMatchSetSummary
   {
   public:
-    AWS_WAFREGIONAL_API RegexMatchSetSummary();
+    AWS_WAFREGIONAL_API RegexMatchSetSummary() = default;
     AWS_WAFREGIONAL_API RegexMatchSetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API RegexMatchSetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
      * <code>RegexMatchSetId</code> to get information about a
@@ -55,127 +56,26 @@ namespace Model
      * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
      * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
      */
-    inline const Aws::String& GetRegexMatchSetId() const{ return m_regexMatchSetId; }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
+    inline const Aws::String& GetRegexMatchSetId() const { return m_regexMatchSetId; }
     inline bool RegexMatchSetIdHasBeenSet() const { return m_regexMatchSetIdHasBeenSet; }
+    template<typename RegexMatchSetIdT = Aws::String>
+    void SetRegexMatchSetId(RegexMatchSetIdT&& value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId = std::forward<RegexMatchSetIdT>(value); }
+    template<typename RegexMatchSetIdT = Aws::String>
+    RegexMatchSetSummary& WithRegexMatchSetId(RegexMatchSetIdT&& value) { SetRegexMatchSetId(std::forward<RegexMatchSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline void SetRegexMatchSetId(const Aws::String& value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId = value; }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline void SetRegexMatchSetId(Aws::String&& value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline void SetRegexMatchSetId(const char* value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline RegexMatchSetSummary& WithRegexMatchSetId(const Aws::String& value) { SetRegexMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline RegexMatchSetSummary& WithRegexMatchSetId(Aws::String&& value) { SetRegexMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> for a <code>RegexMatchSet</code>. You use
-     * <code>RegexMatchSetId</code> to get information about a
-     * <code>RegexMatchSet</code>, update a <code>RegexMatchSet</code>, remove a
-     * <code>RegexMatchSet</code> from a <code>Rule</code>, and delete a
-     * <code>RegexMatchSet</code> from AWS WAF.</p> <p> <code>RegexMatchSetId</code> is
-     * returned by <a>CreateRegexMatchSet</a> and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline RegexMatchSetSummary& WithRegexMatchSetId(const char* value) { SetRegexMatchSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
      * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
-    inline RegexMatchSetSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
-    inline RegexMatchSetSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>RegexMatchSet</a>. You can't change
-     * <code>Name</code> after you create a <code>RegexMatchSet</code>.</p>
-     */
-    inline RegexMatchSetSummary& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RegexMatchSetSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regexMatchSetId;

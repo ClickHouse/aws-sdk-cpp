@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ServiceCatalogProvisioningUpdateDetails::ServiceCatalogProvisioningUpdateDetails() : 
-    m_provisioningArtifactIdHasBeenSet(false),
-    m_provisioningParametersHasBeenSet(false)
-{
-}
-
-ServiceCatalogProvisioningUpdateDetails::ServiceCatalogProvisioningUpdateDetails(JsonView jsonValue) : 
-    m_provisioningArtifactIdHasBeenSet(false),
-    m_provisioningParametersHasBeenSet(false)
+ServiceCatalogProvisioningUpdateDetails::ServiceCatalogProvisioningUpdateDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ServiceCatalogProvisioningUpdateDetails& ServiceCatalogProvisioningUpdateDetails
   if(jsonValue.ValueExists("ProvisioningArtifactId"))
   {
     m_provisioningArtifactId = jsonValue.GetString("ProvisioningArtifactId");
-
     m_provisioningArtifactIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisioningParameters"))
   {
     Aws::Utils::Array<JsonView> provisioningParametersJsonList = jsonValue.GetArray("ProvisioningParameters");
@@ -49,7 +39,6 @@ ServiceCatalogProvisioningUpdateDetails& ServiceCatalogProvisioningUpdateDetails
     }
     m_provisioningParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

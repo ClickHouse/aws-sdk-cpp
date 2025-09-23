@@ -23,7 +23,7 @@ namespace Model
   class DescribeTrunkInterfaceAssociationsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DescribeTrunkInterfaceAssociationsRequest();
+    AWS_EC2_API DescribeTrunkInterfaceAssociationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,225 +38,79 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The IDs of the associations.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAssociationIds() const{ return m_associationIds; }
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAssociationIds() const { return m_associationIds; }
     inline bool AssociationIdsHasBeenSet() const { return m_associationIdsHasBeenSet; }
+    template<typename AssociationIdsT = Aws::Vector<Aws::String>>
+    void SetAssociationIds(AssociationIdsT&& value) { m_associationIdsHasBeenSet = true; m_associationIds = std::forward<AssociationIdsT>(value); }
+    template<typename AssociationIdsT = Aws::Vector<Aws::String>>
+    DescribeTrunkInterfaceAssociationsRequest& WithAssociationIds(AssociationIdsT&& value) { SetAssociationIds(std::forward<AssociationIdsT>(value)); return *this;}
+    template<typename AssociationIdsT = Aws::String>
+    DescribeTrunkInterfaceAssociationsRequest& AddAssociationIds(AssociationIdsT&& value) { m_associationIdsHasBeenSet = true; m_associationIds.emplace_back(std::forward<AssociationIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline void SetAssociationIds(const Aws::Vector<Aws::String>& value) { m_associationIdsHasBeenSet = true; m_associationIds = value; }
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline void SetAssociationIds(Aws::Vector<Aws::String>&& value) { m_associationIdsHasBeenSet = true; m_associationIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithAssociationIds(const Aws::Vector<Aws::String>& value) { SetAssociationIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithAssociationIds(Aws::Vector<Aws::String>&& value) { SetAssociationIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& AddAssociationIds(const Aws::String& value) { m_associationIdsHasBeenSet = true; m_associationIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& AddAssociationIds(Aws::String&& value) { m_associationIdsHasBeenSet = true; m_associationIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the associations.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& AddAssociationIds(const char* value) { m_associationIdsHasBeenSet = true; m_associationIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DescribeTrunkInterfaceAssociationsRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
      * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
      * - The interface protocol. Valid values are <code>VLAN</code> and
      * <code>GRE</code>.</p> </li> </ul>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    DescribeTrunkInterfaceAssociationsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    DescribeTrunkInterfaceAssociationsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p> <code>gre-key</code> - The ID of a
-     * trunk interface association.</p> </li> <li> <p> <code>interface-protocol</code>
-     * - The interface protocol. Valid values are <code>VLAN</code> and
-     * <code>GRE</code>.</p> </li> </ul>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeTrunkInterfaceAssociationsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline DescribeTrunkInterfaceAssociationsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return with a single call. To retrieve the
      * remaining results, make another call with the returned <code>nextToken</code>
      * value.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
     inline DescribeTrunkInterfaceAssociationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_associationIds;
     bool m_associationIdsHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::Vector<Filter> m_filters;
@@ -265,7 +119,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

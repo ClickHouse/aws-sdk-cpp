@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-DescribeRouteCalculatorResult::DescribeRouteCalculatorResult()
-{
-}
-
 DescribeRouteCalculatorResult::DescribeRouteCalculatorResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,36 +25,36 @@ DescribeRouteCalculatorResult::DescribeRouteCalculatorResult(const Aws::AmazonWe
 DescribeRouteCalculatorResult& DescribeRouteCalculatorResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("CalculatorArn"))
-  {
-    m_calculatorArn = jsonValue.GetString("CalculatorArn");
-
-  }
-
   if(jsonValue.ValueExists("CalculatorName"))
   {
     m_calculatorName = jsonValue.GetString("CalculatorName");
-
+    m_calculatorNameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("CreateTime"))
+  if(jsonValue.ValueExists("CalculatorArn"))
   {
-    m_createTime = jsonValue.GetString("CreateTime");
-
+    m_calculatorArn = jsonValue.GetString("CalculatorArn");
+    m_calculatorArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("DataSource"))
-  {
-    m_dataSource = jsonValue.GetString("DataSource");
-
-  }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
+    m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CreateTime"))
+  {
+    m_createTime = jsonValue.GetString("CreateTime");
+    m_createTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("UpdateTime"))
+  {
+    m_updateTime = jsonValue.GetString("UpdateTime");
+    m_updateTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DataSource"))
+  {
+    m_dataSource = jsonValue.GetString("DataSource");
+    m_dataSourceHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -66,20 +62,15 @@ DescribeRouteCalculatorResult& DescribeRouteCalculatorResult::operator =(const A
     {
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
+    m_tagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("UpdateTime"))
-  {
-    m_updateTime = jsonValue.GetString("UpdateTime");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

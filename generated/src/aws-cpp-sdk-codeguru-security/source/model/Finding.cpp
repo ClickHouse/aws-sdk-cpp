@@ -18,47 +18,7 @@ namespace CodeGuruSecurity
 namespace Model
 {
 
-Finding::Finding() : 
-    m_createdAtHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_detectorIdHasBeenSet(false),
-    m_detectorNameHasBeenSet(false),
-    m_detectorTagsHasBeenSet(false),
-    m_generatorIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_remediationHasBeenSet(false),
-    m_resourceHasBeenSet(false),
-    m_ruleIdHasBeenSet(false),
-    m_severity(Severity::NOT_SET),
-    m_severityHasBeenSet(false),
-    m_status(Status::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_vulnerabilityHasBeenSet(false)
-{
-}
-
-Finding::Finding(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_detectorIdHasBeenSet(false),
-    m_detectorNameHasBeenSet(false),
-    m_detectorTagsHasBeenSet(false),
-    m_generatorIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_remediationHasBeenSet(false),
-    m_resourceHasBeenSet(false),
-    m_ruleIdHasBeenSet(false),
-    m_severity(Severity::NOT_SET),
-    m_severityHasBeenSet(false),
-    m_status(Status::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_vulnerabilityHasBeenSet(false)
+Finding::Finding(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -68,31 +28,63 @@ Finding& Finding::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("detectorId"))
+  if(jsonValue.ValueExists("generatorId"))
   {
-    m_detectorId = jsonValue.GetString("detectorId");
-
-    m_detectorIdHasBeenSet = true;
+    m_generatorId = jsonValue.GetString("generatorId");
+    m_generatorIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("detectorName"))
+  if(jsonValue.ValueExists("id"))
   {
-    m_detectorName = jsonValue.GetString("detectorName");
-
-    m_detectorNameHasBeenSet = true;
+    m_id = jsonValue.GetString("id");
+    m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("updatedAt"))
+  {
+    m_updatedAt = jsonValue.GetDouble("updatedAt");
+    m_updatedAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = jsonValue.GetString("type");
+    m_typeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("status"))
+  {
+    m_status = StatusMapper::GetStatusForName(jsonValue.GetString("status"));
+    m_statusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("resource"))
+  {
+    m_resource = jsonValue.GetObject("resource");
+    m_resourceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("vulnerability"))
+  {
+    m_vulnerability = jsonValue.GetObject("vulnerability");
+    m_vulnerabilityHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("severity"))
+  {
+    m_severity = SeverityMapper::GetSeverityForName(jsonValue.GetString("severity"));
+    m_severityHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("remediation"))
+  {
+    m_remediation = jsonValue.GetObject("remediation");
+    m_remediationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("title"))
+  {
+    m_title = jsonValue.GetString("title");
+    m_titleHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("detectorTags"))
   {
     Aws::Utils::Array<JsonView> detectorTagsJsonList = jsonValue.GetArray("detectorTags");
@@ -102,84 +94,21 @@ Finding& Finding::operator =(JsonView jsonValue)
     }
     m_detectorTagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("generatorId"))
+  if(jsonValue.ValueExists("detectorId"))
   {
-    m_generatorId = jsonValue.GetString("generatorId");
-
-    m_generatorIdHasBeenSet = true;
+    m_detectorId = jsonValue.GetString("detectorId");
+    m_detectorIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("id"))
+  if(jsonValue.ValueExists("detectorName"))
   {
-    m_id = jsonValue.GetString("id");
-
-    m_idHasBeenSet = true;
+    m_detectorName = jsonValue.GetString("detectorName");
+    m_detectorNameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("remediation"))
-  {
-    m_remediation = jsonValue.GetObject("remediation");
-
-    m_remediationHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("resource"))
-  {
-    m_resource = jsonValue.GetObject("resource");
-
-    m_resourceHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("ruleId"))
   {
     m_ruleId = jsonValue.GetString("ruleId");
-
     m_ruleIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("severity"))
-  {
-    m_severity = SeverityMapper::GetSeverityForName(jsonValue.GetString("severity"));
-
-    m_severityHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("status"))
-  {
-    m_status = StatusMapper::GetStatusForName(jsonValue.GetString("status"));
-
-    m_statusHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("title"))
-  {
-    m_title = jsonValue.GetString("title");
-
-    m_titleHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("type"))
-  {
-    m_type = jsonValue.GetString("type");
-
-    m_typeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("updatedAt"))
-  {
-    m_updatedAt = jsonValue.GetDouble("updatedAt");
-
-    m_updatedAtHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("vulnerability"))
-  {
-    m_vulnerability = jsonValue.GetObject("vulnerability");
-
-    m_vulnerabilityHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -198,15 +127,60 @@ JsonValue Finding::Jsonize() const
 
   }
 
-  if(m_detectorIdHasBeenSet)
+  if(m_generatorIdHasBeenSet)
   {
-   payload.WithString("detectorId", m_detectorId);
+   payload.WithString("generatorId", m_generatorId);
 
   }
 
-  if(m_detectorNameHasBeenSet)
+  if(m_idHasBeenSet)
   {
-   payload.WithString("detectorName", m_detectorName);
+   payload.WithString("id", m_id);
+
+  }
+
+  if(m_updatedAtHasBeenSet)
+  {
+   payload.WithDouble("updatedAt", m_updatedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", m_type);
+
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", StatusMapper::GetNameForStatus(m_status));
+  }
+
+  if(m_resourceHasBeenSet)
+  {
+   payload.WithObject("resource", m_resource.Jsonize());
+
+  }
+
+  if(m_vulnerabilityHasBeenSet)
+  {
+   payload.WithObject("vulnerability", m_vulnerability.Jsonize());
+
+  }
+
+  if(m_severityHasBeenSet)
+  {
+   payload.WithString("severity", SeverityMapper::GetNameForSeverity(m_severity));
+  }
+
+  if(m_remediationHasBeenSet)
+  {
+   payload.WithObject("remediation", m_remediation.Jsonize());
+
+  }
+
+  if(m_titleHasBeenSet)
+  {
+   payload.WithString("title", m_title);
 
   }
 
@@ -221,66 +195,21 @@ JsonValue Finding::Jsonize() const
 
   }
 
-  if(m_generatorIdHasBeenSet)
+  if(m_detectorIdHasBeenSet)
   {
-   payload.WithString("generatorId", m_generatorId);
+   payload.WithString("detectorId", m_detectorId);
 
   }
 
-  if(m_idHasBeenSet)
+  if(m_detectorNameHasBeenSet)
   {
-   payload.WithString("id", m_id);
-
-  }
-
-  if(m_remediationHasBeenSet)
-  {
-   payload.WithObject("remediation", m_remediation.Jsonize());
-
-  }
-
-  if(m_resourceHasBeenSet)
-  {
-   payload.WithObject("resource", m_resource.Jsonize());
+   payload.WithString("detectorName", m_detectorName);
 
   }
 
   if(m_ruleIdHasBeenSet)
   {
    payload.WithString("ruleId", m_ruleId);
-
-  }
-
-  if(m_severityHasBeenSet)
-  {
-   payload.WithString("severity", SeverityMapper::GetNameForSeverity(m_severity));
-  }
-
-  if(m_statusHasBeenSet)
-  {
-   payload.WithString("status", StatusMapper::GetNameForStatus(m_status));
-  }
-
-  if(m_titleHasBeenSet)
-  {
-   payload.WithString("title", m_title);
-
-  }
-
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", m_type);
-
-  }
-
-  if(m_updatedAtHasBeenSet)
-  {
-   payload.WithDouble("updatedAt", m_updatedAt.SecondsWithMSPrecision());
-  }
-
-  if(m_vulnerabilityHasBeenSet)
-  {
-   payload.WithObject("vulnerability", m_vulnerability.Jsonize());
 
   }
 

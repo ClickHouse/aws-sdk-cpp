@@ -32,42 +32,23 @@ namespace Model
   class AwsEcsServiceNetworkConfigurationDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEcsServiceNetworkConfigurationDetails();
+    AWS_SECURITYHUB_API AwsEcsServiceNetworkConfigurationDetails() = default;
     AWS_SECURITYHUB_API AwsEcsServiceNetworkConfigurationDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEcsServiceNetworkConfigurationDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The VPC subnet and security group configuration.</p>
      */
-    inline const AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails& GetAwsVpcConfiguration() const{ return m_awsVpcConfiguration; }
-
-    /**
-     * <p>The VPC subnet and security group configuration.</p>
-     */
+    inline const AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails& GetAwsVpcConfiguration() const { return m_awsVpcConfiguration; }
     inline bool AwsVpcConfigurationHasBeenSet() const { return m_awsVpcConfigurationHasBeenSet; }
-
-    /**
-     * <p>The VPC subnet and security group configuration.</p>
-     */
-    inline void SetAwsVpcConfiguration(const AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails& value) { m_awsVpcConfigurationHasBeenSet = true; m_awsVpcConfiguration = value; }
-
-    /**
-     * <p>The VPC subnet and security group configuration.</p>
-     */
-    inline void SetAwsVpcConfiguration(AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails&& value) { m_awsVpcConfigurationHasBeenSet = true; m_awsVpcConfiguration = std::move(value); }
-
-    /**
-     * <p>The VPC subnet and security group configuration.</p>
-     */
-    inline AwsEcsServiceNetworkConfigurationDetails& WithAwsVpcConfiguration(const AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails& value) { SetAwsVpcConfiguration(value); return *this;}
-
-    /**
-     * <p>The VPC subnet and security group configuration.</p>
-     */
-    inline AwsEcsServiceNetworkConfigurationDetails& WithAwsVpcConfiguration(AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails&& value) { SetAwsVpcConfiguration(std::move(value)); return *this;}
-
+    template<typename AwsVpcConfigurationT = AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails>
+    void SetAwsVpcConfiguration(AwsVpcConfigurationT&& value) { m_awsVpcConfigurationHasBeenSet = true; m_awsVpcConfiguration = std::forward<AwsVpcConfigurationT>(value); }
+    template<typename AwsVpcConfigurationT = AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails>
+    AwsEcsServiceNetworkConfigurationDetails& WithAwsVpcConfiguration(AwsVpcConfigurationT&& value) { SetAwsVpcConfiguration(std::forward<AwsVpcConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails m_awsVpcConfiguration;

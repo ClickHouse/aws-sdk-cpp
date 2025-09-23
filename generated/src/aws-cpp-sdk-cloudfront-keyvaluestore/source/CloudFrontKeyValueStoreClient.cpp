@@ -41,20 +41,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* CloudFrontKeyValueStoreClient::SERVICE_NAME = "cloudfront-keyvaluestore";
-const char* CloudFrontKeyValueStoreClient::ALLOCATION_TAG = "CloudFrontKeyValueStoreClient";
+namespace Aws
+{
+  namespace CloudFrontKeyValueStore
+  {
+    const char SERVICE_NAME[] = "cloudfront-keyvaluestore";
+    const char ALLOCATION_TAG[] = "CloudFrontKeyValueStoreClient";
+  }
+}
+const char* CloudFrontKeyValueStoreClient::GetServiceName() {return SERVICE_NAME;}
+const char* CloudFrontKeyValueStoreClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const CloudFrontKeyValueStore::CloudFrontKeyValueStoreClientConfiguration& clientConfiguration,
                                                              std::shared_ptr<CloudFrontKeyValueStoreEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
-            Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-                                             SERVICE_NAME,
-                                             Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+            Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
+                                                                  SERVICE_NAME,
+                                                                  Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudFrontKeyValueStoreErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudFrontKeyValueStoreEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -63,14 +70,13 @@ CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const AWSCredential
                                                              std::shared_ptr<CloudFrontKeyValueStoreEndpointProviderBase> endpointProvider,
                                                              const CloudFrontKeyValueStore::CloudFrontKeyValueStoreClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
-            Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
-                                             SERVICE_NAME,
-                                             Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+            Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
+                                                                  Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+                                                                  SERVICE_NAME,
+                                                                  Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudFrontKeyValueStoreErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudFrontKeyValueStoreEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -79,14 +85,13 @@ CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const std::shared_p
                                                              std::shared_ptr<CloudFrontKeyValueStoreEndpointProviderBase> endpointProvider,
                                                              const CloudFrontKeyValueStore::CloudFrontKeyValueStoreClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
-            Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             credentialsProvider,
-                                             SERVICE_NAME,
-                                             Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+            Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
+                                                                  credentialsProvider,
+                                                                  SERVICE_NAME,
+                                                                  Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudFrontKeyValueStoreErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CloudFrontKeyValueStoreEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -94,13 +99,12 @@ CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const std::shared_p
     /* Legacy constructors due deprecation */
   CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
-            Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-                                             SERVICE_NAME,
-                                             Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+            Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
+                                                                  SERVICE_NAME,
+                                                                  Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudFrontKeyValueStoreErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<CloudFrontKeyValueStoreEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -109,13 +113,12 @@ CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const std::shared_p
 CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const AWSCredentials& credentials,
                                                              const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
-            Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
-                                             SERVICE_NAME,
-                                             Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+            Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
+                                                                  Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+                                                                  SERVICE_NAME,
+                                                                  Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudFrontKeyValueStoreErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CloudFrontKeyValueStoreEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -124,13 +127,12 @@ CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const AWSCredential
 CloudFrontKeyValueStoreClient::CloudFrontKeyValueStoreClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
                                                              const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
-            Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             credentialsProvider,
-                                             SERVICE_NAME,
-                                             Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+            Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
+                                                                  credentialsProvider,
+                                                                  SERVICE_NAME,
+                                                                  Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CloudFrontKeyValueStoreErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CloudFrontKeyValueStoreEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -150,6 +152,14 @@ std::shared_ptr<CloudFrontKeyValueStoreEndpointProviderBase>& CloudFrontKeyValue
 void CloudFrontKeyValueStoreClient::init(const CloudFrontKeyValueStore::CloudFrontKeyValueStoreClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("CloudFront KeyValueStore");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

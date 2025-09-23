@@ -23,57 +23,33 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the inventory configuration for an Amazon S3 bucket.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Specifies the S3 Inventory configuration for an Amazon S3
+   * bucket.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/InventoryDestination">AWS
    * API Reference</a></p>
    */
   class InventoryDestination
   {
   public:
-    AWS_S3CRT_API InventoryDestination();
+    AWS_S3CRT_API InventoryDestination() = default;
     AWS_S3CRT_API InventoryDestination(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API InventoryDestination& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
      * (optional) where inventory results are published.</p>
      */
-    inline const InventoryS3BucketDestination& GetS3BucketDestination() const{ return m_s3BucketDestination; }
-
-    /**
-     * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
-     * (optional) where inventory results are published.</p>
-     */
+    inline const InventoryS3BucketDestination& GetS3BucketDestination() const { return m_s3BucketDestination; }
     inline bool S3BucketDestinationHasBeenSet() const { return m_s3BucketDestinationHasBeenSet; }
-
-    /**
-     * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
-     * (optional) where inventory results are published.</p>
-     */
-    inline void SetS3BucketDestination(const InventoryS3BucketDestination& value) { m_s3BucketDestinationHasBeenSet = true; m_s3BucketDestination = value; }
-
-    /**
-     * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
-     * (optional) where inventory results are published.</p>
-     */
-    inline void SetS3BucketDestination(InventoryS3BucketDestination&& value) { m_s3BucketDestinationHasBeenSet = true; m_s3BucketDestination = std::move(value); }
-
-    /**
-     * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
-     * (optional) where inventory results are published.</p>
-     */
-    inline InventoryDestination& WithS3BucketDestination(const InventoryS3BucketDestination& value) { SetS3BucketDestination(value); return *this;}
-
-    /**
-     * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
-     * (optional) where inventory results are published.</p>
-     */
-    inline InventoryDestination& WithS3BucketDestination(InventoryS3BucketDestination&& value) { SetS3BucketDestination(std::move(value)); return *this;}
-
+    template<typename S3BucketDestinationT = InventoryS3BucketDestination>
+    void SetS3BucketDestination(S3BucketDestinationT&& value) { m_s3BucketDestinationHasBeenSet = true; m_s3BucketDestination = std::forward<S3BucketDestinationT>(value); }
+    template<typename S3BucketDestinationT = InventoryS3BucketDestination>
+    InventoryDestination& WithS3BucketDestination(S3BucketDestinationT&& value) { SetS3BucketDestination(std::forward<S3BucketDestinationT>(value)); return *this;}
+    ///@}
   private:
 
     InventoryS3BucketDestination m_s3BucketDestination;

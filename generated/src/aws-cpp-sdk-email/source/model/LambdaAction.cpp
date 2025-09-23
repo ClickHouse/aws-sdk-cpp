@@ -20,19 +20,7 @@ namespace SES
 namespace Model
 {
 
-LambdaAction::LambdaAction() : 
-    m_topicArnHasBeenSet(false),
-    m_functionArnHasBeenSet(false),
-    m_invocationType(InvocationType::NOT_SET),
-    m_invocationTypeHasBeenSet(false)
-{
-}
-
-LambdaAction::LambdaAction(const XmlNode& xmlNode) : 
-    m_topicArnHasBeenSet(false),
-    m_functionArnHasBeenSet(false),
-    m_invocationType(InvocationType::NOT_SET),
-    m_invocationTypeHasBeenSet(false)
+LambdaAction::LambdaAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +46,7 @@ LambdaAction& LambdaAction::operator =(const XmlNode& xmlNode)
     XmlNode invocationTypeNode = resultNode.FirstChild("InvocationType");
     if(!invocationTypeNode.IsNull())
     {
-      m_invocationType = InvocationTypeMapper::GetInvocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(invocationTypeNode.GetText()).c_str()).c_str());
+      m_invocationType = InvocationTypeMapper::GetInvocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(invocationTypeNode.GetText()).c_str()));
       m_invocationTypeHasBeenSet = true;
     }
   }
@@ -80,7 +68,7 @@ void LambdaAction::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_invocationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InvocationType=" << InvocationTypeMapper::GetNameForInvocationType(m_invocationType) << "&";
+      oStream << location << index << locationValue << ".InvocationType=" << StringUtils::URLEncode(InvocationTypeMapper::GetNameForInvocationType(m_invocationType)) << "&";
   }
 
 }
@@ -97,7 +85,7 @@ void LambdaAction::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_invocationTypeHasBeenSet)
   {
-      oStream << location << ".InvocationType=" << InvocationTypeMapper::GetNameForInvocationType(m_invocationType) << "&";
+      oStream << location << ".InvocationType=" << StringUtils::URLEncode(InvocationTypeMapper::GetNameForInvocationType(m_invocationType)) << "&";
   }
 }
 

@@ -25,272 +25,99 @@ namespace Model
 {
 
   /**
-   * <p>The notify configuration type.</p><p><h3>See Also:</h3>   <a
+   * <p>The configuration for Amazon SES email messages that threat protection sends
+   * to a user when your adaptive authentication automated response has a
+   * <i>Notify</i> action.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/NotifyConfigurationType">AWS
    * API Reference</a></p>
    */
   class NotifyConfigurationType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API NotifyConfigurationType();
+    AWS_COGNITOIDENTITYPROVIDER_API NotifyConfigurationType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API NotifyConfigurationType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API NotifyConfigurationType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The email address that is sending the email. The address must be either
+     * <p>The email address that sends the email message. The address must be either
      * individually verified with Amazon Simple Email Service, or from a domain that
      * has been verified with Amazon SES.</p>
      */
-    inline const Aws::String& GetFrom() const{ return m_from; }
-
-    /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
-     */
+    inline const Aws::String& GetFrom() const { return m_from; }
     inline bool FromHasBeenSet() const { return m_fromHasBeenSet; }
+    template<typename FromT = Aws::String>
+    void SetFrom(FromT&& value) { m_fromHasBeenSet = true; m_from = std::forward<FromT>(value); }
+    template<typename FromT = Aws::String>
+    NotifyConfigurationType& WithFrom(FromT&& value) { SetFrom(std::forward<FromT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
+     * <p>The reply-to email address of an email template.</p>
      */
-    inline void SetFrom(const Aws::String& value) { m_fromHasBeenSet = true; m_from = value; }
-
-    /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
-     */
-    inline void SetFrom(Aws::String&& value) { m_fromHasBeenSet = true; m_from = std::move(value); }
-
-    /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
-     */
-    inline void SetFrom(const char* value) { m_fromHasBeenSet = true; m_from.assign(value); }
-
-    /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
-     */
-    inline NotifyConfigurationType& WithFrom(const Aws::String& value) { SetFrom(value); return *this;}
-
-    /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
-     */
-    inline NotifyConfigurationType& WithFrom(Aws::String&& value) { SetFrom(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address that is sending the email. The address must be either
-     * individually verified with Amazon Simple Email Service, or from a domain that
-     * has been verified with Amazon SES.</p>
-     */
-    inline NotifyConfigurationType& WithFrom(const char* value) { SetFrom(value); return *this;}
-
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline const Aws::String& GetReplyTo() const{ return m_replyTo; }
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
+    inline const Aws::String& GetReplyTo() const { return m_replyTo; }
     inline bool ReplyToHasBeenSet() const { return m_replyToHasBeenSet; }
+    template<typename ReplyToT = Aws::String>
+    void SetReplyTo(ReplyToT&& value) { m_replyToHasBeenSet = true; m_replyTo = std::forward<ReplyToT>(value); }
+    template<typename ReplyToT = Aws::String>
+    NotifyConfigurationType& WithReplyTo(ReplyToT&& value) { SetReplyTo(std::forward<ReplyToT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline void SetReplyTo(const Aws::String& value) { m_replyToHasBeenSet = true; m_replyTo = value; }
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline void SetReplyTo(Aws::String&& value) { m_replyToHasBeenSet = true; m_replyTo = std::move(value); }
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline void SetReplyTo(const char* value) { m_replyToHasBeenSet = true; m_replyTo.assign(value); }
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline NotifyConfigurationType& WithReplyTo(const Aws::String& value) { SetReplyTo(value); return *this;}
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline NotifyConfigurationType& WithReplyTo(Aws::String&& value) { SetReplyTo(std::move(value)); return *this;}
-
-    /**
-     * <p>The destination to which the receiver of an email should reply to.</p>
-     */
-    inline NotifyConfigurationType& WithReplyTo(const char* value) { SetReplyTo(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
      * sending authorization policy. This identity permits Amazon Cognito to send for
      * the email address specified in the <code>From</code> parameter.</p>
      */
-    inline const Aws::String& GetSourceArn() const{ return m_sourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
-     */
+    inline const Aws::String& GetSourceArn() const { return m_sourceArn; }
     inline bool SourceArnHasBeenSet() const { return m_sourceArnHasBeenSet; }
+    template<typename SourceArnT = Aws::String>
+    void SetSourceArn(SourceArnT&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::forward<SourceArnT>(value); }
+    template<typename SourceArnT = Aws::String>
+    NotifyConfigurationType& WithSourceArn(SourceArnT&& value) { SetSourceArn(std::forward<SourceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
+     * <p>The template for the email message that your user pool sends when a detected
+     * risk event is blocked.</p>
      */
-    inline void SetSourceArn(const Aws::String& value) { m_sourceArnHasBeenSet = true; m_sourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
-     */
-    inline void SetSourceArn(Aws::String&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
-     */
-    inline void SetSourceArn(const char* value) { m_sourceArnHasBeenSet = true; m_sourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
-     */
-    inline NotifyConfigurationType& WithSourceArn(const Aws::String& value) { SetSourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
-     */
-    inline NotifyConfigurationType& WithSourceArn(Aws::String&& value) { SetSourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the identity that is associated with the
-     * sending authorization policy. This identity permits Amazon Cognito to send for
-     * the email address specified in the <code>From</code> parameter.</p>
-     */
-    inline NotifyConfigurationType& WithSourceArn(const char* value) { SetSourceArn(value); return *this;}
-
-
-    /**
-     * <p>Email template used when a detected risk event is blocked.</p>
-     */
-    inline const NotifyEmailType& GetBlockEmail() const{ return m_blockEmail; }
-
-    /**
-     * <p>Email template used when a detected risk event is blocked.</p>
-     */
+    inline const NotifyEmailType& GetBlockEmail() const { return m_blockEmail; }
     inline bool BlockEmailHasBeenSet() const { return m_blockEmailHasBeenSet; }
+    template<typename BlockEmailT = NotifyEmailType>
+    void SetBlockEmail(BlockEmailT&& value) { m_blockEmailHasBeenSet = true; m_blockEmail = std::forward<BlockEmailT>(value); }
+    template<typename BlockEmailT = NotifyEmailType>
+    NotifyConfigurationType& WithBlockEmail(BlockEmailT&& value) { SetBlockEmail(std::forward<BlockEmailT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Email template used when a detected risk event is blocked.</p>
+     * <p>The template for the email message that your user pool sends when no action
+     * is taken in response to a detected risk.</p>
      */
-    inline void SetBlockEmail(const NotifyEmailType& value) { m_blockEmailHasBeenSet = true; m_blockEmail = value; }
-
-    /**
-     * <p>Email template used when a detected risk event is blocked.</p>
-     */
-    inline void SetBlockEmail(NotifyEmailType&& value) { m_blockEmailHasBeenSet = true; m_blockEmail = std::move(value); }
-
-    /**
-     * <p>Email template used when a detected risk event is blocked.</p>
-     */
-    inline NotifyConfigurationType& WithBlockEmail(const NotifyEmailType& value) { SetBlockEmail(value); return *this;}
-
-    /**
-     * <p>Email template used when a detected risk event is blocked.</p>
-     */
-    inline NotifyConfigurationType& WithBlockEmail(NotifyEmailType&& value) { SetBlockEmail(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The email template used when a detected risk event is allowed.</p>
-     */
-    inline const NotifyEmailType& GetNoActionEmail() const{ return m_noActionEmail; }
-
-    /**
-     * <p>The email template used when a detected risk event is allowed.</p>
-     */
+    inline const NotifyEmailType& GetNoActionEmail() const { return m_noActionEmail; }
     inline bool NoActionEmailHasBeenSet() const { return m_noActionEmailHasBeenSet; }
+    template<typename NoActionEmailT = NotifyEmailType>
+    void SetNoActionEmail(NoActionEmailT&& value) { m_noActionEmailHasBeenSet = true; m_noActionEmail = std::forward<NoActionEmailT>(value); }
+    template<typename NoActionEmailT = NotifyEmailType>
+    NotifyConfigurationType& WithNoActionEmail(NoActionEmailT&& value) { SetNoActionEmail(std::forward<NoActionEmailT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The email template used when a detected risk event is allowed.</p>
+     * <p>The template for the email message that your user pool sends when MFA is
+     * challenged in response to a detected risk.</p>
      */
-    inline void SetNoActionEmail(const NotifyEmailType& value) { m_noActionEmailHasBeenSet = true; m_noActionEmail = value; }
-
-    /**
-     * <p>The email template used when a detected risk event is allowed.</p>
-     */
-    inline void SetNoActionEmail(NotifyEmailType&& value) { m_noActionEmailHasBeenSet = true; m_noActionEmail = std::move(value); }
-
-    /**
-     * <p>The email template used when a detected risk event is allowed.</p>
-     */
-    inline NotifyConfigurationType& WithNoActionEmail(const NotifyEmailType& value) { SetNoActionEmail(value); return *this;}
-
-    /**
-     * <p>The email template used when a detected risk event is allowed.</p>
-     */
-    inline NotifyConfigurationType& WithNoActionEmail(NotifyEmailType&& value) { SetNoActionEmail(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The multi-factor authentication (MFA) email template used when MFA is
-     * challenged as part of a detected risk.</p>
-     */
-    inline const NotifyEmailType& GetMfaEmail() const{ return m_mfaEmail; }
-
-    /**
-     * <p>The multi-factor authentication (MFA) email template used when MFA is
-     * challenged as part of a detected risk.</p>
-     */
+    inline const NotifyEmailType& GetMfaEmail() const { return m_mfaEmail; }
     inline bool MfaEmailHasBeenSet() const { return m_mfaEmailHasBeenSet; }
-
-    /**
-     * <p>The multi-factor authentication (MFA) email template used when MFA is
-     * challenged as part of a detected risk.</p>
-     */
-    inline void SetMfaEmail(const NotifyEmailType& value) { m_mfaEmailHasBeenSet = true; m_mfaEmail = value; }
-
-    /**
-     * <p>The multi-factor authentication (MFA) email template used when MFA is
-     * challenged as part of a detected risk.</p>
-     */
-    inline void SetMfaEmail(NotifyEmailType&& value) { m_mfaEmailHasBeenSet = true; m_mfaEmail = std::move(value); }
-
-    /**
-     * <p>The multi-factor authentication (MFA) email template used when MFA is
-     * challenged as part of a detected risk.</p>
-     */
-    inline NotifyConfigurationType& WithMfaEmail(const NotifyEmailType& value) { SetMfaEmail(value); return *this;}
-
-    /**
-     * <p>The multi-factor authentication (MFA) email template used when MFA is
-     * challenged as part of a detected risk.</p>
-     */
-    inline NotifyConfigurationType& WithMfaEmail(NotifyEmailType&& value) { SetMfaEmail(std::move(value)); return *this;}
-
+    template<typename MfaEmailT = NotifyEmailType>
+    void SetMfaEmail(MfaEmailT&& value) { m_mfaEmailHasBeenSet = true; m_mfaEmail = std::forward<MfaEmailT>(value); }
+    template<typename MfaEmailT = NotifyEmailType>
+    NotifyConfigurationType& WithMfaEmail(MfaEmailT&& value) { SetMfaEmail(std::forward<MfaEmailT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_from;

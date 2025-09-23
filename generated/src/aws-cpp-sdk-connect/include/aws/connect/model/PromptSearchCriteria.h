@@ -33,158 +33,56 @@ namespace Model
   class PromptSearchCriteria
   {
   public:
-    AWS_CONNECT_API PromptSearchCriteria();
+    AWS_CONNECT_API PromptSearchCriteria() = default;
     AWS_CONNECT_API PromptSearchCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API PromptSearchCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of conditions which would be applied together with an OR
      * condition.</p>
      */
-    inline const Aws::Vector<PromptSearchCriteria>& GetOrConditions() const{ return m_orConditions; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
+    inline const Aws::Vector<PromptSearchCriteria>& GetOrConditions() const { return m_orConditions; }
     inline bool OrConditionsHasBeenSet() const { return m_orConditionsHasBeenSet; }
+    template<typename OrConditionsT = Aws::Vector<PromptSearchCriteria>>
+    void SetOrConditions(OrConditionsT&& value) { m_orConditionsHasBeenSet = true; m_orConditions = std::forward<OrConditionsT>(value); }
+    template<typename OrConditionsT = Aws::Vector<PromptSearchCriteria>>
+    PromptSearchCriteria& WithOrConditions(OrConditionsT&& value) { SetOrConditions(std::forward<OrConditionsT>(value)); return *this;}
+    template<typename OrConditionsT = PromptSearchCriteria>
+    PromptSearchCriteria& AddOrConditions(OrConditionsT&& value) { m_orConditionsHasBeenSet = true; m_orConditions.emplace_back(std::forward<OrConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline void SetOrConditions(const Aws::Vector<PromptSearchCriteria>& value) { m_orConditionsHasBeenSet = true; m_orConditions = value; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline void SetOrConditions(Aws::Vector<PromptSearchCriteria>&& value) { m_orConditionsHasBeenSet = true; m_orConditions = std::move(value); }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& WithOrConditions(const Aws::Vector<PromptSearchCriteria>& value) { SetOrConditions(value); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& WithOrConditions(Aws::Vector<PromptSearchCriteria>&& value) { SetOrConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& AddOrConditions(const PromptSearchCriteria& value) { m_orConditionsHasBeenSet = true; m_orConditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& AddOrConditions(PromptSearchCriteria&& value) { m_orConditionsHasBeenSet = true; m_orConditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of conditions which would be applied together with an AND
      * condition.</p>
      */
-    inline const Aws::Vector<PromptSearchCriteria>& GetAndConditions() const{ return m_andConditions; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
+    inline const Aws::Vector<PromptSearchCriteria>& GetAndConditions() const { return m_andConditions; }
     inline bool AndConditionsHasBeenSet() const { return m_andConditionsHasBeenSet; }
+    template<typename AndConditionsT = Aws::Vector<PromptSearchCriteria>>
+    void SetAndConditions(AndConditionsT&& value) { m_andConditionsHasBeenSet = true; m_andConditions = std::forward<AndConditionsT>(value); }
+    template<typename AndConditionsT = Aws::Vector<PromptSearchCriteria>>
+    PromptSearchCriteria& WithAndConditions(AndConditionsT&& value) { SetAndConditions(std::forward<AndConditionsT>(value)); return *this;}
+    template<typename AndConditionsT = PromptSearchCriteria>
+    PromptSearchCriteria& AddAndConditions(AndConditionsT&& value) { m_andConditionsHasBeenSet = true; m_andConditions.emplace_back(std::forward<AndConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline void SetAndConditions(const Aws::Vector<PromptSearchCriteria>& value) { m_andConditionsHasBeenSet = true; m_andConditions = value; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline void SetAndConditions(Aws::Vector<PromptSearchCriteria>&& value) { m_andConditionsHasBeenSet = true; m_andConditions = std::move(value); }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& WithAndConditions(const Aws::Vector<PromptSearchCriteria>& value) { SetAndConditions(value); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& WithAndConditions(Aws::Vector<PromptSearchCriteria>&& value) { SetAndConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& AddAndConditions(const PromptSearchCriteria& value) { m_andConditionsHasBeenSet = true; m_andConditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline PromptSearchCriteria& AddAndConditions(PromptSearchCriteria&& value) { m_andConditionsHasBeenSet = true; m_andConditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A leaf node condition which can be used to specify a string condition.</p>
      *  <p>The currently supported values for <code>FieldName</code> are
      * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
      * 
      */
-    inline const StringCondition& GetStringCondition() const{ return m_stringCondition; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
+    inline const StringCondition& GetStringCondition() const { return m_stringCondition; }
     inline bool StringConditionHasBeenSet() const { return m_stringConditionHasBeenSet; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline void SetStringCondition(const StringCondition& value) { m_stringConditionHasBeenSet = true; m_stringCondition = value; }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline void SetStringCondition(StringCondition&& value) { m_stringConditionHasBeenSet = true; m_stringCondition = std::move(value); }
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline PromptSearchCriteria& WithStringCondition(const StringCondition& value) { SetStringCondition(value); return *this;}
-
-    /**
-     * <p>A leaf node condition which can be used to specify a string condition.</p>
-     *  <p>The currently supported values for <code>FieldName</code> are
-     * <code>name</code>, <code>description</code>, and <code>resourceID</code>.</p>
-     * 
-     */
-    inline PromptSearchCriteria& WithStringCondition(StringCondition&& value) { SetStringCondition(std::move(value)); return *this;}
-
+    template<typename StringConditionT = StringCondition>
+    void SetStringCondition(StringConditionT&& value) { m_stringConditionHasBeenSet = true; m_stringCondition = std::forward<StringConditionT>(value); }
+    template<typename StringConditionT = StringCondition>
+    PromptSearchCriteria& WithStringCondition(StringConditionT&& value) { SetStringCondition(std::forward<StringConditionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PromptSearchCriteria> m_orConditions;

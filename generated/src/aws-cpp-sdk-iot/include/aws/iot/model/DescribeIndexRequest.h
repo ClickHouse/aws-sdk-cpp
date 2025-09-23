@@ -21,7 +21,7 @@ namespace Model
   class DescribeIndexRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeIndexRequest();
+    AWS_IOT_API DescribeIndexRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The index name.</p>
      */
-    inline const Aws::String& GetIndexName() const{ return m_indexName; }
-
-    /**
-     * <p>The index name.</p>
-     */
+    inline const Aws::String& GetIndexName() const { return m_indexName; }
     inline bool IndexNameHasBeenSet() const { return m_indexNameHasBeenSet; }
-
-    /**
-     * <p>The index name.</p>
-     */
-    inline void SetIndexName(const Aws::String& value) { m_indexNameHasBeenSet = true; m_indexName = value; }
-
-    /**
-     * <p>The index name.</p>
-     */
-    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = std::move(value); }
-
-    /**
-     * <p>The index name.</p>
-     */
-    inline void SetIndexName(const char* value) { m_indexNameHasBeenSet = true; m_indexName.assign(value); }
-
-    /**
-     * <p>The index name.</p>
-     */
-    inline DescribeIndexRequest& WithIndexName(const Aws::String& value) { SetIndexName(value); return *this;}
-
-    /**
-     * <p>The index name.</p>
-     */
-    inline DescribeIndexRequest& WithIndexName(Aws::String&& value) { SetIndexName(std::move(value)); return *this;}
-
-    /**
-     * <p>The index name.</p>
-     */
-    inline DescribeIndexRequest& WithIndexName(const char* value) { SetIndexName(value); return *this;}
-
+    template<typename IndexNameT = Aws::String>
+    void SetIndexName(IndexNameT&& value) { m_indexNameHasBeenSet = true; m_indexName = std::forward<IndexNameT>(value); }
+    template<typename IndexNameT = Aws::String>
+    DescribeIndexRequest& WithIndexName(IndexNameT&& value) { SetIndexName(std::forward<IndexNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_indexName;

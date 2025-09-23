@@ -32,109 +32,37 @@ namespace Model
   class Tag
   {
   public:
-    AWS_TRANSLATE_API Tag();
+    AWS_TRANSLATE_API Tag() = default;
     AWS_TRANSLATE_API Tag(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Tag& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The initial part of a key-value pair that forms a tag associated with a given
      * resource. </p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    Tag& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
-    inline Tag& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
-    inline Tag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The initial part of a key-value pair that forms a tag associated with a given
-     * resource. </p>
-     */
-    inline Tag& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The second part of a key-value pair that forms a tag associated with a given
      * resource.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
-    inline Tag& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
-    inline Tag& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p> The second part of a key-value pair that forms a tag associated with a given
-     * resource.</p>
-     */
-    inline Tag& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Tag& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

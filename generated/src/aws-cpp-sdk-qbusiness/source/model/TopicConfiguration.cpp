@@ -18,32 +18,23 @@ namespace QBusiness
 namespace Model
 {
 
-TopicConfiguration::TopicConfiguration() : 
-    m_descriptionHasBeenSet(false),
-    m_exampleChatMessagesHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_rulesHasBeenSet(false)
-{
-}
-
-TopicConfiguration::TopicConfiguration(JsonView jsonValue) : 
-    m_descriptionHasBeenSet(false),
-    m_exampleChatMessagesHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_rulesHasBeenSet(false)
+TopicConfiguration::TopicConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 TopicConfiguration& TopicConfiguration::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("name"))
+  {
+    m_name = jsonValue.GetString("name");
+    m_nameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("exampleChatMessages"))
   {
     Aws::Utils::Array<JsonView> exampleChatMessagesJsonList = jsonValue.GetArray("exampleChatMessages");
@@ -53,14 +44,6 @@ TopicConfiguration& TopicConfiguration::operator =(JsonView jsonValue)
     }
     m_exampleChatMessagesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("name"))
-  {
-    m_name = jsonValue.GetString("name");
-
-    m_nameHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("rules"))
   {
     Aws::Utils::Array<JsonView> rulesJsonList = jsonValue.GetArray("rules");
@@ -70,13 +53,18 @@ TopicConfiguration& TopicConfiguration::operator =(JsonView jsonValue)
     }
     m_rulesHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue TopicConfiguration::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
 
   if(m_descriptionHasBeenSet)
   {
@@ -92,12 +80,6 @@ JsonValue TopicConfiguration::Jsonize() const
      exampleChatMessagesJsonList[exampleChatMessagesIndex].AsString(m_exampleChatMessages[exampleChatMessagesIndex]);
    }
    payload.WithArray("exampleChatMessages", std::move(exampleChatMessagesJsonList));
-
-  }
-
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
 
   }
 

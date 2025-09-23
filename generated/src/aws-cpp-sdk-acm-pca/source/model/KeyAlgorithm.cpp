@@ -21,9 +21,12 @@ namespace Aws
       {
 
         static const int RSA_2048_HASH = HashingUtils::HashString("RSA_2048");
+        static const int RSA_3072_HASH = HashingUtils::HashString("RSA_3072");
         static const int RSA_4096_HASH = HashingUtils::HashString("RSA_4096");
         static const int EC_prime256v1_HASH = HashingUtils::HashString("EC_prime256v1");
         static const int EC_secp384r1_HASH = HashingUtils::HashString("EC_secp384r1");
+        static const int EC_secp521r1_HASH = HashingUtils::HashString("EC_secp521r1");
+        static const int SM2_HASH = HashingUtils::HashString("SM2");
 
 
         KeyAlgorithm GetKeyAlgorithmForName(const Aws::String& name)
@@ -32,6 +35,10 @@ namespace Aws
           if (hashCode == RSA_2048_HASH)
           {
             return KeyAlgorithm::RSA_2048;
+          }
+          else if (hashCode == RSA_3072_HASH)
+          {
+            return KeyAlgorithm::RSA_3072;
           }
           else if (hashCode == RSA_4096_HASH)
           {
@@ -44,6 +51,14 @@ namespace Aws
           else if (hashCode == EC_secp384r1_HASH)
           {
             return KeyAlgorithm::EC_secp384r1;
+          }
+          else if (hashCode == EC_secp521r1_HASH)
+          {
+            return KeyAlgorithm::EC_secp521r1;
+          }
+          else if (hashCode == SM2_HASH)
+          {
+            return KeyAlgorithm::SM2;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -63,12 +78,18 @@ namespace Aws
             return {};
           case KeyAlgorithm::RSA_2048:
             return "RSA_2048";
+          case KeyAlgorithm::RSA_3072:
+            return "RSA_3072";
           case KeyAlgorithm::RSA_4096:
             return "RSA_4096";
           case KeyAlgorithm::EC_prime256v1:
             return "EC_prime256v1";
           case KeyAlgorithm::EC_secp384r1:
             return "EC_secp384r1";
+          case KeyAlgorithm::EC_secp521r1:
+            return "EC_secp521r1";
+          case KeyAlgorithm::SM2:
+            return "SM2";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

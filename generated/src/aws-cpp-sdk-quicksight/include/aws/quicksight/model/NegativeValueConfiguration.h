@@ -32,45 +32,24 @@ namespace Model
   class NegativeValueConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API NegativeValueConfiguration();
+    AWS_QUICKSIGHT_API NegativeValueConfiguration() = default;
     AWS_QUICKSIGHT_API NegativeValueConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API NegativeValueConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the display mode of the negative value configuration.</p>
      */
-    inline const NegativeValueDisplayMode& GetDisplayMode() const{ return m_displayMode; }
-
-    /**
-     * <p>Determines the display mode of the negative value configuration.</p>
-     */
+    inline NegativeValueDisplayMode GetDisplayMode() const { return m_displayMode; }
     inline bool DisplayModeHasBeenSet() const { return m_displayModeHasBeenSet; }
-
-    /**
-     * <p>Determines the display mode of the negative value configuration.</p>
-     */
-    inline void SetDisplayMode(const NegativeValueDisplayMode& value) { m_displayModeHasBeenSet = true; m_displayMode = value; }
-
-    /**
-     * <p>Determines the display mode of the negative value configuration.</p>
-     */
-    inline void SetDisplayMode(NegativeValueDisplayMode&& value) { m_displayModeHasBeenSet = true; m_displayMode = std::move(value); }
-
-    /**
-     * <p>Determines the display mode of the negative value configuration.</p>
-     */
-    inline NegativeValueConfiguration& WithDisplayMode(const NegativeValueDisplayMode& value) { SetDisplayMode(value); return *this;}
-
-    /**
-     * <p>Determines the display mode of the negative value configuration.</p>
-     */
-    inline NegativeValueConfiguration& WithDisplayMode(NegativeValueDisplayMode&& value) { SetDisplayMode(std::move(value)); return *this;}
-
+    inline void SetDisplayMode(NegativeValueDisplayMode value) { m_displayModeHasBeenSet = true; m_displayMode = value; }
+    inline NegativeValueConfiguration& WithDisplayMode(NegativeValueDisplayMode value) { SetDisplayMode(value); return *this;}
+    ///@}
   private:
 
-    NegativeValueDisplayMode m_displayMode;
+    NegativeValueDisplayMode m_displayMode{NegativeValueDisplayMode::NOT_SET};
     bool m_displayModeHasBeenSet = false;
   };
 

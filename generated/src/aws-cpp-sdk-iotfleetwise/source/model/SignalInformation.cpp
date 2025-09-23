@@ -18,21 +18,7 @@ namespace IoTFleetWise
 namespace Model
 {
 
-SignalInformation::SignalInformation() : 
-    m_nameHasBeenSet(false),
-    m_maxSampleCount(0),
-    m_maxSampleCountHasBeenSet(false),
-    m_minimumSamplingIntervalMs(0),
-    m_minimumSamplingIntervalMsHasBeenSet(false)
-{
-}
-
-SignalInformation::SignalInformation(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_maxSampleCount(0),
-    m_maxSampleCountHasBeenSet(false),
-    m_minimumSamplingIntervalMs(0),
-    m_minimumSamplingIntervalMsHasBeenSet(false)
+SignalInformation::SignalInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,23 @@ SignalInformation& SignalInformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxSampleCount"))
   {
     m_maxSampleCount = jsonValue.GetInt64("maxSampleCount");
-
     m_maxSampleCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("minimumSamplingIntervalMs"))
   {
     m_minimumSamplingIntervalMs = jsonValue.GetInt64("minimumSamplingIntervalMs");
-
     m_minimumSamplingIntervalMsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("dataPartitionId"))
+  {
+    m_dataPartitionId = jsonValue.GetString("dataPartitionId");
+    m_dataPartitionIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -82,6 +67,12 @@ JsonValue SignalInformation::Jsonize() const
   if(m_minimumSamplingIntervalMsHasBeenSet)
   {
    payload.WithInt64("minimumSamplingIntervalMs", m_minimumSamplingIntervalMs);
+
+  }
+
+  if(m_dataPartitionIdHasBeenSet)
+  {
+   payload.WithString("dataPartitionId", m_dataPartitionId);
 
   }
 

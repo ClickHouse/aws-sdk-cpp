@@ -30,41 +30,25 @@ namespace Model
   class SsmControls
   {
   public:
-    AWS_CONFIGSERVICE_API SsmControls();
+    AWS_CONFIGSERVICE_API SsmControls() = default;
     AWS_CONFIGSERVICE_API SsmControls(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API SsmControls& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum percentage of remediation actions allowed to run in parallel on
      * the non-compliant resources for that specific rule. You can specify a
      * percentage, such as 10%. The default value is 10. </p>
      */
-    inline int GetConcurrentExecutionRatePercentage() const{ return m_concurrentExecutionRatePercentage; }
-
-    /**
-     * <p>The maximum percentage of remediation actions allowed to run in parallel on
-     * the non-compliant resources for that specific rule. You can specify a
-     * percentage, such as 10%. The default value is 10. </p>
-     */
+    inline int GetConcurrentExecutionRatePercentage() const { return m_concurrentExecutionRatePercentage; }
     inline bool ConcurrentExecutionRatePercentageHasBeenSet() const { return m_concurrentExecutionRatePercentageHasBeenSet; }
-
-    /**
-     * <p>The maximum percentage of remediation actions allowed to run in parallel on
-     * the non-compliant resources for that specific rule. You can specify a
-     * percentage, such as 10%. The default value is 10. </p>
-     */
     inline void SetConcurrentExecutionRatePercentage(int value) { m_concurrentExecutionRatePercentageHasBeenSet = true; m_concurrentExecutionRatePercentage = value; }
-
-    /**
-     * <p>The maximum percentage of remediation actions allowed to run in parallel on
-     * the non-compliant resources for that specific rule. You can specify a
-     * percentage, such as 10%. The default value is 10. </p>
-     */
     inline SsmControls& WithConcurrentExecutionRatePercentage(int value) { SetConcurrentExecutionRatePercentage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The percentage of errors that are allowed before SSM stops running
      * automations on non-compliant resources for that specific rule. You can specify a
@@ -73,44 +57,17 @@ namespace Model
      * non-compliant resources, then SSM stops running the automations when the fifth
      * error is received. </p>
      */
-    inline int GetErrorPercentage() const{ return m_errorPercentage; }
-
-    /**
-     * <p>The percentage of errors that are allowed before SSM stops running
-     * automations on non-compliant resources for that specific rule. You can specify a
-     * percentage of errors, for example 10%. If you do not specifiy a percentage, the
-     * default is 50%. For example, if you set the ErrorPercentage to 40% for 10
-     * non-compliant resources, then SSM stops running the automations when the fifth
-     * error is received. </p>
-     */
+    inline int GetErrorPercentage() const { return m_errorPercentage; }
     inline bool ErrorPercentageHasBeenSet() const { return m_errorPercentageHasBeenSet; }
-
-    /**
-     * <p>The percentage of errors that are allowed before SSM stops running
-     * automations on non-compliant resources for that specific rule. You can specify a
-     * percentage of errors, for example 10%. If you do not specifiy a percentage, the
-     * default is 50%. For example, if you set the ErrorPercentage to 40% for 10
-     * non-compliant resources, then SSM stops running the automations when the fifth
-     * error is received. </p>
-     */
     inline void SetErrorPercentage(int value) { m_errorPercentageHasBeenSet = true; m_errorPercentage = value; }
-
-    /**
-     * <p>The percentage of errors that are allowed before SSM stops running
-     * automations on non-compliant resources for that specific rule. You can specify a
-     * percentage of errors, for example 10%. If you do not specifiy a percentage, the
-     * default is 50%. For example, if you set the ErrorPercentage to 40% for 10
-     * non-compliant resources, then SSM stops running the automations when the fifth
-     * error is received. </p>
-     */
     inline SsmControls& WithErrorPercentage(int value) { SetErrorPercentage(value); return *this;}
-
+    ///@}
   private:
 
-    int m_concurrentExecutionRatePercentage;
+    int m_concurrentExecutionRatePercentage{0};
     bool m_concurrentExecutionRatePercentageHasBeenSet = false;
 
-    int m_errorPercentage;
+    int m_errorPercentage{0};
     bool m_errorPercentageHasBeenSet = false;
   };
 

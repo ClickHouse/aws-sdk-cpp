@@ -29,118 +29,54 @@ namespace Model
   class GetIntegrationResponsesResult
   {
   public:
-    AWS_APIGATEWAYV2_API GetIntegrationResponsesResult();
+    AWS_APIGATEWAYV2_API GetIntegrationResponsesResult() = default;
     AWS_APIGATEWAYV2_API GetIntegrationResponsesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APIGATEWAYV2_API GetIntegrationResponsesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The elements from this collection.</p>
      */
-    inline const Aws::Vector<IntegrationResponse>& GetItems() const{ return m_items; }
+    inline const Aws::Vector<IntegrationResponse>& GetItems() const { return m_items; }
+    template<typename ItemsT = Aws::Vector<IntegrationResponse>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<IntegrationResponse>>
+    GetIntegrationResponsesResult& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = IntegrationResponse>
+    GetIntegrationResponsesResult& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The elements from this collection.</p>
-     */
-    inline void SetItems(const Aws::Vector<IntegrationResponse>& value) { m_items = value; }
-
-    /**
-     * <p>The elements from this collection.</p>
-     */
-    inline void SetItems(Aws::Vector<IntegrationResponse>&& value) { m_items = std::move(value); }
-
-    /**
-     * <p>The elements from this collection.</p>
-     */
-    inline GetIntegrationResponsesResult& WithItems(const Aws::Vector<IntegrationResponse>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>The elements from this collection.</p>
-     */
-    inline GetIntegrationResponsesResult& WithItems(Aws::Vector<IntegrationResponse>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>The elements from this collection.</p>
-     */
-    inline GetIntegrationResponsesResult& AddItems(const IntegrationResponse& value) { m_items.push_back(value); return *this; }
-
-    /**
-     * <p>The elements from this collection.</p>
-     */
-    inline GetIntegrationResponsesResult& AddItems(IntegrationResponse&& value) { m_items.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The next page of elements from this collection. Not valid for the last
      * element of the collection.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetIntegrationResponsesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The next page of elements from this collection. Not valid for the last
-     * element of the collection.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The next page of elements from this collection. Not valid for the last
-     * element of the collection.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The next page of elements from this collection. Not valid for the last
-     * element of the collection.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The next page of elements from this collection. Not valid for the last
-     * element of the collection.</p>
-     */
-    inline GetIntegrationResponsesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The next page of elements from this collection. Not valid for the last
-     * element of the collection.</p>
-     */
-    inline GetIntegrationResponsesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The next page of elements from this collection. Not valid for the last
-     * element of the collection.</p>
-     */
-    inline GetIntegrationResponsesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetIntegrationResponsesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetIntegrationResponsesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetIntegrationResponsesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetIntegrationResponsesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<IntegrationResponse> m_items;
+    bool m_itemsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

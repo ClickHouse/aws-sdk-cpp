@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-NoiseReducerFilterSettings::NoiseReducerFilterSettings() : 
-    m_strength(0),
-    m_strengthHasBeenSet(false)
-{
-}
-
-NoiseReducerFilterSettings::NoiseReducerFilterSettings(JsonView jsonValue) : 
-    m_strength(0),
-    m_strengthHasBeenSet(false)
+NoiseReducerFilterSettings::NoiseReducerFilterSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NoiseReducerFilterSettings& NoiseReducerFilterSettings::operator =(JsonView json
   if(jsonValue.ValueExists("strength"))
   {
     m_strength = jsonValue.GetInteger("strength");
-
     m_strengthHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -30,87 +30,51 @@ namespace Model
   class BookingOptions
   {
   public:
-    AWS_WORKMAIL_API BookingOptions();
+    AWS_WORKMAIL_API BookingOptions() = default;
     AWS_WORKMAIL_API BookingOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API BookingOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The resource's ability to automatically reply to requests. If disabled,
      * delegates must be associated to the resource.</p>
      */
-    inline bool GetAutoAcceptRequests() const{ return m_autoAcceptRequests; }
-
-    /**
-     * <p>The resource's ability to automatically reply to requests. If disabled,
-     * delegates must be associated to the resource.</p>
-     */
+    inline bool GetAutoAcceptRequests() const { return m_autoAcceptRequests; }
     inline bool AutoAcceptRequestsHasBeenSet() const { return m_autoAcceptRequestsHasBeenSet; }
-
-    /**
-     * <p>The resource's ability to automatically reply to requests. If disabled,
-     * delegates must be associated to the resource.</p>
-     */
     inline void SetAutoAcceptRequests(bool value) { m_autoAcceptRequestsHasBeenSet = true; m_autoAcceptRequests = value; }
-
-    /**
-     * <p>The resource's ability to automatically reply to requests. If disabled,
-     * delegates must be associated to the resource.</p>
-     */
     inline BookingOptions& WithAutoAcceptRequests(bool value) { SetAutoAcceptRequests(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The resource's ability to automatically decline any recurring requests.</p>
      */
-    inline bool GetAutoDeclineRecurringRequests() const{ return m_autoDeclineRecurringRequests; }
-
-    /**
-     * <p>The resource's ability to automatically decline any recurring requests.</p>
-     */
+    inline bool GetAutoDeclineRecurringRequests() const { return m_autoDeclineRecurringRequests; }
     inline bool AutoDeclineRecurringRequestsHasBeenSet() const { return m_autoDeclineRecurringRequestsHasBeenSet; }
-
-    /**
-     * <p>The resource's ability to automatically decline any recurring requests.</p>
-     */
     inline void SetAutoDeclineRecurringRequests(bool value) { m_autoDeclineRecurringRequestsHasBeenSet = true; m_autoDeclineRecurringRequests = value; }
-
-    /**
-     * <p>The resource's ability to automatically decline any recurring requests.</p>
-     */
     inline BookingOptions& WithAutoDeclineRecurringRequests(bool value) { SetAutoDeclineRecurringRequests(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The resource's ability to automatically decline any conflicting requests.</p>
      */
-    inline bool GetAutoDeclineConflictingRequests() const{ return m_autoDeclineConflictingRequests; }
-
-    /**
-     * <p>The resource's ability to automatically decline any conflicting requests.</p>
-     */
+    inline bool GetAutoDeclineConflictingRequests() const { return m_autoDeclineConflictingRequests; }
     inline bool AutoDeclineConflictingRequestsHasBeenSet() const { return m_autoDeclineConflictingRequestsHasBeenSet; }
-
-    /**
-     * <p>The resource's ability to automatically decline any conflicting requests.</p>
-     */
     inline void SetAutoDeclineConflictingRequests(bool value) { m_autoDeclineConflictingRequestsHasBeenSet = true; m_autoDeclineConflictingRequests = value; }
-
-    /**
-     * <p>The resource's ability to automatically decline any conflicting requests.</p>
-     */
     inline BookingOptions& WithAutoDeclineConflictingRequests(bool value) { SetAutoDeclineConflictingRequests(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_autoAcceptRequests;
+    bool m_autoAcceptRequests{false};
     bool m_autoAcceptRequestsHasBeenSet = false;
 
-    bool m_autoDeclineRecurringRequests;
+    bool m_autoDeclineRecurringRequests{false};
     bool m_autoDeclineRecurringRequestsHasBeenSet = false;
 
-    bool m_autoDeclineConflictingRequests;
+    bool m_autoDeclineConflictingRequests{false};
     bool m_autoDeclineConflictingRequestsHasBeenSet = false;
   };
 

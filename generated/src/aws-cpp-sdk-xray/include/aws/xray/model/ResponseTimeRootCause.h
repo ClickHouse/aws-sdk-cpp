@@ -33,87 +33,42 @@ namespace Model
   class ResponseTimeRootCause
   {
   public:
-    AWS_XRAY_API ResponseTimeRootCause();
+    AWS_XRAY_API ResponseTimeRootCause() = default;
     AWS_XRAY_API ResponseTimeRootCause(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API ResponseTimeRootCause& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of corresponding services. A service identifies a segment and contains
      * a name, account ID, type, and inferred flag.</p>
      */
-    inline const Aws::Vector<ResponseTimeRootCauseService>& GetServices() const{ return m_services; }
-
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
+    inline const Aws::Vector<ResponseTimeRootCauseService>& GetServices() const { return m_services; }
     inline bool ServicesHasBeenSet() const { return m_servicesHasBeenSet; }
+    template<typename ServicesT = Aws::Vector<ResponseTimeRootCauseService>>
+    void SetServices(ServicesT&& value) { m_servicesHasBeenSet = true; m_services = std::forward<ServicesT>(value); }
+    template<typename ServicesT = Aws::Vector<ResponseTimeRootCauseService>>
+    ResponseTimeRootCause& WithServices(ServicesT&& value) { SetServices(std::forward<ServicesT>(value)); return *this;}
+    template<typename ServicesT = ResponseTimeRootCauseService>
+    ResponseTimeRootCause& AddServices(ServicesT&& value) { m_servicesHasBeenSet = true; m_services.emplace_back(std::forward<ServicesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
-    inline void SetServices(const Aws::Vector<ResponseTimeRootCauseService>& value) { m_servicesHasBeenSet = true; m_services = value; }
-
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
-    inline void SetServices(Aws::Vector<ResponseTimeRootCauseService>&& value) { m_servicesHasBeenSet = true; m_services = std::move(value); }
-
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
-    inline ResponseTimeRootCause& WithServices(const Aws::Vector<ResponseTimeRootCauseService>& value) { SetServices(value); return *this;}
-
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
-    inline ResponseTimeRootCause& WithServices(Aws::Vector<ResponseTimeRootCauseService>&& value) { SetServices(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
-    inline ResponseTimeRootCause& AddServices(const ResponseTimeRootCauseService& value) { m_servicesHasBeenSet = true; m_services.push_back(value); return *this; }
-
-    /**
-     * <p>A list of corresponding services. A service identifies a segment and contains
-     * a name, account ID, type, and inferred flag.</p>
-     */
-    inline ResponseTimeRootCause& AddServices(ResponseTimeRootCauseService&& value) { m_servicesHasBeenSet = true; m_services.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A flag that denotes that the root cause impacts the trace client.</p>
      */
-    inline bool GetClientImpacting() const{ return m_clientImpacting; }
-
-    /**
-     * <p>A flag that denotes that the root cause impacts the trace client.</p>
-     */
+    inline bool GetClientImpacting() const { return m_clientImpacting; }
     inline bool ClientImpactingHasBeenSet() const { return m_clientImpactingHasBeenSet; }
-
-    /**
-     * <p>A flag that denotes that the root cause impacts the trace client.</p>
-     */
     inline void SetClientImpacting(bool value) { m_clientImpactingHasBeenSet = true; m_clientImpacting = value; }
-
-    /**
-     * <p>A flag that denotes that the root cause impacts the trace client.</p>
-     */
     inline ResponseTimeRootCause& WithClientImpacting(bool value) { SetClientImpacting(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<ResponseTimeRootCauseService> m_services;
     bool m_servicesHasBeenSet = false;
 
-    bool m_clientImpacting;
+    bool m_clientImpacting{false};
     bool m_clientImpactingHasBeenSet = false;
   };
 

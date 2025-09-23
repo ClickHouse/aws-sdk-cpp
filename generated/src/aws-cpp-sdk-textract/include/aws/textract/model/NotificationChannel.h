@@ -33,101 +33,36 @@ namespace Model
   class NotificationChannel
   {
   public:
-    AWS_TEXTRACT_API NotificationChannel();
+    AWS_TEXTRACT_API NotificationChannel() = default;
     AWS_TEXTRACT_API NotificationChannel(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API NotificationChannel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
      */
-    inline const Aws::String& GetSNSTopicArn() const{ return m_sNSTopicArn; }
-
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
+    inline const Aws::String& GetSNSTopicArn() const { return m_sNSTopicArn; }
     inline bool SNSTopicArnHasBeenSet() const { return m_sNSTopicArnHasBeenSet; }
+    template<typename SNSTopicArnT = Aws::String>
+    void SetSNSTopicArn(SNSTopicArnT&& value) { m_sNSTopicArnHasBeenSet = true; m_sNSTopicArn = std::forward<SNSTopicArnT>(value); }
+    template<typename SNSTopicArnT = Aws::String>
+    NotificationChannel& WithSNSTopicArn(SNSTopicArnT&& value) { SetSNSTopicArn(std::forward<SNSTopicArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
-    inline void SetSNSTopicArn(const Aws::String& value) { m_sNSTopicArnHasBeenSet = true; m_sNSTopicArn = value; }
-
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
-    inline void SetSNSTopicArn(Aws::String&& value) { m_sNSTopicArnHasBeenSet = true; m_sNSTopicArn = std::move(value); }
-
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
-    inline void SetSNSTopicArn(const char* value) { m_sNSTopicArnHasBeenSet = true; m_sNSTopicArn.assign(value); }
-
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
-    inline NotificationChannel& WithSNSTopicArn(const Aws::String& value) { SetSNSTopicArn(value); return *this;}
-
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
-    inline NotificationChannel& WithSNSTopicArn(Aws::String&& value) { SetSNSTopicArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon SNS topic that Amazon Textract posts the completion status to.</p>
-     */
-    inline NotificationChannel& WithSNSTopicArn(const char* value) { SetSNSTopicArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
      * publishing permissions to the Amazon SNS topic. </p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
-    inline NotificationChannel& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
-    inline NotificationChannel& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role that gives Amazon Textract
-     * publishing permissions to the Amazon SNS topic. </p>
-     */
-    inline NotificationChannel& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    NotificationChannel& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sNSTopicArn;

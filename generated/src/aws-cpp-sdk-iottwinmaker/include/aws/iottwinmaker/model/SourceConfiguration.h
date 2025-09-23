@@ -34,138 +34,60 @@ namespace Model
   class SourceConfiguration
   {
   public:
-    AWS_IOTTWINMAKER_API SourceConfiguration();
+    AWS_IOTTWINMAKER_API SourceConfiguration() = default;
     AWS_IOTTWINMAKER_API SourceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API SourceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source configuration type.</p>
      */
-    inline const SourceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The source configuration type.</p>
-     */
+    inline SourceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(SourceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline SourceConfiguration& WithType(SourceType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The source configuration type.</p>
-     */
-    inline void SetType(const SourceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The source configuration type.</p>
-     */
-    inline void SetType(SourceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The source configuration type.</p>
-     */
-    inline SourceConfiguration& WithType(const SourceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The source configuration type.</p>
-     */
-    inline SourceConfiguration& WithType(SourceType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source configuration S3 configuration.</p>
      */
-    inline const S3SourceConfiguration& GetS3Configuration() const{ return m_s3Configuration; }
-
-    /**
-     * <p>The source configuration S3 configuration.</p>
-     */
+    inline const S3SourceConfiguration& GetS3Configuration() const { return m_s3Configuration; }
     inline bool S3ConfigurationHasBeenSet() const { return m_s3ConfigurationHasBeenSet; }
+    template<typename S3ConfigurationT = S3SourceConfiguration>
+    void SetS3Configuration(S3ConfigurationT&& value) { m_s3ConfigurationHasBeenSet = true; m_s3Configuration = std::forward<S3ConfigurationT>(value); }
+    template<typename S3ConfigurationT = S3SourceConfiguration>
+    SourceConfiguration& WithS3Configuration(S3ConfigurationT&& value) { SetS3Configuration(std::forward<S3ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source configuration S3 configuration.</p>
-     */
-    inline void SetS3Configuration(const S3SourceConfiguration& value) { m_s3ConfigurationHasBeenSet = true; m_s3Configuration = value; }
-
-    /**
-     * <p>The source configuration S3 configuration.</p>
-     */
-    inline void SetS3Configuration(S3SourceConfiguration&& value) { m_s3ConfigurationHasBeenSet = true; m_s3Configuration = std::move(value); }
-
-    /**
-     * <p>The source configuration S3 configuration.</p>
-     */
-    inline SourceConfiguration& WithS3Configuration(const S3SourceConfiguration& value) { SetS3Configuration(value); return *this;}
-
-    /**
-     * <p>The source configuration S3 configuration.</p>
-     */
-    inline SourceConfiguration& WithS3Configuration(S3SourceConfiguration&& value) { SetS3Configuration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source configuration IoT SiteWise configuration.</p>
      */
-    inline const IotSiteWiseSourceConfiguration& GetIotSiteWiseConfiguration() const{ return m_iotSiteWiseConfiguration; }
-
-    /**
-     * <p>The source configuration IoT SiteWise configuration.</p>
-     */
+    inline const IotSiteWiseSourceConfiguration& GetIotSiteWiseConfiguration() const { return m_iotSiteWiseConfiguration; }
     inline bool IotSiteWiseConfigurationHasBeenSet() const { return m_iotSiteWiseConfigurationHasBeenSet; }
+    template<typename IotSiteWiseConfigurationT = IotSiteWiseSourceConfiguration>
+    void SetIotSiteWiseConfiguration(IotSiteWiseConfigurationT&& value) { m_iotSiteWiseConfigurationHasBeenSet = true; m_iotSiteWiseConfiguration = std::forward<IotSiteWiseConfigurationT>(value); }
+    template<typename IotSiteWiseConfigurationT = IotSiteWiseSourceConfiguration>
+    SourceConfiguration& WithIotSiteWiseConfiguration(IotSiteWiseConfigurationT&& value) { SetIotSiteWiseConfiguration(std::forward<IotSiteWiseConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source configuration IoT SiteWise configuration.</p>
-     */
-    inline void SetIotSiteWiseConfiguration(const IotSiteWiseSourceConfiguration& value) { m_iotSiteWiseConfigurationHasBeenSet = true; m_iotSiteWiseConfiguration = value; }
-
-    /**
-     * <p>The source configuration IoT SiteWise configuration.</p>
-     */
-    inline void SetIotSiteWiseConfiguration(IotSiteWiseSourceConfiguration&& value) { m_iotSiteWiseConfigurationHasBeenSet = true; m_iotSiteWiseConfiguration = std::move(value); }
-
-    /**
-     * <p>The source configuration IoT SiteWise configuration.</p>
-     */
-    inline SourceConfiguration& WithIotSiteWiseConfiguration(const IotSiteWiseSourceConfiguration& value) { SetIotSiteWiseConfiguration(value); return *this;}
-
-    /**
-     * <p>The source configuration IoT SiteWise configuration.</p>
-     */
-    inline SourceConfiguration& WithIotSiteWiseConfiguration(IotSiteWiseSourceConfiguration&& value) { SetIotSiteWiseConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source configuration IoT TwinMaker configuration.</p>
      */
-    inline const IotTwinMakerSourceConfiguration& GetIotTwinMakerConfiguration() const{ return m_iotTwinMakerConfiguration; }
-
-    /**
-     * <p>The source configuration IoT TwinMaker configuration.</p>
-     */
+    inline const IotTwinMakerSourceConfiguration& GetIotTwinMakerConfiguration() const { return m_iotTwinMakerConfiguration; }
     inline bool IotTwinMakerConfigurationHasBeenSet() const { return m_iotTwinMakerConfigurationHasBeenSet; }
-
-    /**
-     * <p>The source configuration IoT TwinMaker configuration.</p>
-     */
-    inline void SetIotTwinMakerConfiguration(const IotTwinMakerSourceConfiguration& value) { m_iotTwinMakerConfigurationHasBeenSet = true; m_iotTwinMakerConfiguration = value; }
-
-    /**
-     * <p>The source configuration IoT TwinMaker configuration.</p>
-     */
-    inline void SetIotTwinMakerConfiguration(IotTwinMakerSourceConfiguration&& value) { m_iotTwinMakerConfigurationHasBeenSet = true; m_iotTwinMakerConfiguration = std::move(value); }
-
-    /**
-     * <p>The source configuration IoT TwinMaker configuration.</p>
-     */
-    inline SourceConfiguration& WithIotTwinMakerConfiguration(const IotTwinMakerSourceConfiguration& value) { SetIotTwinMakerConfiguration(value); return *this;}
-
-    /**
-     * <p>The source configuration IoT TwinMaker configuration.</p>
-     */
-    inline SourceConfiguration& WithIotTwinMakerConfiguration(IotTwinMakerSourceConfiguration&& value) { SetIotTwinMakerConfiguration(std::move(value)); return *this;}
-
+    template<typename IotTwinMakerConfigurationT = IotTwinMakerSourceConfiguration>
+    void SetIotTwinMakerConfiguration(IotTwinMakerConfigurationT&& value) { m_iotTwinMakerConfigurationHasBeenSet = true; m_iotTwinMakerConfiguration = std::forward<IotTwinMakerConfigurationT>(value); }
+    template<typename IotTwinMakerConfigurationT = IotTwinMakerSourceConfiguration>
+    SourceConfiguration& WithIotTwinMakerConfiguration(IotTwinMakerConfigurationT&& value) { SetIotTwinMakerConfiguration(std::forward<IotTwinMakerConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    SourceType m_type;
+    SourceType m_type{SourceType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     S3SourceConfiguration m_s3Configuration;

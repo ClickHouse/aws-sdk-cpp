@@ -18,17 +18,7 @@ namespace SSM
 namespace Model
 {
 
-ComplianceExecutionSummary::ComplianceExecutionSummary() : 
-    m_executionTimeHasBeenSet(false),
-    m_executionIdHasBeenSet(false),
-    m_executionTypeHasBeenSet(false)
-{
-}
-
-ComplianceExecutionSummary::ComplianceExecutionSummary(JsonView jsonValue) : 
-    m_executionTimeHasBeenSet(false),
-    m_executionIdHasBeenSet(false),
-    m_executionTypeHasBeenSet(false)
+ComplianceExecutionSummary::ComplianceExecutionSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ComplianceExecutionSummary& ComplianceExecutionSummary::operator =(JsonView json
   if(jsonValue.ValueExists("ExecutionTime"))
   {
     m_executionTime = jsonValue.GetDouble("ExecutionTime");
-
     m_executionTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExecutionId"))
   {
     m_executionId = jsonValue.GetString("ExecutionId");
-
     m_executionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExecutionType"))
   {
     m_executionType = jsonValue.GetString("ExecutionType");
-
     m_executionTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

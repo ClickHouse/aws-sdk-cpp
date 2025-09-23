@@ -21,7 +21,7 @@ namespace Model
   class DeleteGroupRequest : public SyntheticsRequest
   {
   public:
-    AWS_SYNTHETICS_API DeleteGroupRequest();
+    AWS_SYNTHETICS_API DeleteGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_SYNTHETICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Specifies which group to delete. You can specify the group name, the ARN, or
      * the group ID as the <code>GroupIdentifier</code>.</p>
      */
-    inline const Aws::String& GetGroupIdentifier() const{ return m_groupIdentifier; }
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
+    inline const Aws::String& GetGroupIdentifier() const { return m_groupIdentifier; }
     inline bool GroupIdentifierHasBeenSet() const { return m_groupIdentifierHasBeenSet; }
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
-    inline void SetGroupIdentifier(const Aws::String& value) { m_groupIdentifierHasBeenSet = true; m_groupIdentifier = value; }
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
-    inline void SetGroupIdentifier(Aws::String&& value) { m_groupIdentifierHasBeenSet = true; m_groupIdentifier = std::move(value); }
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
-    inline void SetGroupIdentifier(const char* value) { m_groupIdentifierHasBeenSet = true; m_groupIdentifier.assign(value); }
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
-    inline DeleteGroupRequest& WithGroupIdentifier(const Aws::String& value) { SetGroupIdentifier(value); return *this;}
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
-    inline DeleteGroupRequest& WithGroupIdentifier(Aws::String&& value) { SetGroupIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies which group to delete. You can specify the group name, the ARN, or
-     * the group ID as the <code>GroupIdentifier</code>.</p>
-     */
-    inline DeleteGroupRequest& WithGroupIdentifier(const char* value) { SetGroupIdentifier(value); return *this;}
-
+    template<typename GroupIdentifierT = Aws::String>
+    void SetGroupIdentifier(GroupIdentifierT&& value) { m_groupIdentifierHasBeenSet = true; m_groupIdentifier = std::forward<GroupIdentifierT>(value); }
+    template<typename GroupIdentifierT = Aws::String>
+    DeleteGroupRequest& WithGroupIdentifier(GroupIdentifierT&& value) { SetGroupIdentifier(std::forward<GroupIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupIdentifier;

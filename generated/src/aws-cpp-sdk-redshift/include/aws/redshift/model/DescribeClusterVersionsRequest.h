@@ -24,7 +24,7 @@ namespace Model
   class DescribeClusterVersionsRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DescribeClusterVersionsRequest();
+    AWS_REDSHIFT_API DescribeClusterVersionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,112 +39,34 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
      */
-    inline const Aws::String& GetClusterVersion() const{ return m_clusterVersion; }
-
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
+    inline const Aws::String& GetClusterVersion() const { return m_clusterVersion; }
     inline bool ClusterVersionHasBeenSet() const { return m_clusterVersionHasBeenSet; }
+    template<typename ClusterVersionT = Aws::String>
+    void SetClusterVersion(ClusterVersionT&& value) { m_clusterVersionHasBeenSet = true; m_clusterVersion = std::forward<ClusterVersionT>(value); }
+    template<typename ClusterVersionT = Aws::String>
+    DescribeClusterVersionsRequest& WithClusterVersion(ClusterVersionT&& value) { SetClusterVersion(std::forward<ClusterVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
-    inline void SetClusterVersion(const Aws::String& value) { m_clusterVersionHasBeenSet = true; m_clusterVersion = value; }
-
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
-    inline void SetClusterVersion(Aws::String&& value) { m_clusterVersionHasBeenSet = true; m_clusterVersion = std::move(value); }
-
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
-    inline void SetClusterVersion(const char* value) { m_clusterVersionHasBeenSet = true; m_clusterVersion.assign(value); }
-
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
-    inline DescribeClusterVersionsRequest& WithClusterVersion(const Aws::String& value) { SetClusterVersion(value); return *this;}
-
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
-    inline DescribeClusterVersionsRequest& WithClusterVersion(Aws::String&& value) { SetClusterVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
-     */
-    inline DescribeClusterVersionsRequest& WithClusterVersion(const char* value) { SetClusterVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a specific cluster parameter group family to return details
      * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
      * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
      * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline const Aws::String& GetClusterParameterGroupFamily() const{ return m_clusterParameterGroupFamily; }
-
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
+    inline const Aws::String& GetClusterParameterGroupFamily() const { return m_clusterParameterGroupFamily; }
     inline bool ClusterParameterGroupFamilyHasBeenSet() const { return m_clusterParameterGroupFamilyHasBeenSet; }
+    template<typename ClusterParameterGroupFamilyT = Aws::String>
+    void SetClusterParameterGroupFamily(ClusterParameterGroupFamilyT&& value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily = std::forward<ClusterParameterGroupFamilyT>(value); }
+    template<typename ClusterParameterGroupFamilyT = Aws::String>
+    DescribeClusterVersionsRequest& WithClusterParameterGroupFamily(ClusterParameterGroupFamilyT&& value) { SetClusterParameterGroupFamily(std::forward<ClusterParameterGroupFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
-    inline void SetClusterParameterGroupFamily(const Aws::String& value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily = value; }
-
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
-    inline void SetClusterParameterGroupFamily(Aws::String&& value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily = std::move(value); }
-
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
-    inline void SetClusterParameterGroupFamily(const char* value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily.assign(value); }
-
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
-    inline DescribeClusterVersionsRequest& WithClusterParameterGroupFamily(const Aws::String& value) { SetClusterParameterGroupFamily(value); return *this;}
-
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
-    inline DescribeClusterVersionsRequest& WithClusterParameterGroupFamily(Aws::String&& value) { SetClusterParameterGroupFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a specific cluster parameter group family to return details
-     * for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric
-     * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
-     * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
-     */
-    inline DescribeClusterVersionsRequest& WithClusterParameterGroupFamily(const char* value) { SetClusterParameterGroupFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of response records to return in each call. If the number
      * of remaining response records exceeds the specified <code>MaxRecords</code>
@@ -153,39 +75,13 @@ namespace Model
      * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
      * maximum 100.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
     inline DescribeClusterVersionsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional parameter that specifies the starting point to return a set of
      * response records. When the results of a <a>DescribeClusterVersions</a> request
@@ -194,78 +90,13 @@ namespace Model
      * retrieve the next set of response records by providing the returned marker value
      * in the <code>Marker</code> parameter and retrying the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeClusterVersionsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeClusterVersionsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeClusterVersions</a> request
-     * exceed the value specified in <code>MaxRecords</code>, Amazon Web Services
-     * returns a value in the <code>Marker</code> field of the response. You can
-     * retrieve the next set of response records by providing the returned marker value
-     * in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeClusterVersionsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeClusterVersionsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterVersion;
@@ -274,7 +105,7 @@ namespace Model
     Aws::String m_clusterParameterGroupFamily;
     bool m_clusterParameterGroupFamilyHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_marker;

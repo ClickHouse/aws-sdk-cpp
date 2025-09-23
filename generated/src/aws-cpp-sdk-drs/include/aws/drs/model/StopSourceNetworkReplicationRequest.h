@@ -21,7 +21,7 @@ namespace Model
   class StopSourceNetworkReplicationRequest : public DrsRequest
   {
   public:
-    AWS_DRS_API StopSourceNetworkReplicationRequest();
+    AWS_DRS_API StopSourceNetworkReplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_DRS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>ID of the Source Network to stop replication.</p>
      */
-    inline const Aws::String& GetSourceNetworkID() const{ return m_sourceNetworkID; }
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
+    inline const Aws::String& GetSourceNetworkID() const { return m_sourceNetworkID; }
     inline bool SourceNetworkIDHasBeenSet() const { return m_sourceNetworkIDHasBeenSet; }
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
-    inline void SetSourceNetworkID(const Aws::String& value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID = value; }
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
-    inline void SetSourceNetworkID(Aws::String&& value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID = std::move(value); }
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
-    inline void SetSourceNetworkID(const char* value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID.assign(value); }
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
-    inline StopSourceNetworkReplicationRequest& WithSourceNetworkID(const Aws::String& value) { SetSourceNetworkID(value); return *this;}
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
-    inline StopSourceNetworkReplicationRequest& WithSourceNetworkID(Aws::String&& value) { SetSourceNetworkID(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the Source Network to stop replication.</p>
-     */
-    inline StopSourceNetworkReplicationRequest& WithSourceNetworkID(const char* value) { SetSourceNetworkID(value); return *this;}
-
+    template<typename SourceNetworkIDT = Aws::String>
+    void SetSourceNetworkID(SourceNetworkIDT&& value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID = std::forward<SourceNetworkIDT>(value); }
+    template<typename SourceNetworkIDT = Aws::String>
+    StopSourceNetworkReplicationRequest& WithSourceNetworkID(SourceNetworkIDT&& value) { SetSourceNetworkID(std::forward<SourceNetworkIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceNetworkID;

@@ -20,15 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-MetricStreamStatisticsConfiguration::MetricStreamStatisticsConfiguration() : 
-    m_includeMetricsHasBeenSet(false),
-    m_additionalStatisticsHasBeenSet(false)
-{
-}
-
-MetricStreamStatisticsConfiguration::MetricStreamStatisticsConfiguration(const XmlNode& xmlNode) : 
-    m_includeMetricsHasBeenSet(false),
-    m_additionalStatisticsHasBeenSet(false)
+MetricStreamStatisticsConfiguration::MetricStreamStatisticsConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +35,7 @@ MetricStreamStatisticsConfiguration& MetricStreamStatisticsConfiguration::operat
     if(!includeMetricsNode.IsNull())
     {
       XmlNode includeMetricsMember = includeMetricsNode.FirstChild("member");
+      m_includeMetricsHasBeenSet = !includeMetricsMember.IsNull();
       while(!includeMetricsMember.IsNull())
       {
         m_includeMetrics.push_back(includeMetricsMember);
@@ -55,6 +48,7 @@ MetricStreamStatisticsConfiguration& MetricStreamStatisticsConfiguration::operat
     if(!additionalStatisticsNode.IsNull())
     {
       XmlNode additionalStatisticsMember = additionalStatisticsNode.FirstChild("member");
+      m_additionalStatisticsHasBeenSet = !additionalStatisticsMember.IsNull();
       while(!additionalStatisticsMember.IsNull())
       {
         m_additionalStatistics.push_back(additionalStatisticsMember.GetText());
@@ -100,7 +94,7 @@ void MetricStreamStatisticsConfiguration::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_includeMetrics)
       {
         Aws::StringStream includeMetricsSs;
-        includeMetricsSs << location <<  ".IncludeMetrics.member." << includeMetricsIdx++;
+        includeMetricsSs << location << ".IncludeMetrics.member." << includeMetricsIdx++;
         item.OutputToStream(oStream, includeMetricsSs.str().c_str());
       }
   }

@@ -33,94 +33,40 @@ namespace Model
   class DeleteSqlInjectionMatchSetResult
   {
   public:
-    AWS_WAF_API DeleteSqlInjectionMatchSetResult();
+    AWS_WAF_API DeleteSqlInjectionMatchSetResult() = default;
     AWS_WAF_API DeleteSqlInjectionMatchSetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAF_API DeleteSqlInjectionMatchSetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <code>ChangeToken</code> that you used to submit the
      * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
      * query the status of the request. For more information, see
      * <a>GetChangeTokenStatus</a>.</p>
      */
-    inline const Aws::String& GetChangeToken() const{ return m_changeToken; }
+    inline const Aws::String& GetChangeToken() const { return m_changeToken; }
+    template<typename ChangeTokenT = Aws::String>
+    void SetChangeToken(ChangeTokenT&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::forward<ChangeTokenT>(value); }
+    template<typename ChangeTokenT = Aws::String>
+    DeleteSqlInjectionMatchSetResult& WithChangeToken(ChangeTokenT&& value) { SetChangeToken(std::forward<ChangeTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(const Aws::String& value) { m_changeToken = value; }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(Aws::String&& value) { m_changeToken = std::move(value); }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(const char* value) { m_changeToken.assign(value); }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline DeleteSqlInjectionMatchSetResult& WithChangeToken(const Aws::String& value) { SetChangeToken(value); return *this;}
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline DeleteSqlInjectionMatchSetResult& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline DeleteSqlInjectionMatchSetResult& WithChangeToken(const char* value) { SetChangeToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteSqlInjectionMatchSetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteSqlInjectionMatchSetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteSqlInjectionMatchSetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteSqlInjectionMatchSetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_changeToken;
+    bool m_changeTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

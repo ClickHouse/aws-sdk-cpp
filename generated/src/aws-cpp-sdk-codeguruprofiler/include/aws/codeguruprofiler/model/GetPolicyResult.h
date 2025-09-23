@@ -33,118 +33,52 @@ namespace Model
   class GetPolicyResult
   {
   public:
-    AWS_CODEGURUPROFILER_API GetPolicyResult();
+    AWS_CODEGURUPROFILER_API GetPolicyResult() = default;
     AWS_CODEGURUPROFILER_API GetPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEGURUPROFILER_API GetPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The JSON-formatted resource-based policy attached to the
      * <code>ProfilingGroup</code>.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
+    inline const Aws::String& GetPolicy() const { return m_policy; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    GetPolicyResult& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The JSON-formatted resource-based policy attached to the
-     * <code>ProfilingGroup</code>.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policy = value; }
-
-    /**
-     * <p>The JSON-formatted resource-based policy attached to the
-     * <code>ProfilingGroup</code>.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policy = std::move(value); }
-
-    /**
-     * <p>The JSON-formatted resource-based policy attached to the
-     * <code>ProfilingGroup</code>.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policy.assign(value); }
-
-    /**
-     * <p>The JSON-formatted resource-based policy attached to the
-     * <code>ProfilingGroup</code>.</p>
-     */
-    inline GetPolicyResult& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The JSON-formatted resource-based policy attached to the
-     * <code>ProfilingGroup</code>.</p>
-     */
-    inline GetPolicyResult& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON-formatted resource-based policy attached to the
-     * <code>ProfilingGroup</code>.</p>
-     */
-    inline GetPolicyResult& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the current revision of the returned policy.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    GetPolicyResult& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the current revision of the returned policy.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionId = value; }
-
-    /**
-     * <p>A unique identifier for the current revision of the returned policy.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the current revision of the returned policy.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the current revision of the returned policy.</p>
-     */
-    inline GetPolicyResult& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the current revision of the returned policy.</p>
-     */
-    inline GetPolicyResult& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the current revision of the returned policy.</p>
-     */
-    inline GetPolicyResult& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetPolicyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetPolicyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetPolicyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetPolicyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;
+    bool m_policyHasBeenSet = false;
 
     Aws::String m_revisionId;
+    bool m_revisionIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

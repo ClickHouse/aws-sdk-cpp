@@ -10,14 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-DeleteStackRequest::DeleteStackRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_retainResourcesHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false)
-{
-}
-
 Aws::String DeleteStackRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,12 +21,19 @@ Aws::String DeleteStackRequest::SerializePayload() const
 
   if(m_retainResourcesHasBeenSet)
   {
-    unsigned retainResourcesCount = 1;
-    for(auto& item : m_retainResources)
+    if (m_retainResources.empty())
     {
-      ss << "RetainResources.member." << retainResourcesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      retainResourcesCount++;
+      ss << "RetainResources=&";
+    }
+    else
+    {
+      unsigned retainResourcesCount = 1;
+      for(auto& item : m_retainResources)
+      {
+        ss << "RetainResources.member." << retainResourcesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        retainResourcesCount++;
+      }
     }
   }
 
@@ -46,6 +45,11 @@ Aws::String DeleteStackRequest::SerializePayload() const
   if(m_clientRequestTokenHasBeenSet)
   {
     ss << "ClientRequestToken=" << StringUtils::URLEncode(m_clientRequestToken.c_str()) << "&";
+  }
+
+  if(m_deletionModeHasBeenSet)
+  {
+    ss << "DeletionMode=" << StringUtils::URLEncode(DeletionModeMapper::GetNameForDeletionMode(m_deletionMode)) << "&";
   }
 
   ss << "Version=2010-05-15";

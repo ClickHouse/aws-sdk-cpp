@@ -24,60 +24,31 @@ namespace Model
 {
 
   /**
-   * The settings for attaching a VPC interface to an resource.<p><h3>See Also:</h3> 
-   * <a
+   * <p> The settings for attaching a VPC interface to an resource. </p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/VpcInterfaceAttachment">AWS
    * API Reference</a></p>
    */
   class VpcInterfaceAttachment
   {
   public:
-    AWS_MEDIACONNECT_API VpcInterfaceAttachment();
+    AWS_MEDIACONNECT_API VpcInterfaceAttachment() = default;
     AWS_MEDIACONNECT_API VpcInterfaceAttachment(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API VpcInterfaceAttachment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The name of the VPC interface to use for this resource.
+     * <p> The name of the VPC interface to use for this resource.</p>
      */
-    inline const Aws::String& GetVpcInterfaceName() const{ return m_vpcInterfaceName; }
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
+    inline const Aws::String& GetVpcInterfaceName() const { return m_vpcInterfaceName; }
     inline bool VpcInterfaceNameHasBeenSet() const { return m_vpcInterfaceNameHasBeenSet; }
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
-    inline void SetVpcInterfaceName(const Aws::String& value) { m_vpcInterfaceNameHasBeenSet = true; m_vpcInterfaceName = value; }
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
-    inline void SetVpcInterfaceName(Aws::String&& value) { m_vpcInterfaceNameHasBeenSet = true; m_vpcInterfaceName = std::move(value); }
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
-    inline void SetVpcInterfaceName(const char* value) { m_vpcInterfaceNameHasBeenSet = true; m_vpcInterfaceName.assign(value); }
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
-    inline VpcInterfaceAttachment& WithVpcInterfaceName(const Aws::String& value) { SetVpcInterfaceName(value); return *this;}
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
-    inline VpcInterfaceAttachment& WithVpcInterfaceName(Aws::String&& value) { SetVpcInterfaceName(std::move(value)); return *this;}
-
-    /**
-     * The name of the VPC interface to use for this resource.
-     */
-    inline VpcInterfaceAttachment& WithVpcInterfaceName(const char* value) { SetVpcInterfaceName(value); return *this;}
-
+    template<typename VpcInterfaceNameT = Aws::String>
+    void SetVpcInterfaceName(VpcInterfaceNameT&& value) { m_vpcInterfaceNameHasBeenSet = true; m_vpcInterfaceName = std::forward<VpcInterfaceNameT>(value); }
+    template<typename VpcInterfaceNameT = Aws::String>
+    VpcInterfaceAttachment& WithVpcInterfaceName(VpcInterfaceNameT&& value) { SetVpcInterfaceName(std::forward<VpcInterfaceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcInterfaceName;

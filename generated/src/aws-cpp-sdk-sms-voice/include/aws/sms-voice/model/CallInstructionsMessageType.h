@@ -32,60 +32,24 @@ namespace Model
   class CallInstructionsMessageType
   {
   public:
-    AWS_PINPOINTSMSVOICE_API CallInstructionsMessageType();
+    AWS_PINPOINTSMSVOICE_API CallInstructionsMessageType() = default;
     AWS_PINPOINTSMSVOICE_API CallInstructionsMessageType(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICE_API CallInstructionsMessageType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The language to use when delivering the message. For a complete list of
      * supported languages, see the Amazon Polly Developer Guide.
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
-    inline CallInstructionsMessageType& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
-    inline CallInstructionsMessageType& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * The language to use when delivering the message. For a complete list of
-     * supported languages, see the Amazon Polly Developer Guide.
-     */
-    inline CallInstructionsMessageType& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    CallInstructionsMessageType& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_text;

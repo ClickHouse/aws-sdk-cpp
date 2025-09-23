@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-OutputDataConfig::OutputDataConfig() : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_s3OutputPathHasBeenSet(false),
-    m_compressionType(OutputCompressionType::NOT_SET),
-    m_compressionTypeHasBeenSet(false)
-{
-}
-
-OutputDataConfig::OutputDataConfig(JsonView jsonValue) : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_s3OutputPathHasBeenSet(false),
-    m_compressionType(OutputCompressionType::NOT_SET),
-    m_compressionTypeHasBeenSet(false)
+OutputDataConfig::OutputDataConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ OutputDataConfig& OutputDataConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("KmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("KmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3OutputPath"))
   {
     m_s3OutputPath = jsonValue.GetString("S3OutputPath");
-
     m_s3OutputPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CompressionType"))
   {
     m_compressionType = OutputCompressionTypeMapper::GetOutputCompressionTypeForName(jsonValue.GetString("CompressionType"));
-
     m_compressionTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

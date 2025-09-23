@@ -28,75 +28,47 @@ namespace Model
   class GetEbsEncryptionByDefaultResponse
   {
   public:
-    AWS_EC2_API GetEbsEncryptionByDefaultResponse();
+    AWS_EC2_API GetEbsEncryptionByDefaultResponse() = default;
     AWS_EC2_API GetEbsEncryptionByDefaultResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API GetEbsEncryptionByDefaultResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Indicates whether encryption by default is enabled.</p>
      */
-    inline bool GetEbsEncryptionByDefault() const{ return m_ebsEncryptionByDefault; }
-
-    /**
-     * <p>Indicates whether encryption by default is enabled.</p>
-     */
-    inline void SetEbsEncryptionByDefault(bool value) { m_ebsEncryptionByDefault = value; }
-
-    /**
-     * <p>Indicates whether encryption by default is enabled.</p>
-     */
+    inline bool GetEbsEncryptionByDefault() const { return m_ebsEncryptionByDefault; }
+    inline void SetEbsEncryptionByDefault(bool value) { m_ebsEncryptionByDefaultHasBeenSet = true; m_ebsEncryptionByDefault = value; }
     inline GetEbsEncryptionByDefaultResponse& WithEbsEncryptionByDefault(bool value) { SetEbsEncryptionByDefault(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline const SSEType& GetSseType() const{ return m_sseType; }
+    inline SSEType GetSseType() const { return m_sseType; }
+    inline void SetSseType(SSEType value) { m_sseTypeHasBeenSet = true; m_sseType = value; }
+    inline GetEbsEncryptionByDefaultResponse& WithSseType(SSEType value) { SetSseType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetSseType(const SSEType& value) { m_sseType = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetSseType(SSEType&& value) { m_sseType = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline GetEbsEncryptionByDefaultResponse& WithSseType(const SSEType& value) { SetSseType(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline GetEbsEncryptionByDefaultResponse& WithSseType(SSEType&& value) { SetSseType(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GetEbsEncryptionByDefaultResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GetEbsEncryptionByDefaultResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GetEbsEncryptionByDefaultResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_ebsEncryptionByDefault;
+    bool m_ebsEncryptionByDefault{false};
+    bool m_ebsEncryptionByDefaultHasBeenSet = false;
 
-    SSEType m_sseType;
+    SSEType m_sseType{SSEType::NOT_SET};
+    bool m_sseTypeHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

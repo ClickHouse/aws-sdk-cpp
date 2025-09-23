@@ -32,101 +32,36 @@ namespace Model
   class SessionKeyDerivationValue
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API SessionKeyDerivationValue();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API SessionKeyDerivationValue() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API SessionKeyDerivationValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API SessionKeyDerivationValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The cryptogram provided by the terminal during transaction processing.</p>
      */
-    inline const Aws::String& GetApplicationCryptogram() const{ return m_applicationCryptogram; }
-
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
+    inline const Aws::String& GetApplicationCryptogram() const { return m_applicationCryptogram; }
     inline bool ApplicationCryptogramHasBeenSet() const { return m_applicationCryptogramHasBeenSet; }
+    template<typename ApplicationCryptogramT = Aws::String>
+    void SetApplicationCryptogram(ApplicationCryptogramT&& value) { m_applicationCryptogramHasBeenSet = true; m_applicationCryptogram = std::forward<ApplicationCryptogramT>(value); }
+    template<typename ApplicationCryptogramT = Aws::String>
+    SessionKeyDerivationValue& WithApplicationCryptogram(ApplicationCryptogramT&& value) { SetApplicationCryptogram(std::forward<ApplicationCryptogramT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
-    inline void SetApplicationCryptogram(const Aws::String& value) { m_applicationCryptogramHasBeenSet = true; m_applicationCryptogram = value; }
-
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
-    inline void SetApplicationCryptogram(Aws::String&& value) { m_applicationCryptogramHasBeenSet = true; m_applicationCryptogram = std::move(value); }
-
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
-    inline void SetApplicationCryptogram(const char* value) { m_applicationCryptogramHasBeenSet = true; m_applicationCryptogram.assign(value); }
-
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
-    inline SessionKeyDerivationValue& WithApplicationCryptogram(const Aws::String& value) { SetApplicationCryptogram(value); return *this;}
-
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
-    inline SessionKeyDerivationValue& WithApplicationCryptogram(Aws::String&& value) { SetApplicationCryptogram(std::move(value)); return *this;}
-
-    /**
-     * <p>The cryptogram provided by the terminal during transaction processing.</p>
-     */
-    inline SessionKeyDerivationValue& WithApplicationCryptogram(const char* value) { SetApplicationCryptogram(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The transaction counter that is provided by the terminal during transaction
      * processing.</p>
      */
-    inline const Aws::String& GetApplicationTransactionCounter() const{ return m_applicationTransactionCounter; }
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
+    inline const Aws::String& GetApplicationTransactionCounter() const { return m_applicationTransactionCounter; }
     inline bool ApplicationTransactionCounterHasBeenSet() const { return m_applicationTransactionCounterHasBeenSet; }
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
-    inline void SetApplicationTransactionCounter(const Aws::String& value) { m_applicationTransactionCounterHasBeenSet = true; m_applicationTransactionCounter = value; }
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
-    inline void SetApplicationTransactionCounter(Aws::String&& value) { m_applicationTransactionCounterHasBeenSet = true; m_applicationTransactionCounter = std::move(value); }
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
-    inline void SetApplicationTransactionCounter(const char* value) { m_applicationTransactionCounterHasBeenSet = true; m_applicationTransactionCounter.assign(value); }
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
-    inline SessionKeyDerivationValue& WithApplicationTransactionCounter(const Aws::String& value) { SetApplicationTransactionCounter(value); return *this;}
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
-    inline SessionKeyDerivationValue& WithApplicationTransactionCounter(Aws::String&& value) { SetApplicationTransactionCounter(std::move(value)); return *this;}
-
-    /**
-     * <p>The transaction counter that is provided by the terminal during transaction
-     * processing.</p>
-     */
-    inline SessionKeyDerivationValue& WithApplicationTransactionCounter(const char* value) { SetApplicationTransactionCounter(value); return *this;}
-
+    template<typename ApplicationTransactionCounterT = Aws::String>
+    void SetApplicationTransactionCounter(ApplicationTransactionCounterT&& value) { m_applicationTransactionCounterHasBeenSet = true; m_applicationTransactionCounter = std::forward<ApplicationTransactionCounterT>(value); }
+    template<typename ApplicationTransactionCounterT = Aws::String>
+    SessionKeyDerivationValue& WithApplicationTransactionCounter(ApplicationTransactionCounterT&& value) { SetApplicationTransactionCounter(std::forward<ApplicationTransactionCounterT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationCryptogram;

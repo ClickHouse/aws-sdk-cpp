@@ -23,7 +23,7 @@ namespace Model
   class PutConfigRuleRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API PutConfigRuleRequest();
+    AWS_CONFIGSERVICE_API PutConfigRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,77 +36,31 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The rule that you want to add to your account.</p>
      */
-    inline const ConfigRule& GetConfigRule() const{ return m_configRule; }
-
-    /**
-     * <p>The rule that you want to add to your account.</p>
-     */
+    inline const ConfigRule& GetConfigRule() const { return m_configRule; }
     inline bool ConfigRuleHasBeenSet() const { return m_configRuleHasBeenSet; }
+    template<typename ConfigRuleT = ConfigRule>
+    void SetConfigRule(ConfigRuleT&& value) { m_configRuleHasBeenSet = true; m_configRule = std::forward<ConfigRuleT>(value); }
+    template<typename ConfigRuleT = ConfigRule>
+    PutConfigRuleRequest& WithConfigRule(ConfigRuleT&& value) { SetConfigRule(std::forward<ConfigRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The rule that you want to add to your account.</p>
-     */
-    inline void SetConfigRule(const ConfigRule& value) { m_configRuleHasBeenSet = true; m_configRule = value; }
-
-    /**
-     * <p>The rule that you want to add to your account.</p>
-     */
-    inline void SetConfigRule(ConfigRule&& value) { m_configRuleHasBeenSet = true; m_configRule = std::move(value); }
-
-    /**
-     * <p>The rule that you want to add to your account.</p>
-     */
-    inline PutConfigRuleRequest& WithConfigRule(const ConfigRule& value) { SetConfigRule(value); return *this;}
-
-    /**
-     * <p>The rule that you want to add to your account.</p>
-     */
-    inline PutConfigRuleRequest& WithConfigRule(ConfigRule&& value) { SetConfigRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of tag object.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutConfigRuleRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutConfigRuleRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutConfigRuleRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An array of tag object.</p>
-     */
-    inline PutConfigRuleRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    PutConfigRuleRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    PutConfigRuleRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     ConfigRule m_configRule;

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-PhysicalConnectionRequirements::PhysicalConnectionRequirements() : 
-    m_subnetIdHasBeenSet(false),
-    m_securityGroupIdListHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false)
-{
-}
-
-PhysicalConnectionRequirements::PhysicalConnectionRequirements(JsonView jsonValue) : 
-    m_subnetIdHasBeenSet(false),
-    m_securityGroupIdListHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false)
+PhysicalConnectionRequirements::PhysicalConnectionRequirements(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ PhysicalConnectionRequirements& PhysicalConnectionRequirements::operator =(JsonV
   if(jsonValue.ValueExists("SubnetId"))
   {
     m_subnetId = jsonValue.GetString("SubnetId");
-
     m_subnetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIdList"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdListJsonList = jsonValue.GetArray("SecurityGroupIdList");
@@ -51,14 +39,11 @@ PhysicalConnectionRequirements& PhysicalConnectionRequirements::operator =(JsonV
     }
     m_securityGroupIdListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AvailabilityZone"))
   {
     m_availabilityZone = jsonValue.GetString("AvailabilityZone");
-
     m_availabilityZoneHasBeenSet = true;
   }
-
   return *this;
 }
 

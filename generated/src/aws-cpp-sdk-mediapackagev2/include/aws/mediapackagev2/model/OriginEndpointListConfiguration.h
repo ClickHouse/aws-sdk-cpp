@@ -9,8 +9,11 @@
 #include <aws/mediapackagev2/model/ContainerType.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/mediapackagev2/model/ForceEndpointErrorConfiguration.h>
 #include <aws/mediapackagev2/model/ListHlsManifestConfiguration.h>
 #include <aws/mediapackagev2/model/ListLowLatencyHlsManifestConfiguration.h>
+#include <aws/mediapackagev2/model/ListDashManifestConfiguration.h>
+#include <aws/mediapackagev2/model/ListMssManifestConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -36,459 +39,184 @@ namespace Model
   class OriginEndpointListConfiguration
   {
   public:
-    AWS_MEDIAPACKAGEV2_API OriginEndpointListConfiguration();
+    AWS_MEDIAPACKAGEV2_API OriginEndpointListConfiguration() = default;
     AWS_MEDIAPACKAGEV2_API OriginEndpointListConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEV2_API OriginEndpointListConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    OriginEndpointListConfiguration& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline OriginEndpointListConfiguration& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline OriginEndpointListConfiguration& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the resource.</p>
-     */
-    inline OriginEndpointListConfiguration& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that describes the channel group. The name is the primary identifier
      * for the channel group, and must be unique for your account in the AWS
      * Region.</p>
      */
-    inline const Aws::String& GetChannelGroupName() const{ return m_channelGroupName; }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
+    inline const Aws::String& GetChannelGroupName() const { return m_channelGroupName; }
     inline bool ChannelGroupNameHasBeenSet() const { return m_channelGroupNameHasBeenSet; }
+    template<typename ChannelGroupNameT = Aws::String>
+    void SetChannelGroupName(ChannelGroupNameT&& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = std::forward<ChannelGroupNameT>(value); }
+    template<typename ChannelGroupNameT = Aws::String>
+    OriginEndpointListConfiguration& WithChannelGroupName(ChannelGroupNameT&& value) { SetChannelGroupName(std::forward<ChannelGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(const Aws::String& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = value; }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(Aws::String&& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = std::move(value); }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(const char* value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName.assign(value); }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline OriginEndpointListConfiguration& WithChannelGroupName(const Aws::String& value) { SetChannelGroupName(value); return *this;}
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline OriginEndpointListConfiguration& WithChannelGroupName(Aws::String&& value) { SetChannelGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline OriginEndpointListConfiguration& WithChannelGroupName(const char* value) { SetChannelGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that describes the channel. The name is the primary identifier for
      * the channel, and must be unique for your account in the AWS Region and channel
      * group. </p>
      */
-    inline const Aws::String& GetChannelName() const{ return m_channelName; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
+    inline const Aws::String& GetChannelName() const { return m_channelName; }
     inline bool ChannelNameHasBeenSet() const { return m_channelNameHasBeenSet; }
+    template<typename ChannelNameT = Aws::String>
+    void SetChannelName(ChannelNameT&& value) { m_channelNameHasBeenSet = true; m_channelName = std::forward<ChannelNameT>(value); }
+    template<typename ChannelNameT = Aws::String>
+    OriginEndpointListConfiguration& WithChannelName(ChannelNameT&& value) { SetChannelName(std::forward<ChannelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(const Aws::String& value) { m_channelNameHasBeenSet = true; m_channelName = value; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(Aws::String&& value) { m_channelNameHasBeenSet = true; m_channelName = std::move(value); }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(const char* value) { m_channelNameHasBeenSet = true; m_channelName.assign(value); }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline OriginEndpointListConfiguration& WithChannelName(const Aws::String& value) { SetChannelName(value); return *this;}
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline OriginEndpointListConfiguration& WithChannelName(Aws::String&& value) { SetChannelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline OriginEndpointListConfiguration& WithChannelName(const char* value) { SetChannelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that describes the origin endpoint. The name is the primary
      * identifier for the origin endpoint, and and must be unique for your account in
      * the AWS Region and channel. </p>
      */
-    inline const Aws::String& GetOriginEndpointName() const{ return m_originEndpointName; }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
+    inline const Aws::String& GetOriginEndpointName() const { return m_originEndpointName; }
     inline bool OriginEndpointNameHasBeenSet() const { return m_originEndpointNameHasBeenSet; }
+    template<typename OriginEndpointNameT = Aws::String>
+    void SetOriginEndpointName(OriginEndpointNameT&& value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName = std::forward<OriginEndpointNameT>(value); }
+    template<typename OriginEndpointNameT = Aws::String>
+    OriginEndpointListConfiguration& WithOriginEndpointName(OriginEndpointNameT&& value) { SetOriginEndpointName(std::forward<OriginEndpointNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline void SetOriginEndpointName(const Aws::String& value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName = value; }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline void SetOriginEndpointName(Aws::String&& value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName = std::move(value); }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline void SetOriginEndpointName(const char* value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName.assign(value); }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline OriginEndpointListConfiguration& WithOriginEndpointName(const Aws::String& value) { SetOriginEndpointName(value); return *this;}
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline OriginEndpointListConfiguration& WithOriginEndpointName(Aws::String&& value) { SetOriginEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline OriginEndpointListConfiguration& WithOriginEndpointName(const char* value) { SetOriginEndpointName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of container attached to this origin endpoint. A container type is a
      * file format that encapsulates one or more media streams, such as audio and
      * video, into a single file. </p>
      */
-    inline const ContainerType& GetContainerType() const{ return m_containerType; }
-
-    /**
-     * <p>The type of container attached to this origin endpoint. A container type is a
-     * file format that encapsulates one or more media streams, such as audio and
-     * video, into a single file. </p>
-     */
+    inline ContainerType GetContainerType() const { return m_containerType; }
     inline bool ContainerTypeHasBeenSet() const { return m_containerTypeHasBeenSet; }
+    inline void SetContainerType(ContainerType value) { m_containerTypeHasBeenSet = true; m_containerType = value; }
+    inline OriginEndpointListConfiguration& WithContainerType(ContainerType value) { SetContainerType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of container attached to this origin endpoint. A container type is a
-     * file format that encapsulates one or more media streams, such as audio and
-     * video, into a single file. </p>
-     */
-    inline void SetContainerType(const ContainerType& value) { m_containerTypeHasBeenSet = true; m_containerType = value; }
-
-    /**
-     * <p>The type of container attached to this origin endpoint. A container type is a
-     * file format that encapsulates one or more media streams, such as audio and
-     * video, into a single file. </p>
-     */
-    inline void SetContainerType(ContainerType&& value) { m_containerTypeHasBeenSet = true; m_containerType = std::move(value); }
-
-    /**
-     * <p>The type of container attached to this origin endpoint. A container type is a
-     * file format that encapsulates one or more media streams, such as audio and
-     * video, into a single file. </p>
-     */
-    inline OriginEndpointListConfiguration& WithContainerType(const ContainerType& value) { SetContainerType(value); return *this;}
-
-    /**
-     * <p>The type of container attached to this origin endpoint. A container type is a
-     * file format that encapsulates one or more media streams, such as audio and
-     * video, into a single file. </p>
-     */
-    inline OriginEndpointListConfiguration& WithContainerType(ContainerType&& value) { SetContainerType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Any descriptive information that you want to add to the origin endpoint for
      * future identification purposes.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    OriginEndpointListConfiguration& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
-    inline OriginEndpointListConfiguration& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
-    inline OriginEndpointListConfiguration& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Any descriptive information that you want to add to the origin endpoint for
-     * future identification purposes.</p>
-     */
-    inline OriginEndpointListConfiguration& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the origin endpoint was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The date and time the origin endpoint was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    OriginEndpointListConfiguration& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the origin endpoint was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The date and time the origin endpoint was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time the origin endpoint was created.</p>
-     */
-    inline OriginEndpointListConfiguration& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time the origin endpoint was created.</p>
-     */
-    inline OriginEndpointListConfiguration& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the origin endpoint was modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetModifiedAt() const{ return m_modifiedAt; }
-
-    /**
-     * <p>The date and time the origin endpoint was modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetModifiedAt() const { return m_modifiedAt; }
     inline bool ModifiedAtHasBeenSet() const { return m_modifiedAtHasBeenSet; }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    void SetModifiedAt(ModifiedAtT&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::forward<ModifiedAtT>(value); }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    OriginEndpointListConfiguration& WithModifiedAt(ModifiedAtT&& value) { SetModifiedAt(std::forward<ModifiedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the origin endpoint was modified.</p>
-     */
-    inline void SetModifiedAt(const Aws::Utils::DateTime& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = value; }
-
-    /**
-     * <p>The date and time the origin endpoint was modified.</p>
-     */
-    inline void SetModifiedAt(Aws::Utils::DateTime&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::move(value); }
-
-    /**
-     * <p>The date and time the origin endpoint was modified.</p>
-     */
-    inline OriginEndpointListConfiguration& WithModifiedAt(const Aws::Utils::DateTime& value) { SetModifiedAt(value); return *this;}
-
-    /**
-     * <p>The date and time the origin endpoint was modified.</p>
-     */
-    inline OriginEndpointListConfiguration& WithModifiedAt(Aws::Utils::DateTime&& value) { SetModifiedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An HTTP live streaming (HLS) manifest configuration.</p>
      */
-    inline const Aws::Vector<ListHlsManifestConfiguration>& GetHlsManifests() const{ return m_hlsManifests; }
-
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
+    inline const Aws::Vector<ListHlsManifestConfiguration>& GetHlsManifests() const { return m_hlsManifests; }
     inline bool HlsManifestsHasBeenSet() const { return m_hlsManifestsHasBeenSet; }
+    template<typename HlsManifestsT = Aws::Vector<ListHlsManifestConfiguration>>
+    void SetHlsManifests(HlsManifestsT&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests = std::forward<HlsManifestsT>(value); }
+    template<typename HlsManifestsT = Aws::Vector<ListHlsManifestConfiguration>>
+    OriginEndpointListConfiguration& WithHlsManifests(HlsManifestsT&& value) { SetHlsManifests(std::forward<HlsManifestsT>(value)); return *this;}
+    template<typename HlsManifestsT = ListHlsManifestConfiguration>
+    OriginEndpointListConfiguration& AddHlsManifests(HlsManifestsT&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests.emplace_back(std::forward<HlsManifestsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
-    inline void SetHlsManifests(const Aws::Vector<ListHlsManifestConfiguration>& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests = value; }
-
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
-    inline void SetHlsManifests(Aws::Vector<ListHlsManifestConfiguration>&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests = std::move(value); }
-
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& WithHlsManifests(const Aws::Vector<ListHlsManifestConfiguration>& value) { SetHlsManifests(value); return *this;}
-
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& WithHlsManifests(Aws::Vector<ListHlsManifestConfiguration>&& value) { SetHlsManifests(std::move(value)); return *this;}
-
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& AddHlsManifests(const ListHlsManifestConfiguration& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests.push_back(value); return *this; }
-
-    /**
-     * <p>An HTTP live streaming (HLS) manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& AddHlsManifests(ListHlsManifestConfiguration&& value) { m_hlsManifestsHasBeenSet = true; m_hlsManifests.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A low-latency HLS manifest configuration.</p>
      */
-    inline const Aws::Vector<ListLowLatencyHlsManifestConfiguration>& GetLowLatencyHlsManifests() const{ return m_lowLatencyHlsManifests; }
-
-    /**
-     * <p>A low-latency HLS manifest configuration.</p>
-     */
+    inline const Aws::Vector<ListLowLatencyHlsManifestConfiguration>& GetLowLatencyHlsManifests() const { return m_lowLatencyHlsManifests; }
     inline bool LowLatencyHlsManifestsHasBeenSet() const { return m_lowLatencyHlsManifestsHasBeenSet; }
+    template<typename LowLatencyHlsManifestsT = Aws::Vector<ListLowLatencyHlsManifestConfiguration>>
+    void SetLowLatencyHlsManifests(LowLatencyHlsManifestsT&& value) { m_lowLatencyHlsManifestsHasBeenSet = true; m_lowLatencyHlsManifests = std::forward<LowLatencyHlsManifestsT>(value); }
+    template<typename LowLatencyHlsManifestsT = Aws::Vector<ListLowLatencyHlsManifestConfiguration>>
+    OriginEndpointListConfiguration& WithLowLatencyHlsManifests(LowLatencyHlsManifestsT&& value) { SetLowLatencyHlsManifests(std::forward<LowLatencyHlsManifestsT>(value)); return *this;}
+    template<typename LowLatencyHlsManifestsT = ListLowLatencyHlsManifestConfiguration>
+    OriginEndpointListConfiguration& AddLowLatencyHlsManifests(LowLatencyHlsManifestsT&& value) { m_lowLatencyHlsManifestsHasBeenSet = true; m_lowLatencyHlsManifests.emplace_back(std::forward<LowLatencyHlsManifestsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A low-latency HLS manifest configuration.</p>
+     * <p>A DASH manifest configuration.</p>
      */
-    inline void SetLowLatencyHlsManifests(const Aws::Vector<ListLowLatencyHlsManifestConfiguration>& value) { m_lowLatencyHlsManifestsHasBeenSet = true; m_lowLatencyHlsManifests = value; }
+    inline const Aws::Vector<ListDashManifestConfiguration>& GetDashManifests() const { return m_dashManifests; }
+    inline bool DashManifestsHasBeenSet() const { return m_dashManifestsHasBeenSet; }
+    template<typename DashManifestsT = Aws::Vector<ListDashManifestConfiguration>>
+    void SetDashManifests(DashManifestsT&& value) { m_dashManifestsHasBeenSet = true; m_dashManifests = std::forward<DashManifestsT>(value); }
+    template<typename DashManifestsT = Aws::Vector<ListDashManifestConfiguration>>
+    OriginEndpointListConfiguration& WithDashManifests(DashManifestsT&& value) { SetDashManifests(std::forward<DashManifestsT>(value)); return *this;}
+    template<typename DashManifestsT = ListDashManifestConfiguration>
+    OriginEndpointListConfiguration& AddDashManifests(DashManifestsT&& value) { m_dashManifestsHasBeenSet = true; m_dashManifests.emplace_back(std::forward<DashManifestsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A low-latency HLS manifest configuration.</p>
+     * <p>A list of Microsoft Smooth Streaming (MSS) manifest configurations associated
+     * with the origin endpoint. Each configuration represents a different MSS
+     * streaming option available from this endpoint.</p>
      */
-    inline void SetLowLatencyHlsManifests(Aws::Vector<ListLowLatencyHlsManifestConfiguration>&& value) { m_lowLatencyHlsManifestsHasBeenSet = true; m_lowLatencyHlsManifests = std::move(value); }
+    inline const Aws::Vector<ListMssManifestConfiguration>& GetMssManifests() const { return m_mssManifests; }
+    inline bool MssManifestsHasBeenSet() const { return m_mssManifestsHasBeenSet; }
+    template<typename MssManifestsT = Aws::Vector<ListMssManifestConfiguration>>
+    void SetMssManifests(MssManifestsT&& value) { m_mssManifestsHasBeenSet = true; m_mssManifests = std::forward<MssManifestsT>(value); }
+    template<typename MssManifestsT = Aws::Vector<ListMssManifestConfiguration>>
+    OriginEndpointListConfiguration& WithMssManifests(MssManifestsT&& value) { SetMssManifests(std::forward<MssManifestsT>(value)); return *this;}
+    template<typename MssManifestsT = ListMssManifestConfiguration>
+    OriginEndpointListConfiguration& AddMssManifests(MssManifestsT&& value) { m_mssManifestsHasBeenSet = true; m_mssManifests.emplace_back(std::forward<MssManifestsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A low-latency HLS manifest configuration.</p>
+     * <p>The failover settings for the endpoint.</p>
      */
-    inline OriginEndpointListConfiguration& WithLowLatencyHlsManifests(const Aws::Vector<ListLowLatencyHlsManifestConfiguration>& value) { SetLowLatencyHlsManifests(value); return *this;}
-
-    /**
-     * <p>A low-latency HLS manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& WithLowLatencyHlsManifests(Aws::Vector<ListLowLatencyHlsManifestConfiguration>&& value) { SetLowLatencyHlsManifests(std::move(value)); return *this;}
-
-    /**
-     * <p>A low-latency HLS manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& AddLowLatencyHlsManifests(const ListLowLatencyHlsManifestConfiguration& value) { m_lowLatencyHlsManifestsHasBeenSet = true; m_lowLatencyHlsManifests.push_back(value); return *this; }
-
-    /**
-     * <p>A low-latency HLS manifest configuration.</p>
-     */
-    inline OriginEndpointListConfiguration& AddLowLatencyHlsManifests(ListLowLatencyHlsManifestConfiguration&& value) { m_lowLatencyHlsManifestsHasBeenSet = true; m_lowLatencyHlsManifests.push_back(std::move(value)); return *this; }
-
+    inline const ForceEndpointErrorConfiguration& GetForceEndpointErrorConfiguration() const { return m_forceEndpointErrorConfiguration; }
+    inline bool ForceEndpointErrorConfigurationHasBeenSet() const { return m_forceEndpointErrorConfigurationHasBeenSet; }
+    template<typename ForceEndpointErrorConfigurationT = ForceEndpointErrorConfiguration>
+    void SetForceEndpointErrorConfiguration(ForceEndpointErrorConfigurationT&& value) { m_forceEndpointErrorConfigurationHasBeenSet = true; m_forceEndpointErrorConfiguration = std::forward<ForceEndpointErrorConfigurationT>(value); }
+    template<typename ForceEndpointErrorConfigurationT = ForceEndpointErrorConfiguration>
+    OriginEndpointListConfiguration& WithForceEndpointErrorConfiguration(ForceEndpointErrorConfigurationT&& value) { SetForceEndpointErrorConfiguration(std::forward<ForceEndpointErrorConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -503,16 +231,16 @@ namespace Model
     Aws::String m_originEndpointName;
     bool m_originEndpointNameHasBeenSet = false;
 
-    ContainerType m_containerType;
+    ContainerType m_containerType{ContainerType::NOT_SET};
     bool m_containerTypeHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_modifiedAt;
+    Aws::Utils::DateTime m_modifiedAt{};
     bool m_modifiedAtHasBeenSet = false;
 
     Aws::Vector<ListHlsManifestConfiguration> m_hlsManifests;
@@ -520,6 +248,15 @@ namespace Model
 
     Aws::Vector<ListLowLatencyHlsManifestConfiguration> m_lowLatencyHlsManifests;
     bool m_lowLatencyHlsManifestsHasBeenSet = false;
+
+    Aws::Vector<ListDashManifestConfiguration> m_dashManifests;
+    bool m_dashManifestsHasBeenSet = false;
+
+    Aws::Vector<ListMssManifestConfiguration> m_mssManifests;
+    bool m_mssManifestsHasBeenSet = false;
+
+    ForceEndpointErrorConfiguration m_forceEndpointErrorConfiguration;
+    bool m_forceEndpointErrorConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

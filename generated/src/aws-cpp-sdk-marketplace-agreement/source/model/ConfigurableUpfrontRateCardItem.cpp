@@ -18,17 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-ConfigurableUpfrontRateCardItem::ConfigurableUpfrontRateCardItem() : 
-    m_constraintsHasBeenSet(false),
-    m_rateCardHasBeenSet(false),
-    m_selectorHasBeenSet(false)
-{
-}
-
-ConfigurableUpfrontRateCardItem::ConfigurableUpfrontRateCardItem(JsonView jsonValue) : 
-    m_constraintsHasBeenSet(false),
-    m_rateCardHasBeenSet(false),
-    m_selectorHasBeenSet(false)
+ConfigurableUpfrontRateCardItem::ConfigurableUpfrontRateCardItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ConfigurableUpfrontRateCardItem& ConfigurableUpfrontRateCardItem::operator =(Jso
   if(jsonValue.ValueExists("constraints"))
   {
     m_constraints = jsonValue.GetObject("constraints");
-
     m_constraintsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rateCard"))
   {
     Aws::Utils::Array<JsonView> rateCardJsonList = jsonValue.GetArray("rateCard");
@@ -51,14 +39,11 @@ ConfigurableUpfrontRateCardItem& ConfigurableUpfrontRateCardItem::operator =(Jso
     }
     m_rateCardHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("selector"))
   {
     m_selector = jsonValue.GetObject("selector");
-
     m_selectorHasBeenSet = true;
   }
-
   return *this;
 }
 

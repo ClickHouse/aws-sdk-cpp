@@ -28,57 +28,37 @@ namespace Model
   class AdvertiseByoipCidrResponse
   {
   public:
-    AWS_EC2_API AdvertiseByoipCidrResponse();
+    AWS_EC2_API AdvertiseByoipCidrResponse() = default;
     AWS_EC2_API AdvertiseByoipCidrResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API AdvertiseByoipCidrResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Information about the address range.</p>
      */
-    inline const ByoipCidr& GetByoipCidr() const{ return m_byoipCidr; }
+    inline const ByoipCidr& GetByoipCidr() const { return m_byoipCidr; }
+    template<typename ByoipCidrT = ByoipCidr>
+    void SetByoipCidr(ByoipCidrT&& value) { m_byoipCidrHasBeenSet = true; m_byoipCidr = std::forward<ByoipCidrT>(value); }
+    template<typename ByoipCidrT = ByoipCidr>
+    AdvertiseByoipCidrResponse& WithByoipCidr(ByoipCidrT&& value) { SetByoipCidr(std::forward<ByoipCidrT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the address range.</p>
-     */
-    inline void SetByoipCidr(const ByoipCidr& value) { m_byoipCidr = value; }
-
-    /**
-     * <p>Information about the address range.</p>
-     */
-    inline void SetByoipCidr(ByoipCidr&& value) { m_byoipCidr = std::move(value); }
-
-    /**
-     * <p>Information about the address range.</p>
-     */
-    inline AdvertiseByoipCidrResponse& WithByoipCidr(const ByoipCidr& value) { SetByoipCidr(value); return *this;}
-
-    /**
-     * <p>Information about the address range.</p>
-     */
-    inline AdvertiseByoipCidrResponse& WithByoipCidr(ByoipCidr&& value) { SetByoipCidr(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline AdvertiseByoipCidrResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline AdvertiseByoipCidrResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    AdvertiseByoipCidrResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     ByoipCidr m_byoipCidr;
+    bool m_byoipCidrHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

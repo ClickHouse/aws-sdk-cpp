@@ -18,17 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-HeaderMatchPattern::HeaderMatchPattern() : 
-    m_allHasBeenSet(false),
-    m_includedHeadersHasBeenSet(false),
-    m_excludedHeadersHasBeenSet(false)
-{
-}
-
-HeaderMatchPattern::HeaderMatchPattern(JsonView jsonValue) : 
-    m_allHasBeenSet(false),
-    m_includedHeadersHasBeenSet(false),
-    m_excludedHeadersHasBeenSet(false)
+HeaderMatchPattern::HeaderMatchPattern(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ HeaderMatchPattern& HeaderMatchPattern::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("All"))
   {
     m_all = jsonValue.GetObject("All");
-
     m_allHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IncludedHeaders"))
   {
     Aws::Utils::Array<JsonView> includedHeadersJsonList = jsonValue.GetArray("IncludedHeaders");
@@ -51,7 +39,6 @@ HeaderMatchPattern& HeaderMatchPattern::operator =(JsonView jsonValue)
     }
     m_includedHeadersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludedHeaders"))
   {
     Aws::Utils::Array<JsonView> excludedHeadersJsonList = jsonValue.GetArray("ExcludedHeaders");
@@ -61,7 +48,6 @@ HeaderMatchPattern& HeaderMatchPattern::operator =(JsonView jsonValue)
     }
     m_excludedHeadersHasBeenSet = true;
   }
-
   return *this;
 }
 

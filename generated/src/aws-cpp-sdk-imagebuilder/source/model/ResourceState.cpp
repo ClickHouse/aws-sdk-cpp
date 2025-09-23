@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-ResourceState::ResourceState() : 
-    m_status(ResourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ResourceState::ResourceState(JsonView jsonValue) : 
-    m_status(ResourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ResourceState::ResourceState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ResourceState& ResourceState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = ResourceStatusMapper::GetResourceStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

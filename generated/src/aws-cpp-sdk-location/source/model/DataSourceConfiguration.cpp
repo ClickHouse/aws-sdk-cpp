@@ -18,15 +18,7 @@ namespace LocationService
 namespace Model
 {
 
-DataSourceConfiguration::DataSourceConfiguration() : 
-    m_intendedUse(IntendedUse::NOT_SET),
-    m_intendedUseHasBeenSet(false)
-{
-}
-
-DataSourceConfiguration::DataSourceConfiguration(JsonView jsonValue) : 
-    m_intendedUse(IntendedUse::NOT_SET),
-    m_intendedUseHasBeenSet(false)
+DataSourceConfiguration::DataSourceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DataSourceConfiguration& DataSourceConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("IntendedUse"))
   {
     m_intendedUse = IntendedUseMapper::GetIntendedUseForName(jsonValue.GetString("IntendedUse"));
-
     m_intendedUseHasBeenSet = true;
   }
-
   return *this;
 }
 

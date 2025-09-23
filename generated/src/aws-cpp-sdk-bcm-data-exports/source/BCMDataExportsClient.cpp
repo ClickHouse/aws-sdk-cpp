@@ -47,20 +47,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* BCMDataExportsClient::SERVICE_NAME = "bcm-data-exports";
-const char* BCMDataExportsClient::ALLOCATION_TAG = "BCMDataExportsClient";
+namespace Aws
+{
+  namespace BCMDataExports
+  {
+    const char SERVICE_NAME[] = "bcm-data-exports";
+    const char ALLOCATION_TAG[] = "BCMDataExportsClient";
+  }
+}
+const char* BCMDataExportsClient::GetServiceName() {return SERVICE_NAME;}
+const char* BCMDataExportsClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 BCMDataExportsClient::BCMDataExportsClient(const BCMDataExports::BCMDataExportsClientConfiguration& clientConfiguration,
                                            std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<BCMDataExportsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -75,8 +82,7 @@ BCMDataExportsClient::BCMDataExportsClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<BCMDataExportsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -91,8 +97,7 @@ BCMDataExportsClient::BCMDataExportsClient(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<BCMDataExportsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -101,12 +106,11 @@ BCMDataExportsClient::BCMDataExportsClient(const std::shared_ptr<AWSCredentialsP
   BCMDataExportsClient::BCMDataExportsClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<BCMDataExportsErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -121,7 +125,6 @@ BCMDataExportsClient::BCMDataExportsClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<BCMDataExportsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -136,7 +139,6 @@ BCMDataExportsClient::BCMDataExportsClient(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<BCMDataExportsErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -156,6 +158,14 @@ std::shared_ptr<BCMDataExportsEndpointProviderBase>& BCMDataExportsClient::acces
 void BCMDataExportsClient::init(const BCMDataExports::BCMDataExportsClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("BCM Data Exports");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

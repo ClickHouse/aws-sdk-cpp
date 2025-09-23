@@ -18,15 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-ServiceQuotaExceededException::ServiceQuotaExceededException() : 
-    m_messageHasBeenSet(false),
-    m_resourceIdHasBeenSet(false)
-{
-}
-
-ServiceQuotaExceededException::ServiceQuotaExceededException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceIdHasBeenSet(false)
+ServiceQuotaExceededException::ServiceQuotaExceededException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ServiceQuotaExceededException& ServiceQuotaExceededException::operator =(JsonVie
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceId"))
   {
     m_resourceId = jsonValue.GetString("ResourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   return *this;
 }
 

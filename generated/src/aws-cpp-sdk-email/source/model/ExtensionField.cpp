@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-ExtensionField::ExtensionField() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ExtensionField::ExtensionField(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ExtensionField::ExtensionField(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

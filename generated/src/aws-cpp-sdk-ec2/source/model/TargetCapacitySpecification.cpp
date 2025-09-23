@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TargetCapacitySpecification::TargetCapacitySpecification() : 
-    m_totalTargetCapacity(0),
-    m_totalTargetCapacityHasBeenSet(false),
-    m_onDemandTargetCapacity(0),
-    m_onDemandTargetCapacityHasBeenSet(false),
-    m_spotTargetCapacity(0),
-    m_spotTargetCapacityHasBeenSet(false),
-    m_defaultTargetCapacityType(DefaultTargetCapacityType::NOT_SET),
-    m_defaultTargetCapacityTypeHasBeenSet(false),
-    m_targetCapacityUnitType(TargetCapacityUnitType::NOT_SET),
-    m_targetCapacityUnitTypeHasBeenSet(false)
-{
-}
-
-TargetCapacitySpecification::TargetCapacitySpecification(const XmlNode& xmlNode) : 
-    m_totalTargetCapacity(0),
-    m_totalTargetCapacityHasBeenSet(false),
-    m_onDemandTargetCapacity(0),
-    m_onDemandTargetCapacityHasBeenSet(false),
-    m_spotTargetCapacity(0),
-    m_spotTargetCapacityHasBeenSet(false),
-    m_defaultTargetCapacityType(DefaultTargetCapacityType::NOT_SET),
-    m_defaultTargetCapacityTypeHasBeenSet(false),
-    m_targetCapacityUnitType(TargetCapacityUnitType::NOT_SET),
-    m_targetCapacityUnitTypeHasBeenSet(false)
+TargetCapacitySpecification::TargetCapacitySpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -76,13 +52,13 @@ TargetCapacitySpecification& TargetCapacitySpecification::operator =(const XmlNo
     XmlNode defaultTargetCapacityTypeNode = resultNode.FirstChild("defaultTargetCapacityType");
     if(!defaultTargetCapacityTypeNode.IsNull())
     {
-      m_defaultTargetCapacityType = DefaultTargetCapacityTypeMapper::GetDefaultTargetCapacityTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(defaultTargetCapacityTypeNode.GetText()).c_str()).c_str());
+      m_defaultTargetCapacityType = DefaultTargetCapacityTypeMapper::GetDefaultTargetCapacityTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(defaultTargetCapacityTypeNode.GetText()).c_str()));
       m_defaultTargetCapacityTypeHasBeenSet = true;
     }
     XmlNode targetCapacityUnitTypeNode = resultNode.FirstChild("targetCapacityUnitType");
     if(!targetCapacityUnitTypeNode.IsNull())
     {
-      m_targetCapacityUnitType = TargetCapacityUnitTypeMapper::GetTargetCapacityUnitTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetCapacityUnitTypeNode.GetText()).c_str()).c_str());
+      m_targetCapacityUnitType = TargetCapacityUnitTypeMapper::GetTargetCapacityUnitTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetCapacityUnitTypeNode.GetText()).c_str()));
       m_targetCapacityUnitTypeHasBeenSet = true;
     }
   }
@@ -109,12 +85,12 @@ void TargetCapacitySpecification::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_defaultTargetCapacityTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DefaultTargetCapacityType=" << DefaultTargetCapacityTypeMapper::GetNameForDefaultTargetCapacityType(m_defaultTargetCapacityType) << "&";
+      oStream << location << index << locationValue << ".DefaultTargetCapacityType=" << StringUtils::URLEncode(DefaultTargetCapacityTypeMapper::GetNameForDefaultTargetCapacityType(m_defaultTargetCapacityType)) << "&";
   }
 
   if(m_targetCapacityUnitTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TargetCapacityUnitType=" << TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType) << "&";
+      oStream << location << index << locationValue << ".TargetCapacityUnitType=" << StringUtils::URLEncode(TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType)) << "&";
   }
 
 }
@@ -135,11 +111,11 @@ void TargetCapacitySpecification::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_defaultTargetCapacityTypeHasBeenSet)
   {
-      oStream << location << ".DefaultTargetCapacityType=" << DefaultTargetCapacityTypeMapper::GetNameForDefaultTargetCapacityType(m_defaultTargetCapacityType) << "&";
+      oStream << location << ".DefaultTargetCapacityType=" << StringUtils::URLEncode(DefaultTargetCapacityTypeMapper::GetNameForDefaultTargetCapacityType(m_defaultTargetCapacityType)) << "&";
   }
   if(m_targetCapacityUnitTypeHasBeenSet)
   {
-      oStream << location << ".TargetCapacityUnitType=" << TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType) << "&";
+      oStream << location << ".TargetCapacityUnitType=" << StringUtils::URLEncode(TargetCapacityUnitTypeMapper::GetNameForTargetCapacityUnitType(m_targetCapacityUnitType)) << "&";
   }
 }
 

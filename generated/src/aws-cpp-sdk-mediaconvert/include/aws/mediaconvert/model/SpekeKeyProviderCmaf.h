@@ -7,6 +7,7 @@
 #include <aws/mediaconvert/MediaConvert_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/mediaconvert/model/EncryptionContractConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -35,312 +36,100 @@ namespace Model
   class SpekeKeyProviderCmaf
   {
   public:
-    AWS_MEDIACONVERT_API SpekeKeyProviderCmaf();
+    AWS_MEDIACONVERT_API SpekeKeyProviderCmaf() = default;
     AWS_MEDIACONVERT_API SpekeKeyProviderCmaf(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API SpekeKeyProviderCmaf& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * If you want your key provider to encrypt the content keys that it provides to
      * MediaConvert, set up a certificate with a master key using AWS Certificate
      * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
      */
-    inline const Aws::String& GetCertificateArn() const{ return m_certificateArn; }
-
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
+    inline const Aws::String& GetCertificateArn() const { return m_certificateArn; }
     inline bool CertificateArnHasBeenSet() const { return m_certificateArnHasBeenSet; }
+    template<typename CertificateArnT = Aws::String>
+    void SetCertificateArn(CertificateArnT&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::forward<CertificateArnT>(value); }
+    template<typename CertificateArnT = Aws::String>
+    SpekeKeyProviderCmaf& WithCertificateArn(CertificateArnT&& value) { SetCertificateArn(std::forward<CertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
-    inline void SetCertificateArn(const Aws::String& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
-
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
-
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
-    inline void SetCertificateArn(const char* value) { m_certificateArnHasBeenSet = true; m_certificateArn.assign(value); }
-
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
-    inline SpekeKeyProviderCmaf& WithCertificateArn(const Aws::String& value) { SetCertificateArn(value); return *this;}
-
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
-    inline SpekeKeyProviderCmaf& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * If you want your key provider to encrypt the content keys that it provides to
-     * MediaConvert, set up a certificate with a master key using AWS Certificate
-     * Manager. Specify the certificate's Amazon Resource Name (ARN) here.
-     */
-    inline SpekeKeyProviderCmaf& WithCertificateArn(const char* value) { SetCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * Specify the DRM system IDs that you want signaled in the DASH manifest that
      * MediaConvert creates as part of this CMAF package. The DASH manifest can
      * currently signal up to three system IDs. For more information, see
      * https://dashif.org/identifiers/content_protection/.
      */
-    inline const Aws::Vector<Aws::String>& GetDashSignaledSystemIds() const{ return m_dashSignaledSystemIds; }
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
+    inline const Aws::Vector<Aws::String>& GetDashSignaledSystemIds() const { return m_dashSignaledSystemIds; }
     inline bool DashSignaledSystemIdsHasBeenSet() const { return m_dashSignaledSystemIdsHasBeenSet; }
+    template<typename DashSignaledSystemIdsT = Aws::Vector<Aws::String>>
+    void SetDashSignaledSystemIds(DashSignaledSystemIdsT&& value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds = std::forward<DashSignaledSystemIdsT>(value); }
+    template<typename DashSignaledSystemIdsT = Aws::Vector<Aws::String>>
+    SpekeKeyProviderCmaf& WithDashSignaledSystemIds(DashSignaledSystemIdsT&& value) { SetDashSignaledSystemIds(std::forward<DashSignaledSystemIdsT>(value)); return *this;}
+    template<typename DashSignaledSystemIdsT = Aws::String>
+    SpekeKeyProviderCmaf& AddDashSignaledSystemIds(DashSignaledSystemIdsT&& value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds.emplace_back(std::forward<DashSignaledSystemIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
+     * Specify the SPEKE version, either v1.0 or v2.0, that MediaConvert uses when
+     * encrypting your output. For more information, see:
+     * https://docs.aws.amazon.com/speke/latest/documentation/speke-api-specification.html
+     * To use SPEKE v1.0: Leave blank. To use SPEKE v2.0: Specify a SPEKE v2.0 video
+     * preset and a SPEKE v2.0 audio preset.
+     */
+    inline const EncryptionContractConfiguration& GetEncryptionContractConfiguration() const { return m_encryptionContractConfiguration; }
+    inline bool EncryptionContractConfigurationHasBeenSet() const { return m_encryptionContractConfigurationHasBeenSet; }
+    template<typename EncryptionContractConfigurationT = EncryptionContractConfiguration>
+    void SetEncryptionContractConfiguration(EncryptionContractConfigurationT&& value) { m_encryptionContractConfigurationHasBeenSet = true; m_encryptionContractConfiguration = std::forward<EncryptionContractConfigurationT>(value); }
+    template<typename EncryptionContractConfigurationT = EncryptionContractConfiguration>
+    SpekeKeyProviderCmaf& WithEncryptionContractConfiguration(EncryptionContractConfigurationT&& value) { SetEncryptionContractConfiguration(std::forward<EncryptionContractConfigurationT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * Specify up to 3 DRM system IDs that you want signaled in the HLS manifest that
+     * MediaConvert creates as part of this CMAF package. For more information, see
      * https://dashif.org/identifiers/content_protection/.
      */
-    inline void SetDashSignaledSystemIds(const Aws::Vector<Aws::String>& value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds = value; }
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline void SetDashSignaledSystemIds(Aws::Vector<Aws::String>&& value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds = std::move(value); }
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& WithDashSignaledSystemIds(const Aws::Vector<Aws::String>& value) { SetDashSignaledSystemIds(value); return *this;}
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& WithDashSignaledSystemIds(Aws::Vector<Aws::String>&& value) { SetDashSignaledSystemIds(std::move(value)); return *this;}
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& AddDashSignaledSystemIds(const Aws::String& value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds.push_back(value); return *this; }
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& AddDashSignaledSystemIds(Aws::String&& value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * Specify the DRM system IDs that you want signaled in the DASH manifest that
-     * MediaConvert creates as part of this CMAF package. The DASH manifest can
-     * currently signal up to three system IDs. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& AddDashSignaledSystemIds(const char* value) { m_dashSignaledSystemIdsHasBeenSet = true; m_dashSignaledSystemIds.push_back(value); return *this; }
-
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline const Aws::Vector<Aws::String>& GetHlsSignaledSystemIds() const{ return m_hlsSignaledSystemIds; }
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
+    inline const Aws::Vector<Aws::String>& GetHlsSignaledSystemIds() const { return m_hlsSignaledSystemIds; }
     inline bool HlsSignaledSystemIdsHasBeenSet() const { return m_hlsSignaledSystemIdsHasBeenSet; }
+    template<typename HlsSignaledSystemIdsT = Aws::Vector<Aws::String>>
+    void SetHlsSignaledSystemIds(HlsSignaledSystemIdsT&& value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds = std::forward<HlsSignaledSystemIdsT>(value); }
+    template<typename HlsSignaledSystemIdsT = Aws::Vector<Aws::String>>
+    SpekeKeyProviderCmaf& WithHlsSignaledSystemIds(HlsSignaledSystemIdsT&& value) { SetHlsSignaledSystemIds(std::forward<HlsSignaledSystemIdsT>(value)); return *this;}
+    template<typename HlsSignaledSystemIdsT = Aws::String>
+    SpekeKeyProviderCmaf& AddHlsSignaledSystemIds(HlsSignaledSystemIdsT&& value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds.emplace_back(std::forward<HlsSignaledSystemIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline void SetHlsSignaledSystemIds(const Aws::Vector<Aws::String>& value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds = value; }
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline void SetHlsSignaledSystemIds(Aws::Vector<Aws::String>&& value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds = std::move(value); }
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& WithHlsSignaledSystemIds(const Aws::Vector<Aws::String>& value) { SetHlsSignaledSystemIds(value); return *this;}
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& WithHlsSignaledSystemIds(Aws::Vector<Aws::String>&& value) { SetHlsSignaledSystemIds(std::move(value)); return *this;}
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& AddHlsSignaledSystemIds(const Aws::String& value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds.push_back(value); return *this; }
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& AddHlsSignaledSystemIds(Aws::String&& value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * Specify the DRM system ID that you want signaled in the HLS manifest that
-     * MediaConvert creates as part of this CMAF package. The HLS manifest can
-     * currently signal only one system ID. For more information, see
-     * https://dashif.org/identifiers/content_protection/.
-     */
-    inline SpekeKeyProviderCmaf& AddHlsSignaledSystemIds(const char* value) { m_hlsSignaledSystemIdsHasBeenSet = true; m_hlsSignaledSystemIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * Specify the resource ID that your SPEKE-compliant key provider uses to identify
      * this content.
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    SpekeKeyProviderCmaf& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
-    inline SpekeKeyProviderCmaf& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
-    inline SpekeKeyProviderCmaf& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * Specify the resource ID that your SPEKE-compliant key provider uses to identify
-     * this content.
-     */
-    inline SpekeKeyProviderCmaf& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * Specify the URL to the key server that your SPEKE-compliant DRM key provider
      * uses to provide keys for encrypting your content.
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
-    inline SpekeKeyProviderCmaf& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
-    inline SpekeKeyProviderCmaf& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * Specify the URL to the key server that your SPEKE-compliant DRM key provider
-     * uses to provide keys for encrypting your content.
-     */
-    inline SpekeKeyProviderCmaf& WithUrl(const char* value) { SetUrl(value); return *this;}
-
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    SpekeKeyProviderCmaf& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateArn;
@@ -348,6 +137,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_dashSignaledSystemIds;
     bool m_dashSignaledSystemIdsHasBeenSet = false;
+
+    EncryptionContractConfiguration m_encryptionContractConfiguration;
+    bool m_encryptionContractConfigurationHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_hlsSignaledSystemIds;
     bool m_hlsSignaledSystemIdsHasBeenSet = false;

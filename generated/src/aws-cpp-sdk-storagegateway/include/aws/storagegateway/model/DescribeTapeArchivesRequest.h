@@ -25,7 +25,7 @@ namespace Model
   class DescribeTapeArchivesRequest : public StorageGatewayRequest
   {
   public:
-    AWS_STORAGEGATEWAY_API DescribeTapeArchivesRequest();
+    AWS_STORAGEGATEWAY_API DescribeTapeArchivesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,134 +38,44 @@ namespace Model
     AWS_STORAGEGATEWAY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
      * virtual tapes you want to describe.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTapeARNs() const{ return m_tapeARNs; }
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTapeARNs() const { return m_tapeARNs; }
     inline bool TapeARNsHasBeenSet() const { return m_tapeARNsHasBeenSet; }
+    template<typename TapeARNsT = Aws::Vector<Aws::String>>
+    void SetTapeARNs(TapeARNsT&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = std::forward<TapeARNsT>(value); }
+    template<typename TapeARNsT = Aws::Vector<Aws::String>>
+    DescribeTapeArchivesRequest& WithTapeARNs(TapeARNsT&& value) { SetTapeARNs(std::forward<TapeARNsT>(value)); return *this;}
+    template<typename TapeARNsT = Aws::String>
+    DescribeTapeArchivesRequest& AddTapeARNs(TapeARNsT&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.emplace_back(std::forward<TapeARNsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline void SetTapeARNs(const Aws::Vector<Aws::String>& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = value; }
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline void SetTapeARNs(Aws::Vector<Aws::String>&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = std::move(value); }
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline DescribeTapeArchivesRequest& WithTapeARNs(const Aws::Vector<Aws::String>& value) { SetTapeARNs(value); return *this;}
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline DescribeTapeArchivesRequest& WithTapeARNs(Aws::Vector<Aws::String>&& value) { SetTapeARNs(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline DescribeTapeArchivesRequest& AddTapeARNs(const Aws::String& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline DescribeTapeArchivesRequest& AddTapeARNs(Aws::String&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe.</p>
-     */
-    inline DescribeTapeArchivesRequest& AddTapeARNs(const char* value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An opaque string that indicates the position at which to begin describing
      * virtual tapes.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeTapeArchivesRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
-    inline DescribeTapeArchivesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
-    inline DescribeTapeArchivesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An opaque string that indicates the position at which to begin describing
-     * virtual tapes.</p>
-     */
-    inline DescribeTapeArchivesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies that the number of virtual tapes described be limited to the
      * specified number.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>Specifies that the number of virtual tapes described be limited to the
-     * specified number.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>Specifies that the number of virtual tapes described be limited to the
-     * specified number.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>Specifies that the number of virtual tapes described be limited to the
-     * specified number.</p>
-     */
     inline DescribeTapeArchivesRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_tapeARNs;
@@ -174,7 +84,7 @@ namespace Model
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

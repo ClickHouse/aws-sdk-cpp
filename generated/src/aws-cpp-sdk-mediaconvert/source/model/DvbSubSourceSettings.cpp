@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-DvbSubSourceSettings::DvbSubSourceSettings() : 
-    m_pid(0),
-    m_pidHasBeenSet(false)
-{
-}
-
-DvbSubSourceSettings::DvbSubSourceSettings(JsonView jsonValue) : 
-    m_pid(0),
-    m_pidHasBeenSet(false)
+DvbSubSourceSettings::DvbSubSourceSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DvbSubSourceSettings& DvbSubSourceSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("pid"))
   {
     m_pid = jsonValue.GetInteger("pid");
-
     m_pidHasBeenSet = true;
   }
-
   return *this;
 }
 

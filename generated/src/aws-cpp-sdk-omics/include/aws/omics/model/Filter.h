@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/omics/model/ShareStatus.h>
+#include <aws/omics/model/ShareResourceType.h>
 #include <utility>
 
 namespace Aws
@@ -26,106 +27,61 @@ namespace Model
 {
 
   /**
-   * <p> Use filters to focus the returned annotation store versions on a specific
-   * parameter, such as the status of the annotation store. </p><p><h3>See Also:</h3>
-   * <a href="http://docs.aws.amazon.com/goto/WebAPI/omics-2022-11-28/Filter">AWS API
+   * <p>Use filters to return a subset of resources. You can define filters for
+   * specific parameters, such as the resource status.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/omics-2022-11-28/Filter">AWS API
    * Reference</a></p>
    */
   class Filter
   {
   public:
-    AWS_OMICS_API Filter();
+    AWS_OMICS_API Filter() = default;
     AWS_OMICS_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
+     * <p>Filter based on the Amazon Resource Number (ARN) of the resource. You can
+     * specify up to 10 values.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResourceArns() const{ return m_resourceArns; }
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResourceArns() const { return m_resourceArns; }
     inline bool ResourceArnsHasBeenSet() const { return m_resourceArnsHasBeenSet; }
+    template<typename ResourceArnsT = Aws::Vector<Aws::String>>
+    void SetResourceArns(ResourceArnsT&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::forward<ResourceArnsT>(value); }
+    template<typename ResourceArnsT = Aws::Vector<Aws::String>>
+    Filter& WithResourceArns(ResourceArnsT&& value) { SetResourceArns(std::forward<ResourceArnsT>(value)); return *this;}
+    template<typename ResourceArnsT = Aws::String>
+    Filter& AddResourceArns(ResourceArnsT&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.emplace_back(std::forward<ResourceArnsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
+     * <p>Filter based on the resource status. You can specify up to 10 values.</p>
      */
-    inline void SetResourceArns(const Aws::Vector<Aws::String>& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = value; }
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
-    inline void SetResourceArns(Aws::Vector<Aws::String>&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
-    inline Filter& WithResourceArns(const Aws::Vector<Aws::String>& value) { SetResourceArns(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
-    inline Filter& WithResourceArns(Aws::Vector<Aws::String>&& value) { SetResourceArns(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
-    inline Filter& AddResourceArns(const Aws::String& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
-    inline Filter& AddResourceArns(Aws::String&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> The Amazon Resource Number (Arn) for an analytics store. </p>
-     */
-    inline Filter& AddResourceArns(const char* value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
-
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
-    inline const Aws::Vector<ShareStatus>& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
+    inline const Aws::Vector<ShareStatus>& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::Vector<ShareStatus>>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::Vector<ShareStatus>>
+    Filter& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    inline Filter& AddStatus(ShareStatus value) { m_statusHasBeenSet = true; m_status.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p> The status of an annotation store version. </p>
+     * <p>The type of resources to be filtered. You can specify one or more of the
+     * resource types.</p>
      */
-    inline void SetStatus(const Aws::Vector<ShareStatus>& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
-    inline void SetStatus(Aws::Vector<ShareStatus>&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
-    inline Filter& WithStatus(const Aws::Vector<ShareStatus>& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
-    inline Filter& WithStatus(Aws::Vector<ShareStatus>&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
-    inline Filter& AddStatus(const ShareStatus& value) { m_statusHasBeenSet = true; m_status.push_back(value); return *this; }
-
-    /**
-     * <p> The status of an annotation store version. </p>
-     */
-    inline Filter& AddStatus(ShareStatus&& value) { m_statusHasBeenSet = true; m_status.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<ShareResourceType>& GetType() const { return m_type; }
+    inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::Vector<ShareResourceType>>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::Vector<ShareResourceType>>
+    Filter& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    inline Filter& AddType(ShareResourceType value) { m_typeHasBeenSet = true; m_type.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_resourceArns;
@@ -133,6 +89,9 @@ namespace Model
 
     Aws::Vector<ShareStatus> m_status;
     bool m_statusHasBeenSet = false;
+
+    Aws::Vector<ShareResourceType> m_type;
+    bool m_typeHasBeenSet = false;
   };
 
 } // namespace Model

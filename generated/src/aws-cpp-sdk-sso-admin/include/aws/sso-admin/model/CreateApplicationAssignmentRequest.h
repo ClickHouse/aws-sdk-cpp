@@ -22,7 +22,7 @@ namespace Model
   class CreateApplicationAssignmentRequest : public SSOAdminRequest
   {
   public:
-    AWS_SSOADMIN_API CreateApplicationAssignmentRequest();
+    AWS_SSOADMIN_API CreateApplicationAssignmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,150 +35,43 @@ namespace Model
     AWS_SSOADMIN_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
+     * <p>The ARN of the application for which the assignment is created.</p>
      */
-    inline const Aws::String& GetApplicationArn() const{ return m_applicationArn; }
-
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
+    inline const Aws::String& GetApplicationArn() const { return m_applicationArn; }
     inline bool ApplicationArnHasBeenSet() const { return m_applicationArnHasBeenSet; }
+    template<typename ApplicationArnT = Aws::String>
+    void SetApplicationArn(ApplicationArnT&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::forward<ApplicationArnT>(value); }
+    template<typename ApplicationArnT = Aws::String>
+    CreateApplicationAssignmentRequest& WithApplicationArn(ApplicationArnT&& value) { SetApplicationArn(std::forward<ApplicationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
-    inline void SetApplicationArn(const Aws::String& value) { m_applicationArnHasBeenSet = true; m_applicationArn = value; }
-
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
-    inline void SetApplicationArn(const char* value) { m_applicationArnHasBeenSet = true; m_applicationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithApplicationArn(const Aws::String& value) { SetApplicationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the application provider under which the operation will run.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithApplicationArn(const char* value) { SetApplicationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An identifier for an object in IAM Identity Center, such as a user or group.
      * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
      * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
+     * href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM
+     * Identity Center Identity Store API Reference</a>.</p>
      */
-    inline const Aws::String& GetPrincipalId() const{ return m_principalId; }
-
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
+    inline const Aws::String& GetPrincipalId() const { return m_principalId; }
     inline bool PrincipalIdHasBeenSet() const { return m_principalIdHasBeenSet; }
+    template<typename PrincipalIdT = Aws::String>
+    void SetPrincipalId(PrincipalIdT&& value) { m_principalIdHasBeenSet = true; m_principalId = std::forward<PrincipalIdT>(value); }
+    template<typename PrincipalIdT = Aws::String>
+    CreateApplicationAssignmentRequest& WithPrincipalId(PrincipalIdT&& value) { SetPrincipalId(std::forward<PrincipalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
-    inline void SetPrincipalId(const Aws::String& value) { m_principalIdHasBeenSet = true; m_principalId = value; }
-
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
-    inline void SetPrincipalId(Aws::String&& value) { m_principalIdHasBeenSet = true; m_principalId = std::move(value); }
-
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
-    inline void SetPrincipalId(const char* value) { m_principalIdHasBeenSet = true; m_principalId.assign(value); }
-
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithPrincipalId(const Aws::String& value) { SetPrincipalId(value); return *this;}
-
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithPrincipalId(Aws::String&& value) { SetPrincipalId(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier for an object in IAM Identity Center, such as a user or group.
-     * PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For
-     * more information about PrincipalIds in IAM Identity Center, see the <a
-     * href="/singlesignon/latest/IdentityStoreAPIReference/welcome.html">IAM Identity
-     * Center Identity Store API Reference</a>.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithPrincipalId(const char* value) { SetPrincipalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The entity type for which the assignment will be created.</p>
      */
-    inline const PrincipalType& GetPrincipalType() const{ return m_principalType; }
-
-    /**
-     * <p>The entity type for which the assignment will be created.</p>
-     */
+    inline PrincipalType GetPrincipalType() const { return m_principalType; }
     inline bool PrincipalTypeHasBeenSet() const { return m_principalTypeHasBeenSet; }
-
-    /**
-     * <p>The entity type for which the assignment will be created.</p>
-     */
-    inline void SetPrincipalType(const PrincipalType& value) { m_principalTypeHasBeenSet = true; m_principalType = value; }
-
-    /**
-     * <p>The entity type for which the assignment will be created.</p>
-     */
-    inline void SetPrincipalType(PrincipalType&& value) { m_principalTypeHasBeenSet = true; m_principalType = std::move(value); }
-
-    /**
-     * <p>The entity type for which the assignment will be created.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithPrincipalType(const PrincipalType& value) { SetPrincipalType(value); return *this;}
-
-    /**
-     * <p>The entity type for which the assignment will be created.</p>
-     */
-    inline CreateApplicationAssignmentRequest& WithPrincipalType(PrincipalType&& value) { SetPrincipalType(std::move(value)); return *this;}
-
+    inline void SetPrincipalType(PrincipalType value) { m_principalTypeHasBeenSet = true; m_principalType = value; }
+    inline CreateApplicationAssignmentRequest& WithPrincipalType(PrincipalType value) { SetPrincipalType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationArn;
@@ -187,7 +80,7 @@ namespace Model
     Aws::String m_principalId;
     bool m_principalIdHasBeenSet = false;
 
-    PrincipalType m_principalType;
+    PrincipalType m_principalType{PrincipalType::NOT_SET};
     bool m_principalTypeHasBeenSet = false;
   };
 

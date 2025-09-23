@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the device configuration for an Snowcone job.</p><p><h3>See
+   * <p>Specifies the device configuration for an Snowball Edge job.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/SnowconeDeviceConfiguration">AWS
    * API Reference</a></p>
@@ -32,42 +32,23 @@ namespace Model
   class SnowconeDeviceConfiguration
   {
   public:
-    AWS_SNOWBALL_API SnowconeDeviceConfiguration();
+    AWS_SNOWBALL_API SnowconeDeviceConfiguration() = default;
     AWS_SNOWBALL_API SnowconeDeviceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API SnowconeDeviceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Configures the wireless connection for the Snowcone device.</p>
+     * <p>Configures the wireless connection for the Snowball Edge device.</p>
      */
-    inline const WirelessConnection& GetWirelessConnection() const{ return m_wirelessConnection; }
-
-    /**
-     * <p>Configures the wireless connection for the Snowcone device.</p>
-     */
+    inline const WirelessConnection& GetWirelessConnection() const { return m_wirelessConnection; }
     inline bool WirelessConnectionHasBeenSet() const { return m_wirelessConnectionHasBeenSet; }
-
-    /**
-     * <p>Configures the wireless connection for the Snowcone device.</p>
-     */
-    inline void SetWirelessConnection(const WirelessConnection& value) { m_wirelessConnectionHasBeenSet = true; m_wirelessConnection = value; }
-
-    /**
-     * <p>Configures the wireless connection for the Snowcone device.</p>
-     */
-    inline void SetWirelessConnection(WirelessConnection&& value) { m_wirelessConnectionHasBeenSet = true; m_wirelessConnection = std::move(value); }
-
-    /**
-     * <p>Configures the wireless connection for the Snowcone device.</p>
-     */
-    inline SnowconeDeviceConfiguration& WithWirelessConnection(const WirelessConnection& value) { SetWirelessConnection(value); return *this;}
-
-    /**
-     * <p>Configures the wireless connection for the Snowcone device.</p>
-     */
-    inline SnowconeDeviceConfiguration& WithWirelessConnection(WirelessConnection&& value) { SetWirelessConnection(std::move(value)); return *this;}
-
+    template<typename WirelessConnectionT = WirelessConnection>
+    void SetWirelessConnection(WirelessConnectionT&& value) { m_wirelessConnectionHasBeenSet = true; m_wirelessConnection = std::forward<WirelessConnectionT>(value); }
+    template<typename WirelessConnectionT = WirelessConnection>
+    SnowconeDeviceConfiguration& WithWirelessConnection(WirelessConnectionT&& value) { SetWirelessConnection(std::forward<WirelessConnectionT>(value)); return *this;}
+    ///@}
   private:
 
     WirelessConnection m_wirelessConnection;

@@ -18,44 +18,28 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-SessionKeyEmv2000::SessionKeyEmv2000() : 
-    m_applicationTransactionCounterHasBeenSet(false),
-    m_panSequenceNumberHasBeenSet(false),
-    m_primaryAccountNumberHasBeenSet(false)
-{
-}
-
-SessionKeyEmv2000::SessionKeyEmv2000(JsonView jsonValue) : 
-    m_applicationTransactionCounterHasBeenSet(false),
-    m_panSequenceNumberHasBeenSet(false),
-    m_primaryAccountNumberHasBeenSet(false)
+SessionKeyEmv2000::SessionKeyEmv2000(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SessionKeyEmv2000& SessionKeyEmv2000::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("ApplicationTransactionCounter"))
-  {
-    m_applicationTransactionCounter = jsonValue.GetString("ApplicationTransactionCounter");
-
-    m_applicationTransactionCounterHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("PanSequenceNumber"))
-  {
-    m_panSequenceNumber = jsonValue.GetString("PanSequenceNumber");
-
-    m_panSequenceNumberHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PrimaryAccountNumber"))
   {
     m_primaryAccountNumber = jsonValue.GetString("PrimaryAccountNumber");
-
     m_primaryAccountNumberHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PanSequenceNumber"))
+  {
+    m_panSequenceNumber = jsonValue.GetString("PanSequenceNumber");
+    m_panSequenceNumberHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ApplicationTransactionCounter"))
+  {
+    m_applicationTransactionCounter = jsonValue.GetString("ApplicationTransactionCounter");
+    m_applicationTransactionCounterHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,9 +47,9 @@ JsonValue SessionKeyEmv2000::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_applicationTransactionCounterHasBeenSet)
+  if(m_primaryAccountNumberHasBeenSet)
   {
-   payload.WithString("ApplicationTransactionCounter", m_applicationTransactionCounter);
+   payload.WithString("PrimaryAccountNumber", m_primaryAccountNumber);
 
   }
 
@@ -75,9 +59,9 @@ JsonValue SessionKeyEmv2000::Jsonize() const
 
   }
 
-  if(m_primaryAccountNumberHasBeenSet)
+  if(m_applicationTransactionCounterHasBeenSet)
   {
-   payload.WithString("PrimaryAccountNumber", m_primaryAccountNumber);
+   payload.WithString("ApplicationTransactionCounter", m_applicationTransactionCounter);
 
   }
 

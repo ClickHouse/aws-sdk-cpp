@@ -22,7 +22,7 @@ namespace Model
   class ExchangeCodeForTokenRequest : public AmplifyUIBuilderRequest
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API ExchangeCodeForTokenRequest();
+    AWS_AMPLIFYUIBUILDER_API ExchangeCodeForTokenRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,76 +33,31 @@ namespace Model
     AWS_AMPLIFYUIBUILDER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The third-party provider for the token. The only valid value is
      * <code>figma</code>.</p>
      */
-    inline const TokenProviders& GetProvider() const{ return m_provider; }
-
-    /**
-     * <p>The third-party provider for the token. The only valid value is
-     * <code>figma</code>.</p>
-     */
+    inline TokenProviders GetProvider() const { return m_provider; }
     inline bool ProviderHasBeenSet() const { return m_providerHasBeenSet; }
+    inline void SetProvider(TokenProviders value) { m_providerHasBeenSet = true; m_provider = value; }
+    inline ExchangeCodeForTokenRequest& WithProvider(TokenProviders value) { SetProvider(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The third-party provider for the token. The only valid value is
-     * <code>figma</code>.</p>
-     */
-    inline void SetProvider(const TokenProviders& value) { m_providerHasBeenSet = true; m_provider = value; }
-
-    /**
-     * <p>The third-party provider for the token. The only valid value is
-     * <code>figma</code>.</p>
-     */
-    inline void SetProvider(TokenProviders&& value) { m_providerHasBeenSet = true; m_provider = std::move(value); }
-
-    /**
-     * <p>The third-party provider for the token. The only valid value is
-     * <code>figma</code>.</p>
-     */
-    inline ExchangeCodeForTokenRequest& WithProvider(const TokenProviders& value) { SetProvider(value); return *this;}
-
-    /**
-     * <p>The third-party provider for the token. The only valid value is
-     * <code>figma</code>.</p>
-     */
-    inline ExchangeCodeForTokenRequest& WithProvider(TokenProviders&& value) { SetProvider(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the configuration of the request.</p>
      */
-    inline const ExchangeCodeForTokenRequestBody& GetRequest() const{ return m_request; }
-
-    /**
-     * <p>Describes the configuration of the request.</p>
-     */
+    inline const ExchangeCodeForTokenRequestBody& GetRequest() const { return m_request; }
     inline bool RequestHasBeenSet() const { return m_requestHasBeenSet; }
-
-    /**
-     * <p>Describes the configuration of the request.</p>
-     */
-    inline void SetRequest(const ExchangeCodeForTokenRequestBody& value) { m_requestHasBeenSet = true; m_request = value; }
-
-    /**
-     * <p>Describes the configuration of the request.</p>
-     */
-    inline void SetRequest(ExchangeCodeForTokenRequestBody&& value) { m_requestHasBeenSet = true; m_request = std::move(value); }
-
-    /**
-     * <p>Describes the configuration of the request.</p>
-     */
-    inline ExchangeCodeForTokenRequest& WithRequest(const ExchangeCodeForTokenRequestBody& value) { SetRequest(value); return *this;}
-
-    /**
-     * <p>Describes the configuration of the request.</p>
-     */
-    inline ExchangeCodeForTokenRequest& WithRequest(ExchangeCodeForTokenRequestBody&& value) { SetRequest(std::move(value)); return *this;}
-
+    template<typename RequestT = ExchangeCodeForTokenRequestBody>
+    void SetRequest(RequestT&& value) { m_requestHasBeenSet = true; m_request = std::forward<RequestT>(value); }
+    template<typename RequestT = ExchangeCodeForTokenRequestBody>
+    ExchangeCodeForTokenRequest& WithRequest(RequestT&& value) { SetRequest(std::forward<RequestT>(value)); return *this;}
+    ///@}
   private:
 
-    TokenProviders m_provider;
+    TokenProviders m_provider{TokenProviders::NOT_SET};
     bool m_providerHasBeenSet = false;
 
     ExchangeCodeForTokenRequestBody m_request;

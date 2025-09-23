@@ -33,13 +33,14 @@ namespace Model
   class IntelligentTieringFilter
   {
   public:
-    AWS_S3CRT_API IntelligentTieringFilter();
+    AWS_S3CRT_API IntelligentTieringFilter() = default;
     AWS_S3CRT_API IntelligentTieringFilter(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API IntelligentTieringFilter& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>An object key name prefix that identifies the subset of objects to which the
      * rule applies.</p>  <p>Replacement must be made for object keys
@@ -48,140 +49,37 @@ namespace Model
      * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
      * XML related object key constraints</a>.</p> 
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    IntelligentTieringFilter& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
-    inline IntelligentTieringFilter& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
-    inline IntelligentTieringFilter& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>An object key name prefix that identifies the subset of objects to which the
-     * rule applies.</p>  <p>Replacement must be made for object keys
-     * containing special characters (such as carriage returns) when using XML
-     * requests. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
-     * XML related object key constraints</a>.</p> 
-     */
-    inline IntelligentTieringFilter& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     
-    inline const Tag& GetTag() const{ return m_tag; }
-
-    
+    inline const Tag& GetTag() const { return m_tag; }
     inline bool TagHasBeenSet() const { return m_tagHasBeenSet; }
+    template<typename TagT = Tag>
+    void SetTag(TagT&& value) { m_tagHasBeenSet = true; m_tag = std::forward<TagT>(value); }
+    template<typename TagT = Tag>
+    IntelligentTieringFilter& WithTag(TagT&& value) { SetTag(std::forward<TagT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetTag(const Tag& value) { m_tagHasBeenSet = true; m_tag = value; }
-
-    
-    inline void SetTag(Tag&& value) { m_tagHasBeenSet = true; m_tag = std::move(value); }
-
-    
-    inline IntelligentTieringFilter& WithTag(const Tag& value) { SetTag(value); return *this;}
-
-    
-    inline IntelligentTieringFilter& WithTag(Tag&& value) { SetTag(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
      * metrics filter. The operator must have at least two predicates, and an object
      * must match all of the predicates in order for the filter to apply.</p>
      */
-    inline const IntelligentTieringAndOperator& GetAnd() const{ return m_and; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
+    inline const IntelligentTieringAndOperator& GetAnd() const { return m_and; }
     inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline void SetAnd(const IntelligentTieringAndOperator& value) { m_andHasBeenSet = true; m_and = value; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline void SetAnd(IntelligentTieringAndOperator&& value) { m_andHasBeenSet = true; m_and = std::move(value); }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline IntelligentTieringFilter& WithAnd(const IntelligentTieringAndOperator& value) { SetAnd(value); return *this;}
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline IntelligentTieringFilter& WithAnd(IntelligentTieringAndOperator&& value) { SetAnd(std::move(value)); return *this;}
-
+    template<typename AndT = IntelligentTieringAndOperator>
+    void SetAnd(AndT&& value) { m_andHasBeenSet = true; m_and = std::forward<AndT>(value); }
+    template<typename AndT = IntelligentTieringAndOperator>
+    IntelligentTieringFilter& WithAnd(AndT&& value) { SetAnd(std::forward<AndT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefix;

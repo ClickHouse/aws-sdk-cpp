@@ -18,17 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-JobResource::JobResource() : 
-    m_s3ResourcesHasBeenSet(false),
-    m_lambdaResourcesHasBeenSet(false),
-    m_ec2AmiResourcesHasBeenSet(false)
-{
-}
-
-JobResource::JobResource(JsonView jsonValue) : 
-    m_s3ResourcesHasBeenSet(false),
-    m_lambdaResourcesHasBeenSet(false),
-    m_ec2AmiResourcesHasBeenSet(false)
+JobResource::JobResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ JobResource& JobResource::operator =(JsonView jsonValue)
     }
     m_s3ResourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LambdaResources"))
   {
     Aws::Utils::Array<JsonView> lambdaResourcesJsonList = jsonValue.GetArray("LambdaResources");
@@ -54,7 +43,6 @@ JobResource& JobResource::operator =(JsonView jsonValue)
     }
     m_lambdaResourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ec2AmiResources"))
   {
     Aws::Utils::Array<JsonView> ec2AmiResourcesJsonList = jsonValue.GetArray("Ec2AmiResources");
@@ -64,7 +52,6 @@ JobResource& JobResource::operator =(JsonView jsonValue)
     }
     m_ec2AmiResourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

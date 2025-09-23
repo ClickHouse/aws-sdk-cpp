@@ -12,25 +12,6 @@ using namespace Aws::MediaTailor::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutPlaybackConfigurationRequest::PutPlaybackConfigurationRequest() : 
-    m_adDecisionServerUrlHasBeenSet(false),
-    m_availSuppressionHasBeenSet(false),
-    m_bumperHasBeenSet(false),
-    m_cdnConfigurationHasBeenSet(false),
-    m_configurationAliasesHasBeenSet(false),
-    m_dashConfigurationHasBeenSet(false),
-    m_livePreRollConfigurationHasBeenSet(false),
-    m_manifestProcessingRulesHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_personalizationThresholdSeconds(0),
-    m_personalizationThresholdSecondsHasBeenSet(false),
-    m_slateAdUrlHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_transcodeProfileNameHasBeenSet(false),
-    m_videoContentSourceUrlHasBeenSet(false)
-{
-}
-
 Aws::String PutPlaybackConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -79,6 +60,11 @@ Aws::String PutPlaybackConfigurationRequest::SerializePayload() const
   {
    payload.WithObject("DashConfiguration", m_dashConfiguration.Jsonize());
 
+  }
+
+  if(m_insertionModeHasBeenSet)
+  {
+   payload.WithString("InsertionMode", InsertionModeMapper::GetNameForInsertionMode(m_insertionMode));
   }
 
   if(m_livePreRollConfigurationHasBeenSet)
@@ -131,6 +117,12 @@ Aws::String PutPlaybackConfigurationRequest::SerializePayload() const
   if(m_videoContentSourceUrlHasBeenSet)
   {
    payload.WithString("VideoContentSourceUrl", m_videoContentSourceUrl);
+
+  }
+
+  if(m_adConditioningConfigurationHasBeenSet)
+  {
+   payload.WithObject("AdConditioningConfiguration", m_adConditioningConfiguration.Jsonize());
 
   }
 

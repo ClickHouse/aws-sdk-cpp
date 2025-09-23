@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayRouteTablePropagation::TransitGatewayRouteTablePropagation() : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_state(TransitGatewayPropagationState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_transitGatewayRouteTableAnnouncementIdHasBeenSet(false)
-{
-}
-
-TransitGatewayRouteTablePropagation::TransitGatewayRouteTablePropagation(const XmlNode& xmlNode) : 
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_state(TransitGatewayPropagationState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_transitGatewayRouteTableAnnouncementIdHasBeenSet(false)
+TransitGatewayRouteTablePropagation::TransitGatewayRouteTablePropagation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -64,13 +46,13 @@ TransitGatewayRouteTablePropagation& TransitGatewayRouteTablePropagation::operat
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayPropagationStateMapper::GetTransitGatewayPropagationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayPropagationStateMapper::GetTransitGatewayPropagationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode transitGatewayRouteTableAnnouncementIdNode = resultNode.FirstChild("transitGatewayRouteTableAnnouncementId");
@@ -98,12 +80,12 @@ void TransitGatewayRouteTablePropagation::OutputToStream(Aws::OStream& oStream, 
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state)) << "&";
   }
 
   if(m_transitGatewayRouteTableAnnouncementIdHasBeenSet)
@@ -125,11 +107,11 @@ void TransitGatewayRouteTablePropagation::OutputToStream(Aws::OStream& oStream, 
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state)) << "&";
   }
   if(m_transitGatewayRouteTableAnnouncementIdHasBeenSet)
   {

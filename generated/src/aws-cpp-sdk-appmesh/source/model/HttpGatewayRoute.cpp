@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-HttpGatewayRoute::HttpGatewayRoute() : 
-    m_actionHasBeenSet(false),
-    m_matchHasBeenSet(false)
-{
-}
-
-HttpGatewayRoute::HttpGatewayRoute(JsonView jsonValue) : 
-    m_actionHasBeenSet(false),
-    m_matchHasBeenSet(false)
+HttpGatewayRoute::HttpGatewayRoute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HttpGatewayRoute& HttpGatewayRoute::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("action"))
   {
     m_action = jsonValue.GetObject("action");
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("match"))
   {
     m_match = jsonValue.GetObject("match");
-
     m_matchHasBeenSet = true;
   }
-
   return *this;
 }
 

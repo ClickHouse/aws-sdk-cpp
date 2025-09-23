@@ -18,33 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-DescribedAgreement::DescribedAgreement() : 
-    m_arnHasBeenSet(false),
-    m_agreementIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_status(AgreementStatusType::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_serverIdHasBeenSet(false),
-    m_localProfileIdHasBeenSet(false),
-    m_partnerProfileIdHasBeenSet(false),
-    m_baseDirectoryHasBeenSet(false),
-    m_accessRoleHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-DescribedAgreement::DescribedAgreement(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_agreementIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_status(AgreementStatusType::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_serverIdHasBeenSet(false),
-    m_localProfileIdHasBeenSet(false),
-    m_partnerProfileIdHasBeenSet(false),
-    m_baseDirectoryHasBeenSet(false),
-    m_accessRoleHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+DescribedAgreement::DescribedAgreement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,66 +28,48 @@ DescribedAgreement& DescribedAgreement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AgreementId"))
   {
     m_agreementId = jsonValue.GetString("AgreementId");
-
     m_agreementIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = AgreementStatusTypeMapper::GetAgreementStatusTypeForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServerId"))
   {
     m_serverId = jsonValue.GetString("ServerId");
-
     m_serverIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LocalProfileId"))
   {
     m_localProfileId = jsonValue.GetString("LocalProfileId");
-
     m_localProfileIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PartnerProfileId"))
   {
     m_partnerProfileId = jsonValue.GetString("PartnerProfileId");
-
     m_partnerProfileIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BaseDirectory"))
   {
     m_baseDirectory = jsonValue.GetString("BaseDirectory");
-
     m_baseDirectoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccessRole"))
   {
     m_accessRole = jsonValue.GetString("AccessRole");
-
     m_accessRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -123,7 +79,21 @@ DescribedAgreement& DescribedAgreement::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PreserveFilename"))
+  {
+    m_preserveFilename = PreserveFilenameTypeMapper::GetPreserveFilenameTypeForName(jsonValue.GetString("PreserveFilename"));
+    m_preserveFilenameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("EnforceMessageSigning"))
+  {
+    m_enforceMessageSigning = EnforceMessageSigningTypeMapper::GetEnforceMessageSigningTypeForName(jsonValue.GetString("EnforceMessageSigning"));
+    m_enforceMessageSigningHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("CustomDirectories"))
+  {
+    m_customDirectories = jsonValue.GetObject("CustomDirectories");
+    m_customDirectoriesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -192,6 +162,22 @@ JsonValue DescribedAgreement::Jsonize() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_preserveFilenameHasBeenSet)
+  {
+   payload.WithString("PreserveFilename", PreserveFilenameTypeMapper::GetNameForPreserveFilenameType(m_preserveFilename));
+  }
+
+  if(m_enforceMessageSigningHasBeenSet)
+  {
+   payload.WithString("EnforceMessageSigning", EnforceMessageSigningTypeMapper::GetNameForEnforceMessageSigningType(m_enforceMessageSigning));
+  }
+
+  if(m_customDirectoriesHasBeenSet)
+  {
+   payload.WithObject("CustomDirectories", m_customDirectories.Jsonize());
 
   }
 

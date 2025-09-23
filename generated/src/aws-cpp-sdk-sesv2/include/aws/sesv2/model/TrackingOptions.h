@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/sesv2/SESV2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/sesv2/model/HttpsPolicy.h>
 #include <utility>
 
 namespace Aws
@@ -37,56 +38,40 @@ namespace Model
   class TrackingOptions
   {
   public:
-    AWS_SESV2_API TrackingOptions();
+    AWS_SESV2_API TrackingOptions() = default;
     AWS_SESV2_API TrackingOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API TrackingOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The domain to use for tracking open and click events.</p>
      */
-    inline const Aws::String& GetCustomRedirectDomain() const{ return m_customRedirectDomain; }
-
-    /**
-     * <p>The domain to use for tracking open and click events.</p>
-     */
+    inline const Aws::String& GetCustomRedirectDomain() const { return m_customRedirectDomain; }
     inline bool CustomRedirectDomainHasBeenSet() const { return m_customRedirectDomainHasBeenSet; }
+    template<typename CustomRedirectDomainT = Aws::String>
+    void SetCustomRedirectDomain(CustomRedirectDomainT&& value) { m_customRedirectDomainHasBeenSet = true; m_customRedirectDomain = std::forward<CustomRedirectDomainT>(value); }
+    template<typename CustomRedirectDomainT = Aws::String>
+    TrackingOptions& WithCustomRedirectDomain(CustomRedirectDomainT&& value) { SetCustomRedirectDomain(std::forward<CustomRedirectDomainT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The domain to use for tracking open and click events.</p>
+     * <p>The https policy to use for tracking open and click events.</p>
      */
-    inline void SetCustomRedirectDomain(const Aws::String& value) { m_customRedirectDomainHasBeenSet = true; m_customRedirectDomain = value; }
-
-    /**
-     * <p>The domain to use for tracking open and click events.</p>
-     */
-    inline void SetCustomRedirectDomain(Aws::String&& value) { m_customRedirectDomainHasBeenSet = true; m_customRedirectDomain = std::move(value); }
-
-    /**
-     * <p>The domain to use for tracking open and click events.</p>
-     */
-    inline void SetCustomRedirectDomain(const char* value) { m_customRedirectDomainHasBeenSet = true; m_customRedirectDomain.assign(value); }
-
-    /**
-     * <p>The domain to use for tracking open and click events.</p>
-     */
-    inline TrackingOptions& WithCustomRedirectDomain(const Aws::String& value) { SetCustomRedirectDomain(value); return *this;}
-
-    /**
-     * <p>The domain to use for tracking open and click events.</p>
-     */
-    inline TrackingOptions& WithCustomRedirectDomain(Aws::String&& value) { SetCustomRedirectDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain to use for tracking open and click events.</p>
-     */
-    inline TrackingOptions& WithCustomRedirectDomain(const char* value) { SetCustomRedirectDomain(value); return *this;}
-
+    inline HttpsPolicy GetHttpsPolicy() const { return m_httpsPolicy; }
+    inline bool HttpsPolicyHasBeenSet() const { return m_httpsPolicyHasBeenSet; }
+    inline void SetHttpsPolicy(HttpsPolicy value) { m_httpsPolicyHasBeenSet = true; m_httpsPolicy = value; }
+    inline TrackingOptions& WithHttpsPolicy(HttpsPolicy value) { SetHttpsPolicy(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_customRedirectDomain;
     bool m_customRedirectDomainHasBeenSet = false;
+
+    HttpsPolicy m_httpsPolicy{HttpsPolicy::NOT_SET};
+    bool m_httpsPolicyHasBeenSet = false;
   };
 
 } // namespace Model

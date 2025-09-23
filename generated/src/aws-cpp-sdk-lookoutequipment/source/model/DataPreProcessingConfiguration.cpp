@@ -18,15 +18,7 @@ namespace LookoutEquipment
 namespace Model
 {
 
-DataPreProcessingConfiguration::DataPreProcessingConfiguration() : 
-    m_targetSamplingRate(TargetSamplingRate::NOT_SET),
-    m_targetSamplingRateHasBeenSet(false)
-{
-}
-
-DataPreProcessingConfiguration::DataPreProcessingConfiguration(JsonView jsonValue) : 
-    m_targetSamplingRate(TargetSamplingRate::NOT_SET),
-    m_targetSamplingRateHasBeenSet(false)
+DataPreProcessingConfiguration::DataPreProcessingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DataPreProcessingConfiguration& DataPreProcessingConfiguration::operator =(JsonV
   if(jsonValue.ValueExists("TargetSamplingRate"))
   {
     m_targetSamplingRate = TargetSamplingRateMapper::GetTargetSamplingRateForName(jsonValue.GetString("TargetSamplingRate"));
-
     m_targetSamplingRateHasBeenSet = true;
   }
-
   return *this;
 }
 

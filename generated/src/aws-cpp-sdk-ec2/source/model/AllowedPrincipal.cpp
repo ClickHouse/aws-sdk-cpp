@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AllowedPrincipal::AllowedPrincipal() : 
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_servicePermissionIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_serviceIdHasBeenSet(false)
-{
-}
-
-AllowedPrincipal::AllowedPrincipal(const XmlNode& xmlNode) : 
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_servicePermissionIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_serviceIdHasBeenSet(false)
+AllowedPrincipal::AllowedPrincipal(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +34,7 @@ AllowedPrincipal& AllowedPrincipal::operator =(const XmlNode& xmlNode)
     XmlNode principalTypeNode = resultNode.FirstChild("principalType");
     if(!principalTypeNode.IsNull())
     {
-      m_principalType = PrincipalTypeMapper::GetPrincipalTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(principalTypeNode.GetText()).c_str()).c_str());
+      m_principalType = PrincipalTypeMapper::GetPrincipalTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(principalTypeNode.GetText()).c_str()));
       m_principalTypeHasBeenSet = true;
     }
     XmlNode principalNode = resultNode.FirstChild("principal");
@@ -69,6 +53,7 @@ AllowedPrincipal& AllowedPrincipal::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -92,7 +77,7 @@ void AllowedPrincipal::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_principalTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PrincipalType=" << PrincipalTypeMapper::GetNameForPrincipalType(m_principalType) << "&";
+      oStream << location << index << locationValue << ".PrincipalType=" << StringUtils::URLEncode(PrincipalTypeMapper::GetNameForPrincipalType(m_principalType)) << "&";
   }
 
   if(m_principalHasBeenSet)
@@ -127,7 +112,7 @@ void AllowedPrincipal::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_principalTypeHasBeenSet)
   {
-      oStream << location << ".PrincipalType=" << PrincipalTypeMapper::GetNameForPrincipalType(m_principalType) << "&";
+      oStream << location << ".PrincipalType=" << StringUtils::URLEncode(PrincipalTypeMapper::GetNameForPrincipalType(m_principalType)) << "&";
   }
   if(m_principalHasBeenSet)
   {
@@ -143,7 +128,7 @@ void AllowedPrincipal::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

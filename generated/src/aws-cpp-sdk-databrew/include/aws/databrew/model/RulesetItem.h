@@ -33,455 +33,146 @@ namespace Model
   class RulesetItem
   {
   public:
-    AWS_GLUEDATABREW_API RulesetItem();
+    AWS_GLUEDATABREW_API RulesetItem() = default;
     AWS_GLUEDATABREW_API RulesetItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API RulesetItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    RulesetItem& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
-    inline RulesetItem& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
-    inline RulesetItem& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the ruleset.</p>
-     */
-    inline RulesetItem& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
      */
-    inline const Aws::String& GetCreatedBy() const{ return m_createdBy; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
+    inline const Aws::String& GetCreatedBy() const { return m_createdBy; }
     inline bool CreatedByHasBeenSet() const { return m_createdByHasBeenSet; }
+    template<typename CreatedByT = Aws::String>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = Aws::String>
+    RulesetItem& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
-    inline void SetCreatedBy(const Aws::String& value) { m_createdByHasBeenSet = true; m_createdBy = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
-    inline void SetCreatedBy(Aws::String&& value) { m_createdByHasBeenSet = true; m_createdBy = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
-    inline void SetCreatedBy(const char* value) { m_createdByHasBeenSet = true; m_createdBy.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
-    inline RulesetItem& WithCreatedBy(const Aws::String& value) { SetCreatedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
-    inline RulesetItem& WithCreatedBy(Aws::String&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the ruleset.</p>
-     */
-    inline RulesetItem& WithCreatedBy(const char* value) { SetCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the ruleset was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateDate() const{ return m_createDate; }
-
-    /**
-     * <p>The date and time that the ruleset was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateDate() const { return m_createDate; }
     inline bool CreateDateHasBeenSet() const { return m_createDateHasBeenSet; }
+    template<typename CreateDateT = Aws::Utils::DateTime>
+    void SetCreateDate(CreateDateT&& value) { m_createDateHasBeenSet = true; m_createDate = std::forward<CreateDateT>(value); }
+    template<typename CreateDateT = Aws::Utils::DateTime>
+    RulesetItem& WithCreateDate(CreateDateT&& value) { SetCreateDate(std::forward<CreateDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the ruleset was created.</p>
-     */
-    inline void SetCreateDate(const Aws::Utils::DateTime& value) { m_createDateHasBeenSet = true; m_createDate = value; }
-
-    /**
-     * <p>The date and time that the ruleset was created.</p>
-     */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
-
-    /**
-     * <p>The date and time that the ruleset was created.</p>
-     */
-    inline RulesetItem& WithCreateDate(const Aws::Utils::DateTime& value) { SetCreateDate(value); return *this;}
-
-    /**
-     * <p>The date and time that the ruleset was created.</p>
-     */
-    inline RulesetItem& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the ruleset.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the ruleset.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    RulesetItem& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the ruleset.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the ruleset.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the ruleset.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the ruleset.</p>
-     */
-    inline RulesetItem& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the ruleset.</p>
-     */
-    inline RulesetItem& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the ruleset.</p>
-     */
-    inline RulesetItem& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
      */
-    inline const Aws::String& GetLastModifiedBy() const{ return m_lastModifiedBy; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
+    inline const Aws::String& GetLastModifiedBy() const { return m_lastModifiedBy; }
     inline bool LastModifiedByHasBeenSet() const { return m_lastModifiedByHasBeenSet; }
+    template<typename LastModifiedByT = Aws::String>
+    void SetLastModifiedBy(LastModifiedByT&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::forward<LastModifiedByT>(value); }
+    template<typename LastModifiedByT = Aws::String>
+    RulesetItem& WithLastModifiedBy(LastModifiedByT&& value) { SetLastModifiedBy(std::forward<LastModifiedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
-    inline void SetLastModifiedBy(const Aws::String& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
-    inline void SetLastModifiedBy(Aws::String&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
-    inline void SetLastModifiedBy(const char* value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
-    inline RulesetItem& WithLastModifiedBy(const Aws::String& value) { SetLastModifiedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
-    inline RulesetItem& WithLastModifiedBy(Aws::String&& value) { SetLastModifiedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last modified the ruleset.</p>
-     */
-    inline RulesetItem& WithLastModifiedBy(const char* value) { SetLastModifiedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The modification date and time of the ruleset.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedDate() const{ return m_lastModifiedDate; }
-
-    /**
-     * <p>The modification date and time of the ruleset.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedDate() const { return m_lastModifiedDate; }
     inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
+    template<typename LastModifiedDateT = Aws::Utils::DateTime>
+    void SetLastModifiedDate(LastModifiedDateT&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::forward<LastModifiedDateT>(value); }
+    template<typename LastModifiedDateT = Aws::Utils::DateTime>
+    RulesetItem& WithLastModifiedDate(LastModifiedDateT&& value) { SetLastModifiedDate(std::forward<LastModifiedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The modification date and time of the ruleset.</p>
-     */
-    inline void SetLastModifiedDate(const Aws::Utils::DateTime& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
-
-    /**
-     * <p>The modification date and time of the ruleset.</p>
-     */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
-
-    /**
-     * <p>The modification date and time of the ruleset.</p>
-     */
-    inline RulesetItem& WithLastModifiedDate(const Aws::Utils::DateTime& value) { SetLastModifiedDate(value); return *this;}
-
-    /**
-     * <p>The modification date and time of the ruleset.</p>
-     */
-    inline RulesetItem& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the ruleset.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the ruleset.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RulesetItem& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the ruleset.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the ruleset.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the ruleset.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the ruleset.</p>
-     */
-    inline RulesetItem& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the ruleset.</p>
-     */
-    inline RulesetItem& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the ruleset.</p>
-     */
-    inline RulesetItem& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    RulesetItem& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
-    inline RulesetItem& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
-    inline RulesetItem& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the ruleset.</p>
-     */
-    inline RulesetItem& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of rules that are defined in the ruleset.</p>
      */
-    inline int GetRuleCount() const{ return m_ruleCount; }
-
-    /**
-     * <p>The number of rules that are defined in the ruleset.</p>
-     */
+    inline int GetRuleCount() const { return m_ruleCount; }
     inline bool RuleCountHasBeenSet() const { return m_ruleCountHasBeenSet; }
-
-    /**
-     * <p>The number of rules that are defined in the ruleset.</p>
-     */
     inline void SetRuleCount(int value) { m_ruleCountHasBeenSet = true; m_ruleCount = value; }
-
-    /**
-     * <p>The number of rules that are defined in the ruleset.</p>
-     */
     inline RulesetItem& WithRuleCount(int value) { SetRuleCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Metadata tags that have been applied to the ruleset.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    RulesetItem& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    RulesetItem& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Metadata tags that have been applied to the ruleset.</p>
-     */
-    inline RulesetItem& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
      * associated with.</p>
      */
-    inline const Aws::String& GetTargetArn() const{ return m_targetArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
+    inline const Aws::String& GetTargetArn() const { return m_targetArn; }
     inline bool TargetArnHasBeenSet() const { return m_targetArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
-    inline void SetTargetArn(const Aws::String& value) { m_targetArnHasBeenSet = true; m_targetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
-    inline void SetTargetArn(Aws::String&& value) { m_targetArnHasBeenSet = true; m_targetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
-    inline void SetTargetArn(const char* value) { m_targetArnHasBeenSet = true; m_targetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
-    inline RulesetItem& WithTargetArn(const Aws::String& value) { SetTargetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
-    inline RulesetItem& WithTargetArn(Aws::String&& value) { SetTargetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of a resource (dataset) that the ruleset is
-     * associated with.</p>
-     */
-    inline RulesetItem& WithTargetArn(const char* value) { SetTargetArn(value); return *this;}
-
+    template<typename TargetArnT = Aws::String>
+    void SetTargetArn(TargetArnT&& value) { m_targetArnHasBeenSet = true; m_targetArn = std::forward<TargetArnT>(value); }
+    template<typename TargetArnT = Aws::String>
+    RulesetItem& WithTargetArn(TargetArnT&& value) { SetTargetArn(std::forward<TargetArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -490,7 +181,7 @@ namespace Model
     Aws::String m_createdBy;
     bool m_createdByHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createDate;
+    Aws::Utils::DateTime m_createDate{};
     bool m_createDateHasBeenSet = false;
 
     Aws::String m_description;
@@ -499,7 +190,7 @@ namespace Model
     Aws::String m_lastModifiedBy;
     bool m_lastModifiedByHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedDate;
+    Aws::Utils::DateTime m_lastModifiedDate{};
     bool m_lastModifiedDateHasBeenSet = false;
 
     Aws::String m_name;
@@ -508,7 +199,7 @@ namespace Model
     Aws::String m_resourceArn;
     bool m_resourceArnHasBeenSet = false;
 
-    int m_ruleCount;
+    int m_ruleCount{0};
     bool m_ruleCountHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;

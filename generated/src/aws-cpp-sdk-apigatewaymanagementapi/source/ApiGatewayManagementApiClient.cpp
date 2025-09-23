@@ -38,20 +38,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ApiGatewayManagementApiClient::SERVICE_NAME = "execute-api";
-const char* ApiGatewayManagementApiClient::ALLOCATION_TAG = "ApiGatewayManagementApiClient";
+namespace Aws
+{
+  namespace ApiGatewayManagementApi
+  {
+    const char SERVICE_NAME[] = "execute-api";
+    const char ALLOCATION_TAG[] = "ApiGatewayManagementApiClient";
+  }
+}
+const char* ApiGatewayManagementApiClient::GetServiceName() {return SERVICE_NAME;}
+const char* ApiGatewayManagementApiClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const ApiGatewayManagementApi::ApiGatewayManagementApiClientConfiguration& clientConfiguration,
                                                              std::shared_ptr<ApiGatewayManagementApiEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayManagementApiErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApiGatewayManagementApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -66,8 +73,7 @@ ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const AWSCredential
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayManagementApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApiGatewayManagementApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -82,8 +88,7 @@ ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const std::shared_p
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayManagementApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApiGatewayManagementApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -92,12 +97,11 @@ ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const std::shared_p
   ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayManagementApiErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ApiGatewayManagementApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -112,7 +116,6 @@ ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const AWSCredential
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayManagementApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ApiGatewayManagementApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -127,7 +130,6 @@ ApiGatewayManagementApiClient::ApiGatewayManagementApiClient(const std::shared_p
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApiGatewayManagementApiErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ApiGatewayManagementApiEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -147,6 +149,14 @@ std::shared_ptr<ApiGatewayManagementApiEndpointProviderBase>& ApiGatewayManageme
 void ApiGatewayManagementApiClient::init(const ApiGatewayManagementApi::ApiGatewayManagementApiClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("ApiGatewayManagementApi");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

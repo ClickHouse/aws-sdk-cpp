@@ -25,7 +25,7 @@ namespace Model
   class ListVpcConnectionsRequest : public KafkaRequest
   {
   public:
-    AWS_KAFKA_API ListVpcConnectionsRequest();
+    AWS_KAFKA_API ListVpcConnectionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
     AWS_KAFKA_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * 
             <p>The maximum number of results to return in the response. If
@@ -45,36 +46,13 @@ namespace Model
        
      *  
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * 
-            <p>The maximum number of results to return in the response. If
-     * there are more results, the response includes a NextToken parameter.</p>
-       
-     *  
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * 
-            <p>The maximum number of results to return in the response. If
-     * there are more results, the response includes a NextToken parameter.</p>
-       
-     *  
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * 
-            <p>The maximum number of results to return in the response. If
-     * there are more results, the response includes a NextToken parameter.</p>
-       
-     *  
-     */
     inline ListVpcConnectionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * 
             <p>The paginated results marker. When the result of the operation
@@ -83,81 +61,16 @@ namespace Model
      * the next batch, provide this token in your next request.</p>
          
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
-    inline ListVpcConnectionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
-    inline ListVpcConnectionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The paginated results marker. When the result of the operation
-     * is truncated, the call returns NextToken in the response. 
-            To get
-     * the next batch, provide this token in your next request.</p>
-         
-     */
-    inline ListVpcConnectionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListVpcConnectionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

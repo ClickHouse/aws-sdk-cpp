@@ -21,7 +21,7 @@ namespace Model
   class DescribeSecurityProfileRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeSecurityProfileRequest();
+    AWS_IOT_API DescribeSecurityProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the security profile whose information you want to get.</p>
      */
-    inline const Aws::String& GetSecurityProfileName() const{ return m_securityProfileName; }
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
+    inline const Aws::String& GetSecurityProfileName() const { return m_securityProfileName; }
     inline bool SecurityProfileNameHasBeenSet() const { return m_securityProfileNameHasBeenSet; }
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
-    inline void SetSecurityProfileName(const Aws::String& value) { m_securityProfileNameHasBeenSet = true; m_securityProfileName = value; }
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
-    inline void SetSecurityProfileName(Aws::String&& value) { m_securityProfileNameHasBeenSet = true; m_securityProfileName = std::move(value); }
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
-    inline void SetSecurityProfileName(const char* value) { m_securityProfileNameHasBeenSet = true; m_securityProfileName.assign(value); }
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
-    inline DescribeSecurityProfileRequest& WithSecurityProfileName(const Aws::String& value) { SetSecurityProfileName(value); return *this;}
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
-    inline DescribeSecurityProfileRequest& WithSecurityProfileName(Aws::String&& value) { SetSecurityProfileName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the security profile whose information you want to get.</p>
-     */
-    inline DescribeSecurityProfileRequest& WithSecurityProfileName(const char* value) { SetSecurityProfileName(value); return *this;}
-
+    template<typename SecurityProfileNameT = Aws::String>
+    void SetSecurityProfileName(SecurityProfileNameT&& value) { m_securityProfileNameHasBeenSet = true; m_securityProfileName = std::forward<SecurityProfileNameT>(value); }
+    template<typename SecurityProfileNameT = Aws::String>
+    DescribeSecurityProfileRequest& WithSecurityProfileName(SecurityProfileNameT&& value) { SetSecurityProfileName(std::forward<SecurityProfileNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_securityProfileName;

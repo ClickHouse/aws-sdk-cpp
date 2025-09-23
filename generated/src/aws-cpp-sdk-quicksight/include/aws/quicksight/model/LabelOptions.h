@@ -33,117 +33,48 @@ namespace Model
   class LabelOptions
   {
   public:
-    AWS_QUICKSIGHT_API LabelOptions();
+    AWS_QUICKSIGHT_API LabelOptions() = default;
     AWS_QUICKSIGHT_API LabelOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API LabelOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines whether or not the label is visible.</p>
      */
-    inline const Visibility& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>Determines whether or not the label is visible.</p>
-     */
+    inline Visibility GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
+    inline void SetVisibility(Visibility value) { m_visibilityHasBeenSet = true; m_visibility = value; }
+    inline LabelOptions& WithVisibility(Visibility value) { SetVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines whether or not the label is visible.</p>
-     */
-    inline void SetVisibility(const Visibility& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>Determines whether or not the label is visible.</p>
-     */
-    inline void SetVisibility(Visibility&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>Determines whether or not the label is visible.</p>
-     */
-    inline LabelOptions& WithVisibility(const Visibility& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>Determines whether or not the label is visible.</p>
-     */
-    inline LabelOptions& WithVisibility(Visibility&& value) { SetVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The font configuration of the label.</p>
      */
-    inline const FontConfiguration& GetFontConfiguration() const{ return m_fontConfiguration; }
-
-    /**
-     * <p>The font configuration of the label.</p>
-     */
+    inline const FontConfiguration& GetFontConfiguration() const { return m_fontConfiguration; }
     inline bool FontConfigurationHasBeenSet() const { return m_fontConfigurationHasBeenSet; }
+    template<typename FontConfigurationT = FontConfiguration>
+    void SetFontConfiguration(FontConfigurationT&& value) { m_fontConfigurationHasBeenSet = true; m_fontConfiguration = std::forward<FontConfigurationT>(value); }
+    template<typename FontConfigurationT = FontConfiguration>
+    LabelOptions& WithFontConfiguration(FontConfigurationT&& value) { SetFontConfiguration(std::forward<FontConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The font configuration of the label.</p>
-     */
-    inline void SetFontConfiguration(const FontConfiguration& value) { m_fontConfigurationHasBeenSet = true; m_fontConfiguration = value; }
-
-    /**
-     * <p>The font configuration of the label.</p>
-     */
-    inline void SetFontConfiguration(FontConfiguration&& value) { m_fontConfigurationHasBeenSet = true; m_fontConfiguration = std::move(value); }
-
-    /**
-     * <p>The font configuration of the label.</p>
-     */
-    inline LabelOptions& WithFontConfiguration(const FontConfiguration& value) { SetFontConfiguration(value); return *this;}
-
-    /**
-     * <p>The font configuration of the label.</p>
-     */
-    inline LabelOptions& WithFontConfiguration(FontConfiguration&& value) { SetFontConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The text for the label.</p>
      */
-    inline const Aws::String& GetCustomLabel() const{ return m_customLabel; }
-
-    /**
-     * <p>The text for the label.</p>
-     */
+    inline const Aws::String& GetCustomLabel() const { return m_customLabel; }
     inline bool CustomLabelHasBeenSet() const { return m_customLabelHasBeenSet; }
-
-    /**
-     * <p>The text for the label.</p>
-     */
-    inline void SetCustomLabel(const Aws::String& value) { m_customLabelHasBeenSet = true; m_customLabel = value; }
-
-    /**
-     * <p>The text for the label.</p>
-     */
-    inline void SetCustomLabel(Aws::String&& value) { m_customLabelHasBeenSet = true; m_customLabel = std::move(value); }
-
-    /**
-     * <p>The text for the label.</p>
-     */
-    inline void SetCustomLabel(const char* value) { m_customLabelHasBeenSet = true; m_customLabel.assign(value); }
-
-    /**
-     * <p>The text for the label.</p>
-     */
-    inline LabelOptions& WithCustomLabel(const Aws::String& value) { SetCustomLabel(value); return *this;}
-
-    /**
-     * <p>The text for the label.</p>
-     */
-    inline LabelOptions& WithCustomLabel(Aws::String&& value) { SetCustomLabel(std::move(value)); return *this;}
-
-    /**
-     * <p>The text for the label.</p>
-     */
-    inline LabelOptions& WithCustomLabel(const char* value) { SetCustomLabel(value); return *this;}
-
+    template<typename CustomLabelT = Aws::String>
+    void SetCustomLabel(CustomLabelT&& value) { m_customLabelHasBeenSet = true; m_customLabel = std::forward<CustomLabelT>(value); }
+    template<typename CustomLabelT = Aws::String>
+    LabelOptions& WithCustomLabel(CustomLabelT&& value) { SetCustomLabel(std::forward<CustomLabelT>(value)); return *this;}
+    ///@}
   private:
 
-    Visibility m_visibility;
+    Visibility m_visibility{Visibility::NOT_SET};
     bool m_visibilityHasBeenSet = false;
 
     FontConfiguration m_fontConfiguration;

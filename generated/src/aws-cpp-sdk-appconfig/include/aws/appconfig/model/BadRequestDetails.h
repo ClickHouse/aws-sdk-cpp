@@ -33,60 +33,26 @@ namespace Model
   class BadRequestDetails
   {
   public:
-    AWS_APPCONFIG_API BadRequestDetails();
+    AWS_APPCONFIG_API BadRequestDetails() = default;
     AWS_APPCONFIG_API BadRequestDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API BadRequestDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Detailed information about the bad request exception error when creating a
      * hosted configuration version.</p>
      */
-    inline const Aws::Vector<InvalidConfigurationDetail>& GetInvalidConfiguration() const{ return m_invalidConfiguration; }
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
+    inline const Aws::Vector<InvalidConfigurationDetail>& GetInvalidConfiguration() const { return m_invalidConfiguration; }
     inline bool InvalidConfigurationHasBeenSet() const { return m_invalidConfigurationHasBeenSet; }
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
-    inline void SetInvalidConfiguration(const Aws::Vector<InvalidConfigurationDetail>& value) { m_invalidConfigurationHasBeenSet = true; m_invalidConfiguration = value; }
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
-    inline void SetInvalidConfiguration(Aws::Vector<InvalidConfigurationDetail>&& value) { m_invalidConfigurationHasBeenSet = true; m_invalidConfiguration = std::move(value); }
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
-    inline BadRequestDetails& WithInvalidConfiguration(const Aws::Vector<InvalidConfigurationDetail>& value) { SetInvalidConfiguration(value); return *this;}
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
-    inline BadRequestDetails& WithInvalidConfiguration(Aws::Vector<InvalidConfigurationDetail>&& value) { SetInvalidConfiguration(std::move(value)); return *this;}
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
-    inline BadRequestDetails& AddInvalidConfiguration(const InvalidConfigurationDetail& value) { m_invalidConfigurationHasBeenSet = true; m_invalidConfiguration.push_back(value); return *this; }
-
-    /**
-     * <p>Detailed information about the bad request exception error when creating a
-     * hosted configuration version.</p>
-     */
-    inline BadRequestDetails& AddInvalidConfiguration(InvalidConfigurationDetail&& value) { m_invalidConfigurationHasBeenSet = true; m_invalidConfiguration.push_back(std::move(value)); return *this; }
-
+    template<typename InvalidConfigurationT = Aws::Vector<InvalidConfigurationDetail>>
+    void SetInvalidConfiguration(InvalidConfigurationT&& value) { m_invalidConfigurationHasBeenSet = true; m_invalidConfiguration = std::forward<InvalidConfigurationT>(value); }
+    template<typename InvalidConfigurationT = Aws::Vector<InvalidConfigurationDetail>>
+    BadRequestDetails& WithInvalidConfiguration(InvalidConfigurationT&& value) { SetInvalidConfiguration(std::forward<InvalidConfigurationT>(value)); return *this;}
+    template<typename InvalidConfigurationT = InvalidConfigurationDetail>
+    BadRequestDetails& AddInvalidConfiguration(InvalidConfigurationT&& value) { m_invalidConfigurationHasBeenSet = true; m_invalidConfiguration.emplace_back(std::forward<InvalidConfigurationT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<InvalidConfigurationDetail> m_invalidConfiguration;

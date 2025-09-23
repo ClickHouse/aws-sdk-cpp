@@ -21,7 +21,7 @@ namespace Model
   class DisassociateGlobalReplicationGroupRequest : public ElastiCacheRequest
   {
   public:
-    AWS_ELASTICACHE_API DisassociateGlobalReplicationGroupRequest();
+    AWS_ELASTICACHE_API DisassociateGlobalReplicationGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,144 +36,43 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the Global datastore</p>
      */
-    inline const Aws::String& GetGlobalReplicationGroupId() const{ return m_globalReplicationGroupId; }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
+    inline const Aws::String& GetGlobalReplicationGroupId() const { return m_globalReplicationGroupId; }
     inline bool GlobalReplicationGroupIdHasBeenSet() const { return m_globalReplicationGroupIdHasBeenSet; }
+    template<typename GlobalReplicationGroupIdT = Aws::String>
+    void SetGlobalReplicationGroupId(GlobalReplicationGroupIdT&& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = std::forward<GlobalReplicationGroupIdT>(value); }
+    template<typename GlobalReplicationGroupIdT = Aws::String>
+    DisassociateGlobalReplicationGroupRequest& WithGlobalReplicationGroupId(GlobalReplicationGroupIdT&& value) { SetGlobalReplicationGroupId(std::forward<GlobalReplicationGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(const Aws::String& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = value; }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(Aws::String&& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = std::move(value); }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(const char* value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId.assign(value); }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithGlobalReplicationGroupId(const Aws::String& value) { SetGlobalReplicationGroupId(value); return *this;}
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithGlobalReplicationGroupId(Aws::String&& value) { SetGlobalReplicationGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithGlobalReplicationGroupId(const char* value) { SetGlobalReplicationGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the secondary cluster you wish to remove from the Global
      * datastore</p>
      */
-    inline const Aws::String& GetReplicationGroupId() const{ return m_replicationGroupId; }
-
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
+    inline const Aws::String& GetReplicationGroupId() const { return m_replicationGroupId; }
     inline bool ReplicationGroupIdHasBeenSet() const { return m_replicationGroupIdHasBeenSet; }
+    template<typename ReplicationGroupIdT = Aws::String>
+    void SetReplicationGroupId(ReplicationGroupIdT&& value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId = std::forward<ReplicationGroupIdT>(value); }
+    template<typename ReplicationGroupIdT = Aws::String>
+    DisassociateGlobalReplicationGroupRequest& WithReplicationGroupId(ReplicationGroupIdT&& value) { SetReplicationGroupId(std::forward<ReplicationGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline void SetReplicationGroupId(const Aws::String& value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId = value; }
-
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline void SetReplicationGroupId(Aws::String&& value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId = std::move(value); }
-
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline void SetReplicationGroupId(const char* value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId.assign(value); }
-
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithReplicationGroupId(const Aws::String& value) { SetReplicationGroupId(value); return *this;}
-
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithReplicationGroupId(Aws::String&& value) { SetReplicationGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithReplicationGroupId(const char* value) { SetReplicationGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon region of secondary cluster you wish to remove from the Global
      * datastore</p>
      */
-    inline const Aws::String& GetReplicationGroupRegion() const{ return m_replicationGroupRegion; }
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
+    inline const Aws::String& GetReplicationGroupRegion() const { return m_replicationGroupRegion; }
     inline bool ReplicationGroupRegionHasBeenSet() const { return m_replicationGroupRegionHasBeenSet; }
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline void SetReplicationGroupRegion(const Aws::String& value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion = value; }
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline void SetReplicationGroupRegion(Aws::String&& value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline void SetReplicationGroupRegion(const char* value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion.assign(value); }
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithReplicationGroupRegion(const Aws::String& value) { SetReplicationGroupRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithReplicationGroupRegion(Aws::String&& value) { SetReplicationGroupRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon region of secondary cluster you wish to remove from the Global
-     * datastore</p>
-     */
-    inline DisassociateGlobalReplicationGroupRequest& WithReplicationGroupRegion(const char* value) { SetReplicationGroupRegion(value); return *this;}
-
+    template<typename ReplicationGroupRegionT = Aws::String>
+    void SetReplicationGroupRegion(ReplicationGroupRegionT&& value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion = std::forward<ReplicationGroupRegionT>(value); }
+    template<typename ReplicationGroupRegionT = Aws::String>
+    DisassociateGlobalReplicationGroupRequest& WithReplicationGroupRegion(ReplicationGroupRegionT&& value) { SetReplicationGroupRegion(std::forward<ReplicationGroupRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalReplicationGroupId;

@@ -21,7 +21,7 @@ namespace Model
   class DeleteServiceNetworkRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API DeleteServiceNetworkRequest();
+    AWS_VPCLATTICE_API DeleteServiceNetworkRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_VPCLATTICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
+     * <p>The ID or ARN of the service network.</p>
      */
-    inline const Aws::String& GetServiceNetworkIdentifier() const{ return m_serviceNetworkIdentifier; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
+    inline const Aws::String& GetServiceNetworkIdentifier() const { return m_serviceNetworkIdentifier; }
     inline bool ServiceNetworkIdentifierHasBeenSet() const { return m_serviceNetworkIdentifierHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
-    inline void SetServiceNetworkIdentifier(const Aws::String& value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
-    inline void SetServiceNetworkIdentifier(Aws::String&& value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
-    inline void SetServiceNetworkIdentifier(const char* value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
-    inline DeleteServiceNetworkRequest& WithServiceNetworkIdentifier(const Aws::String& value) { SetServiceNetworkIdentifier(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
-    inline DeleteServiceNetworkRequest& WithServiceNetworkIdentifier(Aws::String&& value) { SetServiceNetworkIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) or ID of the service network.</p>
-     */
-    inline DeleteServiceNetworkRequest& WithServiceNetworkIdentifier(const char* value) { SetServiceNetworkIdentifier(value); return *this;}
-
+    template<typename ServiceNetworkIdentifierT = Aws::String>
+    void SetServiceNetworkIdentifier(ServiceNetworkIdentifierT&& value) { m_serviceNetworkIdentifierHasBeenSet = true; m_serviceNetworkIdentifier = std::forward<ServiceNetworkIdentifierT>(value); }
+    template<typename ServiceNetworkIdentifierT = Aws::String>
+    DeleteServiceNetworkRequest& WithServiceNetworkIdentifier(ServiceNetworkIdentifierT&& value) { SetServiceNetworkIdentifier(std::forward<ServiceNetworkIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceNetworkIdentifier;

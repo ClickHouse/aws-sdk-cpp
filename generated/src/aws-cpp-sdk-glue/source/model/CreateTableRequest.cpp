@@ -12,16 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTableRequest::CreateTableRequest() : 
-    m_catalogIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_tableInputHasBeenSet(false),
-    m_partitionIndexesHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_openTableFormatInputHasBeenSet(false)
-{
-}
-
 Aws::String CreateTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -35,6 +25,12 @@ Aws::String CreateTableRequest::SerializePayload() const
   if(m_databaseNameHasBeenSet)
   {
    payload.WithString("DatabaseName", m_databaseName);
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
 
   }
 

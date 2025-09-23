@@ -18,15 +18,7 @@ namespace IoTThingsGraph
 namespace Model
 {
 
-Thing::Thing() : 
-    m_thingArnHasBeenSet(false),
-    m_thingNameHasBeenSet(false)
-{
-}
-
-Thing::Thing(JsonView jsonValue) : 
-    m_thingArnHasBeenSet(false),
-    m_thingNameHasBeenSet(false)
+Thing::Thing(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Thing& Thing::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("thingArn"))
   {
     m_thingArn = jsonValue.GetString("thingArn");
-
     m_thingArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("thingName"))
   {
     m_thingName = jsonValue.GetString("thingName");
-
     m_thingNameHasBeenSet = true;
   }
-
   return *this;
 }
 

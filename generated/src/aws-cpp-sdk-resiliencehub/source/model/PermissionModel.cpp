@@ -18,19 +18,7 @@ namespace ResilienceHub
 namespace Model
 {
 
-PermissionModel::PermissionModel() : 
-    m_crossAccountRoleArnsHasBeenSet(false),
-    m_invokerRoleNameHasBeenSet(false),
-    m_type(PermissionModelType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-PermissionModel::PermissionModel(JsonView jsonValue) : 
-    m_crossAccountRoleArnsHasBeenSet(false),
-    m_invokerRoleNameHasBeenSet(false),
-    m_type(PermissionModelType::NOT_SET),
-    m_typeHasBeenSet(false)
+PermissionModel::PermissionModel(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,21 +34,16 @@ PermissionModel& PermissionModel::operator =(JsonView jsonValue)
     }
     m_crossAccountRoleArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("invokerRoleName"))
   {
     m_invokerRoleName = jsonValue.GetString("invokerRoleName");
-
     m_invokerRoleNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = PermissionModelTypeMapper::GetPermissionModelTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

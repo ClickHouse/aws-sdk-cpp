@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceTopology::InstanceTopology() : 
-    m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_networkNodesHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_zoneIdHasBeenSet(false)
-{
-}
-
-InstanceTopology::InstanceTopology(const XmlNode& xmlNode) : 
-    m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_networkNodesHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_zoneIdHasBeenSet(false)
+InstanceTopology::InstanceTopology(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +53,7 @@ InstanceTopology& InstanceTopology::operator =(const XmlNode& xmlNode)
     if(!networkNodesNode.IsNull())
     {
       XmlNode networkNodesMember = networkNodesNode.FirstChild("item");
+      m_networkNodesHasBeenSet = !networkNodesMember.IsNull();
       while(!networkNodesMember.IsNull())
       {
         m_networkNodes.push_back(networkNodesMember.GetText());
@@ -88,6 +73,12 @@ InstanceTopology& InstanceTopology::operator =(const XmlNode& xmlNode)
     {
       m_zoneId = Aws::Utils::Xml::DecodeEscapedXmlText(zoneIdNode.GetText());
       m_zoneIdHasBeenSet = true;
+    }
+    XmlNode capacityBlockIdNode = resultNode.FirstChild("capacityBlockId");
+    if(!capacityBlockIdNode.IsNull())
+    {
+      m_capacityBlockId = Aws::Utils::Xml::DecodeEscapedXmlText(capacityBlockIdNode.GetText());
+      m_capacityBlockIdHasBeenSet = true;
     }
   }
 
@@ -130,6 +121,11 @@ void InstanceTopology::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".ZoneId=" << StringUtils::URLEncode(m_zoneId.c_str()) << "&";
   }
 
+  if(m_capacityBlockIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CapacityBlockId=" << StringUtils::URLEncode(m_capacityBlockId.c_str()) << "&";
+  }
+
 }
 
 void InstanceTopology::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -161,6 +157,10 @@ void InstanceTopology::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_zoneIdHasBeenSet)
   {
       oStream << location << ".ZoneId=" << StringUtils::URLEncode(m_zoneId.c_str()) << "&";
+  }
+  if(m_capacityBlockIdHasBeenSet)
+  {
+      oStream << location << ".CapacityBlockId=" << StringUtils::URLEncode(m_capacityBlockId.c_str()) << "&";
   }
 }
 

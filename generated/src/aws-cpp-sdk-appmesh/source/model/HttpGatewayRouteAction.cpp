@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-HttpGatewayRouteAction::HttpGatewayRouteAction() : 
-    m_rewriteHasBeenSet(false),
-    m_targetHasBeenSet(false)
-{
-}
-
-HttpGatewayRouteAction::HttpGatewayRouteAction(JsonView jsonValue) : 
-    m_rewriteHasBeenSet(false),
-    m_targetHasBeenSet(false)
+HttpGatewayRouteAction::HttpGatewayRouteAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HttpGatewayRouteAction& HttpGatewayRouteAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("rewrite"))
   {
     m_rewrite = jsonValue.GetObject("rewrite");
-
     m_rewriteHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("target"))
   {
     m_target = jsonValue.GetObject("target");
-
     m_targetHasBeenSet = true;
   }
-
   return *this;
 }
 

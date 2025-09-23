@@ -31,52 +31,23 @@ namespace Model
   class BrowserSettingsSummary
   {
   public:
-    AWS_WORKSPACESWEB_API BrowserSettingsSummary();
+    AWS_WORKSPACESWEB_API BrowserSettingsSummary() = default;
     AWS_WORKSPACESWEB_API BrowserSettingsSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESWEB_API BrowserSettingsSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESWEB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the browser settings.</p>
      */
-    inline const Aws::String& GetBrowserSettingsArn() const{ return m_browserSettingsArn; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
+    inline const Aws::String& GetBrowserSettingsArn() const { return m_browserSettingsArn; }
     inline bool BrowserSettingsArnHasBeenSet() const { return m_browserSettingsArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(const Aws::String& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = value; }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(Aws::String&& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline void SetBrowserSettingsArn(const char* value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline BrowserSettingsSummary& WithBrowserSettingsArn(const Aws::String& value) { SetBrowserSettingsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline BrowserSettingsSummary& WithBrowserSettingsArn(Aws::String&& value) { SetBrowserSettingsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the browser settings.</p>
-     */
-    inline BrowserSettingsSummary& WithBrowserSettingsArn(const char* value) { SetBrowserSettingsArn(value); return *this;}
-
+    template<typename BrowserSettingsArnT = Aws::String>
+    void SetBrowserSettingsArn(BrowserSettingsArnT&& value) { m_browserSettingsArnHasBeenSet = true; m_browserSettingsArn = std::forward<BrowserSettingsArnT>(value); }
+    template<typename BrowserSettingsArnT = Aws::String>
+    BrowserSettingsSummary& WithBrowserSettingsArn(BrowserSettingsArnT&& value) { SetBrowserSettingsArn(std::forward<BrowserSettingsArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_browserSettingsArn;

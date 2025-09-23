@@ -26,7 +26,7 @@ namespace Model
   class ListGroupsRequest : public QBusinessRequest
   {
   public:
-    AWS_QBUSINESS_API ListGroupsRequest();
+    AWS_QBUSINESS_API ListGroupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,286 +39,100 @@ namespace Model
     AWS_QBUSINESS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the application for getting a list of groups mapped to
      * users.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    ListGroupsRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the application for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the data source for getting a list of groups mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the index for getting a list of groups mapped to users.</p>
      */
-    inline const Aws::String& GetIndexId() const{ return m_indexId; }
-
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
+    inline const Aws::String& GetIndexId() const { return m_indexId; }
     inline bool IndexIdHasBeenSet() const { return m_indexIdHasBeenSet; }
+    template<typename IndexIdT = Aws::String>
+    void SetIndexId(IndexIdT&& value) { m_indexIdHasBeenSet = true; m_indexId = std::forward<IndexIdT>(value); }
+    template<typename IndexIdT = Aws::String>
+    ListGroupsRequest& WithIndexId(IndexIdT&& value) { SetIndexId(std::forward<IndexIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
-    inline void SetIndexId(const Aws::String& value) { m_indexIdHasBeenSet = true; m_indexId = value; }
-
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
-    inline void SetIndexId(Aws::String&& value) { m_indexIdHasBeenSet = true; m_indexId = std::move(value); }
-
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
-    inline void SetIndexId(const char* value) { m_indexIdHasBeenSet = true; m_indexId.assign(value); }
-
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
-    inline ListGroupsRequest& WithIndexId(const Aws::String& value) { SetIndexId(value); return *this;}
-
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
-    inline ListGroupsRequest& WithIndexId(Aws::String&& value) { SetIndexId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the index for getting a list of groups mapped to users.</p>
-     */
-    inline ListGroupsRequest& WithIndexId(const char* value) { SetIndexId(value); return *this;}
-
-
-    /**
-     * <p>The maximum number of returned groups that are mapped to users.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of returned groups that are mapped to users.</p>
-     */
-    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of returned groups that are mapped to users.</p>
-     */
-    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of returned groups that are mapped to users.</p>
-     */
-    inline ListGroupsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the previous response was incomplete (because there is more data to
-     * retrieve), Amazon Q returns a pagination token in the response. You can use this
-     * pagination token to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline ListGroupsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp identifier used for the latest <code>PUT</code> or
      * <code>DELETE</code> action for mapping users to their groups.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedEarlierThan() const{ return m_updatedEarlierThan; }
-
-    /**
-     * <p>The timestamp identifier used for the latest <code>PUT</code> or
-     * <code>DELETE</code> action for mapping users to their groups.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedEarlierThan() const { return m_updatedEarlierThan; }
     inline bool UpdatedEarlierThanHasBeenSet() const { return m_updatedEarlierThanHasBeenSet; }
+    template<typename UpdatedEarlierThanT = Aws::Utils::DateTime>
+    void SetUpdatedEarlierThan(UpdatedEarlierThanT&& value) { m_updatedEarlierThanHasBeenSet = true; m_updatedEarlierThan = std::forward<UpdatedEarlierThanT>(value); }
+    template<typename UpdatedEarlierThanT = Aws::Utils::DateTime>
+    ListGroupsRequest& WithUpdatedEarlierThan(UpdatedEarlierThanT&& value) { SetUpdatedEarlierThan(std::forward<UpdatedEarlierThanT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp identifier used for the latest <code>PUT</code> or
-     * <code>DELETE</code> action for mapping users to their groups.</p>
+     * <p>The identifier of the data source for getting a list of groups mapped to
+     * users.</p>
      */
-    inline void SetUpdatedEarlierThan(const Aws::Utils::DateTime& value) { m_updatedEarlierThanHasBeenSet = true; m_updatedEarlierThan = value; }
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
+    inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    ListGroupsRequest& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp identifier used for the latest <code>PUT</code> or
-     * <code>DELETE</code> action for mapping users to their groups.</p>
+     * <p>If the previous response was incomplete (because there is more data to
+     * retrieve), Amazon Q Business returns a pagination token in the response. You can
+     * use this pagination token to retrieve the next set of groups that are mapped to
+     * users.</p>
      */
-    inline void SetUpdatedEarlierThan(Aws::Utils::DateTime&& value) { m_updatedEarlierThanHasBeenSet = true; m_updatedEarlierThan = std::move(value); }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListGroupsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp identifier used for the latest <code>PUT</code> or
-     * <code>DELETE</code> action for mapping users to their groups.</p>
+     * <p>The maximum number of returned groups that are mapped to users.</p>
      */
-    inline ListGroupsRequest& WithUpdatedEarlierThan(const Aws::Utils::DateTime& value) { SetUpdatedEarlierThan(value); return *this;}
-
-    /**
-     * <p>The timestamp identifier used for the latest <code>PUT</code> or
-     * <code>DELETE</code> action for mapping users to their groups.</p>
-     */
-    inline ListGroupsRequest& WithUpdatedEarlierThan(Aws::Utils::DateTime&& value) { SetUpdatedEarlierThan(std::move(value)); return *this;}
-
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline ListGroupsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;
     bool m_applicationIdHasBeenSet = false;
 
-    Aws::String m_dataSourceId;
-    bool m_dataSourceIdHasBeenSet = false;
-
     Aws::String m_indexId;
     bool m_indexIdHasBeenSet = false;
 
-    int m_maxResults;
-    bool m_maxResultsHasBeenSet = false;
+    Aws::Utils::DateTime m_updatedEarlierThan{};
+    bool m_updatedEarlierThanHasBeenSet = false;
+
+    Aws::String m_dataSourceId;
+    bool m_dataSourceIdHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedEarlierThan;
-    bool m_updatedEarlierThanHasBeenSet = false;
+    int m_maxResults{0};
+    bool m_maxResultsHasBeenSet = false;
   };
 
 } // namespace Model

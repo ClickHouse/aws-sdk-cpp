@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DeleteGroupRequest::DeleteGroupRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_indexIdHasBeenSet(false)
-{
-}
-
 Aws::String DeleteGroupRequest::SerializePayload() const
 {
   return {};

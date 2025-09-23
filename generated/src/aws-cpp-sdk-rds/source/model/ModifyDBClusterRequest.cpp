@@ -10,73 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyDBClusterRequest::ModifyDBClusterRequest() : 
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_newDBClusterIdentifierHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_dBClusterParameterGroupNameHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_enableIAMDatabaseAuthentication(false),
-    m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_backtrackWindow(0),
-    m_backtrackWindowHasBeenSet(false),
-    m_cloudwatchLogsExportConfigurationHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_allowMajorVersionUpgrade(false),
-    m_allowMajorVersionUpgradeHasBeenSet(false),
-    m_dBInstanceParameterGroupNameHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_domainIAMRoleNameHasBeenSet(false),
-    m_scalingConfigurationHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_enableHttpEndpoint(false),
-    m_enableHttpEndpointHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_enableGlobalWriteForwarding(false),
-    m_enableGlobalWriteForwardingHasBeenSet(false),
-    m_dBClusterInstanceClassHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false),
-    m_monitoringRoleArnHasBeenSet(false),
-    m_enablePerformanceInsights(false),
-    m_enablePerformanceInsightsHasBeenSet(false),
-    m_performanceInsightsKMSKeyIdHasBeenSet(false),
-    m_performanceInsightsRetentionPeriod(0),
-    m_performanceInsightsRetentionPeriodHasBeenSet(false),
-    m_serverlessV2ScalingConfigurationHasBeenSet(false),
-    m_networkTypeHasBeenSet(false),
-    m_manageMasterUserPassword(false),
-    m_manageMasterUserPasswordHasBeenSet(false),
-    m_rotateMasterUserPassword(false),
-    m_rotateMasterUserPasswordHasBeenSet(false),
-    m_masterUserSecretKmsKeyIdHasBeenSet(false),
-    m_engineModeHasBeenSet(false),
-    m_allowEngineModeChange(false),
-    m_allowEngineModeChangeHasBeenSet(false),
-    m_enableLocalWriteForwarding(false),
-    m_enableLocalWriteForwardingHasBeenSet(false),
-    m_awsBackupRecoveryPointArnHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDBClusterRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -108,12 +41,19 @@ Aws::String ModifyDBClusterRequest::SerializePayload() const
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
@@ -242,6 +182,11 @@ Aws::String ModifyDBClusterRequest::SerializePayload() const
     ss << "MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
   }
 
+  if(m_databaseInsightsModeHasBeenSet)
+  {
+    ss << "DatabaseInsightsMode=" << StringUtils::URLEncode(DatabaseInsightsModeMapper::GetNameForDatabaseInsightsMode(m_databaseInsightsMode)) << "&";
+  }
+
   if(m_enablePerformanceInsightsHasBeenSet)
   {
     ss << "EnablePerformanceInsights=" << std::boolalpha << m_enablePerformanceInsights << "&";
@@ -300,6 +245,21 @@ Aws::String ModifyDBClusterRequest::SerializePayload() const
   if(m_awsBackupRecoveryPointArnHasBeenSet)
   {
     ss << "AwsBackupRecoveryPointArn=" << StringUtils::URLEncode(m_awsBackupRecoveryPointArn.c_str()) << "&";
+  }
+
+  if(m_enableLimitlessDatabaseHasBeenSet)
+  {
+    ss << "EnableLimitlessDatabase=" << std::boolalpha << m_enableLimitlessDatabase << "&";
+  }
+
+  if(m_cACertificateIdentifierHasBeenSet)
+  {
+    ss << "CACertificateIdentifier=" << StringUtils::URLEncode(m_cACertificateIdentifier.c_str()) << "&";
+  }
+
+  if(m_masterUserAuthenticationTypeHasBeenSet)
+  {
+    ss << "MasterUserAuthenticationType=" << StringUtils::URLEncode(MasterUserAuthenticationTypeMapper::GetNameForMasterUserAuthenticationType(m_masterUserAuthenticationType)) << "&";
   }
 
   ss << "Version=2014-10-31";

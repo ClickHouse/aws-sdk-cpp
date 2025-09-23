@@ -42,7 +42,7 @@ namespace Model
   class SMSSandboxPhoneNumber
   {
   public:
-    AWS_SNS_API SMSSandboxPhoneNumber();
+    AWS_SNS_API SMSSandboxPhoneNumber() = default;
     AWS_SNS_API SMSSandboxPhoneNumber(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SNS_API SMSSandboxPhoneNumber& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -50,83 +50,33 @@ namespace Model
     AWS_SNS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The destination phone number.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The destination phone number.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    SMSSandboxPhoneNumber& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination phone number.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The destination phone number.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The destination phone number.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The destination phone number.</p>
-     */
-    inline SMSSandboxPhoneNumber& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The destination phone number.</p>
-     */
-    inline SMSSandboxPhoneNumber& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The destination phone number.</p>
-     */
-    inline SMSSandboxPhoneNumber& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination phone number's verification status.</p>
      */
-    inline const SMSSandboxPhoneNumberVerificationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The destination phone number's verification status.</p>
-     */
+    inline SMSSandboxPhoneNumberVerificationStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The destination phone number's verification status.</p>
-     */
-    inline void SetStatus(const SMSSandboxPhoneNumberVerificationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The destination phone number's verification status.</p>
-     */
-    inline void SetStatus(SMSSandboxPhoneNumberVerificationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The destination phone number's verification status.</p>
-     */
-    inline SMSSandboxPhoneNumber& WithStatus(const SMSSandboxPhoneNumberVerificationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The destination phone number's verification status.</p>
-     */
-    inline SMSSandboxPhoneNumber& WithStatus(SMSSandboxPhoneNumberVerificationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(SMSSandboxPhoneNumberVerificationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline SMSSandboxPhoneNumber& WithStatus(SMSSandboxPhoneNumberVerificationStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_phoneNumber;
     bool m_phoneNumberHasBeenSet = false;
 
-    SMSSandboxPhoneNumberVerificationStatus m_status;
+    SMSSandboxPhoneNumberVerificationStatus m_status{SMSSandboxPhoneNumberVerificationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

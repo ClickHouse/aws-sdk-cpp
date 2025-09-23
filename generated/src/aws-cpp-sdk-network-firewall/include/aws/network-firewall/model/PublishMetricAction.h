@@ -34,52 +34,25 @@ namespace Model
   class PublishMetricAction
   {
   public:
-    AWS_NETWORKFIREWALL_API PublishMetricAction();
+    AWS_NETWORKFIREWALL_API PublishMetricAction() = default;
     AWS_NETWORKFIREWALL_API PublishMetricAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API PublishMetricAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::Vector<Dimension>& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::Vector<Dimension>& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetDimensions(const Aws::Vector<Dimension>& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetDimensions(Aws::Vector<Dimension>&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline PublishMetricAction& WithDimensions(const Aws::Vector<Dimension>& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline PublishMetricAction& WithDimensions(Aws::Vector<Dimension>&& value) { SetDimensions(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline PublishMetricAction& AddDimensions(const Dimension& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
-
-    /**
-     * <p/>
-     */
-    inline PublishMetricAction& AddDimensions(Dimension&& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(std::move(value)); return *this; }
-
+    template<typename DimensionsT = Aws::Vector<Dimension>>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = Aws::Vector<Dimension>>
+    PublishMetricAction& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    template<typename DimensionsT = Dimension>
+    PublishMetricAction& AddDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions.emplace_back(std::forward<DimensionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Dimension> m_dimensions;
